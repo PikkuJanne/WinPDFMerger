@@ -5,7 +5,7 @@ Read AGENTS/INDEX/STATUS, T09 TASKS entry/brief, PRODUCT_SPEC, TECHNICAL_SPEC,
 TEST_STRATEGY, GITHUB_WORKFLOW and AC019/AC020/AC021. Recheck repository/branch,
 clean state, fetch/push origin, live refs/PR/releases; never reset to the baseline.
 
-Implementation checkpoint is prepared: `Invoke-PdfToolJob` routes fixed PDFtk/GS
+Implementation checkpoint C1 is pushed: `139ecdcc9f31bc8c55bd0e26e63aaa43e2acdbfc`. `Invoke-PdfToolJob` routes fixed PDFtk/GS
 vectors through `Invoke-NativeProcess`, captures/logs both tools, privately stages
 fresh outputs and uses no-overwrite moves. PDFtk cat/compress/dont_ask; GS retains
 SAFER, /screen, compatibility1.6/duplicate detection and child-only GS_OPTIONS
@@ -17,8 +17,11 @@ maximum injectable32766. File operands and owned stage must remain below260.
 Real PDFtk2.02 punctuation/Latin paths and CJK install path pass. CJK file operands
 fail safely, with readable Unicode diagnostics;258 input passes/260 preflight
 rejects. Tests hash sources; ACL-denial test restores original descriptor/SDDL.
-Dirty Unit104/ToolInvocation12/PDFtkPaths12 pass both actual shells. See checkpoint
-and precommit evidence; clean C1 reruns/live proof will be recorded separately.
+Clean C1 passes203 tests per shell,406 total: Unit104/ToolInvocation12/
+PDFtkPaths12/NativeRunner36/DependencyEntry9/SourceDiscovery4/Launcher24/
+LauncherNative2, all failure/skip/not_run counts zero. See `evidence/T09-evidence.md`,
+C1 results/live receipt and exact report/hash manifest. Historical dirty runs are
+separate. AC021 passes; required AC019/20 remain not_run as whole cases without GS.
 
 GS is absent. Human response to the exact new external-cache acquisition request
 is required; silence is not approval. The repository dependency policy explicitly
@@ -34,9 +37,9 @@ GS resources/layout and execute GhostscriptPaths in both shells at a clean commi
 The harness must fail closed for missing real dependencies; no skips/mock GS pass.
 
 Only after required AC019/20/21 actual acceptance, update T09 done and NEXT_SESSION
-with T10. Current C1 is implementation-only; no M1 completion claim. Normal push,
-new draft PR (PR7 is merged; never reuse it), clean/live equality and records C2
-are required. Future session rechecks current live refs instead of trusting notes.
+with T10. Current C1 is implementation-only; no M1 completion claim. C1 normal push/clean live equality verified2026-10-07T18:30:39.971403+00:00.
+New draft [PR8](https://github.com/PikkuJanne/WinPDFMerger/pull/8) is open; inspect live state before reuse. Records C2 require fresh verification; final
+C2 post-push clean/live SHA belongs in session output and must be rechecked. Future session rechecks current live refs instead of trusting notes.
 
 Reuse exact approved Pester6.2.0/PDFtk2.02 caches from T03 acquisition receipts and
 process-only RemoteSigned; no repeat approval for those. Actual PS7 remains7.6.5

@@ -85,3 +85,14 @@ remain T09; descendant/run cleanup T15. Five real PDFtk master smokes per shell
 retain 2,2 and 2,2,5 page totals and source snapshots. Actual PS7 remains7.6.5,
 current-supported update/native GS/final page order/fidelity/desktop/release
 unrun. Exact commands/results/limits and report/build hashes: T08 completion/C1.
+
+T09 clean implementation C1 `139ecdcc9f31bc8c55bd0e26e63aaa43e2acdbfc` passes
+203 tests per actual PS5.1/PS7 shell (406 total), all failure/skip/not_run zero.
+Native PDFtk2.02 source/input/output/install/actual-entry punctuation+Latin paths,
+readable CJK operand failures/CJK install success,258 input/260 preflight guard,
+password-required, exclusive lock, owned-file ReadData ACL denial with restored
+SDDL/source snapshots and final collision refusal pass. Controlled job wiring
+and M1 regression tiers are separate evidence. Actual GS remains absent/unrun;
+new exact external-cache acquisition authorization is pending. T09/AC019/20 remain
+blocked/incomplete as whole required gates; AC021 passes. No supported-current
+PS7 or release/Explorer/fidelity claim. See `evidence/T09-evidence.md` and C1 reports.
