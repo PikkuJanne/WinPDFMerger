@@ -1,43 +1,45 @@
 # Project status
 
 Target: published and independently verified `v1.0.0` in `PikkuJanne/WinPDFMerger`.
-Completed milestone: M0 — baseline and safe setup.
-Completed tasks: T01 through T08.
-Current task: T09 — in progress; required dependencies acquired, clean reruns next.
+Completed milestone: M1 — paths, ordering and native execution.
+Completed tasks: T01 through T09.
+Next task: T10 — validate destination and reserve run identity.
 Publication: NOT STARTED.
 
-Owner authorization: "Please install everything needed for testing". Verified
-development-only external caches now contain GS10.08.0, portable PS7.6.6,
-PSScriptAnalyzer1.25.0 and extraction-only 7-Zip26.04. Existing approved
-PDFtk2.02/Pester6.2.0 and synthetic Python fixture libraries were verified/reused.
-Acquisition receipts are under `evidence/T09-*-acquisition.json`; no system/PATH,
-user/machine policy, security-tool or runtime-download change occurred.
+T09 clean C3 `894bbb4862105ae497bc9801decc46575fedd87a` passes217 Pester checks per actual shell,
+434total: Unit104, ToolInvocation12, PdftkPaths13, GhostscriptPaths13,
+NativeRunner36, DependencyEntry9, SourceDiscovery4, Launcher24, LauncherNative2.
+All failures/blocks/containers/skips/not_run0. Required AC019/20/21 pass.
+Python fixture10tests/reproduction/PDFium oracle also pass at clean C3.
+Analyzer entry/helpers:0errors/20warnings/4information in each shell; findings
+retained/reviewed, not lint-clean or a later T22 gate. Evidence:
+`evidence/T09-completion.md`, C3 results/reports/manifest/review/live receipt.
 
-PR8 was owner-merged to main021e2a9. The branch was safely fast-forwarded after
-ancestry/identical-tree checks. Previous C1/C2 reports remain historical; their
-GS/PS7 availability blockers are superseded by the acquisitions in this followup.
-Origin fetch/push remains the required PikkuJanne/WinPDFMerger repository.
+Owner-authorized dependencies are verified external dev caches: GS10.08.0,
+portable supported PS7.6.6, PSA1.25.0; existing PDFtk2.02/Pester6.2.0/Python
+fixture libraries verified/reused. Extraction-only7-Zip26.04 read installer data.
+No admin/system/PATH/persistent policy/security change or vendor redistribution.
+Acquisition receipts disclose hashes/signatures/unsigned extracted binaries,
+archive variants and collector setup faults. Public evidence uses synthetic PDFs.
 
-Actual dirty-base021e2a9 GS testing exposed an encrypted-input native exit0 with
-a one-page artifact instead of its two-page source. Fixed allowlisted
-`-dPDFSTOPONERROR` makes the error nonzero; existing private-output cleanup refuses
-publication. Updated GS13 tests pass in PS5.1 and supported PS7.6.6, with all
-failure/skip/not_run counts zero. These dirty runs are preliminary, not clean-C3
-acceptance. The public encrypted-only workflow fails PDFtk1 before GS conversion.
-SAFER, /screen, compatibility1.6, duplicate detection and child-only GS_OPTIONS
-removal remain. Independent review found no blocking issue.
+Real GS encrypted-input testing exposed default exit0/wrong-page output. Fixed
+vendor `-dPDFSTOPONERROR` returns nonzero and existing owned-stage cleanup refuses
+publication. GS supports tested punctuation/Latin/CJK paths; PDFtk supports tested
+punctuation/Latin and CJK install, safely rejects CJK operands. Both accept258;
+260 preflight rejects. Password/lock/owned ACL denial/collision cases are bounded;
+source snapshots and restored ACL are verified. Page totals do not prove fidelity.
+SAFER,/screen/compatibility1.6/duplicate detection and child-only GS_OPTIONS remain.
 
-PSScriptAnalyzer on entry/helpers in both shells:0errors/20warnings/4information;
-style findings are retained, not called lint-clean. Clean-C3 nine-tier regression
-and analyzer evidence, normal push and fresh clean/live verification remain next.
-AC019/20 remain not_run as whole cases until that checkpoint; AC021 C1 passes.
+C3 matching-branch normal push/fresh clean/live equality is retained. Owner-merged
+PR8/main021e2a9 was safely fast-forwarded before edits; new draft [PR](https://github.com/PikkuJanne/WinPDFMerger/pull/9)
+covers this continuation. C4 records clean-C3 results; its final push/live equality
+belongs in session output and must be rechecked next time. Origin unchanged.
 
-Reference desktop remains non-elevated Windows11 x64/build26300, ordinary PS5.1
-Restricted/all scopes Undefined; tests use previously authorized process-only
-RemoteSigned. OS support channel, Explorer/fidelity/full-release compatibility
-remain unestablished. Input inventory T11, master/email validation T13/T14,
-general staging T12, destination/identity T10 and full interruption T15 remain
-downstream. Earlier T09 notes incorrectly called structural validation T10;
-this mapping corrects the continuation without altering historical reports.
-No private PDFs/upload, runtime network calls, tags/releases/reset/stash/force
-push/origin change occurred. T09/M1 completion still awaits clean results.
+Reference: non-elevated Windows11x64/build26300; actual PS5.1.26100.9444 and
+supported7.6.6. Ordinary PS5.1 remains Restricted/allscopesUndefined; tests only
+use authorized process RemoteSigned. OS support channel/Explorer/full-release
+compatibility unestablished. Future gates: T10 destination/identity, T11 input/page
+inventory, T12 general staging, T13 master validation, T14 email/outcomes, T15
+interruption. Same-second log identity/stale-email summary/fidelity/CI/package/
+security/release remain downstream. Earlier structural-T10 wording is corrected.
+No runtime network/private upload/reset/stash/force/origin/tag/release change.

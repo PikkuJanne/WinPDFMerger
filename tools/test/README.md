@@ -51,3 +51,12 @@ tiers require `-PdftkPath`; `GhostscriptPaths` also requires `-GhostscriptPath`.
 The path suite copies explicitly selected vendor resources into unique ignored
 test directories; it downloads/installs nothing and uses synthetic PDFs only.
 Unsupported backend paths are asserted as safe failures, never skips.
+
+The current T09 development reference pins are PowerShell 7.6.6 and
+PSScriptAnalyzer 1.25.0, recorded in `tests/TestDependencies.psd1`. Explicit
+verified external cache paths/provenance are in the T09 acquisition receipts;
+Pester 6.2.0/PDFtk 2.02 remain pinned by T03 receipts. Select the portable 7.6.6
+host explicitly rather than assuming the first PATH pwsh is current. Tests
+use process-only RemoteSigned under existing authorization. The harness does
+not install/download dependencies. Scoped clean native results/commands are
+in `docs/codex/evidence/T09-completion.md` and `T09-C3-results.json`.
