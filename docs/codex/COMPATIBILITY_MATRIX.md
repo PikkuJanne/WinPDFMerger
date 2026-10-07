@@ -8,9 +8,9 @@ observations are not application compatibility certification. Evidence:
 | Environment | Release scope | Version/build | Evidence | Status |
 |---|---|---|---|---|
 | Windows 11 x64 standard-user desktop | Required | Pro 10.0.26300/build 26300, DisplayVersion 26H2; non-administrator observation token; NTFS fixed drive | T02 baseline/environment | INVENTORIED; application/Explorer acceptance NOT TESTED; OS support channel unestablished |
-| Windows PowerShell 5.1 on reference desktop | Required | 5.1.26100.9444 Desktop x64; approved test Process RemoteSigned; separate ordinary process Restricted/all scopes Undefined | T05 completion/C1 reports; T04 completion/C1 reports; T03 fixture evidence | T04 Unit38/actual-entry SourceDiscovery4 PASS; T05 terminal Launcher24/LauncherNative2 PASS per driver with actual PS5.1 children; narrow boundaries/counts/source preservation; Explorer/release NOT TESTED |
-| Supported PowerShell 7 x64 on reference desktop | Required | Actual 7.6.5 Core x64 RemoteSigned; supported update7.6.6 at inspection | T05 completion/C1 reports; T04 completion/C1 reports; T02 lifecycle evidence | T04 Unit38/actual-entry SourceDiscovery4 PASS at actual7.6.5; T05 test-driver Launcher24/LauncherNative2 PASS with PS5.1 children; current-supported-update/release claim NOT VALIDATED |
-| PDFtk native Windows build | Required | Vendor Server2.02 unsigned x86 engine, explicitly selected external dev cache; SHA256 in acquisition receipt | T03 acquisition/fixture evidence; T04/T05 C1 native reports | T04 three real entry merges + zero-input per shell; T05 one actual BAT/app master + empty-source failure per driver PASS; narrow count/source preservation; production dependency-priority/argument/publication/fidelity gates NOT TESTED; no system installation |
+| Windows PowerShell 5.1 on reference desktop | Required | 5.1.26100.9444 Desktop x64; approved test Process RemoteSigned; separate ordinary process Restricted/all scopes Undefined | T06/T05/T04 completion/C1 reports; T03 fixture evidence | T06 Unit57/actual-entry SourceDiscovery4 PASS; T05 terminal Launcher24/LauncherNative2 PASS per driver; narrow order/log/boundary/count/source preservation; final page-order/Explorer/release NOT TESTED |
+| Supported PowerShell 7 x64 on reference desktop | Required | Actual 7.6.5 Core x64 RemoteSigned; supported update7.6.6 at inspection | T06/T05/T04 completion/C1 reports; T02 lifecycle evidence | T06 Unit57/actual-entry SourceDiscovery4 PASS at actual7.6.5; T05 test-driver Launcher24/LauncherNative2 PASS with PS5.1 children; current-supported-update/release claim NOT VALIDATED |
+| PDFtk native Windows build | Required | Vendor Server2.02 unsigned x86 engine, explicitly selected external dev cache; SHA256 in acquisition receipt | T03 acquisition/fixture evidence; T04/T05/T06 C1 native reports | T06 three entry merges + zero-input per shell PASS,2/2/5page totals and numbered input log; T05 BAT/app smoke PASS; independent final page-order/dependency/argument/publication/fidelity gates NOT TESTED; no system installation |
 | Ghostscript native Windows build | Required for email support | Not discovered in PATH/common install paths/uninstall registrations | T02 probe | NATIVE NOT TESTED; selected build/version/acquisition unknown |
 | GitHub Windows runner | Required CI evidence; not desktop certification | UNKNOWN | None | NOT TESTED |
 | Windows 10 | Optional/excludable | UNKNOWN | None | NOT TESTED |
@@ -51,3 +51,11 @@ PSModulePath normalization isolates driver inheritance; native dependency overri
 exclude GS. Ordinary PS5.1 policy/token were rechecked without changes. Explorer,
 current supported PS7 application build, native paths/email/fidelity/publication
 and release gates remain pending. See `evidence/T05-completion.md` for exact scope.
+
+T06 clean C1 `c3c839a264ea35608d5ca6116c595bab4f3050d0` passes Unit57 and
+SourceDiscovery4 in EACH actual PS5.1/PS7 shell. Comparator magnitude/leading-zero/
+text/case/path ties and en-US/tr-TR/reversed-input consistency are unit evidence.
+Real entry/PDFtk multi-input log proves1,2,10,legitimate-prefix order; master page
+counts are2,2,5 per shell and sources remain unchanged. Independent final PDF page
+order remains downstream. Same narrow native paths/GS exclusion/environment and
+current-supported-PS7/desktop/release limitations apply; see T06 completion.

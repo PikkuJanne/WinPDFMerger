@@ -51,4 +51,4 @@ case ties wait until natural segments exhaust. Discovery supplies canonical
 absolute FileInfo.FullName; no per-comparison filesystem traversal is introduced.
 A copied collection retains original objects. Numbered entry logs record operand
 order; independent final PDF page order remains a downstream native gate. Evidence:
-`evidence/T06-checkpoint.md` and final clean implementation receipts when present.
+`evidence/T06-completion.md`, clean C1 results/reports and historical checkpoint.
