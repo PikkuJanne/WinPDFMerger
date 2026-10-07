@@ -100,8 +100,64 @@ function Find-Ghostscript {
     }
     return $null
 }
-function NaturalSortKey([string]$s) {
-    [regex]::Split($s, '(\d+)') | ForEach-Object { if ($_ -match '^\d+$') { [int]$_ } else { $_ } }
+function Compare-NaturalName {
+    param([string]$Left, [string]$Right)
+
+    # Non-ASCII digits are text. Compare maximal runs without numeric parsing.
+    $leftRuns = [regex]::Matches($Left, '[0-9]+|[^0-9]+')
+    $rightRuns = [regex]::Matches($Right, '[0-9]+|[^0-9]+')
+    $runCount = [Math]::Min($leftRuns.Count, $rightRuns.Count)
+    for ($index = 0; $index -lt $runCount; $index++) {
+        $leftRun = $leftRuns[$index].Value
+        $rightRun = $rightRuns[$index].Value
+        $leftIsNumber = $leftRun[0] -ge [char]'0' -and $leftRun[0] -le [char]'9'
+        $rightIsNumber = $rightRun[0] -ge [char]'0' -and $rightRun[0] -le [char]'9'
+        if ($leftIsNumber -and $rightIsNumber) {
+            $leftDigits = $leftRun.TrimStart([char[]]'0')
+            $rightDigits = $rightRun.TrimStart([char[]]'0')
+            $comparison = $leftDigits.Length.CompareTo($rightDigits.Length)
+            if ($comparison -eq 0) {
+                $comparison = [string]::CompareOrdinal($leftDigits, $rightDigits)
+            }
+            if ($comparison -eq 0) {
+                # Resolve an equal numeric run before considering later runs.
+                $comparison = $leftRun.Length.CompareTo($rightRun.Length)
+            }
+        } else {
+            # Also defines the mixed digit/text rule: ordinal text comparison.
+            $comparison = [string]::Compare($leftRun, $rightRun, [StringComparison]::OrdinalIgnoreCase)
+        }
+        if ($comparison -ne 0) { return $comparison }
+    }
+    return $leftRuns.Count.CompareTo($rightRuns.Count)
+}
+
+function Compare-PdfInput {
+    param($Left, $Right)
+
+    $comparison = Compare-NaturalName -Left $Left.BaseName -Right $Right.BaseName
+    if ($comparison -eq 0) {
+        # Case differences are deferred until all natural segments compare equal.
+        $comparison = [string]::CompareOrdinal($Left.BaseName, $Right.BaseName)
+    }
+    if ($comparison -eq 0) {
+        # Discovery supplies canonical absolute FileInfo.FullName values.
+        $comparison = [string]::CompareOrdinal($Left.FullName, $Right.FullName)
+    }
+    return $comparison
+}
+
+function Sort-PdfInputs {
+    param([object[]]$Inputs)
+
+    # Sort a separate collection, retaining the frozen FileInfo objects.
+    $ordered = New-Object 'System.Collections.Generic.List[object]'
+    if ($Inputs.Count -gt 0) { $ordered.AddRange($Inputs) }
+    $ordered.Sort([System.Comparison[object]]{
+        param($left, $right)
+        Compare-PdfInput -Left $left -Right $right
+    })
+    return $ordered
 }
 function Sanitize-FileName([string]$name) {
     $invalid = [IO.Path]::GetInvalidFileNameChars() -join ''

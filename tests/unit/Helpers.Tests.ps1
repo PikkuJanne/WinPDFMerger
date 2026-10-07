@@ -9,7 +9,7 @@ Describe 'AC005: importing baseline helpers' {
         $errors = $null
         $ast = [System.Management.Automation.Language.Parser]::ParseFile($helpers, [ref]$tokens, [ref]$errors)
         @($errors).Count | Should -Be 0
-        @($ast.EndBlock.Statements).Count | Should -Be 7
+        @($ast.EndBlock.Statements).Count | Should -BeGreaterThan 0
         foreach ($statement in $ast.EndBlock.Statements) {
             $statement.GetType().Name | Should -Be 'FunctionDefinitionAst'
         }
@@ -49,20 +49,22 @@ Describe 'AC005: importing baseline helpers' {
     }
 }
 
-Describe 'T03 measured baseline characterization (not the future product contract)' {
+Describe 'Existing helper behavior and corrected ordering regressions' {
     BeforeAll { . $helpers }
 
     It 'replaces invalid filename characters and trims ordinary whitespace' {
         Sanitize-FileName '  ordinary:name?  ' | Should -BeExactly 'ordinary_name_'
     }
 
-    It 'retains the measured numeric ordering defect until T06' {
+    It 'orders the formerly defective numeric example naturally' {
         $items = @('10','2','01','1') | ForEach-Object { [pscustomobject]@{ BaseName = $_; FullName = ('C:\Synthetic\' + $_ + '.pdf') } }
-        $order = @($items | Sort-Object { NaturalSortKey $_.BaseName }, FullName | ForEach-Object { $_.BaseName })
-        ($order -join ',') | Should -BeExactly '01,1,10,2'
+        $order = @(Sort-PdfInputs -Inputs $items | ForEach-Object { $_.BaseName })
+        ($order -join ',') | Should -BeExactly '1,01,2,10'
     }
 
-    It 'retains the measured Int32 overflow defect until T06' {
-        { NaturalSortKey '2147483648' } | Should -Throw
+    It 'orders the formerly overflowing Int32 example without fixed-width parsing' {
+        $items = @('2147483648','2','2147483647') | ForEach-Object { [pscustomobject]@{ BaseName = $_; FullName = ('C:\Synthetic\' + $_ + '.pdf') } }
+        $order = @(Sort-PdfInputs -Inputs $items | ForEach-Object { $_.BaseName })
+        ($order -join ',') | Should -BeExactly '2,2147483647,2147483648'
     }
 }

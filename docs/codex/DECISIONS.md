@@ -33,3 +33,22 @@ process-only RemoteSigned for PS5.1 tests. User/machine policy and PATH stay
 unchanged; no installer executed or vendor executable redistributed in repo.
 Evidence: `evidence/T03-completion.md` and acquisition receipts. No product
 contract changed; supported PS7 update/application/desktop gates remain later work.
+
+2026-10-07 — D17: T05 retains the existing launcher's process-only Bypass flag,
+NoProfile, Windows PowerShell5.1 and pause. Group Policy precedence is preserved;
+no user/machine policy is changed. The host is selected by the standard SystemRoot
+PS5.1 executable path. RemoteSigned would change unsigned downloaded-script
+behavior and is not substituted silently. Quoted path/status tests use an actual
+cmd/BAT/PS5.1 receiver; a separate real PDFtk smoke proves only a simple terminal
+merge. Percent expansion before the batch boundary is characterized with a direct
+PowerShell alternative, without claiming Explorer acceptance. Evidence:
+`evidence/T05-completion.md`, clean C1 results/reports and historical checkpoint.
+
+2026-10-07 — D18: T06 implements the existing ordering contract with ASCII digit
+runs and ordinal comparisons, including ordinal case-insensitive comparison when
+a digit run meets text. Numeric run-length ties precede later segments; original
+case ties wait until natural segments exhaust. Discovery supplies canonical
+absolute FileInfo.FullName; no per-comparison filesystem traversal is introduced.
+A copied collection retains original objects. Numbered entry logs record operand
+order; independent final PDF page order remains a downstream native gate. Evidence:
+`evidence/T06-completion.md`, clean C1 results/reports and historical checkpoint.

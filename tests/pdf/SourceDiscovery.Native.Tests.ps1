@@ -60,7 +60,7 @@ BeforeAll {
         }
     }
 
-    function Assert-DiscoveryNativeMaster($Application, [int]$ExpectedPages, [int]$ExpectedInputs) {
+    function Assert-DiscoveryNativeMaster($Application, [int]$ExpectedPages, [int]$ExpectedInputs, [string[]]$ExpectedInputNames = @()) {
         $before = @(Get-DiscoveryNativeSnapshot $Application.Source) -join "`n"
         $result = Invoke-TestChildProcess -Executable $shell -Arguments @('-NoProfile', '-ExecutionPolicy', 'RemoteSigned', '-File', $Application.Entry, $Application.Source) -ChildPath $childPath -ChildEnvironment $Application.ChildEnvironment
         $result.ExitCode | Should -Be 0 -Because ($result.Stdout + $result.Stderr)
@@ -73,6 +73,15 @@ BeforeAll {
         $log | Should -Match ('(?m)^Source folder: ' + [regex]::Escape($Application.Source) + '\r?$')
         $log | Should -Match ('(?m)^PDF count: ' + $ExpectedInputs + '\r?$')
         $log | Should -Match '(?m)^Done\.\r?$'
+        if ($ExpectedInputNames.Count -gt 0) {
+            # Entry/log wiring only. These lines do not inspect the page order
+            # of the produced PDF; that independent oracle remains a later gate.
+            $inputLines = @($log -split '\r?\n' | Where-Object { $_ -match '^Input [0-9]+: ' })
+            $expectedLines = for ($index = 0; $index -lt $ExpectedInputNames.Count; $index++) {
+                'Input {0}: {1}' -f ($index + 1), (Join-Path $Application.Source $ExpectedInputNames[$index])
+            }
+            ($inputLines -join "`n") | Should -BeExactly ($expectedLines -join "`n")
+        }
         $masters = @(Get-ChildItem -LiteralPath $Application.App -Filter '*.pdf' -File | Where-Object { $_.Name -notlike '*_email.pdf' })
         $masters.Count | Should -Be 1
         $data = Invoke-TestChildProcess -Executable $PdftkPath -Arguments @($masters[0].FullName, 'dump_data_utf8', 'output', '-', 'dont_ask') -TimeoutMilliseconds 10000
@@ -104,6 +113,7 @@ Describe 'AC007: actual entry source discovery with real PDFtk' {
         $application = New-DiscoveryApplication
         [void](Copy-DiscoveryNativeFixture $application.Source '1.pdf' '1.pdf')
         [void](Copy-DiscoveryNativeFixture $application.Source '2.pdf' '2.PDF')
+        [void](Copy-DiscoveryNativeFixture $application.Source '10.pdf' '10.pdf')
         [void](Copy-DiscoveryNativeFixture $application.Source '10.pdf' 'WinPDFMerge_legitimate.pdf')
         $hidden = Copy-DiscoveryNativeFixture $application.Source '2.pdf' 'hidden.PDF'
         [IO.File]::SetAttributes($hidden, ([IO.File]::GetAttributes($hidden) -bor [IO.FileAttributes]::Hidden))
@@ -111,7 +121,7 @@ Describe 'AC007: actual entry source discovery with real PDFtk' {
         [void](Copy-DiscoveryNativeFixture (Join-Path $application.Source 'nested') '2.pdf' 'nested.PDF')
         [IO.File]::WriteAllText((Join-Path $application.Source 'notes.txt'), 'synthetic non-PDF')
         [void][IO.Directory]::CreateDirectory((Join-Path $application.Source 'directory.pdf'))
-        Assert-DiscoveryNativeMaster $application 4 3
+        Assert-DiscoveryNativeMaster $application 5 4 -ExpectedInputNames @('1.pdf', '2.PDF', '10.pdf', 'WinPDFMerge_legitimate.pdf')
     }
 
     It 'fails zero visible top-level inputs before producing PDFs or a run log' {
