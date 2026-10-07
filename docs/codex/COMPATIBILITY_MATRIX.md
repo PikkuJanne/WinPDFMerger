@@ -8,8 +8,8 @@ observations are not application compatibility certification. Evidence:
 | Environment | Release scope | Version/build | Evidence | Status |
 |---|---|---|---|---|
 | Windows 11 x64 standard-user desktop | Required | Pro 10.0.26300/build 26300, DisplayVersion 26H2; non-administrator observation token; NTFS fixed drive | T02 baseline/environment | INVENTORIED; application/Explorer acceptance NOT TESTED; OS support channel unestablished |
-| Windows PowerShell 5.1 on reference desktop | Required | 5.1.26100.9444 Desktop x64; approved test Process RemoteSigned; ordinary separate process Restricted/all scopes Undefined | T07/T06/T05/T04 completion/C1 reports; T03 fixture evidence | T07 Unit99/Dependency9/Source4 PASS; strict lookup/version/early faults/owned probe; T05 terminal Launcher24/LauncherNative2 remains PASS; narrow PDFtk counts/source preservation; native GS/general lifecycle/Explorer/release NOT TESTED |
-| Supported PowerShell 7 x64 on reference desktop | Required | Actual 7.6.5 Core x64 RemoteSigned; supported update7.6.6 at inspection | T07/T06/T05/T04 completion/C1 reports; T02 lifecycle evidence | T07 Unit99/Dependency9/Source4 PASS at actual7.6.5; T05 launcher driver PASS withPS5.1 children; current-supported-update/release claim NOT VALIDATED |
+| Windows PowerShell 5.1 on reference desktop | Required | 5.1.26100.9444 Desktop x64; approved test Process RemoteSigned; ordinary separate process Restricted/all scopes Undefined | T08/T07/T06/T05/T04 completion/C1 reports; T03 fixture evidence | T08 Unit99/NativeRunner36/Dependency9/Source4 PASS; controlled vector/capture/immediate-child token lifecycle; T05 terminal Launcher24/LauncherNative2 remains PASS; narrow PDFtk counts/source preservation; native GS/descendants/full-run interruption/Explorer/release NOT TESTED |
+| Supported PowerShell 7 x64 on reference desktop | Required | Actual 7.6.5 Core x64 RemoteSigned; supported update7.6.6 at inspection | T08/T07/T06/T05/T04 completion/C1 reports; T02 lifecycle evidence | T08 Unit99/NativeRunner36/Dependency9/Source4 PASS at actual7.6.5; T05 launcher driver PASS withPS5.1 children; current-supported-update/release claim NOT VALIDATED |
 | PDFtk native Windows build | Required | Vendor Server2.02 unsigned x86 engine; actual CLI version2.02; explicit external dev cache, hash in receipt | T03 acquisition/fixture evidence; T07/T06/T05/T04 C1 native reports | T07 exact path/version plus five inspected masters per shell PASS;2/2page dependency smokes and2/2/5source totals/source preservation; selected failure before outputs/logs; final page-order/arguments/publication/fidelity gates NOT TESTED; no system install |
 | Ghostscript native Windows build | Required for email support | Not discovered in PATH/common install paths/uninstall registrations | T02 probe | NATIVE NOT TESTED; selected build/version/acquisition unknown |
 | GitHub Windows runner | Required CI evidence; not desktop certification | UNKNOWN | None | NOT TESTED |
@@ -72,3 +72,16 @@ inspected; numeric/x86 GS lookup is not native GS/x86-host support. Fixed versio
 probe bounds do not certify general T08 streams/descendants/cancellation. Native
 GS/current-supported-PS7/finalpageorder/fidelity/desktop/release remain unrun.
 Exact commands/results/limits and report/build-receipt hashes: T07 completion/C1.
+
+T08 clean C1 `2726c73ad2ff8660540c964789910a9da1f8b3a8` passes Unit99,
+NativeRunner36, DependencyEntry9 and SourceDiscovery4 in each actual shell.
+Controlled compiled Windows echo verifies exact empty/quote/backslash/control/
+Unicode argument vectors; fair capped dual capture/nonzero/launch/inherited-pipe
+faults, exact immediate-child timeout/token cancellation, unrelated same-image
+survival, child-only GS_OPTIONS and UTF8-noBOM logs pass. These do not certify
+native PDF engine paths/encoding, descendant termination or full application
+interruption cleanup. Conversion routing/real paths/prompts/command-length guards
+remain T09; descendant/run cleanup T15. Five real PDFtk master smokes per shell
+retain 2,2 and 2,2,5 page totals and source snapshots. Actual PS7 remains7.6.5,
+current-supported update/native GS/final page order/fidelity/desktop/release
+unrun. Exact commands/results/limits and report/build hashes: T08 completion/C1.

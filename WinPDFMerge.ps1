@@ -202,8 +202,8 @@ if ($gsPath -and -not $gsVersionFailure) {
          -RedirectStandardOutput $tmpOut -RedirectStandardError $tmpErr
 
     # Append GhostScript logs to main log
-    if (Test-Path -LiteralPath $tmpOut) { Get-Content -LiteralPath $tmpOut | Add-Content -LiteralPath $logPath }
-    if (Test-Path -LiteralPath $tmpErr) { Get-Content -LiteralPath $tmpErr | Add-Content -LiteralPath $logPath }
+    if (Test-Path -LiteralPath $tmpOut) { Get-Content -LiteralPath $tmpOut | Write-RunLog -LiteralPath $logPath -Append | Out-Null }
+    if (Test-Path -LiteralPath $tmpErr) { Get-Content -LiteralPath $tmpErr | Write-RunLog -LiteralPath $logPath -Append | Out-Null }
     if (Test-Path -LiteralPath $tmpOut) { Remove-Item -LiteralPath $tmpOut -Force -ErrorAction SilentlyContinue }
     if (Test-Path -LiteralPath $tmpErr) { Remove-Item -LiteralPath $tmpErr -Force -ErrorAction SilentlyContinue }
 

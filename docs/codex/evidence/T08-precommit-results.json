@@ -1,0 +1,263 @@
+{
+  "schema_version": 1,
+  "historical_dirty_runs_only": true,
+  "command_setup": "Expand exact approved T03 acquisition receipts locally: manifest=$env:USERPROFILE/.cache/WinPDFMerger-T03/pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67/module/Pester.psd1; exe=$env:LOCALAPPDATA/WinPDFMergerDevCache/T03-pdftk-295456f881ea41a4a78dcf207f8965bf/pdftk-server-2.02/app/bin/pdftk.exe. No new acquisition.",
+  "executions": [
+    {
+      "label": "initial-ps51-harness-failure",
+      "command": "powershell.exe -NoProfile -ExecutionPolicy RemoteSigned -File tools/test/Invoke-Tests.ps1 -PesterModulePath $manifest -Tier NativeRunner",
+      "exit_code": 1,
+      "summary": {
+        "observed_at_utc": "2026-10-07T17:44:30.9932827Z",
+        "commit_under_test": "2470fb6b0d93bbd0f56cfccbc7f11b1d70d27c24",
+        "dirty_worktree": true,
+        "shell_version": "5.1.26100.9444",
+        "shell_edition": "Desktop",
+        "process_64_bit": true,
+        "execution_policy": "RemoteSigned",
+        "pester_version": "6.2.0",
+        "tier": "NativeRunner",
+        "evidence_class": "windows-controlled-native-argument-process; no PDF-engine-support claim",
+        "passed": 24,
+        "failed": 11,
+        "failed_blocks": 0,
+        "failed_containers": 0,
+        "skipped": 0,
+        "not_run": 0,
+        "total": 35,
+        "native_fixture_build_receipt": "C:\\projects\\WinPDFMerger-main\\tests\\.work\\fake-native\\211ebeedce7e45cdb758557ae1c99e22\\build-info.json",
+        "native_fixture_build_receipt_sha256": "ef0048e4cfb97887840cbc1911b0e36734be3b6b42cd3591e98002a56042d33f"
+      }
+    },
+    {
+      "label": "unit-ps51-pass",
+      "command": "powershell.exe -NoProfile -ExecutionPolicy RemoteSigned -File tools/test/Invoke-Tests.ps1 -PesterModulePath $manifest -Tier Unit",
+      "exit_code": 0,
+      "summary": {
+        "observed_at_utc": "2026-10-07T17:45:01.0597064Z",
+        "commit_under_test": "2470fb6b0d93bbd0f56cfccbc7f11b1d70d27c24",
+        "dirty_worktree": true,
+        "shell_version": "5.1.26100.9444",
+        "shell_edition": "Desktop",
+        "process_64_bit": true,
+        "execution_policy": "RemoteSigned",
+        "pester_version": "6.2.0",
+        "tier": "Unit",
+        "evidence_class": "unit-controlled-process-and-filesystem",
+        "passed": 99,
+        "failed": 0,
+        "failed_blocks": 0,
+        "failed_containers": 0,
+        "skipped": 0,
+        "not_run": 0,
+        "total": 99
+      }
+    },
+    {
+      "label": "unit-ps7-pass",
+      "command": "pwsh.exe -NoProfile -ExecutionPolicy RemoteSigned -File tools/test/Invoke-Tests.ps1 -PesterModulePath $manifest -Tier Unit",
+      "exit_code": 0,
+      "summary": {
+        "observed_at_utc": "2026-10-07T17:45:04.2653181Z",
+        "commit_under_test": "2470fb6b0d93bbd0f56cfccbc7f11b1d70d27c24",
+        "dirty_worktree": true,
+        "shell_version": "7.6.5",
+        "shell_edition": "Core",
+        "process_64_bit": true,
+        "execution_policy": "RemoteSigned",
+        "pester_version": "6.2.0",
+        "tier": "Unit",
+        "evidence_class": "unit-controlled-process-and-filesystem",
+        "passed": 99,
+        "failed": 0,
+        "failed_blocks": 0,
+        "failed_containers": 0,
+        "skipped": 0,
+        "not_run": 0,
+        "total": 99
+      }
+    },
+    {
+      "label": "dependency-ps51-pass",
+      "command": "powershell.exe -NoProfile -ExecutionPolicy RemoteSigned -File tools/test/Invoke-Tests.ps1 -PesterModulePath $manifest -Tier DependencyEntry -PdftkPath $exe",
+      "exit_code": 0,
+      "summary": {
+        "observed_at_utc": "2026-10-07T17:46:05.8058080Z",
+        "commit_under_test": "2470fb6b0d93bbd0f56cfccbc7f11b1d70d27c24",
+        "dirty_worktree": true,
+        "shell_version": "5.1.26100.9444",
+        "shell_edition": "Desktop",
+        "process_64_bit": true,
+        "execution_policy": "RemoteSigned",
+        "pester_version": "6.2.0",
+        "tier": "DependencyEntry",
+        "evidence_class": "windows-entry-dependency-faults-controlled-process-and-real-pdftk",
+        "passed": 9,
+        "failed": 0,
+        "failed_blocks": 0,
+        "failed_containers": 0,
+        "skipped": 0,
+        "not_run": 0,
+        "total": 9
+      }
+    },
+    {
+      "label": "dependency-ps7-pass",
+      "command": "pwsh.exe -NoProfile -ExecutionPolicy RemoteSigned -File tools/test/Invoke-Tests.ps1 -PesterModulePath $manifest -Tier DependencyEntry -PdftkPath $exe",
+      "exit_code": 0,
+      "summary": {
+        "observed_at_utc": "2026-10-07T17:46:08.9266280Z",
+        "commit_under_test": "2470fb6b0d93bbd0f56cfccbc7f11b1d70d27c24",
+        "dirty_worktree": true,
+        "shell_version": "7.6.5",
+        "shell_edition": "Core",
+        "process_64_bit": true,
+        "execution_policy": "RemoteSigned",
+        "pester_version": "6.2.0",
+        "tier": "DependencyEntry",
+        "evidence_class": "windows-entry-dependency-faults-controlled-process-and-real-pdftk",
+        "passed": 9,
+        "failed": 0,
+        "failed_blocks": 0,
+        "failed_containers": 0,
+        "skipped": 0,
+        "not_run": 0,
+        "total": 9
+      }
+    },
+    {
+      "label": "corrected-native-ps51-pass",
+      "command": "powershell.exe -NoProfile -ExecutionPolicy RemoteSigned -File tools/test/Invoke-Tests.ps1 -PesterModulePath $manifest -Tier NativeRunner",
+      "exit_code": 0,
+      "summary": {
+        "observed_at_utc": "2026-10-07T17:46:14.3729926Z",
+        "commit_under_test": "2470fb6b0d93bbd0f56cfccbc7f11b1d70d27c24",
+        "dirty_worktree": true,
+        "shell_version": "5.1.26100.9444",
+        "shell_edition": "Desktop",
+        "process_64_bit": true,
+        "execution_policy": "RemoteSigned",
+        "pester_version": "6.2.0",
+        "tier": "NativeRunner",
+        "evidence_class": "windows-controlled-native-argument-process; no PDF-engine-support claim",
+        "passed": 36,
+        "failed": 0,
+        "failed_blocks": 0,
+        "failed_containers": 0,
+        "skipped": 0,
+        "not_run": 0,
+        "total": 36,
+        "native_fixture_build_receipt": "C:\\projects\\WinPDFMerger-main\\tests\\.work\\fake-native\\c590ea2f02dd417a97c4e63a9b344c35\\build-info.json",
+        "native_fixture_build_receipt_sha256": "27d830de4711f7c4955e4e475779016f42daa0db6da3990eb659ebd8b2fb1a0d"
+      }
+    },
+    {
+      "label": "corrected-native-ps7-pass",
+      "command": "pwsh.exe -NoProfile -ExecutionPolicy RemoteSigned -File tools/test/Invoke-Tests.ps1 -PesterModulePath $manifest -Tier NativeRunner",
+      "exit_code": 0,
+      "summary": {
+        "observed_at_utc": "2026-10-07T17:46:15.2297644Z",
+        "commit_under_test": "2470fb6b0d93bbd0f56cfccbc7f11b1d70d27c24",
+        "dirty_worktree": true,
+        "shell_version": "7.6.5",
+        "shell_edition": "Core",
+        "process_64_bit": true,
+        "execution_policy": "RemoteSigned",
+        "pester_version": "6.2.0",
+        "tier": "NativeRunner",
+        "evidence_class": "windows-controlled-native-argument-process; no PDF-engine-support claim",
+        "passed": 36,
+        "failed": 0,
+        "failed_blocks": 0,
+        "failed_containers": 0,
+        "skipped": 0,
+        "not_run": 0,
+        "total": 36,
+        "native_fixture_build_receipt": "C:\\projects\\WinPDFMerger-main\\tests\\.work\\fake-native\\fe12aeb23e08470eb6a851a3d31810f6\\build-info.json",
+        "native_fixture_build_receipt_sha256": "3bedef85ff255ad66ee73ef06b0762e36dc486996b70a2f87dbb450afffc3e0f"
+      }
+    }
+  ],
+  "timeout_observation_command": "<selected-shell> -NoProfile -ExecutionPolicy RemoteSigned -File tests/.work/T08-observe.ps1; development-only direct ProcessStartInfo harness, closed stdin, both ReadToEndAsync streams, 30000ms bound; PDFtk vector source repeated1/100 followed by cat output <fresh-owned-ignored-file> compress; inspect dump_data_utf8 NumberOfPages and unchanged source SHA256",
+  "timeout_observations": [
+    {
+      "receipt_sha256": "1cf37084265d4ce292b0b1740dfb0ec991f0321e48e758ec3b09fefcfd42d26b",
+      "receipt": {
+        "observed_at_utc": "2026-10-07T17:43:18.5687537Z",
+        "commit_under_test": "2470fb6b0d93bbd0f56cfccbc7f11b1d70d27c24",
+        "dirty_worktree": true,
+        "shell_version": "7.6.5",
+        "evidence_class": "synthetic-real-pdftk-timing-observation-via-development-harness",
+        "pdftk_sha256": "5e5cbe817ecc3cc1875369d81119472559c9624d55c7176852c8827750afa00a",
+        "source_sha256": "7821d0ff4c3d655511e4421559d317013a64356a370d7b07a47079e5f02ad901",
+        "source_unchanged": true,
+        "observations": [
+          {
+            "source_copies": 1,
+            "expected_pages": 2,
+            "inspected_pages": 2,
+            "exit_code": 0,
+            "elapsed_milliseconds": 88,
+            "output_bytes": 1985,
+            "stdout": "",
+            "stderr": ""
+          },
+          {
+            "source_copies": 100,
+            "expected_pages": 200,
+            "inspected_pages": 200,
+            "exit_code": 0,
+            "elapsed_milliseconds": 787,
+            "output_bytes": 144506,
+            "stdout": "",
+            "stderr": ""
+          }
+        ],
+        "limits": "Text fixture repeated to 2/200 pages; not image-heavy/large real jobs or native Ghostscript. Development process harness, not shared runner acceptance."
+      }
+    },
+    {
+      "receipt_sha256": "ebbc13d75741e9573a3a1d662ffd06949e281cea9a56a7acdc55de9c6c82a317",
+      "receipt": {
+        "observed_at_utc": "2026-10-07T17:43:17.4954635Z",
+        "commit_under_test": "2470fb6b0d93bbd0f56cfccbc7f11b1d70d27c24",
+        "dirty_worktree": true,
+        "shell_version": "5.1.26100.9444",
+        "evidence_class": "synthetic-real-pdftk-timing-observation-via-development-harness",
+        "pdftk_sha256": "5e5cbe817ecc3cc1875369d81119472559c9624d55c7176852c8827750afa00a",
+        "source_sha256": "7821d0ff4c3d655511e4421559d317013a64356a370d7b07a47079e5f02ad901",
+        "source_unchanged": true,
+        "observations": [
+          {
+            "source_copies": 1,
+            "expected_pages": 2,
+            "inspected_pages": 2,
+            "exit_code": 0,
+            "elapsed_milliseconds": 100,
+            "output_bytes": 1985,
+            "stdout": "",
+            "stderr": ""
+          },
+          {
+            "source_copies": 100,
+            "expected_pages": 200,
+            "inspected_pages": 200,
+            "exit_code": 0,
+            "elapsed_milliseconds": 835,
+            "output_bytes": 144506,
+            "stdout": "",
+            "stderr": ""
+          }
+        ],
+        "limits": "Text fixture repeated to 2/200 pages; not image-heavy/large real jobs or native Ghostscript. Development process harness, not shared runner acceptance."
+      }
+    }
+  ],
+  "limitations": [
+    "Dirty starting-head runs are preliminary; final acceptance requires clean tested C1 and live synchronization.",
+    "Initial PS5.1 NativeRunner35 had24pass11fail: nine JSON array nesting assertions, one PowerShell array/addition expression and one disposed mock Process.Id filter. Test fixes only; no product defect inferred.",
+    "Corrected NativeRunner36 adds a nonstring-element case and UTF8-noBOM byte assertions; all stream/timeout/cancellation/environment behavior already passed in the initial run.",
+    "Controlled echo/stream/process/cancellation tests do not prove native PDF engine path handling, descendant termination, conversion result/publication, or current-supported PS7 compatibility.",
+    "Timing samples are repeated synthetic text fixture jobs via the old development harness; do not certify shared-runner conversion, image-heavy work, arbitrary large jobs, native Ghostscript or a 15minute elapsed maximum."
+  ]
+}
