@@ -52,3 +52,15 @@ absolute FileInfo.FullName; no per-comparison filesystem traversal is introduced
 A copied collection retains original objects. Numbered entry logs record operand
 order; independent final PDF page order remains a downstream native gate. Evidence:
 `evidence/T06-completion.md`, clean C1 results/reports and historical checkpoint.
+
+2026-10-07 — D19: T07 preserves PDFtk PATH/common priority while repairing x86
+syntax and adding the x86 Server path. Common GS versions sort globally across
+both roots, with native-root then ordinal-path ties and64/32 incomplete-install
+fallback. A selected existing tool's failed version probe is reported explicitly,
+without silently choosing another installation. Fixed --version probes have a
+5000ms execution/capture bound plus1000ms best-effort owned-process termination;
+GS_OPTIONS is cleared only in the probe child. Found-GS preflight failure follows
+existing partial2/master-retention semantics; absence remains optional0. This
+does not complete general T08 lifecycle or later conversion/publication handling.
+Evidence: `evidence/T07-completion.md`, clean C1 reports/results/live and historical
+checkpoint. No product contract or supported-build claim changed.
