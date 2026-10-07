@@ -1,21 +1,28 @@
 # Next session
 
-Current task: T02 — review/inventory complete, checkpoint synchronization pending.
-Finish the ordinary commit/push and clean fresh live-ref checks before marking
-T02 done. Then select exactly T03 — Establish test seams and a minimal fixture
-harness. Do not start product fixes during this T02 thread.
+Selected task: T03 — Establish test seams and a minimal fixture harness.
+T02 is completed at the verified C1 checkpoint below; the final records-only
+commit's own push/live proof is reported in the preceding session output.
+Recheck current clean live equality afresh before starting T03.
 
 Read repository/ancestor AGENTS.md, INDEX.md, STATUS.md, selected TASKS.json entry
 and task brief, PRODUCT_SPEC.md, GITHUB_WORKFLOW.md and TEST_STRATEGY.md. T03 also
 requires TECHNICAL_SPEC.md. Use NEXT_THREAD_PROMPT.md. Confirm branch/worktree,
 both origin URLs, live main/readiness refs, PR/release/tag state before edits.
 
-T02 review/probe implementation SHA: `4ad96bfe67ffa86753ace9a728dbad21192bb556`.
-Live PR #1 had already merged the T01 handoff at this commit; readiness was
-fast-forwarded safely to it. No product file differs from historical baseline
+Initial T02 review/probe SHA: `4ad96bfe67ffa86753ace9a728dbad21192bb556`.
+Tested evidence/procedure C1: `59f7030e2d4e8ee9f34b8c7e1ba563743b33cffc`, pushed
+normally and verified clean/local=live at 2026-10-07 15:36:32 UTC. The procedure
+reran at C1 with the same source/procedure hashes and substantive results.
+Actual proof: `evidence/T02-checkpoint.md`, `T02-C1-live-sync.json`.
+Live PR #1 had already merged the T01 handoff at `4ad96bf`; readiness was
+fast-forwarded safely to that merge. No product file differs from historical baseline
 `4926abc022b9b048dab2dda03650b755ef7ff875`, and raw hashes of all seven originals
-remain preserved. No upstream product fix was found. A new draft continuation PR
-is needed because #1 is merged. Never treat historical OPEN/draft records as live.
+remain preserved. No upstream product fix was found. Draft continuation PR #2
+is OPEN: https://github.com/PikkuJanne/WinPDFMerger/pull/2; reuse it while open.
+Never treat historical OPEN/draft records as live. No saved origins/settings
+changed; if transport trouble recurs, per-command HTTP/1.1 push details are in
+T02-checkpoint.md. Never assume a failed push synchronized.
 
 AC003/AC004 passed their review scope: every audit item classified, environment
 and source/trust limitations recorded. Isolated PS7 function/path/process and

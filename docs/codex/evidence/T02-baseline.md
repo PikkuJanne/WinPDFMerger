@@ -181,7 +181,9 @@ the successful recorded query. Neither failed attempt is counted as test success
 No application fix or development-helper change requires new regression tests
 in T02; the probe is retained as a replayable baseline observation procedure.
 
-Task is still in_progress until records are reviewed, committed, pushed and clean
-live equality is verified. A later records-only checkpoint can reference that
-observed commit without fabricating its own future hash. Next conceptual task
-after synchronized T02 completion: T03 — test seams and minimal fixture harness.
+At the initial evidence checkpoint, T02 remained in_progress until records were
+reviewed, committed, pushed and clean live equality verified. Subsequent actual
+verification/completion is recorded in `T02-checkpoint.md` and
+`T02-C1-live-sync.json`, without fabricating the records commit's future hash.
+Next conceptual task after synchronized T02 completion: T03 — test seams and
+minimal fixture harness.
