@@ -2,7 +2,7 @@
 [CmdletBinding()]
 param(
     [string]$PesterModulePath,
-    [ValidateSet('Unit', 'NativeFixture', 'SourceDiscovery', 'Launcher', 'LauncherNative', 'DependencyEntry', 'NativeRunner', 'ToolInvocation', 'PdftkPaths', 'GhostscriptPaths')][string]$Tier = 'Unit',
+    [ValidateSet('Unit', 'NativeFixture', 'SourceDiscovery', 'Launcher', 'LauncherNative', 'DependencyEntry', 'NativeRunner', 'ToolInvocation', 'PdftkPaths', 'GhostscriptPaths', 'Destination')][string]$Tier = 'Unit',
     [string]$PdftkPath,
     [string]$GhostscriptPath
 )
@@ -15,8 +15,8 @@ if ($PesterModulePath) { $pesterName = $PesterModulePath }
 Import-Module -Name $pesterName -RequiredVersion $pins.PesterVersion -ErrorAction Stop
 $selected = Get-Module Pester
 if ($selected.Version.ToString() -ne $pins.PesterVersion) { throw 'Unexpected Pester version.' }
-if ($Tier -in @('NativeFixture', 'SourceDiscovery', 'LauncherNative', 'DependencyEntry', 'PdftkPaths', 'GhostscriptPaths') -and -not $PdftkPath) { throw "$Tier requires an explicit real PDFtk executable path." }
-if ($Tier -eq 'GhostscriptPaths' -and -not $GhostscriptPath) { throw 'GhostscriptPaths requires an explicit real Ghostscript executable path.' }
+if ($Tier -in @('NativeFixture', 'SourceDiscovery', 'LauncherNative', 'DependencyEntry', 'PdftkPaths', 'GhostscriptPaths', 'Destination') -and -not $PdftkPath) { throw "$Tier requires an explicit real PDFtk executable path." }
+if ($Tier -in @('GhostscriptPaths', 'Destination') -and -not $GhostscriptPath) { throw "$Tier requires an explicit real Ghostscript executable path." }
 $nativeFixturePath = $null
 $nativeFixtureBuildReceipt = $null
 if ($Tier -eq 'NativeRunner') {
@@ -46,6 +46,9 @@ if ($Tier -eq 'Unit') {
     $backend = if ($Tier -eq 'PdftkPaths') { 'Pdftk' } else { 'Ghostscript' }
     $config.Run.Container = New-PesterContainer -Path (Join-Path $repo 'tests/pdf/ToolPaths.Native.Tests.ps1') `
         -Data @{ ToolBackend = $backend; PdftkPath = $PdftkPath; GhostscriptPath = $GhostscriptPath }
+} elseif ($Tier -eq 'Destination') {
+    $config.Run.Container = New-PesterContainer -Path (Join-Path $repo 'tests/filesafety/Destination.Native.Tests.ps1') `
+        -Data @{ PdftkPath = $PdftkPath; GhostscriptPath = $GhostscriptPath }
 } else {
     $testFile = if ($Tier -eq 'SourceDiscovery') { 'tests/pdf/SourceDiscovery.Native.Tests.ps1' } elseif ($Tier -eq 'LauncherNative') { 'tests/launcher/Launcher.Native.Tests.ps1' } elseif ($Tier -eq 'DependencyEntry') { 'tests/dependencies/Dependencies.Entry.Tests.ps1' } else { 'tests/pdf/Fixture.Native.Tests.ps1' }
     $container = New-PesterContainer -Path (Join-Path $repo $testFile) -Data @{ PdftkPath = $PdftkPath }
@@ -78,6 +81,7 @@ if ($Tier -eq 'NativeRunner') {
 if ($Tier -in @('ToolInvocation', 'PdftkPaths', 'GhostscriptPaths')) {
     $summary.evidence_class = if ($Tier -eq 'ToolInvocation') { 'unit-controlled-native-job-and-filesystem' } else { 'windows-real-tool-path-prompt-integration' }
 }
+if ($Tier -eq 'Destination') { $summary.evidence_class = 'windows-real-entry-destination-identity-ACL-junction-concurrency' }
 $summary | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath (Join-Path $work 'summary.json') -Encoding UTF8
 $summary | ConvertTo-Json -Depth 4
 Write-Host ('Reports: ' + $work)

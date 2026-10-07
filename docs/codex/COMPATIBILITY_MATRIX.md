@@ -105,3 +105,16 @@ test dependencies, retained outside repository/system. Acquisition receipts and
 C3 manifest/review disclose actual signatures/hashes, static warnings and historical
 GS exit0/password-error wrongpage failure fixed with PDFSTOPONERROR. Full release/
 OS support channel/Explorer/fidelity/structural/email validation remain later gates.
+
+T10 clean C1 `962f05ec1ea9f8edfbeb8e5fc755dacac24156ed` passes202 focused tests per actual
+PS5.1.26100.9444/supportedPS7.6.6 shell,404total; AC022/23/24 pass. Actual local
+NTFS standard-user copied application paths prove owned WriteData/AddFile denial,
+default refusal/explicit writable recovery/original SDDL restoration, physical
+same/case/available8.3 aliases, four leaf/ancestor junction refusals and two
+concurrently live PDFtk2.02/GS10.08.0 applications with distinct shared identities.
+Sources/foreign finals and owned probe/stage cleanup are checked. Unit naming/
+metadata mocks remain separate. Static0errors/29warnings/5info retained/reviewed
+nonblocking. Known caches reverified without acquisition/system changes. Earlier
+full NativeRunner/Launcher/Python fixture suites were not repeated; T11–T15,
+OS support-channel/UNC/Explorer/fidelity/CI/full-release gates remain pending.
+See T10 completion/C1 reports/review/live sync and cache audit.

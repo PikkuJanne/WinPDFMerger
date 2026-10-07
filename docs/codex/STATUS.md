@@ -2,44 +2,38 @@
 
 Target: published and independently verified `v1.0.0` in `PikkuJanne/WinPDFMerger`.
 Completed milestone: M1 — paths, ordering and native execution.
-Completed tasks: T01 through T09.
-Next task: T10 — validate destination and reserve run identity.
+Completed tasks: T01 through T10.
+Next task: T11 — preflight every input PDF and page totals, in M2.
 Publication: NOT STARTED.
 
-T09 clean C3 `894bbb4862105ae497bc9801decc46575fedd87a` passes217 Pester checks per actual shell,
-434total: Unit104, ToolInvocation12, PdftkPaths13, GhostscriptPaths13,
-NativeRunner36, DependencyEntry9, SourceDiscovery4, Launcher24, LauncherNative2.
-All failures/blocks/containers/skips/not_run0. Required AC019/20/21 pass.
-Python fixture10tests/reproduction/PDFium oracle also pass at clean C3.
-Analyzer entry/helpers:0errors/20warnings/4information in each shell; findings
-retained/reviewed, not lint-clean or a later T22 gate. Evidence:
-`evidence/T09-completion.md`, C3 results/reports/manifest/review/live receipt.
+T10 destination and shared run identity are complete. Named `-OutputFolder`
+selects an existing writable directory; omission keeps the entry-script directory.
+Physical source/output identity and source/output reparse ancestors fail closed.
+An owned create-new write/flush probe proves writability without a cleanup sweep.
+Master/email/log share bounded safe names, an invariant timestamp and random16hex
+suffix; CreateNew log reservation and existing no-overwrite final moves preserve
+other files. Sources retain their names and hashes. See `evidence/T10-completion.md`.
 
-Owner-authorized dependencies are verified external dev caches: GS10.08.0,
-portable supported PS7.6.6, PSA1.25.0; existing PDFtk2.02/Pester6.2.0/Python
-fixture libraries verified/reused. Extraction-only7-Zip26.04 read installer data.
-No admin/system/PATH/persistent policy/security change or vendor redistribution.
-Acquisition receipts disclose hashes/signatures/unsigned extracted binaries,
-archive variants and collector setup faults. Public evidence uses synthetic PDFs.
+Clean C1 `962f05ec1ea9f8edfbeb8e5fc755dacac24156ed` passes202 focused tests in each actual
+PS5.1/PS7.6.6 shell,404 total, with all failures/blocks/containers/skips/not_run0.
+Actual standard-user write denial/recovery/SDDL restoration, same/case/8.3 alias
+refusal, four junction cases and simultaneous real-engine identities pass.
+AC022/AC023/AC024 pass. Exact commands/versions, original/sanitized hashes and
+distinct historical dirty14/1 failures/corrected passes remain in C1 results and
+reports. Analyzer entry/helpers:0errors/29warnings/5information per shell, reviewed
+nonblocking for T10; not lint-clean/T22 completion. Independent review is retained.
 
-Real GS encrypted-input testing exposed default exit0/wrong-page output. Fixed
-vendor `-dPDFSTOPONERROR` returns nonzero and existing owned-stage cleanup refuses
-publication. GS supports tested punctuation/Latin/CJK paths; PDFtk supports tested
-punctuation/Latin and CJK install, safely rejects CJK operands. Both accept258;
-260 preflight rejects. Password/lock/owned ACL denial/collision cases are bounded;
-source snapshots and restored ACL are verified. Page totals do not prove fidelity.
-SAFER,/screen/compatibility1.6/duplicate detection and child-only GS_OPTIONS remain.
+C1 was pushed normally with fresh clean/local/live equality. Draft [PR10](https://github.com/PikkuJanne/WinPDFMerger/pull/10)
+follows owner-merged PR9 and safe ancestry/identical-tree fast-forward to main
+af54a03 before implementation. Final records-only C2 synchronization is reported
+in the session, avoiding self-reference; recheck live refs next session. No
+reset/stash/force/origin/tag/release change.
 
-C3 matching-branch normal push/fresh clean/live equality is retained. Owner-merged
-PR8/main021e2a9 was safely fast-forwarded before edits; new draft [PR](https://github.com/PikkuJanne/WinPDFMerger/pull/9)
-covers this continuation. C4 records clean-C3 results; its final push/live equality
-belongs in session output and must be rechecked next time. Origin unchanged.
-
-Reference: non-elevated Windows11x64/build26300; actual PS5.1.26100.9444 and
-supported7.6.6. Ordinary PS5.1 remains Restricted/allscopesUndefined; tests only
-use authorized process RemoteSigned. OS support channel/Explorer/full-release
-compatibility unestablished. Future gates: T10 destination/identity, T11 input/page
-inventory, T12 general staging, T13 master validation, T14 email/outcomes, T15
-interruption. Same-second log identity/stale-email summary/fidelity/CI/package/
-security/release remain downstream. Earlier structural-T10 wording is corrected.
-No runtime network/private upload/reset/stash/force/origin/tag/release change.
+Approved external Pester6.2.0/PDFtk2.02/GS10.08.0/supported portable PS7.6.6/
+PSA1.25.0 caches were reverified (1,388 files), with no new acquisition/install.
+Ordinary PS5.1 remains Restricted/all scopesUndefined; only authorized test-child
+RemoteSigned is used. Standard-user Windows11x64/build26300 local NTFS evidence
+does not establish OS support channel/UNC/Explorer/fidelity/full release compatibility.
+No admin/PATH/persistent policy/security change, private PDFs/uploads or runtime
+network calls. T11 input/page inventory, T12 general staging, T13 master validation,
+T14 email/outcomes, T15 interruption and CI/package/security/release gates remain.

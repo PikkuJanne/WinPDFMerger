@@ -26,9 +26,9 @@ FEATURES
         - Archive-safe master, lossless
         - Email copy, size-optimized via Ghostscript profile
     - Clean file naming:
-        WinPDFMerge_<SourceFolder>_<yyyyMMdd_HHmmss>.pdf
-        WinPDFMerge_<SourceFolder>_<yyyyMMdd_HHmmss>_email.pdf
-        WinPDFMerge_<SourceFolder>_<yyyyMMdd_HHmmss>.log
+        WinPDFMerge_<SourceFolder>_<yyyyMMdd_HHmmss>_<run>.pdf
+        WinPDFMerge_<SourceFolder>_<yyyyMMdd_HHmmss>_<run>_email.pdf
+        WinPDFMerge_<SourceFolder>_<yyyyMMdd_HHmmss>_<run>.log
     - Robust logging, full command lines + Ghostscript stdout/stderr appended to .log.
     - Bounded native execution with closed stdin, both streams captured, and child-only GS_OPTIONS removal.
 
@@ -49,6 +49,9 @@ USAGE
        - Output: merged PDFs + log are created in the script’s directory.
     B) Direct PowerShell (positional arg; simplest path handling)
        - .\WinPDFMerge.ps1 "C:\Work\Papers\ToMerge"
+       - .\WinPDFMerge.ps1 "C:\Work\Papers\ToMerge" -OutputFolder "C:\Work\Merged"
+       - OutputFolder must already exist, be writable, and differ from SourceFolder.
+         Omitted means the entry-script directory. Junction/reparse paths are refused.
 
 QUALITY / SIZE PRESETS (email copy)
     - Default profile: `/screen` (smallest typical email size, good for on-screen reading).
@@ -81,10 +84,12 @@ LICENSE / WARRANTY
 
 #>
 
-[CmdletBinding()]
+[CmdletBinding(PositionalBinding=$false)]
 param(
     [Parameter(Mandatory=$false, Position=0)]
-    [string]$SourceFolder
+    [string]$SourceFolder,
+    [Parameter(Mandatory=$false)]
+    [string]$OutputFolder
 )
 
 Set-StrictMode -Version Latest
@@ -98,13 +103,29 @@ function Get-ScriptDir {
 $ScriptDir = Get-ScriptDir
 . (Join-Path $ScriptDir 'src/WinPDFMerge.Helpers.ps1')
 if ([string]::IsNullOrWhiteSpace($SourceFolder)) {
-    Write-Host "Usage: WinPDFMerge.ps1 <FolderWithPDFs>" -ForegroundColor Yellow
+    Write-Host "Usage: WinPDFMerge.ps1 <FolderWithPDFs> [-OutputFolder <ExistingDirectory>]" -ForegroundColor Yellow
     exit 1
 }
-# Validate and freeze sources before dependency lookup or output/log creation.
-# Advanced parameter binding rejects additional source arguments.
+# Resolve paths and prevent overlap before discovery, probes or native work.
+# Only SourceFolder is positional; OutputFolder must be explicitly named.
+try { $SourceFolder = Resolve-SourceDirectory -Path $SourceFolder }
+catch {
+    Write-Error ("Source preflight failed: {0}" -f $_.Exception.Message) -ErrorAction Continue
+    exit 1
+}
 try {
-    $SourceFolder = Resolve-SourceDirectory -Path $SourceFolder
+    if (-not $PSBoundParameters.ContainsKey('OutputFolder')) { $OutputFolder = $ScriptDir }
+    $OutputFolder = Resolve-OutputDirectory -Path $OutputFolder
+    Assert-MergeDirectories -SourceFolder $SourceFolder -OutputFolder $OutputFolder
+    $run = New-MergeRunIdentity -SourceFolder $SourceFolder -OutputFolder $OutputFolder
+    Test-OutputDirectoryWritable -OutputFolder $OutputFolder
+} catch {
+    Write-Host 'Destination preflight failed.' -ForegroundColor Red
+    Write-Host $_.Exception.Message
+    Write-Host 'Choose a separate existing writable directory with -OutputFolder. No merge was started.'
+    exit 1
+}
+try {
     $pdfs = @(Get-SourcePdfFiles -SourceFolder $SourceFolder)
     $pdfs = @(Sort-PdfInputs -Inputs $pdfs)
 } catch {
@@ -126,18 +147,26 @@ try {
     exit 1
 }
 
-# Build names
-$folderBase = Split-Path $SourceFolder -Leaf
-$stamp      = (Get-Date).ToString('yyyyMMdd_HHmmss')
-$baseOut    = "WinPDFMerge_{0}_{1}" -f (Sanitize-FileName $folderBase), $stamp
-$outLossless = Join-Path $ScriptDir ($baseOut + ".pdf")
-$outEmail    = Join-Path $ScriptDir ($baseOut + "_email.pdf")
-$logPath     = Join-Path $ScriptDir ($baseOut + ".log")
-
-"==== WinPDFMerge run $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss') ====" | Write-RunLog -LiteralPath $logPath
+# Claim one identity for the log/master/email. CreateNew refuses collisions;
+# every log write appends to this run's reserved file.
+$outLossless = $run.MasterPath
+$outEmail = $run.EmailPath
+$logPath = $run.LogPath
+try {
+    Reserve-MergeRunIdentity -Identity $run
+    "==== WinPDFMerge run $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss') ====" | Write-RunLog -LiteralPath $logPath -Append
+} catch {
+    Write-Host 'Run identity/log creation failed in OutputFolder.' -ForegroundColor Red
+    Write-Host $_.Exception.Message
+    Write-Host 'Choose an existing writable -OutputFolder. No merge was started.'
+    exit 1
+}
 "PDFtk: $pdftkPath (version $pdftkVersion)" | Write-RunLog -LiteralPath $logPath -Append
 "Source folder: $SourceFolder" | Write-RunLog -LiteralPath $logPath -Append
+"Output folder: $OutputFolder" | Write-RunLog -LiteralPath $logPath -Append
+"Run identity: $($run.BaseName)" | Write-RunLog -LiteralPath $logPath -Append
 "Output (lossless): $outLossless" | Write-RunLog -LiteralPath $logPath -Append
+"Planned email output: $outEmail" | Write-RunLog -LiteralPath $logPath -Append
 "PDF count: $($pdfs.Count)" | Write-RunLog -LiteralPath $logPath -Append
 for ($index = 0; $index -lt $pdfs.Count; $index++) {
     ("Input {0}: {1}" -f ($index + 1), $pdfs[$index].FullName) | Write-RunLog -LiteralPath $logPath -Append

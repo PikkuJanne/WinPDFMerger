@@ -59,6 +59,197 @@ function Get-SourcePdfFiles {
     return $files
 }
 
+function Resolve-OutputDirectory {
+    [CmdletBinding()]
+    param([string]$Path)
+
+    if ([string]::IsNullOrWhiteSpace($Path)) {
+        throw 'OutputFolder must name one existing writable FileSystem directory. Create the directory first and supply -OutputFolder.'
+    }
+    if ($Path.IndexOfAny([char[]]'*?') -ge 0) {
+        throw "OutputFolder does not support wildcard expansion: '$Path'. Supply one literal directory."
+    }
+    try { $resolved = @(Resolve-Path -LiteralPath $Path -ErrorAction Stop) }
+    catch { throw "OutputFolder must be an existing accessible directory: '$Path'. Create it first or choose another -OutputFolder. $($_.Exception.Message)" }
+    if ($resolved.Count -ne 1 -or $resolved[0].Provider.Name -ne 'FileSystem') {
+        throw "OutputFolder must resolve to exactly one FileSystem directory: '$Path'."
+    }
+    $directory = Get-Item -LiteralPath $resolved[0].ProviderPath -Force -ErrorAction Stop
+    if (-not $directory.PSIsContainer) { throw "OutputFolder is not a directory: '$Path'." }
+    $fullPath = [IO.Path]::GetFullPath($directory.FullName)
+    $root = [IO.Path]::GetPathRoot($fullPath)
+    if ($fullPath.Length -gt $root.Length) { $fullPath = $fullPath.TrimEnd([char[]]'\/') }
+    return $fullPath
+}
+
+function Assert-MergeDirectoryPath {
+    param([string]$Path, [string]$Role)
+
+    # Reject a junction/symlink/mount point at any component, including an
+    # ancestor of an ordinary leaf. Do not guess a reparse target's identity.
+    $current = New-Object IO.DirectoryInfo($Path)
+    while ($null -ne $current) {
+        $item = Get-Item -LiteralPath $current.FullName -Force -ErrorAction Stop
+        if (($item.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0) {
+            throw "$Role contains an unsupported junction or reparse directory: '$($current.FullName)'. Choose a direct directory path for SourceFolder and -OutputFolder."
+        }
+        $current = $current.Parent
+    }
+}
+
+function Get-MergeDirectoryIdentity {
+    param([string]$Path)
+
+    if ([Environment]::OSVersion.Platform -ne [PlatformID]::Win32NT) {
+        throw 'Directory identity requires Windows; choose a supported Windows filesystem.'
+    }
+    # Lazy, small Windows metadata adapter. Importing helpers compiles nothing
+    # and performs no filesystem/native work.128-bit IDs avoid truncating ReFS
+    # identity, but only the actually tested filesystem is a support claim.
+    if (-not ('WinPDFMerger.DirectoryIdentity' -as [type])) {
+        Add-Type -TypeDefinition @'
+using System;
+using System.ComponentModel;
+using System.Globalization;
+using System.IO;
+using System.Runtime.InteropServices;
+using Microsoft.Win32.SafeHandles;
+namespace WinPDFMerger {
+    public static class DirectoryIdentity {
+        [StructLayout(LayoutKind.Sequential)]
+        private struct FileIdInfo {
+            public ulong VolumeSerialNumber;
+            public ulong FileIdLow;
+            public ulong FileIdHigh;
+        }
+        [DllImport("kernel32.dll", CharSet=CharSet.Unicode, ExactSpelling=true, SetLastError=true)]
+        private static extern SafeFileHandle CreateFileW(string name, uint access, uint share,
+            IntPtr security, uint creation, uint flags, IntPtr template);
+        [DllImport("kernel32.dll", ExactSpelling=true, SetLastError=true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool GetFileInformationByHandleEx(SafeFileHandle handle, int informationClass,
+            out FileIdInfo information, uint bufferSize);
+        public static string Get(string path) {
+            // Metadata only, all sharing modes, OPEN_EXISTING/BACKUP_SEMANTICS.
+            using (SafeFileHandle handle = CreateFileW(path, 0, 7, IntPtr.Zero, 3, 0x02000000, IntPtr.Zero)) {
+                if (handle.IsInvalid) throw new IOException("Cannot open directory identity: " + path,
+                    new Win32Exception(Marshal.GetLastWin32Error()));
+                FileIdInfo info;
+                // FileIdInfo=18; FILE_ID_INFO is volume64 followed by opaque ID128.
+                if (!GetFileInformationByHandleEx(handle, 18, out info, (uint)Marshal.SizeOf(typeof(FileIdInfo))))
+                    throw new IOException("Cannot establish directory identity: " + path,
+                        new Win32Exception(Marshal.GetLastWin32Error()));
+                if (info.FileIdLow == 0 && info.FileIdHigh == 0)
+                    throw new IOException("Ambiguous directory identity: " + path);
+                return info.VolumeSerialNumber.ToString("X16", CultureInfo.InvariantCulture) + ":" +
+                    info.FileIdHigh.ToString("X16", CultureInfo.InvariantCulture) +
+                    info.FileIdLow.ToString("X16", CultureInfo.InvariantCulture);
+            }
+        }
+    }
+}
+'@ -ErrorAction Stop
+    }
+    return [WinPDFMerger.DirectoryIdentity]::Get($Path)
+}
+
+function Assert-MergeDirectories {
+    param([string]$SourceFolder, [string]$OutputFolder)
+
+    Assert-MergeDirectoryPath -Path $SourceFolder -Role SourceFolder
+    Assert-MergeDirectoryPath -Path $OutputFolder -Role OutputFolder
+    $sourceIdentity = Get-MergeDirectoryIdentity -Path $SourceFolder
+    $outputIdentity = Get-MergeDirectoryIdentity -Path $OutputFolder
+    if ($sourceIdentity -ceq $outputIdentity) {
+        throw 'SourceFolder and OutputFolder refer to the same directory. Choose a separate existing -OutputFolder; sources cannot also be the destination.'
+    }
+}
+
+function Test-OutputDirectoryWritable {
+    param([string]$OutputFolder)
+
+    $probe = [IO.Path]::Combine($OutputFolder, ('.WinPDFMerge_probe_' + [Guid]::NewGuid().ToString('N') + '.tmp'))
+    $stream = $null
+    $failure = $null
+    try {
+        # CreateNew cannot overwrite a foreign candidate. DeleteOnClose belongs
+        # only to the successfully opened handle; no name-based cleanup sweep.
+        $stream = [IO.FileStream]::new($probe, [IO.FileMode]::CreateNew, [IO.FileAccess]::Write,
+            [IO.FileShare]::None, 4096, [IO.FileOptions]::DeleteOnClose)
+        $stream.WriteByte(0)
+        $stream.Flush()
+    } catch { $failure = $_.Exception.Message }
+    finally {
+        if ($null -ne $stream) {
+            try { $stream.Dispose() }
+            catch { $failure = "Owned writability probe cleanup failed: $($_.Exception.Message)" }
+        }
+    }
+    if ($failure) {
+        throw "OutputFolder '$OutputFolder' is not writable or its owned probe could not be cleaned. Choose an existing writable -OutputFolder. $failure"
+    }
+}
+
+function New-MergeRunIdentity {
+    [CmdletBinding()]
+    param(
+        [AllowEmptyString()][string]$SourceFolder,
+        [Parameter(Mandatory=$true)][string]$OutputFolder,
+        [datetime]$Timestamp = [datetime]::Now,
+        [ValidatePattern('^[0-9a-fA-F]{16}$')][string]$RunSuffix = ([Guid]::NewGuid().ToString('N').Substring(0, 16))
+    )
+
+    $stamp = $Timestamp.ToString('yyyyMMdd_HHmmss', [Globalization.CultureInfo]::InvariantCulture)
+    $suffix = $RunSuffix.ToLowerInvariant()
+    $leaf = ''
+    if (-not [string]::IsNullOrWhiteSpace($SourceFolder)) {
+        $source = $SourceFolder.TrimEnd([char[]]'\/')
+        $root = [IO.Path]::GetPathRoot($SourceFolder).TrimEnd([char[]]'\/')
+        if ($source -ine $root) { $leaf = [IO.Path]::GetFileName($source) }
+    }
+    $label = (Sanitize-FileName $leaf).TrimEnd([char[]]' .')
+    if ([string]::IsNullOrWhiteSpace($label)) { $label = 'root' }
+    # Include the actual T09 private output layout in preflight, before probe,
+    # log or native work. Existing native backend operands stay below260.
+    $stage = [IO.Path]::Combine([IO.Path]::Combine($OutputFolder, ('.WinPDFMerge_' + ('0' * 32) + '.tmp')), 'output.pdf')
+    $fixedEmail = [IO.Path]::Combine($OutputFolder, ('WinPDFMerge__' + $stamp + '_' + $suffix + '_email.pdf'))
+    $labelLimit = [Math]::Min(64, (259 - $fixedEmail.Length))
+    if ($stage.Length -ge 260 -or $labelLimit -lt 1) {
+        throw 'Output paths have insufficient room for safe names and private native output. Choose a shorter existing -OutputFolder.'
+    }
+    if ($label.Length -gt $labelLimit) {
+        $label = $label.Substring(0, $labelLimit)
+        if ([char]::IsHighSurrogate($label[$label.Length - 1])) { $label = $label.Substring(0, $label.Length - 1) }
+        $label = $label.TrimEnd([char[]]' .')
+        if ([string]::IsNullOrEmpty($label)) { $label = 'r' }
+    }
+    $baseName = 'WinPDFMerge_' + $label + '_' + $stamp + '_' + $suffix
+    return [pscustomobject]@{
+        OutputFolder = $OutputFolder; FolderLabel = $label; Timestamp = $stamp; RunSuffix = $suffix
+        BaseName = $baseName
+        MasterPath = [IO.Path]::Combine($OutputFolder, ($baseName + '.pdf'))
+        EmailPath = [IO.Path]::Combine($OutputFolder, ($baseName + '_email.pdf'))
+        LogPath = [IO.Path]::Combine($OutputFolder, ($baseName + '.log'))
+    }
+}
+
+function Reserve-MergeRunIdentity {
+    param($Identity)
+
+    foreach ($path in @($Identity.MasterPath, $Identity.EmailPath, $Identity.LogPath)) {
+        if ([IO.File]::Exists($path) -or [IO.Directory]::Exists($path)) {
+            throw "Run identity already exists at '$path'. No existing output was replaced; run again for a fresh identity."
+        }
+    }
+    $stream = $null
+    try {
+        # Atomically claim the cooperating run's identity via its log. All entry
+        # writes append afterward; final PDF moves still enforce no-overwrite.
+        $stream = [IO.FileStream]::new($Identity.LogPath, [IO.FileMode]::CreateNew, [IO.FileAccess]::Write, [IO.FileShare]::Read)
+    } catch { throw "Cannot reserve run identity in OutputFolder '$($Identity.OutputFolder)'. No existing file was replaced. $($_.Exception.Message)" }
+    finally { if ($null -ne $stream) { $stream.Dispose() } }
+}
+
 function Write-RunLog {
     [CmdletBinding()]
     param(

@@ -1,42 +1,36 @@
 # Next session
 
-Selected task: T10 — validate destination and reserve run identity (M2).
-Read AGENTS/INDEX/STATUS, T10 TASKS entry/brief, PRODUCT_SPEC, TECHNICAL_SPEC,
-TEST_STRATEGY, GITHUB_WORKFLOW and AC022/AC023/AC024. Recheck local branch/clean
-tree/origin fetch+push/fresh live refs/PR/releases. Never reset to the baseline.
+Selected task: T11 — preflight every input PDF and page totals.
+Read AGENTS/INDEX/STATUS, T11 TASKS entry/brief, PRODUCT_SPEC, TECHNICAL_SPEC,
+TEST_STRATEGY, GITHUB_WORKFLOW and AC025/AC026. Recheck repository/branch/clean
+tree/origin fetch+push/live refs/PR/releases. Never reset to the historical baseline.
 
-T09/M1 completed at clean C3 `894bbb4862105ae497bc9801decc46575fedd87a`:217 Pester cases per actual
-PS5.1/7.6.6 shell,434total;9tiers, all failure/skip/not_run0; AC019/20/21 pass.
-Python fixture10tests/exact reproduction/PDFium oracle pass. PSA1.25.0 entry/
-helpers0errors/20warnings/4information; reviewed style hints retained, no T22
-completion claim. See T09 completion/results/reports/manifest/review/live receipt.
-C4 records-only continuation requires final fresh live proof in session output;
-verify current refs anew. Draft [PR](https://github.com/PikkuJanne/WinPDFMerger/pull/9) replaces owner-merged PR8.
+T10 is complete at clean implementation `962f05ec1ea9f8edfbeb8e5fc755dacac24156ed`:
+202 focused cases per actual PS5.1/PS7.6.6 shell,404 total, all bad counts0.
+Required AC022/23/24 pass. Default entry output/named existing OutputFolder,
+owned write probe/denial recovery, physical same/case/8.3 identity and reparse
+ancestor refusal, bounded invariant names/random16hex and CreateNew log
+reservation are implemented. Actual two-child concurrency produces unique shared
+master/email/log identities while preserving foreign finals/sources. Exact clean
+and distinct historical dirty failure reports, versions/hashes/static findings,
+review and C1 live sync are in T10 completion/C1 records. Do not count mocks or
+historical dirty runs as native acceptance. Final records-only C2 post-push SHA/
+equality is in the prior session output under the no-self-reference workflow.
 
-Reuse verified external dev caches from T09 GS/PS7/PSA acquisition receipts and
-T03 Pester6.2.0/PDFtk2.02 receipts. Owner explicitly authorized all needed test
-dependencies; process-only RemoteSigned already authorized. No repeat acquisition
-approval for these exact caches; no automatic downloads/system/PATH/security
-changes. Current supported PS7 reference pin7.6.6 in TestDependencies.psd1.
+Draft [PR10](https://github.com/PikkuJanne/WinPDFMerger/pull/10) is the current implementation PR; PR9 was owner-merged.
+Reuse exact verified external caches from T03/T09 receipts and T10 cache audit;
+prior acquisition/testing/RemoteSigned authorization persists. No repeat approval
+or installer is needed. Ordinary PS5.1 Restricted/all scopesUndefined, non-elevated
+Windows11x64/build26300; actual NTFS scope only, OS support channel unestablished.
 
-Invoke-PdfToolJob routes bounded direct vectors/logs, private fresh outputs and
-no-overwrite moves. PDFtk cat/compress/dont_ask; GS SAFER,/screen,compatibility1.6,
-duplicate detection, fixedPDFSTOPONERROR and child-only GS_OPTIONS removal.
-The fixed error flag rejects observed password-error exit0/wrong-page artifact;
-it does not replace structural/expected-total validation. Command bound30000
-includes executable serialization/separator/NUL; operands/stage below260.
-PDFtk CJK operands fail safely with readable native diagnostics; GS testedCJK
-paths pass; sources are never renamed. ACL fixture descriptor/source restored.
+T11 must preflight every frozen ordered input, reject invalid/unsupported-encrypted
+PDFs without omitting any source, and derive exact expected page totals with
+regressions. Preserve T10 destination/run identity and T09 fixed direct/bounded/
+noninteractive native jobs, optional GS/default screen, sources and no-overwrite
+publication. Helpers remain import-only/PS5.1-compatible. T12 general staging,
+T13 master validation, T14 email/outcomes and T15 interruption remain later tasks.
+OutputFolder starts at T10 for AC022; T16 owns remaining public parameters.
 
-T10 should implement destination/overlap/writability and unique shared run identity,
-including the known same-second log/final naming weakness. Preserve master sources
-and current defaults. T11 owns input/page inventory, T12 generalized staging,
-T13 master validation/publication, T14 email validation/outcomes (including known
-stale-email summary), T15 full interruption/descendants. Earlier historical notes
-misassigned structural validation to T10; use this corrected task map.
-
-Reference standard-user Windows11x64/build26300; ordinary PS5.1 Restricted/all
-scopesUndefined, actual5.1.26100.9444 and supported7.6.6. OS support channel and
-Explorer/fidelity/full release compatibility remain unestablished; native scoped
-tests cannot replace human desktop/CI/package/release gates. One conceptual task
-per thread; no intermediate tags/releases/private PDF/upload/runtime network calls.
+Full fidelity/Explorer/CI/package/security/release compatibility is still pending.
+Keep one conceptual task; no intermediate tags/releases, private-PDF upload,
+runtime network, force/reset/stash/origin or persistent security changes.

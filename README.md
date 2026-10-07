@@ -49,10 +49,32 @@ Command line
 One folder (top-level PDFs only, no recursion):
 .\WinPDFMerge.ps1 "C:\Work\Docs\ToMerge"
 
+Choose another existing writable destination explicitly:
+
+```powershell
+.\WinPDFMerge.ps1 "C:\Work\Docs\ToMerge" -OutputFolder "C:\Work\Merged"
+```
+
+The default remains the entry-script directory. A missing, inaccessible or
+unwritable destination fails before merging with `-OutputFolder` guidance;
+the script does not create a directory or fall back elsewhere. Source and
+destination cannot identify the same directory, including case/short-name aliases.
+Junctions and other reparse directories at either path or an ancestor are refused;
+choose direct directory paths. A temporary create-new writability probe is removed
+when its owned handle closes. No existing files are used as probes.
+
 **Output naming**
-WinPDFMerge_<FolderName>_<yyyyMMdd_HHmmss>.pdf (lossless master via PDFtk)
-WinPDFMerge_<FolderName>_<yyyyMMdd_HHmmss>_email.pdf (email friendly version via Ghostscript)
-WinPDFMerge_<FolderName>_<yyyyMMdd_HHmmss>.log (full command lines + GhostScript stdout/stderr)
+WinPDFMerge_<FolderName>_<yyyyMMdd_HHmmss>_<run>.pdf (master via PDFtk)
+WinPDFMerge_<FolderName>_<yyyyMMdd_HHmmss>_<run>_email.pdf (email copy via Ghostscript)
+WinPDFMerge_<FolderName>_<yyyyMMdd_HHmmss>_<run>.log (both native streams and diagnostics)
+
+Each run receives a random 16-hex-character suffix shared by all three files.
+The log is reserved with create-new semantics; an existing identity is refused.
+Folder labels are bounded to 64 UTF-16 characters and shortened further when
+needed for the destination path. Root/empty labels use `root`; trailing dots/spaces
+are removed from the derived label. Input directories/files are never renamed.
+The longest final path and private native output must fit below 260 characters;
+an excessively long destination fails with instructions to choose a shorter path.
 
 **Email-friendly copy (quality/size)**
 Default profile: -dPDFSETTINGS=/screen (small, on-screen reading).
