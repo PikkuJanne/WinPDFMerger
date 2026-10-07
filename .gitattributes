@@ -1,0 +1,5 @@
+# Preserve synthetic PDF bytes through Windows checkout/line-ending conversion.
+/tests/fixtures/numbered/*.pdf binary
+
+# Existing entry is stored with CRLF; preserve its bytes and check real whitespace.
+/WinPDFMerge.ps1 -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

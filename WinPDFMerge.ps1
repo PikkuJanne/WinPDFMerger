@@ -93,41 +93,9 @@ function Get-ScriptDir {
     if ($PSCommandPath) { return (Split-Path -Parent $PSCommandPath) }
     return (Get-Location).Path
 }
-function Find-Pdftk {
-    $pdftk = Get-Command pdftk -ErrorAction SilentlyContinue
-    if ($pdftk) { return $pdftk.Source }
-    $candidates = @(
-        "$Env:ProgramFiles\PDFtk Server\bin\pdftk.exe",
-        "$Env:ProgramFiles(x86)\PDFtk\bin\pdftk.exe",
-        "$Env:ProgramFiles\Pdftk Server\bin\pdftk.exe"
-    )
-    foreach ($c in $candidates) { if (Test-Path $c) { return $c } }
-    return $null
-}
-function Find-Ghostscript {
-    $gs = Get-Command gswin64c.exe -ErrorAction SilentlyContinue
-    if ($gs) { return $gs.Source }
-    $gs = Get-Command gswin32c.exe -ErrorAction SilentlyContinue
-    if ($gs) { return $gs.Source }
-    $common = Get-ChildItem -Path "$Env:ProgramFiles\gs" -Directory -ErrorAction SilentlyContinue |
-              Sort-Object Name -Descending | Select-Object -First 1
-    if ($common) {
-        $cand = Join-Path $common.FullName "bin\gswin64c.exe"
-        if (Test-Path $cand) { return $cand }
-    }
-    return $null
-}
-function NaturalSortKey([string]$s) {
-    [regex]::Split($s, '(\d+)') | ForEach-Object { if ($_ -match '^\d+$') { [int]$_ } else { $_ } }
-}
-function Sanitize-FileName([string]$name) {
-    $invalid = [IO.Path]::GetInvalidFileNameChars() -join ''
-    $re = "[{0}]" -f ([Regex]::Escape($invalid))
-    ($name -replace $re, '_').Trim()
-}
-
 # --- Entry ---
 $ScriptDir = Get-ScriptDir
+. (Join-Path $ScriptDir 'src/WinPDFMerge.Helpers.ps1')
 if (-not $SourceFolder) { if ($args.Count -ge 1) { $SourceFolder = $args[0] } }
 if (-not $SourceFolder) { Write-Host "Usage: WinPDFMerge.ps1 <FolderWithPDFs>" -ForegroundColor Yellow; exit 1 }
 $SourceFolder = (Resolve-Path $SourceFolder).Path

@@ -1,0 +1,74 @@
+{
+  "schema_version": 1,
+  "observed_at_utc": "2026-10-07T15:53:15.3213876Z",
+  "commit_under_test": "9cdcf5411755492ab50015178a36e39233240ec2",
+  "dirty_worktree": false,
+  "shell_version": "7.6.5",
+  "process_64_bit": true,
+  "token_is_administrator": false,
+  "effective_policy": "RemoteSigned",
+  "fake_probe_sha256": "bced1b12687c9d756109b5e32d7aa672d0589a4e8cea40bfd549ce048693cf81",
+  "evidence_scope": "Partial T03 verification. Required Pester/both-shell/PDFtk gates remain not_run.",
+  "pester_executed": false,
+  "ps51_scripts_executed": false,
+  "pdftk_executed": false,
+  "ghostscript_executed": false,
+  "application_pdf_merge_executed": false,
+  "current_supported_ps7_claim": false,
+  "executions": [
+    {
+      "check": "fixture-tests",
+      "command": "& '<bundled-python-3.12.14>' -B -m unittest discover -s tools/test/tests -p test_fixture_oracle.py -v",
+      "exit_code": 0,
+      "output": "test_committed_corpus_reproduces_exactly (test_fixture_oracle.FixtureOracleTests.test_committed_corpus_reproduces_exactly) ... ok\r\ntest_corpus_inspection_preserves_source_hashes (test_fixture_oracle.FixtureOracleTests.test_corpus_inspection_preserves_source_hashes) ... ok\r\ntest_empty_manifest_cannot_report_native_inspection_success (test_fixture_oracle.FixtureOracleTests.test_empty_manifest_cannot_report_native_inspection_success) ... ok\r\ntest_hash_gate_detects_changed_fixture (test_fixture_oracle.FixtureOracleTests.test_hash_gate_detects_changed_fixture) ... ok\r\ntest_malformed_metadata_fails_before_native_inspection (test_fixture_oracle.FixtureOracleTests.test_malformed_metadata_fails_before_native_inspection) ... ok\r\ntest_native_oracle_rejects_wrong_page_count (test_fixture_oracle.FixtureOracleTests.test_native_oracle_rejects_wrong_page_count) ... ok\r\ntest_native_oracle_rejects_wrong_page_order (test_fixture_oracle.FixtureOracleTests.test_native_oracle_rejects_wrong_page_order) ... ok\r\ntest_optional_render_creates_one_png_per_real_page (test_fixture_oracle.FixtureOracleTests.test_optional_render_creates_one_png_per_real_page) ... ok\r\ntest_pdf_cli_rejects_bad_schema_and_inconsistent_expectations (test_fixture_oracle.FixtureOracleTests.test_pdf_cli_rejects_bad_schema_and_inconsistent_expectations) ... ok\r\ntest_real_native_oracle_reads_total_order_and_sizes (test_fixture_oracle.FixtureOracleTests.test_real_native_oracle_reads_total_order_and_sizes) ... ok\r\n\r\n----------------------------------------------------------------------\r\nRan 10 tests in 0.105s\r\n\r\nOK\r\n"
+    },
+    {
+      "check": "fixture-oracle",
+      "command": "& '<bundled-python-3.12.14>' -B tools/test/fixture_oracle.py",
+      "exit_code": 0,
+      "output": "{\r\n  \"evidence_class\": \"fixture_native_inspection\",\r\n  \"product_merge_executed\": false,\r\n  \"pdftk_executed\": false,\r\n  \"ghostscript_executed\": false,\r\n  \"pypdfium2_version\": \"5.13.0\",\r\n  \"pdfium_version\": \"153.0.7999.0\",\r\n  \"fixtures\": [\r\n    {\r\n      \"file\": \"1.pdf\",\r\n      \"sha256\": \"ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109\",\r\n      \"page_count\": 1,\r\n      \"page_identifiers\": [\r\n        \"T03-01-P01\"\r\n      ],\r\n      \"page_sizes_points\": [\r\n        [\r\n          432.0,\r\n          288.0\r\n        ]\r\n      ]\r\n    },\r\n    {\r\n      \"file\": \"2.pdf\",\r\n      \"sha256\": \"7821d0ff4c3d655511e4421559d317013a64356a370d7b07a47079e5f02ad901\",\r\n      \"page_count\": 2,\r\n      \"page_identifiers\": [\r\n        \"T03-02-P01\",\r\n        \"T03-02-P02\"\r\n      ],\r\n      \"page_sizes_points\": [\r\n        [\r\n          432.0,\r\n          288.0\r\n        ],\r\n        [\r\n          432.0,\r\n          288.0\r\n        ]\r\n      ]\r\n    },\r\n    {\r\n      \"file\": \"10.pdf\",\r\n      \"sha256\": \"9fa79c41feb7be692b100bc0fe44ed063029e0955900d3bb2f8552a10afb6aaa\",\r\n      \"page_count\": 1,\r\n      \"page_identifiers\": [\r\n        \"T03-10-P01\"\r\n      ],\r\n      \"page_sizes_points\": [\r\n        [\r\n          432.0,\r\n          288.0\r\n        ]\r\n      ]\r\n    }\r\n  ],\r\n  \"total_pages\": 4,\r\n  \"page_identifiers\": [\r\n    \"T03-01-P01\",\r\n    \"T03-02-P01\",\r\n    \"T03-02-P02\",\r\n    \"T03-10-P01\"\r\n  ]\r\n}\r\n"
+    },
+    {
+      "check": "fixture-reproduction",
+      "command": "& '<bundled-python-3.12.14>' -B tools/test/generate_numbered_fixtures.py",
+      "exit_code": 0,
+      "output": "PASS: 3 PDFs and manifest reproduce byte-for-byte.\r\n"
+    },
+    {
+      "check": "controlled-process",
+      "command": "& '<bundled-pwsh-7.6.5>' -NoProfile -File tests/.work/Validate-FakeNative.ps1",
+      "exit_code": 0,
+      "output": "{\r\n  \"shell_version\": \"7.6.5\",\r\n  \"scope\": \"Controlled Windows process only; not native PDF engine or application process wrapper evidence\",\r\n  \"compiler\": \"4.8.9221.0 built by: NET481REL1LAST_25H2\",\r\n  \"checks\": {\r\n    \"echo_argument_boundaries\": \"pass: 7 empty/space/trailing-slash/quote/Unicode/control-character arguments\",\r\n    \"echo_empty_array\": \"pass\",\r\n    \"dual_streams\": \"pass\",\r\n    \"partial_and_nonzero\": \"pass: exit 17 with non-PDF marker; repeat exits 64 and preserves bytes\",\r\n    \"sleep\": \"pass: 50 milliseconds\",\r\n    \"flood\": \"pass: 1024 lines and 147456 characters per stream\",\r\n    \"invalid_and_bound_limits\": \"pass: 5 cases fail with exit 64 before normal output\"\r\n  }\r\n}\r\n"
+    },
+    {
+      "check": "pester-ps7-rejection",
+      "command": "& '<bundled-pwsh-7.6.5>' -NoProfile -File tools/test/Invoke-Tests.ps1",
+      "exit_code": 1,
+      "output": "Import-Module: C:\\projects\\WinPDFMerger-main\\tools\\test\\Invoke-Tests.ps1:14\r\nLine |\r\n  14 |  Import-Module -Name $pesterName -RequiredVersion $pins.PesterVersion  …\r\n     |  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\r\n     | The specified module 'Pester' with version '6.2.0' was not loaded because no valid module file was found in any\r\n     | module directory.\r\n"
+    },
+    {
+      "check": "ps51-policy-rejection",
+      "command": "powershell.exe -NoProfile -File tools/test/Invoke-Tests.ps1",
+      "exit_code": 1,
+      "output": "File C:\\projects\\WinPDFMerger-main\\tools\\test\\Invoke-Tests.ps1 cannot be loaded because running scripts is disabled on \r\nthis system. For more information, see about_Execution_Policies at https:/go.microsoft.com/fwlink/?LinkID=135170.\r\n    + CategoryInfo          : SecurityError: (:) [], ParentContainsErrorRecordException\r\n    + FullyQualifiedErrorId : UnauthorizedAccess\r\n"
+    },
+    {
+      "check": "ps51-parser",
+      "command": "powershell.exe -NoProfile -Command '$files = @(\"WinPDFMerge.ps1\",\"src/WinPDFMerge.Helpers.ps1\",\"tools/test/Invoke-Tests.ps1\",\"tools/test/Build-FakeNative.ps1\",\"tests/unit/Helpers.Tests.ps1\",\"tests/unit/FakeNative.Tests.ps1\",\"tests/pdf/Fixture.Native.Tests.ps1\",\"tests/TestDependencies.psd1\"); foreach ($file in $files) { $tokens = $null; $errors = $null; $null = [System.Management.Automation.Language.Parser]::ParseFile((Join-Path (Get-Location) $file), [ref]$tokens, [ref]$errors); if (@($errors).Count -ne 0) { throw \"Parser error\" }; [pscustomobject]@{ file=$file; errors=@($errors).Count } }; $PSVersionTable.PSVersion.ToString(); Get-ExecutionPolicy'",
+      "exit_code": 0,
+      "output": "\r\nfile                               errors\r\n----                               ------\r\nWinPDFMerge.ps1                         0\r\nsrc/WinPDFMerge.Helpers.ps1             0\r\ntools/test/Invoke-Tests.ps1             0\r\ntools/test/Build-FakeNative.ps1         0\r\ntests/unit/Helpers.Tests.ps1            0\r\ntests/unit/FakeNative.Tests.ps1         0\r\ntests/pdf/Fixture.Native.Tests.ps1      0\r\ntests/TestDependencies.psd1             0\r\n5.1.26100.9444\r\nRestricted\r\n\r\n\r\n"
+    },
+    {
+      "check": "plan",
+      "command": "& '<bundled-python-3.12.14>' -B tools/codex/handoff.py check-plan --repo .",
+      "exit_code": 0,
+      "output": "{\r\n  \"valid\": true,\r\n  \"gate\": \"structure-only\",\r\n  \"task_count\": 34,\r\n  \"case_count\": 78,\r\n  \"done_tasks\": 2,\r\n  \"passed_cases\": 4,\r\n  \"excluded_cases\": 0,\r\n  \"note\": \"Record validation only; does not execute application tests or verify current GitHub state.\"\r\n}\r\n"
+    },
+    {
+      "check": "ps7-import-smoke",
+      "command": "& '<bundled-pwsh-7.6.5>' -NoProfile -Command '$repo = (Get-Location).Path; $helper = Join-Path $repo \"src/WinPDFMerge.Helpers.ps1\"; $beforeFiles = (@(Get-ChildItem -LiteralPath $repo -Filter \"WinPDFMerge_*\" -File | ForEach-Object FullName) -join \"`n\"); $savedGS = [Environment]::GetEnvironmentVariable(\"GS_OPTIONS\", \"Process\"); $location = (Get-Location).Path; $preference = $ErrorActionPreference; function Start-Process { throw \"Unexpected native launch\" }; try { foreach ($value in @($null, \"\", \"T03 synthetic sentinel\")) { [Environment]::SetEnvironmentVariable(\"GS_OPTIONS\", $value, \"Process\"); $before = [Environment]::GetEnvironmentVariable(\"GS_OPTIONS\", \"Process\"); . $helper; if ([Environment]::GetEnvironmentVariable(\"GS_OPTIONS\", \"Process\") -cne $before) { throw \"GS_OPTIONS changed\" } }; if ((Get-Location).Path -cne $location -or $ErrorActionPreference -ne $preference) { throw \"Caller state changed\" }; if ((@(Get-ChildItem -LiteralPath $repo -Filter \"WinPDFMerge_*\" -File | ForEach-Object FullName) -join \"`n\") -cne $beforeFiles) { throw \"Outputs changed\" }; \"PASS: PS7 helper import returned, no native call, unchanged caller/output/GS states\" } finally { [Environment]::SetEnvironmentVariable(\"GS_OPTIONS\", $savedGS, \"Process\") }'",
+      "exit_code": 0,
+      "output": "PASS: PS7 helper import returned, no native call, unchanged caller/output/GS states\r\n"
+    }
+  ]
+}

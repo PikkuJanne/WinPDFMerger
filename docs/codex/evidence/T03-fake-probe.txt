@@ -1,0 +1,58 @@
+Set-StrictMode -Version Latest
+$ErrorActionPreference = 'Stop'
+$repo = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot '../..')).ProviderPath
+$exe = & (Join-Path $repo 'tools/test/Build-FakeNative.ps1')
+function Invoke-Fixture([string[]]$Arguments) {
+    $start = [Diagnostics.ProcessStartInfo]::new()
+    $start.FileName = $exe
+    $start.UseShellExecute = $false
+    $start.RedirectStandardOutput = $true
+    $start.RedirectStandardError = $true
+    foreach ($argument in $Arguments) { [void]$start.ArgumentList.Add($argument) }
+    $process = [Diagnostics.Process]::new()
+    $process.StartInfo = $start
+    try {
+        [void]$process.Start()
+        $stdout = $process.StandardOutput.ReadToEndAsync()
+        $stderr = $process.StandardError.ReadToEndAsync()
+        if (-not $process.WaitForExit(10000)) {
+            $process.Kill()
+            throw 'Controlled process exceeded validation timeout.'
+        }
+        [pscustomobject]@{ ExitCode = $process.ExitCode; Stdout = $stdout.GetAwaiter().GetResult(); Stderr = $stderr.GetAwaiter().GetResult() }
+    } finally { $process.Dispose() }
+}
+$checks = [ordered]@{}
+$expected = @('', 'two words', 'C:\synthetic [1] ! & (2)\', 'He said "hello"', 'ä中', "line`nbreak", "`t")
+$echo = Invoke-Fixture (@('echo') + $expected)
+$actual = @($echo.Stdout | ConvertFrom-Json)
+if ($echo.ExitCode -ne 0 -or $echo.Stderr.Length -ne 0 -or $actual.Count -ne $expected.Count) { throw 'Echo envelope failed.' }
+for ($i = 0; $i -lt $expected.Count; $i++) { if ($actual[$i] -cne $expected[$i]) { throw "Argument $i failed." } }
+$checks.echo_argument_boundaries = 'pass: 7 empty/space/trailing-slash/quote/Unicode/control-character arguments'
+$empty = Invoke-Fixture @('echo')
+if ($empty.ExitCode -ne 0 -or $empty.Stdout.Trim() -cne '[]') { throw 'Empty echo failed.' }
+$checks.echo_empty_array = 'pass'
+$streams = Invoke-Fixture @('streams', 'stdout marker', 'stderr marker')
+if ($streams.ExitCode -ne 0 -or $streams.Stdout.Trim() -cne 'stdout marker' -or $streams.Stderr.Trim() -cne 'stderr marker') { throw 'Streams failed.' }
+$checks.dual_streams = 'pass'
+$partial = Join-Path ([IO.Path]::GetDirectoryName($exe)) 'owned-partial.pdf'
+$failed = Invoke-Fixture @('fail', '17', $partial)
+$marker = [IO.File]::ReadAllText($partial)
+if ($failed.ExitCode -ne 17 -or $marker -notlike 'FAKE-NATIVE-PARTIAL*') { throw 'Partial failure failed.' }
+$repeat = Invoke-Fixture @('fail', '17', $partial)
+if ($repeat.ExitCode -ne 64 -or [IO.File]::ReadAllText($partial) -cne $marker) { throw 'Create-new overwrite protection failed.' }
+$checks.partial_and_nonzero = 'pass: exit 17 with non-PDF marker; repeat exits 64 and preserves bytes'
+$sleep = Invoke-Fixture @('sleep', '50')
+if ($sleep.ExitCode -ne 0 -or $sleep.Stdout.Length -ne 0 -or $sleep.Stderr.Length -ne 0) { throw 'Sleep failed.' }
+$checks.sleep = 'pass: 50 milliseconds'
+$flood = Invoke-Fixture @('flood', '1024', '128')
+$outLines = @($flood.Stdout -split '\r?\n' | Where-Object { $_.Length -gt 0 })
+$errLines = @($flood.Stderr -split '\r?\n' | Where-Object { $_.Length -gt 0 })
+if ($flood.ExitCode -ne 0 -or $outLines.Count -ne 1024 -or $errLines.Count -ne 1024 -or $outLines[-1] -notlike 'stdout:001023:*' -or $errLines[-1] -notlike 'stderr:001023:*') { throw 'Flood failed.' }
+$checks.flood = "pass: 1024 lines and $($flood.Stdout.Length) characters per stream"
+foreach ($arguments in @(@('sleep','300001'), @('flood','65536','1024'), @('fail','0'), @('fail','1','relative.pdf'), @('unknown'))) {
+    $invalid = Invoke-Fixture $arguments
+    if ($invalid.ExitCode -ne 64 -or $invalid.Stdout.Length -ne 0 -or $invalid.Stderr.Length -eq 0) { throw 'Invalid input did not fail before work.' }
+}
+$checks.invalid_and_bound_limits = 'pass: 5 cases fail with exit 64 before normal output'
+[ordered]@{ shell_version = $PSVersionTable.PSVersion.ToString(); scope = 'Controlled Windows process only; not native PDF engine or application process wrapper evidence'; compiler = ((Get-Content -LiteralPath (Join-Path ([IO.Path]::GetDirectoryName($exe)) 'build-info.json') -Raw | ConvertFrom-Json).compiler_version); checks = $checks } | ConvertTo-Json -Depth 4
