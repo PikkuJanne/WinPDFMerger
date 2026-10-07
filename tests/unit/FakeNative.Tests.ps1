@@ -34,7 +34,9 @@ Describe 'T03 controlled process fixture (not PDFtk or Ghostscript)' {
         $unicode = 'T03-' + [char]0x00e4
         $result = Invoke-ControlledProbe ('echo "two words" "" "' + $unicode + '" C:\Synthetic\')
         $result.ExitCode | Should -Be 0
-        $received = @($result.Stdout | ConvertFrom-Json)
+        # PS5.1 returns the JSON array as one pipeline object; assignment preserves
+        # that array while PS7 collects enumerated elements into the same shape.
+        $received = ConvertFrom-Json -InputObject $result.Stdout
         $received.Count | Should -Be 4
         $received[0] | Should -BeExactly 'two words'
         $received[1] | Should -BeExactly ''
@@ -47,7 +49,7 @@ Describe 'T03 controlled process fixture (not PDFtk or Ghostscript)' {
         $stderrPath = Join-Path $TestDrive 'split.stderr.txt'
         $process = Start-Process -FilePath $fake -ArgumentList @('echo', 'two words') -NoNewWindow -Wait -PassThru -RedirectStandardOutput $stdoutPath -RedirectStandardError $stderrPath
         $process.ExitCode | Should -Be 0
-        $received = @(Get-Content -LiteralPath $stdoutPath -Raw | ConvertFrom-Json)
+        $received = ConvertFrom-Json -InputObject (Get-Content -LiteralPath $stdoutPath -Raw)
         ($received -join ',') | Should -BeExactly 'two,words'
     }
 

@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "task": "T03",
+  "purpose": "Owner-authorized development-only acquisition of official PDFtk for the synthetic native fixture oracle",
+  "observed_at_utc": "2026-10-07T15:58:23.0329343Z",
+  "repository_head_at_receipt": "9cdcf5411755492ab50015178a36e39233240ec2",
+  "environment": {
+    "platform": "Windows",
+    "shell_version": "7.6.5",
+    "standard_user_token": true,
+    "execution_policy_changes": false,
+    "administrator_requested": false
+  },
+  "cache_root": "%LOCALAPPDATA%/WinPDFMergerDevCache/T03-pdftk-295456f881ea41a4a78dcf207f8965bf",
+  "download_method": "Invoke-WebRequest over HTTPS with 30-second timeout; files written only to the unique external cache",
+  "pdftk_installer": {
+    "official_download_page": "https://www.pdflabs.com/tools/pdftk-server/",
+    "url": "https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/pdftk_server-2.02-win-setup.exe",
+    "file": "pdftk_server-2.02-win-setup.exe",
+    "bytes": 3054862,
+    "sha256": "cc8f6a43fc91026bb739ad0ad9a124c24750d6127662fb3638ec1d44403aabd2",
+    "expected_sha256_source": "https://raw.githubusercontent.com/microsoft/winget-pkgs/master/manifests/p/PDFLabs/PDFtk/Server/2.02/PDFLabs.PDFtk.Server.installer.yaml",
+    "manifest_snapshot_sha256": "6672004c75635ade6c79dd93610abf109911b2416c567376a09ebc7bb3418db4",
+    "expected_sha256_match": true,
+    "authenticode_status": "NotSigned",
+    "installer_executed": false
+  },
+  "extractor": {
+    "official_page": "https://constexpr.org/innoextract/",
+    "url": "https://constexpr.org/innoextract/files/innoextract-1.9-windows.zip",
+    "signature_url": "https://constexpr.org/innoextract/files/innoextract-1.9-windows.zip.sig",
+    "publisher_key_url": "https://constexpr.org/dscharrer.asc",
+    "version": "1.9",
+    "archive_bytes": 520705,
+    "archive_sha256": "6989342c9b026a00a72a38f23b62a8e6a22cc5de69805cf47d68ac2fec993065",
+    "publisher_listed_md5": "72d0d0dd874b6236eaa44411f4470ee1",
+    "publisher_listed_md5_match": true,
+    "signature_sha256": "c5669faf0905b8f87cba749a96c9f1fd867e49ea390dc02739d1ef0c6b1bc78e",
+    "publisher_key_sha256": "d089564d3e767fe2d06319fbaa26965ac3b24115386a43b58302ff9df6d1eef6",
+    "signature_verifier": "Existing Git-bundled gpgv (GnuPG) 2.4.9",
+    "signature_algorithm": "RSA/SHA256",
+    "signature_date": "2020-08-09",
+    "signature_exit_code": 0,
+    "signature_status": "GOODSIG and VALIDSIG",
+    "signer_fingerprint": "ADE9653703D4ADE0E997758128555A66D7E1DEC9",
+    "key_id_matches_official_page": true,
+    "verifier_keyring": "Public keyring confined to the owned external cache; no user/system keyring changed",
+    "zip_path_validation": "Every entry checked for absolute paths, escape from extraction root, and symbolic-link attributes before extraction; files created with CreateNew",
+    "executable_sha256": "946bd06d8b3722a791fea4d84f496139eef6faef61640924cb72f5f1998a68e1",
+    "authenticode_status": "NotSigned",
+    "version_probe_exit_code": 0,
+    "verification_notes": "The publisher key was retrieved from its official HTTPS site and its signature verifies the archive; no independent certification of publisher-key identity is asserted. MD5 alone was not the trust gate. Initial Git gpg imports reported path-format/agent-start errors; the owned public keyring was successfully read by gpgv and signature verification then returned 0. No agent configuration or security setting changed."
+  },
+  "extraction": {
+    "mode": "innoextract --list, followed by --extract --output-dir in the owned cache; the PDFtk setup executable was only read as data",
+    "list_exit_code": 0,
+    "list_elapsed_ms": 42,
+    "extract_exit_code": 0,
+    "extract_elapsed_ms": 378,
+    "per_process_timeout_ms": 30000,
+    "standard_input_closed": true,
+    "stdout_and_stderr_drained_asynchronously": true,
+    "vendor_docs_and_licenses_retained": true
+  },
+  "extracted_files": [
+    {
+      "relative_path": "pdftk-server-2.02/app/bin/pdftk.exe",
+      "bytes": 8890393,
+      "sha256": "5e5cbe817ecc3cc1875369d81119472559c9624d55c7176852c8827750afa00a",
+      "authenticode_status": "NotSigned",
+      "pe_machine": "0x014c (x86)"
+    },
+    {
+      "relative_path": "pdftk-server-2.02/app/bin/libiconv2.dll",
+      "bytes": 978432,
+      "sha256": "cb016e794d3311c71f21d87803e10a0e1133995f62a485eb37b321cd9b9e1087",
+      "authenticode_status": "NotSigned"
+    }
+  ],
+  "pdftk_version_probe": {
+    "executable": "<owned-cache>/pdftk-server-2.02/app/bin/pdftk.exe",
+    "arguments": ["--version"],
+    "invocation": "Direct ProcessStartInfo invocation with ArgumentList, no shell evaluation",
+    "exit_code": 0,
+    "elapsed_ms": 747,
+    "stdout_version": "pdftk 2.02",
+    "stderr": "",
+    "scope": "Acquisition/version only; does not prove application merging, fixture correctness, PDF fidelity, PS5.1 execution, or release support"
+  },
+  "boundaries": {
+    "system_installation": false,
+    "path_environment_changed": false,
+    "file_unblocking": false,
+    "security_controls_changed": false,
+    "repository_vendor_binaries_added": false,
+    "release_redistribution": false,
+    "pdf_documents_uploaded": false,
+    "runtime_network_behavior_changed": false
+  },
+  "limitations": [
+    "Official PDFtk installer and extracted executable/library have no Authenticode signature. The installer hash matches Microsoft's independently maintained winget manifest; this is an integrity/provenance check, not a malware-free guarantee.",
+    "The extracted engine is x86 running on this x64 Windows host. No 32-bit application-host compatibility claim follows.",
+    "The development cache is external and untracked; its availability must be checked on future sessions. No runtime installer or dependency downloader was added.",
+    "PowerShell 7.6.5 was used for acquisition; this does not certify the required current supported PowerShell update. Native oracle results are recorded separately by the task owner."
+  ]
+}

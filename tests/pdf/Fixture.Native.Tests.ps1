@@ -16,7 +16,8 @@ BeforeAll {
     function Read-NativeFixture([string]$Path) {
         $info = New-Object Diagnostics.ProcessStartInfo
         $info.FileName = $PdftkPath
-        $info.Arguments = '"' + $Path + '" dump_data_utf8 dont_ask'
+        # PDFtk Server 2.02 requires explicit stdout output before dont_ask.
+        $info.Arguments = '"' + $Path + '" dump_data_utf8 output - dont_ask'
         $info.UseShellExecute = $false
         $info.CreateNoWindow = $true
         $info.RedirectStandardInput = $true
