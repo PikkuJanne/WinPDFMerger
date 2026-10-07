@@ -3,38 +3,31 @@
 Target: published and independently verified `v1.0.0` in `PikkuJanne/WinPDFMerger`.
 Completed milestone: M0 — baseline and safe setup.
 Completed tasks: T01, T02, T03 and T04.
-Next task: T05 — Repair the drag-and-drop batch wrapper.
+Current task: T05 — Repair the drag-and-drop batch wrapper (in progress).
 Publication: NOT STARTED.
 
-T04 AC007/AC008 pass at clean implementation C1
-`2f15e8291459940473b4e69c49a27f73fb7eb690`: Pester6.2.0 38 Unit/filesystem cases
-and 4 actual-entry/real PDFtk2.02 SourceDiscovery cases in EACH shell, no failures,
-skips, blocks or unrun tests. Single/multiple/uppercase/bracket sources work;
-hidden/nested PDFs are omitted; source hashes/names/metadata and log appends remain.
-Missing/file/provider/wildcard/zero source failures precede dependencies/outputs.
-Three added helpers import safely; four earlier baseline helper bodies/defaults
-and batch remain. M1 continues with T05; T06 ordering and later gates are pending.
+T05 literal quoted assignments/diagnostics, disabled delayed expansion, exact
+one-source checks, trailing-separator argument quoting, ERRORLEVEL capture and
+0/1/2 status/pause fixes are implemented. Dirty Launcher24 controlled realcmd/BAT/
+PS5.1 receiver cases pass in both test drivers; LauncherNative2 realapp/PDFtk
+smoke passes in PS5.1. Final pause proof is strengthened after independent
+review. Clean C1 reruns and normal push/live equality remain before acceptance.
+Evidence: evidence/T05-checkpoint.md. T06 onward remain pending/not_run.
 
-Normal C1 push and fresh read-only clean local/live equality verified
-2026-10-07T16:24:33.769587+00:00. Final records-only C2 must also be verified after
-push; its own hash/proof is reported in session output. Draft PR #4 OPEN:
-https://github.com/PikkuJanne/WinPDFMerger/pull/4. PR #3 is merged; main observed
-`6b38115d7f269827cb4616e5a645c007b9860829`; no tags/releases created.
+PR #4 merged before T05. Live main merge6dcb255 was inspected and safely
+fast-forwarded into readiness with an unchanged file tree. New draft continuation
+PR is needed. No reset/stash/force/origin/published-tag change or release created.
 
-Evidence: `evidence/T04-completion.md`, `T04-C1-results.json`, four sanitized
-NUnit/JSON report pairs in `T04-C1-reports/`, `T04-C1-live-sync.json` and historical
-red/precommit records. T03 fixture/oracle and acquisition evidence remains valid
-for its own scope. Failures are retained and superseded by clean C1 passes.
+T04 accepted clean2f15e82 source/native boundary evidence remains in its completion
+and C1 reports. T05 does not alter the .ps1/helpers, sort, engines or output defaults.
+Existing approved Pester6.2.0/PDFtk2.02 caches and parent test-process RemoteSigned
+are reused; actual launcher preserves established process-only Bypass and NoProfile,
+WindowsPS5.1 and pause. No install, parent environment, user/machine policy or
+security change. Ordinary separate PS5.1 remains Restricted/all scopes Undefined.
 
-Existing approved Pester/PDFtk cache acquisition and process-only RemoteSigned
-tests were reused. No installation, user/machine policy, parent environment or
-security changes. Ordinary separate PS5.1 remains Restricted/all scopes Undefined.
-Actual shells are PS5.1 5.1.26100.9444 and PS7 7.6.5 x64; no current supported-update
-or release compatibility claim. PDFtk2.02 unsigned x86 is explicitly cache-selected
-for integration; vendor binaries are outside repo. Native tests exclude optional
-GS via child-only environment and use short ASCII output paths without spaces.
-
-These narrow real master merges do not satisfy later sorting/native-argument,
-Unicode/space/tool-path, email, alias/no-overwrite, fidelity, launcher/Explorer,
-CI/package/release acceptance. PSScriptAnalyzer remains absent/unrun. All T05 onward
-tasks/cases remain pending/not_run. No work beyond T04 was performed.
+PS7 driver actual7.6.5 is not current-supported-update validation. Its child module
+path is test-only isolated to standardWindowsPS5.1 modules. Controlled receiver
+path tests do not certify native PDF engine paths; actual PDFtk smoke uses short
+ASCII paths without spaces and excludes GS only in children. Explorer/T26,
+full native space/Unicode/tool paths/T09, email, ordering/T06, fidelity, publication
+safety, CI/package/release acceptance remain not_run; PSScriptAnalyzer absent/unrun.

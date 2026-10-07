@@ -33,3 +33,13 @@ process-only RemoteSigned for PS5.1 tests. User/machine policy and PATH stay
 unchanged; no installer executed or vendor executable redistributed in repo.
 Evidence: `evidence/T03-completion.md` and acquisition receipts. No product
 contract changed; supported PS7 update/application/desktop gates remain later work.
+
+2026-10-07 — D17: T05 retains the existing launcher's process-only Bypass flag,
+NoProfile, Windows PowerShell5.1 and pause. Group Policy precedence is preserved;
+no user/machine policy is changed. The host is selected by the standard SystemRoot
+PS5.1 executable path. RemoteSigned would change unsigned downloaded-script
+behavior and is not substituted silently. Quoted path/status tests use an actual
+cmd/BAT/PS5.1 receiver; a separate real PDFtk smoke proves only a simple terminal
+merge. Percent expansion before the batch boundary is characterized with a direct
+PowerShell alternative, without claiming Explorer acceptance. Evidence:
+`evidence/T05-checkpoint.md` and final clean implementation receipts when present.
