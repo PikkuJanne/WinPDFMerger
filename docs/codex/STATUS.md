@@ -3,8 +3,15 @@
 Target: published and independently verified `v1.0.0` in `PikkuJanne/WinPDFMerger`.
 Completed milestone: M0 — baseline and safe setup.
 Completed tasks: T01, T02, T03, T04, T05 and T06.
-Next task: T07 — Repair dependency resolution and version reporting (pending).
+Current task: T07 — Repair dependency resolution and version reporting (in progress).
 Publication: NOT STARTED.
+
+T07 started clean/live at0cf1ff1. PR #5 had merged; main merge8ac34fe was safely
+fast-forwarded after ancestry and empty file-tree diff review. New dependency
+regressions precede implementation. Strict lookup/numeric GS/version preflight and
+independent review pass dirty Unit99/DependencyEntry9 in EACH actual shell.
+AC013/14/15 remain not_run until clean C1 evidence. See `evidence/T07-checkpoint.md`
+and historical dirty summaries. No work on T08 or later.
 
 T06 and AC011/AC012 pass at clean implementation C1
 `c3c839a264ea35608d5ca6116c595bab4f3050d0`: Pester6.2.0 Unit57 and actual
@@ -34,5 +41,5 @@ supported update7.6.6, no current-supported-build/release compatibility claim.
 Native short ASCII/no-space script/output paths and bracket names only, GS
 excluded in children. Dependency selection/version/T07, native paths/serializer,
 email, destinations/publication safety, fidelity/finalpageorder, Explorer/T26,
-CI/package/release remain unrun; PSScriptAnalyzer absent/unrun. T07 onward pending
+CI/package/release remain unrun; PSScriptAnalyzer absent/unrun. T08 onward pending
 and AC013 onward not_run. Project/release completion remains outstanding.

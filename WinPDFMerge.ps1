@@ -112,8 +112,19 @@ try {
     exit 1
 }
 
-$pdftkPath = Find-Pdftk
-if (-not $pdftkPath) { Write-Error "PDFtk Server not found. Install PDFtk Server and ensure 'pdftk' is in PATH." }
+$pdftkPath = $null
+try {
+    $pdftkPath = Find-Pdftk
+    if (-not $pdftkPath) { throw 'PDFtk Server not found.' }
+    $pdftkVersion = Get-NativeToolVersion -Path $pdftkPath -Tool PdfTk
+} catch {
+    # Plain diagnostic lines stay copyable even when PS5.1 formats long errors.
+    Write-Host 'PDFtk preflight failed.' -ForegroundColor Red
+    Write-Host ("Selected executable: '{0}'" -f $pdftkPath)
+    Write-Host $_.Exception.Message
+    Write-Host "Install PDFtk Server and ensure 'pdftk.exe' is in PATH."
+    exit 1
+}
 
 # Build names
 $folderBase = Split-Path $SourceFolder -Leaf
@@ -124,6 +135,7 @@ $outEmail    = Join-Path $ScriptDir ($baseOut + "_email.pdf")
 $logPath     = Join-Path $ScriptDir ($baseOut + ".log")
 
 "==== WinPDFMerge run $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss') ====" | Write-RunLog -LiteralPath $logPath
+"PDFtk: $pdftkPath (version $pdftkVersion)" | Write-RunLog -LiteralPath $logPath -Append
 "Source folder: $SourceFolder" | Write-RunLog -LiteralPath $logPath -Append
 "Output (lossless): $outLossless" | Write-RunLog -LiteralPath $logPath -Append
 "PDF count: $($pdfs.Count)" | Write-RunLog -LiteralPath $logPath -Append
@@ -146,8 +158,17 @@ if ($proc.ExitCode -ne 0 -or -not (Test-Path -LiteralPath $outLossless)) {
 
 # --- Email-friendly copy with GhostScript ---
 $gsPath = Find-Ghostscript
+$gsVersionFailure = $false
 if ($gsPath) {
-    "Ghostscript found: $gsPath" | Write-RunLog -LiteralPath $logPath -Append
+    try {
+        $gsVersion = Get-NativeToolVersion -Path $gsPath -Tool Ghostscript
+    } catch {
+        ("Ghostscript version preflight failed for '{0}': {1} Skipping email copy. Master retained." -f $gsPath, $_.Exception.Message) | Write-RunLog -LiteralPath $logPath -Append
+        $gsVersionFailure = $true
+    }
+}
+if ($gsPath -and -not $gsVersionFailure) {
+    "Ghostscript: $gsPath (version $gsVersion)" | Write-RunLog -LiteralPath $logPath -Append
     if (Test-Path -LiteralPath $outEmail) {
         "Removing existing email file: $outEmail" | Write-RunLog -LiteralPath $logPath -Append
         Remove-Item -LiteralPath $outEmail -Force -ErrorAction SilentlyContinue
@@ -194,11 +215,17 @@ if ($gsPath) {
     } else {
         "Ghostscript returned exit code $($p.ExitCode). Skipping email copy; see log for details." | Write-RunLog -LiteralPath $logPath -Append
     }
-} else {
+} elseif (-not $gsVersionFailure) {
     "Ghostscript not found; skipping email-optimized copy." | Write-RunLog -LiteralPath $logPath -Append
 }
 
 "Done." | Write-RunLog -LiteralPath $logPath -Append
+if ($gsVersionFailure) {
+    Write-Host "`nPARTIAL SUCCESS: Ghostscript version preflight failed."
+    Write-Host " - Lossless: $outLossless"
+    Write-Host "Log: $logPath"
+    exit 2
+}
 Write-Host "`nSUCCESS:"
 Write-Host " - Lossless: $outLossless"
 if (Test-Path -LiteralPath $outEmail) { Write-Host " - Email-optimized: $outEmail" }

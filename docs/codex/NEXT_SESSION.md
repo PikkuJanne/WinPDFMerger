@@ -1,10 +1,16 @@
 # Next session
 
-Selected task: T07 — Repair dependency resolution and version reporting (pending).
+Selected task: T07 — Repair dependency resolution and version reporting (in progress).
 Read AGENTS/INDEX/STATUS, T07 TASKS entry/brief, PRODUCT_SPEC, TECHNICAL_SPEC
 (dependency resolution), TEST_STRATEGY, GITHUB_WORKFLOW and AC013/AC014/AC015.
 Recheck repository/branch/clean state, origin fetch/push, live refs/PR/releases.
 Inspect current code; preserve unrelated work and never reset to the audit baseline.
+
+T07 began clean/live0cf1ff1; PR #5 had merged. Main8ac34fe was safelyff after
+ancestry/empty-tree-diff review. Regression tests preceded implementation; reviewed
+strict lookup/numeric GS/version probes pass dirty Unit99/DependencyEntry9 in EACH
+actual shell. AC013/14/15 and clean C1 test/push/live evidence remain pending. See
+`evidence/T07-checkpoint.md`; create a new draft continuation after clean C1 push.
 
 T06 accepted at clean C1 `c3c839a264ea35608d5ca6116c595bab4f3050d0`: Unit57 plus
 actual entry/real PDFtk SourceDiscovery4 in EACH PS5.1/PS7 shell, zero fail/skipped/
