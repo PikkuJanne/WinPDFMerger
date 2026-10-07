@@ -1,40 +1,47 @@
 # Next session
 
-Selected task: T05 — Repair the drag-and-drop batch wrapper (in progress).
-Working-tree launcher implementation and Launcher24/native2 passes are recorded;
-stronger pause proof, clean C1 tests, normal push/live equality and final acceptance
-remain before selecting T06. Read AGENTS/INDEX/STATUS/T05 TASKS entry/brief,
-PRODUCT_SPEC, launcher TECHNICAL_SPEC, TEST_STRATEGY, GITHUB_WORKFLOW and AC009/10.
-Recheck checkout, origin fetch/push and live refs/PR/releases before editing.
+Selected task: T06 — Implement tested deterministic natural order (pending).
+Read AGENTS/INDEX/STATUS, T06 TASKS entry/brief, PRODUCT_SPEC ordering,
+TECHNICAL_SPEC, TEST_STRATEGY, GITHUB_WORKFLOW and AC011/AC012 before editing.
+Recheck repository/branch/clean state, origin fetch/push, live refs/PR/releases.
+Inspect the current sort and preserve unrelated work; do not reset to the baseline.
 
-Readiness began clean/live2b02224. PR #4 had merged; inspected main merge6dcb255
-was fast-forwarded after empty-tree-diff/ancestry checks. No reset/stash/force/origin
-change. Closed PR #4 must not be reused; create a new draft continuation after
-clean C1 normal push. No tags/releases exist at observation.
+T05 is accepted at clean C1 `769817ba9aa8923a3b0001252637865c9a25f7a0`:
+Launcher24 and LauncherNative2 pass under EACH PS5.1/PS7 test driver, no failures,
+skips or not_run cases. Actual cmd/BAT receivers and application children are
+PS5.1. Exact literal metacharacters/trailing separators, argument count, missing
+script, inherited ERRORLEVEL, 0/1/2/7 display/propagation and pause are covered.
+The pause proof waits for the exact receiver PID to exit before cmd waits on stdin.
+README characterizes percent expansion before the BAT boundary and direct
+PowerShell preserves literal percent paths. No .ps1/helper/sort/engine/default
+change in T05. See `evidence/T05-completion.md` and C1 reports/results.
 
-T05 BAT retains PS5.1/NoProfile/process-only Bypass/pause; quote-safe labels and
-assignments disable delayed expansion, reject zero/multiple/empty extra sources,
-double final backslash runs for native quoting, clear local ERRORLEVEL shadow,
-capture exact status and present0/1/2. README describes measured percent expansion
-before cmd receives BAT arguments and direct-PowerShell alternative. .ps1/helpers/
-engines/defaults unchanged. No work on T06 onward.
+C1 pushed normally and fresh clean/live equality passed2026-10-07T16:44:13Z.
+Draft continuation PR #5 is open; PR #4 merged before T05. Main merge6dcb255 was
+safely fast-forwarded after ancestry/empty-tree-diff review. No reset/stash/force/
+origin/tag change or release. C2 contains only records/evidence-byte attributes;
+its own fresh post-push equality belongs in session output and must be rechecked.
 
-Harness now has Launcher (24 controlled actual cmd/BAT/PS5.1 receiver cases) and
-LauncherNative (2 actual BAT/app/realPDFtk smoke cases, explicit PdftkPath).
-Launcher receiver is not PDF support; terminal is not Explorer. Test-only child
-PSModulePath isolation to WindowsPS5.1 systemModules resolves PS7-driver inheritance;
-parent paths/policies unchanged. Strengthen pause test by confirming receiver PID
-exits before cmd waits for stdin. See evidence/T05-checkpoint.md for red/dirty runs.
+T06 needs a small comparator: ASCII digit runs by significant length then ordinal
+digits, shorter original digit run for equal magnitude, ordinal case-insensitive
+text, subsequent segments, original base name/full path final ties. No fixed-width
+numeric parsing or culture-based order. Add AC011/12 regressions before/with fixes:
+1/01/001/2/10, long numbers, multiple groups, all-zero runs, case ties, two cultures.
+Do not run application orchestration merely by dot-sourcing helper definitions.
+Real numbered-page master order is a downstream integration gate, not a unit pass.
+Do not work on T07 or later in this thread; successful T06 hands off T07.
 
-Reuse exact Pester6.2.0/PDFtk2.02 verified external dev caches and approved test
-process RemoteSigned; no repeat permission, silent install, parent PATH or user/
-machine policy/security changes. Expand symbolic T03 acquisition paths locally.
-Ordinary PS5.1 remains Restricted/all scopes Undefined. PS5.1 5.1.26100.9444 x64;
-PS7 actual7.6.5, no current-supported-update/release claim. GS absent/unrun.
-Native smoke shortASCII/no-space paths prove simple master/status/source preservation
-only. Native paths/T09, ordering/T06, email, publication, fidelity, Explorer/T26,
-CI/package/release and PSScriptAnalyzer gates remain outstanding.
+Reuse approved verified external Pester6.2.0/PDFtk2.02 caches and test-process
+RemoteSigned; no repeat permission, silent install, persistent policy/security or
+parent PATH changes. Expand T03 acquisition receipt cache paths locally. Separate
+ordinary PS5.1 is Restricted/all scopes Undefined; actual5.1.26100.9444 x64.
+PS7 actual7.6.5 remains behind recorded supported update7.6.6, with no current
+supported-build/release claim. T05's standard-system PSModulePath isolation is
+child-only test context, not an application environment change.
 
-Use implementation C1 then records-only C2: test clean C1, push and verify;
-accept T05/AC009/AC010 and select T06 with actual receipts, then push/check C2 and
-report its own hash/live equality in session output.
+Native T05 smoke proves a simple two-page master/source preservation and empty
+source failure using short ASCII/no-space paths, child dependency environment,
+GS absent. Receiver path/status cases do not certify native engine paths or real
+partial email results. Native serializer/timeout/cancellation, destinations,
+fidelity, Explorer/T26, CI/package/release and PSScriptAnalyzer gates remain later.
+Use tested clean C1 then records C2; push and freshly verify each checkpoint.

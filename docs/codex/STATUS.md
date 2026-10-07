@@ -2,32 +2,35 @@
 
 Target: published and independently verified `v1.0.0` in `PikkuJanne/WinPDFMerger`.
 Completed milestone: M0 — baseline and safe setup.
-Completed tasks: T01, T02, T03 and T04.
-Current task: T05 — Repair the drag-and-drop batch wrapper (in progress).
+Completed tasks: T01, T02, T03, T04 and T05.
+Next task: T06 — Implement tested deterministic natural order (pending).
 Publication: NOT STARTED.
 
-T05 literal quoted assignments/diagnostics, disabled delayed expansion, exact
-one-source checks, trailing-separator argument quoting, ERRORLEVEL capture and
-0/1/2 status/pause fixes are implemented. Dirty Launcher24 controlled realcmd/BAT/
-PS5.1 receiver cases pass in both test drivers; LauncherNative2 realapp/PDFtk
-smoke passes in PS5.1. Final pause proof is strengthened after independent
-review. Clean C1 reruns and normal push/live equality remain before acceptance.
-Evidence: evidence/T05-checkpoint.md. T06 onward remain pending/not_run.
+T05 and AC009/AC010 pass at clean implementation C1
+`769817ba9aa8923a3b0001252637865c9a25f7a0`. Each PS5.1 and PS7 test driver
+passed Launcher24 actual cmd/BAT/PS5.1 receiver cases and LauncherNative2 actual
+BAT/application/PDFtk smoke cases; all failures/skips/not_run/blocks/containers
+are zero. Quoted metacharacters, extra inputs, trailing separators, real exit
+capture, 0/1/2 presentation and pause are covered. README documents measured outer
+cmd percent expansion and a direct PowerShell alternative. Evidence:
+`evidence/T05-completion.md`, `T05-C1-results.json`, retained report pairs/manifest.
 
-PR #4 merged before T05. Live main merge6dcb255 was inspected and safely
-fast-forwarded into readiness with an unchanged file tree. New draft continuation
-PR is needed. No reset/stash/force/origin/published-tag change or release created.
+C1 normal push and clean/live equality passed2026-10-07T16:44:13.051800+00:00.
+Draft [PR #5](https://github.com/PikkuJanne/WinPDFMerger/pull/5) continues after
+merged PR #4. Main6dcb255 was inspected and safely fast-forwarded before T05 with
+an unchanged file tree. No reset/stash/force/origin/tag change or release created.
+Final records C2 also requires fresh post-push clean/live proof in session output.
 
-T04 accepted clean2f15e82 source/native boundary evidence remains in its completion
-and C1 reports. T05 does not alter the .ps1/helpers, sort, engines or output defaults.
-Existing approved Pester6.2.0/PDFtk2.02 caches and parent test-process RemoteSigned
-are reused; actual launcher preserves established process-only Bypass and NoProfile,
-WindowsPS5.1 and pause. No install, parent environment, user/machine policy or
-security change. Ordinary separate PS5.1 remains Restricted/all scopes Undefined.
+T04 source/native evidence remains accepted. T05 keeps WindowsPS5.1/NoProfile,
+established process-only Bypass and pause. Approved Pester6.2.0/PDFtk2.02 caches
+and parent test-process RemoteSigned are reused. No install, parent environment,
+user/machine policy or security change. Separate ordinary PS5.1 remains Restricted
+with all scopes Undefined. T05 leaves the .ps1/helpers/engines/defaults unchanged.
 
-PS7 driver actual7.6.5 is not current-supported-update validation. Its child module
-path is test-only isolated to standardWindowsPS5.1 modules. Controlled receiver
-path tests do not certify native PDF engine paths; actual PDFtk smoke uses short
-ASCII paths without spaces and excludes GS only in children. Explorer/T26,
-full native space/Unicode/tool paths/T09, email, ordering/T06, fidelity, publication
-safety, CI/package/release acceptance remain not_run; PSScriptAnalyzer absent/unrun.
+PS7 actual7.6.5 is the test driver; every BAT child is PS5.1. Its receiver module
+path normalization is test-only. No current-supported-update/release claim.
+Controlled receiver path/status tests do not certify native PDF engine paths or
+email partial success. Native smoke uses short ASCII/no-space paths, GS excluded
+only in children. Explorer/T26, native space/Unicode/tool paths/T09, email,
+ordering/T06, fidelity, publication safety, CI/package/release remain not_run;
+PSScriptAnalyzer absent/unrun. T06 onward remain pending with their cases not_run.

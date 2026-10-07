@@ -1,0 +1,216 @@
+{
+  "schema_version": 1,
+  "commit_under_test": "769817ba9aa8923a3b0001252637865c9a25f7a0",
+  "dirty_worktree": false,
+  "ac009": "pass",
+  "ac010": "pass",
+  "scope": "T05 actual Windows cmd/BAT path delivery and launcher contract; narrow real entry/PDFtk smoke",
+  "pester_version": "6.2.0",
+  "launcher_receiver_host": "Windows PowerShell 5.1.26100.9444 Desktop x64, NoProfile, process-only Bypass",
+  "pdftk_version_from_hash_matched_acquisition_receipt": "2.02",
+  "pdftk_sha256": "5e5cbe817ecc3cc1875369d81119472559c9624d55c7176852c8827750afa00a",
+  "controlled_launcher_cases_per_driver": 24,
+  "native_master_merges_executed_per_driver": 1,
+  "zero_input_native_tier_cases_per_driver": 1,
+  "ghostscript_executed": false,
+  "explorer_observed": false,
+  "current_supported_ps7_claim": false,
+  "ps51_test_process_policy_owner_authorized": true,
+  "user_machine_policy_or_parent_environment_changed": false,
+  "environment": {
+    "observed_at_utc": "2026-10-07T16:44:36.2984265Z",
+    "shell_version": "5.1.26100.9444",
+    "shell_edition": "Desktop",
+    "process_64_bit": true,
+    "os_version": "Microsoft Windows NT 10.0.26300.0",
+    "elevated_administrator": false,
+    "ordinary_process_policy": "Restricted",
+    "policy_scopes": [
+      {
+        "scope": "MachinePolicy",
+        "policy": "Undefined"
+      },
+      {
+        "scope": "UserPolicy",
+        "policy": "Undefined"
+      },
+      {
+        "scope": "Process",
+        "policy": "Undefined"
+      },
+      {
+        "scope": "CurrentUser",
+        "policy": "Undefined"
+      },
+      {
+        "scope": "LocalMachine",
+        "policy": "Undefined"
+      }
+    ]
+  },
+  "executions": [
+    {
+      "check": "launcher-ps51",
+      "command": "powershell.exe -NoProfile -ExecutionPolicy RemoteSigned -File tools/test/Invoke-Tests.ps1 -PesterModulePath $manifest -Tier Launcher",
+      "command_setup": "manifest: expand T03-pester-acquisition.json cache.directory_label/module_manifest_relative_path; exe: expand T03-pdftk-acquisition.json cache_root plus pdftk-server-2.02/app/bin/pdftk.exe",
+      "exit_code": 0,
+      "output": "Pester v6.2.0\n\nRunning tests from 1 files.\n\nRunning tests from 'C:\\projects\\WinPDFMerger-main\\tests\\launcher\\Launcher.Tests.ps1'\nDescribing AC009: actual cmd batch path safety with a synthetic PowerShell receiver\n  [+] preserves spaces in installation and source paths 966ms\n  [+] preserves exclamation marks in installation and source paths 606ms\n  [+] preserves ampersands in installation and source paths 620ms\n  [+] preserves parentheses in installation and source paths 542ms\n  [+] preserves brackets in installation and source paths 580ms\n  [+] preserves combined metacharacters in installation and source paths 593ms\n  [+] does not execute an ampersand-separated command embedded in an installation path 726ms\n  [+] quotes an invalid source diagnostic without executing its embedded echo command 81ms\nT05 boundary observation: cmd expanded source%T05_SENTINEL% to sourceEXPANDED before the launcher received it.\n  [+] characterizes paired percent expansion in the outer cmd command before the batch receives input 561ms\nT05 boundary observation: cmd selected installEXPANDED when given install%T05_SENTINEL% in its outer command.\n  [+] characterizes paired percent expansion in the installation path at the outer cmd boundary 547ms\nT05 boundary alternative: direct powershell.exe -File receives the literal percent-bearing SourceFolder without cmd parsing.\n  [+] preserves the literal paired-percent source through the direct PowerShell alternative 478ms\n  [+] passes a trailing source separator without absorbing the closing native quote 508ms\n  [+] passes multiple trailing source separators without losing the argument boundary 496ms\n  [+] preserves a filesystem root argument through the trailing-backslash quoting path 547ms\n\nDescribing AC010: actual cmd batch invocation and exit contract with a synthetic receiver\n  [+] presents exit 0 and propagates the exact code 556ms\n  [+] presents exit 1 and propagates the exact code 479ms\n  [+] presents exit 2 and propagates the exact code 525ms\n  [+] presents exit 7 and propagates the exact code 516ms\n  [+] retains an actual pause until controlled stdin is supplied 1s\n  [+] rejects zero arguments with usage and exit one before invoking the receiver 68ms\n  [+] rejects multiple dropped source paths with usage rather than ignoring the second 61ms\n  [+] rejects an explicitly empty second argument as an extra argument 60ms\n  [+] uses the actual child exit when an inherited ERRORLEVEL environment variable is present 524ms\n  [+] reports a missing adjacent script safely in a metacharacter installation directory 94ms\nTests completed in 12.79s\nTests Passed: 24, Failed: 0, Skipped: 0, Inconclusive: 0, NotRun: 0\n{\r\n    \"observed_at_utc\":  \"2026-10-07T16:43:24.2463551Z\",\r\n    \"commit_under_test\":  \"769817ba9aa8923a3b0001252637865c9a25f7a0\",\r\n    \"dirty_worktree\":  false,\r\n    \"shell_version\":  \"5.1.26100.9444\",\r\n    \"shell_edition\":  \"Desktop\",\r\n    \"process_64_bit\":  true,\r\n    \"execution_policy\":  \"RemoteSigned\",\r\n    \"pester_version\":  \"6.2.0\",\r\n    \"tier\":  \"Launcher\",\r\n    \"evidence_class\":  \"windows-cmd-actual-batch-controlled-ps51-receiver\",\r\n    \"passed\":  24,\r\n    \"failed\":  0,\r\n    \"failed_blocks\":  0,\r\n    \"failed_containers\":  0,\r\n    \"skipped\":  0,\r\n    \"not_run\":  0,\r\n    \"total\":  24\r\n}\r\nReports: C:\\projects\\WinPDFMerger-main\\tests\\.work\\pester\\3252ba890b564812878ea415cf28b360\n",
+      "summary": {
+        "observed_at_utc": "2026-10-07T16:43:24.2463551Z",
+        "commit_under_test": "769817ba9aa8923a3b0001252637865c9a25f7a0",
+        "dirty_worktree": false,
+        "shell_version": "5.1.26100.9444",
+        "shell_edition": "Desktop",
+        "process_64_bit": true,
+        "execution_policy": "RemoteSigned",
+        "pester_version": "6.2.0",
+        "tier": "Launcher",
+        "evidence_class": "windows-cmd-actual-batch-controlled-ps51-receiver",
+        "passed": 24,
+        "failed": 0,
+        "failed_blocks": 0,
+        "failed_containers": 0,
+        "skipped": 0,
+        "not_run": 0,
+        "total": 24
+      }
+    },
+    {
+      "check": "launcher-ps7",
+      "command": "pwsh -NoProfile -ExecutionPolicy RemoteSigned -File tools/test/Invoke-Tests.ps1 -PesterModulePath $manifest -Tier Launcher",
+      "command_setup": "manifest: expand T03-pester-acquisition.json cache.directory_label/module_manifest_relative_path; exe: expand T03-pdftk-acquisition.json cache_root plus pdftk-server-2.02/app/bin/pdftk.exe",
+      "exit_code": 0,
+      "output": "Pester v6.2.0\r\n\nRunning tests from 1 files.\r\n\nRunning tests from 'C:\\projects\\WinPDFMerger-main\\tests\\launcher\\Launcher.Tests.ps1'\r\nDescribing AC009: actual cmd batch path safety with a synthetic PowerShell receiver\r\n  [+] preserves spaces in installation and source paths 858ms\r\n  [+] preserves exclamation marks in installation and source paths 614ms\r\n  [+] preserves ampersands in installation and source paths 622ms\r\n  [+] preserves parentheses in installation and source paths 567ms\r\n  [+] preserves brackets in installation and source paths 593ms\r\n  [+] preserves combined metacharacters in installation and source paths 596ms\r\n  [+] does not execute an ampersand-separated command embedded in an installation path 635ms\r\n  [+] quotes an invalid source diagnostic without executing its embedded echo command 77ms\r\nT05 boundary observation: cmd expanded source%T05_SENTINEL% to sourceEXPANDED before the launcher received it.\r\n  [+] characterizes paired percent expansion in the outer cmd command before the batch receives input 609ms\r\nT05 boundary observation: cmd selected installEXPANDED when given install%T05_SENTINEL% in its outer command.\r\n  [+] characterizes paired percent expansion in the installation path at the outer cmd boundary 562ms\r\nT05 boundary alternative: direct powershell.exe -File receives the literal percent-bearing SourceFolder without cmd parsing.\r\n  [+] preserves the literal paired-percent source through the direct PowerShell alternative 479ms\r\n  [+] passes a trailing source separator without absorbing the closing native quote 521ms\r\n  [+] passes multiple trailing source separators without losing the argument boundary 523ms\r\n  [+] preserves a filesystem root argument through the trailing-backslash quoting path 514ms\r\n\r\nDescribing AC010: actual cmd batch invocation and exit contract with a synthetic receiver\r\n  [+] presents exit 0 and propagates the exact code 531ms\r\n  [+] presents exit 1 and propagates the exact code 499ms\r\n  [+] presents exit 2 and propagates the exact code 500ms\r\n  [+] presents exit 7 and propagates the exact code 498ms\r\n  [+] retains an actual pause until controlled stdin is supplied 1.02s\r\n  [+] rejects zero arguments with usage and exit one before invoking the receiver 67ms\r\n  [+] rejects multiple dropped source paths with usage rather than ignoring the second 61ms\r\n  [+] rejects an explicitly empty second argument as an extra argument 57ms\r\n  [+] uses the actual child exit when an inherited ERRORLEVEL environment variable is present 514ms\r\n  [+] reports a missing adjacent script safely in a metacharacter installation directory 60ms\r\nTests completed in 12.39s\r\nTests Passed: 24, Failed: 0, Skipped: 0, Inconclusive: 0, NotRun: 0\r\n{\r\n  \"observed_at_utc\": \"2026-10-07T16:43:23.7557279Z\",\r\n  \"commit_under_test\": \"769817ba9aa8923a3b0001252637865c9a25f7a0\",\r\n  \"dirty_worktree\": false,\r\n  \"shell_version\": \"7.6.5\",\r\n  \"shell_edition\": \"Core\",\r\n  \"process_64_bit\": true,\r\n  \"execution_policy\": \"RemoteSigned\",\r\n  \"pester_version\": \"6.2.0\",\r\n  \"tier\": \"Launcher\",\r\n  \"evidence_class\": \"windows-cmd-actual-batch-controlled-ps51-receiver\",\r\n  \"passed\": 24,\r\n  \"failed\": 0,\r\n  \"failed_blocks\": 0,\r\n  \"failed_containers\": 0,\r\n  \"skipped\": 0,\r\n  \"not_run\": 0,\r\n  \"total\": 24\r\n}\r\nReports: C:\\projects\\WinPDFMerger-main\\tests\\.work\\pester\\dc5743d718a9414d801ee97eddb9eeb2\r\n",
+      "summary": {
+        "observed_at_utc": "2026-10-07T16:43:23.7557279Z",
+        "commit_under_test": "769817ba9aa8923a3b0001252637865c9a25f7a0",
+        "dirty_worktree": false,
+        "shell_version": "7.6.5",
+        "shell_edition": "Core",
+        "process_64_bit": true,
+        "execution_policy": "RemoteSigned",
+        "pester_version": "6.2.0",
+        "tier": "Launcher",
+        "evidence_class": "windows-cmd-actual-batch-controlled-ps51-receiver",
+        "passed": 24,
+        "failed": 0,
+        "failed_blocks": 0,
+        "failed_containers": 0,
+        "skipped": 0,
+        "not_run": 0,
+        "total": 24
+      }
+    },
+    {
+      "check": "native-ps51",
+      "command": "powershell.exe -NoProfile -ExecutionPolicy RemoteSigned -File tools/test/Invoke-Tests.ps1 -PesterModulePath $manifest -Tier LauncherNative -PdftkPath $exe",
+      "command_setup": "manifest: expand T03-pester-acquisition.json cache.directory_label/module_manifest_relative_path; exe: expand T03-pdftk-acquisition.json cache_root plus pdftk-server-2.02/app/bin/pdftk.exe",
+      "exit_code": 0,
+      "output": "Pester v6.2.0\n\nRunning tests from 1 files.\n\nRunning tests from 'C:\\projects\\WinPDFMerger-main\\tests\\launcher\\Launcher.Native.Tests.ps1'\nPDFtk SHA256: 5E5CBE817ECC3CC1875369D81119472559C9624D55C7176852C8827750AFA00A\nPDFtk file version: \nDescribing AC010: actual cmd batch and application with real PDFtk, narrow smoke\n  [+] returns success for a two-page single-fixture master and leaves the source unchanged 2.29s\n  [+] returns failure for an empty source before producing a PDF or run log 640ms\nTests completed in 3.95s\nTests Passed: 2, Failed: 0, Skipped: 0, Inconclusive: 0, NotRun: 0\n{\r\n    \"observed_at_utc\":  \"2026-10-07T16:43:16.2243602Z\",\r\n    \"commit_under_test\":  \"769817ba9aa8923a3b0001252637865c9a25f7a0\",\r\n    \"dirty_worktree\":  false,\r\n    \"shell_version\":  \"5.1.26100.9444\",\r\n    \"shell_edition\":  \"Desktop\",\r\n    \"process_64_bit\":  true,\r\n    \"execution_policy\":  \"RemoteSigned\",\r\n    \"pester_version\":  \"6.2.0\",\r\n    \"tier\":  \"LauncherNative\",\r\n    \"evidence_class\":  \"windows-cmd-actual-batch-entry-real-pdftk\",\r\n    \"passed\":  2,\r\n    \"failed\":  0,\r\n    \"failed_blocks\":  0,\r\n    \"failed_containers\":  0,\r\n    \"skipped\":  0,\r\n    \"not_run\":  0,\r\n    \"total\":  2\r\n}\r\nReports: C:\\projects\\WinPDFMerger-main\\tests\\.work\\pester\\ca8bd759f003461a975c5f716e6c07c0\n",
+      "summary": {
+        "observed_at_utc": "2026-10-07T16:43:16.2243602Z",
+        "commit_under_test": "769817ba9aa8923a3b0001252637865c9a25f7a0",
+        "dirty_worktree": false,
+        "shell_version": "5.1.26100.9444",
+        "shell_edition": "Desktop",
+        "process_64_bit": true,
+        "execution_policy": "RemoteSigned",
+        "pester_version": "6.2.0",
+        "tier": "LauncherNative",
+        "evidence_class": "windows-cmd-actual-batch-entry-real-pdftk",
+        "passed": 2,
+        "failed": 0,
+        "failed_blocks": 0,
+        "failed_containers": 0,
+        "skipped": 0,
+        "not_run": 0,
+        "total": 2
+      }
+    },
+    {
+      "check": "native-ps7",
+      "command": "pwsh -NoProfile -ExecutionPolicy RemoteSigned -File tools/test/Invoke-Tests.ps1 -PesterModulePath $manifest -Tier LauncherNative -PdftkPath $exe",
+      "command_setup": "manifest: expand T03-pester-acquisition.json cache.directory_label/module_manifest_relative_path; exe: expand T03-pdftk-acquisition.json cache_root plus pdftk-server-2.02/app/bin/pdftk.exe",
+      "exit_code": 0,
+      "output": "Pester v6.2.0\r\n\nRunning tests from 1 files.\r\n\nRunning tests from 'C:\\projects\\WinPDFMerger-main\\tests\\launcher\\Launcher.Native.Tests.ps1'\r\nPDFtk SHA256: 5E5CBE817ECC3CC1875369D81119472559C9624D55C7176852C8827750AFA00A\r\nPDFtk file version: \r\nDescribing AC010: actual cmd batch and application with real PDFtk, narrow smoke\r\n  [+] returns success for a two-page single-fixture master and leaves the source unchanged 2.15s\r\n  [+] returns failure for an empty source before producing a PDF or run log 706ms\r\nTests completed in 3.85s\r\nTests Passed: 2, Failed: 0, Skipped: 0, Inconclusive: 0, NotRun: 0\r\n{\r\n  \"observed_at_utc\": \"2026-10-07T16:43:17.0162444Z\",\r\n  \"commit_under_test\": \"769817ba9aa8923a3b0001252637865c9a25f7a0\",\r\n  \"dirty_worktree\": false,\r\n  \"shell_version\": \"7.6.5\",\r\n  \"shell_edition\": \"Core\",\r\n  \"process_64_bit\": true,\r\n  \"execution_policy\": \"RemoteSigned\",\r\n  \"pester_version\": \"6.2.0\",\r\n  \"tier\": \"LauncherNative\",\r\n  \"evidence_class\": \"windows-cmd-actual-batch-entry-real-pdftk\",\r\n  \"passed\": 2,\r\n  \"failed\": 0,\r\n  \"failed_blocks\": 0,\r\n  \"failed_containers\": 0,\r\n  \"skipped\": 0,\r\n  \"not_run\": 0,\r\n  \"total\": 2\r\n}\r\nReports: C:\\projects\\WinPDFMerger-main\\tests\\.work\\pester\\8430503592ff46e48bf2e5eb4d6a2bcb\r\n",
+      "summary": {
+        "observed_at_utc": "2026-10-07T16:43:17.0162444Z",
+        "commit_under_test": "769817ba9aa8923a3b0001252637865c9a25f7a0",
+        "dirty_worktree": false,
+        "shell_version": "7.6.5",
+        "shell_edition": "Core",
+        "process_64_bit": true,
+        "execution_policy": "RemoteSigned",
+        "pester_version": "6.2.0",
+        "tier": "LauncherNative",
+        "evidence_class": "windows-cmd-actual-batch-entry-real-pdftk",
+        "passed": 2,
+        "failed": 0,
+        "failed_blocks": 0,
+        "failed_containers": 0,
+        "skipped": 0,
+        "not_run": 0,
+        "total": 2
+      }
+    }
+  ],
+  "supplemental_checks": [
+    {
+      "command": "Explicit SystemRoot/WindowsPowerShell/v1.0/powershell.exe -NoProfile -EncodedCommand (UTF-16LE inline Parser::ParseFile over tools/test/Invoke-Tests.ps1 and tests/launcher/{Receiver.ps1,TestSupport.ps1,Launcher.Tests.ps1,Launcher.Native.Tests.ps1})",
+      "exit_code": 0,
+      "actual_result": "Parser PASS: 5 files; actual shell 5.1.26100.9444",
+      "decoded_command_payload": "$files = @('tools/test/Invoke-Tests.ps1', 'tests/launcher/Receiver.ps1', 'tests/launcher/TestSupport.ps1', 'tests/launcher/Launcher.Tests.ps1', 'tests/launcher/Launcher.Native.Tests.ps1')\nforeach ($file in $files) {\n $tokens = $null\n $errors = $null\n [void][System.Management.Automation.Language.Parser]::ParseFile((Join-Path $PWD $file), [ref]$tokens, [ref]$errors)\n if ($errors.Count -ne 0) { $errors | Format-List; exit 1 }\n}\nWrite-Output ('Parser PASS: 5 files; actual shell ' + $PSVersionTable.PSVersion)"
+    },
+    {
+      "command": "Explicit SystemRoot/WindowsPowerShell/v1.0/powershell.exe -NoProfile -EncodedCommand (UTF-16LE inline version/OS/token/Get-ExecutionPolicy -List inventory)",
+      "exit_code": 0,
+      "actual_result": {
+        "observed_at_utc": "2026-10-07T16:44:36.2984265Z",
+        "shell_version": "5.1.26100.9444",
+        "shell_edition": "Desktop",
+        "process_64_bit": true,
+        "os_version": "Microsoft Windows NT 10.0.26300.0",
+        "elevated_administrator": false,
+        "ordinary_process_policy": "Restricted",
+        "policy_scopes": [
+          {
+            "scope": "MachinePolicy",
+            "policy": "Undefined"
+          },
+          {
+            "scope": "UserPolicy",
+            "policy": "Undefined"
+          },
+          {
+            "scope": "Process",
+            "policy": "Undefined"
+          },
+          {
+            "scope": "CurrentUser",
+            "policy": "Undefined"
+          },
+          {
+            "scope": "LocalMachine",
+            "policy": "Undefined"
+          }
+        ]
+      },
+      "decoded_command_payload": "[ordered]@{\n observed_at_utc = [DateTime]::UtcNow.ToString('o')\n shell_version = $PSVersionTable.PSVersion.ToString()\n shell_edition = $PSVersionTable.PSEdition\n process_64_bit = [Environment]::Is64BitProcess\n os_version = [Environment]::OSVersion.VersionString\n elevated_administrator = (New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent())).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)\n ordinary_process_policy = (Get-ExecutionPolicy).ToString()\n policy_scopes = @(Get-ExecutionPolicy -List | ForEach-Object { [ordered]@{ scope = $_.Scope.ToString(); policy = $_.ExecutionPolicy.ToString() } })\n} | ConvertTo-Json -Depth 5"
+    },
+    {
+      "command": "python tools/codex/handoff.py check-plan --repo .",
+      "exit_code": 0,
+      "actual_result": "valid=true; structure-only; 34 tasks/78 cases; done4/pass8 before final records"
+    }
+  ],
+  "limitations": [
+    "PS7 is the 7.6.5 test driver; the actual BAT receiver/application host is PS5.1 in all four runs. No current-supported-update or PS7 application/release compatibility claim.",
+    "Metacharacter delivery and statuses including partial2 are actual cmd/BAT tests with a synthetic PS5.1 receiver; they do not certify the PDF engine/native serializer or real email partial success.",
+    "Paired defined percent variables expand in the outer cmd command for source and installation before BAT; direct PowerShell preserves both literal percent-bearing paths. Explorer behavior remains T26.",
+    "Launcher test children use standard WindowsPS5.1 system PSModulePath to isolate PS7-driver module inheritance; parent paths/policies are asserted unchanged.",
+    "Native smoke uses short ASCII/no-space script/source/output paths, actual PDFtk, and child-only PATH/ProgramFiles overrides excluding GS. It proves one two-page master plus empty-source failure per driver.",
+    "No ordering, dependency-priority, native space/Unicode/tool-path, email, timeout/descendant cancellation, destination overlap/no-overwrite, PDF fidelity, Explorer, CI, package or release acceptance follows.",
+    "Test harness timeout kills its shell; descendant cancellation is untested. PSScriptAnalyzer remains absent/unrun; parser/record checks are not merge acceptance.",
+    "Windows 11 OS support channel remains unestablished in the existing inventory."
+  ]
+}

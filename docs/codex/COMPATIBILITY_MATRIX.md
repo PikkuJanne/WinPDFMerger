@@ -8,9 +8,9 @@ observations are not application compatibility certification. Evidence:
 | Environment | Release scope | Version/build | Evidence | Status |
 |---|---|---|---|---|
 | Windows 11 x64 standard-user desktop | Required | Pro 10.0.26300/build 26300, DisplayVersion 26H2; non-administrator observation token; NTFS fixed drive | T02 baseline/environment | INVENTORIED; application/Explorer acceptance NOT TESTED; OS support channel unestablished |
-| Windows PowerShell 5.1 on reference desktop | Required | 5.1.26100.9444 Desktop x64; approved test Process RemoteSigned; separate ordinary process Restricted/all scopes Undefined | T04 completion/C1 reports; T03 fixture evidence; T02 historical rejection | T04 Unit38/actual-entry SourceDiscovery4 PASS; narrow master counts/source preservation only; launcher/Explorer/release NOT TESTED |
-| Supported PowerShell 7 x64 on reference desktop | Required | Actual 7.6.5 Core x64 RemoteSigned; supported update7.6.6 at inspection | T04 completion/C1 reports; T03 fixture evidence; T02 lifecycle evidence | T04 Unit38/actual-entry SourceDiscovery4 PASS at actual7.6.5; current-supported-update/release claim NOT VALIDATED |
-| PDFtk native Windows build | Required | Vendor Server2.02 unsigned x86 engine, explicitly selected external dev cache; SHA256 in acquisition receipt | T03 acquisition/fixture evidence; T04 C1 native reports | Three real entry merges plus zero-input case per shell PASS for T04 boundaries/brackets/source preservation; production dependency-priority/argument/publication/fidelity gates NOT TESTED; no system installation |
+| Windows PowerShell 5.1 on reference desktop | Required | 5.1.26100.9444 Desktop x64; approved test Process RemoteSigned; separate ordinary process Restricted/all scopes Undefined | T05 completion/C1 reports; T04 completion/C1 reports; T03 fixture evidence | T04 Unit38/actual-entry SourceDiscovery4 PASS; T05 terminal Launcher24/LauncherNative2 PASS per driver with actual PS5.1 children; narrow boundaries/counts/source preservation; Explorer/release NOT TESTED |
+| Supported PowerShell 7 x64 on reference desktop | Required | Actual 7.6.5 Core x64 RemoteSigned; supported update7.6.6 at inspection | T05 completion/C1 reports; T04 completion/C1 reports; T02 lifecycle evidence | T04 Unit38/actual-entry SourceDiscovery4 PASS at actual7.6.5; T05 test-driver Launcher24/LauncherNative2 PASS with PS5.1 children; current-supported-update/release claim NOT VALIDATED |
+| PDFtk native Windows build | Required | Vendor Server2.02 unsigned x86 engine, explicitly selected external dev cache; SHA256 in acquisition receipt | T03 acquisition/fixture evidence; T04/T05 C1 native reports | T04 three real entry merges + zero-input per shell; T05 one actual BAT/app master + empty-source failure per driver PASS; narrow count/source preservation; production dependency-priority/argument/publication/fidelity gates NOT TESTED; no system installation |
 | Ghostscript native Windows build | Required for email support | Not discovered in PATH/common install paths/uninstall registrations | T02 probe | NATIVE NOT TESTED; selected build/version/acquisition unknown |
 | GitHub Windows runner | Required CI evidence; not desktop certification | UNKNOWN | None | NOT TESTED |
 | Windows 10 | Optional/excludable | UNKNOWN | None | NOT TESTED |
@@ -41,3 +41,13 @@ no user/machine policy or parent environment changes. Native cases use short ASC
 script/output paths without spaces, child-only dependency environment, GS excluded.
 Other punctuation/Unicode source tests are helper-level; no later native quoting,
 email, fidelity, output publication or desktop/release pass is inferred.
+
+T05 extends evidence at clean C1 `769817ba9aa8923a3b0001252637865c9a25f7a0`
+to actual terminal cmd/BAT path delivery/exit/pause with controlled PS5.1 receivers
+and narrow real BAT/application/PDFtk smoke. Each PS5.1/PS7 driver passes24+2;
+all child applications are PS5.1. Controlled metacharacter/status cases do not
+certify PDF engine path support or real email partial success. Test-child-only
+PSModulePath normalization isolates driver inheritance; native dependency overrides
+exclude GS. Ordinary PS5.1 policy/token were rechecked without changes. Explorer,
+current supported PS7 application build, native paths/email/fidelity/publication
+and release gates remain pending. See `evidence/T05-completion.md` for exact scope.

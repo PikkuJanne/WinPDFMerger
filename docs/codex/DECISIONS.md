@@ -42,4 +42,4 @@ behavior and is not substituted silently. Quoted path/status tests use an actual
 cmd/BAT/PS5.1 receiver; a separate real PDFtk smoke proves only a simple terminal
 merge. Percent expansion before the batch boundary is characterized with a direct
 PowerShell alternative, without claiming Explorer acceptance. Evidence:
-`evidence/T05-checkpoint.md` and final clean implementation receipts when present.
+`evidence/T05-completion.md`, clean C1 results/reports and historical checkpoint.
