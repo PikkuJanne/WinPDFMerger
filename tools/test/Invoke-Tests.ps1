@@ -2,8 +2,9 @@
 [CmdletBinding()]
 param(
     [string]$PesterModulePath,
-    [ValidateSet('Unit', 'NativeFixture', 'SourceDiscovery', 'Launcher', 'LauncherNative', 'DependencyEntry', 'NativeRunner')][string]$Tier = 'Unit',
-    [string]$PdftkPath
+    [ValidateSet('Unit', 'NativeFixture', 'SourceDiscovery', 'Launcher', 'LauncherNative', 'DependencyEntry', 'NativeRunner', 'ToolInvocation', 'PdftkPaths', 'GhostscriptPaths')][string]$Tier = 'Unit',
+    [string]$PdftkPath,
+    [string]$GhostscriptPath
 )
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
@@ -14,7 +15,8 @@ if ($PesterModulePath) { $pesterName = $PesterModulePath }
 Import-Module -Name $pesterName -RequiredVersion $pins.PesterVersion -ErrorAction Stop
 $selected = Get-Module Pester
 if ($selected.Version.ToString() -ne $pins.PesterVersion) { throw 'Unexpected Pester version.' }
-if ($Tier -in @('NativeFixture', 'SourceDiscovery', 'LauncherNative', 'DependencyEntry') -and -not $PdftkPath) { throw "$Tier requires an explicit real PDFtk executable path." }
+if ($Tier -in @('NativeFixture', 'SourceDiscovery', 'LauncherNative', 'DependencyEntry', 'PdftkPaths', 'GhostscriptPaths') -and -not $PdftkPath) { throw "$Tier requires an explicit real PDFtk executable path." }
+if ($Tier -eq 'GhostscriptPaths' -and -not $GhostscriptPath) { throw 'GhostscriptPaths requires an explicit real Ghostscript executable path.' }
 $nativeFixturePath = $null
 $nativeFixtureBuildReceipt = $null
 if ($Tier -eq 'NativeRunner') {
@@ -38,6 +40,12 @@ if ($Tier -eq 'Unit') {
 } elseif ($Tier -eq 'NativeRunner') {
     $container = New-PesterContainer -Path (Join-Path $repo 'tests/native/NativeRunner.Tests.ps1') -Data @{ FakeNativePath = $nativeFixturePath; BuildReceiptPath = $nativeFixtureBuildReceipt }
     $config.Run.Container = $container
+} elseif ($Tier -eq 'ToolInvocation') {
+    $config.Run.Path = Join-Path $repo 'tests/native/ToolInvocation.Tests.ps1'
+} elseif ($Tier -in @('PdftkPaths', 'GhostscriptPaths')) {
+    $backend = if ($Tier -eq 'PdftkPaths') { 'Pdftk' } else { 'Ghostscript' }
+    $config.Run.Container = New-PesterContainer -Path (Join-Path $repo 'tests/pdf/ToolPaths.Native.Tests.ps1') `
+        -Data @{ ToolBackend = $backend; PdftkPath = $PdftkPath; GhostscriptPath = $GhostscriptPath }
 } else {
     $testFile = if ($Tier -eq 'SourceDiscovery') { 'tests/pdf/SourceDiscovery.Native.Tests.ps1' } elseif ($Tier -eq 'LauncherNative') { 'tests/launcher/Launcher.Native.Tests.ps1' } elseif ($Tier -eq 'DependencyEntry') { 'tests/dependencies/Dependencies.Entry.Tests.ps1' } else { 'tests/pdf/Fixture.Native.Tests.ps1' }
     $container = New-PesterContainer -Path (Join-Path $repo $testFile) -Data @{ PdftkPath = $PdftkPath }
@@ -66,6 +74,9 @@ $summary = [ordered]@{
 if ($Tier -eq 'NativeRunner') {
     $summary.native_fixture_build_receipt = $nativeFixtureBuildReceipt
     $summary.native_fixture_build_receipt_sha256 = (Get-FileHash -LiteralPath $nativeFixtureBuildReceipt -Algorithm SHA256).Hash.ToLowerInvariant()
+}
+if ($Tier -in @('ToolInvocation', 'PdftkPaths', 'GhostscriptPaths')) {
+    $summary.evidence_class = if ($Tier -eq 'ToolInvocation') { 'unit-controlled-native-job-and-filesystem' } else { 'windows-real-tool-path-prompt-integration' }
 }
 $summary | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath (Join-Path $work 'summary.json') -Encoding UTF8
 $summary | ConvertTo-Json -Depth 4

@@ -30,7 +30,7 @@ FEATURES
         WinPDFMerge_<SourceFolder>_<yyyyMMdd_HHmmss>_email.pdf
         WinPDFMerge_<SourceFolder>_<yyyyMMdd_HHmmss>.log
     - Robust logging, full command lines + Ghostscript stdout/stderr appended to .log.
-    - Defensive GhostScript handling, clears GS_OPTIONS, safe quoting, redirected streams -> no PS pipeline errors.
+    - Bounded native execution with closed stdin, both streams captured, and child-only GS_OPTIONS removal.
 
 MY INTENDED USAGE
     - I drag a folder with invoices/contracts/etc. onto WinPDFMerge.bat.
@@ -73,7 +73,7 @@ TROUBLESHOOTING
         - Try `/ebook` instead of `/screen` (some PDFs behave better with that profile).
         - Ensure the target email PDF isn’t open in a viewer (file lock).
     - NativeCommandError or odd GS warnings:
-        - This script redirects GS output to temp files, then appends to the .log
+        - Both native streams are captured by the bounded runner and appended to the UTF-8 run log
           to avoid PowerShell pipeline errors, consult the .log for details.
 
 LICENSE / WARRANTY
@@ -143,22 +143,23 @@ for ($index = 0; $index -lt $pdfs.Count; $index++) {
     ("Input {0}: {1}" -f ($index + 1), $pdfs[$index].FullName) | Write-RunLog -LiteralPath $logPath -Append
 }
 
-# --- PDFtk merge, lossless ---
-$quoted = $pdfs.FullName | ForEach-Object { '"{0}"' -f $_ }
-$pdftkArgs = @()
-$pdftkArgs += $quoted
-$pdftkArgs += 'cat','output',$outLossless,'compress'
-
-"Running: `"$pdftkPath`" $($pdftkArgs -join ' ')" | Write-RunLog -LiteralPath $logPath -Append
-$proc = Start-Process -FilePath $pdftkPath -ArgumentList $pdftkArgs -NoNewWindow -Wait -PassThru
-if ($proc.ExitCode -ne 0 -or -not (Test-Path -LiteralPath $outLossless)) {
-    Write-Error "PDFtk failed (exit $($proc.ExitCode)). See log: $logPath"
+# --- PDFtk merge through bounded, prompt-free private output ---
+$merge = Invoke-PdfToolJob -Tool Pdftk -Executable $pdftkPath -InputPaths @($pdfs.FullName) -OutputPath $outLossless
+if ($null -ne $merge.NativeResult) {
+    Write-NativeProcessLog -Result $merge.NativeResult -LiteralPath $logPath -Label PDFtk
+}
+if ($merge.CleanupError) { $merge.CleanupError | Write-RunLog -LiteralPath $logPath -Append }
+if (-not $merge.Succeeded) {
+    $merge.OutputError | Write-RunLog -LiteralPath $logPath -Append
+    Write-Host "PDFtk failed. See log: $logPath" -ForegroundColor Red
+    exit 1
 }
 "PDFtk merge OK." | Write-RunLog -LiteralPath $logPath -Append
 
 # --- Email-friendly copy with GhostScript ---
 $gsPath = Find-Ghostscript
 $gsVersionFailure = $false
+$gsFailureMessage = 'Ghostscript version preflight failed.'
 if ($gsPath) {
     try {
         $gsVersion = Get-NativeToolVersion -Path $gsPath -Tool Ghostscript
@@ -169,51 +170,18 @@ if ($gsPath) {
 }
 if ($gsPath -and -not $gsVersionFailure) {
     "Ghostscript: $gsPath (version $gsVersion)" | Write-RunLog -LiteralPath $logPath -Append
-    if (Test-Path -LiteralPath $outEmail) {
-        "Removing existing email file: $outEmail" | Write-RunLog -LiteralPath $logPath -Append
-        Remove-Item -LiteralPath $outEmail -Force -ErrorAction SilentlyContinue
+    $email = Invoke-PdfToolJob -Tool Ghostscript -Executable $gsPath -InputPaths @($outLossless) -OutputPath $outEmail
+    if ($null -ne $email.NativeResult) {
+        Write-NativeProcessLog -Result $email.NativeResult -LiteralPath $logPath -Label Ghostscript
     }
-
-    # Conservative email profile, change to /ebook for higher quality
-    $gsArgs = @(
-        '-dBATCH','-dNOPAUSE','-dSAFER',
-        '-sDEVICE=pdfwrite',
-        '-dCompatibilityLevel=1.6',
-        '-dPDFSETTINGS=/screen',
-        '-dDetectDuplicateImages=true',
-        '-o', $outEmail,               # handles spaces safely
-        '-f', $outLossless
-    )
-
-    # Build one string and log it
-    $argStr = ($gsArgs | ForEach-Object { if ($_ -match '\s') { '"{0}"' -f $_ } else { $_ } }) -join ' '
-    "GS: `"$gsPath`" $argStr" | Write-RunLog -LiteralPath $logPath -Append
-
-    # Neutralize any global GhostScript options that may conflict
-    $bakGS = $env:GS_OPTIONS; $env:GS_OPTIONS = ''
-
-    # Run Ghostscript with redirected streams, no PS pipeline, and no NativeCommandError
-    $tmpOut = [IO.Path]::ChangeExtension($outEmail, ".gs.stdout.txt")
-    $tmpErr = [IO.Path]::ChangeExtension($outEmail, ".gs.stderr.txt")
-    if (Test-Path -LiteralPath $tmpOut) { Remove-Item -LiteralPath $tmpOut -Force -ErrorAction SilentlyContinue }
-    if (Test-Path -LiteralPath $tmpErr) { Remove-Item -LiteralPath $tmpErr -Force -ErrorAction SilentlyContinue }
-
-    $p = Start-Process -FilePath $gsPath -ArgumentList $argStr -NoNewWindow -Wait -PassThru `
-         -RedirectStandardOutput $tmpOut -RedirectStandardError $tmpErr
-
-    # Append GhostScript logs to main log
-    if (Test-Path -LiteralPath $tmpOut) { Get-Content -LiteralPath $tmpOut | Write-RunLog -LiteralPath $logPath -Append | Out-Null }
-    if (Test-Path -LiteralPath $tmpErr) { Get-Content -LiteralPath $tmpErr | Write-RunLog -LiteralPath $logPath -Append | Out-Null }
-    if (Test-Path -LiteralPath $tmpOut) { Remove-Item -LiteralPath $tmpOut -Force -ErrorAction SilentlyContinue }
-    if (Test-Path -LiteralPath $tmpErr) { Remove-Item -LiteralPath $tmpErr -Force -ErrorAction SilentlyContinue }
-
-    # Restore GS_OPTIONS
-    if ($null -ne $bakGS) { $env:GS_OPTIONS = $bakGS } else { Remove-Item -LiteralPath Env:\GS_OPTIONS -ErrorAction SilentlyContinue }
-
-    if ($p.ExitCode -eq 0 -and (Test-Path -LiteralPath $outEmail)) {
+    if ($email.CleanupError) { $email.CleanupError | Write-RunLog -LiteralPath $logPath -Append }
+    if ($email.Succeeded) {
         "Email-optimized PDF created." | Write-RunLog -LiteralPath $logPath -Append
     } else {
-        "Ghostscript returned exit code $($p.ExitCode). Skipping email copy; see log for details." | Write-RunLog -LiteralPath $logPath -Append
+        $email.OutputError | Write-RunLog -LiteralPath $logPath -Append
+        "Ghostscript conversion failed. Master retained; see log for details." | Write-RunLog -LiteralPath $logPath -Append
+        $gsVersionFailure = $true
+        $gsFailureMessage = 'Ghostscript conversion failed. Master retained.'
     }
 } elseif (-not $gsVersionFailure) {
     "Ghostscript not found; skipping email-optimized copy." | Write-RunLog -LiteralPath $logPath -Append
@@ -221,7 +189,7 @@ if ($gsPath -and -not $gsVersionFailure) {
 
 "Done." | Write-RunLog -LiteralPath $logPath -Append
 if ($gsVersionFailure) {
-    Write-Host "`nPARTIAL SUCCESS: Ghostscript version preflight failed."
+    Write-Host "`nPARTIAL SUCCESS: $gsFailureMessage"
     Write-Host " - Lossless: $outLossless"
     Write-Host "Log: $logPath"
     exit 2

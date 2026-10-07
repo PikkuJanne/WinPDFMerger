@@ -3,60 +3,37 @@
 Target: published and independently verified `v1.0.0` in `PikkuJanne/WinPDFMerger`.
 Completed milestone: M0 — baseline and safe setup.
 Completed tasks: T01 through T08.
-Next task: T09 — Fix real tool quoting, noninteractive execution and limits (pending).
+Current task: T09 — native conversion routing implemented; BLOCKED on required real Ghostscript evidence.
 Publication: NOT STARTED.
 
-T08/AC016/AC017/AC018 pass at clean implementation C1
-`2726c73ad2ff8660540c964789910a9da1f8b3a8`: pinned Pester6.2.0 Unit99,
-NativeRunner36, DependencyEntry9 and SourceDiscovery4 in each actual PS5.1/PS7
-shell. Failures, failed blocks/containers, skipped and not_run are all zero.
-Evidence: `evidence/T08-completion.md`, C1 results/live receipt and eight exact
-summary/sanitized XML pairs plus four controlled build receipts/hash manifest.
-Historical dirty test-harness failures and limited timing observations remain
-separately labeled in T08 checkpoint/precommit results.
+T09 removes manual quoting/Start-Process conversion plumbing and parent GS_OPTIONS
+mutation. Both fixed native operations now use the bounded vector runner/logger.
+PDFtk dont_ask applies only to fresh private output; final moves refuse overwrites.
+Complete command guard:30000 UTF-16 characters including executable/quotes/NUL.
+Job file operands and private output path must remain shorter than260. Original
+files are never renamed. Failed GS conversion retains master and returns2.
 
-Shared helpers now implement strict Windows string-vector serialization, direct
-literal absolute exe selection, concurrent capped stream draining, explicit
-launch/nonzero/capture/termination results, exact immediate-child timeout/token
-cancellation and UTF8-without-BOM logging. Controlled Windows echo verifies
-empty/space/quote/backslash/control/Unicode boundaries. Large dual streams,
-inherited-pipe capture bounds, same-image unrelated-process survival and simulated
-stop failure pass. Incomplete/truncated capture cannot imply success.
+See `evidence/T09-checkpoint.md` and historical dirty `T09-precommit-results.json`.
+Dirty Unit104, ToolInvocation12 and actual PDFtkPaths12 pass both PS5.1/PS7.
+Native source/install/output punctuation/Latin paths, CJK backend failures,
+258-character operand/260 guard, password/lock/owned ACL denial/collision are
+observed; sources/ACL descriptors restored. Initial two Pester root-setup container
+failures are retained as historical faults and corrected. Clean tested C1 and
+matching-branch push/live proof remain the next checkpoint.
 
-Internal job wait defaults to 900000ms (15 minutes); version probes retain 5000ms.
-Owned termination and final stream capture each have injectable 1000ms defaults;
-each stream retains at most 8388608 characters. Synthetic real PDFtk text jobs
-with 2/200 pages took 88–100/787–835ms via the development harness, not a broad
-large-job/GS bound. Version probes now delegate to the shared runner and remove
-GS_OPTIONS only in the child. All run-log writers use UTF8 without BOM.
+Required native GS is absent. Prepared exact official GS10.08.0/7-Zip26.04
+external-cache extraction awaits the requested human authorization. No download
+or installation occurred. AC019/AC020 remain not_run as whole required cases;
+PDFtk observations do not count as GS support. AC021 awaits clean C1 evidence.
+T10 is not advanced. T08 remains accepted at2726c73 with evidence in its completion.
 
-Actual conversion invocations remain for T09. T07 strict executable/version
-selection and early faults still pass, including optional GS absent0 and found-GS
-version failure partial2/master retention. DependencyEntry9 reruns five actual
-entry faults, two real PDFtk master smokes and two controlled helper cases.
-SourceDiscovery4 reruns three real masters plus zero-input. Five real masters
-per shell retain page totals 2,2 and 2,2,5, numbered operands and source snapshots.
-Those narrow checks do not certify final PDF page order/fidelity or native GS.
+Started clean/live a49b4b4; owner-merged PR7 main0720a96 was fast-forwarded only
+after ancestry and unchanged-tree checks. New checkpoint/PR and fresh synchronization
+are still required. No reset/stash/force/origin/tag/release change.
 
-Started clean/live 8375ab4; owner-merged PR #6/main2470fb6 was safely fast-forwarded
-after ancestry and unchanged-tree review. C1 normal push and fresh clean/live
-equality passed 2026-10-07T17:48:58.172949+00:00. New draft
-[PR #7](https://github.com/PikkuJanne/WinPDFMerger/pull/7) continues readiness.
-Final records C2 also needs normal push/fresh clean local=live proof; its SHA
-belongs in session output and is rechecked next session. No reset, stash, force,
-origin, tag or release change.
-
-Approved exact external Pester6.2.0/PDFtk2.02 caches and test-process RemoteSigned
-were reused. No new install/download, vendor redistribution, persistent policy/
-environment/security change or private PDFs/upload. Ordinary separate PS5.1 is
-Restricted with all scopes Undefined; Windows11 x64/build26300, non-elevated.
-Actual PS5.1 is 5.1.26100.9444; actual PS7 is 7.6.5 behind recorded update7.6.6.
-No current-supported-PS7/release claim; OS support channel unestablished.
-
-Immediate child ownership is tested; descendant/full-run interruption cleanup
-remains T15. Inherited writers can retain pending Framework read workers after
-bounded return. Actual native encodings/paths/prompts/length guards remain T09.
-PDF validation, destination overlap/no-overwrite, email outcomes, fidelity,
-Explorer/T26, CI/package/release and PSScriptAnalyzer remain unrun. Existing
-native app/output paths are short ASCII/no-space with bracket source coverage.
-T09 onward pending; AC019 onward not_run. Project/release completion outstanding.
+Exact approved external Pester6.2.0/PDFtk2.02 and test-process RemoteSigned reused.
+Actual PS5.1:5.1.26100.9444; actual PS7:7.6.5 behind recorded7.6.6. Non-elevated
+Windows11 x64/build26300; OS support channel unestablished. No current-supported
+PS7/release claim, private PDFs/upload or persistent security/environment change.
+Structural validation, full staging/overlap/outcomes, stale-email summary/log
+identity, interruption, fidelity/Explorer/CI/package/release gates remain downstream.

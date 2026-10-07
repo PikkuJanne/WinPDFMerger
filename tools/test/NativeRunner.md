@@ -1,4 +1,4 @@
-# Shared native runner (T08)
+# Shared native runner (T08/T09)
 
 Import `src/WinPDFMerge.Helpers.ps1` to define helpers without starting the
 application. `Invoke-NativeProcess` takes an explicitly resolved absolute `.exe`
@@ -13,7 +13,7 @@ shorter limits. T08 synthetic real PDFtk2.02 observations took 88–100ms for tw
 text pages and 787–835ms for 200 repeated text pages. The generous default
 provides headroom, not a measured maximum for image-heavy jobs or Ghostscript.
 Version probes explicitly keep **5000ms**. This is an internal interface;
-T09 routes conversion calls and tests real-tool limits.
+Both conversion calls now use this runner through `Invoke-PdfToolJob`.
 
 Both UTF-8 streams use concurrent asynchronous reads. Each retains at most
 **8388608 characters**, then drains/discards excess and returns truncation
@@ -39,8 +39,8 @@ close. No image-name-wide process kill is used.
 `GS_OPTIONS`. `Write-NativeProcessLog` logs executable/arguments, result states,
 exit/elapsed/PID, errors and both streams. Control characters in diagnostic
 metadata are escaped; captured stream text retains its line breaks. All
-`Write-RunLog` output is UTF-8 without BOM in both shells. Native tool diagnostic
-encodings still need T09 characterization; this does not promise support for
+`Write-RunLog` output is UTF-8 without BOM in both shells. Native tool diagnostics
+are decoded as UTF-8; this does not promise support for
 arbitrary legacy-encoded output.
 
 Run the controlled Windows tier with the pinned Pester cache in each shell:
@@ -54,9 +54,29 @@ Use an authorized policy-permitted environment. The harness installs nothing,
 compiles with an existing Windows Framework compiler and retains its hash receipt
 in `tests/.work`. Argument echo is Windows process integration; fault/stream/
 cancellation tests are controlled-process evidence. Neither proves PDFtk/GS
-document compatibility. Conversion orchestration is deliberately still unchanged
-at T08; T09 owns its routing, real paths, prompt handling and command-length guard.
+document compatibility.
+
+`Invoke-PdfToolJob` accepts a fixed `Pdftk` or `Ghostscript` operation, absolute
+input/output paths, and an injectable job timeout. It creates a fresh private
+directory beside the final output and uses only its known `output.pdf` operand.
+PDFtk uses `cat`, `compress` and `dont_ask`; GS keeps `/screen`, compatibility 1.6,
+duplicate-image detection and `SAFER`, with child-only `GS_OPTIONS` removal.
+An existing final is refused before launch, and `File.Move` also refuses races.
+Only the one owned file and empty directory are cleaned. Native success plus a
+nonempty file is required; structural validation remains T10 and generalized
+staging/overlap/naming/outcome handling remains T11-T15.
+
+`Assert-NativeCommandLength` measures the executable and argument serialization,
+separator and final NUL in UTF-16 code units. The default **30000** leaves room
+below CreateProcessW's 32767 maximum; the injectable limit cannot exceed 32766.
+An oversized command returns `Started=false`, null PID/exit and an actionable
+`LaunchError` before `Process.Start`. No shell workaround or chunking is used.
+The job helper also refuses file operands of 260 or more characters and output
+folders without room for its private target. Backend Unicode errors fail with
+native streams and guidance; sources are never renamed.
 
 Primary references: [Windows CRT argument parsing](https://learn.microsoft.com/en-us/cpp/c-language/parsing-c-command-line-arguments),
 [Process stream deadlocks](https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.process.standardoutput),
-[bounded exit waits](https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.process.waitforexit).
+[bounded exit waits](https://learn.microsoft.com/en-us/dotnet/api/system.diagnostics.process.waitforexit),
+[CreateProcessW command limit](https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-createprocessw),
+[PDFtk dont_ask](https://www.pdflabs.com/docs/pdftk-man-page/).

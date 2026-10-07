@@ -133,6 +133,25 @@ function ConvertTo-NativeLogText {
     return $sanitized.ToString()
 }
 
+function Assert-NativeCommandLength {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory=$true)][string]$Executable,
+        [AllowEmptyString()][string]$SerializedArguments = '',
+        [ValidateRange(1, 32766)][int]$MaximumCommandLineCharacters = 30000
+    )
+
+    # Count UTF-16 code units, executable quotes, separating space and final NUL.
+    # Keep headroom beneath CreateProcessW's 32767-character limit.
+    $executableText = ConvertTo-NativeArgumentString -Arguments @($Executable)
+    $length = $executableText.Length + 1
+    if ($SerializedArguments.Length -gt 0) { $length += 1 + $SerializedArguments.Length }
+    if ($length -gt $MaximumCommandLineCharacters) {
+        throw "Native command requires $length UTF-16 characters including executable, quoting and terminator; the limit is $MaximumCommandLineCharacters. Use fewer inputs or shorter folder paths. No native process was launched; source files were not renamed."
+    }
+    return $length
+}
+
 function New-NativeStreamCapture {
     param([IO.StreamReader]$Reader)
 
@@ -206,6 +225,7 @@ function Invoke-NativeProcess {
         [ValidateRange(1, 60000)][int]$TerminationTimeoutMilliseconds = 1000,
         [ValidateRange(1, 60000)][int]$CaptureTimeoutMilliseconds = 1000,
         [ValidateRange(1, 2147483647)][int]$MaximumCaptureCharacters = 8388608,
+        [ValidateRange(1, 32766)][int]$MaximumCommandLineCharacters = 30000,
         [Threading.CancellationToken]$CancellationToken = [Threading.CancellationToken]::None,
         [AllowEmptyCollection()][string[]]$RemoveEnvironmentVariables = @()
     )
@@ -245,6 +265,8 @@ function Invoke-NativeProcess {
                 throw 'Native executable must resolve to an existing .exe file.'
             }
             $resolvedExecutable = $file.FullName
+            $null = Assert-NativeCommandLength -Executable $resolvedExecutable -SerializedArguments $serialized `
+                -MaximumCommandLineCharacters $MaximumCommandLineCharacters
             $startInfo = New-Object Diagnostics.ProcessStartInfo
             $startInfo.FileName = $resolvedExecutable
             $startInfo.Arguments = $serialized
@@ -391,6 +413,93 @@ function Write-NativeProcessLog {
         "$safeLabel stderr:"
         $Result.Stderr
     ) | Write-RunLog -LiteralPath $LiteralPath -Append
+}
+
+function Invoke-PdfToolJob {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory=$true)][ValidateSet('Pdftk', 'Ghostscript')][string]$Tool,
+        [Parameter(Mandatory=$true)][string]$Executable,
+        [Parameter(Mandatory=$true)][AllowEmptyCollection()][object[]]$InputPaths,
+        [Parameter(Mandatory=$true)][string]$OutputPath,
+        [ValidateRange(1, 2147483647)][int]$TimeoutMilliseconds = 900000
+    )
+
+    $native = $null
+    $outputError = $null
+    $cleanupError = $null
+    $published = $false
+    $ownedDirectory = $null
+    $stagedOutput = $null
+    try {
+        if ($InputPaths.Count -eq 0 -or ($Tool -eq 'Ghostscript' -and $InputPaths.Count -ne 1)) {
+            throw 'PDFtk requires at least one input; Ghostscript requires exactly one master input.'
+        }
+        foreach ($path in @($InputPaths) + @($OutputPath)) {
+            if ($path -isnot [string] -or [string]::IsNullOrWhiteSpace($path) -or
+                -not [IO.Path]::IsPathRooted($path) -or [IO.Path]::GetFullPath($path) -ine $path) {
+                throw 'PDF tool input/output paths must be literal absolute file paths.'
+            }
+            if ($path.Length -ge 260) {
+                throw "Unsupported PDF tool path '$path': this workflow limits file paths to fewer than 260 UTF-16 characters. Use shorter folders; source files will not be renamed."
+            }
+        }
+        foreach ($inputPath in $InputPaths) {
+            if (-not [IO.File]::Exists($inputPath)) { throw "PDF input is missing or inaccessible: '$inputPath'." }
+            if ($inputPath -ieq $OutputPath) { throw 'PDF output must be separate from every source file.' }
+        }
+        if (Test-Path -LiteralPath $OutputPath) { throw "PDF output already exists: '$OutputPath'. Choose a fresh output; existing files are never overwritten." }
+        $parent = [IO.Path]::GetDirectoryName($OutputPath)
+        if (-not [IO.Directory]::Exists($parent)) { throw "PDF output directory does not exist: '$parent'." }
+        $candidate = Join-Path $parent ('.WinPDFMerge_' + [Guid]::NewGuid().ToString('N') + '.tmp')
+        $stagedOutput = Join-Path $candidate 'output.pdf'
+        if ($stagedOutput.Length -ge 260) {
+            throw 'Output folder is too long for a private native output path (260-character limit). Use a shorter output folder.'
+        }
+        # New-Item without Force refuses an existing directory. Only after that
+        # succeeds do we own this exact directory and its one known output file.
+        $null = New-Item -ItemType Directory -Path $candidate -ErrorAction Stop
+        $ownedDirectory = $candidate
+        if ($Tool -eq 'Pdftk') {
+            $arguments = @($InputPaths) + @('cat', 'output', $stagedOutput, 'compress', 'dont_ask')
+            $removeEnvironment = @()
+        } else {
+            $arguments = @('-dBATCH', '-dNOPAUSE', '-dSAFER', '-sDEVICE=pdfwrite',
+                '-dCompatibilityLevel=1.6', '-dPDFSETTINGS=/screen', '-dDetectDuplicateImages=true',
+                '-o', $stagedOutput, '-f', $InputPaths[0])
+            $removeEnvironment = @('GS_OPTIONS')
+        }
+        $native = Invoke-NativeProcess -Executable $Executable -Arguments $arguments `
+            -TimeoutMilliseconds $TimeoutMilliseconds -RemoveEnvironmentVariables $removeEnvironment
+        if (-not $native.Succeeded) {
+            throw "$Tool failed. Check native exit/launch/capture/timeout details and both streams in the log. The backend may reject Unicode or long paths; source files were not renamed."
+        }
+        if (-not [IO.File]::Exists($stagedOutput) -or (Get-Item -LiteralPath $stagedOutput).Length -eq 0) {
+            throw "$Tool did not produce a nonempty private output."
+        }
+        # File.Move refuses an existing target, including a collision after the
+        # preflight. Structural validation is added by T10 before publication.
+        [IO.File]::Move($stagedOutput, $OutputPath)
+        $published = $true
+    } catch {
+        $outputError = $_.Exception.Message
+    } finally {
+        if ($null -ne $ownedDirectory) {
+            try {
+                # Remove only the known run-owned file, then the empty directory.
+                if ([IO.File]::Exists($stagedOutput)) { [IO.File]::Delete($stagedOutput) }
+                [IO.Directory]::Delete($ownedDirectory, $false)
+            } catch { $cleanupError = 'Private native output cleanup was best effort: ' + $_.Exception.Message }
+        }
+    }
+    return [pscustomobject]@{
+        NativeResult = $native
+        OutputPath = $OutputPath
+        OutputPublished = $published
+        OutputError = $outputError
+        CleanupError = $cleanupError
+        Succeeded = ($published -and -not $outputError)
+    }
 }
 
 function Get-DependencyExecutablePath {
