@@ -1,0 +1,356 @@
+{
+  "schema_version": 1,
+  "commit_under_test": "2726c73ad2ff8660540c964789910a9da1f8b3a8",
+  "dirty_worktree": false,
+  "ac016": "pass",
+  "ac017": "pass",
+  "ac018": "pass",
+  "scope": "Windows controlled native argument echo integration; bounded stream/launch/process/token/env/logging faults; T07 dependency wrapper and existing real PDFtk source-discovery regression. Entry conversion routing remains T09.",
+  "pester_version": "6.2.0",
+  "cases_per_shell": {
+    "Unit": 99,
+    "NativeRunner": 36,
+    "DependencyEntry": 9,
+    "SourceDiscovery": 4
+  },
+  "native_argument_roundtrip_vectors": "Zero payload; empty first/middle/last; whitespace/tabs/CRLF; consecutive/embedded quotes; backslashes before quotes/trailing separators; literal shell metacharacters; Unicode. Exact per-element JSON assertions through application serializer/ProcessStartInfo and real compiled Windows fixture in special-character/Unicode tool directory.",
+  "stream_volume_actual_expected_characters_per_stream": 3264000,
+  "internal_defaults": {
+    "job_timeout_milliseconds": 900000,
+    "version_process_timeout_milliseconds": 5000,
+    "owned_termination_milliseconds": 1000,
+    "final_stream_capture_milliseconds": 1000,
+    "retained_characters_per_stream": 8388608,
+    "read_buffer_characters_per_stream": 8192
+  },
+  "injected_cases": {
+    "retention_cap_characters": 1024,
+    "timeout_milliseconds": 500,
+    "active_cancel_after_milliseconds": 1000,
+    "held_pipe_capture_milliseconds": 200,
+    "failed_stop_termination_milliseconds": 100,
+    "failed_stop_capture_milliseconds": 100
+  },
+  "observed_bounds": "Timeout exact owned PID exited, unrelated same-image PID alive, elapsed<4000ms. Active token cancellation exact owned PID exited/unrelated alive, elapsed<5000ms. Held inherited pipes preserve partial stdout/stderr, parent exit0 and owned descendant still alive, capture error and elapsed<4000ms; test cleans that exact descendant. Injected stop failure returns live exact owned PID, explicit best-effort termination/capture errors and elapsed<4000ms; test cleans its PID.",
+  "gs_options_observed_states": {
+    "ps51_requested_unset_empty_value": [
+      "unset",
+      "unset",
+      "value"
+    ],
+    "ps7_requested_unset_empty_value": [
+      "unset",
+      "empty",
+      "value"
+    ]
+  },
+  "log_encoding": "UTF-8 without BOM; strict UTF8 byte decode, no BOM/replacement characters; both streams, Unicode paths/text, flags, elapsed, exit7, launch error and IO-failure assertions.",
+  "parallel_execution": "Eight independent shell/tier processes ran concurrently. Pester duration includes concurrent workload and assertions; is not a standalone native performance benchmark.",
+  "pdftk_cli_version": "2.02",
+  "pdftk_sha256": "5e5cbe817ecc3cc1875369d81119472559c9624d55c7176852c8827750afa00a",
+  "native_real_pdftk_master_merges_per_shell": 5,
+  "dependency_master_page_totals": [
+    2,
+    2
+  ],
+  "source_discovery_master_page_totals": [
+    2,
+    2,
+    5
+  ],
+  "source_snapshots_unchanged": true,
+  "controlled_fixture_receipts": [
+    {
+      "receipt": "docs/codex/evidence/T08-C1-reports/argument-build-ps51.json",
+      "sha256": "bb12c2f3179a5e53cf92734012da1e2994606dbfb977d61075f9c7a58e37dedd",
+      "record": {
+        "purpose": "Controlled argument/fault process; not PDF/native-engine evidence",
+        "compiler": "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe",
+        "compiler_version": "4.8.9221.0 built by: NET481REL1LAST_25H2",
+        "source_sha256": "30c0e8e7adb20352c58747d61462717f18c59bfd75031de0ef8f6ad7de167143",
+        "executable_sha256": "a4276479b6ca8635b593bc7c195a031bed6fdcc300a38db7d995f3ea52d8192e",
+        "shell_version": "5.1.26100.9444",
+        "built_at_utc": "2026-10-07T17:47:56.3883644Z"
+      }
+    },
+    {
+      "receipt": "docs/codex/evidence/T08-C1-reports/argument-build-ps7.json",
+      "sha256": "e002bf654396384ff947613f91c5828307cc82b9a5f843f53b6385fad344cb11",
+      "record": {
+        "purpose": "Controlled argument/fault process; not PDF/native-engine evidence",
+        "compiler": "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe",
+        "compiler_version": "4.8.9221.0 built by: NET481REL1LAST_25H2",
+        "source_sha256": "30c0e8e7adb20352c58747d61462717f18c59bfd75031de0ef8f6ad7de167143",
+        "executable_sha256": "ceac6524ca1e2b44cf3cc17cfdf38033fb09df34bb1b51bb1b00e08adbaf8f9f",
+        "shell_version": "7.6.5",
+        "built_at_utc": "2026-10-07T17:48:00.5312847Z"
+      }
+    },
+    {
+      "receipt": "docs/codex/evidence/T08-C1-reports/version-build-1.json",
+      "sha256": "0d79bd18f55f4849b47b3c5cfc8cf17cde873a1d370fec6fa0786f333eeabc22",
+      "record": {
+        "purpose": "Controlled version/fault executable only; no PDF engine evidence",
+        "compiler": "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe",
+        "compiler_version": "4.8.9221.0 built by: NET481REL1LAST_25H2",
+        "source_sha256": "69ccaeb25c85831bdb04a69e7c12958fb06b956040814705fddd19dd21bac342",
+        "executable_sha256": "35dc24079472e93d47b3b5806c14971d8fada05a10218737721aec1b627a652a",
+        "built_at_utc": "2026-10-07T17:47:59.1224120Z"
+      }
+    },
+    {
+      "receipt": "docs/codex/evidence/T08-C1-reports/version-build-2.json",
+      "sha256": "00c8c5d24db226dd73a50a97e7dcb10597525bf5a9188ef48e279f724d0e563a",
+      "record": {
+        "purpose": "Controlled version/fault executable only; no PDF engine evidence",
+        "compiler": "C:\\Windows\\Microsoft.NET\\Framework64\\v4.0.30319\\csc.exe",
+        "compiler_version": "4.8.9221.0 built by: NET481REL1LAST_25H2",
+        "source_sha256": "69ccaeb25c85831bdb04a69e7c12958fb06b956040814705fddd19dd21bac342",
+        "executable_sha256": "b034394b4c82296c84b1fc8edbc4bf41251b37dc1568e8bcb3d780569eb87e1c",
+        "built_at_utc": "2026-10-07T17:48:05.3994415Z"
+      }
+    }
+  ],
+  "command_setup": "manifest = Join-Path $env:USERPROFILE '.cache/WinPDFMerger-T03/pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67/module/Pester.psd1'; exe = Join-Path $env:LOCALAPPDATA 'WinPDFMergerDevCache/T03-pdftk-295456f881ea41a4a78dcf207f8965bf/pdftk-server-2.02/app/bin/pdftk.exe'; reuse approved exact external T03 caches, no acquisition.",
+  "environment": {
+    "os": "Windows11 x64 build26300",
+    "ordinary_ps51_inventory_at_utc": "2026-10-07T17:42:13.1238058Z",
+    "standard_user_non_elevated": true,
+    "ordinary_ps51_policy": "Restricted",
+    "ordinary_ps51_all_policy_scopes": "Undefined",
+    "ps51": "5.1.26100.9444",
+    "ps7": "7.6.5",
+    "test_process_policy": "RemoteSigned previously authorized",
+    "current_supported_ps7_claim": false,
+    "persistent_policy_environment_security_changed": false,
+    "new_dependency_install_download": false,
+    "native_ghostscript_executed": false
+  },
+  "executions": [
+    {
+      "check": "unit-ps51",
+      "command": "powershell.exe -NoProfile -ExecutionPolicy RemoteSigned -File tools/test/Invoke-Tests.ps1 -PesterModulePath $manifest -Tier Unit *> tests/.work/T08-C1-Unit-ps51.txt",
+      "exit_code": 0,
+      "output": "Pester v6.2.0\n\nRunning tests from 5 files.\n\nRunning tests from 'C:\\projects\\WinPDFMerger-main\\tests\\unit\\Dependencies.Tests.ps1'\nDescribing T07: controlled dependency discovery and version regressions\n Describing AC013: strict PDFtk executable selection\n   [+] ignores a Alias named pdftk and requests applications only 1.03s\n   [+] ignores a Function named pdftk and requests applications only 73ms\n   [+] selects a valid PATH application before common installations and prefers ApplicationInfo.Path 129ms\n   [+] uses the first existing PATH application when multiple candidates are returned 62ms\n   [+] resolves the actual ProgramFiles(x86) legacy PDFtk candidate 85ms\n   [+] falls through to the ProgramFiles(x86) PDFtk Server candidate 45ms\n   [+] preserves documented common-location priority 80ms\n   [+] rejects wrong executable names and continues to a valid common candidate 50ms\n   [+] rejects a missing PATH file and continues to the next real file 51ms\n   [+] rejects a directory named pdftk.exe instead of accepting it as an executable 63ms\n   [+] uses literal common-root paths containing brackets 59ms\n   [+] returns no path when required PDFtk is absent 46ms\n Describing AC014: optional Ghostscript selection and numeric installation versions\n   [+] ignores a Alias named Ghostscript and requests applications only 300ms\n   [+] ignores a Function named Ghostscript and requests applications only 69ms\n   [+] prioritizes PATH gswin64c before PATH gswin32c and common installations 79ms\n   [+] falls back to valid PATH gswin32c when PATH gswin64c is missing or incorrectly named 80ms\n   [+] orders gs10.2 after gs9.99 numerically rather than lexically 102ms\n   [+] continues past an incomplete newest recognized installation 94ms\n   [+] ignores unrelated and malformed version directories even when they contain executables 84ms\n   [+] accepts supported two, three and four component folder versions and sorts them numerically 121ms\n   [+] ignores overflowing two, three and four component directory versions 246ms\n   [+] prefers gswin64c before gswin32c within the same installation 76ms\n   [+] uses gswin32c from a recognized common installation when its gswin64c is absent 208ms\n   [+] considers the x86 root globally by version before an older ProgramFiles installation 105ms\n   [+] prefers ProgramFiles to the x86 root when installation versions tie 121ms\n   [+] uses literal Ghostscript installation roots containing brackets 81ms\n   [+] returns no path when optional Ghostscript is absent 103ms\n Describing AC013: native version parsing through the agreed controlled process seam\n   [+] parses the exact PDFtk banner version and calls the selected executable path 333ms\n   [+] parses bare Ghostscript version 10.06 while preserving component zeros 94ms\n   [+] parses bare Ghostscript version 10.06.0 while preserving component zeros 66ms\n   [+] parses bare Ghostscript version 10.06.0.1 while preserving component zeros 39ms\n   [+] uses recognizable stderr version output when stdout is empty 79ms\n   [+] recognizes an anchored stderr version when stdout contains only unrelated diagnostics 74ms\n   [+] does not let unrelated stderr override a successful stdout version 62ms\n   [+] rejects a nonzero probe exit even when its output contains a recognizable version 151ms\n   [+] rejects unrecognized version output rather than guessing from generic digits 61ms\n   [+] rejects Ghostscript output unrelated application 10.06.0 without a complete valid version 75ms\n   [+] rejects Ghostscript output 10.06.0garbage without a complete valid version 98ms\n   [+] rejects Ghostscript output 2147483648.0 without a complete valid version 61ms\n   [+] rejects Ghostscript output 10.2.2147483648 without a complete valid version 97ms\n   [+] rejects Ghostscript output 10.2.1.2147483648 without a complete valid version 113ms\n   [+] propagates a version-probe exception instead of inventing a version 65ms\n\nRunning tests from 'C:\\projects\\WinPDFMerger-main\\tests\\unit\\FakeNative.Tests.ps1'\nDescribing T03 controlled process fixture (not PDFtk or Ghostscript)\n  [+] echoes individual space, empty, Unicode and trailing-backslash arguments 516ms\n  [+] exposes the baseline Start-Process array splitting defect 1.12s\n  [+] emits both streams independently 255ms\n  [+] returns nonzero after making a deliberately invalid partial file and refuses overwrite 331ms\n  [+] provides a finite sleep for later timeout tests 421ms\n  [+] provides high volume on both streams for later capture tests 234ms\n\nRunning tests from 'C:\\projects\\WinPDFMerger-main\\tests\\unit\\Helpers.Tests.ps1'\nDescribing AC005: importing baseline helpers\n  [+] has only function definitions at file scope 130ms\n  [+] returns to the caller without native work, outputs, location or preference changes 123ms\n  [+] preserves GS_OPTIONS unset 50ms\n  [+] preserves GS_OPTIONS empty 15ms\n  [+] preserves GS_OPTIONS value 21ms\n\nDescribing Existing helper behavior and corrected ordering regressions\n  [+] replaces invalid filename characters and trims ordinary whitespace 17ms\n  [+] orders the formerly defective numeric example naturally 77ms\n  [+] orders the formerly overflowing Int32 example without fixed-width parsing 38ms\n\nRunning tests from 'C:\\projects\\WinPDFMerger-main\\tests\\unit\\Ordering.Tests.ps1'\nDescribing AC011: ASCII numeric magnitude and leading-zero order\n  [+] orders 1, 01, 001, 2 and 10 by the documented run rules 69ms\n  [+] handles tokens beyond Int32, Int64 and decimal without overflow 45ms\n  [+] uses ordinal digits to distinguish very long values of the same significant length 24ms\n  [+] orders equal long magnitudes by original numeric-run length 19ms\n  [+] continues through multiple numeric groups 22ms\n\nDescribing AC012: deterministic natural segments and final ties\n  [+] orders all-zero numeric runs by their original length 35ms\n  [+] applies an equal-magnitude run-length tie before comparing later numeric groups 29ms\n  [+] compares later natural segments before the original case-sensitive name tie 20ms\n  [+] orders exhausted token sequences before extensions despite original-case differences 29ms\n  [+] compares mixed digit and text punctuation tokens ordinally rather than putting all numbers first 213ms\n  [+] uses the ordinal original basename before the ordinal full-path tie 24ms\n  [+] compares already canonical absolute full paths ordinally when basenames tie 29ms\n  [+] returns zero when natural name, original name and canonical full path are identical 23ms\n  [+] treats Arabic-Indic and fullwidth digits as ordinal text rather than numeric runs 87ms\n  [+] gives the same documented order and reversed-input result in en-US 123ms\n  [+] gives the same documented order and reversed-input result in tr-TR 79ms\n  [+] preserves object identities and the original collection while sorting a copy 41ms\n  [+] normalizes empty and single-input collections without copying their objects 31ms\n  [+] is reflexive, antisymmetric and transitive on a concise mixed corpus 1.21s\n\nRunning tests from 'C:\\projects\\WinPDFMerger-main\\tests\\unit\\SourceDiscovery.Tests.ps1'\nDescribing AC007: real filesystem source collection boundaries\n  [+] reports zero top-level visible PDFs clearly 69ms\n  [+] returns one PDF as a FileInfo that callers can normalize to an array 37ms\n  [+] includes multiple top-level PDFs and uppercase extensions without prefix omission 36ms\n  [+] omits subfolder and hidden PDFs while preserving every source byte, name and metadata 91ms\n  [+] reports no inputs when the only top-level PDF is hidden 21ms\n  [+] freezes the discovered collection before a later file arrives 22ms\n\nDescribing AC008: literal source directory validation\n  [+] resolves bracket names literally instead of selecting a wildcard sibling 49ms\n  [+] resolves a relative directory and a trailing separator without changing location 39ms\n  [+] accepts an explicitly qualified FileSystem directory 13ms\n  [+] preserves supported punctuation, Unicode and apostrophes in directory and input names 28ms\n  [+] rejects null input with a SourceFolder diagnostic 45ms\n  [+] rejects empty input with a SourceFolder diagnostic 24ms\n  [+] rejects whitespace input with a SourceFolder diagnostic 13ms\n  [+] rejects a missing directory 20ms\n  [+] rejects a file instead of a directory 23ms\n  [+] rejects nonfilesystem providers even when the provider path exists 14ms\n  [+] rejects wildcard expansion instead of resolving one or multiple matching directories 48ms\n  [+] rejects a directory array instead of combining source folders 16ms\n\nDescribing AC008: entry preflight failures precede dependencies and output creation\n  [+] shows usage and exits one for omitted input without an interactive prompt 1.06s\n  [+] fails a missing directory before dependency resolution and outputs 797ms\n  [+] fails a file argument before dependency resolution and outputs 750ms\n  [+] fails a nonfilesystem provider before dependency resolution and outputs 601ms\n  [+] rejects extra source paths before creating outputs 457ms\n  [+] reports zero PDFs before trying to find PDFtk 1.04s\nTests completed in 30.69s\nTests Passed: 99, Failed: 0, Skipped: 0, Inconclusive: 0, NotRun: 0\n{\n    \"observed_at_utc\":  \"2026-10-07T17:48:27.7570695Z\",\n    \"commit_under_test\":  \"2726c73ad2ff8660540c964789910a9da1f8b3a8\",\n    \"dirty_worktree\":  false,\n    \"shell_version\":  \"5.1.26100.9444\",\n    \"shell_edition\":  \"Desktop\",\n    \"process_64_bit\":  true,\n    \"execution_policy\":  \"RemoteSigned\",\n    \"pester_version\":  \"6.2.0\",\n    \"tier\":  \"Unit\",\n    \"evidence_class\":  \"unit-controlled-process-and-filesystem\",\n    \"passed\":  99,\n    \"failed\":  0,\n    \"failed_blocks\":  0,\n    \"failed_containers\":  0,\n    \"skipped\":  0,\n    \"not_run\":  0,\n    \"total\":  99\n}\nReports: C:\\projects\\WinPDFMerger-main\\tests\\.work\\pester\\cab2112dae6149c4ad6aa6a5096d4d21\n",
+      "summary": {
+        "observed_at_utc": "2026-10-07T17:48:27.7570695Z",
+        "commit_under_test": "2726c73ad2ff8660540c964789910a9da1f8b3a8",
+        "dirty_worktree": false,
+        "shell_version": "5.1.26100.9444",
+        "shell_edition": "Desktop",
+        "process_64_bit": true,
+        "execution_policy": "RemoteSigned",
+        "pester_version": "6.2.0",
+        "tier": "Unit",
+        "evidence_class": "unit-controlled-process-and-filesystem",
+        "passed": 99,
+        "failed": 0,
+        "failed_blocks": 0,
+        "failed_containers": 0,
+        "skipped": 0,
+        "not_run": 0,
+        "total": 99
+      }
+    },
+    {
+      "check": "nativerunner-ps51",
+      "command": "powershell.exe -NoProfile -ExecutionPolicy RemoteSigned -File tools/test/Invoke-Tests.ps1 -PesterModulePath $manifest -Tier NativeRunner *> tests/.work/T08-C1-NativeRunner-ps51.txt",
+      "exit_code": 0,
+      "output": "Pester v6.2.0\n\nRunning tests from 1 files.\n\nRunning tests from 'C:\\projects\\WinPDFMerger-main\\tests\\native\\NativeRunner.Tests.ps1'\nControlled native fixture build receipt: C:\\projects\\WinPDFMerger-main\\tests\\.work\\fake-native\\d10832c0a3fb4e03b9050f929cf51f2c\\build-info.json\nControlled native fixture SHA256: a4276479b6ca8635b593bc7c195a031bed6fdcc300a38db7d995f3ea52d8192e\nDescribing AC016: Windows native vector round-trip through the compiled argument echo\n  [+] preserves zero payload arguments argument boundaries 755ms\n  [+] preserves single empty value argument boundaries 278ms\n  [+] preserves empty first middle and last values argument boundaries 336ms\n  [+] preserves spaces and leading/trailing whitespace argument boundaries 234ms\n  [+] preserves tabs and newlines argument boundaries 265ms\n  [+] preserves quotes and consecutive quotes argument boundaries 674ms\n  [+] preserves backslashes before embedded quotes argument boundaries 815ms\n  [+] preserves trailing separators and space-containing roots argument boundaries 486ms\n  [+] preserves literal shell characters argument boundaries 361ms\n  [+] preserves Unicode argument boundaries 420ms\n  [+] accepts an empty serializer vector without inventing an operand 17ms\n  [+] rejects null vector instead of silently changing the argument vector 136ms\n  [+] rejects null element instead of silently changing the argument vector 8ms\n  [+] rejects nonstring element instead of silently changing the argument vector 12ms\n  [+] rejects NUL character instead of silently changing the argument vector 19ms\n  [+] sanitizes rendered control characters while delivering their original values 507ms\n\nDescribing AC017: bounded dual-stream capture and explicit native failure results\n  [+] captures Unicode stdout and stderr independently under ErrorAction Stop 319ms\n  [+] fully drains simultaneous multi-megabyte streams without deadlock 14.29s\n  [+] caps retained stream memory while draining excess output and reports incomplete capture 582ms\n  [+] returns nonzero exit and both diagnostic streams without native-warning pipeline failure 137ms\n  [+] returns explicit launch errors for a missing executable 72ms\n  [+] returns explicit launch errors for a invalid image executable 55ms\n  [+] returns explicit launch errors for a relative executable 23ms\n  [+] closes redirected stdin so a prompt reader sees EOF immediately 140ms\n  [+] bounds stream capture when an exited parent leaves inherited pipe handles open 382ms\n\nDescribing AC018: bounded owned-process timeout, cancellation and termination failure\n  [+] times out only its exact sleeping child while an unrelated same-image process survives 582ms\n  [+] honors cancellation requested before launch without creating a child 44ms\n  [+] cancels an active sleeping child while an unrelated same-image process survives 1.07s\n  [+] reports injected failure to terminate and returns within bounded capture time 1.14s\n\nDescribing T08: child-only environment and consistent Unicode native diagnostics\nGS_OPTIONS requested unset; observed caller state unset\n  [+] removes only child GS_OPTIONS and preserves actual caller unset state 443ms\nGS_OPTIONS requested empty; observed caller state unset\n  [+] removes only child GS_OPTIONS and preserves actual caller empty state 258ms\nGS_OPTIONS requested value; observed caller state value\n  [+] removes only child GS_OPTIONS and preserves actual caller value state 274ms\n  [+] inherits caller GS_OPTIONS when no explicit child removal is requested 421ms\n  [+] logs both streams, Unicode paths, result flags, elapsed time and nonzero exit consistently 432ms\n  [+] logs launch errors explicitly without inventing a zero exit status 52ms\n  [+] surfaces logging IO failure while preserving the caller environment 295ms\nTests completed in 31.81s\nTests Passed: 36, Failed: 0, Skipped: 0, Inconclusive: 0, NotRun: 0\n{\n    \"observed_at_utc\":  \"2026-10-07T17:48:29.7553994Z\",\n    \"commit_under_test\":  \"2726c73ad2ff8660540c964789910a9da1f8b3a8\",\n    \"dirty_worktree\":  false,\n    \"shell_version\":  \"5.1.26100.9444\",\n    \"shell_edition\":  \"Desktop\",\n    \"process_64_bit\":  true,\n    \"execution_policy\":  \"RemoteSigned\",\n    \"pester_version\":  \"6.2.0\",\n    \"tier\":  \"NativeRunner\",\n    \"evidence_class\":  \"windows-controlled-native-argument-process; no PDF-engine-support claim\",\n    \"passed\":  36,\n    \"failed\":  0,\n    \"failed_blocks\":  0,\n    \"failed_containers\":  0,\n    \"skipped\":  0,\n    \"not_run\":  0,\n    \"total\":  36,\n    \"native_fixture_build_receipt\":  \"C:\\\\projects\\\\WinPDFMerger-main\\\\tests\\\\.work\\\\fake-native\\\\d10832c0a3fb4e03b9050f929cf51f2c\\\\build-info.json\",\n    \"native_fixture_build_receipt_sha256\":  \"bb12c2f3179a5e53cf92734012da1e2994606dbfb977d61075f9c7a58e37dedd\"\n}\nReports: C:\\projects\\WinPDFMerger-main\\tests\\.work\\pester\\c4ab0456b3fe42e68c0b1195379d791e\n",
+      "summary": {
+        "observed_at_utc": "2026-10-07T17:48:29.7553994Z",
+        "commit_under_test": "2726c73ad2ff8660540c964789910a9da1f8b3a8",
+        "dirty_worktree": false,
+        "shell_version": "5.1.26100.9444",
+        "shell_edition": "Desktop",
+        "process_64_bit": true,
+        "execution_policy": "RemoteSigned",
+        "pester_version": "6.2.0",
+        "tier": "NativeRunner",
+        "evidence_class": "windows-controlled-native-argument-process; no PDF-engine-support claim",
+        "passed": 36,
+        "failed": 0,
+        "failed_blocks": 0,
+        "failed_containers": 0,
+        "skipped": 0,
+        "not_run": 0,
+        "total": 36,
+        "native_fixture_build_receipt": "C:\\projects\\WinPDFMerger-main\\tests\\.work\\fake-native\\d10832c0a3fb4e03b9050f929cf51f2c\\build-info.json",
+        "native_fixture_build_receipt_sha256": "bb12c2f3179a5e53cf92734012da1e2994606dbfb977d61075f9c7a58e37dedd"
+      }
+    },
+    {
+      "check": "dependencyentry-ps51",
+      "command": "powershell.exe -NoProfile -ExecutionPolicy RemoteSigned -File tools/test/Invoke-Tests.ps1 -PesterModulePath $manifest -Tier DependencyEntry -PdftkPath $exe *> tests/.work/T08-C1-DependencyEntry-ps51.txt",
+      "exit_code": 0,
+      "output": "Pester v6.2.0\n\nRunning tests from 1 files.\n\nRunning tests from 'C:\\projects\\WinPDFMerger-main\\tests\\dependencies\\Dependencies.Entry.Tests.ps1'\nReal PDFtk SHA256: 5E5CBE817ECC3CC1875369D81119472559C9624D55C7176852C8827750AFA00A\nReal PDFtk file version: \nDescribing AC015: actual Windows entry rejects absent or unusable PDFtk before outputs\n  [+] rejects missing PDFtk with installation guidance and no PDF or run log 2.82s\n  [+] rejects a discovered pdftk.exe file that is not an executable before outputs 3.16s\n  [+] rejects the controlled nonzero-exit version probe before outputs 3.82s\n  [+] rejects the controlled unrecognized-banner version probe before outputs 3.46s\n  [+] rejects the controlled finite timeout version probe before outputs 7.12s\n\nDescribing T07 actual entry dependency diagnostics with real PDFtk, narrow native smoke\n  [+] reports selected real PDFtk path and version and merges two pages with optional GS absent 3.1s\n  [+] retains a real two-page master and returns partial success when a controlled GS version probe fails 2.48s\n\nDescribing T07 real dependency version-probe helper with a controlled executable, no PDF or GS support claim\nGS_OPTIONS requested unset; observed caller state unset\nGS_OPTIONS requested empty; observed caller state unset\nGS_OPTIONS requested value; observed caller state value\n  [+] clears GS_OPTIONS only in the version child across requested unset, empty and value caller states 1.18s\n  [+] uses an injected 200ms version-probe timeout and observes its exact fixture PID exited at return 327ms\nTests completed in 31.23s\nTests Passed: 9, Failed: 0, Skipped: 0, Inconclusive: 0, NotRun: 0\n{\n    \"observed_at_utc\":  \"2026-10-07T17:48:29.4525343Z\",\n    \"commit_under_test\":  \"2726c73ad2ff8660540c964789910a9da1f8b3a8\",\n    \"dirty_worktree\":  false,\n    \"shell_version\":  \"5.1.26100.9444\",\n    \"shell_edition\":  \"Desktop\",\n    \"process_64_bit\":  true,\n    \"execution_policy\":  \"RemoteSigned\",\n    \"pester_version\":  \"6.2.0\",\n    \"tier\":  \"DependencyEntry\",\n    \"evidence_class\":  \"windows-entry-dependency-faults-controlled-process-and-real-pdftk\",\n    \"passed\":  9,\n    \"failed\":  0,\n    \"failed_blocks\":  0,\n    \"failed_containers\":  0,\n    \"skipped\":  0,\n    \"not_run\":  0,\n    \"total\":  9\n}\nReports: C:\\projects\\WinPDFMerger-main\\tests\\.work\\pester\\2a08a931289b454bbab952640db2777b\n",
+      "summary": {
+        "observed_at_utc": "2026-10-07T17:48:29.4525343Z",
+        "commit_under_test": "2726c73ad2ff8660540c964789910a9da1f8b3a8",
+        "dirty_worktree": false,
+        "shell_version": "5.1.26100.9444",
+        "shell_edition": "Desktop",
+        "process_64_bit": true,
+        "execution_policy": "RemoteSigned",
+        "pester_version": "6.2.0",
+        "tier": "DependencyEntry",
+        "evidence_class": "windows-entry-dependency-faults-controlled-process-and-real-pdftk",
+        "passed": 9,
+        "failed": 0,
+        "failed_blocks": 0,
+        "failed_containers": 0,
+        "skipped": 0,
+        "not_run": 0,
+        "total": 9
+      }
+    },
+    {
+      "check": "sourcediscovery-ps51",
+      "command": "powershell.exe -NoProfile -ExecutionPolicy RemoteSigned -File tools/test/Invoke-Tests.ps1 -PesterModulePath $manifest -Tier SourceDiscovery -PdftkPath $exe *> tests/.work/T08-C1-SourceDiscovery-ps51.txt",
+      "exit_code": 0,
+      "output": "Pester v6.2.0\n\nRunning tests from 1 files.\n\nRunning tests from 'C:\\projects\\WinPDFMerger-main\\tests\\pdf\\SourceDiscovery.Native.Tests.ps1'\nPDFtk SHA256: 5E5CBE817ECC3CC1875369D81119472559C9624D55C7176852C8827750AFA00A\nPDFtk file version: \nDescribing AC007: actual entry source discovery with real PDFtk\n  [+] merges one uppercase-extension PDF without scalar Count failure or source edits 5.81s\n  [+] keeps brackets literal through input collection and generated output checks 5.79s\n  [+] merges only multiple visible top-level inputs, retaining uppercase and legitimate result-prefix names 4.87s\n  [+] fails zero visible top-level inputs before producing PDFs or a run log 4s\nTests completed in 22.48s\nTests Passed: 4, Failed: 0, Skipped: 0, Inconclusive: 0, NotRun: 0\n{\n    \"observed_at_utc\":  \"2026-10-07T17:48:21.7161910Z\",\n    \"commit_under_test\":  \"2726c73ad2ff8660540c964789910a9da1f8b3a8\",\n    \"dirty_worktree\":  false,\n    \"shell_version\":  \"5.1.26100.9444\",\n    \"shell_edition\":  \"Desktop\",\n    \"process_64_bit\":  true,\n    \"execution_policy\":  \"RemoteSigned\",\n    \"pester_version\":  \"6.2.0\",\n    \"tier\":  \"SourceDiscovery\",\n    \"evidence_class\":  \"windows-entry-source-discovery-real-pdftk\",\n    \"passed\":  4,\n    \"failed\":  0,\n    \"failed_blocks\":  0,\n    \"failed_containers\":  0,\n    \"skipped\":  0,\n    \"not_run\":  0,\n    \"total\":  4\n}\nReports: C:\\projects\\WinPDFMerger-main\\tests\\.work\\pester\\37ac3540494a474fb11fe9b714bf719e\n",
+      "summary": {
+        "observed_at_utc": "2026-10-07T17:48:21.7161910Z",
+        "commit_under_test": "2726c73ad2ff8660540c964789910a9da1f8b3a8",
+        "dirty_worktree": false,
+        "shell_version": "5.1.26100.9444",
+        "shell_edition": "Desktop",
+        "process_64_bit": true,
+        "execution_policy": "RemoteSigned",
+        "pester_version": "6.2.0",
+        "tier": "SourceDiscovery",
+        "evidence_class": "windows-entry-source-discovery-real-pdftk",
+        "passed": 4,
+        "failed": 0,
+        "failed_blocks": 0,
+        "failed_containers": 0,
+        "skipped": 0,
+        "not_run": 0,
+        "total": 4
+      }
+    },
+    {
+      "check": "unit-ps7",
+      "command": "pwsh.exe -NoProfile -ExecutionPolicy RemoteSigned -File tools/test/Invoke-Tests.ps1 -PesterModulePath $manifest -Tier Unit *> tests/.work/T08-C1-Unit-ps7.txt",
+      "exit_code": 0,
+      "output": "Pester v6.2.0\n\nRunning tests from 5 files.\n\nRunning tests from 'C:\\projects\\WinPDFMerger-main\\tests\\unit\\Dependencies.Tests.ps1'\nDescribing T07: controlled dependency discovery and version regressions\n Describing AC013: strict PDFtk executable selection\n   [+] ignores a Alias named pdftk and requests applications only 1.8s\n   [+] ignores a Function named pdftk and requests applications only 89ms\n   [+] selects a valid PATH application before common installations and prefers ApplicationInfo.Path 166ms\n   [+] uses the first existing PATH application when multiple candidates are returned 93ms\n   [+] resolves the actual ProgramFiles(x86) legacy PDFtk candidate 76ms\n   [+] falls through to the ProgramFiles(x86) PDFtk Server candidate 74ms\n   [+] preserves documented common-location priority 114ms\n   [+] rejects wrong executable names and continues to a valid common candidate 99ms\n   [+] rejects a missing PATH file and continues to the next real file 70ms\n   [+] rejects a directory named pdftk.exe instead of accepting it as an executable 111ms\n   [+] uses literal common-root paths containing brackets 92ms\n   [+] returns no path when required PDFtk is absent 43ms\n Describing AC014: optional Ghostscript selection and numeric installation versions\n   [+] ignores a Alias named Ghostscript and requests applications only 188ms\n   [+] ignores a Function named Ghostscript and requests applications only 82ms\n   [+] prioritizes PATH gswin64c before PATH gswin32c and common installations 46ms\n   [+] falls back to valid PATH gswin32c when PATH gswin64c is missing or incorrectly named 107ms\n   [+] orders gs10.2 after gs9.99 numerically rather than lexically 104ms\n   [+] continues past an incomplete newest recognized installation 101ms\n   [+] ignores unrelated and malformed version directories even when they contain executables 169ms\n   [+] accepts supported two, three and four component folder versions and sorts them numerically 109ms\n   [+] ignores overflowing two, three and four component directory versions 128ms\n   [+] prefers gswin64c before gswin32c within the same installation 126ms\n   [+] uses gswin32c from a recognized common installation when its gswin64c is absent 89ms\n   [+] considers the x86 root globally by version before an older ProgramFiles installation 116ms\n   [+] prefers ProgramFiles to the x86 root when installation versions tie 81ms\n   [+] uses literal Ghostscript installation roots containing brackets 55ms\n   [+] returns no path when optional Ghostscript is absent 58ms\n Describing AC013: native version parsing through the agreed controlled process seam\n   [+] parses the exact PDFtk banner version and calls the selected executable path 393ms\n   [+] parses bare Ghostscript version 10.06 while preserving component zeros 141ms\n   [+] parses bare Ghostscript version 10.06.0 while preserving component zeros 38ms\n   [+] parses bare Ghostscript version 10.06.0.1 while preserving component zeros 53ms\n   [+] uses recognizable stderr version output when stdout is empty 99ms\n   [+] recognizes an anchored stderr version when stdout contains only unrelated diagnostics 187ms\n   [+] does not let unrelated stderr override a successful stdout version 65ms\n   [+] rejects a nonzero probe exit even when its output contains a recognizable version 282ms\n   [+] rejects unrecognized version output rather than guessing from generic digits 88ms\n   [+] rejects Ghostscript output unrelated application 10.06.0 without a complete valid version 96ms\n   [+] rejects Ghostscript output 10.06.0garbage without a complete valid version 71ms\n   [+] rejects Ghostscript output 2147483648.0 without a complete valid version 80ms\n   [+] rejects Ghostscript output 10.2.2147483648 without a complete valid version 49ms\n   [+] rejects Ghostscript output 10.2.1.2147483648 without a complete valid version 74ms\n   [+] propagates a version-probe exception instead of inventing a version 133ms\n\nRunning tests from 'C:\\projects\\WinPDFMerger-main\\tests\\unit\\FakeNative.Tests.ps1'\nDescribing T03 controlled process fixture (not PDFtk or Ghostscript)\n  [+] echoes individual space, empty, Unicode and trailing-backslash arguments 376ms\n  [+] exposes the baseline Start-Process array splitting defect 128ms\n  [+] emits both streams independently 130ms\n  [+] returns nonzero after making a deliberately invalid partial file and refuses overwrite 404ms\n  [+] provides a finite sleep for later timeout tests 239ms\n  [+] provides high volume on both streams for later capture tests 326ms\n\nRunning tests from 'C:\\projects\\WinPDFMerger-main\\tests\\unit\\Helpers.Tests.ps1'\nDescribing AC005: importing baseline helpers\n  [+] has only function definitions at file scope 163ms\n  [+] returns to the caller without native work, outputs, location or preference changes 145ms\n  [+] preserves GS_OPTIONS unset 42ms\n  [+] preserves GS_OPTIONS empty 13ms\n  [+] preserves GS_OPTIONS value 18ms\n\nDescribing Existing helper behavior and corrected ordering regressions\n  [+] replaces invalid filename characters and trims ordinary whitespace 11ms\n  [+] orders the formerly defective numeric example naturally 78ms\n  [+] orders the formerly overflowing Int32 example without fixed-width parsing 171ms\n\nRunning tests from 'C:\\projects\\WinPDFMerger-main\\tests\\unit\\Ordering.Tests.ps1'\nDescribing AC011: ASCII numeric magnitude and leading-zero order\n  [+] orders 1, 01, 001, 2 and 10 by the documented run rules 65ms\n  [+] handles tokens beyond Int32, Int64 and decimal without overflow 49ms\n  [+] uses ordinal digits to distinguish very long values of the same significant length 62ms\n  [+] orders equal long magnitudes by original numeric-run length 30ms\n  [+] continues through multiple numeric groups 51ms\n\nDescribing AC012: deterministic natural segments and final ties\n  [+] orders all-zero numeric runs by their original length 112ms\n  [+] applies an equal-magnitude run-length tie before comparing later numeric groups 9ms\n  [+] compares later natural segments before the original case-sensitive name tie 52ms\n  [+] orders exhausted token sequences before extensions despite original-case differences 34ms\n  [+] compares mixed digit and text punctuation tokens ordinally rather than putting all numbers first 28ms\n  [+] uses the ordinal original basename before the ordinal full-path tie 28ms\n  [+] compares already canonical absolute full paths ordinally when basenames tie 15ms\n  [+] returns zero when natural name, original name and canonical full path are identical 8ms\n  [+] treats Arabic-Indic and fullwidth digits as ordinal text rather than numeric runs 23ms\n  [+] gives the same documented order and reversed-input result in en-US 40ms\n  [+] gives the same documented order and reversed-input result in tr-TR 30ms\n  [+] preserves object identities and the original collection while sorting a copy 34ms\n  [+] normalizes empty and single-input collections without copying their objects 50ms\n  [+] is reflexive, antisymmetric and transitive on a concise mixed corpus 650ms\n\nRunning tests from 'C:\\projects\\WinPDFMerger-main\\tests\\unit\\SourceDiscovery.Tests.ps1'\nDescribing AC007: real filesystem source collection boundaries\n  [+] reports zero top-level visible PDFs clearly 95ms\n  [+] returns one PDF as a FileInfo that callers can normalize to an array 62ms\n  [+] includes multiple top-level PDFs and uppercase extensions without prefix omission 47ms\n  [+] omits subfolder and hidden PDFs while preserving every source byte, name and metadata 80ms\n  [+] reports no inputs when the only top-level PDF is hidden 22ms\n  [+] freezes the discovered collection before a later file arrives 20ms\n\nDescribing AC008: literal source directory validation\n  [+] resolves bracket names literally instead of selecting a wildcard sibling 46ms\n  [+] resolves a relative directory and a trailing separator without changing location 38ms\n  [+] accepts an explicitly qualified FileSystem directory 14ms\n  [+] preserves supported punctuation, Unicode and apostrophes in directory and input names 41ms\n  [+] rejects null input with a SourceFolder diagnostic 14ms\n  [+] rejects empty input with a SourceFolder diagnostic 11ms\n  [+] rejects whitespace input with a SourceFolder diagnostic 18ms\n  [+] rejects a missing directory 23ms\n  [+] rejects a file instead of a directory 15ms\n  [+] rejects nonfilesystem providers even when the provider path exists 17ms\n  [+] rejects wildcard expansion instead of resolving one or multiple matching directories 20ms\n  [+] rejects a directory array instead of combining source folders 35ms\n\nDescribing AC008: entry preflight failures precede dependencies and output creation\n  [+] shows usage and exits one for omitted input without an interactive prompt 1.62s\n  [+] fails a missing directory before dependency resolution and outputs 1.45s\n  [+] fails a file argument before dependency resolution and outputs 1.35s\n  [+] fails a nonfilesystem provider before dependency resolution and outputs 2.29s\n  [+] rejects extra source paths before creating outputs 1.41s\n  [+] reports zero PDFs before trying to find PDFtk 1.26s\nTests completed in 30.61s\nTests Passed: 99, Failed: 0, Skipped: 0, Inconclusive: 0, NotRun: 0\n{\n  \"observed_at_utc\": \"2026-10-07T17:48:31.2347516Z\",\n  \"commit_under_test\": \"2726c73ad2ff8660540c964789910a9da1f8b3a8\",\n  \"dirty_worktree\": false,\n  \"shell_version\": \"7.6.5\",\n  \"shell_edition\": \"Core\",\n  \"process_64_bit\": true,\n  \"execution_policy\": \"RemoteSigned\",\n  \"pester_version\": \"6.2.0\",\n  \"tier\": \"Unit\",\n  \"evidence_class\": \"unit-controlled-process-and-filesystem\",\n  \"passed\": 99,\n  \"failed\": 0,\n  \"failed_blocks\": 0,\n  \"failed_containers\": 0,\n  \"skipped\": 0,\n  \"not_run\": 0,\n  \"total\": 99\n}\nReports: C:\\projects\\WinPDFMerger-main\\tests\\.work\\pester\\2d4fd4b7b7594a81a49a37e9ce5da776\n",
+      "summary": {
+        "observed_at_utc": "2026-10-07T17:48:31.2347516Z",
+        "commit_under_test": "2726c73ad2ff8660540c964789910a9da1f8b3a8",
+        "dirty_worktree": false,
+        "shell_version": "7.6.5",
+        "shell_edition": "Core",
+        "process_64_bit": true,
+        "execution_policy": "RemoteSigned",
+        "pester_version": "6.2.0",
+        "tier": "Unit",
+        "evidence_class": "unit-controlled-process-and-filesystem",
+        "passed": 99,
+        "failed": 0,
+        "failed_blocks": 0,
+        "failed_containers": 0,
+        "skipped": 0,
+        "not_run": 0,
+        "total": 99
+      }
+    },
+    {
+      "check": "nativerunner-ps7",
+      "command": "pwsh.exe -NoProfile -ExecutionPolicy RemoteSigned -File tools/test/Invoke-Tests.ps1 -PesterModulePath $manifest -Tier NativeRunner *> tests/.work/T08-C1-NativeRunner-ps7.txt",
+      "exit_code": 0,
+      "output": "Pester v6.2.0\n\nRunning tests from 1 files.\n\nRunning tests from 'C:\\projects\\WinPDFMerger-main\\tests\\native\\NativeRunner.Tests.ps1'\nControlled native fixture build receipt: C:\\projects\\WinPDFMerger-main\\tests\\.work\\fake-native\\e3a41a82cea6421e8b8b98606bafc0c6\\build-info.json\nControlled native fixture SHA256: ceac6524ca1e2b44cf3cc17cfdf38033fb09df34bb1b51bb1b00e08adbaf8f9f\nDescribing AC016: Windows native vector round-trip through the compiled argument echo\n  [+] preserves zero payload arguments argument boundaries 995ms\n  [+] preserves single empty value argument boundaries 294ms\n  [+] preserves empty first middle and last values argument boundaries 560ms\n  [+] preserves spaces and leading/trailing whitespace argument boundaries 345ms\n  [+] preserves tabs and newlines argument boundaries 311ms\n  [+] preserves quotes and consecutive quotes argument boundaries 256ms\n  [+] preserves backslashes before embedded quotes argument boundaries 431ms\n  [+] preserves trailing separators and space-containing roots argument boundaries 180ms\n  [+] preserves literal shell characters argument boundaries 300ms\n  [+] preserves Unicode argument boundaries 428ms\n  [+] accepts an empty serializer vector without inventing an operand 67ms\n  [+] rejects null vector instead of silently changing the argument vector 144ms\n  [+] rejects null element instead of silently changing the argument vector 7ms\n  [+] rejects nonstring element instead of silently changing the argument vector 8ms\n  [+] rejects NUL character instead of silently changing the argument vector 7ms\n  [+] sanitizes rendered control characters while delivering their original values 366ms\n\nDescribing AC017: bounded dual-stream capture and explicit native failure results\n  [+] captures Unicode stdout and stderr independently under ErrorAction Stop 463ms\n  [+] fully drains simultaneous multi-megabyte streams without deadlock 14.96s\n  [+] caps retained stream memory while draining excess output and reports incomplete capture 2.16s\n  [+] returns nonzero exit and both diagnostic streams without native-warning pipeline failure 197ms\n  [+] returns explicit launch errors for a missing executable 17ms\n  [+] returns explicit launch errors for a invalid image executable 18ms\n  [+] returns explicit launch errors for a relative executable 63ms\n  [+] closes redirected stdin so a prompt reader sees EOF immediately 152ms\n  [+] bounds stream capture when an exited parent leaves inherited pipe handles open 382ms\n\nDescribing AC018: bounded owned-process timeout, cancellation and termination failure\n  [+] times out only its exact sleeping child while an unrelated same-image process survives 551ms\n  [+] honors cancellation requested before launch without creating a child 20ms\n  [+] cancels an active sleeping child while an unrelated same-image process survives 1.06s\n  [+] reports injected failure to terminate and returns within bounded capture time 889ms\n\nDescribing T08: child-only environment and consistent Unicode native diagnostics\nGS_OPTIONS requested unset; observed caller state unset\n  [+] removes only child GS_OPTIONS and preserves actual caller unset state 87ms\nGS_OPTIONS requested empty; observed caller state empty\n  [+] removes only child GS_OPTIONS and preserves actual caller empty state 107ms\nGS_OPTIONS requested value; observed caller state value\n  [+] removes only child GS_OPTIONS and preserves actual caller value state 92ms\n  [+] inherits caller GS_OPTIONS when no explicit child removal is requested 93ms\n  [+] logs both streams, Unicode paths, result flags, elapsed time and nonzero exit consistently 182ms\n  [+] logs launch errors explicitly without inventing a zero exit status 19ms\n  [+] surfaces logging IO failure while preserving the caller environment 77ms\nTests completed in 30.95s\nTests Passed: 36, Failed: 0, Skipped: 0, Inconclusive: 0, NotRun: 0\n{\n  \"observed_at_utc\": \"2026-10-07T17:48:33.1065939Z\",\n  \"commit_under_test\": \"2726c73ad2ff8660540c964789910a9da1f8b3a8\",\n  \"dirty_worktree\": false,\n  \"shell_version\": \"7.6.5\",\n  \"shell_edition\": \"Core\",\n  \"process_64_bit\": true,\n  \"execution_policy\": \"RemoteSigned\",\n  \"pester_version\": \"6.2.0\",\n  \"tier\": \"NativeRunner\",\n  \"evidence_class\": \"windows-controlled-native-argument-process; no PDF-engine-support claim\",\n  \"passed\": 36,\n  \"failed\": 0,\n  \"failed_blocks\": 0,\n  \"failed_containers\": 0,\n  \"skipped\": 0,\n  \"not_run\": 0,\n  \"total\": 36,\n  \"native_fixture_build_receipt\": \"C:\\\\projects\\\\WinPDFMerger-main\\\\tests\\\\.work\\\\fake-native\\\\e3a41a82cea6421e8b8b98606bafc0c6\\\\build-info.json\",\n  \"native_fixture_build_receipt_sha256\": \"e002bf654396384ff947613f91c5828307cc82b9a5f843f53b6385fad344cb11\"\n}\nReports: C:\\projects\\WinPDFMerger-main\\tests\\.work\\pester\\7a7ea509c0a74f02860724bfd4b254a6\n",
+      "summary": {
+        "observed_at_utc": "2026-10-07T17:48:33.1065939Z",
+        "commit_under_test": "2726c73ad2ff8660540c964789910a9da1f8b3a8",
+        "dirty_worktree": false,
+        "shell_version": "7.6.5",
+        "shell_edition": "Core",
+        "process_64_bit": true,
+        "execution_policy": "RemoteSigned",
+        "pester_version": "6.2.0",
+        "tier": "NativeRunner",
+        "evidence_class": "windows-controlled-native-argument-process; no PDF-engine-support claim",
+        "passed": 36,
+        "failed": 0,
+        "failed_blocks": 0,
+        "failed_containers": 0,
+        "skipped": 0,
+        "not_run": 0,
+        "total": 36,
+        "native_fixture_build_receipt": "C:\\projects\\WinPDFMerger-main\\tests\\.work\\fake-native\\e3a41a82cea6421e8b8b98606bafc0c6\\build-info.json",
+        "native_fixture_build_receipt_sha256": "e002bf654396384ff947613f91c5828307cc82b9a5f843f53b6385fad344cb11"
+      }
+    },
+    {
+      "check": "dependencyentry-ps7",
+      "command": "pwsh.exe -NoProfile -ExecutionPolicy RemoteSigned -File tools/test/Invoke-Tests.ps1 -PesterModulePath $manifest -Tier DependencyEntry -PdftkPath $exe *> tests/.work/T08-C1-DependencyEntry-ps7.txt",
+      "exit_code": 0,
+      "output": "Pester v6.2.0\n\nRunning tests from 1 files.\n\nRunning tests from 'C:\\projects\\WinPDFMerger-main\\tests\\dependencies\\Dependencies.Entry.Tests.ps1'\nReal PDFtk SHA256: 5E5CBE817ECC3CC1875369D81119472559C9624D55C7176852C8827750AFA00A\nReal PDFtk file version: \nDescribing AC015: actual Windows entry rejects absent or unusable PDFtk before outputs\n  [+] rejects missing PDFtk with installation guidance and no PDF or run log 4.62s\n  [+] rejects a discovered pdftk.exe file that is not an executable before outputs 3.19s\n  [+] rejects the controlled nonzero-exit version probe before outputs 2.52s\n  [+] rejects the controlled unrecognized-banner version probe before outputs 3.22s\n  [+] rejects the controlled finite timeout version probe before outputs 7.06s\n\nDescribing T07 actual entry dependency diagnostics with real PDFtk, narrow native smoke\n  [+] reports selected real PDFtk path and version and merges two pages with optional GS absent 2.74s\n  [+] retains a real two-page master and returns partial success when a controlled GS version probe fails 1.67s\n\nDescribing T07 real dependency version-probe helper with a controlled executable, no PDF or GS support claim\nGS_OPTIONS requested unset; observed caller state unset\nGS_OPTIONS requested empty; observed caller state empty\nGS_OPTIONS requested value; observed caller state value\n  [+] clears GS_OPTIONS only in the version child across requested unset, empty and value caller states 296ms\n  [+] uses an injected 200ms version-probe timeout and observes its exact fixture PID exited at return 245ms\nTests completed in 29.95s\nTests Passed: 9, Failed: 0, Skipped: 0, Inconclusive: 0, NotRun: 0\n{\n  \"observed_at_utc\": \"2026-10-07T17:48:32.1658624Z\",\n  \"commit_under_test\": \"2726c73ad2ff8660540c964789910a9da1f8b3a8\",\n  \"dirty_worktree\": false,\n  \"shell_version\": \"7.6.5\",\n  \"shell_edition\": \"Core\",\n  \"process_64_bit\": true,\n  \"execution_policy\": \"RemoteSigned\",\n  \"pester_version\": \"6.2.0\",\n  \"tier\": \"DependencyEntry\",\n  \"evidence_class\": \"windows-entry-dependency-faults-controlled-process-and-real-pdftk\",\n  \"passed\": 9,\n  \"failed\": 0,\n  \"failed_blocks\": 0,\n  \"failed_containers\": 0,\n  \"skipped\": 0,\n  \"not_run\": 0,\n  \"total\": 9\n}\nReports: C:\\projects\\WinPDFMerger-main\\tests\\.work\\pester\\2ff67be5e1d04509a696716bc22953bc\n",
+      "summary": {
+        "observed_at_utc": "2026-10-07T17:48:32.1658624Z",
+        "commit_under_test": "2726c73ad2ff8660540c964789910a9da1f8b3a8",
+        "dirty_worktree": false,
+        "shell_version": "7.6.5",
+        "shell_edition": "Core",
+        "process_64_bit": true,
+        "execution_policy": "RemoteSigned",
+        "pester_version": "6.2.0",
+        "tier": "DependencyEntry",
+        "evidence_class": "windows-entry-dependency-faults-controlled-process-and-real-pdftk",
+        "passed": 9,
+        "failed": 0,
+        "failed_blocks": 0,
+        "failed_containers": 0,
+        "skipped": 0,
+        "not_run": 0,
+        "total": 9
+      }
+    },
+    {
+      "check": "sourcediscovery-ps7",
+      "command": "pwsh.exe -NoProfile -ExecutionPolicy RemoteSigned -File tools/test/Invoke-Tests.ps1 -PesterModulePath $manifest -Tier SourceDiscovery -PdftkPath $exe *> tests/.work/T08-C1-SourceDiscovery-ps7.txt",
+      "exit_code": 0,
+      "output": "Pester v6.2.0\n\nRunning tests from 1 files.\n\nRunning tests from 'C:\\projects\\WinPDFMerger-main\\tests\\pdf\\SourceDiscovery.Native.Tests.ps1'\nPDFtk SHA256: 5E5CBE817ECC3CC1875369D81119472559C9624D55C7176852C8827750AFA00A\nPDFtk file version: \nDescribing AC007: actual entry source discovery with real PDFtk\n  [+] merges one uppercase-extension PDF without scalar Count failure or source edits 5.72s\n  [+] keeps brackets literal through input collection and generated output checks 4.12s\n  [+] merges only multiple visible top-level inputs, retaining uppercase and legitimate result-prefix names 3.86s\n  [+] fails zero visible top-level inputs before producing PDFs or a run log 2.51s\nTests completed in 18.69s\nTests Passed: 4, Failed: 0, Skipped: 0, Inconclusive: 0, NotRun: 0\n{\n  \"observed_at_utc\": \"2026-10-07T17:48:22.5191609Z\",\n  \"commit_under_test\": \"2726c73ad2ff8660540c964789910a9da1f8b3a8\",\n  \"dirty_worktree\": false,\n  \"shell_version\": \"7.6.5\",\n  \"shell_edition\": \"Core\",\n  \"process_64_bit\": true,\n  \"execution_policy\": \"RemoteSigned\",\n  \"pester_version\": \"6.2.0\",\n  \"tier\": \"SourceDiscovery\",\n  \"evidence_class\": \"windows-entry-source-discovery-real-pdftk\",\n  \"passed\": 4,\n  \"failed\": 0,\n  \"failed_blocks\": 0,\n  \"failed_containers\": 0,\n  \"skipped\": 0,\n  \"not_run\": 0,\n  \"total\": 4\n}\nReports: C:\\projects\\WinPDFMerger-main\\tests\\.work\\pester\\7b2e06483b0149d3b93301cf7846e8e8\n",
+      "summary": {
+        "observed_at_utc": "2026-10-07T17:48:22.5191609Z",
+        "commit_under_test": "2726c73ad2ff8660540c964789910a9da1f8b3a8",
+        "dirty_worktree": false,
+        "shell_version": "7.6.5",
+        "shell_edition": "Core",
+        "process_64_bit": true,
+        "execution_policy": "RemoteSigned",
+        "pester_version": "6.2.0",
+        "tier": "SourceDiscovery",
+        "evidence_class": "windows-entry-source-discovery-real-pdftk",
+        "passed": 4,
+        "failed": 0,
+        "failed_blocks": 0,
+        "failed_containers": 0,
+        "skipped": 0,
+        "not_run": 0,
+        "total": 4
+      }
+    }
+  ],
+  "supplemental_checks": [
+    {
+      "command": "Actual powershell.exe -NoProfile -Command inline Parser.ParseFile for WinPDFMerge.ps1, src/WinPDFMerge.Helpers.ps1, tools/test/Invoke-Tests.ps1, tests/native/NativeRunner.Tests.ps1 at clean C1",
+      "exit_code": 0,
+      "actual_result": "Parser PASS: 4 files; actual shell5.1.26100.9444"
+    },
+    {
+      "command": "python tools/codex/handoff.py check-plan --repo . (before final records)",
+      "exit_code": 0,
+      "actual_result": "structure-only valid=true;34tasks78cases,done7/pass15; not application tests"
+    }
+  ],
+  "limitations": [
+    "Controlled Windows echo is argument/process integration, not native PDFtk/GS path/encoding/document compatibility. Real conversion routing, prompt flags and command-length guard remain T09.",
+    "Only immediate owned child termination is implemented. Inherited writers may retain pending Framework read workers; bounded capture reports partial output. Descendant/full-run interruption cleanup remains T15.",
+    "Injected stop/logging failure simulates a fault path; it is not an actual OS denied-termination/disk-full experiment.",
+    "UTF8 decoder is verified with controlled UTF8 fixture and ASCII version banners; actual engine diagnostics encoding remains T09.",
+    "Actual PS7 7.6.5 is behind recorded supported update7.6.6; no current-supported-build/release claim.",
+    "Real PDFtk uses existing narrow ASCII/no-space app/output paths with bracket coverage. Page totals/operand logs/source preservation do not certify independent final page order/fidelity/validation/publication.",
+    "Native GS, PDF validation, overlap/no-overwrite, email outcomes, Explorer/desktop, CI/package/release and PSScriptAnalyzer remain unrun; OS support channel unestablished."
+  ]
+}

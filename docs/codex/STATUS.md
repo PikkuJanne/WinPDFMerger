@@ -2,50 +2,61 @@
 
 Target: published and independently verified `v1.0.0` in `PikkuJanne/WinPDFMerger`.
 Completed milestone: M0 — baseline and safe setup.
-Completed tasks: T01 through T07.
-Current task: T08 — Centralize bounded native execution and logging (in_progress).
+Completed tasks: T01 through T08.
+Next task: T09 — Fix real tool quoting, noninteractive execution and limits (pending).
 Publication: NOT STARTED.
 
-T07/AC013/AC014/AC015 pass at clean implementation C1
-`08733007b5dc1ffcbefe225e9cd97fe91b5a9f84`: pinned Pester6.2.0 Unit99,
-DependencyEntry9 and SourceDiscovery4 in EACH actual PS5.1/PS7 shell; all
-failures/blocks/containers/skips/not_run zero. Evidence: `evidence/T07-completion.md`,
-C1 results/live receipt, six summary/XML pairs and two controlled-build receipts
-with hashes. Historical dirty setup/mock/assertion failures remain separately labeled.
+T08/AC016/AC017/AC018 pass at clean implementation C1
+`2726c73ad2ff8660540c964789910a9da1f8b3a8`: pinned Pester6.2.0 Unit99,
+NativeRunner36, DependencyEntry9 and SourceDiscovery4 in each actual PS5.1/PS7
+shell. Failures, failed blocks/containers, skipped and not_run are all zero.
+Evidence: `evidence/T08-completion.md`, C1 results/live receipt and eight exact
+summary/sanitized XML pairs plus four controlled build receipts/hash manifest.
+Historical dirty test-harness failures and limited timing observations remain
+separately labeled in T08 checkpoint/precommit results.
 
-Executable lookup is Application-only with exact names/canonical literal leaves,
-PATH/common priority, corrected x86 paths and numeric GS fallback across both roots.
-Fixed --version probes capture both streams, bound execution/capture/owned termination,
-and clear only child GS_OPTIONS. Actual selected path/version console/log diagnostics
-pass. Missing/unusable PDFtk returns1 before outputs/logs; missing GS stays optional0.
-Found-GS version preflight failure alone retains master and returns partial2.
+Shared helpers now implement strict Windows string-vector serialization, direct
+literal absolute exe selection, concurrent capped stream draining, explicit
+launch/nonzero/capture/termination results, exact immediate-child timeout/token
+cancellation and UTF8-without-BOM logging. Controlled Windows echo verifies
+empty/space/quote/backslash/control/Unicode boundaries. Large dual streams,
+inherited-pipe capture bounds, same-image unrelated-process survival and simulated
+stop failure pass. Incomplete/truncated capture cannot imply success.
 
-DependencyEntry9 comprises5actual Windows required-dependency faults,2real-PDFtk
-two-page master smokes (one controlled GS fault), and2controlled direct-helper cases.
-Exact owned timeout PID exit and caller unset/empty/value preservation are observed.
-Test setup temporarily changes/restores only its own process environment; application
-overrides are child-only. SourceDiscovery4 reruns3real merges plus zero-input;
-page totals2,2,5, numbered operands1,2,10,legitimate-prefix and source snapshots pass.
-Five real master merges per shell are narrow native PDFtk evidence; controlled
-fixtures/GS lookup are not native Ghostscript/x86-host/general lifecycle support.
+Internal job wait defaults to 900000ms (15 minutes); version probes retain 5000ms.
+Owned termination and final stream capture each have injectable 1000ms defaults;
+each stream retains at most 8388608 characters. Synthetic real PDFtk text jobs
+with 2/200 pages took 88–100/787–835ms via the development harness, not a broad
+large-job/GS bound. Version probes now delegate to the shared runner and remove
+GS_OPTIONS only in the child. All run-log writers use UTF8 without BOM.
 
-Started clean/live0cf1ff1; owner-merged PR #5/main8ac34fe was safely fast-forwarded
-after ancestry/empty-tree review. Normal C1 push and fresh clean/live equality passed
-2026-10-07T17:31:50.341428+00:00. New draft
-[PR #6](https://github.com/PikkuJanne/WinPDFMerger/pull/6) continues readiness.
-Final records C2 must also pass fresh post-push clean/live proof; its own SHA belongs
-in session output and is rechecked next session. No reset/stash/force/origin/tag/release.
+Actual conversion invocations remain for T09. T07 strict executable/version
+selection and early faults still pass, including optional GS absent0 and found-GS
+version failure partial2/master retention. DependencyEntry9 reruns five actual
+entry faults, two real PDFtk master smokes and two controlled helper cases.
+SourceDiscovery4 reruns three real masters plus zero-input. Five real masters
+per shell retain page totals 2,2 and 2,2,5, numbered operands and source snapshots.
+Those narrow checks do not certify final PDF page order/fidelity or native GS.
+
+Started clean/live 8375ab4; owner-merged PR #6/main2470fb6 was safely fast-forwarded
+after ancestry and unchanged-tree review. C1 normal push and fresh clean/live
+equality passed 2026-10-07T17:48:58.172949+00:00. New draft
+[PR #7](https://github.com/PikkuJanne/WinPDFMerger/pull/7) continues readiness.
+Final records C2 also needs normal push/fresh clean local=live proof; its SHA
+belongs in session output and is rechecked next session. No reset, stash, force,
+origin, tag or release change.
 
 Approved exact external Pester6.2.0/PDFtk2.02 caches and test-process RemoteSigned
-reused without new install/download, vendor redistribution, persistent policy/security
-or environment change. Separate ordinary PS5.1 remains Restricted/all scopes Undefined;
-non-elevated Windows11 x64/build26300. PS5.1 actual5.1.26100.9444; PS7 actual7.6.5
-behind recorded supported update7.6.6, no current-supported-build/release claim.
+were reused. No new install/download, vendor redistribution, persistent policy/
+environment/security change or private PDFs/upload. Ordinary separate PS5.1 is
+Restricted with all scopes Undefined; Windows11 x64/build26300, non-elevated.
+Actual PS5.1 is 5.1.26100.9444; actual PS7 is 7.6.5 behind recorded update7.6.6.
+No current-supported-PS7/release claim; OS support channel unestablished.
 
-T04 source boundaries, T05 terminal launcher and T06 deterministic order remain
-accepted within their recorded scope. Independent final PDF page order/fidelity,
-general native arguments/streams/descendants/cancellation, native GS/email, PDF
-validation, destination overlap/no-overwrite, Explorer/T26, CI/package/release and
-PSScriptAnalyzer remain unrun. Native master paths are short ASCII/no-space app/output
-paths with bracket source coverage. OS support channel remains unestablished.
-T08 in_progress with dirty Unit99/NativeRunner36/DependencyEntry9 passing in both actual shells; clean C1 gates pending. T09 onward pending; AC016 onward not_run. Project/release completion outstanding.
+Immediate child ownership is tested; descendant/full-run interruption cleanup
+remains T15. Inherited writers can retain pending Framework read workers after
+bounded return. Actual native encodings/paths/prompts/length guards remain T09.
+PDF validation, destination overlap/no-overwrite, email outcomes, fidelity,
+Explorer/T26, CI/package/release and PSScriptAnalyzer remain unrun. Existing
+native app/output paths are short ASCII/no-space with bracket source coverage.
+T09 onward pending; AC019 onward not_run. Project/release completion outstanding.

@@ -64,3 +64,15 @@ existing partial2/master-retention semantics; absence remains optional0. This
 does not complete general T08 lifecycle or later conversion/publication handling.
 Evidence: `evidence/T07-completion.md`, clean C1 reports/results/live and historical
 checkpoint. No product contract or supported-build claim changed.
+
+2026-10-07 — D20: T08 uses a shared PS5.1-compatible CRT string-vector runner
+with fair asynchronous dual drains, an explicit 900000ms internal job wait,
+5000ms version process wait, separate 1000ms immediate-owned termination/final
+capture waits and 8388608 retained characters per stream. Truncation drains
+excess but fails capture/Succeeded; token cancellation and bounded inherited-pipe
+capture are controlled Windows evidence. Narrow 2/200-page synthetic PDFtk text
+timings support generous headroom, not a measured large-job/GS maximum. UTF8-noBOM
+run logging is consistent across shells. Version probes delegate now; conversion
+routing/prompt/length/native-path gates remain T09 and descendant/full-run cleanup
+T15. No product default or current-supported-build claim changed. Evidence:
+`evidence/T08-completion.md`, clean C1 results/reports/live and historical checkpoint.
