@@ -1,41 +1,36 @@
 # Next session
 
-Selected task: finish T10 — validate destination and reserve run identity.
-Read AGENTS/INDEX/STATUS, T10 TASKS entry/brief, PRODUCT_SPEC, TECHNICAL_SPEC,
-TEST_STRATEGY, GITHUB_WORKFLOW and AC022/AC023/AC024. Recheck current branch/clean
+Selected task: T11 — preflight every input PDF and page totals.
+Read AGENTS/INDEX/STATUS, T11 TASKS entry/brief, PRODUCT_SPEC, TECHNICAL_SPEC,
+TEST_STRATEGY, GITHUB_WORKFLOW and AC025/AC026. Recheck repository/branch/clean
 tree/origin fetch+push/live refs/PR/releases. Never reset to the historical baseline.
 
-T10 implementation is edited but not accepted: `-OutputFolder` named only (default
-entry directory), literal existing directory preflight, physical overlap refusal,
-reparse ancestor refusal, owned create-new/DeleteOnClose write probe, bounded
-surrogate-safe names/invariant timestamp/random16hex and atomic create-new log
-reservation. Root/empty labels use root; excessive destinations fail before native
-work. Existing final paths and sources are preserved. See T10 checkpoint and
-tools/test/Destination.md for helper/test scope. OutputFolder starts here because
-AC022 requires it; T16 owns the remaining parameter interface.
+T10 is complete at clean implementation `962f05ec1ea9f8edfbeb8e5fc755dacac24156ed`:
+202 focused cases per actual PS5.1/PS7.6.6 shell,404 total, all bad counts0.
+Required AC022/23/24 pass. Default entry output/named existing OutputFolder,
+owned write probe/denial recovery, physical same/case/8.3 identity and reparse
+ancestor refusal, bounded invariant names/random16hex and CreateNew log
+reservation are implemented. Actual two-child concurrency produces unique shared
+master/email/log identities while preserving foreign finals/sources. Exact clean
+and distinct historical dirty failure reports, versions/hashes/static findings,
+review and C1 live sync are in T10 completion/C1 records. Do not count mocks or
+historical dirty runs as native acceptance. Final records-only C2 post-push SHA/
+equality is in the prior session output under the no-self-reference workflow.
 
-Preliminary Unit134 passes both actual PS5.1/PS7.6.6 at dirty af54a03; static
-entry/helpers 0 errors/29 warnings/5 information in each. Destination15 also
-passes both shells at dirty base after a planned-email log diagnostic resolved
-the sole prior concurrency assertion failure (historical14/1 reports preserved).
-Focused regressions must pass at a clean C1 before AC022/23/24 or T10 are marked
-done. Preserve actual failed/dirty runs separately, never count mock metadata or
-missing environment as native acceptance. After acceptance, push matching branch,
-fresh clean local/live equality, retain exact/sanitized hashes and independent
-review in C2 records, then select T11. Final C2 SHA/equality belongs in session
-output under the no-self-reference checkpoint workflow.
+Draft [PR10](https://github.com/PikkuJanne/WinPDFMerger/pull/10) is the current implementation PR; PR9 was owner-merged.
+Reuse exact verified external caches from T03/T09 receipts and T10 cache audit;
+prior acquisition/testing/RemoteSigned authorization persists. No repeat approval
+or installer is needed. Ordinary PS5.1 Restricted/all scopesUndefined, non-elevated
+Windows11x64/build26300; actual NTFS scope only, OS support channel unestablished.
 
-PR9 is owner-merged at main af54a0310745fc88c7019716c60fdd525353ff33; safe
-ancestry/identical-tree fast-forward completed before edits. A new draft PR is
-needed after the next implementation push. Reuse exact verified external caches
-in T03/T09 acquisition receipts; no repeat dependency or process RemoteSigned
-approval is needed. T10 cache check rehashed 1,388 extracted files successfully;
-ordinary PS5.1 Restricted/all scopes Undefined, non-elevated Windows11 x64/build26300.
+T11 must preflight every frozen ordered input, reject invalid/unsupported-encrypted
+PDFs without omitting any source, and derive exact expected page totals with
+regressions. Preserve T10 destination/run identity and T09 fixed direct/bounded/
+noninteractive native jobs, optional GS/default screen, sources and no-overwrite
+publication. Helpers remain import-only/PS5.1-compatible. T12 general staging,
+T13 master validation, T14 email/outcomes and T15 interruption remain later tasks.
+OutputFolder starts at T10 for AC022; T16 owns remaining public parameters.
 
-Physical metadata is volume64/file128 via a tiny lazy Windows adapter; actual
-filesystem claims remain limited to tested local NTFS. Reparse paths are refused,
-unavailable identity fails closed. T11 input/page inventory, T12 generalized
-staging, T13 master validation, T14 email/outcomes, T15 full interruption remain.
-OS support channel, fidelity/Explorer/CI/package/security/release compatibility
-are still pending. Keep one conceptual task; no intermediate tags/releases,
-source/private-PDF upload, runtime network or persistent security changes.
+Full fidelity/Explorer/CI/package/security/release compatibility is still pending.
+Keep one conceptual task; no intermediate tags/releases, private-PDF upload,
+runtime network, force/reset/stash/origin or persistent security changes.

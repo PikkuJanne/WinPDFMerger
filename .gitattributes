@@ -49,3 +49,14 @@
 
 # Preserve T10 reused dependency audit receipt bytes.
 /docs/codex/evidence/T10-cache-verification.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Preserve exact T10 checkpoint report/provenance bytes and recorded hashes.
+/docs/codex/evidence/T10-C1-reports/* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T10-C1-results.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T10-C1-review.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T10-C1-live-sync.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Historical XML embeds exact captured empty diagnostic values after ': '.
+# Keep those bytes/digests; waive only trailing spaces in these two data files.
+/docs/codex/evidence/T10-C1-reports/historical-dirty-3-Destination-results.xml -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T10-C1-reports/historical-dirty-4-Destination-results.xml -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

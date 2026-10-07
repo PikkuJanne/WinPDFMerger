@@ -1,0 +1,515 @@
+{
+  "schema_version": 1,
+  "task": "T10",
+  "reviewer": "independent review subagent",
+  "observed_at_utc": "2026-10-07T20:29:34Z",
+  "baseline_commit": "af54a0310745fc88c7019716c60fdd525353ff33",
+  "reviewed_revision": {
+    "commit_under_test": "962f05ec1ea9f8edfbeb8e5fc755dacac24156ed",
+    "dirty_worktree": false,
+    "meaning": "Clean implementation C1. All eleven frozen reviewed file hashes independently rechecked identical; public clean execution and live-sync evidence audit remains pending."
+  },
+  "review_roles": {
+    "t10_production_or_test_edits": false,
+    "tracked_edits": false,
+    "t10_dependency_acquisition": false,
+    "historical_dependency_role": "This reviewer acquired authorized development-only PowerShell 7.6.6 and PSScriptAnalyzer 1.25.0 caches in T09. Another agent acquired Ghostscript. T10 reuses prior receipts; runtime/tests were independently reviewed.",
+    "authorized_ignored_output": "tests/.work/T10-review-C1.json"
+  },
+  "scope": [
+    "T10 existing literal OutputFolder with default captured entry-script directory; no fallback creation.",
+    "Physical directory identity using lazy FILE_ID_INFO volume64/file128 metadata, same/case/available short-name aliases, explicit leaf/ancestor reparse refusal, fail-closed metadata errors.",
+    "Owned CreateNew/DeleteOnClose byte-write-and-flush probe and atomic CreateNew shared-identity log reservation.",
+    "Bounded safe folder token, invariant timestamp, random16hex suffix, surrogate-safe truncation and actual final/private native output path budgets.",
+    "Native standard-user ACL denial/readability/explicit destination recovery/original SDDL restoration; confined nonrecursive junction unlinking; two simultaneously live application children and per-result master/email/log attribution.",
+    "M1 boundary preservation: PS5.1 import-only helpers, sole positional source, top-level source discovery, strict executable selection, direct bounded noninteractive native jobs, fresh private outputs, SAFER, child-only GS_OPTIONS removal and no-overwrite final moves."
+  ],
+  "reviewed_files": [
+    {
+      "path": "WinPDFMerge.ps1",
+      "sha256": "d1bd4971a5499d51eb9007eab0ee863cc61a7369b5096340600e79cb7d129573"
+    },
+    {
+      "path": "WinPDFMerge.bat",
+      "sha256": "288287beefea974c64d39b34266332d83112b9106c952efd8c304edfedebff83"
+    },
+    {
+      "path": "src/WinPDFMerge.Helpers.ps1",
+      "sha256": "057ca9761639233b2f88e1fd4b4de5afe67f2342c52f567074cfcbb64d5e83e2"
+    },
+    {
+      "path": "tests/unit/Destination.Tests.ps1",
+      "sha256": "56b19a3177e64e9b98730ce234cabbbb143ca1af2dd3247d5e0ee81f9f1e61bb"
+    },
+    {
+      "path": "tests/filesafety/Destination.Native.Tests.ps1",
+      "sha256": "08e16e1621649e8fc472abaaa9c7132efecb40f33f0c6299b3c9b875decf8e6a"
+    },
+    {
+      "path": "tests/TestSupport.ps1",
+      "sha256": "7377be7c09cdaf12533f13cb3d56342ac19e368ad1604012b364fa86263af039"
+    },
+    {
+      "path": "tools/test/Invoke-Tests.ps1",
+      "sha256": "7ee1cfa72bc7ba26243060274eb207c20db629ce407202441cc41a23035f0f26"
+    },
+    {
+      "path": "README.md",
+      "sha256": "1f34fa81fb68d9c2b40e8c16e49440fe35a9a3fd0e005c17a9d5e6122e8c5e2d"
+    },
+    {
+      "path": "tools/test/Destination.md",
+      "sha256": "576064e3af427a4d7d8b58bf959aadc385db2e7347d3f3a7173fcd76dbaf7037"
+    },
+    {
+      "path": ".gitattributes",
+      "sha256": "499250a09722964bcb430e45140d966b8895dd1daf9172d04417a8dd4a503e9c"
+    },
+    {
+      "path": "docs/codex/evidence/T10-cache-verification.json",
+      "sha256": "281b5b49d3a29fb83403bc0970762b1f947d8283fe518b388c4e2f9a15ca58f0"
+    }
+  ],
+  "specifications_examined": [
+    "AGENTS.md",
+    "docs/codex/INDEX.md",
+    "docs/codex/STATUS.md",
+    "docs/codex/NEXT_SESSION.md",
+    "docs/codex/TASKS.json",
+    "docs/codex/tasks/T10.md",
+    "docs/codex/PRODUCT_SPEC.md",
+    "docs/codex/TECHNICAL_SPEC.md",
+    "docs/codex/TEST_STRATEGY.md",
+    "docs/codex/GITHUB_WORKFLOW.md",
+    "docs/codex/ACCEPTANCE_CASES.json",
+    "docs/codex/evidence/T10-checkpoint.md"
+  ],
+  "primary_metadata_references": [
+    "https://learn.microsoft.com/en-us/windows/win32/api/winbase/ns-winbase-file_id_info",
+    "https://learn.microsoft.com/en-us/windows/win32/api/winbase/nf-winbase-getfileinformationbyhandleex",
+    "https://learn.microsoft.com/en-us/windows/win32/api/fileapi/nf-fileapi-createfilew"
+  ],
+  "findings": [],
+  "resolved_review_notes": [
+    {
+      "kind": "test-harness bound",
+      "description": "Concurrent helper originally read asynchronous stream .Result after bounded process exit without a stream bound. Frozen helper now waits for both stream tasks with a 5000 ms limit before .Result; no demonstrated application failure."
+    },
+    {
+      "kind": "observations",
+      "description": "Concurrency observation results originally reused the first child for both identities. Frozen test uniquely matches each master path in its own child stdout and excludes the other identity from stdout/log."
+    },
+    {
+      "kind": "preliminary native failure",
+      "description": "Initial actual Destination suites each passed14/failed1 because the concurrent assertion expected a final email path absent from the log. Application now logs explicitly 'Planned email output', preserving optional-email outcome semantics. Retry suites each passed15 with every bad count zero. Both failed dirty reports are retained separately and do not contribute to acceptance totals."
+    }
+  ],
+  "metadata_sanity": {
+    "performed_by_reviewer": true,
+    "actual_shells": [
+      "5.1.26100.9444 Desktop",
+      "7.6.6 Core"
+    ],
+    "operation": "Read-only helper calls on the repository, its case alias and a distinct existing test directory; reflection of the boxed private FILE_ID_INFO struct. No orchestration/probe/log/native PDF job was invoked.",
+    "results": {
+      "struct_bytes": 24,
+      "case_alias_same": true,
+      "distinct_directory_different": true,
+      "identity_format_valid": true,
+      "exit_code": 0
+    },
+    "historical_harness_fault": "Initial Marshal.SizeOf projection supplied RuntimeType and selected the Object overload, producing a reflection projection error after successful metadata calls. Corrected projection boxed the private struct; both shell reruns exited0. This is reviewer tooling, not an application/native acceptance failure.",
+    "evidence_class": "read-only Windows metadata ABI sanity, not AC022/23/24 completion"
+  },
+  "static_analysis": {
+    "analyzer_version": "1.25.0",
+    "reports": [
+      {
+        "path": "tests/.work/T10-analyzer-C1-ps51.json",
+        "sha256": "c73719754eedf0f00a161ad4bbdea732f791279bc38aca26844f3449aa08c797"
+      },
+      {
+        "path": "tests/.work/T10-analyzer-C1-ps7.json",
+        "sha256": "d7944f3297e288327957c006b906de9d3bfa577c962b8f634ded9a4af63ea574"
+      }
+    ],
+    "actual_shells": [
+      "5.1.26100.9444",
+      "7.6.6"
+    ],
+    "commit_under_test": "962f05ec1ea9f8edfbeb8e5fc755dacac24156ed",
+    "dirty_worktree": false,
+    "each_shell": {
+      "errors": 0,
+      "warnings": 29,
+      "information": 5
+    },
+    "warning_rules": {
+      "PSAvoidUsingWriteHost": 19,
+      "PSUseBOMForUnicodeEncodedFile": 1,
+      "PSUseSingularNouns": 3,
+      "PSUseApprovedVerbs": 3,
+      "PSUseShouldProcessForStateChangingFunctions": 3
+    },
+    "information_rules": {
+      "PSUseOutputTypeCorrectly": 5
+    },
+    "classification": "No T10 blocking defect identified. WriteHost findings concern intended console diagnostics; non-ASCII is confined to entry comments; internal naming/type annotations are style; ShouldProcess heuristics include a pure identity builder/private allocation and mandatory owned-process cleanup. Findings are retained, not a lint-clean or T22 claim.",
+    "limitation": "Clean C1 analyzers confirm the reviewed final entry/helper bytes; full T22 static/fault acceptance remains future work.",
+    "historical_preliminary_reports": [
+      {
+        "path": "tests/.work/T10-analyzer-precommit-ps51.json",
+        "sha256": "f957c83fd42730c406e776340edc2076692c994b39298bdef83ffd818b9aaa14"
+      },
+      {
+        "path": "tests/.work/T10-analyzer-precommit-ps7.json",
+        "sha256": "76e9ba4c7f6482a8edbff2a11211c14ccb893c9e3f1de980844c4fdbb6982c61"
+      }
+    ]
+  },
+  "preliminary_reports_examined": [
+    {
+      "path": "tests/.work/pester/92a0b91064834c289a9bba21ce0ba0fa/summary.json",
+      "sha256": "4760ffa0b36a833ec6d5db932c4e232967e3f8b8b2b810ceae78270780666c98",
+      "xml_path": "tests/.work/pester/92a0b91064834c289a9bba21ce0ba0fa/results.xml",
+      "xml_sha256": "6690e3961f7ff7392c0803b9f2fab429cd827cfd2aa8f103f636aa01fc3613a0",
+      "shell_version": "5.1.26100.9444",
+      "tier": "Unit",
+      "commit_under_test": "af54a0310745fc88c7019716c60fdd525353ff33",
+      "dirty_worktree": true,
+      "counts": {
+        "passed": 134,
+        "failed": 0,
+        "failed_blocks": 0,
+        "failed_containers": 0,
+        "skipped": 0,
+        "not_run": 0,
+        "total": 134
+      },
+      "xml_total": 134,
+      "xml_failures": 0,
+      "class": "dirty preliminary pass, excluded from clean acceptance"
+    },
+    {
+      "path": "tests/.work/pester/62bdc1d36afb45bd9ad5a4ef40ae4b95/summary.json",
+      "sha256": "6b6a9ae1d586637dffb25f9dc6c75ed95262955faac09d1e4463fd090d09a6ed",
+      "xml_path": "tests/.work/pester/62bdc1d36afb45bd9ad5a4ef40ae4b95/results.xml",
+      "xml_sha256": "1b48c3d5274bd5563b03c29917b2c65184aead992c662d61b897303747e7636f",
+      "shell_version": "7.6.6",
+      "tier": "Unit",
+      "commit_under_test": "af54a0310745fc88c7019716c60fdd525353ff33",
+      "dirty_worktree": true,
+      "counts": {
+        "passed": 134,
+        "failed": 0,
+        "failed_blocks": 0,
+        "failed_containers": 0,
+        "skipped": 0,
+        "not_run": 0,
+        "total": 134
+      },
+      "xml_total": 134,
+      "xml_failures": 0,
+      "class": "dirty preliminary pass, excluded from clean acceptance"
+    },
+    {
+      "path": "tests/.work/pester/d202e566683d41c8bf37d99ed4f034f7/summary.json",
+      "sha256": "0f9275e79f1c5c8a470e00faac7854168adf758e5ef65d6e1c8e90707de554c2",
+      "xml_path": "tests/.work/pester/d202e566683d41c8bf37d99ed4f034f7/results.xml",
+      "xml_sha256": "8f221fbe1b1da69a1bda9a2e586c03c5e0d3d3d0394fed743744438344056d57",
+      "shell_version": "5.1.26100.9444",
+      "tier": "Destination",
+      "commit_under_test": "af54a0310745fc88c7019716c60fdd525353ff33",
+      "dirty_worktree": true,
+      "counts": {
+        "passed": 15,
+        "failed": 0,
+        "failed_blocks": 0,
+        "failed_containers": 0,
+        "skipped": 0,
+        "not_run": 0,
+        "total": 15
+      },
+      "xml_total": 15,
+      "xml_failures": 0,
+      "class": "dirty preliminary pass, excluded from clean acceptance"
+    },
+    {
+      "path": "tests/.work/pester/14f7c0bd6f034f588be8edee9fb7a689/summary.json",
+      "sha256": "14dc0837c273d57e9e9b12804870e70e495b4e2a44ac07f6d2ad7069de2a0b6f",
+      "xml_path": "tests/.work/pester/14f7c0bd6f034f588be8edee9fb7a689/results.xml",
+      "xml_sha256": "3ba346dc66be53542f0bc426cd35520e38dd8849b0cc01eb367ff346bc8236b6",
+      "shell_version": "7.6.6",
+      "tier": "Destination",
+      "commit_under_test": "af54a0310745fc88c7019716c60fdd525353ff33",
+      "dirty_worktree": true,
+      "counts": {
+        "passed": 15,
+        "failed": 0,
+        "failed_blocks": 0,
+        "failed_containers": 0,
+        "skipped": 0,
+        "not_run": 0,
+        "total": 15
+      },
+      "xml_total": 15,
+      "xml_failures": 0,
+      "class": "dirty preliminary pass, excluded from clean acceptance"
+    },
+    {
+      "path": "tests/.work/pester/549b1f7f38874113b30060823d8cadcd/summary.json",
+      "sha256": "1c747ed8457c802cd58034ce87786ebfbd615413a761400b20794d9feffdc0d5",
+      "xml_path": "tests/.work/pester/549b1f7f38874113b30060823d8cadcd/results.xml",
+      "xml_sha256": "31b24ee6ed8fc17ee85b20ca3ca1aaeda92f23ac3c4dbc325a36fc1978a5eedf",
+      "shell_version": "5.1.26100.9444",
+      "tier": "Destination",
+      "commit_under_test": "af54a0310745fc88c7019716c60fdd525353ff33",
+      "dirty_worktree": true,
+      "counts": {
+        "passed": 14,
+        "failed": 1,
+        "failed_blocks": 0,
+        "failed_containers": 0,
+        "skipped": 0,
+        "not_run": 0,
+        "total": 15
+      },
+      "xml_total": 15,
+      "xml_failures": 1,
+      "class": "historical dirty failed run, excluded from acceptance"
+    },
+    {
+      "path": "tests/.work/pester/96665e57cc79405481cdff60613093ed/summary.json",
+      "sha256": "ff4252c43d0777fa5f2782fd2aa932a86f0a69c19e09af3ac6c121a0955a2ad6",
+      "xml_path": "tests/.work/pester/96665e57cc79405481cdff60613093ed/results.xml",
+      "xml_sha256": "5a0b4b4f0c77d98f62e9cedd2a44929994de7a4b8c2ccd3a48d1b15eaa6203ce",
+      "shell_version": "7.6.6",
+      "tier": "Destination",
+      "commit_under_test": "af54a0310745fc88c7019716c60fdd525353ff33",
+      "dirty_worktree": true,
+      "counts": {
+        "passed": 14,
+        "failed": 1,
+        "failed_blocks": 0,
+        "failed_containers": 0,
+        "skipped": 0,
+        "not_run": 0,
+        "total": 15
+      },
+      "xml_total": 15,
+      "xml_failures": 1,
+      "class": "historical dirty failed run, excluded from acceptance"
+    }
+  ],
+  "preliminary_native_observations_examined": [
+    {
+      "path": "tests/.work/destination/f2f37275b2ac448cba1a4b0bc07cd84b/native-observations.json",
+      "sha256": "afc74974bb1cf554c13f1db61b0c8056f794e60bd763dcdb29fed35c70643e0c",
+      "shell_version": "5.1.26100.9444"
+    },
+    {
+      "path": "tests/.work/destination/05f905729658468fba99d86b33b4dc02/native-observations.json",
+      "sha256": "90997c4cd215795b8e82a963eeb6ace4c73995961085ac62a3dc7baccc38a805",
+      "shell_version": "7.6.6"
+    }
+  ],
+  "acceptance_audit": {
+    "status": "pass",
+    "manifest_sha256": "ba9c63134515a3b01d3a045cda1de7332720fa1706fef9c898a06585d70fbaf5",
+    "results_sha256": "b624cf69e2361fbab82bcf979caac49b8d64c596d276692712e2aa83b4f75830",
+    "public_report_files": 64,
+    "total_files_with_results": 65,
+    "clean_summary_xml_pairs": 16,
+    "all_summary_xml_pairs": 22,
+    "native_observations_raw_and_sanitized_verified": 10,
+    "clean_passes": 404,
+    "failures_skips_not_run": 0,
+    "scope": "Eight focused tiers; raw binding, exact byte copies, parsed data preservation, ownership/build hashes, privacy and historical exclusion independently checked",
+    "clean_commit_under_test": "962f05ec1ea9f8edfbeb8e5fc755dacac24156ed",
+    "actual_shells": [
+      "5.1.26100.9444 Desktop x64",
+      "7.6.6 Core x64"
+    ],
+    "expected_counts": {
+      "Unit": 134,
+      "Destination": 15,
+      "ToolInvocation": 12,
+      "PdftkPaths": 13,
+      "GhostscriptPaths": 13,
+      "SourceDiscovery": 4,
+      "DependencyEntry": 9,
+      "LauncherNative": 2
+    },
+    "passed_per_shell": {
+      "ps51": 202,
+      "ps7": 202
+    },
+    "clean_native_observations": 6,
+    "historical_native_observations": 4,
+    "controlled_dependency_entry_builds": 2,
+    "dependency_acquisition_receipts": 5,
+    "historical_dirty_reports": 6,
+    "historical_rule": "Both preliminary Unit134 passes, both Destination14pass/1fail runs and both corrected Destination15 passes are preserved and excluded from404 clean acceptance passes.",
+    "data_preservation": "All22 parsed XML trees preserve tags, node counts, nonidentity attributes/text except allowed path-prefix masks; all10 native JSON objects and collector/static metadata preserve parsed fields/types except allowed string-prefix redaction. Original summary/build bytes match the retained exact copies.",
+    "hash_binding": "Verified every referenced retained file hash; raw summaries/XML/native/log/stderr/run/aggregate/collector digests; expected-count/runner hashes; exact attributable controlled executable/build/source hashes; ordinary/cache bytes and existing acquisition receipt hashes.",
+    "privacy": "Complete64-file report set plus results contains no raw user profile path, collected XML user/domain/machine identities or credential markers. Synthetic source filenames only; no private PDFs/SID/SDDL copied.",
+    "ac022": "pass",
+    "ac023": "pass",
+    "ac024": "pass",
+    "qualification": "Accepts only the executed clean T10 implementation gates. Final C2 records commit/push/live equality remains root's subsequent gate."
+  },
+  "limitations": [
+    "Actual filesystem evidence is local NTFS on the recorded non-elevated Windows host. Other filesystems, live UNC/ARM/x86 and OS support-channel compatibility remain unvalidated.",
+    "Reparse ancestors are deliberately refused. Path preflight is not a transactional guarantee against an unrelated process replacing paths after inspection.",
+    "Unchanged general TestSupport descendant/inherited-pipe fault behavior is not certified by the new bounded concurrent helper.",
+    "T11 owns input/page inventory; T12 general staging/state; T13 master validation/publication; T14 email validation/size/outcomes; T15 full interruption/descendant cleanup; T16 remaining public parameters.",
+    "Narrow page-count/source snapshots and shared identities do not certify visible fidelity, PDF/A, signatures, forms, attachments, accessibility or malware safety. Explorer, CI, static/fault, packaging/security and final published-and-independently-downloaded v1.0.0 gates remain later work."
+  ],
+  "privacy": "Sanitized relative repository/test paths only. No user SID/SDDL, private document names or PDF contents copied into this reviewer record; raw synthetic logs remain ignored pending root's reviewed public collection.",
+  "initial_observed_at_utc": "2026-10-07T20:02:40Z",
+  "collector_preparation_review": {
+    "status": "reviewed, no open blocking concern",
+    "reviewed_ignored_files": [
+      {
+        "path": "tests/.work/Run-T10Checkpoint.ps1",
+        "sha256": "49ef35cd95511b7d2bc84353a3da2563a72c0c7d31f6c02c3b5284992270fa7d"
+      },
+      {
+        "path": "tests/.work/Collect-T10Evidence.py",
+        "sha256": "159ceac83fff6acd2c1a4d1735a106bafb1de6ee6c554dfbbb8861785aedd3ea"
+      },
+      {
+        "path": "tests/.work/Collect-T09C3Evidence.py",
+        "sha256": "2e8953bf5a5b78a3849fca1c2a966910ca4a6758a6f42effcf2cc1b6a840ac83"
+      },
+      {
+        "path": "tests/.work/T10-expected-counts.json",
+        "sha256": "1315d2a4d234ec423b9ce4f98a3fc062f1e0bac2c3b92b0c0d4c9cda4ebba4d0"
+      }
+    ],
+    "frozen_counts": {
+      "Unit": 134,
+      "Destination": 15,
+      "ToolInvocation": 12,
+      "PdftkPaths": 13,
+      "GhostscriptPaths": 13,
+      "SourceDiscovery": 4,
+      "DependencyEntry": 9,
+      "LauncherNative": 2
+    },
+    "expected_total_per_shell": 202,
+    "scope": "Eight focused destination/identity and affected-entry/native tiers. Full NativeRunner, Launcher and Python helper suites are unchanged and are not rerun or claimed here.",
+    "examined_gates": "Exact clean SHA at every suite/end; positive frozen tier counts and runner/count input hashes; explicit approved shell/engine/module paths; bounded process/stream capture; attributable DependencyEntry fixture receipt; clean native shell/engine/standard-user observations; summary/XML/raw digest binding; historical dirty records excluded; recursive redaction/privacy gates; full in-memory validation before exclusive public creation/no overwrite."
+  },
+  "reviewed_file_context": "Eleven frozen clean C1 source/test/document/cache bytes at 962f05ec remain recorded above. The later records-only C2 .gitattributes edit is intentional; that historical C1 hash is not asserted as a current C2 byte hash. All current application/test/tool/README/Destination.md bytes still match C1.",
+  "records_audit_context": {
+    "implementation_commit": "962f05ec1ea9f8edfbeb8e5fc755dacac24156ed",
+    "current_worktree": "Records-only C2 preparation on C1; no runtime/test/tool delta.",
+    "records_reviewed": [
+      {
+        "path": ".gitattributes",
+        "sha256": "c3735488343dae76e6ccbd5e41d521e940b7ad9034f564eb7b48834a8ac05695"
+      },
+      {
+        "path": "docs/codex/ACCEPTANCE_CASES.json",
+        "sha256": "e2ad6415b587b08224b4d4f0d1c4d4e0ea2acf7a3d439e54865fc9ca680ed00a"
+      },
+      {
+        "path": "docs/codex/COMPATIBILITY_MATRIX.md",
+        "sha256": "6ccaffd6d0a71f9a3c7c4120871e40aa3ff457a019d1d0cd9f66a308e05f39f4"
+      },
+      {
+        "path": "docs/codex/DECISIONS.md",
+        "sha256": "0d13f88410a3663032628651d2d863329afd944340f589613273f58330245103"
+      },
+      {
+        "path": "docs/codex/NEXT_SESSION.md",
+        "sha256": "186cc91bd4f0dd3cc6e9e9da8835cd6fef037131de5bdef4a1d12782ef48bc0c"
+      },
+      {
+        "path": "docs/codex/STATUS.md",
+        "sha256": "50f1d08ece36baf4cb3e193f52068b3782b169e5a2ad0bf4b2370a121ce296c3"
+      },
+      {
+        "path": "docs/codex/TASKS.json",
+        "sha256": "ec3273ad01fc8be35a79fa17641b164c304e9b04f4350a3bff9bd37253af7677"
+      },
+      {
+        "path": "docs/codex/evidence/T10-checkpoint.md",
+        "sha256": "91509dbe011205524a64743ae0c96f794352ce3f3b7ac6198fcccb43bf968af9"
+      },
+      {
+        "path": "docs/codex/evidence/T10-completion.md",
+        "sha256": "40746cc32a1516b6edc47f90d5ea148239b5e9e44ce77061f49ca918a4a958c7"
+      },
+      {
+        "path": "docs/codex/evidence/T10-C1-live-sync.json",
+        "sha256": "5ce5d80d36b116ee55a3d56ded22a20228344b05e27806e0a47056a0b21bbaf1"
+      }
+    ],
+    "self_reference": "This review does not store its own digest or a future final-records commit SHA."
+  },
+  "handoff_and_live_audit": {
+    "tasks": "T10 done, T11 pending/next; AC022/AC023/AC024 pass and downstream AC025/AC026 remain future.",
+    "documents": "STATUS, NEXT_SESSION, task/case entries, completion, matrix, D23 and checkpoint consistently scope202 per shell/404 total, exact clean C1, standard-user local NTFS, historical failure retention and correct later task map.",
+    "origin_fetch_and_push": "https://github.com/PikkuJanne/WinPDFMerger.git",
+    "independent_live_remote_head": "962f05ec1ea9f8edfbeb8e5fc755dacac24156ed",
+    "independent_live_main_head": "af54a0310745fc88c7019716c60fdd525353ff33",
+    "pr": {
+      "number": 10,
+      "url": "https://github.com/PikkuJanne/WinPDFMerger/pull/10",
+      "state": "OPEN",
+      "is_draft": true,
+      "base": "main",
+      "head_branch": "codex/v1.0.0-readiness",
+      "head_commit": "962f05ec1ea9f8edfbeb8e5fc755dacac24156ed",
+      "merge_state": "CLEAN"
+    },
+    "retained_clean_c1_sync": "docs/codex/evidence/T10-C1-live-sync.json at2026-10-07T20:18:40.312036+00:00 matches independently read live ref.",
+    "check_plan": {
+      "status": "pass",
+      "performed_by_reviewer": true,
+      "command": "python -B tools/codex/handoff.py check-plan --repo .",
+      "exit_code": 0,
+      "valid": true,
+      "gate": "structure-only",
+      "task_count": 34,
+      "case_count": 78,
+      "done_tasks": 10,
+      "passed_cases": 24,
+      "excluded_cases": 0,
+      "limitation": "Record validation only; application/native gates and live state are audited separately above.",
+      "initial_missing_review": "Before root copied the completed reviewer artifact, the same check failed closed solely on missing/empty T10-C1-review.json. After the authorized exact public copy, the independent rerun passed. This was a record completeness gate, not an application/test failure."
+    },
+    "final_c2_sync": "pending root records-only commit/push and fresh clean local/live equality; no future SHA invented",
+    "staging_review": "Root's ignored staging helper is confined to76 intended record paths and verifies67 retained C1 evidence blobs byte for byte. A key mismatch (open_findings versus actual findings) was identified before execution; root corrected gates to require findings==[] and acceptance_audit.status=='pass'. Final stage/commit/push remains root-owned."
+  },
+  "post_audit_records_correction": {
+    "scope": "Records-only .gitattributes and completion disclosure; no runtime/test/tool source delta and no native rerun justified.",
+    "initial_staging_fault": "Root's first cached whitespace check rejected12 trailing-space lines in the two historical failed Destination XMLs. Independent byte inspection confirms exactly6 captured empty-diagnostic ': ' lines in each. This is a generated records/staging check failure, separate from application test counts.",
+    "preserved_files": [
+      {
+        "file": "historical-dirty-3-Destination-results.xml",
+        "sha256": "89a0765efeca7d2a0b7df70e05a34746a75329073bc46ffc489c76a87c9802e7",
+        "trailing_space_lines": 6,
+        "captured_empty_diagnostic_lines": 6
+      },
+      {
+        "file": "historical-dirty-4-Destination-results.xml",
+        "sha256": "fcc64a7f2451d101c1015df1d6f4d01c80b3014e4a212e795248f28bfa91df28",
+        "trailing_space_lines": 6,
+        "captured_empty_diagnostic_lines": 6
+      }
+    ],
+    "attribute_exception": "Only the two exact historical XML paths receive whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol and -text. Other reports retain blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol; sampled historical retry and clean XML attributes confirm no broader waiver.",
+    "report_integrity": "Original historical XML, manifest ba9c63134515a3b01d3a045cda1de7332720fa1706fef9c898a06585d70fbaf5 and results b624cf69e2361fbab82bcf979caac49b8d64c596d276692712e2aa83b4f75830 bytes/digests remain unchanged.",
+    "independently_observed_retry": {
+      "cached_diff_check_exit_code": 0,
+      "staged_record_paths": 76,
+      "exact_retained_c1_evidence_blobs": 67,
+      "byte_mismatches": 0
+    },
+    "completion_disclosure": "The appended completion note accurately describes the staging fault, exact byte preservation, narrow per-file whitespace exception and unchanged application counts.",
+    "final_gate": "Root will recopy this updated reviewer record and repeat exact staging/check-plan before commit/push; no future final-records SHA is asserted."
+  }
+}

@@ -95,3 +95,15 @@ full resource layouts, archive variants and collector setup faults. Scoped C3
 native regression supports M1 at supportedPS7.6.6, not full release compatibility.
 Static20warning/4information findings remain recorded/nonblocking forT09; T22
 owns later full analysis/fault coverage. See T09 acquisition/completion/manifest.
+
+2026-10-07 — D23: T10 starts named OutputFolder because required AC022 needs an
+explicit existing writable destination; omission retains the captured entry
+directory and T16 owns remaining parameters. A tiny lazy Windows FILE_ID_INFO
+adapter compares volume64/file128 with fail-closed metadata errors; leaf/ancestor
+reparse paths are explicitly unsupported, actual proof scoped to local NTFS.
+Owned CreateNew/DeleteOnClose write/flush probe and CreateNew append-only log
+reservation preserve other files. Safe max64/adaptive labels, invariant local
+timestamp and random16hex suffix share all final/log paths, with surrogate-safe
+truncation and below260 final/private budgets. Actual concurrent applications
+and same/case/8.3/junction/ACL cases pass; later transactional staging/validation/
+interruption gates remain. See T10 completion/C1 results/review/live evidence.

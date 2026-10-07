@@ -2,44 +2,38 @@
 
 Target: published and independently verified `v1.0.0` in `PikkuJanne/WinPDFMerger`.
 Completed milestone: M1 — paths, ordering and native execution.
-Completed tasks: T01 through T09.
-Current task: T10 — destination preflight and shared run identity, in progress.
+Completed tasks: T01 through T10.
+Next task: T11 — preflight every input PDF and page totals, in M2.
 Publication: NOT STARTED.
 
-Named `-OutputFolder` now selects an existing writable directory; omission keeps
-the captured entry-script directory. Missing/file/wildcard/provider destinations,
-source/output physical identity, reparse ancestors and insufficient path budgets
-fail before discovery/probes/native merging. A create-new/DeleteOnClose writability
-probe writes and flushes one byte, then closes without a cleanup sweep.
+T10 destination and shared run identity are complete. Named `-OutputFolder`
+selects an existing writable directory; omission keeps the entry-script directory.
+Physical source/output identity and source/output reparse ancestors fail closed.
+An owned create-new write/flush probe proves writability without a cleanup sweep.
+Master/email/log share bounded safe names, an invariant timestamp and random16hex
+suffix; CreateNew log reservation and existing no-overwrite final moves preserve
+other files. Sources retain their names and hashes. See `evidence/T10-completion.md`.
 
-The master/email/log share a bounded source label, invariant local timestamp and
-random 16-hex suffix. A create-new log atomically reserves the identity, with all
-entry writes appended. Existing final/email/log files or directories are refused;
-native publication retains T09's no-overwrite move. Source names are unchanged.
-Directory comparison uses a tiny lazy Windows metadata adapter with volume and
-128-bit file ID; unavailable/ambiguous identity fails closed. Reparse paths remain
-explicitly unsupported. This is preflight, not a transactional filesystem snapshot.
+Clean C1 `962f05ec1ea9f8edfbeb8e5fc755dacac24156ed` passes202 focused tests in each actual
+PS5.1/PS7.6.6 shell,404 total, with all failures/blocks/containers/skips/not_run0.
+Actual standard-user write denial/recovery/SDDL restoration, same/case/8.3 alias
+refusal, four junction cases and simultaneous real-engine identities pass.
+AC022/AC023/AC024 pass. Exact commands/versions, original/sanitized hashes and
+distinct historical dirty14/1 failures/corrected passes remain in C1 results and
+reports. Analyzer entry/helpers:0errors/29warnings/5information per shell, reviewed
+nonblocking for T10; not lint-clean/T22 completion. Independent review is retained.
 
-Preliminary Unit134 passes in actual PS5.1 and verified PS7.6.6 at dirty base
-af54a0310745fc88c7019716c60fdd525353ff33. Analyzer entry/helpers in both shells:
-0 errors, 29 warnings, 5 information; retained/reviewed nonblocking for T10,
-not lint-clean or T22 completion. Actual Destination15 now passes in each shell
-at dirty base af54a03 after a planned-email log diagnostic fixed one concurrency
-assertion; the earlier14/1 reports are retained as historical. Actual denied-write
-recovery, same/case/available8.3 aliases, four junction cases and simultaneous
-real-engine identities pass preliminarily. Clean C1 focused entry/backend
-regressions remain next; AC022/23/24 remain not_run until
-required clean evidence. T10 is not complete. See `evidence/T10-checkpoint.md`.
+C1 was pushed normally with fresh clean/local/live equality. Draft [PR10](https://github.com/PikkuJanne/WinPDFMerger/pull/10)
+follows owner-merged PR9 and safe ancestry/identical-tree fast-forward to main
+af54a03 before implementation. Final records-only C2 synchronization is reported
+in the session, avoiding self-reference; recheck live refs next session. No
+reset/stash/force/origin/tag/release change.
 
-Started clean/live T09 C4 d61995e. Owner-merged PR9/main af54a03 was safely
-fast-forwarded after ancestry/identical-tree checks; origin unchanged. A new draft
-PR is required after the implementation push. No reset/stash/force/tag/release.
-Approved external dependencies were reverified without acquisition or installation:
-Pester6.2.0/PDFtk2.02/GS10.08.0/portable supported PS7.6.6/PSA1.25.0;
-1,388 retained extracted files match prior receipts. Standard-user Windows11 x64
-build26300; ordinary PS5.1 remains Restricted/all scopes Undefined. Only authorized
-test-process RemoteSigned is used. No admin/system/PATH/security changes or
-private PDFs/uploads/runtime network calls. OS support channel and full release/
-Explorer/fidelity compatibility remain unestablished. T11 input/page inventory,
-T12 general staging, T13 master validation, T14 email/outcomes, T15 interruption
-and subsequent CI/package/security/release gates remain downstream.
+Approved external Pester6.2.0/PDFtk2.02/GS10.08.0/supported portable PS7.6.6/
+PSA1.25.0 caches were reverified (1,388 files), with no new acquisition/install.
+Ordinary PS5.1 remains Restricted/all scopesUndefined; only authorized test-child
+RemoteSigned is used. Standard-user Windows11x64/build26300 local NTFS evidence
+does not establish OS support channel/UNC/Explorer/fidelity/full release compatibility.
+No admin/PATH/persistent policy/security change, private PDFs/uploads or runtime
+network calls. T11 input/page inventory, T12 general staging, T13 master validation,
+T14 email/outcomes, T15 interruption and CI/package/security/release gates remain.

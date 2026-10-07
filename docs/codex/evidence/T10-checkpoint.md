@@ -73,3 +73,13 @@ did not list the final email path required by the assertion. The narrow header
 Those initial dirty failures will remain separate from clean C1 acceptance.
 The new concurrent test helper also bounds final stream completion before reading
 results; this is harness robustness, not a T15 full-descendant acceptance claim.
+
+## Accepted clean implementation and records checkpoint
+
+The preliminary state above is historical. C1 `962f05ec1ea9f8edfbeb8e5fc755dacac24156ed` passes
+all eight selected tiers in both actual shells:202 each/404total, all bad counts0.
+AC022/23/24 and T10 are complete after clean C1 push/live equality and independent
+review. Exact commands/reports/limits/historical failures are in T10 completion,
+C1 results/reports/review/live and cache audit. Draft [PR10](https://github.com/PikkuJanne/WinPDFMerger/pull/10)
+is open. Final C2 is records only; its live equality is reported in the session.
+Next task is T11. No full release/Explorer/fidelity/UNC acceptance is inferred.
