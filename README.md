@@ -63,6 +63,31 @@ Junctions and other reparse directories at either path or an ancestor are refuse
 choose direct directory paths. A temporary create-new writability probe is removed
 when its owned handle closes. No existing files are used as probes.
 
+**Input preflight**
+Before merging, the script inspects every visible top-level PDF in the frozen
+natural filename order with PDFtk's read-only `dump_data_utf8` operation. The
+log lists each input, its positive page count, the expected total, and both
+native streams. An empty, unparseable, zero-page, ambiguous-count or unsupported
+password-protected input stops the whole run with its filename; no input is
+skipped and no password or repair workflow is offered.
+
+A bounded read-only envelope check first requires a PDF header at the file
+start, a terminal EOF/footer within the last 8192 bytes, and a positive in-file
+final cross-reference offset targeting `xref` or a plausible indirect-object
+header within 1024 bytes. Missing/truncated footers, zero/out-of-file offsets,
+broken target headers and non-whitespace after EOF are refused before PDFtk.
+Earlier footer records are allowed; actual CR structural/footer, incremental, cross-reference
+stream and linearized inputs are tested separately. Unusual layouts beyond these
+bounds are reported as unsupported or malformed, without modifying the source.
+
+Use stable source documents. Length and UTC modification-time checks around
+inspection and immediately before merging detect obvious changes, without
+guaranteeing a filesystem snapshot. Newly added files do not enter the frozen
+set. Readable PDFs may contain malformations that PDFtk does not report; a
+successful inspection/page count is neither universal PDF validation nor a
+fidelity or safety guarantee. Encryption with empty passwords that PDFtk can
+read is not treated as unsupported password protection. Originals are retained.
+
 **Output naming**
 WinPDFMerge_<FolderName>_<yyyyMMdd_HHmmss>_<run>.pdf (master via PDFtk)
 WinPDFMerge_<FolderName>_<yyyyMMdd_HHmmss>_<run>_email.pdf (email copy via Ghostscript)

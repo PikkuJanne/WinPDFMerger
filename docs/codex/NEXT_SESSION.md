@@ -1,36 +1,24 @@
 # Next session
 
-Selected task: T11 — preflight every input PDF and page totals.
-Read AGENTS/INDEX/STATUS, T11 TASKS entry/brief, PRODUCT_SPEC, TECHNICAL_SPEC,
-TEST_STRATEGY, GITHUB_WORKFLOW and AC025/AC026. Recheck repository/branch/clean
-tree/origin fetch+push/live refs/PR/releases. Never reset to the historical baseline.
+Selected task: finish T11 — input preflight and expected page totals.
+Read AGENTS/INDEX/STATUS, T11 task/brief, PRODUCT_SPEC/TECHNICAL_SPEC/TEST_STRATEGY/
+GITHUB_WORKFLOW and AC025/AC026. Recheck current branch/clean state/origin/live refs/
+PR/releases. Never reset to the historical baseline.
 
-T10 is complete at clean implementation `962f05ec1ea9f8edfbeb8e5fc755dacac24156ed`:
-202 focused cases per actual PS5.1/PS7.6.6 shell,404 total, all bad counts0.
-Required AC022/23/24 pass. Default entry output/named existing OutputFolder,
-owned write probe/denial recovery, physical same/case/8.3 identity and reparse
-ancestor refusal, bounded invariant names/random16hex and CreateNew log
-reservation are implemented. Actual two-child concurrency produces unique shared
-master/email/log identities while preserving foreign finals/sources. Exact clean
-and distinct historical dirty failure reports, versions/hashes/static findings,
-review and C1 live sync are in T10 completion/C1 records. Do not count mocks or
-historical dirty runs as native acceptance. Final records-only C2 post-push SHA/
-equality is in the prior session output under the no-self-reference workflow.
+T11 inventory and bounded case-sensitive byte-envelope guard are implemented:
+strict labeled Int64 counts, frozen ordered metadata and immediate premerge checks.
+Dirty Unit197 and corrected actual InputPreflight22 pass both actual shells at
+f790c51. Native initial9/4 logger-return failures and interim tolerated CR fixture
+runs remain historical. Corrected CR structural/footer (LF stream opening),
+incremental/xref-stream/actual GS-linearized controls pass. Last isolated xref-case
+unit refinement awaits clean C1; nine tiers287 per shell plus static/review remain.
+No universal PDF validator,
+password/repair workflow, full fidelity or transactional snapshot claim.
 
-Draft [PR10](https://github.com/PikkuJanne/WinPDFMerger/pull/10) is the current implementation PR; PR9 was owner-merged.
-Reuse exact verified external caches from T03/T09 receipts and T10 cache audit;
-prior acquisition/testing/RemoteSigned authorization persists. No repeat approval
-or installer is needed. Ordinary PS5.1 Restricted/all scopesUndefined, non-elevated
-Windows11x64/build26300; actual NTFS scope only, OS support channel unestablished.
-
-T11 must preflight every frozen ordered input, reject invalid/unsupported-encrypted
-PDFs without omitting any source, and derive exact expected page totals with
-regressions. Preserve T10 destination/run identity and T09 fixed direct/bounded/
-noninteractive native jobs, optional GS/default screen, sources and no-overwrite
-publication. Helpers remain import-only/PS5.1-compatible. T12 general staging,
-T13 master validation, T14 email/outcomes and T15 interruption remain later tasks.
-OutputFolder starts at T10 for AC022; T16 owns remaining public parameters.
-
-Full fidelity/Explorer/CI/package/security/release compatibility is still pending.
-Keep one conceptual task; no intermediate tags/releases, private-PDF upload,
-runtime network, force/reset/stash/origin or persistent security changes.
+Preserve current work, finish final tests/review and clean C1 focused checkpoint;
+push matching branch/fresh clean local-live equality, retain exact/sanitized hashes
+and failures separately in records C2, then select T12. AC025/26 remain not_run;
+T11 in_progress. Prior PR10 owner-merged main f790c51, safe FF verified. New draft
+PR follows accepted implementation push. Reuse verified external caches without
+repeat installation or approval; test-process RemoteSigned only. Later T12–T15,
+Explorer/CI/fidelity/package/security/release gates remain required.
