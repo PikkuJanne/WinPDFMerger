@@ -76,3 +76,22 @@ run logging is consistent across shells. Version probes delegate now; conversion
 routing/prompt/length/native-path gates remain T09 and descendant/full-run cleanup
 T15. No product default or current-supported-build claim changed. Evidence:
 `evidence/T08-completion.md`, clean C1 results/reports/live and historical checkpoint.
+
+2026-10-07 — D21: T09 shares fixed direct tool vectors/bounded logger, private fresh
+outputs/no-overwrite moves, PDFtk dont_ask only for fresh owned output, complete
+command bound30000 UTF16 including executable/separator/NUL and operand/stage
+below260. Fixed GS PDFSTOPONERROR is justified by actual encrypted-input native0/
+wrongpage evidence and vendor error-signal documentation; native1 now prevents
+publication/cleans partial output. SAFER/screen/default operations unchanged;
+full structural/expected-total validation remains T11/T13/T14. Actual PDFtk CJK
+operand limits are documented without source renaming. Evidence: T09 completion/C3.
+
+2026-10-07 — D22: Owner explicitly authorized all needed testing dependencies.
+Exact GS10.08.0/portable supportedPS7.6.6/PSA1.25.0 caches are verified outside
+repo/system, with extraction-only7-Zip26.04; approvedPDFtk2.02/Pester6.2.0 reused.
+No setup/admin/PATH/persistent policy/security/runtime network requirement added.
+Acquisition receipts disclose signed packages versus unsigned extracted tools,
+full resource layouts, archive variants and collector setup faults. Scoped C3
+native regression supports M1 at supportedPS7.6.6, not full release compatibility.
+Static20warning/4information findings remain recorded/nonblocking forT09; T22
+owns later full analysis/fault coverage. See T09 acquisition/completion/manifest.

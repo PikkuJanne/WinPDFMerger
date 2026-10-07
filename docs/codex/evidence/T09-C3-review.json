@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "task": "T09",
+  "review_observed_at_utc": "2026-10-07T19:34:49Z",
+  "initial_clean_production_review_observed_at_utc": "2026-10-07T19:26:52Z",
+  "reviewer_role": "Independent production, test and evidence reviewer; also author of the explicitly authorized PS7 and PSScriptAnalyzer acquisitions",
+  "repository": "PikkuJanne/WinPDFMerger",
+  "branch": "codex/v1.0.0-readiness",
+  "reviewed_implementation_commit": "894bbb4862105ae497bc9801decc46575fedd87a",
+  "historical_pre_T09_baseline": "0720a96e39fc1b6ec4448ab25955101a2cdadfb6",
+  "reviewed_worktree_dirty": false,
+  "records_audit_worktree_dirty": true,
+  "worktree_context": "The production review was at clean C3; the later records audit observes root's intended C4 documentation/evidence worktree. C3 test executions remain explicitly clean. No C4 clean/push claim is made before its final checkpoint.",
+  "review_mode": "Read-only production/test/receipt/records review; writes are restricted to this ignored reviewer record and an ignored independent read-only audit script",
+  "scope": "Complete T09 changes against the historical pre-T09 baseline, including historical C1 and the fixed GS error flag; focused cross-cutting M1 regressions",
+  "source_binding": "These ten actual C3 worktree file-byte SHA256 hashes were freshly recomputed at the initial clean C3 review and matched the previously reviewed final production/test/documentation hashes; handoff predecessor hashes are not substituted. Later C4 reference documentation is reviewed separately below.",
+  "reviewed_source_files": [
+    {"path": "README.md", "sha256": "d89d0cf225e460cec9ed1d1257829b8c7fb590ebb4e94e6429bb9c10b53aa165"},
+    {"path": "WinPDFMerge.ps1", "sha256": "0d0a081f116285b890734f1bd41bc99c1f9a119eb10e455c50f5700d66fa911e"},
+    {"path": "src/WinPDFMerge.Helpers.ps1", "sha256": "0861d6eb971a3ce5d861b6803d7533e41db783c1f342906e04b725dcbc50b899"},
+    {"path": "tests/TestDependencies.psd1", "sha256": "1fca65d576f27f4f9ef8ef2408e24d7377a6c0af5fa6225562e3317583628f79"},
+    {"path": "tests/unit/NativeCommand.Tests.ps1", "sha256": "123fe700b112bb56695a2245c60b2a55c35b6c641a35afd2113342aab684db55"},
+    {"path": "tests/native/ToolInvocation.Tests.ps1", "sha256": "e12e2781526ce9b90ddaf9a1d3808cc71fd176e9d3a9ae87d51d3f707a6c40d2"},
+    {"path": "tests/pdf/ToolPaths.Native.Tests.ps1", "sha256": "3250806db7c3139b23baf728d6e93f977a617b6c02267fc7b2dcc40bf1fa0294"},
+    {"path": "tools/test/Invoke-Tests.ps1", "sha256": "6a5e86115fd0bc30f53ac396955a7d889c6a924e33e818c084370375fa0e32a4"},
+    {"path": "tools/test/NativeRunner.md", "sha256": "9600f40ad35d3768ff69a1de3e3b1b402a5cdfb5292fa9bbcfe762e7ecafd3b9"},
+    {"path": "tools/test/README.md", "sha256": "36f9275a1474def3397032158e6bf977984e525c6bff92fe7b0b6e557b90d757"}
+  ],
+  "production_review": [
+    "Both real tool jobs use the shared bounded direct-executable runner and its fixed argument-vector serializer; no shell evaluation, runtime network, engine replacement or chunked merge is introduced.",
+    "PDFtk dont_ask is paired with a fresh private output. Source paths remain literal and unchanged. Existing finals are refused before launch and no-overwrite File.Move handles a later collision.",
+    "Private native output ownership begins only after creation of its fresh directory; cleanup removes only its known output and then its empty directory, with best-effort cleanup errors retained.",
+    "The complete serialized command guard counts UTF16 code units including executable quoting, separator and final NUL, with a 30000 default below CreateProcessW limits. Input/output and private native output paths conservatively require fewer than 260 code units.",
+    "Ghostscript retains SAFER, screen, compatibility1.6, duplicate detection and child-only GS_OPTIONS removal. The fixed PDFSTOPONERROR flag makes the observed password/interpreter error return nonzero so existing failure handling excludes its partial output.",
+    "Native nonzero/launch/capture/timeout errors and missing or empty private outputs cannot publish. Successful master publication survives optional GS failure; source preservation, ownership and logs remain within T09 scope.",
+    "The changes use Windows PowerShell5.1-compatible constructs. T09 tests distinguish mocks/controlled process fixtures from actual Windows PDFtk/GS observations."
+  ],
+  "M1_review": [
+    "Literal top-level discovery, frozen input sets and deterministic natural culture-independent ordering remain unchanged by T09 routing.",
+    "Strict selected executable resolution and version diagnostics, exact argument vectors, bounded dual-stream capture, exact-owned-PID timeout/cancellation and parent environment preservation are retained.",
+    "The requested clean nine-tier reruns cover Unit, ToolInvocation, PdftkPaths, GhostscriptPaths, NativeRunner, DependencyEntry, SourceDiscovery, Launcher and LauncherNative in both required shells.",
+    "Final visible PDF ordering/fidelity, actual Explorer interaction and later publication gates remain separate from comparator/native-path regression evidence."
+  ],
+  "test_review": [
+    "Unit tests cover the exact serialized command boundary, UTF16 surrogate counting, oversized prelaunch refusal and an injectable tiny guard.",
+    "Mocked integration decisions cover fixed tool vectors, prompt-free private output, source/output/private-stage path limits, preexisting and racing finals, failed or incomplete native results, cleanup bounds and parent environment preservation.",
+    "Native suites gate exact selected PDFtk2.02 and GS10.08.0 executable/DLL receipts; relocated GS installations preserve runtime resources.",
+    "Actual special-character/Latin/CJK source, operand, output and install cases distinguish observed PDFtk CJK operand failure from supported GS behavior without renaming source files.",
+    "Encrypted inputs, encrypted-only public entry, exclusive input lock and actual current-user ReadData ACL denial are separately labeled; ACL restoration, SDDL and source hash/metadata checks run in finally.",
+    "Native path totals are tested using controlled original synthetic fixtures. PDFtk page-count inspection copies only owned results to a fresh ASCII oracle path; it does not prove universal fidelity."
+  ],
+  "historical_C1_audit": {
+    "commit_under_test": "139ecdcc9f31bc8c55bd0e26e63aaa43e2acdbfc",
+    "classification": "Historical clean PDFtk and focused M1 evidence; never substituted for missing GS or current PS7 validation",
+    "summary_XML_pairs_independently_verified": 16,
+    "passed_per_shell": 203,
+    "passed_total": 406,
+    "all_failure_block_container_skip_not_run_counts": 0,
+    "retained_hashes_and_XML_totals_verified": true,
+    "XML_identity_redaction_and_public_privacy_verified": true,
+    "case_state_at_that_checkpoint": {"AC019": "not_run", "AC020": "not_run", "AC021": "pass"},
+    "limitations": "Historical PS7 was7.6.5 and actual GS was unavailable; those limitations are retained rather than retroactively called a pass."
+  },
+  "acquisition_review": [
+    {"receipt": "docs/codex/evidence/T09-gs-acquisition.json", "sha256": "0719743818ad984fec3aed42e1066b8f31ff11ea616f525bc894957393776f12", "reviewer_role": "Read-only independent review of sibling-authored GS/7Zip acquisition", "outcome": "Exact receipt/helper/runtime/manifest hashes, source provenance, confined extraction, unsigned extracted binaries, duplicate archive resource audit and privacy disclosures reviewed; no actionable issue found."},
+    {"receipt": "docs/codex/evidence/T09-ps7-acquisition.json", "sha256": "36826b712330419a063ccf567387790023390196320b033eddb57f10d9a7b040", "reviewer_role": "Acquisition author and verifier, not an independent acquisition-author reviewer", "outcome": "Official current-supported PS7.6.6 portable x64 archive/digest, Valid Microsoft executable signature, confined file manifest and actual version launch verified in an explicit external development cache."},
+    {"receipt": "docs/codex/evidence/T09-analyzer-acquisition.json", "sha256": "2fee5fc9c2720e09e9f992adfc626b8e9dece6ec5d06ccee285a7961b9b9f42a", "reviewer_role": "Acquisition author and verifier, not an independent acquisition-author reviewer", "outcome": "Official PSScriptAnalyzer1.25.0 Gallery package SHA512 and GitHub SHA256, publisher/selected file signatures, confined manifest and actual imports in PS5.1/PS7.6.6 verified. NuGet container signature was not independently verified and is explicitly disclosed."}
+  ],
+  "acquisition_boundaries": "The human owner explicitly authorized everything needed for testing. Acquisitions used external development caches only; no installer execution, admin, global PATH/module/policy/registry/security changes or application download feature. Initial collector failures and the child-only PSModulePath isolation correction remain disclosed in exact receipts.",
+  "static_analysis_review": {
+    "analyzer_version": "1.25.0",
+    "observed_report_context": "Clean C3 894bbb4862105ae497bc9801decc46575fedd87a, dirty_worktree=false, actual PS5.1.26100.9444 and PS7.6.6; both raw analyzer records independently read and counted",
+    "clean_raw_reports": [
+      {"path": "tests/.work/T09-analyzer-C3-ps51.json", "sha256": "96a2fb6bc242c476a9984ef1251e9c2371219e6911ad77c70fff8e6dbbd37597", "shell_version": "5.1.26100.9444"},
+      {"path": "tests/.work/T09-analyzer-C3-ps7.json", "sha256": "b1b8b4b689f2304ceb9c85a720b7a52689b8b9e0a16e2708a8b26a1b9c5d5a1b", "shell_version": "7.6.6"}
+    ],
+    "files": ["WinPDFMerge.ps1", "src/WinPDFMerge.Helpers.ps1"],
+    "each_shell_counts": {"Error": 0, "Warning": 20, "Information": 4},
+    "warning_rules": [
+      {"rule": "PSAvoidUsingWriteHost", "count": 13, "classification": "Intended console presentation; no T09 native argument/ownership defect identified."},
+      {"rule": "PSUseBOMForUnicodeEncodedFile", "count": 1, "classification": "NonASCII entry content is within the initial comment block; no nonASCII executable/path literal is corrupted."},
+      {"rule": "PSUseSingularNouns", "count": 2, "classification": "Existing helper naming style."},
+      {"rule": "PSUseApprovedVerbs", "count": 2, "classification": "Existing helper naming style."},
+      {"rule": "PSUseShouldProcessForStateChangingFunctions", "count": 2, "classification": "Heuristic for private stream allocation and mandatory exact-owned-process cleanup; no actionable T09 defect identified."}
+    ],
+    "information_rules": [{"rule": "PSUseOutputTypeCorrectly", "count": 4, "classification": "Output-type annotation/style notices."}],
+    "result": "No actual T09 blocking defect identified; warnings and information remain retained. This is not a lint-clean or T22 completion claim."
+  },
+  "evidence_collector_review": {
+    "path": "tests/.work/Collect-T09C3Evidence.py",
+    "sha256": "2e8953bf5a5b78a3849fca1c2a966910ca4a6758a6f42effcf2cc1b6a840ac83",
+    "result": "No actionable issue found in the executed final collector including ordinary environment, acquisition and separate Python helper records. Exact clean SHA, shell/Pester pins, tier counts, owned native/build receipts and privacy/hash checks validate before public output creation. Historical dirty failed GS/direct harness records are excluded from clean acceptance totals.",
+    "preparation_fault_disclosure": "The initial check-only preparation rejected equivalent observed_at_utc strings after ConvertFrom/To-Json removed insignificant trailing fractional-second zeros from duplicated job summaries in runs.json. Comparison now normalizes only those trailing zeros; all other fields must still match. Four duplicated summaries have that rendering difference. The 18 public/raw summary.json files remain exact byte copies with matching hashes. This collector preparation fault is separate from application/test failures and contributes no test count."
+  },
+  "findings": [],
+  "production_review_conclusion": "No blocking or actionable T09 production/test finding in the reviewed C3 content.",
+  "clean_C3_evidence_audit": {
+    "status": "pass",
+    "command": "python -B tests/.work/Audit-T09C3-Independent.py",
+    "audit_script_sha256": "0e15e4a22efb3fb477664c7a470994fdd12c0e7b3e43ca9b4963de343bbaf039",
+    "scope": "Independent read-only verification of retained/raw evidence; this audit command does not execute application merges or add acceptance test counts.",
+    "reports_manifest": "docs/codex/evidence/T09-C3-reports/manifest.json",
+    "manifest_sha256": "e32c11abdf9dd42f7ace175410fe3138b09d0640e81a7c490420a97b381a65fb",
+    "results_file": "docs/codex/evidence/T09-C3-results.json",
+    "results_sha256": "87c7c0059009cd12ab171946264e301c0b409a4affe507073682f2548829a77f",
+    "exact_clean_summary_XML_pairs": 18,
+    "passed_per_shell": 217,
+    "passed_total": 434,
+    "all_failure_block_container_skip_not_run_counts": 0,
+    "actual_shell_versions": ["5.1.26100.9444", "7.6.6"],
+    "counts_each_shell": {"Unit": 104, "ToolInvocation": 12, "PdftkPaths": 13, "GhostscriptPaths": 13, "NativeRunner": 36, "DependencyEntry": 9, "SourceDiscovery": 4, "Launcher": 24, "LauncherNative": 2},
+    "retained_report_files": 60,
+    "distinct_public_raw_source_paths_rehashed": 151,
+    "exact_owned_build_receipts": 4,
+    "actual_native_observation_receipts": 4,
+    "observations_each_native_receipt": 14,
+    "actual_native_versions": {"Pdftk": "2.02", "Ghostscript": "10.08.0"},
+    "actual_native_checks": "Raw logs identify exact vendor engine SHA256 and versions; native receipts preserve supported-path success, safe PDFtk CJK operand failure, GS CJK success, 258 input, 260 prelaunch guard, encrypted/locked/actual ACL-denied nonzero prompt-free failure, preexisting-final refusal and public entry outcomes. Passing XML cases bind source/ACL restoration assertions to the reviewed test source.",
+    "summary_bytes_match_raw": true,
+    "all_recorded_public_and_raw_hashes_match": true,
+    "XML_case_results_and_totals_match": true,
+    "native_and_static_content_preserved_except_declared_privacy_redactions": true,
+    "public_privacy_and_XML_identity_redactions_pass": true,
+    "historical_records_excluded_from_clean_totals": 4,
+    "historical_failure": "Dirty default-GS precursor remains11pass/1fail. Actual stop-on-error direct probe is exit1 with a partial output; separate prelaunch slash-path harness fault is not a native execution. Neither contributes clean totals.",
+    "static_counts_each_actual_shell": {"Error": 0, "Warning": 20, "Information": 4},
+    "separate_python_helper_tests_passed": 10,
+    "separate_python_scope": "Exact three-fixture reproduction and four-page PDFium oracle plus helper unit checks are retained separately from the434 application/control/native tier passes.",
+    "reviewer_audit_preparation_note": "The independent audit's first invocation assumed a different ignored Python command-receipt filename and stopped at FileNotFoundError after the application/native record checks. Reading the collector's actual label.json/label.txt convention corrected only that audit lookup; the complete rerun passed. No source, raw/public evidence or application tests were changed."
+  },
+  "C3_synchronization_and_PR_review": {
+    "live_receipt": "docs/codex/evidence/T09-C3-live-sync.json",
+    "live_receipt_sha256": "482abe0ed4d4d29e616ce6a6eabd54aba31872f440467e04f36d39643831755f",
+    "receipt_checked_at_utc": "2026-10-07T19:30:25.501637+00:00",
+    "receipt_local_and_live_commit": "894bbb4862105ae497bc9801decc46575fedd87a",
+    "receipt_clean_and_synchronized": true,
+    "fresh_read_only_live_ref_matches_C3": true,
+    "PR": "https://github.com/PikkuJanne/WinPDFMerger/pull/9",
+    "PR_state": "OPEN",
+    "PR_draft": true,
+    "PR_head_commit": "894bbb4862105ae497bc9801decc46575fedd87a",
+    "limitation": "Final C4 records commit/push/live equality remains root-owned and must be verified after that future checkpoint; this review does not invent its SHA."
+  },
+  "continuation_consistency_at_review": "Reviewed C4 TASKS/STATUS/NEXT/ACCEPTANCE_CASES/COMPATIBILITY_MATRIX/DECISIONS/completion correctly set T09done, required AC019/20/21pass and M1complete on executed clean C3 evidence, and select pending T10. Later task/fidelity/Explorer/full release/OS support limits remain explicit. Historical C1/C2 records remain separate. Final C4 synchronization is still pending and is not self-asserted in committed records.",
+  "C4_records_scope_review": "C4 tracked changes reviewed include handoff/evidence records, narrowly added .gitattributes byte-preservation entries for C3 evidence, and tools/test/README.md documentation of explicit supported host/pins/receipts. The README addition is documentation; its C3 hash above intentionally remains the tested C3 snapshot. No post-C3 production or test delta was found.",
+  "deferred_task_map": {
+    "T10": "Destination validation and run identity; same-second log identity and overlap/output-directory preflight",
+    "T11": "Input PDF inventory and expected page totals",
+    "T12": "General staging and publication framework",
+    "T13": "Master structural/page-total validation and truthful publication",
+    "T14": "Email validation and explicit optional-email outcomes, including stale summary behavior",
+    "T15": "Full interruption/descendants and broader IO failure paths"
+  },
+  "limitations": [
+    "T09 nonempty-file/native-exit checks do not certify structural correctness, expected totals or feature/visual preservation.",
+    "Mock and controlled process fixtures do not establish actual PDF-engine support; synthetic native fixtures do not establish universal document fidelity.",
+    "The Windows reference host is non-elevated Windows11 x64; OS support channel, other OS/architecture/live UNC combinations remain unestablished.",
+    "Actual Explorer drag-and-drop, full later security/fault/static suites, CI, candidate packaging and published v1.0.0 verification remain downstream.",
+    "Historical structural-validation-T10 wording is incorrect; the explicit task map above governs this review."
+  ]
+}

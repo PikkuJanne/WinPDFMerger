@@ -1,0 +1,256 @@
+{
+  "schema_version": 1,
+  "task": "T09",
+  "purpose": "Owner-authorized development-only actual Ghostscript dependency for AC019/AC020",
+  "observed_at_utc": "2026-10-07T19:04:43.5595199Z",
+  "authorization": "Owner stated: \"Please install everything needed for testing\". This authorized the already prepared exact development-cache plan for Ghostscript10.08.0 and 7-Zip26.04; the user did not name those versions in that message.",
+  "prior_failed_attempts": [
+    {
+      "task": "T09",
+      "attempt": "initial acquisition",
+      "cache_root": "%LOCALAPPDATA%/WinPDFMergerDevCache/T09-gs-d9d34f2887044c26afb47013422fd135",
+      "observed_at_utc": "2026-10-07T19:04:32.5664188Z",
+      "exit_code": 1,
+      "stage": "after both downloads and size/SHA256 checks, before signature checks/extraction",
+      "error": "CopyToAsync GetResult produced a VoidTaskResult pipeline item, making returned download path an array instead of a string; first Get-AuthenticodeSignature failed on that invalid path.",
+      "repair": "Suppressed CopyToAsync result output in ignored acquisition script; new fresh owned cache used for retry.",
+      "native_vendor_processes_started": false,
+      "artifacts_retained": true,
+      "files": [
+        {
+          "name": "7z2604-x64.msi",
+          "bytes": 2009088,
+          "sha256": "0b01334a418654293513449f61d6bfc99e5196ca371e3c3dc961eda57cd535c6"
+        },
+        {
+          "name": "gs10080w64.exe",
+          "bytes": 65093120,
+          "sha256": "52a91b8bf09298788d7a57b9206127026c23eacd75405f0a131e26dc381dce50"
+        }
+      ]
+    }
+  ],
+  "repository_head_at_receipt": "021e2a955c10aa486b25d27bec19899078dc0891",
+  "cache_root": "%LOCALAPPDATA%/WinPDFMergerDevCache/T09-gs-e84c278f46724e9a97dd8dbcdbb8d66f",
+  "environment": {
+    "platform": "Windows",
+    "shell_version": "7.6.5",
+    "standard_user_token": true,
+    "administrator_requested": false,
+    "process_launch_execution_policy": "RemoteSigned (explicit process-only launch parameter)",
+    "persistent_execution_policy_changes": false
+  },
+  "ghostscript_installer": {
+    "official_page": "https://ghostscript.com/releases/",
+    "version": "10.08.0",
+    "release_date": "2026-09-08",
+    "url": "https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10080/gs10080w64.exe",
+    "bytes": 65093120,
+    "sha256": "52a91b8bf09298788d7a57b9206127026c23eacd75405f0a131e26dc381dce50",
+    "expected_sha256_source": "https://api.github.com/repos/ArtifexSoftware/ghostpdl-downloads/releases/tags/gs10080",
+    "sha512": "cb3ecc798508851ba28b05e3fb914ddefe78168190726376d8581546ce61d5b216ffa3359e6f829072786bc12350501c7b6f99110d578696b87213d157774269",
+    "expected_sha512_source": "https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10080/SHA512SUMS",
+    "authenticode": {
+      "status": "Valid",
+      "signer_subject": "CN=\"Artifex Software, Inc.\", O=\"Artifex Software, Inc.\", S=California, C=US",
+      "signer_thumbprint": "97443F2913370F6906EC7E881CF0A5A224E9951A",
+      "timestamp_subject": "CN=Sectigo Public Time Stamping Signer R37, O=Sectigo Limited, S=Greater London, C=GB"
+    },
+    "installer_executed": false
+  },
+  "extractor": {
+    "official_page": "https://www.7-zip.org/download.html",
+    "version": "26.04",
+    "url": "https://github.com/ip7z/7zip/releases/download/26.04/7z2604-x64.msi",
+    "bytes": 2009088,
+    "sha256": "0b01334a418654293513449f61d6bfc99e5196ca371e3c3dc961eda57cd535c6",
+    "expected_sha256_source": "https://api.github.com/repos/ip7z/7zip/releases/tags/26.04",
+    "independent_matching_hash_source": "https://raw.githubusercontent.com/microsoft/winget-pkgs/master/manifests/7/7zip/7zip/26.04/7zip.7zip.installer.yaml",
+    "authenticode": {
+      "status": "NotSigned",
+      "signer_subject": null,
+      "signer_thumbprint": null,
+      "timestamp_subject": null
+    },
+    "msi_executed": false,
+    "msi_database_mode": "MSIDBOPEN_READONLY",
+    "msi_stream_read": "MsiRecordReadStream on embedded cabinet",
+    "cabinet_extraction": "Built-in System32/expand.exe, exact validated file selectors, fresh owned output",
+    "files": [
+      {
+        "relative_path": "7zip-26.04-x64/7z.dll",
+        "bytes": 1907712,
+        "sha256": "899cd73d7fc60e1c1c35c7de0f5bed3dc69bfe2cecbd48014d868a347970a0b1",
+        "authenticode": {
+          "status": "NotSigned",
+          "signer_subject": null,
+          "signer_thumbprint": null,
+          "timestamp_subject": null
+        }
+      },
+      {
+        "relative_path": "7zip-26.04-x64/7z.exe",
+        "bytes": 577536,
+        "sha256": "95fff19b73eff77c87c0d7bd32822e43fb90dd2932459f962eb532d8dfb6ba53",
+        "authenticode": {
+          "status": "NotSigned",
+          "signer_subject": null,
+          "signer_thumbprint": null,
+          "timestamp_subject": null
+        }
+      },
+      {
+        "relative_path": "7zip-26.04-x64/History.txt",
+        "bytes": 12112,
+        "sha256": "cf51c5e78c0cf4b9106ad6b42918a471d15c78a993a9df5b5efccb1377823063",
+        "authenticode": null
+      },
+      {
+        "relative_path": "7zip-26.04-x64/License.txt",
+        "bytes": 6031,
+        "sha256": "519ac0a4bded9c18ea02e0afb71f663d8c47373bd9facd3ac96a79f51d77765d",
+        "authenticode": null
+      },
+      {
+        "relative_path": "7zip-26.04-x64/readme.txt",
+        "bytes": 1711,
+        "sha256": "6929cb624c82d5d1c55a146b5dcb4542445628e4ad8bcfe6272a0814e1383618",
+        "authenticode": null
+      }
+    ],
+    "commands": [
+      {
+        "file_id": "_7z.dll",
+        "name": "7z.dll",
+        "exit_code": 0,
+        "elapsed_ms": 88
+      },
+      {
+        "file_id": "_7z.exe",
+        "name": "7z.exe",
+        "exit_code": 0,
+        "elapsed_ms": 83
+      },
+      {
+        "file_id": "History.txt",
+        "name": "History.txt",
+        "exit_code": 0,
+        "elapsed_ms": 71
+      },
+      {
+        "file_id": "License.txt",
+        "name": "License.txt",
+        "exit_code": 0,
+        "elapsed_ms": 68
+      },
+      {
+        "file_id": "readme.txt",
+        "name": "readme.txt",
+        "exit_code": 0,
+        "elapsed_ms": 72
+      }
+    ],
+    "independent_manifest_text_utf8_sha256": "b3754cc998df0814c0d925bb0458f68279c4b5b48bc1b62ee6d7d79448c91468",
+    "independent_expected_hash_observed_match": true
+  },
+  "ghostscript_extraction": {
+    "mode": "Full DLL-backed 7z.exe reads GS NSIS installer as data; l -slt then x -aos into fresh owned runtime root, with both duplicate vendor helper variants retained separately in external audit directory",
+    "listed_entries": 655,
+    "archive_paths_confined": true,
+    "list_exit_code": 0,
+    "extract_exit_code": 0,
+    "extract_elapsed_ms": 2892,
+    "preserve_all_vendor_files": true,
+    "extracted_files": 654,
+    "manifest_sha256": "ad256db742152ec9faba40eb77eb855973181cf0f8afa8183c8c057242a3b041",
+    "selected_files": [
+      {
+        "relative_path": "ghostscript-10.08.0-x64/bin/gswin64c.exe",
+        "bytes": 93696,
+        "sha256": "9b29d3b5128c6d53bb4e9eee77e3919d05038cdfdd8e07697af4d9c319f9d5ad",
+        "authenticode": {
+          "status": "NotSigned",
+          "signer_subject": null,
+          "signer_thumbprint": null,
+          "timestamp_subject": null
+        }
+      },
+      {
+        "relative_path": "ghostscript-10.08.0-x64/bin/gsdll64.dll",
+        "bytes": 25041408,
+        "sha256": "a134ed0d3af749bdab93c66029180e676d36d9cc624c192ea287f73c891fb0af",
+        "authenticode": {
+          "status": "NotSigned",
+          "signer_subject": null,
+          "signer_thumbprint": null,
+          "timestamp_subject": null
+        }
+      }
+    ],
+    "post_extraction_every_listed_entry_present": true,
+    "duplicate_entry_variants": {
+      "path": "lib/gssetgs.bat",
+      "listing_count": 2,
+      "runtime_extraction": "-aos retained first 552-byte variant",
+      "audit_extraction": "A separate fresh external audit directory with -aou retained both distinct vendor variants; no runtime/source file renaming",
+      "exit_code": 0,
+      "files": [
+        {
+          "relative_path": "duplicate-entry-variants/lib/gssetgs_1.bat",
+          "bytes": 380,
+          "sha256": "babee67366808cf4f4c5724783c3975f3c07db62e0f4754c144aeb8e8d0ecd0b"
+        },
+        {
+          "relative_path": "duplicate-entry-variants/lib/gssetgs.bat",
+          "bytes": 552,
+          "sha256": "ca207628a1dd76951dd7b750ec733b2be09a463bc761e9b17e4cd7e0e9c54356"
+        }
+      ]
+    }
+  },
+  "version_probe": {
+    "executable": "ghostscript-10.08.0-x64/bin/gswin64c.exe",
+    "arguments": [
+      "--version"
+    ],
+    "exit_code": 0,
+    "elapsed_ms": 227,
+    "stdout": "10.08.0",
+    "stderr": "",
+    "scope": "Dependency acquisition/version only; no PDF conversion or application acceptance claim"
+  },
+  "boundaries": {
+    "system_installation": false,
+    "installers_executed": false,
+    "path_environment_changed": false,
+    "registry_changed": false,
+    "file_unblocking": false,
+    "security_controls_changed": false,
+    "repository_vendor_binaries_added": false,
+    "release_redistribution": false,
+    "pdf_documents_uploaded": false,
+    "runtime_network_behavior_changed": false
+  },
+  "limitations": [
+    "Official vendor hashes and Authenticode status establish recorded integrity/provenance; a vendor-hosted checksum alone does not independently establish publisher identity or malware-free status.",
+    "Acquisition and version probe are separate from actual PDF-engine integration tests.",
+    "No supported-current-PowerShell-build or OS support-channel claim follows from this acquisition.",
+    "Portable extracted dependency cache is development-only, external and untracked; no application installer/downloader was added."
+  ],
+  "command": "<existing-bundled-pwsh> -NoProfile -ExecutionPolicy RemoteSigned -File <repo>/tests/.work/T09-acquisition/Acquire-Ghostscript.ps1 -RepositoryRoot <repo> -PriorAttemptReceipts <initial-owned-cache>/failed-attempt-receipt.json",
+  "acquisition_script_sha256": "bce36f65596fd09fbf1895125a30e41429d5e07b768589770f834e2bd6478de4",
+  "extraction_timeouts_ms": {
+    "ordinary_owned_native": 30000,
+    "gs_archive_extraction": 60000,
+    "gs_version": 5000,
+    "capture": 1000,
+    "network_download": 60000
+  },
+  "acquisition_result": {
+    "exit_code": 0,
+    "ghostscript_version": "10.08.0",
+    "scope": "Verified dependency acquisition and version only, actual native PDF tests recorded separately by T09",
+    "prior_failed_attempt_preserved": true
+  },
+  "receipt_reviewed_at_utc": "2026-10-07T19:06:12.4272016Z"
+}

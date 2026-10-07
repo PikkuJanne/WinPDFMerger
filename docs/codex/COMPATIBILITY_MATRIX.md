@@ -8,10 +8,10 @@ observations are not application compatibility certification. Evidence:
 | Environment | Release scope | Version/build | Evidence | Status |
 |---|---|---|---|---|
 | Windows 11 x64 standard-user desktop | Required | Pro 10.0.26300/build 26300, DisplayVersion 26H2; non-administrator observation token; NTFS fixed drive | T02 baseline/environment | INVENTORIED; application/Explorer acceptance NOT TESTED; OS support channel unestablished |
-| Windows PowerShell 5.1 on reference desktop | Required | 5.1.26100.9444 Desktop x64; approved test Process RemoteSigned; ordinary separate process Restricted/all scopes Undefined | T08/T07/T06/T05/T04 completion/C1 reports; T03 fixture evidence | T08 Unit99/NativeRunner36/Dependency9/Source4 PASS; controlled vector/capture/immediate-child token lifecycle; T05 terminal Launcher24/LauncherNative2 remains PASS; narrow PDFtk counts/source preservation; native GS/descendants/full-run interruption/Explorer/release NOT TESTED |
-| Supported PowerShell 7 x64 on reference desktop | Required | Actual 7.6.5 Core x64 RemoteSigned; supported update7.6.6 at inspection | T08/T07/T06/T05/T04 completion/C1 reports; T02 lifecycle evidence | T08 Unit99/NativeRunner36/Dependency9/Source4 PASS at actual7.6.5; T05 launcher driver PASS withPS5.1 children; current-supported-update/release claim NOT VALIDATED |
-| PDFtk native Windows build | Required | Vendor Server2.02 unsigned x86 engine; actual CLI version2.02; explicit external dev cache, hash in receipt | T03 acquisition/fixture evidence; T07/T06/T05/T04 C1 native reports | T07 exact path/version plus five inspected masters per shell PASS;2/2page dependency smokes and2/2/5source totals/source preservation; selected failure before outputs/logs; final page-order/arguments/publication/fidelity gates NOT TESTED; no system install |
-| Ghostscript native Windows build | Required for email support | Not discovered in PATH/common install paths/uninstall registrations | T02 probe | NATIVE NOT TESTED; selected build/version/acquisition unknown |
+| Windows PowerShell 5.1 on reference desktop | Required | 5.1.26100.9444 Desktop x64; test Process RemoteSigned; ordinary Restricted/all scopes Undefined | T09 completion/C3 reports + prior task evidence | T09/M1 narrow217cases PASS with actualPDFtk/GS; full interruption/fidelity/Explorer/release NOT TESTED |
+| Supported PowerShell 7 x64 on reference desktop | Required | Supported portable7.6.6 Core x64; Microsoft-signed host; Process RemoteSigned | T09 PS7 acquisition + completion/C3 reports | T09/M1 narrow217cases PASS with actualPDFtk/GS; full application/release compatibility NOT VALIDATED |
+| PDFtk native Windows build | Required | Vendor Server2.02 unsigned x86; approved exact external cache | T03 acquisition + T09 completion/C3 | Tested punctuation/Latin paths andCJKinstall PASS; CJKoperands safeFAIL;258PASS/260preflight; bounded encrypted/lock/ACL/collision PASS; no fidelity/release claim |
+| Ghostscript native Windows build | Required for email support | Verified10.08.0 x64 console/interpreter unsigned; signed installer; explicit external cache | T09 GS acquisition + completion/C3 | Tested punctuation/Latin/CJK paths,258input, boundedfailure/entry PASS; PDFSTOPONERROR nativeerror regression PASS; full email validation/fidelity/release NOT TESTED |
 | GitHub Windows runner | Required CI evidence; not desktop certification | UNKNOWN | None | NOT TESTED |
 | Windows 10 | Optional/excludable | UNKNOWN | None | NOT TESTED |
 | Live UNC network share | Optional/excludable | UNKNOWN | None | NOT TESTED |
@@ -96,3 +96,12 @@ and M1 regression tiers are separate evidence. Actual GS remains absent/unrun;
 new exact external-cache acquisition authorization is pending. T09/AC019/20 remain
 blocked/incomplete as whole required gates; AC021 passes. No supported-current
 PS7 or release/Explorer/fidelity claim. See `evidence/T09-evidence.md` and C1 reports.
+
+T09 followup supersedes historical dependency availability/PS7 gaps above. Clean C3
+`894bbb4862105ae497bc9801decc46575fedd87a` passes217Pester tests per actual shell/434total,
+Python10tests/exact regeneration/PDFium oracle and scoped analyzer0errors/20warnings/
+4information. Required AC019/20/21 pass; M1 complete. Owner authorized all needed
+test dependencies, retained outside repository/system. Acquisition receipts and
+C3 manifest/review disclose actual signatures/hashes, static warnings and historical
+GS exit0/password-error wrongpage failure fixed with PDFSTOPONERROR. Full release/
+OS support channel/Explorer/fidelity/structural/email validation remain later gates.

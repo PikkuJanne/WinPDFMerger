@@ -1,52 +1,42 @@
 # Next session
 
-Selected task: finish T09 (blocked on required real Ghostscript evidence).
-Read AGENTS/INDEX/STATUS, T09 TASKS entry/brief, PRODUCT_SPEC, TECHNICAL_SPEC,
-TEST_STRATEGY, GITHUB_WORKFLOW and AC019/AC020/AC021. Recheck repository/branch,
-clean state, fetch/push origin, live refs/PR/releases; never reset to the baseline.
+Selected task: T10 — validate destination and reserve run identity (M2).
+Read AGENTS/INDEX/STATUS, T10 TASKS entry/brief, PRODUCT_SPEC, TECHNICAL_SPEC,
+TEST_STRATEGY, GITHUB_WORKFLOW and AC022/AC023/AC024. Recheck local branch/clean
+tree/origin fetch+push/fresh live refs/PR/releases. Never reset to the baseline.
 
-Implementation checkpoint C1 is pushed: `139ecdcc9f31bc8c55bd0e26e63aaa43e2acdbfc`. `Invoke-PdfToolJob` routes fixed PDFtk/GS
-vectors through `Invoke-NativeProcess`, captures/logs both tools, privately stages
-fresh outputs and uses no-overwrite moves. PDFtk cat/compress/dont_ask; GS retains
-SAFER, /screen, compatibility1.6/duplicate detection and child-only GS_OPTIONS
-removal. Native exit/capture/launch/timeout faults cannot publish an output; failed
-GS returns2/master retention. Structural checks/state integration remain T10-T15.
+T09/M1 completed at clean C3 `894bbb4862105ae497bc9801decc46575fedd87a`:217 Pester cases per actual
+PS5.1/7.6.6 shell,434total;9tiers, all failure/skip/not_run0; AC019/20/21 pass.
+Python fixture10tests/exact reproduction/PDFium oracle pass. PSA1.25.0 entry/
+helpers0errors/20warnings/4information; reviewed style hints retained, no T22
+completion claim. See T09 completion/results/reports/manifest/review/live receipt.
+C4 records-only continuation requires final fresh live proof in session output;
+verify current refs anew. Draft [PR](https://github.com/PikkuJanne/WinPDFMerger/pull/9) replaces owner-merged PR8.
 
-Command bound30000 includes executable serialization, separator and NUL in UTF16;
-maximum injectable32766. File operands and owned stage must remain below260.
-Real PDFtk2.02 punctuation/Latin paths and CJK install path pass. CJK file operands
-fail safely, with readable Unicode diagnostics;258 input passes/260 preflight
-rejects. Tests hash sources; ACL-denial test restores original descriptor/SDDL.
-Clean C1 passes203 tests per shell,406 total: Unit104/ToolInvocation12/
-PDFtkPaths12/NativeRunner36/DependencyEntry9/SourceDiscovery4/Launcher24/
-LauncherNative2, all failure/skip/not_run counts zero. See `evidence/T09-evidence.md`,
-C1 results/live receipt and exact report/hash manifest. Historical dirty runs are
-separate. AC021 passes; required AC019/20 remain not_run as whole cases without GS.
+Reuse verified external dev caches from T09 GS/PS7/PSA acquisition receipts and
+T03 Pester6.2.0/PDFtk2.02 receipts. Owner explicitly authorized all needed test
+dependencies; process-only RemoteSigned already authorized. No repeat acquisition
+approval for these exact caches; no automatic downloads/system/PATH/security
+changes. Current supported PS7 reference pin7.6.6 in TestDependencies.psd1.
 
-GS is absent. Human response to the exact new external-cache acquisition request
-is required; silence is not approval. The repository dependency policy explicitly
-says installation is not implicit. Planned official GS10.08.0 x64 (~65MB) plus
-7-Zip26.04 MSI (~2MB), published SHA256/SHA512 checks, read installers as data,
-no setup execution/admin/PATH/registry/persistent security change/vendor release
-files. Prepared local-only ignored script:
-`tests/.work/T09-acquisition/Acquire-Ghostscript.ps1`; if missing, reconstruct the
-reviewed plan from `evidence/T09-checkpoint.md`. Never imply it is distributed.
-After human approval run it with previously approved test-process RemoteSigned;
-verify EXE and interpreter DLL hashes via its actual acquisition receipt, preserve
-GS resources/layout and execute GhostscriptPaths in both shells at a clean commit.
-The harness must fail closed for missing real dependencies; no skips/mock GS pass.
+Invoke-PdfToolJob routes bounded direct vectors/logs, private fresh outputs and
+no-overwrite moves. PDFtk cat/compress/dont_ask; GS SAFER,/screen,compatibility1.6,
+duplicate detection, fixedPDFSTOPONERROR and child-only GS_OPTIONS removal.
+The fixed error flag rejects observed password-error exit0/wrong-page artifact;
+it does not replace structural/expected-total validation. Command bound30000
+includes executable serialization/separator/NUL; operands/stage below260.
+PDFtk CJK operands fail safely with readable native diagnostics; GS testedCJK
+paths pass; sources are never renamed. ACL fixture descriptor/source restored.
 
-Only after required AC019/20/21 actual acceptance, update T09 done and NEXT_SESSION
-with T10. Current C1 is implementation-only; no M1 completion claim. C1 normal push/clean live equality verified2026-10-07T18:30:39.971403+00:00.
-New draft [PR8](https://github.com/PikkuJanne/WinPDFMerger/pull/8) is open; inspect live state before reuse. Records C2 require fresh verification; final
-C2 post-push clean/live SHA belongs in session output and must be rechecked. Future session rechecks current live refs instead of trusting notes.
+T10 should implement destination/overlap/writability and unique shared run identity,
+including the known same-second log/final naming weakness. Preserve master sources
+and current defaults. T11 owns input/page inventory, T12 generalized staging,
+T13 master validation/publication, T14 email validation/outcomes (including known
+stale-email summary), T15 full interruption/descendants. Earlier historical notes
+misassigned structural validation to T10; use this corrected task map.
 
-Reuse exact approved Pester6.2.0/PDFtk2.02 caches from T03 acquisition receipts and
-process-only RemoteSigned; no repeat approval for those. Actual PS7 remains7.6.5
-behind recorded7.6.6, no current-supported-build/release claim. Ordinary separate
-PS5.1 Restricted/all scopes Undefined; non-elevated Windows11 x64/build26300,
-actual5.1.26100.9444, OS support channel unestablished. No private PDF/upload,
-runtime network calls or permanent environment/security changes. PDF validation,
-output overlap/final identity/email outcomes/fidelity/Explorer/CI/package/release
-and PSScriptAnalyzer remain later gates. Preserve master/source safety and leave
-only this conceptual task in this thread.
+Reference standard-user Windows11x64/build26300; ordinary PS5.1 Restricted/all
+scopesUndefined, actual5.1.26100.9444 and supported7.6.6. OS support channel and
+Explorer/fidelity/full release compatibility remain unestablished; native scoped
+tests cannot replace human desktop/CI/package/release gates. One conceptual task
+per thread; no intermediate tags/releases/private PDF/upload/runtime network calls.

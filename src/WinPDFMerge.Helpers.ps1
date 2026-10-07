@@ -464,7 +464,10 @@ function Invoke-PdfToolJob {
             $arguments = @($InputPaths) + @('cat', 'output', $stagedOutput, 'compress', 'dont_ask')
             $removeEnvironment = @()
         } else {
-            $arguments = @('-dBATCH', '-dNOPAUSE', '-dSAFER', '-sDEVICE=pdfwrite',
+            # GS otherwise can return zero and write a blank PDF after a PDF
+            # interpreter error. Signal that error via its native exit status;
+            # structural/page-total validation is still required separately.
+            $arguments = @('-dBATCH', '-dNOPAUSE', '-dSAFER', '-dPDFSTOPONERROR', '-sDEVICE=pdfwrite',
                 '-dCompatibilityLevel=1.6', '-dPDFSETTINGS=/screen', '-dDetectDuplicateImages=true',
                 '-o', $stagedOutput, '-f', $InputPaths[0])
             $removeEnvironment = @('GS_OPTIONS')
@@ -478,7 +481,7 @@ function Invoke-PdfToolJob {
             throw "$Tool did not produce a nonempty private output."
         }
         # File.Move refuses an existing target, including a collision after the
-        # preflight. Structural validation is added by T10 before publication.
+        # preflight. Structural/page-total validation is a separate later gate.
         [IO.File]::Move($stagedOutput, $OutputPath)
         $published = $true
     } catch {

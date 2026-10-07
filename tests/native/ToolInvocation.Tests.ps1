@@ -91,12 +91,12 @@ Describe 'T09: fixed tool vectors and private fresh native outputs' {
         }
         $result = Invoke-PdfToolJob -Tool Ghostscript -Executable $case.Executable -InputPaths @($case.Inputs[0]) -OutputPath $case.Output
         $result.Succeeded | Should -BeTrue -Because $result.OutputError
-        ($script:t09CapturedArguments[0..6] -join '|') | Should -BeExactly '-dBATCH|-dNOPAUSE|-dSAFER|-sDEVICE=pdfwrite|-dCompatibilityLevel=1.6|-dPDFSETTINGS=/screen|-dDetectDuplicateImages=true'
-        $script:t09CapturedArguments.Count | Should -Be 11
-        $script:t09CapturedArguments[7] | Should -BeExactly '-o'
-        $script:t09CapturedArguments[8] | Should -Not -Be $case.Output
-        $script:t09CapturedArguments[9] | Should -BeExactly '-f'
-        $script:t09CapturedArguments[10] | Should -BeExactly $case.Inputs[0]
+        ($script:t09CapturedArguments[0..7] -join '|') | Should -BeExactly '-dBATCH|-dNOPAUSE|-dSAFER|-dPDFSTOPONERROR|-sDEVICE=pdfwrite|-dCompatibilityLevel=1.6|-dPDFSETTINGS=/screen|-dDetectDuplicateImages=true'
+        $script:t09CapturedArguments.Count | Should -Be 12
+        $script:t09CapturedArguments[8] | Should -BeExactly '-o'
+        $script:t09CapturedArguments[9] | Should -Not -Be $case.Output
+        $script:t09CapturedArguments[10] | Should -BeExactly '-f'
+        $script:t09CapturedArguments[11] | Should -BeExactly $case.Inputs[0]
         ($script:t09CapturedRemovedEnvironment -join '|') | Should -BeExactly 'GS_OPTIONS'
         [Environment]::GetEnvironmentVariable('GS_OPTIONS', 'Process') | Should -BeExactly $callerOptions
         (Get-ToolInvocationHashes $case.Inputs) | Should -BeExactly $before

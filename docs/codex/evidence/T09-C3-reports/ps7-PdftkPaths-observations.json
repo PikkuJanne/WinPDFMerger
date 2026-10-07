@@ -1,0 +1,295 @@
+{
+  "CommitUnderTest": "894bbb4862105ae497bc9801decc46575fedd87a",
+  "DirtyWorktree": false,
+  "ShellVersion": "7.6.6",
+  "ShellEdition": "Core",
+  "ToolBackend": "Pdftk",
+  "ToolVersion": "2.02",
+  "Observations": [
+    {
+      "Label": "supported-spaces",
+      "Backend": "Pdftk",
+      "Version": "2.02",
+      "InputPaths": [
+        "<repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\47547ba42027456b88da7321a6e34ac9\\source two words\\input two words.pdf"
+      ],
+      "InputLengths": [
+        155
+      ],
+      "OutputPath": "<repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\47547ba42027456b88da7321a6e34ac9\\output two words\\result two words.pdf",
+      "Published": true,
+      "Succeeded": true,
+      "OutputError": null,
+      "CleanupError": null,
+      "NativeStarted": true,
+      "ExitCode": 0,
+      "TimedOut": false,
+      "ElapsedMilliseconds": 97,
+      "Stdout": "",
+      "Stderr": ""
+    },
+    {
+      "Label": "supported-shell and wildcard characters",
+      "Backend": "Pdftk",
+      "Version": "2.02",
+      "InputPaths": [
+        "<repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\54ee15dd89354f31b74d051fe274bfc3\\source [x] ! & (a) apostrophe's\\input [x] ! & (a) apostrophe's.pdf"
+      ],
+      "InputLengths": [
+        185
+      ],
+      "OutputPath": "<repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\54ee15dd89354f31b74d051fe274bfc3\\output [x] ! & (a) apostrophe's\\result [x] ! & (a) apostrophe's.pdf",
+      "Published": true,
+      "Succeeded": true,
+      "OutputError": null,
+      "CleanupError": null,
+      "NativeStarted": true,
+      "ExitCode": 0,
+      "TimedOut": false,
+      "ElapsedMilliseconds": 134,
+      "Stdout": "",
+      "Stderr": ""
+    },
+    {
+      "Label": "supported-Latin Unicode",
+      "Backend": "Pdftk",
+      "Version": "2.02",
+      "InputPaths": [
+        "<repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\8a789cefed5048fba9ae38d9af3f49b5\\source latin-ä\\input latin-ä.pdf"
+      ],
+      "InputLengths": [
+        151
+      ],
+      "OutputPath": "<repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\8a789cefed5048fba9ae38d9af3f49b5\\output latin-ä\\result latin-ä.pdf",
+      "Published": true,
+      "Succeeded": true,
+      "OutputError": null,
+      "CleanupError": null,
+      "NativeStarted": true,
+      "ExitCode": 0,
+      "TimedOut": false,
+      "ElapsedMilliseconds": 110,
+      "Stdout": "",
+      "Stderr": ""
+    },
+    {
+      "Label": "CJK-install-only",
+      "Backend": "Pdftk",
+      "Version": "2.02",
+      "InputPaths": [
+        "<repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\20eb18e0913d461b91bc413ebbcee9ba\\source plain\\input plain.pdf"
+      ],
+      "InputLengths": [
+        147
+      ],
+      "OutputPath": "<repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\20eb18e0913d461b91bc413ebbcee9ba\\output plain\\result plain.pdf",
+      "Published": true,
+      "Succeeded": true,
+      "OutputError": null,
+      "CleanupError": null,
+      "NativeStarted": true,
+      "ExitCode": 0,
+      "TimedOut": false,
+      "ElapsedMilliseconds": 107,
+      "Stdout": "",
+      "Stderr": ""
+    },
+    {
+      "Label": "CJK-input",
+      "Backend": "Pdftk",
+      "Version": "2.02",
+      "InputPaths": [
+        "<repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\19fbbb457e2e48ecaa5f9ae3ddc3d5fc\\source plain\\input-日.pdf"
+      ],
+      "InputLengths": [
+        143
+      ],
+      "OutputPath": "<repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\19fbbb457e2e48ecaa5f9ae3ddc3d5fc\\output plain\\result plain.pdf",
+      "Published": false,
+      "Succeeded": false,
+      "OutputError": "Pdftk failed. Check native exit/launch/capture/timeout details and both streams in the log. The backend may reject Unicode or long paths; source files were not renamed.",
+      "CleanupError": null,
+      "NativeStarted": true,
+      "ExitCode": 1,
+      "TimedOut": false,
+      "ElapsedMilliseconds": 213,
+      "Stdout": "",
+      "Stderr": "Error: Unable to find file.\r\nError: Failed to open PDF file: \r\n   <repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\19fbbb457e2e48ecaa5f9ae3ddc3d5fc\\source plain\\input-日.pdf\r\nErrors encountered.  No output created.\r\nDone.  Input errors, so no output created.\r\n"
+    },
+    {
+      "Label": "CJK-output-directory",
+      "Backend": "Pdftk",
+      "Version": "2.02",
+      "InputPaths": [
+        "<repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\be6c78a63efb44219c6106e2b3c22137\\source plain\\input plain.pdf"
+      ],
+      "InputLengths": [
+        147
+      ],
+      "OutputPath": "<repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\be6c78a63efb44219c6106e2b3c22137\\output-日\\result.pdf",
+      "Published": false,
+      "Succeeded": false,
+      "OutputError": "Pdftk failed. Check native exit/launch/capture/timeout details and both streams in the log. The backend may reject Unicode or long paths; source files were not renamed.",
+      "CleanupError": null,
+      "NativeStarted": true,
+      "ExitCode": 1,
+      "TimedOut": false,
+      "ElapsedMilliseconds": 95,
+      "Stdout": "",
+      "Stderr": "Error: Failed to open output file: \r\n   <repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\be6c78a63efb44219c6106e2b3c22137\\output-日\\.WinPDFMerge_1ef9e73250de480eb33712e35c111ed5.tmp\\output.pdf\r\n   No output created.\r\n"
+    },
+    {
+      "Label": "258-character-input",
+      "Backend": "Pdftk",
+      "Version": "2.02",
+      "InputPaths": [
+        "<repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\6a4c4f210e404922a6cdc39a47eac4d4\\ppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp\\input.pdf"
+      ],
+      "InputLengths": [
+        258
+      ],
+      "OutputPath": "<repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\6a4c4f210e404922a6cdc39a47eac4d4\\output plain\\result plain.pdf",
+      "Published": true,
+      "Succeeded": true,
+      "OutputError": null,
+      "CleanupError": null,
+      "NativeStarted": true,
+      "ExitCode": 0,
+      "TimedOut": false,
+      "ElapsedMilliseconds": 87,
+      "Stdout": "",
+      "Stderr": ""
+    },
+    {
+      "Label": "260-character-preflight",
+      "Backend": "Pdftk",
+      "Version": "2.02",
+      "InputPaths": [
+        "<repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\6a4c4f210e404922a6cdc39a47eac4d4\\ppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp\\inputxx.pdf"
+      ],
+      "InputLengths": [
+        260
+      ],
+      "OutputPath": "<repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\6a4c4f210e404922a6cdc39a47eac4d4\\output plain\\length-rejected.pdf",
+      "Published": false,
+      "Succeeded": false,
+      "OutputError": "Unsupported PDF tool path '<repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\6a4c4f210e404922a6cdc39a47eac4d4\\ppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppppp\\inputxx.pdf': this workflow limits file paths to fewer than 260 UTF-16 characters. Use shorter folders; source files will not be renamed.",
+      "CleanupError": null,
+      "NativeStarted": false,
+      "ExitCode": null,
+      "TimedOut": false,
+      "ElapsedMilliseconds": null,
+      "Stdout": "",
+      "Stderr": ""
+    },
+    {
+      "Label": "actual-entry-special-Latin-paths",
+      "Backend": "Pdftk",
+      "Version": "2.02",
+      "ExitCode": 0,
+      "Stdout": "==== WinPDFMerge run 2026-10-07 21.24.10 ====\r\nPDFtk: <repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\f4200fd6dadf43c6ab3067bdce532aff\\install tools [x] & ! (a) ' �\\pdftk.exe (version 2.02)\r\nSource folder: <repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\f4200fd6dadf43c6ab3067bdce532aff\\source [x] & ! (a) ' �\r\nOutput (lossless): <repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\f4200fd6dadf43c6ab3067bdce532aff\\app [x] & ! (a) ' �\\WinPDFMerge_source [x] & ! (a) ' �_20261007_212410.pdf\r\nPDF count: 1\r\nInput 1: <repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\f4200fd6dadf43c6ab3067bdce532aff\\source [x] & ! (a) ' �\\input [x] & ! (a) ' �.pdf\r\nPDFtk executable: <repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\f4200fd6dadf43c6ab3067bdce532aff\\install tools [x] & ! (a) ' �\\pdftk.exe\r\nPDFtk arguments: \"<repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\f4200fd6dadf43c6ab3067bdce532aff\\source [x] & ! (a) ' �\\input [x] & ! (a) ' �.pdf\" \"cat\" \"output\" \"<repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\f4200fd6dadf43c6ab3067bdce532aff\\app [x] & ! (a) ' �\\.WinPDFMerge_7c6baf7fd5d84aa7a02efc8c3c7cc9ab.tmp\\output.pdf\" \"compress\" \"dont_ask\"\r\nPDFtk exit: 0; elapsed: 108 ms; PID: 25248\r\nPDFtk started: True; timed out: False; cancelled: False; succeeded: True\r\nPDFtk launch error: \r\nPDFtk capture error: \r\nPDFtk termination error: \r\nPDFtk stdout truncated: False; stderr truncated: False\r\nPDFtk stdout:\r\n\r\nPDFtk stderr:\r\n\r\nPDFtk merge OK.\r\nGhostscript not found; skipping email-optimized copy.\r\nDone.\r\n\nSUCCESS:\r\n - Lossless: <repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\f4200fd6dadf43c6ab3067bdce532aff\\app [x] & ! (a) ' �\\WinPDFMerge_source [x] & ! (a) ' �_20261007_212410.pdf\r\nLog: <repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\f4200fd6dadf43c6ab3067bdce532aff\\app [x] & ! (a) ' �\\WinPDFMerge_source [x] & ! (a) ' �_20261007_212410.log\r\n",
+      "Stderr": "",
+      "Log": "==== WinPDFMerge run 2026-10-07 21.24.10 ====\r\nPDFtk: <repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\f4200fd6dadf43c6ab3067bdce532aff\\install tools [x] & ! (a) ' ä\\pdftk.exe (version 2.02)\r\nSource folder: <repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\f4200fd6dadf43c6ab3067bdce532aff\\source [x] & ! (a) ' ä\r\nOutput (lossless): <repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\f4200fd6dadf43c6ab3067bdce532aff\\app [x] & ! (a) ' ä\\WinPDFMerge_source [x] & ! (a) ' ä_20261007_212410.pdf\r\nPDF count: 1\r\nInput 1: <repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\f4200fd6dadf43c6ab3067bdce532aff\\source [x] & ! (a) ' ä\\input [x] & ! (a) ' ä.pdf\r\nPDFtk executable: <repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\f4200fd6dadf43c6ab3067bdce532aff\\install tools [x] & ! (a) ' ä\\pdftk.exe\r\nPDFtk arguments: \"<repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\f4200fd6dadf43c6ab3067bdce532aff\\source [x] & ! (a) ' ä\\input [x] & ! (a) ' ä.pdf\" \"cat\" \"output\" \"<repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\f4200fd6dadf43c6ab3067bdce532aff\\app [x] & ! (a) ' ä\\.WinPDFMerge_7c6baf7fd5d84aa7a02efc8c3c7cc9ab.tmp\\output.pdf\" \"compress\" \"dont_ask\"\r\nPDFtk exit: 0; elapsed: 108 ms; PID: 25248\r\nPDFtk started: True; timed out: False; cancelled: False; succeeded: True\r\nPDFtk launch error: \r\nPDFtk capture error: \r\nPDFtk termination error: \r\nPDFtk stdout truncated: False; stderr truncated: False\r\nPDFtk stdout:\r\n\r\nPDFtk stderr:\r\n\r\nPDFtk merge OK.\r\nGhostscript not found; skipping email-optimized copy.\r\nDone.\r\n",
+      "SourceSnapshot": "{\"Path\":\"<repo>\\\\tests\\\\.work\\\\tool-paths\\\\2e4b2a1a484b4d04a79d6fedba43b1f4\\\\f4200fd6dadf43c6ab3067bdce532aff\\\\source [x] & ! (a) ' ä\\\\input [x] & ! (a) ' ä.pdf\",\"Hash\":\"7821D0FF4C3D655511E4421559D317013A64356A370D7B07A47079E5F02AD901\",\"Length\":2452,\"Modified\":639269846812809771,\"Attributes\":32}"
+    },
+    {
+      "Label": "encrypted-input-no-password",
+      "Backend": "Pdftk",
+      "Version": "2.02",
+      "InputPaths": [
+        "<repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\a6792da5e29b40f2925d51e0fca42ddc\\source plain\\encrypted.pdf"
+      ],
+      "InputLengths": [
+        145
+      ],
+      "OutputPath": "<repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\a6792da5e29b40f2925d51e0fca42ddc\\output plain\\result plain.pdf",
+      "Published": false,
+      "Succeeded": false,
+      "OutputError": "Pdftk failed. Check native exit/launch/capture/timeout details and both streams in the log. The backend may reject Unicode or long paths; source files were not renamed.",
+      "CleanupError": null,
+      "NativeStarted": true,
+      "ExitCode": 1,
+      "TimedOut": false,
+      "ElapsedMilliseconds": 83,
+      "Stdout": "",
+      "Stderr": "Error: Failed to open PDF file: \r\n   <repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\a6792da5e29b40f2925d51e0fca42ddc\\source plain\\encrypted.pdf\r\n   OWNER PASSWORD REQUIRED, but not given (or incorrect)\r\nErrors encountered.  No output created.\r\nDone.  Input errors, so no output created.\r\n"
+    },
+    {
+      "Label": "actual-encrypted-only-entry-failure-before-GS",
+      "Backend": "Pdftk",
+      "Version": "2.02",
+      "ExitCode": 1,
+      "Stdout": "==== WinPDFMerge run 2026-10-07 21.24.13 ====\r\nPDFtk: <LOCALAPPDATA>\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe (version 2.02)\r\nSource folder: <repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\85f38da959294f4bbd0974efc59ffd1b\\encrypted-only-source\r\nOutput (lossless): <repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\85f38da959294f4bbd0974efc59ffd1b\\encrypted-entry-app\\WinPDFMerge_encrypted-only-source_20261007_212413.pdf\r\nPDF count: 1\r\nInput 1: <repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\85f38da959294f4bbd0974efc59ffd1b\\encrypted-only-source\\encrypted.pdf\r\nPDFtk executable: <LOCALAPPDATA>\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe\r\nPDFtk arguments: \"<repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\85f38da959294f4bbd0974efc59ffd1b\\encrypted-only-source\\encrypted.pdf\" \"cat\" \"output\" \"<repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\85f38da959294f4bbd0974efc59ffd1b\\encrypted-entry-app\\.WinPDFMerge_4ea3b75ea82a44a8b89094bb1a14f374.tmp\\output.pdf\" \"compress\" \"dont_ask\"\r\nPDFtk exit: 1; elapsed: 106 ms; PID: 22696\r\nPDFtk started: True; timed out: False; cancelled: False; succeeded: False\r\nPDFtk launch error: \r\nPDFtk capture error: \r\nPDFtk termination error: \r\nPDFtk stdout truncated: False; stderr truncated: False\r\nPDFtk stdout:\r\n\r\nPDFtk stderr:\r\nError: Failed to open PDF file: \r\n   <repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\85f38da959294f4bbd0974efc59ffd1b\\encrypted-only-source\\encrypted.pdf\r\n   OWNER PASSWORD REQUIRED, but not given (or incorrect)\r\nErrors encountered.  No output created.\r\nDone.  Input errors, so no output created.\r\n\r\nPdftk failed. Check native exit/launch/capture/timeout details and both streams in the log. The backend may reject Unicode or long paths; source files were not renamed.\r\nPDFtk failed. See log: <repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\85f38da959294f4bbd0974efc59ffd1b\\encrypted-entry-app\\WinPDFMerge_encrypted-only-source_20261007_212413.log\r\n",
+      "Stderr": "",
+      "Log": "==== WinPDFMerge run 2026-10-07 21.24.13 ====\r\nPDFtk: <LOCALAPPDATA>\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe (version 2.02)\r\nSource folder: <repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\85f38da959294f4bbd0974efc59ffd1b\\encrypted-only-source\r\nOutput (lossless): <repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\85f38da959294f4bbd0974efc59ffd1b\\encrypted-entry-app\\WinPDFMerge_encrypted-only-source_20261007_212413.pdf\r\nPDF count: 1\r\nInput 1: <repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\85f38da959294f4bbd0974efc59ffd1b\\encrypted-only-source\\encrypted.pdf\r\nPDFtk executable: <LOCALAPPDATA>\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe\r\nPDFtk arguments: \"<repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\85f38da959294f4bbd0974efc59ffd1b\\encrypted-only-source\\encrypted.pdf\" \"cat\" \"output\" \"<repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\85f38da959294f4bbd0974efc59ffd1b\\encrypted-entry-app\\.WinPDFMerge_4ea3b75ea82a44a8b89094bb1a14f374.tmp\\output.pdf\" \"compress\" \"dont_ask\"\r\nPDFtk exit: 1; elapsed: 106 ms; PID: 22696\r\nPDFtk started: True; timed out: False; cancelled: False; succeeded: False\r\nPDFtk launch error: \r\nPDFtk capture error: \r\nPDFtk termination error: \r\nPDFtk stdout truncated: False; stderr truncated: False\r\nPDFtk stdout:\r\n\r\nPDFtk stderr:\r\nError: Failed to open PDF file: \r\n   <repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\85f38da959294f4bbd0974efc59ffd1b\\encrypted-only-source\\encrypted.pdf\r\n   OWNER PASSWORD REQUIRED, but not given (or incorrect)\r\nErrors encountered.  No output created.\r\nDone.  Input errors, so no output created.\r\n\r\nPdftk failed. Check native exit/launch/capture/timeout details and both streams in the log. The backend may reject Unicode or long paths; source files were not renamed.\r\n",
+      "SourceSnapshot": "{\"Path\":\"<repo>\\\\tests\\\\.work\\\\tool-paths\\\\2e4b2a1a484b4d04a79d6fedba43b1f4\\\\85f38da959294f4bbd0974efc59ffd1b\\\\source plain\\\\input plain.pdf\",\"Hash\":\"7821D0FF4C3D655511E4421559D317013A64356A370D7B07A47079E5F02AD901\",\"Length\":2452,\"Modified\":639269846812809771,\"Attributes\":32}\n{\"Path\":\"<repo>\\\\tests\\\\.work\\\\tool-paths\\\\2e4b2a1a484b4d04a79d6fedba43b1f4\\\\85f38da959294f4bbd0974efc59ffd1b\\\\encrypted-only-source\\\\encrypted.pdf\",\"Hash\":\"6846E07086F187FB0EDAE36B87A2F74FD24CEA6674881CB3180D88AFDB6E3081\",\"Length\":2545,\"Modified\":639269978527308760,\"Attributes\":32}"
+    },
+    {
+      "Label": "locked-input",
+      "Backend": "Pdftk",
+      "Version": "2.02",
+      "InputPaths": [
+        "<repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\a47a8e8072bc45c4980d978287b898bc\\source plain\\input plain.pdf"
+      ],
+      "InputLengths": [
+        147
+      ],
+      "OutputPath": "<repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\a47a8e8072bc45c4980d978287b898bc\\output plain\\result plain.pdf",
+      "Published": false,
+      "Succeeded": false,
+      "OutputError": "Pdftk failed. Check native exit/launch/capture/timeout details and both streams in the log. The backend may reject Unicode or long paths; source files were not renamed.",
+      "CleanupError": null,
+      "NativeStarted": true,
+      "ExitCode": 1,
+      "TimedOut": false,
+      "ElapsedMilliseconds": 81,
+      "Stdout": "",
+      "Stderr": "Error: Unexpected Exception in open_reader()\r\njava.io.FileNotFoundException: <repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\a47a8e8072bc45c4980d978287b898bc\\source plain\\input plain.pdf: The process cannot access the file because it is being used by another process.\r\n\r\n   at 0x0059a84e (Unknown Source)\r\n   at 0x0059ad42 (Unknown Source)\r\n   at 0x005e9bd4 (Unknown Source)\r\n   at 0x00590c74 (Unknown Source)\r\n   at 0x00648f54 (Unknown Source)\r\n   at 0x0063aee2 (Unknown Source)\r\n   at 0x0063873c (Unknown Source)\r\n   at 0x005d1a09 (Unknown Source)\r\n   at 0x005d1bc7 (Unknown Source)\r\n   at 0x005106aa (Unknown Source)\r\n   at 0x0051048a (Unknown Source)\r\n   at 0x00484605 (Unknown Source)\r\n   at 0x004df3d7 (Unknown Source)\r\n   at 0x004df38a (Unknown Source)\r\n   at 0x0041a16a (Unknown Source)\r\n   at 0x0041af94 (Unknown Source)\r\n   at 0x0041d187 (Unknown Source)\r\n   at 0x00421e89 (Unknown Source)\r\n   at 0x0042298a (Unknown Source)\r\n   at 0x0058ed52 (Unknown Source)\r\n   at 0x0058ede4 (Unknown Source)\r\n   at 0x75ae5d45 (Unknown Source)\r\n   at 0x773ee1f7 (Unknown Source)\r\n   at 0x773ee17d (Unknown Source)\r\nError: Failed to open PDF file: \r\n   <repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\a47a8e8072bc45c4980d978287b898bc\\source plain\\input plain.pdf\r\nErrors encountered.  No output created.\r\nDone.  Input errors, so no output created.\r\n"
+    },
+    {
+      "Label": "owned-current-user-ReadData-ACL-denial",
+      "Backend": "Pdftk",
+      "Version": "2.02",
+      "InputPaths": [
+        "<repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\9273755ae5944215824b1c9dc7634b6d\\source plain\\input plain.pdf"
+      ],
+      "InputLengths": [
+        147
+      ],
+      "OutputPath": "<repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\9273755ae5944215824b1c9dc7634b6d\\output plain\\result plain.pdf",
+      "Published": false,
+      "Succeeded": false,
+      "OutputError": "Pdftk failed. Check native exit/launch/capture/timeout details and both streams in the log. The backend may reject Unicode or long paths; source files were not renamed.",
+      "CleanupError": null,
+      "NativeStarted": true,
+      "ExitCode": 1,
+      "TimedOut": false,
+      "ElapsedMilliseconds": 113,
+      "Stdout": "",
+      "Stderr": "Error: Unexpected Exception in open_reader()\r\njava.io.FileNotFoundException: <repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\9273755ae5944215824b1c9dc7634b6d\\source plain\\input plain.pdf: Access is denied.\r\n\r\n   at 0x0059a84e (Unknown Source)\r\n   at 0x0059ad42 (Unknown Source)\r\n   at 0x005e9bd4 (Unknown Source)\r\n   at 0x00590c74 (Unknown Source)\r\n   at 0x00648f54 (Unknown Source)\r\n   at 0x0063aee2 (Unknown Source)\r\n   at 0x0063873c (Unknown Source)\r\n   at 0x005d1a09 (Unknown Source)\r\n   at 0x005d1bc7 (Unknown Source)\r\n   at 0x005106aa (Unknown Source)\r\n   at 0x0051048a (Unknown Source)\r\n   at 0x00484605 (Unknown Source)\r\n   at 0x004df3d7 (Unknown Source)\r\n   at 0x004df38a (Unknown Source)\r\n   at 0x0041a16a (Unknown Source)\r\n   at 0x0041af94 (Unknown Source)\r\n   at 0x0041d187 (Unknown Source)\r\n   at 0x00421e89 (Unknown Source)\r\n   at 0x0042298a (Unknown Source)\r\n   at 0x0058ed52 (Unknown Source)\r\n   at 0x0058ede4 (Unknown Source)\r\n   at 0x75ae5d45 (Unknown Source)\r\n   at 0x773ee1f7 (Unknown Source)\r\n   at 0x773ee17d (Unknown Source)\r\nError: Failed to open PDF file: \r\n   <repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\9273755ae5944215824b1c9dc7634b6d\\source plain\\input plain.pdf\r\nErrors encountered.  No output created.\r\nDone.  Input errors, so no output created.\r\n"
+    },
+    {
+      "Label": "existing-final-refused",
+      "Backend": "Pdftk",
+      "Version": "2.02",
+      "InputPaths": [
+        "<repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\7588e7f1c5b24521b52120989a7416d6\\source plain\\input plain.pdf"
+      ],
+      "InputLengths": [
+        147
+      ],
+      "OutputPath": "<repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\7588e7f1c5b24521b52120989a7416d6\\output plain\\result plain.pdf",
+      "Published": false,
+      "Succeeded": false,
+      "OutputError": "PDF output already exists: '<repo>\\tests\\.work\\tool-paths\\2e4b2a1a484b4d04a79d6fedba43b1f4\\7588e7f1c5b24521b52120989a7416d6\\output plain\\result plain.pdf'. Choose a fresh output; existing files are never overwritten.",
+      "CleanupError": null,
+      "NativeStarted": false,
+      "ExitCode": null,
+      "TimedOut": false,
+      "ElapsedMilliseconds": null,
+      "Stdout": "",
+      "Stderr": ""
+    }
+  ],
+  "Scope": "Synthetic Windows real-engine path/noninteractive observations; no fidelity or current-supported-PS7 claim."
+}

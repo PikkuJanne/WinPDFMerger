@@ -294,7 +294,39 @@ Describe 'AC020: real prompt-free encrypted, locked and collision outcomes' {
         $job.NativeResult.TimedOut | Should -BeFalse
         ($job.NativeResult.Stdout + $job.NativeResult.Stderr) | Should -Match '(?i)password|encrypt'
         [IO.File]::Exists($case.Output) | Should -BeFalse
+        @(Get-ChildItem -LiteralPath $case.OutputDirectory -Directory -Force).Count | Should -Be 0
         (Get-ToolPathSnapshot @($case.Input, $encrypted)) | Should -BeExactly $before
+    }
+
+    It 'fails the actual encrypted-only application workflow through PDFtk before any Ghostscript conversion' {
+        $case = New-ToolPathCase
+        $source = Join-Path $case.Root 'encrypted-only-source'
+        $app = Join-Path $case.Root 'encrypted-entry-app'
+        [void][IO.Directory]::CreateDirectory($source)
+        [void][IO.Directory]::CreateDirectory((Join-Path $app 'src'))
+        $encrypted = Join-Path $source 'encrypted.pdf'
+        $creation = Invoke-TestChildProcess -Executable $PdftkPath -Arguments @($case.Input, 'output', $encrypted, 'user_pw', 'synthetic-t09-user', 'owner_pw', 'synthetic-t09-owner', 'encrypt_128bit', 'dont_ask') -TimeoutMilliseconds 10000
+        $creation.ExitCode | Should -Be 0 -Because $creation.Stderr
+        [IO.File]::Copy((Join-Path $repo 'WinPDFMerge.ps1'), (Join-Path $app 'WinPDFMerge.ps1'), $false)
+        [IO.File]::Copy((Join-Path $repo 'src/WinPDFMerge.Helpers.ps1'), (Join-Path $app 'src/WinPDFMerge.Helpers.ps1'), $false)
+        $before = Get-ToolPathSnapshot @($case.Input, $encrypted)
+        $noCommon = Join-Path $case.Root 'no-common-engines'
+        [void][IO.Directory]::CreateDirectory($noCommon)
+        $childPath = [IO.Path]::GetDirectoryName($PdftkPath) + ';' + (Join-Path $env:SystemRoot 'System32')
+        if ($ToolBackend -eq 'Ghostscript') { $childPath = [IO.Path]::GetDirectoryName($engine) + ';' + $childPath }
+        $result = Invoke-TestChildProcess -Executable $shell -Arguments @('-NoProfile', '-ExecutionPolicy', 'RemoteSigned', '-File', (Join-Path $app 'WinPDFMerge.ps1'), $source) -ChildPath $childPath -ChildEnvironment @{ ProgramFiles = $noCommon; 'ProgramFiles(x86)' = $noCommon } -TimeoutMilliseconds 10000
+        $result.ExitCode | Should -Be 1 -Because ($result.Stdout + $result.Stderr)
+        ($result.Stdout + $result.Stderr) | Should -Match 'PDFtk failed'
+        @(Get-ChildItem -LiteralPath $app -Filter '*.pdf' -File).Count | Should -Be 0
+        @(Get-ChildItem -LiteralPath $app -Directory -Force | Where-Object Name -like '.WinPDFMerge_*.tmp').Count | Should -Be 0
+        $logs = @(Get-ChildItem -LiteralPath $app -Filter '*.log' -File)
+        $logs.Count | Should -Be 1
+        $log = [IO.File]::ReadAllText($logs[0].FullName, [Text.Encoding]::UTF8)
+        $log | Should -Match '(?i)PDFtk failed'
+        $log | Should -Match '(?i)password'
+        $log | Should -Not -Match '(?m)^Ghostscript(?: stdout:| stderr:|:)'
+        (Get-ToolPathSnapshot @($case.Input, $encrypted)) | Should -BeExactly $before
+        $observations.Add([pscustomobject]@{ Label = 'actual-encrypted-only-entry-failure-before-GS'; Backend = $ToolBackend; Version = $version; ExitCode = $result.ExitCode; Stdout = $result.Stdout; Stderr = $result.Stderr; Log = $log; SourceSnapshot = $before })
     }
 
     It 'fails a genuinely exclusively locked input within the finite native bound without changing source bytes' {
