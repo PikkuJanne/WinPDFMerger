@@ -6,5 +6,254 @@
   "releases_seen": [],
   "source_review_only": true,
   "production_files_modified_by_bundle": false,
-  "windows_execution_tested_by_bundle": false
+  "windows_execution_tested_by_bundle": false,
+  "t02": {
+    "observed_at_utc": "2026-10-07T15:30:03.7535188Z",
+    "commit_under_test": "4ad96bfe67ffa86753ace9a728dbad21192bb556",
+    "branch": "codex/v1.0.0-readiness",
+    "origin_fetch": "https://github.com/PikkuJanne/WinPDFMerger.git",
+    "origin_push": "https://github.com/PikkuJanne/WinPDFMerger.git",
+    "live_main_at_start": "4ad96bfe67ffa86753ace9a728dbad21192bb556",
+    "live_readiness_at_start": "fa486f11e6468266b5c982368654acb63af0a2b5",
+    "reconciliation": "Clean fast-forward of readiness to origin/main; no file changes. PR #1 already merged at 2026-10-07T15:26:10Z.",
+    "product_diff_from_reviewed_commit": "empty",
+    "source_hashes": [
+      {
+        "file": "LICENSE",
+        "sha256": "714ffa7a21614e637d7dbb17a2e86e4575d7ecd2b6d36b5b67ab3fdcc4193477"
+      },
+      {
+        "file": "README.md",
+        "sha256": "7127abe5b169ff2b46f78d3bb03353669f278d5860983829d3bce093bd4458aa"
+      },
+      {
+        "file": "WinPDFMerge.bat",
+        "sha256": "b02fef932c59d0d3d8df48c8b3b986d766353a0660e262cb5ca460d3ba5c3a2f"
+      },
+      {
+        "file": "WinPDFMerge.ico",
+        "sha256": "a341d50a022161a3f0e669185328b9ff9629b2f4e8948014cdd0ed51998f9bbb"
+      },
+      {
+        "file": "WinPDFMerge.ps1",
+        "sha256": "46db099cd9a74c1d8b7bb0eac1a402fc28e3e80d894da386a2207f77d444284a"
+      },
+      {
+        "file": "WinPDFMerge_icon.png",
+        "sha256": "365ec34dff8c410c50c316552b29ac6f6d47b40011037a4e17fe681a9dd871e9"
+      },
+      {
+        "file": "WinPDFMerge_poster.png",
+        "sha256": "612edb108f71978135035594c94e97d2e3459fdfe67dbbdc3b1b4c9b849b025d"
+      }
+    ],
+    "audit_items": [
+      {
+        "id": "B01",
+        "title": "PDFtk argument boundaries",
+        "classification": "reproduced (Windows argument observer); source-confirmed / needs PDFtk repro",
+        "source_locations": [
+          "WinPDFMerge.ps1:158-165"
+        ],
+        "actual_evidence": "PS7 Start-Process split unquoted output into C:\\Synthetic and Output\\master.pdf; quoted input stayed intact.",
+        "followup_tasks": "T08,T09",
+        "evidence": [
+          "docs/codex/evidence/T02-baseline.md",
+          "docs/codex/evidence/T02-probe-ps7.json"
+        ]
+      },
+      {
+        "id": "B02",
+        "title": "Literal paths, collections and output leaf names",
+        "classification": "reproduced (shell primitives); source-confirmed / needs remaining edge/native repro",
+        "source_locations": [
+          "WinPDFMerge.ps1:133-150"
+        ],
+        "actual_evidence": "Bracket path: Resolve-Path 0 vs literal 1; Test-Path false vs literal true. Strict singleton Count raised PropertyNotFoundException; uppercase PDF enumeration found 1. Root leaf was C:\\, not empty.",
+        "followup_tasks": "T04,T10",
+        "evidence": [
+          "docs/codex/evidence/T02-baseline.md",
+          "docs/codex/evidence/T02-probe-ps7.json"
+        ]
+      },
+      {
+        "id": "B03",
+        "title": "Batch delayed expansion, assignments and extra folders",
+        "classification": "reproduced (cmd primitives); source-confirmed / needs actual launcher/Explorer repro",
+        "source_locations": [
+          "WinPDFMerge.bat:2-30"
+        ],
+        "actual_evidence": "Synthetic !variable! segment disappeared; unquoted & assignment executed a second echo. Full wrapper and extra-folder invocation not executed.",
+        "followup_tasks": "T05",
+        "evidence": [
+          "docs/codex/evidence/T02-baseline.md",
+          "docs/codex/evidence/T02-probe-ps7.json"
+        ]
+      },
+      {
+        "id": "B04",
+        "title": "Natural sort Int32 and mixed-array keys",
+        "classification": "reproduced (extracted baseline function); needs native page-order repro",
+        "source_locations": [
+          "WinPDFMerge.ps1:120-122",
+          "WinPDFMerge.ps1:142"
+        ],
+        "actual_evidence": "2147483648 raised RuntimeException; input 10,2,01,1 sorted 01,1,10,2 in en-US and de-DE.",
+        "followup_tasks": "T06",
+        "evidence": [
+          "docs/codex/evidence/T02-baseline.md",
+          "docs/codex/evidence/T02-probe-ps7.json"
+        ]
+      },
+      {
+        "id": "B05",
+        "title": "Same-second final names, overwrite and overlap",
+        "classification": "source-confirmed / needs repro",
+        "source_locations": [
+          "WinPDFMerge.ps1:146-164",
+          "WinPDFMerge.ps1:174-176"
+        ],
+        "actual_evidence": "Second-precision identity, direct final output and explicit email removal; no source/output overlap gate or owned staging.",
+        "followup_tasks": "T10,T12",
+        "evidence": [
+          "docs/codex/evidence/T02-baseline.md",
+          "docs/codex/evidence/T02-probe-ps7.json"
+        ]
+      },
+      {
+        "id": "B06",
+        "title": "Input/master/email structural validity",
+        "classification": "source-confirmed / needs repro",
+        "source_locations": [
+          "WinPDFMerge.ps1:140-165",
+          "WinPDFMerge.ps1:215"
+        ],
+        "actual_evidence": "Exit/existence gates; no input structural preflight, nonempty output or parsed page-total validation.",
+        "followup_tasks": "T11,T13,T14",
+        "evidence": [
+          "docs/codex/evidence/T02-baseline.md",
+          "docs/codex/evidence/T02-probe-ps7.json"
+        ]
+      },
+      {
+        "id": "B07",
+        "title": "PDFtk streams and GS cleanup/environment finally",
+        "classification": "source-confirmed / needs repro",
+        "source_locations": [
+          "WinPDFMerge.ps1:164",
+          "WinPDFMerge.ps1:195-213"
+        ],
+        "actual_evidence": "PDFtk streams not captured. GS redirects both streams, but cleanup and GS_OPTIONS restoration are sequential without finally.",
+        "followup_tasks": "T08,T15",
+        "evidence": [
+          "docs/codex/evidence/T02-baseline.md",
+          "docs/codex/evidence/T02-probe-ps7.json"
+        ]
+      },
+      {
+        "id": "B08",
+        "title": "Dependency fallback interpolation and ordering",
+        "classification": "reproduced (shell primitives); source-confirmed / needs selection/native repro",
+        "source_locations": [
+          "WinPDFMerge.ps1:95-117"
+        ],
+        "actual_evidence": "x86 interpolation produced C:\\Program Files(x86), unlike C:\\Program Files (x86). Lexical descending gs9.56.1/gs10.06.0 chooses gs9.56.1. Only first GS folder is examined.",
+        "followup_tasks": "T07",
+        "evidence": [
+          "docs/codex/evidence/T02-baseline.md",
+          "docs/codex/evidence/T02-probe-ps7.json"
+        ]
+      },
+      {
+        "id": "B09",
+        "title": "GS failure final summary and exit",
+        "classification": "source-confirmed / needs repro",
+        "source_locations": [
+          "WinPDFMerge.ps1:215-229"
+        ],
+        "actual_evidence": "Nonzero GS conversion can reach existence-only email summary and final exit 0. Terminating launch/log faults may prevent reaching that exit.",
+        "followup_tasks": "T14,T15",
+        "evidence": [
+          "docs/codex/evidence/T02-baseline.md",
+          "docs/codex/evidence/T02-probe-ps7.json"
+        ]
+      },
+      {
+        "id": "B10",
+        "title": "Unbounded native command and destination preflight",
+        "classification": "source-confirmed / needs repro",
+        "source_locations": [
+          "WinPDFMerge.ps1:152-164",
+          "WinPDFMerge.ps1:191-204"
+        ],
+        "actual_evidence": "No command-length guard/timeout; first destination write is log, with no writability preflight.",
+        "followup_tasks": "T09,T10",
+        "evidence": [
+          "docs/codex/evidence/T02-baseline.md",
+          "docs/codex/evidence/T02-probe-ps7.json"
+        ]
+      },
+      {
+        "id": "B11",
+        "title": "Public parameter interface",
+        "classification": "source-confirmed / needs invocation repro",
+        "source_locations": [
+          "WinPDFMerge.ps1:83-87",
+          "WinPDFMerge.ps1:148-150",
+          "WinPDFMerge.ps1:184"
+        ],
+        "actual_evidence": "Only SourceFolder declared; script directory and /screen fixed; future public options not implemented.",
+        "followup_tasks": "T16",
+        "evidence": [
+          "docs/codex/evidence/T02-baseline.md",
+          "docs/codex/evidence/T02-probe-ps7.json"
+        ]
+      },
+      {
+        "id": "B12",
+        "title": "Compression benefit and preservation/compatibility claims",
+        "classification": "source-confirmed / needs repro",
+        "source_locations": [
+          "WinPDFMerge.ps1:6-7",
+          "WinPDFMerge.ps1:25",
+          "WinPDFMerge.ps1:215-216",
+          "README.md:6-12"
+        ],
+        "actual_evidence": "No size comparison; archive-safe/smaller/Windows 10/PS7 claims have no project acceptance evidence. Inventory does not disprove those platforms.",
+        "followup_tasks": "T17,T19,T26",
+        "evidence": [
+          "docs/codex/evidence/T02-baseline.md",
+          "docs/codex/evidence/T02-probe-ps7.json"
+        ]
+      },
+      {
+        "id": "B13",
+        "title": "Help, application tests, CI and release workflow",
+        "classification": "source-confirmed / needs later task execution; historical no-tests wording qualified",
+        "source_locations": [
+          "WinPDFMerge.ps1:10-79",
+          "README.md:17-23",
+          "README.md:58-65",
+          "git ls-files"
+        ],
+        "actual_evidence": "No conventional comment help, application tests, CI or application packager. T01 added development helper tests and handoff/release planning metadata; not an upstream product fix.",
+        "followup_tasks": "T18-T34",
+        "evidence": [
+          "docs/codex/evidence/T02-baseline.md",
+          "docs/codex/evidence/T02-probe-ps7.json"
+        ]
+      }
+    ],
+    "pdf_merge_executed": false,
+    "explorer_drag_drop_executed": false,
+    "windows_powershell_probe": "Rejected by Restricted execution policy; inventory/parser only",
+    "powershell_7_probe": "7.6.5 isolated shell/process observations only; not current supported update",
+    "tags_seen": [],
+    "releases_seen": [],
+    "environment_evidence": [
+      "docs/codex/evidence/T02-environment.json",
+      "docs/codex/evidence/T02-probe-ps7.json"
+    ],
+    "checkpoint": "Review complete; task checkpoint pending push and fresh clean live-ref verification."
+  }
 }

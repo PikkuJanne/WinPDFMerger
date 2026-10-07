@@ -1,25 +1,32 @@
 # Project status
 
 Target: published and independently verified `v1.0.0` in `PikkuJanne/WinPDFMerger`.
-
 Current milestone: M0 — baseline and safe setup.
-Completed task: T01 — reconcile checkout and safely install the handoff.
-Next task: T02 — Reproduce the baseline and record environment (next thread).
-Product implementation: NOT STARTED.
-Publication: NOT STARTED; no release is created by this handoff.
-Known reviewed baseline: `4926abc022b9b048dab2dda03650b755ef7ff875` (recheck live).
-Last observed clean live checkpoint: `27fe1afb1a397067cd9f4667282ba6085f295aa0`
-on `codex/v1.0.0-readiness`, verified 2026-10-07 15:17:30 UTC.
-Final records commit: verify after pushing and report its SHA in session output;
-recheck current live refs at the start of the next thread.
-Application tests: NOT RUN; all later task/case records remain pending/not_run.
+Completed task: T01 — safe handoff installation.
+Current task: T02 — baseline/environment review passed; synchronization pending.
+Next conceptual task after T02 checkpoint: T03 — test seams and fixture harness.
+Product implementation and publication: NOT STARTED.
 
-T01: 66 create-only handoff paths imported; original seven files unchanged.
-AC001 and AC002 passed. Installed helper tests: 26 pass, 1 symlink-privilege skip.
-Four push failures were recorded as unsynchronized; an HTTP/1.1 push succeeded
-before AC002 passed. No persistent Git settings or protections changed.
-Draft PR: https://github.com/PikkuJanne/WinPDFMerger/pull/1 (OPEN, draft).
-Evidence: `evidence/T01-bootstrap.md`, `T01-helper-audit.md`, `T01-checkpoint.md`.
-Windows 11 x64 and both shells available; PDFtk/Ghostscript absent.
+Historical reviewed product baseline: `4926abc022b9b048dab2dda03650b755ef7ff875`.
+T02 review/probe commit: `4ad96bfe67ffa86753ace9a728dbad21192bb556`;
+all seven original files remain unchanged. All 13 audit observations classified;
+AC003/AC004 review pass. PS7 primitives exposed argument splitting, wildcard
+paths, singleton Count, numeric sort/overflow, x86 fallback and batch expansion.
+No application/native/manual PDF case passed.
 
-Read NEXT_SESSION.md and TASKS.json. Keep this summary short. Record specific blockers, last tested implementation SHA, prior verified checkpoint, and evidence paths as work progresses. Never replace unknown results with a generic "all done".
+Start-of-T02 clean local/live readiness was `fa486f11e6468266b5c982368654acb63af0a2b5`.
+PR #1 is MERGED; live main advanced to `4ad96bf`. Readiness safely fast-forwarded
+to main; its T02 checkpoint still requires normal push/live equality. A new draft
+PR will replace the merged bootstrap PR for continuing work. No tags/releases.
+
+Windows 11 Pro x64 build 26300 (26H2); observation token is non-administrator.
+Windows PowerShell 5.1.26100.9444 inventory/parser succeeded, but its normal
+script probe was rejected by Restricted policy. PowerShell 7.6.5 primitives ran;
+official current LTS update is 7.6.6, so no current supported-update claim.
+PDFtk/GS undiscovered; Pester 3.4.0 unpinned/unexecuted; PSScriptAnalyzer absent.
+No policy changes or installs. These constraints remain for later native gates.
+
+Evidence: `evidence/T02-baseline.md`, `T02-environment.json`, `T02-probe-ps7.json`,
+replay procedure `T02-probe.ps1`, `BASELINE.json`, `COMPATIBILITY_MATRIX.md`.
+T01 helper evidence remains valid for its tested commit; it is not product proof.
+Recheck live refs and final records commit at every handoff.
