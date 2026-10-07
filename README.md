@@ -89,8 +89,8 @@ Order: ASCII digit groups by magnitude (1, 01, 001, 2, 10), then subsequent grou
 Text compares ordinally without case; original base name and full path break ties ordinally.
 No fixed-width numeric conversion or culture-dependent ordering.
 Email copy: Ghostscript pdfwrite device with /screen (default) and safe quoting via -o and -f.
-Robust logging: Ghostscript stdout/stderr redirected to temp files and appended to the run log (prevents PowerShell pipeline errors).
-Defensive environment: the script clears GS_OPTIONS for the GhostScript call to avoid inherited settings breaking runs.
+Robust logging: both tools use a bounded process runner that captures stdout/stderr and records launch, exit, timeout, and capture failures. Ghostscript options are removed only in its child environment.
+Defensive environment: the script removes GS_OPTIONS only in the child for the GhostScript call to avoid inherited settings breaking runs.
 
 **Tweaks (optional)**
 Higher quality email copy -> change /screen → /ebook.
@@ -109,3 +109,9 @@ Encrypted/secured PDFs -> PDFtk may fail, decrypt/remove restrictions first.
 This is a personal tool for a specific workflow (bundling PDFs, then emailing a lighter copy). Provided as-is, without warranty. Use at your own risk. Feel free to adapt. Intentionally minimal to keep my workflow fast and predictable.
 
 
+
+Native execution limits: complete serialized commands are limited to 30,000 UTF-16 characters, including the executable, quotes, separator, and terminator. Oversized jobs fail before launch; use fewer inputs or shorter folder paths. File operands must be shorter than 260 characters, and the output folder must also leave room for a private staging path. There is no long-path or chunked-merge workaround.
+
+PDFtk Server 2.02 on the tested Windows host accepts spaces, brackets, exclamation marks, ampersands, parentheses, apostrophes, and Latin `ä` in file paths. CJK input paths and output directories fail in that backend, even though a CJK tool-installation directory works. Unsupported paths fail without renaming sources. These observations do not promise every Unicode name works.
+
+Each native job has a 15-minute execution limit (version probes: 5 seconds), closed standard input, and bounded final capture/owned-process termination. PDFtk uses `dont_ask` only for a fresh private output; final moves never replace an existing PDF. Inputs requiring an unavailable password fail without asking for one. A failed Ghostscript conversion returns partial success (2) and retains the merged master.

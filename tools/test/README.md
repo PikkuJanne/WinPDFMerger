@@ -45,4 +45,9 @@ controlled stream/launch/timeout/cancellation/logging faults, without a PDFtk
 requirement. The harness compiles the development fixture and records its build
 receipt path/hash. See [NativeRunner.md](NativeRunner.md) for the internal
 interface, timeout/capture defaults and precise ownership limits. Real conversion
-path/prompt/command-length acceptance remains T09.
+T09 adds `ToolInvocation` for isolated job wiring/output faults and `PdftkPaths`
+and `GhostscriptPaths` for real Windows engine path/prompt tests. Both native
+tiers require `-PdftkPath`; `GhostscriptPaths` also requires `-GhostscriptPath`.
+The path suite copies explicitly selected vendor resources into unique ignored
+test directories; it downloads/installs nothing and uses synthetic PDFs only.
+Unsupported backend paths are asserted as safe failures, never skips.
