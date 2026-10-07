@@ -2,7 +2,7 @@
 [CmdletBinding()]
 param(
     [string]$PesterModulePath,
-    [ValidateSet('Unit', 'NativeFixture')][string]$Tier = 'Unit',
+    [ValidateSet('Unit', 'NativeFixture', 'SourceDiscovery')][string]$Tier = 'Unit',
     [string]$PdftkPath
 )
 Set-StrictMode -Version Latest
@@ -14,7 +14,7 @@ if ($PesterModulePath) { $pesterName = $PesterModulePath }
 Import-Module -Name $pesterName -RequiredVersion $pins.PesterVersion -ErrorAction Stop
 $selected = Get-Module Pester
 if ($selected.Version.ToString() -ne $pins.PesterVersion) { throw 'Unexpected Pester version.' }
-if ($Tier -eq 'NativeFixture' -and -not $PdftkPath) { throw 'NativeFixture requires an explicit real PDFtk executable path.' }
+if ($Tier -ne 'Unit' -and -not $PdftkPath) { throw "$Tier requires an explicit real PDFtk executable path." }
 $work = Join-Path $repo ('tests/.work/pester/' + [Guid]::NewGuid().ToString('N'))
 [void][IO.Directory]::CreateDirectory($work)
 $config = New-PesterConfiguration
@@ -27,7 +27,8 @@ $config.TestResult.OutputFormat = 'NUnitXml'
 if ($Tier -eq 'Unit') {
     $config.Run.Path = Join-Path $repo 'tests/unit'
 } else {
-    $container = New-PesterContainer -Path (Join-Path $repo 'tests/pdf/Fixture.Native.Tests.ps1') -Data @{ PdftkPath = $PdftkPath }
+    $testFile = if ($Tier -eq 'SourceDiscovery') { 'tests/pdf/SourceDiscovery.Native.Tests.ps1' } else { 'tests/pdf/Fixture.Native.Tests.ps1' }
+    $container = New-PesterContainer -Path (Join-Path $repo $testFile) -Data @{ PdftkPath = $PdftkPath }
     $config.Run.Container = $container
 }
 $result = Invoke-Pester -Configuration $config
@@ -41,7 +42,7 @@ $summary = [ordered]@{
     execution_policy = (Get-ExecutionPolicy).ToString()
     pester_version = $selected.Version.ToString()
     tier = $Tier
-    evidence_class = $(if ($Tier -eq 'Unit') { 'unit-controlled-process' } else { 'native-pdftk-fixture-inspection' })
+    evidence_class = $(if ($Tier -eq 'Unit') { 'unit-controlled-process-and-filesystem' } elseif ($Tier -eq 'SourceDiscovery') { 'windows-entry-source-discovery-real-pdftk' } else { 'native-pdftk-fixture-inspection' })
     passed = $result.PassedCount
     failed = $result.FailedCount
     failed_blocks = $result.FailedBlocksCount

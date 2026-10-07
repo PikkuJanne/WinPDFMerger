@@ -9,7 +9,7 @@ Describe 'AC005: importing baseline helpers' {
         $errors = $null
         $ast = [System.Management.Automation.Language.Parser]::ParseFile($helpers, [ref]$tokens, [ref]$errors)
         @($errors).Count | Should -Be 0
-        @($ast.EndBlock.Statements).Count | Should -Be 4
+        @($ast.EndBlock.Statements).Count | Should -Be 7
         foreach ($statement in $ast.EndBlock.Statements) {
             $statement.GetType().Name | Should -Be 'FunctionDefinitionAst'
         }

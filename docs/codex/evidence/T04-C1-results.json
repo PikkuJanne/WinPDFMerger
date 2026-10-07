@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "commit_under_test": "2f15e8291459940473b4e69c49a27f73fb7eb690",
+  "dirty_worktree": false,
+  "ac007": "pass",
+  "ac008": "pass",
+  "scope": "T04 source discovery, literal path preflight and narrow actual Windows entry/PDFtk merges",
+  "pester_version": "6.2.0",
+  "pdftk_version_from_hash_matched_acquisition_receipt": "2.02",
+  "pdftk_sha256": "5e5cbe817ecc3cc1875369d81119472559c9624d55c7176852c8827750afa00a",
+  "native_merges_executed_per_shell": 3,
+  "zero_input_native_tier_cases_per_shell": 1,
+  "ghostscript_executed": false,
+  "current_supported_ps7_claim": false,
+  "ps51_process_policy_owner_authorized": true,
+  "user_machine_policy_or_parent_environment_changed": false,
+  "environment": {
+    "elevated_administrator": false,
+    "normal_execution_policy": "Restricted",
+    "scopes": [
+      {
+        "scope": "MachinePolicy",
+        "policy": "Undefined"
+      },
+      {
+        "scope": "UserPolicy",
+        "policy": "Undefined"
+      },
+      {
+        "scope": "Process",
+        "policy": "Undefined"
+      },
+      {
+        "scope": "CurrentUser",
+        "policy": "Undefined"
+      },
+      {
+        "scope": "LocalMachine",
+        "policy": "Undefined"
+      }
+    ]
+  },
+  "executions": [
+    {
+      "check": "unit-ps51",
+      "command": "powershell.exe -NoProfile -ExecutionPolicy RemoteSigned -File tools/test/Invoke-Tests.ps1 -PesterModulePath $manifest",
+      "command_setup": "$manifest = Join-Path $env:USERPROFILE '.cache/WinPDFMerger-T03/pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67/module/Pester.psd1'; $exe = Join-Path $env:LOCALAPPDATA 'WinPDFMergerDevCache/T03-pdftk-295456f881ea41a4a78dcf207f8965bf/pdftk-server-2.02/app/bin/pdftk.exe';",
+      "exit_code": 0,
+      "output": "Pester v6.2.0\n\nRunning tests from 3 files.\n\nRunning tests from 'C:\\projects\\WinPDFMerger-main\\tests\\unit\\FakeNative.Tests.ps1'\nDescribing T03 controlled process fixture (not PDFtk or Ghostscript)\n  [+] echoes individual space, empty, Unicode and trailing-backslash arguments 254ms\n  [+] exposes the baseline Start-Process array splitting defect 1.04s\n  [+] emits both streams independently 175ms\n  [+] returns nonzero after making a deliberately invalid partial file and refuses overwrite 126ms\n  [+] provides a finite sleep for later timeout tests 181ms\n  [+] provides high volume on both streams for later capture tests 120ms\n\nRunning tests from 'C:\\projects\\WinPDFMerger-main\\tests\\unit\\Helpers.Tests.ps1'\nDescribing AC005: importing baseline helpers\n  [+] has only function definitions at file scope 39ms\n  [+] returns to the caller without native work, outputs, location or preference changes 343ms\n  [+] preserves GS_OPTIONS unset 73ms\n  [+] preserves GS_OPTIONS empty 22ms\n  [+] preserves GS_OPTIONS value 16ms\n\nDescribing T03 measured baseline characterization (not the future product contract)\n  [+] replaces invalid filename characters and trims ordinary whitespace 17ms\n  [+] retains the measured numeric ordering defect until T06 29ms\n  [+] retains the measured Int32 overflow defect until T06 94ms\n\nRunning tests from 'C:\\projects\\WinPDFMerger-main\\tests\\unit\\SourceDiscovery.Tests.ps1'\nDescribing AC007: real filesystem source collection boundaries\n  [+] reports zero top-level visible PDFs clearly 90ms\n  [+] returns one PDF as a FileInfo that callers can normalize to an array 44ms\n  [+] includes multiple top-level PDFs and uppercase extensions without prefix omission 34ms\n  [+] omits subfolder and hidden PDFs while preserving every source byte, name and metadata 89ms\n  [+] reports no inputs when the only top-level PDF is hidden 24ms\n  [+] freezes the discovered collection before a later file arrives 25ms\n\nDescribing AC008: literal source directory validation\n  [+] resolves bracket names literally instead of selecting a wildcard sibling 34ms\n  [+] resolves a relative directory and a trailing separator without changing location 19ms\n  [+] accepts an explicitly qualified FileSystem directory 9ms\n  [+] preserves supported punctuation, Unicode and apostrophes in directory and input names 21ms\n  [+] rejects null input with a SourceFolder diagnostic 27ms\n  [+] rejects empty input with a SourceFolder diagnostic 12ms\n  [+] rejects whitespace input with a SourceFolder diagnostic 11ms\n  [+] rejects a missing directory 13ms\n  [+] rejects a file instead of a directory 16ms\n  [+] rejects nonfilesystem providers even when the provider path exists 12ms\n  [+] rejects wildcard expansion instead of resolving one or multiple matching directories 25ms\n  [+] rejects a directory array instead of combining source folders 13ms\n\nDescribing AC008: entry preflight failures precede dependencies and output creation\n  [+] shows usage and exits one for omitted input without an interactive prompt 655ms\n  [+] fails a missing directory before dependency resolution and outputs 547ms\n  [+] fails a file argument before dependency resolution and outputs 671ms\n  [+] fails a nonfilesystem provider before dependency resolution and outputs 590ms\n  [+] rejects extra source paths before creating outputs 417ms\n  [+] reports zero PDFs before trying to find PDFtk 633ms\nTests completed in 8.52s\nTests Passed: 38, Failed: 0, Skipped: 0, Inconclusive: 0, NotRun: 0\n{\r\n    \"observed_at_utc\":  \"2026-10-07T16:23:16.2497608Z\",\r\n    \"commit_under_test\":  \"2f15e8291459940473b4e69c49a27f73fb7eb690\",\r\n    \"dirty_worktree\":  false,\r\n    \"shell_version\":  \"5.1.26100.9444\",\r\n    \"shell_edition\":  \"Desktop\",\r\n    \"process_64_bit\":  true,\r\n    \"execution_policy\":  \"RemoteSigned\",\r\n    \"pester_version\":  \"6.2.0\",\r\n    \"tier\":  \"Unit\",\r\n    \"evidence_class\":  \"unit-controlled-process-and-filesystem\",\r\n    \"passed\":  38,\r\n    \"failed\":  0,\r\n    \"failed_blocks\":  0,\r\n    \"failed_containers\":  0,\r\n    \"skipped\":  0,\r\n    \"not_run\":  0,\r\n    \"total\":  38\r\n}\r\nReports: C:\\projects\\WinPDFMerger-main\\tests\\.work\\pester\\17bd7a524abf4e439403b80a55cb6997\n",
+      "summary": {
+        "observed_at_utc": "2026-10-07T16:23:16.2497608Z",
+        "commit_under_test": "2f15e8291459940473b4e69c49a27f73fb7eb690",
+        "dirty_worktree": false,
+        "shell_version": "5.1.26100.9444",
+        "shell_edition": "Desktop",
+        "process_64_bit": true,
+        "execution_policy": "RemoteSigned",
+        "pester_version": "6.2.0",
+        "tier": "Unit",
+        "evidence_class": "unit-controlled-process-and-filesystem",
+        "passed": 38,
+        "failed": 0,
+        "failed_blocks": 0,
+        "failed_containers": 0,
+        "skipped": 0,
+        "not_run": 0,
+        "total": 38
+      }
+    },
+    {
+      "check": "unit-ps7",
+      "command": "& pwsh.exe -NoProfile -File tools/test/Invoke-Tests.ps1 -PesterModulePath $manifest",
+      "command_setup": "$manifest = Join-Path $env:USERPROFILE '.cache/WinPDFMerger-T03/pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67/module/Pester.psd1'; $exe = Join-Path $env:LOCALAPPDATA 'WinPDFMergerDevCache/T03-pdftk-295456f881ea41a4a78dcf207f8965bf/pdftk-server-2.02/app/bin/pdftk.exe';",
+      "exit_code": 0,
+      "output": "Pester v6.2.0\r\n\nRunning tests from 3 files.\r\n\nRunning tests from 'C:\\projects\\WinPDFMerger-main\\tests\\unit\\FakeNative.Tests.ps1'\r\nDescribing T03 controlled process fixture (not PDFtk or Ghostscript)\r\n  [+] echoes individual space, empty, Unicode and trailing-backslash arguments 205ms\r\n  [+] exposes the baseline Start-Process array splitting defect 71ms\r\n  [+] emits both streams independently 80ms\r\n  [+] returns nonzero after making a deliberately invalid partial file and refuses overwrite 148ms\r\n  [+] provides a finite sleep for later timeout tests 173ms\r\n  [+] provides high volume on both streams for later capture tests 178ms\r\n\nRunning tests from 'C:\\projects\\WinPDFMerger-main\\tests\\unit\\Helpers.Tests.ps1'\r\nDescribing AC005: importing baseline helpers\r\n  [+] has only function definitions at file scope 38ms\r\n  [+] returns to the caller without native work, outputs, location or preference changes 280ms\r\n  [+] preserves GS_OPTIONS unset 54ms\r\n  [+] preserves GS_OPTIONS empty 29ms\r\n  [+] preserves GS_OPTIONS value 13ms\r\n\r\nDescribing T03 measured baseline characterization (not the future product contract)\r\n  [+] replaces invalid filename characters and trims ordinary whitespace 12ms\r\n  [+] retains the measured numeric ordering defect until T06 43ms\r\n  [+] retains the measured Int32 overflow defect until T06 46ms\r\n\nRunning tests from 'C:\\projects\\WinPDFMerger-main\\tests\\unit\\SourceDiscovery.Tests.ps1'\r\nDescribing AC007: real filesystem source collection boundaries\r\n  [+] reports zero top-level visible PDFs clearly 80ms\r\n  [+] returns one PDF as a FileInfo that callers can normalize to an array 38ms\r\n  [+] includes multiple top-level PDFs and uppercase extensions without prefix omission 36ms\r\n  [+] omits subfolder and hidden PDFs while preserving every source byte, name and metadata 75ms\r\n  [+] reports no inputs when the only top-level PDF is hidden 28ms\r\n  [+] freezes the discovered collection before a later file arrives 23ms\r\n\r\nDescribing AC008: literal source directory validation\r\n  [+] resolves bracket names literally instead of selecting a wildcard sibling 36ms\r\n  [+] resolves a relative directory and a trailing separator without changing location 24ms\r\n  [+] accepts an explicitly qualified FileSystem directory 25ms\r\n  [+] preserves supported punctuation, Unicode and apostrophes in directory and input names 32ms\r\n  [+] rejects null input with a SourceFolder diagnostic 14ms\r\n  [+] rejects empty input with a SourceFolder diagnostic 8ms\r\n  [+] rejects whitespace input with a SourceFolder diagnostic 7ms\r\n  [+] rejects a missing directory 19ms\r\n  [+] rejects a file instead of a directory 14ms\r\n  [+] rejects nonfilesystem providers even when the provider path exists 10ms\r\n  [+] rejects wildcard expansion instead of resolving one or multiple matching directories 15ms\r\n  [+] rejects a directory array instead of combining source folders 12ms\r\n\r\nDescribing AC008: entry preflight failures precede dependencies and output creation\r\n  [+] shows usage and exits one for omitted input without an interactive prompt 1.27s\r\n  [+] fails a missing directory before dependency resolution and outputs 1.35s\r\n  [+] fails a file argument before dependency resolution and outputs 1.24s\r\n  [+] fails a nonfilesystem provider before dependency resolution and outputs 1.18s\r\n  [+] rejects extra source paths before creating outputs 1.16s\r\n  [+] reports zero PDFs before trying to find PDFtk 1.25s\r\nTests completed in 10.72s\r\nTests Passed: 38, Failed: 0, Skipped: 0, Inconclusive: 0, NotRun: 0\r\n{\r\n  \"observed_at_utc\": \"2026-10-07T16:23:19.4900713Z\",\r\n  \"commit_under_test\": \"2f15e8291459940473b4e69c49a27f73fb7eb690\",\r\n  \"dirty_worktree\": false,\r\n  \"shell_version\": \"7.6.5\",\r\n  \"shell_edition\": \"Core\",\r\n  \"process_64_bit\": true,\r\n  \"execution_policy\": \"RemoteSigned\",\r\n  \"pester_version\": \"6.2.0\",\r\n  \"tier\": \"Unit\",\r\n  \"evidence_class\": \"unit-controlled-process-and-filesystem\",\r\n  \"passed\": 38,\r\n  \"failed\": 0,\r\n  \"failed_blocks\": 0,\r\n  \"failed_containers\": 0,\r\n  \"skipped\": 0,\r\n  \"not_run\": 0,\r\n  \"total\": 38\r\n}\r\nReports: C:\\projects\\WinPDFMerger-main\\tests\\.work\\pester\\f894ef6062864ea08ac86e0268b23e79\r\n",
+      "summary": {
+        "observed_at_utc": "2026-10-07T16:23:19.4900713Z",
+        "commit_under_test": "2f15e8291459940473b4e69c49a27f73fb7eb690",
+        "dirty_worktree": false,
+        "shell_version": "7.6.5",
+        "shell_edition": "Core",
+        "process_64_bit": true,
+        "execution_policy": "RemoteSigned",
+        "pester_version": "6.2.0",
+        "tier": "Unit",
+        "evidence_class": "unit-controlled-process-and-filesystem",
+        "passed": 38,
+        "failed": 0,
+        "failed_blocks": 0,
+        "failed_containers": 0,
+        "skipped": 0,
+        "not_run": 0,
+        "total": 38
+      }
+    },
+    {
+      "check": "source-ps51",
+      "command": "powershell.exe -NoProfile -ExecutionPolicy RemoteSigned -File tools/test/Invoke-Tests.ps1 -PesterModulePath $manifest -Tier SourceDiscovery -PdftkPath $exe",
+      "command_setup": "$manifest = Join-Path $env:USERPROFILE '.cache/WinPDFMerger-T03/pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67/module/Pester.psd1'; $exe = Join-Path $env:LOCALAPPDATA 'WinPDFMergerDevCache/T03-pdftk-295456f881ea41a4a78dcf207f8965bf/pdftk-server-2.02/app/bin/pdftk.exe';",
+      "exit_code": 0,
+      "output": "Pester v6.2.0\n\nRunning tests from 1 files.\n\nRunning tests from 'C:\\projects\\WinPDFMerger-main\\tests\\pdf\\SourceDiscovery.Native.Tests.ps1'\nPDFtk SHA256: 5E5CBE817ECC3CC1875369D81119472559C9624D55C7176852C8827750AFA00A\nPDFtk file version: \nDescribing AC007: actual entry source discovery with real PDFtk\n  [+] merges one uppercase-extension PDF without scalar Count failure or source edits 2.32s\n  [+] keeps brackets literal through input collection and generated output checks 2.09s\n  [+] merges only multiple visible top-level inputs, retaining uppercase and legitimate result-prefix names 2.04s\n  [+] fails zero visible top-level inputs before producing PDFs or a run log 674ms\nTests completed in 8.07s\nTests Passed: 4, Failed: 0, Skipped: 0, Inconclusive: 0, NotRun: 0\n{\r\n    \"observed_at_utc\":  \"2026-10-07T16:23:16.9801173Z\",\r\n    \"commit_under_test\":  \"2f15e8291459940473b4e69c49a27f73fb7eb690\",\r\n    \"dirty_worktree\":  false,\r\n    \"shell_version\":  \"5.1.26100.9444\",\r\n    \"shell_edition\":  \"Desktop\",\r\n    \"process_64_bit\":  true,\r\n    \"execution_policy\":  \"RemoteSigned\",\r\n    \"pester_version\":  \"6.2.0\",\r\n    \"tier\":  \"SourceDiscovery\",\r\n    \"evidence_class\":  \"windows-entry-source-discovery-real-pdftk\",\r\n    \"passed\":  4,\r\n    \"failed\":  0,\r\n    \"failed_blocks\":  0,\r\n    \"failed_containers\":  0,\r\n    \"skipped\":  0,\r\n    \"not_run\":  0,\r\n    \"total\":  4\r\n}\r\nReports: C:\\projects\\WinPDFMerger-main\\tests\\.work\\pester\\94e12599d3074d5fb8289ac0753e44a4\n",
+      "summary": {
+        "observed_at_utc": "2026-10-07T16:23:16.9801173Z",
+        "commit_under_test": "2f15e8291459940473b4e69c49a27f73fb7eb690",
+        "dirty_worktree": false,
+        "shell_version": "5.1.26100.9444",
+        "shell_edition": "Desktop",
+        "process_64_bit": true,
+        "execution_policy": "RemoteSigned",
+        "pester_version": "6.2.0",
+        "tier": "SourceDiscovery",
+        "evidence_class": "windows-entry-source-discovery-real-pdftk",
+        "passed": 4,
+        "failed": 0,
+        "failed_blocks": 0,
+        "failed_containers": 0,
+        "skipped": 0,
+        "not_run": 0,
+        "total": 4
+      }
+    },
+    {
+      "check": "source-ps7",
+      "command": "& pwsh.exe -NoProfile -File tools/test/Invoke-Tests.ps1 -PesterModulePath $manifest -Tier SourceDiscovery -PdftkPath $exe",
+      "command_setup": "$manifest = Join-Path $env:USERPROFILE '.cache/WinPDFMerger-T03/pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67/module/Pester.psd1'; $exe = Join-Path $env:LOCALAPPDATA 'WinPDFMergerDevCache/T03-pdftk-295456f881ea41a4a78dcf207f8965bf/pdftk-server-2.02/app/bin/pdftk.exe';",
+      "exit_code": 0,
+      "output": "Pester v6.2.0\r\n\nRunning tests from 1 files.\r\n\nRunning tests from 'C:\\projects\\WinPDFMerger-main\\tests\\pdf\\SourceDiscovery.Native.Tests.ps1'\r\nPDFtk SHA256: 5E5CBE817ECC3CC1875369D81119472559C9624D55C7176852C8827750AFA00A\r\nPDFtk file version: \r\nDescribing AC007: actual entry source discovery with real PDFtk\r\n  [+] merges one uppercase-extension PDF without scalar Count failure or source edits 2.03s\r\n  [+] keeps brackets literal through input collection and generated output checks 1.63s\r\n  [+] merges only multiple visible top-level inputs, retaining uppercase and legitimate result-prefix names 1.6s\r\n  [+] fails zero visible top-level inputs before producing PDFs or a run log 1.41s\r\nTests completed in 7.5s\r\nTests Passed: 4, Failed: 0, Skipped: 0, Inconclusive: 0, NotRun: 0\r\n{\r\n  \"observed_at_utc\": \"2026-10-07T16:23:16.7050493Z\",\r\n  \"commit_under_test\": \"2f15e8291459940473b4e69c49a27f73fb7eb690\",\r\n  \"dirty_worktree\": false,\r\n  \"shell_version\": \"7.6.5\",\r\n  \"shell_edition\": \"Core\",\r\n  \"process_64_bit\": true,\r\n  \"execution_policy\": \"RemoteSigned\",\r\n  \"pester_version\": \"6.2.0\",\r\n  \"tier\": \"SourceDiscovery\",\r\n  \"evidence_class\": \"windows-entry-source-discovery-real-pdftk\",\r\n  \"passed\": 4,\r\n  \"failed\": 0,\r\n  \"failed_blocks\": 0,\r\n  \"failed_containers\": 0,\r\n  \"skipped\": 0,\r\n  \"not_run\": 0,\r\n  \"total\": 4\r\n}\r\nReports: C:\\projects\\WinPDFMerger-main\\tests\\.work\\pester\\592b80b21cc3493d982575815ab20b98\r\n",
+      "summary": {
+        "observed_at_utc": "2026-10-07T16:23:16.7050493Z",
+        "commit_under_test": "2f15e8291459940473b4e69c49a27f73fb7eb690",
+        "dirty_worktree": false,
+        "shell_version": "7.6.5",
+        "shell_edition": "Core",
+        "process_64_bit": true,
+        "execution_policy": "RemoteSigned",
+        "pester_version": "6.2.0",
+        "tier": "SourceDiscovery",
+        "evidence_class": "windows-entry-source-discovery-real-pdftk",
+        "passed": 4,
+        "failed": 0,
+        "failed_blocks": 0,
+        "failed_containers": 0,
+        "skipped": 0,
+        "not_run": 0,
+        "total": 4
+      }
+    }
+  ],
+  "supplemental_checks": [
+    {
+      "command": "powershell.exe -NoProfile -Command '$errorsFound = @(); foreach ($file in @(\"WinPDFMerge.ps1\", \"src/WinPDFMerge.Helpers.ps1\", \"tools/test/Invoke-Tests.ps1\", \"tests/TestSupport.ps1\", \"tests/unit/SourceDiscovery.Tests.ps1\", \"tests/pdf/SourceDiscovery.Native.Tests.ps1\")) { $tokens = $null; $errors = $null; [void][Management.Automation.Language.Parser]::ParseFile((Join-Path (Get-Location).Path $file), [ref]$tokens, [ref]$errors); $errorsFound += $errors }; if ($errorsFound.Count -gt 0) { $errorsFound | Format-List; exit 1 }; \"PS5.1 parser PASS: 6 files\"; \"Ordinary PS5.1 effective policy: $(Get-ExecutionPolicy)\"'",
+      "exit_code": 0,
+      "actual_result": "PS5.1 parser PASS: 6 files"
+    },
+    {
+      "command": "python tools/codex/handoff.py check-plan --repo .",
+      "exit_code": 0,
+      "actual_result": "valid=true; structure-only; 34 tasks/78 cases; done3/pass6 before final records"
+    }
+  ],
+  "limitations": [
+    "PS7 actual7.6.5 is not the recorded supported update7.6.6; no release compatibility claim.",
+    "Native cases use short ASCII script/output paths without spaces; bracket source/input/output names are tested. Other punctuation/Unicode source names are helper-level only.",
+    "Ghostscript is deliberately excluded using child-only PATH/ProgramFiles overrides; email paths/conversion are not tested.",
+    "No sorting, dependency-priority, native serializer/timeout/cancellation, destination overlap/no-overwrite, PDF fidelity, Explorer, CI, package or release acceptance follows.",
+    "Test harness timeout kills its shell; descendant cancellation is untested.",
+    "PSScriptAnalyzer is still absent/unrun. Parser and record checks are not native merge acceptance."
+  ]
+}
