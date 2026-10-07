@@ -1,0 +1,15 @@
+# Security and dependency policy
+
+No application network operations, telemetry, remote conversion, uploaded documents, cloud API keys, or silent self-update. Runtime needs only the documented Windows/PowerShell and native dependencies. Development CI/module installation is separate from application operation.
+
+At T02 record exact native versions, paths, OS, shell, architecture, and acquisition provenance. At T25 recheck current official vendor release/security information; do not pin an old baseline just because it is present locally. PDFtk and GS licensing/security information must be checked from vendor sources before deciding to redistribute anything. Default package policy: no third-party executables. Keep the repository's existing MIT license for project code; it does not relicense dependencies. [S03, S04, S12, R04]
+
+Do not claim that `-dSAFER` or successful PDF parsing fully isolates hostile files. Use standard-user operation, a current verified dependency installation, synthetic test data, and no forced elevation. Do not relax GS restrictions, Windows security controls, or Group Policy. The existing launcher uses process-scoped execution-policy behavior; do not convert that into a machine-wide policy change. [S04, S10]
+
+No dependency installation, certificate purchase, paid signing account, security-setting changes, or publication to other services is implicit. Ask only for genuinely required credentials/approval through normal secure tool flows, never for secrets pasted into logs. A transparently unsigned PowerShell ZIP is acceptable for v1.0.0. Do not call a SHA-256 file a signature, and do not promise SmartScreen or enterprise execution acceptance. Optional signing must not become a release blocker or add a permanent private key to the repo. [S11]
+
+Local logs can include confidential folder and document names. Public test evidence must use synthetic fixture paths or be redacted. Do not commit personal PDFs, full native logs from private work, access tokens, private certificates, environment dumps, or enterprise hostnames. Inspect the staged diff and existing tracked files/history for inadvertent secrets before publication; findings require safe remediation, not unauthorized history rewriting.
+
+CI must use minimal token permissions, verified full-SHA Action pins, a fixed recorded runner label, pinned compatible Pester/PSScriptAnalyzer versions, and no auto-publication on ordinary pushes/PRs. Never combine untrusted PR checkout with privileged `pull_request_target` execution. Vendor binaries used by CI require known source and integrity verification; do not log tokens or add third-party installers blindly. Honor repository protections and approvals. [S07]
+
+Release building uses an explicit tracked-file allowlist, not `Compress-Archive *`. Verify excluded private, developer, and temporary files are absent. Build in a clean checkout, verify manifest/version/commit provenance, and independently re-download the final public asset. A checksum on the same website is useful for integrity but does not independently establish publisher identity. [S11]
