@@ -1,41 +1,40 @@
 # Next session
 
-Selected task: T04 — Harden source discovery and literal paths.
-T03/M0 completed at clean tested C2 `fca1e20c0240995d8b888fee25c2f24ddf0da418`;
-normal push/local=live equality verified 2026-10-07T16:00:57.088867+00:00.
-Final C3 records commit own proof belongs in preceding session output; verify
-current checkout/live state afresh before editing. Draft PR #3 OPEN at observation:
-https://github.com/PikkuJanne/WinPDFMerger/pull/3. Reuse while open.
+Selected task: T04 — Harden source discovery and literal paths (in progress).
+Implementation/dirty regression review is complete; clean C1 acceptance reruns,
+normal push and fresh clean local/live equality remain before selecting T05.
+Read AGENTS, INDEX, STATUS, T04 TASKS entry/brief, PRODUCT_SPEC, TECHNICAL_SPEC,
+TEST_STRATEGY, GITHUB_WORKFLOW and AC007/AC008; verify repository/live state afresh.
 
-Read ancestor/repo AGENTS, INDEX, STATUS, T04 TASKS entry/brief, PRODUCT_SPEC,
-TECHNICAL_SPEC, TEST_STRATEGY, GITHUB_WORKFLOW and relevant AC007/AC008.
-Confirm branch/worktree/originURLs/live main/readiness/PR/tag/release state.
-No resets/stashes/forcepushes/originchanges. One conceptual task; no T05 onward.
+Readiness began clean/synchronized at `938992f`; live PR #3 was already merged.
+Inspected main `6b38115` was an ancestor-preserving merge with an empty tree diff;
+`git fetch origin main` then `git merge --ff-only origin/main` reconciled it.
+No reset/stash/force/origin/published-tag change. A new draft continuation PR is
+needed because #3 is merged; do not reuse its closed state or merge early.
 
-Four baseline helpers now live in `src/WinPDFMerge.Helpers.ps1`; entry captures
-its own directory before import. Remaining entry behavior and helper bodies are
-unchanged. T04 owns source discovery arrays/literal path validation; don't treat
-T03 characterization of sort/overflow/Start-Process defects as final contract tests.
-Add regression tests before/with fixes, keep PS5.1 compatible, no entry orchestration
-on import, top-level-only inputs and non-Force hidden behavior, preserved sources.
+T04 adds Resolve-SourceDirectory, Get-SourcePdfFiles and Write-RunLog; entry freezes
+array enumeration/sorting before dependencies/outputs, uses literal file/log paths,
+and keeps visible top-level-only scan/defaults. Helpers still import definitions
+only. Three narrow actual entry merge cases and one zero-input native case use
+real PDFtk; sources unchanged. Sorting/dependencies/native serializer/publication
+remain their assigned later tasks. Tests/TestSupport is development-only.
 
-Harness: `tools/test/Invoke-Tests.ps1` with exact Pester6.2.0, Unit and real
-NativeFixture tiers. T03 had 14+1 pass per shell and ten independent fixture
-tests, no skips/failures, at clean C2. See `evidence/T03-completion.md`/C2 receipts.
-External cache Pester/PDFtk labels/hashes/provenance are in acquisition receipts;
-expand USERPROFILE/LocalAppData labels locally, never paste private paths/docs.
-Owner approved those development acquisitions and process-only RemoteSigned
-tests in this session. No repeated approval is needed within that scope. No
-user/machine policy change or security bypass; MachinePolicy/UserPolicy were
-Undefined and normal PS5.1 remains Restricted. Do not install tools silently.
+Harness: tools/test/Invoke-Tests.ps1, exact Pester6.2.0, Unit and SourceDiscovery
+tiers; SourceDiscovery requires explicit verified PDFtk cache executable. Dirty
+both-shell Unit38/NativeSource4 pass with no skips. Receipts/history:
+evidence/T04-checkpoint.md and T04-precommit-results.json. Do not mistake dirty
+passes for clean tested-commit/live synchronization.
 
-PS5.1 5.1.26100.9444 x64; actual PS7 7.6.5 x64 is behind supported update7.6.6,
-so no supported-build release claim. PDFtk2.02 x86 is in explicit dev cache, not
-PATH/system installed; ordinary application dependency selection is untested.
-Ghostscript remains absent. App/native merge/conversion, launcher/Explorer,
-feature-rich fidelity, CI, package and release cases remain not_run. T03's real
-fixture inspection is not evidence those later gates already pass.
+Existing approved Pester/PDFtk external-cache acquisition and process-only
+RemoteSigned testing authorization persist. No repeat permission needed; no
+installation or user/machine policy/PATH/security change. Ordinary separate
+PS5.1 remains Restricted/all scopes Undefined. PS5.1 is5.1.26100.9444 x64;
+PS7 actual7.6.5 is behind recorded supported update7.6.6. No supported-build claim.
+PDFtk2.02 x86 unsigned cache hash is in T03 acquisition receipt; no vendor binaries
+in repo. Ghostscript absent and explicitly isolated out of nativeSource tests.
+Full native space/Unicode/tool paths, email, launcher/Explorer, feature-rich PDF,
+CI/package/release acceptance remain not_run. No work on T05 or later yet.
 
-Run changed relevant tiers, review diff, update task/case/evidence/status/continuation,
-commit/push matching branch and verify clean HEAD=fresh live same-name ref.
-Record implementation SHA first and final records proof separately as before.
+Use the no-self-reference C1 implementation/C2 records method: test clean C1,
+push/verify C1, then records only to accept T04/AC007/AC008 and select T05; finally
+push/verify C2 and report its own proof in session output.

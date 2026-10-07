@@ -55,7 +55,7 @@ QUALITY / SIZE PRESETS (email copy)
 
 NOTES
     - Source scan quality is preserved in the lossless master, Ghostscript only affects the email copy.
-    - No recursion, only PDFs directly in the provided folder are merged.
+    - No recursion, only visible PDFs directly in the provided folder are merged; hidden PDFs are omitted.
     - Filenames with spaces/special chars are handled, sort is by base name, then path.
 
 LIMITATIONS
@@ -96,18 +96,23 @@ function Get-ScriptDir {
 # --- Entry ---
 $ScriptDir = Get-ScriptDir
 . (Join-Path $ScriptDir 'src/WinPDFMerge.Helpers.ps1')
-if (-not $SourceFolder) { if ($args.Count -ge 1) { $SourceFolder = $args[0] } }
-if (-not $SourceFolder) { Write-Host "Usage: WinPDFMerge.ps1 <FolderWithPDFs>" -ForegroundColor Yellow; exit 1 }
-$SourceFolder = (Resolve-Path $SourceFolder).Path
-if (-not (Test-Path $SourceFolder -PathType Container)) { Write-Error "Provided path is not a folder: $SourceFolder" }
+if ([string]::IsNullOrWhiteSpace($SourceFolder)) {
+    Write-Host "Usage: WinPDFMerge.ps1 <FolderWithPDFs>" -ForegroundColor Yellow
+    exit 1
+}
+# Validate and freeze sources before dependency lookup or output/log creation.
+# Advanced parameter binding rejects additional source arguments.
+try {
+    $SourceFolder = Resolve-SourceDirectory -Path $SourceFolder
+    $pdfs = @(Get-SourcePdfFiles -SourceFolder $SourceFolder)
+    $pdfs = @($pdfs | Sort-Object { NaturalSortKey $_.BaseName }, FullName)
+} catch {
+    Write-Error ("Source preflight failed: {0}" -f $_.Exception.Message) -ErrorAction Continue
+    exit 1
+}
 
 $pdftkPath = Find-Pdftk
 if (-not $pdftkPath) { Write-Error "PDFtk Server not found. Install PDFtk Server and ensure 'pdftk' is in PATH." }
-
-# Collect PDFs, top-level only
-$pdfs = Get-ChildItem -LiteralPath $SourceFolder -Filter *.pdf -File -ErrorAction Stop
-if (-not $pdfs -or $pdfs.Count -eq 0) { Write-Error "No PDFs found in: $SourceFolder" }
-$pdfs = $pdfs | Sort-Object { NaturalSortKey $_.BaseName }, FullName
 
 # Build names
 $folderBase = Split-Path $SourceFolder -Leaf
@@ -117,10 +122,10 @@ $outLossless = Join-Path $ScriptDir ($baseOut + ".pdf")
 $outEmail    = Join-Path $ScriptDir ($baseOut + "_email.pdf")
 $logPath     = Join-Path $ScriptDir ($baseOut + ".log")
 
-"==== WinPDFMerge run $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss') ====" | Tee-Object -FilePath $logPath
-"Source folder: $SourceFolder" | Tee-Object -FilePath $logPath -Append
-"Output (lossless): $outLossless" | Tee-Object -FilePath $logPath -Append
-"PDF count: $($pdfs.Count)" | Tee-Object -FilePath $logPath -Append
+"==== WinPDFMerge run $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss') ====" | Write-RunLog -LiteralPath $logPath
+"Source folder: $SourceFolder" | Write-RunLog -LiteralPath $logPath -Append
+"Output (lossless): $outLossless" | Write-RunLog -LiteralPath $logPath -Append
+"PDF count: $($pdfs.Count)" | Write-RunLog -LiteralPath $logPath -Append
 
 # --- PDFtk merge, lossless ---
 $quoted = $pdfs.FullName | ForEach-Object { '"{0}"' -f $_ }
@@ -128,19 +133,19 @@ $pdftkArgs = @()
 $pdftkArgs += $quoted
 $pdftkArgs += 'cat','output',$outLossless,'compress'
 
-"Running: `"$pdftkPath`" $($pdftkArgs -join ' ')" | Tee-Object -FilePath $logPath -Append
+"Running: `"$pdftkPath`" $($pdftkArgs -join ' ')" | Write-RunLog -LiteralPath $logPath -Append
 $proc = Start-Process -FilePath $pdftkPath -ArgumentList $pdftkArgs -NoNewWindow -Wait -PassThru
-if ($proc.ExitCode -ne 0 -or -not (Test-Path $outLossless)) {
+if ($proc.ExitCode -ne 0 -or -not (Test-Path -LiteralPath $outLossless)) {
     Write-Error "PDFtk failed (exit $($proc.ExitCode)). See log: $logPath"
 }
-"PDFtk merge OK." | Tee-Object -FilePath $logPath -Append
+"PDFtk merge OK." | Write-RunLog -LiteralPath $logPath -Append
 
 # --- Email-friendly copy with GhostScript ---
 $gsPath = Find-Ghostscript
 if ($gsPath) {
-    "Ghostscript found: $gsPath" | Tee-Object -FilePath $logPath -Append
-    if (Test-Path $outEmail) {
-        "Removing existing email file: $outEmail" | Tee-Object -FilePath $logPath -Append
+    "Ghostscript found: $gsPath" | Write-RunLog -LiteralPath $logPath -Append
+    if (Test-Path -LiteralPath $outEmail) {
+        "Removing existing email file: $outEmail" | Write-RunLog -LiteralPath $logPath -Append
         Remove-Item -LiteralPath $outEmail -Force -ErrorAction SilentlyContinue
     }
 
@@ -157,7 +162,7 @@ if ($gsPath) {
 
     # Build one string and log it
     $argStr = ($gsArgs | ForEach-Object { if ($_ -match '\s') { '"{0}"' -f $_ } else { $_ } }) -join ' '
-    "GS: `"$gsPath`" $argStr" | Tee-Object -FilePath $logPath -Append
+    "GS: `"$gsPath`" $argStr" | Write-RunLog -LiteralPath $logPath -Append
 
     # Neutralize any global GhostScript options that may conflict
     $bakGS = $env:GS_OPTIONS; $env:GS_OPTIONS = ''
@@ -165,33 +170,33 @@ if ($gsPath) {
     # Run Ghostscript with redirected streams, no PS pipeline, and no NativeCommandError
     $tmpOut = [IO.Path]::ChangeExtension($outEmail, ".gs.stdout.txt")
     $tmpErr = [IO.Path]::ChangeExtension($outEmail, ".gs.stderr.txt")
-    if (Test-Path $tmpOut) { Remove-Item $tmpOut -Force -ErrorAction SilentlyContinue }
-    if (Test-Path $tmpErr) { Remove-Item $tmpErr -Force -ErrorAction SilentlyContinue }
+    if (Test-Path -LiteralPath $tmpOut) { Remove-Item -LiteralPath $tmpOut -Force -ErrorAction SilentlyContinue }
+    if (Test-Path -LiteralPath $tmpErr) { Remove-Item -LiteralPath $tmpErr -Force -ErrorAction SilentlyContinue }
 
     $p = Start-Process -FilePath $gsPath -ArgumentList $argStr -NoNewWindow -Wait -PassThru `
          -RedirectStandardOutput $tmpOut -RedirectStandardError $tmpErr
 
     # Append GhostScript logs to main log
-    if (Test-Path $tmpOut) { Get-Content $tmpOut | Add-Content -Path $logPath }
-    if (Test-Path $tmpErr) { Get-Content $tmpErr | Add-Content -Path $logPath }
-    if (Test-Path $tmpOut) { Remove-Item $tmpOut -Force -ErrorAction SilentlyContinue }
-    if (Test-Path $tmpErr) { Remove-Item $tmpErr -Force -ErrorAction SilentlyContinue }
+    if (Test-Path -LiteralPath $tmpOut) { Get-Content -LiteralPath $tmpOut | Add-Content -LiteralPath $logPath }
+    if (Test-Path -LiteralPath $tmpErr) { Get-Content -LiteralPath $tmpErr | Add-Content -LiteralPath $logPath }
+    if (Test-Path -LiteralPath $tmpOut) { Remove-Item -LiteralPath $tmpOut -Force -ErrorAction SilentlyContinue }
+    if (Test-Path -LiteralPath $tmpErr) { Remove-Item -LiteralPath $tmpErr -Force -ErrorAction SilentlyContinue }
 
     # Restore GS_OPTIONS
-    if ($null -ne $bakGS) { $env:GS_OPTIONS = $bakGS } else { Remove-Item Env:\GS_OPTIONS -ErrorAction SilentlyContinue }
+    if ($null -ne $bakGS) { $env:GS_OPTIONS = $bakGS } else { Remove-Item -LiteralPath Env:\GS_OPTIONS -ErrorAction SilentlyContinue }
 
-    if ($p.ExitCode -eq 0 -and (Test-Path $outEmail)) {
-        "Email-optimized PDF created." | Tee-Object -FilePath $logPath -Append
+    if ($p.ExitCode -eq 0 -and (Test-Path -LiteralPath $outEmail)) {
+        "Email-optimized PDF created." | Write-RunLog -LiteralPath $logPath -Append
     } else {
-        "Ghostscript returned exit code $($p.ExitCode). Skipping email copy; see log for details." | Tee-Object -FilePath $logPath -Append
+        "Ghostscript returned exit code $($p.ExitCode). Skipping email copy; see log for details." | Write-RunLog -LiteralPath $logPath -Append
     }
 } else {
-    "Ghostscript not found; skipping email-optimized copy." | Tee-Object -FilePath $logPath -Append
+    "Ghostscript not found; skipping email-optimized copy." | Write-RunLog -LiteralPath $logPath -Append
 }
 
-"Done." | Tee-Object -FilePath $logPath -Append
+"Done." | Write-RunLog -LiteralPath $logPath -Append
 Write-Host "`nSUCCESS:"
 Write-Host " - Lossless: $outLossless"
-if (Test-Path $outEmail) { Write-Host " - Email-optimized: $outEmail" }
+if (Test-Path -LiteralPath $outEmail) { Write-Host " - Email-optimized: $outEmail" }
 Write-Host "Log: $logPath"
 exit 0

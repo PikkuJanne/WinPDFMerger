@@ -6,6 +6,14 @@ Completed tasks: T01, T02 and T03.
 Next task: T04 — Harden source discovery and literal paths.
 Publication: NOT STARTED.
 
+T04 is in progress: literal source/provider validation, frozen array collection,
+early source failures and bracket-safe log/output probes implemented. Dirty
+PS5.1/PS7 Unit38 and real PDFtk SourceDiscovery4 runs pass; independent diff
+review found no blocking T04 issue. Clean C1 acceptance and push/live proof remain.
+Evidence: `evidence/T04-checkpoint.md`, `T04-precommit-results.json`.
+PR #3 has merged; inspected main merge `6b38115` was safely fast-forwarded into
+the development branch with an unchanged file tree. No tags/releases exist.
+
 T03 AC005/AC006 pass at clean corrected implementation C2
 `fca1e20c0240995d8b888fee25c2f24ddf0da418`: Pester6.2.0 14 Unit tests + one real
 PDFtk inspection case across all three fixtures in EACH shell, no failures/skips;
