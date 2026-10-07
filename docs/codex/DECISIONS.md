@@ -107,3 +107,17 @@ timestamp and random16hex suffix share all final/log paths, with surrogate-safe
 truncation and below260 final/private budgets. Actual concurrent applications
 and same/case/8.3/junction/ACL cases pass; later transactional staging/validation/
 interruption gates remain. See T10 completion/C1 results/review/live evidence.
+
+2026-10-07 — D24: Before a successful merge, T11 requires every frozen input to
+pass bounded read-only PDFtk inspection with exactly one complete positive
+invariant Int64 stdout count.
+Fresh ordered length/UTCmtime snapshots and a premerge recheck catch obvious
+changes without transactional freezing. Measured silent recovery of damaged
+envelopes justifies a small case-sensitive byte0 header/final8192 footer/1024-byte
+xref-target plausibility guard, not a new full PDF parser. Known valid corrected
+CR structural/footer, incremental/xref-stream and actual GS-linearized controls
+pass. Readable encryption and undetected internal damage remain disclosed limits;
+no password/repair workflow. Fixed test-only Python/PDFium verifies visible order,
+not runtime processing or full fidelity. Dirty logger failures and invalid CR
+tolerance stay historical; clean C1 nine-tier574 acceptance and scoped static
+0errors/31warnings/6information are retained/reviewed. See T11 completion/C1.

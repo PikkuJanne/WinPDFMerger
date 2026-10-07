@@ -118,3 +118,18 @@ nonblocking. Known caches reverified without acquisition/system changes. Earlier
 full NativeRunner/Launcher/Python fixture suites were not repeated; T11–T15,
 OS support-channel/UNC/Explorer/fidelity/CI/full-release gates remain pending.
 See T10 completion/C1 reports/review/live sync and cache audit.
+
+T11 clean C1 `822f84eb4f7f0d75736887d9d79d0d363ae551a7` passes287 focused cases in each actual PS5.1.26100.9444 /
+supportedPS7.6.6 host,574 total, all bad counts zero. AC025/26 pass: actual whole-job
+named damaged/protected/zero-page/ambiguous-label refusal and exact natural ordered
+page inventory, with eight independent PDFium visible-ID checks per shell. Actual
+corrected CR structural/footer, incremental, xref-stream and GS10.08.0 linearized
+fixtures preserve pages;75 source/foreign snapshot references per shell match.
+Exclusive sharing denial stops before native launch; controlled source-change/
+parser/overflow/logging cases remain unit evidence. Guard is bounded plausibility,
+not universal corruption/encryption detection, full fidelity or transactional
+snapshot. Static0errors/31warnings/6information retained/reviewed nonblocking;
+selected approved caches reverified with no new acquisition/system change.
+T12–T15, OS support-channel/UNC/Explorer/fidelity/CI/package/release gates remain.
+Exact commands/hashes/results/limits and separate failed/tolerance-only history:
+T11 completion/C1 reports/results/review/live receipts.

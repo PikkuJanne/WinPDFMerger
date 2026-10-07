@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="13" errors="0" failures="4" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2026-10-07" time="22.44.49">
+  <environment clr-version="4.0.30319.42000" user-domain="REDACTED" cwd="REDACTED" platform="Microsoft Windows 11 Pro|C:\Windows|\Device\Harddisk0\Partition3" machine-name="REDACTED" nunit-version="2.5.8.0" os-version="10.0.26300" user="REDACTED" />
+  <culture-info current-culture="fi-FI" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Failure" success="False" time="21.5499" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="[repo]\tests\pdf\InputPreflight.Native.Tests.ps1" executed="True" result="Failure" success="False" time="21.5499" asserts="0" description="[repo]\tests\pdf\InputPreflight.Native.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="AC025: actual per-file PDFtk input rejection without a partial merge" executed="True" result="Success" success="True" time="11.4703" asserts="0" description="AC025: actual per-file PDFtk input rejection without a partial merge">
+            <results>
+              <test-suite type="ParameterizedTest" name="AC025: actual per-file PDFtk input rejection without a partial merge.rejects a named &lt;Kind&gt; file among valid inputs before master/email processing" executed="True" result="Success" success="True" time="11.3945" asserts="0" description="rejects a named &lt;Kind&gt; file among valid inputs before master/email processing">
+                <results>
+                  <test-case description="rejects a named empty file among valid inputs before master/email processing" name="AC025: actual per-file PDFtk input rejection without a partial merge.rejects a named empty file among valid inputs before master/email processing" time="1.5757" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects a named truncated file among valid inputs before master/email processing" name="AC025: actual per-file PDFtk input rejection without a partial merge.rejects a named truncated file among valid inputs before master/email processing" time="1.3722" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects a named malformed file among valid inputs before master/email processing" name="AC025: actual per-file PDFtk input rejection without a partial merge.rejects a named malformed file among valid inputs before master/email processing" time="1.3603" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects a named non-PDF file among valid inputs before master/email processing" name="AC025: actual per-file PDFtk input rejection without a partial merge.rejects a named non-PDF file among valid inputs before master/email processing" time="1.6059" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects a named password-encrypted file among valid inputs before master/email processing" name="AC025: actual per-file PDFtk input rejection without a partial merge.rejects a named password-encrypted file among valid inputs before master/email processing" time="1.7972" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects a named owner-password-restricted file among valid inputs before master/email processing" name="AC025: actual per-file PDFtk input rejection without a partial merge.rejects a named owner-password-restricted file among valid inputs before master/email processing" time="2.0435" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects a named zero-page file among valid inputs before master/email processing" name="AC025: actual per-file PDFtk input rejection without a partial merge.rejects a named zero-page file among valid inputs before master/email processing" time="1.6398" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="AC026: real input totals and independently observed natural page order" executed="True" result="Failure" success="False" time="20.1325" asserts="0" description="AC026: real input totals and independently observed natural page order">
+            <results>
+              <test-case description="refuses real metadata that injects a counterfeit anchored page-count label before merging valid siblings" name="AC026: real input totals and independently observed natural page order.refuses real metadata that injects a counterfeit anchored page-count label before merging valid siblings" time="1.7014" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="inspects one uppercase-extension input and logs its exact positive page total" name="AC026: real input totals and independently observed natural page order.inspects one uppercase-extension input and logs its exact positive page total" time="1.7382" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected 0, because ==== WinPDFMerge run 2026-10-07 22.45.05 ====
+PDFtk: [LOCALAPPDATA]\WinPDFMergerDevCache\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\pdftk-server-2.02\app\bin\pdftk.exe (version 2.02)
+Source folder: [repo]\tests\.work\input-preflight\98fd17c75f5f4ec8bfb199e7d66ffac3\6fec0ad8ab9643f78949bab24b2cbcbe\source [x]
+Output folder: [repo]\tests\.work\input-preflight\98fd17c75f5f4ec8bfb199e7d66ffac3\6fec0ad8ab9643f78949bab24b2cbcbe\output
+Run identity: WinPDFMerge_source [x]_20261007_224504_8123885c40b5419a
+Output (lossless): [repo]\tests\.work\input-preflight\98fd17c75f5f4ec8bfb199e7d66ffac3\6fec0ad8ab9643f78949bab24b2cbcbe\output\WinPDFMerge_source [x]_20261007_224504_8123885c40b5419a.pdf
+Planned email output: [repo]\tests\.work\input-preflight\98fd17c75f5f4ec8bfb199e7d66ffac3\6fec0ad8ab9643f78949bab24b2cbcbe\output\WinPDFMerge_source [x]_20261007_224504_8123885c40b5419a_email.pdf
+PDF count: 1
+Input 1: [repo]\tests\.work\input-preflight\98fd17c75f5f4ec8bfb199e7d66ffac3\6fec0ad8ab9643f78949bab24b2cbcbe\source [x]\single.PDF
+PDFtk failed during input preflight. No merge was started.
+The property 'Inputs' cannot be found on this object. Verify that the property exists.
+See log: [repo]\tests\.work\input-preflight\98fd17c75f5f4ec8bfb199e7d66ffac3\6fec0ad8ab9643f78949bab24b2cbcbe\output\WinPDFMerge_source [x]_20261007_224504_8123885c40b5419a.log, but got 1.</message>
+                  <stack-trace>at $result.ExitCode | Should -Be 0 -Because ($result.Stdout+$result.Stderr), [repo]\tests\pdf\InputPreflight.Native.Tests.ps1:192
+at &lt;ScriptBlock&gt;, [repo]\tests\pdf\InputPreflight.Native.Tests.ps1:251</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="freezes 1,01,2,10 natural ordering and exact totals without omitting repeated visible content" name="AC026: real input totals and independently observed natural page order.freezes 1,01,2,10 natural ordering and exact totals without omitting repeated visible content" time="1.8229" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected 0, because ==== WinPDFMerge run 2026-10-07 22.45.06 ====
+PDFtk: [LOCALAPPDATA]\WinPDFMergerDevCache\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\pdftk-server-2.02\app\bin\pdftk.exe (version 2.02)
+Source folder: [repo]\tests\.work\input-preflight\98fd17c75f5f4ec8bfb199e7d66ffac3\60d6fef1d28a4badaef4f9c33b8305d2\source [x]
+Output folder: [repo]\tests\.work\input-preflight\98fd17c75f5f4ec8bfb199e7d66ffac3\60d6fef1d28a4badaef4f9c33b8305d2\output
+Run identity: WinPDFMerge_source [x]_20261007_224506_ebfc248ba96d4054
+Output (lossless): [repo]\tests\.work\input-preflight\98fd17c75f5f4ec8bfb199e7d66ffac3\60d6fef1d28a4badaef4f9c33b8305d2\output\WinPDFMerge_source [x]_20261007_224506_ebfc248ba96d4054.pdf
+Planned email output: [repo]\tests\.work\input-preflight\98fd17c75f5f4ec8bfb199e7d66ffac3\60d6fef1d28a4badaef4f9c33b8305d2\output\WinPDFMerge_source [x]_20261007_224506_ebfc248ba96d4054_email.pdf
+PDF count: 4
+Input 1: [repo]\tests\.work\input-preflight\98fd17c75f5f4ec8bfb199e7d66ffac3\60d6fef1d28a4badaef4f9c33b8305d2\source [x]\1.pdf
+Input 2: [repo]\tests\.work\input-preflight\98fd17c75f5f4ec8bfb199e7d66ffac3\60d6fef1d28a4badaef4f9c33b8305d2\source [x]\01.PDF
+Input 3: [repo]\tests\.work\input-preflight\98fd17c75f5f4ec8bfb199e7d66ffac3\60d6fef1d28a4badaef4f9c33b8305d2\source [x]\2.pdf
+Input 4: [repo]\tests\.work\input-preflight\98fd17c75f5f4ec8bfb199e7d66ffac3\60d6fef1d28a4badaef4f9c33b8305d2\source [x]\10.pdf
+PDFtk failed during input preflight. No merge was started.
+The property 'Inputs' cannot be found on this object. Verify that the property exists.
+See log: [repo]\tests\.work\input-preflight\98fd17c75f5f4ec8bfb199e7d66ffac3\60d6fef1d28a4badaef4f9c33b8305d2\output\WinPDFMerge_source [x]_20261007_224506_ebfc248ba96d4054.log, but got 1.</message>
+                  <stack-trace>at $result.ExitCode | Should -Be 0 -Because ($result.Stdout+$result.Stderr), [repo]\tests\pdf\InputPreflight.Native.Tests.ps1:192
+at &lt;ScriptBlock&gt;, [repo]\tests\pdf\InputPreflight.Native.Tests.ps1:257</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="logs and merges multiple numeric segments in their exact natural order" name="AC026: real input totals and independently observed natural page order.logs and merges multiple numeric segments in their exact natural order" time="1.6213" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected 0, because ==== WinPDFMerge run 2026-10-07 22.45.08 ====
+PDFtk: [LOCALAPPDATA]\WinPDFMergerDevCache\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\pdftk-server-2.02\app\bin\pdftk.exe (version 2.02)
+Source folder: [repo]\tests\.work\input-preflight\98fd17c75f5f4ec8bfb199e7d66ffac3\20a1d9be32bb48fa8faed2eae99cec3f\source [x]
+Output folder: [repo]\tests\.work\input-preflight\98fd17c75f5f4ec8bfb199e7d66ffac3\20a1d9be32bb48fa8faed2eae99cec3f\output
+Run identity: WinPDFMerge_source [x]_20261007_224508_bd34df9dfaf54dc9
+Output (lossless): [repo]\tests\.work\input-preflight\98fd17c75f5f4ec8bfb199e7d66ffac3\20a1d9be32bb48fa8faed2eae99cec3f\output\WinPDFMerge_source [x]_20261007_224508_bd34df9dfaf54dc9.pdf
+Planned email output: [repo]\tests\.work\input-preflight\98fd17c75f5f4ec8bfb199e7d66ffac3\20a1d9be32bb48fa8faed2eae99cec3f\output\WinPDFMerge_source [x]_20261007_224508_bd34df9dfaf54dc9_email.pdf
+PDF count: 3
+Input 1: [repo]\tests\.work\input-preflight\98fd17c75f5f4ec8bfb199e7d66ffac3\20a1d9be32bb48fa8faed2eae99cec3f\source [x]\chapter1-part2.pdf
+Input 2: [repo]\tests\.work\input-preflight\98fd17c75f5f4ec8bfb199e7d66ffac3\20a1d9be32bb48fa8faed2eae99cec3f\source [x]\chapter1-part10.PDF
+Input 3: [repo]\tests\.work\input-preflight\98fd17c75f5f4ec8bfb199e7d66ffac3\20a1d9be32bb48fa8faed2eae99cec3f\source [x]\chapter2-part1.pdf
+PDFtk failed during input preflight. No merge was started.
+The property 'Inputs' cannot be found on this object. Verify that the property exists.
+See log: [repo]\tests\.work\input-preflight\98fd17c75f5f4ec8bfb199e7d66ffac3\20a1d9be32bb48fa8faed2eae99cec3f\output\WinPDFMerge_source [x]_20261007_224508_bd34df9dfaf54dc9.log, but got 1.</message>
+                  <stack-trace>at $result.ExitCode | Should -Be 0 -Because ($result.Stdout+$result.Stderr), [repo]\tests\pdf\InputPreflight.Native.Tests.ps1:192
+at &lt;ScriptBlock&gt;, [repo]\tests\pdf\InputPreflight.Native.Tests.ps1:263</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="uses the actual labeled page total despite NumberOfPages digits embedded in PDF metadata" name="AC026: real input totals and independently observed natural page order.uses the actual labeled page total despite NumberOfPages digits embedded in PDF metadata" time="1.6021" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected 0, because ==== WinPDFMerge run 2026-10-07 22.45.10 ====
+PDFtk: [LOCALAPPDATA]\WinPDFMergerDevCache\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\pdftk-server-2.02\app\bin\pdftk.exe (version 2.02)
+Source folder: [repo]\tests\.work\input-preflight\98fd17c75f5f4ec8bfb199e7d66ffac3\01b8429d99354d78b82c09a91d05d73e\source [x]
+Output folder: [repo]\tests\.work\input-preflight\98fd17c75f5f4ec8bfb199e7d66ffac3\01b8429d99354d78b82c09a91d05d73e\output
+Run identity: WinPDFMerge_source [x]_20261007_224509_a6685cde5234477c
+Output (lossless): [repo]\tests\.work\input-preflight\98fd17c75f5f4ec8bfb199e7d66ffac3\01b8429d99354d78b82c09a91d05d73e\output\WinPDFMerge_source [x]_20261007_224509_a6685cde5234477c.pdf
+Planned email output: [repo]\tests\.work\input-preflight\98fd17c75f5f4ec8bfb199e7d66ffac3\01b8429d99354d78b82c09a91d05d73e\output\WinPDFMerge_source [x]_20261007_224509_a6685cde5234477c_email.pdf
+PDF count: 1
+Input 1: [repo]\tests\.work\input-preflight\98fd17c75f5f4ec8bfb199e7d66ffac3\01b8429d99354d78b82c09a91d05d73e\source [x]\metadata-noise.pdf
+PDFtk failed during input preflight. No merge was started.
+The property 'Inputs' cannot be found on this object. Verify that the property exists.
+See log: [repo]\tests\.work\input-preflight\98fd17c75f5f4ec8bfb199e7d66ffac3\01b8429d99354d78b82c09a91d05d73e\output\WinPDFMerge_source [x]_20261007_224509_a6685cde5234477c.log, but got 1.</message>
+                  <stack-trace>at $result.ExitCode | Should -Be 0 -Because ($result.Stdout+$result.Stderr), [repo]\tests\pdf\InputPreflight.Native.Tests.ps1:192
+at &lt;ScriptBlock&gt;, [repo]\tests\pdf\InputPreflight.Native.Tests.ps1:279</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="bounds actual PDFtk inspection of an exclusively locked input and preserves the source" name="AC026: real input totals and independently observed natural page order.bounds actual PDFtk inspection of an exclusively locked input and preserves the source" time="0.1555" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

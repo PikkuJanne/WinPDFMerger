@@ -101,3 +101,13 @@ Prepared clean C1 scope: nine tiers per actual shell, expected287 each/574total
 GhostscriptPaths13, SourceDiscovery4, DependencyEntry9, LauncherNative2).
 At this implementation checkpoint T11 remains in_progress, AC025/26 not_run:
 clean final tests, independent review, push/live equality and records are pending.
+
+## Accepted clean implementation and records checkpoint
+
+The preliminary state above is historical. Clean C1 `822f84eb4f7f0d75736887d9d79d0d363ae551a7` passes all nine
+selected tiers in both actual shells:287 each/574 total, all bad counts zero.
+AC025/26 and T11 are complete after clean C1 push/live equality and independent
+review. Exact commands/results/hashes/limits and separate historical failures are
+in T11 completion/C1 artifacts. Draft [PR11](https://github.com/PikkuJanne/WinPDFMerger/pull/11) is open. Final C2 is records
+only; its own clean live equality is reported in the session. Next task is T12.
+No universal validator/encryption/fidelity/transactional snapshot/release claim.

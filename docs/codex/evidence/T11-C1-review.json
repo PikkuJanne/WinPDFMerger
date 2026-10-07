@@ -1,0 +1,587 @@
+{
+  "schema_version": 1,
+  "task": "T11",
+  "reviewer": "independent review subagent",
+  "observed_at_utc": "2026-10-07T21:11:39Z",
+  "baseline_commit": "f790c512396be9ccb3e5254ce11ffa4d061666ab",
+  "reviewed_revision": {
+    "commit_under_test": "822f84eb4f7f0d75736887d9d79d0d363ae551a7",
+    "dirty_worktree": false,
+    "meaning": "Clean implementation C1 is the commit under test. Twelve frozen tested-worktree hashes are retained; C1 Git-blob hashes are separately recorded for expected EOL normalization. Final clean execution, raw/public/native/cache/privacy audits pass. Current preparation consists only of staged records and byte-preservation attributes; no future C2 SHA or clean C2 synchronization is claimed."
+  },
+  "review_roles": {
+    "t11_production_or_test_edits": false,
+    "tracked_edits": false,
+    "t11_dependency_acquisition": false,
+    "historical_dependency_role": "This reviewer acquired authorized development-only PowerShell 7.6.6 and PSScriptAnalyzer 1.25.0 caches in T09. Another agent acquired Ghostscript. T11 reuses the prior approved receipts. The reviewer did not implement T11 runtime, tests, fixture generator or collector.",
+    "authorized_ignored_output": "tests/.work/T11-review-C1.json"
+  },
+  "scope": [
+    "T11 per-input bounded noninteractive PDFtk dump_data_utf8 stdout inspection, exactly one complete positive invariant Int64 page-count label, guarded aggregate, named whole-job failure without cat/GS or skipped inputs.",
+    "Ordered discovery remains the sole enumeration; fresh length/UTC modification ticks for every input are copied upfront, checked before/after each inspection and immediately before cat. Inventory stores lightweight metadata after native evidence logging.",
+    "Small read-only byte-envelope guard: Latin1 byte positions, maximum reads of 16 header bytes, 8192 footer bytes and 1024 target bytes, final terminal EOF/positive in-file offset, case-sensitive conventional xref or plausible indirect-object header, bounded PDF whitespace/comment separators, deterministic handle disposal.",
+    "Controlled parser/process/source-change/logging/overflow/envelope shape tests remain distinct from actual standard-user Windows native entry and independent PDFium visible-order observations.",
+    "Original CR structural/footer, incremental and xref-stream fixture generation; approved GS 10.08.0 FastWebView fixture only in development tests; exact source/cache/fixture hashes and fixed direct bounded native vector.",
+    "M1 preservation: compatible function-only PS5.1 helpers, unchanged batch/source discovery/sorting/destination boundaries, explicit engine selection, direct bounded native jobs with dont_ask/SAFER/PDFSTOPONERROR, fresh private outputs/no-overwrite moves/local source preservation."
+  ],
+  "reviewed_files": [
+    {
+      "path": "WinPDFMerge.ps1",
+      "sha256": "4d88f3923299979bd75ee23ec65d499846d64c40098f5bdf0914b94d62b602c2",
+      "bytes": 11726,
+      "hash_representation": "frozen tested-worktree bytes",
+      "C1_git_blob_sha256": "4d88f3923299979bd75ee23ec65d499846d64c40098f5bdf0914b94d62b602c2",
+      "C1_git_blob_bytes": 11726,
+      "git_storage_representation": "identical"
+    },
+    {
+      "path": "WinPDFMerge.bat",
+      "sha256": "288287beefea974c64d39b34266332d83112b9106c952efd8c304edfedebff83",
+      "bytes": 1782,
+      "hash_representation": "frozen tested-worktree bytes",
+      "C1_git_blob_sha256": "288287beefea974c64d39b34266332d83112b9106c952efd8c304edfedebff83",
+      "C1_git_blob_bytes": 1782,
+      "git_storage_representation": "identical"
+    },
+    {
+      "path": "src/WinPDFMerge.Helpers.ps1",
+      "sha256": "00bea94189097760de22559e61760d8b4822301e0c715f68099951006f4bf259",
+      "bytes": 53748,
+      "hash_representation": "frozen tested-worktree bytes",
+      "C1_git_blob_sha256": "c7766b277c7452fd1793f493eeb35a8dcb506d2fb6bd6cb98030b0eb4db2a19f",
+      "C1_git_blob_bytes": 52679,
+      "git_storage_representation": "Git CRLF-to-LF normalization; tested worktree hash retained"
+    },
+    {
+      "path": "tests/unit/InputPreflight.Tests.ps1",
+      "sha256": "8fad71140de4dc5288188332f17b024ba238c98391e92f2520d21755699c5454",
+      "bytes": 13561,
+      "hash_representation": "frozen tested-worktree bytes",
+      "C1_git_blob_sha256": "8fad71140de4dc5288188332f17b024ba238c98391e92f2520d21755699c5454",
+      "C1_git_blob_bytes": 13561,
+      "git_storage_representation": "identical"
+    },
+    {
+      "path": "tests/unit/PdfEnvelope.Tests.ps1",
+      "sha256": "2dc0844b249140d3100a6ae894d5f505e0310090d6ef978734a2bd2b23033122",
+      "bytes": 6506,
+      "hash_representation": "frozen tested-worktree bytes",
+      "C1_git_blob_sha256": "2dc0844b249140d3100a6ae894d5f505e0310090d6ef978734a2bd2b23033122",
+      "C1_git_blob_bytes": 6506,
+      "git_storage_representation": "identical"
+    },
+    {
+      "path": "tests/pdf/InputPreflight.Native.Tests.ps1",
+      "sha256": "157f10b56df0ee4bc5bc9fbc8aee1a2dfc3e24eccdd3175a7394097db207a60a",
+      "bytes": 26769,
+      "hash_representation": "frozen tested-worktree bytes",
+      "C1_git_blob_sha256": "157f10b56df0ee4bc5bc9fbc8aee1a2dfc3e24eccdd3175a7394097db207a60a",
+      "C1_git_blob_bytes": 26769,
+      "git_storage_representation": "identical"
+    },
+    {
+      "path": "tests/TestSupport.ps1",
+      "sha256": "7377be7c09cdaf12533f13cb3d56342ac19e368ad1604012b364fa86263af039",
+      "bytes": 2190,
+      "hash_representation": "frozen tested-worktree bytes",
+      "C1_git_blob_sha256": "7377be7c09cdaf12533f13cb3d56342ac19e368ad1604012b364fa86263af039",
+      "C1_git_blob_bytes": 2190,
+      "git_storage_representation": "identical"
+    },
+    {
+      "path": "tools/test/Invoke-Tests.ps1",
+      "sha256": "abaad1d0e41f969b9c014d4a15c3bb9f1c3c6b0ad161feb395ad42facf080eb2",
+      "bytes": 6726,
+      "hash_representation": "frozen tested-worktree bytes",
+      "C1_git_blob_sha256": "abaad1d0e41f969b9c014d4a15c3bb9f1c3c6b0ad161feb395ad42facf080eb2",
+      "C1_git_blob_bytes": 6726,
+      "git_storage_representation": "identical"
+    },
+    {
+      "path": "tools/test/generate_pdf_envelope_fixtures.py",
+      "sha256": "7eac6f773c1ee3a075de4f1c647b49f9c8c4ab5364e98432c7a185a861bfe59f",
+      "bytes": 8794,
+      "hash_representation": "frozen tested-worktree bytes",
+      "C1_git_blob_sha256": "7eac6f773c1ee3a075de4f1c647b49f9c8c4ab5364e98432c7a185a861bfe59f",
+      "C1_git_blob_bytes": 8794,
+      "git_storage_representation": "identical"
+    },
+    {
+      "path": "tools/test/InputPreflight.md",
+      "sha256": "7284d245bfdee661980daa6b0604ed449cfbd5940fe9ef070c90a5aecbd21f9b",
+      "bytes": 5368,
+      "hash_representation": "frozen tested-worktree bytes",
+      "C1_git_blob_sha256": "7284d245bfdee661980daa6b0604ed449cfbd5940fe9ef070c90a5aecbd21f9b",
+      "C1_git_blob_bytes": 5368,
+      "git_storage_representation": "identical"
+    },
+    {
+      "path": "README.md",
+      "sha256": "c7d2c8e58b1c9da2b9fca73fc2efdc0cb66ed2b360c709743ebbcc97e89109d6",
+      "bytes": 10735,
+      "hash_representation": "frozen tested-worktree bytes",
+      "C1_git_blob_sha256": "c7d2c8e58b1c9da2b9fca73fc2efdc0cb66ed2b360c709743ebbcc97e89109d6",
+      "C1_git_blob_bytes": 10735,
+      "git_storage_representation": "identical"
+    },
+    {
+      "path": ".gitattributes",
+      "sha256": "c3735488343dae76e6ccbd5e41d521e940b7ad9034f564eb7b48834a8ac05695",
+      "bytes": 4987,
+      "hash_representation": "frozen tested-worktree bytes",
+      "C1_git_blob_sha256": "aab3e2d3a7842b0bd333306a6235987c0fbdc96fa2afa4b1738eee75e27c5ef4",
+      "C1_git_blob_bytes": 4981,
+      "git_storage_representation": "Git CRLF-to-LF normalization; tested worktree hash retained"
+    }
+  ],
+  "specifications_examined": [
+    "AGENTS.md",
+    "docs/codex/INDEX.md",
+    "docs/codex/STATUS.md",
+    "docs/codex/NEXT_SESSION.md",
+    "docs/codex/TASKS.json",
+    "docs/codex/tasks/T11.md",
+    "docs/codex/PRODUCT_SPEC.md",
+    "docs/codex/TECHNICAL_SPEC.md",
+    "docs/codex/TEST_STRATEGY.md",
+    "docs/codex/GITHUB_WORKFLOW.md",
+    "docs/codex/ACCEPTANCE_CASES.json"
+  ],
+  "findings": [],
+  "resolved_review_points": [
+    {
+      "issue": "Native logger echoed strings into the inventory success stream, producing preliminary actual native 9 pass/4 fail per shell.",
+      "resolution": "Suppress logger success output while retaining log write failures; regression requires exactly one inventory object even when a controlled logger echoes text. Corrected preliminary native passes are separate from clean acceptance."
+    },
+    {
+      "issue": "Pinned PDFtk accepted missing EOF, true final startxref 0, corrupt xref keyword and nonwhitespace trailing data with exit0/positive count/no stderr.",
+      "resolution": "Added bounded byte-envelope refusal for those measured cases, with positive actual CR structural/footer, incremental, xref-stream and linearized controls. Explicitly retain that internally damaged/backend-repaired data can remain undetected; no universal validity or repair detector claim."
+    },
+    {
+      "issue": "Indirect-object target separator/comment and numeric-footer indentation compatibility.",
+      "resolution": "Accept PDF delimiters after obj, bounded whitespace/comment separators between object-number/generation/obj, and horizontal whitespace around numeric final offset; controlled regressions exercise each branch."
+    },
+    {
+      "issue": "PowerShell default case-insensitive matching could accept case-changed PDF keywords.",
+      "resolution": "Case-sensitive header/table/obj checks and four keyword regressions. The xref test now changes only the standalone target line, preserving startxref so target rejection is independently exercised."
+    },
+    {
+      "issue": "Initial CR fixture used a lone CR after stream, despite stream syntax requiring LF or CRLF.",
+      "resolution": "Corrected development generator emits required LF after stream while preserving CR structural/header/xref/footer lines. Historical tolerated-CR characterizations remain explicitly invalid/tolerance-only and excluded from acceptance."
+    },
+    {
+      "issue": "Guide could imply PDFtk accepts all five tested damaged variants.",
+      "resolution": "Guide names the four actually accepted damage variants; last40-byte truncation remains a distinct rejected fixture."
+    }
+  ],
+  "preliminary_evidence": {
+    "classification": "Historical dirty precommit context only; excluded from clean acceptance.",
+    "unit": [
+      {
+        "shell": "Windows PowerShell 5.1.26100.9444",
+        "passed": 197,
+        "all_bad_counts": 0,
+        "summary": "tests/.work/pester/179ededf14de404680f2cbde874e8212/summary.json"
+      },
+      {
+        "shell": "PowerShell 7.6.6",
+        "passed": 197,
+        "all_bad_counts": 0,
+        "summary": "tests/.work/pester/e28b35e3f0304df1ba4cd1fe8313c82e/summary.json"
+      }
+    ],
+    "unit_limitation": "Those 197 passes preceded the final xref-only case-test isolation edit; final clean C1 must execute the frozen test bytes. Final clean C1 executes all 197 cases in both actual shells and resolves this limitation.",
+    "native_input": [
+      {
+        "shell": "Windows PowerShell 5.1.26100.9444",
+        "passed": 22,
+        "all_bad_counts": 0,
+        "summary": "tests/.work/pester/5f7332f8626249578ad9869e8e00064c/summary.json"
+      },
+      {
+        "shell": "PowerShell 7.6.6",
+        "passed": 22,
+        "all_bad_counts": 0,
+        "summary": "tests/.work/pester/c8cea0aa0f61455da91cd85ef440fd9c/summary.json"
+      }
+    ],
+    "native_limitation": "Those 22 passes using the corrected generator preceded the final case-sensitive/comment-header refinements; final clean C1 must execute the frozen production bytes. Final clean C1 executes the final 22 cases in both actual shells and resolves this limitation.",
+    "historical_characterization_scope": "Raw native parseability/protection/page-label probes, recoverable damage, actual GS linearized early 0/final 338, historical invalid CR tolerance and corrected original envelope positives are characterization only; they never add to clean acceptance totals."
+  },
+  "static_analysis": {
+    "classification": "Clean C1 scoped actual PSScriptAnalyzer execution independently audited; earlier dirty reports remain historical.",
+    "reports": [
+      "docs/codex/evidence/T11-C1-reports/ps51-PSScriptAnalyzer-findings.json",
+      "docs/codex/evidence/T11-C1-reports/ps7-PSScriptAnalyzer-findings.json"
+    ],
+    "analyzer_version": "1.25.0",
+    "per_shell": {
+      "errors": 0,
+      "warnings": 31,
+      "information": 6
+    },
+    "warning_rules": {
+      "PSAvoidUsingWriteHost": 20,
+      "PSUseBOMForUnicodeEncodedFile": 1,
+      "PSUseApprovedVerbs": 3,
+      "PSUseShouldProcessForStateChangingFunctions": 3,
+      "PSUseSingularNouns": 4
+    },
+    "information_rules": {
+      "PSUseOutputTypeCorrectly": 6
+    },
+    "assessment": "No actual T11 blocking defect indicated: WriteHost is interactive entry diagnostics; nonASCII/BOM warning concerns existing help/comments only; verb/noun names and ShouldProcess heuristics preserve internal helper behavior; information concerns output-type declarations. All 0 errors/31 warnings/6 information in each actual shell remain retained for wider T22 review; no lint-clean claim.",
+    "historical_reports": [
+      "tests/.work/T11-analyzer-final-precommit-ps51.json",
+      "tests/.work/T11-analyzer-final-precommit-ps7.json"
+    ],
+    "commit_under_test": "822f84eb4f7f0d75736887d9d79d0d363ae551a7",
+    "dirty_worktree": false
+  },
+  "acceptance_audit": {
+    "status": "pass",
+    "expected_clean_commit": "822f84eb4f7f0d75736887d9d79d0d363ae551a7",
+    "expected_cases_per_shell": {
+      "Unit": 197,
+      "InputPreflight": 22,
+      "Destination": 15,
+      "ToolInvocation": 12,
+      "PdftkPaths": 13,
+      "GhostscriptPaths": 13,
+      "SourceDiscovery": 4,
+      "DependencyEntry": 9,
+      "LauncherNative": 2
+    },
+    "expected_passed_per_shell": 287,
+    "expected_total": 574,
+    "meaning": "Required AC025/AC026 are supported by exact clean C1 reports and actual Windows native observations; controlled cases and historical dirty records are classified separately. Records-only C2 commit/push and final synchronization are owned by root and remain subsequent actions.",
+    "public_results": "docs/codex/evidence/T11-C1-results.json",
+    "public_manifest": "docs/codex/evidence/T11-C1-reports/manifest.json",
+    "clean_reports": 18,
+    "passed_per_shell": 287,
+    "passed_total": 574,
+    "all_failure_skip_not_run_counts": 0,
+    "actual_shell_versions": [
+      "5.1.26100.9444",
+      "7.6.6"
+    ],
+    "evidence_binding_audit": {
+      "audit": "pass",
+      "commit": "822f84eb4f7f0d75736887d9d79d0d363ae551a7",
+      "clean_pairs": 18,
+      "clean_total": 574,
+      "raw_bindings_checked": 90,
+      "public_record_hash_references_checked": 90,
+      "public_report_files": 93,
+      "public_total_files": 96,
+      "historical_dirty_records": 10,
+      "historical_failed_cases_excluded": 8,
+      "standalone_characterizations": 5,
+      "selected_cache_files": 14,
+      "oracle_runtime_files": 2,
+      "static_per_shell": {
+        "errors": 0,
+        "warnings": 31,
+        "information": 6
+      },
+      "privacy": "pass",
+      "manifest_sha256": "dc3667f572fda9acb92aae9ee8d35ddf1fcb0689aa443c2f7387f97a6b11fd07",
+      "results_sha256": "a44df56797a616e4cbac61008a4607d1083237e1050554b3ae3c799a42203880",
+      "tiers": [
+        {
+          "shell": "ps51",
+          "tier": "Unit",
+          "passed": 197
+        },
+        {
+          "shell": "ps51",
+          "tier": "InputPreflight",
+          "passed": 22
+        },
+        {
+          "shell": "ps51",
+          "tier": "Destination",
+          "passed": 15
+        },
+        {
+          "shell": "ps51",
+          "tier": "ToolInvocation",
+          "passed": 12
+        },
+        {
+          "shell": "ps51",
+          "tier": "PdftkPaths",
+          "passed": 13
+        },
+        {
+          "shell": "ps51",
+          "tier": "GhostscriptPaths",
+          "passed": 13
+        },
+        {
+          "shell": "ps51",
+          "tier": "SourceDiscovery",
+          "passed": 4
+        },
+        {
+          "shell": "ps51",
+          "tier": "DependencyEntry",
+          "passed": 9
+        },
+        {
+          "shell": "ps51",
+          "tier": "LauncherNative",
+          "passed": 2
+        },
+        {
+          "shell": "ps7",
+          "tier": "Unit",
+          "passed": 197
+        },
+        {
+          "shell": "ps7",
+          "tier": "InputPreflight",
+          "passed": 22
+        },
+        {
+          "shell": "ps7",
+          "tier": "Destination",
+          "passed": 15
+        },
+        {
+          "shell": "ps7",
+          "tier": "ToolInvocation",
+          "passed": 12
+        },
+        {
+          "shell": "ps7",
+          "tier": "PdftkPaths",
+          "passed": 13
+        },
+        {
+          "shell": "ps7",
+          "tier": "GhostscriptPaths",
+          "passed": 13
+        },
+        {
+          "shell": "ps7",
+          "tier": "SourceDiscovery",
+          "passed": 4
+        },
+        {
+          "shell": "ps7",
+          "tier": "DependencyEntry",
+          "passed": 9
+        },
+        {
+          "shell": "ps7",
+          "tier": "LauncherNative",
+          "passed": 2
+        }
+      ]
+    },
+    "artifact_and_native_postfile_audit": {
+      "audit": "pass",
+      "public_artifacts": 96,
+      "public_bytes": 2603235,
+      "public_artifact_hashes_checked": 96,
+      "native": {
+        "ps51": {
+          "snapshots_rechecked": 75,
+          "independent_oracle_orders": 8,
+          "whole_job_rejections": 13,
+          "locked_file_before_native": 1,
+          "private_residue": 0
+        },
+        "ps7": {
+          "snapshots_rechecked": 75,
+          "independent_oracle_orders": 8,
+          "whole_job_rejections": 13,
+          "locked_file_before_native": 1,
+          "private_residue": 0
+        }
+      },
+      "envelope_builds_checked": 2,
+      "original_envelope_files_hashchecked": 10,
+      "oracle_scripts_hashchecked": 2,
+      "collection_receipt_sha256": "0a64e0fd8b24a9bf3d9630b7376d0ee54e13055523c5c9b894a42b28a7680d1d"
+    },
+    "plan_structure_check": {
+      "status": "pass",
+      "actual_command": "python -B tools/codex/handoff.py check-plan --repo .",
+      "observed_at_utc": "2026-10-07T21:11:39Z",
+      "valid": true,
+      "gate": "structure-only",
+      "task_count": 34,
+      "case_count": 78,
+      "done_tasks": 11,
+      "passed_cases": 26,
+      "excluded_cases": 0,
+      "note": "Record validation only; does not execute application tests or verify current GitHub state.",
+      "meaning": "Actual independent check after root copied the public reviewer file. Structure-only record validation is distinct from the 574 clean application/test passes."
+    }
+  },
+  "limitations": [
+    "The envelope guard is plausibility, not full PDF syntax/dictionary/stream validation. Unusual layouts outside the 8192-byte footer and 1024-byte target bounds are unsupported or malformed. Native parsing can accept internally damaged or repaired data without reporting it.",
+    "No reliable input encryption/permission labels exist in the measured PDFtk document data; unsupported password/restricted fixtures fail, while readable empty-password encryption is not universally refused. No password, restriction-removal or repair option/workflow is added.",
+    "Fresh length/mtime checks detect obvious source changes, not byte-identity replacement or transactional filesystem freezing. Concurrent edits after the final check remain outside that guarantee.",
+    "Independent PDFium visible identifiers/page order on synthetic outputs are narrow inventory/order evidence, not full fidelity or T13 master validation.",
+    "Actual evidence is limited to the recorded local standard-user Windows environment. No live UNC, Explorer, OS support-channel, package or release claim follows.",
+    "T12 generalized staging, T13 master validation/publication, T14 email validation/outcomes, T15 broader interruption/descendant cleanup, T16 remaining public parameters, T19 fidelity and T22 broader static/fault testing remain later work."
+  ],
+  "primary_sources_consulted": [
+    "https://www.pdflabs.com/docs/pdftk-man-page/",
+    "https://pdf-issues.pdfa.org/32000-2-2020/clause07.html",
+    "https://pdfa.org/the-smallest-possible-valid-pdf/",
+    "https://opensource.adobe.com/dc-acrobat-sdk-docs/pdfstandards/pdfreference1.7old.pdf",
+    "https://opensource.adobe.com/dc-acrobat-sdk-docs/library/plugin/Plugins_Cos.html"
+  ],
+  "source_access_note": "Reviewed official PDFtk/PDF Association/Adobe primary documentation and indexed Adobe reference excerpts; direct official full-PDF opens returned 404/internal fetch errors, so no downloaded/full PDF-reference inspection is claimed.",
+  "precommit_source_freeze_observed_at_utc": "2026-10-07T20:57:50Z",
+  "frozen_source_audit": {
+    "status": "pass",
+    "commit": "822f84eb4f7f0d75736887d9d79d0d363ae551a7",
+    "dirty_worktree": false,
+    "files_crossmatched": 12,
+    "mismatches": 0,
+    "meaning": "Observed on clean C1 before evidence collection. All twelve frozen working-file hashes matched. Eleven remain byte-identical after records preparation; .gitattributes now contains reviewed T11 byte-preservation entries. Stored C1 helper and attributes differ only by verified CRLF-to-LF normalization, recorded separately."
+  },
+  "records_audit": {
+    "status": "pass",
+    "audit": "pass",
+    "byte_preserved_staged_evidence": 98,
+    "records_only": true,
+    "runtime_test_generator_guide_readme_delta": false,
+    "tested_worktree_files_crossmatched": 12,
+    "current_unchanged_files": 11,
+    "C1_blob_hashes": [
+      {
+        "path": "WinPDFMerge.ps1",
+        "C1_git_blob_sha256": "4d88f3923299979bd75ee23ec65d499846d64c40098f5bdf0914b94d62b602c2",
+        "C1_git_blob_bytes": 11726,
+        "tested_worktree_sha256": "4d88f3923299979bd75ee23ec65d499846d64c40098f5bdf0914b94d62b602c2",
+        "tested_worktree_bytes": 11726,
+        "representation": "identical"
+      },
+      {
+        "path": "WinPDFMerge.bat",
+        "C1_git_blob_sha256": "288287beefea974c64d39b34266332d83112b9106c952efd8c304edfedebff83",
+        "C1_git_blob_bytes": 1782,
+        "tested_worktree_sha256": "288287beefea974c64d39b34266332d83112b9106c952efd8c304edfedebff83",
+        "tested_worktree_bytes": 1782,
+        "representation": "identical"
+      },
+      {
+        "path": "src/WinPDFMerge.Helpers.ps1",
+        "C1_git_blob_sha256": "c7766b277c7452fd1793f493eeb35a8dcb506d2fb6bd6cb98030b0eb4db2a19f",
+        "C1_git_blob_bytes": 52679,
+        "tested_worktree_sha256": "00bea94189097760de22559e61760d8b4822301e0c715f68099951006f4bf259",
+        "tested_worktree_bytes": 53748,
+        "representation": "Git CRLF-to-LF normalization; tested worktree hash retained"
+      },
+      {
+        "path": "tests/unit/InputPreflight.Tests.ps1",
+        "C1_git_blob_sha256": "8fad71140de4dc5288188332f17b024ba238c98391e92f2520d21755699c5454",
+        "C1_git_blob_bytes": 13561,
+        "tested_worktree_sha256": "8fad71140de4dc5288188332f17b024ba238c98391e92f2520d21755699c5454",
+        "tested_worktree_bytes": 13561,
+        "representation": "identical"
+      },
+      {
+        "path": "tests/unit/PdfEnvelope.Tests.ps1",
+        "C1_git_blob_sha256": "2dc0844b249140d3100a6ae894d5f505e0310090d6ef978734a2bd2b23033122",
+        "C1_git_blob_bytes": 6506,
+        "tested_worktree_sha256": "2dc0844b249140d3100a6ae894d5f505e0310090d6ef978734a2bd2b23033122",
+        "tested_worktree_bytes": 6506,
+        "representation": "identical"
+      },
+      {
+        "path": "tests/pdf/InputPreflight.Native.Tests.ps1",
+        "C1_git_blob_sha256": "157f10b56df0ee4bc5bc9fbc8aee1a2dfc3e24eccdd3175a7394097db207a60a",
+        "C1_git_blob_bytes": 26769,
+        "tested_worktree_sha256": "157f10b56df0ee4bc5bc9fbc8aee1a2dfc3e24eccdd3175a7394097db207a60a",
+        "tested_worktree_bytes": 26769,
+        "representation": "identical"
+      },
+      {
+        "path": "tests/TestSupport.ps1",
+        "C1_git_blob_sha256": "7377be7c09cdaf12533f13cb3d56342ac19e368ad1604012b364fa86263af039",
+        "C1_git_blob_bytes": 2190,
+        "tested_worktree_sha256": "7377be7c09cdaf12533f13cb3d56342ac19e368ad1604012b364fa86263af039",
+        "tested_worktree_bytes": 2190,
+        "representation": "identical"
+      },
+      {
+        "path": "tools/test/Invoke-Tests.ps1",
+        "C1_git_blob_sha256": "abaad1d0e41f969b9c014d4a15c3bb9f1c3c6b0ad161feb395ad42facf080eb2",
+        "C1_git_blob_bytes": 6726,
+        "tested_worktree_sha256": "abaad1d0e41f969b9c014d4a15c3bb9f1c3c6b0ad161feb395ad42facf080eb2",
+        "tested_worktree_bytes": 6726,
+        "representation": "identical"
+      },
+      {
+        "path": "tools/test/generate_pdf_envelope_fixtures.py",
+        "C1_git_blob_sha256": "7eac6f773c1ee3a075de4f1c647b49f9c8c4ab5364e98432c7a185a861bfe59f",
+        "C1_git_blob_bytes": 8794,
+        "tested_worktree_sha256": "7eac6f773c1ee3a075de4f1c647b49f9c8c4ab5364e98432c7a185a861bfe59f",
+        "tested_worktree_bytes": 8794,
+        "representation": "identical"
+      },
+      {
+        "path": "tools/test/InputPreflight.md",
+        "C1_git_blob_sha256": "7284d245bfdee661980daa6b0604ed449cfbd5940fe9ef070c90a5aecbd21f9b",
+        "C1_git_blob_bytes": 5368,
+        "tested_worktree_sha256": "7284d245bfdee661980daa6b0604ed449cfbd5940fe9ef070c90a5aecbd21f9b",
+        "tested_worktree_bytes": 5368,
+        "representation": "identical"
+      },
+      {
+        "path": "README.md",
+        "C1_git_blob_sha256": "c7d2c8e58b1c9da2b9fca73fc2efdc0cb66ed2b360c709743ebbcc97e89109d6",
+        "C1_git_blob_bytes": 10735,
+        "tested_worktree_sha256": "c7d2c8e58b1c9da2b9fca73fc2efdc0cb66ed2b360c709743ebbcc97e89109d6",
+        "tested_worktree_bytes": 10735,
+        "representation": "identical"
+      },
+      {
+        "path": ".gitattributes",
+        "C1_git_blob_sha256": "aab3e2d3a7842b0bd333306a6235987c0fbdc96fa2afa4b1738eee75e27c5ef4",
+        "C1_git_blob_bytes": 4981,
+        "tested_worktree_sha256": "c3735488343dae76e6ccbd5e41d521e940b7ad9034f564eb7b48834a8ac05695",
+        "tested_worktree_bytes": 4987,
+        "representation": "Git CRLF-to-LF normalization; tested worktree hash retained"
+      }
+    ],
+    "gitattributes": "T11-only byte-preservation entries, no whitespace exemptions; historical prior entries unchanged",
+    "cached_whitespace_check": "pass",
+    "task_cases": "Only T11 done and required AC025/AC026 pass changed; T12 pending; historical evidence distinct",
+    "plan_status": "pass: valid structure-only, 34 tasks/78 cases, 11 done/26 passed/0 excluded",
+    "records_privacy": "pass",
+    "source_hash_representation_note": "The failed initial Git-blob-versus-tested-byte comparison was corrected to verify and record EOL normalization. No production, evidence or test bytes changed for this audit.",
+    "task_status": "T11 done; AC025 and AC026 pass; T12 pending/selected next; M1 complete and publication not started.",
+    "wording_review": "Successful-merge requirement and first-failure stop are explicit in completion, STATUS and D24; later inputs are not inspected after failure. Version probes can occur earlier; refusal is before merge/email conversion. NEXT reports future C2 equality only after its actual push.",
+    "check_plan_limit": "Resolved after root public reviewer copy: actual independent structure validation passes.",
+    "reviewer_file_self_hash": "Intentionally absent: the root records the copied reviewer digest externally.",
+    "staged_paths_after_review_copy": 107,
+    "final_copy_scope": "The audited first public reviewer copy was staged byte-exact. Root owns exact replacement with this final ignored receipt, final storage check, records-only commit and normal push; no future C2 SHA/synchronization is claimed."
+  },
+  "live_and_pull_request_audit": {
+    "status": "pass",
+    "clean_C1_receipt": "docs/codex/evidence/T11-C1-live-sync.json",
+    "clean_C1_receipt_observed_at_utc": "2026-10-07T21:02:04Z",
+    "independent_live_observed_at_utc": "2026-10-07T21:10:03Z",
+    "command": "git ls-remote origin refs/heads/codex/v1.0.0-readiness refs/heads/main; gh pr view 11 --json url,state,isDraft,headRefName,headRefOid,baseRefName",
+    "local_and_live_feature_head": "822f84eb4f7f0d75736887d9d79d0d363ae551a7",
+    "live_main": "f790c512396be9ccb3e5254ce11ffa4d061666ab",
+    "draft_pull_request": {
+      "url": "https://github.com/PikkuJanne/WinPDFMerger/pull/11",
+      "state": "OPEN",
+      "is_draft": true,
+      "base": "main",
+      "head": "codex/v1.0.0-readiness",
+      "head_sha": "822f84eb4f7f0d75736887d9d79d0d363ae551a7"
+    },
+    "current_preparation_state": "Records-only edits staged; not claimed as clean current C2. No post-C2 push/sync observation exists in this C1 review."
+  },
+  "audit_method_note": "Independent raw/public comparisons parse numeric totals consistently across the two JSON serializers and accept the recorded plain REDACTED XML markers. Reviewer predicate/inline-script corrections were audit harness issues only; no application/test/evidence failure or artifact mutation resulted."
+}
