@@ -1,0 +1,782 @@
+{
+  "schema_version": 1,
+  "repository": "PikkuJanne/WinPDFMerger",
+  "target_release": "v1.0.0",
+  "task_statuses": [
+    "pending",
+    "in_progress",
+    "blocked",
+    "done"
+  ],
+  "milestones": [
+    {
+      "id": "M0",
+      "title": "Baseline and safe setup",
+      "goal": "No product rewrite; baseline and synchronization are understood before fixes."
+    },
+    {
+      "id": "M1",
+      "title": "Paths, ordering and native execution",
+      "goal": "Reliable argument boundaries, dependency selection, deterministic order and bounded commands."
+    },
+    {
+      "id": "M2",
+      "title": "PDF validation and non-destructive results",
+      "goal": "Sources/existing outputs stay safe; partial success cannot masquerade as full success."
+    },
+    {
+      "id": "M3",
+      "title": "Focused usability and honest documentation",
+      "goal": "Preserved defaults, small parameter set, useful diagnostics and measured PDF limitations."
+    },
+    {
+      "id": "M4",
+      "title": "Regression, CI and Windows acceptance",
+      "goal": "Required real Windows/native evidence plus scoped, truthful compatibility claims."
+    },
+    {
+      "id": "M5",
+      "title": "Packaging and accepted release source",
+      "goal": "Reviewed package workflow and merged immutable release-source commit R."
+    },
+    {
+      "id": "M6",
+      "title": "Publish, verify and close",
+      "goal": "Only v1.0.0 is publicly released; exact assets, downloaded operation and final sync are verified."
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T01",
+      "milestone": "M0",
+      "title": "Reconcile checkout and safely install the handoff",
+      "status": "in_progress",
+      "depends_on": [],
+      "brief": "docs/codex/tasks/T01.md",
+      "likely_paths": [
+        "docs/codex/**",
+        "AGENTS.md",
+        "tools/codex/**"
+      ],
+      "acceptance_ids": [
+        "AC001",
+        "AC002"
+      ],
+      "evidence": [
+        "docs/codex/evidence/T01-bootstrap.md",
+        "docs/codex/evidence/T01-helper-audit.md"
+      ],
+      "notes": "Create-only import verified; final commit/push/live branch checkpoint pending. Product tasks remain pending."
+    },
+    {
+      "id": "T02",
+      "milestone": "M0",
+      "title": "Reproduce the baseline and record environment",
+      "status": "pending",
+      "depends_on": [
+        "T01"
+      ],
+      "brief": "docs/codex/tasks/T02.md",
+      "likely_paths": [
+        "docs/codex/evidence/**",
+        "docs/codex/BASELINE.json",
+        "docs/codex/COMPATIBILITY_MATRIX.md"
+      ],
+      "acceptance_ids": [
+        "AC003",
+        "AC004"
+      ],
+      "evidence": [],
+      "notes": null
+    },
+    {
+      "id": "T03",
+      "milestone": "M0",
+      "title": "Establish test seams and a minimal fixture harness",
+      "status": "pending",
+      "depends_on": [
+        "T02"
+      ],
+      "brief": "docs/codex/tasks/T03.md",
+      "likely_paths": [
+        "tests/**",
+        "WinPDFMerge.ps1",
+        "src/**",
+        "tools/test/**",
+        ".gitignore"
+      ],
+      "acceptance_ids": [
+        "AC005",
+        "AC006"
+      ],
+      "evidence": [],
+      "notes": null
+    },
+    {
+      "id": "T04",
+      "milestone": "M1",
+      "title": "Harden source discovery and literal paths",
+      "status": "pending",
+      "depends_on": [
+        "T03"
+      ],
+      "brief": "docs/codex/tasks/T04.md",
+      "likely_paths": [
+        "WinPDFMerge.ps1",
+        "src/**",
+        "tests/**"
+      ],
+      "acceptance_ids": [
+        "AC007",
+        "AC008"
+      ],
+      "evidence": [],
+      "notes": null
+    },
+    {
+      "id": "T05",
+      "milestone": "M1",
+      "title": "Repair the drag-and-drop batch wrapper",
+      "status": "pending",
+      "depends_on": [
+        "T04"
+      ],
+      "brief": "docs/codex/tasks/T05.md",
+      "likely_paths": [
+        "WinPDFMerge.bat",
+        "tests/launcher/**"
+      ],
+      "acceptance_ids": [
+        "AC009",
+        "AC010"
+      ],
+      "evidence": [],
+      "notes": null
+    },
+    {
+      "id": "T06",
+      "milestone": "M1",
+      "title": "Implement tested deterministic natural order",
+      "status": "pending",
+      "depends_on": [
+        "T05"
+      ],
+      "brief": "docs/codex/tasks/T06.md",
+      "likely_paths": [
+        "WinPDFMerge.ps1",
+        "src/**",
+        "tests/**"
+      ],
+      "acceptance_ids": [
+        "AC011",
+        "AC012"
+      ],
+      "evidence": [],
+      "notes": null
+    },
+    {
+      "id": "T07",
+      "milestone": "M1",
+      "title": "Repair dependency resolution and version reporting",
+      "status": "pending",
+      "depends_on": [
+        "T06"
+      ],
+      "brief": "docs/codex/tasks/T07.md",
+      "likely_paths": [
+        "WinPDFMerge.ps1",
+        "src/**",
+        "tests/**"
+      ],
+      "acceptance_ids": [
+        "AC013",
+        "AC014",
+        "AC015"
+      ],
+      "evidence": [],
+      "notes": null
+    },
+    {
+      "id": "T08",
+      "milestone": "M1",
+      "title": "Centralize bounded native execution and logging",
+      "status": "pending",
+      "depends_on": [
+        "T07"
+      ],
+      "brief": "docs/codex/tasks/T08.md",
+      "likely_paths": [
+        "WinPDFMerge.ps1",
+        "src/**",
+        "tests/native/**"
+      ],
+      "acceptance_ids": [
+        "AC016",
+        "AC017",
+        "AC018"
+      ],
+      "evidence": [],
+      "notes": null
+    },
+    {
+      "id": "T09",
+      "milestone": "M1",
+      "title": "Fix real tool quoting, noninteractive execution and limits",
+      "status": "pending",
+      "depends_on": [
+        "T08"
+      ],
+      "brief": "docs/codex/tasks/T09.md",
+      "likely_paths": [
+        "WinPDFMerge.ps1",
+        "src/**",
+        "tests/native/**",
+        "docs/codex/evidence/**"
+      ],
+      "acceptance_ids": [
+        "AC019",
+        "AC020",
+        "AC021"
+      ],
+      "evidence": [],
+      "notes": null
+    },
+    {
+      "id": "T10",
+      "milestone": "M2",
+      "title": "Validate destination and reserve run identity",
+      "status": "pending",
+      "depends_on": [
+        "T09"
+      ],
+      "brief": "docs/codex/tasks/T10.md",
+      "likely_paths": [
+        "WinPDFMerge.ps1",
+        "src/**",
+        "tests/**"
+      ],
+      "acceptance_ids": [
+        "AC022",
+        "AC023",
+        "AC024"
+      ],
+      "evidence": [],
+      "notes": null
+    },
+    {
+      "id": "T11",
+      "milestone": "M2",
+      "title": "Preflight every input PDF and page totals",
+      "status": "pending",
+      "depends_on": [
+        "T10"
+      ],
+      "brief": "docs/codex/tasks/T11.md",
+      "likely_paths": [
+        "WinPDFMerge.ps1",
+        "src/**",
+        "tests/pdf/**"
+      ],
+      "acceptance_ids": [
+        "AC025",
+        "AC026"
+      ],
+      "evidence": [],
+      "notes": null
+    },
+    {
+      "id": "T12",
+      "milestone": "M2",
+      "title": "Introduce no-overwrite staging and publication",
+      "status": "pending",
+      "depends_on": [
+        "T11"
+      ],
+      "brief": "docs/codex/tasks/T12.md",
+      "likely_paths": [
+        "WinPDFMerge.ps1",
+        "src/**",
+        "tests/filesafety/**"
+      ],
+      "acceptance_ids": [
+        "AC027",
+        "AC028",
+        "AC029"
+      ],
+      "evidence": [],
+      "notes": null
+    },
+    {
+      "id": "T13",
+      "milestone": "M2",
+      "title": "Validate and publish the master truthfully",
+      "status": "pending",
+      "depends_on": [
+        "T12"
+      ],
+      "brief": "docs/codex/tasks/T13.md",
+      "likely_paths": [
+        "WinPDFMerge.ps1",
+        "src/**",
+        "tests/pdf/**"
+      ],
+      "acceptance_ids": [
+        "AC030",
+        "AC031"
+      ],
+      "evidence": [],
+      "notes": null
+    },
+    {
+      "id": "T14",
+      "milestone": "M2",
+      "title": "Make optional email processing and result states explicit",
+      "status": "pending",
+      "depends_on": [
+        "T13"
+      ],
+      "brief": "docs/codex/tasks/T14.md",
+      "likely_paths": [
+        "WinPDFMerge.ps1",
+        "WinPDFMerge.bat",
+        "src/**",
+        "tests/**"
+      ],
+      "acceptance_ids": [
+        "AC032",
+        "AC033",
+        "AC034"
+      ],
+      "evidence": [],
+      "notes": null
+    },
+    {
+      "id": "T15",
+      "milestone": "M2",
+      "title": "Close interruption, environment and IO failure paths",
+      "status": "pending",
+      "depends_on": [
+        "T14"
+      ],
+      "brief": "docs/codex/tasks/T15.md",
+      "likely_paths": [
+        "WinPDFMerge.ps1",
+        "src/**",
+        "tests/faults/**"
+      ],
+      "acceptance_ids": [
+        "AC035",
+        "AC036",
+        "AC037"
+      ],
+      "evidence": [],
+      "notes": null
+    },
+    {
+      "id": "T16",
+      "milestone": "M3",
+      "title": "Add the small public parameter interface",
+      "status": "pending",
+      "depends_on": [
+        "T15"
+      ],
+      "brief": "docs/codex/tasks/T16.md",
+      "likely_paths": [
+        "WinPDFMerge.ps1",
+        "src/**",
+        "tests/cli/**"
+      ],
+      "acceptance_ids": [
+        "AC038",
+        "AC039"
+      ],
+      "evidence": [],
+      "notes": null
+    },
+    {
+      "id": "T17",
+      "milestone": "M3",
+      "title": "Report real compression benefit and preset tradeoffs",
+      "status": "pending",
+      "depends_on": [
+        "T16"
+      ],
+      "brief": "docs/codex/tasks/T17.md",
+      "likely_paths": [
+        "WinPDFMerge.ps1",
+        "src/**",
+        "tests/pdf/**",
+        "docs/**"
+      ],
+      "acceptance_ids": [
+        "AC040",
+        "AC041"
+      ],
+      "evidence": [],
+      "notes": null
+    },
+    {
+      "id": "T18",
+      "milestone": "M3",
+      "title": "Improve help, progress and private-by-default diagnostics",
+      "status": "pending",
+      "depends_on": [
+        "T17"
+      ],
+      "brief": "docs/codex/tasks/T18.md",
+      "likely_paths": [
+        "WinPDFMerge.ps1",
+        "src/**",
+        "tests/help/**",
+        "docs/**"
+      ],
+      "acceptance_ids": [
+        "AC042",
+        "AC043"
+      ],
+      "evidence": [],
+      "notes": null
+    },
+    {
+      "id": "T19",
+      "milestone": "M3",
+      "title": "Characterize feature-rich PDF preservation",
+      "status": "pending",
+      "depends_on": [
+        "T18"
+      ],
+      "brief": "docs/codex/tasks/T19.md",
+      "likely_paths": [
+        "tests/fixtures/**",
+        "tests/pdf/**",
+        "docs/PDF_LIMITATIONS.md",
+        "docs/codex/evidence/**"
+      ],
+      "acceptance_ids": [
+        "AC044",
+        "AC045"
+      ],
+      "evidence": [],
+      "notes": null
+    },
+    {
+      "id": "T20",
+      "milestone": "M3",
+      "title": "Write the public documentation and dependency/privacy policy",
+      "status": "pending",
+      "depends_on": [
+        "T19"
+      ],
+      "brief": "docs/codex/tasks/T20.md",
+      "likely_paths": [
+        "README.md",
+        "LICENSE",
+        "SECURITY.md",
+        "docs/**"
+      ],
+      "acceptance_ids": [
+        "AC046",
+        "AC047"
+      ],
+      "evidence": [],
+      "notes": null
+    },
+    {
+      "id": "T21",
+      "milestone": "M4",
+      "title": "Complete synthetic regression corpus and source-safety coverage",
+      "status": "pending",
+      "depends_on": [
+        "T20"
+      ],
+      "brief": "docs/codex/tasks/T21.md",
+      "likely_paths": [
+        "tests/**",
+        "tools/test/**",
+        "docs/codex/evidence/**"
+      ],
+      "acceptance_ids": [
+        "AC048",
+        "AC049"
+      ],
+      "evidence": [],
+      "notes": null
+    },
+    {
+      "id": "T22",
+      "milestone": "M4",
+      "title": "Finish fault tests and static analysis coverage",
+      "status": "pending",
+      "depends_on": [
+        "T21"
+      ],
+      "brief": "docs/codex/tasks/T22.md",
+      "likely_paths": [
+        "tests/**",
+        "PSScriptAnalyzerSettings.psd1",
+        "tools/test/**"
+      ],
+      "acceptance_ids": [
+        "AC050",
+        "AC051"
+      ],
+      "evidence": [],
+      "notes": null
+    },
+    {
+      "id": "T23",
+      "milestone": "M4",
+      "title": "Run full native integration in both required shells",
+      "status": "pending",
+      "depends_on": [
+        "T22"
+      ],
+      "brief": "docs/codex/tasks/T23.md",
+      "likely_paths": [
+        "tests/**",
+        "docs/codex/evidence/**",
+        "docs/codex/COMPATIBILITY_MATRIX.md"
+      ],
+      "acceptance_ids": [
+        "AC052",
+        "AC053"
+      ],
+      "evidence": [],
+      "notes": null
+    },
+    {
+      "id": "T24",
+      "milestone": "M4",
+      "title": "Add safe Windows CI and machine-readable reports",
+      "status": "pending",
+      "depends_on": [
+        "T23"
+      ],
+      "brief": "docs/codex/tasks/T24.md",
+      "likely_paths": [
+        ".github/workflows/**",
+        "tests/**",
+        "tools/test/**",
+        "docs/DEVELOPMENT.md"
+      ],
+      "acceptance_ids": [
+        "AC054",
+        "AC055"
+      ],
+      "evidence": [],
+      "notes": null
+    },
+    {
+      "id": "T25",
+      "milestone": "M4",
+      "title": "Perform focused security and public-repository review",
+      "status": "pending",
+      "depends_on": [
+        "T24"
+      ],
+      "brief": "docs/codex/tasks/T25.md",
+      "likely_paths": [
+        "WinPDFMerge.ps1",
+        "WinPDFMerge.bat",
+        "src/**",
+        ".github/**",
+        "SECURITY.md",
+        "docs/codex/evidence/**"
+      ],
+      "acceptance_ids": [
+        "AC056",
+        "AC057"
+      ],
+      "evidence": [],
+      "notes": null
+    },
+    {
+      "id": "T26",
+      "milestone": "M4",
+      "title": "Complete desktop acceptance and compatibility scoping",
+      "status": "pending",
+      "depends_on": [
+        "T25"
+      ],
+      "brief": "docs/codex/tasks/T26.md",
+      "likely_paths": [
+        "docs/codex/evidence/**",
+        "docs/codex/COMPATIBILITY_MATRIX.md",
+        "README.md"
+      ],
+      "acceptance_ids": [
+        "AC058",
+        "AC059",
+        "AC060",
+        "AC061",
+        "AC062"
+      ],
+      "evidence": [],
+      "notes": null
+    },
+    {
+      "id": "T27",
+      "milestone": "M5",
+      "title": "Add single-source version and final change notes",
+      "status": "pending",
+      "depends_on": [
+        "T26"
+      ],
+      "brief": "docs/codex/tasks/T27.md",
+      "likely_paths": [
+        "WinPDFMerge.ps1",
+        "src/**",
+        "VERSION",
+        "CHANGELOG.md",
+        "docs/RELEASE_NOTES_v1.0.0.md"
+      ],
+      "acceptance_ids": [
+        "AC063",
+        "AC064"
+      ],
+      "evidence": [],
+      "notes": null
+    },
+    {
+      "id": "T28",
+      "milestone": "M5",
+      "title": "Implement clean allowlisted packaging and checksums",
+      "status": "pending",
+      "depends_on": [
+        "T27"
+      ],
+      "brief": "docs/codex/tasks/T28.md",
+      "likely_paths": [
+        "tools/release/**",
+        "release-files.json",
+        "tests/package/**",
+        "docs/DEVELOPMENT.md"
+      ],
+      "acceptance_ids": [
+        "AC065",
+        "AC066"
+      ],
+      "evidence": [],
+      "notes": null
+    },
+    {
+      "id": "T29",
+      "milestone": "M5",
+      "title": "Test the candidate ZIP as an end user",
+      "status": "pending",
+      "depends_on": [
+        "T28"
+      ],
+      "brief": "docs/codex/tasks/T29.md",
+      "likely_paths": [
+        "tests/package/**",
+        "docs/codex/evidence/**"
+      ],
+      "acceptance_ids": [
+        "AC067",
+        "AC068"
+      ],
+      "evidence": [],
+      "notes": null
+    },
+    {
+      "id": "T30",
+      "milestone": "M5",
+      "title": "Audit completeness and establish the merge gate",
+      "status": "pending",
+      "depends_on": [
+        "T29"
+      ],
+      "brief": "docs/codex/tasks/T30.md",
+      "likely_paths": [
+        "docs/codex/**",
+        "docs/RELEASE_NOTES_v1.0.0.md"
+      ],
+      "acceptance_ids": [
+        "AC069",
+        "AC070"
+      ],
+      "evidence": [],
+      "notes": null
+    },
+    {
+      "id": "T31",
+      "milestone": "M5",
+      "title": "Merge the accepted PR and freeze release-source commit R",
+      "status": "pending",
+      "depends_on": [
+        "T30"
+      ],
+      "brief": "docs/codex/tasks/T31.md",
+      "likely_paths": [
+        "docs/codex/**",
+        ".github/**"
+      ],
+      "acceptance_ids": [
+        "AC071",
+        "AC072"
+      ],
+      "evidence": [],
+      "notes": null
+    },
+    {
+      "id": "T32",
+      "milestone": "M6",
+      "title": "Build exact R assets, then create final tag and draft",
+      "status": "pending",
+      "depends_on": [
+        "T31"
+      ],
+      "brief": "docs/codex/tasks/T32.md",
+      "likely_paths": [
+        "docs/codex/**",
+        "release staging outside tracked sources"
+      ],
+      "acceptance_ids": [
+        "AC073",
+        "AC074"
+      ],
+      "evidence": [],
+      "notes": null
+    },
+    {
+      "id": "T33",
+      "milestone": "M6",
+      "title": "Publish v1.0.0 and verify public download",
+      "status": "pending",
+      "depends_on": [
+        "T32"
+      ],
+      "brief": "docs/codex/tasks/T33.md",
+      "likely_paths": [
+        "docs/codex/**",
+        "independent download directory"
+      ],
+      "acceptance_ids": [
+        "AC075",
+        "AC076"
+      ],
+      "evidence": [],
+      "notes": null
+    },
+    {
+      "id": "T34",
+      "milestone": "M6",
+      "title": "Synchronize closure evidence and declare completion",
+      "status": "pending",
+      "depends_on": [
+        "T33"
+      ],
+      "brief": "docs/codex/tasks/T34.md",
+      "likely_paths": [
+        "docs/codex/**"
+      ],
+      "acceptance_ids": [
+        "AC077",
+        "AC078"
+      ],
+      "evidence": [],
+      "notes": null
+    }
+  ]
+}
