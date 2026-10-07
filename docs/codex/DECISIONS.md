@@ -25,3 +25,11 @@ in place with a newly created main ref and index-only `read-tree`. No second
 checkout, reset, overwrite, or history rewrite was needed. Existing instructions
 and handoff records were absent, so no manual merge was necessary. Evidence:
 `evidence/T01-bootstrap.md`. This is setup only; no product/test contract changed.
+
+2026-10-07 — D16: T03 pins Pester6.2.0 for both required shells and keeps test
+PDF generation/oracle/fake-process tooling development-only. Owner explicitly
+approved exact Pester/official PDFtk acquisition into external dev caches and
+process-only RemoteSigned for PS5.1 tests. User/machine policy and PATH stay
+unchanged; no installer executed or vendor executable redistributed in repo.
+Evidence: `evidence/T03-completion.md` and acquisition receipts. No product
+contract changed; supported PS7 update/application/desktop gates remain later work.
