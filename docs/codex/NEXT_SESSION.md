@@ -1,42 +1,41 @@
 # Next session
 
-Selected task: T10 — validate destination and reserve run identity (M2).
+Selected task: finish T10 — validate destination and reserve run identity.
 Read AGENTS/INDEX/STATUS, T10 TASKS entry/brief, PRODUCT_SPEC, TECHNICAL_SPEC,
-TEST_STRATEGY, GITHUB_WORKFLOW and AC022/AC023/AC024. Recheck local branch/clean
-tree/origin fetch+push/fresh live refs/PR/releases. Never reset to the baseline.
+TEST_STRATEGY, GITHUB_WORKFLOW and AC022/AC023/AC024. Recheck current branch/clean
+tree/origin fetch+push/live refs/PR/releases. Never reset to the historical baseline.
 
-T09/M1 completed at clean C3 `894bbb4862105ae497bc9801decc46575fedd87a`:217 Pester cases per actual
-PS5.1/7.6.6 shell,434total;9tiers, all failure/skip/not_run0; AC019/20/21 pass.
-Python fixture10tests/exact reproduction/PDFium oracle pass. PSA1.25.0 entry/
-helpers0errors/20warnings/4information; reviewed style hints retained, no T22
-completion claim. See T09 completion/results/reports/manifest/review/live receipt.
-C4 records-only continuation requires final fresh live proof in session output;
-verify current refs anew. Draft [PR](https://github.com/PikkuJanne/WinPDFMerger/pull/9) replaces owner-merged PR8.
+T10 implementation is edited but not accepted: `-OutputFolder` named only (default
+entry directory), literal existing directory preflight, physical overlap refusal,
+reparse ancestor refusal, owned create-new/DeleteOnClose write probe, bounded
+surrogate-safe names/invariant timestamp/random16hex and atomic create-new log
+reservation. Root/empty labels use root; excessive destinations fail before native
+work. Existing final paths and sources are preserved. See T10 checkpoint and
+tools/test/Destination.md for helper/test scope. OutputFolder starts here because
+AC022 requires it; T16 owns the remaining parameter interface.
 
-Reuse verified external dev caches from T09 GS/PS7/PSA acquisition receipts and
-T03 Pester6.2.0/PDFtk2.02 receipts. Owner explicitly authorized all needed test
-dependencies; process-only RemoteSigned already authorized. No repeat acquisition
-approval for these exact caches; no automatic downloads/system/PATH/security
-changes. Current supported PS7 reference pin7.6.6 in TestDependencies.psd1.
+Preliminary Unit134 passes both actual PS5.1/PS7.6.6 at dirty af54a03; static
+entry/helpers 0 errors/29 warnings/5 information in each. Destination15 also
+passes both shells at dirty base after a planned-email log diagnostic resolved
+the sole prior concurrency assertion failure (historical14/1 reports preserved).
+Focused regressions must pass at a clean C1 before AC022/23/24 or T10 are marked
+done. Preserve actual failed/dirty runs separately, never count mock metadata or
+missing environment as native acceptance. After acceptance, push matching branch,
+fresh clean local/live equality, retain exact/sanitized hashes and independent
+review in C2 records, then select T11. Final C2 SHA/equality belongs in session
+output under the no-self-reference checkpoint workflow.
 
-Invoke-PdfToolJob routes bounded direct vectors/logs, private fresh outputs and
-no-overwrite moves. PDFtk cat/compress/dont_ask; GS SAFER,/screen,compatibility1.6,
-duplicate detection, fixedPDFSTOPONERROR and child-only GS_OPTIONS removal.
-The fixed error flag rejects observed password-error exit0/wrong-page artifact;
-it does not replace structural/expected-total validation. Command bound30000
-includes executable serialization/separator/NUL; operands/stage below260.
-PDFtk CJK operands fail safely with readable native diagnostics; GS testedCJK
-paths pass; sources are never renamed. ACL fixture descriptor/source restored.
+PR9 is owner-merged at main af54a0310745fc88c7019716c60fdd525353ff33; safe
+ancestry/identical-tree fast-forward completed before edits. A new draft PR is
+needed after the next implementation push. Reuse exact verified external caches
+in T03/T09 acquisition receipts; no repeat dependency or process RemoteSigned
+approval is needed. T10 cache check rehashed 1,388 extracted files successfully;
+ordinary PS5.1 Restricted/all scopes Undefined, non-elevated Windows11 x64/build26300.
 
-T10 should implement destination/overlap/writability and unique shared run identity,
-including the known same-second log/final naming weakness. Preserve master sources
-and current defaults. T11 owns input/page inventory, T12 generalized staging,
-T13 master validation/publication, T14 email validation/outcomes (including known
-stale-email summary), T15 full interruption/descendants. Earlier historical notes
-misassigned structural validation to T10; use this corrected task map.
-
-Reference standard-user Windows11x64/build26300; ordinary PS5.1 Restricted/all
-scopesUndefined, actual5.1.26100.9444 and supported7.6.6. OS support channel and
-Explorer/fidelity/full release compatibility remain unestablished; native scoped
-tests cannot replace human desktop/CI/package/release gates. One conceptual task
-per thread; no intermediate tags/releases/private PDF/upload/runtime network calls.
+Physical metadata is volume64/file128 via a tiny lazy Windows adapter; actual
+filesystem claims remain limited to tested local NTFS. Reparse paths are refused,
+unavailable identity fails closed. T11 input/page inventory, T12 generalized
+staging, T13 master validation, T14 email/outcomes, T15 full interruption remain.
+OS support channel, fidelity/Explorer/CI/package/security/release compatibility
+are still pending. Keep one conceptual task; no intermediate tags/releases,
+source/private-PDF upload, runtime network or persistent security changes.
