@@ -1,52 +1,36 @@
 # Next session
 
-Selected task: finish T09 (blocked on required real Ghostscript evidence).
+Selected task: finish T09; clean verified dependency/backend reruns next.
 Read AGENTS/INDEX/STATUS, T09 TASKS entry/brief, PRODUCT_SPEC, TECHNICAL_SPEC,
-TEST_STRATEGY, GITHUB_WORKFLOW and AC019/AC020/AC021. Recheck repository/branch,
-clean state, fetch/push origin, live refs/PR/releases; never reset to the baseline.
+TEST_STRATEGY, GITHUB_WORKFLOW and AC019/AC020/AC021. Recheck branch, clean tree,
+origin fetch/push, fresh live refs/PR/releases; never reset to the baseline.
 
-Implementation checkpoint C1 is pushed: `139ecdcc9f31bc8c55bd0e26e63aaa43e2acdbfc`. `Invoke-PdfToolJob` routes fixed PDFtk/GS
-vectors through `Invoke-NativeProcess`, captures/logs both tools, privately stages
-fresh outputs and uses no-overwrite moves. PDFtk cat/compress/dont_ask; GS retains
-SAFER, /screen, compatibility1.6/duplicate detection and child-only GS_OPTIONS
-removal. Native exit/capture/launch/timeout faults cannot publish an output; failed
-GS returns2/master retention. Structural checks/state integration remain T10-T15.
+The owner authorized all needed testing dependencies. GS10.08.0, PS7.6.6 and
+PSScriptAnalyzer1.25.0 are acquired/verified in explicit external dev caches;
+7-Zip26.04 was used only to read the GS installer as data. Reuse exact paths and
+hashes in `evidence/T09-*-acquisition.json`, plus approved T03 Pester6.2.0/PDFtk2.02
+receipts. No repeat approval is needed for those acquisitions or process-only
+RemoteSigned tests. No system install/PATH/persistent security changes.
 
-Command bound30000 includes executable serialization, separator and NUL in UTF16;
-maximum injectable32766. File operands and owned stage must remain below260.
-Real PDFtk2.02 punctuation/Latin paths and CJK install path pass. CJK file operands
-fail safely, with readable Unicode diagnostics;258 input passes/260 preflight
-rejects. Tests hash sources; ACL-denial test restores original descriptor/SDDL.
-Clean C1 passes203 tests per shell,406 total: Unit104/ToolInvocation12/
-PDFtkPaths12/NativeRunner36/DependencyEntry9/SourceDiscovery4/Launcher24/
-LauncherNative2, all failure/skip/not_run counts zero. See `evidence/T09-evidence.md`,
-C1 results/live receipt and exact report/hash manifest. Historical dirty runs are
-separate. AC021 passes; required AC019/20 remain not_run as whole cases without GS.
+Current dirty changes add GS `-dPDFSTOPONERROR` after genuine exit0/password-error/
+wrong-page output observation. Vendor docs support this fixed error signal.
+Updated GS13 native tests pass both PS5.1 and supported7.6.6 preliminarily; preserve
+failed pre-fix evidence separately. Run all nine T09/M1 tiers at clean C3 in both
+shells, retain exact reports and hashes, run analyzer in both shells, review,
+normal push and fresh clean/live equality. Only then mark T09/AC019/20 complete,
+M1 complete and select T10. C1/C2 records remain historical, not acceptance of GS.
 
-GS is absent. Human response to the exact new external-cache acquisition request
-is required; silence is not approval. The repository dependency policy explicitly
-says installation is not implicit. Planned official GS10.08.0 x64 (~65MB) plus
-7-Zip26.04 MSI (~2MB), published SHA256/SHA512 checks, read installers as data,
-no setup execution/admin/PATH/registry/persistent security change/vendor release
-files. Prepared local-only ignored script:
-`tests/.work/T09-acquisition/Acquire-Ghostscript.ps1`; if missing, reconstruct the
-reviewed plan from `evidence/T09-checkpoint.md`. Never imply it is distributed.
-After human approval run it with previously approved test-process RemoteSigned;
-verify EXE and interpreter DLL hashes via its actual acquisition receipt, preserve
-GS resources/layout and execute GhostscriptPaths in both shells at a clean commit.
-The harness must fail closed for missing real dependencies; no skips/mock GS pass.
+PR8 is merged; next implementation push requires a new draft PR, attached to the
+chat. C3 is implementation/test/acquisition checkpoint, C4 records clean-C3 tests
+and sync. The final C4 SHA/fresh live equality belongs in session output. Respect
+the no-self-reference workflow; do not claim a future push in committed records.
 
-Only after required AC019/20/21 actual acceptance, update T09 done and NEXT_SESSION
-with T10. Current C1 is implementation-only; no M1 completion claim. C1 normal push/clean live equality verified2026-10-07T18:30:39.971403+00:00.
-New draft [PR8](https://github.com/PikkuJanne/WinPDFMerger/pull/8) is open; inspect live state before reuse. Records C2 require fresh verification; final
-C2 post-push clean/live SHA belongs in session output and must be rechecked. Future session rechecks current live refs instead of trusting notes.
-
-Reuse exact approved Pester6.2.0/PDFtk2.02 caches from T03 acquisition receipts and
-process-only RemoteSigned; no repeat approval for those. Actual PS7 remains7.6.5
-behind recorded7.6.6, no current-supported-build/release claim. Ordinary separate
-PS5.1 Restricted/all scopes Undefined; non-elevated Windows11 x64/build26300,
-actual5.1.26100.9444, OS support channel unestablished. No private PDF/upload,
-runtime network calls or permanent environment/security changes. PDF validation,
-output overlap/final identity/email outcomes/fidelity/Explorer/CI/package/release
-and PSScriptAnalyzer remain later gates. Preserve master/source safety and leave
-only this conceptual task in this thread.
+PSA preliminary scope entry/helpers:0errors/20warnings/4information, reviewed
+nonblocking style hints; not lint-clean/full T22 completion. Required clean test
+evidence is pending. Reference Windows11 x64/build26300 non-elevated; ordinary
+PS5.1 Restricted/all scopes Undefined; OS support channel unestablished.
+Future task mapping: T10 destination/identity, T11 input/page inventory, T12
+general staging, T13 master validation, T14 email/outcomes, T15 interruption.
+Earlier historical structural-T10 wording is incorrect. Keep these later gates,
+fidelity/Explorer/CI/package/security/release work separate from native T09 evidence.
+No private PDFs/upload/runtime network calls or intermediate tags/releases.

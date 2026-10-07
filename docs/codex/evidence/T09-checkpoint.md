@@ -1,3 +1,6 @@
+> Historical C1/C2 record. Authorization/acquisition and native-error findings
+> are superseded by [T09-C3-checkpoint.md](T09-C3-checkpoint.md); original results remain historical.
+
 # T09 — Native conversion checkpoint, required GS evidence pending
 
 Started clean/live on `codex/v1.0.0-readiness` at

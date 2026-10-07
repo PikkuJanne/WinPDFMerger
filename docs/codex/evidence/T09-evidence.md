@@ -1,3 +1,6 @@
+> Historical C1/C2 record. Authorization/acquisition and native-error findings
+> are superseded by [T09-C3-checkpoint.md](T09-C3-checkpoint.md); original results remain historical.
+
 # T09 — Synchronized implementation evidence; native GS blocker remains
 
 Clean implementation C1: `139ecdcc9f31bc8c55bd0e26e63aaa43e2acdbfc`.

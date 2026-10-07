@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "task": "T09",
+  "observed_at_utc": "2026-10-07T19:09:05.5255978Z",
+  "repository_head_at_acquisition": "021e2a955c10aa486b25d27bec19899078dc0891",
+  "authorization": "Owner explicitly authorized installing everything needed for project testing in this session; portable/module external-cache acquisition implements that testing authorization.",
+  "pre_acquisition_inventory": "Existing selected PowerShell 7 host was 7.6.5; no current 7.6.6 external test cache had been prepared by this task.",
+  "dependency": {
+    "name": "PowerShell",
+    "version": "7.6.6",
+    "architecture": "win-x64",
+    "format": "portable ZIP",
+    "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.6.6/PowerShell-7.6.6-win-x64.zip",
+    "bytes": 106328873,
+    "sha256": "02fe458be20493fbdf43f61ea20610b811ee6c738ab1676c61b9cfcd1a33c860",
+    "expected_hash_sources": [
+      "https://api.github.com/repos/PowerShell/PowerShell/releases/tags/v7.6.6",
+      "https://github.com/PowerShell/PowerShell/releases/download/v7.6.6/hashes.sha256"
+    ],
+    "release_published_utc": "2026-09-08T20:28:01Z",
+    "support_reference": "https://learn.microsoft.com/en-us/powershell/scripting/install/powershell-support-lifecycle?view=powershell-7.6",
+    "support_observation": "Official Microsoft page names 7.6.6 current LTS and 7.6 LTS support through November 2028; observed 2026-10-07."
+  },
+  "cache": {
+    "directory_label": "%LOCALAPPDATA%/WinPDFMergerDevCache/T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a",
+    "executable_relative_path": "portable/pwsh.exe",
+    "outside_repository": true,
+    "unique_owned_directory": true,
+    "archive_entry_count": 661,
+    "archive_paths_confined": true,
+    "file_manifest": {
+      "files": 658,
+      "manifest_relative_path": "files-sha256.json",
+      "manifest_sha256": "0452420bfb5255b7c46e1dd82f33bce23b638363bbe4fc78cbe561921faeed70"
+    }
+  },
+  "executable": {
+    "sha256": "bfb46af89433268872ddb43d1ca7a3f433452ee91ed356a9786940f90118e285",
+    "authenticode": {
+      "status": "Valid",
+      "signer_subject": "CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US",
+      "signer_thumbprint": "AB172913A2960A224809EE8A0C371CD47A079B72",
+      "timestamp_subject": "CN=Microsoft Time-Stamp Service, OU=nShield TSS ESN:2D1A-05E0-D947, OU=Microsoft Ireland Operations Limited, O=Microsoft Corporation, L=Redmond, S=Washington, C=US"
+    }
+  },
+  "version_probe": {
+    "exit_code": 0,
+    "elapsed_ms": 599,
+    "stdout": "{\"version\":\"7.6.6\",\"edition\":\"Core\",\"process_64_bit\":true}",
+    "stderr": ""
+  },
+  "scope": "Acquisition/version only, no application test or release compatibility pass",
+  "system_installation": false,
+  "installer_executed": false,
+  "registry_path_policy_security_changes": false,
+  "parent_path_psmodulepath_unchanged": true,
+  "collector_history": {
+    "initial_process": "Downloaded/extracted verified archives and ended before writing receipts; its final output was not retained.",
+    "resume_failure": "Captured PS5.1 inventory Get-ExecutionPolicy could not autoload Microsoft.PowerShell.Security through inherited PS7 PSModulePath; PSScriptAnalyzer import/rule discovery and separate direct shell probes succeeded.",
+    "resolution": "Only probe-child PSModulePath selects the chosen shell bundled Modules directory; exact analyzer module is imported by absolute manifest. Parent/global paths remain unchanged.",
+    "cache_resume": "Existing exact task-owned archives reverified at pinned hashes and confinement checks; no files overwritten and no repeated downloads."
+  },
+  "child_probe_module_path": "Selected shell bundled Modules only; child environment, no parent/global change."
+}

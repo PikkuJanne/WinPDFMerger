@@ -61,10 +61,14 @@ input/output paths, and an injectable job timeout. It creates a fresh private
 directory beside the final output and uses only its known `output.pdf` operand.
 PDFtk uses `cat`, `compress` and `dont_ask`; GS keeps `/screen`, compatibility 1.6,
 duplicate-image detection and `SAFER`, with child-only `GS_OPTIONS` removal.
+The fixed `-dPDFSTOPONERROR` flag signals PDF interpreter errors via a nonzero
+native exit, preventing the observed password-error/exit-zero/blank-output case.
+It does not replace structural or expected-page-total validation.
 An existing final is refused before launch, and `File.Move` also refuses races.
 Only the one owned file and empty directory are cleaned. Native success plus a
-nonempty file is required; structural validation remains T10 and generalized
-staging/overlap/naming/outcome handling remains T11-T15.
+nonempty file is required; input/page inventory remains T11, master/email
+validation T13/T14, and generalized staging T12. Destination/identity preflight
+remains T10; full outcome/interruption handling remains T14/T15.
 
 `Assert-NativeCommandLength` measures the executable and argument serialization,
 separator and final NUL in UTF-16 code units. The default **30000** leaves room
