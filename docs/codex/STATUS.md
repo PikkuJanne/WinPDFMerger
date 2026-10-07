@@ -3,7 +3,7 @@
 Target: published and independently verified `v1.0.0` in `PikkuJanne/WinPDFMerger`.
 Completed milestone: M0 — baseline and safe setup.
 Completed tasks: T01 through T07.
-Next task: T08 — Centralize bounded native execution and logging (pending).
+Current task: T08 — Centralize bounded native execution and logging (in_progress).
 Publication: NOT STARTED.
 
 T07/AC013/AC014/AC015 pass at clean implementation C1
@@ -48,4 +48,4 @@ general native arguments/streams/descendants/cancellation, native GS/email, PDF
 validation, destination overlap/no-overwrite, Explorer/T26, CI/package/release and
 PSScriptAnalyzer remain unrun. Native master paths are short ASCII/no-space app/output
 paths with bracket source coverage. OS support channel remains unestablished.
-T08 onward pending; AC016 onward not_run. Project/release completion outstanding.
+T08 in_progress with dirty Unit99/NativeRunner36/DependencyEntry9 passing in both actual shells; clean C1 gates pending. T09 onward pending; AC016 onward not_run. Project/release completion outstanding.

@@ -39,3 +39,10 @@ dependency is added to WinPDFMerger.
 Official pin/support references: [Pester 6.2.0](https://github.com/pester/Pester/releases/tag/6.2.0),
 [Pester installation and compatibility](https://pester.dev/docs/introduction/installation),
 [report configuration](https://pester.dev/docs/usage/configuration).
+
+T08 adds `-Tier NativeRunner` for actual Windows argument-echo integration and
+controlled stream/launch/timeout/cancellation/logging faults, without a PDFtk
+requirement. The harness compiles the development fixture and records its build
+receipt path/hash. See [NativeRunner.md](NativeRunner.md) for the internal
+interface, timeout/capture defaults and precise ownership limits. Real conversion
+path/prompt/command-length acceptance remains T09.

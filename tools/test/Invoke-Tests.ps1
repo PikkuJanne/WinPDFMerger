@@ -2,7 +2,7 @@
 [CmdletBinding()]
 param(
     [string]$PesterModulePath,
-    [ValidateSet('Unit', 'NativeFixture', 'SourceDiscovery', 'Launcher', 'LauncherNative', 'DependencyEntry')][string]$Tier = 'Unit',
+    [ValidateSet('Unit', 'NativeFixture', 'SourceDiscovery', 'Launcher', 'LauncherNative', 'DependencyEntry', 'NativeRunner')][string]$Tier = 'Unit',
     [string]$PdftkPath
 )
 Set-StrictMode -Version Latest
@@ -15,6 +15,13 @@ Import-Module -Name $pesterName -RequiredVersion $pins.PesterVersion -ErrorActio
 $selected = Get-Module Pester
 if ($selected.Version.ToString() -ne $pins.PesterVersion) { throw 'Unexpected Pester version.' }
 if ($Tier -in @('NativeFixture', 'SourceDiscovery', 'LauncherNative', 'DependencyEntry') -and -not $PdftkPath) { throw "$Tier requires an explicit real PDFtk executable path." }
+$nativeFixturePath = $null
+$nativeFixtureBuildReceipt = $null
+if ($Tier -eq 'NativeRunner') {
+    $nativeFixturePath = & (Join-Path $repo 'tools/test/Build-FakeNative.ps1')
+    $nativeFixtureBuildReceipt = Join-Path ([IO.Path]::GetDirectoryName($nativeFixturePath)) 'build-info.json'
+    if (-not [IO.File]::Exists($nativeFixtureBuildReceipt)) { throw 'Missing controlled native fixture build receipt.' }
+}
 $work = Join-Path $repo ('tests/.work/pester/' + [Guid]::NewGuid().ToString('N'))
 [void][IO.Directory]::CreateDirectory($work)
 $config = New-PesterConfiguration
@@ -28,6 +35,9 @@ if ($Tier -eq 'Unit') {
     $config.Run.Path = Join-Path $repo 'tests/unit'
 } elseif ($Tier -eq 'Launcher') {
     $config.Run.Path = Join-Path $repo 'tests/launcher/Launcher.Tests.ps1'
+} elseif ($Tier -eq 'NativeRunner') {
+    $container = New-PesterContainer -Path (Join-Path $repo 'tests/native/NativeRunner.Tests.ps1') -Data @{ FakeNativePath = $nativeFixturePath; BuildReceiptPath = $nativeFixtureBuildReceipt }
+    $config.Run.Container = $container
 } else {
     $testFile = if ($Tier -eq 'SourceDiscovery') { 'tests/pdf/SourceDiscovery.Native.Tests.ps1' } elseif ($Tier -eq 'LauncherNative') { 'tests/launcher/Launcher.Native.Tests.ps1' } elseif ($Tier -eq 'DependencyEntry') { 'tests/dependencies/Dependencies.Entry.Tests.ps1' } else { 'tests/pdf/Fixture.Native.Tests.ps1' }
     $container = New-PesterContainer -Path (Join-Path $repo $testFile) -Data @{ PdftkPath = $PdftkPath }
@@ -44,7 +54,7 @@ $summary = [ordered]@{
     execution_policy = (Get-ExecutionPolicy).ToString()
     pester_version = $selected.Version.ToString()
     tier = $Tier
-    evidence_class = $(if ($Tier -eq 'Unit') { 'unit-controlled-process-and-filesystem' } elseif ($Tier -eq 'SourceDiscovery') { 'windows-entry-source-discovery-real-pdftk' } elseif ($Tier -eq 'Launcher') { 'windows-cmd-actual-batch-controlled-ps51-receiver' } elseif ($Tier -eq 'LauncherNative') { 'windows-cmd-actual-batch-entry-real-pdftk' } elseif ($Tier -eq 'DependencyEntry') { 'windows-entry-dependency-faults-controlled-process-and-real-pdftk' } else { 'native-pdftk-fixture-inspection' })
+    evidence_class = $(if ($Tier -eq 'Unit') { 'unit-controlled-process-and-filesystem' } elseif ($Tier -eq 'SourceDiscovery') { 'windows-entry-source-discovery-real-pdftk' } elseif ($Tier -eq 'Launcher') { 'windows-cmd-actual-batch-controlled-ps51-receiver' } elseif ($Tier -eq 'LauncherNative') { 'windows-cmd-actual-batch-entry-real-pdftk' } elseif ($Tier -eq 'DependencyEntry') { 'windows-entry-dependency-faults-controlled-process-and-real-pdftk' } elseif ($Tier -eq 'NativeRunner') { 'windows-controlled-native-argument-process; no PDF-engine-support claim' } else { 'native-pdftk-fixture-inspection' })
     passed = $result.PassedCount
     failed = $result.FailedCount
     failed_blocks = $result.FailedBlocksCount
@@ -52,6 +62,10 @@ $summary = [ordered]@{
     skipped = $result.SkippedCount
     not_run = $result.NotRunCount
     total = $result.TotalCount
+}
+if ($Tier -eq 'NativeRunner') {
+    $summary.native_fixture_build_receipt = $nativeFixtureBuildReceipt
+    $summary.native_fixture_build_receipt_sha256 = (Get-FileHash -LiteralPath $nativeFixtureBuildReceipt -Algorithm SHA256).Hash.ToLowerInvariant()
 }
 $summary | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath (Join-Path $work 'summary.json') -Encoding UTF8
 $summary | ConvertTo-Json -Depth 4

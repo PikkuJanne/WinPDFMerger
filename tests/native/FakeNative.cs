@@ -1,6 +1,7 @@
 // Development-only process fixture. This is not a PDF engine or validator.
 // Compatible with the Windows .NET Framework C# compiler (no runtime packages).
 using System;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Text;
@@ -20,7 +21,7 @@ internal static class FakeNative
         try
         {
             if (args.Length == 0)
-                return Usage("A mode is required: echo, streams, fail, sleep, or flood.");
+                return Usage("A mode is required: echo, streams, fail, sleep, flood, stdin, environment, or hold-pipes.");
 
             switch (args[0])
             {
@@ -36,14 +37,29 @@ internal static class FakeNative
                 case "fail":
                     return Fail(args);
                 case "sleep":
-                    if (args.Length != 2)
-                        return Usage("sleep <milliseconds 0..300000>");
+                    if (args.Length < 2 || args.Length > 3)
+                        return Usage("sleep <milliseconds 0..300000> [absolute new PID-receipt path]");
+                    if (args.Length == 3)
+                        WriteNewReceipt(args[2], Process.GetCurrentProcess().Id.ToString(CultureInfo.InvariantCulture));
                     Thread.Sleep(ParseBoundedInteger(args[1], 0, MaximumSleepMilliseconds));
                     return 0;
                 case "flood":
                     return Flood(args);
+                case "stdin":
+                    if (args.Length != 1)
+                        return Usage("stdin");
+                    Console.Out.WriteLine("stdin-characters:" + Console.In.ReadToEnd().Length.ToString(CultureInfo.InvariantCulture));
+                    return 0;
+                case "environment":
+                    if (args.Length != 2)
+                        return Usage("environment <variable name>");
+                    string environmentValue = Environment.GetEnvironmentVariable(args[1]);
+                    Console.Out.WriteLine(environmentValue == null ? "<unset>" : JsonArguments(new string[] { environmentValue }, 0));
+                    return 0;
+                case "hold-pipes":
+                    return HoldPipes(args);
                 default:
-                    return Usage("Unknown mode. Use echo, streams, fail, sleep, or flood.");
+                    return Usage("Unknown mode. Use echo, streams, fail, sleep, flood, stdin, environment, or hold-pipes.");
             }
         }
         catch (Exception error)
@@ -52,6 +68,47 @@ internal static class FakeNative
             Console.Error.WriteLine("fake-native: " + error.GetType().Name + ": " + error.Message);
             return UsageExitCode;
         }
+    }
+
+    private static int HoldPipes(string[] args)
+    {
+        if (args.Length != 3)
+            return Usage("hold-pipes <milliseconds 0..300000> <absolute new child-PID receipt path>");
+        int milliseconds = ParseBoundedInteger(args[1], 0, MaximumSleepMilliseconds);
+        ProcessStartInfo start = new ProcessStartInfo();
+        start.FileName = System.Reflection.Assembly.GetExecutingAssembly().Location;
+        start.Arguments = "sleep " + milliseconds.ToString(CultureInfo.InvariantCulture);
+        start.UseShellExecute = false;
+        start.CreateNoWindow = true;
+        // Deliberately inherit the two redirected handles. The runner owns the
+        // parent only; the test reads this exact PID and cleans up its child.
+        using (Process child = Process.Start(start))
+        {
+            try
+            {
+                WriteNewReceipt(args[2], child.Id.ToString(CultureInfo.InvariantCulture));
+            }
+            catch
+            {
+                child.Kill();
+                child.WaitForExit(1000);
+                throw;
+            }
+            Console.Out.WriteLine("held-pipe-child:" + child.Id.ToString(CultureInfo.InvariantCulture));
+            Console.Error.WriteLine("held-pipe-stderr");
+            Console.Out.Flush();
+            Console.Error.Flush();
+        }
+        return 0;
+    }
+
+    private static void WriteNewReceipt(string path, string value)
+    {
+        if (!Path.IsPathRooted(path) || Path.GetFullPath(path) != path)
+            throw new ArgumentException("Receipt path must be absolute and normalized.");
+        byte[] marker = Encoding.UTF8.GetBytes(value);
+        using (FileStream output = new FileStream(path, FileMode.CreateNew, FileAccess.Write, FileShare.Read))
+            output.Write(marker, 0, marker.Length);
     }
 
     private static int Fail(string[] args)

@@ -1,6 +1,6 @@
 # Next session
 
-Selected task: T08 — Centralize bounded native execution and logging (pending).
+Selected task: T08 — Centralize bounded native execution and logging (in_progress; clean checkpoint pending).
 Read AGENTS/INDEX/STATUS, T08 TASKS entry/brief, PRODUCT_SPEC, TECHNICAL_SPEC
 (native invocation), TEST_STRATEGY, GITHUB_WORKFLOW and AC016/AC017/AC018.
 Recheck repository/branch/clean state, origin fetch/push, live refs/PR/releases.
