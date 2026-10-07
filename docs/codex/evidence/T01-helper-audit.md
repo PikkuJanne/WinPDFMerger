@@ -4,7 +4,7 @@ Observed 2026-10-07; report completed 15:11 UTC. This record covers the original
 
 ## Environment and commands
 
-Windows PowerShell invoked the bundled Python **3.12.14** and available Git. Python was run with `-B` for all helper executions, preventing bytecode writes into the immutable bundle. No additional packages or application dependencies were installed.
+The configured default PowerShell shell invoked the bundled Python **3.12.14** and available Git. A separate `powershell.exe -NoProfile -NonInteractive` child created the real junction. Python was run with `-B` for all helper executions, preventing bytecode writes into the immutable bundle. No additional packages or application dependencies were installed.
 
 Sanitized path variables below identify the exact types of locations used: `$Bundle` was the original `WinPDFMerger_Codex_v1.0.0_Bundle` directory extracted outside the repository; `$Python` was the bundled dependency-runtime `python.exe`. Public evidence omits personal absolute host paths. These command lines reproduce the executed invocations:
 
