@@ -2,7 +2,7 @@
 [CmdletBinding()]
 param(
     [string]$PesterModulePath,
-    [ValidateSet('Unit', 'NativeFixture', 'SourceDiscovery', 'Launcher', 'LauncherNative')][string]$Tier = 'Unit',
+    [ValidateSet('Unit', 'NativeFixture', 'SourceDiscovery', 'Launcher', 'LauncherNative', 'DependencyEntry')][string]$Tier = 'Unit',
     [string]$PdftkPath
 )
 Set-StrictMode -Version Latest
@@ -14,7 +14,7 @@ if ($PesterModulePath) { $pesterName = $PesterModulePath }
 Import-Module -Name $pesterName -RequiredVersion $pins.PesterVersion -ErrorAction Stop
 $selected = Get-Module Pester
 if ($selected.Version.ToString() -ne $pins.PesterVersion) { throw 'Unexpected Pester version.' }
-if ($Tier -in @('NativeFixture', 'SourceDiscovery', 'LauncherNative') -and -not $PdftkPath) { throw "$Tier requires an explicit real PDFtk executable path." }
+if ($Tier -in @('NativeFixture', 'SourceDiscovery', 'LauncherNative', 'DependencyEntry') -and -not $PdftkPath) { throw "$Tier requires an explicit real PDFtk executable path." }
 $work = Join-Path $repo ('tests/.work/pester/' + [Guid]::NewGuid().ToString('N'))
 [void][IO.Directory]::CreateDirectory($work)
 $config = New-PesterConfiguration
@@ -29,7 +29,7 @@ if ($Tier -eq 'Unit') {
 } elseif ($Tier -eq 'Launcher') {
     $config.Run.Path = Join-Path $repo 'tests/launcher/Launcher.Tests.ps1'
 } else {
-    $testFile = if ($Tier -eq 'SourceDiscovery') { 'tests/pdf/SourceDiscovery.Native.Tests.ps1' } elseif ($Tier -eq 'LauncherNative') { 'tests/launcher/Launcher.Native.Tests.ps1' } else { 'tests/pdf/Fixture.Native.Tests.ps1' }
+    $testFile = if ($Tier -eq 'SourceDiscovery') { 'tests/pdf/SourceDiscovery.Native.Tests.ps1' } elseif ($Tier -eq 'LauncherNative') { 'tests/launcher/Launcher.Native.Tests.ps1' } elseif ($Tier -eq 'DependencyEntry') { 'tests/dependencies/Dependencies.Entry.Tests.ps1' } else { 'tests/pdf/Fixture.Native.Tests.ps1' }
     $container = New-PesterContainer -Path (Join-Path $repo $testFile) -Data @{ PdftkPath = $PdftkPath }
     $config.Run.Container = $container
 }
@@ -44,7 +44,7 @@ $summary = [ordered]@{
     execution_policy = (Get-ExecutionPolicy).ToString()
     pester_version = $selected.Version.ToString()
     tier = $Tier
-    evidence_class = $(if ($Tier -eq 'Unit') { 'unit-controlled-process-and-filesystem' } elseif ($Tier -eq 'SourceDiscovery') { 'windows-entry-source-discovery-real-pdftk' } elseif ($Tier -eq 'Launcher') { 'windows-cmd-actual-batch-controlled-ps51-receiver' } elseif ($Tier -eq 'LauncherNative') { 'windows-cmd-actual-batch-entry-real-pdftk' } else { 'native-pdftk-fixture-inspection' })
+    evidence_class = $(if ($Tier -eq 'Unit') { 'unit-controlled-process-and-filesystem' } elseif ($Tier -eq 'SourceDiscovery') { 'windows-entry-source-discovery-real-pdftk' } elseif ($Tier -eq 'Launcher') { 'windows-cmd-actual-batch-controlled-ps51-receiver' } elseif ($Tier -eq 'LauncherNative') { 'windows-cmd-actual-batch-entry-real-pdftk' } elseif ($Tier -eq 'DependencyEntry') { 'windows-entry-dependency-faults-controlled-process-and-real-pdftk' } else { 'native-pdftk-fixture-inspection' })
     passed = $result.PassedCount
     failed = $result.FailedCount
     failed_blocks = $result.FailedBlocksCount

@@ -76,30 +76,158 @@ function Write-RunLog {
     }
 }
 
-function Find-Pdftk {
-    $pdftk = Get-Command pdftk -ErrorAction SilentlyContinue
-    if ($pdftk) { return $pdftk.Source }
-    $candidates = @(
-        "$Env:ProgramFiles\PDFtk Server\bin\pdftk.exe",
-        "$Env:ProgramFiles(x86)\PDFtk\bin\pdftk.exe",
-        "$Env:ProgramFiles\Pdftk Server\bin\pdftk.exe"
-    )
-    foreach ($c in $candidates) { if (Test-Path $c) { return $c } }
-    return $null
+function Get-DependencyExecutablePath {
+    param([string]$Path, [string]$ExpectedName)
+
+    if ([string]::IsNullOrWhiteSpace($Path) -or
+        [IO.Path]::GetFileName($Path) -ine $ExpectedName) { return $null }
+    try {
+        $resolved = @(Resolve-Path -LiteralPath $Path -ErrorAction Stop)
+        if ($resolved.Count -ne 1 -or $resolved[0].Provider.Name -ne 'FileSystem') { return $null }
+        $file = Get-Item -LiteralPath $resolved[0].ProviderPath -Force -ErrorAction Stop
+        if ($file -isnot [IO.FileInfo] -or $file.Name -ine $ExpectedName) { return $null }
+        return $file.FullName
+    } catch {
+        return $null
+    }
 }
-function Find-Ghostscript {
-    $gs = Get-Command gswin64c.exe -ErrorAction SilentlyContinue
-    if ($gs) { return $gs.Source }
-    $gs = Get-Command gswin32c.exe -ErrorAction SilentlyContinue
-    if ($gs) { return $gs.Source }
-    $common = Get-ChildItem -Path "$Env:ProgramFiles\gs" -Directory -ErrorAction SilentlyContinue |
-              Sort-Object Name -Descending | Select-Object -First 1
-    if ($common) {
-        $cand = Join-Path $common.FullName "bin\gswin64c.exe"
-        if (Test-Path $cand) { return $cand }
+
+function Find-PathApplication {
+    param([string]$Name)
+
+    $applications = @(Get-Command -Name $Name -CommandType Application -All -ErrorAction SilentlyContinue)
+    foreach ($application in $applications) {
+        if ($application.CommandType -ne [Management.Automation.CommandTypes]::Application) { continue }
+        $path = Get-DependencyExecutablePath -Path $application.Path -ExpectedName $Name
+        if ($path) { return $path }
     }
     return $null
 }
+
+function Find-Pdftk {
+    $path = Find-PathApplication -Name 'pdftk.exe'
+    if ($path) { return $path }
+    # Preserve the existing common-location priority; add the x86 Server path.
+    $locations = @(
+        @{ Root = $Env:ProgramFiles; Relative = 'PDFtk Server\bin\pdftk.exe' },
+        @{ Root = ${Env:ProgramFiles(x86)}; Relative = 'PDFtk\bin\pdftk.exe' },
+        @{ Root = ${Env:ProgramFiles(x86)}; Relative = 'PDFtk Server\bin\pdftk.exe' }
+    )
+    foreach ($location in $locations) {
+        if ([string]::IsNullOrWhiteSpace($location.Root)) { continue }
+        $path = Get-DependencyExecutablePath -Path (Join-Path $location.Root $location.Relative) -ExpectedName 'pdftk.exe'
+        if ($path) { return $path }
+    }
+    return $null
+}
+
+function Find-Ghostscript {
+    foreach ($name in @('gswin64c.exe', 'gswin32c.exe')) {
+        $path = Find-PathApplication -Name $name
+        if ($path) { return $path }
+    }
+    $installations = New-Object 'System.Collections.Generic.List[object]'
+    $roots = @($Env:ProgramFiles, ${Env:ProgramFiles(x86)})
+    for ($priority = 0; $priority -lt $roots.Count; $priority++) {
+        if ([string]::IsNullOrWhiteSpace($roots[$priority])) { continue }
+        $root = Join-Path $roots[$priority] 'gs'
+        foreach ($directory in @(Get-ChildItem -LiteralPath $root -Directory -ErrorAction SilentlyContinue)) {
+            $match = [regex]::Match($directory.Name, '^gs([0-9]+(?:\.[0-9]+){1,3})$')
+            [version]$version = $null
+            if (-not $match.Success -or -not [version]::TryParse($match.Groups[1].Value, [ref]$version)) { continue }
+            $installations.Add([pscustomobject]@{ Version = $version; Priority = $priority; Directory = $directory.FullName })
+        }
+    }
+    $installations.Sort([System.Comparison[object]]{
+        param($left, $right)
+        $comparison = $right.Version.CompareTo($left.Version)
+        if ($comparison -eq 0) { $comparison = $left.Priority.CompareTo($right.Priority) }
+        if ($comparison -eq 0) { $comparison = [string]::CompareOrdinal($left.Directory, $right.Directory) }
+        return $comparison
+    })
+    foreach ($installation in $installations) {
+        foreach ($name in @('gswin64c.exe', 'gswin32c.exe')) {
+            $path = Get-DependencyExecutablePath -Path (Join-Path $installation.Directory ('bin\' + $name)) -ExpectedName $name
+            if ($path) { return $path }
+        }
+    }
+    return $null
+}
+
+function Invoke-DependencyVersionProbe {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory=$true)][string]$Path,
+        [ValidateRange(1, 60000)][int]$TimeoutMilliseconds = 5000
+    )
+
+    # This bounded, fixed-argument preflight is separate from the general native
+    # argument/lifecycle work. Start both reads before waiting for the owned child.
+    $startInfo = New-Object Diagnostics.ProcessStartInfo
+    $startInfo.FileName = $Path
+    $startInfo.Arguments = '--version'
+    $startInfo.UseShellExecute = $false
+    $startInfo.CreateNoWindow = $true
+    $startInfo.RedirectStandardInput = $true
+    $startInfo.RedirectStandardOutput = $true
+    $startInfo.RedirectStandardError = $true
+    $startInfo.EnvironmentVariables.Remove('GS_OPTIONS')
+    $process = New-Object Diagnostics.Process
+    $process.StartInfo = $startInfo
+    $started = $false
+    $timer = [Diagnostics.Stopwatch]::StartNew()
+    try {
+        $started = $process.Start()
+        if (-not $started) { throw 'Version probe did not start.' }
+        $process.StandardInput.Close()
+        $stdout = $process.StandardOutput.ReadToEndAsync()
+        $stderr = $process.StandardError.ReadToEndAsync()
+        $remaining = [Math]::Max(0, $TimeoutMilliseconds - [int]$timer.ElapsedMilliseconds)
+        if (-not $process.WaitForExit($remaining)) { throw "Version probe timed out after $TimeoutMilliseconds ms." }
+        $remaining = [Math]::Max(0, $TimeoutMilliseconds - [int]$timer.ElapsedMilliseconds)
+        if (-not [Threading.Tasks.Task]::WaitAll([Threading.Tasks.Task[]]@($stdout, $stderr), $remaining)) {
+            throw "Version probe stream capture timed out after $TimeoutMilliseconds ms."
+        }
+        return [pscustomobject]@{ ExitCode = $process.ExitCode; Stdout = $stdout.Result; Stderr = $stderr.Result }
+    } finally {
+        # Terminate only this probe, never other PDFtk/GS sessions by image name.
+        # Descendant cancellation and general native cleanup remain later work.
+        if ($started -and -not $process.HasExited) {
+            try {
+                $process.Kill()
+                if (-not $process.WaitForExit(1000)) { Write-Warning 'Version probe termination was best effort.' }
+            } catch {
+                Write-Warning ('Version probe termination was best effort: ' + $_.Exception.Message)
+            }
+        }
+        $timer.Stop()
+        $process.Dispose()
+    }
+}
+
+function Get-NativeToolVersion {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory=$true)][string]$Path,
+        [Parameter(Mandatory=$true)][ValidateSet('PdfTk', 'Ghostscript')][string]$Tool
+    )
+
+    $probe = Invoke-DependencyVersionProbe -Path $Path
+    $diagnostic = 'stdout: {0}; stderr: {1}' -f $probe.Stdout.Trim(), $probe.Stderr.Trim()
+    if ($diagnostic.Length -gt 2048) { $diagnostic = $diagnostic.Substring(0, 2048) + ' [truncated]' }
+    if ($probe.ExitCode -ne 0) { throw "$Tool version probe failed (exit $($probe.ExitCode)). $diagnostic" }
+    $pattern = if ($Tool -eq 'PdfTk') { '(?m)^pdftk ([0-9]+(?:\.[0-9]+){1,3})(?=\s|$)' } else { '(?m)^([0-9]+(?:\.[0-9]+){1,3})\s*$' }
+    foreach ($output in @($probe.Stdout, $probe.Stderr)) {
+        $match = [regex]::Match($output, $pattern)
+        [version]$version = $null
+        if ($match.Success -and [version]::TryParse($match.Groups[1].Value, [ref]$version)) {
+            # Preserve actual spelling such as PDFtk 2.02, not normalized 2.2.
+            return $match.Groups[1].Value
+        }
+    }
+    throw "$Tool version probe returned unrecognized output. $diagnostic"
+}
+
 function Compare-NaturalName {
     param([string]$Left, [string]$Right)
 

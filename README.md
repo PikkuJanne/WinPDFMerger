@@ -22,6 +22,24 @@ Place these files together (e.g., in C:\Tools\WinPDFMerge\):
 WinPDFMerge.ps1
 WinPDFMerge.bat  (wrapper for drag-and-drop)
 
+**Dependency selection**
+The script selects real applications named `pdftk.exe`, `gswin64c.exe` or
+`gswin32c.exe`; PowerShell aliases/functions and missing files are ignored.
+PDFtk priority is PATH, `%ProgramFiles%\PDFtk Server\bin`, then
+`%ProgramFiles(x86)%\PDFtk\bin` and `%ProgramFiles(x86)%\PDFtk Server\bin`.
+Ghostscript priority is PATH 64-bit, then PATH 32-bit, then recognized `gsX.Y`
+(two to four numeric components) directories under both Program Files roots,
+newest numeric version first. Equal versions prefer Program Files over x86;
+each installation tries 64-bit then 32-bit and skips incomplete installations.
+
+The selected executable runs directly with `--version`, with a five-second
+probe limit and cleared child-only `GS_OPTIONS`. Its path and actual version
+appear in the console/log. Unusable PDFtk fails before output/log creation with
+installation guidance. Missing optional Ghostscript permits a master-only result;
+a found Ghostscript that fails version preflight retains the master, omits the
+email copy and returns partial success (2). Version detection does not establish
+trust or compatibility for every native build; native acceptance remains separate.
+
 **Usage**
 Drag & Drop (recommended)
 Drag a folder containing PDFs onto WinPDFMerge.bat.

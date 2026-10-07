@@ -8,9 +8,9 @@ observations are not application compatibility certification. Evidence:
 | Environment | Release scope | Version/build | Evidence | Status |
 |---|---|---|---|---|
 | Windows 11 x64 standard-user desktop | Required | Pro 10.0.26300/build 26300, DisplayVersion 26H2; non-administrator observation token; NTFS fixed drive | T02 baseline/environment | INVENTORIED; application/Explorer acceptance NOT TESTED; OS support channel unestablished |
-| Windows PowerShell 5.1 on reference desktop | Required | 5.1.26100.9444 Desktop x64; approved test Process RemoteSigned; separate ordinary process Restricted/all scopes Undefined | T06/T05/T04 completion/C1 reports; T03 fixture evidence | T06 Unit57/actual-entry SourceDiscovery4 PASS; T05 terminal Launcher24/LauncherNative2 PASS per driver; narrow order/log/boundary/count/source preservation; final page-order/Explorer/release NOT TESTED |
-| Supported PowerShell 7 x64 on reference desktop | Required | Actual 7.6.5 Core x64 RemoteSigned; supported update7.6.6 at inspection | T06/T05/T04 completion/C1 reports; T02 lifecycle evidence | T06 Unit57/actual-entry SourceDiscovery4 PASS at actual7.6.5; T05 test-driver Launcher24/LauncherNative2 PASS with PS5.1 children; current-supported-update/release claim NOT VALIDATED |
-| PDFtk native Windows build | Required | Vendor Server2.02 unsigned x86 engine, explicitly selected external dev cache; SHA256 in acquisition receipt | T03 acquisition/fixture evidence; T04/T05/T06 C1 native reports | T06 three entry merges + zero-input per shell PASS,2/2/5page totals and numbered input log; T05 BAT/app smoke PASS; independent final page-order/dependency/argument/publication/fidelity gates NOT TESTED; no system installation |
+| Windows PowerShell 5.1 on reference desktop | Required | 5.1.26100.9444 Desktop x64; approved test Process RemoteSigned; ordinary separate process Restricted/all scopes Undefined | T07/T06/T05/T04 completion/C1 reports; T03 fixture evidence | T07 Unit99/Dependency9/Source4 PASS; strict lookup/version/early faults/owned probe; T05 terminal Launcher24/LauncherNative2 remains PASS; narrow PDFtk counts/source preservation; native GS/general lifecycle/Explorer/release NOT TESTED |
+| Supported PowerShell 7 x64 on reference desktop | Required | Actual 7.6.5 Core x64 RemoteSigned; supported update7.6.6 at inspection | T07/T06/T05/T04 completion/C1 reports; T02 lifecycle evidence | T07 Unit99/Dependency9/Source4 PASS at actual7.6.5; T05 launcher driver PASS withPS5.1 children; current-supported-update/release claim NOT VALIDATED |
+| PDFtk native Windows build | Required | Vendor Server2.02 unsigned x86 engine; actual CLI version2.02; explicit external dev cache, hash in receipt | T03 acquisition/fixture evidence; T07/T06/T05/T04 C1 native reports | T07 exact path/version plus five inspected masters per shell PASS;2/2page dependency smokes and2/2/5source totals/source preservation; selected failure before outputs/logs; final page-order/arguments/publication/fidelity gates NOT TESTED; no system install |
 | Ghostscript native Windows build | Required for email support | Not discovered in PATH/common install paths/uninstall registrations | T02 probe | NATIVE NOT TESTED; selected build/version/acquisition unknown |
 | GitHub Windows runner | Required CI evidence; not desktop certification | UNKNOWN | None | NOT TESTED |
 | Windows 10 | Optional/excludable | UNKNOWN | None | NOT TESTED |
@@ -59,3 +59,16 @@ Real entry/PDFtk multi-input log proves1,2,10,legitimate-prefix order; master pa
 counts are2,2,5 per shell and sources remain unchanged. Independent final PDF page
 order remains downstream. Same narrow native paths/GS exclusion/environment and
 current-supported-PS7/desktop/release limitations apply; see T06 completion.
+
+T07 clean C1 `08733007b5dc1ffcbefe225e9cd97fe91b5a9f84` passes Unit99,
+DependencyEntry9 and SourceDiscovery4 in EACH actual shell. Strict executable/x86/
+numeric GS/version parsing is42new unit cases. Dependency tier is5actual entry
+faults,2real-PDFtk2page smokes and2direct controlled probe cases; controlled GS
+version failure alone retains master/returns2. Exact timeout PID exit and caller
+GS_OPTIONS states are observed. PS5.1 requested empty normalizes to absent; PS7
+exposes empty. Test-only process environment setup restores actual state in finally;
+application overrides remain child-only. Five real master merges per shell are
+inspected; numeric/x86 GS lookup is not native GS/x86-host support. Fixed version
+probe bounds do not certify general T08 streams/descendants/cancellation. Native
+GS/current-supported-PS7/finalpageorder/fidelity/desktop/release remain unrun.
+Exact commands/results/limits and report/build-receipt hashes: T07 completion/C1.
