@@ -34,7 +34,7 @@ These failures remain historical working-tree observations in
 Latest working-tree results before C1: PS5.1 Unit38/38 and SourceDiscovery4/4;
 PS7 Unit38/38 and SourceDiscovery4/4, all exit0 with no failures/skips/not_run.
 Unit includes 24 added source regressions. Real PDFtk merges yield 2 pages from
-one uppercase input, 1 from a bracket input, and 4 from three visible top-level
+one uppercase input, 2 from a bracket input, and 4 from three visible top-level
 inputs; hidden/nested files are omitted and all source hashes/metadata stay
 unchanged. Zero visible inputs exits1 with no PDF/log. Child-only PATH and
 ProgramFiles overrides deliberately exclude GS; parent environment is unchanged.

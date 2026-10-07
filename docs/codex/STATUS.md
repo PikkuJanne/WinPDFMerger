@@ -2,40 +2,39 @@
 
 Target: published and independently verified `v1.0.0` in `PikkuJanne/WinPDFMerger`.
 Completed milestone: M0 — baseline and safe setup.
-Completed tasks: T01, T02 and T03.
-Next task: T04 — Harden source discovery and literal paths.
+Completed tasks: T01, T02, T03 and T04.
+Next task: T05 — Repair the drag-and-drop batch wrapper.
 Publication: NOT STARTED.
 
-T04 is in progress: literal source/provider validation, frozen array collection,
-early source failures and bracket-safe log/output probes implemented. Dirty
-PS5.1/PS7 Unit38 and real PDFtk SourceDiscovery4 runs pass; independent diff
-review found no blocking T04 issue. Clean C1 acceptance and push/live proof remain.
-Evidence: `evidence/T04-checkpoint.md`, `T04-precommit-results.json`.
-PR #3 has merged; inspected main merge `6b38115` was safely fast-forwarded into
-the development branch with an unchanged file tree. No tags/releases exist.
+T04 AC007/AC008 pass at clean implementation C1
+`2f15e8291459940473b4e69c49a27f73fb7eb690`: Pester6.2.0 38 Unit/filesystem cases
+and 4 actual-entry/real PDFtk2.02 SourceDiscovery cases in EACH shell, no failures,
+skips, blocks or unrun tests. Single/multiple/uppercase/bracket sources work;
+hidden/nested PDFs are omitted; source hashes/names/metadata and log appends remain.
+Missing/file/provider/wildcard/zero source failures precede dependencies/outputs.
+Three added helpers import safely; four earlier baseline helper bodies/defaults
+and batch remain. M1 continues with T05; T06 ordering and later gates are pending.
 
-T03 AC005/AC006 pass at clean corrected implementation C2
-`fca1e20c0240995d8b888fee25c2f24ddf0da418`: Pester6.2.0 14 Unit tests + one real
-PDFtk inspection case across all three fixtures in EACH shell, no failures/skips;
-ten independent native-fixture/oracle tests, exact corpus reproduction and visual
-review pass. Four unchanged baseline helpers import safely; entry behavior/defaults
-remain. Controlled-process results are distinct from PDFtk and independent PDFium.
+Normal C1 push and fresh read-only clean local/live equality verified
+2026-10-07T16:24:33.769587+00:00. Final records-only C2 must also be verified after
+push; its own hash/proof is reported in session output. Draft PR #4 OPEN:
+https://github.com/PikkuJanne/WinPDFMerger/pull/4. PR #3 is merged; main observed
+`6b38115d7f269827cb4616e5a645c007b9860829`; no tags/releases created.
 
-Owner explicitly approved Pester/official PDFtk external dev-cache acquisition
-and process-only RemoteSigned tests. Pester package hash/signatures and PDFtk
-installer hash/extractor signature verified; unsigned x86 PDFtk2.02 inspected
-with unchanged fixture hashes. No system install, user/machine policy, PATH or
-security changes. Normal separate PS5.1 remains Restricted. PS7 actual testbuild
-7.6.5 is behind supported update7.6.6, so no current-supported-build claim.
+Evidence: `evidence/T04-completion.md`, `T04-C1-results.json`, four sanitized
+NUnit/JSON report pairs in `T04-C1-reports/`, `T04-C1-live-sync.json` and historical
+red/precommit records. T03 fixture/oracle and acquisition evidence remains valid
+for its own scope. Failures are retained and superseded by clean C1 passes.
 
-C2 normal push and independent local/live equality verified clean at
-2026-10-07T16:00:57.088867+00:00. Final records-only C3 must also be freshly
-verified after push; its own hash/proof is reported in session output.
-Draft PR #3 OPEN: https://github.com/PikkuJanne/WinPDFMerger/pull/3.
-Main remained `86f56c133b92507f88e01dfdac5960bbce24e847`; no tags/releases.
+Existing approved Pester/PDFtk cache acquisition and process-only RemoteSigned
+tests were reused. No installation, user/machine policy, parent environment or
+security changes. Ordinary separate PS5.1 remains Restricted/all scopes Undefined.
+Actual shells are PS5.1 5.1.26100.9444 and PS7 7.6.5 x64; no current supported-update
+or release compatibility claim. PDFtk2.02 unsigned x86 is explicitly cache-selected
+for integration; vendor binaries are outside repo. Native tests exclude optional
+GS via child-only environment and use short ASCII output paths without spaces.
 
-Evidence: `evidence/T03-completion.md`, `T03-C2-results.json`, four sanitized
-NUnit/JSON reports in `T03-C2-reports/`, `T03-C2-live-sync.json`, and acquisition
-receipts. Initial rejections/failures remain historical evidence, superseded by
-clean C2 passes. No application merge, GS, Explorer, feature-rich PDF, CI/package
-or release acceptance passed. All T04 onward tasks/cases remain pending/not_run.
+These narrow real master merges do not satisfy later sorting/native-argument,
+Unicode/space/tool-path, email, alias/no-overwrite, fidelity, launcher/Explorer,
+CI/package/release acceptance. PSScriptAnalyzer remains absent/unrun. All T05 onward
+tasks/cases remain pending/not_run. No work beyond T04 was performed.
