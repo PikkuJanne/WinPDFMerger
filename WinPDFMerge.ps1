@@ -20,7 +20,8 @@ WHAT THIS IS (AND ISN’T)
 
 FEATURES
     - Lossless merge uses PDFtk “cat” to concatenate PDFs without rasterizing pages.
-    - Natural sort: 1, 2, 10… ordering by base filename, top-level only, no recursion.
+    - Natural sort: 1, 01, 001, 2, 10… by ASCII digit magnitude and ordinal text.
+      Top-level only, no recursion; original base name/path break ties ordinally.
     - Dual outputs:
         - Archive-safe master, lossless
         - Email copy, size-optimized via Ghostscript profile
@@ -105,7 +106,7 @@ if ([string]::IsNullOrWhiteSpace($SourceFolder)) {
 try {
     $SourceFolder = Resolve-SourceDirectory -Path $SourceFolder
     $pdfs = @(Get-SourcePdfFiles -SourceFolder $SourceFolder)
-    $pdfs = @($pdfs | Sort-Object { NaturalSortKey $_.BaseName }, FullName)
+    $pdfs = @(Sort-PdfInputs -Inputs $pdfs)
 } catch {
     Write-Error ("Source preflight failed: {0}" -f $_.Exception.Message) -ErrorAction Continue
     exit 1
@@ -126,6 +127,9 @@ $logPath     = Join-Path $ScriptDir ($baseOut + ".log")
 "Source folder: $SourceFolder" | Write-RunLog -LiteralPath $logPath -Append
 "Output (lossless): $outLossless" | Write-RunLog -LiteralPath $logPath -Append
 "PDF count: $($pdfs.Count)" | Write-RunLog -LiteralPath $logPath -Append
+for ($index = 0; $index -lt $pdfs.Count; $index++) {
+    ("Input {0}: {1}" -f ($index + 1), $pdfs[$index].FullName) | Write-RunLog -LiteralPath $logPath -Append
+}
 
 # --- PDFtk merge, lossless ---
 $quoted = $pdfs.FullName | ForEach-Object { '"{0}"' -f $_ }

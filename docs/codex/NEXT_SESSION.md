@@ -1,10 +1,16 @@
 # Next session
 
-Selected task: T06 — Implement tested deterministic natural order (pending).
+Selected task: T06 — Implement tested deterministic natural order (in progress).
 Read AGENTS/INDEX/STATUS, T06 TASKS entry/brief, PRODUCT_SPEC ordering,
 TECHNICAL_SPEC, TEST_STRATEGY, GITHUB_WORKFLOW and AC011/AC012 before editing.
 Recheck repository/branch/clean state, origin fetch/push, live refs/PR/releases.
 Inspect the current sort and preserve unrelated work; do not reset to the baseline.
+
+T06 started clean/live-equal atf95f026; main6dcb255 and open draft PR #5 unchanged.
+Comparator/entry/numbered log and final boundary tests are implemented/reviewed.
+Dirty final PS5.1 Unit57 passes; earlier PS7 Unit55 and native4 each shell pass.
+See `evidence/T06-checkpoint.md`. Clean C1 tests/push/live, AC011/AC012 and final
+records remain pending. No task T07 or later is being implemented.
 
 T05 is accepted at clean C1 `769817ba9aa8923a3b0001252637865c9a25f7a0`:
 Launcher24 and LauncherNative2 pass under EACH PS5.1/PS7 test driver, no failures,

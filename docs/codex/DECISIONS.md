@@ -43,3 +43,12 @@ cmd/BAT/PS5.1 receiver; a separate real PDFtk smoke proves only a simple termina
 merge. Percent expansion before the batch boundary is characterized with a direct
 PowerShell alternative, without claiming Explorer acceptance. Evidence:
 `evidence/T05-completion.md`, clean C1 results/reports and historical checkpoint.
+
+2026-10-07 — D18: T06 implements the existing ordering contract with ASCII digit
+runs and ordinal comparisons, including ordinal case-insensitive comparison when
+a digit run meets text. Numeric run-length ties precede later segments; original
+case ties wait until natural segments exhaust. Discovery supplies canonical
+absolute FileInfo.FullName; no per-comparison filesystem traversal is introduced.
+A copied collection retains original objects. Numbered entry logs record operand
+order; independent final PDF page order remains a downstream native gate. Evidence:
+`evidence/T06-checkpoint.md` and final clean implementation receipts when present.

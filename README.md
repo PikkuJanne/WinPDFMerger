@@ -67,7 +67,9 @@ Policy. [Microsoft execution-policy documentation](https://learn.microsoft.com/e
 
 **Technical details**
 Merge (lossless): pdftk file1.pdf file2.pdf ... cat output out.pdf
-Order: natural sort by base filename (1, 2, 10…), then by full path.
+Order: ASCII digit groups by magnitude (1, 01, 001, 2, 10), then subsequent groups.
+Text compares ordinally without case; original base name and full path break ties ordinally.
+No fixed-width numeric conversion or culture-dependent ordering.
 Email copy: Ghostscript pdfwrite device with /screen (default) and safe quoting via -o and -f.
 Robust logging: Ghostscript stdout/stderr redirected to temp files and appended to the run log (prevents PowerShell pipeline errors).
 Defensive environment: the script clears GS_OPTIONS for the GhostScript call to avoid inherited settings breaking runs.

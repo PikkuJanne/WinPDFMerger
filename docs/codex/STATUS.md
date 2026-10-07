@@ -3,8 +3,16 @@
 Target: published and independently verified `v1.0.0` in `PikkuJanne/WinPDFMerger`.
 Completed milestone: M0 — baseline and safe setup.
 Completed tasks: T01, T02, T03, T04 and T05.
-Next task: T06 — Implement tested deterministic natural order (pending).
+Current task: T06 — Implement tested deterministic natural order (in progress).
 Publication: NOT STARTED.
+
+T06 begins clean/live-equal at `f95f02628d9ae4b4edeaf812facd851e101d2dfb`.
+Draft PR #5 remains open, live main6dcb255 unchanged, no tags/releases present.
+The comparator/entry/numbered log implementation is reviewed; dirty final PS5.1
+Unit57 passes, earlier PS7 Unit55 and native SourceDiscovery4 each shell pass.
+The final tests add reviewed punctuation/exhaustion boundaries. Clean C1 checks,
+normal push/live and AC011/AC012 acceptance remain pending/not_run.
+Evidence: `evidence/T06-checkpoint.md`. No work on T07 or later.
 
 T05 and AC009/AC010 pass at clean implementation C1
 `769817ba9aa8923a3b0001252637865c9a25f7a0`. Each PS5.1 and PS7 test driver
@@ -33,4 +41,4 @@ Controlled receiver path/status tests do not certify native PDF engine paths or
 email partial success. Native smoke uses short ASCII/no-space paths, GS excluded
 only in children. Explorer/T26, native space/Unicode/tool paths/T09, email,
 ordering/T06, fidelity, publication safety, CI/package/release remain not_run;
-PSScriptAnalyzer absent/unrun. T06 onward remain pending with their cases not_run.
+PSScriptAnalyzer absent/unrun. T07 onward remain pending; AC011 onward not_run.
