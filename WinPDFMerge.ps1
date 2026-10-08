@@ -51,12 +51,14 @@ USAGE
        - .\WinPDFMerge.ps1 "C:\Work\Papers\ToMerge"
        - .\WinPDFMerge.ps1 "C:\Work\Papers\ToMerge" -OutputFolder "C:\Work\Merged"
        - .\WinPDFMerge.ps1 "C:\Work\Papers\ToMerge" -SkipEmail
+       - .\WinPDFMerge.ps1 "C:\Work\Papers\ToMerge" -EmailPreset ebook
        - OutputFolder must already exist, be writable, and differ from SourceFolder.
          Omitted means the entry-script directory. Junction/reparse paths are refused.
 
 QUALITY / SIZE PRESETS (email copy)
     - Default profile: `/screen` (smallest typical email size, good for on-screen reading).
-    - For higher quality, change to `/ebook`.
+    - Select `/ebook` with -EmailPreset ebook; only screen and ebook are accepted.
+    - -SkipEmail bypasses Ghostscript and explains any explicitly supplied preset is ignored.
 
 NOTES
     - Source scan quality is preserved in the lossless master, Ghostscript only affects the email copy.
@@ -74,7 +76,7 @@ TROUBLESHOOTING
     - “Ghostscript not found”: install Ghostscript or skip the email copy (lossless merge still works).
     - Email copy not produced:
         - Check the .log, warnings are captured even when the run succeeds.
-        - Try `/ebook` instead of `/screen` (some PDFs behave better with that profile).
+        - Try -EmailPreset ebook to select the alternative fixed profile.
         - Ensure the target email PDF isn’t open in a viewer (file lock).
     - NativeCommandError or odd GS warnings:
         - Both native streams are captured by the bounded runner and appended to the UTF-8 run log
@@ -91,7 +93,9 @@ param(
     [string]$SourceFolder,
     [Parameter(Mandatory=$false)]
     [string]$OutputFolder,
-    [switch]$SkipEmail
+    [switch]$SkipEmail,
+    [ValidateSet('screen', 'ebook')]
+    [string]$EmailPreset = 'screen'
 )
 
 Set-StrictMode -Version Latest
@@ -103,6 +107,10 @@ function Get-ScriptDir {
 }
 # --- Entry ---
 $ScriptDir = Get-ScriptDir
+if ([string]::IsNullOrWhiteSpace($SourceFolder)) {
+    Write-Host "Usage: WinPDFMerge.ps1 <FolderWithPDFs> [-OutputFolder <ExistingDirectory>] [-SkipEmail] [-EmailPreset screen|ebook]" -ForegroundColor Yellow
+    exit 1
+}
 . (Join-Path $ScriptDir 'src/WinPDFMerge.Helpers.ps1')
 $cancellation = $null
 try {
@@ -112,9 +120,10 @@ catch {
     exit 1
 }
 $cancellationToken = $cancellation.Token
-if ([string]::IsNullOrWhiteSpace($SourceFolder)) {
-    Write-Host "Usage: WinPDFMerge.ps1 <FolderWithPDFs> [-OutputFolder <ExistingDirectory>] [-SkipEmail]" -ForegroundColor Yellow
-    exit 1
+$ignoredPresetMessage = $null
+if ($SkipEmail -and $PSBoundParameters.ContainsKey('EmailPreset')) {
+    $ignoredPresetMessage = "EmailPreset '$EmailPreset' is ignored because -SkipEmail was supplied."
+    Write-Host $ignoredPresetMessage -ForegroundColor Yellow
 }
 # Resolve paths and prevent overlap before discovery, probes or native work.
 # Only SourceFolder is positional; OutputFolder must be explicitly named.
@@ -175,6 +184,7 @@ try {
 "PDFtk: $pdftkPath (version $pdftkVersion)" | Write-RunLog -LiteralPath $logPath -Append
 "Source folder: $SourceFolder" | Write-RunLog -LiteralPath $logPath -Append
 "Output folder: $OutputFolder" | Write-RunLog -LiteralPath $logPath -Append
+if ($ignoredPresetMessage) { $ignoredPresetMessage | Write-RunLog -LiteralPath $logPath -Append }
 "Run identity: $($run.BaseName)" | Write-RunLog -LiteralPath $logPath -Append
 "Planned master output: $outLossless" | Write-RunLog -LiteralPath $logPath -Append
 "Planned email output: $outEmail" | Write-RunLog -LiteralPath $logPath -Append
@@ -239,7 +249,7 @@ try {
             try { $gsVersion = Get-NativeToolVersion -Path $gsPath -Tool Ghostscript -CancellationToken $cancellationToken }
             catch { throw ("Ghostscript version preflight failed for '{0}': {1}" -f $gsPath, $_.Exception.Message) }
             "Ghostscript: $gsPath (version $gsVersion)" | Write-RunLog -LiteralPath $logPath -Append
-            $email = Invoke-PdfToolJob -Tool Ghostscript -Executable $gsPath -InputPaths @($outLossless) -OutputPath $outEmail -Staging $staging -ExpectedPageCount $merge.ValidatedPageCount -InspectionExecutable $pdftkPath -CancellationToken $cancellationToken
+            $email = Invoke-PdfToolJob -Tool Ghostscript -Executable $gsPath -InputPaths @($outLossless) -OutputPath $outEmail -Staging $staging -ExpectedPageCount $merge.ValidatedPageCount -InspectionExecutable $pdftkPath -EmailPreset $EmailPreset -CancellationToken $cancellationToken
             if ($email.Succeeded -and $email.OutputValidated -and $email.OutputPublished -and $email.OutputState -eq 'published') {
                 $emailState = 'published'
             } elseif ($email.Succeeded -and $email.OutputValidated -and -not $email.OutputPublished -and $email.OutputState -eq 'no_size_benefit') {

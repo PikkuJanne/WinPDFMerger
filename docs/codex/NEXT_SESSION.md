@@ -1,6 +1,6 @@
 # Next session
 
-Selected task: T16 — add the small public parameter interface, in M3.
+Current task: T16 — add the small public parameter interface, in progress in M3.
 Read AGENTS/INDEX/STATUS, T16 TASKS entry/brief, PRODUCT_SPEC and relevant
 technical/test/workflow specifications and acceptance cases. Recheck current
 branch, clean state, origin/live refs/PR/tags/releases; preserve unrelated work.

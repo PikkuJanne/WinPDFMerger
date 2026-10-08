@@ -63,6 +63,22 @@ Junctions and other reparse directories at either path or an ancestor are refuse
 choose direct directory paths. A temporary create-new writability probe is removed
 when its owned handle closes. No existing files are used as probes.
 
+Choose the email preset or request only the master:
+
+```powershell
+.\WinPDFMerge.ps1 "C:\Work\Docs\ToMerge" -EmailPreset ebook
+.\WinPDFMerge.ps1 "C:\Work\Docs\ToMerge" -SkipEmail
+```
+
+`SourceFolder` is the only positional argument. `EmailPreset` accepts only
+`screen` (default) or `ebook`; these select fixed Ghostscript flags. Invalid
+presets, extra source arguments and unsupported option names fail before output
+creation. With `-SkipEmail`, Ghostscript is neither discovered nor launched;
+an explicitly supplied `-EmailPreset` is explained as ignored in the console
+and run log. Its value must still be valid. Missing source input prints usage
+and exits 1 without an interactive parameter prompt. The batch launcher keeps
+the one-folder workflow and defaults; use the `.ps1` for named options.
+
 **Input preflight**
 Before merging, the script inspects every visible top-level PDF in the frozen
 natural filename order with PDFtk's read-only `dump_data_utf8` operation. The
@@ -103,8 +119,9 @@ an excessively long destination fails with instructions to choose a shorter path
 
 **Email-friendly copy (quality/size)**
 Default profile: -dPDFSETTINGS=/screen (small, on-screen reading).
-Prefer better quality? Change to /ebook in the script.
-Need crisper scans? Add explicit downsampling (e.g., 150–200 dpi) before the -o line.
+Select the fixed /ebook profile with `-EmailPreset ebook`. Presets can change
+appearance and size; neither guarantees a particular attachment size. Only a
+separately validated derivative smaller than the master is published.
 
 **Batch wrapper (included)**
 WinPDFMerge.bat (drag-and-drop + double-click)
@@ -140,10 +157,9 @@ Robust logging: both tools use a bounded process runner that captures stdout/std
 Defensive environment: the script removes GS_OPTIONS only in the child for the GhostScript call to avoid inherited settings breaking runs.
 
 **Tweaks (optional)**
-Higher quality email copy -> change /screen → /ebook.
-Even smaller email -> keep /screen and/or add more aggressive downsampling.
+Alternative email preset -> use `-EmailPreset ebook`; screen remains the default.
 Different ordering -> rename files, the tool sorts by filename.
-Include subfolders -> extend the Get-ChildItem call to -Recurse (not enabled by default).
+Subfolders are not scanned; move the intended inputs into one source folder.
 
 **Troubleshooting**
 “pdftk not found” -> install PDFtk Server, ensure pdftk is in PATH or lives in a standard location (the script checks common paths).

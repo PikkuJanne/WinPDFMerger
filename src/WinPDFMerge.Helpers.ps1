@@ -1350,6 +1350,7 @@ function Invoke-PdfToolJob {
         $Staging,
         [long]$ExpectedPageCount = 0,
         [string]$InspectionExecutable,
+        [ValidateSet('screen', 'ebook')][string]$EmailPreset = 'screen',
         [ValidateRange(1, 2147483647)][int]$TimeoutMilliseconds = 900000,
         [Threading.CancellationToken]$CancellationToken = [Threading.CancellationToken]::None
     )
@@ -1423,8 +1424,13 @@ function Invoke-PdfToolJob {
             # GS otherwise can return zero and write a blank PDF after a PDF
             # interpreter error. Signal that error via its native exit status;
             # structural/page-total validation is still required separately.
+            # Public presets select only these fixed flags, never arbitrary GS options.
+            $presetFlag = switch ($EmailPreset) {
+                'screen' { '-dPDFSETTINGS=/screen' }
+                'ebook' { '-dPDFSETTINGS=/ebook' }
+            }
             $arguments = @('-dBATCH', '-dNOPAUSE', '-dSAFER', '-dPDFSTOPONERROR', '-sDEVICE=pdfwrite',
-                '-dCompatibilityLevel=1.6', '-dPDFSETTINGS=/screen', '-dDetectDuplicateImages=true',
+                '-dCompatibilityLevel=1.6', $presetFlag, '-dDetectDuplicateImages=true',
                 '-o', $stagedOutput, '-f', $InputPaths[0])
             $removeEnvironment = @('GS_OPTIONS')
         }

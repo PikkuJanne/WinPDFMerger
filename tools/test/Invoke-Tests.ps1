@@ -2,7 +2,7 @@
 [CmdletBinding()]
 param(
     [string]$PesterModulePath,
-    [ValidateSet('Unit', 'NativeFixture', 'SourceDiscovery', 'Launcher', 'LauncherNative', 'DependencyEntry', 'NativeRunner', 'ToolInvocation', 'PdftkPaths', 'GhostscriptPaths', 'Destination', 'InputPreflight', 'Staging', 'MasterValidation', 'EmailOutcome', 'FaultIO', 'FaultRecovery')][string]$Tier = 'Unit',
+    [ValidateSet('Unit', 'NativeFixture', 'SourceDiscovery', 'Launcher', 'LauncherNative', 'DependencyEntry', 'NativeRunner', 'ToolInvocation', 'PdftkPaths', 'GhostscriptPaths', 'Destination', 'InputPreflight', 'Staging', 'MasterValidation', 'EmailOutcome', 'FaultIO', 'FaultRecovery', 'Parameters', 'ParametersNative')][string]$Tier = 'Unit',
     [string]$PdftkPath,
     [string]$GhostscriptPath,
     [string]$PythonPath
@@ -37,6 +37,12 @@ $config.TestResult.OutputPath = Join-Path $work 'results.xml'
 $config.TestResult.OutputFormat = 'NUnitXml'
 if ($Tier -eq 'Unit') {
     $config.Run.Path = Join-Path $repo 'tests/unit'
+} elseif ($Tier -eq 'Parameters') {
+    $config.Run.Path = Join-Path $repo 'tests/cli/Parameters.Tests.ps1'
+} elseif ($Tier -eq 'ParametersNative') {
+    if (-not $PdftkPath -or -not $GhostscriptPath -or -not $PythonPath) { throw 'ParametersNative requires explicit real PDFtk/Ghostscript and pinned development Python paths.' }
+    $config.Run.Container = New-PesterContainer -Path (Join-Path $repo 'tests/cli/Parameters.Native.Tests.ps1') `
+        -Data @{ PdftkPath=$PdftkPath; GhostscriptPath=$GhostscriptPath; PythonPath=$PythonPath }
 } elseif ($Tier -eq 'FaultIO') {
     $config.Run.Path = Join-Path $repo 'tests/faults/FaultIO.Tests.ps1'
 } elseif ($Tier -eq 'FaultRecovery') {
@@ -108,6 +114,8 @@ if ($Tier -eq 'MasterValidation') { $summary.evidence_class = 'windows-real-pdft
 if ($Tier -eq 'EmailOutcome') { $summary.evidence_class = 'windows-real-pdftk-gs-email-outcomes-actual-batch-and-controlled-fault-scheduling' }
 if ($Tier -eq 'FaultIO') { $summary.evidence_class = 'unit-controlled-IO-logging-outcomes-and-real-file-locks' }
 if ($Tier -eq 'FaultRecovery') { $summary.evidence_class = 'windows-real-engines-environment-and-controlled-owned-native-cancellation' }
+if ($Tier -eq 'Parameters') { $summary.evidence_class = 'unit-actual-parameter-binding-and-controlled-entry-native-decisions' }
+if ($Tier -eq 'ParametersNative') { $summary.evidence_class = 'windows-real-entry-preset-and-defaults-actual-cmd-batch-delivery-not-Explorer' }
 $summary | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath (Join-Path $work 'summary.json') -Encoding UTF8
 $summary | ConvertTo-Json -Depth 4
 Write-Host ('Reports: ' + $work)

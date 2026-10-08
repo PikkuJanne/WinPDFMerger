@@ -3,7 +3,7 @@
 Target: published and independently verified `v1.0.0` in `PikkuJanne/WinPDFMerger`.
 Completed milestones: M1 — paths, ordering and native execution; M2 — PDF validation and non-destructive results, within the recorded local Windows scope.
 Completed tasks: T01 through T15.
-Next task: T16 — add the small public parameter interface, in M3.
+Current task: T16 — add the small public parameter interface, in progress in M3.
 Publication: NOT STARTED.
 
 T15 and required AC035/AC036 integration plus AC037 unit pass at clean C1

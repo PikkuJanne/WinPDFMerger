@@ -108,7 +108,7 @@ function Publish-PdfStagedOutput {
  Save-T15FaultReceipt
 }
 function Invoke-PdfToolJob {
- [CmdletBinding()]param([string]$Tool,[string]$Executable,[object[]]$InputPaths,[string]$OutputPath,$Staging,[long]$ExpectedPageCount,[string]$InspectionExecutable,[int]$TimeoutMilliseconds=900000,[Threading.CancellationToken]$CancellationToken=[Threading.CancellationToken]::None)
+ [CmdletBinding()]param([string]$Tool,[string]$Executable,[object[]]$InputPaths,[string]$OutputPath,$Staging,[long]$ExpectedPageCount,[string]$InspectionExecutable,[ValidateSet('screen','ebook')][string]$EmailPreset='screen',[int]$TimeoutMilliseconds=900000,[Threading.CancellationToken]$CancellationToken=[Threading.CancellationToken]::None)
  $job=& $script:t15OriginalJob @PSBoundParameters
  $script:t15Receipt.Jobs+=@([pscustomobject]@{Tool=$Tool;OutputPath=$OutputPath;OutputPublished=$job.OutputPublished;OutputValidated=$job.OutputValidated;OutputState=$job.OutputState;Succeeded=$job.Succeeded;OutputError=$job.OutputError;CleanupError=$job.CleanupError;StagingPath=$job.StagingPath})
  Save-T15FaultReceipt; $job
