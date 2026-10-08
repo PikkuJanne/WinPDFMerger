@@ -12,7 +12,7 @@ observations are not application compatibility certification. Evidence:
 | Supported PowerShell 7 x64 on reference desktop | Required | Supported portable7.6.6 Core x64; Microsoft-signed host; Process RemoteSigned | T09 PS7 acquisition + T23 completion/results/reports | T23 same relevant suite: 854 checks / 29 tiers PASS; OS channel unestablished; broader desktop/release compatibility remains |
 | PDFtk native Windows build | Required | Vendor Server2.02 unsigned x86; approved exact external cache | T03 acquisition + T23 completion/reports | T23 paths, ordered pages, structural validation, job bounds and source/publication safety PASS; CJK operands/inspection remain safely refused; no broader release claim |
 | Ghostscript native Windows build | Required for email support | Verified10.08.0 x64 console/interpreter unsigned; signed installer; explicit external cache | T09 GS acquisition + T23 completion/reports | T23 paths, both presets, validation, warning disposition and email outcomes PASS; PDFtk inspection limits retained; visual/desktop/package/release gates remain |
-| GitHub Windows runner | Required CI evidence; not desktop certification | UNKNOWN | None | NOT TESTED |
+| GitHub Windows runner | Required CI evidence; not desktop certification | windows-2025; actual Server10.0.26100.0/admin, image20260925.250.1; PS5.1.26100.33438 / pinned PS7.6.6 | T24 completion/results/sanitized reports | AC054/AC055 PASS; actual push/PR4/4 and deliberate failure gate; separate controlled/unit and scoped native smoke; no desktop/standard-user ACL claim |
 | Windows 10 | Optional/excludable | UNKNOWN | None | NOT TESTED |
 | Live UNC network share | Optional/excludable | UNKNOWN | None | NOT TESTED |
 | ARM/32-bit host | Optional/excludable | UNKNOWN | None | NOT TESTED |
@@ -324,3 +324,21 @@ and `evidence/T23-results.json`.
 OS support channel remains unestablished. Physical Explorer/desktop, CI,
 security, broader OS/UNC, distribution and final publication remain subsequent
 gates. No Windows 10, ARM, 32-bit host or live UNC pass is inferred.
+
+T24 at clean C1b `e626e45a5ba375456f23b506f0ded7ca7d68f1e3` adds actual
+Windows hosted CI. Normal push and PR runs each pass 1306 Pester checks / 18
+report pairs; the PR tests synthetic merge `1c42402a05f4b18f0df35cf2a4225ffb928405df`
+with the identical implementation Git tree. A same-source negative probe has
+1306 passes and exactly two deliberate failed assertions, one per unit host;
+both native jobs pass and the workflow fails. All four artifacts per run are
+downloaded and API-digest verified. Real PDFtk2.02/GS10.08.0 smoke remains
+separate from controlled/unit classes. Both tiny preset candidates are valid
+but larger and omitted, so this adds no new smaller-output or fidelity claim.
+The local selected driver passes the same 1306 checks in PS5.1.26100.9444 /
+PS7.6.6 under a nonadmin token. All 64 maintained PowerShell files pass 41
+selected rules per host, with no findings/suppressions; vendor advisories
+0 errors / 325 warnings / 175 information retained. Earlier parser and test
+failures, hosted ACL scope change, versions and limits are disclosed in T24
+completion. Hosted Server/admin CI is not physical Explorer/manual desktop
+acceptance. OS channel, security, broader OS/UNC, package and release gates
+remain; publication is not started.

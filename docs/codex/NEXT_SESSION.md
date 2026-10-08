@@ -1,44 +1,58 @@
 # Next session
 
-Current task: T24 - add safe Windows CI and machine-readable reports, pending.
-Read AGENTS/INDEX/STATUS, T24 TASKS entry/tasks/T24.md and relevant workflow,
-test/dependency/security specifications and AC054/AC055. Keep one conceptual
-task. Recheck repository/branch/clean state, both origin destinations and live
-branch/main/PR/tag/release state before edits; preserve unrelated work.
+Current task: T25 - focused security and public-repository review, pending.
+Read AGENTS/INDEX/STATUS, T25 TASKS entry/tasks/T25.md and relevant product,
+workflow, test/dependency/security specifications and AC056/AC057. Keep one
+conceptual task. Recheck repository/branch/clean state, both origin destinations
+and live branch/main/PR/tag/release state before edits; preserve unrelated work.
 
-T23 AC052/AC053 pass at clean C1 `8fa2032c66f94199b121fc1914792d6d71bb6202`:
-29 relevant tiers each in actual Windows PS5.1.26100.9444 / pinned PS7.6.6,
-854 checks each/ 1708 total / 58original report pairs, every bad count zero.
-All start/end source guards and 348 selected dependency rehashes pass.
-Evidence classes distinguish controlled processes from actual PDF engines.
-Six new native cases each cover representative mixed/preset jobs, command
-bounds and benign GS warnings; the warning envelope stays rejected by app
-preflight. Runtime/native flags/launchers/defaults unchanged.
+T24 AC054/AC055 pass at clean C1b
+`e626e45a5ba375456f23b506f0ded7ca7d68f1e3`: normal hosted push 37809847683 and
+PR37809856744 each pass four jobs / 1306 checks / 18 sanitized pairs. PR actually
+tests synthetic merge `1c42402a05f4b18f0df35cf2a4225ffb928405df`, with identical
+Git tree to C1b. Same-source negative 37809951854 has 1306 normal passes and one
+real deliberate failure per unit host; native jobs pass and workflow fails,
+with four artifacts. Verified full-SHA Actions, temporary hash-checked vendor
+dependencies, actual minimum permissions and sanitized uploads pass review.
+Routine CI cannot publish a release.
 
-Independent raw review passes 15507 checks and eight extra PDFium audit reads; scoped parser/
-analyzer checks pass two changed files / 41 rules per host, no findings/suppressions, advisory
-0 errors / 9 warnings / 8 information each. Fixture/oracle Python tests pass 40/40.
-Preparation findings/probes/corrected audit-schema assumption are retained.
-Legacy observations without own commit fields are bound by clean outer tier/
-source guards, never by inferred fields. See T23 completion/results/manifest.
+Clean local selected driver passes 1306 checks / 18 pairs in actual
+PS5.1.26100.9444 / pinned PS7.6.6, nonadmin Windows 10.0.26300.0. All 64 maintained
+PowerShell files pass 41 selected rules per host with no findings/suppressions;
+advisories 0 errors / 325 warnings / 175 information retained. Independent final
+hosted/local audits pass 28950/5511 integrity checks, not application tests.
+All 20 downloaded ZIP digests match API. Failed preparation remains separate:
+workflow context, PS5.1 module path, LICENSE EOL and hosted-admin ACL. Native CI
+is scoped fixture/source-discovery and genuine-engine merge/preset/no-overwrite
+smoke; original native ACL/path suites remain unchanged. Both tiny GS candidates
+are larger and omitted. No desktop/manual, whole native suite, new positive
+smaller publication or fidelity claim follows. See T24 completion/results/
+manifest/reviews and preserve original receipts.
 
-Reuse approved external Pester6.2.0/analyzer1.25.0/PDFtk2.02/GS10.08.0 /
-pinned PS7.6.6 caches and workspace26.1007.11041 Python3.12.14/exact PDFium pins.
-No acquisition/admin/persistent policy/environment/security change was made.
-Existing scoped child RemoteSigned/module-path isolation remains authorized;
-ordinary PS5.1 Restricted / PS7 LocalMachine RemoteSigned and BAT process-only Bypass
-are disclosed. Never bypass enterprise policy or install dependencies silently.
+Hosted Windows 2025 Server/admin image 20260925.250.1 uses actual
+PS5.1.26100.33438 / PS7.6.6; it does not close standard-user ACL or physical
+Explorer acceptance. Local OS support channel remains unestablished. Reuse
+approved external Pester 6.2.0/analyzer 1.25.0/PDFtk 2.02/GS10.08.0/pinned PS7.6.6
+caches and workspace 26.1007.11041 Python 3.12.14/exact PDFium pins. No local
+acquisition/admin/persistent policy/environment/security change was made.
+Existing scoped child RemoteSigned and selected-shell module-path isolation
+remain authorized. Ordinary PS5.1 Restricted / PS7 LocalMachine RemoteSigned
+and BAT process-only Bypass remain disclosed; never bypass enterprise policy
+or silently install dependencies.
 
-C1 normal push/fresh clean live equality and draft PR23 head match are retained. Records/
-byte-preservation C2 own clean/live equality will be checked after push in the session;
-recheck afresh. OS support channel remains unestablished. Do not relabel
-hosted Windows Server CI as desktop/Explorer acceptance or a mock/skip/missing
-environment/counter null/resource-full simulation as native/manual evidence.
-T22 developer bracketed-root Pester discovery and supplemental helper symlink
-limits remain disclosed; no new validation claim is made for those paths.
+C1b normal push/fresh clean live equality is retained. Records-only C2 own
+clean/live equality and current draft PR24 head are checked after push in session;
+recheck afresh. No future self-referential commit proof. PR24 remains draft and
+unmerged; same-source remote failure-probe branch is intentional historical
+evidence, not the development branch. Do not merge before T01-T30 gates.
+Preserve T23 broader native evidence, T19 preservation limits and T22 bracketed-
+root Pester/optional helper symlink limits.
 
 Preserve local/top-level/nonhidden/literal inputs, natural order, output beside
 scripts, screen default, no-overwrite owned staging, strict-smaller email and
-validated master retention. Physical Explorer/desktop, security, broader OS/UNC,
-package and publication remain later gates. Only final v1.0.0 after M6 gates;
-Publication NOT STARTED and no tag/release exists.
+validated master retention. T25 reviews current primary dependency/security
+information, runtime/native ownership boundaries and tracked/staged/history
+privacy without deleting history or weakening protections. Accurately disclosed
+unsigned release is acceptable. Physical Explorer/desktop, broader OS/UNC,
+packaging and publication remain later gates. Only v1.0.0 after M6; publication
+NOT STARTED and no tag/release exists.

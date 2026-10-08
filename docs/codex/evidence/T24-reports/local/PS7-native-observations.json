@@ -1,0 +1,99 @@
+{
+  "commit_under_test": "e626e45a5ba375456f23b506f0ded7ca7d68f1e3",
+  "dirty_worktree": false,
+  "shell_version": "7.6.6",
+  "shell_edition": "Core",
+  "scope": "Windows real pinned engine helper smoke and PDFtk structural page counts; no standard-user/ACL, desktop, rendering, feature-preservation, or independent-renderer acceptance",
+  "engines": [
+    {
+      "id": "pdftk",
+      "version": "2.02",
+      "selected_files": [
+        {
+          "name": "pdftk.exe",
+          "sha256": "5e5cbe817ecc3cc1875369d81119472559c9624d55c7176852c8827750afa00a"
+        },
+        {
+          "name": "libiconv2.dll",
+          "sha256": "cb016e794d3311c71f21d87803e10a0e1133995f62a485eb37b321cd9b9e1087"
+        }
+      ]
+    },
+    {
+      "id": "ghostscript",
+      "version": "10.08.0",
+      "selected_files": [
+        {
+          "name": "gswin64c.exe",
+          "sha256": "9b29d3b5128c6d53bb4e9eee77e3919d05038cdfdd8e07697af4d9c319f9d5ad"
+        },
+        {
+          "name": "gsdll64.dll",
+          "sha256": "a134ed0d3af749bdab93c66029180e676d36d9cc624c192ea287f73c891fb0af"
+        }
+      ]
+    }
+  ],
+  "observations": [
+    {
+      "label": "pdftk-merge-three-pages",
+      "source_snapshot_unchanged": true,
+      "native_started": true,
+      "exit_code": 0,
+      "output_validated": true,
+      "validated_pages": 3,
+      "output_state": "published",
+      "output_published": true,
+      "output_bytes": 2866,
+      "master_bytes": null
+    },
+    {
+      "label": "ghostscript-screen-two-pages",
+      "source_snapshot_unchanged": true,
+      "native_started": true,
+      "exit_code": 0,
+      "output_validated": true,
+      "validated_pages": 2,
+      "output_state": "no_size_benefit",
+      "output_published": false,
+      "output_bytes": 3886,
+      "master_bytes": 2452
+    },
+    {
+      "label": "ghostscript-ebook-two-pages",
+      "source_snapshot_unchanged": true,
+      "native_started": true,
+      "exit_code": 0,
+      "output_validated": true,
+      "validated_pages": 2,
+      "output_state": "no_size_benefit",
+      "output_published": false,
+      "output_bytes": 3877,
+      "master_bytes": 2452
+    },
+    {
+      "label": "pdftk-existing-output-refused",
+      "source_snapshot_unchanged": true,
+      "native_started": false,
+      "exit_code": null,
+      "output_validated": false,
+      "validated_pages": null,
+      "output_state": "failed",
+      "output_published": false,
+      "output_bytes": null,
+      "master_bytes": null
+    },
+    {
+      "label": "ghostscript-existing-output-refused",
+      "source_snapshot_unchanged": true,
+      "native_started": false,
+      "exit_code": null,
+      "output_validated": false,
+      "validated_pages": null,
+      "output_state": "failed",
+      "output_published": false,
+      "output_bytes": null,
+      "master_bytes": 2452
+    }
+  ]
+}
