@@ -1,0 +1,3363 @@
+{
+  "SchemaVersion": 1,
+  "Task": "T18",
+  "Phase": "C1b",
+  "ReviewedAtUtc": "2026-10-08T09:28:43.928984+00:00",
+  "CommitUnderTest": "e506d73797379f355a1a0b731c857e71f4c1d251",
+  "Baseline": "0cf2f49d4e9ab572a60bcdabbdbf33a033e33034",
+  "DirtyWorktreeAtReview": false,
+  "Result": "pass",
+  "BlockingFindings": [],
+  "Scope": [
+    "README.md",
+    "WinPDFMerge.bat",
+    "WinPDFMerge.ps1",
+    "src/WinPDFMerge.Helpers.ps1",
+    "tests/cli/Parameters.Native.Tests.ps1",
+    "tests/dependencies/Dependencies.Entry.Tests.ps1",
+    "tests/filesafety/Destination.Native.Tests.ps1",
+    "tests/help/Diagnostics.Native.Tests.ps1",
+    "tests/help/Diagnostics.Tests.ps1",
+    "tests/launcher/Launcher.Native.Tests.ps1",
+    "tests/pdf/SizeReporting.Native.Tests.ps1",
+    "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+    "tests/unit/SourceDiscovery.Tests.ps1",
+    "tools/test/Invoke-Tests.ps1"
+  ],
+  "SourceBindings": [
+    {
+      "Path": "README.md",
+      "SHA256": "48caf05815ff6b9742fa96e32c4aa44af47e638c5f5bf608ec77f4e54445cd7f"
+    },
+    {
+      "Path": "WinPDFMerge.bat",
+      "SHA256": "288287beefea974c64d39b34266332d83112b9106c952efd8c304edfedebff83"
+    },
+    {
+      "Path": "WinPDFMerge.ps1",
+      "SHA256": "e702b0b1583ab841589494cc524da1d9bd4148cf8849577793b08fd8f54b641d"
+    },
+    {
+      "Path": "src/WinPDFMerge.Helpers.ps1",
+      "SHA256": "3df10eafeac04493b06300d276cff05a9c5ef196a01b7b157a6afd3d2768eaa7"
+    },
+    {
+      "Path": "tests/cli/Parameters.Native.Tests.ps1",
+      "SHA256": "66b28062dfba7bd89f2635c2aca30b6f50d91986d5587561b8cc8fdf32014d5f"
+    },
+    {
+      "Path": "tests/dependencies/Dependencies.Entry.Tests.ps1",
+      "SHA256": "5a01c54cce4503c6f7ac342059fd55ec9dc012d3131918146f22a3571cb01875"
+    },
+    {
+      "Path": "tests/filesafety/Destination.Native.Tests.ps1",
+      "SHA256": "82e23b98f905bcd07dd8449e2a06db721853dc6b052dedf9ec3d3a0573136ac8"
+    },
+    {
+      "Path": "tests/help/Diagnostics.Native.Tests.ps1",
+      "SHA256": "9c74aa99cff23b17fe8b362eba7d1b55111b45382395cee1e6c549f146d2052e"
+    },
+    {
+      "Path": "tests/help/Diagnostics.Tests.ps1",
+      "SHA256": "a5b5e43b0d778df7ac7df74ba741a76a66c807c6623f08991a056b8967f77663"
+    },
+    {
+      "Path": "tests/launcher/Launcher.Native.Tests.ps1",
+      "SHA256": "16f39449a9480c6dff3872b1d294155a11f8a0353ce2776290c4240514c140d3"
+    },
+    {
+      "Path": "tests/pdf/SizeReporting.Native.Tests.ps1",
+      "SHA256": "ea7eb9798d9db2356033c78ae5c7ccf2b6a019f577515f8e1afe5a1e61cda9c4"
+    },
+    {
+      "Path": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+      "SHA256": "191bcd2f23fe7d869fbd6d338bffe1cdc627cc3522df7888975313aa8fd2f643"
+    },
+    {
+      "Path": "tests/unit/SourceDiscovery.Tests.ps1",
+      "SHA256": "2cd137f0e8c9cf3c5851acda6c5456f80413c7a16e946ace3d06d0b3b5724b02"
+    },
+    {
+      "Path": "tools/test/Invoke-Tests.ps1",
+      "SHA256": "d6546052dbe10304feba829d35d8ed180b0d6490c35e8241eafe10207c95d8d7"
+    }
+  ],
+  "CodeReview": {
+    "Result": "pass",
+    "Checks": [
+      "Actual dot-directive help with four options/examples; separated example descriptions. Missing input remains noninteractive before helper import.",
+      "Owned CreateNew log moved after trusted separate existing writable destination/run-name guards, before discovery/dependencies. Pretrust failure is console-only with explicit no-log explanation.",
+      "Version receipts log both native streams/failure flags before refusal and suppress log pipeline output; optional no-log single-version-string interface retained. Attempted failed versions become not determined.",
+      "Named actual stages and measured monotonic decimal-invariant seconds. Unknown discovered/page/tool states explicit; no invented completion percentage.",
+      "Master/email publication state recorded before logging; final context/log faults preserve explicit validated published paths and recompute correct failure/partial outcome.",
+      "Runtime engine/job/owned-launch/staging/count-validation/strict-smaller/no-overwrite/SAFER/child-environment vectors preserved. No runtime network/upload/acquisition/telemetry added.",
+      "README/help disclose sensitive local paths/names/native PDF metadata and lack of redaction/encryption/special ACL; public copy sanitization distinct. Windows/PS claims scoped.",
+      "Legacy tests retain original acceptance counts while expecting new early diagnostic log and adding optional LogPath wrappers; source/foreign/no-PDF/no-staging checks retained."
+    ],
+    "ResolvedFindings": [
+      "Failed attempted version state corrected from not probed to not determined; README blanket platform wording scoped by root.",
+      "Native-focused actual Get-Help revealed description text included in Example.Code; root inserted command/description blank separators before final source freeze."
+    ],
+    "PreservationProof": {
+      "UnchangedHelperFunctions": [
+        {
+          "Function": "Assert-MergeDirectories",
+          "LogicalBodySHA256": "15435dec1529b47378079f8d76fd71b5a2f1d2984723bca98b967e869ebd75fc"
+        },
+        {
+          "Function": "Assert-MergeDirectoryPath",
+          "LogicalBodySHA256": "643982cbadc4a166d7d6d0c6dd381b22be783ecb860b93067d88dcd880e971ce"
+        },
+        {
+          "Function": "Assert-NativeCommandLength",
+          "LogicalBodySHA256": "14a6f2b036a1b3dceb8cc81e5ab58834b28b2ad08efc34b44229e919914b8d97"
+        },
+        {
+          "Function": "Assert-PdfInputEnvelope",
+          "LogicalBodySHA256": "7056b2a6d29a3316c814f82cbe3d73f13555b2936a1448b6ea98068fa5750050"
+        },
+        {
+          "Function": "Assert-PdfInputInventory",
+          "LogicalBodySHA256": "86eff6850569c7df371a70af4fd143fc8adb746cafe6753d29e547f7922faf20"
+        },
+        {
+          "Function": "Assert-PdfInputSnapshot",
+          "LogicalBodySHA256": "07ab8f90fc500f3e2d6543c618791af495fb5ed6c00a325861dba932cebe456f"
+        },
+        {
+          "Function": "Assert-PdfStaging",
+          "LogicalBodySHA256": "de7a3d1208866097e3313b3d8716168dfff35ffda45fdd7ee63e1878a4d6d9d5"
+        },
+        {
+          "Function": "Compare-NaturalName",
+          "LogicalBodySHA256": "e104812d33c1025f6d6c1f9beda7573099533c31faf3c8764dc7f5e602596f4e"
+        },
+        {
+          "Function": "Compare-PdfInput",
+          "LogicalBodySHA256": "7c37a4f0e0fcf06cb6ccda6bc0a5ee6666f89c4425f61c9fe77922bd0bb864c3"
+        },
+        {
+          "Function": "ConvertFrom-PdfDocumentData",
+          "LogicalBodySHA256": "7cd9bc99ab07015b589f40330207aef14906439fb647b85ee00e438a113ec888"
+        },
+        {
+          "Function": "ConvertTo-NativeArgumentString",
+          "LogicalBodySHA256": "b786c43d21f251c3c8dd46ee38075ee0e15407dad6ca1331f1e417b0ba84fd84"
+        },
+        {
+          "Function": "ConvertTo-NativeLogText",
+          "LogicalBodySHA256": "eba0b41b0c83e3edab24b749ba777745f040a0bc7d32c32adc903a7e22a9b1f7"
+        },
+        {
+          "Function": "Find-Ghostscript",
+          "LogicalBodySHA256": "6623d5b8d67e195e3fe3d3564a6ca5812adca359cd1bd9c43b6fa44bf850e92e"
+        },
+        {
+          "Function": "Find-PathApplication",
+          "LogicalBodySHA256": "93ab1007cdf3a830cf2e7544de34a969034ad6d6cf5ed5978113be0c3895876f"
+        },
+        {
+          "Function": "Find-Pdftk",
+          "LogicalBodySHA256": "6d7d4d73ff37251d8b5ed1c771c7d6e44b7dc2dde7afe2427a485312b1601ecd"
+        },
+        {
+          "Function": "Format-PdfByteSize",
+          "LogicalBodySHA256": "2032f6a4b0206017dd6da480d4d479b78ebba57433998705c698089dffc7a28e"
+        },
+        {
+          "Function": "Get-DependencyExecutablePath",
+          "LogicalBodySHA256": "13f121c15453457aba6b9a0790fdcd839b4b46c454eb303e6021585e989bff2d"
+        },
+        {
+          "Function": "Get-MergeDirectoryIdentity",
+          "LogicalBodySHA256": "11b31a1148191fe0df1bb4c8bd84f27abc67bd96aeaa1cf7d0a2373aacf46fe7"
+        },
+        {
+          "Function": "Get-PdfDocumentInspection",
+          "LogicalBodySHA256": "7296b090ae5e2bdf01b744a73883882998f8f4b593502cf15f41b626118cdb18"
+        },
+        {
+          "Function": "Get-PdfInputInventory",
+          "LogicalBodySHA256": "4d2159886c4df3b12a1a13cbcfbaba0c76519c7f942245b58aa21d677e6ed209"
+        },
+        {
+          "Function": "Get-PdfInputSnapshot",
+          "LogicalBodySHA256": "a8fe52a629166b74a134ec496d49c584b3f3dda5be858159656d6eb30b3fc493"
+        },
+        {
+          "Function": "Get-PdfMergeOutcome",
+          "LogicalBodySHA256": "6b51d8fa0ccfcb3ffc28cbbc0bada64ad37f62d5355c692eb4d63c7b73b4859e"
+        },
+        {
+          "Function": "Get-PdfSizeReport",
+          "LogicalBodySHA256": "c78a15395a89c15b6b71f8a6221a5023bd5db22eb24669a8734e1b12694f862f"
+        },
+        {
+          "Function": "Get-SourcePdfFiles",
+          "LogicalBodySHA256": "50c9e8a6324e9ee7cb8ec290a8608ad6a67275f75e988dc0ff43d80bb4e9ea18"
+        },
+        {
+          "Function": "Initialize-OwnedNativeRuntime",
+          "LogicalBodySHA256": "85ae3a24afedf3521671cadb320ffa2d17db63415a4cdd88ec0143fde6685ebc"
+        },
+        {
+          "Function": "Invoke-NativeProcess",
+          "LogicalBodySHA256": "5f65ae49023072b8652772cbc3e4310babcc10b644dcfc4cb90d4220e64dacfb"
+        },
+        {
+          "Function": "Invoke-PdfToolJob",
+          "LogicalBodySHA256": "8d6037f725a07303f64f63c99d3a72e6a7e081bb5cfb5c35fc1e53415f4841c7"
+        },
+        {
+          "Function": "New-MergeRunIdentity",
+          "LogicalBodySHA256": "33d0a1db7a13417f9aa672255a5249660860096cca78a1c46c95c92595b257ef"
+        },
+        {
+          "Function": "New-NativeStreamCapture",
+          "LogicalBodySHA256": "7789ad0452336050a140d12bbeae636f74ce300027b47596bbd066b32389a654"
+        },
+        {
+          "Function": "New-PdfCancellationContext",
+          "LogicalBodySHA256": "93ec8f6bed2d88886d9a77ec927dfdf1993d732bbe8d11e5256b93a527f967fc"
+        },
+        {
+          "Function": "New-PdfStaging",
+          "LogicalBodySHA256": "a2b29cfca2dff6814462b2f219ca5e45cc972c739ee1fb3862510e3338376422"
+        },
+        {
+          "Function": "Publish-PdfStagedOutput",
+          "LogicalBodySHA256": "ee40e3906094702897d8283d46bb4d81e46f10cfc469a17e037f00fcd439a3b0"
+        },
+        {
+          "Function": "Read-PdfEnvelopeBytes",
+          "LogicalBodySHA256": "aeace3058db009097dc30ed867ffeb9237d902899f2e29d7868ccda10df2a3ee"
+        },
+        {
+          "Function": "Receive-NativeStreamCapture",
+          "LogicalBodySHA256": "336dc7f89e7f94ef95616eb16af0d5de97ea6b0f3b0507f2c32c83af795f4dfe"
+        },
+        {
+          "Function": "Remove-PdfStaging",
+          "LogicalBodySHA256": "fadfeed3a52a455ed6206e41d749cb498c6041bde5b1dad052027ca8db4542b5"
+        },
+        {
+          "Function": "Reserve-MergeRunIdentity",
+          "LogicalBodySHA256": "d1d3a36cb2666722f535b4c3881b6803af687abf332c5809411b2e09587ae448"
+        },
+        {
+          "Function": "Resolve-OutputDirectory",
+          "LogicalBodySHA256": "2b4537566628b1dbb533e65c69b71668df2ffa0d1365293f0186dff66fd99500"
+        },
+        {
+          "Function": "Resolve-SourceDirectory",
+          "LogicalBodySHA256": "9e5e8535f96176a66e5f1cf5215e7f5d595d0bd4dad5c71e1574e3296f5026fe"
+        },
+        {
+          "Function": "Sanitize-FileName",
+          "LogicalBodySHA256": "4955a1ff5fa8e3478389f98c34bef47e5cc74cb6c8d5027347aa79baf36613a8"
+        },
+        {
+          "Function": "Sort-PdfInputs",
+          "LogicalBodySHA256": "5b9a536f6b836c830ede425654241113c6003b8e6f2ca1d48dcf087afa2be983"
+        },
+        {
+          "Function": "Stop-OwnedNativeProcess",
+          "LogicalBodySHA256": "e17dc8702d2a6cd9d443d1375c6d7d5e52b4a07e6faa5c059ae319d7568a9a07"
+        },
+        {
+          "Function": "Test-OutputDirectoryWritable",
+          "LogicalBodySHA256": "fc8480713f274b9b17a6bd24f5ddd190e7c67c3f05d8468cf9b5b47b3da418e4"
+        },
+        {
+          "Function": "Write-NativeProcessLog",
+          "LogicalBodySHA256": "d3958e3dad34c39cfd7ee9995b97cf6fe8fe65b58478b9ee860f92810b62806f"
+        },
+        {
+          "Function": "Write-RunLog",
+          "LogicalBodySHA256": "cd197e1e197200170557a8345648ee2c0213255afaf75e1a69b0601a5ab061ce"
+        }
+      ],
+      "AddedHelperFunctions": [
+        "Get-PdfRunSummary",
+        "Write-PdfRunStage"
+      ],
+      "ModifiedHelperFunctions": [
+        "Get-NativeToolVersion",
+        "Invoke-DependencyVersionProbe"
+      ],
+      "NativeJobCallLinesUnchanged": true,
+      "BatchRawBytesUnchanged": true
+    }
+  },
+  "StaticAnalysisReview": {
+    "Result": "pass",
+    "Scope": "All twelve changed PowerShell source/test files versus T18 baseline; default PSA rules, no suppressions. Not full T22 repository lint.",
+    "Reports": [
+      {
+        "Shell": "ps51",
+        "ActualShellVersion": "5.1.26100.9444",
+        "AnalyzerVersion": "1.25.0",
+        "Errors": 0,
+        "Warnings": 97,
+        "Information": 82,
+        "RawReportPath": "tests/.work/T18-C1b-analyzer-ps51.json",
+        "RawReportSHA256": "636eb11cd6830665965dad912df48acf406842f93beddadbac3d2aa5f673d6dd",
+        "ExecutionPath": "tests/.work/T18-C1b-analyzer-execution-ps51-25096a4f7bc144c1a11aee630b0a2ee2/execution.json",
+        "ExecutionSHA256": "99202e5e7bb066f7e0ce1eacbfd0bbde6a4f1414f495b2fd46ce6975f7eb42ae",
+        "DriverSnapshotSHA256": "a5606d13061cfa80129933294089c79b00e03745f97dbbf031c826e707fd4731",
+        "Groups": [
+          {
+            "Severity": 0,
+            "Rule": "PSAvoidUsingPositionalParameters",
+            "Count": 76,
+            "Disposition": "nonblocking",
+            "Reason": "Private synthetic test/assertion helpers and expected interface examples; tested delivery, style guidance only."
+          },
+          {
+            "Severity": 0,
+            "Rule": "PSUseOutputTypeCorrectly",
+            "Count": 6,
+            "Disposition": "nonblocking",
+            "Reason": "Existing helper return annotations absent; observed return contracts are exercised. Information only."
+          },
+          {
+            "Severity": 1,
+            "Rule": "PSAvoidAssignmentToAutomaticVariable",
+            "Count": 5,
+            "Disposition": "nonblocking",
+            "Reason": "Unchanged older Destination/T16/T17 native-test helper local input path variables, no pipeline input expected or consumed. No new application assignment."
+          },
+          {
+            "Severity": 1,
+            "Rule": "PSAvoidUsingWriteHost",
+            "Count": 35,
+            "Disposition": "nonblocking",
+            "Reason": "Console diagnostics and test receipt markers are intentional for established interactive/batch workflow; actual stdout capture separately tested. No supported pre-PS5 host claim."
+          },
+          {
+            "Severity": 1,
+            "Rule": "PSReviewUnusedParameter",
+            "Count": 18,
+            "Disposition": "nonblocking",
+            "Reason": "Pester container/case parameters and dynamic/scriptblock uses; named parameter delivery is exercised in tests. No identified unused runtime decision input."
+          },
+          {
+            "Severity": 1,
+            "Rule": "PSUseApprovedVerbs",
+            "Count": 3,
+            "Disposition": "nonblocking",
+            "Reason": "Established private helper names retained; cosmetic naming does not change invocation/safety."
+          },
+          {
+            "Severity": 1,
+            "Rule": "PSUseDeclaredVarsMoreThanAssignments",
+            "Count": 12,
+            "Disposition": "nonblocking",
+            "Reason": "Pester BeforeAll/AfterAll cross-block observations and preservation context; variables are used in retained receipts/assertions despite analyzer block limitations."
+          },
+          {
+            "Severity": 1,
+            "Rule": "PSUseShouldProcessForStateChangingFunctions",
+            "Count": 19,
+            "Disposition": "nonblocking",
+            "Reason": "Internal guarded helpers/test fixture constructors trigger verb heuristic; existing controlled ownership/no-overwrite behavior is retained. No new public WhatIf interface."
+          },
+          {
+            "Severity": 1,
+            "Rule": "PSUseSingularNouns",
+            "Count": 5,
+            "Disposition": "nonblocking",
+            "Reason": "Established internal/test names; naming guidance only."
+          }
+        ],
+        "Findings": [
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "WinPDFMerge.ps1",
+            "Line": 74,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "WinPDFMerge.ps1",
+            "Line": 75,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "WinPDFMerge.ps1",
+            "Line": 88,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "WinPDFMerge.ps1",
+            "Line": 91,
+            "Column": 21
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "WinPDFMerge.ps1",
+            "Line": 94,
+            "Column": 21
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "WinPDFMerge.ps1",
+            "Line": 95,
+            "Column": 12
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "WinPDFMerge.ps1",
+            "Line": 109,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "WinPDFMerge.ps1",
+            "Line": 126,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "WinPDFMerge.ps1",
+            "Line": 148,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "WinPDFMerge.ps1",
+            "Line": 174,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "WinPDFMerge.ps1",
+            "Line": 268,
+            "Column": 13
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "WinPDFMerge.ps1",
+            "Line": 278,
+            "Column": 13
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "WinPDFMerge.ps1",
+            "Line": 280,
+            "Column": 21
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "WinPDFMerge.ps1",
+            "Line": 313,
+            "Column": 1
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "WinPDFMerge.ps1",
+            "Line": 314,
+            "Column": 1
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "WinPDFMerge.ps1",
+            "Line": 315,
+            "Column": 40
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "WinPDFMerge.ps1",
+            "Line": 317,
+            "Column": 44
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "WinPDFMerge.ps1",
+            "Line": 319,
+            "Column": 48
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "WinPDFMerge.ps1",
+            "Line": 320,
+            "Column": 1
+          },
+          {
+            "RuleName": "PSUseOutputTypeCorrectly",
+            "Severity": 0,
+            "Message": "The cmdlet 'Resolve-SourceDirectory' returns an object of type 'System.String' but this type is not declared in the OutputType attribute.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 38,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSUseOutputTypeCorrectly",
+            "Severity": 0,
+            "Message": "The cmdlet 'Get-SourcePdfFiles' returns an object of type 'System.Object[]' but this type is not declared in the OutputType attribute.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 59,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSUseOutputTypeCorrectly",
+            "Severity": 0,
+            "Message": "The cmdlet 'Resolve-OutputDirectory' returns an object of type 'System.String' but this type is not declared in the OutputType attribute.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 82,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSUseOutputTypeCorrectly",
+            "Severity": 0,
+            "Message": "The cmdlet 'Write-RunLog' returns an object of type 'System.String' but this type is not declared in the OutputType attribute.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 272,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSUseOutputTypeCorrectly",
+            "Severity": 0,
+            "Message": "The cmdlet 'Stop-OwnedNativeProcess' returns an object of type 'System.String' but this type is not declared in the OutputType attribute.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 791,
+            "Column": 13
+          },
+          {
+            "RuleName": "PSUseOutputTypeCorrectly",
+            "Severity": 0,
+            "Message": "The cmdlet 'ConvertFrom-PdfDocumentData' returns an object of type 'System.Int64' but this type is not declared in the OutputType attribute.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 1027,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": 1,
+            "Message": "Function 'New-MergeRunIdentity' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 193,
+            "Column": 10
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": 1,
+            "Message": "Function 'New-NativeStreamCapture' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 384,
+            "Column": 10
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": 1,
+            "Message": "Function 'New-PdfCancellationContext' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 771,
+            "Column": 10
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": 1,
+            "Message": "Function 'Stop-OwnedNativeProcess' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 776,
+            "Column": 10
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": 1,
+            "Message": "Function 'New-PdfStaging' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 1203,
+            "Column": 10
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": 1,
+            "Message": "Function 'Remove-PdfStaging' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 1322,
+            "Column": 10
+          },
+          {
+            "RuleName": "PSUseSingularNouns",
+            "Severity": 1,
+            "Message": "The cmdlet 'Get-SourcePdfFiles' uses a plural noun. A singular noun should be used instead.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 41,
+            "Column": 10
+          },
+          {
+            "RuleName": "PSUseSingularNouns",
+            "Severity": 1,
+            "Message": "The cmdlet 'Assert-MergeDirectories' uses a plural noun. A singular noun should be used instead.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 156,
+            "Column": 10
+          },
+          {
+            "RuleName": "PSUseSingularNouns",
+            "Severity": 1,
+            "Message": "The cmdlet 'Read-PdfEnvelopeBytes' uses a plural noun. A singular noun should be used instead.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 1061,
+            "Column": 10
+          },
+          {
+            "RuleName": "PSUseSingularNouns",
+            "Severity": 1,
+            "Message": "The cmdlet 'Sort-PdfInputs' uses a plural noun. A singular noun should be used instead.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 1852,
+            "Column": 10
+          },
+          {
+            "RuleName": "PSUseApprovedVerbs",
+            "Severity": 1,
+            "Message": "The cmdlet 'Reserve-MergeRunIdentity' uses an unapproved verb.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 236,
+            "Column": 10
+          },
+          {
+            "RuleName": "PSUseApprovedVerbs",
+            "Severity": 1,
+            "Message": "The cmdlet 'Sort-PdfInputs' uses an unapproved verb.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 1852,
+            "Column": 10
+          },
+          {
+            "RuleName": "PSUseApprovedVerbs",
+            "Severity": 1,
+            "Message": "The cmdlet 'Sanitize-FileName' uses an unapproved verb.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 1864,
+            "Column": 10
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.Helpers.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 286,
+            "Column": 12
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-ParameterResult' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 253,
+            "Column": 62
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-ParameterObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 255,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-ParameterObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 265,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Invoke-ParameterEntry' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 273,
+            "Column": 19
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-ParameterResult' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 274,
+            "Column": 18
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-ParameterObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 275,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Invoke-ParameterEntry' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 281,
+            "Column": 19
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-ParameterResult' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 282,
+            "Column": 18
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-ParameterObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 283,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Invoke-ParameterEntry' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 292,
+            "Column": 19
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-ParameterResult' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 293,
+            "Column": 18
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-ParameterObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 298,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSUseDeclaredVarsMoreThanAssignments",
+            "Severity": 1,
+            "Message": "The variable 'parentPolicies' is assigned but never used.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 54,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSUseDeclaredVarsMoreThanAssignments",
+            "Severity": 1,
+            "Message": "The variable 'oracleVersions' is assigned but never used.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 94,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'Parameters.Native.Tests.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 246,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": 1,
+            "Message": "The parameter 'PdftkPath' has been declared but not used.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 5,
+            "Column": 41
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": 1,
+            "Message": "The parameter 'GhostscriptPath' has been declared but not used.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 6,
+            "Column": 41
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": 1,
+            "Message": "The parameter 'PythonPath' has been declared but not used.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 7,
+            "Column": 41
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": 1,
+            "Message": "Function 'New-ParameterApplication' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 102,
+            "Column": 14
+          },
+          {
+            "RuleName": "PSAvoidAssignmentToAutomaticVariable",
+            "Severity": 1,
+            "Message": "The Variable 'input' is an automatic variable that is built into PowerShell, assigning to it might have undesired side effects. If assignment is not by design, please use a different name.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 111,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": 1,
+            "Message": "Function 'New-DependencyEntryApplication' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+            "ScriptPath": "tests/dependencies/Dependencies.Entry.Tests.ps1",
+            "Line": 50,
+            "Column": 14
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": 1,
+            "Message": "Function 'Set-DependencyTestEnvironmentState' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+            "ScriptPath": "tests/dependencies/Dependencies.Entry.Tests.ps1",
+            "Line": 100,
+            "Column": 14
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": 1,
+            "Message": "The parameter 'PdftkPath' has been declared but not used.",
+            "ScriptPath": "tests/dependencies/Dependencies.Entry.Tests.ps1",
+            "Line": 5,
+            "Column": 43
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": 1,
+            "Message": "The parameter 'Label' has been declared but not used.",
+            "ScriptPath": "tests/dependencies/Dependencies.Entry.Tests.ps1",
+            "Line": 173,
+            "Column": 15
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'Dependencies.Entry.Tests.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "tests/dependencies/Dependencies.Entry.Tests.ps1",
+            "Line": 24,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'Dependencies.Entry.Tests.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "tests/dependencies/Dependencies.Entry.Tests.ps1",
+            "Line": 25,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'Dependencies.Entry.Tests.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "tests/dependencies/Dependencies.Entry.Tests.ps1",
+            "Line": 279,
+            "Column": 17
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-DestinationSuccess' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 212,
+            "Column": 16
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-DestinationObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 215,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-DestinationSuccess' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 226,
+            "Column": 16
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-DestinationObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 229,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-DestinationObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 253,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-DestinationSuccess' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 276,
+            "Column": 20
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-DestinationObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 277,
+            "Column": 13
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-DestinationObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 278,
+            "Column": 13
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-DestinationObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 302,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-DestinationObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 321,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-DestinationObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 330,
+            "Column": 17
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-DestinationObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 381,
+            "Column": 13
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-DestinationObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 435,
+            "Column": 17
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": 1,
+            "Message": "Function 'New-DestinationApplication' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 44,
+            "Column": 14
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": 1,
+            "Message": "Function 'Start-DestinationEntry' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 129,
+            "Column": 14
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": 1,
+            "Message": "Function 'Remove-DestinationJunction' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 166,
+            "Column": 14
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'Destination.Native.Tests.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 204,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": 1,
+            "Message": "The parameter 'PdftkPath' has been declared but not used.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 4,
+            "Column": 41
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": 1,
+            "Message": "The parameter 'GhostscriptPath' has been declared but not used.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 5,
+            "Column": 41
+          },
+          {
+            "RuleName": "PSUseDeclaredVarsMoreThanAssignments",
+            "Severity": 1,
+            "Message": "The variable 'currentSid' is assigned but never used.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 15,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSUseDeclaredVarsMoreThanAssignments",
+            "Severity": 1,
+            "Message": "The variable 'pdftkVersion' is assigned but never used.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 39,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSUseDeclaredVarsMoreThanAssignments",
+            "Severity": 1,
+            "Message": "The variable 'gsVersion' is assigned but never used.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 40,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSUseDeclaredVarsMoreThanAssignments",
+            "Severity": 1,
+            "Message": "The variable 'parentPath' is assigned but never used.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 41,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSUseDeclaredVarsMoreThanAssignments",
+            "Severity": 1,
+            "Message": "The variable 'parentGsOptions' is assigned but never used.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 42,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSAvoidAssignmentToAutomaticVariable",
+            "Severity": 1,
+            "Message": "The Variable 'input' is an automatic variable that is built into PowerShell, assigning to it might have undesired side effects. If assignment is not by design, please use a different name.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 53,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidAssignmentToAutomaticVariable",
+            "Severity": 1,
+            "Message": "The Variable 'input' is an automatic variable that is built into PowerShell, assigning to it might have undesired side effects. If assignment is not by design, please use a different name.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 351,
+            "Column": 17
+          },
+          {
+            "RuleName": "PSAvoidAssignmentToAutomaticVariable",
+            "Severity": 1,
+            "Message": "The Variable 'input' is an automatic variable that is built into PowerShell, assigning to it might have undesired side effects. If assignment is not by design, please use a different name.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 364,
+            "Column": 17
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Invoke-DiagnosticChild' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 144,
+            "Column": 26
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Invoke-DiagnosticChild' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 159,
+            "Column": 17
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Invoke-DiagnosticChild' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 172,
+            "Column": 17
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Invoke-DiagnosticChild' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 201,
+            "Column": 17
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Invoke-DiagnosticChild' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 204,
+            "Column": 15
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-DiagnosticSummary' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 219,
+            "Column": 58
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-DiagnosticNative' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 225,
+            "Column": 21
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-DiagnosticNative' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 230,
+            "Column": 24
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-DiagnosticNative' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 232,
+            "Column": 20
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-DiagnosticNative' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 233,
+            "Column": 20
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-DiagnosticNative' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 243,
+            "Column": 24
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-DiagnosticNative' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 244,
+            "Column": 24
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-DiagnosticNative' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 245,
+            "Column": 24
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-DiagnosticObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 291,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-DiagnosticSuccess' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 300,
+            "Column": 16
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-DiagnosticObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 301,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Invoke-DiagnosticChild' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 306,
+            "Column": 17
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-DiagnosticSuccess' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 307,
+            "Column": 16
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-DiagnosticObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 310,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Invoke-DiagnosticChild' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 322,
+            "Column": 17
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-DiagnosticObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 324,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-DiagnosticNative' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 327,
+            "Column": 17
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-DiagnosticSummary' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 331,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Invoke-DiagnosticChild' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 337,
+            "Column": 17
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-DiagnosticObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 339,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-DiagnosticSummary' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 343,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Invoke-DiagnosticChild' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 351,
+            "Column": 17
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-DiagnosticObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 352,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Invoke-DiagnosticChild' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 360,
+            "Column": 17
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-DiagnosticObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 361,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSUseDeclaredVarsMoreThanAssignments",
+            "Severity": 1,
+            "Message": "The variable 'parentPolicies' is assigned but never used.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 56,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSUseDeclaredVarsMoreThanAssignments",
+            "Severity": 1,
+            "Message": "The variable 'originalBefore' is assigned but never used.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 93,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSUseDeclaredVarsMoreThanAssignments",
+            "Severity": 1,
+            "Message": "The variable 'oracleVersions' is assigned but never used.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 146,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": 1,
+            "Message": "Function 'New-DiagnosticApplication' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 94,
+            "Column": 14
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": 1,
+            "Message": "Function 'New-DiagnosticHelp' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 147,
+            "Column": 14
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'Diagnostics.Native.Tests.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 280,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": 1,
+            "Message": "The parameter 'PdftkPath' has been declared but not used.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 6,
+            "Column": 41
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": 1,
+            "Message": "The parameter 'GhostscriptPath' has been declared but not used.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 7,
+            "Column": 41
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": 1,
+            "Message": "The parameter 'PythonPath' has been declared but not used.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 8,
+            "Column": 41
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": 1,
+            "Message": "Function 'New-DiagnosticNativeResult' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+            "ScriptPath": "tests/help/Diagnostics.Tests.ps1",
+            "Line": 15,
+            "Column": 14
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": 1,
+            "Message": "Function 'New-DiagnosticEntryCase' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+            "ScriptPath": "tests/help/Diagnostics.Tests.ps1",
+            "Line": 32,
+            "Column": 14
+          },
+          {
+            "RuleName": "PSUseSingularNouns",
+            "Severity": 1,
+            "Message": "The cmdlet 'Get-DiagnosticPreservedHashes' uses a plural noun. A singular noun should be used instead.",
+            "ScriptPath": "tests/help/Diagnostics.Tests.ps1",
+            "Line": 29,
+            "Column": 14
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'Diagnostics.Tests.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "tests/help/Diagnostics.Tests.ps1",
+            "Line": 357,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'Diagnostics.Tests.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "tests/help/Diagnostics.Tests.ps1",
+            "Line": 358,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'Diagnostics.Tests.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "tests/help/Diagnostics.Tests.ps1",
+            "Line": 359,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": 1,
+            "Message": "The parameter 'Named' has been declared but not used.",
+            "ScriptPath": "tests/help/Diagnostics.Tests.ps1",
+            "Line": 239,
+            "Column": 22
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": 1,
+            "Message": "Function 'New-NativeLauncherApplication' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+            "ScriptPath": "tests/launcher/Launcher.Native.Tests.ps1",
+            "Line": 22,
+            "Column": 14
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'Launcher.Native.Tests.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "tests/launcher/Launcher.Native.Tests.ps1",
+            "Line": 19,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'Launcher.Native.Tests.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "tests/launcher/Launcher.Native.Tests.ps1",
+            "Line": 20,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": 1,
+            "Message": "The parameter 'PdftkPath' has been declared but not used.",
+            "ScriptPath": "tests/launcher/Launcher.Native.Tests.ps1",
+            "Line": 5,
+            "Column": 43
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-SizeResult' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SizeReporting.Native.Tests.ps1",
+            "Line": 313,
+            "Column": 16
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-SizeObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SizeReporting.Native.Tests.ps1",
+            "Line": 314,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-SizeResult' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SizeReporting.Native.Tests.ps1",
+            "Line": 318,
+            "Column": 16
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-SizeObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SizeReporting.Native.Tests.ps1",
+            "Line": 320,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-SizeResult' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SizeReporting.Native.Tests.ps1",
+            "Line": 324,
+            "Column": 16
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-SizeObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SizeReporting.Native.Tests.ps1",
+            "Line": 329,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-SizeResult' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SizeReporting.Native.Tests.ps1",
+            "Line": 341,
+            "Column": 16
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-SizeObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SizeReporting.Native.Tests.ps1",
+            "Line": 342,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSUseDeclaredVarsMoreThanAssignments",
+            "Severity": 1,
+            "Message": "The variable 'parentPolicies' is assigned but never used.",
+            "ScriptPath": "tests/pdf/SizeReporting.Native.Tests.ps1",
+            "Line": 53,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSUseDeclaredVarsMoreThanAssignments",
+            "Severity": 1,
+            "Message": "The variable 'oracleVersions' is assigned but never used.",
+            "ScriptPath": "tests/pdf/SizeReporting.Native.Tests.ps1",
+            "Line": 91,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": 1,
+            "Message": "Function 'New-SizeApplication' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+            "ScriptPath": "tests/pdf/SizeReporting.Native.Tests.ps1",
+            "Line": 99,
+            "Column": 14
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'SizeReporting.Native.Tests.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "tests/pdf/SizeReporting.Native.Tests.ps1",
+            "Line": 300,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": 1,
+            "Message": "The parameter 'PdftkPath' has been declared but not used.",
+            "ScriptPath": "tests/pdf/SizeReporting.Native.Tests.ps1",
+            "Line": 5,
+            "Column": 41
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": 1,
+            "Message": "The parameter 'GhostscriptPath' has been declared but not used.",
+            "ScriptPath": "tests/pdf/SizeReporting.Native.Tests.ps1",
+            "Line": 6,
+            "Column": 41
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": 1,
+            "Message": "The parameter 'PythonPath' has been declared but not used.",
+            "ScriptPath": "tests/pdf/SizeReporting.Native.Tests.ps1",
+            "Line": 7,
+            "Column": 41
+          },
+          {
+            "RuleName": "PSAvoidAssignmentToAutomaticVariable",
+            "Severity": 1,
+            "Message": "The Variable 'input' is an automatic variable that is built into PowerShell, assigning to it might have undesired side effects. If assignment is not by design, please use a different name.",
+            "ScriptPath": "tests/pdf/SizeReporting.Native.Tests.ps1",
+            "Line": 107,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Copy-DiscoveryNativeFixture' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+            "Line": 102,
+            "Column": 16
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-DiscoveryNativeMaster' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+            "Line": 103,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Copy-DiscoveryNativeFixture' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+            "Line": 108,
+            "Column": 16
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-DiscoveryNativeMaster' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+            "Line": 109,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Copy-DiscoveryNativeFixture' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+            "Line": 114,
+            "Column": 16
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Copy-DiscoveryNativeFixture' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+            "Line": 115,
+            "Column": 16
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Copy-DiscoveryNativeFixture' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+            "Line": 116,
+            "Column": 16
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Copy-DiscoveryNativeFixture' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+            "Line": 117,
+            "Column": 16
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Copy-DiscoveryNativeFixture' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+            "Line": 118,
+            "Column": 19
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Copy-DiscoveryNativeFixture' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+            "Line": 121,
+            "Column": 16
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-DiscoveryNativeMaster' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+            "Line": 124,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Copy-DiscoveryNativeFixture' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+            "Line": 129,
+            "Column": 16
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Copy-DiscoveryNativeFixture' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+            "Line": 130,
+            "Column": 19
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": 1,
+            "Message": "Function 'New-DiscoveryApplication' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+            "ScriptPath": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+            "Line": 23,
+            "Column": 14
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": 1,
+            "Message": "The parameter 'PdftkPath' has been declared but not used.",
+            "ScriptPath": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+            "Line": 3,
+            "Column": 43
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'SourceDiscovery.Native.Tests.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+            "Line": 20,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'SourceDiscovery.Native.Tests.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+            "Line": 21,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": 1,
+            "Message": "The parameter 'Label' has been declared but not used.",
+            "ScriptPath": "tests/unit/SourceDiscovery.Tests.ps1",
+            "Line": 157,
+            "Column": 15
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": 1,
+            "Message": "The parameter 'Value' has been declared but not used.",
+            "ScriptPath": "tests/unit/SourceDiscovery.Tests.ps1",
+            "Line": 157,
+            "Column": 23
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'Invoke-Tests.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "tools/test/Invoke-Tests.ps1",
+            "Line": 137,
+            "Column": 1
+          }
+        ]
+      },
+      {
+        "Shell": "ps7",
+        "ActualShellVersion": "7.6.6",
+        "AnalyzerVersion": "1.25.0",
+        "Errors": 0,
+        "Warnings": 97,
+        "Information": 82,
+        "RawReportPath": "tests/.work/T18-C1b-analyzer-ps7.json",
+        "RawReportSHA256": "c80e7689181e89cb23265df0b995617e54f932098c34437f131f7026624f0d48",
+        "ExecutionPath": "tests/.work/T18-C1b-analyzer-execution-ps7-8e740636d2c04c729b266b2baf363dec/execution.json",
+        "ExecutionSHA256": "7906801ed567483d9d9f9f547819cd64a49d47d96aa13f867c13af7345d2ac68",
+        "DriverSnapshotSHA256": "a5606d13061cfa80129933294089c79b00e03745f97dbbf031c826e707fd4731",
+        "Groups": [
+          {
+            "Severity": 0,
+            "Rule": "PSAvoidUsingPositionalParameters",
+            "Count": 76,
+            "Disposition": "nonblocking",
+            "Reason": "Private synthetic test/assertion helpers and expected interface examples; tested delivery, style guidance only."
+          },
+          {
+            "Severity": 0,
+            "Rule": "PSUseOutputTypeCorrectly",
+            "Count": 6,
+            "Disposition": "nonblocking",
+            "Reason": "Existing helper return annotations absent; observed return contracts are exercised. Information only."
+          },
+          {
+            "Severity": 1,
+            "Rule": "PSAvoidAssignmentToAutomaticVariable",
+            "Count": 5,
+            "Disposition": "nonblocking",
+            "Reason": "Unchanged older Destination/T16/T17 native-test helper local input path variables, no pipeline input expected or consumed. No new application assignment."
+          },
+          {
+            "Severity": 1,
+            "Rule": "PSAvoidUsingWriteHost",
+            "Count": 35,
+            "Disposition": "nonblocking",
+            "Reason": "Console diagnostics and test receipt markers are intentional for established interactive/batch workflow; actual stdout capture separately tested. No supported pre-PS5 host claim."
+          },
+          {
+            "Severity": 1,
+            "Rule": "PSReviewUnusedParameter",
+            "Count": 18,
+            "Disposition": "nonblocking",
+            "Reason": "Pester container/case parameters and dynamic/scriptblock uses; named parameter delivery is exercised in tests. No identified unused runtime decision input."
+          },
+          {
+            "Severity": 1,
+            "Rule": "PSUseApprovedVerbs",
+            "Count": 3,
+            "Disposition": "nonblocking",
+            "Reason": "Established private helper names retained; cosmetic naming does not change invocation/safety."
+          },
+          {
+            "Severity": 1,
+            "Rule": "PSUseDeclaredVarsMoreThanAssignments",
+            "Count": 12,
+            "Disposition": "nonblocking",
+            "Reason": "Pester BeforeAll/AfterAll cross-block observations and preservation context; variables are used in retained receipts/assertions despite analyzer block limitations."
+          },
+          {
+            "Severity": 1,
+            "Rule": "PSUseShouldProcessForStateChangingFunctions",
+            "Count": 19,
+            "Disposition": "nonblocking",
+            "Reason": "Internal guarded helpers/test fixture constructors trigger verb heuristic; existing controlled ownership/no-overwrite behavior is retained. No new public WhatIf interface."
+          },
+          {
+            "Severity": 1,
+            "Rule": "PSUseSingularNouns",
+            "Count": 5,
+            "Disposition": "nonblocking",
+            "Reason": "Established internal/test names; naming guidance only."
+          }
+        ],
+        "Findings": [
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "WinPDFMerge.ps1",
+            "Line": 74,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "WinPDFMerge.ps1",
+            "Line": 75,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "WinPDFMerge.ps1",
+            "Line": 88,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "WinPDFMerge.ps1",
+            "Line": 91,
+            "Column": 21
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "WinPDFMerge.ps1",
+            "Line": 94,
+            "Column": 21
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "WinPDFMerge.ps1",
+            "Line": 95,
+            "Column": 12
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "WinPDFMerge.ps1",
+            "Line": 109,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "WinPDFMerge.ps1",
+            "Line": 126,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "WinPDFMerge.ps1",
+            "Line": 148,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "WinPDFMerge.ps1",
+            "Line": 174,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "WinPDFMerge.ps1",
+            "Line": 268,
+            "Column": 13
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "WinPDFMerge.ps1",
+            "Line": 278,
+            "Column": 13
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "WinPDFMerge.ps1",
+            "Line": 280,
+            "Column": 21
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "WinPDFMerge.ps1",
+            "Line": 313,
+            "Column": 1
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "WinPDFMerge.ps1",
+            "Line": 314,
+            "Column": 1
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "WinPDFMerge.ps1",
+            "Line": 315,
+            "Column": 40
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "WinPDFMerge.ps1",
+            "Line": 317,
+            "Column": 44
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "WinPDFMerge.ps1",
+            "Line": 319,
+            "Column": 48
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "WinPDFMerge.ps1",
+            "Line": 320,
+            "Column": 1
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'WinPDFMerge.Helpers.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 286,
+            "Column": 12
+          },
+          {
+            "RuleName": "PSUseApprovedVerbs",
+            "Severity": 1,
+            "Message": "The cmdlet 'Reserve-MergeRunIdentity' uses an unapproved verb.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 236,
+            "Column": 10
+          },
+          {
+            "RuleName": "PSUseApprovedVerbs",
+            "Severity": 1,
+            "Message": "The cmdlet 'Sort-PdfInputs' uses an unapproved verb.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 1852,
+            "Column": 10
+          },
+          {
+            "RuleName": "PSUseApprovedVerbs",
+            "Severity": 1,
+            "Message": "The cmdlet 'Sanitize-FileName' uses an unapproved verb.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 1864,
+            "Column": 10
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": 1,
+            "Message": "Function 'New-MergeRunIdentity' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 193,
+            "Column": 10
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": 1,
+            "Message": "Function 'New-NativeStreamCapture' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 384,
+            "Column": 10
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": 1,
+            "Message": "Function 'New-PdfCancellationContext' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 771,
+            "Column": 10
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": 1,
+            "Message": "Function 'Stop-OwnedNativeProcess' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 776,
+            "Column": 10
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": 1,
+            "Message": "Function 'New-PdfStaging' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 1203,
+            "Column": 10
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": 1,
+            "Message": "Function 'Remove-PdfStaging' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 1322,
+            "Column": 10
+          },
+          {
+            "RuleName": "PSUseOutputTypeCorrectly",
+            "Severity": 0,
+            "Message": "The cmdlet 'Resolve-SourceDirectory' returns an object of type 'System.String' but this type is not declared in the OutputType attribute.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 38,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSUseOutputTypeCorrectly",
+            "Severity": 0,
+            "Message": "The cmdlet 'Get-SourcePdfFiles' returns an object of type 'System.Object[]' but this type is not declared in the OutputType attribute.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 59,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSUseOutputTypeCorrectly",
+            "Severity": 0,
+            "Message": "The cmdlet 'Resolve-OutputDirectory' returns an object of type 'System.String' but this type is not declared in the OutputType attribute.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 82,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSUseOutputTypeCorrectly",
+            "Severity": 0,
+            "Message": "The cmdlet 'Write-RunLog' returns an object of type 'System.String' but this type is not declared in the OutputType attribute.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 272,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSUseOutputTypeCorrectly",
+            "Severity": 0,
+            "Message": "The cmdlet 'Stop-OwnedNativeProcess' returns an object of type 'System.String' but this type is not declared in the OutputType attribute.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 791,
+            "Column": 13
+          },
+          {
+            "RuleName": "PSUseOutputTypeCorrectly",
+            "Severity": 0,
+            "Message": "The cmdlet 'ConvertFrom-PdfDocumentData' returns an object of type 'System.Int64' but this type is not declared in the OutputType attribute.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 1027,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSUseSingularNouns",
+            "Severity": 1,
+            "Message": "The cmdlet 'Get-SourcePdfFiles' uses a plural noun. A singular noun should be used instead.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 41,
+            "Column": 10
+          },
+          {
+            "RuleName": "PSUseSingularNouns",
+            "Severity": 1,
+            "Message": "The cmdlet 'Assert-MergeDirectories' uses a plural noun. A singular noun should be used instead.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 156,
+            "Column": 10
+          },
+          {
+            "RuleName": "PSUseSingularNouns",
+            "Severity": 1,
+            "Message": "The cmdlet 'Read-PdfEnvelopeBytes' uses a plural noun. A singular noun should be used instead.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 1061,
+            "Column": 10
+          },
+          {
+            "RuleName": "PSUseSingularNouns",
+            "Severity": 1,
+            "Message": "The cmdlet 'Sort-PdfInputs' uses a plural noun. A singular noun should be used instead.",
+            "ScriptPath": "src/WinPDFMerge.Helpers.ps1",
+            "Line": 1852,
+            "Column": 10
+          },
+          {
+            "RuleName": "PSAvoidAssignmentToAutomaticVariable",
+            "Severity": 1,
+            "Message": "The Variable 'input' is an automatic variable that is built into PowerShell, assigning to it might have undesired side effects. If assignment is not by design, please use a different name.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 111,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-ParameterResult' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 253,
+            "Column": 62
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-ParameterObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 255,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-ParameterObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 265,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Invoke-ParameterEntry' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 273,
+            "Column": 19
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-ParameterResult' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 274,
+            "Column": 18
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-ParameterObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 275,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Invoke-ParameterEntry' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 281,
+            "Column": 19
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-ParameterResult' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 282,
+            "Column": 18
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-ParameterObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 283,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Invoke-ParameterEntry' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 292,
+            "Column": 19
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-ParameterResult' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 293,
+            "Column": 18
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-ParameterObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 298,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'Parameters.Native.Tests.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 246,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": 1,
+            "Message": "The parameter 'PdftkPath' has been declared but not used.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 5,
+            "Column": 41
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": 1,
+            "Message": "The parameter 'GhostscriptPath' has been declared but not used.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 6,
+            "Column": 41
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": 1,
+            "Message": "The parameter 'PythonPath' has been declared but not used.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 7,
+            "Column": 41
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": 1,
+            "Message": "Function 'New-ParameterApplication' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 102,
+            "Column": 14
+          },
+          {
+            "RuleName": "PSUseDeclaredVarsMoreThanAssignments",
+            "Severity": 1,
+            "Message": "The variable 'parentPolicies' is assigned but never used.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 54,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSUseDeclaredVarsMoreThanAssignments",
+            "Severity": 1,
+            "Message": "The variable 'oracleVersions' is assigned but never used.",
+            "ScriptPath": "tests/cli/Parameters.Native.Tests.ps1",
+            "Line": 94,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'Dependencies.Entry.Tests.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "tests/dependencies/Dependencies.Entry.Tests.ps1",
+            "Line": 24,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'Dependencies.Entry.Tests.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "tests/dependencies/Dependencies.Entry.Tests.ps1",
+            "Line": 25,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'Dependencies.Entry.Tests.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "tests/dependencies/Dependencies.Entry.Tests.ps1",
+            "Line": 279,
+            "Column": 17
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": 1,
+            "Message": "The parameter 'PdftkPath' has been declared but not used.",
+            "ScriptPath": "tests/dependencies/Dependencies.Entry.Tests.ps1",
+            "Line": 5,
+            "Column": 43
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": 1,
+            "Message": "The parameter 'Label' has been declared but not used.",
+            "ScriptPath": "tests/dependencies/Dependencies.Entry.Tests.ps1",
+            "Line": 173,
+            "Column": 15
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": 1,
+            "Message": "Function 'New-DependencyEntryApplication' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+            "ScriptPath": "tests/dependencies/Dependencies.Entry.Tests.ps1",
+            "Line": 50,
+            "Column": 14
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": 1,
+            "Message": "Function 'Set-DependencyTestEnvironmentState' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+            "ScriptPath": "tests/dependencies/Dependencies.Entry.Tests.ps1",
+            "Line": 100,
+            "Column": 14
+          },
+          {
+            "RuleName": "PSAvoidAssignmentToAutomaticVariable",
+            "Severity": 1,
+            "Message": "The Variable 'input' is an automatic variable that is built into PowerShell, assigning to it might have undesired side effects. If assignment is not by design, please use a different name.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 53,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidAssignmentToAutomaticVariable",
+            "Severity": 1,
+            "Message": "The Variable 'input' is an automatic variable that is built into PowerShell, assigning to it might have undesired side effects. If assignment is not by design, please use a different name.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 351,
+            "Column": 17
+          },
+          {
+            "RuleName": "PSAvoidAssignmentToAutomaticVariable",
+            "Severity": 1,
+            "Message": "The Variable 'input' is an automatic variable that is built into PowerShell, assigning to it might have undesired side effects. If assignment is not by design, please use a different name.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 364,
+            "Column": 17
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'Destination.Native.Tests.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 204,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": 1,
+            "Message": "The parameter 'PdftkPath' has been declared but not used.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 4,
+            "Column": 41
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": 1,
+            "Message": "The parameter 'GhostscriptPath' has been declared but not used.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 5,
+            "Column": 41
+          },
+          {
+            "RuleName": "PSUseDeclaredVarsMoreThanAssignments",
+            "Severity": 1,
+            "Message": "The variable 'currentSid' is assigned but never used.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 15,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSUseDeclaredVarsMoreThanAssignments",
+            "Severity": 1,
+            "Message": "The variable 'pdftkVersion' is assigned but never used.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 39,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSUseDeclaredVarsMoreThanAssignments",
+            "Severity": 1,
+            "Message": "The variable 'gsVersion' is assigned but never used.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 40,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSUseDeclaredVarsMoreThanAssignments",
+            "Severity": 1,
+            "Message": "The variable 'parentPath' is assigned but never used.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 41,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSUseDeclaredVarsMoreThanAssignments",
+            "Severity": 1,
+            "Message": "The variable 'parentGsOptions' is assigned but never used.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 42,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": 1,
+            "Message": "Function 'New-DestinationApplication' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 44,
+            "Column": 14
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": 1,
+            "Message": "Function 'Start-DestinationEntry' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 129,
+            "Column": 14
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": 1,
+            "Message": "Function 'Remove-DestinationJunction' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 166,
+            "Column": 14
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-DestinationSuccess' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 212,
+            "Column": 16
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-DestinationObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 215,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-DestinationSuccess' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 226,
+            "Column": 16
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-DestinationObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 229,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-DestinationObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 253,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-DestinationSuccess' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 276,
+            "Column": 20
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-DestinationObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 277,
+            "Column": 13
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-DestinationObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 278,
+            "Column": 13
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-DestinationObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 302,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-DestinationObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 321,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-DestinationObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 330,
+            "Column": 17
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-DestinationObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 381,
+            "Column": 13
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-DestinationObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/filesafety/Destination.Native.Tests.ps1",
+            "Line": 435,
+            "Column": 17
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'Diagnostics.Native.Tests.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 280,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": 1,
+            "Message": "Function 'New-DiagnosticApplication' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 94,
+            "Column": 14
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": 1,
+            "Message": "Function 'New-DiagnosticHelp' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 147,
+            "Column": 14
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": 1,
+            "Message": "The parameter 'PdftkPath' has been declared but not used.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 6,
+            "Column": 41
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": 1,
+            "Message": "The parameter 'GhostscriptPath' has been declared but not used.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 7,
+            "Column": 41
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": 1,
+            "Message": "The parameter 'PythonPath' has been declared but not used.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 8,
+            "Column": 41
+          },
+          {
+            "RuleName": "PSUseDeclaredVarsMoreThanAssignments",
+            "Severity": 1,
+            "Message": "The variable 'parentPolicies' is assigned but never used.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 56,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSUseDeclaredVarsMoreThanAssignments",
+            "Severity": 1,
+            "Message": "The variable 'originalBefore' is assigned but never used.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 93,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSUseDeclaredVarsMoreThanAssignments",
+            "Severity": 1,
+            "Message": "The variable 'oracleVersions' is assigned but never used.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 146,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Invoke-DiagnosticChild' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 144,
+            "Column": 26
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Invoke-DiagnosticChild' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 159,
+            "Column": 17
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Invoke-DiagnosticChild' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 172,
+            "Column": 17
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Invoke-DiagnosticChild' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 201,
+            "Column": 17
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Invoke-DiagnosticChild' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 204,
+            "Column": 15
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-DiagnosticSummary' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 219,
+            "Column": 58
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-DiagnosticNative' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 225,
+            "Column": 21
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-DiagnosticNative' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 230,
+            "Column": 24
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-DiagnosticNative' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 232,
+            "Column": 20
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-DiagnosticNative' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 233,
+            "Column": 20
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-DiagnosticNative' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 243,
+            "Column": 24
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-DiagnosticNative' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 244,
+            "Column": 24
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-DiagnosticNative' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 245,
+            "Column": 24
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-DiagnosticObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 291,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-DiagnosticSuccess' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 300,
+            "Column": 16
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-DiagnosticObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 301,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Invoke-DiagnosticChild' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 306,
+            "Column": 17
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-DiagnosticSuccess' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 307,
+            "Column": 16
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-DiagnosticObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 310,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Invoke-DiagnosticChild' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 322,
+            "Column": 17
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-DiagnosticObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 324,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-DiagnosticNative' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 327,
+            "Column": 17
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-DiagnosticSummary' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 331,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Invoke-DiagnosticChild' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 337,
+            "Column": 17
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-DiagnosticObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 339,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-DiagnosticSummary' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 343,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Invoke-DiagnosticChild' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 351,
+            "Column": 17
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-DiagnosticObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 352,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Invoke-DiagnosticChild' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 360,
+            "Column": 17
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-DiagnosticObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/help/Diagnostics.Native.Tests.ps1",
+            "Line": 361,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'Diagnostics.Tests.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "tests/help/Diagnostics.Tests.ps1",
+            "Line": 357,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'Diagnostics.Tests.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "tests/help/Diagnostics.Tests.ps1",
+            "Line": 358,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'Diagnostics.Tests.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "tests/help/Diagnostics.Tests.ps1",
+            "Line": 359,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": 1,
+            "Message": "The parameter 'Named' has been declared but not used.",
+            "ScriptPath": "tests/help/Diagnostics.Tests.ps1",
+            "Line": 239,
+            "Column": 22
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": 1,
+            "Message": "Function 'New-DiagnosticNativeResult' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+            "ScriptPath": "tests/help/Diagnostics.Tests.ps1",
+            "Line": 15,
+            "Column": 14
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": 1,
+            "Message": "Function 'New-DiagnosticEntryCase' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+            "ScriptPath": "tests/help/Diagnostics.Tests.ps1",
+            "Line": 32,
+            "Column": 14
+          },
+          {
+            "RuleName": "PSUseSingularNouns",
+            "Severity": 1,
+            "Message": "The cmdlet 'Get-DiagnosticPreservedHashes' uses a plural noun. A singular noun should be used instead.",
+            "ScriptPath": "tests/help/Diagnostics.Tests.ps1",
+            "Line": 29,
+            "Column": 14
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'Launcher.Native.Tests.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "tests/launcher/Launcher.Native.Tests.ps1",
+            "Line": 19,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'Launcher.Native.Tests.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "tests/launcher/Launcher.Native.Tests.ps1",
+            "Line": 20,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": 1,
+            "Message": "The parameter 'PdftkPath' has been declared but not used.",
+            "ScriptPath": "tests/launcher/Launcher.Native.Tests.ps1",
+            "Line": 5,
+            "Column": 43
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": 1,
+            "Message": "Function 'New-NativeLauncherApplication' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+            "ScriptPath": "tests/launcher/Launcher.Native.Tests.ps1",
+            "Line": 22,
+            "Column": 14
+          },
+          {
+            "RuleName": "PSAvoidAssignmentToAutomaticVariable",
+            "Severity": 1,
+            "Message": "The Variable 'input' is an automatic variable that is built into PowerShell, assigning to it might have undesired side effects. If assignment is not by design, please use a different name.",
+            "ScriptPath": "tests/pdf/SizeReporting.Native.Tests.ps1",
+            "Line": 107,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-SizeResult' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SizeReporting.Native.Tests.ps1",
+            "Line": 313,
+            "Column": 16
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-SizeObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SizeReporting.Native.Tests.ps1",
+            "Line": 314,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-SizeResult' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SizeReporting.Native.Tests.ps1",
+            "Line": 318,
+            "Column": 16
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-SizeObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SizeReporting.Native.Tests.ps1",
+            "Line": 320,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-SizeResult' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SizeReporting.Native.Tests.ps1",
+            "Line": 324,
+            "Column": 16
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-SizeObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SizeReporting.Native.Tests.ps1",
+            "Line": 329,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-SizeResult' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SizeReporting.Native.Tests.ps1",
+            "Line": 341,
+            "Column": 16
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Add-SizeObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SizeReporting.Native.Tests.ps1",
+            "Line": 342,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'SizeReporting.Native.Tests.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "tests/pdf/SizeReporting.Native.Tests.ps1",
+            "Line": 300,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": 1,
+            "Message": "The parameter 'PdftkPath' has been declared but not used.",
+            "ScriptPath": "tests/pdf/SizeReporting.Native.Tests.ps1",
+            "Line": 5,
+            "Column": 41
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": 1,
+            "Message": "The parameter 'GhostscriptPath' has been declared but not used.",
+            "ScriptPath": "tests/pdf/SizeReporting.Native.Tests.ps1",
+            "Line": 6,
+            "Column": 41
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": 1,
+            "Message": "The parameter 'PythonPath' has been declared but not used.",
+            "ScriptPath": "tests/pdf/SizeReporting.Native.Tests.ps1",
+            "Line": 7,
+            "Column": 41
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": 1,
+            "Message": "Function 'New-SizeApplication' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+            "ScriptPath": "tests/pdf/SizeReporting.Native.Tests.ps1",
+            "Line": 99,
+            "Column": 14
+          },
+          {
+            "RuleName": "PSUseDeclaredVarsMoreThanAssignments",
+            "Severity": 1,
+            "Message": "The variable 'parentPolicies' is assigned but never used.",
+            "ScriptPath": "tests/pdf/SizeReporting.Native.Tests.ps1",
+            "Line": 53,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSUseDeclaredVarsMoreThanAssignments",
+            "Severity": 1,
+            "Message": "The variable 'oracleVersions' is assigned but never used.",
+            "ScriptPath": "tests/pdf/SizeReporting.Native.Tests.ps1",
+            "Line": 91,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'SourceDiscovery.Native.Tests.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+            "Line": 20,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'SourceDiscovery.Native.Tests.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+            "Line": 21,
+            "Column": 5
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": 1,
+            "Message": "The parameter 'PdftkPath' has been declared but not used.",
+            "ScriptPath": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+            "Line": 3,
+            "Column": 43
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": 1,
+            "Message": "Function 'New-DiscoveryApplication' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+            "ScriptPath": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+            "Line": 23,
+            "Column": 14
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Copy-DiscoveryNativeFixture' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+            "Line": 102,
+            "Column": 16
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-DiscoveryNativeMaster' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+            "Line": 103,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Copy-DiscoveryNativeFixture' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+            "Line": 108,
+            "Column": 16
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-DiscoveryNativeMaster' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+            "Line": 109,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Copy-DiscoveryNativeFixture' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+            "Line": 114,
+            "Column": 16
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Copy-DiscoveryNativeFixture' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+            "Line": 115,
+            "Column": 16
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Copy-DiscoveryNativeFixture' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+            "Line": 116,
+            "Column": 16
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Copy-DiscoveryNativeFixture' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+            "Line": 117,
+            "Column": 16
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Copy-DiscoveryNativeFixture' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+            "Line": 118,
+            "Column": 19
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Copy-DiscoveryNativeFixture' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+            "Line": 121,
+            "Column": 16
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Assert-DiscoveryNativeMaster' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+            "Line": 124,
+            "Column": 9
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Copy-DiscoveryNativeFixture' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+            "Line": 129,
+            "Column": 16
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": 0,
+            "Message": "Cmdlet 'Copy-DiscoveryNativeFixture' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+            "ScriptPath": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+            "Line": 130,
+            "Column": 19
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": 1,
+            "Message": "The parameter 'Label' has been declared but not used.",
+            "ScriptPath": "tests/unit/SourceDiscovery.Tests.ps1",
+            "Line": 157,
+            "Column": 15
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": 1,
+            "Message": "The parameter 'Value' has been declared but not used.",
+            "ScriptPath": "tests/unit/SourceDiscovery.Tests.ps1",
+            "Line": 157,
+            "Column": 23
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": 1,
+            "Message": "File 'Invoke-Tests.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+            "ScriptPath": "tools/test/Invoke-Tests.ps1",
+            "Line": 137,
+            "Column": 1
+          }
+        ]
+      }
+    ],
+    "Executions": [
+      {
+        "Path": "tests/.work/T18-C1b-analyzer-execution-ps51-25096a4f7bc144c1a11aee630b0a2ee2",
+        "ExecutionSHA256": "99202e5e7bb066f7e0ce1eacbfd0bbde6a4f1414f495b2fd46ce6975f7eb42ae"
+      },
+      {
+        "Path": "tests/.work/T18-C1b-analyzer-execution-ps7-8e740636d2c04c729b266b2baf363dec",
+        "ExecutionSHA256": "7906801ed567483d9d9f9f547819cd64a49d47d96aa13f867c13af7345d2ac68"
+      }
+    ],
+    "PreparationHistory": [
+      {
+        "Path": "tests/.work/T18-precommit-analyzer-execution-ps51-53b595d7dbc24fe098553a1f20d3d441",
+        "ExitCode": 1,
+        "ExecutionSHA256": "15356aa12c9ed2826826bd37f933d3364e778522e3c2895d873d02140f7af777",
+        "FindingsAvailable": false,
+        "Diagnosis": "Reviewer scope reader wrapped PS5.1 ConvertFrom-Json array as one ChildPath. Ignored driver changed to explicit string[]; exact pre-run sources, argv/raw streams retained. No application/native acceptance failure."
+      }
+    ]
+  },
+  "NativeEvidence": {
+    "Result": "not_run",
+    "Scope": "Native AC042/AC043 receipt audit follows clean C1; controlled/static/source review does not certify native acceptance."
+  },
+  "EvidenceAudit": {
+    "Result": "not_run",
+    "Scope": "Separate complete raw/public planned archive audit required later."
+  },
+  "PolicyScope": {
+    "OrchestrationControlAndPSA": "Previously authorized child-only RemoteSigned; inherited PSModulePath removed only in test children.",
+    "PreservedBATAndReadmePercentRoute": "Existing accepted process-only Bypass flags; documented percent route intentionally executes actual Windows PowerShell5.1 in both outer tier contexts.",
+    "EnterpriseOrPersistentPolicyOverride": false,
+    "Basis": "Root confirmed preserved prior T06/T16 command scope; fresh ordinary inventory has MachinePolicy/UserPolicy Undefined. No source policy change."
+  },
+  "ReviewScriptSHA256": "3acdcfe5479d94479b7161dbb3c5f095f0b85c5554dc9a8b86cf2aebc94a616b",
+  "Limits": [
+    "Read-only source/diff and actual default scoped static checks only. No application/suite/fixture/native-engine rerun by this source review.",
+    "This binds actual clean C1 source and scoped analyzer executions; aggregate/native/archive/final synchronization audits remain separate.",
+    "Early binding/unsafe source-output/helper-import/host setup failures can occur before a safe usable log; unavailable/inaccessible log writes remain honest best effort.",
+    "Local diagnostics are sensitive and unredacted. This does not imply uploaded private PDFs or encrypted/private filesystem permissions.",
+    "Reviewer authored unchanged T15 native adapter and two T16 wrapper additions; those unchanged pieces are preservation-checked, not independently authored-code reviewed again."
+  ]
+}

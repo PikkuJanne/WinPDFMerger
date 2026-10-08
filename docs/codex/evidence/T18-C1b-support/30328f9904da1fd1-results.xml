@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="11" errors="0" failures="6" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2026-10-08" time="11.00.30">
+  <environment cwd="&lt;REPO&gt;" user-domain="&lt;IDENTITY&gt;" platform="Microsoft Windows 11 Pro|C:\Windows|\Device\Harddisk0\Partition3" os-version="10.0.26300" user="&lt;IDENTITY&gt;" machine-name="&lt;IDENTITY&gt;" nunit-version="2.5.8.0" clr-version="10.0.12" />
+  <culture-info current-culture="fi-FI" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Failure" success="False" time="15.2811" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="&lt;REPO&gt;\tests\help\Diagnostics.Native.Tests.ps1" executed="True" result="Failure" success="False" time="15.2811" asserts="0" description="&lt;REPO&gt;\tests\help\Diagnostics.Native.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="AC042 actual help and every documented application command" executed="True" result="Failure" success="False" time="7.1062" asserts="0" description="AC042 actual help and every documented application command">
+            <results>
+              <test-case description="returns genuine Get-Help synopsis, description, parameters and four executable examples" name="AC042 actual help and every documented application command.returns genuine Get-Help synopsis, description, parameters and four executable examples" time="1.1979" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected strings to be the same, but they were different.
+Expected length: 232
+Actual length:   508
+Strings differ at index 43.
+Expected: '.\WinPDFMerge.ps1 'C:\Work\Papers\ToMerge'␊.\WinPDFMerge.ps1 'C:\Work\Papers\ToMerge' -OutputFolder ...'
+But was:  '.\WinPDFMerge.ps1 'C:\Work\Papers\ToMerge'␊Writes the master, any smaller validated screen email cop...'
+           -------------------------------------------^</message>
+                  <stack-trace>at (@($proof.Help.Examples | ForEach-Object { $_.Code.Trim() }) -join "`n") | Should -BeExactly ($expectedHelpCodes -join "`n"), &lt;REPO&gt;\tests\help\Diagnostics.Native.Tests.ps1:289</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="runs the documented direct powershell.exe literal-percent route without cmd expansion" name="AC042 actual help and every documented application command.runs the documented direct powershell.exe literal-percent route without cmd expansion" time="3.1494" asserts="0" success="True" result="Success" executed="True" />
+              <test-suite type="ParameterizedTest" name="AC042 actual help and every documented application command.executes the actual help example and matching README route &lt;Route&gt;" executed="True" result="Failure" success="False" time="2.7114" asserts="0" description="executes the actual help example and matching README route &lt;Route&gt;">
+                <results>
+                  <test-case description="executes the actual help example and matching README route positional-default" name="AC042 actual help and every documented application command.executes the actual help example and matching README route positional-default" time="0.759" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>Expected strings to be the same, but they were different.
+Expected length: 42
+Actual length:   129
+Strings differ at index 42.
+Expected: '.\WinPDFMerge.ps1 'C:\Work\Papers\ToMerge''
+But was:  '.\WinPDFMerge.ps1 'C:\Work\Papers\ToMerge'␊Writes the master, any smaller validated screen email cop...'
+           ------------------------------------------^</message>
+                      <stack-trace>at $code.Trim() | Should -BeExactly $expectedHelpCodes[$Index], &lt;REPO&gt;\tests\help\Diagnostics.Native.Tests.ps1:168
+at &lt;ScriptBlock&gt;, &lt;REPO&gt;\tests\help\Diagnostics.Native.Tests.ps1:298</stack-trace>
+                    </failure>
+                  </test-case>
+                  <test-case description="executes the actual help example and matching README route explicit-output" name="AC042 actual help and every documented application command.executes the actual help example and matching README route explicit-output" time="0.6697" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>Expected strings to be the same, but they were different.
+Expected length: 73
+Actual length:   118
+Strings differ at index 73.
+Expected: '.\WinPDFMerge.ps1 'C:\Work\Papers\ToMerge' -OutputFolder 'C:\Work\Merged''
+But was:  '.\WinPDFMerge.ps1 'C:\Work\Papers\ToMerge' -OutputFolder 'C:\Work\Merged'␊Uses the existing separate...'
+           -------------------------------------------------------------------------^</message>
+                      <stack-trace>at $code.Trim() | Should -BeExactly $expectedHelpCodes[$Index], &lt;REPO&gt;\tests\help\Diagnostics.Native.Tests.ps1:168
+at &lt;ScriptBlock&gt;, &lt;REPO&gt;\tests\help\Diagnostics.Native.Tests.ps1:298</stack-trace>
+                    </failure>
+                  </test-case>
+                  <test-case description="executes the actual help example and matching README route SkipEmail" name="AC042 actual help and every documented application command.executes the actual help example and matching README route SkipEmail" time="0.6574" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>Expected strings to be the same, but they were different.
+Expected length: 53
+Actual length:   118
+Strings differ at index 53.
+Expected: '.\WinPDFMerge.ps1 'C:\Work\Papers\ToMerge' -SkipEmail'
+But was:  '.\WinPDFMerge.ps1 'C:\Work\Papers\ToMerge' -SkipEmail␊Creates the master without discovering or laun...'
+           -----------------------------------------------------^</message>
+                      <stack-trace>at $code.Trim() | Should -BeExactly $expectedHelpCodes[$Index], &lt;REPO&gt;\tests\help\Diagnostics.Native.Tests.ps1:168
+at &lt;ScriptBlock&gt;, &lt;REPO&gt;\tests\help\Diagnostics.Native.Tests.ps1:298</stack-trace>
+                    </failure>
+                  </test-case>
+                  <test-case description="executes the actual help example and matching README route ebook" name="AC042 actual help and every documented application command.executes the actual help example and matching README route ebook" time="0.6253" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>Expected strings to be the same, but they were different.
+Expected length: 61
+Actual length:   140
+Strings differ at index 61.
+Expected: '.\WinPDFMerge.ps1 'C:\Work\Papers\ToMerge' -EmailPreset ebook'
+But was:  '.\WinPDFMerge.ps1 'C:\Work\Papers\ToMerge' -EmailPreset ebook␊Selects the ebook email preset. A cand...'
+           -------------------------------------------------------------^</message>
+                      <stack-trace>at $code.Trim() | Should -BeExactly $expectedHelpCodes[$Index], &lt;REPO&gt;\tests\help\Diagnostics.Native.Tests.ps1:168
+at &lt;ScriptBlock&gt;, &lt;REPO&gt;\tests\help\Diagnostics.Native.Tests.ps1:298</stack-trace>
+                    </failure>
+                  </test-case>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="AC043 actual early/failure diagnostics supporting separate review" executed="True" result="Failure" success="False" time="12.9397" asserts="0" description="AC043 actual early/failure diagnostics supporting separate review">
+            <results>
+              <test-case description="logs useful actual PDFtk failure for an owned corrupt copied input with both native stream labels" name="AC043 actual early/failure diagnostics supporting separate review.logs useful actual PDFtk failure for an owned corrupt copied input with both native stream labels" time="1.9973" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="retains early trusted-path failure diagnostics when selected PDFtk is missing in a scoped child environment" name="AC043 actual early/failure diagnostics supporting separate review.retains early trusted-path failure diagnostics when selected PDFtk is missing in a scoped child environment" time="1.294" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected regular expression '(?m)^.+ executable:' to not match '==== WinPDFMerge run 2026-10-08 11.00.42 ====
+Stage: Invocation preflight; elapsed: 0.680 s
+Source folder: &lt;REPO&gt;\tests\.work\diagnostics\f380623f3cfd4d0ea141ae68a62428d5\21b28d4ca31c4710b0479890bd4044be\source folder
+Output folder: &lt;REPO&gt;\tests\.work\diagnostics\f380623f3cfd4d0ea141ae68a62428d5\21b28d4ca31c4710b0479890bd4044be\app with spaces
+Run identity: WinPDFMerge_source folder_20261008_110042_9d9f83f16eda4314
+Planned master output: &lt;REPO&gt;\tests\.work\diagnostics\f380623f3cfd4d0ea141ae68a62428d5\21b28d4ca31c4710b0479890bd4044be\app with spaces\WinPDFMerge_source folder_20261008_110042_9d9f83f16eda4314.pdf
+Planned email output: &lt;REPO&gt;\tests\.work\diagnostics\f380623f3cfd4d0ea141ae68a62428d5\21b28d4ca31c4710b0479890bd4044be\app with spaces\WinPDFMerge_source folder_20261008_110042_9d9f83f16eda4314_email.pdf
+Diagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.
+PowerShell: 7.6.6 (Core)
+Stage: Input discovery; elapsed: 0.692 s
+PDF count: 3
+Input 1: &lt;REPO&gt;\tests\.work\diagnostics\f380623f3cfd4d0ea141ae68a62428d5\21b28d4ca31c4710b0479890bd4044be\source folder\1.pdf
+Input 2: &lt;REPO&gt;\tests\.work\diagnostics\f380623f3cfd4d0ea141ae68a62428d5\21b28d4ca31c4710b0479890bd4044be\source folder\2.pdf
+Input 3: &lt;REPO&gt;\tests\.work\diagnostics\f380623f3cfd4d0ea141ae68a62428d5\21b28d4ca31c4710b0479890bd4044be\source folder\10.pdf
+Stage: PDFtk preflight; elapsed: 0.749 s
+PDFtk preflight failed. Selected executable: ''. PDFtk Server not found.
+Elapsed time: 0.802 s
+PowerShell: 7.6.6 (Core)
+PDFtk version: not probed
+Ghostscript version: not probed
+Input summary: 3 PDF(s); expected pages: not inspected
+Result: Failure; exit code: 1
+', but it did match.</message>
+                  <stack-trace>at $log.Text | Should -Match 'PDFtk Server not found'; $log.Text | Should -Not -Match '(?m)^.+ executable:', &lt;REPO&gt;\tests\help\Diagnostics.Native.Tests.ps1:341</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="prints missing-input usage without prompting or importing the application helper" name="AC043 actual early/failure diagnostics supporting separate review.prints missing-input usage without prompting or importing the application helper" time="0.4995" asserts="0" success="True" result="Success" executed="True" />
+              <test-suite type="ParameterizedTest" name="AC043 actual early/failure diagnostics supporting separate review.reports &lt;Kind&gt; preflight clearly on console before an unsafe diagnostic location can be established" executed="True" result="Success" success="True" time="2.0368" asserts="0" description="reports &lt;Kind&gt; preflight clearly on console before an unsafe diagnostic location can be established">
+                <results>
+                  <test-case description="reports source preflight clearly on console before an unsafe diagnostic location can be established" name="AC043 actual early/failure diagnostics supporting separate review.reports source preflight clearly on console before an unsafe diagnostic location can be established" time="1.0187" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="reports destination preflight clearly on console before an unsafe diagnostic location can be established" name="AC043 actual early/failure diagnostics supporting separate review.reports destination preflight clearly on console before an unsafe diagnostic location can be established" time="1.0182" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

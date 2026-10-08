@@ -3,34 +3,30 @@
 Target: published and independently verified `v1.0.0` in `PikkuJanne/WinPDFMerger`.
 Completed milestones: M1 and M2 within recorded local Windows scope.
 Current milestone: M3 — focused usability and honest documentation, in progress.
-Completed tasks: T01 through T17.
-Selected task: T18 — improve help, progress and private-by-default diagnostics, in progress.
+Completed tasks: T01 through T18.
+Selected next task: T19 — characterize feature-rich PDF preservation, pending.
 Publication: NOT STARTED.
 
-T17 remains complete at tested C1 `040176695fdb79e614ba2a821118fbc979a33115`;
-its records C2 `0cf2f49d4e9ab572a60bcdabbdbf33a033e33034` was freshly clean/live
-verified at T18 start. Owner merged PR17 to main `4e4501a34541c8e231c6c32528819efa16cba3bb`;
-that main tree matches the starting feature tree. No tag/release was found.
+T18 clean C1b `e506d73797379f355a1a0b731c857e71f4c1d251` passes 590 tests in each of actual
+PS5.1.26100.9444 Desktop x64 and pinned PS7.6.6 Core x64: 1,180 total across
+17 tiers/34 reports, all bad counts zero. AC042 integration and independent
+AC043 review pass. Actual comment help, measured named stages/summary, earlier
+trusted owned logs and both version-probe streams improve diagnostics without
+changing defaults/publication safeguards. Logs stay local and can be sensitive.
+Source/diagnostic/runtime/native/public archive reviews pass; twelve changed
+PS files have zero PSA errors with reviewed 97 warnings/82 information each.
+Not lint-clean/full T22. Dirty/C1a/preparation failures and absences remain
+separate. See evidence/T18-completion.md and its results/manifest/provenance.
 
-T18 implementation provides actual comment help, measured named stages/summary,
-early trusted local logging and full native version-probe diagnostics. New
-36-case controlled diagnostics and 11-case native help/routes suites have dirty
-development evidence in both required shells. Initial help formatting failures
-and reviewer/test preparation failures are retained, not counted as acceptance.
-Required AC042 integration and AC043 review remain not_run until clean C1 gates.
-See evidence/T18-checkpoint.md. A records-only C2 must bind actual C1 execution,
-review and synchronization; C2's own push/equality is reported afterward.
+C1a runtime bytes remain identical in test-only C1b. C1b was clean/live verified
+after tests. Records-only C2 binds that actual checkpoint; C2's own synchronization
+and PR head are reported afterward in the session and rechecked next session.
+Owner merged PR17 to main `4e4501a34541c8e231c6c32528819efa16cba3bb`.
+[Draft T18 PR](https://github.com/PikkuJanne/WinPDFMerger/pull/18) contains current implementation/closure.
+No tag/release created. T19/AC044/AC045 remain unstarted.
 
-Approved caches only; standard-user NTFS/build26300, ordinary Restricted/all
-scopes Undefined; authorized child RemoteSigned, no acquisition/admin or
-persistent environment/policy/security changes. Screen/output-beside-entry,
-source preservation, native safety/ownership/no-overwrite and published-master
-retention remain. Physical Explorer/abrupt crash, broad OS/UNC/CI/security,
-feature preservation/package/release gates remain open. No full-project claim.
-
-Initial clean C1a cc76ccf was pushed/live verified, then full drivers stopped
-on one legacy Destination test expectation (correct early log plus foreign
-file); native/help and first fifteen tiers passed. Actual580pass/1fail each
-across sixteen executed tiers; Staging not executed. Application source stays
-unchanged; test-only checkpoint and full clean C1b acceptance remain required.
-T18/AC042/AC043 are not yet checkpoint-complete; T19/publication remain unstarted.
+Approved caches only; standard user/local NTFS/build26300, ordinary Restricted/
+policy scopes Undefined, authorized child RemoteSigned and existing explicit
+BAT/percent-route process-only Bypass. No acquisition/admin/persistent policy/
+environment/security changes. Physical Explorer/abrupt crash, broad OS/UNC/CI/
+security, feature preservation/package/release gates remain open.
