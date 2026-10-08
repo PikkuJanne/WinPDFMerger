@@ -1,0 +1,176 @@
+{
+  "schema_version": 1,
+  "task": "T20",
+  "acceptance": {
+    "AC046": {
+      "result": "pass",
+      "mode": "review",
+      "semantic_checks": 31,
+      "local_links": 35,
+      "immutable_checks": 6,
+      "report": "T20-reports/C1-user-docs-review.json"
+    },
+    "AC047": {
+      "result": "pass",
+      "mode": "review",
+      "policy_checks": 33,
+      "report": "T20-reports/C1-policy-review.json"
+    }
+  },
+  "tested_commit": "a9e93319ad260646d57278f207872a0e03dbb155",
+  "environment": {
+    "os": "Windows 11 reference desktop, Windows10.0.26300.0; OS support channel unestablished",
+    "account": "standard user",
+    "filesystem": "local NTFS",
+    "python_for_clean_capture": "3.12.14",
+    "scoped_test_policy": "RemoteSigned, child-only PSModulePath removal",
+    "ordinary_policy": "Restricted; all five scopes Undefined",
+    "dependency_acquisition": false,
+    "persistent_environment_or_security_change": false
+  },
+  "targeted_pester": {
+    "passed": 198,
+    "reports": 8,
+    "failed": 0,
+    "failed_blocks": 0,
+    "failed_containers": 0,
+    "skipped": 0,
+    "not_run": 0,
+    "hosts": [
+      {
+        "shell": "ps51",
+        "summary": {
+          "shell_version": "5.1.26100.9444",
+          "shell_edition": "Desktop",
+          "process_64_bit": true,
+          "pester_version": "6.2.0",
+          "execution_policy": "RemoteSigned"
+        },
+        "passed": 99,
+        "tiers": [
+          {
+            "tier": "PublicDocs",
+            "passed": 18,
+            "evidence_class": "public-documentation-contract-isolated-real-parameter-binding-and-controlled-helper-outcomes; no application/native/manual acceptance",
+            "public_summary": "T20-reports/C1-ps51-PublicDocs.summary.json",
+            "public_xml": "T20-reports/C1-ps51-PublicDocs.results.xml"
+          },
+          {
+            "tier": "PreservationDocs",
+            "passed": 14,
+            "evidence_class": "documentation-contract-and-actual-help; not native PDF preservation or manual acceptance",
+            "public_summary": "T20-reports/C1-ps51-PreservationDocs.summary.json",
+            "public_xml": "T20-reports/C1-ps51-PreservationDocs.results.xml"
+          },
+          {
+            "tier": "Parameters",
+            "passed": 31,
+            "evidence_class": "unit-actual-parameter-binding-and-controlled-entry-native-decisions",
+            "public_summary": "T20-reports/C1-ps51-Parameters.summary.json",
+            "public_xml": "T20-reports/C1-ps51-Parameters.results.xml"
+          },
+          {
+            "tier": "Diagnostics",
+            "passed": 36,
+            "evidence_class": "unit-help-stage-summary-and-controlled-probe-entry-diagnostics; no PDF-engine-support claim",
+            "public_summary": "T20-reports/C1-ps51-Diagnostics.summary.json",
+            "public_xml": "T20-reports/C1-ps51-Diagnostics.results.xml"
+          }
+        ]
+      },
+      {
+        "shell": "ps7",
+        "summary": {
+          "shell_version": "7.6.6",
+          "shell_edition": "Core",
+          "process_64_bit": true,
+          "pester_version": "6.2.0",
+          "execution_policy": "RemoteSigned"
+        },
+        "passed": 99,
+        "tiers": [
+          {
+            "tier": "PublicDocs",
+            "passed": 18,
+            "evidence_class": "public-documentation-contract-isolated-real-parameter-binding-and-controlled-helper-outcomes; no application/native/manual acceptance",
+            "public_summary": "T20-reports/C1-ps7-PublicDocs.summary.json",
+            "public_xml": "T20-reports/C1-ps7-PublicDocs.results.xml"
+          },
+          {
+            "tier": "PreservationDocs",
+            "passed": 14,
+            "evidence_class": "documentation-contract-and-actual-help; not native PDF preservation or manual acceptance",
+            "public_summary": "T20-reports/C1-ps7-PreservationDocs.summary.json",
+            "public_xml": "T20-reports/C1-ps7-PreservationDocs.results.xml"
+          },
+          {
+            "tier": "Parameters",
+            "passed": 31,
+            "evidence_class": "unit-actual-parameter-binding-and-controlled-entry-native-decisions",
+            "public_summary": "T20-reports/C1-ps7-Parameters.summary.json",
+            "public_xml": "T20-reports/C1-ps7-Parameters.results.xml"
+          },
+          {
+            "tier": "Diagnostics",
+            "passed": 36,
+            "evidence_class": "unit-help-stage-summary-and-controlled-probe-entry-diagnostics; no PDF-engine-support claim",
+            "public_summary": "T20-reports/C1-ps7-Diagnostics.summary.json",
+            "public_xml": "T20-reports/C1-ps7-Diagnostics.results.xml"
+          }
+        ]
+      }
+    ]
+  },
+  "scoped_analyzer": {
+    "version": "1.25.0",
+    "files": [
+      "tests/help/PublicDocs.Tests.ps1",
+      "tools/test/Invoke-Tests.ps1"
+    ],
+    "per_host": {
+      "errors": 0,
+      "warnings": 4,
+      "information": 0
+    },
+    "warning_review": "Pester BeforeAll variable scope, receipt/report Write-Host, plural test helper; nonblocking for T20, not T22/full lint completion"
+  },
+  "unchanged_file_sha256": {
+    "LICENSE": "714ffa7a21614e637d7dbb17a2e86e4575d7ecd2b6d36b5b67ab3fdcc4193477",
+    "WinPDFMerge.ps1": "e702b0b1583ab841589494cc524da1d9bd4148cf8849577793b08fd8f54b641d",
+    "WinPDFMerge.bat": "288287beefea974c64d39b34266332d83112b9106c952efd8c304edfedebff83",
+    "src/WinPDFMerge.Helpers.ps1": "3df10eafeac04493b06300d276cff05a9c5ef196a01b7b157a6afd3d2768eaa7",
+    "docs/PDF_LIMITATIONS.md": "ee8c4f1b73d62ba75abebc4709f2a543fde7d260503069e714ecaa679c965503",
+    "docs/EMAIL_PRESETS.md": "ff77346ea43a0a5142526e9b0517faff40ce1cf306da444d762b58b65bf3db39"
+  },
+  "c1_sync": {
+    "repository": "PikkuJanne/WinPDFMerger",
+    "branch": "codex/v1.0.0-readiness",
+    "local_head": "a9e93319ad260646d57278f207872a0e03dbb155",
+    "live_remote_head": "a9e93319ad260646d57278f207872a0e03dbb155",
+    "clean": true,
+    "synchronized": true,
+    "checked_at": "2026-10-08T11:46:42.137515+00:00",
+    "method": "live git ls-remote; no fetch, push or checkout mutation"
+  },
+  "pull_request": {
+    "baseRefOid": "b30cf5c36120d526ad43e34e146577253d50f1b9",
+    "headRefOid": "a9e93319ad260646d57278f207872a0e03dbb155",
+    "isDraft": true,
+    "number": 20,
+    "state": "OPEN",
+    "url": "https://github.com/PikkuJanne/WinPDFMerger/pull/20"
+  },
+  "archive": {
+    "manifest": "T20-reports/manifest.json",
+    "sha256": "ae84589610b8ea3cdd770dd7279f1aeced3c07239beeeb52028af597fad0631a",
+    "selected_text_files": 99,
+    "privacy": "Declared consistent path/identity substitutions; raw/public hashes. No PDF/PNG/EXE/DLL contents."
+  },
+  "limits": [
+    "Required outcomes are independent doc/source/reference reviews, not physical install/Explorer or packaged ZIP acceptance.",
+    "PublicDocs binds six real ParamBlock examples without running application orchestration. Parameters/Diagnostics use controlled entry/helper receipts, not native PDF engines.",
+    "Scoped static AST reader PS7.6.5 is not supported-shell compatibility evidence; actual targeted tests use separately pinned PS7.6.6.",
+    "No full security/history audit, CI, native integration, broad OS/UNC, package/publication certification.",
+    "Current-source instructions and no-private-vulnerability-channel statement must be reconciled at later publication/security gates."
+  ]
+}

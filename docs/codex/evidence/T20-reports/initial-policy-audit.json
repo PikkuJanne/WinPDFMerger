@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "task": "T20",
+  "acceptance_case": "AC047",
+  "phase": "source_and_primary_reference_preparation",
+  "starting_commit": "440ea7f6f4d92892fd6302d349848955b440f93d",
+  "observed_date": "2026-10-08",
+  "result": "preparation_only",
+  "source_hashes": {
+    "LICENSE": "714ffa7a21614e637d7dbb17a2e86e4575d7ecd2b6d36b5b67ab3fdcc4193477",
+    "WinPDFMerge.ps1": "e702b0b1583ab841589494cc524da1d9bd4148cf8849577793b08fd8f54b641d",
+    "WinPDFMerge.bat": "288287beefea974c64d39b34266332d83112b9106c952efd8c304edfedebff83",
+    "src/WinPDFMerge.Helpers.ps1": "3df10eafeac04493b06300d276cff05a9c5ef196a01b7b157a6afd3d2768eaa7"
+  },
+  "authenticode": [
+    {
+      "file": "WinPDFMerge.ps1",
+      "status": "NotSigned",
+      "signer_present": false
+    },
+    {
+      "file": "src/WinPDFMerge.Helpers.ps1",
+      "status": "NotSigned",
+      "signer_present": false
+    }
+  ],
+  "read_only_github_observation": {
+    "command": "gh api repos/PikkuJanne/WinPDFMerger/private-vulnerability-reporting",
+    "result": {
+      "enabled": false
+    },
+    "scope": "No private-report capability or response-time commitment may be invented. No repository setting was changed."
+  },
+  "source_observations": [
+    "The required src/WinPDFMerge.Helpers.ps1 helper is loaded by the entry point.",
+    "Entry/helper/BAT have no application network, download, or telemetry call.",
+    "Selected absolute executable runs directly through CreateProcessW with UseShellExecute false.",
+    "Ghostscript fixed rewrite flags retain -dSAFER; GS_OPTIONS removal is child-only, including version probes.",
+    "UTF-8-no-BOM logs contain paths, names, engine arguments, PID/timing/failure facts and native streams that can contain PDF metadata.",
+    "Control-character escaping does not redact confidential names. Logs are not encrypted or specially access-isolated.",
+    "Owned staging inherits normal Windows permissions; owner.json contains run/process/time/known-file facts, and crashes may retain temporary PDFs.",
+    "BAT retains its process-scoped Bypass flag; no persistent execution-policy/security-control change exists.",
+    "Both project PowerShell source files are NotSigned without signer certificates.",
+    "Narrow reference Windows/native/shell observations are not full Explorer, CI, package, release or broad operating-system support certification."
+  ],
+  "official_references": [
+    {
+      "url": "https://www.pdflabs.com/tools/pdftk-server/",
+      "claim": "Official command-line Windows installer; vendor Windows 10/11 availability is separate from application validation."
+    },
+    {
+      "url": "https://www.pdflabs.com/docs/pdftk-license/",
+      "claim": "PDFtk Server GPL Version 2, separate redistribution and third-party library terms. Project MIT does not relicense dependency."
+    },
+    {
+      "url": "https://www.ghostscript.com/releases/gsdnld.html",
+      "claim": "Separate Windows dependency has AGPL/commercial licensing alternatives; no distribution clearance inferred."
+    },
+    {
+      "url": "https://www.ghostscript.com/licensing/",
+      "claim": "Artifex exclusively handles Ghostscript licensing."
+    },
+    {
+      "url": "https://artifex.com/licensing",
+      "claim": "AGPLv3/commercial alternatives; own use/distribution must comply with vendor terms."
+    },
+    {
+      "url": "https://www.ghostscript.com/releases/index.html",
+      "claim": "Released build observed as 10.08.0 dated 2026-09-08; time-sensitive observation, not permanent latest/safe claim."
+    },
+    {
+      "url": "https://www.ghostscript.com/releases/cve/index.html",
+      "claim": "Official fixed-vulnerability list is not absence-of-vulnerability proof."
+    },
+    {
+      "url": "https://ghostscript.readthedocs.io/en/latest/Use.html#dsafer",
+      "claim": "SAFER provides file/device controls, not full hostile-PDF isolation. Latest documentation labels development 10.09.0, separate from released version."
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-7.6",
+      "claim": "Process policy is temporary; Group Policy overrides all scopes; unsigned downloaded files can be blocked."
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/powershell/scripting/install/powershell-support-lifecycle?view=powershell-7.6",
+      "claim": "Current LTS observed as 7.6.6; Windows PowerShell 5.1 follows Windows lifecycle. Not blanket application compatibility."
+    },
+    {
+      "url": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.security/get-authenticodesignature?view=powershell-7.6",
+      "claim": "Authenticode status is separate from SHA-256 integrity digest."
+    }
+  ],
+  "recommendations": [
+    "Preserve LICENSE exact bytes and separate MIT project terms from native vendor terms.",
+    "Install the full project tree including src helper; separate optional Ghostscript from required PDFtk.",
+    "No vendor binaries, auto-install or auto-update; dependencies acquired independently from official sources.",
+    "Document local outputs/logs/leftover-staging sensitivity and inherited permissions; synced/network folders have external behavior beyond this application.",
+    "Disclose unsigned scripts and distinguish SHA-256 checksums from signatures/publisher identity.",
+    "Do not promise sandboxing, malware removal, preserved signature/PDF-A/accessibility/archival features or enterprise execution acceptance.",
+    "Execution guidance stays process-scoped; no bypassing organization controls or disabling security; trusted-file unblocking only after review.",
+    "Limit Windows/shell compatibility claims to actual observed scope; Explorer/CI/package/release acceptance remains pending.",
+    "Do not invent private-report capability, private email, response deadline or support commitment."
+  ],
+  "preparation_failure": {
+    "action": "One multiline PowerShell invocation attempted to write this preparation receipt.",
+    "result": "Automatic approval review rejected invocation with only blocked by policy and no detailed stated reason. No acceptance receipt produced.",
+    "correction": "Use an explicit ignored receipt file; read-only source observations and hashes remain actual commands."
+  },
+  "blockers": [],
+  "limitations": [
+    "Final proposed documentation has not yet been reviewed.",
+    "Vendor-reference observations are not redistribution legal clearance.",
+    "Source/reference review is not application runtime or Windows/manual acceptance."
+  ]
+}

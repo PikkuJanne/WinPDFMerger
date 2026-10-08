@@ -1,0 +1,102 @@
+{
+  "schema": "t20.user-docs.initial-review.v1",
+  "scope": "read-only source and public-doc review; no application/native/manual execution",
+  "utc": "2026-10-08T11:32:03.8443809Z",
+  "baseline_commit": "440ea7f6f4d92892fd6302d349848955b440f93d",
+  "cases": [
+    "AC046"
+  ],
+  "source_refs": [
+    "README.md",
+    "WinPDFMerge.ps1",
+    "WinPDFMerge.bat",
+    "src/WinPDFMerge.Helpers.ps1",
+    "docs/codex/tasks/T20.md",
+    "docs/codex/PRODUCT_SPEC.md",
+    "docs/codex/TEST_STRATEGY.md"
+  ],
+  "findings": [
+    {
+      "severity": "blocker",
+      "source": "WinPDFMerge.ps1:78",
+      "topic": "installation-layout",
+      "id": "I01",
+      "detail": "README instructs placement of only launchers; entry needs adjacent src/WinPDFMerge.Helpers.ps1, so public instructions cannot produce a working complete install."
+    },
+    {
+      "severity": "documentation-gap",
+      "source": "src/WinPDFMerge.Helpers.ps1:1653",
+      "topic": "optional-Ghostscript",
+      "id": "I02",
+      "detail": "Initial requirements/installation list Ghostscript without clear optional or master-only route despite absent/skip email success."
+    },
+    {
+      "severity": "incorrect-label",
+      "source": "WinPDFMerge.bat:7",
+      "topic": "batch-double-click",
+      "id": "I03",
+      "detail": "README calls batch drag-drop plus double-click but no-folder double-click prints usage, pause, and exit1; no folder picker exists."
+    },
+    {
+      "severity": "misleading-advice",
+      "source": "src/WinPDFMerge.Helpers.ps1:1308",
+      "topic": "file-locks",
+      "id": "I04",
+      "detail": "Close output viewers guidance targets unique fresh final filenames; failures need source/native/log/destination stage diagnosis."
+    },
+    {
+      "severity": "documentation-gap",
+      "source": "src/WinPDFMerge.Helpers.ps1:1634",
+      "topic": "exit-codes",
+      "id": "I05",
+      "detail": "Accurate distributed prose needs a consolidated code0/1/2 scenario table and PowerShell LASTEXITCODE explanation."
+    },
+    {
+      "severity": "documentation-gap",
+      "source": "docs/codex/PRODUCT_SPEC.md:7",
+      "topic": "naming",
+      "id": "I06",
+      "detail": "Explain repository WinPDFMerger versus fixed established WinPDFMerge launcher names."
+    },
+    {
+      "severity": "documentation-gap",
+      "source": "WinPDFMerge.ps1:119",
+      "topic": "launch-context",
+      "id": "I07",
+      "detail": "Provide complete layout and cd/external-shell examples; direct examples require existing separate output and proper working directory."
+    },
+    {
+      "severity": "documentation-gap",
+      "source": "src/WinPDFMerge.Helpers.ps1:41",
+      "topic": "input-rules",
+      "id": "I08",
+      "detail": "Consolidate hidden/no-recursion, case-insensitive PDF extension, one PDF valid, no silent prefix omission, stable files and ordered log."
+    },
+    {
+      "severity": "documentation-gap",
+      "source": "docs/codex/PRODUCT_SPEC.md:80",
+      "topic": "compatibility",
+      "id": "I09",
+      "detail": "Explicitly identify live UNC as unvalidated beside Windows10/ARM/x86 exclusions."
+    },
+    {
+      "severity": "misleading-advice",
+      "source": "src/WinPDFMerge.Helpers.ps1:1114",
+      "topic": "password-documents",
+      "id": "I10",
+      "detail": "Replace decrypt/remove restrictions first with authorized readable source copy outside tool while preserving originals; tool has no password/repair workflow."
+    }
+  ],
+  "positive_checks": [
+    "Source/output distinct existing writable paths, junction ancestor refusal, path limits and no directory fallback are implemented.",
+    "Only four supported public parameters and fixed screen/ebook map are implemented.",
+    "SkipEmail bypasses GS discovery/probe/launch; explicit preset is reported ignored but remains binder validated.",
+    "Natural ASCII digit comparator and deterministic ordinal tie-break match technical README prose.",
+    "Master publication precedes GS selection; strict smaller valid derivative publication and master retention implemented.",
+    "Reserved UTF8 local log precedes discovery/probes after safe source/output preflight.",
+    "Controlled cancel/timeout and ownership-specific staging cleanup limits match existing detailed prose.",
+    "Preservation and preset docs retain measured limited claims; no signed/XFA/PDF-A/accessibility/malware certification."
+  ],
+  "result": "changes-required",
+  "final_review_pending": true
+}

@@ -1,0 +1,53 @@
+{
+  "Task": "T20",
+  "Phase": "C1",
+  "CommitUnderTest": "a9e93319ad260646d57278f207872a0e03dbb155",
+  "DirtyWorktree": false,
+  "ShellVersion": "7.6.6",
+  "ShellEdition": "Core",
+  "AnalyzerVersion": "1.25.0",
+  "Process64Bit": true,
+  "ExecutionPolicy": "RemoteSigned",
+  "Scope": [
+    "tests/help/PublicDocs.Tests.ps1",
+    "tools/test/Invoke-Tests.ps1"
+  ],
+  "AcquisitionReceiptSHA256": "2fee5fc9c2720e09e9f992adfc626b8e9dece6ec5d06ccee285a7961b9b9f42a",
+  "Errors": 0,
+  "Warnings": 4,
+  "Information": 0,
+  "Findings": [
+    {
+      "RuleName": "PSAvoidUsingWriteHost",
+      "Severity": 1,
+      "Message": "File 'PublicDocs.Tests.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+      "ScriptPath": "C:\\T20Repo\\tests\\help\\PublicDocs.Tests.ps1",
+      "Line": 248,
+      "Column": 5
+    },
+    {
+      "RuleName": "PSUseDeclaredVarsMoreThanAssignments",
+      "Severity": 1,
+      "Message": "The variable 'bindingOnly' is assigned but never used.",
+      "ScriptPath": "C:\\T20Repo\\tests\\help\\PublicDocs.Tests.ps1",
+      "Line": 26,
+      "Column": 5
+    },
+    {
+      "RuleName": "PSUseSingularNouns",
+      "Severity": 1,
+      "Message": "The cmdlet 'Get-PublicParagraphs' uses a plural noun. A singular noun should be used instead.",
+      "ScriptPath": "C:\\T20Repo\\tests\\help\\PublicDocs.Tests.ps1",
+      "Line": 36,
+      "Column": 14
+    },
+    {
+      "RuleName": "PSAvoidUsingWriteHost",
+      "Severity": 1,
+      "Message": "File 'Invoke-Tests.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+      "ScriptPath": "C:\\T20Repo\\tools\\test\\Invoke-Tests.ps1",
+      "Line": 148,
+      "Column": 1
+    }
+  ]
+}

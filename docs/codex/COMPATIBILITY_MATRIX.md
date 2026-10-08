@@ -258,3 +258,16 @@ PublicT19-onlytextarchiveidentity/pathsubstitutions/rawhashbindings; synthetic
 PDF/PNG/nativebinaryhash-only. BroadOS/UNC/CI/security/package/release remain
 open. M3inprogress,T20nextpending; commands/context/hashes/limits:T19completion/
 results/manifest and independent reviews. C2sync reported after normalpush.
+
+## T20 documentation and policy review checkpoint
+
+Clean C1 `a9e93319ad260646d57278f207872a0e03dbb155` on standard-user Windows x64/localNTFS:
+PublicDocs18/PreservationDocs14/Parameters31/Diagnostics36 per actualPS5.1.26100.9444
+and pinnedPS7.6.6,198total/eightNUnit pairs,allbadcounts0. These are docs, isolated
+actual ParamBlock and controlled entry/helper checks; no nativePDF/Explorer pass.
+AC046/M3 review31semantic/35links/6immutable and AC04733policy checks pass.
+Scoped PSA1.25.0 two test-tooling files0errors/4warnings each, reviewed nonblocking.
+MIT/license/runtime/defaults/nativeflags/priorPDFobservations unchanged. No acquisition
+or persistent policy/environment/security change. Supporting AST readerPS7.6.5 only
+proves syntax; required test evidence usesPS7.6.6. Broad OS/UNC/fullnative/lint/security/
+CI/package/release gates remain open. Evidence:evidence/T20-completion.md.

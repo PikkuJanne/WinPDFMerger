@@ -1,31 +1,31 @@
 # Project status
 
 Target: published and independently verified v1.0.0 in PikkuJanne/WinPDFMerger.
-Completed milestones: M1/M2 within recorded local Windows scope.
-Current milestone: M3, in progress. Completed tasks: T01 through T19.
-Current task: T20 — write public documentation and dependency/privacy policy, in_progress.
-Publication: NOT STARTED. No intermediate release or tag is created.
+Completed milestones: M1/M2/M3 within recorded local Windows/test/review scope.
+Current milestone: M4, pending. Completed tasks: T01 through T20.
+Next task: T21 — complete synthetic regression corpus and source-safety coverage, pending.
+Publication: NOT STARTED. No release or tag is created.
 
-T19 AC044 integration/AC045 independent review pass at clean C1
-`50220eccd1917e44a52d94cbfe3bf35b1940f3d8`: 414 Pester cases each actual PS5.1.26100.9444/pinnedPS7.6.6,
-828 total/12 reports, all bad counts zero; 12 oracle graph regressions pass.
-Reproducible synthetic originals and master/screen/ebook observations show
-renamed second form, lost document attachment index/tag tree, retained page
-payload hashes/navigation offsets and lost editable email fields/widgets.
-Master pixels match originals; screen changes rotated-page orientation.
-Actual results/exclusions: evidence/T19-completion.md, T19-results.json and
-T19-C1-reports/manifest.json. Original app/BAT/helpers/native flags remain intact.
+T20 AC046 public-instructions review and AC047 license/scope review pass at
+clean implementation C1 `a9e93319ad260646d57278f207872a0e03dbb155`. PublicDocs18,
+PreservationDocs14, Parameters31 and Diagnostics36 passed per actual
+PS5.1.26100.9444/PS7.6.6 x64 host:99each/198total/eight reports, all bad counts0.
+Independent reviews:31semantic/35local-link/6immutable and33policy checks pass.
+Scoped PSA1.25.0:0errors/4reviewed nonblocking warnings/0information per host.
+See evidence/T20-completion.md, T20-results.json and T20-reports/manifest.json.
 
-C1 was normally pushed; fresh read-only sync confirmed local=live and clean,
-and draft PR19 head matched C1. Records-only C2 is verified after its normal
-push and its SHA/equality are reported in the session, without self-reference.
-Owner merged prior PR18; origin/development branch remain unchanged.
+README installation now includes the required src helper, optional Ghostscript,
+the original command routes and0/1/2 exits. Public usage/troubleshooting/dependency/
+privacy/security docs match completed behavior. MIT LICENSE and application/BAT/
+helper bytes, defaults, native flags and prior PDF limitation/preset docs are unchanged.
+C1 was normally pushed; fresh read-only sync proved local=live and clean, and
+draft PR20 head matched C1. Records-only C2 is checked after normal push and
+reported in the session, without inventing its future SHA or synchronization.
+Owner merged prior PR19; origin/development branch remain unchanged.
 
-Standard-user Windows x64/local NTFS, approved cached/bundled development pins;
-no acquisition/admin/persistent policy/environment/security changes. Structural,
-unit/static/docs and scoped rendered observations remain distinct. Source/default/
-native-safety/owned-staging/strict-smaller/no-overwrite/master-retention contracts
-remain. No signature/XFA/PDF-A/accessibility/malware/universal preservation
-certification. Physical Explorer, broad OS/UNC/security, CI/package/publication
-gates remain open. T20 public docs are being reviewed; required cases remain not_run
-until clean-commit checks, independent review and synchronization are recorded.
+T19 synthetic preservation observations still apply: master fields can be renamed,
+document attachment indexes/tag trees lost, editable email fields/widgets lost,
+and screen orientation changed. Keep originals; no signature/XFA/PDF-A/accessibility/
+malware/universal archival guarantees. Doc/isolated-binding/controlled tests remain
+distinct from native/manual evidence. Physical Explorer, full native/lint/security/
+CI/package/publication gates remain open. T21 is pending and unstarted.

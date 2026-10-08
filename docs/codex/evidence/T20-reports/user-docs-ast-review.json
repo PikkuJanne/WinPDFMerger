@@ -1,0 +1,77 @@
+{
+  "Schema": "t20.public-example-syntax-review.v1",
+  "Utc": "2026-10-08T11:42:32.8912616Z",
+  "Scope": "actual PowerShell AST parse of public fenced examples; no application/example/native invocation",
+  "Shell": "7.6.5",
+  "Edition": "Core",
+  "ProducerSHA256": "58d5d1b58421e7b4e12136999fa82669ce0c45ca0f34510c0a3dcfab8cd0457b",
+  "SourceBindings": [
+    {
+      "Path": "README.md",
+      "SHA256": "2a13671dc1a22dd164c2be06defd8eeaac8b2e45a141b48984fe5a2d8d085381"
+    },
+    {
+      "Path": "docs/USAGE.md",
+      "SHA256": "021878c135ee913337ef1a8bbcc940cbb557319eb11fb77dd7e86c51a047ee32"
+    },
+    {
+      "Path": "docs/TROUBLESHOOTING.md",
+      "SHA256": "a0401c15186331f2b025a94abd835a9b8f76149749802b10a703220dfb568248"
+    },
+    {
+      "Path": "docs/DEPENDENCIES.md",
+      "SHA256": "68b029f35da66d459bd5df6a94812093fa9ea4ffb4d923d74df716a751d61152"
+    },
+    {
+      "Path": "SECURITY.md",
+      "SHA256": "2a4592c271a20facb810151bd6fe17bcd84c946fb7d544ccc4b75c8205491398"
+    }
+  ],
+  "Blocks": [
+    {
+      "Path": "README.md",
+      "Line": 81,
+      "Commands": [
+        "Set-Location -LiteralPath 'C:\\Tools\\WinPDFMerge'",
+        ".\\WinPDFMerge.ps1 \"C:\\Work\\Docs\\ToMerge\"",
+        ".\\WinPDFMerge.ps1 \"C:\\Work\\Docs\\ToMerge\" -OutputFolder \"C:\\Work\\Merged\"",
+        ".\\WinPDFMerge.ps1 \"C:\\Work\\Docs\\ToMerge\" -EmailPreset ebook",
+        ".\\WinPDFMerge.ps1 \"C:\\Work\\Docs\\ToMerge\" -SkipEmail"
+      ],
+      "Errors": [],
+      "Result": "pass"
+    },
+    {
+      "Path": "README.md",
+      "Line": 95,
+      "Commands": [
+        "Get-Help .\\WinPDFMerge.ps1 -Examples"
+      ],
+      "Errors": [],
+      "Result": "pass"
+    },
+    {
+      "Path": "README.md",
+      "Line": 103,
+      "Commands": [
+        "powershell.exe -NoProfile -ExecutionPolicy Bypass -File 'C:\\Tools\\WinPDFMerge\\WinPDFMerge.ps1' -SourceFolder 'C:\\Work\\source%NAME%'"
+      ],
+      "Errors": [],
+      "Result": "pass"
+    },
+    {
+      "Path": "docs/USAGE.md",
+      "Line": 24,
+      "Commands": [
+        "& 'C:\\Tools\\WinPDFMerge\\WinPDFMerge.ps1' -SourceFolder 'C:\\Work\\Docs\\ToMerge' -OutputFolder 'C:\\Work\\Merged' -SkipEmail"
+      ],
+      "Errors": [],
+      "Result": "pass"
+    }
+  ],
+  "BlockCount": 4,
+  "CommandCount": 8,
+  "ApplicationInvoked": false,
+  "NativeEngineInvoked": false,
+  "Result": "pass"
+}

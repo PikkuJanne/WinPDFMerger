@@ -1,0 +1,881 @@
+{
+  "schema": "t20.user-docs.final-review.v1",
+  "utc": "2026-10-08T11:44:35.435755+00:00",
+  "case": "AC046",
+  "milestone": "M3 doc/behavior cross-check",
+  "review_scope": "independent semantic public instructions versus actual source plus local-link/hash mechanical support; no application or native engine invoked; no physical Explorer/package/publication claim",
+  "baseline_commit": "440ea7f6f4d92892fd6302d349848955b440f93d",
+  "current_head": "a9e93319ad260646d57278f207872a0e03dbb155",
+  "dirty_paths": [],
+  "python": "3.12.14",
+  "reviewer_script_sha256": "43e7c46febe32d4a0ef5664ab533593ddd152c2039e30799bc91db87f4299c96",
+  "checks": [
+    {
+      "id": "layout-and-names",
+      "kind": "independent semantic doc/source review",
+      "result": "pass",
+      "doc_refs": [
+        "README.md:28",
+        "README.md:9"
+      ],
+      "actual_source_refs": [
+        "WinPDFMerge.ps1:78"
+      ],
+      "conclusion": "Installation retains established launcher names and mandatory src helper; no runtime Python requirement."
+    },
+    {
+      "id": "dependency-roles",
+      "kind": "independent semantic doc/source review",
+      "result": "pass",
+      "doc_refs": [
+        "README.md:21",
+        "README.md:23"
+      ],
+      "actual_source_refs": [
+        "WinPDFMerge.ps1:168",
+        "WinPDFMerge.ps1:232"
+      ],
+      "conclusion": "PDFtk required; absent GS permits master-only; separately installed vendor tools."
+    },
+    {
+      "id": "four-parameters",
+      "kind": "independent semantic doc/source review",
+      "result": "pass",
+      "doc_refs": [
+        "docs/USAGE.md:13",
+        "docs/USAGE.md:18"
+      ],
+      "actual_source_refs": [
+        "WinPDFMerge.ps1:52",
+        "WinPDFMerge.ps1:59"
+      ],
+      "conclusion": "Exactly one positional SourceFolder plus OutputFolder, SkipEmail and fixed screen/ebook preset; missing/invalid invocation fails early."
+    },
+    {
+      "id": "output-default-and-paths",
+      "kind": "independent semantic doc/source review",
+      "result": "pass",
+      "doc_refs": [
+        "README.md:55",
+        "docs/USAGE.md:67"
+      ],
+      "actual_source_refs": [
+        "WinPDFMerge.ps1:119",
+        "src/WinPDFMerge.Helpers.ps1:156",
+        "src/WinPDFMerge.Helpers.ps1:85"
+      ],
+      "conclusion": "Existing writable separate destination, entry-script default, no mkdir/fallback, alias identity and reparse ancestor refusal."
+    },
+    {
+      "id": "dragdrop-and-doubleclick",
+      "kind": "independent semantic doc/source review",
+      "result": "pass",
+      "doc_refs": [
+        "README.md:74",
+        "README.md:76"
+      ],
+      "actual_source_refs": [
+        "WinPDFMerge.bat:7",
+        "WinPDFMerge.bat:8",
+        "WinPDFMerge.bat:57"
+      ],
+      "conclusion": "BAT accepts one folder and pauses; no picker/options; physical Explorer remains unrun release gate."
+    },
+    {
+      "id": "batch-host-and-code",
+      "kind": "independent semantic doc/source review",
+      "result": "pass",
+      "doc_refs": [
+        "README.md:125",
+        "docs/USAGE.md:20"
+      ],
+      "actual_source_refs": [
+        "WinPDFMerge.bat:30",
+        "WinPDFMerge.bat:59"
+      ],
+      "conclusion": "BAT fixed Windows PowerShell 5.1 NoProfile with existing process policy flag; exact code after pause."
+    },
+    {
+      "id": "direct-examples",
+      "kind": "independent semantic doc/source review",
+      "result": "pass",
+      "doc_refs": [
+        "README.md:82",
+        "docs/USAGE.md:21"
+      ],
+      "actual_source_refs": [
+        "WinPDFMerge.ps1:54"
+      ],
+      "conclusion": "Examples specify host/working-directory context, existing illustrative paths, supported flags, and immediate LASTEXITCODE; help reads without orchestration."
+    },
+    {
+      "id": "percent-boundary",
+      "kind": "independent semantic doc/source review",
+      "result": "pass",
+      "doc_refs": [
+        "README.md:99",
+        "README.md:109"
+      ],
+      "actual_source_refs": [
+        "WinPDFMerge.bat:10",
+        "WinPDFMerge.bat:30"
+      ],
+      "conclusion": "Paired percent expansion attributed to cmd boundary; direct PowerShell alternative retains original supported route with policy precedence limits."
+    },
+    {
+      "id": "visible-top-level-inputs",
+      "kind": "independent semantic doc/source review",
+      "result": "pass",
+      "doc_refs": [
+        "README.md:68",
+        "docs/USAGE.md:36"
+      ],
+      "actual_source_refs": [
+        "src/WinPDFMerge.Helpers.ps1:50",
+        "src/WinPDFMerge.Helpers.ps1:51"
+      ],
+      "conclusion": "Non-Force top-level .pdf/.PDF; one accepted, none error; no prefix omission of old results."
+    },
+    {
+      "id": "natural-order",
+      "kind": "independent semantic doc/source review",
+      "result": "pass",
+      "doc_refs": [
+        "docs/USAGE.md:40",
+        "docs/USAGE.md:44"
+      ],
+      "actual_source_refs": [
+        "src/WinPDFMerge.Helpers.ps1:1805",
+        "src/WinPDFMerge.Helpers.ps1:1837"
+      ],
+      "conclusion": "Magnitude/shorter equal numeric runs/subsequent segments, ordinal case-insensitive text and ordinal original name/path ties correctly documented."
+    },
+    {
+      "id": "freeze-and-snapshot",
+      "kind": "independent semantic doc/source review",
+      "result": "pass",
+      "doc_refs": [
+        "docs/USAGE.md:46",
+        "docs/USAGE.md:60"
+      ],
+      "actual_source_refs": [
+        "WinPDFMerge.ps1:154",
+        "src/WinPDFMerge.Helpers.ps1:1052",
+        "WinPDFMerge.ps1:190"
+      ],
+      "conclusion": "Frozen set and length/mtime checks detect obvious changes; no filesystem snapshot or inclusion of new arrivals claimed."
+    },
+    {
+      "id": "inspection-and-password",
+      "kind": "independent semantic doc/source review",
+      "result": "pass",
+      "doc_refs": [
+        "docs/USAGE.md:47",
+        "docs/USAGE.md:50"
+      ],
+      "actual_source_refs": [
+        "src/WinPDFMerge.Helpers.ps1:1114",
+        "src/WinPDFMerge.Helpers.ps1:1148"
+      ],
+      "conclusion": "Every input inspected; positive unambiguous count; no silent skip, repair, flatten or password workflow; authorized working copy guidance preserves originals."
+    },
+    {
+      "id": "bounded-envelope",
+      "kind": "independent semantic doc/source review",
+      "result": "pass",
+      "doc_refs": [
+        "docs/USAGE.md:55",
+        "docs/USAGE.md:56"
+      ],
+      "actual_source_refs": [
+        "src/WinPDFMerge.Helpers.ps1:1075"
+      ],
+      "conclusion": "Header/final EOF/startxref bounded screening described without universal validity or safety guarantee."
+    },
+    {
+      "id": "native-path-and-command-limits",
+      "kind": "independent semantic doc/source review",
+      "result": "pass",
+      "doc_refs": [
+        "docs/USAGE.md:73",
+        "docs/USAGE.md:75"
+      ],
+      "actual_source_refs": [
+        "src/WinPDFMerge.Helpers.ps1:365",
+        "src/WinPDFMerge.Helpers.ps1:1039"
+      ],
+      "conclusion": "Actual native path/serialized command bounds and shorter-path/fewer-input guidance; no long-path/chunk workaround claim."
+    },
+    {
+      "id": "unicode-and-os-scope",
+      "kind": "independent semantic doc/source review",
+      "result": "pass",
+      "doc_refs": [
+        "docs/USAGE.md:81",
+        "README.md:19"
+      ],
+      "actual_source_refs": [
+        "src/WinPDFMerge.Helpers.ps1:379"
+      ],
+      "conclusion": "Measured backend Unicode exclusions and Windows10/ARM/x86/UNC nonvalidation retained; no general compatibility claim."
+    },
+    {
+      "id": "unique-output-identity",
+      "kind": "independent semantic doc/source review",
+      "result": "pass",
+      "doc_refs": [
+        "docs/USAGE.md:93",
+        "docs/USAGE.md:94"
+      ],
+      "actual_source_refs": [
+        "src/WinPDFMerge.Helpers.ps1:193",
+        "src/WinPDFMerge.Helpers.ps1:236"
+      ],
+      "conclusion": "Timestamp/random suffix shared by final outputs/log; bounded folder label and root fallback; no overwrite."
+    },
+    {
+      "id": "master-first-and-validation",
+      "kind": "independent semantic doc/source review",
+      "result": "pass",
+      "doc_refs": [
+        "docs/USAGE.md:100",
+        "README.md:115"
+      ],
+      "actual_source_refs": [
+        "WinPDFMerge.ps1:211",
+        "src/WinPDFMerge.Helpers.ps1:1297"
+      ],
+      "conclusion": "Staged native result validates before File.Move publication without replace; master published before optional GS and retained after failures."
+    },
+    {
+      "id": "strict-smaller-email",
+      "kind": "independent semantic doc/source review",
+      "result": "pass",
+      "doc_refs": [
+        "docs/USAGE.md:102",
+        "README.md:117"
+      ],
+      "actual_source_refs": [
+        "src/WinPDFMerge.Helpers.ps1:1547",
+        "src/WinPDFMerge.Helpers.ps1:1548"
+      ],
+      "conclusion": "Valid equal/larger derivative omitted/discarded, never published; no target email size."
+    },
+    {
+      "id": "skip-and-preset",
+      "kind": "independent semantic doc/source review",
+      "result": "pass",
+      "doc_refs": [
+        "README.md:92",
+        "docs/USAGE.md:16"
+      ],
+      "actual_source_refs": [
+        "WinPDFMerge.ps1:107",
+        "WinPDFMerge.ps1:226",
+        "src/WinPDFMerge.Helpers.ps1:1468"
+      ],
+      "conclusion": "Skip bypasses GS discovery and invocation; explicit valid preset ignored; default screen and fixed ebook maintained."
+    },
+    {
+      "id": "gs-safety-and-environment",
+      "kind": "independent semantic doc/source review",
+      "result": "pass",
+      "doc_refs": [
+        "docs/USAGE.md:107",
+        "docs/USAGE.md:108"
+      ],
+      "actual_source_refs": [
+        "src/WinPDFMerge.Helpers.ps1:1470",
+        "src/WinPDFMerge.Helpers.ps1:1473"
+      ],
+      "conclusion": "Fixed pdfwrite safety flags and child-only environment removal, no safety sandbox/preservation certification."
+    },
+    {
+      "id": "t17-size-format",
+      "kind": "independent semantic doc/source review",
+      "result": "pass",
+      "doc_refs": [
+        "docs/USAGE.md:112",
+        "docs/USAGE.md:113"
+      ],
+      "actual_source_refs": [
+        "src/WinPDFMerge.Helpers.ps1:1583",
+        "src/WinPDFMerge.Helpers.ps1:1597"
+      ],
+      "conclusion": "B integer, KiB+two decimals, reduction one decimal, exact byte authority, unpublished candidate reporting match real formatter."
+    },
+    {
+      "id": "code0",
+      "kind": "independent semantic doc/source review",
+      "result": "pass",
+      "doc_refs": [
+        "README.md:121"
+      ],
+      "actual_source_refs": [
+        "src/WinPDFMerge.Helpers.ps1:1650",
+        "src/WinPDFMerge.Helpers.ps1:1654",
+        "src/WinPDFMerge.Helpers.ps1:1655"
+      ],
+      "conclusion": "Master plus valid smaller/skipped/unavailable/no size benefit succeeds."
+    },
+    {
+      "id": "code1",
+      "kind": "independent semantic doc/source review",
+      "result": "pass",
+      "doc_refs": [
+        "README.md:122"
+      ],
+      "actual_source_refs": [
+        "src/WinPDFMerge.Helpers.ps1:1644",
+        "WinPDFMerge.ps1:75"
+      ],
+      "conclusion": "No validated published master: invocation/input/destination/PDFtk/merge failure or controlled prepublication cancel is code1."
+    },
+    {
+      "id": "code2",
+      "kind": "independent semantic doc/source review",
+      "result": "pass",
+      "doc_refs": [
+        "README.md:123"
+      ],
+      "actual_source_refs": [
+        "src/WinPDFMerge.Helpers.ps1:1668",
+        "WinPDFMerge.ps1:307"
+      ],
+      "conclusion": "Master retained after email or later log/cancel failure; valid published paths only; no failed candidate advertised."
+    },
+    {
+      "id": "t18-log-timing",
+      "kind": "independent semantic doc/source review",
+      "result": "pass",
+      "doc_refs": [
+        "docs/USAGE.md:124",
+        "README.md:143"
+      ],
+      "actual_source_refs": [
+        "WinPDFMerge.ps1:134",
+        "WinPDFMerge.ps1:152",
+        "src/WinPDFMerge.Helpers.ps1:253"
+      ],
+      "conclusion": "UTF8 local reserved log starts after safe source/output checks and before discovery/probes; early unsafe/binding failures console-only possible."
+    },
+    {
+      "id": "t18-diagnostic-facts",
+      "kind": "independent semantic doc/source review",
+      "result": "pass",
+      "doc_refs": [
+        "docs/USAGE.md:126",
+        "docs/USAGE.md:122"
+      ],
+      "actual_source_refs": [
+        "src/WinPDFMerge.Helpers.ps1:289",
+        "src/WinPDFMerge.Helpers.ps1:988"
+      ],
+      "conclusion": "Measured named stages, versions/input pages/native stdout+stderr/failure timing/sizes/outcome with honest unknown states, no estimated percentage."
+    },
+    {
+      "id": "timeout-and-cancel",
+      "kind": "independent semantic doc/source review",
+      "result": "pass",
+      "doc_refs": [
+        "docs/USAGE.md:130",
+        "docs/USAGE.md:130",
+        "docs/USAGE.md:134"
+      ],
+      "actual_source_refs": [
+        "src/WinPDFMerge.Helpers.ps1:804",
+        "src/WinPDFMerge.Helpers.ps1:1758",
+        "WinPDFMerge.ps1:285"
+      ],
+      "conclusion": "Per-job/probe bounds, closed input, controlled event-dependent Ctrl+C 1/2, abrupt death no code/cleanup guarantee."
+    },
+    {
+      "id": "owned-staging-cleanup",
+      "kind": "independent semantic doc/source review",
+      "result": "pass",
+      "doc_refs": [
+        "docs/USAGE.md:137",
+        "docs/TROUBLESHOOTING.md:107",
+        "docs/TROUBLESHOOTING.md:111"
+      ],
+      "actual_source_refs": [
+        "src/WinPDFMerge.Helpers.ps1:1203",
+        "src/WinPDFMerge.Helpers.ps1:1322"
+      ],
+      "conclusion": "One run's known paths and retained ownership marker only; stopped-run manual inspection; no active/foreign prefix deletion."
+    },
+    {
+      "id": "troubleshooting-recipes",
+      "kind": "independent semantic doc/source review",
+      "result": "pass",
+      "doc_refs": [
+        "docs/TROUBLESHOOTING.md:91",
+        "docs/TROUBLESHOOTING.md:94"
+      ],
+      "actual_source_refs": [
+        "src/WinPDFMerge.Helpers.ps1:1315",
+        "WinPDFMerge.ps1:115"
+      ],
+      "conclusion": "Actionable install/preflight/input/email/log/lock/collision/cancel recovery tied to exact stage/path; no unsafe output deletion workaround."
+    },
+    {
+      "id": "t19-preservation",
+      "kind": "independent semantic doc/source review",
+      "result": "pass",
+      "doc_refs": [
+        "README.md:135",
+        "docs/PDF_LIMITATIONS.md:53",
+        "docs/PDF_LIMITATIONS.md:70"
+      ],
+      "actual_source_refs": [
+        "src/WinPDFMerge.Helpers.ps1:1459",
+        "src/WinPDFMerge.Helpers.ps1:1470"
+      ],
+      "conclusion": "Master nonrasterizing assembly versus lossy email; observed field/tag/attachment/rotation limits and synthetic weighting qualified; originals retained."
+    },
+    {
+      "id": "privacy-and-reporting",
+      "kind": "independent semantic doc/source review",
+      "result": "pass",
+      "doc_refs": [
+        "README.md:142",
+        "docs/TROUBLESHOOTING.md:118",
+        "SECURITY.md:41"
+      ],
+      "actual_source_refs": [
+        "WinPDFMerge.ps1:144",
+        "src/WinPDFMerge.Helpers.ps1:988"
+      ],
+      "conclusion": "Local unredacted confidential log and staging metadata; sanitize both streams/copies and do not attach private PDFs; no application ACL/encryption promise."
+    }
+  ],
+  "check_count": 31,
+  "bindings": [
+    {
+      "path": "README.md",
+      "bytes": 8216,
+      "sha256": "2a13671dc1a22dd164c2be06defd8eeaac8b2e45a141b48984fe5a2d8d085381",
+      "retained_snapshot": "tests/.work/T20-user-docs-final-review/clean-C1/sources/README.md"
+    },
+    {
+      "path": "SECURITY.md",
+      "bytes": 5233,
+      "sha256": "2a4592c271a20facb810151bd6fe17bcd84c946fb7d544ccc4b75c8205491398",
+      "retained_snapshot": "tests/.work/T20-user-docs-final-review/clean-C1/sources/SECURITY.md"
+    },
+    {
+      "path": "docs/USAGE.md",
+      "bytes": 8799,
+      "sha256": "021878c135ee913337ef1a8bbcc940cbb557319eb11fb77dd7e86c51a047ee32",
+      "retained_snapshot": "tests/.work/T20-user-docs-final-review/clean-C1/sources/docs/USAGE.md"
+    },
+    {
+      "path": "docs/TROUBLESHOOTING.md",
+      "bytes": 6941,
+      "sha256": "a0401c15186331f2b025a94abd835a9b8f76149749802b10a703220dfb568248",
+      "retained_snapshot": "tests/.work/T20-user-docs-final-review/clean-C1/sources/docs/TROUBLESHOOTING.md"
+    },
+    {
+      "path": "docs/DEPENDENCIES.md",
+      "bytes": 4211,
+      "sha256": "68b029f35da66d459bd5df6a94812093fa9ea4ffb4d923d74df716a751d61152",
+      "retained_snapshot": "tests/.work/T20-user-docs-final-review/clean-C1/sources/docs/DEPENDENCIES.md"
+    },
+    {
+      "path": "docs/PDF_LIMITATIONS.md",
+      "bytes": 5853,
+      "sha256": "ee8c4f1b73d62ba75abebc4709f2a543fde7d260503069e714ecaa679c965503",
+      "retained_snapshot": "tests/.work/T20-user-docs-final-review/clean-C1/sources/docs/PDF_LIMITATIONS.md"
+    },
+    {
+      "path": "docs/EMAIL_PRESETS.md",
+      "bytes": 2883,
+      "sha256": "ff77346ea43a0a5142526e9b0517faff40ce1cf306da444d762b58b65bf3db39",
+      "retained_snapshot": "tests/.work/T20-user-docs-final-review/clean-C1/sources/docs/EMAIL_PRESETS.md"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1070,
+      "sha256": "714ffa7a21614e637d7dbb17a2e86e4575d7ecd2b6d36b5b67ab3fdcc4193477",
+      "retained_snapshot": "tests/.work/T20-user-docs-final-review/clean-C1/sources/LICENSE"
+    },
+    {
+      "path": "WinPDFMerge.ps1",
+      "bytes": 18637,
+      "sha256": "e702b0b1583ab841589494cc524da1d9bd4148cf8849577793b08fd8f54b641d",
+      "retained_snapshot": "tests/.work/T20-user-docs-final-review/clean-C1/sources/WinPDFMerge.ps1"
+    },
+    {
+      "path": "WinPDFMerge.bat",
+      "bytes": 1782,
+      "sha256": "288287beefea974c64d39b34266332d83112b9106c952efd8c304edfedebff83",
+      "retained_snapshot": "tests/.work/T20-user-docs-final-review/clean-C1/sources/WinPDFMerge.bat"
+    },
+    {
+      "path": "src/WinPDFMerge.Helpers.ps1",
+      "bytes": 101346,
+      "sha256": "3df10eafeac04493b06300d276cff05a9c5ef196a01b7b157a6afd3d2768eaa7",
+      "retained_snapshot": "tests/.work/T20-user-docs-final-review/clean-C1/sources/src/WinPDFMerge.Helpers.ps1"
+    }
+  ],
+  "immutable_checks": [
+    {
+      "path": "WinPDFMerge.ps1",
+      "baseline_blob": "ee429a79b03d7cd5473900dd3067fc98dfea6540",
+      "actual_blob": "ee429a79b03d7cd5473900dd3067fc98dfea6540",
+      "result": "pass"
+    },
+    {
+      "path": "WinPDFMerge.bat",
+      "baseline_blob": "17e054df3ea043832de4599aa811f90e4e660208",
+      "actual_blob": "17e054df3ea043832de4599aa811f90e4e660208",
+      "result": "pass"
+    },
+    {
+      "path": "src/WinPDFMerge.Helpers.ps1",
+      "baseline_blob": "f201fe126d9a9bfd4cb9acc05aa6a25f619c6022",
+      "actual_blob": "f201fe126d9a9bfd4cb9acc05aa6a25f619c6022",
+      "result": "pass"
+    },
+    {
+      "path": "LICENSE",
+      "baseline_blob": "d8cca2639474e791c0aaa4d77aac79d8c8900359",
+      "actual_blob": "d8cca2639474e791c0aaa4d77aac79d8c8900359",
+      "result": "pass"
+    },
+    {
+      "path": "docs/PDF_LIMITATIONS.md",
+      "baseline_blob": "495b6a245f5b17a5cea1e9bbe57f4921d8b5703a",
+      "actual_blob": "495b6a245f5b17a5cea1e9bbe57f4921d8b5703a",
+      "result": "pass"
+    },
+    {
+      "path": "docs/EMAIL_PRESETS.md",
+      "baseline_blob": "70f2faa27f5bf2f69023588f88da94a998248a0f",
+      "actual_blob": "70f2faa27f5bf2f69023588f88da94a998248a0f",
+      "result": "pass"
+    }
+  ],
+  "local_links": [
+    {
+      "source": "README.md:24",
+      "target": "docs/DEPENDENCIES.md",
+      "result": "pass"
+    },
+    {
+      "source": "README.md:62",
+      "target": "SECURITY.md",
+      "result": "pass"
+    },
+    {
+      "source": "README.md:62",
+      "target": "docs/TROUBLESHOOTING.md#script-blocked",
+      "result": "pass"
+    },
+    {
+      "source": "README.md:128",
+      "target": "docs/USAGE.md",
+      "result": "pass"
+    },
+    {
+      "source": "README.md:134",
+      "target": "docs/EMAIL_PRESETS.md",
+      "result": "pass"
+    },
+    {
+      "source": "README.md:135",
+      "target": "docs/PDF_LIMITATIONS.md",
+      "result": "pass"
+    },
+    {
+      "source": "README.md:145",
+      "target": "docs/TROUBLESHOOTING.md",
+      "result": "pass"
+    },
+    {
+      "source": "README.md:146",
+      "target": "docs/USAGE.md",
+      "result": "pass"
+    },
+    {
+      "source": "README.md:146",
+      "target": "docs/DEPENDENCIES.md",
+      "result": "pass"
+    },
+    {
+      "source": "README.md:147",
+      "target": "SECURITY.md",
+      "result": "pass"
+    },
+    {
+      "source": "README.md:148",
+      "target": "LICENSE",
+      "result": "pass"
+    },
+    {
+      "source": "SECURITY.md:15",
+      "target": "docs/DEPENDENCIES.md",
+      "result": "pass"
+    },
+    {
+      "source": "SECURITY.md:23",
+      "target": "docs/PDF_LIMITATIONS.md",
+      "result": "pass"
+    },
+    {
+      "source": "SECURITY.md:29",
+      "target": "docs/TROUBLESHOOTING.md#orphan-staging",
+      "result": "pass"
+    },
+    {
+      "source": "SECURITY.md:75",
+      "target": "LICENSE",
+      "result": "pass"
+    },
+    {
+      "source": "docs/USAGE.md:3",
+      "target": "../README.md",
+      "result": "pass"
+    },
+    {
+      "source": "docs/USAGE.md:31",
+      "target": "TROUBLESHOOTING.md#script-blocked",
+      "result": "pass"
+    },
+    {
+      "source": "docs/USAGE.md:87",
+      "target": "../README.md#use",
+      "result": "pass"
+    },
+    {
+      "source": "docs/USAGE.md:117",
+      "target": "EMAIL_PRESETS.md",
+      "result": "pass"
+    },
+    {
+      "source": "docs/USAGE.md:118",
+      "target": "PDF_LIMITATIONS.md",
+      "result": "pass"
+    },
+    {
+      "source": "docs/USAGE.md:128",
+      "target": "../SECURITY.md#privacy-and-logs",
+      "result": "pass"
+    },
+    {
+      "source": "docs/USAGE.md:142",
+      "target": "TROUBLESHOOTING.md#orphan-staging",
+      "result": "pass"
+    },
+    {
+      "source": "docs/USAGE.md:143",
+      "target": "../README.md#results-and-exit-codes",
+      "result": "pass"
+    },
+    {
+      "source": "docs/TROUBLESHOOTING.md:7",
+      "target": "../README.md#results-and-exit-codes",
+      "result": "pass"
+    },
+    {
+      "source": "docs/TROUBLESHOOTING.md:20",
+      "target": "../SECURITY.md#unsigned-scripts-and-integrity",
+      "result": "pass"
+    },
+    {
+      "source": "docs/TROUBLESHOOTING.md:31",
+      "target": "../README.md#install",
+      "result": "pass"
+    },
+    {
+      "source": "docs/TROUBLESHOOTING.md:46",
+      "target": "USAGE.md#paths-and-destinations",
+      "result": "pass"
+    },
+    {
+      "source": "docs/TROUBLESHOOTING.md:53",
+      "target": "DEPENDENCIES.md#selection-and-diagnostics",
+      "result": "pass"
+    },
+    {
+      "source": "docs/TROUBLESHOOTING.md:73",
+      "target": "PDF_LIMITATIONS.md",
+      "result": "pass"
+    },
+    {
+      "source": "docs/TROUBLESHOOTING.md:120",
+      "target": "../SECURITY.md#reporting",
+      "result": "pass"
+    },
+    {
+      "source": "docs/DEPENDENCIES.md:3",
+      "target": "../LICENSE",
+      "result": "pass"
+    },
+    {
+      "source": "docs/DEPENDENCIES.md:55",
+      "target": "../SECURITY.md",
+      "result": "pass"
+    },
+    {
+      "source": "docs/DEPENDENCIES.md:55",
+      "target": "TROUBLESHOOTING.md",
+      "result": "pass"
+    },
+    {
+      "source": "docs/PDF_LIMITATIONS.md:48",
+      "target": "codex/evidence/T19-checkpoint.md",
+      "result": "pass"
+    },
+    {
+      "source": "docs/EMAIL_PRESETS.md:18",
+      "target": "../tests/fixtures/presets/manifest.json",
+      "result": "pass"
+    }
+  ],
+  "external_links_inventoried_not_checked": [
+    {
+      "source": "README.md:20",
+      "target": "https://www.pdflabs.com/tools/pdftk-server/"
+    },
+    {
+      "source": "README.md:22",
+      "target": "https://www.ghostscript.com/releases/gsdnld.html"
+    },
+    {
+      "source": "README.md:26",
+      "target": "https://github.com/PikkuJanne/WinPDFMerger"
+    },
+    {
+      "source": "README.md:109",
+      "target": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-5.1"
+    },
+    {
+      "source": "SECURITY.md:62",
+      "target": "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies"
+    },
+    {
+      "source": "SECURITY.md:72",
+      "target": "https://github.com/PikkuJanne/WinPDFMerger/issues"
+    },
+    {
+      "source": "SECURITY.md:78",
+      "target": "https://github.com/PikkuJanne/WinPDFMerger/security"
+    },
+    {
+      "source": "docs/TROUBLESHOOTING.md:116",
+      "target": "https://github.com/PikkuJanne/WinPDFMerger/issues"
+    },
+    {
+      "source": "docs/DEPENDENCIES.md:10",
+      "target": "https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows"
+    },
+    {
+      "source": "docs/DEPENDENCIES.md:10",
+      "target": "https://github.com/PowerShell/PowerShell/blob/master/LICENSE.txt"
+    },
+    {
+      "source": "docs/DEPENDENCIES.md:11",
+      "target": "https://www.pdflabs.com/tools/pdftk-server/"
+    },
+    {
+      "source": "docs/DEPENDENCIES.md:11",
+      "target": "https://www.pdflabs.com/docs/pdftk-license/"
+    },
+    {
+      "source": "docs/DEPENDENCIES.md:12",
+      "target": "https://www.ghostscript.com/releases/gsdnld.html"
+    },
+    {
+      "source": "docs/DEPENDENCIES.md:12",
+      "target": "https://artifex.com/licensing"
+    },
+    {
+      "source": "docs/DEPENDENCIES.md:27",
+      "target": "https://learn.microsoft.com/en-us/powershell/scripting/install/powershell-support-lifecycle"
+    },
+    {
+      "source": "docs/DEPENDENCIES.md:28",
+      "target": "https://www.ghostscript.com/releases/cve/index.html"
+    },
+    {
+      "source": "docs/PDF_LIMITATIONS.md:19",
+      "target": "https://www.pdflabs.com/docs/pdftk-man-page/"
+    },
+    {
+      "source": "docs/PDF_LIMITATIONS.md:22",
+      "target": "https://ghostscript.readthedocs.io/en/gs10.08.0/VectorDevices.html"
+    },
+    {
+      "source": "docs/EMAIL_PRESETS.md:10",
+      "target": "https://ghostscript.readthedocs.io/en/gs10.08.0/VectorDevices.html#controls-and-features-specific-to-postscript-and-pdf-input"
+    }
+  ],
+  "ast_parse_support": {
+    "report": "tests/.work/T20-user-docs-final-review/ast-review.json",
+    "sha256": "1828d943598c3f960c3779943f618cc8ee9b6568eaf91fa8a58c91403e2eebc1",
+    "result": "pass",
+    "shell": "7.6.5",
+    "block_count": 4,
+    "command_count": 8,
+    "scope": "PowerShell 7.6.5 reader host syntax support only, not pinned supported-shell application compatibility evidence"
+  },
+  "producer_preparation": [
+    "The first reviewer producer invocation failed before report creation because a source reference used the incorrectly transcribed strict-smaller if-statement. Only the ignored reviewer reference literal was corrected to the existing actual source; no runtime/public-doc change. Current producer succeeds."
+  ],
+  "blockers": [],
+  "limitations": [
+    "Documentation/source review does not execute install/drag-drop examples against a real desktop or packaged ZIP; those remain later gates.",
+    "Live vendor/dependency/license/security statements are reviewed separately by the policy auditor.",
+    "C1 binding must prove these reviewed exact public source hashes match the clean implementation commit before recording acceptance."
+  ],
+  "result": "pass",
+  "guard_checks": [
+    {
+      "kind": "expected current HEAD",
+      "expected": "a9e93319ad260646d57278f207872a0e03dbb155",
+      "actual": "a9e93319ad260646d57278f207872a0e03dbb155",
+      "result": "pass"
+    },
+    {
+      "kind": "clean source checkout",
+      "dirty_paths": [],
+      "result": "pass"
+    },
+    {
+      "kind": "AST reviewed public source hash",
+      "path": "README.md",
+      "expected": "2a13671dc1a22dd164c2be06defd8eeaac8b2e45a141b48984fe5a2d8d085381",
+      "actual": "2a13671dc1a22dd164c2be06defd8eeaac8b2e45a141b48984fe5a2d8d085381",
+      "result": "pass"
+    },
+    {
+      "kind": "AST reviewed public source hash",
+      "path": "docs/USAGE.md",
+      "expected": "021878c135ee913337ef1a8bbcc940cbb557319eb11fb77dd7e86c51a047ee32",
+      "actual": "021878c135ee913337ef1a8bbcc940cbb557319eb11fb77dd7e86c51a047ee32",
+      "result": "pass"
+    },
+    {
+      "kind": "AST reviewed public source hash",
+      "path": "docs/TROUBLESHOOTING.md",
+      "expected": "a0401c15186331f2b025a94abd835a9b8f76149749802b10a703220dfb568248",
+      "actual": "a0401c15186331f2b025a94abd835a9b8f76149749802b10a703220dfb568248",
+      "result": "pass"
+    },
+    {
+      "kind": "AST reviewed public source hash",
+      "path": "docs/DEPENDENCIES.md",
+      "expected": "68b029f35da66d459bd5df6a94812093fa9ea4ffb4d923d74df716a751d61152",
+      "actual": "68b029f35da66d459bd5df6a94812093fa9ea4ffb4d923d74df716a751d61152",
+      "result": "pass"
+    },
+    {
+      "kind": "AST reviewed public source hash",
+      "path": "SECURITY.md",
+      "expected": "2a4592c271a20facb810151bd6fe17bcd84c946fb7d544ccc4b75c8205491398",
+      "actual": "2a4592c271a20facb810151bd6fe17bcd84c946fb7d544ccc4b75c8205491398",
+      "result": "pass"
+    }
+  ]
+}
