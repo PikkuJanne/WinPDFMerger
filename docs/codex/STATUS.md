@@ -2,25 +2,29 @@
 
 Target: published and independently verified v1.0.0 in PikkuJanne/WinPDFMerger.
 Completed milestones: M1/M2 within recorded local Windows scope.
-Current milestone: M3, in progress. Completed tasks: T01 through T18.
-Selected task: T19 — characterize feature-rich PDF preservation, in progress.
-Publication: NOT STARTED. T20 remains pending and unstarted.
+Current milestone: M3, in progress. Completed tasks: T01 through T19.
+Next task: T20 — write public documentation and dependency/privacy policy, pending.
+Publication: NOT STARTED. No intermediate release or tag is created.
 
-T18 records C2 7e0fe6fde769911f323bd87e4c4f9382d26e331b was freshly clean/live
-verified at T19 start. Owner merged PR18; fetched main
-802b13da6785cc12c43158d1f6b63e6fb40a12da has the same tree. No tags/releases
-exist. Origin and development branch remain unchanged.
+T19 AC044 integration/AC045 independent review pass at clean C1
+`50220eccd1917e44a52d94cbfe3bf35b1940f3d8`: 414 Pester cases each actual PS5.1.26100.9444/pinnedPS7.6.6,
+828 total/12 reports, all bad counts zero; 12 oracle graph regressions pass.
+Reproducible synthetic originals and master/screen/ebook observations show
+renamed second form, lost document attachment index/tag tree, retained page
+payload hashes/navigation offsets and lost editable email fields/widgets.
+Master pixels match originals; screen changes rotated-page orientation.
+Actual results/exclusions: evidence/T19-completion.md, T19-results.json and
+T19-C1-reports/manifest.json. Original app/BAT/helpers/native flags remain intact.
 
-T19 is building a reproducible original synthetic feature corpus and separate
-master/screen/ebook observations. Canonical forms/widgets/repeated names,
-destinations/bookmarks, annotations, rotation, attachments and minimal tagged
-structure are inspected independently from visual/page results. Public wording
-will state actual limitations. No runtime flags, repair or flattening are changed.
-AC044/045 remain not_run until clean checkpoint evidence/review; see T19-checkpoint.
-Records-only C2 will bind actual C1 results; its own sync is reported afterward.
+C1 was normally pushed; fresh read-only sync confirmed local=live and clean,
+and draft PR19 head matched C1. Records-only C2 is verified after its normal
+push and its SHA/equality are reported in the session, without self-reference.
+Owner merged prior PR18; origin/development branch remain unchanged.
 
-Standard-user Windows x64/local NTFS, approved caches/preinstalled bundled
-development packages only; no acquisition/admin/persistent policy/security changes.
-Source preservation, defaults, top-level inputs, native safety, owned staging,
-strict-smaller/no-overwrite and published-master retention remain.
-Physical Explorer, broad OS/UNC/security, CI/package/publication gates remain open.
+Standard-user Windows x64/local NTFS, approved cached/bundled development pins;
+no acquisition/admin/persistent policy/environment/security changes. Structural,
+unit/static/docs and scoped rendered observations remain distinct. Source/default/
+native-safety/owned-staging/strict-smaller/no-overwrite/master-retention contracts
+remain. No signature/XFA/PDF-A/accessibility/malware/universal preservation
+certification. Physical Explorer, broad OS/UNC/security, CI/package/publication
+gates remain open. T20 is pending and unstarted.

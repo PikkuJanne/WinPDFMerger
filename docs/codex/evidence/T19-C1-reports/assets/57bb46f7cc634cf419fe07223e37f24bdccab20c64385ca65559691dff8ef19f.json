@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "target_release": "v1.0.0",
+  "assets": [
+    "WinPDFMerger-v1.0.0.zip",
+    "SHA256SUMS.txt"
+  ],
+  "zip_root": "WinPDFMerger-v1.0.0",
+  "required_files": [
+    "WinPDFMerge.ps1",
+    "WinPDFMerge.bat",
+    "README.md",
+    "LICENSE",
+    "BUILD_INFO.json"
+  ],
+  "build_info_contract": {
+    "version": "1.0.0",
+    "source_commit": "Full lowercase 40-character accepted Git commit R",
+    "build_environment": "Record actual builder/runtime identity without secrets or private paths; additional metadata keys are allowed.",
+    "files": [
+      {
+        "path": "Each packaged file relative to the package root, excluding BUILD_INFO.json itself; forward slashes only",
+        "sha256": "SHA-256 of exact packaged file bytes"
+      }
+    ]
+  },
+  "checksum_file_format": "One line: <ZIP SHA-256><two ASCII spaces>WinPDFMerger-v1.0.0.zip; LF or CRLF.",
+  "hashes_recorded_before_publication": [
+    "ZIP SHA-256",
+    "SHA-256 of the complete SHA256SUMS.txt file"
+  ],
+  "notes": [
+    "This is a build specification, not actual build metadata or evidence.",
+    "Do not put placeholder hashes or this contract file into the application ZIP.",
+    "Per-file inventory must cover every packaged regular file except BUILD_INFO.json itself.",
+    "Handoff Python tools and development/test files are excluded from the application package."
+  ]
+}

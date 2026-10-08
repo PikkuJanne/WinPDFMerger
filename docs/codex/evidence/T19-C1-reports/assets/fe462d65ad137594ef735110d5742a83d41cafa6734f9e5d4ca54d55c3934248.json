@@ -1,0 +1,212 @@
+{
+    "Task":  "T19",
+    "Scope":  "AC045 public documentation contract; no application/native/PDF/manual execution",
+    "ShellVersion":  "5.1.26100.9444",
+    "ShellEdition":  "Desktop",
+    "SourceBindings":  [
+                           {
+                               "Path":  "README.md",
+                               "Exists":  true,
+                               "SHA256":  "627065cf57dd2b5c88a30224b73f6b482f518a6583d896f42ac734e37fd33d26",
+                               "RetainedSourcePath":  "<REPO>\\tests\\.work\\T19-preservation-docs\\56a6b2d4ea644a6daedd370358fa51cf\\README-source.txt"
+                           },
+                           {
+                               "Path":  "docs/PDF_LIMITATIONS.md",
+                               "Exists":  true,
+                               "SHA256":  "ee8c4f1b73d62ba75abebc4709f2a543fde7d260503069e714ecaa679c965503",
+                               "RetainedSourcePath":  "<REPO>\\tests\\.work\\T19-preservation-docs\\56a6b2d4ea644a6daedd370358fa51cf\\Limits-source.txt"
+                           },
+                           {
+                               "Path":  "WinPDFMerge.ps1",
+                               "Exists":  true,
+                               "SHA256":  "e702b0b1583ab841589494cc524da1d9bd4148cf8849577793b08fd8f54b641d",
+                               "RetainedSourcePath":  "<REPO>\\tests\\.work\\T19-preservation-docs\\56a6b2d4ea644a6daedd370358fa51cf\\Entry-source.txt"
+                           }
+                       ],
+    "HelpBinding":  {
+                        "Command":  [
+                                        "Get-Help",
+                                        "-Name",
+                                        "<REPO>\\WinPDFMerge.ps1",
+                                        "-Full"
+                                    ],
+                        "RetainedTextPath":  "<REPO>\\tests\\.work\\T19-preservation-docs\\56a6b2d4ea644a6daedd370358fa51cf\\actual-help.txt",
+                        "SHA256":  "f0ed1f00c95fd943ba4b16a345d3c3b86f547ce60197bc3899146d6d5bfd6f80",
+                        "ApplicationInvoked":  false
+                    },
+    "Observations":  [
+                         {
+                             "Label":  "no-overclaim-README",
+                             "Surface":  "README",
+                             "Scope":  "public documentation/comment-help contract only; no native PDF, structural, visual or signature proof",
+                             "Detail":  {
+                                            "UnqualifiedClaims":  [
+
+                                                                  ]
+                                        }
+                         },
+                         {
+                             "Label":  "no-overclaim-Help",
+                             "Surface":  "Help",
+                             "Scope":  "public documentation/comment-help contract only; no native PDF, structural, visual or signature proof",
+                             "Detail":  {
+                                            "UnqualifiedClaims":  [
+
+                                                                  ]
+                                        }
+                         },
+                         {
+                             "Label":  "no-overclaim-Limits",
+                             "Surface":  "Limits",
+                             "Scope":  "public documentation/comment-help contract only; no native PDF, structural, visual or signature proof",
+                             "Detail":  {
+                                            "UnqualifiedClaims":  [
+
+                                                                  ]
+                                        }
+                         },
+                         {
+                             "Label":  "master-email-distinction-README",
+                             "Surface":  "README",
+                             "Scope":  "public documentation/comment-help contract only; no native PDF, structural, visual or signature proof",
+                             "Detail":  {
+                                            "EmailParagraphs":  [
+                                                                    "**Synopsis** Merges visible top-level PDFs into a master via PDFtk without intentional page rasterization or image downsampling. The optional email copy is a potentially lossy Ghostscript rewrite. Neither output is an archival or feature-retention guarantee. Creates a smaller “email-friendly” copy via Ghostscript (configurable profile). Natural sort by base filename (1, 2, 10…). Drag \u0026 drop workflow: I drop a folder onto the .bat, outputs land next to the scripts with a timestamped log.",
+                                                                    "**Email-friendly copy (quality/size)** The default remains `-dPDFSETTINGS=/screen`; select the fixed `/ebook` profile with `-EmailPreset ebook`. Presets can change appearance and size; neither guarantees a particular attachment size. Only a separately validated derivative smaller than the master is published."
+                                                                ],
+                                            "MasterParagraphs":  [
+                                                                     "**Synopsis** Merges visible top-level PDFs into a master via PDFtk without intentional page rasterization or image downsampling. The optional email copy is a potentially lossy Ghostscript rewrite. Neither output is an archival or feature-retention guarantee. Creates a smaller “email-friendly” copy via Ghostscript (configurable profile). Natural sort by base filename (1, 2, 10…). Drag \u0026 drop workflow: I drop a folder onto the .bat, outputs land next to the scripts with a timestamped log."
+                                                                 ]
+                                        }
+                         },
+                         {
+                             "Label":  "master-email-distinction-Help",
+                             "Surface":  "Help",
+                             "Scope":  "public documentation/comment-help contract only; no native PDF, structural, visual or signature proof",
+                             "Detail":  {
+                                            "EmailParagraphs":  [
+                                                                    "DESCRIPTION Orders inputs naturally by filename and uses local PDFtk to publish a validated merged master without intentional page rasterization or image downsampling. Optional Ghostscript rewrites an email candidate with the fixed screen default or ebook preset. Only a validated candidate smaller than the master is published. Sources and existing outputs are never replaced. No application network calls, downloads, telemetry, recursion or OCR are performed."
+                                                                ],
+                                            "MasterParagraphs":  [
+                                                                     "DESCRIPTION Orders inputs naturally by filename and uses local PDFtk to publish a validated merged master without intentional page rasterization or image downsampling. Optional Ghostscript rewrites an email candidate with the fixed screen default or ebook preset. Only a validated candidate smaller than the master is published. Sources and existing outputs are never replaced. No application network calls, downloads, telemetry, recursion or OCR are performed."
+                                                                 ]
+                                        }
+                         },
+                         {
+                             "Label":  "readme-limitations-link",
+                             "Surface":  "README",
+                             "Scope":  "public documentation/comment-help contract only; no native PDF, structural, visual or signature proof",
+                             "Detail":  {
+                                            "LimitsExists":  true,
+                                            "MatchingLinks":  [
+                                                                  "[PDF preservation limits](docs/PDF_LIMITATIONS.md)"
+                                                              ]
+                                        }
+                         },
+                         {
+                             "Label":  "retain-source-originals",
+                             "Surface":  "Limits",
+                             "Scope":  "public documentation/comment-help contract only; no native PDF, structural, visual or signature proof",
+                             "Detail":  {
+                                            "SourceParagraphs":  [
+                                                                     "Source files remain unchanged. Keep original feature-rich documents and signed PDFs. The application adds no silent flattening or repair step to force a test to pass; native engines can nevertheless alter or discard document features. Local processing does not establish that a PDF is safe or trustworthy.",
+                                                                     "The root reviewer inspected all ten distinct rendered-page pixel groups covering 48 pages from these runs. Masters matched original page pixels; email appearances and orientations changed as described. This is a limited visual observation, not an interactive editor, signature, accessibility or general fidelity certification. No URI was followed, and no attachment was opened. Source bytes and timestamps, foreign output files and the parent environment remained unchanged."
+                                                                 ],
+                                            "RetentionParagraphs":  [
+                                                                        "Source files remain unchanged. Keep original feature-rich documents and signed PDFs. The application adds no silent flattening or repair step to force a test to pass; native engines can nevertheless alter or discard document features. Local processing does not establish that a PDF is safe or trustworthy.",
+                                                                        "Forms and repeated or duplicate field names may change during assembly. Canonical AcroForm values, page widgets and their displayed appearances are different representations; a visible value alone does not prove an editable field survived. XFA is unsupported as a preservation guarantee; the [PDFtk manual](https://www.pdflabs.com/docs/pdftk-man-page/) documents automatic XFA omission when assembling multiple inputs. Retain originals and check actual fields. Ghostscript\u0027s [pdfwrite documentation](https://ghostscript.readthedocs.io/en/gs10.08.0/VectorDevices.html) describes creation of a new PDF and limits on non-marking information."
+                                                                    ]
+                                        }
+                         },
+                         {
+                             "Label":  "explicit-limit-signature",
+                             "Surface":  "Limits",
+                             "Scope":  "public documentation/comment-help contract only; no native PDF, structural, visual or signature proof",
+                             "Detail":  {
+                                            "AdditionalTopicPattern":  "",
+                                            "MatchingParagraphs":  [
+                                                                       "Neither output guarantees PDF/A compliance, archival certification, universal feature retention or signature validity. Merging or rewriting signed input can invalidate digital signatures; keeping a signature-looking appearance is not cryptographic verification. No signed sample or signature validator is included in this corpus, so signature preservation is unvalidated. The application is not a malware sanitizer and a parse/page-count check does not remove malicious content.",
+                                                                       "The root reviewer inspected all ten distinct rendered-page pixel groups covering 48 pages from these runs. Masters matched original page pixels; email appearances and orientations changed as described. This is a limited visual observation, not an interactive editor, signature, accessibility or general fidelity certification. No URI was followed, and no attachment was opened. Source bytes and timestamps, foreign output files and the parent environment remained unchanged.",
+                                                                       "These controlled originals are not a universal PDF compatibility or accessibility corpus. There is no signed or XFA sample, signature validation, PDF/A validation, malware validation or accessibility certification. Broader desktop and release acceptance remains separate from structural and rendered-page observations."
+                                                                   ]
+                                        }
+                         },
+                         {
+                             "Label":  "explicit-limit-XFA",
+                             "Surface":  "Limits",
+                             "Scope":  "public documentation/comment-help contract only; no native PDF, structural, visual or signature proof",
+                             "Detail":  {
+                                            "AdditionalTopicPattern":  "",
+                                            "MatchingParagraphs":  [
+                                                                       "Forms and repeated or duplicate field names may change during assembly. Canonical AcroForm values, page widgets and their displayed appearances are different representations; a visible value alone does not prove an editable field survived. XFA is unsupported as a preservation guarantee; the [PDFtk manual](https://www.pdflabs.com/docs/pdftk-man-page/) documents automatic XFA omission when assembling multiple inputs. Retain originals and check actual fields. Ghostscript\u0027s [pdfwrite documentation](https://ghostscript.readthedocs.io/en/gs10.08.0/VectorDevices.html) describes creation of a new PDF and limits on non-marking information.",
+                                                                       "These controlled originals are not a universal PDF compatibility or accessibility corpus. There is no signed or XFA sample, signature validation, PDF/A validation, malware validation or accessibility certification. Broader desktop and release acceptance remains separate from structural and rendered-page observations."
+                                                                   ]
+                                        }
+                         },
+                         {
+                             "Label":  "explicit-limit-PDF-A",
+                             "Surface":  "Limits",
+                             "Scope":  "public documentation/comment-help contract only; no native PDF, structural, visual or signature proof",
+                             "Detail":  {
+                                            "AdditionalTopicPattern":  "",
+                                            "MatchingParagraphs":  [
+                                                                       "Neither output guarantees PDF/A compliance, archival certification, universal feature retention or signature validity. Merging or rewriting signed input can invalidate digital signatures; keeping a signature-looking appearance is not cryptographic verification. No signed sample or signature validator is included in this corpus, so signature preservation is unvalidated. The application is not a malware sanitizer and a parse/page-count check does not remove malicious content.",
+                                                                       "These controlled originals are not a universal PDF compatibility or accessibility corpus. There is no signed or XFA sample, signature validation, PDF/A validation, malware validation or accessibility certification. Broader desktop and release acceptance remains separate from structural and rendered-page observations."
+                                                                   ]
+                                        }
+                         },
+                         {
+                             "Label":  "explicit-limit-accessibility-tags",
+                             "Surface":  "Limits",
+                             "Scope":  "public documentation/comment-help contract only; no native PDF, structural, visual or signature proof",
+                             "Detail":  {
+                                            "AdditionalTopicPattern":  "",
+                                            "MatchingParagraphs":  [
+                                                                       "The merged master uses PDFtk without intentional page rasterization or image downsampling. It is a new assembled document, not a byte-for-byte copy of each input. The email copy is a potentially lossy Ghostscript rewrite with screen as the default and ebook as the alternative. A nonempty file, successful parse and expected page count are necessary publication checks, not proof of visual, interactive, accessibility or archival preservation.",
+                                                                       "Links, bookmarks and annotations may change, disappear or point to a different page after assembly or rewriting. Attachments and embedded files are not guaranteed to survive either output. Accessibility tags and reading-order structure are not guaranteed; a tag dictionary alone does not certify accessibility. Inspect intended navigation, annotations, forms, attachments and reading order in the actual result before using it as a substitute for an original.",
+                                                                       "| Feature | Originals | PDFtk master | Screen and ebook email copies | | --- | --- | --- | --- | | Pages | Four identifiable pages across two inputs | Four identifiers in A, B order | Four identifiers in the same order | | Forms | Two canonical values, four widgets total | Values and four widget relationships retained; second full field name became `1.shared_text` | No canonical fields or widgets; displayed values remain in page content | | Navigation | Four bookmarks, four internal links and four inert URI links total; two named destinations | Bookmark and internal-link targets resolve to merged pages; URI strings retained; named-destination index absent | Bookmark and internal-link targets resolve; URI strings retained; named-destination index absent | | Annotations | Four text notes, four highlights and two page attachment annotations total | Subtypes retained | Subtypes retained; appearances and placement can change | | Attachments | Two document EmbeddedFiles entries and two page FileAttachment payloads | Document entries absent; page annotation payloads retained | Document entries absent; page annotation payloads retained | | Minimal tags | Structure trees, ParentTree entries and matched MCIDs | Structure tree and ParentTree absent; residual MCIDs have no matched structure elements | Same missing relationships; residual marked content does not establish accessibility | | Rotation | Raw rotations `0,90,0,270` | Same raw rotations and pixel-identical rendered pages | Screen renders the rotated text upright; ebook keeps the original sideways text orientation. Raw rotation values differ |",
+                                                                       "The root reviewer inspected all ten distinct rendered-page pixel groups covering 48 pages from these runs. Masters matched original page pixels; email appearances and orientations changed as described. This is a limited visual observation, not an interactive editor, signature, accessibility or general fidelity certification. No URI was followed, and no attachment was opened. Source bytes and timestamps, foreign output files and the parent environment remained unchanged.",
+                                                                       "These controlled originals are not a universal PDF compatibility or accessibility corpus. There is no signed or XFA sample, signature validation, PDF/A validation, malware validation or accessibility certification. Broader desktop and release acceptance remains separate from structural and rendered-page observations."
+                                                                   ]
+                                        }
+                         },
+                         {
+                             "Label":  "explicit-limit-attachments",
+                             "Surface":  "Limits",
+                             "Scope":  "public documentation/comment-help contract only; no native PDF, structural, visual or signature proof",
+                             "Detail":  {
+                                            "AdditionalTopicPattern":  "",
+                                            "MatchingParagraphs":  [
+                                                                       "Links, bookmarks and annotations may change, disappear or point to a different page after assembly or rewriting. Attachments and embedded files are not guaranteed to survive either output. Accessibility tags and reading-order structure are not guaranteed; a tag dictionary alone does not certify accessibility. Inspect intended navigation, annotations, forms, attachments and reading order in the actual result before using it as a substitute for an original.",
+                                                                       "| Feature | Originals | PDFtk master | Screen and ebook email copies | | --- | --- | --- | --- | | Pages | Four identifiable pages across two inputs | Four identifiers in A, B order | Four identifiers in the same order | | Forms | Two canonical values, four widgets total | Values and four widget relationships retained; second full field name became `1.shared_text` | No canonical fields or widgets; displayed values remain in page content | | Navigation | Four bookmarks, four internal links and four inert URI links total; two named destinations | Bookmark and internal-link targets resolve to merged pages; URI strings retained; named-destination index absent | Bookmark and internal-link targets resolve; URI strings retained; named-destination index absent | | Annotations | Four text notes, four highlights and two page attachment annotations total | Subtypes retained | Subtypes retained; appearances and placement can change | | Attachments | Two document EmbeddedFiles entries and two page FileAttachment payloads | Document entries absent; page annotation payloads retained | Document entries absent; page annotation payloads retained | | Minimal tags | Structure trees, ParentTree entries and matched MCIDs | Structure tree and ParentTree absent; residual MCIDs have no matched structure elements | Same missing relationships; residual marked content does not establish accessibility | | Rotation | Raw rotations `0,90,0,270` | Same raw rotations and pixel-identical rendered pages | Screen renders the rotated text upright; ebook keeps the original sideways text orientation. Raw rotation values differ |",
+                                                                       "The root reviewer inspected all ten distinct rendered-page pixel groups covering 48 pages from these runs. Masters matched original page pixels; email appearances and orientations changed as described. This is a limited visual observation, not an interactive editor, signature, accessibility or general fidelity certification. No URI was followed, and no attachment was opened. Source bytes and timestamps, foreign output files and the parent environment remained unchanged."
+                                                                   ]
+                                        }
+                         },
+                         {
+                             "Label":  "explicit-limit-forms-repeated-fields",
+                             "Surface":  "Limits",
+                             "Scope":  "public documentation/comment-help contract only; no native PDF, structural, visual or signature proof",
+                             "Detail":  {
+                                            "AdditionalTopicPattern":  "\\b(?:repeated|duplicate)\\b.{0,80}\\b(?:fields?|names?)\\b",
+                                            "MatchingParagraphs":  [
+                                                                       "Forms and repeated or duplicate field names may change during assembly. Canonical AcroForm values, page widgets and their displayed appearances are different representations; a visible value alone does not prove an editable field survived. XFA is unsupported as a preservation guarantee; the [PDFtk manual](https://www.pdflabs.com/docs/pdftk-man-page/) documents automatic XFA omission when assembling multiple inputs. Retain originals and check actual fields. Ghostscript\u0027s [pdfwrite documentation](https://ghostscript.readthedocs.io/en/gs10.08.0/VectorDevices.html) describes creation of a new PDF and limits on non-marking information.",
+                                                                       "Links, bookmarks and annotations may change, disappear or point to a different page after assembly or rewriting. Attachments and embedded files are not guaranteed to survive either output. Accessibility tags and reading-order structure are not guaranteed; a tag dictionary alone does not certify accessibility. Inspect intended navigation, annotations, forms, attachments and reading order in the actual result before using it as a substitute for an original.",
+                                                                       "| Feature | Originals | PDFtk master | Screen and ebook email copies | | --- | --- | --- | --- | | Pages | Four identifiable pages across two inputs | Four identifiers in A, B order | Four identifiers in the same order | | Forms | Two canonical values, four widgets total | Values and four widget relationships retained; second full field name became `1.shared_text` | No canonical fields or widgets; displayed values remain in page content | | Navigation | Four bookmarks, four internal links and four inert URI links total; two named destinations | Bookmark and internal-link targets resolve to merged pages; URI strings retained; named-destination index absent | Bookmark and internal-link targets resolve; URI strings retained; named-destination index absent | | Annotations | Four text notes, four highlights and two page attachment annotations total | Subtypes retained | Subtypes retained; appearances and placement can change | | Attachments | Two document EmbeddedFiles entries and two page FileAttachment payloads | Document entries absent; page annotation payloads retained | Document entries absent; page annotation payloads retained | | Minimal tags | Structure trees, ParentTree entries and matched MCIDs | Structure tree and ParentTree absent; residual MCIDs have no matched structure elements | Same missing relationships; residual marked content does not establish accessibility | | Rotation | Raw rotations `0,90,0,270` | Same raw rotations and pixel-identical rendered pages | Screen renders the rotated text upright; ebook keeps the original sideways text orientation. Raw rotation values differ |"
+                                                                   ]
+                                        }
+                         },
+                         {
+                             "Label":  "explicit-limit-malware",
+                             "Surface":  "Limits",
+                             "Scope":  "public documentation/comment-help contract only; no native PDF, structural, visual or signature proof",
+                             "Detail":  {
+                                            "AdditionalTopicPattern":  "",
+                                            "MatchingParagraphs":  [
+                                                                       "Neither output guarantees PDF/A compliance, archival certification, universal feature retention or signature validity. Merging or rewriting signed input can invalidate digital signatures; keeping a signature-looking appearance is not cryptographic verification. No signed sample or signature validator is included in this corpus, so signature preservation is unvalidated. The application is not a malware sanitizer and a parse/page-count check does not remove malicious content.",
+                                                                       "These controlled originals are not a universal PDF compatibility or accessibility corpus. There is no signed or XFA sample, signature validation, PDF/A validation, malware validation or accessibility certification. Broader desktop and release acceptance remains separate from structural and rendered-page observations."
+                                                                   ]
+                                        }
+                         }
+                     ]
+}

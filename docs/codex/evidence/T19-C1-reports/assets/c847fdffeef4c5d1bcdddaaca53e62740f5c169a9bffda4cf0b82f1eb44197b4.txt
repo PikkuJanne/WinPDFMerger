@@ -1,0 +1,159 @@
+diff --git a/.gitattributes b/.gitattributes
+index 76d3df6..fa7ff75 100644
+--- a/.gitattributes
++++ b/.gitattributes
+@@ -532,3 +532,8 @@
+ /docs/codex/evidence/T18-C1b-support/2026de5b4ecf4d82-stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+ /docs/codex/evidence/T18-C1b-support/4b7562016aa09bf7-stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+ /docs/codex/evidence/T18-C1b-support/683f7fc71a7969c7-stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
++
++# Preserve the reproducible T19 recipe bytes bound by its fixture manifest.
++/tests/fixtures/features/generate_features.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
++/tests/fixtures/features/manifest.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
++/tools/test/feature_oracle.py -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+diff --git a/README.md b/README.md
+index 0635796..3f3c80e 100644
+--- a/README.md
++++ b/README.md
+@@ -1,8 +1,10 @@
+-# WinPDFMerge — Lossless folder PDF merge + email-friendly copy (PowerShell + PDFtk + GhostScript)
++# WinPDFMerge — Folder PDF merge + optional email copy (PowerShell + PDFtk + Ghostscript)
+ Minimal, no-frills PDF merger I use to bundle invoices/contracts/etc. into one file and, produce a smaller email copy. It’s a personal, purpose-built tool. I don’t expect most people to need this. It trades options for reliability and repeatability.
+ 
+ **Synopsis**
+-Merges all top-level PDFs from a folder into a single, lossless PDF via PDFtk.
++Merges visible top-level PDFs into a master via PDFtk without intentional page
++rasterization or image downsampling. The optional email copy is a potentially
++lossy Ghostscript rewrite. Neither output is an archival or feature-retention guarantee.
+ Creates a smaller “email-friendly” copy via Ghostscript (configurable profile).
+ Natural sort by base filename (1, 2, 10…).
+ Drag & drop workflow: I drop a folder onto the .bat, outputs land next to the scripts with a timestamped log.
+@@ -44,7 +46,7 @@ trust or compatibility for every native build; native acceptance remains separat
+ **Usage**
+ Drag & Drop (recommended)
+ Drag a folder containing PDFs onto WinPDFMerge.bat.
+-The merged PDF (lossless), optional email copy, and a log file are created in the same directory as the scripts.
++The merged master, optional email copy, and a log file are created in the same directory as the scripts.
+ Window stays open so you can see status/log path.
+ Command line
+ One folder (top-level PDFs only, no recursion):
+@@ -109,6 +111,11 @@ a report publicly, make a copy and replace private names/paths and sensitive
+ metadata consistently, retaining useful stage, version, exit and size facts.
+ Do not attach private PDFs. The application never uploads diagnostics or PDFs.
+ 
++**Preservation**
++See [PDF preservation limits](docs/PDF_LIMITATIONS.md) before merging forms,
++attachments, tagged or signed documents. Keep original feature-rich and signed
++PDFs; readable pages and a successful page count do not prove retained features.
++
+ **Input preflight**
+ Before merging, the script inspects every visible top-level PDF in the frozen
+ natural filename order with PDFtk's read-only `dump_data_utf8` operation. The
+@@ -196,7 +203,7 @@ it changes no user or machine setting and does not override organizational Group
+ Policy. [Microsoft execution-policy documentation](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-5.1).
+ 
+ **Technical details**
+-Merge (lossless): pdftk file1.pdf file2.pdf ... cat output out.pdf
++Master: PDFtk concatenates pages and compresses page streams; this does not certify document-level features.
+ Order: ASCII digit groups by magnitude (1, 01, 001, 2, 10), then subsequent groups.
+ Text compares ordinally without case; original base name and full path break ties ordinally.
+ No fixed-width numeric conversion or culture-dependent ordering.
+@@ -211,7 +218,7 @@ Subfolders are not scanned; move the intended inputs into one source folder.
+ 
+ **Troubleshooting**
+ “pdftk not found” -> install PDFtk Server, ensure pdftk is in PATH or lives in a standard location (the script checks common paths).
+-“gswin64c not found” -> install Ghostscript or skip the email copy (lossless master still produced).
++“gswin64c not found” -> install Ghostscript or skip the email copy (validated master still produced).
+ Email copy missing -> check the .log created next to the outputs, warnings are captured even when the merge succeeds.
+ “File in use” -> close any viewer holding _email.pdf or the master.
+ Encrypted/secured PDFs -> PDFtk may fail, decrypt/remove restrictions first.
+diff --git a/tests/fixtures/README.md b/tests/fixtures/README.md
+index 6687519..97a014b 100644
+--- a/tests/fixtures/README.md
++++ b/tests/fixtures/README.md
+@@ -34,4 +34,37 @@ These checks inspect real PDFs with an independent native parser. They prove
+ the tiny corpus and its oracle, and must be recorded separately from controlled
+ fake-process tests. They do not prove PDFtk/Ghostscript execution, product
+ merging, feature preservation or desktop acceptance. Mixed sizes, rotation,
+-images/scans, corrupt/encrypted and feature-rich PDFs belong to later tasks.
++images/scans and corrupt/encrypted PDFs belong to later tasks.
++
++## T19 synthetic feature corpus
++
++`features/generate_features.py` creates two original CC0 PDFs in an explicitly
++selected development directory. `features/manifest.json` binds their exact
++bytes and expected four-page order. The corpus covers links and internal
++destinations, bookmarks, AcroForm values and repeated field names, two widgets
++per field, annotations, rotations, document and page attachments, and minimal
++tag relationships. It contains no user documents or external artwork.
++
++```text
++python -B tests/fixtures/features/generate_features.py --output tests/.work/features
++python -B tools/test/feature_oracle.py --pdf tests/.work/features/1-feature-A.pdf --output tests/.work/features-A.json --render-dir tests/.work/features-A-renders
++python -B -m unittest discover -s tools/test/tests -p test_feature_oracle.py -v
++```
++
++Use the pinned Python 3.12.14 and development dependencies recorded in the
++manifest and `tools/test/requirements-fixtures.txt`. These tools neither install
++dependencies nor participate in the application runtime. The read-only oracle
++uses pypdf for raw document structures and native PDFium for identifiers and
++rendered pages. It does not merge, repair, fill, flatten or rewrite tested PDFs.
++
++`PreservationNative` runs the unchanged application with explicitly selected
++PDFtk and Ghostscript paths and records originals, masters, screen copies and
++ebook copies separately. Artificial, nonpainting page-stream comments make the
++synthetic inputs large enough for the normal smaller-email publication rule;
++these sizes do not measure representative compression or image fidelity.
++
++Tag relationships do not certify accessibility. Signatures and XFA have no
++validated preservation guarantee in this corpus. See `docs/PDF_LIMITATIONS.md`
++for measured native results and limits. Generated PDFs and rendered QA images
++remain in ignored development directories; public evidence retains text and
++hashes without private PDFs.
+diff --git a/tools/test/Invoke-Tests.ps1 b/tools/test/Invoke-Tests.ps1
+index c9b3c34..90ee2d2 100644
+--- a/tools/test/Invoke-Tests.ps1
++++ b/tools/test/Invoke-Tests.ps1
+@@ -2,7 +2,7 @@
+ [CmdletBinding()]
+ param(
+     [string]$PesterModulePath,
+-    [ValidateSet('Unit', 'NativeFixture', 'SourceDiscovery', 'Launcher', 'LauncherNative', 'DependencyEntry', 'NativeRunner', 'ToolInvocation', 'PdftkPaths', 'GhostscriptPaths', 'Destination', 'InputPreflight', 'Staging', 'MasterValidation', 'EmailOutcome', 'FaultIO', 'FaultRecovery', 'Parameters', 'ParametersNative', 'SizeReporting', 'SizeReportingNative', 'Diagnostics', 'DiagnosticsNative')][string]$Tier = 'Unit',
++    [ValidateSet('Unit', 'NativeFixture', 'SourceDiscovery', 'Launcher', 'LauncherNative', 'DependencyEntry', 'NativeRunner', 'ToolInvocation', 'PdftkPaths', 'GhostscriptPaths', 'Destination', 'InputPreflight', 'Staging', 'MasterValidation', 'EmailOutcome', 'FaultIO', 'FaultRecovery', 'Parameters', 'ParametersNative', 'SizeReporting', 'SizeReportingNative', 'Diagnostics', 'DiagnosticsNative', 'PreservationDocs', 'PreservationNative')][string]$Tier = 'Unit',
+     [string]$PdftkPath,
+     [string]$GhostscriptPath,
+     [string]$PythonPath
+@@ -35,7 +35,13 @@ $config.Output.Verbosity = 'Detailed'
+ $config.TestResult.Enabled = $true
+ $config.TestResult.OutputPath = Join-Path $work 'results.xml'
+ $config.TestResult.OutputFormat = 'NUnitXml'
+-if ($Tier -eq 'Diagnostics') {
++if ($Tier -eq 'PreservationDocs') {
++    $config.Run.Path = Join-Path $repo 'tests/help/PreservationDocs.Tests.ps1'
++} elseif ($Tier -eq 'PreservationNative') {
++    if (-not $PdftkPath -or -not $GhostscriptPath -or -not $PythonPath) { throw 'PreservationNative requires explicit real PDFtk/Ghostscript and pinned development Python paths.' }
++    $config.Run.Container = New-PesterContainer -Path (Join-Path $repo 'tests/pdf/Preservation.Native.Tests.ps1') `
++        -Data @{ PdftkPath=$PdftkPath; GhostscriptPath=$GhostscriptPath; PythonPath=$PythonPath }
++} elseif ($Tier -eq 'Diagnostics') {
+     $config.Run.Path = Join-Path $repo 'tests/help/Diagnostics.Tests.ps1'
+ } elseif ($Tier -eq 'DiagnosticsNative') {
+     if (-not $PdftkPath -or -not $GhostscriptPath -or -not $PythonPath) { throw 'DiagnosticsNative requires explicit real PDFtk/Ghostscript and pinned development Python paths.' }
+@@ -132,6 +138,8 @@ if ($Tier -eq 'SizeReporting') { $summary.evidence_class = 'unit-numeric-size-re
+ if ($Tier -eq 'SizeReportingNative') { $summary.evidence_class = 'windows-real-entry-size-accounting-and-controlled-equal-size-boundary; visual-manual-observations-separate' }
+ if ($Tier -eq 'Diagnostics') { $summary.evidence_class = 'unit-help-stage-summary-and-controlled-probe-entry-diagnostics; no PDF-engine-support claim' }
+ if ($Tier -eq 'DiagnosticsNative') { $summary.evidence_class = 'windows-real-help-examples-CLI-entry-diagnostics-and-independent-pdfium; not Explorer or manual desktop acceptance' }
++if ($Tier -eq 'PreservationDocs') { $summary.evidence_class = 'documentation-contract-and-actual-help; not native PDF preservation or manual acceptance' }
++if ($Tier -eq 'PreservationNative') { $summary.evidence_class = 'windows-real-entry-master-screen-ebook-feature-characterization; strict-pypdf-and-independent-pdfium; visual review separate' }
+ $summary | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath (Join-Path $work 'summary.json') -Encoding UTF8
+ $summary | ConvertTo-Json -Depth 4
+ Write-Host ('Reports: ' + $work)
+diff --git a/tools/test/requirements-fixtures.txt b/tools/test/requirements-fixtures.txt
+index 7d5a585..1fc88c9 100644
+--- a/tools/test/requirements-fixtures.txt
++++ b/tools/test/requirements-fixtures.txt
+@@ -2,3 +2,5 @@
+ # No runner silently installs these dependencies.
+ reportlab==4.4.9
+ pypdfium2==5.13.0
++pypdf==6.10.0
++Pillow==12.3.0

@@ -1,0 +1,250 @@
+{
+  "SchemaVersion": 1,
+  "Task": "T19",
+  "Result": "pass",
+  "EvidenceClass": "primary-source design review",
+  "ObservedAtUtc": "2026-10-08T10:16:32.321676+00:00",
+  "CommitUnderResearch": "7e0fe6fde769911f323bd87e4c4f9382d26e331b",
+  "DirtyWorktree": true,
+  "CurrentStatus": [
+    "M README.md",
+    " M docs/codex/NEXT_SESSION.md",
+    " M docs/codex/STATUS.md",
+    " M docs/codex/TASKS.json",
+    " M tools/test/Invoke-Tests.ps1",
+    " M tools/test/requirements-fixtures.txt",
+    "?? docs/PDF_LIMITATIONS.md",
+    "?? docs/codex/evidence/T19-checkpoint.md",
+    "?? tests/fixtures/features/",
+    "?? tests/help/PreservationDocs.Tests.ps1",
+    "?? tests/pdf/Preservation.Native.Tests.ps1"
+  ],
+  "InitialRepositoryCheck": {
+    "Commit": "7e0fe6fde769911f323bd87e4c4f9382d26e331b",
+    "Branch": "codex/v1.0.0-readiness",
+    "Clean": true,
+    "LiveFeature": "7e0fe6fde769911f323bd87e4c4f9382d26e331b",
+    "LiveMain": "802b13da6785cc12c43158d1f6b63e6fb40a12da",
+    "Origin": "https://github.com/PikkuJanne/WinPDFMerger.git",
+    "Method": "Actual git reads and live ls-remote in the initial T19 tool invocation; this receipt does not repeat the network query"
+  },
+  "ResearchMethod": "Actual web.run search/open/find of these primary vendor URLs; observations manually transcribed by independent reviewer, not fetched by this producer",
+  "Sources": [
+    {
+      "Title": "PDFtk Server Manual",
+      "URL": "https://www.pdflabs.com/docs/pdftk-man-page/",
+      "ExactQuotes": [
+        "Use the compress filter to restore page stream compression.",
+        "any XFA data in the input is automatically omitted."
+      ],
+      "TotalQuotedWords": 18,
+      "Observations": [
+        "cat assembles input pages into a new PDF; whole-input concatenation documents bookmark merging.",
+        "compress concerns PDF page stream compression; it is not a universal feature-preservation certification.",
+        "Multi-input assembly explicitly omits XFA. dump_data_annots documents only link annotations.",
+        "flatten is a separate explicit output operation, absent from the current application vector."
+      ],
+      "Limits": [
+        "This is an unversioned vendor manual; native behavior of the selected PDFtk Server 2.02 still requires observations.",
+        "It does not establish universal AcroForm, attachment, tag, signature or archival retention."
+      ]
+    },
+    {
+      "Title": "High Level Devices, Ghostscript 10.08.0",
+      "URL": "https://ghostscript.readthedocs.io/en/gs10.08.0/VectorDevices.html",
+      "ExactQuotes": [
+        "Instead, a new PDF file is being created"
+      ],
+      "TotalQuotedWords": 8,
+      "Observations": [
+        "pdfwrite recreates a PDF page description; a similar appearance is distinct from identical document structure.",
+        "The manual warns that some non-marking information does not carry through.",
+        "PreserveAnnots describes attempts to retain most annotations and names Link/Widget exceptions; PreserveMarkedContent describes an attempt, not accessibility validation.",
+        "Outlines ordinarily pass through pdfmarks. Documentation of features is not a guarantee for this selected vector/corpus."
+      ],
+      "Limits": [
+        "No signature, XFA or attachment preservation guarantee was found in the reviewed versioned page.",
+        "Do not replace actual feature outcomes with blanket link/widget loss claims; interpreter behavior must be observed."
+      ]
+    },
+    {
+      "Title": "Merging PDF files, pypdf 6.10.0",
+      "URL": "https://pypdf.readthedocs.io/en/6.10.0/user/merging-pdfs.html",
+      "ExactQuotes": [
+        "When merging forms, some form fields may have the same names, preventing access to some data."
+      ],
+      "TotalQuotedWords": 16,
+      "Observations": [
+        "Repeated source form names require explicit test coverage with distinct values.",
+        "pypdf's top-name grouping is a library option; silently renaming/repairing application inputs would hide the PDFtk characterization."
+      ],
+      "Limits": [
+        "pypdf is a development fixture/inspection dependency, not the application's merger; its merge outcomes do not prove PDFtk outcomes."
+      ]
+    },
+    {
+      "Title": "Interactions with PDF Forms, pypdf 6.10.0",
+      "URL": "https://pypdf.readthedocs.io/en/6.10.0/user/forms.html",
+      "ExactQuotes": [
+        "Forms have a dual nature"
+      ],
+      "TotalQuotedWords": 5,
+      "Observations": [
+        "Catalog AcroForm/Fields and page Widget annotations are distinct views that must both be traversed.",
+        "Field objects may be fused widgets or hierarchical parents with Kids. Repeated widgets for one field differ from colliding field names in separate documents.",
+        "Values, parent-child associations and appearance streams need separate recording; visible form text does not establish editable-field retention."
+      ],
+      "Limits": [
+        "A field-name dictionary alone can hide repeated-name collisions or orphan page widgets; no interactive GUI editing was performed here."
+      ]
+    },
+    {
+      "Title": "PdfWriter class, pypdf 6.10.0",
+      "URL": "https://pypdf.readthedocs.io/en/6.10.0/modules/PdfWriter.html",
+      "ExactQuotes": [
+        "the original document is written first and new/modified content is appended."
+      ],
+      "TotalQuotedWords": 11,
+      "Observations": [
+        "The library distinguishes incremental append from a new document rewrite and discusses signed documents in that context.",
+        "This application uses PDFtk cat and Ghostscript pdfwrite, not pypdf incremental writes."
+      ],
+      "Limits": [
+        "This API description does not validate any signature or support a claim that arbitrary changes preserve signature permissions."
+      ]
+    },
+    {
+      "Title": "Permissions and limitations of signed PDFs, Adobe Acrobat",
+      "URL": "https://helpx.adobe.com/acrobat/desktop/e-sign-documents/learn-about-signatures/signed-pdf-limitations.html",
+      "ExactQuotes": [
+        "Save a backup copy of the unsigned PDF before signing."
+      ],
+      "TotalQuotedWords": 10,
+      "Observations": [
+        "Adobe describes editing restrictions and obtaining original/unsigned copies of signed documents.",
+        "Keep originals; this merger neither verifies nor promises cryptographic signature validity."
+      ],
+      "Limits": [
+        "This is current Acrobat guidance, not an engine-specific PDFtk/Ghostscript acceptance result.",
+        "Visible signature appearance, page readability and positive page count cannot establish cryptographic validity; no signed sample or trust-chain validation was run."
+      ]
+    }
+  ],
+  "CurrentFiles": [
+    {
+      "Path": "AGENTS.md",
+      "SHA256": "41a0d6012fb146c6b9bb1ea61ea623e11dd25fc197e4b03a9aede1ef2e2634fc",
+      "Bytes": 3709
+    },
+    {
+      "Path": "docs/codex/INDEX.md",
+      "SHA256": "7544e4c3103b1ecb0dbb8f1c79d19828f480a6af531f0ba88d6243326f89e7f9",
+      "Bytes": 2456
+    },
+    {
+      "Path": "docs/codex/STATUS.md",
+      "SHA256": "77f1382fdbad9ec6f2d1b55b5edc4e5bfff8415f71343debb555d6170e652053",
+      "Bytes": 1616
+    },
+    {
+      "Path": "docs/codex/NEXT_SESSION.md",
+      "SHA256": "16d1822219f2eb602ef0c042194525a60d61f9cab13513de7ce0bc3af3454785",
+      "Bytes": 1747
+    },
+    {
+      "Path": "docs/codex/TASKS.json",
+      "SHA256": "3816d75095d1013511477491af6a8f08986db1174ad062cdd092ef25afae442c",
+      "Bytes": 40177
+    },
+    {
+      "Path": "docs/codex/tasks/T19.md",
+      "SHA256": "0bf2f07a94adb5c46db4653d7f694f24c6bfd7b604b723fdb5f4329fa26837f0",
+      "Bytes": 2378
+    },
+    {
+      "Path": "docs/codex/PRODUCT_SPEC.md",
+      "SHA256": "020901fce949b0fbe20aa79336c4c7308a200dd8324562bfc8f9109b8a9fc1af",
+      "Bytes": 7429
+    },
+    {
+      "Path": "docs/codex/TECHNICAL_SPEC.md",
+      "SHA256": "012b6d2bd6b750759389590a61c274ae9e1b1f0a030ab6595c777f04bb3eb5e9",
+      "Bytes": 8579
+    },
+    {
+      "Path": "docs/codex/TEST_STRATEGY.md",
+      "SHA256": "d624cd30bcfc78c175c1e184898c34402978c2f4b82f37b4b09ddf645c2e294f",
+      "Bytes": 6923
+    },
+    {
+      "Path": "docs/codex/GITHUB_WORKFLOW.md",
+      "SHA256": "71be0cb63a4d1ab0c7860e8e78ec4f2f01049fa45ff17600d680d52e2a662677",
+      "Bytes": 7862
+    },
+    {
+      "Path": "docs/codex/ACCEPTANCE_CASES.json",
+      "SHA256": "af3e735f433a0163a5a7b86e231f2b100006ad847e1af1fc66ce6e85cd277e3d",
+      "Bytes": 44274
+    },
+    {
+      "Path": "WinPDFMerge.ps1",
+      "SHA256": "e702b0b1583ab841589494cc524da1d9bd4148cf8849577793b08fd8f54b641d",
+      "Bytes": 18637
+    },
+    {
+      "Path": "src/WinPDFMerge.Helpers.ps1",
+      "SHA256": "3df10eafeac04493b06300d276cff05a9c5ef196a01b7b157a6afd3d2768eaa7",
+      "Bytes": 101346
+    },
+    {
+      "Path": "WinPDFMerge.bat",
+      "SHA256": "288287beefea974c64d39b34266332d83112b9106c952efd8c304edfedebff83",
+      "Bytes": 1782
+    },
+    {
+      "Path": "README.md",
+      "SHA256": "656d9f79e6b9276f3e7201136af5fea2c4a04e5b1c20ad6277182134cfd70be1",
+      "Bytes": 16722
+    },
+    {
+      "Path": "docs/EMAIL_PRESETS.md",
+      "SHA256": "ff77346ea43a0a5142526e9b0517faff40ce1cf306da444d762b58b65bf3db39",
+      "Bytes": 2883
+    }
+  ],
+  "Producer": {
+    "Path": "tests/.work/Research-T19Preservation.py",
+    "SHA256": "c69fffbd2ad27a9d54ca1204349c8942f49b5fbd7d0b80b8b143348a5ade7f7e",
+    "PythonLabel": "approved bundled Python 3.12.14",
+    "PythonSHA256": "dd5f8d19f6755d6491ee7c4bef2fe35ddd521334cc3ca3ed8fc93ebcadf135d0"
+  },
+  "CurrentNativeVectors": {
+    "Pdftk": "input operands; cat; output; owned staged master; compress; dont_ask",
+    "Ghostscript": "BATCH; NOPAUSE; SAFER; PDFSTOPONERROR; pdfwrite; CompatibilityLevel=1.6; fixed screen/ebook; DetectDuplicateImages=true; -o owned staged candidate; -f published master",
+    "Note": "Read-only current source inspection; no native invocation, publication, runtime parameter or feature-repair change by reviewer"
+  },
+  "CorpusRecommendations": [
+    "Resolve nested bookmark and internal GoTo targets to output page offsets; record URI strings without visiting them.",
+    "Traverse raw AcroForm leaves and page widgets including distinct repeated names/values, Parent/Kids/P and appearances; retain orphan-widget observations separately.",
+    "Hash decoded attachment payloads and distinguish document EmbeddedFiles from page FileAttachment annotations.",
+    "Record annotation subtype/rect/content/appearance separately from rendering; drawing an appearance is not editable annotation retention.",
+    "Record raw rotation and effective page orientation separately; email may bake rotation into page content.",
+    "Record minimal tags, Lang, marked-content IDs and parent-tree relationships as structural observations; do not infer accessible reading order or PDF/UA compliance.",
+    "Signed-sample exclusion/non-guarantee is expressly allowed by TEST_STRATEGY; XFA/signature validity must remain excluded from proven guarantees.",
+    "Observe originals, master, screen and ebook separately. If a valid candidate is larger, label its controlled retained characterization path and do not force final publication.",
+    "Preserve original/foreign hashes, exact selected engine pins/vectors and clearly distinguish controlled inspection from application/native/manual acceptance."
+  ],
+  "SuggestedDocumentation": "The master is assembled by PDFtk without intentional page rasterization or image downsampling. It is a new merged document. Feature behavior depends on the input and engine version; keep originals and check forms, links, bookmarks and attachments. The optional screen/ebook PDF is a rewrite and can change visible detail and document structure. XFA and signature validity are not supported guarantees. Neither output establishes PDF/A, accessibility certification, archival certification or malware removal.",
+  "BlockingFindings": [],
+  "AcceptanceStatus": {
+    "AC044": "not_run",
+    "AC045": "not_run"
+  },
+  "Limits": [
+    "Research/design review only; no PDF authoring, application/native/suite run or actual output inspection.",
+    "No visual, physical Explorer, form-editing, accessibility, signature, malware or archival certification claim.",
+    "Root and fixture/test authors own implementations; later independent actual receipt/docs review remains pending.",
+    "Repository-relative labels only in this receipt; no private PDF/name/profile values or downloaded third-party pages exported.",
+    "No historical evidence recursion. Quotations are at most 25 words per primary webpage source."
+  ]
+}
