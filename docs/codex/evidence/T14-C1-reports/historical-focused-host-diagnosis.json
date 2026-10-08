@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "task": "T14",
+  "purpose": "Preserve actual focused test-host fault history and clarify launch-environment metadata; not application acceptance",
+  "root_cause": "Windows Python copies environment keys as uppercase. The earlier case-sensitive dictionary pop for PSModulePath did not remove PSMODULEPATH; the PS5.1 child inherited parent module search paths and could not load Microsoft.PowerShell.Security. Case-insensitive child-only removal restores selected-shell standard module initialization.",
+  "earlier_metadata_note": "The child_environment_removed list in three earlier run.json files records intended removal, not actual removal. No historical raw receipt was rewritten. Current launcher records actual removed key names and verifies no case-insensitive module-path key remains.",
+  "correction": "Case-insensitive removal only in subprocess environment plus standard policy/security-module bootstrap before Pester. No persistent environment, policy or PATH changes.",
+  "native_support_claim": false,
+  "fabricated_summary_or_xml": false,
+  "historical_attempts": [
+    {
+      "root": "tests/.work/T14-focused-ps51-9a767746909344699c905ce840b971bc",
+      "classification": "Historical focused test-host fault; excluded from clean acceptance totals",
+      "diagnosis": "Initial inherited child module path",
+      "summary_available": false,
+      "xml_available": true,
+      "counts_as_printed": {
+        "passed": 17,
+        "failed": 103,
+        "skipped": 0,
+        "inconclusive": 0,
+        "not_run": 0
+      },
+      "container_failure_printed": false,
+      "raw_sha256": {
+        "stdout.txt": "beea6eb3b928509ba3dae1d83f8abd674d914da932e3656c7c85b0a050fd72c7",
+        "stderr.txt": "b610466d51b242045c8405b0479a4a7f0e36291dec1b971a5d495142a7ac0fdb",
+        "run.json": "f1259b6c0493b377704d5f175582a8acfee7a142ad1c8066f660b1c53cfc3408",
+        "results.xml": "667b511ff5de78438d70e5e36acf308af7f23b529165aa53ed642ef6e4832361"
+      }
+    },
+    {
+      "root": "tests/.work/T14-focused-ps51-a2e6039ee6624e5d8522490581df3943",
+      "classification": "Historical focused test-host fault; excluded from clean acceptance totals",
+      "diagnosis": "Intended case-sensitive dict removal did not match uppercase PSMODULEPATH",
+      "summary_available": false,
+      "xml_available": true,
+      "counts_as_printed": {
+        "passed": 17,
+        "failed": 103,
+        "skipped": 0,
+        "inconclusive": 0,
+        "not_run": 0
+      },
+      "container_failure_printed": false,
+      "raw_sha256": {
+        "stdout.txt": "18cae9d910fe4b81a1a0df39b25ce80a794cc32bd0798ac765b051fd70781824",
+        "stderr.txt": "b610466d51b242045c8405b0479a4a7f0e36291dec1b971a5d495142a7ac0fdb",
+        "run.json": "b0e53cf8109c497cdd60386e949c52ad44d66afaa756abc85b21376885bfda24",
+        "results.xml": "7b282b68db5fd48a6abac5054de92cfbf4fcc77121589925ebfebf0ad74c48cd"
+      }
+    },
+    {
+      "root": "tests/.work/T14-focused-ps51-7f30fb0a9acf4836a693f24fd7d52573",
+      "classification": "Historical focused test-host fault; excluded from clean acceptance totals",
+      "diagnosis": "Same inherited module path; fixture BeforeAll hash failed",
+      "summary_available": false,
+      "xml_available": true,
+      "counts_as_printed": {
+        "passed": 0,
+        "failed": 120,
+        "skipped": 0,
+        "inconclusive": 0,
+        "not_run": 0
+      },
+      "container_failure_printed": true,
+      "raw_sha256": {
+        "stdout.txt": "70c4ba3b7ef94d702a6e281f6bb7b0562534da36cd380688428b5e913415e749",
+        "stderr.txt": "b610466d51b242045c8405b0479a4a7f0e36291dec1b971a5d495142a7ac0fdb",
+        "run.json": "c1162d5e02f4e761871ce078fe1f188f69d627a970b6c02516caba107f65d02e",
+        "results.xml": "8d3966342dfbf4b6acccd4922a79edc250f779712367a4a9a3915f4e4a0b28c8"
+      }
+    },
+    {
+      "root": "tests/.work/T14-focused-ps51-ac20eddc2c3b46988e625dea1f221572",
+      "classification": "Historical focused test-host fault; excluded from clean acceptance totals",
+      "diagnosis": "Same inherited module path; driver policy bootstrap failed before Pester",
+      "summary_available": false,
+      "xml_available": false,
+      "counts_as_printed": null,
+      "container_failure_printed": false,
+      "raw_sha256": {
+        "stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr.txt": "b610466d51b242045c8405b0479a4a7f0e36291dec1b971a5d495142a7ac0fdb",
+        "run.json": "bb225ad1698a1790b12745556a30c3bab02c1c6cea49fafbdb2b9f6e59dc78c5"
+      }
+    }
+  ]
+}

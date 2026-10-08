@@ -64,6 +64,12 @@ BeforeAll {
         }) -join "`n")
     }
 
+    function Add-StagingNativeMasterPadding([string]$Path) {
+        $before=(Get-FileHash -LiteralPath $Path -Algorithm SHA256).Hash
+        [IO.File]::AppendAllText($Path,(' ' * 4096),[Text.Encoding]::ASCII)
+        [pscustomobject]@{ Path=$Path; BeforeSHA256=$before; AfterSHA256=(Get-FileHash -LiteralPath $Path -Algorithm SHA256).Hash; AddedWhitespaceBytes=4096; Scope='Controlled preparation of this synthetic test-owned published master only, before preservation snapshot; keeps final PDF footer within8192 bytes and forces a smaller real GS derivative for actual publication-race coverage.' }
+    }
+
     function Assert-StagingNativePages([string]$Path, [int]$Expected=3) {
         $inspection = Invoke-TestChildProcess -Executable $PdftkPath -Arguments @($Path,'dump_data_utf8','output','-','dont_ask') -TimeoutMilliseconds 10000
         $inspection.ExitCode | Should -Be 0 -Because $inspection.Stderr
@@ -81,13 +87,14 @@ BeforeAll {
         $Result.NativeResult.Executable | Should -BeExactly $Executable
         $Result.NativeResult.RenderedArguments | Should -Match ([regex]::Escape($StagePath))
         $Result.NativeResult.ProcessId | Should -BeGreaterThan 0
-        if ($Executable -ceq $PdftkPath) {
+        if ($Executable -ceq $PdftkPath -or $Executable -ceq $GhostscriptPath) {
             $Result.OutputValidated | Should -BeTrue
             $Result.ValidatedPageCount | Should -Be 3
             $Result.ValidationResult.Succeeded | Should -BeTrue
             $Result.ValidationResult.PageCount | Should -Be 3
             $Result.ValidationResult.NativeResult.Started | Should -BeTrue
             $Result.ValidationResult.NativeResult.ExitCode | Should -Be 0
+            $Result.ValidationResult.NativeResult.Executable | Should -BeExactly $PdftkPath
             $Result.ValidationResult.NativeResult.ProcessId | Should -Not -Be $Result.NativeResult.ProcessId
             $Result.ValidationResult.NativeResult.RenderedArguments | Should -Match 'dump_data_utf8'
             $Result.ValidationResult.NativeResult.RenderedArguments | Should -Match ([regex]::Escape($StagePath))
@@ -120,12 +127,14 @@ try {
     if ([Console]::In.ReadLine() -cne 'GO') { throw 'Missing exact parent start barrier.' }
     $master = Invoke-PdfToolJob -Tool Pdftk -ExpectedPageCount 3 -Executable $Pdftk -InputPaths $inputs -OutputPath $run.MasterPath -Staging $staging -TimeoutMilliseconds 20000
     if (-not $master.Succeeded) { throw ('Actual concurrent master failed: ' + ($master | ConvertTo-Json -Depth 6 -Compress)) }
+    [IO.File]::AppendAllText($run.MasterPath,(' ' * 4096),[Text.Encoding]::ASCII)
+    $preparation=[ordered]@{AddedWhitespaceBytes=4096;Scope='Controlled padding of owned synthetic master before preservation snapshots; real GS must publish a smaller derivative.';PreparedMasterSHA256=(Get-FileHash -LiteralPath $run.MasterPath -Algorithm SHA256).Hash}
     if ($Role -eq 'B') {
         [Console]::Out.WriteLine('HOLDING')
         if ([Console]::In.ReadLine() -cne 'FINISH') { throw 'Missing exact parent held-stage release.' }
         [IO.File]::Delete($staging.EmailPath)
     }
-    $email = Invoke-PdfToolJob -Tool Ghostscript -Executable $Gs -InputPaths @($run.MasterPath) -OutputPath $run.EmailPath -Staging $staging -TimeoutMilliseconds 20000
+    $email = Invoke-PdfToolJob -Tool Ghostscript -ExpectedPageCount 3 -InspectionExecutable $Pdftk -Executable $Gs -InputPaths @($run.MasterPath) -OutputPath $run.EmailPath -Staging $staging -TimeoutMilliseconds 20000
     if (-not $email.Succeeded) { throw ('Actual concurrent email failed: ' + ($email | ConvertTo-Json -Depth 6 -Compress)) }
     if ($Role -eq 'A') {
         [Console]::Out.WriteLine('PRE_CLEAN')
@@ -133,7 +142,7 @@ try {
     }
     $cleanup = Remove-PdfStaging -Staging $staging
     if (-not $cleanup.Cleaned) { throw $cleanup.CleanupError }
-    [Console]::Out.WriteLine(([ordered]@{ Event='RESULT'; Role=$Role; ProcessId=$PID; Master=$master; Email=$email; Cleanup=$cleanup } | ConvertTo-Json -Depth 7 -Compress))
+    [Console]::Out.WriteLine(([ordered]@{ Event='RESULT'; Role=$Role; ProcessId=$PID; Master=$master; MasterPreparation=$preparation; Email=$email; Cleanup=$cleanup } | ConvertTo-Json -Depth 7 -Compress))
     exit 0
 } catch {
     [Console]::Error.WriteLine($_.Exception.Message)
@@ -215,10 +224,11 @@ Describe 'AC027: actual engines preserve source and existing final bytes' {
         try {
             $master = Invoke-PdfToolJob -Tool Pdftk -ExpectedPageCount 3 -Executable $PdftkPath -InputPaths $case.Inputs -OutputPath $case.Master -Staging $stage -TimeoutMilliseconds 20000
             Assert-StagingRealSuccess $master $PdftkPath $stage.MasterPath
+            $preparation=Add-StagingNativeMasterPadding $case.Master
             [IO.Directory]::Exists($stage.DirectoryPath) | Should -BeTrue
             [IO.File]::Exists($stage.MarkerPath) | Should -BeTrue
             $masterBefore = Get-StagingNativeSnapshot @($case.Master)
-            $email = Invoke-PdfToolJob -Tool Ghostscript -Executable $GhostscriptPath -InputPaths @($case.Master) -OutputPath $case.Email -Staging $stage -TimeoutMilliseconds 20000
+            $email = Invoke-PdfToolJob -Tool Ghostscript -ExpectedPageCount 3 -InspectionExecutable $PdftkPath -Executable $GhostscriptPath -InputPaths @($case.Master) -OutputPath $case.Email -Staging $stage -TimeoutMilliseconds 20000
             Assert-StagingRealSuccess $email $GhostscriptPath $stage.EmailPath
             $email.NativeResult.RenderedArguments | Should -Match '\-dSAFER'
             $email.NativeResult.RenderedArguments | Should -Match '/screen'
@@ -230,7 +240,7 @@ Describe 'AC027: actual engines preserve source and existing final bytes' {
             Assert-StagingNativePages $case.Email
             (Get-StagingNativeSnapshot @($case.Master)) | Should -BeExactly $masterBefore
             (Get-StagingNativeSnapshot (@($case.Inputs)+@($case.Foreign))) | Should -BeExactly $before
-            $observations.Add([pscustomobject]@{ Label='real-tools-one-owned-stage'; SourceAndForeignBefore=$before; SourceAndForeignAfter=(Get-StagingNativeSnapshot (@($case.Inputs)+@($case.Foreign))); FinalOutputs=(Get-StagingNativeSnapshot @($case.Master,$case.Email)); Stage=$stage.DirectoryPath; Master=$master; Email=$email; Cleanup=$cleanup })
+            $observations.Add([pscustomobject]@{ Label='real-tools-one-owned-stage'; SourceAndForeignBefore=$before; SourceAndForeignAfter=(Get-StagingNativeSnapshot (@($case.Inputs)+@($case.Foreign))); FinalOutputs=(Get-StagingNativeSnapshot @($case.Master,$case.Email)); MasterPreparation=$preparation; Stage=$stage.DirectoryPath; Master=$master; Email=$email; Cleanup=$cleanup })
         } finally { if (-not $stage.Cleaned) { $null = Remove-PdfStaging -Staging $stage } }
     }
 
@@ -240,8 +250,8 @@ Describe 'AC027: actual engines preserve source and existing final bytes' {
         [IO.File]::Copy($case.Inputs[0],$case.Master,$false)
         $before = Get-StagingNativeSnapshot (@($case.Inputs)+@($case.Foreign,$case.Master))
         $exe = if ($Tool -eq 'Pdftk') { $PdftkPath } else { $GhostscriptPath }
-        $expectedArguments = @{}
-        if ($Tool -eq 'Pdftk') { $expectedArguments.ExpectedPageCount = [long]1 }
+        $expectedArguments = @{ExpectedPageCount=[long]1}
+        if ($Tool -eq 'Ghostscript') { $expectedArguments.InspectionExecutable = $PdftkPath }
         $stage = New-PdfStaging -OutputFolder $case.Output -RunIdentity ('T12-preexisting-' + $Tool)
         try {
             $result = Invoke-PdfToolJob @expectedArguments -Tool $Tool -Executable $exe -InputPaths @($case.Inputs[0]) -OutputPath $case.Master -Staging $stage -TimeoutMilliseconds 20000
@@ -263,13 +273,15 @@ Describe 'AC027: actual engines preserve source and existing final bytes' {
         param($Tool,$Kind)
         $case = New-StagingNativeCase
         $paths = @($case.Inputs)+@($case.Foreign)
-        $expectedArguments = @{}
-        if ($Tool -eq 'Pdftk') { $expectedArguments.ExpectedPageCount = [long]3 }
+        $expectedArguments = @{ExpectedPageCount=[long]3}
+        if ($Tool -eq 'Ghostscript') { $expectedArguments.InspectionExecutable = $PdftkPath }
+        $preparation=$null
         $stage = New-PdfStaging -OutputFolder $case.Output -RunIdentity ('T12-publication-race-' + $Tool)
         try {
             if ($Tool -eq 'Ghostscript') {
                 $master = Invoke-PdfToolJob -Tool Pdftk -ExpectedPageCount 3 -Executable $PdftkPath -InputPaths $case.Inputs -OutputPath $case.Master -Staging $stage -TimeoutMilliseconds 20000
                 Assert-StagingRealSuccess $master $PdftkPath $stage.MasterPath
+                $preparation=Add-StagingNativeMasterPadding $case.Master
                 $paths += $case.Master
             }
             $before = Get-StagingNativeSnapshot $paths
@@ -300,12 +312,13 @@ Describe 'AC027: actual engines preserve source and existing final bytes' {
             $result.NativeResult.Succeeded | Should -BeTrue
             $result.NativeResult.ExitCode | Should -Be 0
             $result.NativeResult.Executable | Should -BeExactly $exe
-            if ($Tool -eq 'Pdftk') {
+            if ($Tool -in @('Pdftk','Ghostscript')) {
                 $result.OutputValidated | Should -BeTrue
                 $result.ValidatedPageCount | Should -Be 3
                 $result.ValidationResult.Succeeded | Should -BeTrue
                 $result.ValidationResult.NativeResult.Started | Should -BeTrue
                 $result.ValidationResult.NativeResult.ExitCode | Should -Be 0
+                $result.ValidationResult.NativeResult.Executable | Should -BeExactly $PdftkPath
                 $result.ValidationResult.NativeResult.RenderedArguments | Should -Match 'dump_data_utf8'
             }
             $result.Succeeded | Should -BeFalse
@@ -323,7 +336,7 @@ Describe 'AC027: actual engines preserve source and existing final bytes' {
             (Get-StagingNativeSnapshot $paths) | Should -BeExactly $before
             if ($Tool -eq 'Ghostscript') { Assert-StagingNativePages $case.Master }
             Should -Invoke Publish-PdfStagedOutput -Times 1 -Exactly
-            $observations.Add([pscustomobject]@{ Label=('actual-move-' + $Kind + '-collision-after-real-' + $Tool); ControlledScheduling='Foreign file or directory final inserted inside publication wrapper after actual native exit zero; original helper performs real File.Move.'; CollisionKind=$Kind; RealNativeStarted=$true; Before=$before; After=(Get-StagingNativeSnapshot $paths); StagedSHA256=$script:t12RaceStagedHash; ForeignSentinelPath=$script:t12RaceSentinelPath; ForeignFinalSHA256=$script:t12RaceForeignHash; Result=$result; Cleanup=$cleanup })
+            $observations.Add([pscustomobject]@{ Label=('actual-move-' + $Kind + '-collision-after-real-' + $Tool); MasterPreparation=$preparation; ControlledScheduling='Foreign file or directory final inserted inside publication wrapper after actual native exit zero; original helper performs real File.Move. GS masters receive4096bytes owned whitespace preparation before preservation snapshot so actual GS reaches a smaller validated final move.'; CollisionKind=$Kind; RealNativeStarted=$true; Before=$before; After=(Get-StagingNativeSnapshot $paths); StagedSHA256=$script:t12RaceStagedHash; ForeignSentinelPath=$script:t12RaceSentinelPath; ForeignFinalSHA256=$script:t12RaceForeignHash; Result=$result; Cleanup=$cleanup })
         } finally { if (-not $stage.Cleaned) { $null = Remove-PdfStaging -Staging $stage } }
     }
 

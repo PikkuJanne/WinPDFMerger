@@ -97,8 +97,15 @@ Describe 'T09: fixed tool vectors and private fresh native outputs' {
             [IO.File]::Copy($case.Inputs[0], $script:t09CapturedStage, $false)
             New-ToolInvocationResult
         }
-        $result = Invoke-PdfToolJob -Tool Ghostscript -Executable $case.Executable -InputPaths @($case.Inputs[0]) -OutputPath $case.Output
+        $result = Invoke-PdfToolJob -Tool Ghostscript -Executable $case.Executable -InputPaths @($case.Inputs[0]) -OutputPath $case.Output -ExpectedPageCount 3 -InspectionExecutable $case.Executable
         $result.Succeeded | Should -BeTrue -Because $result.OutputError
+        $result.OutputValidated | Should -BeTrue
+        $result.ValidatedPageCount | Should -Be 3
+        $result.OutputState | Should -BeExactly 'no_size_benefit'
+        $result.OutputPublished | Should -BeFalse
+        $result.OutputError | Should -BeNullOrEmpty
+        $result.MasterBytes | Should -Be $result.OutputBytes
+        [IO.File]::Exists($case.Output) | Should -BeFalse
         ($script:t09CapturedArguments[0..7] -join '|') | Should -BeExactly '-dBATCH|-dNOPAUSE|-dSAFER|-dPDFSTOPONERROR|-sDEVICE=pdfwrite|-dCompatibilityLevel=1.6|-dPDFSETTINGS=/screen|-dDetectDuplicateImages=true'
         $script:t09CapturedArguments.Count | Should -Be 12
         $script:t09CapturedArguments[8] | Should -BeExactly '-o'
@@ -157,8 +164,8 @@ Describe 'T09: collision refusal and bounded native failures' {
         [IO.File]::WriteAllText($case.Output, 'T09 foreign final sentinel')
         $existingHash = (Get-FileHash -LiteralPath $case.Output -Algorithm SHA256).Hash
         Mock Invoke-NativeProcess { throw 'Existing final must fail before launching any process.' }
-        $expectedPages = @{}
-        if ($Tool -eq 'Pdftk') { $expectedPages.ExpectedPageCount = [long]3 }
+        $expectedPages = @{ ExpectedPageCount = [long]3 }
+        if ($Tool -eq 'Ghostscript') { $expectedPages.InspectionExecutable = $case.Executable }
         $result = Invoke-PdfToolJob -Tool $Tool -Executable $case.Executable -InputPaths @($case.Inputs[0]) -OutputPath $case.Output @expectedPages
         $result.Succeeded | Should -BeFalse
         $result.OutputPublished | Should -BeFalse

@@ -2,39 +2,42 @@
 
 Target: published and independently verified `v1.0.0` in `PikkuJanne/WinPDFMerger`.
 Completed milestone: M1 — paths, ordering and native execution.
-Completed tasks: T01 through T13.
-Next task: T14 — make optional email processing and result states explicit, in M2.
+Completed tasks: T01 through T14.
+Next task: T15 — close interruption, environment and IO failure paths, in M2.
 Publication: NOT STARTED.
 
-T13 and required AC030/AC031 pass at clean C1 `e74ffa92588eff876c12ebd3321e2f3b0d6f110c`.
-Eleven focused tiers pass in each actual PS5.1.26100.9444 / supportedPS7.6.6:
-369each738total,all failure/skip/not_run counts0. Native merge success and nonempty
-output require separate complete bounded staged PDFtk inspection and an exact
-positive frozen expected page total before final no-overwrite move. Stage/parent
-ownership,reparse guards and staged metadata are rechecked. Merge and validation
-receipts stay separate; planned/validated/published states remain truthful.
+T14 and required AC032/AC033 integration +AC034 unit pass at clean C1 `588a96586518059ed38e2de01ad2312003defc7c`.
+Thirteen relevant tiers pass in each actualPS5.1.26100.9444 / supportedPS7.6.6:
+476each952total,all failure/block/container/skip/not_run counts0. Separate complete
+bounded email inspection/exact frozen master pages, staging/master stability and
+strictly-smaller publication now precede any advertised email final.
 
-Actual single2page and natural1/01/2/10 fivepage masters preserve independently
-checked visible IDs,0/90/180/270rotations,dimensions and all source/foreign hashes.
-Real wrong expected count refuses publication. Controlled native/unit faults and
-staged substitutions are disclosed separately; no mock becomes an actualengine
-pass. T12 shared atomic staging,immutable readable marker,known-only cleanup,
-exact orphan diagnostics,source/final preservation and collisions still pass.
+Explicit SkipEmail bypasses GS discovery/version/launch. Skip, missing optionalGS,
+valid no-benefit output and published smaller email return0. Real email or post-
+master failure returns2 with validated master retained; pre-master failure1.
+Result paths follow explicit states. BAT remains unchanged; actualcmd/BAT cases
+verify0/1/2 through its realPS5.1 child. RealGS smaller/no-benefit/partial output
+and pinnedPDFium visibleID/count/rotation/dimensions checks match preserved source/
+master/foreign hashes. Controlled corrupt-input/count/discovery/logger faults and
+owned staging whitespace preparation are disclosed. GS CJKstage native0 with
+PDFtk2.02 inspection failure refuses publication; no broader support claim.
 
-Independent code/static/evidence review and native audit are retained. Scoped
-PSA1.25.0 over10files:0errors112warnings49information eachshell,reviewed nonblocking,
-not lint-clean/fullT22. Historical dirty50/50 focused runs,earlier49/49 and native
-smoke pass separately from clean738. Exact commands,historical reports,pins and
-raw/sanitized hashes are in T13 completion/results/manifest/review/native audit.
+Independent code/static/native/evidence reviews and exact raw/sanitized bindings
+are retained. PSA1.25.0:0errors108warnings42info each10files,reviewed nonblocking,
+not lint-clean/fullT22. Historical failedPS5.1 focused host module-path and native
+localized assertion attempts remain explicit, separate from corrected122/122 and
+11/11 dirty passes and clean952. No missing summary/XML is fabricated.
 
-C1 normal push and fresh clean local/live equality are verified. Draft T13 PR
-follows owner-merged PR12/main c7cb75e; exact URL is in completion. Final records
-C2's own post-push SHA/equality is reported in the session without self-reference.
-Known authorized caches reused; no acquisition/admin/PATH/persistent policy/
-security change. Actual local NTFS Windows11x64/build26300 standard-user synthetic
-evidence; ordinary PS5.1 Restricted/allUndefined remains,child-only RemoteSigned.
+C1 normal push/fresh clean local-live equality verified; exact draftPR follows
+owner-mergedPR13/main f91882c and is in T14 completion. Records-onlyC2 binds C1;
+C2's own SHA/clean/live equality is reported in session without self-reference.
+Known approved caches reused; no acquisition/admin/persistent PATH/policy/security
+change. Standard-user localNTFS Windows11x64/build26300 evidence; ordinaryPS5.1
+Restricted/allUndefined remains,authorized test-child-onlyRemoteSigned.
 
-Structural checks do not certify universal validity/security,fidelity/features/
-signatures or transactional snapshots. T14 email validation/size/outcomes,T15
-interruption/descendants and options,fidelity,OS support-channel/UNC/Explorer,
-CI/security/package/release gates remain. No full project/release claim.
+Defaults /screen/output-beside-entry, local engines, import-onlyPS5.1-compatible
+helpers, source/final preservation and owned staging remain. T15 interruption/
+environment/IO,T16options,T17fidelity/size reporting and OS/UNC/Explorer/CI/security/
+package/release gates remain. Structure/page/snapshot checks do not certify
+universal validity/security,fidelity/signatures,PDF/A or archival safety. No
+full project/publication claim; no tag/release is created.

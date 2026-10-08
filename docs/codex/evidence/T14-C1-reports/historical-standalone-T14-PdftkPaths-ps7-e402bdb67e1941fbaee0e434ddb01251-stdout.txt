@@ -1,0 +1,47 @@
+Pester v6.2.0
+
+Running tests from 1 files.
+
+Running tests from '<repo>\tests\pdf\ToolPaths.Native.Tests.ps1'
+Actual native tool: Pdftk 2.02
+Engine SHA256: 5E5CBE817ECC3CC1875369D81119472559C9624D55C7176852C8827750AFA00A
+PDFtk inspection oracle SHA256: 5e5cbe817ecc3cc1875369d81119472559c9624d55c7176852c8827750afa00a
+Describing AC019: actual native source, output and installation path vectors
+  [+] processes spaces in input, output and selected install paths without source edits 1.43s
+  [+] processes shell and wildcard characters in input, output and selected install paths without source edits 408ms
+  [+] processes Latin Unicode in input, output and selected install paths without source edits 395ms
+  [+] selects an executable in a CJK install directory while keeping PDF operands supported 378ms
+  [+] records the CJK input result with unchanged sources and explicit backend diagnostics 292ms
+  [+] records the CJK output-directory result with unchanged sources and explicit backend diagnostics 144ms
+  [+] supports a 258-character PDFtk input operand and refuses the 260-character guard before launch 348ms
+  [+] runs the actual application from special and Latin paths with the same real selected engines 2.47s
+
+Describing AC020: real prompt-free encrypted, locked and collision outcomes
+  [+] fails a synthetic password-protected input promptly without asking for a password or publishing a final 208ms
+  [+] fails the actual encrypted-only application workflow through PDFtk before any Ghostscript conversion 2.06s
+  [+] fails a genuinely exclusively locked input within the finite native bound without changing source bytes 204ms
+  [+] fails an actual current-user ReadData ACL denial promptly and restores the owned fixture descriptor 397ms
+  [+] refuses a preexisting final before actual native execution without an overwrite prompt or byte change 35ms
+Native observations: <repo>\tests\.work\tool-paths\f858dfca48ce4a92820c472c1e0d72f5\native-observations.json
+Tests completed in 10.17s
+Tests Passed: 13, Failed: 0, Skipped: 0, Inconclusive: 0, NotRun: 0
+{
+  "observed_at_utc": "2026-10-08T05:08:53.9419528Z",
+  "commit_under_test": "947e8cfb998187195db2655f5ff30eee433d156a",
+  "dirty_worktree": true,
+  "shell_version": "7.6.6",
+  "shell_edition": "Core",
+  "process_64_bit": true,
+  "execution_policy": "RemoteSigned",
+  "pester_version": "6.2.0",
+  "tier": "PdftkPaths",
+  "evidence_class": "windows-real-tool-path-prompt-integration",
+  "passed": 13,
+  "failed": 0,
+  "failed_blocks": 0,
+  "failed_containers": 0,
+  "skipped": 0,
+  "not_run": 0,
+  "total": 13
+}
+Reports: <repo>\tests\.work\pester\3f975cadb7524a18a599e9e038ccf49a

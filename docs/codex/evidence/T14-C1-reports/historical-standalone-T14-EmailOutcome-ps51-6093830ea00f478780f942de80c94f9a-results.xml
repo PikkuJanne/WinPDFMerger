@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="11" errors="0" failures="10" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2026-10-08" time="07.08.42">
+  <environment clr-version="4.0.30319.42000" user-domain="REDACTED" cwd="REDACTED" platform="Microsoft Windows 11 Pro|C:\Windows|\Device\Harddisk0\Partition3" machine-name="REDACTED" nunit-version="2.5.8.0" os-version="10.0.26300" user="REDACTED" />
+  <culture-info current-culture="fi-FI" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Failure" success="False" time="33.363" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="[repo]\tests\pdf\EmailOutcome.Native.Tests.ps1" executed="True" result="Failure" success="False" time="33.363" asserts="0" description="[repo]\tests\pdf\EmailOutcome.Native.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="AC032 actual optional email outcomes and valid size decision" executed="True" result="Failure" success="False" time="11.8375" asserts="0" description="AC032 actual optional email outcomes and valid size decision">
+            <results>
+              <test-case description="returns master-only zero with optional GS absent from scoped child discovery" name="AC032 actual optional email outcomes and valid size decision.returns master-only zero with optional GS absent from scoped child discovery" time="2.5377" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected strings to be the same, but they were different.
+Expected length: 7
+Actual length:   11
+Strings differ at index 4.
+Expected: '432,288'
+But was:  '432,0,288,0'
+           ----^</message>
+                  <stack-trace>at $actual.page_count | Should -Be 1;$actual.pages[0].identifier | Should -BeExactly $Id;$actual.pages[0].rotation_degrees | Should -Be 0;($actual.pages[0].size_points -join ',') | Should -BeExactly '432,288', [repo]\tests\pdf\EmailOutcome.Native.Tests.ps1:114
+at Assert-EmailResult, [repo]\tests\pdf\EmailOutcome.Native.Tests.ps1:120
+at &lt;ScriptBlock&gt;, [repo]\tests\pdf\EmailOutcome.Native.Tests.ps1:151</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="skips available real GS without discovery, proven by a copied-helper throwing discovery sentinel" name="AC032 actual optional email outcomes and valid size decision.skips available real GS without discovery, proven by a copied-helper throwing discovery sentinel" time="2.2668" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected strings to be the same, but they were different.
+Expected length: 7
+Actual length:   11
+Strings differ at index 4.
+Expected: '432,288'
+But was:  '432,0,288,0'
+           ----^</message>
+                  <stack-trace>at $actual.page_count | Should -Be 1;$actual.pages[0].identifier | Should -BeExactly $Id;$actual.pages[0].rotation_degrees | Should -Be 0;($actual.pages[0].size_points -join ',') | Should -BeExactly '432,288', [repo]\tests\pdf\EmailOutcome.Native.Tests.ps1:114
+at Assert-EmailResult, [repo]\tests\pdf\EmailOutcome.Native.Tests.ps1:120
+at &lt;ScriptBlock&gt;, [repo]\tests\pdf\EmailOutcome.Native.Tests.ps1:156</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="publishes a validated smaller real GS derivative of an original deterministic raster PDF" name="AC032 actual optional email outcomes and valid size decision.publishes a validated smaller real GS derivative of an original deterministic raster PDF" time="3.5193" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected strings to be the same, but they were different.
+Expected length: 7
+Actual length:   11
+Strings differ at index 4.
+Expected: '432,288'
+But was:  '432,0,288,0'
+           ----^</message>
+                  <stack-trace>at $actual.page_count | Should -Be 1;$actual.pages[0].identifier | Should -BeExactly $Id;$actual.pages[0].rotation_degrees | Should -Be 0;($actual.pages[0].size_points -join ',') | Should -BeExactly '432,288', [repo]\tests\pdf\EmailOutcome.Native.Tests.ps1:114
+at Assert-EmailResult, [repo]\tests\pdf\EmailOutcome.Native.Tests.ps1:120
+at &lt;ScriptBlock&gt;, [repo]\tests\pdf\EmailOutcome.Native.Tests.ps1:160</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="reports no size benefit with zero and omits a valid larger tiny-text derivative" name="AC032 actual optional email outcomes and valid size decision.reports no size benefit with zero and omits a valid larger tiny-text derivative" time="3.437" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected strings to be the same, but they were different.
+Expected length: 7
+Actual length:   11
+Strings differ at index 4.
+Expected: '432,288'
+But was:  '432,0,288,0'
+           ----^</message>
+                  <stack-trace>at $actual.page_count | Should -Be 1;$actual.pages[0].identifier | Should -BeExactly $Id;$actual.pages[0].rotation_degrees | Should -Be 0;($actual.pages[0].size_points -join ',') | Should -BeExactly '432,288', [repo]\tests\pdf\EmailOutcome.Native.Tests.ps1:114
+at Assert-EmailResult, [repo]\tests\pdf\EmailOutcome.Native.Tests.ps1:120
+at &lt;ScriptBlock&gt;, [repo]\tests\pdf\EmailOutcome.Native.Tests.ps1:164</stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="AC033 real GS partial and AC034 native count-fault supplement" executed="True" result="Failure" success="False" time="23.01" asserts="0" description="AC033 real GS partial and AC034 native count-fault supplement">
+            <results>
+              <test-case description="returns two after actual GS leaves a nonempty staged partial, retaining the validated master" name="AC033 real GS partial and AC034 native count-fault supplement.returns two after actual GS leaves a nonempty staged partial, retaining the validated master" time="3.2008" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected strings to be the same, but they were different.
+Expected length: 7
+Actual length:   11
+Strings differ at index 4.
+Expected: '432,288'
+But was:  '432,0,288,0'
+           ----^</message>
+                  <stack-trace>at $actual.page_count | Should -Be 1;$actual.pages[0].identifier | Should -BeExactly $Id;$actual.pages[0].rotation_degrees | Should -Be 0;($actual.pages[0].size_points -join ',') | Should -BeExactly '432,288', [repo]\tests\pdf\EmailOutcome.Native.Tests.ps1:114
+at Assert-EmailResult, [repo]\tests\pdf\EmailOutcome.Native.Tests.ps1:120
+at &lt;ScriptBlock&gt;, [repo]\tests\pdf\EmailOutcome.Native.Tests.ps1:170</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="returns two when genuine GS exit zero and real inspection disagree with an injected expected count" name="AC033 real GS partial and AC034 native count-fault supplement.returns two when genuine GS exit zero and real inspection disagree with an injected expected count" time="3.5437" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected strings to be the same, but they were different.
+Expected length: 7
+Actual length:   11
+Strings differ at index 4.
+Expected: '432,288'
+But was:  '432,0,288,0'
+           ----^</message>
+                  <stack-trace>at $actual.page_count | Should -Be 1;$actual.pages[0].identifier | Should -BeExactly $Id;$actual.pages[0].rotation_degrees | Should -Be 0;($actual.pages[0].size_points -join ',') | Should -BeExactly '432,288', [repo]\tests\pdf\EmailOutcome.Native.Tests.ps1:114
+at Assert-EmailResult, [repo]\tests\pdf\EmailOutcome.Native.Tests.ps1:120
+at &lt;ScriptBlock&gt;, [repo]\tests\pdf\EmailOutcome.Native.Tests.ps1:174</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="retains a real published master and returns two after a controlled discovery exception" name="AC033 real GS partial and AC034 native count-fault supplement.retains a real published master and returns two after a controlled discovery exception" time="2.2224" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected strings to be the same, but they were different.
+Expected length: 7
+Actual length:   11
+Strings differ at index 4.
+Expected: '432,288'
+But was:  '432,0,288,0'
+           ----^</message>
+                  <stack-trace>at $actual.page_count | Should -Be 1;$actual.pages[0].identifier | Should -BeExactly $Id;$actual.pages[0].rotation_degrees | Should -Be 0;($actual.pages[0].size_points -join ',') | Should -BeExactly '432,288', [repo]\tests\pdf\EmailOutcome.Native.Tests.ps1:114
+at Assert-EmailResult, [repo]\tests\pdf\EmailOutcome.Native.Tests.ps1:120
+at &lt;ScriptBlock&gt;, [repo]\tests\pdf\EmailOutcome.Native.Tests.ps1:180</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="retains a real published master and returns two after a once-only publication log exception" name="AC033 real GS partial and AC034 native count-fault supplement.retains a real published master and returns two after a once-only publication log exception" time="2.1942" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected strings to be the same, but they were different.
+Expected length: 7
+Actual length:   11
+Strings differ at index 4.
+Expected: '432,288'
+But was:  '432,0,288,0'
+           ----^</message>
+                  <stack-trace>at $actual.page_count | Should -Be 1;$actual.pages[0].identifier | Should -BeExactly $Id;$actual.pages[0].rotation_degrees | Should -Be 0;($actual.pages[0].size_points -join ',') | Should -BeExactly '432,288', [repo]\tests\pdf\EmailOutcome.Native.Tests.ps1:114
+at Assert-EmailResult, [repo]\tests\pdf\EmailOutcome.Native.Tests.ps1:120
+at &lt;ScriptBlock&gt;, [repo]\tests\pdf\EmailOutcome.Native.Tests.ps1:199</stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="Actual BAT carries the 0/1/2 contract through its PS5.1 child" executed="True" result="Failure" success="False" time="31.5065" asserts="0" description="Actual BAT carries the 0/1/2 contract through its PS5.1 child">
+            <results>
+              <test-suite type="ParameterizedTest" name="Actual BAT carries the 0/1/2 contract through its PS5.1 child.returns exact code &lt;Code&gt; through actual cmd/BAT/application and native tools" executed="True" result="Failure" success="False" time="8.4736" asserts="0" description="returns exact code &lt;Code&gt; through actual cmd/BAT/application and native tools">
+                <results>
+                  <test-case description="returns exact code 0 through actual cmd/BAT/application and native tools" name="Actual BAT carries the 0/1/2 contract through its PS5.1 child.returns exact code 0 through actual cmd/BAT/application and native tools" time="3.4857" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>Expected strings to be the same, but they were different.
+Expected length: 7
+Actual length:   11
+Strings differ at index 4.
+Expected: '432,288'
+But was:  '432,0,288,0'
+           ----^</message>
+                      <stack-trace>at $actual.page_count | Should -Be 1;$actual.pages[0].identifier | Should -BeExactly $Id;$actual.pages[0].rotation_degrees | Should -Be 0;($actual.pages[0].size_points -join ',') | Should -BeExactly '432,288', [repo]\tests\pdf\EmailOutcome.Native.Tests.ps1:114
+at Assert-EmailResult, [repo]\tests\pdf\EmailOutcome.Native.Tests.ps1:120
+at &lt;ScriptBlock&gt;, [repo]\tests\pdf\EmailOutcome.Native.Tests.ps1:212</stack-trace>
+                    </failure>
+                  </test-case>
+                  <test-case description="returns exact code 1 through actual cmd/BAT/application and native tools" name="Actual BAT carries the 0/1/2 contract through its PS5.1 child.returns exact code 1 through actual cmd/BAT/application and native tools" time="1.5035" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="returns exact code 2 through actual cmd/BAT/application and native tools" name="Actual BAT carries the 0/1/2 contract through its PS5.1 child.returns exact code 2 through actual cmd/BAT/application and native tools" time="3.4844" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>Expected strings to be the same, but they were different.
+Expected length: 7
+Actual length:   11
+Strings differ at index 4.
+Expected: '432,288'
+But was:  '432,0,288,0'
+           ----^</message>
+                      <stack-trace>at $actual.page_count | Should -Be 1;$actual.pages[0].identifier | Should -BeExactly $Id;$actual.pages[0].rotation_degrees | Should -Be 0;($actual.pages[0].size_points -join ',') | Should -BeExactly '432,288', [repo]\tests\pdf\EmailOutcome.Native.Tests.ps1:114
+at Assert-EmailResult, [repo]\tests\pdf\EmailOutcome.Native.Tests.ps1:120
+at &lt;ScriptBlock&gt;, [repo]\tests\pdf\EmailOutcome.Native.Tests.ps1:212</stack-trace>
+                    </failure>
+                  </test-case>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
