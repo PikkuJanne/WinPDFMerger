@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="32" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2026-10-08" time="09.46.02">
+  <environment platform="Microsoft Windows 11 Pro|C:\Windows|\Device\Harddisk0\Partition3" clr-version="10.0.12" user-domain="REDACTED" os-version="10.0.26300" cwd="REDACTED" machine-name="REDACTED" user="REDACTED" nunit-version="2.5.8.0" />
+  <culture-info current-culture="fi-FI" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="21.4283" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="[repo]\tests\pdf\SizeReporting.Tests.ps1" executed="True" result="Success" success="True" time="21.4283" asserts="0" description="[repo]\tests\pdf\SizeReporting.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="AC040 import-only binary byte formatting" executed="True" result="Success" success="True" time="0.3874" asserts="0" description="AC040 import-only binary byte formatting">
+            <results>
+              <test-case description="rejects a negative byte count" name="AC040 import-only binary byte formatting.rejects a negative byte count" time="0.0437" asserts="0" success="True" result="Success" executed="True" />
+              <test-suite type="ParameterizedTest" name="AC040 import-only binary byte formatting.formats &lt;Bytes&gt; bytes as &lt;Expected&gt;" executed="True" result="Success" success="True" time="0.2675" asserts="0" description="formats &lt;Bytes&gt; bytes as &lt;Expected&gt;">
+                <results>
+                  <test-case description="formats 0 bytes as 0 B" name="AC040 import-only binary byte formatting.formats 0 bytes as 0 B" time="0.2057" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="formats 1023 bytes as 1023 B" name="AC040 import-only binary byte formatting.formats 1023 bytes as 1023 B" time="0.0069" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="formats 1024 bytes as 1.00 KiB" name="AC040 import-only binary byte formatting.formats 1024 bytes as 1.00 KiB" time="0.0074" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="formats 1048575 bytes as 1024.00 KiB" name="AC040 import-only binary byte formatting.formats 1048575 bytes as 1024.00 KiB" time="0.0071" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="formats 1048576 bytes as 1.00 MiB" name="AC040 import-only binary byte formatting.formats 1048576 bytes as 1.00 MiB" time="0.0061" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="formats 1073741824 bytes as 1.00 GiB" name="AC040 import-only binary byte formatting.formats 1073741824 bytes as 1.00 GiB" time="0.0095" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="formats 1099511627776 bytes as 1.00 TiB" name="AC040 import-only binary byte formatting.formats 1099511627776 bytes as 1.00 TiB" time="0.0089" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="formats 1125899906842624 bytes as 1.00 PiB" name="AC040 import-only binary byte formatting.formats 1125899906842624 bytes as 1.00 PiB" time="0.006" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="formats 1152921504606846976 bytes as 1.00 EiB" name="AC040 import-only binary byte formatting.formats 1152921504606846976 bytes as 1.00 EiB" time="0.005" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="formats 9223372036854775807 bytes as 8.00 EiB" name="AC040 import-only binary byte formatting.formats 9223372036854775807 bytes as 8.00 EiB" time="0.0049" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="AC040 invariant size report and decimal reduction" executed="True" result="Success" success="True" time="0.7038" asserts="0" description="AC040 invariant size report and decimal reduction">
+            <results>
+              <test-case description="reports only master metrics when no validated email size was supplied" name="AC040 invariant size report and decimal reduction.reports only master metrics when no validated email size was supplied" time="0.0269" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="retains a fractional decimal reduction independently of display rounding" name="AC040 invariant size report and decimal reduction.retains a fractional decimal reduction independently of display rounding" time="0.0285" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="keeps a positive one-byte reduction at the Int64 boundary without overflow" name="AC040 invariant size report and decimal reduction.keeps a positive one-byte reduction at the Int64 boundary without overflow" time="0.0332" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="calculates a negative candidate reduction across the full Int64 byte range" name="AC040 invariant size report and decimal reduction.calculates a negative candidate reduction across the full Int64 byte range" time="0.0175" asserts="0" success="True" result="Success" executed="True" />
+              <test-suite type="ParameterizedTest" name="AC040 invariant size report and decimal reduction.uses identical bytes and decimal punctuation under &lt;Culture&gt;" executed="True" result="Success" success="True" time="0.1117" asserts="0" description="uses identical bytes and decimal punctuation under &lt;Culture&gt;">
+                <results>
+                  <test-case description="uses identical bytes and decimal punctuation under en-US" name="AC040 invariant size report and decimal reduction.uses identical bytes and decimal punctuation under en-US" time="0.0846" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="uses identical bytes and decimal punctuation under de-DE" name="AC040 invariant size report and decimal reduction.uses identical bytes and decimal punctuation under de-DE" time="0.027" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="ParameterizedTest" name="AC040 invariant size report and decimal reduction.labels &lt;Label&gt; validated candidates as unpublished with truthful reduction" executed="True" result="Success" success="True" time="0.0326" asserts="0" description="labels &lt;Label&gt; validated candidates as unpublished with truthful reduction">
+                <results>
+                  <test-case description="labels equal validated candidates as unpublished with truthful reduction" name="AC040 invariant size report and decimal reduction.labels equal validated candidates as unpublished with truthful reduction" time="0.0215" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="labels larger validated candidates as unpublished with truthful reduction" name="AC040 invariant size report and decimal reduction.labels larger validated candidates as unpublished with truthful reduction" time="0.0111" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="ParameterizedTest" name="AC040 invariant size report and decimal reduction.rejects &lt;Label&gt; rather than reporting invalid measurements or publication" executed="True" result="Success" success="True" time="0.0547" asserts="0" description="rejects &lt;Label&gt; rather than reporting invalid measurements or publication">
+                <results>
+                  <test-case description="rejects empty-master rather than reporting invalid measurements or publication" name="AC040 invariant size report and decimal reduction.rejects empty-master rather than reporting invalid measurements or publication" time="0.0197" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects empty-email rather than reporting invalid measurements or publication" name="AC040 invariant size report and decimal reduction.rejects empty-email rather than reporting invalid measurements or publication" time="0.0072" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects published-without-email rather than reporting invalid measurements or publication" name="AC040 invariant size report and decimal reduction.rejects published-without-email rather than reporting invalid measurements or publication" time="0.0086" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects published-equal rather than reporting invalid measurements or publication" name="AC040 invariant size report and decimal reduction.rejects published-equal rather than reporting invalid measurements or publication" time="0.0063" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects published-larger rather than reporting invalid measurements or publication" name="AC040 invariant size report and decimal reduction.rejects published-larger rather than reporting invalid measurements or publication" time="0.0057" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects unpublished-smaller rather than reporting invalid measurements or publication" name="AC040 invariant size report and decimal reduction.rejects unpublished-smaller rather than reporting invalid measurements or publication" time="0.0072" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="AC040 copied-entry measured size reporting with controlled native receipts" executed="True" result="Success" success="True" time="20.5836" asserts="0" description="AC040 copied-entry measured size reporting with controlled native receipts">
+            <results>
+              <test-suite type="ParameterizedTest" name="AC040 copied-entry measured size reporting with controlled native receipts.reports truthful sizes and published paths for &lt;Mode&gt;" executed="True" result="Success" success="True" time="19.8678" asserts="0" description="reports truthful sizes and published paths for &lt;Mode&gt;">
+                <results>
+                  <test-case description="reports truthful sizes and published paths for published" name="AC040 copied-entry measured size reporting with controlled native receipts.reports truthful sizes and published paths for published" time="3.7233" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="reports truthful sizes and published paths for equal" name="AC040 copied-entry measured size reporting with controlled native receipts.reports truthful sizes and published paths for equal" time="2.6705" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="reports truthful sizes and published paths for larger" name="AC040 copied-entry measured size reporting with controlled native receipts.reports truthful sizes and published paths for larger" time="2.6403" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="reports truthful sizes and published paths for skipped" name="AC040 copied-entry measured size reporting with controlled native receipts.reports truthful sizes and published paths for skipped" time="2.3271" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="reports truthful sizes and published paths for unavailable" name="AC040 copied-entry measured size reporting with controlled native receipts.reports truthful sizes and published paths for unavailable" time="3.4873" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="reports truthful sizes and published paths for failed" name="AC040 copied-entry measured size reporting with controlled native receipts.reports truthful sizes and published paths for failed" time="2.491" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="reports truthful sizes and published paths for log-failed" name="AC040 copied-entry measured size reporting with controlled native receipts.reports truthful sizes and published paths for log-failed" time="2.5283" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

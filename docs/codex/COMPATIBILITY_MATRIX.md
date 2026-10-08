@@ -211,3 +211,17 @@ release/signatures/PDF-A/universal preservation remain unclaimed. Approved
 cache reuse,no acquisition/admin/persistentpolicy/PATH/security changes.
 M3inprogress,T17next; exact commands/context/hashes/limits:T16completion,
 results,manifest,reviews,provenance and C1live receipt.
+
+T17 clean C1 `040176695fdb79e614ba2a821118fbc979a33115`:16tiers579each actualPS5.1.26100.9444/
+pinnedPS7.6.6,1158total32reports,allbadcounts0. AC040integration/AC041manual
+pass on standarduser/localNTFS/build26300. Real exactsize/decimalreduction/
+candidate omission/success0 plus actual Codex40page10unique144DPI synthetic
+visual review bothshells; screen smallest rastertext/outlines degrade, ebook
+clearer, vector-only grows/omits. Not owner/Explorer/manualdesktop acceptance.
+Independent source/runtime/native/archive reviews pass; archive11660
+checks/632files. PSA5PSfiles0errors51warnings14info each nonblocking,
+notfullT22. Dirty/preparation/absences separate. Approved cache reuse/noacquisition/
+admin/persistentpolicy/environment/security changes. PhysicalExplorer/broadOS/
+UNC/CI/security/package/release/universalfidelity/signatures/PDF-A remain open.
+M3inprogress,T18nextpending; exact commands/hashes/context/limits:T17completion/
+results/manifest/manualreview/source/runtime/native/archive/provenance/C1live.

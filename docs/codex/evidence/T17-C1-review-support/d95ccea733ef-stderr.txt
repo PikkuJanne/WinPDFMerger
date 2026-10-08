@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "<repo>\tests\.work\Complete-T17Records.py", line 30, in <module>
+    source=repo/row['Path'];assert sha(source.read_bytes())==row['SHA256'].lower(),row['Path'];publish(source,row.get('Kind',row.get('Kinds','Actual review support')))
+                                                                                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>\tests\.work\Complete-T17Records.py", line 22, in publish
+    public=B['json_bytes'](sanitizer.sanitize_value(load(source))) if source.suffix=='.json' else sanitizer.sanitize_string(raw.decode('utf-8-sig')).encode('utf-8');sanitizer.privacy_gate(public,source.name)
+                                                                                                                            ^^^^^^^^^^^^^^^^^^^^^^^
+  File "<USERPROFILE>\.cache\codex-runtimes\codex-primary-runtime\dependencies\python\Lib\encodings\utf_8_sig.py", line 23, in decode
+    (output, consumed) = codecs.utf_8_decode(input, errors, True)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0x93 in position 10: invalid start byte
+decoding with 'utf-8-sig' codec failed

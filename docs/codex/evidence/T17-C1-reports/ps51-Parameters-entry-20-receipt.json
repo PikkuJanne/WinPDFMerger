@@ -1,0 +1,212 @@
+{
+  "Scope": "unit controlled native receipts; no PDF-engine execution",
+  "HelperLoaded": true,
+  "NativeCalls": 5,
+  "PdftkDiscovery": 1,
+  "GSDiscovery": 1,
+  "GSVersion": 1,
+  "WritableChecks": 1,
+  "Jobs": [
+    {
+      "Tool": "Pdftk",
+      "EmailPreset": "screen",
+      "PresetBound": false,
+      "OutputPublished": true,
+      "OutputValidated": true,
+      "OutputState": "published",
+      "Succeeded": true,
+      "OutputPath": "<repo>\\tests\\.work\\T16-parameters\\03b0210587a742d9be15cf87754b556c\\68e4d482179b4dc280fb985c1e1f694f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261008_094754_8d93e3c72340487e.pdf",
+      "OutputError": null
+    },
+    {
+      "Tool": "Ghostscript",
+      "EmailPreset": "screen",
+      "PresetBound": true,
+      "OutputPublished": true,
+      "OutputValidated": true,
+      "OutputState": "published",
+      "Succeeded": true,
+      "OutputPath": "<repo>\\tests\\.work\\T16-parameters\\03b0210587a742d9be15cf87754b556c\\68e4d482179b4dc280fb985c1e1f694f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261008_094754_8d93e3c72340487e_email.pdf",
+      "OutputError": null
+    }
+  ],
+  "NativeVectors": [
+    {
+      "Executable": "<repo>\\tests\\.work\\T16-parameters\\03b0210587a742d9be15cf87754b556c\\68e4d482179b4dc280fb985c1e1f694f\\app\\pdftk.exe",
+      "Arguments": [
+        "<repo>\\tests\\.work\\T16-parameters\\03b0210587a742d9be15cf87754b556c\\68e4d482179b4dc280fb985c1e1f694f\\source [x] ! &\\1.pdf",
+        "dump_data_utf8",
+        "output",
+        "-",
+        "dont_ask"
+      ],
+      "RemoveEnvironmentVariables": []
+    },
+    {
+      "Executable": "<repo>\\tests\\.work\\T16-parameters\\03b0210587a742d9be15cf87754b556c\\68e4d482179b4dc280fb985c1e1f694f\\app\\pdftk.exe",
+      "Arguments": [
+        "<repo>\\tests\\.work\\T16-parameters\\03b0210587a742d9be15cf87754b556c\\68e4d482179b4dc280fb985c1e1f694f\\source [x] ! &\\1.pdf",
+        "cat",
+        "output",
+        "<repo>\\tests\\.work\\T16-parameters\\03b0210587a742d9be15cf87754b556c\\68e4d482179b4dc280fb985c1e1f694f\\output [x] ! &\\.WinPDFMerge_d03d482c84a14f6cab3c0052ee87032e.tmp\\master.pdf",
+        "compress",
+        "dont_ask"
+      ],
+      "RemoveEnvironmentVariables": []
+    },
+    {
+      "Executable": "<repo>\\tests\\.work\\T16-parameters\\03b0210587a742d9be15cf87754b556c\\68e4d482179b4dc280fb985c1e1f694f\\app\\pdftk.exe",
+      "Arguments": [
+        "<repo>\\tests\\.work\\T16-parameters\\03b0210587a742d9be15cf87754b556c\\68e4d482179b4dc280fb985c1e1f694f\\output [x] ! &\\.WinPDFMerge_d03d482c84a14f6cab3c0052ee87032e.tmp\\master.pdf",
+        "dump_data_utf8",
+        "output",
+        "-",
+        "dont_ask"
+      ],
+      "RemoveEnvironmentVariables": []
+    },
+    {
+      "Executable": "<repo>\\tests\\.work\\T16-parameters\\03b0210587a742d9be15cf87754b556c\\68e4d482179b4dc280fb985c1e1f694f\\app\\gswin64c.exe",
+      "Arguments": [
+        "-dBATCH",
+        "-dNOPAUSE",
+        "-dSAFER",
+        "-dPDFSTOPONERROR",
+        "-sDEVICE=pdfwrite",
+        "-dCompatibilityLevel=1.6",
+        "-dPDFSETTINGS=/screen",
+        "-dDetectDuplicateImages=true",
+        "-o",
+        "<repo>\\tests\\.work\\T16-parameters\\03b0210587a742d9be15cf87754b556c\\68e4d482179b4dc280fb985c1e1f694f\\output [x] ! &\\.WinPDFMerge_d03d482c84a14f6cab3c0052ee87032e.tmp\\email.pdf",
+        "-f",
+        "<repo>\\tests\\.work\\T16-parameters\\03b0210587a742d9be15cf87754b556c\\68e4d482179b4dc280fb985c1e1f694f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261008_094754_8d93e3c72340487e.pdf"
+      ],
+      "RemoveEnvironmentVariables": [
+        "GS_OPTIONS"
+      ]
+    },
+    {
+      "Executable": "<repo>\\tests\\.work\\T16-parameters\\03b0210587a742d9be15cf87754b556c\\68e4d482179b4dc280fb985c1e1f694f\\app\\pdftk.exe",
+      "Arguments": [
+        "<repo>\\tests\\.work\\T16-parameters\\03b0210587a742d9be15cf87754b556c\\68e4d482179b4dc280fb985c1e1f694f\\output [x] ! &\\.WinPDFMerge_d03d482c84a14f6cab3c0052ee87032e.tmp\\email.pdf",
+        "dump_data_utf8",
+        "output",
+        "-",
+        "dont_ask"
+      ],
+      "RemoveEnvironmentVariables": []
+    }
+  ],
+  "Messages": [
+    "==== WinPDFMerge run 2026-10-08 09.47.54 ====",
+    "PDFtk: <repo>\\tests\\.work\\T16-parameters\\03b0210587a742d9be15cf87754b556c\\68e4d482179b4dc280fb985c1e1f694f\\app\\pdftk.exe (version 2.02)",
+    "Source folder: <repo>\\tests\\.work\\T16-parameters\\03b0210587a742d9be15cf87754b556c\\68e4d482179b4dc280fb985c1e1f694f\\source [x] ! &",
+    "Output folder: <repo>\\tests\\.work\\T16-parameters\\03b0210587a742d9be15cf87754b556c\\68e4d482179b4dc280fb985c1e1f694f\\output [x] ! &",
+    "Run identity: WinPDFMerge_source [x] ! &_20261008_094754_8d93e3c72340487e",
+    "Planned master output: <repo>\\tests\\.work\\T16-parameters\\03b0210587a742d9be15cf87754b556c\\68e4d482179b4dc280fb985c1e1f694f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261008_094754_8d93e3c72340487e.pdf",
+    "Planned email output: <repo>\\tests\\.work\\T16-parameters\\03b0210587a742d9be15cf87754b556c\\68e4d482179b4dc280fb985c1e1f694f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261008_094754_8d93e3c72340487e_email.pdf",
+    "PDF count: 1",
+    "Input 1: <repo>\\tests\\.work\\T16-parameters\\03b0210587a742d9be15cf87754b556c\\68e4d482179b4dc280fb985c1e1f694f\\source [x] ! &\\1.pdf",
+    "Input preflight 1 executable: <repo>\\tests\\.work\\T16-parameters\\03b0210587a742d9be15cf87754b556c\\68e4d482179b4dc280fb985c1e1f694f\\app\\pdftk.exe",
+    "Input preflight 1 arguments: T16 controlled vector",
+    "Input preflight 1 exit: 0; elapsed: 1 ms; PID: 12345",
+    "Input preflight 1 started: True; timed out: False; cancelled: False; succeeded: True",
+    "Input preflight 1 launch error: ",
+    "Input preflight 1 capture error: ",
+    "Input preflight 1 termination error: ",
+    "Input preflight 1 stdout truncated: False; stderr truncated: False",
+    "Input preflight 1 stdout:",
+    "NumberOfPages: 1",
+    "Input preflight 1 stderr:",
+    "",
+    "Input 1 pages: 1",
+    "Expected page total: 1",
+    "Private staging: <repo>\\tests\\.work\\T16-parameters\\03b0210587a742d9be15cf87754b556c\\68e4d482179b4dc280fb985c1e1f694f\\output [x] ! &\\.WinPDFMerge_d03d482c84a14f6cab3c0052ee87032e.tmp",
+    "PDFtk executable: <repo>\\tests\\.work\\T16-parameters\\03b0210587a742d9be15cf87754b556c\\68e4d482179b4dc280fb985c1e1f694f\\app\\pdftk.exe",
+    "PDFtk arguments: T16 controlled vector",
+    "PDFtk exit: 0; elapsed: 1 ms; PID: 12345",
+    "PDFtk started: True; timed out: False; cancelled: False; succeeded: True",
+    "PDFtk launch error: ",
+    "PDFtk capture error: ",
+    "PDFtk termination error: ",
+    "PDFtk stdout truncated: False; stderr truncated: False",
+    "PDFtk stdout:",
+    "T16 controlled conversion",
+    "PDFtk stderr:",
+    "",
+    "Master validation executable: <repo>\\tests\\.work\\T16-parameters\\03b0210587a742d9be15cf87754b556c\\68e4d482179b4dc280fb985c1e1f694f\\app\\pdftk.exe",
+    "Master validation arguments: T16 controlled vector",
+    "Master validation exit: 0; elapsed: 1 ms; PID: 12345",
+    "Master validation started: True; timed out: False; cancelled: False; succeeded: True",
+    "Master validation launch error: ",
+    "Master validation capture error: ",
+    "Master validation termination error: ",
+    "Master validation stdout truncated: False; stderr truncated: False",
+    "Master validation stdout:",
+    "NumberOfPages: 1",
+    "Master validation stderr:",
+    "",
+    "Master validation OK: 1 expected pages inspected. Merged master published: <repo>\\tests\\.work\\T16-parameters\\03b0210587a742d9be15cf87754b556c\\68e4d482179b4dc280fb985c1e1f694f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261008_094754_8d93e3c72340487e.pdf",
+    "Ghostscript: <repo>\\tests\\.work\\T16-parameters\\03b0210587a742d9be15cf87754b556c\\68e4d482179b4dc280fb985c1e1f694f\\app\\gswin64c.exe (version 10.08.0)",
+    "Ghostscript executable: <repo>\\tests\\.work\\T16-parameters\\03b0210587a742d9be15cf87754b556c\\68e4d482179b4dc280fb985c1e1f694f\\app\\gswin64c.exe",
+    "Ghostscript arguments: T16 controlled vector",
+    "Ghostscript exit: 0; elapsed: 1 ms; PID: 12345",
+    "Ghostscript started: True; timed out: False; cancelled: False; succeeded: True",
+    "Ghostscript launch error: ",
+    "Ghostscript capture error: ",
+    "Ghostscript termination error: ",
+    "Ghostscript stdout truncated: False; stderr truncated: False",
+    "Ghostscript stdout:",
+    "T16 controlled conversion",
+    "Ghostscript stderr:",
+    "",
+    "Email validation executable: <repo>\\tests\\.work\\T16-parameters\\03b0210587a742d9be15cf87754b556c\\68e4d482179b4dc280fb985c1e1f694f\\app\\pdftk.exe",
+    "Email validation arguments: T16 controlled vector",
+    "Email validation exit: 0; elapsed: 1 ms; PID: 12345",
+    "Email validation started: True; timed out: False; cancelled: False; succeeded: True",
+    "Email validation launch error: ",
+    "Email validation capture error: ",
+    "Email validation termination error: ",
+    "Email validation stdout truncated: False; stderr truncated: False",
+    "Email validation stdout:",
+    "NumberOfPages: 1",
+    "Email validation stderr:",
+    "",
+    "Email result: published",
+    "Validated smaller email copy published.",
+    "Master size: 2810 bytes (2.74 KiB).",
+    "Email size: 1786 bytes (1.74 KiB).",
+    "Email reduction: 36.4%.",
+    "Published Merged master: <repo>\\tests\\.work\\T16-parameters\\03b0210587a742d9be15cf87754b556c\\68e4d482179b4dc280fb985c1e1f694f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261008_094754_8d93e3c72340487e.pdf",
+    "Published Email-optimized: <repo>\\tests\\.work\\T16-parameters\\03b0210587a742d9be15cf87754b556c\\68e4d482179b4dc280fb985c1e1f694f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261008_094754_8d93e3c72340487e_email.pdf",
+    "Done.",
+    "Result: SUCCESS; exit code: 0"
+  ],
+  "Outcome": {
+    "ExitCode": 0,
+    "Summary": "SUCCESS",
+    "EmailMessage": "Validated smaller email copy published.",
+    "EmailState": "published",
+    "PublishedPaths": [
+      {
+        "Label": "Merged master",
+        "Path": "<repo>\\tests\\.work\\T16-parameters\\03b0210587a742d9be15cf87754b556c\\68e4d482179b4dc280fb985c1e1f694f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261008_094754_8d93e3c72340487e.pdf"
+      },
+      {
+        "Label": "Email-optimized",
+        "Path": "<repo>\\tests\\.work\\T16-parameters\\03b0210587a742d9be15cf87754b556c\\68e4d482179b4dc280fb985c1e1f694f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261008_094754_8d93e3c72340487e_email.pdf"
+      }
+    ]
+  },
+  "Identity": {
+    "OutputFolder": "<repo>\\tests\\.work\\T16-parameters\\03b0210587a742d9be15cf87754b556c\\68e4d482179b4dc280fb985c1e1f694f\\output [x] ! &",
+    "FolderLabel": "source [x] ! &",
+    "Timestamp": "20261008_094754",
+    "RunSuffix": "8d93e3c72340487e",
+    "BaseName": "WinPDFMerge_source [x] ! &_20261008_094754_8d93e3c72340487e",
+    "MasterPath": "<repo>\\tests\\.work\\T16-parameters\\03b0210587a742d9be15cf87754b556c\\68e4d482179b4dc280fb985c1e1f694f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261008_094754_8d93e3c72340487e.pdf",
+    "EmailPath": "<repo>\\tests\\.work\\T16-parameters\\03b0210587a742d9be15cf87754b556c\\68e4d482179b4dc280fb985c1e1f694f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261008_094754_8d93e3c72340487e_email.pdf",
+    "LogPath": "<repo>\\tests\\.work\\T16-parameters\\03b0210587a742d9be15cf87754b556c\\68e4d482179b4dc280fb985c1e1f694f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261008_094754_8d93e3c72340487e.log"
+  },
+  "BindingError": null
+}

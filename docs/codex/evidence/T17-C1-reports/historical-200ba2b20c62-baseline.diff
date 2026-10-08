@@ -1,0 +1,1033 @@
+diff --git a/README.md b/README.md
+index 88332cb..157700f 100644
+--- a/README.md
++++ b/README.md
+@@ -118,10 +118,28 @@ The longest final path and private native output must fit below 260 characters;
+ an excessively long destination fails with instructions to choose a shorter path.
+ 
+ **Email-friendly copy (quality/size)**
+-Default profile: -dPDFSETTINGS=/screen (small, on-screen reading).
+-Select the fixed /ebook profile with `-EmailPreset ebook`. Presets can change
+-appearance and size; neither guarantees a particular attachment size. Only a
+-separately validated derivative smaller than the master is published.
++The default remains `-dPDFSETTINGS=/screen`; select the fixed `/ebook` profile
++with `-EmailPreset ebook`. Presets can change appearance and size; neither
++guarantees a particular attachment size. Only a separately validated derivative
++smaller than the master is published.
++
++The console and log show exact master/email byte counts, readable binary sizes
++(`KiB` = 1,024 bytes, `MiB` = 1,048,576 bytes), and percentage reduction relative
++to the master. `B` uses whole bytes, `KiB` and larger units use two decimal
++places, and percentages use one; the exact byte counts are authoritative.
++For example, a 2,048-byte master and
++1,024-byte email copy report `2.00 KiB`, `1.00 KiB` and `50.0%` reduction.
++
++An equal or larger validated candidate is labelled as **not published**, its
++actual candidate size and zero/negative reduction are shown, and the validated
++master is retained with success code 0. It is never listed as an email output.
++Skipped, unavailable or failed email processing reports the master size without
++advertising a partial candidate. Check the produced file before sending it;
++compression benefit and readable detail depend on the content.
++
++See [observed preset tradeoffs](docs/EMAIL_PRESETS.md) for original small-print,
++scanned and mixed examples, including the detail lost by `/screen` in the
++smallest scanned text.
+ 
+ **Batch wrapper (included)**
+ WinPDFMerge.bat (drag-and-drop + double-click)
+diff --git a/WinPDFMerge.ps1 b/WinPDFMerge.ps1
+index be741d2..03ff824 100644
+--- a/WinPDFMerge.ps1
++++ b/WinPDFMerge.ps1
+@@ -217,6 +217,7 @@ for ($index = 0; $index -lt $pdfs.Count; $index++) {
+ # logging so later optional/log exceptions retain the validated master outcome.
+ $staging = $null
+ $masterPublished = $false
++$sizeReport = $null
+ $emailState = 'not_started'
+ $failureMessage = $null
+ $runFailed = $false
+@@ -227,6 +228,9 @@ try {
+     Assert-PdfInputInventory -Inventory $inventory
+     $merge = Invoke-PdfToolJob -Tool Pdftk -Executable $pdftkPath -InputPaths @($inventory.Inputs.FullName) -OutputPath $outLossless -Staging $staging -ExpectedPageCount $inventory.ExpectedPageCount -CancellationToken $cancellationToken
+     $masterPublished = ($merge.OutputPublished -and $merge.OutputValidated)
++    if ($masterPublished) {
++        $sizeReport = Get-PdfSizeReport -MasterBytes (Get-PdfInputSnapshot -LiteralPath $outLossless).Length
++    }
+     if ($null -ne $merge.NativeResult) {
+         Write-NativeProcessLog -Result $merge.NativeResult -LiteralPath $logPath -Label PDFtk
+     }
+@@ -257,6 +261,9 @@ try {
+             } else {
+                 $emailState = 'failed'
+             }
++            if ($emailState -in @('published','no_size_benefit')) {
++                $sizeReport = Get-PdfSizeReport -MasterBytes $email.MasterBytes -EmailBytes $email.OutputBytes -EmailPublished:($emailState -eq 'published')
++            }
+             if ($null -ne $email.NativeResult) {
+                 Write-NativeProcessLog -Result $email.NativeResult -LiteralPath $logPath -Label Ghostscript
+             }
+@@ -298,6 +305,9 @@ $outcome = Get-PdfMergeOutcome -MasterPublished $masterPublished -EmailState $em
+ try {
+     ("Email result: {0}" -f $emailState) | Write-RunLog -LiteralPath $logPath -Append
+     $outcome.EmailMessage | Write-RunLog -LiteralPath $logPath -Append
++    if ($null -ne $sizeReport) {
++        foreach ($line in $sizeReport.Lines) { $line | Write-RunLog -LiteralPath $logPath -Append }
++    }
+     foreach ($output in $outcome.PublishedPaths) {
+         ("Published {0}: {1}" -f $output.Label, $output.Path) | Write-RunLog -LiteralPath $logPath -Append
+     }
+@@ -312,6 +322,9 @@ try {
+ }
+ $detail = if ($failureMessage) { $failureMessage } else { $outcome.EmailMessage }
+ Write-Host ("`n{0}: {1}" -f $outcome.Summary, $detail)
++if ($null -ne $sizeReport) {
++    foreach ($line in $sizeReport.Lines) { Write-Host $line }
++}
+ foreach ($output in $outcome.PublishedPaths) { Write-Host (" - {0}: {1}" -f $output.Label, $output.Path) }
+ Write-Host "Log: $logPath"
+ exit $outcome.ExitCode
+diff --git a/src/WinPDFMerge.Helpers.ps1 b/src/WinPDFMerge.Helpers.ps1
+index 7d98c8c..69f9d1c 100644
+--- a/src/WinPDFMerge.Helpers.ps1
++++ b/src/WinPDFMerge.Helpers.ps1
+@@ -1542,6 +1542,57 @@ function Invoke-PdfToolJob {
+     }
+ }
+ 
++function Format-PdfByteSize {
++    param([Parameter(Mandatory=$true)][ValidateRange(0,9223372036854775807)][long]$Bytes)
++
++    $units = @('B','KiB','MiB','GiB','TiB','PiB','EiB')
++    $value = [decimal]$Bytes
++    $unit = 0
++    while ($value -ge 1024 -and $unit -lt ($units.Count - 1)) {
++        $value /= 1024
++        $unit++
++    }
++    $format = if ($unit -eq 0) { '0' } else { '0.00' }
++    return ('{0} {1}' -f $value.ToString($format, [Globalization.CultureInfo]::InvariantCulture), $units[$unit])
++}
++
++function Get-PdfSizeReport {
++    param(
++        [Parameter(Mandatory=$true)][ValidateRange(1,9223372036854775807)][long]$MasterBytes,
++        [ValidateRange(1,9223372036854775807)][long]$EmailBytes,
++        [switch]$EmailPublished
++    )
++
++    $hasEmail = $PSBoundParameters.ContainsKey('EmailBytes')
++    if ($EmailPublished -and (-not $hasEmail -or $EmailBytes -ge $MasterBytes)) {
++        throw 'Published email size reporting requires a strictly smaller validated email result.'
++    }
++    if ($hasEmail -and -not $EmailPublished -and $EmailBytes -lt $MasterBytes) {
++        throw 'Unpublished email size reporting requires a validated candidate with no size benefit.'
++    }
++    $lines = @('Master size: {0} bytes ({1}).' -f $MasterBytes.ToString([Globalization.CultureInfo]::InvariantCulture), (Format-PdfByteSize -Bytes $MasterBytes))
++    $reduction = $null
++    if ($hasEmail) {
++        $reduction = [decimal]100 * (([decimal]$MasterBytes - [decimal]$EmailBytes) / [decimal]$MasterBytes)
++        $percentage = $reduction.ToString('0.0', [Globalization.CultureInfo]::InvariantCulture)
++        $bytes = $EmailBytes.ToString([Globalization.CultureInfo]::InvariantCulture)
++        $human = Format-PdfByteSize -Bytes $EmailBytes
++        if ($EmailPublished) {
++            $lines += 'Email size: {0} bytes ({1}).' -f $bytes, $human
++            $lines += 'Email reduction: {0}%.' -f $percentage
++        } else {
++            $lines += 'Validated email candidate size: {0} bytes ({1}); not published.' -f $bytes, $human
++            $lines += 'Email candidate reduction: {0}% (no size benefit; candidate not published).' -f $percentage
++        }
++    }
++    return [pscustomobject]@{
++        MasterBytes = $MasterBytes
++        EmailBytes = $(if ($hasEmail) { $EmailBytes } else { $null })
++        ReductionPercent = $reduction
++        Lines = @($lines)
++    }
++}
++
+ function Get-PdfMergeOutcome {
+     param(
+         [Parameter(Mandatory=$true)][bool]$MasterPublished,
+diff --git a/tests/fixtures/presets/generate_presets.py b/tests/fixtures/presets/generate_presets.py
+new file mode 100644
+index 0000000..08a0674
+--- /dev/null
++++ b/tests/fixtures/presets/generate_presets.py
+@@ -0,0 +1,173 @@
++"""Development-only original synthetic preset corpus; never an application engine.
++
++All text, diagrams and image pixels are authored here (CC0-1.0). No document,
++network content or user font is read. Exact pinned packages make invariant
++ReportLab output reproducible. Outputs must be a new explicitly owned directory.
++"""
++
++from __future__ import annotations
++
++import argparse
++import hashlib
++import json
++from pathlib import Path
++import random
++import sys
++
++import PIL
++from PIL import Image, ImageDraw, ImageFont
++import reportlab
++from reportlab.lib.utils import ImageReader
++from reportlab.pdfgen.canvas import Canvas
++
++
++VERSIONS = {"python": "3.12.14", "reportlab": "4.4.9", "pillow": "12.3.0"}
++PAGE_SIZE = (612, 792)
++SEED = 170041
++
++
++def require_versions() -> None:
++    actual = {"python": sys.version.split()[0], "reportlab": reportlab.Version,
++              "pillow": PIL.__version__}
++    if actual != VERSIONS:
++        raise RuntimeError(f"Development generator pins differ: {actual}")
++
++
++def heading(c: Canvas, title: str, identifier: str) -> None:
++    c.setFillColorRGB(0.08, 0.18, 0.28)
++    c.setFont("Helvetica-Bold", 19)
++    c.drawString(36, 750, title)
++    c.setFont("Helvetica", 10)
++    c.drawString(36, 728, "Original synthetic test content - compare master, screen and ebook at 100%.")
++    c.setStrokeColorRGB(0.25, 0.40, 0.52)
++    c.line(36, 718, 576, 718)
++    c.setFillColorRGB(0.08, 0.18, 0.28)
++    c.setFont("Helvetica", 11)
++    c.drawString(36, 22, identifier)
++    c.setFont("Helvetica", 8)
++    c.drawRightString(576, 22, "CC0 original fixture; no forms, signatures or private content")
++
++
++def vector_page(c: Canvas, identifier: str, title: str) -> None:
++    heading(c, title, identifier)
++    c.setFillColorRGB(0, 0, 0)
++    c.setFont("Helvetica-Bold", 12)
++    c.drawString(36, 690, "Small-print ladder and line detail")
++    y = 660
++    for points in (12, 10, 8, 7, 6, 5):
++        c.setFont("Helvetica", points)
++        c.drawString(42, y, f"{points} pt: Invoice 170041 | 0123456789 | AaBb CcDd MmNn | $123.45 | 0O 1Il")
++        y -= 34
++    c.setFont("Helvetica-Bold", 11)
++    c.drawString(36, 430, "Fine rules, grayscale and color detail")
++    for index, width in enumerate((0.25, 0.5, 0.75, 1.0, 1.5)):
++        y = 405 - index * 19
++        c.setLineWidth(width)
++        c.setStrokeColorRGB(0, 0, 0)
++        c.line(42, y, 356, y)
++        c.setFont("Helvetica", 8)
++        c.drawString(370, y - 3, f"{width:g} pt rule")
++    for index, gray in enumerate((0, 0.15, 0.35, 0.55, 0.75, 0.9)):
++        c.setFillColorRGB(gray, gray, gray)
++        c.rect(42 + index * 83, 263, 74, 36, fill=1, stroke=0)
++    for index, rgb in enumerate(((0.8, 0.1, 0.1), (0.1, 0.55, 0.2), (0.15, 0.3, 0.8),
++                                 (0.85, 0.55, 0.1), (0.55, 0.2, 0.65), (0.1, 0.6, 0.65))):
++        c.setFillColorRGB(*rgb)
++        c.rect(42 + index * 83, 210, 74, 36, fill=1, stroke=0)
++    c.setFillColorRGB(0, 0, 0)
++    c.setFont("Helvetica-Bold", 11)
++    c.drawString(36, 175, "Original table")
++    for row, text in enumerate(("Item        Units        Rate          Total",
++                                "Paper       12           3.25          39.00",
++                                "Ink         4            17.50         70.00",
++                                "Review      1            0.00          0.00")):
++        c.setFont("Courier", 8)
++        c.drawString(42, 152 - row * 19, text)
++    c.showPage()
++
++
++def scanned_image() -> Image.Image:
++    width, height = 2250, 2800
++    # Deterministic low-amplitude scanner-like noise; no external source image.
++    pixels = random.Random(SEED).randbytes(width * height)
++    pixels = bytes(249 + value % 7 for value in pixels)
++    image = Image.frombytes("L", (width, height), pixels)
++    draw = ImageDraw.Draw(image)
++    scale = width / 540
++    def text(x: int, y: int, value: str, points: int) -> None:
++        draw.text((int(x * scale), int(y * scale)), value, fill=20,
++                  font=ImageFont.load_default(size=int(points * scale)))
++    text(20, 18, "SCANNED ORIGINAL - raster text and diagram", 15)
++    text(20, 48, "Original pixels, deterministic noise, no OCR layer", 10)
++    for row, points in enumerate((12, 10, 8, 7, 6)):
++        text(20, 90 + row * 37,
++             f"{points} pt: Account 170041 / 0123456789 / AaBb MmNn / $123.45", points)
++    text(20, 293, "Raster diagram: lines, circles and grayscale", 11)
++    for index, line_width in enumerate((1, 2, 3, 4, 6)):
++        y = int((325 + index * 17) * scale)
++        draw.line((int(20 * scale), y, int(320 * scale), y), fill=10, width=line_width)
++    for index in range(5):
++        x, y = int((25 + index * 98) * scale), int(435 * scale)
++        radius = int(34 * scale)
++        draw.ellipse((x, y, x + radius, y + radius), outline=15, width=2)
++        draw.rectangle((x, y + 2 * radius, x + radius, y + 3 * radius),
++                       fill=int(index * 52))
++    text(20, 580, "Check legibility at 100%; smaller bytes alone do not prove fidelity.", 9)
++    return image
++
++
++def scan_page(c: Canvas, image: Image.Image, identifier: str, title: str) -> None:
++    heading(c, title, identifier)
++    c.drawImage(ImageReader(image), 36, 43, width=540, height=672)
++    c.showPage()
++
++
++def generate(output: Path) -> dict:
++    require_versions()
++    output.mkdir(parents=True, exist_ok=True)
++    image = scanned_image()
++    specifications = (
++        ("small-print.pdf", ["T03-17-P01"], "vector_small_print"),
++        ("scan.pdf", ["T03-17-P02"], "original_scanned_text_diagram"),
++        ("mixed.pdf", ["T03-17-P03", "T03-17-P04"], "mixed_vector_raster"),
++    )
++    fixtures = []
++    for name, identifiers, category in specifications:
++        path = output / name
++        if path.exists():
++            raise FileExistsError(f"Refusing to overwrite fixture: {path}")
++        c = Canvas(str(path), pagesize=PAGE_SIZE, pageCompression=1, invariant=1)
++        c.setTitle(f"Original T17 synthetic {category}")
++        c.setAuthor("WinPDFMerger synthetic fixture generator")
++        c.setSubject("CC0 original synthetic preset review; development only")
++        if category == "vector_small_print":
++            vector_page(c, identifiers[0], "Vector small-print specimen")
++        elif category == "original_scanned_text_diagram":
++            scan_page(c, image, identifiers[0], "Scanned text and diagram specimen")
++        else:
++            vector_page(c, identifiers[0], "Mixed specimen - vector page")
++            scan_page(c, image, identifiers[1], "Mixed specimen - scanned page")
++        c.save()
++        raw = path.read_bytes()
++        fixtures.append({"file": name, "category": category, "bytes": len(raw),
++                         "sha256": hashlib.sha256(raw).hexdigest(),
++                         "page_count": len(identifiers), "page_identifiers": identifiers,
++                         "page_size_points": list(PAGE_SIZE)})
++    return {"schema_version": 1, "license": "CC0-1.0", "versions": VERSIONS,
++            "provenance": "Original synthetic vector text/diagrams and seeded raster pixels; no external documents, user data, OCR or network.",
++            "scan_pixel_dimensions": [2250, 2800], "scan_seed": SEED,
++            "generator_sha256": hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
++            "fixtures": fixtures,
++            "scope": "Development fixture recipe and structural expectations; visual preset acceptance requires actual rendered master/derivative review."}
++
++
++def main() -> int:
++    parser = argparse.ArgumentParser(description=__doc__)
++    parser.add_argument("--output", required=True, type=Path)
++    args = parser.parse_args()
++    print(json.dumps(generate(args.output), indent=2))
++    return 0
++
++
++if __name__ == "__main__":
++    raise SystemExit(main())
+diff --git a/tests/pdf/SizeReporting.Native.Tests.ps1 b/tests/pdf/SizeReporting.Native.Tests.ps1
+new file mode 100644
+index 0000000..e780ab0
+--- /dev/null
++++ b/tests/pdf/SizeReporting.Native.Tests.ps1
+@@ -0,0 +1,344 @@
++# Actual Windows entry size accounting with approved native engines.
++# Copied helper recording, SkipEmail, equal-candidate and corrupt-input controls
++# are disclosed. Structural checks do not count as manual visual fidelity.
++param(
++    [Parameter(Mandatory=$true)][string]$PdftkPath,
++    [Parameter(Mandatory=$true)][string]$GhostscriptPath,
++    [Parameter(Mandatory=$true)][string]$PythonPath
++)
++
++BeforeAll {
++    $repo = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot '../..')).ProviderPath
++    if ([Environment]::OSVersion.Platform -ne [PlatformID]::Win32NT) { throw 'Size integration requires actual Windows; unavailable evidence is not skipped.' }
++    $identity = [Security.Principal.WindowsIdentity]::GetCurrent()
++    try {
++        $principal = New-Object Security.Principal.WindowsPrincipal($identity)
++        if ($principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)) { throw 'Run size integration as a standard user.' }
++    } finally { $identity.Dispose() }
++    . (Join-Path $repo 'src/WinPDFMerge.Helpers.ps1')
++    . (Join-Path $repo 'tests/TestSupport.ps1')
++    foreach ($name in @('PdftkPath','GhostscriptPath','PythonPath')) {
++        Set-Variable -Name $name -Value (Resolve-Path -LiteralPath (Get-Variable -Name $name -ValueOnly)).ProviderPath
++    }
++    if ([IO.Path]::GetFileName($PdftkPath) -ine 'pdftk.exe' -or [IO.Path]::GetFileName($GhostscriptPath) -ine 'gswin64c.exe' -or [IO.Path]::GetFileName($PythonPath) -ine 'python.exe') { throw 'Supply approved real engine and development Python executable paths.' }
++    $pdftkReceipt = Get-Content -LiteralPath (Join-Path $repo 'docs/codex/evidence/T03-pdftk-acquisition.json') -Raw | ConvertFrom-Json
++    $gsReceipt = Get-Content -LiteralPath (Join-Path $repo 'docs/codex/evidence/T09-gs-acquisition.json') -Raw | ConvertFrom-Json
++    $engineHashes = New-Object 'System.Collections.Generic.List[object]'
++    foreach ($selection in @(
++        @{Path=$PdftkPath; Leaf='pdftk.exe'; Files=$pdftkReceipt.extracted_files},
++        @{Path=(Join-Path ([IO.Path]::GetDirectoryName($PdftkPath)) 'libiconv2.dll'); Leaf='libiconv2.dll'; Files=$pdftkReceipt.extracted_files},
++        @{Path=$GhostscriptPath; Leaf='gswin64c.exe'; Files=$gsReceipt.ghostscript_extraction.selected_files},
++        @{Path=(Join-Path ([IO.Path]::GetDirectoryName($GhostscriptPath)) 'gsdll64.dll'); Leaf='gsdll64.dll'; Files=$gsReceipt.ghostscript_extraction.selected_files}
++    )) {
++        $expected = @($selection.Files | Where-Object relative_path -like ('*/' + $selection.Leaf))
++        $hash = (Get-FileHash -LiteralPath $selection.Path -Algorithm SHA256).Hash.ToLowerInvariant()
++        if ($expected.Count -ne 1 -or $hash -cne $expected[0].sha256) { throw ('Approved engine pin differs: ' + $selection.Leaf) }
++        $engineHashes.Add([pscustomobject]@{Name=$selection.Leaf; SHA256=$hash})
++    }
++    $pythonHash = (Get-FileHash -LiteralPath $PythonPath -Algorithm SHA256).Hash.ToLowerInvariant()
++    if ($pythonHash -cne 'dd5f8d19f6755d6491ee7c4bef2fe35ddd521334cc3ca3ed8fc93ebcadf135d0') { throw 'Development Python differs from its approved pin.' }
++    $pdftkVersion = Get-NativeToolVersion -Path $PdftkPath -Tool PdfTk
++    $gsVersion = Get-NativeToolVersion -Path $GhostscriptPath -Tool Ghostscript
++    if ($pdftkVersion -cne '2.02' -or $gsVersion -cne '10.08.0') { throw 'Size integration requires approved exact engine versions.' }
++    $fixturePath = Join-Path $repo 'tests/fixtures/numbered/1.pdf'
++    $manifest = Get-Content -LiteralPath (Join-Path $repo 'tests/fixtures/numbered/manifest.json') -Raw | ConvertFrom-Json
++    $tinyExpectation = @($manifest.fixtures | Where-Object file -eq '1.pdf')[0]
++    if ((Get-FileHash -LiteralPath $fixturePath -Algorithm SHA256).Hash.ToLowerInvariant() -cne $tinyExpectation.sha256 -or (Get-Item -LiteralPath $fixturePath).Length -ne $tinyExpectation.bytes) { throw 'Original synthetic fixture differs from its recorded pin.' }
++    $shell = [Diagnostics.Process]::GetCurrentProcess().MainModule.FileName
++    $work = Join-Path $repo ('tests/.work/size-reporting/' + [Guid]::NewGuid().ToString('N'))
++    [void][IO.Directory]::CreateDirectory($work)
++    $observations = New-Object 'System.Collections.Generic.List[object]'
++    $parentEnvironment = @{}
++    foreach ($name in @('PATH','GS_OPTIONS','ProgramFiles','ProgramFiles(x86)','PSModulePath')) { $parentEnvironment[$name] = [Environment]::GetEnvironmentVariable($name,'Process') }
++    $parentPolicies = @(Get-ExecutionPolicy -List | ForEach-Object { $_.Scope.ToString() + '=' + $_.ExecutionPolicy.ToString() }) -join ';'
++    $generator = Join-Path $repo 'tests/fixtures/presets/generate_presets.py'
++    $presetManifestPath = Join-Path $repo 'tests/fixtures/presets/manifest.json'
++    $presetManifest = Get-Content -LiteralPath $presetManifestPath -Raw | ConvertFrom-Json
++    (Get-FileHash -LiteralPath $generator -Algorithm SHA256).Hash.ToLowerInvariant() | Should -BeExactly $presetManifest.generator_sha256
++    $originals = Join-Path $work 'original-preset-corpus'
++    $generationCommand = @('-B',$generator,'--output',$originals)
++    $generationResult = Invoke-TestChildProcess -Executable $PythonPath -Arguments $generationCommand -TimeoutMilliseconds 30000
++    $generationResult.ExitCode | Should -Be 0 -Because $generationResult.Stderr
++    $generation = $generationResult.Stdout | ConvertFrom-Json
++    ($generation | ConvertTo-Json -Depth 8 -Compress) | Should -BeExactly ($presetManifest | ConvertTo-Json -Depth 8 -Compress)
++    foreach ($original in $presetManifest.fixtures) {
++        $path = Join-Path $originals $original.file
++        (Get-FileHash -LiteralPath $path -Algorithm SHA256).Hash.ToLowerInvariant() | Should -BeExactly $original.sha256
++        (Get-Item -LiteralPath $path).Length | Should -Be $original.bytes
++    }
++    $oracle = Join-Path $work 'independent-size-inspection.py'
++    [IO.File]::WriteAllText($oracle,@'
++import json, re, sys
++from pathlib import Path
++from contextlib import closing
++import pypdfium2 as pdfium
++if sys.version.split()[0]!='3.12.14' or str(pdfium.PYPDFIUM_INFO)!='5.13.0' or str(pdfium.PDFIUM_INFO)!='153.0.7999.0':
++    raise RuntimeError('Size oracle requires approved development pins.')
++if sys.argv[1:]==['--versions']:
++    print(json.dumps({'python':sys.version.split()[0],'pypdfium2':str(pdfium.PYPDFIUM_INFO),'pdfium':str(pdfium.PDFIUM_INFO)}));raise SystemExit(0)
++pages=[]
++with pdfium.PdfDocument(Path(sys.argv[1])) as document:
++    for n in range(len(document)):
++        with closing(document[n]) as page:
++            with closing(page.get_textpage()) as text:
++                ids=re.findall(r'T03-[0-9]{2}-P[0-9]{2}',text.get_text_range())
++            if len(ids)!=1:raise ValueError('Expected one synthetic visible identifier per page.')
++            pages.append({'identifier':ids[0],'rotation_degrees':page.get_rotation(),'size_points':list(page.get_size())})
++print(json.dumps({'page_count':len(pages),'pages':pages,'pypdfium2':str(pdfium.PYPDFIUM_INFO),'pdfium':str(pdfium.PDFIUM_INFO)}))
++'@,(New-Object Text.UTF8Encoding($false)))
++    $versions = Invoke-TestChildProcess -Executable $PythonPath -Arguments @('-B',$oracle,'--versions') -TimeoutMilliseconds 10000
++    $versions.ExitCode | Should -Be 0 -Because $versions.Stderr
++    $oracleVersions = $versions.Stdout | ConvertFrom-Json
++
++    function Get-SizeSnapshot([string[]]$Paths) {
++        foreach ($path in $Paths) {
++            $file = Get-Item -LiteralPath $path -Force
++            [pscustomobject]@{Path=$file.FullName; SHA256=(Get-FileHash -LiteralPath $path -Algorithm SHA256).Hash; Length=$file.Length; ModifiedUtcTicks=$file.LastWriteTimeUtc.Ticks; Attributes=[int]$file.Attributes}
++        }
++    }
++    function New-SizeApplication([string]$Fixture='scan',[ValidateSet('record','skip','equal','corrupt')][string]$Control='record') {
++        $root = Join-Path $work ([Guid]::NewGuid().ToString('N'))
++        $app = Join-Path $root 'app'; $source = Join-Path $root 'source'; $output = Join-Path $root 'output'; $noCommon = Join-Path $root 'no-common-engines'; $capture = Join-Path $root 'captured-calls'
++        foreach ($directory in @((Join-Path $app 'src'),$source,$output,$noCommon,$capture)) { [void][IO.Directory]::CreateDirectory($directory) }
++        [IO.File]::Copy((Join-Path $repo 'WinPDFMerge.ps1'),(Join-Path $app 'WinPDFMerge.ps1'),$false)
++        $helper = Join-Path $app 'src/WinPDFMerge.Helpers.ps1'
++        [IO.File]::Copy((Join-Path $repo 'src/WinPDFMerge.Helpers.ps1'),$helper,$false)
++        $foreign = Join-Path $output 'foreign-existing.pdf'; [IO.File]::Copy($fixturePath,$foreign,$false)
++        $input = Join-Path $source '1.pdf'
++        $expectation = if ($Fixture -eq 'tiny') { $tinyExpectation } else { @($presetManifest.fixtures | Where-Object file -eq ($Fixture+'.pdf'))[0] }
++        $original = if ($Fixture -eq 'tiny') { $fixturePath } else { Join-Path $originals $expectation.file }
++        [IO.File]::Copy($original,$input,$false)
++        $bad = Join-Path $root 'owned-corrupt-gs-input.pdf'
++        if ($Control -eq 'corrupt') { [IO.File]::WriteAllText($bad,"%PDF-1.4`nT17 owned synthetic corrupt PDF`n%%EOF`n",[Text.Encoding]::ASCII) }
++        $recordingSource = @'
++$script:t17OriginalNative=${function:Invoke-NativeProcess}
++$script:t17OriginalPdfJob=${function:Invoke-PdfToolJob}
++$script:t17OriginalVersion=${function:Get-NativeToolVersion}
++$script:t17NativeCalls=New-Object 'System.Collections.Generic.List[object]'
++function Get-T17RecordedSnapshot([string]$Path) {
++ $f=Get-Item -LiteralPath $Path -Force
++ [ordered]@{Path=$f.FullName;SHA256=(Get-FileHash -LiteralPath $f.FullName -Algorithm SHA256).Hash;Length=$f.Length;ModifiedUtcTicks=$f.LastWriteTimeUtc.Ticks;Attributes=[int]$f.Attributes}
++}
++function Invoke-NativeProcess {
++ [CmdletBinding()]param([string]$Executable,[AllowNull()][AllowEmptyCollection()][object[]]$Arguments=@(),[int]$TimeoutMilliseconds=900000,[int]$TerminationTimeoutMilliseconds=1000,[int]$CaptureTimeoutMilliseconds=1000,[int]$MaximumCaptureCharacters=8388608,[int]$MaximumCommandLineCharacters=30000,[Threading.CancellationToken]$CancellationToken=[Threading.CancellationToken]::None,[AllowEmptyCollection()][string[]]$RemoveEnvironmentVariables=@())
++ $parameters=@{};foreach($key in $PSBoundParameters.Keys){$parameters[$key]=$PSBoundParameters[$key]}
++ if('__CONTROL__' -eq 'skip' -and [IO.Path]::GetFileName($Executable) -ieq 'gswin64c.exe'){[IO.File]::WriteAllText('__CAPTURE__/unexpected-GS-native.txt','T17 controlled sentinel');throw 'T17 controlled GS native sentinel reached'}
++ $result=& $script:t17OriginalNative @parameters
++ $script:t17NativeCalls.Add([pscustomobject]@{Executable=$Executable;Arguments=@($Arguments);RemoveEnvironmentVariables=@($RemoveEnvironmentVariables);Result=$result})
++ [IO.File]::WriteAllText('__CAPTURE__/native-calls.json',(ConvertTo-Json -InputObject $script:t17NativeCalls.ToArray() -Depth 10),(New-Object Text.UTF8Encoding($false)))
++ if('__CONTROL__' -eq 'equal' -and $Arguments -contains '-sDEVICE=pdfwrite' -and $result.Succeeded){
++  $stage=[string]$Arguments[[array]::IndexOf($Arguments,'-o')+1];$master=[string]$Arguments[$Arguments.Count-1]
++  $actual=Get-T17RecordedSnapshot $stage
++  [IO.File]::Copy($stage,'__CAPTURE__/actual-gs-before-equal.pdf',$false)
++  [IO.File]::Copy($master,$stage,$true)
++  [IO.File]::WriteAllText('__CAPTURE__/equal-boundary.json',([ordered]@{ActualGhostscriptCandidate=$actual;RetainedActualGhostscriptCandidate='__CAPTURE__/actual-gs-before-equal.pdf';InjectedCandidate=(Get-T17RecordedSnapshot $stage);UnmodifiedMaster=(Get-T17RecordedSnapshot $master);Scope='Controlled boundary supplement: after actual GS success, only the owned staged candidate is replaced with identical published master bytes before original strict inspection. This is not a genuine GS equal-size result.'}|ConvertTo-Json -Depth 8),(New-Object Text.UTF8Encoding($false)))
++ }
++ $result
++}
++function Invoke-PdfToolJob {
++ [CmdletBinding()]param([string]$Tool,[string]$Executable,[object[]]$InputPaths,[string]$OutputPath,$Staging,[long]$ExpectedPageCount,[string]$InspectionExecutable,[ValidateSet('screen','ebook')][string]$EmailPreset='screen',[int]$TimeoutMilliseconds=900000,[Threading.CancellationToken]$CancellationToken=[Threading.CancellationToken]::None)
++ $parameters=@{};foreach($key in $PSBoundParameters.Keys){$parameters[$key]=$PSBoundParameters[$key]}
++ $before=$null;$after=$null;$candidate=$null;$partial=$null
++ if($Tool -eq 'Ghostscript'){
++  $before=Get-T17RecordedSnapshot $InputPaths[0]
++  if('__CONTROL__' -eq 'corrupt'){$parameters.InputPaths=@('__BAD__')}
++ }
++ $job=& $script:t17OriginalPdfJob @parameters
++ if($Tool -eq 'Ghostscript'){
++  $after=Get-T17RecordedSnapshot $InputPaths[0]
++  if($job.OutputValidated){
++   $candidatePath=if($job.OutputPublished){$OutputPath}else{$Staging.EmailPath}
++   [IO.File]::Copy($candidatePath,'__CAPTURE__/retained-validated-email.pdf',$false)
++   $candidate=Get-T17RecordedSnapshot '__CAPTURE__/retained-validated-email.pdf'
++  }elseif([IO.File]::Exists($Staging.EmailPath)){
++   $partial=Get-T17RecordedSnapshot $Staging.EmailPath
++   [IO.File]::Copy($Staging.EmailPath,'__CAPTURE__/retained-failed-partial.pdf',$false)
++  }
++ }
++ $record=[ordered]@{Tool=$Tool;Control='__CONTROL__';RequestedEmailPreset=$EmailPreset;BoundParameterKeys=@($PSBoundParameters.Keys);OriginalInputPaths=@($InputPaths);ActualInputPaths=@($parameters.InputPaths);OutputPath=$OutputPath;ExpectedPageCount=$ExpectedPageCount;InspectionExecutable=$InspectionExecutable;MasterBefore=$before;MasterAfter=$after;RetainedValidatedCandidate=$candidate;FailedPartialBeforeCleanup=$partial;StageDirectory=$Staging.DirectoryPath;StagedEmailPath=$Staging.EmailPath;Job=$job;Scope='Original actual selected job and strict validation/publication run; copied helper records raw receipts and copies owned candidate evidence before entry cleanup. Equal/corrupt/skip controls are explicitly labelled.'}
++ [IO.File]::WriteAllText(('__CAPTURE__/'+$Tool+'-job.json'),($record|ConvertTo-Json -Depth 14),(New-Object Text.UTF8Encoding($false)))
++ $job
++}
++if('__CONTROL__' -eq 'skip') {
++ function Find-Ghostscript {[IO.File]::WriteAllText('__CAPTURE__/unexpected-GS-discovery.txt','T17 controlled sentinel');throw 'T17 controlled GS discovery sentinel reached'}
++ function Get-NativeToolVersion {
++  [CmdletBinding()]param([string]$Path,[string]$Tool,[int]$TimeoutMilliseconds=10000,[Threading.CancellationToken]$CancellationToken=[Threading.CancellationToken]::None)
++  if($Tool -eq 'Ghostscript'){[IO.File]::WriteAllText('__CAPTURE__/unexpected-GS-probe.txt','T17 controlled sentinel');throw 'T17 controlled GS version sentinel reached'}
++  & $script:t17OriginalVersion @PSBoundParameters
++ }
++}
++'@
++        foreach ($pair in @(@('__CONTROL__',$Control),@('__CAPTURE__',$capture),@('__BAD__',$bad))) { $recordingSource=$recordingSource.Replace($pair[0],($pair[1] -replace "'","''")) }
++        [IO.File]::AppendAllText($helper,"`n"+$recordingSource,(New-Object Text.UTF8Encoding($false)))
++        [pscustomobject]@{Root=$root;App=$app;Source=$source;Output=$output;Foreign=$foreign;Input=$input;Original=$original;Expectation=$expectation;Entry=(Join-Path $app 'WinPDFMerge.ps1');Helper=$helper;Capture=$capture;Control=$Control;Bad=$bad;ChildEnvironment=@{ProgramFiles=$noCommon;'ProgramFiles(x86)'=$noCommon;GS_OPTIONS='-T17-invalid-inherited-child-option'}}
++    }
++    function Invoke-SizeEntry($App,[string]$Preset='screen',[switch]$DefaultPreset,[switch]$MissingGs,[switch]$Skip) {
++        $path=[IO.Path]::GetDirectoryName($PdftkPath)+';'+(Join-Path $env:SystemRoot 'System32')
++        if (-not $MissingGs) { $path=[IO.Path]::GetDirectoryName($GhostscriptPath)+';'+$path }
++        $argv=@('-NoProfile','-ExecutionPolicy','RemoteSigned','-File',$App.Entry,$App.Source,'-OutputFolder',$App.Output)
++        if (-not $DefaultPreset) { $argv+=@('-EmailPreset',$Preset) }; if ($Skip) { $argv+='-SkipEmail' }
++        $result=Invoke-TestChildProcess -Executable $shell -Arguments $argv -ChildPath $path -ChildEnvironment $App.ChildEnvironment -TimeoutMilliseconds 50000
++        [IO.File]::WriteAllText((Join-Path $App.Root 'entry.stdout.txt'),$result.Stdout,(New-Object Text.UTF8Encoding($false)))
++        [IO.File]::WriteAllText((Join-Path $App.Root 'entry.stderr.txt'),$result.Stderr,(New-Object Text.UTF8Encoding($false)))
++        [IO.File]::WriteAllText((Join-Path $App.Root 'entry-command.json'),([ordered]@{Executable=$shell;Arguments=$argv;ChildPath=$path;ChildEnvironment=$App.ChildEnvironment;ExitCode=$result.ExitCode;StdoutSHA256=(Get-FileHash -LiteralPath (Join-Path $App.Root 'entry.stdout.txt') -Algorithm SHA256).Hash;StderrSHA256=(Get-FileHash -LiteralPath (Join-Path $App.Root 'entry.stderr.txt') -Algorithm SHA256).Hash}|ConvertTo-Json -Depth 6),(New-Object Text.UTF8Encoding($false)))
++        $result
++    }
++    function Assert-SizePdf([string]$Path,$Expectation) {
++        $inspection=Invoke-TestChildProcess -Executable $PdftkPath -Arguments @($Path,'dump_data_utf8','output','-','dont_ask') -TimeoutMilliseconds 10000
++        $inspection.ExitCode | Should -Be 0 -Because $inspection.Stderr
++        $counts=@([regex]::Matches($inspection.Stdout,'(?m)^NumberOfPages:\s*([0-9]+)\s*$'))
++        $counts.Count | Should -Be 1; [long]$counts[0].Groups[1].Value | Should -Be $Expectation.page_count
++        $read=Invoke-TestChildProcess -Executable $PythonPath -Arguments @('-B',$oracle,$Path) -TimeoutMilliseconds 10000
++        $read.ExitCode | Should -Be 0 -Because $read.Stderr; $actual=$read.Stdout | ConvertFrom-Json
++        $actual.page_count | Should -Be $Expectation.page_count
++        for ($n=0;$n -lt $Expectation.page_count;$n++) {
++            $actual.pages[$n].identifier | Should -BeExactly $Expectation.page_identifiers[$n]
++            $actual.pages[$n].rotation_degrees | Should -Be 0
++            [double]$actual.pages[$n].size_points[0] | Should -Be $Expectation.page_size_points[0]
++            [double]$actual.pages[$n].size_points[1] | Should -Be $Expectation.page_size_points[1]
++        }
++        [pscustomobject]@{Snapshot=@(Get-SizeSnapshot @($Path))[0];PdfTkRead=$inspection;OracleRead=$read;Oracle=$actual}
++    }
++    function Get-ExpectedHumanSize([long]$Bytes) {
++        # Independent numeric expectation using a logarithmic unit index rather
++        # than the production loop; decimal arithmetic and invariant display.
++        $unit=[math]::Floor([math]::Log([double]$Bytes,1024)); if ($unit -lt 0) { $unit=0 }
++        $value=[decimal]$Bytes/[decimal]([math]::Pow(1024,$unit))
++        $format=if($unit -eq 0){'0'}else{'0.00'}
++        $value.ToString($format,[Globalization.CultureInfo]::InvariantCulture)+' '+@('B','KiB','MiB','GiB','TiB','PiB','EiB')[$unit]
++    }
++    function Assert-SizeResult($App,$Result,[string]$Preset='screen',[string]$RequiredState='auto',[int]$Code=0) {
++        $Result.ExitCode | Should -Be $Code -Because ($Result.Stdout+$Result.Stderr)
++        $masters=@(Get-ChildItem -LiteralPath $App.Output -File -Filter 'WinPDFMerge_*.pdf' | Where-Object Name -notlike '*_email.pdf')
++        $emails=@(Get-ChildItem -LiteralPath $App.Output -File -Filter 'WinPDFMerge_*_email.pdf')
++        $logs=@(Get-ChildItem -LiteralPath $App.Output -File -Filter 'WinPDFMerge_*.log')
++        $masters.Count | Should -Be 1; $logs.Count | Should -Be 1
++        $log=[IO.File]::ReadAllText($logs[0].FullName,[Text.Encoding]::UTF8)
++        $master=Get-Content -LiteralPath (Join-Path $App.Capture 'Pdftk-job.json') -Raw | ConvertFrom-Json
++        $master.Job.OutputPublished | Should -BeTrue; $master.Job.OutputValidated | Should -BeTrue; $master.Job.ValidatedPageCount | Should -Be $App.Expectation.page_count
++        foreach ($native in @($master.Job.NativeResult,$master.Job.ValidationResult.NativeResult)) {
++            $native.Started | Should -BeTrue; $native.ExitCode | Should -Be 0; $native.ProcessId | Should -BeGreaterThan 0; $native.OwnershipReleased | Should -BeTrue; $native.Executable | Should -BeExactly $PdftkPath
++        }
++        $master.Job.NativeResult.ProcessId | Should -Not -Be $master.Job.ValidationResult.NativeResult.ProcessId
++        $reads=@((Assert-SizePdf $App.Input $App.Expectation),(Assert-SizePdf $masters[0].FullName $App.Expectation))
++        $masterBytes=[long]$masters[0].Length
++        $expectedLines=@('Master size: '+$masterBytes.ToString([Globalization.CultureInfo]::InvariantCulture)+' bytes ('+(Get-ExpectedHumanSize $masterBytes)+').')
++        $email=$null; $candidateBytes=$null; $reduction=$null; $state=$RequiredState
++        $calls=@(foreach($call in (ConvertFrom-Json -InputObject ([IO.File]::ReadAllText((Join-Path $App.Capture 'native-calls.json'),[Text.Encoding]::UTF8)))){$call})
++        $gsCalls=@($calls | Where-Object Executable -eq $GhostscriptPath)
++        if ($RequiredState -in @('skipped','unavailable')) {
++            $emails.Count | Should -Be 0; $gsCalls.Count | Should -Be 0
++            [IO.File]::Exists((Join-Path $App.Capture 'Ghostscript-job.json')) | Should -BeFalse
++            @(Get-ChildItem -LiteralPath $App.Capture -Filter 'unexpected-GS-*').Count | Should -Be 0
++        } else {
++            $email=Get-Content -LiteralPath (Join-Path $App.Capture 'Ghostscript-job.json') -Raw | ConvertFrom-Json
++            $state=[string]$email.Job.OutputState
++            if ($RequiredState -ne 'auto') { $state | Should -BeExactly $RequiredState }
++            $email.RequestedEmailPreset.ToLowerInvariant() | Should -BeExactly $Preset
++            ($email.MasterBefore|ConvertTo-Json -Compress) | Should -BeExactly ($email.MasterAfter|ConvertTo-Json -Compress)
++            (@(Get-SizeSnapshot @($masters[0].FullName))[0]|ConvertTo-Json -Compress) | Should -BeExactly ($email.MasterAfter|ConvertTo-Json -Compress)
++            $conversions=@($gsCalls | Where-Object {$_.Arguments -contains '-sDEVICE=pdfwrite'}); $conversions.Count | Should -Be 1
++            $nativeInput=if($App.Control -eq 'corrupt'){$App.Bad}else{$masters[0].FullName}
++            $expectedVector=@('-dBATCH','-dNOPAUSE','-dSAFER','-dPDFSTOPONERROR','-sDEVICE=pdfwrite','-dCompatibilityLevel=1.6',('-dPDFSETTINGS=/'+$Preset),'-dDetectDuplicateImages=true','-o',$email.StagedEmailPath,'-f',$nativeInput)
++            ($conversions[0].Arguments|ConvertTo-Json -Compress) | Should -BeExactly ($expectedVector|ConvertTo-Json -Compress)
++            $conversions[0].RemoveEnvironmentVariables | Should -Contain 'GS_OPTIONS'
++            $email.Job.NativeResult.Started | Should -BeTrue; $email.Job.NativeResult.ProcessId | Should -BeGreaterThan 0; $email.Job.NativeResult.OwnershipReleased | Should -BeTrue
++            if ($state -eq 'failed') {
++                $emails.Count | Should -Be 0; $email.Job.OutputValidated | Should -BeFalse; $email.Job.OutputPublished | Should -BeFalse
++                $email.Job.NativeResult.ExitCode | Should -Be 1; $email.FailedPartialBeforeCleanup.Length | Should -BeGreaterThan 0
++            } else {
++                $email.Job.NativeResult.ExitCode | Should -Be 0
++                $email.Job.OutputValidated | Should -BeTrue; $email.Job.Succeeded | Should -BeTrue; $email.Job.ValidatedPageCount | Should -Be $App.Expectation.page_count
++                $email.Job.ValidationResult.NativeResult.Started | Should -BeTrue; $email.Job.ValidationResult.NativeResult.ExitCode | Should -Be 0; $email.Job.ValidationResult.NativeResult.OwnershipReleased | Should -BeTrue
++                $email.Job.NativeResult.ProcessId | Should -Not -Be $email.Job.ValidationResult.NativeResult.ProcessId
++                $candidateBytes=[long]$email.RetainedValidatedCandidate.Length
++                $candidateBytes | Should -Be $email.Job.OutputBytes; $email.Job.MasterBytes | Should -Be $masterBytes
++                $reads+=Assert-SizePdf $email.RetainedValidatedCandidate.Path $App.Expectation
++                $reduction=[decimal]100*(([decimal]$masterBytes-[decimal]$candidateBytes)/[decimal]$masterBytes)
++                $percentage=$reduction.ToString('0.0',[Globalization.CultureInfo]::InvariantCulture)
++                $human=Get-ExpectedHumanSize $candidateBytes
++                if ($candidateBytes -lt $masterBytes) {
++                    $state | Should -BeExactly 'published'; $emails.Count | Should -Be 1; $email.Job.OutputPublished | Should -BeTrue
++                    $emails[0].Length | Should -Be $candidateBytes
++                    (Get-FileHash -LiteralPath $emails[0].FullName -Algorithm SHA256).Hash | Should -BeExactly $email.RetainedValidatedCandidate.SHA256
++                    $expectedLines+=@(('Email size: '+$candidateBytes+' bytes ('+$human+').'),('Email reduction: '+$percentage+'%.'))
++                    $reads+=Assert-SizePdf $emails[0].FullName $App.Expectation
++                } else {
++                    $state | Should -BeExactly 'no_size_benefit'; $emails.Count | Should -Be 0; $email.Job.OutputPublished | Should -BeFalse
++                    $expectedLines+=@(('Validated email candidate size: '+$candidateBytes+' bytes ('+$human+'); not published.'),('Email candidate reduction: '+$percentage+'% (no size benefit; candidate not published).'))
++                    $Result.Stdout | Should -Not -Match '(?m)^ - Email-optimized:'
++                }
++            }
++        }
++        # Existing Write-RunLog returns each logged line to stdout. Verify the
++        # final console summary separately, then verify every earlier metric.
++        $summary=[regex]::Match($Result.Stdout,'(?m)^(?:SUCCESS|PARTIAL SUCCESS):')
++        $summary.Success | Should -BeTrue
++        foreach ($text in @($Result.Stdout.Substring($summary.Index),$log)) {
++            $sizeLines=@(($text -split '\r?\n') | Where-Object {$_ -match '^(Master size:|Email size:|Email reduction:|Validated email candidate size:|Email candidate reduction:)'})
++            ($sizeLines|ConvertTo-Json -Compress) | Should -BeExactly ($expectedLines|ConvertTo-Json -Compress)
++        }
++        $allConsoleMetrics=@(($Result.Stdout -split '\r?\n')|Where-Object {$_ -match '^(Master size:|Email size:|Email reduction:|Validated email candidate size:|Email candidate reduction:)'})
++        foreach ($line in $allConsoleMetrics) { $expectedLines | Should -Contain $line }
++        $log | Should -Match ('(?m)^Email result: '+$state+'\r?$')
++        foreach ($directory in @($App.App,$App.Output,$App.Source)) { @(Get-ChildItem -LiteralPath $directory -Force | Where-Object Name -like '.WinPDFMerge*').Count | Should -Be 0 }
++        [IO.Directory]::Exists($master.StageDirectory) | Should -BeFalse
++        [pscustomobject]@{MasterPath=$masters[0].FullName;EmailPaths=@($emails|ForEach-Object FullName);LogPath=$logs[0].FullName;Log=$log;MasterJob=$master;EmailJob=$email;NativeCalls=$calls;FinalReads=$reads;Result=$Result;ExpectedSizeLines=$expectedLines;MasterBytes=$masterBytes;ValidatedCandidateBytes=$candidateBytes;ReductionPercentInvariant=$(if($null -ne $reduction){$reduction.ToString([Globalization.CultureInfo]::InvariantCulture)}else{$null});ExpectedState=$state;ExpectedPreset=$Preset;OutputDirectory=$App.Output;CommandReceiptPath=(Join-Path $App.Root 'entry-command.json')}
++    }
++    function Add-SizeObservation($App,[string]$Label,$Before,$Proof) {
++        $after=@(Get-SizeSnapshot @($App.Input,$App.Foreign,$App.Original))
++        ($after|ConvertTo-Json -Compress) | Should -BeExactly ($Before|ConvertTo-Json -Compress)
++        $observations.Add([pscustomobject]@{Label=$Label;SourceFolder=$App.Source;OutputFolder=$App.Output;OriginalFixturePath=$App.Original;FixtureExpectation=$App.Expectation;EntrySHA256=(Get-FileHash -LiteralPath $App.Entry -Algorithm SHA256).Hash;CopiedHelperSHA256=(Get-FileHash -LiteralPath $App.Helper -Algorithm SHA256).Hash;Before=$Before;After=$after;Proof=$Proof;Control=$App.Control;ControlledHooks=$(switch($App.Control){'equal'{'After real GS0, owned staged candidate replaced by identical unmodified master bytes before original real strict PDFtk inspection; equal boundary fault supplement, not actual GS equality.'};'corrupt'{'Separate owned corrupt native GS input substituted after master publication; actual engine failure/partial, original source/master untouched. Job.MasterBytes is substituted corrupt input length.'};'skip'{'GS remains available but discovery/probe/native hooks throw and write sentinel if unexpectedly reached.'};default{'Recording wrappers only invoke original selected functions; owned validated evidence copies retained outside final output before cleanup.'}});Scope='Actual Windows application and pinned engines. Structural size/count/ID assertions are not manual visual fidelity acceptance.'})
++    }
++}
++
++AfterAll {
++    foreach ($name in $parentEnvironment.Keys) { [Environment]::GetEnvironmentVariable($name,'Process') | Should -BeExactly $parentEnvironment[$name] }
++    (@(Get-ExecutionPolicy -List | ForEach-Object { $_.Scope.ToString()+'='+$_.ExecutionPolicy.ToString() }) -join ';') | Should -BeExactly $parentPolicies
++    $report=Join-Path $work 'native-observations.json'
++    [ordered]@{ObservedAtUtc=[datetime]::UtcNow.ToString('o');CommitUnderTest=(& git -C $repo rev-parse HEAD);DirtyWorktree=(@(& git -C $repo status --porcelain=v1).Count -ne 0);ShellVersion=$PSVersionTable.PSVersion.ToString();ShellEdition=$PSVersionTable.PSEdition;StandardUser=$true;Process64Bit=[Environment]::Is64BitProcess;PdfTkVersion=$pdftkVersion;GhostscriptVersion=$gsVersion;EngineSHA256=$engineHashes.ToArray();PythonSHA256=$pythonHash;OracleVersions=$oracleVersions;OracleSHA256=(Get-FileHash -LiteralPath $oracle -Algorithm SHA256).Hash;GeneratorSHA256=(Get-FileHash -LiteralPath $generator -Algorithm SHA256).Hash;GeneratorCommand=$generationCommand;GeneratorResult=$generationResult;OriginalCorpusDirectory=$originals;FixtureManifest=$presetManifest;FixtureManifestSHA256=(Get-FileHash -LiteralPath $presetManifestPath -Algorithm SHA256).Hash;OriginalFixtureSHA256=(Get-FileHash -LiteralPath $fixturePath -Algorithm SHA256).Hash;TestSourceSHA256=(Get-FileHash -LiteralPath (Join-Path $repo 'tests/pdf/SizeReporting.Native.Tests.ps1') -Algorithm SHA256).Hash;Observations=$observations.ToArray();Scope='Actual Windows entry, PDFtk2.02/GS10.08.0 and independent development PDFium on original CC0 synthetic vector/raster/mixed corpus. Recording/candidate evidence copies, skip sentinel, equal candidate and corrupt-input controls are disclosed. No runtime Python/network. Structural tests do not count as manual visual acceptance, physical Explorer, universal fidelity/security, signatures, UNC/package or release acceptance.'}|ConvertTo-Json -Depth 20|Write-RunLog -LiteralPath $report|Out-Null
++    Write-Host ('Size reporting observations: '+$report)
++}
++
++Describe 'AC040 real size accounting and AC041 render-ready native corpus' {
++    It 'reports real <Fixture> <Preset> master and validated candidate lengths with the selected fixed native flags' -TestCases @(
++        @{Fixture='small-print';Preset='screen'},@{Fixture='small-print';Preset='ebook'},
++        @{Fixture='scan';Preset='screen'},@{Fixture='scan';Preset='ebook'},
++        @{Fixture='mixed';Preset='screen'},@{Fixture='mixed';Preset='ebook'}
++    ) {
++        param($Fixture,$Preset)
++        $app=New-SizeApplication $Fixture; $before=@(Get-SizeSnapshot @($app.Input,$app.Foreign,$app.Original))
++        $result=Invoke-SizeEntry $app $Preset -DefaultPreset:($Preset -eq 'screen')
++        $required=if($Fixture -eq 'small-print'){'auto'}else{'published'}
++        $proof=Assert-SizeResult $app $result $Preset $required
++        Add-SizeObservation $app ('actual-'+$Fixture+'-'+$Preset) $before $proof
++    }
++    It 'omits a genuinely larger real tiny-text rewrite, reports negative benefit and returns zero' {
++        $app=New-SizeApplication 'tiny';$before=@(Get-SizeSnapshot @($app.Input,$app.Foreign,$app.Original))
++        $proof=Assert-SizeResult $app (Invoke-SizeEntry $app -DefaultPreset) 'screen' 'no_size_benefit'
++        $proof.ValidatedCandidateBytes | Should -BeGreaterThan $proof.MasterBytes
++        Add-SizeObservation $app 'actual-tiny-larger-no-benefit-code0' $before $proof
++    }
++    It 'rejects controlled exact equality after real GS success and actual strict candidate inspection' {
++        $app=New-SizeApplication 'tiny' 'equal';$before=@(Get-SizeSnapshot @($app.Input,$app.Foreign,$app.Original))
++        $proof=Assert-SizeResult $app (Invoke-SizeEntry $app -DefaultPreset) 'screen' 'no_size_benefit'
++        $proof.ValidatedCandidateBytes | Should -Be $proof.MasterBytes
++        $boundary=Get-Content -LiteralPath (Join-Path $app.Capture 'equal-boundary.json') -Raw|ConvertFrom-Json
++        $boundary.InjectedCandidate.SHA256 | Should -BeExactly $boundary.UnmodifiedMaster.SHA256
++        $proof|Add-Member -NotePropertyName EqualBoundary -NotePropertyValue $boundary
++        Add-SizeObservation $app 'controlled-equal-after-actual-GS0-code0' $before $proof
++    }
++}
++
++Describe 'AC040 master-only honest size accounting' {
++    It 'prints only master metrics for <Mode> and retains the source and foreign final' -TestCases @(@{Mode='skip'},@{Mode='missing'},@{Mode='failure'}) {
++        param($Mode)
++        $control=switch($Mode){'skip'{'skip'};'failure'{'corrupt'};default{'record'}}
++        $state=switch($Mode){'skip'{'skipped'};'missing'{'unavailable'};default{'failed'}}
++        $code=if($Mode -eq 'failure'){2}else{0}
++        $app=New-SizeApplication 'tiny' $control;$before=@(Get-SizeSnapshot @($app.Input,$app.Foreign,$app.Original))
++        $result=Invoke-SizeEntry $app -DefaultPreset -Skip:($Mode -eq 'skip') -MissingGs:($Mode -eq 'missing')
++        $proof=Assert-SizeResult $app $result 'screen' $state $code
++        Add-SizeObservation $app ('actual-master-only-'+$Mode+'-code'+$code) $before $proof
++    }
++}
+diff --git a/tests/pdf/SizeReporting.Tests.ps1 b/tests/pdf/SizeReporting.Tests.ps1
+new file mode 100644
+index 0000000..de93200
+--- /dev/null
++++ b/tests/pdf/SizeReporting.Tests.ps1
+@@ -0,0 +1,312 @@
++# AC040 support: import-only numeric decisions and copied-entry controls.
++# Controlled native receipts exercise the real envelope/parser/publication code;
++# they are not PDF-engine integration or AC041 visual/manual observations.
++BeforeAll {
++    $repo = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot '../..')).ProviderPath
++    . (Join-Path $repo 'src/WinPDFMerge.Helpers.ps1')
++    $fixture = Join-Path $repo 'tests/fixtures/numbered/1.pdf'
++    $shell = [Diagnostics.Process]::GetCurrentProcess().MainModule.FileName
++    $work = Join-Path $repo ('tests/.work/T17-size-reporting/' + [Guid]::NewGuid().ToString('N'))
++    [void][IO.Directory]::CreateDirectory($work)
++    $observations = New-Object 'System.Collections.Generic.List[object]'
++    $invariant = [Globalization.CultureInfo]::InvariantCulture
++
++    function Get-SizeTestHash([string]$Path) { (Get-FileHash -LiteralPath $Path -Algorithm SHA256).Hash.ToLowerInvariant() }
++    function Add-SizeObservation([string]$Label,$Data) {
++        $observations.Add([pscustomobject]@{Label=$Label;Scope='unit numeric decision; no native PDF engine';Data=$Data})
++    }
++    function New-SizeEntryCase([string]$Mode) {
++        $root=Join-Path $work ([Guid]::NewGuid().ToString('N'))
++        $app=Join-Path $root 'app'; $source=Join-Path $root 'source [x] ! &'; $output=Join-Path $root 'output [x] ! &'
++        foreach($directory in @((Join-Path $app 'src'),$source,$output)){[void][IO.Directory]::CreateDirectory($directory)}
++        $entry=Join-Path $app 'WinPDFMerge.ps1'; $helper=Join-Path $app 'src/WinPDFMerge.Helpers.ps1'
++        [IO.File]::Copy((Join-Path $repo 'WinPDFMerge.ps1'),$entry,$false)
++        [IO.File]::Copy((Join-Path $repo 'src/WinPDFMerge.Helpers.ps1'),$helper,$false)
++        $inputPath=Join-Path $source '1.pdf'; $foreign=Join-Path $output 'foreign-existing.pdf'
++        foreach($path in @($inputPath,$foreign)){[IO.File]::Copy($fixture,$path,$false)}
++        $pdftk=Join-Path $app 'pdftk.exe'; $gs=Join-Path $app 'gswin64c.exe'
++        foreach($path in @($pdftk,$gs)){[IO.File]::WriteAllText($path,'T17 controlled placeholder; never executed')}
++        $receipt=Join-Path $root 'receipt.json'; $config=Join-Path $app 'size-config.json'
++        $initial=[ordered]@{Scope='copied entry with controlled native receipts; no PDF-engine execution';Identity=$null;GSDiscovery=0;Jobs=@();Reports=@();Messages=@();Outcome=$null;NativeCalls=0}
++        [IO.File]::WriteAllText($receipt,($initial | ConvertTo-Json -Depth 6),(New-Object Text.UTF8Encoding($false)))
++        $controlled=@'
++$script:t17Config=Get-Content -LiteralPath (Join-Path (Split-Path -Parent $PSScriptRoot) 'size-config.json') -Raw | ConvertFrom-Json
++$script:t17Receipt=Get-Content -LiteralPath $script:t17Config.Receipt -Raw | ConvertFrom-Json
++$script:t17Identity=${function:New-MergeRunIdentity}
++$script:t17Job=${function:Invoke-PdfToolJob}
++$script:t17Logger=${function:Write-RunLog}
++$script:t17Report=${function:Get-PdfSizeReport}
++$script:t17Outcome=${function:Get-PdfMergeOutcome}
++function Save-T17SizeReceipt { [IO.File]::WriteAllText($script:t17Config.Receipt,($script:t17Receipt | ConvertTo-Json -Depth 24),(New-Object Text.UTF8Encoding($false))) }
++function Find-Pdftk { $script:t17Config.Pdftk }
++function Find-Ghostscript { $script:t17Receipt.GSDiscovery++; Save-T17SizeReceipt; if($script:t17Config.Mode -ne 'unavailable'){$script:t17Config.Ghostscript} }
++function Get-NativeToolVersion {
++ param([string]$Path,[string]$Tool,[Threading.CancellationToken]$CancellationToken=[Threading.CancellationToken]::None)
++ if($Tool -eq 'Ghostscript'){'10.08.0'}else{'2.02'}
++}
++function New-MergeRunIdentity {
++ [CmdletBinding()]param([string]$SourceFolder,[string]$OutputFolder,[datetime]$Timestamp=[datetime]::Now,[string]$RunSuffix=([Guid]::NewGuid().ToString('N').Substring(0,16)))
++ $identity=& $script:t17Identity @PSBoundParameters; $script:t17Receipt.Identity=$identity; Save-T17SizeReceipt; $identity
++}
++function Invoke-NativeProcess {
++ [CmdletBinding()]param([string]$Executable,[object[]]$Arguments,[int]$TimeoutMilliseconds=900000,[string[]]$RemoveEnvironmentVariables=@(),[Threading.CancellationToken]$CancellationToken=[Threading.CancellationToken]::None)
++ $script:t17Receipt.NativeCalls++; Save-T17SizeReceipt; $exitCode=0
++ if($Arguments -contains 'dump_data_utf8'){$text='NumberOfPages: 1'}else{
++  $marker=if($Arguments -contains 'cat'){'output'}else{'-o'}
++  $destination=[string]$Arguments[[Array]::IndexOf([object[]]$Arguments,$marker)+1]
++  $bytes=[IO.File]::ReadAllBytes($script:t17Config.Fixture)
++  $padding=if($marker -eq 'output'){1024}elseif($script:t17Config.Mode -eq 'equal'){1024}elseif($script:t17Config.Mode -eq 'larger'){2048}else{0}
++  if($padding){$bytes=[byte[]]($bytes+[Text.Encoding]::ASCII.GetBytes((' ' * $padding)))}
++  [IO.File]::WriteAllBytes($destination,$bytes)
++  if($marker -eq '-o' -and $script:t17Config.Mode -eq 'failed'){$exitCode=7}
++  $text='T17 controlled conversion'
++ }
++ [pscustomobject]@{Executable=$Executable;RenderedArguments='T17 controlled vector';Succeeded=($exitCode -eq 0);Started=$true;ExitCode=$exitCode;ProcessId=12345;ElapsedMilliseconds=1;TimedOut=$false;Cancelled=$false;LaunchError=$null;CaptureError=$null;TerminationError=$null;OwnershipReleased=$true;StdoutTruncated=$false;StderrTruncated=$false;Stdout=$text;Stderr='T17 controlled warning'}
++}
++function Invoke-PdfToolJob {
++ [CmdletBinding()]param([string]$Tool,[string]$Executable,[object[]]$InputPaths,[string]$OutputPath,$Staging,[long]$ExpectedPageCount,[string]$InspectionExecutable,[string]$EmailPreset='screen',[int]$TimeoutMilliseconds=900000,[Threading.CancellationToken]$CancellationToken=[Threading.CancellationToken]::None)
++ $job=& $script:t17Job @PSBoundParameters
++ $masterHash=if([IO.File]::Exists($script:t17Receipt.Identity.MasterPath)){(Get-FileHash -LiteralPath $script:t17Receipt.Identity.MasterPath -Algorithm SHA256).Hash.ToLowerInvariant()}else{$null}
++ $script:t17Receipt.Jobs+=@([pscustomobject]@{Tool=$Tool;Job=$job;MasterSHA256=$masterHash}); Save-T17SizeReceipt; $job
++}
++function Get-PdfSizeReport {
++ param([long]$MasterBytes,[long]$EmailBytes,[switch]$EmailPublished)
++ $report=& $script:t17Report @PSBoundParameters
++ $reductionText=if($null -ne $report.ReductionPercent){$report.ReductionPercent.ToString([Globalization.CultureInfo]::InvariantCulture)}else{$null}
++ $script:t17Receipt.Reports+=@([pscustomobject]@{MasterBytes=$MasterBytes;EmailBytesBound=$PSBoundParameters.ContainsKey('EmailBytes');EmailPublished=[bool]$EmailPublished;ReductionDecimalInvariant=$reductionText;Report=$report})
++ Save-T17SizeReceipt; $report
++}
++function Write-RunLog {
++ [CmdletBinding()]param([Parameter(ValueFromPipeline=$true)][string]$Message,[string]$LiteralPath,[switch]$Append)
++ process {
++  $script:t17Receipt.Messages+=@($Message); Save-T17SizeReceipt
++  if($script:t17Config.Mode -eq 'log-failed' -and $Message.StartsWith('Master size: ')){throw [IO.IOException]::new('T17 controlled size-report logging failure')}
++  & $script:t17Logger @PSBoundParameters
++ }
++}
++function Get-PdfMergeOutcome {
++ param([bool]$MasterPublished,[string]$EmailState='not_started',[string]$MasterPath,[string]$EmailPath,[switch]$RunFailed)
++ $outcome=& $script:t17Outcome @PSBoundParameters; $script:t17Receipt.Outcome=$outcome; Save-T17SizeReceipt; $outcome
++}
++'@
++        [IO.File]::AppendAllText($helper,[Environment]::NewLine+$controlled,(New-Object Text.UTF8Encoding($false)))
++        $wrapper=Join-Path $root 'Invoke-Entry.ps1'
++        $wrapperText=@'
++[CmdletBinding()]param([string]$Configuration)
++Set-StrictMode -Version Latest
++$ErrorActionPreference='Stop'
++$config=Get-Content -LiteralPath $Configuration -Raw | ConvertFrom-Json
++[Threading.Thread]::CurrentThread.CurrentCulture=[Globalization.CultureInfo]::GetCultureInfo('de-DE')
++[Threading.Thread]::CurrentThread.CurrentUICulture=[Globalization.CultureInfo]::GetCultureInfo('de-DE')
++try { & $config.Entry -SourceFolder $config.Source -OutputFolder $config.Output -SkipEmail:($config.Mode -eq 'skipped'); exit $LASTEXITCODE }
++catch { [Console]::Error.WriteLine($_.Exception.Message); exit 1 }
++'@
++        [IO.File]::WriteAllText($wrapper,$wrapperText,(New-Object Text.UTF8Encoding($false)))
++        [pscustomobject]@{Root=$root;Entry=$entry;Helper=$helper;Wrapper=$wrapper;Input=$inputPath;Foreign=$foreign;Source=$source;Output=$output;Receipt=$receipt;Config=$config;Pdftk=$pdftk;GS=$gs;Mode=$Mode}
++    }
++    function Invoke-SizeEntryCase($Case) {
++        $before=(Get-SizeTestHash $Case.Input)+':'+(Get-SizeTestHash $Case.Foreign)
++        $configuration=[ordered]@{Mode=$Case.Mode;Fixture=$fixture;Pdftk=$Case.Pdftk;Ghostscript=$Case.GS;Receipt=$Case.Receipt;Entry=$Case.Entry;Source=$Case.Source;Output=$Case.Output}
++        [IO.File]::WriteAllText($Case.Config,($configuration | ConvertTo-Json -Depth 8),(New-Object Text.UTF8Encoding($false)))
++        $arguments=@('-NoLogo','-NoProfile','-NonInteractive','-ExecutionPolicy','RemoteSigned','-File',$Case.Wrapper,'-Configuration',$Case.Config)
++        $remove=@([Environment]::GetEnvironmentVariables('Process').Keys | Where-Object {[string]$_ -ieq 'PSModulePath'} | ForEach-Object {[string]$_})
++        $result=Invoke-NativeProcess -Executable $shell -Arguments $arguments -TimeoutMilliseconds 20000 -RemoveEnvironmentVariables $remove
++        foreach($stream in @('Stdout','Stderr')){[IO.File]::WriteAllText((Join-Path $Case.Root ($stream.ToLowerInvariant()+'.txt')),[string]$result.$stream,(New-Object Text.UTF8Encoding($false)))}
++        $receipt=Get-Content -LiteralPath $Case.Receipt -Raw | ConvertFrom-Json
++        $finals=@(Get-ChildItem -LiteralPath $Case.Output -File -Filter 'WinPDFMerge_*.pdf' | ForEach-Object {[pscustomobject]@{Path=$_.FullName;Bytes=$_.Length;SHA256=(Get-SizeTestHash $_.FullName)}})
++        $record=[ordered]@{Label=('entry-'+$Case.Mode);Scope='actual bounded copied-entry subprocess with controlled native receipts; no PDF-engine/manual claim';Culture='de-DE';Command=@($shell)+$arguments;ChildEnvironmentRemovedKeys=$remove;PersistentEnvironmentChanges=$false;EntrySHA256=(Get-SizeTestHash $Case.Entry);HelperWithHooksSHA256=(Get-SizeTestHash $Case.Helper);WrapperSHA256=(Get-SizeTestHash $Case.Wrapper);ConfigurationSHA256=(Get-SizeTestHash $Case.Config);Result=$result;ReceiptPath=$Case.Receipt;ReceiptSHA256=(Get-SizeTestHash $Case.Receipt);Receipt=$receipt;Before=$before;After=((Get-SizeTestHash $Case.Input)+':'+(Get-SizeTestHash $Case.Foreign));Finals=$finals;StdoutSHA256=(Get-SizeTestHash (Join-Path $Case.Root 'stdout.txt'));StderrSHA256=(Get-SizeTestHash (Join-Path $Case.Root 'stderr.txt'))}
++        [IO.File]::WriteAllText((Join-Path $Case.Root 'invocation.json'),($record | ConvertTo-Json -Depth 28),(New-Object Text.UTF8Encoding($false)))
++        $observations.Add([pscustomobject]$record)
++        $result.Started | Should -BeTrue
++        $result.TimedOut | Should -BeFalse
++        $result.Cancelled | Should -BeFalse
++        $result.LaunchError | Should -BeNullOrEmpty
++        $result.CaptureError | Should -BeNullOrEmpty
++        $result.TerminationError | Should -BeNullOrEmpty
++        $result.OwnershipReleased | Should -BeTrue
++        $record.After | Should -BeExactly $before
++        [pscustomobject]@{Result=$result;Receipt=$receipt;Observation=$record}
++    }
++}
++
++Describe 'AC040 import-only binary byte formatting' {
++    It 'formats <Bytes> bytes as <Expected>' -TestCases @(
++        @{Bytes=[long]0;Expected='0 B'},
++        @{Bytes=[long]1023;Expected='1023 B'},
++        @{Bytes=[long]1024;Expected='1.00 KiB'},
++        @{Bytes=[long]1048575;Expected='1024.00 KiB'},
++        @{Bytes=[long]1048576;Expected='1.00 MiB'},
++        @{Bytes=[long]1073741824;Expected='1.00 GiB'},
++        @{Bytes=[long]1099511627776;Expected='1.00 TiB'},
++        @{Bytes=[long]1125899906842624;Expected='1.00 PiB'},
++        @{Bytes=[long]1152921504606846976;Expected='1.00 EiB'},
++        @{Bytes=[long]::MaxValue;Expected='8.00 EiB'}
++    ) {
++        param($Bytes,$Expected)
++        $actual=Format-PdfByteSize -Bytes $Bytes
++        $actual | Should -BeExactly $Expected
++        Add-SizeObservation ('format-'+$Bytes.ToString($invariant)) ([pscustomobject]@{Bytes=$Bytes;Actual=$actual;Expected=$Expected})
++    }
++    It 'rejects a negative byte count' {
++        {Format-PdfByteSize -Bytes -1} | Should -Throw
++        Add-SizeObservation 'format-negative' @{Rejected=$true;Bytes=-1}
++    }
++}
++
++Describe 'AC040 invariant size report and decimal reduction' {
++    It 'uses identical bytes and decimal punctuation under <Culture>' -TestCases @(@{Culture='en-US'},@{Culture='de-DE'}) {
++        param($Culture)
++        $thread=[Threading.Thread]::CurrentThread; $oldCulture=$thread.CurrentCulture; $oldUICulture=$thread.CurrentUICulture
++        try {
++            $thread.CurrentCulture=[Globalization.CultureInfo]::GetCultureInfo($Culture)
++            $thread.CurrentUICulture=[Globalization.CultureInfo]::GetCultureInfo($Culture)
++            $report=Get-PdfSizeReport -MasterBytes 1536 -EmailBytes 1024 -EmailPublished
++            @($report.Lines) | Should -Be @('Master size: 1536 bytes (1.50 KiB).','Email size: 1024 bytes (1.00 KiB).','Email reduction: 33.3%.')
++            $report.MasterBytes | Should -Be 1536
++            $report.EmailBytes | Should -Be 1024
++            $report.ReductionPercent | Should -BeOfType ([decimal])
++            Add-SizeObservation ('culture-'+$Culture) $report
++        } finally { $thread.CurrentCulture=$oldCulture; $thread.CurrentUICulture=$oldUICulture }
++    }
++    It 'reports only master metrics when no validated email size was supplied' {
++        $report=Get-PdfSizeReport -MasterBytes 1048576
++        @($report.Lines) | Should -Be @('Master size: 1048576 bytes (1.00 MiB).')
++        $report.EmailBytes | Should -BeNullOrEmpty
++        $report.ReductionPercent | Should -BeNullOrEmpty
++        Add-SizeObservation 'master-only' $report
++    }
++    It 'retains a fractional decimal reduction independently of display rounding' {
++        $report=Get-PdfSizeReport -MasterBytes 3 -EmailBytes 1 -EmailPublished
++        $report.ReductionPercent | Should -BeOfType ([decimal])
++        $report.ReductionPercent | Should -BeGreaterThan ([decimal]66.66666666)
++        $report.ReductionPercent | Should -BeLessThan ([decimal]66.66666667)
++        @($report.Lines) | Should -Be @('Master size: 3 bytes (3 B).','Email size: 1 bytes (1 B).','Email reduction: 66.7%.')
++        Add-SizeObservation 'fractional-reduction' $report
++    }
++    It 'keeps a positive one-byte reduction at the Int64 boundary without overflow' {
++        $report=Get-PdfSizeReport -MasterBytes ([long]::MaxValue) -EmailBytes ([long]::MaxValue-1) -EmailPublished
++        $report.MasterBytes | Should -Be ([long]::MaxValue)
++        $report.EmailBytes | Should -Be ([long]::MaxValue-1)
++        $report.ReductionPercent | Should -BeGreaterThan 0
++        $report.ReductionPercent | Should -BeLessThan ([decimal]0.0000000000000001)
++        $report.Lines[2] | Should -BeExactly 'Email reduction: 0.0%.'
++        Add-SizeObservation 'int64-one-byte-reduction' $report
++    }
++    It 'labels <Label> validated candidates as unpublished with truthful reduction' -TestCases @(
++        @{Label='equal';Email=[long]1024;Reduction=[decimal]0;Human='1.00 KiB';Percent='0.0'},
++        @{Label='larger';Email=[long]2048;Reduction=[decimal]-100;Human='2.00 KiB';Percent='-100.0'}
++    ) {
++        param($Label,$Email,$Reduction,$Human,$Percent)
++        $report=Get-PdfSizeReport -MasterBytes 1024 -EmailBytes $Email
++        $report.ReductionPercent | Should -Be $Reduction
++        @($report.Lines) | Should -Be @('Master size: 1024 bytes (1.00 KiB).',('Validated email candidate size: {0} bytes ({1}); not published.' -f $Email,$Human),('Email candidate reduction: {0}% (no size benefit; candidate not published).' -f $Percent))
++        Add-SizeObservation ('candidate-'+$Label) $report
++    }
++    It 'calculates a negative candidate reduction across the full Int64 byte range' {
++        $report=Get-PdfSizeReport -MasterBytes 1 -EmailBytes ([long]::MaxValue)
++        $report.ReductionPercent | Should -Be ([decimal]'-922337203685477580600')
++        $report.Lines[1] | Should -BeExactly 'Validated email candidate size: 9223372036854775807 bytes (8.00 EiB); not published.'
++        $report.Lines[2] | Should -BeExactly 'Email candidate reduction: -922337203685477580600.0% (no size benefit; candidate not published).'
++        Add-SizeObservation 'int64-negative-reduction' $report
++    }
++    It 'rejects <Label> rather than reporting invalid measurements or publication' -TestCases @(
++        @{Label='empty-master'},@{Label='empty-email'},@{Label='published-without-email'},
++        @{Label='published-equal'},@{Label='published-larger'},@{Label='unpublished-smaller'}
++    ) {
++        param($Label)
++        $parameters=switch($Label){
++            'empty-master'{@{MasterBytes=0}}
++            'empty-email'{@{MasterBytes=2;EmailBytes=0}}
++            'published-without-email'{@{MasterBytes=2;EmailPublished=$true}}
++            'published-equal'{@{MasterBytes=2;EmailBytes=2;EmailPublished=$true}}
++            'published-larger'{@{MasterBytes=2;EmailBytes=3;EmailPublished=$true}}
++            'unpublished-smaller'{@{MasterBytes=2;EmailBytes=1}}
++        }
++        {Get-PdfSizeReport @parameters} | Should -Throw
++        Add-SizeObservation ('rejected-'+$Label) @{Rejected=$true;Parameters=$parameters}
++    }
++}
++
++Describe 'AC040 copied-entry measured size reporting with controlled native receipts' {
++    It 'reports truthful sizes and published paths for <Mode>' -TestCases @(
++        @{Mode='published';State='published';Exit=0;EmailMetrics=$true;PublishedCount=2},
++        @{Mode='equal';State='no_size_benefit';Exit=0;EmailMetrics=$true;PublishedCount=1},
++        @{Mode='larger';State='no_size_benefit';Exit=0;EmailMetrics=$true;PublishedCount=1},
++        @{Mode='skipped';State='skipped';Exit=0;EmailMetrics=$false;PublishedCount=1},
++        @{Mode='unavailable';State='unavailable';Exit=0;EmailMetrics=$false;PublishedCount=1},
++        @{Mode='failed';State='failed';Exit=2;EmailMetrics=$false;PublishedCount=1},
++        @{Mode='log-failed';State='published';Exit=2;EmailMetrics=$true;PublishedCount=2}
++    ) {
++        param($Mode,$State,$Exit,$EmailMetrics,$PublishedCount)
++        $case=New-SizeEntryCase $Mode; $run=Invoke-SizeEntryCase $case
++        $run.Result.ExitCode | Should -Be $Exit
++        $run.Receipt.Outcome.EmailState | Should -BeExactly $State
++        @($run.Receipt.Outcome.PublishedPaths).Count | Should -Be $PublishedCount
++        @($run.Observation.Finals).Count | Should -Be $PublishedCount
++        $master=$run.Receipt.Identity.MasterPath; $email=$run.Receipt.Identity.EmailPath
++        [IO.File]::Exists($master) | Should -BeTrue
++        $masterBytes=(Get-Item -LiteralPath $master).Length
++        $masterBytes | Should -Be ((Get-Item -LiteralPath $fixture).Length+1024)
++        $run.Receipt.Jobs[0].MasterSHA256 | Should -BeExactly (Get-SizeTestHash $master)
++        $report=$run.Receipt.Reports[-1].Report
++        $report.MasterBytes | Should -Be $masterBytes
++        $run.Receipt.Reports[0].EmailBytesBound | Should -BeFalse
++        $masterHuman=([decimal]$masterBytes/1024).ToString('0.00',$invariant)+' KiB'
++        $masterLine='Master size: '+$masterBytes.ToString($invariant)+' bytes ('+$masterHuman+').'
++        $report.Lines[0] | Should -BeExactly $masterLine
++        $sizePattern='^(Master size:|Email size:|Email reduction:|Validated email candidate size:|Email candidate reduction:)'
++        # Write-RunLog echoes messages; the final summary prints measured sizes
++        # again. Verify all metrics, then the ordered final summary separately.
++        foreach($line in @($run.Result.Stdout -split '\r?\n' | Where-Object {$_ -match $sizePattern})){@($report.Lines) | Should -Contain $line}
++        $summaryText=($run.Result.Stdout -split '(?m)^(?:SUCCESS|PARTIAL SUCCESS|FAILURE):')[-1]
++        $consoleLines=@($summaryText -split '\r?\n' | Where-Object {$_ -match $sizePattern})
++        @($consoleLines) | Should -Be @($report.Lines)
++        $log=[IO.File]::ReadAllText($run.Receipt.Identity.LogPath)
++        $logLines=@($log -split '\r?\n' | Where-Object {$_ -match '^(Master size:|Email size:|Email reduction:|Validated email candidate size:|Email candidate reduction:)'})
++        if($EmailMetrics){
++            @($run.Receipt.Reports).Count | Should -Be 2
++            $job=$run.Receipt.Jobs[1].Job
++            $job.OutputValidated | Should -BeTrue
++            $job.MasterBytes | Should -Be $masterBytes
++            $report.EmailBytes | Should -Be $job.OutputBytes
++            $candidateBytes=if($Mode -eq 'equal'){$masterBytes}elseif($Mode -eq 'larger'){$masterBytes+1024}else{(Get-Item -LiteralPath $fixture).Length}
++            $job.OutputBytes | Should -Be $candidateBytes
++            $expectedReduction=[decimal]100*(([decimal]$masterBytes-[decimal]$candidateBytes)/[decimal]$masterBytes)
++            $run.Receipt.Reports[-1].ReductionDecimalInvariant | Should -BeExactly $expectedReduction.ToString($invariant)
++            $run.Receipt.Jobs[1].MasterSHA256 | Should -BeExactly (Get-SizeTestHash $master)
++            if($State -eq 'published'){
++                [IO.File]::Exists($email) | Should -BeTrue
++                (Get-Item -LiteralPath $email).Length | Should -Be $candidateBytes
++                (Get-SizeTestHash $email) | Should -BeExactly (Get-SizeTestHash $fixture)
++                $report.Lines[1] | Should -Match '^Email size: '
++                $report.Lines[2] | Should -BeExactly ('Email reduction: '+$expectedReduction.ToString('0.0',$invariant)+'%.')
++            }else{
++                [IO.File]::Exists($email) | Should -BeFalse
++                $report.Lines[1] | Should -Match '^Validated email candidate size: .*; not published\.$'
++                $report.Lines[2] | Should -BeExactly ('Email candidate reduction: '+$expectedReduction.ToString('0.0',$invariant)+'% (no size benefit; candidate not published).')
++                $run.Result.Stdout | Should -Not -Match ' - Email-optimized:'
++            }
++        }else{
++            @($run.Receipt.Reports).Count | Should -Be 1
++            @($report.Lines).Count | Should -Be 1
++            $report.EmailBytes | Should -BeNullOrEmpty
++            $report.ReductionPercent | Should -BeNullOrEmpty
++            [IO.File]::Exists($email) | Should -BeFalse
++            if($Mode -eq 'failed'){$run.Receipt.Jobs[1].Job.OutputValidated | Should -BeFalse}
++        }
++        if($Mode -eq 'log-failed'){
++            @($logLines).Count | Should -Be 0
++            $run.Result.Stdout | Should -Match 'PARTIAL SUCCESS: Result logging failed:'
++            $log | Should -Not -Match 'Result: SUCCESS; exit code: 0'
++        }else{@($logLines) | Should -Be @($report.Lines)}
++        if($Mode -eq 'skipped'){$run.Receipt.GSDiscovery | Should -Be 0}
++        @(Get-ChildItem -LiteralPath $case.Output -Force | Where-Object {$_.Name -like '.WinPDFMerge_*'}).Count | Should -Be 0
++    }
++}
++
++AfterAll {
++    $path=Join-Path $work 'size-reporting-observations.json'
++    [IO.File]::WriteAllText($path,($observations.ToArray() | ConvertTo-Json -Depth 32),(New-Object Text.UTF8Encoding($false)))
++    Write-Host ('Size reporting unit observations: '+($observations.ToArray() | ConvertTo-Json -Depth 32 -Compress))
++    Write-Host ('Size reporting unit receipts: '+$path)
++}
+diff --git a/tools/test/Invoke-Tests.ps1 b/tools/test/Invoke-Tests.ps1
+index 477f655..75b29ae 100644
+--- a/tools/test/Invoke-Tests.ps1
++++ b/tools/test/Invoke-Tests.ps1
+@@ -2,7 +2,7 @@
+ [CmdletBinding()]
+ param(
+     [string]$PesterModulePath,
+-    [ValidateSet('Unit', 'NativeFixture', 'SourceDiscovery', 'Launcher', 'LauncherNative', 'DependencyEntry', 'NativeRunner', 'ToolInvocation', 'PdftkPaths', 'GhostscriptPaths', 'Destination', 'InputPreflight', 'Staging', 'MasterValidation', 'EmailOutcome', 'FaultIO', 'FaultRecovery', 'Parameters', 'ParametersNative')][string]$Tier = 'Unit',
++    [ValidateSet('Unit', 'NativeFixture', 'SourceDiscovery', 'Launcher', 'LauncherNative', 'DependencyEntry', 'NativeRunner', 'ToolInvocation', 'PdftkPaths', 'GhostscriptPaths', 'Destination', 'InputPreflight', 'Staging', 'MasterValidation', 'EmailOutcome', 'FaultIO', 'FaultRecovery', 'Parameters', 'ParametersNative', 'SizeReporting', 'SizeReportingNative')][string]$Tier = 'Unit',
+     [string]$PdftkPath,
+     [string]$GhostscriptPath,
+     [string]$PythonPath
+@@ -37,6 +37,12 @@ $config.TestResult.OutputPath = Join-Path $work 'results.xml'
+ $config.TestResult.OutputFormat = 'NUnitXml'
+ if ($Tier -eq 'Unit') {
+     $config.Run.Path = Join-Path $repo 'tests/unit'
++} elseif ($Tier -eq 'SizeReporting') {
++    $config.Run.Path = Join-Path $repo 'tests/pdf/SizeReporting.Tests.ps1'
++} elseif ($Tier -eq 'SizeReportingNative') {
++    if (-not $PdftkPath -or -not $GhostscriptPath -or -not $PythonPath) { throw 'SizeReportingNative requires explicit real PDFtk/Ghostscript and pinned development Python paths.' }
++    $config.Run.Container = New-PesterContainer -Path (Join-Path $repo 'tests/pdf/SizeReporting.Native.Tests.ps1') `
++        -Data @{ PdftkPath=$PdftkPath; GhostscriptPath=$GhostscriptPath; PythonPath=$PythonPath }
+ } elseif ($Tier -eq 'Parameters') {
+     $config.Run.Path = Join-Path $repo 'tests/cli/Parameters.Tests.ps1'
+ } elseif ($Tier -eq 'ParametersNative') {
+@@ -116,6 +122,8 @@ if ($Tier -eq 'FaultIO') { $summary.evidence_class = 'unit-controlled-IO-logging
+ if ($Tier -eq 'FaultRecovery') { $summary.evidence_class = 'windows-real-engines-environment-and-controlled-owned-native-cancellation' }
+ if ($Tier -eq 'Parameters') { $summary.evidence_class = 'unit-actual-parameter-binding-and-controlled-entry-native-decisions' }
+ if ($Tier -eq 'ParametersNative') { $summary.evidence_class = 'windows-real-entry-preset-and-defaults-actual-cmd-batch-delivery-not-Explorer' }
++if ($Tier -eq 'SizeReporting') { $summary.evidence_class = 'unit-numeric-size-reporting-and-controlled-entry-decisions' }
++if ($Tier -eq 'SizeReportingNative') { $summary.evidence_class = 'windows-real-entry-size-accounting-and-controlled-equal-size-boundary; visual-manual-observations-separate' }
+ $summary | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath (Join-Path $work 'summary.json') -Encoding UTF8
+ $summary | ConvertTo-Json -Depth 4
+ Write-Host ('Reports: ' + $work)

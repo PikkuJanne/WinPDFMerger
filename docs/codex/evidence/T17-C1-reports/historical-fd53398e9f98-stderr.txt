@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "<repo>\tests\.work\Collect-T17Evidence.py", line 697, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "<repo>\tests\.work\Collect-T17Evidence.py", line 676, in main
+    shells=[collector.clean_shell(label,collector.work/('T17-C1-'+label)) for label in ('ps51','ps7')]
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>\tests\.work\Collect-T17Evidence.py", line 86, in clean_shell
+    elif tier=='SizeReporting':self.size_unit(label,job,metadata)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>\tests\.work\Collect-T17Evidence.py", line 382, in size_unit
+    finals=row['Finals'];require(finals and len(finals)==(2 if row['Label'] in ('entry-smaller','entry-log-failed') else 1),'Controlled published final list differs')
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>\tests\.work\Collect-T09C3Evidence.py", line 33, in require
+    raise ValueError(message)
+ValueError: Controlled published final list differs

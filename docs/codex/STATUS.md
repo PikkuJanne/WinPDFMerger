@@ -3,36 +3,30 @@
 Target: published and independently verified `v1.0.0` in `PikkuJanne/WinPDFMerger`.
 Completed milestones: M1 and M2 within recorded local Windows scope.
 Current milestone: M3 — focused usability and honest documentation, in progress.
-Completed tasks: T01 through T16.
-Current task: T17 — report real compression benefit and preset tradeoffs, in progress.
+Completed tasks: T01 through T17.
+Selected task: T18 — improve help, progress and private-by-default diagnostics.
 Publication: NOT STARTED.
 
-T16 and AC038 integration/AC039 unit pass at clean implementation C1
-`26ac1b73e3733a23099de53d944e00e4ee412982`. Fourteen relevant tiers pass536each/1072total
-in actual Windows PowerShell5.1.26100.9444 Desktop x64 and pinnedPS7.6.6 Core x64,
-all failure/block/container/skip/not-run counts zero. Fixed screen/ebook flags,
-legacy positional/named invocation, default/named destination, actual cmd/BAT,
-closed-stdin usage, early refusals and SkipEmail bypass/explanation are covered.
+T17 AC040 integration/AC041 manual pass at clean C1 `040176695fdb79e614ba2a821118fbc979a33115`.
+16tiers579each1158total/32reports in actualPS5.1.26100.9444 and pinnedPS7.6.6;
+all bad counts0. Exact master/email bytes, binary sizes and decimal reduction;
+equal/larger candidates labelled not published with retained master/success0.
+Root Codex actual40page10unique144DPI original/master/preset visual review:
+screen scan small text/outlines degraded; ebook clearer; vector-only grew/omitted.
+Codex visual scope is separate from owner/physical Explorer acceptance.
 
-Independent runtime/source reviews no blocks; native2273checks/18case audits/
-28fresh retained PDFtk/PDFium reads pass. Archive review6397checks
-passes the335-file plan; actual public write matches it. Scoped PSA1.25.0 over
-7changed PowerShell files reports0errors71warnings34info each, reviewed
-nonblocking, not lint-clean/fullT22. Dirty/preparation failures remain excluded
-from clean counts; absent historical files are disclosed without reconstruction.
+Independent source/runtime/native/archive reviews pass; archive11660
+checks/632plannedfiles; actual public write matches reviewed hashes.
+PSA1.25.0 scoped5PSfiles0errors51warnings14info each reviewed nonblocking,
+not lint-clean/fullT22. Exact commands/environment/raw-public hashes/review
+support, initial failed preparation and honest absences in T17 completion.
 
-Clean C1 normal push/fresh live equality verified; draftPR16 follows owner-merged
-PR15/mainc1fdb3b. Records-only C2 binds C1; own SHA/clean live equality is reported
-in session after commit/push. Exact commands/environment/raw-public hashes,
-controls, original support, reports/reviews/history are in T16 completion.
-Approved caches reused, no acquisition/admin/persistent PATH/policy/security
-or parent environment change. Standard-user NTFS/Windows build26300; ordinary
-PS5.1 Restricted/all scopes Undefined, authorized test-child RemoteSigned.
-
-Preserve validated masters after email failure; owned temporary outputs and
-native jobs, exact page inspections, strict smaller-email/no-overwrite gates,
-import-only PS5.1 helpers, local direct engines and source/final preservation.
-Defaults remain /screen and output beside entry. Physical Explorer and abrupt
-Ctrl+C/host/window/crash cleanup, T17 fidelity/size reporting, broad OS/UNC/CI/
-security/package/release gates remain open. No signature/PDF-A/malware-removal/
-universal preservation or archival guarantee. No tag/release/full completion.
+C1 normalpush/freshcleanlive verified; draftPR follows owner-mergedPR16/main7d7eba4.
+Records-onlyC2bindsC1; own SHA/live equality reported in session after push.
+Approved caches reused; standard-user NTFS/build26300; ordinaryRestricted/
+all scopesUndefined, authorized childRemoteSigned; no acquisition/admin/
+persistent environment/policy/security changes. Source/master/final safety,
+fixed screen/ebook flags and screen/output-beside-entry defaults preserved.
+T18pending. PhysicalExplorer/abrupt crash cleanup, broadOS/UNC/CI/security/
+package/release gates remain. No universal preservation/signature/PDF-A/
+archival/security guarantee. No tag/release/full-project completion.

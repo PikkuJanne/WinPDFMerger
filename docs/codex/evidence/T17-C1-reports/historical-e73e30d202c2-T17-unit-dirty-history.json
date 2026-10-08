@@ -1,0 +1,1888 @@
+{
+  "Task": "T17",
+  "ObservedAtUtc": "2026-10-08T07:31:49.508116+00:00",
+  "Producer": {
+    "Path": "<repo>\\tests\\.work\\Index-T17UnitHistory.py",
+    "SHA256": "6a279a7f97a642b164c3931a296319616507321f806c034cec16d4c3e9494ecd",
+    "Bytes": 5229
+  },
+  "Attempts": [
+    {
+      "Root": "<repo>\\tests\\.work\\T17-dirty-SizeReporting-ps51-44ec43431d2747c09041b0cf1ad6adf2",
+      "Classification": "initial test-assertion failure",
+      "Scope": "dirty import-only numeric decisions and bounded copied-entry controls; excluded from clean acceptance totals",
+      "Diagnosis": "Initial six failures assumed stdout size lines appeared once; existing logger echoes lines before the final summary. The correction checks final-summary ordering and every observed metric line. No runtime change.",
+      "Invocation": {
+        "Task": "T17",
+        "EvidenceClass": "dirty numeric and controlled-entry size-reporting unit development; not clean acceptance or PDF-engine support",
+        "Selection": "ps51",
+        "Command": [
+          "C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+          "-NoLogo",
+          "-NoProfile",
+          "-NonInteractive",
+          "-ExecutionPolicy",
+          "RemoteSigned",
+          "-File",
+          "<repo>\\tools\\test\\Invoke-Tests.ps1",
+          "-PesterModulePath",
+          "<USERPROFILE>/.cache/WinPDFMerger-T03/pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67/module/Pester.psd1",
+          "-Tier",
+          "SizeReporting"
+        ],
+        "CommitUnderTest": "27527e839e3b6b37bc554356618bba2ec169a83a",
+        "DirtyWorktree": true,
+        "ChildEnvironmentRemovedKeys": [
+          "PSMODULEPATH"
+        ],
+        "PersistentEnvironmentChanges": false,
+        "StartedAtUtc": "2026-10-08T07:28:59.617997+00:00",
+        "SourceSHA256": {
+          "WinPDFMerge.ps1": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4",
+          "src/WinPDFMerge.Helpers.ps1": "5e4cec2cb31b85e72e551b7f8b291c8c67809c42cf435ad00ee1bc555fec38a0",
+          "tools/test/Invoke-Tests.ps1": "d2df7969d0bb5762bdfd647be45803772a1836c222a745411524cda8ed7c65c9",
+          "tests/pdf/SizeReporting.Tests.ps1": "5f498955eace4585eaf37fc9e270ec25b59b4c3e802160098d8c6017878fa60e"
+        },
+        "LauncherSHA256": "0745c8ad458816f7fe587fd64392addc52b34aa66416ef15a4abc0073b0d6e5f"
+      },
+      "Execution": {
+        "ExitCode": 1,
+        "TimedOut": false,
+        "ElapsedSeconds": 21.844000000011874,
+        "CompletedAtUtc": "2026-10-08T07:29:21.473159+00:00",
+        "StdoutSHA256": "a8b1fdd5c3a4a23157b2dc570620d74b064d62b571f42b1709af5a45378a9ccb",
+        "StderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "StdoutBytes": 144382,
+        "StderrBytes": 0,
+        "ReportPath": "<repo>\\tests\\.work\\pester\\7e21b0af0e274b31aa16a0b3e1af50d1",
+        "ReportFiles": {
+          "summary.json": {
+            "Path": "<repo>\\tests\\.work\\pester\\7e21b0af0e274b31aa16a0b3e1af50d1\\summary.json",
+            "SHA256": "d29a24702dcde3c1ab04dc1ee52885a21803957d02c3669a461449fdb90d192d",
+            "Bytes": 617
+          },
+          "results.xml": {
+            "Path": "<repo>\\tests\\.work\\pester\\7e21b0af0e274b31aa16a0b3e1af50d1\\results.xml",
+            "SHA256": "7b65346888012180455d287173d3d09fc113e353c3447c41e57bbb81d54e52a2",
+            "Bytes": 17794
+          }
+        },
+        "ObservedSummary": {
+          "observed_at_utc": "2026-10-08T07:29:21.2370167Z",
+          "commit_under_test": "27527e839e3b6b37bc554356618bba2ec169a83a",
+          "dirty_worktree": true,
+          "shell_version": "5.1.26100.9444",
+          "shell_edition": "Desktop",
+          "process_64_bit": true,
+          "execution_policy": "RemoteSigned",
+          "pester_version": "6.2.0",
+          "tier": "SizeReporting",
+          "evidence_class": "unit-numeric-size-reporting-and-controlled-entry-decisions",
+          "passed": 26,
+          "failed": 6,
+          "failed_blocks": 0,
+          "failed_containers": 0,
+          "skipped": 0,
+          "not_run": 0,
+          "total": 32
+        }
+      },
+      "NUnitRootAttributes": {
+        "{http://www.w3.org/2001/XMLSchema-instance}noNamespaceSchemaLocation": "nunit_schema_2.5.xsd",
+        "name": "Pester",
+        "total": "32",
+        "errors": "0",
+        "failures": "6",
+        "not-run": "0",
+        "inconclusive": "0",
+        "ignored": "0",
+        "skipped": "0",
+        "invalid": "0",
+        "date": "2026-10-08",
+        "time": "09.29.00"
+      },
+      "ObservationCount": 32,
+      "NumericDecisionCount": 25,
+      "ControlledEntryCount": 7,
+      "Files": [
+        {
+          "Path": "<repo>\\tests\\.work\\T17-dirty-SizeReporting-ps51-44ec43431d2747c09041b0cf1ad6adf2\\invocation.json",
+          "SHA256": "400a96d33d06c3ab26328d43818397b1de9594f4a3c0eb4c534d4ae449b3ae85",
+          "Bytes": 1408
+        },
+        {
+          "Path": "<repo>\\tests\\.work\\T17-dirty-SizeReporting-ps51-44ec43431d2747c09041b0cf1ad6adf2\\execution.json",
+          "SHA256": "4ca5ac38740b7e65270e8babf2ec1c42a308bbbc4f477d60d41354b3e13f5ec5",
+          "Bytes": 1630
+        },
+        {
+          "Path": "<repo>\\tests\\.work\\T17-dirty-SizeReporting-ps51-44ec43431d2747c09041b0cf1ad6adf2\\stdout.txt",
+          "SHA256": "a8b1fdd5c3a4a23157b2dc570620d74b064d62b571f42b1709af5a45378a9ccb",
+          "Bytes": 144382
+        },
+        {
+          "Path": "<repo>\\tests\\.work\\T17-dirty-SizeReporting-ps51-44ec43431d2747c09041b0cf1ad6adf2\\stderr.txt",
+          "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "Bytes": 0
+        },
+        {
+          "Path": "<repo>\\tests\\.work\\pester\\7e21b0af0e274b31aa16a0b3e1af50d1\\summary.json",
+          "SHA256": "d29a24702dcde3c1ab04dc1ee52885a21803957d02c3669a461449fdb90d192d",
+          "Bytes": 617
+        },
+        {
+          "Path": "<repo>\\tests\\.work\\pester\\7e21b0af0e274b31aa16a0b3e1af50d1\\results.xml",
+          "SHA256": "7b65346888012180455d287173d3d09fc113e353c3447c41e57bbb81d54e52a2",
+          "Bytes": 17794
+        },
+        {
+          "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\size-reporting-observations.json",
+          "SHA256": "129dec68e2784376684409645e16e012a050437dae400f035eb97e6e9f35911d",
+          "Bytes": 246762
+        }
+      ],
+      "ControlledCases": [
+        {
+          "Label": "entry-published",
+          "Before": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "After": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "Files": [
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\ecb6c2e2b63f4739b5a0c39cde99348d\\receipt.json",
+              "SHA256": "19417569e0209e43f765209adc252da416bb4e11fd9907d130dc2584af685ce0",
+              "Bytes": 23094
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\ecb6c2e2b63f4739b5a0c39cde99348d\\invocation.json",
+              "SHA256": "dcb280857348c8e1dc8e5f919a4c78943aa73b63ae1b67d1e9d263ccced5f5a5",
+              "Bytes": 38035
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\ecb6c2e2b63f4739b5a0c39cde99348d\\stdout.txt",
+              "SHA256": "8045e229aae1f55b26563a950f235e0e780bd16d1f6e5ed42912f5a7ac4fd7ca",
+              "Bytes": 5810
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\ecb6c2e2b63f4739b5a0c39cde99348d\\stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\ecb6c2e2b63f4739b5a0c39cde99348d\\Invoke-Entry.ps1",
+              "SHA256": "d0535da1cce7392bdcfaeb982f8b115df8d382df0197bb2a48cf8a596e2f6eb7",
+              "Bytes": 594
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\ecb6c2e2b63f4739b5a0c39cde99348d\\app\\WinPDFMerge.ps1",
+              "SHA256": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4",
+              "Bytes": 17642
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\ecb6c2e2b63f4739b5a0c39cde99348d\\app\\src\\WinPDFMerge.Helpers.ps1",
+              "SHA256": "61ddad5daa48e04acbe1e9b7c2ce5a032938ec6dba99f15a3850e2bc7a45f027",
+              "Bytes": 103793
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\ecb6c2e2b63f4739b5a0c39cde99348d\\app\\size-config.json",
+              "SHA256": "34c526e6ca135f0f0dc4c3b0e395c8d0a97ea767fabb3bb76c4d8bd6c2af5853",
+              "Bytes": 1151
+            }
+          ]
+        },
+        {
+          "Label": "entry-equal",
+          "Before": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "After": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "Files": [
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\edccd46935754f76ac9bfb22d13a222b\\receipt.json",
+              "SHA256": "cf4acb744ac6b07bb6e9ead01001ee11d2fc901996b4e39970b184bb02686b89",
+              "Bytes": 22531
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\edccd46935754f76ac9bfb22d13a222b\\invocation.json",
+              "SHA256": "1314fcc422f0fdb78ee7f0fceef1317d79e99878c1b9100dbc69552384177217",
+              "Bytes": 36644
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\edccd46935754f76ac9bfb22d13a222b\\stdout.txt",
+              "SHA256": "d97342a55fae219580b6b513c3bb19b5b79a7e1c35b55abccd8233a81e3a7046",
+              "Bytes": 5562
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\edccd46935754f76ac9bfb22d13a222b\\stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\edccd46935754f76ac9bfb22d13a222b\\Invoke-Entry.ps1",
+              "SHA256": "d0535da1cce7392bdcfaeb982f8b115df8d382df0197bb2a48cf8a596e2f6eb7",
+              "Bytes": 594
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\edccd46935754f76ac9bfb22d13a222b\\app\\WinPDFMerge.ps1",
+              "SHA256": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4",
+              "Bytes": 17642
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\edccd46935754f76ac9bfb22d13a222b\\app\\src\\WinPDFMerge.Helpers.ps1",
+              "SHA256": "61ddad5daa48e04acbe1e9b7c2ce5a032938ec6dba99f15a3850e2bc7a45f027",
+              "Bytes": 103793
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\edccd46935754f76ac9bfb22d13a222b\\app\\size-config.json",
+              "SHA256": "04cdb17b6b2c5e30da18c331afb1642ff876a68ca8c5baec2bf568ef1591fe7d",
+              "Bytes": 1147
+            }
+          ]
+        },
+        {
+          "Label": "entry-larger",
+          "Before": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "After": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "Files": [
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\137b3164794e49e989fa21162c02a90c\\receipt.json",
+              "SHA256": "190919caada2e599a457980c48a57e8dad868079030d37bee7b1181d4de481bb",
+              "Bytes": 22595
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\137b3164794e49e989fa21162c02a90c\\invocation.json",
+              "SHA256": "01f69514463118062428fc5f3d1c599753e350b47bd036a4f8ecddd08381e807",
+              "Bytes": 36714
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\137b3164794e49e989fa21162c02a90c\\stdout.txt",
+              "SHA256": "c6ad5c61e576d6f2a20275a61d3c8f842cbd337e4cca75d3dd48d6ef9af5726b",
+              "Bytes": 5566
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\137b3164794e49e989fa21162c02a90c\\stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\137b3164794e49e989fa21162c02a90c\\Invoke-Entry.ps1",
+              "SHA256": "d0535da1cce7392bdcfaeb982f8b115df8d382df0197bb2a48cf8a596e2f6eb7",
+              "Bytes": 594
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\137b3164794e49e989fa21162c02a90c\\app\\WinPDFMerge.ps1",
+              "SHA256": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4",
+              "Bytes": 17642
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\137b3164794e49e989fa21162c02a90c\\app\\src\\WinPDFMerge.Helpers.ps1",
+              "SHA256": "61ddad5daa48e04acbe1e9b7c2ce5a032938ec6dba99f15a3850e2bc7a45f027",
+              "Bytes": 103793
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\137b3164794e49e989fa21162c02a90c\\app\\size-config.json",
+              "SHA256": "061336cb1833d86730d62f9bfb9947db7539cb1770daf36344e8b9ef3a52a76d",
+              "Bytes": 1148
+            }
+          ]
+        },
+        {
+          "Label": "entry-skipped",
+          "Before": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "After": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "Files": [
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\13f523229cac41dba9c851adff8155fb\\receipt.json",
+              "SHA256": "77cfe7983d00dd4fa9f6c3391bc8c07742f2b0b6ab16e78b4f3ae27b865a55b5",
+              "Bytes": 13903
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\13f523229cac41dba9c851adff8155fb\\invocation.json",
+              "SHA256": "5d272fc83cf2a3126797ed5028f82aa927b482999d3727fa033a608599e895c6",
+              "Bytes": 24578
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\13f523229cac41dba9c851adff8155fb\\stdout.txt",
+              "SHA256": "2aa164ebd4e7d114cb492cd32e7d2aa2e93806483ff20aa99b29fb70f1d9a318",
+              "Bytes": 3852
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\13f523229cac41dba9c851adff8155fb\\stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\13f523229cac41dba9c851adff8155fb\\Invoke-Entry.ps1",
+              "SHA256": "d0535da1cce7392bdcfaeb982f8b115df8d382df0197bb2a48cf8a596e2f6eb7",
+              "Bytes": 594
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\13f523229cac41dba9c851adff8155fb\\app\\WinPDFMerge.ps1",
+              "SHA256": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4",
+              "Bytes": 17642
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\13f523229cac41dba9c851adff8155fb\\app\\src\\WinPDFMerge.Helpers.ps1",
+              "SHA256": "61ddad5daa48e04acbe1e9b7c2ce5a032938ec6dba99f15a3850e2bc7a45f027",
+              "Bytes": 103793
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\13f523229cac41dba9c851adff8155fb\\app\\size-config.json",
+              "SHA256": "ad82195bcb42bd65e73b6115d47617167b90615e5781fc4431ff96ecda3aec9b",
+              "Bytes": 1149
+            }
+          ]
+        },
+        {
+          "Label": "entry-unavailable",
+          "Before": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "After": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "Files": [
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\514ac6d8cbaf48d8b262a921ca207a6b\\receipt.json",
+              "SHA256": "75c0f4b589c86fd467adbc5e7a2580e3b13384be62555b3d0429ff790f4519b3",
+              "Bytes": 13913
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\514ac6d8cbaf48d8b262a921ca207a6b\\invocation.json",
+              "SHA256": "100a3430321c94845a6122a8ed71b42f7c9fa9e88f84cc07f45247581ef32a0c",
+              "Bytes": 24597
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\514ac6d8cbaf48d8b262a921ca207a6b\\stdout.txt",
+              "SHA256": "cd8eb033607b48ccc13b018a64922287705f204478f42ebe408a0f21f3077bc4",
+              "Bytes": 3858
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\514ac6d8cbaf48d8b262a921ca207a6b\\stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\514ac6d8cbaf48d8b262a921ca207a6b\\Invoke-Entry.ps1",
+              "SHA256": "d0535da1cce7392bdcfaeb982f8b115df8d382df0197bb2a48cf8a596e2f6eb7",
+              "Bytes": 594
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\514ac6d8cbaf48d8b262a921ca207a6b\\app\\WinPDFMerge.ps1",
+              "SHA256": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4",
+              "Bytes": 17642
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\514ac6d8cbaf48d8b262a921ca207a6b\\app\\src\\WinPDFMerge.Helpers.ps1",
+              "SHA256": "61ddad5daa48e04acbe1e9b7c2ce5a032938ec6dba99f15a3850e2bc7a45f027",
+              "Bytes": 103793
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\514ac6d8cbaf48d8b262a921ca207a6b\\app\\size-config.json",
+              "SHA256": "a5c51f4f0ca4bef42ba95c4bf9e97688c5100e7320a34b599d3687818cd37443",
+              "Bytes": 1153
+            }
+          ]
+        },
+        {
+          "Label": "entry-failed",
+          "Before": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "After": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "Files": [
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\92b7c521dc66412991c32ef6025b1eae\\receipt.json",
+              "SHA256": "475db9134c32346e3803f301ca38a111886936fed9f6c6608e1ebaabe57a481e",
+              "Bytes": 18438
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\92b7c521dc66412991c32ef6025b1eae\\invocation.json",
+              "SHA256": "d1862184441ab995964e9c1b911650a2e3d3dd76d20f0ff2dd43a576e10e2db6",
+              "Bytes": 30911
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\92b7c521dc66412991c32ef6025b1eae\\stdout.txt",
+              "SHA256": "0f7f41372fd644c0d22486a0dda817febb48fbb70a7d030b12d345ad748ec64e",
+              "Bytes": 4790
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\92b7c521dc66412991c32ef6025b1eae\\stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\92b7c521dc66412991c32ef6025b1eae\\Invoke-Entry.ps1",
+              "SHA256": "d0535da1cce7392bdcfaeb982f8b115df8d382df0197bb2a48cf8a596e2f6eb7",
+              "Bytes": 594
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\92b7c521dc66412991c32ef6025b1eae\\app\\WinPDFMerge.ps1",
+              "SHA256": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4",
+              "Bytes": 17642
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\92b7c521dc66412991c32ef6025b1eae\\app\\src\\WinPDFMerge.Helpers.ps1",
+              "SHA256": "61ddad5daa48e04acbe1e9b7c2ce5a032938ec6dba99f15a3850e2bc7a45f027",
+              "Bytes": 103793
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\92b7c521dc66412991c32ef6025b1eae\\app\\size-config.json",
+              "SHA256": "b73e99798b3750b8256d3256dd36e9db74b790dd6f86d0170d2f2b3f967d17d4",
+              "Bytes": 1148
+            }
+          ]
+        },
+        {
+          "Label": "entry-log-failed",
+          "Before": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "After": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "Files": [
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\69d8dae441c240a299e1e60582d647ae\\receipt.json",
+              "SHA256": "e83c79564d87de6d5b1e271bcedfb847723ce34d2118260731457b981387e3cc",
+              "Bytes": 22359
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\69d8dae441c240a299e1e60582d647ae\\invocation.json",
+              "SHA256": "5cc7d07212e895c92745a13b8629433f71ebab24202432a78b0d8cc004549c25",
+              "Bytes": 36579
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\69d8dae441c240a299e1e60582d647ae\\stdout.txt",
+              "SHA256": "6e266a3c151818c82e72005aea31d4530886f8e5289be791b544ef01ce088e8f",
+              "Bytes": 5236
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\69d8dae441c240a299e1e60582d647ae\\stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\69d8dae441c240a299e1e60582d647ae\\Invoke-Entry.ps1",
+              "SHA256": "d0535da1cce7392bdcfaeb982f8b115df8d382df0197bb2a48cf8a596e2f6eb7",
+              "Bytes": 594
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\69d8dae441c240a299e1e60582d647ae\\app\\WinPDFMerge.ps1",
+              "SHA256": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4",
+              "Bytes": 17642
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\69d8dae441c240a299e1e60582d647ae\\app\\src\\WinPDFMerge.Helpers.ps1",
+              "SHA256": "61ddad5daa48e04acbe1e9b7c2ce5a032938ec6dba99f15a3850e2bc7a45f027",
+              "Bytes": 103793
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\21a30cd2b1234b8d80c582a1a432afaf\\69d8dae441c240a299e1e60582d647ae\\app\\size-config.json",
+              "SHA256": "e4aabc925c230a84b0beabc80b07ac3253f851e0210283bd2102c02968c98c89",
+              "Bytes": 1152
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Root": "<repo>\\tests\\.work\\T17-dirty-SizeReporting-ps7-e5c161d487aa45e3930c913bb984a8b4",
+      "Classification": "initial test-assertion failure",
+      "Scope": "dirty import-only numeric decisions and bounded copied-entry controls; excluded from clean acceptance totals",
+      "Diagnosis": "Initial six failures assumed stdout size lines appeared once; existing logger echoes lines before the final summary. The correction checks final-summary ordering and every observed metric line. No runtime change.",
+      "Invocation": {
+        "Task": "T17",
+        "EvidenceClass": "dirty numeric and controlled-entry size-reporting unit development; not clean acceptance or PDF-engine support",
+        "Selection": "ps7",
+        "Command": [
+          "<LOCALAPPDATA>/WinPDFMergerDevCache/T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a/portable/pwsh.exe",
+          "-NoLogo",
+          "-NoProfile",
+          "-NonInteractive",
+          "-ExecutionPolicy",
+          "RemoteSigned",
+          "-File",
+          "<repo>\\tools\\test\\Invoke-Tests.ps1",
+          "-PesterModulePath",
+          "<USERPROFILE>/.cache/WinPDFMerger-T03/pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67/module/Pester.psd1",
+          "-Tier",
+          "SizeReporting"
+        ],
+        "CommitUnderTest": "27527e839e3b6b37bc554356618bba2ec169a83a",
+        "DirtyWorktree": true,
+        "ChildEnvironmentRemovedKeys": [
+          "PSMODULEPATH"
+        ],
+        "PersistentEnvironmentChanges": false,
+        "StartedAtUtc": "2026-10-08T07:29:00.185136+00:00",
+        "SourceSHA256": {
+          "WinPDFMerge.ps1": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4",
+          "src/WinPDFMerge.Helpers.ps1": "5e4cec2cb31b85e72e551b7f8b291c8c67809c42cf435ad00ee1bc555fec38a0",
+          "tools/test/Invoke-Tests.ps1": "d2df7969d0bb5762bdfd647be45803772a1836c222a745411524cda8ed7c65c9",
+          "tests/pdf/SizeReporting.Tests.ps1": "5f498955eace4585eaf37fc9e270ec25b59b4c3e802160098d8c6017878fa60e"
+        },
+        "LauncherSHA256": "0745c8ad458816f7fe587fd64392addc52b34aa66416ef15a4abc0073b0d6e5f"
+      },
+      "Execution": {
+        "ExitCode": 1,
+        "TimedOut": false,
+        "ElapsedSeconds": 22.687999999994645,
+        "CompletedAtUtc": "2026-10-08T07:29:22.870463+00:00",
+        "StdoutSHA256": "ae28a910ae1c8aa39b7fd8b1fdb95b02cbd092345abebee7742c2e8118761e73",
+        "StderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "StdoutBytes": 143426,
+        "StderrBytes": 0,
+        "ReportPath": "<repo>\\tests\\.work\\pester\\96551cdd2b174e20aa5eee62c7e284b7",
+        "ReportFiles": {
+          "summary.json": {
+            "Path": "<repo>\\tests\\.work\\pester\\96551cdd2b174e20aa5eee62c7e284b7\\summary.json",
+            "SHA256": "5b13c7e3338353c37b14cc8411fc60cfeaf259232ebad9896f32809de1d3956c",
+            "Bytes": 551
+          },
+          "results.xml": {
+            "Path": "<repo>\\tests\\.work\\pester\\96551cdd2b174e20aa5eee62c7e284b7\\results.xml",
+            "SHA256": "e82d4009a65d364fbfd74941366000d63397901f663c0a8611d278db1df60e71",
+            "Bytes": 17787
+          }
+        },
+        "ObservedSummary": {
+          "observed_at_utc": "2026-10-08T07:29:22.6929840Z",
+          "commit_under_test": "27527e839e3b6b37bc554356618bba2ec169a83a",
+          "dirty_worktree": true,
+          "shell_version": "7.6.6",
+          "shell_edition": "Core",
+          "process_64_bit": true,
+          "execution_policy": "RemoteSigned",
+          "pester_version": "6.2.0",
+          "tier": "SizeReporting",
+          "evidence_class": "unit-numeric-size-reporting-and-controlled-entry-decisions",
+          "passed": 26,
+          "failed": 6,
+          "failed_blocks": 0,
+          "failed_containers": 0,
+          "skipped": 0,
+          "not_run": 0,
+          "total": 32
+        }
+      },
+      "NUnitRootAttributes": {
+        "{http://www.w3.org/2001/XMLSchema-instance}noNamespaceSchemaLocation": "nunit_schema_2.5.xsd",
+        "name": "Pester",
+        "total": "32",
+        "errors": "0",
+        "failures": "6",
+        "not-run": "0",
+        "inconclusive": "0",
+        "ignored": "0",
+        "skipped": "0",
+        "invalid": "0",
+        "date": "2026-10-08",
+        "time": "09.29.01"
+      },
+      "ObservationCount": 32,
+      "NumericDecisionCount": 25,
+      "ControlledEntryCount": 7,
+      "Files": [
+        {
+          "Path": "<repo>\\tests\\.work\\T17-dirty-SizeReporting-ps7-e5c161d487aa45e3930c913bb984a8b4\\invocation.json",
+          "SHA256": "27de1f0aaa9d8bf2cf904063cd26a1014526dda0e0142883f0fe9c1a9f945486",
+          "Bytes": 1458
+        },
+        {
+          "Path": "<repo>\\tests\\.work\\T17-dirty-SizeReporting-ps7-e5c161d487aa45e3930c913bb984a8b4\\execution.json",
+          "SHA256": "97fab2b06006b5315e208dc4181a190f4e4eab62f08f2ac3fffbc39476ab5e14",
+          "Bytes": 1618
+        },
+        {
+          "Path": "<repo>\\tests\\.work\\T17-dirty-SizeReporting-ps7-e5c161d487aa45e3930c913bb984a8b4\\stdout.txt",
+          "SHA256": "ae28a910ae1c8aa39b7fd8b1fdb95b02cbd092345abebee7742c2e8118761e73",
+          "Bytes": 143426
+        },
+        {
+          "Path": "<repo>\\tests\\.work\\T17-dirty-SizeReporting-ps7-e5c161d487aa45e3930c913bb984a8b4\\stderr.txt",
+          "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "Bytes": 0
+        },
+        {
+          "Path": "<repo>\\tests\\.work\\pester\\96551cdd2b174e20aa5eee62c7e284b7\\summary.json",
+          "SHA256": "5b13c7e3338353c37b14cc8411fc60cfeaf259232ebad9896f32809de1d3956c",
+          "Bytes": 551
+        },
+        {
+          "Path": "<repo>\\tests\\.work\\pester\\96551cdd2b174e20aa5eee62c7e284b7\\results.xml",
+          "SHA256": "e82d4009a65d364fbfd74941366000d63397901f663c0a8611d278db1df60e71",
+          "Bytes": 17787
+        },
+        {
+          "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\size-reporting-observations.json",
+          "SHA256": "f5020f9840f08499514bc32b568f66ca7e1e69bcb845a334091eccb3392f1618",
+          "Bytes": 163291
+        }
+      ],
+      "ControlledCases": [
+        {
+          "Label": "entry-published",
+          "Before": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "After": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "Files": [
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\461395003e5d4f60b5e111aba8078c00\\receipt.json",
+              "SHA256": "dcda326a04e4ffe656da91cb5cb56594cda1a595553508eb4e5fdcda0e9b8b8c",
+              "Bytes": 14616
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\461395003e5d4f60b5e111aba8078c00\\invocation.json",
+              "SHA256": "98d4033714137038eeb68d5808cc892c058b508664024a73f5c69de0aa7893fe",
+              "Bytes": 25008
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\461395003e5d4f60b5e111aba8078c00\\stdout.txt",
+              "SHA256": "68409951121e7a45eba5726255eb2a65fc2f7450dcdab8ab8a234ae0fb574dbe",
+              "Bytes": 5817
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\461395003e5d4f60b5e111aba8078c00\\stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\461395003e5d4f60b5e111aba8078c00\\Invoke-Entry.ps1",
+              "SHA256": "d0535da1cce7392bdcfaeb982f8b115df8d382df0197bb2a48cf8a596e2f6eb7",
+              "Bytes": 594
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\461395003e5d4f60b5e111aba8078c00\\app\\WinPDFMerge.ps1",
+              "SHA256": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4",
+              "Bytes": 17642
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\461395003e5d4f60b5e111aba8078c00\\app\\src\\WinPDFMerge.Helpers.ps1",
+              "SHA256": "61ddad5daa48e04acbe1e9b7c2ce5a032938ec6dba99f15a3850e2bc7a45f027",
+              "Bytes": 103793
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\461395003e5d4f60b5e111aba8078c00\\app\\size-config.json",
+              "SHA256": "49e1f9420b7ece7300299ee0e4a649b32a45caa2550d1753d0ca6681016e438a",
+              "Bytes": 1117
+            }
+          ]
+        },
+        {
+          "Label": "entry-equal",
+          "Before": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "After": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "Files": [
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\08f95bffb8a745c39d7b3a901205f321\\receipt.json",
+              "SHA256": "19620b39cd4e74a8201970f171c081e82ef14cdd158adcec9d378b8bc8e5212c",
+              "Bytes": 14246
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\08f95bffb8a745c39d7b3a901205f321\\invocation.json",
+              "SHA256": "8b855919a560fcb0b8f27206de9d5a6465bec37f9e63dbc54cf41e8a09641cc7",
+              "Bytes": 24006
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\08f95bffb8a745c39d7b3a901205f321\\stdout.txt",
+              "SHA256": "e4ce1f32dc61cb6416922021fd9e24cf69083932564c49c8a9834e755d1c8417",
+              "Bytes": 5568
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\08f95bffb8a745c39d7b3a901205f321\\stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\08f95bffb8a745c39d7b3a901205f321\\Invoke-Entry.ps1",
+              "SHA256": "d0535da1cce7392bdcfaeb982f8b115df8d382df0197bb2a48cf8a596e2f6eb7",
+              "Bytes": 594
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\08f95bffb8a745c39d7b3a901205f321\\app\\WinPDFMerge.ps1",
+              "SHA256": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4",
+              "Bytes": 17642
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\08f95bffb8a745c39d7b3a901205f321\\app\\src\\WinPDFMerge.Helpers.ps1",
+              "SHA256": "61ddad5daa48e04acbe1e9b7c2ce5a032938ec6dba99f15a3850e2bc7a45f027",
+              "Bytes": 103793
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\08f95bffb8a745c39d7b3a901205f321\\app\\size-config.json",
+              "SHA256": "05aeb99d8c56a607fde167d7d8f20c8d0a3552af013a5e8799cd6e3c2b849058",
+              "Bytes": 1113
+            }
+          ]
+        },
+        {
+          "Label": "entry-larger",
+          "Before": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "After": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "Files": [
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\88dbe651a642424093624d98f9a86972\\receipt.json",
+              "SHA256": "5073850c3b69e1dfab0a23a99ff0dd39c7a562d0a00c66da645c5cc21e43a47e",
+              "Bytes": 14308
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\88dbe651a642424093624d98f9a86972\\invocation.json",
+              "SHA256": "e2b2d80f83126e5ebe8bdd099b7d74f8ea65fc18df768a0e1156fa77085c7f6f",
+              "Bytes": 24060
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\88dbe651a642424093624d98f9a86972\\stdout.txt",
+              "SHA256": "a2439a83f6e4221d411a3af6d87e20e539640b55cd8c48d25ba153b9e0fb560a",
+              "Bytes": 5572
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\88dbe651a642424093624d98f9a86972\\stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\88dbe651a642424093624d98f9a86972\\Invoke-Entry.ps1",
+              "SHA256": "d0535da1cce7392bdcfaeb982f8b115df8d382df0197bb2a48cf8a596e2f6eb7",
+              "Bytes": 594
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\88dbe651a642424093624d98f9a86972\\app\\WinPDFMerge.ps1",
+              "SHA256": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4",
+              "Bytes": 17642
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\88dbe651a642424093624d98f9a86972\\app\\src\\WinPDFMerge.Helpers.ps1",
+              "SHA256": "61ddad5daa48e04acbe1e9b7c2ce5a032938ec6dba99f15a3850e2bc7a45f027",
+              "Bytes": 103793
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\88dbe651a642424093624d98f9a86972\\app\\size-config.json",
+              "SHA256": "1a0b01c624bbd5eb96b9c6de1d6b8baa1798df5445636c3839b680b9cbe7b3a1",
+              "Bytes": 1114
+            }
+          ]
+        },
+        {
+          "Label": "entry-skipped",
+          "Before": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "After": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "Files": [
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\c0f08771611242b9ab167f28f17471cc\\receipt.json",
+              "SHA256": "eb301cdeee1aa09d7df96ec1a4cf04c07574c20141f10544d60b00e1b4d13f92",
+              "Bytes": 9249
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\c0f08771611242b9ab167f28f17471cc\\invocation.json",
+              "SHA256": "b63a23a39ff37b33c4d552c8168961434a7a533d958187a4f7346784aaa01a1a",
+              "Bytes": 17008
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\c0f08771611242b9ab167f28f17471cc\\stdout.txt",
+              "SHA256": "a637c3b192e6e52d824b316d18e583dec3358147f39ec8322c6b926d8e24b0e3",
+              "Bytes": 3856
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\c0f08771611242b9ab167f28f17471cc\\stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\c0f08771611242b9ab167f28f17471cc\\Invoke-Entry.ps1",
+              "SHA256": "d0535da1cce7392bdcfaeb982f8b115df8d382df0197bb2a48cf8a596e2f6eb7",
+              "Bytes": 594
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\c0f08771611242b9ab167f28f17471cc\\app\\WinPDFMerge.ps1",
+              "SHA256": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4",
+              "Bytes": 17642
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\c0f08771611242b9ab167f28f17471cc\\app\\src\\WinPDFMerge.Helpers.ps1",
+              "SHA256": "61ddad5daa48e04acbe1e9b7c2ce5a032938ec6dba99f15a3850e2bc7a45f027",
+              "Bytes": 103793
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\c0f08771611242b9ab167f28f17471cc\\app\\size-config.json",
+              "SHA256": "61ed419af61c312de2349b74dc07d04193235b731adad287c0da21c49e2f86b9",
+              "Bytes": 1115
+            }
+          ]
+        },
+        {
+          "Label": "entry-unavailable",
+          "Before": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "After": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "Files": [
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\0b0d3112da91404ea40920b0b88be302\\receipt.json",
+              "SHA256": "a142ef32fd5167e840f38a5edc50521a2dac59b486a24b830cef8c4766049bcd",
+              "Bytes": 9259
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\0b0d3112da91404ea40920b0b88be302\\invocation.json",
+              "SHA256": "18a8e115cf41e6f869076b138e8455b1c9304966a4e8e6c2d5f581e78075da08",
+              "Bytes": 17027
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\0b0d3112da91404ea40920b0b88be302\\stdout.txt",
+              "SHA256": "1e9486598b50de10b25ec383ffd165ed7c7466848349da5a2466f83bc2214f22",
+              "Bytes": 3862
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\0b0d3112da91404ea40920b0b88be302\\stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\0b0d3112da91404ea40920b0b88be302\\Invoke-Entry.ps1",
+              "SHA256": "d0535da1cce7392bdcfaeb982f8b115df8d382df0197bb2a48cf8a596e2f6eb7",
+              "Bytes": 594
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\0b0d3112da91404ea40920b0b88be302\\app\\WinPDFMerge.ps1",
+              "SHA256": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4",
+              "Bytes": 17642
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\0b0d3112da91404ea40920b0b88be302\\app\\src\\WinPDFMerge.Helpers.ps1",
+              "SHA256": "61ddad5daa48e04acbe1e9b7c2ce5a032938ec6dba99f15a3850e2bc7a45f027",
+              "Bytes": 103793
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\0b0d3112da91404ea40920b0b88be302\\app\\size-config.json",
+              "SHA256": "a8aae1ab8ad19f126ff77a1c4fe4d92410a50f8a07f9e3a18bdfa1df85aa157a",
+              "Bytes": 1119
+            }
+          ]
+        },
+        {
+          "Label": "entry-failed",
+          "Before": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "After": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "Files": [
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\bea7feae6aec4e7ebe72142bccdb8fea\\receipt.json",
+              "SHA256": "fdf02b4c923463006c6eec5adc1d02767a6103d156131c83520e305610172976",
+              "Bytes": 12289
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\bea7feae6aec4e7ebe72142bccdb8fea\\invocation.json",
+              "SHA256": "2f70e87436b41d6bc70729c41cd3c67b6e4e2d4869f3a01017461ca0b1d98922",
+              "Bytes": 21132
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\bea7feae6aec4e7ebe72142bccdb8fea\\stdout.txt",
+              "SHA256": "ebc5242aa1735a764b1a77aaa1b3656c391d5a5b2aa7c80a826c7545484d05d4",
+              "Bytes": 4794
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\bea7feae6aec4e7ebe72142bccdb8fea\\stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\bea7feae6aec4e7ebe72142bccdb8fea\\Invoke-Entry.ps1",
+              "SHA256": "d0535da1cce7392bdcfaeb982f8b115df8d382df0197bb2a48cf8a596e2f6eb7",
+              "Bytes": 594
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\bea7feae6aec4e7ebe72142bccdb8fea\\app\\WinPDFMerge.ps1",
+              "SHA256": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4",
+              "Bytes": 17642
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\bea7feae6aec4e7ebe72142bccdb8fea\\app\\src\\WinPDFMerge.Helpers.ps1",
+              "SHA256": "61ddad5daa48e04acbe1e9b7c2ce5a032938ec6dba99f15a3850e2bc7a45f027",
+              "Bytes": 103793
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\bea7feae6aec4e7ebe72142bccdb8fea\\app\\size-config.json",
+              "SHA256": "14fc87eeadac76b9c9cbceb00e247af73fb0c7c8c7990d09c76899db1f34a7af",
+              "Bytes": 1114
+            }
+          ]
+        },
+        {
+          "Label": "entry-log-failed",
+          "Before": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "After": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "Files": [
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\87b3e22c6a244ea28d786174108347f3\\receipt.json",
+              "SHA256": "8ecfc97e5437729667e4ee7f6703ce00b16a37ea2ea0fc8eaf9fc7848c5509f9",
+              "Bytes": 14003
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\87b3e22c6a244ea28d786174108347f3\\invocation.json",
+              "SHA256": "f7c881e8bc8eeb94f87eecad67d33d1f019cd62ca6f1c6ec322f9bab5273662d",
+              "Bytes": 23779
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\87b3e22c6a244ea28d786174108347f3\\stdout.txt",
+              "SHA256": "ea9053cdfda0bf0d7d41c6e0a1f7e0e964e37ad5329282973099ff0cbe905acf",
+              "Bytes": 5243
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\87b3e22c6a244ea28d786174108347f3\\stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\87b3e22c6a244ea28d786174108347f3\\Invoke-Entry.ps1",
+              "SHA256": "d0535da1cce7392bdcfaeb982f8b115df8d382df0197bb2a48cf8a596e2f6eb7",
+              "Bytes": 594
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\87b3e22c6a244ea28d786174108347f3\\app\\WinPDFMerge.ps1",
+              "SHA256": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4",
+              "Bytes": 17642
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\87b3e22c6a244ea28d786174108347f3\\app\\src\\WinPDFMerge.Helpers.ps1",
+              "SHA256": "61ddad5daa48e04acbe1e9b7c2ce5a032938ec6dba99f15a3850e2bc7a45f027",
+              "Bytes": 103793
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\8c628a1004c54122a4d911a2a061e637\\87b3e22c6a244ea28d786174108347f3\\app\\size-config.json",
+              "SHA256": "9045e8e2c7fa56000ed85247b94901a35d4b1ec8812e4705ecdb092a1890a73e",
+              "Bytes": 1118
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Root": "<repo>\\tests\\.work\\T17-dirty-SizeReporting-ps51-b1700da7e57a422897b7c4cb86cfdd22",
+      "Classification": "corrected focused pass",
+      "Scope": "dirty import-only numeric decisions and bounded copied-entry controls; excluded from clean acceptance totals",
+      "Diagnosis": "32 focused checks passed after test-only stdout assertion correction.",
+      "Invocation": {
+        "Task": "T17",
+        "EvidenceClass": "dirty numeric and controlled-entry size-reporting unit development; not clean acceptance or PDF-engine support",
+        "Selection": "ps51",
+        "Command": [
+          "C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+          "-NoLogo",
+          "-NoProfile",
+          "-NonInteractive",
+          "-ExecutionPolicy",
+          "RemoteSigned",
+          "-File",
+          "<repo>\\tools\\test\\Invoke-Tests.ps1",
+          "-PesterModulePath",
+          "<USERPROFILE>/.cache/WinPDFMerger-T03/pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67/module/Pester.psd1",
+          "-Tier",
+          "SizeReporting"
+        ],
+        "CommitUnderTest": "27527e839e3b6b37bc554356618bba2ec169a83a",
+        "DirtyWorktree": true,
+        "ChildEnvironmentRemovedKeys": [
+          "PSMODULEPATH"
+        ],
+        "PersistentEnvironmentChanges": false,
+        "StartedAtUtc": "2026-10-08T07:30:08.129232+00:00",
+        "SourceSHA256": {
+          "WinPDFMerge.ps1": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4",
+          "src/WinPDFMerge.Helpers.ps1": "5e4cec2cb31b85e72e551b7f8b291c8c67809c42cf435ad00ee1bc555fec38a0",
+          "tools/test/Invoke-Tests.ps1": "d2df7969d0bb5762bdfd647be45803772a1836c222a745411524cda8ed7c65c9",
+          "tests/pdf/SizeReporting.Tests.ps1": "de6fcc7a106e90ec461fe06aac8b96e1eb13b7308e66a7cef66b24893bcb3273"
+        },
+        "LauncherSHA256": "0745c8ad458816f7fe587fd64392addc52b34aa66416ef15a4abc0073b0d6e5f"
+      },
+      "Execution": {
+        "ExitCode": 0,
+        "TimedOut": false,
+        "ElapsedSeconds": 19.67200000002049,
+        "CompletedAtUtc": "2026-10-08T07:30:27.795396+00:00",
+        "StdoutSHA256": "8548a8a6a35bd3386615345633b40a3d5291fd276029df15f193881cdc6ad3d6",
+        "StderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "StdoutBytes": 141361,
+        "StderrBytes": 0,
+        "ReportPath": "<repo>\\tests\\.work\\pester\\d7451b59d5f24d8fb55abb0ee628a75c",
+        "ReportFiles": {
+          "summary.json": {
+            "Path": "<repo>\\tests\\.work\\pester\\d7451b59d5f24d8fb55abb0ee628a75c\\summary.json",
+            "SHA256": "a702562de656b152b53aea0bd1cd67eeb83b8145c976a74c9f3b5057f158da7e",
+            "Bytes": 617
+          },
+          "results.xml": {
+            "Path": "<repo>\\tests\\.work\\pester\\d7451b59d5f24d8fb55abb0ee628a75c\\results.xml",
+            "SHA256": "4683ba7d8f5891c80370fdc4864e302c16b14e75d74b4c6a91025d61737a2b0a",
+            "Bytes": 13695
+          }
+        },
+        "ObservedSummary": {
+          "observed_at_utc": "2026-10-08T07:30:27.6012145Z",
+          "commit_under_test": "27527e839e3b6b37bc554356618bba2ec169a83a",
+          "dirty_worktree": true,
+          "shell_version": "5.1.26100.9444",
+          "shell_edition": "Desktop",
+          "process_64_bit": true,
+          "execution_policy": "RemoteSigned",
+          "pester_version": "6.2.0",
+          "tier": "SizeReporting",
+          "evidence_class": "unit-numeric-size-reporting-and-controlled-entry-decisions",
+          "passed": 32,
+          "failed": 0,
+          "failed_blocks": 0,
+          "failed_containers": 0,
+          "skipped": 0,
+          "not_run": 0,
+          "total": 32
+        }
+      },
+      "NUnitRootAttributes": {
+        "{http://www.w3.org/2001/XMLSchema-instance}noNamespaceSchemaLocation": "nunit_schema_2.5.xsd",
+        "name": "Pester",
+        "total": "32",
+        "errors": "0",
+        "failures": "0",
+        "not-run": "0",
+        "inconclusive": "0",
+        "ignored": "0",
+        "skipped": "0",
+        "invalid": "0",
+        "date": "2026-10-08",
+        "time": "09.30.09"
+      },
+      "ObservationCount": 32,
+      "NumericDecisionCount": 25,
+      "ControlledEntryCount": 7,
+      "Files": [
+        {
+          "Path": "<repo>\\tests\\.work\\T17-dirty-SizeReporting-ps51-b1700da7e57a422897b7c4cb86cfdd22\\invocation.json",
+          "SHA256": "36864d2ce7861321b93bd32331226ed3d5c8568f3d7bdb8053fee48490a7da09",
+          "Bytes": 1408
+        },
+        {
+          "Path": "<repo>\\tests\\.work\\T17-dirty-SizeReporting-ps51-b1700da7e57a422897b7c4cb86cfdd22\\execution.json",
+          "SHA256": "907135b6ab7b76356ef597a1819d0872edecf197af52f3eef6a66dfe211fe1e0",
+          "Bytes": 1629
+        },
+        {
+          "Path": "<repo>\\tests\\.work\\T17-dirty-SizeReporting-ps51-b1700da7e57a422897b7c4cb86cfdd22\\stdout.txt",
+          "SHA256": "8548a8a6a35bd3386615345633b40a3d5291fd276029df15f193881cdc6ad3d6",
+          "Bytes": 141361
+        },
+        {
+          "Path": "<repo>\\tests\\.work\\T17-dirty-SizeReporting-ps51-b1700da7e57a422897b7c4cb86cfdd22\\stderr.txt",
+          "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "Bytes": 0
+        },
+        {
+          "Path": "<repo>\\tests\\.work\\pester\\d7451b59d5f24d8fb55abb0ee628a75c\\summary.json",
+          "SHA256": "a702562de656b152b53aea0bd1cd67eeb83b8145c976a74c9f3b5057f158da7e",
+          "Bytes": 617
+        },
+        {
+          "Path": "<repo>\\tests\\.work\\pester\\d7451b59d5f24d8fb55abb0ee628a75c\\results.xml",
+          "SHA256": "4683ba7d8f5891c80370fdc4864e302c16b14e75d74b4c6a91025d61737a2b0a",
+          "Bytes": 13695
+        },
+        {
+          "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\size-reporting-observations.json",
+          "SHA256": "a97f17c497fc7ef27c4509e6c89dbceed5eac7407b95e70f4df3a7b3e6a22908",
+          "Bytes": 246762
+        }
+      ],
+      "ControlledCases": [
+        {
+          "Label": "entry-published",
+          "Before": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "After": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "Files": [
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\a78ade1b340a42d7a9ac5903ba5c3497\\receipt.json",
+              "SHA256": "9b499b077b338a57c287727db4258237c5c60de2f279bc253c7284db2c03b5ef",
+              "Bytes": 23094
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\a78ade1b340a42d7a9ac5903ba5c3497\\invocation.json",
+              "SHA256": "2e434c36f728f72d50624e7a8f0b58964fa451097a938dbb6baa4b62121e839f",
+              "Bytes": 38034
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\a78ade1b340a42d7a9ac5903ba5c3497\\stdout.txt",
+              "SHA256": "251f416d988624392d1589d4b0d974b747b0d20b8705ac9aa2c7dc468d2c79c2",
+              "Bytes": 5810
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\a78ade1b340a42d7a9ac5903ba5c3497\\stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\a78ade1b340a42d7a9ac5903ba5c3497\\Invoke-Entry.ps1",
+              "SHA256": "d0535da1cce7392bdcfaeb982f8b115df8d382df0197bb2a48cf8a596e2f6eb7",
+              "Bytes": 594
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\a78ade1b340a42d7a9ac5903ba5c3497\\app\\WinPDFMerge.ps1",
+              "SHA256": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4",
+              "Bytes": 17642
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\a78ade1b340a42d7a9ac5903ba5c3497\\app\\src\\WinPDFMerge.Helpers.ps1",
+              "SHA256": "61ddad5daa48e04acbe1e9b7c2ce5a032938ec6dba99f15a3850e2bc7a45f027",
+              "Bytes": 103793
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\a78ade1b340a42d7a9ac5903ba5c3497\\app\\size-config.json",
+              "SHA256": "1a3691a6336d86998d72f2ee9cd88fced2e2e6eabc19c35ded3012ef219712e2",
+              "Bytes": 1151
+            }
+          ]
+        },
+        {
+          "Label": "entry-equal",
+          "Before": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "After": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "Files": [
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\36e7bc3eb8c14acca4eda3b855d45be1\\receipt.json",
+              "SHA256": "0b075f0a578db62f1698e25fa67b1f32bb48137a7eb01a29b68c653aa9106b95",
+              "Bytes": 22531
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\36e7bc3eb8c14acca4eda3b855d45be1\\invocation.json",
+              "SHA256": "440d7bd855c6856c5c0da6c42a851994fa32d271074c790ba984eaaf4eab9e77",
+              "Bytes": 36645
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\36e7bc3eb8c14acca4eda3b855d45be1\\stdout.txt",
+              "SHA256": "34f595c717c54141c007d6ade2e77685e9b7e6b59dd7fe90d3a44a1fc447a492",
+              "Bytes": 5562
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\36e7bc3eb8c14acca4eda3b855d45be1\\stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\36e7bc3eb8c14acca4eda3b855d45be1\\Invoke-Entry.ps1",
+              "SHA256": "d0535da1cce7392bdcfaeb982f8b115df8d382df0197bb2a48cf8a596e2f6eb7",
+              "Bytes": 594
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\36e7bc3eb8c14acca4eda3b855d45be1\\app\\WinPDFMerge.ps1",
+              "SHA256": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4",
+              "Bytes": 17642
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\36e7bc3eb8c14acca4eda3b855d45be1\\app\\src\\WinPDFMerge.Helpers.ps1",
+              "SHA256": "61ddad5daa48e04acbe1e9b7c2ce5a032938ec6dba99f15a3850e2bc7a45f027",
+              "Bytes": 103793
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\36e7bc3eb8c14acca4eda3b855d45be1\\app\\size-config.json",
+              "SHA256": "947166dc2d31fb8d1be861fc7e2cf14e23ba01456cce3a3815cfcff520d63285",
+              "Bytes": 1147
+            }
+          ]
+        },
+        {
+          "Label": "entry-larger",
+          "Before": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "After": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "Files": [
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\1c0d53f842bb480f83c84dbb4e5cd93a\\receipt.json",
+              "SHA256": "5a27e90aa21cb45807f4bf39ed2c3a59c61790e66400cbc8b87f6777c9f7056d",
+              "Bytes": 22595
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\1c0d53f842bb480f83c84dbb4e5cd93a\\invocation.json",
+              "SHA256": "8dc6717071235497260e582a91c59d740880bdadef15f437f2e06ba4899f84be",
+              "Bytes": 36714
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\1c0d53f842bb480f83c84dbb4e5cd93a\\stdout.txt",
+              "SHA256": "921ef516e01cf837aed34cefc2ea1bef7a77fc9c70ed5ff99a1f9fd2203bcc19",
+              "Bytes": 5566
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\1c0d53f842bb480f83c84dbb4e5cd93a\\stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\1c0d53f842bb480f83c84dbb4e5cd93a\\Invoke-Entry.ps1",
+              "SHA256": "d0535da1cce7392bdcfaeb982f8b115df8d382df0197bb2a48cf8a596e2f6eb7",
+              "Bytes": 594
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\1c0d53f842bb480f83c84dbb4e5cd93a\\app\\WinPDFMerge.ps1",
+              "SHA256": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4",
+              "Bytes": 17642
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\1c0d53f842bb480f83c84dbb4e5cd93a\\app\\src\\WinPDFMerge.Helpers.ps1",
+              "SHA256": "61ddad5daa48e04acbe1e9b7c2ce5a032938ec6dba99f15a3850e2bc7a45f027",
+              "Bytes": 103793
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\1c0d53f842bb480f83c84dbb4e5cd93a\\app\\size-config.json",
+              "SHA256": "a412569219dd0f551317874fde8d5b1f9896b03df85753806f303924b8eabd58",
+              "Bytes": 1148
+            }
+          ]
+        },
+        {
+          "Label": "entry-skipped",
+          "Before": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "After": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "Files": [
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\7ad07f1e32b0498f8ad3b18460c9c00d\\receipt.json",
+              "SHA256": "0e74e7c002a20894d5e02f33cdcc5c0c0a3fa1755ee366bef7f614811139c2a5",
+              "Bytes": 13903
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\7ad07f1e32b0498f8ad3b18460c9c00d\\invocation.json",
+              "SHA256": "01883ad19e6e996cb754880b4d386083b06fc07473b3a52588b42f998c7de375",
+              "Bytes": 24577
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\7ad07f1e32b0498f8ad3b18460c9c00d\\stdout.txt",
+              "SHA256": "4acef7f05604f6716e710c433975ed84cf83746be1cb580e2a068458004c88c1",
+              "Bytes": 3852
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\7ad07f1e32b0498f8ad3b18460c9c00d\\stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\7ad07f1e32b0498f8ad3b18460c9c00d\\Invoke-Entry.ps1",
+              "SHA256": "d0535da1cce7392bdcfaeb982f8b115df8d382df0197bb2a48cf8a596e2f6eb7",
+              "Bytes": 594
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\7ad07f1e32b0498f8ad3b18460c9c00d\\app\\WinPDFMerge.ps1",
+              "SHA256": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4",
+              "Bytes": 17642
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\7ad07f1e32b0498f8ad3b18460c9c00d\\app\\src\\WinPDFMerge.Helpers.ps1",
+              "SHA256": "61ddad5daa48e04acbe1e9b7c2ce5a032938ec6dba99f15a3850e2bc7a45f027",
+              "Bytes": 103793
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\7ad07f1e32b0498f8ad3b18460c9c00d\\app\\size-config.json",
+              "SHA256": "1aae969a03fda18ad3cae127882616fbc35aff11894e61476ad84f33d5807681",
+              "Bytes": 1149
+            }
+          ]
+        },
+        {
+          "Label": "entry-unavailable",
+          "Before": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "After": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "Files": [
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\9a7aaf1ff3824dd7802cda02999e5f3a\\receipt.json",
+              "SHA256": "35db3985c4ed7ec57bbadd9974bc6e2ce9bb88d1ea4b9c6d714183585dac458a",
+              "Bytes": 13913
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\9a7aaf1ff3824dd7802cda02999e5f3a\\invocation.json",
+              "SHA256": "dd6d516b676b4e8c40df6001b226aacb8dd7249d105f3ff5e418accd4d59f24f",
+              "Bytes": 24597
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\9a7aaf1ff3824dd7802cda02999e5f3a\\stdout.txt",
+              "SHA256": "fea8a79e137cdd726b4264ee6b85b0f34f20cf28e41d73948fbba1447ef4e851",
+              "Bytes": 3858
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\9a7aaf1ff3824dd7802cda02999e5f3a\\stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\9a7aaf1ff3824dd7802cda02999e5f3a\\Invoke-Entry.ps1",
+              "SHA256": "d0535da1cce7392bdcfaeb982f8b115df8d382df0197bb2a48cf8a596e2f6eb7",
+              "Bytes": 594
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\9a7aaf1ff3824dd7802cda02999e5f3a\\app\\WinPDFMerge.ps1",
+              "SHA256": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4",
+              "Bytes": 17642
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\9a7aaf1ff3824dd7802cda02999e5f3a\\app\\src\\WinPDFMerge.Helpers.ps1",
+              "SHA256": "61ddad5daa48e04acbe1e9b7c2ce5a032938ec6dba99f15a3850e2bc7a45f027",
+              "Bytes": 103793
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\9a7aaf1ff3824dd7802cda02999e5f3a\\app\\size-config.json",
+              "SHA256": "7128256f8450d68c1e290e5fa0be4674c937c6cf5cddf58491a893841a688263",
+              "Bytes": 1153
+            }
+          ]
+        },
+        {
+          "Label": "entry-failed",
+          "Before": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "After": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "Files": [
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\34990b63b9f349b490148d0b5720c879\\receipt.json",
+              "SHA256": "0eaba3bf4930b6d6aba568276a333aafe063f911d4656826ae0a38c2e5b92587",
+              "Bytes": 18438
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\34990b63b9f349b490148d0b5720c879\\invocation.json",
+              "SHA256": "88fc4ddc0f884266fa066842cada1007dc96eb2e266402c5da775fbcc86f3863",
+              "Bytes": 30911
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\34990b63b9f349b490148d0b5720c879\\stdout.txt",
+              "SHA256": "32d136c51205b351e83ef78b594df18976efe2d41fbf1fa1176dc737c8f5cf23",
+              "Bytes": 4790
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\34990b63b9f349b490148d0b5720c879\\stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\34990b63b9f349b490148d0b5720c879\\Invoke-Entry.ps1",
+              "SHA256": "d0535da1cce7392bdcfaeb982f8b115df8d382df0197bb2a48cf8a596e2f6eb7",
+              "Bytes": 594
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\34990b63b9f349b490148d0b5720c879\\app\\WinPDFMerge.ps1",
+              "SHA256": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4",
+              "Bytes": 17642
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\34990b63b9f349b490148d0b5720c879\\app\\src\\WinPDFMerge.Helpers.ps1",
+              "SHA256": "61ddad5daa48e04acbe1e9b7c2ce5a032938ec6dba99f15a3850e2bc7a45f027",
+              "Bytes": 103793
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\34990b63b9f349b490148d0b5720c879\\app\\size-config.json",
+              "SHA256": "e6b79efda469fa22dbba7be12201f9b9255067bbb1ee636ae556ceced570f876",
+              "Bytes": 1148
+            }
+          ]
+        },
+        {
+          "Label": "entry-log-failed",
+          "Before": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "After": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "Files": [
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\8dfaa9e1f70844b29cd11b2fa09960bf\\receipt.json",
+              "SHA256": "61ce56960fd2c38ab749bd7cd59d97351c6568542d698ad066d9c62b6d533d44",
+              "Bytes": 22359
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\8dfaa9e1f70844b29cd11b2fa09960bf\\invocation.json",
+              "SHA256": "38bb6ea2b3d1866d7f44d44d4a185c17d08b21e010868f7955fae0e796fb66ca",
+              "Bytes": 36580
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\8dfaa9e1f70844b29cd11b2fa09960bf\\stdout.txt",
+              "SHA256": "64e79a45e217fb317590faf74657580f569e64900d2559c3cc7c4f421d96d938",
+              "Bytes": 5236
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\8dfaa9e1f70844b29cd11b2fa09960bf\\stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\8dfaa9e1f70844b29cd11b2fa09960bf\\Invoke-Entry.ps1",
+              "SHA256": "d0535da1cce7392bdcfaeb982f8b115df8d382df0197bb2a48cf8a596e2f6eb7",
+              "Bytes": 594
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\8dfaa9e1f70844b29cd11b2fa09960bf\\app\\WinPDFMerge.ps1",
+              "SHA256": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4",
+              "Bytes": 17642
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\8dfaa9e1f70844b29cd11b2fa09960bf\\app\\src\\WinPDFMerge.Helpers.ps1",
+              "SHA256": "61ddad5daa48e04acbe1e9b7c2ce5a032938ec6dba99f15a3850e2bc7a45f027",
+              "Bytes": 103793
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\4d0e4ef3492e4043821cbab5b28ecbaa\\8dfaa9e1f70844b29cd11b2fa09960bf\\app\\size-config.json",
+              "SHA256": "c8d3231b54bdd7fffe9378ba49d8e289c9b125ee7db710ccdb48ad37e6d5a421",
+              "Bytes": 1152
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "Root": "<repo>\\tests\\.work\\T17-dirty-SizeReporting-ps7-57f26d42fb3849d8bc493633ec2d6d31",
+      "Classification": "corrected focused pass",
+      "Scope": "dirty import-only numeric decisions and bounded copied-entry controls; excluded from clean acceptance totals",
+      "Diagnosis": "32 focused checks passed after test-only stdout assertion correction.",
+      "Invocation": {
+        "Task": "T17",
+        "EvidenceClass": "dirty numeric and controlled-entry size-reporting unit development; not clean acceptance or PDF-engine support",
+        "Selection": "ps7",
+        "Command": [
+          "<LOCALAPPDATA>/WinPDFMergerDevCache/T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a/portable/pwsh.exe",
+          "-NoLogo",
+          "-NoProfile",
+          "-NonInteractive",
+          "-ExecutionPolicy",
+          "RemoteSigned",
+          "-File",
+          "<repo>\\tools\\test\\Invoke-Tests.ps1",
+          "-PesterModulePath",
+          "<USERPROFILE>/.cache/WinPDFMerger-T03/pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67/module/Pester.psd1",
+          "-Tier",
+          "SizeReporting"
+        ],
+        "CommitUnderTest": "27527e839e3b6b37bc554356618bba2ec169a83a",
+        "DirtyWorktree": true,
+        "ChildEnvironmentRemovedKeys": [
+          "PSMODULEPATH"
+        ],
+        "PersistentEnvironmentChanges": false,
+        "StartedAtUtc": "2026-10-08T07:30:08.129232+00:00",
+        "SourceSHA256": {
+          "WinPDFMerge.ps1": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4",
+          "src/WinPDFMerge.Helpers.ps1": "5e4cec2cb31b85e72e551b7f8b291c8c67809c42cf435ad00ee1bc555fec38a0",
+          "tools/test/Invoke-Tests.ps1": "d2df7969d0bb5762bdfd647be45803772a1836c222a745411524cda8ed7c65c9",
+          "tests/pdf/SizeReporting.Tests.ps1": "de6fcc7a106e90ec461fe06aac8b96e1eb13b7308e66a7cef66b24893bcb3273"
+        },
+        "LauncherSHA256": "0745c8ad458816f7fe587fd64392addc52b34aa66416ef15a4abc0073b0d6e5f"
+      },
+      "Execution": {
+        "ExitCode": 0,
+        "TimedOut": false,
+        "ElapsedSeconds": 19.984000000025844,
+        "CompletedAtUtc": "2026-10-08T07:30:28.107886+00:00",
+        "StdoutSHA256": "337914a8bf4232836b0704fa32f744be19ac7d057bb226ea7e549b60433f5e20",
+        "StderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "StdoutBytes": 140403,
+        "StderrBytes": 0,
+        "ReportPath": "<repo>\\tests\\.work\\pester\\5ce699c839d64c7fbeeba1d9d91c0bbc",
+        "ReportFiles": {
+          "summary.json": {
+            "Path": "<repo>\\tests\\.work\\pester\\5ce699c839d64c7fbeeba1d9d91c0bbc\\summary.json",
+            "SHA256": "1b7ae758de6f10661502a81ef1020f222f568f9fc4c6051053d023e36d65123d",
+            "Bytes": 551
+          },
+          "results.xml": {
+            "Path": "<repo>\\tests\\.work\\pester\\5ce699c839d64c7fbeeba1d9d91c0bbc\\results.xml",
+            "SHA256": "5da3427373e9fd2d3b2de1529494a9614a3f068fb4f82ac2be8c9f9bbceb75fb",
+            "Bytes": 13687
+          }
+        },
+        "ObservedSummary": {
+          "observed_at_utc": "2026-10-08T07:30:27.8640692Z",
+          "commit_under_test": "27527e839e3b6b37bc554356618bba2ec169a83a",
+          "dirty_worktree": true,
+          "shell_version": "7.6.6",
+          "shell_edition": "Core",
+          "process_64_bit": true,
+          "execution_policy": "RemoteSigned",
+          "pester_version": "6.2.0",
+          "tier": "SizeReporting",
+          "evidence_class": "unit-numeric-size-reporting-and-controlled-entry-decisions",
+          "passed": 32,
+          "failed": 0,
+          "failed_blocks": 0,
+          "failed_containers": 0,
+          "skipped": 0,
+          "not_run": 0,
+          "total": 32
+        }
+      },
+      "NUnitRootAttributes": {
+        "{http://www.w3.org/2001/XMLSchema-instance}noNamespaceSchemaLocation": "nunit_schema_2.5.xsd",
+        "name": "Pester",
+        "total": "32",
+        "errors": "0",
+        "failures": "0",
+        "not-run": "0",
+        "inconclusive": "0",
+        "ignored": "0",
+        "skipped": "0",
+        "invalid": "0",
+        "date": "2026-10-08",
+        "time": "09.30.09"
+      },
+      "ObservationCount": 32,
+      "NumericDecisionCount": 25,
+      "ControlledEntryCount": 7,
+      "Files": [
+        {
+          "Path": "<repo>\\tests\\.work\\T17-dirty-SizeReporting-ps7-57f26d42fb3849d8bc493633ec2d6d31\\invocation.json",
+          "SHA256": "f20a4536b4d1813f00e9f8a5ad3176ce3cfcfcfc1d1c68fd7c268a3913892404",
+          "Bytes": 1458
+        },
+        {
+          "Path": "<repo>\\tests\\.work\\T17-dirty-SizeReporting-ps7-57f26d42fb3849d8bc493633ec2d6d31\\execution.json",
+          "SHA256": "02bb058e0a1d3b36c9a3879f2502a4fdeec5012f6d12283f73c99e0c5dc236d3",
+          "Bytes": 1618
+        },
+        {
+          "Path": "<repo>\\tests\\.work\\T17-dirty-SizeReporting-ps7-57f26d42fb3849d8bc493633ec2d6d31\\stdout.txt",
+          "SHA256": "337914a8bf4232836b0704fa32f744be19ac7d057bb226ea7e549b60433f5e20",
+          "Bytes": 140403
+        },
+        {
+          "Path": "<repo>\\tests\\.work\\T17-dirty-SizeReporting-ps7-57f26d42fb3849d8bc493633ec2d6d31\\stderr.txt",
+          "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "Bytes": 0
+        },
+        {
+          "Path": "<repo>\\tests\\.work\\pester\\5ce699c839d64c7fbeeba1d9d91c0bbc\\summary.json",
+          "SHA256": "1b7ae758de6f10661502a81ef1020f222f568f9fc4c6051053d023e36d65123d",
+          "Bytes": 551
+        },
+        {
+          "Path": "<repo>\\tests\\.work\\pester\\5ce699c839d64c7fbeeba1d9d91c0bbc\\results.xml",
+          "SHA256": "5da3427373e9fd2d3b2de1529494a9614a3f068fb4f82ac2be8c9f9bbceb75fb",
+          "Bytes": 13687
+        },
+        {
+          "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\size-reporting-observations.json",
+          "SHA256": "a09ce602a444e20cf0fd6430b2372a9711d2082f2653da2146394269ba7bcbb1",
+          "Bytes": 163291
+        }
+      ],
+      "ControlledCases": [
+        {
+          "Label": "entry-published",
+          "Before": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "After": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "Files": [
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\cc352767437b427599abb9d311c112b8\\receipt.json",
+              "SHA256": "50a34d4299b6f5ae0ee7c37213f630c10eda881cbff3483ea9e71657af7aa31a",
+              "Bytes": 14616
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\cc352767437b427599abb9d311c112b8\\invocation.json",
+              "SHA256": "11cba92f0f4bed4e4b1605fb81964ce4defb1295dd3e5a9517ee855bcdd3bc53",
+              "Bytes": 25008
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\cc352767437b427599abb9d311c112b8\\stdout.txt",
+              "SHA256": "cc25f1d0ec9838e497608c91e21b2387d66577e3268c22065cbc9f995b99df82",
+              "Bytes": 5817
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\cc352767437b427599abb9d311c112b8\\stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\cc352767437b427599abb9d311c112b8\\Invoke-Entry.ps1",
+              "SHA256": "d0535da1cce7392bdcfaeb982f8b115df8d382df0197bb2a48cf8a596e2f6eb7",
+              "Bytes": 594
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\cc352767437b427599abb9d311c112b8\\app\\WinPDFMerge.ps1",
+              "SHA256": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4",
+              "Bytes": 17642
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\cc352767437b427599abb9d311c112b8\\app\\src\\WinPDFMerge.Helpers.ps1",
+              "SHA256": "61ddad5daa48e04acbe1e9b7c2ce5a032938ec6dba99f15a3850e2bc7a45f027",
+              "Bytes": 103793
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\cc352767437b427599abb9d311c112b8\\app\\size-config.json",
+              "SHA256": "76729d130f1fab285df8a90df77748f18b8551f3e97458c3c9332645ca728874",
+              "Bytes": 1117
+            }
+          ]
+        },
+        {
+          "Label": "entry-equal",
+          "Before": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "After": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "Files": [
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\7a6d59bbae88452696d6fb9c5d0c2e22\\receipt.json",
+              "SHA256": "e41c4e30ea96a0910c038449cbc76e45f2574400665e37868aeeb97bcf033ca4",
+              "Bytes": 14246
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\7a6d59bbae88452696d6fb9c5d0c2e22\\invocation.json",
+              "SHA256": "2d5eba6dfd1a32a1278a95c4b8ba6b3d6e4dd652b904237f13b23694d1ee7f35",
+              "Bytes": 24006
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\7a6d59bbae88452696d6fb9c5d0c2e22\\stdout.txt",
+              "SHA256": "6de89cb55f23190aa6a532564a21b1f81f4887b832a21353edc2c90714370f3f",
+              "Bytes": 5568
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\7a6d59bbae88452696d6fb9c5d0c2e22\\stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\7a6d59bbae88452696d6fb9c5d0c2e22\\Invoke-Entry.ps1",
+              "SHA256": "d0535da1cce7392bdcfaeb982f8b115df8d382df0197bb2a48cf8a596e2f6eb7",
+              "Bytes": 594
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\7a6d59bbae88452696d6fb9c5d0c2e22\\app\\WinPDFMerge.ps1",
+              "SHA256": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4",
+              "Bytes": 17642
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\7a6d59bbae88452696d6fb9c5d0c2e22\\app\\src\\WinPDFMerge.Helpers.ps1",
+              "SHA256": "61ddad5daa48e04acbe1e9b7c2ce5a032938ec6dba99f15a3850e2bc7a45f027",
+              "Bytes": 103793
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\7a6d59bbae88452696d6fb9c5d0c2e22\\app\\size-config.json",
+              "SHA256": "1bcb45b359c4abdeeff3e55e46ededa1cc83523bc9c1d4fe4fa9a59abcfedcd3",
+              "Bytes": 1113
+            }
+          ]
+        },
+        {
+          "Label": "entry-larger",
+          "Before": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "After": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "Files": [
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\04d10fc3b1b5439993c61676693ffb97\\receipt.json",
+              "SHA256": "25f7a501ddc6fe84bd1d32c43c21a56223fec208ddc33d128f4ad720eadfcc34",
+              "Bytes": 14308
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\04d10fc3b1b5439993c61676693ffb97\\invocation.json",
+              "SHA256": "54a3d07c0b0c37cef9b8c1428f8d30c05ad361394184883f0279ba79556bcfdc",
+              "Bytes": 24060
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\04d10fc3b1b5439993c61676693ffb97\\stdout.txt",
+              "SHA256": "44478d34e24ac2ef0a9f72fb9755699bb66f01814c76c537c38a65221d56e69d",
+              "Bytes": 5572
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\04d10fc3b1b5439993c61676693ffb97\\stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\04d10fc3b1b5439993c61676693ffb97\\Invoke-Entry.ps1",
+              "SHA256": "d0535da1cce7392bdcfaeb982f8b115df8d382df0197bb2a48cf8a596e2f6eb7",
+              "Bytes": 594
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\04d10fc3b1b5439993c61676693ffb97\\app\\WinPDFMerge.ps1",
+              "SHA256": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4",
+              "Bytes": 17642
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\04d10fc3b1b5439993c61676693ffb97\\app\\src\\WinPDFMerge.Helpers.ps1",
+              "SHA256": "61ddad5daa48e04acbe1e9b7c2ce5a032938ec6dba99f15a3850e2bc7a45f027",
+              "Bytes": 103793
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\04d10fc3b1b5439993c61676693ffb97\\app\\size-config.json",
+              "SHA256": "ada7124fac282efcfc8191b9b9cb4f4d0b079eefb60e01f2f780b83d124880e6",
+              "Bytes": 1114
+            }
+          ]
+        },
+        {
+          "Label": "entry-skipped",
+          "Before": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "After": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "Files": [
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\4da45896ee3c4edebe8d56c6f65dcb82\\receipt.json",
+              "SHA256": "38f85486084bd9004d47bb5e35d63671f62ee4faa36d8fe7e01f1a5df9c192ad",
+              "Bytes": 9249
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\4da45896ee3c4edebe8d56c6f65dcb82\\invocation.json",
+              "SHA256": "9fafb3c6fc818443d79a5b155b29a819cbb699c42c9d7e9c9337223341307a38",
+              "Bytes": 17008
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\4da45896ee3c4edebe8d56c6f65dcb82\\stdout.txt",
+              "SHA256": "e7c7098d2edd43621cd9fb4b86989350465ac5f3b358de6b2ba29eb4eead644c",
+              "Bytes": 3856
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\4da45896ee3c4edebe8d56c6f65dcb82\\stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\4da45896ee3c4edebe8d56c6f65dcb82\\Invoke-Entry.ps1",
+              "SHA256": "d0535da1cce7392bdcfaeb982f8b115df8d382df0197bb2a48cf8a596e2f6eb7",
+              "Bytes": 594
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\4da45896ee3c4edebe8d56c6f65dcb82\\app\\WinPDFMerge.ps1",
+              "SHA256": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4",
+              "Bytes": 17642
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\4da45896ee3c4edebe8d56c6f65dcb82\\app\\src\\WinPDFMerge.Helpers.ps1",
+              "SHA256": "61ddad5daa48e04acbe1e9b7c2ce5a032938ec6dba99f15a3850e2bc7a45f027",
+              "Bytes": 103793
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\4da45896ee3c4edebe8d56c6f65dcb82\\app\\size-config.json",
+              "SHA256": "9b00a12236efd8ad20d016f9ab358b5ca53801b5162552eae710e1fea180a411",
+              "Bytes": 1115
+            }
+          ]
+        },
+        {
+          "Label": "entry-unavailable",
+          "Before": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "After": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "Files": [
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\66050e7bb3704f79862c378fbd646726\\receipt.json",
+              "SHA256": "6658ebe8b6e0a53c636897e5bd6f8d766e99c9a42a7c4f86a61c0bb8e0eeeaee",
+              "Bytes": 9259
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\66050e7bb3704f79862c378fbd646726\\invocation.json",
+              "SHA256": "1bbebf47f1a5846f3a013c966ac917c85a2d55e3acde3e26deb3b3148a7189d5",
+              "Bytes": 17027
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\66050e7bb3704f79862c378fbd646726\\stdout.txt",
+              "SHA256": "2511d00360240af3761ba1632ed3bbbffa7b61c9f507dff17fbfcd4a351ccb3a",
+              "Bytes": 3862
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\66050e7bb3704f79862c378fbd646726\\stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\66050e7bb3704f79862c378fbd646726\\Invoke-Entry.ps1",
+              "SHA256": "d0535da1cce7392bdcfaeb982f8b115df8d382df0197bb2a48cf8a596e2f6eb7",
+              "Bytes": 594
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\66050e7bb3704f79862c378fbd646726\\app\\WinPDFMerge.ps1",
+              "SHA256": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4",
+              "Bytes": 17642
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\66050e7bb3704f79862c378fbd646726\\app\\src\\WinPDFMerge.Helpers.ps1",
+              "SHA256": "61ddad5daa48e04acbe1e9b7c2ce5a032938ec6dba99f15a3850e2bc7a45f027",
+              "Bytes": 103793
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\66050e7bb3704f79862c378fbd646726\\app\\size-config.json",
+              "SHA256": "63a2e9fcb18ae8d64f88750316e6427daa40f85d340683dfab44debc9dd9447a",
+              "Bytes": 1119
+            }
+          ]
+        },
+        {
+          "Label": "entry-failed",
+          "Before": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "After": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "Files": [
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\78a478f0734e4a9083903c28489745b0\\receipt.json",
+              "SHA256": "a023dde0e7bc13cb56e4c86cc12e269acf78d96e720e348abdbaf4dd573c6c30",
+              "Bytes": 12289
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\78a478f0734e4a9083903c28489745b0\\invocation.json",
+              "SHA256": "f08b4f2b34a592cb03e2338d5aff9afd36a208084ef59cad83eed676fb4ec6d4",
+              "Bytes": 21132
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\78a478f0734e4a9083903c28489745b0\\stdout.txt",
+              "SHA256": "f7cd12a36f803811bca58ab0673bde0864f0d6716cd0c3087a2ca7ac5617c256",
+              "Bytes": 4794
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\78a478f0734e4a9083903c28489745b0\\stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\78a478f0734e4a9083903c28489745b0\\Invoke-Entry.ps1",
+              "SHA256": "d0535da1cce7392bdcfaeb982f8b115df8d382df0197bb2a48cf8a596e2f6eb7",
+              "Bytes": 594
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\78a478f0734e4a9083903c28489745b0\\app\\WinPDFMerge.ps1",
+              "SHA256": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4",
+              "Bytes": 17642
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\78a478f0734e4a9083903c28489745b0\\app\\src\\WinPDFMerge.Helpers.ps1",
+              "SHA256": "61ddad5daa48e04acbe1e9b7c2ce5a032938ec6dba99f15a3850e2bc7a45f027",
+              "Bytes": 103793
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\78a478f0734e4a9083903c28489745b0\\app\\size-config.json",
+              "SHA256": "558f47e200d51660dfdbd264c51b4e5101193c27aef848492df5c5bdabf0c0e6",
+              "Bytes": 1114
+            }
+          ]
+        },
+        {
+          "Label": "entry-log-failed",
+          "Before": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "After": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "Files": [
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\ecdfa17563944037912fd9d888d40a7c\\receipt.json",
+              "SHA256": "36f974054d6ee44177519e4cef0c2d3d8694acda8ad558c2366936140ef1a909",
+              "Bytes": 14003
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\ecdfa17563944037912fd9d888d40a7c\\invocation.json",
+              "SHA256": "92044902fa44f34957bba5ebace2e63e79d6b7ee67c887fe483b484e86791bb1",
+              "Bytes": 23779
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\ecdfa17563944037912fd9d888d40a7c\\stdout.txt",
+              "SHA256": "4784b18ce9a032197fb4e8c7495aca181f319a52172dafc28538f0659cf41e99",
+              "Bytes": 5243
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\ecdfa17563944037912fd9d888d40a7c\\stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\ecdfa17563944037912fd9d888d40a7c\\Invoke-Entry.ps1",
+              "SHA256": "d0535da1cce7392bdcfaeb982f8b115df8d382df0197bb2a48cf8a596e2f6eb7",
+              "Bytes": 594
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\ecdfa17563944037912fd9d888d40a7c\\app\\WinPDFMerge.ps1",
+              "SHA256": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4",
+              "Bytes": 17642
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\ecdfa17563944037912fd9d888d40a7c\\app\\src\\WinPDFMerge.Helpers.ps1",
+              "SHA256": "61ddad5daa48e04acbe1e9b7c2ce5a032938ec6dba99f15a3850e2bc7a45f027",
+              "Bytes": 103793
+            },
+            {
+              "Path": "<repo>\\tests\\.work\\T17-size-reporting\\7c95685b8706422e88ef97ef6f8d1b9a\\ecdfa17563944037912fd9d888d40a7c\\app\\size-config.json",
+              "SHA256": "ddefdebe1af1fb2bf59fde0279e8eff662592c1f0995fa08ed128845e49df304",
+              "Bytes": 1118
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "EvidenceClass": "historical dirty unit development, not clean/native/manual acceptance",
+  "ActualShells": [
+    "Windows PowerShell 5.1.26100.9444",
+    "PowerShell 7.6.6"
+  ],
+  "FrozenUnitSHA256": "de6fcc7a106e90ec461fe06aac8b96e1eb13b7308e66a7cef66b24893bcb3273",
+  "Limitations": [
+    "PDFtk/Ghostscript results are controlled receipts in owned entry/helper copies; no PDF engines execute in these cases.",
+    "The bounded child shells are actual Windows processes, with child-only inherited PSModulePath removal and no persistent environment changes.",
+    "This index does not establish AC040 real-engine integration or AC041 visual/manual acceptance.",
+    "All four raw stdout/stderr/summary/NUnit attempts and all copied-entry receipts are retained; no absent reports are inferred."
+  ],
+  "Privacy": "Synthetic document names only; raw receipts contain local workspace/profile/cache paths and process IDs. Sanitize these identities before public archival and retain raw original SHA256 separately."
+}

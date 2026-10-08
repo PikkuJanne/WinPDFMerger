@@ -1,0 +1,41 @@
+# Email preset tradeoffs
+
+`screen` remains the default. Choose `-EmailPreset ebook` when the default
+loses detail you need, or use `-SkipEmail` to keep only the master. Inspect the
+actual email copy before sending it, especially small scanned text, fine lines
+and diagrams. A smaller file does not establish readable detail.
+
+Ghostscript describes `/screen` as a low-resolution profile and `/ebook` as
+a medium-resolution profile. Its presets can change document appearance.
+See the [Ghostscript 10.08.0 PDF settings documentation](https://ghostscript.readthedocs.io/en/gs10.08.0/VectorDevices.html#controls-and-features-specific-to-postscript-and-pdf-input).
+
+## Observed synthetic examples
+
+These observations use original CC0 synthetic documents, PDFtk Server 2.02
+and Ghostscript 10.08.0 on Windows. Original, master and validated candidate
+pages were rendered at the same 144 DPI and visually compared by Codex.
+The recipe and exact original hashes are in
+[`tests/fixtures/presets`](../tests/fixtures/presets/manifest.json).
+Sizes below are rounded examples; native output bytes can vary between runs.
+They are not size targets or promises for other documents.
+
+| Document | Master | `/screen` candidate | `/ebook` candidate | Observed detail |
+| --- | --- | --- | --- | --- |
+| One vector small-print page | 2.10 KiB | 3.54 KiB; larger, omitted | 3.54 KiB; larger, omitted | The 12-to-5-point text ladder, table and fine rules remained readable in these renders. Neither preset supplied a size benefit. |
+| One scanned text/diagram page | 2.39 MiB | 168 KiB; about 93.1% reduction | 582 KiB; about 76.2% reduction | `/screen` degraded the smallest raster text and broke fine circle outlines into dots; `/ebook` kept the 12-to-6-point ladder and fine outlines much clearer. |
+| Two mixed vector/scan pages | 2.39 MiB | 169 KiB; about 93.1% reduction | 583 KiB; about 76.2% reduction | Vector text, table and rules remained readable with both presets. The scan page showed the same small-text and outline tradeoff as the scanned example. |
+
+The master renders matched the originals in this corpus. Both presets retained
+the expected page order, identifiers, page dimensions and unclipped layout.
+This limited visual comparison does not establish fidelity for every PDF or
+preservation of forms, signatures, PDF/A, accessibility or archival properties.
+
+## Reading the result
+
+The console and log report exact bytes, readable binary sizes and the actual
+reduction relative to the master. Only a validated candidate strictly smaller
+than the master becomes an email output. Equal or larger candidates are
+labelled **not published**, report zero or negative reduction, and leave the
+master available with success code 0. Skipping email or missing Ghostscript
+also permits a master-only result; an email-processing failure retains a
+validated master and returns partial success (2).

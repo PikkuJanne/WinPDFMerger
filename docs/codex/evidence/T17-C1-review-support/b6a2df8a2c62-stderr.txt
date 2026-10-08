@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "<repo>\tests\.work\Collect-T17Evidence.py", line 701, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "<repo>\tests\.work\Collect-T17Evidence.py", line 681, in main
+    collector.historical()
+  File "<repo>\tests\.work\Collect-T17Evidence.py", line 417, in historical
+    retain_bound_values(value)
+  File "<repo>\tests\.work\Collect-T17Evidence.py", line 412, in retain_bound_values
+    for item in value.values():retain_bound_values(item)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>\tests\.work\Collect-T17Evidence.py", line 412, in retain_bound_values
+    for item in value.values():retain_bound_values(item)
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>\tests\.work\Collect-T17Evidence.py", line 409, in retain_bound_values
+    require(original.is_relative_to(self.work) and sha(original.read_bytes())==value['SHA256'].lower(),'Historical retained source/binary binding differs')
+  File "<repo>\tests\.work\Collect-T09C3Evidence.py", line 33, in require
+    raise ValueError(message)
+ValueError: Historical retained source/binary binding differs
