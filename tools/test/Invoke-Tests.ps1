@@ -2,7 +2,7 @@
 [CmdletBinding()]
 param(
     [string]$PesterModulePath,
-    [ValidateSet('Unit', 'NativeFixture', 'SourceDiscovery', 'Launcher', 'LauncherNative', 'DependencyEntry', 'NativeRunner', 'ToolInvocation', 'PdftkPaths', 'GhostscriptPaths', 'Destination', 'InputPreflight', 'Staging', 'MasterValidation', 'EmailOutcome', 'FaultIO', 'FaultRecovery', 'Parameters', 'ParametersNative', 'SizeReporting', 'SizeReportingNative', 'Diagnostics', 'DiagnosticsNative', 'PreservationDocs', 'PreservationNative')][string]$Tier = 'Unit',
+    [ValidateSet('Unit', 'NativeFixture', 'SourceDiscovery', 'Launcher', 'LauncherNative', 'DependencyEntry', 'NativeRunner', 'ToolInvocation', 'PdftkPaths', 'GhostscriptPaths', 'Destination', 'InputPreflight', 'Staging', 'MasterValidation', 'EmailOutcome', 'FaultIO', 'FaultRecovery', 'Parameters', 'ParametersNative', 'SizeReporting', 'SizeReportingNative', 'Diagnostics', 'DiagnosticsNative', 'PreservationDocs', 'PreservationNative', 'PublicDocs')][string]$Tier = 'Unit',
     [string]$PdftkPath,
     [string]$GhostscriptPath,
     [string]$PythonPath
@@ -35,7 +35,9 @@ $config.Output.Verbosity = 'Detailed'
 $config.TestResult.Enabled = $true
 $config.TestResult.OutputPath = Join-Path $work 'results.xml'
 $config.TestResult.OutputFormat = 'NUnitXml'
-if ($Tier -eq 'PreservationDocs') {
+if ($Tier -eq 'PublicDocs') {
+    $config.Run.Path = Join-Path $repo 'tests/help/PublicDocs.Tests.ps1'
+} elseif ($Tier -eq 'PreservationDocs') {
     $config.Run.Path = Join-Path $repo 'tests/help/PreservationDocs.Tests.ps1'
 } elseif ($Tier -eq 'PreservationNative') {
     if (-not $PdftkPath -or -not $GhostscriptPath -or -not $PythonPath) { throw 'PreservationNative requires explicit real PDFtk/Ghostscript and pinned development Python paths.' }
@@ -140,6 +142,7 @@ if ($Tier -eq 'Diagnostics') { $summary.evidence_class = 'unit-help-stage-summar
 if ($Tier -eq 'DiagnosticsNative') { $summary.evidence_class = 'windows-real-help-examples-CLI-entry-diagnostics-and-independent-pdfium; not Explorer or manual desktop acceptance' }
 if ($Tier -eq 'PreservationDocs') { $summary.evidence_class = 'documentation-contract-and-actual-help; not native PDF preservation or manual acceptance' }
 if ($Tier -eq 'PreservationNative') { $summary.evidence_class = 'windows-real-entry-master-screen-ebook-feature-characterization; strict-pypdf-and-independent-pdfium; visual review separate' }
+if ($Tier -eq 'PublicDocs') { $summary.evidence_class = 'public-documentation-contract-isolated-real-parameter-binding-and-controlled-helper-outcomes; no application/native/manual acceptance' }
 $summary | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath (Join-Path $work 'summary.json') -Encoding UTF8
 $summary | ConvertTo-Json -Depth 4
 Write-Host ('Reports: ' + $work)

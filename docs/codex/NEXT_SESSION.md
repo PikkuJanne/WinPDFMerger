@@ -1,7 +1,7 @@
 # Next session
 
 Selected next task: T20 — write public documentation and dependency/privacy
-policy, M3, pending. Read AGENTS/INDEX/STATUS, the T20 TASKS entry and
+policy, M3, in_progress. Read AGENTS/INDEX/STATUS, the T20 TASKS entry and
 tasks/T20.md, relevant PRODUCT/TEST/GITHUB_WORKFLOW specifications and
 AC046/AC047. Recheck repository/branch/clean state/origin/live refs/PR/main/
 tags/releases. Preserve unrelated work; never reset to a historical baseline.
@@ -30,4 +30,6 @@ No acquisition/admin/persistent environment/policy/security changes. Authorized
 child RemoteSigned/module-path cleanup remains scoped; original BAT/percent
 route uses process-only Bypass. Preserve source/output/ownership/cancellation/
 strict-smaller/native safety/master/default contracts. Physical Explorer/broad
-release gates remain open. T20 unstarted; publication remains NOT STARTED.
+release gates remain open. T20 documentation draft and regression checks are in progress;
+finish clean-commit review, evidence and synchronization before selecting T21.
+Publication remains NOT STARTED.

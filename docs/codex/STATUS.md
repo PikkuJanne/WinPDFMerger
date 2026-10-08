@@ -3,7 +3,7 @@
 Target: published and independently verified v1.0.0 in PikkuJanne/WinPDFMerger.
 Completed milestones: M1/M2 within recorded local Windows scope.
 Current milestone: M3, in progress. Completed tasks: T01 through T19.
-Next task: T20 — write public documentation and dependency/privacy policy, pending.
+Current task: T20 — write public documentation and dependency/privacy policy, in_progress.
 Publication: NOT STARTED. No intermediate release or tag is created.
 
 T19 AC044 integration/AC045 independent review pass at clean C1
@@ -27,4 +27,5 @@ unit/static/docs and scoped rendered observations remain distinct. Source/defaul
 native-safety/owned-staging/strict-smaller/no-overwrite/master-retention contracts
 remain. No signature/XFA/PDF-A/accessibility/malware/universal preservation
 certification. Physical Explorer, broad OS/UNC/security, CI/package/publication
-gates remain open. T20 is pending and unstarted.
+gates remain open. T20 public docs are being reviewed; required cases remain not_run
+until clean-commit checks, independent review and synchronization are recorded.
