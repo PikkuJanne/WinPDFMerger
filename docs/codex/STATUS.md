@@ -2,30 +2,24 @@
 
 Target: published and independently verified v1.0.0 in PikkuJanne/WinPDFMerger.
 Completed milestones: M1/M2/M3 within recorded local Windows/test/review scope.
-Current milestone: M4, pending. Completed tasks: T01 through T20.
-Next task: T21 — complete synthetic regression corpus and source-safety coverage, pending.
+Current milestone: M4, in_progress. Completed tasks: T01 through T21.
+Current task: T22 — fault tests and static analysis coverage, pending/unstarted.
 Publication: NOT STARTED. No release or tag is created.
 
-T20 AC046 public-instructions review and AC047 license/scope review pass at
-clean implementation C1 `a9e93319ad260646d57278f207872a0e03dbb155`. PublicDocs18,
-PreservationDocs14, Parameters31 and Diagnostics36 passed per actual
-PS5.1.26100.9444/PS7.6.6 x64 host:99each/198total/eight reports, all bad counts0.
-Independent reviews:31semantic/35local-link/6immutable and33policy checks pass.
-Scoped PSA1.25.0:0errors/4reviewed nonblocking warnings/0information per host.
-See evidence/T20-completion.md, T20-results.json and T20-reports/manifest.json.
+T21 AC048 review and AC049 Windows integration pass at clean implementation
+`abf8976e84f2c3f851efc42a844037a880519b26`: 451 Pester checks in each actual
+PS5.1 and pinned PS7.6.6, 902 total/22 reports, all bad counts zero; 40 Python tests,
+independent corpus/native/archive reviews. Corpus: 73 entries/46 valid PDFs,
+71 fixed entries reproducible; native audit: 42 observations/38 fresh PDFium reads.
+Runtime PS1/BAT/helpers/defaults/native arguments are unchanged. Scoped analyzer
+has zero errors and reviewed harness findings; full T22 is still open.
 
-README installation now includes the required src helper, optional Ghostscript,
-the original command routes and0/1/2 exits. Public usage/troubleshooting/dependency/
-privacy/security docs match completed behavior. MIT LICENSE and application/BAT/
-helper bytes, defaults, native flags and prior PDF limitation/preset docs are unchanged.
-C1 was normally pushed; fresh read-only sync proved local=live and clean, and
-draft PR20 head matched C1. Records-only C2 is checked after normal push and
-reported in the session, without inventing its future SHA or synchronization.
-Owner merged prior PR19; origin/development branch remain unchanged.
+Normal implementation push and fresh clean/live sync passed; draft PR21 head
+matched tested C1b. Records-only C2 is checked after push in the session, avoiding
+self-referential evidence. Owner merged PR20 into main at 8540ed2 (task-start tree).
+See evidence/T21-completion.md, results and archive review for actual commands,
+environment, preparation failures, source/hash bindings and scoped limitations.
 
-T19 synthetic preservation observations still apply: master fields can be renamed,
-document attachment indexes/tag trees lost, editable email fields/widgets lost,
-and screen orientation changed. Keep originals; no signature/XFA/PDF-A/accessibility/
-malware/universal archival guarantees. Doc/isolated-binding/controlled tests remain
-distinct from native/manual evidence. Physical Explorer, full native/lint/security/
-CI/package/publication gates remain open. T21 is pending and unstarted.
+Retain signed/feature-rich originals and measured T19 preservation limitations.
+Full fault/static/native, physical Explorer, CI, security, OS/UNC, package and
+publication gates remain open. A tag/draft is never release completion.

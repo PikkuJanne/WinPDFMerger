@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8'?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="9" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2026-10-08" time="15.04.04">
+  <environment os-version="10.0.26300" platform="Microsoft Windows 11 Pro|C:\Windows|\Device\Harddisk0\Partition3" nunit-version="2.5.8.0" cwd="&lt;REPO&gt;" machine-name="&lt;COMPUTERNAME&gt;" user-domain="&lt;COMPUTERNAME&gt;" clr-version="10.0.12" user="&lt;USERNAME&gt;" />
+  <culture-info current-culture="fi-FI" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="11.1989" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="&lt;REPO&gt;\tests\filesafety\Staging.Native.Tests.ps1" executed="True" result="Success" success="True" time="11.1989" asserts="0" description="&lt;REPO&gt;\tests\filesafety\Staging.Native.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="AC027: actual engines preserve source and existing final bytes" executed="True" result="Success" success="True" time="4.6486" asserts="0" description="AC027: actual engines preserve source and existing final bytes">
+            <results>
+              <test-case description="uses one private stage for actual PDFtk and Ghostscript, then cleans only the caller-owned stage" name="AC027: actual engines preserve source and existing final bytes.uses one private stage for actual PDFtk and Ghostscript, then cleans only the caller-owned stage" time="1.3312" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="cleans owned staging after actual PDFtk rejects bad data without replacing sources or an existing final" name="AC027: actual engines preserve source and existing final bytes.cleans owned staging after actual PDFtk rejects bad data without replacing sources or an existing final" time="0.1992" asserts="0" success="True" result="Success" executed="True" />
+              <test-suite type="ParameterizedTest" name="AC027: actual engines preserve source and existing final bytes.refuses an existing &lt;Tool&gt; final before native launch and keeps its SHA256" executed="True" result="Success" success="True" time="0.2458" asserts="0" description="refuses an existing &lt;Tool&gt; final before native launch and keeps its SHA256">
+                <results>
+                  <test-case description="refuses an existing Pdftk final before native launch and keeps its SHA256" name="AC027: actual engines preserve source and existing final bytes.refuses an existing Pdftk final before native launch and keeps its SHA256" time="0.1412" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="refuses an existing Ghostscript final before native launch and keeps its SHA256" name="AC027: actual engines preserve source and existing final bytes.refuses an existing Ghostscript final before native launch and keeps its SHA256" time="0.1046" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="ParameterizedTest" name="AC027: actual engines preserve source and existing final bytes.keeps a foreign &lt;Kind&gt; at the &lt;Tool&gt; final inserted after real native success at the actual no-overwrite move" executed="True" result="Success" success="True" time="2.8045" asserts="0" description="keeps a foreign &lt;Kind&gt; at the &lt;Tool&gt; final inserted after real native success at the actual no-overwrite move">
+                <results>
+                  <test-case description="keeps a foreign file at the Pdftk final inserted after real native success at the actual no-overwrite move" name="AC027: actual engines preserve source and existing final bytes.keeps a foreign file at the Pdftk final inserted after real native success at the actual no-overwrite move" time="0.7767" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="keeps a foreign file at the Ghostscript final inserted after real native success at the actual no-overwrite move" name="AC027: actual engines preserve source and existing final bytes.keeps a foreign file at the Ghostscript final inserted after real native success at the actual no-overwrite move" time="0.9206" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="keeps a foreign directory at the Pdftk final inserted after real native success at the actual no-overwrite move" name="AC027: actual engines preserve source and existing final bytes.keeps a foreign directory at the Pdftk final inserted after real native success at the actual no-overwrite move" time="0.3504" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="keeps a foreign directory at the Ghostscript final inserted after real native success at the actual no-overwrite move" name="AC027: actual engines preserve source and existing final bytes.keeps a foreign directory at the Ghostscript final inserted after real native success at the actual no-overwrite move" time="0.7568" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="AC028: actual same-second concurrent runs isolate staging, final moves and cleanup" executed="True" result="Success" success="True" time="9.0661" asserts="0" description="AC028: actual same-second concurrent runs isolate staging, final moves and cleanup">
+            <results>
+              <test-case description="starts two real native jobs behind a shared barrier and preserves the live second run staging while the first cleans" name="AC028: actual same-second concurrent runs isolate staging, final moves and cleanup.starts two real native jobs behind a shared barrier and preserves the live second run staging while the first cleans" time="4.4075" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

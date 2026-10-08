@@ -37,7 +37,8 @@ BeforeAll {
         $engineHashes.Add([pscustomobject]@{Name=$selection.Leaf; SHA256=$hash})
     }
     $pythonHash = (Get-FileHash -LiteralPath $PythonPath -Algorithm SHA256).Hash.ToLowerInvariant()
-    if ($pythonHash -cne 'dd5f8d19f6755d6491ee7c4bef2fe35ddd521334cc3ca3ed8fc93ebcadf135d0') { throw 'Development Python differs from its approved pin.' }
+    $pythonPins = Import-PowerShellDataFile -LiteralPath (Join-Path $repo 'tests/TestDependencies.psd1')
+    if ($pythonHash -cnotin $pythonPins.DevelopmentPythonSHA256) { throw 'Development Python differs from its approved pins.' }
     $pdftkVersion = Get-NativeToolVersion -Path $PdftkPath -Tool PdfTk
     $gsVersion = Get-NativeToolVersion -Path $GhostscriptPath -Tool Ghostscript
     if ($pdftkVersion -cne '2.02' -or $gsVersion -cne '10.08.0') { throw 'Parameter integration requires approved exact engine versions.' }
