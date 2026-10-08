@@ -606,6 +606,192 @@ function Write-NativeProcessLog {
     ) | Write-RunLog -LiteralPath $LiteralPath -Append
 }
 
+function ConvertFrom-PdfDocumentData {
+    [CmdletBinding()]
+    param([AllowEmptyString()][string]$Text)
+
+    # Only a physical stdout label supplies the count. Horizontal whitespace
+    # cannot consume another line, and a malformed duplicate is still ambiguous.
+    $labels = @([regex]::Matches($Text, '(?m)^NumberOfPages:[^\r\n]*\r?$'))
+    if ($labels.Count -ne 1) { throw 'PDF document data must contain exactly one labeled page count.' }
+    $value = [regex]::Match($labels[0].Value, '^NumberOfPages:[ \t]*([0-9]+)[ \t]*\r?$')
+    $count = [long]0
+    if (-not $value.Success -or -not [long]::TryParse($value.Groups[1].Value,
+            [Globalization.NumberStyles]::None, [Globalization.CultureInfo]::InvariantCulture, [ref]$count) -or $count -le 0) {
+        throw 'PDF document data has an invalid, zero or unsupported page count.'
+    }
+    return $count
+}
+
+function Get-PdfInputSnapshot {
+    [CmdletBinding()]
+    param([Parameter(Mandatory=$true)][string]$LiteralPath)
+
+    try {
+        if ([string]::IsNullOrWhiteSpace($LiteralPath) -or $LiteralPath.IndexOf([char]0) -ge 0 -or
+            -not [IO.Path]::IsPathRooted($LiteralPath) -or [IO.Path]::GetFullPath($LiteralPath) -ine $LiteralPath) {
+            throw 'Use a literal canonical absolute input file path.'
+        }
+        if ($LiteralPath.Length -ge 260) { throw 'Input file paths must be fewer than 260 UTF-16 characters; use shorter folders without renaming sources.' }
+        # Get-Item reads fresh metadata; discovery FileInfo caches are not reused.
+        $file = Get-Item -LiteralPath $LiteralPath -Force -ErrorAction Stop
+        if ($file -isnot [IO.FileInfo]) { throw 'The input must be a filesystem file.' }
+        if ($file.Length -eq 0) { throw 'The input is empty.' }
+        return [pscustomobject]@{
+            FullName = $file.FullName
+            Length = [long]$file.Length
+            LastWriteTimeUtcTicks = [long]$file.LastWriteTimeUtc.Ticks
+        }
+    } catch { throw "PDF input '$LiteralPath' cannot be inspected: $($_.Exception.Message)" }
+}
+
+function Assert-PdfInputSnapshot {
+    param([Parameter(Mandatory=$true)]$Snapshot)
+
+    $current = Get-PdfInputSnapshot -LiteralPath $Snapshot.FullName
+    if ($current.Length -ne $Snapshot.Length -or $current.LastWriteTimeUtcTicks -ne $Snapshot.LastWriteTimeUtcTicks) {
+        throw "PDF input '$($Snapshot.FullName)' changed during preflight. Use stable source documents and run again; no merge was started."
+    }
+}
+
+function Read-PdfEnvelopeBytes {
+    param([IO.Stream]$Stream, [long]$Offset, [ValidateRange(1, 8192)][int]$Count)
+
+    $Stream.Position = $Offset
+    $buffer = New-Object byte[] $Count
+    $read = 0
+    while ($read -lt $Count) {
+        $received = $Stream.Read($buffer, $read, ($Count - $read))
+        if ($received -eq 0) { throw 'PDF envelope changed or could not be read completely.' }
+        $read += $received
+    }
+    return ,$buffer
+}
+
+function Assert-PdfInputEnvelope {
+    [CmdletBinding()]
+    param([Parameter(Mandatory=$true)][string]$LiteralPath)
+
+    $stream = $null
+    try {
+        $stream = [IO.File]::Open($LiteralPath, [IO.FileMode]::Open, [IO.FileAccess]::Read,
+            ([IO.FileShare]::ReadWrite -bor [IO.FileShare]::Delete))
+        $length = $stream.Length
+        if ($length -eq 0) { throw 'The input is empty.' }
+        # Latin1 preserves one byte per character; offsets are byte positions,
+        # never UTF8 character positions or normalized newline positions.
+        $encoding = [Text.Encoding]::GetEncoding(28591)
+        $head = $encoding.GetString((Read-PdfEnvelopeBytes -Stream $stream -Offset 0 -Count ([int][Math]::Min(16, $length))))
+        if ($head -cnotmatch '\A%PDF-[12]\.[0-9](?:\r\n|\r|\n)') { throw 'A supported PDF header must begin the input file.' }
+        $tailLength = [int][Math]::Min(8192, $length)
+        $tail = $encoding.GetString((Read-PdfEnvelopeBytes -Stream $stream -Offset ($length - $tailLength) -Count $tailLength))
+        # Only the final footer counts. Earlier EOF/startxref0 records in valid
+        # linearized/incremental PDFs do not decide this envelope check.
+        $footer = [regex]::Match($tail, '(?:\A|[\r\n])[ \t]*startxref[ \t]*(?:\r\n|\r|\n)[ \t]*([0-9]+)[ \t]*(?:\r\n|\r|\n)%%EOF[\x00\t\n\f\r ]*\z')
+        $offset = [long]0
+        if (-not $footer.Success -or -not [long]::TryParse($footer.Groups[1].Value,
+                [Globalization.NumberStyles]::None, [Globalization.CultureInfo]::InvariantCulture, [ref]$offset) -or
+            $offset -le 0 -or $offset -ge $length) {
+            throw 'PDF footer is unsupported or malformed: require final startxref with a positive in-file offset and terminal %%EOF within the last 8192 bytes.'
+        }
+        $target = $encoding.GetString((Read-PdfEnvelopeBytes -Stream $stream -Offset $offset -Count ([int][Math]::Min(1024, ($length - $offset)))))
+        $table = $target -cmatch '\Axref(?:[\x00\t\n\f\r ]|\z)'
+        $separator = '(?:[\x00\t\n\f\r ]|%[^\r\n]*(?:\r\n|\r|\n))+'
+        $indirect = $target -cmatch ('\A[0-9]+' + $separator + '[0-9]+' + $separator + 'obj(?=[\x00\t\n\f\r ()<>\[\]{}/%])')
+        if (-not $table -and -not $indirect) {
+            throw 'PDF final cross-reference target is unsupported or malformed; expected xref or an indirect-object header within 1024 bytes.'
+        }
+        # This is an envelope plausibility guard. PDFtk still inspects the page
+        # structure; neither check certifies every dictionary/stream or fidelity.
+    } catch { throw "PDF input '$LiteralPath' failed envelope preflight: $($_.Exception.Message)" }
+    finally { if ($null -ne $stream) { $stream.Dispose() } }
+}
+
+function Get-PdfDocumentInspection {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory=$true)][string]$Executable,
+        [Parameter(Mandatory=$true)][string]$LiteralPath,
+        [ValidateRange(1, 2147483647)][int]$TimeoutMilliseconds = 900000
+    )
+
+    $native = $null
+    $count = $null
+    $inputError = $null
+    try {
+        $null = Get-PdfInputSnapshot -LiteralPath $LiteralPath
+        Assert-PdfInputEnvelope -LiteralPath $LiteralPath
+        # Read-only operation and explicit stdout target: no output PDF, password
+        # workflow or repair operation. Shared runner closes stdin and bounds
+        # execution, both streams, capture and immediate-owned termination.
+        $native = Invoke-NativeProcess -Executable $Executable `
+            -Arguments @($LiteralPath, 'dump_data_utf8', 'output', '-', 'dont_ask') -TimeoutMilliseconds $TimeoutMilliseconds
+        if (-not $native.Succeeded) {
+            throw "PDFtk document inspection failed (exit code: $($native.ExitCode)). See native launch/capture/timeout details and both streams; protected or unparseable inputs are unsupported without passwords or repair."
+        }
+        $count = ConvertFrom-PdfDocumentData -Text $native.Stdout
+    } catch { $inputError = "PDF input '$LiteralPath' failed preflight: $($_.Exception.Message)" }
+    return [pscustomobject]@{
+        NativeResult = $native
+        PageCount = $count
+        InputError = $inputError
+        Succeeded = ($null -eq $inputError)
+    }
+}
+
+function Get-PdfInputInventory {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory=$true)][string]$Executable,
+        [Parameter(Mandatory=$true)][AllowEmptyCollection()][object[]]$Inputs,
+        [string]$LogPath,
+        [ValidateRange(1, 2147483647)][int]$TimeoutMilliseconds = 900000
+    )
+
+    if ($Inputs.Count -eq 0) { throw 'The page inventory requires at least one input file.' }
+    $snapshots = New-Object 'System.Collections.Generic.List[object]'
+    # Freeze every metadata record before inspecting the first input. Discovery
+    # remains the sole enumeration; later files are never added to this run.
+    foreach ($inputFile in $Inputs) {
+        if ($inputFile -isnot [IO.FileInfo]) { throw 'The page inventory requires discovered filesystem input files.' }
+        $snapshots.Add((Get-PdfInputSnapshot -LiteralPath $inputFile.FullName))
+    }
+    $entries = New-Object 'System.Collections.Generic.List[object]'
+    $total = [long]0
+    for ($index = 0; $index -lt $snapshots.Count; $index++) {
+        $snapshot = $snapshots[$index]
+        Assert-PdfInputSnapshot -Snapshot $snapshot
+        $inspection = Get-PdfDocumentInspection -Executable $Executable -LiteralPath $snapshot.FullName -TimeoutMilliseconds $TimeoutMilliseconds
+        if ($LogPath -and $null -ne $inspection.NativeResult) {
+            # The logger echoes strings on the success stream. Keep raw evidence
+            # in the file without mixing it into this function's result object.
+            Write-NativeProcessLog -Result $inspection.NativeResult -LiteralPath $LogPath -Label ('Input preflight ' + ($index + 1)) | Out-Null
+        }
+        if (-not $inspection.Succeeded) { throw $inspection.InputError }
+        Assert-PdfInputSnapshot -Snapshot $snapshot
+        $pages = [long]$inspection.PageCount
+        if ($pages -le 0 -or $total -gt ([long]::MaxValue - $pages)) {
+            throw "Expected page total is zero or exceeds the supported limit at PDF input '$($snapshot.FullName)'."
+        }
+        $total += $pages
+        $entries.Add([pscustomobject]@{
+            FullName = $snapshot.FullName
+            Length = $snapshot.Length
+            LastWriteTimeUtcTicks = $snapshot.LastWriteTimeUtcTicks
+            PageCount = $pages
+        })
+        # Each potentially large native result is logged promptly, then released;
+        # only lightweight ordered metadata survives the inventory loop.
+        $inspection = $null
+    }
+    return [pscustomobject]@{ Inputs = $entries.ToArray(); ExpectedPageCount = $total }
+}
+
+function Assert-PdfInputInventory {
+    param([Parameter(Mandatory=$true)]$Inventory)
+    foreach ($entry in $Inventory.Inputs) { Assert-PdfInputSnapshot -Snapshot $entry }
+}
+
 function Invoke-PdfToolJob {
     [CmdletBinding()]
     param(

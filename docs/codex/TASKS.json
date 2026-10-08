@@ -350,7 +350,7 @@
       "id": "T11",
       "milestone": "M2",
       "title": "Preflight every input PDF and page totals",
-      "status": "pending",
+      "status": "done",
       "depends_on": [
         "T10"
       ],
@@ -364,8 +364,17 @@
         "AC025",
         "AC026"
       ],
-      "evidence": [],
-      "notes": null
+      "evidence": [
+        "docs/codex/evidence/T11-completion.md",
+        "docs/codex/evidence/T11-C1-results.json",
+        "docs/codex/evidence/T11-C1-reports/manifest.json",
+        "docs/codex/evidence/T11-C1-review.json",
+        "docs/codex/evidence/T11-C1-live-sync.json",
+        "docs/codex/evidence/T11-cache-verification.json",
+        "docs/codex/evidence/T11-environment.json",
+        "docs/codex/evidence/T11-checkpoint.md"
+      ],
+      "notes": "Clean C1 822f84eb4f7f0d75736887d9d79d0d363ae551a7: nine focused tiers in each actual PS5.1.26100.9444 / supported PS7.6.6, 287 passes each / 574 total, all failure/skip/not-run counts zero. AC025/26 pass: named whole-job rejection before merge, bounded envelope plausibility, strict labeled positive Int64 page counts and exact expected totals/natural order independently observed with PDFium. Frozen fresh length/UTCmtime checks catch obvious changes, not a transactional snapshot. Original native9/4 logger failures and tolerated invalid CR stream controls remain historical, separately retained. Corrected CR structural/footer, incremental, xref-stream and actual GS-linearized controls pass. Static0errors/31warnings/6information reviewed nonblocking. Normal C1 push/fresh clean live equality verified; records-only C2 synchronization reported in session. Draft PR https://github.com/PikkuJanne/WinPDFMerger/pull/11. T12 next; no universal validity/encryption detection, full fidelity or release claim."
     },
     {
       "id": "T12",

@@ -172,8 +172,24 @@ for ($index = 0; $index -lt $pdfs.Count; $index++) {
     ("Input {0}: {1}" -f ($index + 1), $pdfs[$index].FullName) | Write-RunLog -LiteralPath $logPath -Append
 }
 
+# Inspect every frozen ordered input before starting the merge. The expected
+# total is input evidence; staged master/email validation belongs to later gates.
+try {
+    $inventory = Get-PdfInputInventory -Executable $pdftkPath -Inputs $pdfs -LogPath $logPath
+    for ($index = 0; $index -lt $inventory.Inputs.Count; $index++) {
+        ("Input {0} pages: {1}" -f ($index + 1), $inventory.Inputs[$index].PageCount) | Write-RunLog -LiteralPath $logPath -Append
+    }
+    ("Expected page total: {0}" -f $inventory.ExpectedPageCount) | Write-RunLog -LiteralPath $logPath -Append
+    Assert-PdfInputInventory -Inventory $inventory
+} catch {
+    'PDFtk failed during input preflight. No merge was started.' | Write-RunLog -LiteralPath $logPath -Append
+    $_.Exception.Message | Write-RunLog -LiteralPath $logPath -Append
+    Write-Host "See log: $logPath" -ForegroundColor Red
+    exit 1
+}
+
 # --- PDFtk merge through bounded, prompt-free private output ---
-$merge = Invoke-PdfToolJob -Tool Pdftk -Executable $pdftkPath -InputPaths @($pdfs.FullName) -OutputPath $outLossless
+$merge = Invoke-PdfToolJob -Tool Pdftk -Executable $pdftkPath -InputPaths @($inventory.Inputs.FullName) -OutputPath $outLossless
 if ($null -ne $merge.NativeResult) {
     Write-NativeProcessLog -Result $merge.NativeResult -LiteralPath $logPath -Label PDFtk
 }
