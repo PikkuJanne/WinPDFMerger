@@ -84,6 +84,8 @@ Describe 'Windows CI policy contract' {
         $yaml | Should -Match 'if-no-files-found: error'
         $yaml | Should -Match 'include-hidden-files: false'
         $yaml | Should -Match 'retention-days: 7'
+        # runner context is available to step env, not job env.
+        $yaml | Should -Not -Match '(?m)^      CI_REPORTS:.*runner\.temp'
         # PS5.1 drops empty native argv values; the native job has no analyzer.
         $yaml | Should -Match "if \(\`$env:CI_GROUP -eq 'unit'\) \{ \`$arguments \+= @\('-AnalyzerModulePath', \`$env:CI_ANALYZER\) \}"
     }

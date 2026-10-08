@@ -37,3 +37,12 @@ root regressions pass again after the final invocation change.
 
 C1 will bind the implementation. Hosted pass, PR execution and deliberate
 failure remain required before AC054/AC055 can be accepted.
+
+First pushed C1 `7f3426deac5834c9e070855f65eaab02059aa0bf` was clean/live
+synchronized. Draft PR24 was created and attached. Hosted push run
+`37808521621` failed before creating any job or artifact; it is not test
+evidence. Investigation found `runner.temp` in job-level `env`, where GitHub's
+context-availability contract excludes `runner`. The setting is moved into
+step-level `env`, where it is supported, with a workflow regression assertion.
+The next clean implementation checkpoint and hosted rerun will supersede this
+failed preparation, retaining its actual run ID and zero executed jobs.

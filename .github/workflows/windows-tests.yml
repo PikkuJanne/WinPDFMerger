@@ -34,7 +34,6 @@ jobs:
       CI_SHELL_NAME: ${{ matrix.shell }}
       CI_COMMIT: ${{ github.sha }}
       CI_FAILURE_PROBE: ${{ github.ref == 'refs/heads/codex/t24-ci-failure-probe' || inputs.failure_probe == true }}
-      CI_REPORTS: ${{ runner.temp }}/sanitized-reports
     steps:
       - name: Check out the tested commit
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -45,12 +44,15 @@ jobs:
       - name: Prepare verified temporary test dependencies
         id: dependencies
         shell: powershell
+        env:
+          CI_REPORTS: ${{ runner.temp }}/sanitized-reports
         run: |
           & ./tools/test/Initialize-CiDependencies.ps1 -Group $env:CI_GROUP -Shell $env:CI_SHELL_NAME -ArtifactDirectory $env:CI_REPORTS
 
       - name: Run the selected tests and export sanitized receipts
         shell: powershell
         env:
+          CI_REPORTS: ${{ runner.temp }}/sanitized-reports
           CI_SHELL_PATH: ${{ steps.dependencies.outputs.shell_path }}
           CI_PESTER: ${{ steps.dependencies.outputs.pester_path }}
           CI_ANALYZER: ${{ steps.dependencies.outputs.analyzer_path }}
