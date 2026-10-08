@@ -3,8 +3,15 @@
 Target: published and independently verified `v1.0.0` in `PikkuJanne/WinPDFMerger`.
 Completed milestone: M1 — paths, ordering and native execution.
 Completed tasks: T01 through T12.
-Next task: T13 — validate and publish the master truthfully, in M2.
+Active task: T13 — validate and publish the master truthfully, in M2.
 Publication: NOT STARTED.
+
+T13 is in progress. Mandatory frozen positive expected pages, separate bounded
+staged-master inspection and exact count now precede publication; planned and
+published logs differ. Dirty focused unit/native runs pass, with scope/history in
+T13 checkpoint. Required AC030/31 await committed clean dual-shell eleven tiers
+(369each/738total expected), independent review/audit and fresh pushed equality.
+T12 PR12 is now owner-merged; starting readiness d9e2038/main c7cb75e were checked.
 
 T12 and required AC027/AC028/AC029 pass at clean implementation C1 `1a4901b8914d02af6c539bc5b82181705ca3c2e9`.
 Ten focused tiers pass in each actual PS5.1.26100.9444 / supported PS7.6.6:
@@ -35,7 +42,8 @@ admin/PATH/persistent policy/security change. Local NTFS Windows11x64/build26300
 standard-user synthetic evidence; ordinary Restricted/allUndefined remains.
 
 T11 frozen per-input bounded inspection/expected inventory, natural order and
-change checks remain passing. Current T12 publication gate is nonempty-only:
-T13 structural master validation and T14 email validation/size/outcomes are next.
+change checks remain passing. T12's historical publication gate was nonempty-only;
+T13's structural master validation is implemented pending clean acceptance.
+T14 email validation/size/outcomes is next after T13 closure.
 T15 interruption/descendants,remaining options,fidelity,OS support-channel/UNC/
 Explorer,CI/security/package/release gates remain. No full project/release claim.

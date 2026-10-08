@@ -1,6 +1,6 @@
 # Next session
 
-Selected task: T13 — validate and publish the master truthfully.
+Active task: T13 — validate and publish the master truthfully.
 Read AGENTS/INDEX/STATUS,T13 TASKS entry/brief,PRODUCT_SPEC,TECHNICAL_SPEC,
 TEST_STRATEGY/GITHUB_WORKFLOW and AC030/AC031. Recheck branch/clean/origin/live
 refs/PR/tags/releases before edits. Never reset,stash or discard work silently.
@@ -22,11 +22,17 @@ directory removal fails,marker restoration uses guarded CreateNew,best effort.
 No broad orphan scan,prefix exclusion or recursive cleanup. Published master
 must survive email failures; explicit emailPublished governs the summary.
 
-T13 must extend the existing small seams so native success/nonempty staged data
-also needs successful bounded PDFtk inspection and exact expected nonzero page
-total BEFORE publishing/advertising master. Current T12 nonempty-only gate is
-explicitly incomplete for structural/fidelity assurance. Keep T11 frozen expected
-input totals/order/source-change checks; keep sources and defaults. Separate T14
+T13 now extends the existing small seams: native success/nonempty staged data
+also needs successful complete bounded PDFtk inspection and exact frozen positive
+page total BEFORE publishing/advertising master. Mandatory ExpectedPageCount
+prevents a private-helper bypass; receipts distinguish validated/published state.
+38 new unit cases plus12 invocation cases pass50/50 each actual PS5.1/PS7.6.6
+in dirty development. Actual master7 each shell and staged/path smoke pass.
+Required AC030/31 await committed clean eleven tiers,369each/738total expected,
+independent review/native audit and normal push/fresh clean local/live equality.
+See T13 checkpoint for commands/retained history and scope. Start refs were clean
+readiness d9e2038,owner-merged PR12/main c7cb75e; verify current refs afresh.
+Keep T11 frozen input totals/order/source-change checks,sources/defaults. Separate T14
 email validation/size-benefit/outcomes and T15 interruption/descendant cleanup.
 Add regression before/with each fix;helpers remain import-only and PS5.1-compatible.
 

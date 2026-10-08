@@ -81,6 +81,17 @@ BeforeAll {
         $Result.NativeResult.Executable | Should -BeExactly $Executable
         $Result.NativeResult.RenderedArguments | Should -Match ([regex]::Escape($StagePath))
         $Result.NativeResult.ProcessId | Should -BeGreaterThan 0
+        if ($Executable -ceq $PdftkPath) {
+            $Result.OutputValidated | Should -BeTrue
+            $Result.ValidatedPageCount | Should -Be 3
+            $Result.ValidationResult.Succeeded | Should -BeTrue
+            $Result.ValidationResult.PageCount | Should -Be 3
+            $Result.ValidationResult.NativeResult.Started | Should -BeTrue
+            $Result.ValidationResult.NativeResult.ExitCode | Should -Be 0
+            $Result.ValidationResult.NativeResult.ProcessId | Should -Not -Be $Result.NativeResult.ProcessId
+            $Result.ValidationResult.NativeResult.RenderedArguments | Should -Match 'dump_data_utf8'
+            $Result.ValidationResult.NativeResult.RenderedArguments | Should -Match ([regex]::Escape($StagePath))
+        }
     }
 
     # Tests retain every synthetic output/report for evidence. This helper only
@@ -107,7 +118,7 @@ try {
     if ($Role -eq 'B') { [IO.File]::Copy($inputs[0],$staging.EmailPath,$false) }
     [Console]::Out.WriteLine(([ordered]@{ Event='READY'; ProcessId=$PID; Timestamp=$run.Timestamp; BaseName=$run.BaseName; Stage=$staging.DirectoryPath; HeldPath=$staging.EmailPath; Master=$run.MasterPath; Email=$run.EmailPath; Log=$run.LogPath } | ConvertTo-Json -Compress))
     if ([Console]::In.ReadLine() -cne 'GO') { throw 'Missing exact parent start barrier.' }
-    $master = Invoke-PdfToolJob -Tool Pdftk -Executable $Pdftk -InputPaths $inputs -OutputPath $run.MasterPath -Staging $staging -TimeoutMilliseconds 20000
+    $master = Invoke-PdfToolJob -Tool Pdftk -ExpectedPageCount 3 -Executable $Pdftk -InputPaths $inputs -OutputPath $run.MasterPath -Staging $staging -TimeoutMilliseconds 20000
     if (-not $master.Succeeded) { throw ('Actual concurrent master failed: ' + ($master | ConvertTo-Json -Depth 6 -Compress)) }
     if ($Role -eq 'B') {
         [Console]::Out.WriteLine('HOLDING')
@@ -191,7 +202,7 @@ AfterAll {
         Process64Bit=[Environment]::Is64BitProcess; StandardUser=$true
         PdfTkVersion=$pdftkVersion; GhostscriptVersion=$gsVersion; EngineSHA256=$engineHashes.ToArray()
         Observations=$observations.ToArray()
-        Scope='Synthetic local Windows staging/native/publication evidence. Collision insertion and pipe barriers are controlled scheduling; actual engines and final File.Move are real. Page totals are narrow structural checks, not fidelity, desktop, T13 validation or T14 email-size acceptance.'
+        Scope='Synthetic local Windows staging/native/publication evidence. Collision insertion and pipe barriers are controlled scheduling; actual engines, master inspection and final File.Move are real. Page totals/master gate checks are narrow structural evidence, not fidelity, desktop or T14 email-size acceptance.'
     } | ConvertTo-Json -Depth 12 | Write-RunLog -LiteralPath $report | Out-Null
     Write-Host ('Staging observations: ' + $report)
 }
@@ -202,7 +213,7 @@ Describe 'AC027: actual engines preserve source and existing final bytes' {
         $before = Get-StagingNativeSnapshot (@($case.Inputs)+@($case.Foreign))
         $stage = New-PdfStaging -OutputFolder $case.Output -RunIdentity 'T12-real-shared-stage'
         try {
-            $master = Invoke-PdfToolJob -Tool Pdftk -Executable $PdftkPath -InputPaths $case.Inputs -OutputPath $case.Master -Staging $stage -TimeoutMilliseconds 20000
+            $master = Invoke-PdfToolJob -Tool Pdftk -ExpectedPageCount 3 -Executable $PdftkPath -InputPaths $case.Inputs -OutputPath $case.Master -Staging $stage -TimeoutMilliseconds 20000
             Assert-StagingRealSuccess $master $PdftkPath $stage.MasterPath
             [IO.Directory]::Exists($stage.DirectoryPath) | Should -BeTrue
             [IO.File]::Exists($stage.MarkerPath) | Should -BeTrue
@@ -229,9 +240,11 @@ Describe 'AC027: actual engines preserve source and existing final bytes' {
         [IO.File]::Copy($case.Inputs[0],$case.Master,$false)
         $before = Get-StagingNativeSnapshot (@($case.Inputs)+@($case.Foreign,$case.Master))
         $exe = if ($Tool -eq 'Pdftk') { $PdftkPath } else { $GhostscriptPath }
+        $expectedArguments = @{}
+        if ($Tool -eq 'Pdftk') { $expectedArguments.ExpectedPageCount = [long]1 }
         $stage = New-PdfStaging -OutputFolder $case.Output -RunIdentity ('T12-preexisting-' + $Tool)
         try {
-            $result = Invoke-PdfToolJob -Tool $Tool -Executable $exe -InputPaths @($case.Inputs[0]) -OutputPath $case.Master -Staging $stage -TimeoutMilliseconds 20000
+            $result = Invoke-PdfToolJob @expectedArguments -Tool $Tool -Executable $exe -InputPaths @($case.Inputs[0]) -OutputPath $case.Master -Staging $stage -TimeoutMilliseconds 20000
             $result.Succeeded | Should -BeFalse
             $result.OutputPublished | Should -BeFalse
             $result.NativeResult | Should -BeNullOrEmpty
@@ -250,10 +263,12 @@ Describe 'AC027: actual engines preserve source and existing final bytes' {
         param($Tool,$Kind)
         $case = New-StagingNativeCase
         $paths = @($case.Inputs)+@($case.Foreign)
+        $expectedArguments = @{}
+        if ($Tool -eq 'Pdftk') { $expectedArguments.ExpectedPageCount = [long]3 }
         $stage = New-PdfStaging -OutputFolder $case.Output -RunIdentity ('T12-publication-race-' + $Tool)
         try {
             if ($Tool -eq 'Ghostscript') {
-                $master = Invoke-PdfToolJob -Tool Pdftk -Executable $PdftkPath -InputPaths $case.Inputs -OutputPath $case.Master -Staging $stage -TimeoutMilliseconds 20000
+                $master = Invoke-PdfToolJob -Tool Pdftk -ExpectedPageCount 3 -Executable $PdftkPath -InputPaths $case.Inputs -OutputPath $case.Master -Staging $stage -TimeoutMilliseconds 20000
                 Assert-StagingRealSuccess $master $PdftkPath $stage.MasterPath
                 $paths += $case.Master
             }
@@ -280,11 +295,19 @@ Describe 'AC027: actual engines preserve source and existing final bytes' {
             $inputs = if ($Tool -eq 'Pdftk') { $case.Inputs } else { @($case.Master) }
             $final = if ($Tool -eq 'Pdftk') { $case.Master } else { $case.Email }
             $staged = if ($Tool -eq 'Pdftk') { $stage.MasterPath } else { $stage.EmailPath }
-            $result = Invoke-PdfToolJob -Tool $Tool -Executable $exe -InputPaths $inputs -OutputPath $final -Staging $stage -TimeoutMilliseconds 20000
+            $result = Invoke-PdfToolJob @expectedArguments -Tool $Tool -Executable $exe -InputPaths $inputs -OutputPath $final -Staging $stage -TimeoutMilliseconds 20000
             $result.NativeResult.Started | Should -BeTrue
             $result.NativeResult.Succeeded | Should -BeTrue
             $result.NativeResult.ExitCode | Should -Be 0
             $result.NativeResult.Executable | Should -BeExactly $exe
+            if ($Tool -eq 'Pdftk') {
+                $result.OutputValidated | Should -BeTrue
+                $result.ValidatedPageCount | Should -Be 3
+                $result.ValidationResult.Succeeded | Should -BeTrue
+                $result.ValidationResult.NativeResult.Started | Should -BeTrue
+                $result.ValidationResult.NativeResult.ExitCode | Should -Be 0
+                $result.ValidationResult.NativeResult.RenderedArguments | Should -Match 'dump_data_utf8'
+            }
             $result.Succeeded | Should -BeFalse
             $result.OutputPublished | Should -BeFalse
             $result.OutputError | Should -Not -BeNullOrEmpty
@@ -312,7 +335,7 @@ Describe 'AC027: actual engines preserve source and existing final bytes' {
         $before = Get-StagingNativeSnapshot $paths
         $stage = New-PdfStaging -OutputFolder $case.Output -RunIdentity 'T12-real-pdftk-failure'
         try {
-            $result = Invoke-PdfToolJob -Tool Pdftk -Executable $PdftkPath -InputPaths @($case.Inputs[0],$bad) -OutputPath $case.Master -Staging $stage -TimeoutMilliseconds 20000
+            $result = Invoke-PdfToolJob -Tool Pdftk -ExpectedPageCount 1 -Executable $PdftkPath -InputPaths @($case.Inputs[0],$bad) -OutputPath $case.Master -Staging $stage -TimeoutMilliseconds 20000
             $result.Succeeded | Should -BeFalse
             $result.OutputPublished | Should -BeFalse
             $result.NativeResult.Started | Should -BeTrue

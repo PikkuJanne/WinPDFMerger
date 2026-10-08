@@ -133,7 +133,7 @@ BeforeAll {
         if ($ExpectedExecutablePath) { $text | Should -Match ([regex]::Escape($ExpectedExecutablePath)) }
         foreach ($detail in $ExpectedDetails) { $text | Should -Match $detail }
         $text | Should -Match '(?i)install PDFtk Server'
-        $text | Should -Not -Match '(?im)^SUCCESS:|PDFtk merge OK|Merge completed successfully'
+        $text | Should -Not -Match '(?im)^SUCCESS:|PDFtk merge OK|Master validation OK|Merged master published|Merge completed successfully'
         @(Get-ChildItem -LiteralPath $Application.App -File -Force -Recurse | Where-Object { $_.Extension -in @('.pdf', '.log') }).Count | Should -Be 0
         (@(Get-DependencyEntrySourceSnapshot $Application.Source) -join "`n") | Should -BeExactly $before
         Assert-DependencyEntryParentUnchanged

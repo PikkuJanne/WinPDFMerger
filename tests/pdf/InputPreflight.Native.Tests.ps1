@@ -213,7 +213,7 @@ print(json.dumps({"page_count": len(actual), "page_identifiers": actual, "pypdfi
         $log | Should -Match ([regex]::Escape($BadPath))
         Assert-InputOrder $Application $log @('1.pdf',[IO.Path]::GetFileName($BadPath),'10.pdf')
         $log | Should -Not -Match '(?m)^PDFtk arguments:.*\bcat\b'
-        $log | Should -Not -Match '(?m)^PDFtk merge OK\.|^Ghostscript(?: arguments:| stdout:| stderr:)'
+        $log | Should -Not -Match '(?m)^PDFtk merge OK\.|^Master validation OK|Merged master published|^Ghostscript(?: arguments:| stdout:| stderr:)'
         @(Get-ChildItem -LiteralPath $Application.Output -File -Filter '*.pdf').Count | Should -Be 0
         Assert-InputResidue $Application
         (Get-InputTestSnapshot $Application) | Should -BeExactly $before
