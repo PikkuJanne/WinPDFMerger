@@ -1,0 +1,451 @@
+{
+  "SchemaVersion": 1,
+  "Task": "T15",
+  "Phase": "C1",
+  "ReviewedAtUtc": "2026-10-08T06:23:11.825019+00:00",
+  "DirtyWorktreeAtReview": false,
+  "ReviewerRole": "FaultIO test agent, independent of root-authored production implementation",
+  "IndependenceLimit": "Reviewer authored FaultIO tests; this is a separate review of root-authored entry/helpers/inline owned-native adapter, not an independent review of the reviewer own tests.",
+  "Result": "no_blocking_findings",
+  "Findings": [],
+  "SourceFiles": [
+    {
+      "Path": "WinPDFMerge.ps1",
+      "SHA256": "3c176bf7cdccb2f987cad84f08184477c6d5921c32e1b9ad1a6c0bc868029cde",
+      "C1GitBlobSHA256": "3c176bf7cdccb2f987cad84f08184477c6d5921c32e1b9ad1a6c0bc868029cde"
+    },
+    {
+      "Path": "src/WinPDFMerge.Helpers.ps1",
+      "SHA256": "985a467989e66d68cabba1e6b5846c73a1c61fb33f69ee113fd764a251639ce7",
+      "C1GitBlobSHA256": "2a7b019485a4ef302a7a0270a3dca10f99ff2bddb20b719e4a7665ff254384aa"
+    },
+    {
+      "Path": "tests/faults/FaultIO.Tests.ps1",
+      "SHA256": "8883965c71c5c9369a33b2d3e180a6c2622c8f3c52c86c86543d3e4d71858db9",
+      "C1GitBlobSHA256": "8883965c71c5c9369a33b2d3e180a6c2622c8f3c52c86c86543d3e4d71858db9"
+    }
+  ],
+  "ReviewedAreas": [
+    "Native executable is literal and explicit; CreateProcessW receives a nonnull application path and the existing serialized vector, without shell evaluation.",
+    "Unnamed noninherited invocation job and exact three-pipe inherited handle list are associated at process creation; the process is suspended until its managed handle and readers are retained.",
+    "No breakaway permission is set. Normal inherited job descendants are released by exact-job termination; no image-name termination or unrelated PID sweep exists.",
+    "Execution, capture and termination waits are bounded. Success requires confirmed ownership release; a prior stop/capture/launch error remains a failure.",
+    "GS_OPTIONS removal changes only the selected ProcessStartInfo environment; the parent unset/empty/value state is never written by application runtime.",
+    "Cancellation is forwarded through versions, inventory, inspection and merge/email work, checked before final move and reporting, and the console context is disposed in outer finally.",
+    "Master/email publication requires existing complete validation, fixed count, stable snapshots and no-overwrite same-folder File.Move; optional failures do not delete valid published PDFs.",
+    "Missing/false conversion or inspection OwnershipReleased quarantines the owned stage. Retained cleanup closes its marker handle without deleting known files or ownership evidence.",
+    "Early metadata/preflight diagnostics have logging guards; RunFailed is separate from publication state, preserving already-published paths under later reporting failures.",
+    "Returned cleanup-only warnings may accompany valid success; unexpected cleanup throw marks run failure and retains explicit valid paths. Final result log is written after other summary writes."
+  ],
+  "TestExecutions": [
+    {
+      "path": "tests/.work/T15-focused-FaultIO-ps51-914896cff31e475d909f0755aaf07ec3",
+      "summary": {
+        "Task": "T15",
+        "EvidenceClass": "unit controlled native receipts, copied entry and real NTFS locks",
+        "CommitUnderTest": "f896457acf695831b4bf8f07f2eec3775e3213a8",
+        "DirtyWorktree": true,
+        "Shell": "5.1.26100.9444",
+        "Edition": "Desktop",
+        "Is64Bit": true,
+        "PesterVersion": "6.2.0",
+        "Passed": 28,
+        "Failed": 0,
+        "FailedBlocks": 0,
+        "FailedContainers": 0,
+        "Skipped": 0,
+        "NotRun": 0,
+        "Total": 28
+      },
+      "command": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-NoLogo",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "<REPO>\\tests\\.work\\Run-T15FaultIOFocus.ps1",
+        "-ReportDirectory",
+        "<REPO>\\tests\\.work\\T15-focused-FaultIO-ps51-914896cff31e475d909f0755aaf07ec3"
+      ],
+      "child_environment_removed_keys": [
+        "PSMODULEPATH"
+      ],
+      "files": {
+        "execution.json": "c9f529113a5f1d14270545ca6f8be9b9e729a1076264dae800c38fb028b3236f",
+        "invocation.json": "b63f6c71e1f76b9e31c2953cdc3c1d671c9f86122db9cb82fcce3b24ba726bc9",
+        "results.xml": "2316dc9214b75facf2892de576e8ac8d7b3bcdc1bd66a28dc074f8e848245589",
+        "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout.txt": "df4ab9b1001fe78f2b833bc7ab580ecf6c99500fc4a6bfafcc6663022b09f6d8",
+        "summary.json": "e57248e78273f85dcd8f4b6d8a8c30577d49bacec10cc3d16a343ee0297b22ea"
+      }
+    },
+    {
+      "path": "tests/.work/T15-focused-FaultIO-ps7-f4da568ce668461a923bf9383e6ae16d",
+      "summary": {
+        "Task": "T15",
+        "EvidenceClass": "unit controlled native receipts, copied entry and real NTFS locks",
+        "CommitUnderTest": "f896457acf695831b4bf8f07f2eec3775e3213a8",
+        "DirtyWorktree": true,
+        "Shell": "7.6.6",
+        "Edition": "Core",
+        "Is64Bit": true,
+        "PesterVersion": "6.2.0",
+        "Passed": 28,
+        "Failed": 0,
+        "FailedBlocks": 0,
+        "FailedContainers": 0,
+        "Skipped": 0,
+        "NotRun": 0,
+        "Total": 28
+      },
+      "command": [
+        "<APPROVED_PS7_CACHE>\\portable\\pwsh.exe",
+        "-NoLogo",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "<REPO>\\tests\\.work\\Run-T15FaultIOFocus.ps1",
+        "-ReportDirectory",
+        "<REPO>\\tests\\.work\\T15-focused-FaultIO-ps7-f4da568ce668461a923bf9383e6ae16d"
+      ],
+      "child_environment_removed_keys": [
+        "PSMODULEPATH"
+      ],
+      "files": {
+        "execution.json": "ac5fce836659309f3e59a39c20c34fe5be5b379cbc9f940b902f7842c6aac0fb",
+        "invocation.json": "dfbe8649124aa44b9c930e67243ad356ca3fe59be96629fdc406705b829f6a08",
+        "results.xml": "7461e28d21bc688b73efd8dcd0eeaaaf2c5ff9c8b584b1f9d329972b36fb9f3c",
+        "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout.txt": "b3c3467b137fd89f03940e0c8fbb94e91e9b9f7450b1d6c0184a5aebd19b1185",
+        "summary.json": "8f3b5638b34b4212f932b292ff52b5a559e7a165950e5b5f9867c066f0387037"
+      }
+    },
+    {
+      "path": "tests/.work/T15-focused-FaultIO-ps51-b1d408c1fe3e40628098b8d11d282957",
+      "summary": {
+        "Task": "T15",
+        "EvidenceClass": "unit controlled native receipts, copied entry and real NTFS locks",
+        "CommitUnderTest": "f896457acf695831b4bf8f07f2eec3775e3213a8",
+        "DirtyWorktree": true,
+        "Shell": "5.1.26100.9444",
+        "Edition": "Desktop",
+        "Is64Bit": true,
+        "PesterVersion": "6.2.0",
+        "Passed": 32,
+        "Failed": 0,
+        "FailedBlocks": 0,
+        "FailedContainers": 0,
+        "Skipped": 0,
+        "NotRun": 0,
+        "Total": 32
+      },
+      "command": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-NoLogo",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "<REPO>\\tests\\.work\\Run-T15FaultIOFocus.ps1",
+        "-ReportDirectory",
+        "<REPO>\\tests\\.work\\T15-focused-FaultIO-ps51-b1d408c1fe3e40628098b8d11d282957"
+      ],
+      "child_environment_removed_keys": [
+        "PSMODULEPATH"
+      ],
+      "files": {
+        "execution.json": "b96bc8cc182e67694661afb6084446e119d91407b22933a19036dbbb064da3da",
+        "invocation.json": "9a80189d5d31fd8ba69b03a4b2f647a86d8fc0175eae252d88549bc8ff8c13e8",
+        "results.xml": "8a9d1db585fa2bd42eb51c358059f86d4890dec287d122892853578201d7d24a",
+        "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout.txt": "b89f1ed6d4b8ee2d0affdde7e0a328fae649e1b70d8b48e8cd96966d9edcbe54",
+        "summary.json": "b36ff5b76332600d15046c3e7fa2d93caaa646d1615aedcb044aa2d196c8a396"
+      }
+    },
+    {
+      "path": "tests/.work/T15-focused-FaultIO-ps7-81d1a1aa655645c597992279d9a5939d",
+      "summary": {
+        "Task": "T15",
+        "EvidenceClass": "unit controlled native receipts, copied entry and real NTFS locks",
+        "CommitUnderTest": "f896457acf695831b4bf8f07f2eec3775e3213a8",
+        "DirtyWorktree": true,
+        "Shell": "7.6.6",
+        "Edition": "Core",
+        "Is64Bit": true,
+        "PesterVersion": "6.2.0",
+        "Passed": 32,
+        "Failed": 0,
+        "FailedBlocks": 0,
+        "FailedContainers": 0,
+        "Skipped": 0,
+        "NotRun": 0,
+        "Total": 32
+      },
+      "command": [
+        "<APPROVED_PS7_CACHE>\\portable\\pwsh.exe",
+        "-NoLogo",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "<REPO>\\tests\\.work\\Run-T15FaultIOFocus.ps1",
+        "-ReportDirectory",
+        "<REPO>\\tests\\.work\\T15-focused-FaultIO-ps7-81d1a1aa655645c597992279d9a5939d"
+      ],
+      "child_environment_removed_keys": [
+        "PSMODULEPATH"
+      ],
+      "files": {
+        "execution.json": "315b89a92d992c2125d3259fd1c946ce35ddff88ba014da0f6cffded8a758752",
+        "invocation.json": "cd32a62ae8dc3dd791b4665b5fd1edca17441d64398eb5a4e2c7303d0877af7f",
+        "results.xml": "67fec60920738db104606f51d39c61163357e6598124ea8635866457f51c660d",
+        "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout.txt": "97931fcd0f15d5dac1816e94bafd19b292abf2dd04c122158828d5210e65fda0",
+        "summary.json": "463daa58608aa6ea2005e3c15dc052aacc44908622774a49751868b5655f8993"
+      }
+    }
+  ],
+  "TestOutcome": "First28/28 then expanded32/32 pass in both actual required shells. No failures in these four focused executions; no skip or native-engine-support claim.",
+  "CommandsAndMethod": [
+    "Read-only git status/rev-parse/remote/ls-remote and targeted Get-Content/rg source inspection.",
+    "Approved Python -B tests/.work/Run-T15FaultIOFocus.py ps51 and ps7, unique raw reports per invocation; child-only RemoteSigned and case-insensitive inherited PSModulePath removal.",
+    "PS5.1 Parser.ParseFile on the initial fault file: zero errors; both subsequent Pester runs parsed/executed expanded32 cases.",
+    "Read Microsoft primary API documentation for JOB_LIST/HANDLE_LIST, inherited jobs, kill-on-close and process creation.",
+    "Approved Python -B tests/.work/Run-T15C1Analyzer.py ps51/ps7 launches Analyze-T15.ps1 -Label ps51/ps7 -Phase C1 with child-only case-insensitive PSModulePath removal. Both exit0; raw commands/hashes retained in ignored execution receipts."
+  ],
+  "PrimaryDocumentation": [
+    {
+      "Title": "UpdateProcThreadAttribute",
+      "URL": "https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-updateprocthreadattribute",
+      "Support": "Job-list association during child creation; explicit inheritable-handle list with inheritHandles true; attribute values retained until list destruction."
+    },
+    {
+      "Title": "Job Objects",
+      "URL": "https://learn.microsoft.com/en-us/windows/win32/procthread/job-objects",
+      "Support": "Normal CreateProcess children inherit job association; terminate/kill-on-last-close applies to associated processes and nested child jobs."
+    },
+    {
+      "Title": "Inheritance",
+      "URL": "https://learn.microsoft.com/en-us/windows/win32/procthread/inheritance",
+      "Support": "Explicit inherited handle list and STARTF_USESTDHANDLES."
+    }
+  ],
+  "Limitations": [
+    "This review binds clean exact C1; historical focused tests remain explicitly dirty and separate. Full clean acceptance, native evidence and closure/synchronization are owned by root.",
+    "Controlled native receipts and copied helpers are unit decision tests, not actual PDFtk/Ghostscript, OS unstoppable-writer, resource exhaustion or broad ACL experiments.",
+    "Real locked handles were exercised. Denied/full/write/move/log exceptions and unresolved ownership receipts are deliberately injected.",
+    "Ordinary inherited job descendants are the scope; this is not a security sandbox or a guarantee about external process brokers.",
+    "Console event availability depends on host. Physical Ctrl+C, host/window termination and machine crashes are not certified by controlled token tests; abrupt termination cannot guarantee cleanup/exit/log completion.",
+    "Source metadata checks are not a transaction against concurrent external source edits; PDF structure/count is not a fidelity/security/signature or archival certification.",
+    "Root owns actual native/dual-shell full acceptance, static review, code/evidence review, synchronization, and publication gates; this review does not duplicate or claim those results."
+  ],
+  "CommitUnderReview": "53d0923c95a86ae6a44bc89bab51cac6786c1e32",
+  "PriorDirtyReview": {
+    "Path": "tests/.work/T15-M2-runtime-review-dirty.json",
+    "SHA256": "50b429994d14786c94530a9603424d3926e7f3aca71d9206badceb79371f8dfc",
+    "Classification": "historical dirty-source review, not C1 acceptance"
+  },
+  "C1SourceRecheck": "Clean exact C1 and reviewed working/source blob hashes checked; production entry/helpers/FaultIO hashes are unchanged from the final32 focused review. Ownership/log/publication guards and inline owned adapter were freshly reread.",
+  "StaticAnalysisReview": {
+    "Result": "reviewed_nonblocking",
+    "Scope": "13 explicitly listed files; default PSA1.25.0 rules in both actual required shells",
+    "Files": [
+      "WinPDFMerge.ps1",
+      "src/WinPDFMerge.Helpers.ps1",
+      "tools/test/Invoke-Tests.ps1",
+      "tests/faults/FaultIO.Tests.ps1",
+      "tests/faults/FaultRecovery.Native.Tests.ps1",
+      "tests/native/NativeRunner.Tests.ps1",
+      "tests/unit/EmailOutcome.Tests.ps1",
+      "tests/unit/MasterValidation.Tests.ps1",
+      "tests/native/ToolInvocation.Tests.ps1",
+      "tests/pdf/EmailOutcome.Native.Tests.ps1",
+      "tests/pdf/ToolPaths.Native.Tests.ps1",
+      "tests/filesafety/Staging.Native.Tests.ps1",
+      "tests/filesafety/Destination.Native.Tests.ps1"
+    ],
+    "SourceFiles": [
+      {
+        "Path": "WinPDFMerge.ps1",
+        "SHA256": "3c176bf7cdccb2f987cad84f08184477c6d5921c32e1b9ad1a6c0bc868029cde",
+        "C1GitBlobSHA256": "3c176bf7cdccb2f987cad84f08184477c6d5921c32e1b9ad1a6c0bc868029cde"
+      },
+      {
+        "Path": "src/WinPDFMerge.Helpers.ps1",
+        "SHA256": "985a467989e66d68cabba1e6b5846c73a1c61fb33f69ee113fd764a251639ce7",
+        "C1GitBlobSHA256": "2a7b019485a4ef302a7a0270a3dca10f99ff2bddb20b719e4a7665ff254384aa"
+      },
+      {
+        "Path": "tools/test/Invoke-Tests.ps1",
+        "SHA256": "3c8ed122b9854de7ad011d325304ae0bb9c1aa799dac76b96f2f3069878cda6d",
+        "C1GitBlobSHA256": "3c8ed122b9854de7ad011d325304ae0bb9c1aa799dac76b96f2f3069878cda6d"
+      },
+      {
+        "Path": "tests/faults/FaultIO.Tests.ps1",
+        "SHA256": "8883965c71c5c9369a33b2d3e180a6c2622c8f3c52c86c86543d3e4d71858db9",
+        "C1GitBlobSHA256": "8883965c71c5c9369a33b2d3e180a6c2622c8f3c52c86c86543d3e4d71858db9"
+      },
+      {
+        "Path": "tests/faults/FaultRecovery.Native.Tests.ps1",
+        "SHA256": "e7325b526affe7c6f97edd1fda53601a254c30cc8c73ce8ae4dfdef1de321e44",
+        "C1GitBlobSHA256": "e7325b526affe7c6f97edd1fda53601a254c30cc8c73ce8ae4dfdef1de321e44"
+      },
+      {
+        "Path": "tests/native/NativeRunner.Tests.ps1",
+        "SHA256": "652e36ff610fd7106d1d7ceaeb3176c0a0208db97f4a82572cbb256c6ac7e7a5",
+        "C1GitBlobSHA256": "652e36ff610fd7106d1d7ceaeb3176c0a0208db97f4a82572cbb256c6ac7e7a5"
+      },
+      {
+        "Path": "tests/unit/EmailOutcome.Tests.ps1",
+        "SHA256": "120d915d434678013634424748fdc28d5cb05b816744db1c9b75a8270237cc38",
+        "C1GitBlobSHA256": "120d915d434678013634424748fdc28d5cb05b816744db1c9b75a8270237cc38"
+      },
+      {
+        "Path": "tests/unit/MasterValidation.Tests.ps1",
+        "SHA256": "5b507afaf3f2abd79f7193700544c1f70fcd497f1f020183ce5eb64636d647bb",
+        "C1GitBlobSHA256": "5b507afaf3f2abd79f7193700544c1f70fcd497f1f020183ce5eb64636d647bb"
+      },
+      {
+        "Path": "tests/native/ToolInvocation.Tests.ps1",
+        "SHA256": "e4320bd335826e29e0d83228170c0cac3f792a6501a073d0c2c6f8ed63ed3e24",
+        "C1GitBlobSHA256": "e4320bd335826e29e0d83228170c0cac3f792a6501a073d0c2c6f8ed63ed3e24"
+      },
+      {
+        "Path": "tests/pdf/EmailOutcome.Native.Tests.ps1",
+        "SHA256": "42804bfdfc75d5fdb53a0ffaa6d8519e633f42593d00536d4d2f89e441c4e3b9",
+        "C1GitBlobSHA256": "42804bfdfc75d5fdb53a0ffaa6d8519e633f42593d00536d4d2f89e441c4e3b9"
+      },
+      {
+        "Path": "tests/pdf/ToolPaths.Native.Tests.ps1",
+        "SHA256": "38471ceb05e4a88f2ce0098fa47f941bc4044f69392c7973667e55f150153291",
+        "C1GitBlobSHA256": "466bf3a89b85b8ac017ca8600b7447571a985c600a3e9e1e6759eac791b41d6f"
+      },
+      {
+        "Path": "tests/filesafety/Staging.Native.Tests.ps1",
+        "SHA256": "762f92889196f4e1e7f2331930cfb9390f35c302c24b40582ebb35130ffcf105",
+        "C1GitBlobSHA256": "762f92889196f4e1e7f2331930cfb9390f35c302c24b40582ebb35130ffcf105"
+      },
+      {
+        "Path": "tests/filesafety/Destination.Native.Tests.ps1",
+        "SHA256": "24ae02611b7f561a718db2f107fb70cbfcd957a7371b06a8f4265880a7500ce7",
+        "C1GitBlobSHA256": "24ae02611b7f561a718db2f107fb70cbfcd957a7371b06a8f4265880a7500ce7"
+      }
+    ],
+    "Executions": [
+      {
+        "Shell": "ps51",
+        "ShellVersion": "5.1.26100.9444",
+        "AnalyzerVersion": "1.25.0",
+        "Errors": 0,
+        "Warnings": 152,
+        "Information": 45,
+        "Report": "tests/.work/T15-C1-analyzer-ps51.json",
+        "ReportSHA256": "93eb5258291f788b4e0416f2f1ab3f75e5452240243cbf51e0d3f66f09b8c57d",
+        "RawExecutionDirectory": "tests/.work/T15-C1-analyzer-execution-ps51-f0e60f1c21484cbbbcdcbe8e61df5956",
+        "Command": [
+          "C:/Windows/System32/WindowsPowerShell/v1.0/powershell.exe",
+          "-NoLogo",
+          "-NoProfile",
+          "-NonInteractive",
+          "-ExecutionPolicy",
+          "RemoteSigned",
+          "-File",
+          "<REPO>\\tests\\.work\\Analyze-T15.ps1",
+          "-Label",
+          "ps51",
+          "-Phase",
+          "C1"
+        ],
+        "ChildEnvironmentRemovedKeys": [
+          "PSMODULEPATH"
+        ],
+        "PersistentEnvironmentChanges": false,
+        "RawFileHashes": {
+          "execution.json": "df0e61f9f7881da4529e40e133b4868b5a749a675a340236a5f81141758aa222",
+          "invocation.json": "ff1e1810e7e8cee3d8647b91db53e5580e70ccea9cdd0f65670377beadb24345",
+          "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout.txt": "5d5b968754e00fdb194775588ee7a080133d63ceef172b3e287c20bb54544c9d"
+        },
+        "FindingRuleCounts": {
+          "PSAvoidAssignmentToAutomaticVariable": 11,
+          "PSAvoidUsingPositionalParameters": 39,
+          "PSAvoidUsingWriteHost": 36,
+          "PSReviewUnusedParameter": 39,
+          "PSUseApprovedVerbs": 3,
+          "PSUseBOMForUnicodeEncodedFile": 2,
+          "PSUseDeclaredVarsMoreThanAssignments": 24,
+          "PSUseOutputTypeCorrectly": 6,
+          "PSUseShouldProcessForStateChangingFunctions": 28,
+          "PSUseSingularNouns": 9
+        }
+      },
+      {
+        "Shell": "ps7",
+        "ShellVersion": "7.6.6",
+        "AnalyzerVersion": "1.25.0",
+        "Errors": 0,
+        "Warnings": 152,
+        "Information": 45,
+        "Report": "tests/.work/T15-C1-analyzer-ps7.json",
+        "ReportSHA256": "a3e0c660295b8c85575121eaa4418a665c8ba5c280fcfc295d21ff55bf8df36d",
+        "RawExecutionDirectory": "tests/.work/T15-C1-analyzer-execution-ps7-7e1c9ae63bdd44ccb68f833bf4cc637c",
+        "Command": [
+          "<APPROVED_PS7_CACHE>/portable/pwsh.exe",
+          "-NoLogo",
+          "-NoProfile",
+          "-NonInteractive",
+          "-ExecutionPolicy",
+          "RemoteSigned",
+          "-File",
+          "<REPO>\\tests\\.work\\Analyze-T15.ps1",
+          "-Label",
+          "ps7",
+          "-Phase",
+          "C1"
+        ],
+        "ChildEnvironmentRemovedKeys": [
+          "PSMODULEPATH"
+        ],
+        "PersistentEnvironmentChanges": false,
+        "RawFileHashes": {
+          "execution.json": "eff53d0313d50e9c09d635ac9e7f7050695d0723b08008ba1132143d19ed62c6",
+          "invocation.json": "4789c3b15327938fca515e085d9f52498ef9718e4bea547fa8d09999f2c99db4",
+          "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout.txt": "49e94b1f387c2a844437c1116b57142d7b5eee1dda33af0658e58938fbb49725"
+        },
+        "FindingRuleCounts": {
+          "PSAvoidAssignmentToAutomaticVariable": 11,
+          "PSAvoidUsingPositionalParameters": 39,
+          "PSAvoidUsingWriteHost": 36,
+          "PSReviewUnusedParameter": 39,
+          "PSUseApprovedVerbs": 3,
+          "PSUseBOMForUnicodeEncodedFile": 2,
+          "PSUseDeclaredVarsMoreThanAssignments": 24,
+          "PSUseOutputTypeCorrectly": 6,
+          "PSUseShouldProcessForStateChangingFunctions": 28,
+          "PSUseSingularNouns": 9
+        }
+      }
+    ],
+    "FindingsAssessment": {
+      "PSAvoidUsingWriteHost": "36 warnings: deliberate console presentation/diagnostics in entry and test hosts; not new native shell invocation or data uploads.",
+      "PSUseShouldProcessForStateChangingFunctions": "28 warnings: internal bounded helpers, process wrappers and controlled test functions; public preview/option work remains T16. No added confirmation flow is inferred.",
+      "PSUseBOMForUnicodeEncodedFile": "2 warnings: existing entry/native-path file encoding advice retained; actual PS5.1 execution and Unicode boundary cases are separate evidence, no universal encoding claim.",
+      "PSAvoidAssignmentToAutomaticVariable": "11 warnings: synthetic test fixture path locals named input, explicitly assigned/read; no production HOME/PID/environment-variable assignment. No test pipeline enumeration depends on automatic input.",
+      "PSUseApprovedVerbs/PSUseSingularNouns": "3/9 naming warnings: scoped helper/test naming conventions, not unsafe process or filesystem behavior.",
+      "PSReviewUnusedParameter/PSUseDeclaredVarsMoreThanAssignments": "39/24 warnings: mainly mocks, copied child helper seams, Pester phase/block bindings and indirect use; reviewed execution paths cover the intended decisions.",
+      "PSUseOutputTypeCorrectly/PSAvoidUsingPositionalParameters": "6/39 informational findings: metadata and invocation-style advice retained; bounded receipt/schema checks are tested separately."
+    },
+    "NotLintClean": true,
+    "DoesNotCloseT22": true
+  },
+  "AcceptanceStatus": "Root full clean17-tier Windows acceptance and evidence archive are in progress and not claimed by this review. Expected559 per shell is not an observed pass here.",
+  "LiveSynchronizationStatus": "Review confirms local exact clean C1 only. Root owns subsequent normal push and fresh local/live equality; no C1 live equality is claimed here.",
+  "Privacy": "Displayed command paths redact user profile/cache/repo identity; exact original argv remains in ignored hash-bound invocation.json receipts. No user PDFs or document names are included."
+}

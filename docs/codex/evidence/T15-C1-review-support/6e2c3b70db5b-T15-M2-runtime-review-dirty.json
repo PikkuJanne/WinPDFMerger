@@ -1,0 +1,245 @@
+{
+  "SchemaVersion": 1,
+  "Task": "T15",
+  "Phase": "dirty implementation M2 runtime review",
+  "ReviewedAtUtc": "2026-10-08T06:09:43.422345+00:00",
+  "CommitAtReview": "f896457acf695831b4bf8f07f2eec3775e3213a8",
+  "DirtyWorktreeAtReview": true,
+  "ReviewerRole": "FaultIO test agent, independent of root-authored production implementation",
+  "IndependenceLimit": "Reviewer authored FaultIO tests; this is a separate review of root-authored entry/helpers/inline owned-native adapter, not an independent review of the reviewer own tests.",
+  "Result": "no_blocking_findings",
+  "Findings": [],
+  "SourceFiles": [
+    {
+      "Path": "WinPDFMerge.ps1",
+      "SHA256": "3c176bf7cdccb2f987cad84f08184477c6d5921c32e1b9ad1a6c0bc868029cde"
+    },
+    {
+      "Path": "src/WinPDFMerge.Helpers.ps1",
+      "SHA256": "985a467989e66d68cabba1e6b5846c73a1c61fb33f69ee113fd764a251639ce7"
+    },
+    {
+      "Path": "tests/faults/FaultIO.Tests.ps1",
+      "SHA256": "8883965c71c5c9369a33b2d3e180a6c2622c8f3c52c86c86543d3e4d71858db9"
+    }
+  ],
+  "ReviewedAreas": [
+    "Native executable is literal and explicit; CreateProcessW receives a nonnull application path and the existing serialized vector, without shell evaluation.",
+    "Unnamed noninherited invocation job and exact three-pipe inherited handle list are associated at process creation; the process is suspended until its managed handle and readers are retained.",
+    "No breakaway permission is set. Normal inherited job descendants are released by exact-job termination; no image-name termination or unrelated PID sweep exists.",
+    "Execution, capture and termination waits are bounded. Success requires confirmed ownership release; a prior stop/capture/launch error remains a failure.",
+    "GS_OPTIONS removal changes only the selected ProcessStartInfo environment; the parent unset/empty/value state is never written by application runtime.",
+    "Cancellation is forwarded through versions, inventory, inspection and merge/email work, checked before final move and reporting, and the console context is disposed in outer finally.",
+    "Master/email publication requires existing complete validation, fixed count, stable snapshots and no-overwrite same-folder File.Move; optional failures do not delete valid published PDFs.",
+    "Missing/false conversion or inspection OwnershipReleased quarantines the owned stage. Retained cleanup closes its marker handle without deleting known files or ownership evidence.",
+    "Early metadata/preflight diagnostics have logging guards; RunFailed is separate from publication state, preserving already-published paths under later reporting failures.",
+    "Returned cleanup-only warnings may accompany valid success; unexpected cleanup throw marks run failure and retains explicit valid paths. Final result log is written after other summary writes."
+  ],
+  "TestExecutions": [
+    {
+      "path": "tests/.work/T15-focused-FaultIO-ps51-914896cff31e475d909f0755aaf07ec3",
+      "summary": {
+        "Task": "T15",
+        "EvidenceClass": "unit controlled native receipts, copied entry and real NTFS locks",
+        "CommitUnderTest": "f896457acf695831b4bf8f07f2eec3775e3213a8",
+        "DirtyWorktree": true,
+        "Shell": "5.1.26100.9444",
+        "Edition": "Desktop",
+        "Is64Bit": true,
+        "PesterVersion": "6.2.0",
+        "Passed": 28,
+        "Failed": 0,
+        "FailedBlocks": 0,
+        "FailedContainers": 0,
+        "Skipped": 0,
+        "NotRun": 0,
+        "Total": 28
+      },
+      "command": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-NoLogo",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "<repo>\\tests\\.work\\Run-T15FaultIOFocus.ps1",
+        "-ReportDirectory",
+        "<repo>\\tests\\.work\\T15-focused-FaultIO-ps51-914896cff31e475d909f0755aaf07ec3"
+      ],
+      "child_environment_removed_keys": [
+        "PSMODULEPATH"
+      ],
+      "files": {
+        "execution.json": "c9f529113a5f1d14270545ca6f8be9b9e729a1076264dae800c38fb028b3236f",
+        "invocation.json": "b63f6c71e1f76b9e31c2953cdc3c1d671c9f86122db9cb82fcce3b24ba726bc9",
+        "results.xml": "2316dc9214b75facf2892de576e8ac8d7b3bcdc1bd66a28dc074f8e848245589",
+        "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout.txt": "df4ab9b1001fe78f2b833bc7ab580ecf6c99500fc4a6bfafcc6663022b09f6d8",
+        "summary.json": "e57248e78273f85dcd8f4b6d8a8c30577d49bacec10cc3d16a343ee0297b22ea"
+      }
+    },
+    {
+      "path": "tests/.work/T15-focused-FaultIO-ps7-f4da568ce668461a923bf9383e6ae16d",
+      "summary": {
+        "Task": "T15",
+        "EvidenceClass": "unit controlled native receipts, copied entry and real NTFS locks",
+        "CommitUnderTest": "f896457acf695831b4bf8f07f2eec3775e3213a8",
+        "DirtyWorktree": true,
+        "Shell": "7.6.6",
+        "Edition": "Core",
+        "Is64Bit": true,
+        "PesterVersion": "6.2.0",
+        "Passed": 28,
+        "Failed": 0,
+        "FailedBlocks": 0,
+        "FailedContainers": 0,
+        "Skipped": 0,
+        "NotRun": 0,
+        "Total": 28
+      },
+      "command": [
+        "<LOCALAPPDATA>\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+        "-NoLogo",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "<repo>\\tests\\.work\\Run-T15FaultIOFocus.ps1",
+        "-ReportDirectory",
+        "<repo>\\tests\\.work\\T15-focused-FaultIO-ps7-f4da568ce668461a923bf9383e6ae16d"
+      ],
+      "child_environment_removed_keys": [
+        "PSMODULEPATH"
+      ],
+      "files": {
+        "execution.json": "ac5fce836659309f3e59a39c20c34fe5be5b379cbc9f940b902f7842c6aac0fb",
+        "invocation.json": "dfbe8649124aa44b9c930e67243ad356ca3fe59be96629fdc406705b829f6a08",
+        "results.xml": "7461e28d21bc688b73efd8dcd0eeaaaf2c5ff9c8b584b1f9d329972b36fb9f3c",
+        "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout.txt": "b3c3467b137fd89f03940e0c8fbb94e91e9b9f7450b1d6c0184a5aebd19b1185",
+        "summary.json": "8f3b5638b34b4212f932b292ff52b5a559e7a165950e5b5f9867c066f0387037"
+      }
+    },
+    {
+      "path": "tests/.work/T15-focused-FaultIO-ps51-b1d408c1fe3e40628098b8d11d282957",
+      "summary": {
+        "Task": "T15",
+        "EvidenceClass": "unit controlled native receipts, copied entry and real NTFS locks",
+        "CommitUnderTest": "f896457acf695831b4bf8f07f2eec3775e3213a8",
+        "DirtyWorktree": true,
+        "Shell": "5.1.26100.9444",
+        "Edition": "Desktop",
+        "Is64Bit": true,
+        "PesterVersion": "6.2.0",
+        "Passed": 32,
+        "Failed": 0,
+        "FailedBlocks": 0,
+        "FailedContainers": 0,
+        "Skipped": 0,
+        "NotRun": 0,
+        "Total": 32
+      },
+      "command": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-NoLogo",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "<repo>\\tests\\.work\\Run-T15FaultIOFocus.ps1",
+        "-ReportDirectory",
+        "<repo>\\tests\\.work\\T15-focused-FaultIO-ps51-b1d408c1fe3e40628098b8d11d282957"
+      ],
+      "child_environment_removed_keys": [
+        "PSMODULEPATH"
+      ],
+      "files": {
+        "execution.json": "b96bc8cc182e67694661afb6084446e119d91407b22933a19036dbbb064da3da",
+        "invocation.json": "9a80189d5d31fd8ba69b03a4b2f647a86d8fc0175eae252d88549bc8ff8c13e8",
+        "results.xml": "8a9d1db585fa2bd42eb51c358059f86d4890dec287d122892853578201d7d24a",
+        "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout.txt": "b89f1ed6d4b8ee2d0affdde7e0a328fae649e1b70d8b48e8cd96966d9edcbe54",
+        "summary.json": "b36ff5b76332600d15046c3e7fa2d93caaa646d1615aedcb044aa2d196c8a396"
+      }
+    },
+    {
+      "path": "tests/.work/T15-focused-FaultIO-ps7-81d1a1aa655645c597992279d9a5939d",
+      "summary": {
+        "Task": "T15",
+        "EvidenceClass": "unit controlled native receipts, copied entry and real NTFS locks",
+        "CommitUnderTest": "f896457acf695831b4bf8f07f2eec3775e3213a8",
+        "DirtyWorktree": true,
+        "Shell": "7.6.6",
+        "Edition": "Core",
+        "Is64Bit": true,
+        "PesterVersion": "6.2.0",
+        "Passed": 32,
+        "Failed": 0,
+        "FailedBlocks": 0,
+        "FailedContainers": 0,
+        "Skipped": 0,
+        "NotRun": 0,
+        "Total": 32
+      },
+      "command": [
+        "<LOCALAPPDATA>\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+        "-NoLogo",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "<repo>\\tests\\.work\\Run-T15FaultIOFocus.ps1",
+        "-ReportDirectory",
+        "<repo>\\tests\\.work\\T15-focused-FaultIO-ps7-81d1a1aa655645c597992279d9a5939d"
+      ],
+      "child_environment_removed_keys": [
+        "PSMODULEPATH"
+      ],
+      "files": {
+        "execution.json": "315b89a92d992c2125d3259fd1c946ce35ddff88ba014da0f6cffded8a758752",
+        "invocation.json": "cd32a62ae8dc3dd791b4665b5fd1edca17441d64398eb5a4e2c7303d0877af7f",
+        "results.xml": "67fec60920738db104606f51d39c61163357e6598124ea8635866457f51c660d",
+        "stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout.txt": "97931fcd0f15d5dac1816e94bafd19b292abf2dd04c122158828d5210e65fda0",
+        "summary.json": "463daa58608aa6ea2005e3c15dc052aacc44908622774a49751868b5655f8993"
+      }
+    }
+  ],
+  "TestOutcome": "First28/28 then expanded32/32 pass in both actual required shells. No failures in these four focused executions; no skip or native-engine-support claim.",
+  "CommandsAndMethod": [
+    "Read-only git status/rev-parse/remote/ls-remote and targeted Get-Content/rg source inspection.",
+    "Approved Python -B tests/.work/Run-T15FaultIOFocus.py ps51 and ps7, unique raw reports per invocation; child-only RemoteSigned and case-insensitive inherited PSModulePath removal.",
+    "PS5.1 Parser.ParseFile on the initial fault file: zero errors; both subsequent Pester runs parsed/executed expanded32 cases.",
+    "Read Microsoft primary API documentation for JOB_LIST/HANDLE_LIST, inherited jobs, kill-on-close and process creation."
+  ],
+  "PrimaryDocumentation": [
+    {
+      "Title": "UpdateProcThreadAttribute",
+      "URL": "https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-updateprocthreadattribute",
+      "Support": "Job-list association during child creation; explicit inheritable-handle list with inheritHandles true; attribute values retained until list destruction."
+    },
+    {
+      "Title": "Job Objects",
+      "URL": "https://learn.microsoft.com/en-us/windows/win32/procthread/job-objects",
+      "Support": "Normal CreateProcess children inherit job association; terminate/kill-on-last-close applies to associated processes and nested child jobs."
+    },
+    {
+      "Title": "Inheritance",
+      "URL": "https://learn.microsoft.com/en-us/windows/win32/procthread/inheritance",
+      "Support": "Explicit inherited handle list and STARTF_USESTDHANDLES."
+    }
+  ],
+  "Limitations": [
+    "Dirty-source review and focused unit evidence are not clean C1 acceptance or task completion; bind/recheck the final C1 before closure.",
+    "Controlled native receipts and copied helpers are unit decision tests, not actual PDFtk/Ghostscript, OS unstoppable-writer, resource exhaustion or broad ACL experiments.",
+    "Real locked handles were exercised. Denied/full/write/move/log exceptions and unresolved ownership receipts are deliberately injected.",
+    "Ordinary inherited job descendants are the scope; this is not a security sandbox or a guarantee about external process brokers.",
+    "Console event availability depends on host. Physical Ctrl+C, host/window termination and machine crashes are not certified by controlled token tests; abrupt termination cannot guarantee cleanup/exit/log completion.",
+    "Source metadata checks are not a transaction against concurrent external source edits; PDF structure/count is not a fidelity/security/signature or archival certification.",
+    "Root owns actual native/dual-shell full acceptance, static review, code/evidence review, synchronization, and publication gates; this review does not duplicate or claim those results."
+  ]
+}

@@ -1,0 +1,124 @@
+{
+  "SchemaVersion": 1,
+  "Task": "T15",
+  "Phase": "C1",
+  "CommitUnderTest": "53d0923c95a86ae6a44bc89bab51cac6786c1e32",
+  "ObservedAtUtc": "2026-10-08T06:32:16.5352190Z",
+  "Result": "pass",
+  "FinalNativeAudit": {
+    "Path": "tests/.work/T15-C1-native-audit.json",
+    "SHA256": "8ce60f2486bfb6b776e9a505a9d1ffbc2a015268cc4ce0c2eb47c507d717e30d",
+    "Checks": 2515,
+    "CaseAudits": 28,
+    "FreshPDFReads": 26,
+    "Partial": false
+  },
+  "Files": [
+    {
+      "Role": "Final independent native audit",
+      "Path": "tests/.work/T15-C1-native-audit.json",
+      "SHA256": "8ce60f2486bfb6b776e9a505a9d1ffbc2a015268cc4ce0c2eb47c507d717e30d",
+      "Bytes": 464378
+    },
+    {
+      "Role": "Exact relocated first failed audit report",
+      "Path": "tests/.work/T15-native-audit-attempts/20261008T062222060Z-d951a00202004a99a1ba0e43d8a53076/report-failed.json",
+      "SHA256": "b318a14ac71db48ada0a850253c7cb208357dc3cdfe33f5237de9649c4b7aedc",
+      "Bytes": 462193
+    },
+    {
+      "Role": "Initial audit attempt command/exit receipt",
+      "Path": "tests/.work/T15-native-audit-attempts/20261008T062222060Z-d951a00202004a99a1ba0e43d8a53076/attempt.json",
+      "SHA256": "28ecda7fd1654689fa611016cacb1570634acd7d8847169d90e5004b7c9aeecc",
+      "Bytes": 1561
+    },
+    {
+      "Role": "Initial actual audit captured stdout",
+      "Path": "tests/.work/T15-native-audit-attempts/20261008T062222060Z-d951a00202004a99a1ba0e43d8a53076/stdout.txt",
+      "SHA256": "529a25ceb7ccbd1202d3d7e3cb69caf2af37f8bdfdc2af8d21056c635f230f00",
+      "Bytes": 195
+    },
+    {
+      "Role": "Initial actual audit captured stderr",
+      "Path": "tests/.work/T15-native-audit-attempts/20261008T062222060Z-d951a00202004a99a1ba0e43d8a53076/stderr.txt",
+      "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "Bytes": 0
+    },
+    {
+      "Role": "Final audit attempt command/exit receipt",
+      "Path": "tests/.work/T15-native-audit-attempts/20261008T062413148Z-7ab304ce0d3e4e52adc517c0e6a1f2e3/attempt.json",
+      "SHA256": "90aa6e76a64f4c65de2f11b27268d3fe9ea0df1e0d4ae2150679f4d9534f7f4d",
+      "Bytes": 1845
+    },
+    {
+      "Role": "Final actual audit captured stdout",
+      "Path": "tests/.work/T15-native-audit-attempts/20261008T062413148Z-7ab304ce0d3e4e52adc517c0e6a1f2e3/stdout.txt",
+      "SHA256": "08b40de52794aee8aa7453796913c2c4e3acca7b8b72db9117195e15f29b8559",
+      "Bytes": 195
+    },
+    {
+      "Role": "Final actual audit captured stderr",
+      "Path": "tests/.work/T15-native-audit-attempts/20261008T062413148Z-7ab304ce0d3e4e52adc517c0e6a1f2e3/stderr.txt",
+      "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "Bytes": 0
+    },
+    {
+      "Role": "Final independent auditor source",
+      "Path": "tests/.work/Audit-T15Native.py",
+      "SHA256": "b573995b6dbe5ed0bb120334b3c5711c17b20419ae107b9d70464c40c87c5ce8",
+      "Bytes": 31156
+    },
+    {
+      "Role": "Final audit capture wrapper source",
+      "Path": "tests/.work/Invoke-T15NativeAudit.ps1",
+      "SHA256": "f88dc60c7d26269b0e40966c337ac66c72337fbf96e71dc5ceb100611337d390",
+      "Bytes": 5423
+    },
+    {
+      "Role": "Independent collector planned-payload review",
+      "Path": "tests/.work/T15-C1-evidence-review.json",
+      "SHA256": "eb0195354ce7eeef8de0ba3f88ffe9e0ef8964380a4b0baabde0d6d2b00e30e9",
+      "Bytes": 671887
+    },
+    {
+      "Role": "Independent collector review source",
+      "Path": "tests/.work/Review-T15Collector.py",
+      "SHA256": "45d0c067d6e385f8a938c987dfc46b8207820ccddba277aac2fc8193a8fcf3ec",
+      "Bytes": 15756
+    }
+  ],
+  "AuditAttemptHistory": {
+    "InitialExitCode": 1,
+    "InitialFreshPDFReads": 26,
+    "InitialFindings": [
+      "5.1.26100.9444 retained oracle/generator binding",
+      "7.6.6 retained oracle/generator binding"
+    ],
+    "Diagnosis": "Audit preparation compared lowercase computed hashes with uppercase OracleSHA256/GeneratorSHA256 receipt strings. Only ignored auditor normalization/history changed; product/source/receipt bytes remained intact.",
+    "OriginalFailedOutputLabel": "tests/.work/T15-C1-native-audit.json",
+    "ExactFailedBytesRelocatedTo": "tests/.work/T15-native-audit-attempts/20261008T062222060Z-d951a00202004a99a1ba0e43d8a53076/report-failed.json",
+    "FinalExitCode": 0,
+    "FinalFreshPDFReads": 26,
+    "TotalActualFreshPDFReadsAcrossBothAttempts": 52,
+    "CleanSuiteAcceptanceCountsAdded": 0
+  },
+  "InitialAuditorSourceSnapshot": {
+    "Retained": false,
+    "OriginalRecordedPath": "tests/.work/Audit-T15Native.py",
+    "OriginalRecordedSHA256": "8afea9cea048b9ccf05096ad683ef731d7815771cac54bb0d09f1de80b43e95e",
+    "Note": "Initial auditor source bytes were not retained as a separate snapshot before correction. Original actual attempt receipt and exact failed report/captures remain retained; no missing source snapshot is invented."
+  },
+  "InitialCaptureWrapperSource": {
+    "RetainedAsFile": false,
+    "Note": "First capture wrapper executed as an inline tool command; the actual audit command/process/exit and captured streams are retained, without inventing a wrapper source file."
+  },
+  "EvidenceReviewCapture": {
+    "RetainedAsSeparateFiles": false,
+    "Note": "Independent review source and result receipt retained. Actual check-only invocation/result appeared in the tool transcript; no separate original stdout/stderr files were captured."
+  },
+  "Limits": [
+    "Support files are ignored local evidence; root separately archives raw/public hash bindings in C2. This index writes no public files.",
+    "No suite/application rerun; actual read-only PDFtk/PDFium inspections are of owned synthetic retained finals only.",
+    "Historical concurrent process/sentinel behavior is bound to original observations/tests/XML; no physical Ctrl+C, hard-crash, disk-exhaustion, Explorer/UNC/CI/package/release claim."
+  ]
+}

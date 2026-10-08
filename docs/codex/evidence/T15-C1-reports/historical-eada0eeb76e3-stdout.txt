@@ -1,0 +1,77 @@
+Pester v6.2.0
+
+Running tests from 1 files.
+
+Running tests from '<repo>\tests\native\NativeRunner.Tests.ps1'
+Controlled native fixture build receipt: <repo>\tests\.work\fake-native\45655efbca4b4f46a589642ff85737dd\build-info.json
+Controlled native fixture SHA256: dcf49931af1225ba61e13846a896f818416de2e16e6931630ceb83d8a62c2861
+Describing AC016: Windows native vector round-trip through the compiled argument echo
+  [+] preserves zero payload arguments argument boundaries 1.67s
+  [+] preserves single empty value argument boundaries 137ms
+  [+] preserves empty first middle and last values argument boundaries 157ms
+  [+] preserves spaces and leading/trailing whitespace argument boundaries 193ms
+  [+] preserves tabs and newlines argument boundaries 139ms
+  [+] preserves quotes and consecutive quotes argument boundaries 172ms
+  [+] preserves backslashes before embedded quotes argument boundaries 236ms
+  [+] preserves trailing separators and space-containing roots argument boundaries 227ms
+  [+] preserves literal shell characters argument boundaries 208ms
+  [+] preserves Unicode argument boundaries 175ms
+  [+] accepts an empty serializer vector without inventing an operand 16ms
+  [+] rejects null vector instead of silently changing the argument vector 108ms
+  [+] rejects null element instead of silently changing the argument vector 19ms
+  [+] rejects nonstring element instead of silently changing the argument vector 18ms
+  [+] rejects NUL character instead of silently changing the argument vector 37ms
+  [+] sanitizes rendered control characters while delivering their original values 277ms
+
+Describing AC017: bounded dual-stream capture and explicit native failure results
+  [+] captures Unicode stdout and stderr independently under ErrorAction Stop 256ms
+  [+] fully drains simultaneous multi-megabyte streams without deadlock 2.2s
+  [+] caps retained stream memory while draining excess output and reports incomplete capture 151ms
+  [+] returns nonzero exit and both diagnostic streams without native-warning pipeline failure 94ms
+  [+] returns explicit launch errors for a missing executable 34ms
+  [+] returns explicit launch errors for a invalid image executable 30ms
+  [+] returns explicit launch errors for a relative executable 11ms
+  [+] closes redirected stdin so a prompt reader sees EOF immediately 123ms
+  [+] releases its owned inherited-pipe descendant when the parent exits first 137ms
+
+Describing AC018: bounded owned-process timeout, cancellation and termination failure
+  [+] times out only its exact sleeping child while an unrelated same-image process survives 592ms
+  [+] honors cancellation requested before launch without creating a child 36ms
+  [+] cancels an active sleeping child while an unrelated same-image process survives 1.08s
+  [+] reports injected explicit-stop failure while fallback job closure releases the owned child 1.09s
+
+Describing T08: child-only environment and consistent Unicode native diagnostics
+GS_OPTIONS requested unset; observed caller state unset
+  [+] removes only child GS_OPTIONS and preserves actual caller unset state 210ms
+GS_OPTIONS requested empty; observed caller state empty
+  [+] removes only child GS_OPTIONS and preserves actual caller empty state 171ms
+GS_OPTIONS requested value; observed caller state value
+  [+] removes only child GS_OPTIONS and preserves actual caller value state 179ms
+  [+] inherits caller GS_OPTIONS when no explicit child removal is requested 272ms
+  [+] logs both streams, Unicode paths, result flags, elapsed time and nonzero exit consistently 385ms
+  [+] logs launch errors explicitly without inventing a zero exit status 43ms
+  [+] surfaces logging IO failure while preserving the caller environment 154ms
+Tests completed in 13.01s
+Tests Passed: 36, Failed: 0, Skipped: 0, Inconclusive: 0, NotRun: 0
+{
+  "observed_at_utc": "2026-10-08T06:08:29.3798860Z",
+  "commit_under_test": "f896457acf695831b4bf8f07f2eec3775e3213a8",
+  "dirty_worktree": true,
+  "shell_version": "7.6.6",
+  "shell_edition": "Core",
+  "process_64_bit": true,
+  "execution_policy": "RemoteSigned",
+  "pester_version": "6.2.0",
+  "tier": "NativeRunner",
+  "evidence_class": "windows-controlled-native-argument-process; no PDF-engine-support claim",
+  "passed": 36,
+  "failed": 0,
+  "failed_blocks": 0,
+  "failed_containers": 0,
+  "skipped": 0,
+  "not_run": 0,
+  "total": 36,
+  "native_fixture_build_receipt": "<repo>\\tests\\.work\\fake-native\\45655efbca4b4f46a589642ff85737dd\\build-info.json",
+  "native_fixture_build_receipt_sha256": "7b1096fa11f15f2b67d49d00fc8c6d295393836bd03ba55afd2bce45ee9546e4"
+}
+Reports: <repo>\tests\.work\pester\6dca65b8011d43538bf60466736a71b6

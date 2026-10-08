@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "<repo>\tests\.work\Collect-T15Evidence.py", line 375, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "<repo>\tests\.work\Collect-T15Evidence.py", line 366, in main
+    shells=[collector.clean_shell(label,collector.work/('T15-C1-'+label)) for label in ('ps51','ps7')]
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>\tests\.work\Collect-T15Evidence.py", line 89, in clean_shell
+    self.fault_recovery(label,job,metadata,aggregate['shell_version'])
+  File "<repo>\tests\.work\Collect-T15Evidence.py", line 139, in fault_recovery
+    log=self.owned_input(proof['LogPath']).read_text(encoding='utf-8-sig');require(log==proof['Log'],'Retained log changed')
+                                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>\tests\.work\Collect-T09C3Evidence.py", line 33, in require
+    raise ValueError(message)
+ValueError: Retained log changed

@@ -1,0 +1,49 @@
+Pester v6.2.0
+
+Running tests from 1 files.
+
+Running tests from '<repo>\tests\faults\FaultRecovery.Native.Tests.ps1'
+Describing AC035 actual caller unset, empty and value survive success, start failure and logging fault
+  [+] preserves genuine OS unset state after actual entry success 4.42s
+  [+] preserves genuine OS empty state after actual entry success 4.46s
+  [+] preserves genuine OS value state after actual entry success 3.55s
+  [+] preserves genuine OS unset state after actual entry start-failure 3.2s
+  [+] preserves genuine OS empty state after actual entry start-failure 3.41s
+  [+] preserves genuine OS value state after actual entry start-failure 3.23s
+  [+] preserves genuine OS unset state after actual entry log-fault 4.34s
+  [+] preserves genuine OS empty state after actual entry log-fault 3.9s
+  [+] preserves genuine OS value state after actual entry log-fault 3.53s
+
+Describing AC036 controlled entry interruption retains ownership and explicit outcomes
+  [+] cancels owned parent and two descendant levels at cancel-before-master while unrelated same-image process survives 4.72s
+  [+] cancels owned parent and two descendant levels at cancel-after-master while unrelated same-image process survives 5.39s
+  [+] refuses a final master when controlled cancellation arrives after genuine merge and staged inspection success 2.27s
+
+Describing Actual controlled nested process ownership is independent of parent exit or timeout
+  [+] releases nested owned tree for timeout while unrelated same-image sentinel survives 2.59s
+  [+] releases nested owned tree for parent-exits-first while unrelated same-image sentinel survives 262ms
+Fault recovery observations: <repo>\tests\.work\fault-recovery\656a3bab62e64e3f841bbf75cab67b1f\native-observations.json
+Tests completed in 51.52s
+Tests Passed: 14, Failed: 0, Skipped: 0, Inconclusive: 0, NotRun: 0
+{
+  "observed_at_utc": "2026-10-08T06:20:45.5231836Z",
+  "commit_under_test": "53d0923c95a86ae6a44bc89bab51cac6786c1e32",
+  "dirty_worktree": false,
+  "shell_version": "7.6.6",
+  "shell_edition": "Core",
+  "process_64_bit": true,
+  "execution_policy": "RemoteSigned",
+  "pester_version": "6.2.0",
+  "tier": "FaultRecovery",
+  "evidence_class": "windows-real-engines-environment-and-controlled-owned-native-cancellation",
+  "passed": 14,
+  "failed": 0,
+  "failed_blocks": 0,
+  "failed_containers": 0,
+  "skipped": 0,
+  "not_run": 0,
+  "total": 14,
+  "native_fixture_build_receipt": "<repo>\\tests\\.work\\fake-native\\c639d8e0dfde427a9c154d40b98935a8\\build-info.json",
+  "native_fixture_build_receipt_sha256": "9562af82e5d779947b5a00a4ef0f4816b5d9149f5393d8122885c3c757715965"
+}
+Reports: <repo>\tests\.work\pester\0ec1cff878ae4862a9d60c842d6cb447

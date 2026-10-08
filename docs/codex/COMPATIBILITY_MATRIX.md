@@ -178,3 +178,22 @@ review and fresh C1live equality retained. No acquisition/admin/persistent polic
 PATH/security/runtime network change. T15/T16/T17 and OS/UNC/Explorer/fidelity/CI/
 package/release gates remain. Exact commands/hashes/results/limits/history:
 T14 completion/C1results/reports/review/native audit/live receipt.
+
+T15 clean C1 `53d0923c95a86ae6a44bc89bab51cac6786c1e32`:17 tiers,559 passes each actual
+PS5.1.26100.9444 / pinnedPS7.6.6,1118total,all bad counts0. AC035/036 integration
+and AC037 unit pass on standard-user localNTFS Windows11x64/build26300. Actual
+Win32 unset/empty/value GS_OPTIONS survives real engine success, invalid-image
+start failure and controlled logger errors. Compiled inherited nested-process
+cancellation before/after master stops owned descendants, preserves unrelated
+same-image sentinel and validated master. Real locks and injected denied/full/
+write/log/cleanup/ownership receipt faults remain truthful. Independent M2
+source review no blocks; native2515checks/26freshPDFtk+PDFium retained-final
+reads and evidence4611checks pass. PSA0errors152warnings45info each13files,
+reviewed nonblocking; not lint-clean/fullT22. Dirty/preparation failures, missing
+bootstrap XML/summary and corrected focused passes stay separate from1118.
+Physical Ctrl+C/host/window/crash cleanup, broadACL/diskexhaustion, external
+brokers,OS/UNC/Explorer/fidelity/signatures/PDF-A/CI/package/release not certified.
+Approved selected cache bytes reused, no acquisition/admin/persistent policy/
+PATH/security changes. M2 complete within stated scope; T16/T17 and later gates
+remain. Exact commands/environment/hashes/limits: T15 completion/results/manifest,
+M2review/nativeaudit/evidencereview/provenance/C1live receipt.
