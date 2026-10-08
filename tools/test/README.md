@@ -77,4 +77,6 @@ checks do not certify Explorer interaction. See the fixture corpus catalogue in
 `tests/TestDependencies.psd1` lists both exact observed Python3.12.14 executable
 hashes from the earlier reference runtime and workspace bundle26.1007.11041.
 Package/library pins and synthetic expected bytes remain checked separately.
+The feature oracle likewise allows only the two recorded PDFium DLL hashes
+from those same-version reference bundles and records the selected actual hash.
 Nothing downloads dependencies or adds Python to application runtime packaging.

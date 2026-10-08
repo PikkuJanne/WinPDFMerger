@@ -60,6 +60,24 @@ dirty Unit run read the earlier PS5.1 tests (336pass/3fail); its parallel PS7 ru
 passed339 but the source guard caught the test edit. Neither run has an accepted
 aggregate. Clean-C1 Unit will revalidate the final339 cases in both shells.
 
+First clean implementation C1a `c2dd655ef9ec4ea42b53b8f1482c68a60d219721`
+passed Unit339, SourceDiscovery4, InputPreflight22, MasterValidation7, Staging9,
+Destination15 and SizeReportingNative11 per host (407 each). PreservationNative
+then correctly refused the refreshed workspace PDFium DLL:0pass/6fail and
+1failed container per host, other bad counts0. Neither full pipeline has an
+accepted aggregate. The fresh environment receipt had recorded both changed
+Python executable and PDFium DLL bytes, with unchanged reported versions; the
+initial implementation updated only the Python executable readers.
+
+The correction adds only the two exact observed PDFium DLL hashes to the
+development feature oracle, retaining strict version checks and the actual
+selected hash in observations. Three regressions demonstrate actual current
+library acceptance, unknown-byte refusal with matching versions, and version
+refusal before DLL access. The old guard reproduced the new regression failure;
+after correction all40 Python regressions pass. No native library installation
+or runtime application change occurred. Corrected clean implementation C1b
+and its full relevant corpus execution/review remain pending until performed.
+
 Required AC048/AC049 remain not_run until a frozen implementation is committed
 and the reconstruct/review and relevant dual-shell corpus tiers pass against it.
 Physical Explorer, full native/lint/security/CI/package/publication gates remain

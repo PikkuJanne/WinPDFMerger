@@ -39,6 +39,12 @@ Ghostscript **10.08.0** executable; the generator verifies the earlier acquisiti
 receipt and console/DLL hashes before launching it. No tool downloads or installs
 dependencies. Python and generators are development-only and must stay outside
 runtime packaging. WinPDFMerger has no runtime Python dependency.
+The refreshed workspace bundle reports the same Python and PDFium versions
+with different executable and DLL bytes. Test-only Python readers and the
+feature oracle accept only the two exact observed hashes of each, record the
+selected bytes, and retain version pins. Unknown DLL bytes remain a failure
+even when version strings match; this is a development cache compatibility
+allowlist, not a runtime installation or general trust of same-version binaries.
 
 From the repository root, substitute the selected executable paths:
 

@@ -1,4 +1,4 @@
-"""Feature oracle faults use in-memory PDF object graphs, never engine mocks.
+"""Feature oracle trust guards and raw in-memory PDF object graph faults.
 
 These tests do not serialize a PDF, run the application or claim native feature
 preservation. They protect observations that page text/rendering cannot prove.
@@ -6,8 +6,10 @@ preservation. They protect observations that page text/rendering cannot prove.
 from __future__ import annotations
 
 import importlib.util
+import hashlib
 from pathlib import Path
 import unittest
+from unittest import mock
 
 from pypdf import PdfWriter
 from pypdf.generic import (ArrayObject, DecodedStreamObject, DictionaryObject,
@@ -50,6 +52,29 @@ def field_with_widget(writer, page_index, value, appearance_value=None):
 
 
 class FeatureOracleGraphTests(unittest.TestCase):
+    def test_actual_current_pinned_dll_is_accepted_and_its_exact_hash_recorded(self):
+        library = Path(oracle.pypdfium2_raw.__file__).parent / "pdfium.dll"
+        actual_hash = hashlib.sha256(library.read_bytes()).hexdigest()
+        result = oracle.require_versions()
+        self.assertEqual({key: result[key] for key in oracle.VERSIONS}, oracle.VERSIONS)
+        self.assertEqual(result["pdfium_dll_sha256"], actual_hash)
+        self.assertIn(actual_hash, {
+            "958e5342ed7e2e20fb914adde238bbae0ac8ad4a3267aa49d0b9dd266c7667f2",
+            "524ecbe6a7d49103909b1ed39fe512d2d4e612e35dac1336c9274371d20c5d90",
+        })
+
+    def test_unapproved_dll_bytes_fail_even_when_reported_versions_match(self):
+        with mock.patch.object(Path, "read_bytes", return_value=b"Unapproved synthetic DLL bytes"):
+            with self.assertRaisesRegex(RuntimeError, "approved PDFium DLL bytes"):
+                oracle.require_versions()
+
+    def test_version_mismatch_fails_before_reading_selected_dll(self):
+        with mock.patch.object(oracle.pdfium, "PDFIUM_INFO", "unapproved-version"), \
+                mock.patch.object(Path, "read_bytes") as read_bytes:
+            with self.assertRaisesRegex(RuntimeError, "approved development pins"):
+                oracle.require_versions()
+            read_bytes.assert_not_called()
+
     def test_same_name_canonical_fields_keep_distinct_values_and_widgets(self):
         writer, refs = graph()
         field_with_widget(writer, 0, "value-A"); field_with_widget(writer, 1, "value-B")

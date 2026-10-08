@@ -31,7 +31,13 @@ import pypdfium2_raw
 
 VERSIONS = {"python": "3.12.14", "pypdf": "6.10.0", "pypdfium2": "5.13.0",
             "pdfium": "153.0.7999.0", "pillow": "12.3.0"}
-PDFIUM_DLL_SHA256 = "958e5342ed7e2e20fb914adde238bbae0ac8ad4a3267aa49d0b9dd266c7667f2"
+# Exact DLL bytes observed in the approved T19 cache and refreshed T21 bundled
+# runtime. Both expose the same pinned PDFium version; version strings alone
+# never authorize another DLL. Each inspection records the selected actual hash.
+PDFIUM_DLL_SHA256_ALLOWLIST = frozenset((
+    "958e5342ed7e2e20fb914adde238bbae0ac8ad4a3267aa49d0b9dd266c7667f2",
+    "524ecbe6a7d49103909b1ed39fe512d2d4e612e35dac1336c9274371d20c5d90",
+))
 IDENTIFIER = re.compile(r"T19-[AB]-P[12]")
 REPO = Path(__file__).resolve().parents[2]
 
@@ -44,7 +50,7 @@ def require_versions() -> dict:
         raise RuntimeError(f"Feature oracle requires approved development pins: {actual}")
     library = Path(pypdfium2_raw.__file__).parent / "pdfium.dll"
     actual["pdfium_dll_sha256"] = hashlib.sha256(library.read_bytes()).hexdigest()
-    if actual["pdfium_dll_sha256"] != PDFIUM_DLL_SHA256:
+    if actual["pdfium_dll_sha256"] not in PDFIUM_DLL_SHA256_ALLOWLIST:
         raise RuntimeError("Feature oracle requires the approved PDFium DLL bytes.")
     return actual
 
