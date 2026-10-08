@@ -16,7 +16,8 @@ website work, cloud conversion, OCR, a GUI editor and an installer are outside i
 1. Use a Windows 11 x64 computer and a normal user account. Windows PowerShell 5.1
    is the batch launcher's host. Direct invocation has also been tested on PowerShell
    7.6.6 x64. These are scoped test observations, not completed release certification.
-   Windows 10, ARM, 32-bit hosts and live UNC shares are unvalidated.
+   Windows 10, ARM, 32-bit hosts and live UNC shares are unvalidated and excluded
+   from validated v1.0.0 support; see the [compatibility scope](docs/COMPATIBILITY.md).
 2. Install [PDFtk Server for Windows](https://www.pdflabs.com/tools/pdftk-server/)
    from its vendor. PDFtk is required. Install
    [Ghostscript](https://www.ghostscript.com/releases/gsdnld.html) only if you want
@@ -43,6 +44,7 @@ C:\Tools\WinPDFMerge\
         USAGE.md
         TROUBLESHOOTING.md
         DEPENDENCIES.md
+        COMPATIBILITY.md
         PDF_LIMITATIONS.md
         EMAIL_PRESETS.md
 ```
@@ -143,6 +145,7 @@ unencrypted; sanitize a copy before sharing and do not attach private PDFs.
 Some invocation or unsafe-destination failures happen before a log can be created.
 
 See [troubleshooting](docs/TROUBLESHOOTING.md),
+[compatibility scope](docs/COMPATIBILITY.md),
 [full usage and path limits](docs/USAGE.md), [dependency policy](docs/DEPENDENCIES.md)
 and [security/privacy policy](SECURITY.md). Project code and documentation retain
 the [MIT license](LICENSE), provided as-is without warranty; vendor dependencies

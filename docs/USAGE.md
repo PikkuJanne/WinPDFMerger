@@ -81,7 +81,8 @@ marks, ampersands, parentheses, apostrophes and Latin `ä` worked in operands.
 CJK source/input and output paths failed in that backend, although a CJK tool
 installation directory worked. These observations do not promise all Unicode
 names work. Unsupported inputs fail without renaming sources. Live UNC shares,
-Windows 10, ARM and 32-bit hosts are unvalidated.
+Windows 10, ARM and 32-bit hosts are unvalidated and excluded from validated
+v1.0.0 support; see the [compatibility scope and rationale](COMPATIBILITY.md).
 
 For paired `%NAME%` characters in source or installation paths, use the
 [direct PowerShell route](../README.md#use): `cmd.exe` may expand them before

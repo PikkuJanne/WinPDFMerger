@@ -3,44 +3,31 @@
 Target: published and independently verified v1.0.0 in PikkuJanne/WinPDFMerger.
 Completed milestones: M1/M2/M3 within recorded Windows/test/review scope.
 Current milestone: M4, in_progress. Completed tasks: T01 through T25.
-Current task: T26 - desktop acceptance and compatibility scoping, pending.
-Publication: NOT STARTED. No release or tag is created.
+Current task: T26 - desktop acceptance and compatibility scoping, in_progress.
+Publication: NOT STARTED. No release or tag exists in the fresh T26 inspection.
 
-T25 AC056/AC057 review pass at clean C1
-`18a47ee304afa2dfee7efb353fae15fa5f55d026`. Runtime/native/CI behavior is unchanged.
-Current primary dependency information supports retained PDFtk2.02, GS10.08.0
-and PS7.6.6. Public docs disclose dated notices, PDFtk maintenance uncertainty,
-Windows support-channel uncertainty and acceptable unsigned v1.0.0 policy.
-Two documentation regressions are added. Clean PublicDocs20/20 and focused
-parser/analyzer1 file/41 rules pass in EACH actual PS5.1.26100.9444 and pinned
-PS7.6.6; every bad count is0,3 advisory warnings per host remain visible.
+T26 has documented the permitted Windows10/liveUNC/ARM/32-bit-host validation
+exclusions (AC060-AC062 are excluded, never pass), with public rationale and a
+documentation regression. Required AC058 Explorer/visible PDF acceptance and
+AC059 complete required-environment review remain not_run. Synthetic walkthrough
+preparation cannot replace supplied human observations. T27 is not dependency-ready.
 
-Independent all-local-reachable-history/privacy/CI review covers84 commits,
-6456 blobs/209830889 bytes and7748 paths/index entries. No actionable finding,
-recognized secret candidate, actual local-identity blob match or GitHub secret-
-scanning alert remains. All29 profile-like candidates/82 occurrences are
-synthetic fixture/task identities or privacy-guard regexes. Only three generated
-numbered PDF histories exist; no vendor binaries/private document archives found.
-No immutable evidence or history was modified. Scans remain heuristic and scoped.
-Future explicit package allowlist/builder/actual package checks remain T28/later.
+Fresh targeted registry observation identifies current Windows Pro26H2 full
+26300.9457 and a standard-user x64 token. Microsoft's current release table lists
+that exact GA revision; prior OSVersion10.0.26300.0 omitted the revision. Insider
+enrollment/channel still requires Settings evidence. Historical receipts retain
+their own dates and limited observations. See evidence/T26-compatibility-review.md.
 
-C1 normal push/fresh clean live equality is retained. DraftPR25 is open/unmerged;
-C1 push37814587403 and PR37814761853 each show four successful jobs in fresh
-platform metadata, without new artifact/count/checkout reconstruction claims.
-Final evidence/records and citation commit also adds scoped report byte-preservation attributes;
-its own clean/live equality and current PR head must be checked after push in
-session without self-reference. See T25 completion/results/reviews/manifest.
+PR25 was freshly observed MERGED at main e245114. The clean readiness checkout
+safely fast-forwarded from6180b73 to same-tree main; no runtime/source change or
+history rewrite occurred. This current platform observation supersedes the old
+continuation's draft/open status; immutable T25 evidence remains unchanged.
 
-PR24 was observed already merged; readiness safely fast-forwarded to same-tree
-main8331924 before T25 changes. Historical T24 draft/unmerged observations remain
-in immutable evidence. T24 AC054/AC055 clean C1b
-`e626e45a5ba375456f23b506f0ded7ca7d68f1e3` retains actual hosted/local1306 checks,
-18 report pairs, scoped native smoke and truthful deliberate-failure evidence.
-T23 broader native evidence and T19 preservation limits retain their own scope.
+T23 clean C1 8fa2032 retains actual PS5.1.26100.9444/pinnedPS7.6.6 dual-shell
+native evidence,854checks/29tiers each. T24 retains actual hosted Windows Server/
+admin CI and deliberate failure gates; T25 retains scoped security/dependency/
+privacy review. These are supporting evidence, not physical Explorer acceptance.
 
-T26 must obtain actual standard-user Explorer/visible PDF observations, resolve
-or disclose the required desktop OS support-channel evidence and honestly scope
-Windows10/live UNC/ARM/x86. Local build26300/26H2 support channel is unestablished;
-hosted Windows Server/admin CI is not physical Explorer or standard-user ACL
-acceptance. No new T25 native/manual/package or release pass is claimed. Later
-package, accepted-source, publication, downloaded operation and closure gates remain.
+Clean T26 documentation/static test results and its normal push/live equality
+will be recorded after execution. M4 and later package, accepted-source,
+publication/download/closure gates remain incomplete; only final v1.0.0 is allowed.

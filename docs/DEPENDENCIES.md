@@ -19,16 +19,25 @@ their obligations. Development Python, fixture libraries, Pester and PSScriptAna
 are not application runtime requirements; development pins belong in test tooling.
 
 Windows PowerShell 5.1 and PowerShell 7.6.6 x64 have actual scoped test evidence on
-the reference desktop reporting Windows 11 Pro, build 26300 / 26H2. Its Windows
-support channel is unestablished; Windows PowerShell support follows the host
+the reference desktop reporting Windows 11 Pro, build 26300 / 26H2. Its machine
+enrollment and Windows support channel are unestablished; Windows PowerShell support follows the host
 Windows lifecycle. PDFtk Server 2.02 and Ghostscript 10.08.0 were the native builds
 used. These observations do not certify OS support, every build or complete release
-acceptance. Windows 10, ARM, 32-bit hosts and live UNC shares are unvalidated.
+acceptance. Windows 10, ARM, 32-bit hosts and live UNC shares are unvalidated and
+excluded from validated v1.0.0 support; see the [compatibility scope](COMPATIBILITY.md).
 Version numbers here identify tests, not perpetual newest/safe versions. Before
 installation or release, check current vendor downloads, security notices and the
 [PowerShell support lifecycle](https://learn.microsoft.com/en-us/powershell/scripting/install/powershell-support-lifecycle).
 The [Ghostscript CVE page](https://www.ghostscript.com/releases/cve/index.html) lists vendor
 security information. Keep security restrictions enabled.
+
+A separate 2026-10-08 registry check observed Windows 11 Pro 26H2, full build
+26300.9457. [Microsoft's release history](https://learn.microsoft.com/en-us/windows/release-health/windows11-release-information),
+checked that day, lists that build in the General Availability Channel from
+2026-09-29; its latest 26H2 build was 26300.9550. The exact current build match
+does not establish Insider enrollment, retroactively add the revision to older
+test receipts, or complete standard-user Explorer acceptance. See the dated
+[compatibility scope](COMPATIBILITY.md).
 
 ## Vendor information checked 2026-10-08
 
