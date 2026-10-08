@@ -1,32 +1,30 @@
 # Project status
 
-Target: published and independently verified `v1.0.0` in `PikkuJanne/WinPDFMerger`.
-Completed milestones: M1 and M2 within recorded local Windows scope.
-Current milestone: M3 — focused usability and honest documentation, in progress.
-Completed tasks: T01 through T18.
-Selected next task: T19 — characterize feature-rich PDF preservation, pending.
-Publication: NOT STARTED.
+Target: published and independently verified v1.0.0 in PikkuJanne/WinPDFMerger.
+Completed milestones: M1/M2 within recorded local Windows scope.
+Current milestone: M3, in progress. Completed tasks: T01 through T19.
+Next task: T20 — write public documentation and dependency/privacy policy, pending.
+Publication: NOT STARTED. No intermediate release or tag is created.
 
-T18 clean C1b `e506d73797379f355a1a0b731c857e71f4c1d251` passes 590 tests in each of actual
-PS5.1.26100.9444 Desktop x64 and pinned PS7.6.6 Core x64: 1,180 total across
-17 tiers/34 reports, all bad counts zero. AC042 integration and independent
-AC043 review pass. Actual comment help, measured named stages/summary, earlier
-trusted owned logs and both version-probe streams improve diagnostics without
-changing defaults/publication safeguards. Logs stay local and can be sensitive.
-Source/diagnostic/runtime/native/public archive reviews pass; twelve changed
-PS files have zero PSA errors with reviewed 97 warnings/82 information each.
-Not lint-clean/full T22. Dirty/C1a/preparation failures and absences remain
-separate. See evidence/T18-completion.md and its results/manifest/provenance.
+T19 AC044 integration/AC045 independent review pass at clean C1
+`50220eccd1917e44a52d94cbfe3bf35b1940f3d8`: 414 Pester cases each actual PS5.1.26100.9444/pinnedPS7.6.6,
+828 total/12 reports, all bad counts zero; 12 oracle graph regressions pass.
+Reproducible synthetic originals and master/screen/ebook observations show
+renamed second form, lost document attachment index/tag tree, retained page
+payload hashes/navigation offsets and lost editable email fields/widgets.
+Master pixels match originals; screen changes rotated-page orientation.
+Actual results/exclusions: evidence/T19-completion.md, T19-results.json and
+T19-C1-reports/manifest.json. Original app/BAT/helpers/native flags remain intact.
 
-C1a runtime bytes remain identical in test-only C1b. C1b was clean/live verified
-after tests. Records-only C2 binds that actual checkpoint; C2's own synchronization
-and PR head are reported afterward in the session and rechecked next session.
-Owner merged PR17 to main `4e4501a34541c8e231c6c32528819efa16cba3bb`.
-[Draft T18 PR](https://github.com/PikkuJanne/WinPDFMerger/pull/18) contains current implementation/closure.
-No tag/release created. T19/AC044/AC045 remain unstarted.
+C1 was normally pushed; fresh read-only sync confirmed local=live and clean,
+and draft PR19 head matched C1. Records-only C2 is verified after its normal
+push and its SHA/equality are reported in the session, without self-reference.
+Owner merged prior PR18; origin/development branch remain unchanged.
 
-Approved caches only; standard user/local NTFS/build26300, ordinary Restricted/
-policy scopes Undefined, authorized child RemoteSigned and existing explicit
-BAT/percent-route process-only Bypass. No acquisition/admin/persistent policy/
-environment/security changes. Physical Explorer/abrupt crash, broad OS/UNC/CI/
-security, feature preservation/package/release gates remain open.
+Standard-user Windows x64/local NTFS, approved cached/bundled development pins;
+no acquisition/admin/persistent policy/environment/security changes. Structural,
+unit/static/docs and scoped rendered observations remain distinct. Source/default/
+native-safety/owned-staging/strict-smaller/no-overwrite/master-retention contracts
+remain. No signature/XFA/PDF-A/accessibility/malware/universal preservation
+certification. Physical Explorer, broad OS/UNC/security, CI/package/publication
+gates remain open. T20 is pending and unstarted.

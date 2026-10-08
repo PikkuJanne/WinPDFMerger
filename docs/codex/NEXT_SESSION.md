@@ -1,33 +1,33 @@
 # Next session
 
-Selected task: T19 — characterize feature-rich PDF preservation, pending, M3.
-Read AGENTS.md, docs/codex/INDEX.md, STATUS.md, T19 TASKS entry/tasks/T19.md,
-PRODUCT_SPEC.md, TECHNICAL_SPEC.md, TEST_STRATEGY.md and GITHUB_WORKFLOW.md.
-AC044 requires reproducible feature-corpus master-versus-email observations;
-AC045 requires conservative documented limits. Track provenance and separate
-visual/page checks from structural/signature claims. Never flatten silently.
-Test links/bookmarks/forms/repeated fields/annotations/rotation/attachments/tags
-where available; keep unsupported XFA/signature guarantees conservative. No
-PDF/A/universal retention/archive certification/malware-removal promise.
+Selected next task: T20 — write public documentation and dependency/privacy
+policy, M3, pending. Read AGENTS/INDEX/STATUS, the T20 TASKS entry and
+tasks/T20.md, relevant PRODUCT/TEST/GITHUB_WORKFLOW specifications and
+AC046/AC047. Recheck repository/branch/clean state/origin/live refs/PR/main/
+tags/releases. Preserve unrelated work; never reset to a historical baseline.
 
-First recheck repository/branch/clean state, unchanged fetch/push origin, live
-matching ref/PR/main/tags/releases. Reuse codex/v1.0.0-readiness only if suitable;
-preserve unrelated changes, never reset to a historical baseline. T18 is complete
-at tested C1b `e506d73797379f355a1a0b731c857e71f4c1d251`; records-only C2 synchronization
-and draft PR head must be verified and reported in its session after push.
-Reverify fresh rather than relying on these records alone.
-T18 has actual help, measured stages/counts/pages/versions/outcome/size summary,
-earlier trusted owned local logs, full native version receipts and privacy advice.
-Clean 17tiers/590 each required shell, AC042/043 and source/diagnostic/runtime/
-native/archive review pass. Dirty/C1a failures do not count as final acceptance.
-See evidence/T18-completion.md/results/manifest/provenance. T19 is not started;
-M3 is in progress and publication remains NOT STARTED.
+T19 is complete at tested clean C1 `50220eccd1917e44a52d94cbfe3bf35b1940f3d8`:
+six targeted tiers414 each PS5.1.26100.9444/pinnedPS7.6.6,828 total12reports,
+all bad counts zero, plus12 actual oracle graph regressions. AC044 integration
+and AC045 independent review pass. See evidence/T19-completion.md,
+T19-results.json and T19-C1-reports/manifest.json for actual commands, bindings,
+failures and limits. C1 push/live/clean/draftPR19 head equality is recorded.
+Verify and report records-only C2 after push in the session; do not write its
+own future SHA/sync into tracked files. Reverify current live state next session.
 
-Reuse and rehash approved Pester6.2.0/PDFtk2.02/GS10.08.0/PSA1.25.0/Python3.12.14
-and PDFium pins; existing CC0 synthetic recipes. Child-only module-path removal,
-authorized child RemoteSigned, existing explicit BAT/percent route Bypass; no
-acquisition/admin/persistent policy/environment/security changes. Keep screen,
-ebook, output-beside-entry, top-level/SkipEmail, source/foreign-file preservation,
-ownership/cancellation/strict inspection/strict-smaller/no-overwrite/master
-retention. Logs contain local sensitive paths; sanitize public copies separately.
-Physical Explorer remains AC058/T26 and broader release gates remain open.
+Keep measured preservation wording: masters can rename fields and lose document
+attachment indexes/tag trees; email can lose editable fields/widgets and change
+orientation. Retained page payloads/navigation and rendered values are limited
+corpus observations. Source PDFs stay unchanged; keep originals. No automatic
+flatten/repair/native flag change; no signature/XFA/PDF-A/accessibility/malware
+or universal archival guarantees. Synthetic size padding is not compression or
+image fidelity evidence. Generated PDFs/QA PNGs stay local; public text receipts
+have disclosed identity/path substitutions and raw hash bindings.
+
+Reuse/reverify approved Pester6.2.0/PDFtk2.02/GS10.08.0/PSA1.25.0/PS7.6.6 and
+bundled Python3.12.14/ReportLab4.4.9/pypdf6.10.0/PDFium/Pillow pins if needed.
+No acquisition/admin/persistent environment/policy/security changes. Authorized
+child RemoteSigned/module-path cleanup remains scoped; original BAT/percent
+route uses process-only Bypass. Preserve source/output/ownership/cancellation/
+strict-smaller/native safety/master/default contracts. Physical Explorer/broad
+release gates remain open. T20 unstarted; publication remains NOT STARTED.

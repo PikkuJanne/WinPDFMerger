@@ -1,0 +1,77 @@
+# PDF preservation limits
+
+The merged master uses PDFtk without intentional page rasterization or image
+downsampling. It is a new assembled document, not a byte-for-byte copy of each
+input. The email copy is a potentially lossy Ghostscript rewrite with screen
+as the default and ebook as the alternative. A nonempty file, successful parse
+and expected page count are necessary publication checks, not proof of visual,
+interactive, accessibility or archival preservation.
+
+Source files remain unchanged. Keep original feature-rich documents and signed
+PDFs. The application adds no silent flattening or repair step to force a test
+to pass; native engines can nevertheless alter or discard document features.
+Local processing does not establish that a PDF is safe or trustworthy.
+
+Forms and repeated or duplicate field names may change during assembly. Canonical
+AcroForm values, page widgets and their displayed appearances are different
+representations; a visible value alone does not prove an editable field survived.
+XFA is unsupported as a preservation guarantee; the
+[PDFtk manual](https://www.pdflabs.com/docs/pdftk-man-page/)
+documents automatic XFA omission when assembling multiple inputs. Retain originals
+and check actual fields. Ghostscript's
+[pdfwrite documentation](https://ghostscript.readthedocs.io/en/gs10.08.0/VectorDevices.html)
+describes creation of a new PDF and limits on non-marking information.
+
+Links, bookmarks and annotations may change, disappear or point to a different
+page after assembly or rewriting. Attachments and embedded files are not
+guaranteed to survive either output. Accessibility tags and reading-order
+structure are not guaranteed; a tag dictionary alone does not certify accessibility.
+Inspect intended navigation, annotations, forms, attachments and reading order
+in the actual result before using it as a substitute for an original.
+
+Neither output guarantees PDF/A compliance, archival certification, universal
+feature retention or signature validity. Merging or rewriting signed input can
+invalidate digital signatures; keeping a signature-looking appearance is not
+cryptographic verification. No signed sample or signature validator is included
+in this corpus, so signature preservation is unvalidated. The application is
+not a malware sanitizer and a parse/page-count check does not remove malicious content.
+
+## Measured synthetic corpus
+
+T19 uses two original CC0, two-page inputs with the same `shared_text` field name
+and distinct `value-A` and `value-B` values. The generator and manifest are in
+`tests/fixtures/features`. Actual standard-user Windows runs used PDFtk Server
+2.02 and Ghostscript 10.08.0 with the application's existing flags, under Windows
+PowerShell 5.1.26100.9444 and pinned PowerShell 7.6.6. Both shells produced the
+same feature observations. pypdf 6.10.0 inspected raw structures; PDFium
+153.0.7999.0 inspected identifiers and rendered pages at 144 DPI. Full receipts
+and scope are in [T19 evidence](codex/evidence/T19-checkpoint.md).
+
+| Feature | Originals | PDFtk master | Screen and ebook email copies |
+| --- | --- | --- | --- |
+| Pages | Four identifiable pages across two inputs | Four identifiers in A, B order | Four identifiers in the same order |
+| Forms | Two canonical values, four widgets total | Values and four widget relationships retained; second full field name became `1.shared_text` | No canonical fields or widgets; displayed values remain in page content |
+| Navigation | Four bookmarks, four internal links and four inert URI links total; two named destinations | Bookmark and internal-link targets resolve to merged pages; URI strings retained; named-destination index absent | Bookmark and internal-link targets resolve; URI strings retained; named-destination index absent |
+| Annotations | Four text notes, four highlights and two page attachment annotations total | Subtypes retained | Subtypes retained; appearances and placement can change |
+| Attachments | Two document EmbeddedFiles entries and two page FileAttachment payloads | Document entries absent; page annotation payloads retained | Document entries absent; page annotation payloads retained |
+| Minimal tags | Structure trees, ParentTree entries and matched MCIDs | Structure tree and ParentTree absent; residual MCIDs have no matched structure elements | Same missing relationships; residual marked content does not establish accessibility |
+| Rotation | Raw rotations `0,90,0,270` | Same raw rotations and pixel-identical rendered pages | Screen renders the rotated text upright; ebook keeps the original sideways text orientation. Raw rotation values differ |
+
+The root reviewer inspected all ten distinct rendered-page pixel groups covering
+48 pages from these runs. Masters matched original page pixels; email appearances
+and orientations changed as described. This is a limited visual observation, not
+an interactive editor, signature, accessibility or general fidelity certification.
+No URI was followed, and no attachment was opened. Source bytes and timestamps,
+foreign output files and the parent environment remained unchanged.
+
+For reproducible execution of the normal smaller-email rule, each input contains
+seeded, nonpainting page-stream comments. Input sizes were 191,533 and 191,534
+bytes; masters were 175,653 bytes, screen copies 8,872 bytes and ebook copies
+8,844 bytes. This artificial weighting is not a representative compression ratio
+or image-quality benchmark. The application adds no flattening/repair flags to
+obtain these observations.
+
+These controlled originals are not a universal PDF compatibility or accessibility
+corpus. There is no signed or XFA sample, signature validation, PDF/A validation,
+malware validation or accessibility certification. Broader desktop and release
+acceptance remains separate from structural and rendered-page observations.

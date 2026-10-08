@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "<REPO>\tests\.work\Verify-T19C1.py", line 27, in <module>
+    sync=json.loads((root/'sync.stdout.txt').read_text(encoding='utf-8-sig'));pr=json.loads((root/'pr.stdout.txt').read_text());policy=json.loads((root/'environment.stdout.txt').read_text(encoding='utf-8-sig'));assert sync['local_head']==sync['live_remote_head']==head and sync['clean'] and sync['synchronized'];assert pr['headRefOid']==head and pr['isDraft'] and pr['state']=='OPEN';assert policy['Policy']=='Restricted' and all(x['Policy']=='Undefined' for x in policy['Scopes'])
+                                                                                                                                                                                                                                                                                                                                                                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError
