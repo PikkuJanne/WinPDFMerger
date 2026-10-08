@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "runner_label": "windows-2025",
+  "purpose": "Explicit GitHub-hosted Windows CI only; archives extracted into one owned RUNNER_TEMP directory; no third-party redistribution",
+  "dependencies": [
+    {
+      "id": "pester", "version": "6.2.0", "group": "all", "shell": "all", "kind": "zip", "filename": "Pester.6.2.0.nupkg",
+      "url": "https://www.powershellgallery.com/api/v2/package/Pester/6.2.0", "bytes": 465109,
+      "sha256": "e6ac7418d4f12500269aaca58ae56cf1caafbbf1afa2cec334e289d1cf50a239",
+      "integrity_source": "docs/codex/evidence/T03-pester-acquisition.json (Gallery SHA512 and selected publisher signatures)",
+      "files": [{ "path": "Pester.psd1", "sha256": "ea8445218d46eeb69dd08827d38222f1d23c592966722ecfd0bdc419bf045543" }]
+    },
+    {
+      "id": "analyzer", "version": "1.25.0", "group": "unit", "shell": "all", "kind": "zip", "filename": "PSScriptAnalyzer.1.25.0.nupkg",
+      "url": "https://github.com/PowerShell/PSScriptAnalyzer/releases/download/1.25.0/PSScriptAnalyzer.1.25.0.nupkg", "bytes": 14658674,
+      "sha256": "14e634c828eb98efb9f40b2918ba90f139ed5eccdf663a2a747736d996995d60",
+      "integrity_source": "https://api.github.com/repos/PowerShell/PSScriptAnalyzer/releases/tags/1.25.0",
+      "files": [{ "path": "PSScriptAnalyzer.psd1", "sha256": "2b219f688bcdd67101040f845e530b22907d39bbf49089b4b5b2afaba7996791" }]
+    },
+    {
+      "id": "powershell", "version": "7.6.6", "group": "all", "shell": "PS7", "kind": "zip", "filename": "PowerShell-7.6.6-win-x64.zip",
+      "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.6.6/PowerShell-7.6.6-win-x64.zip", "bytes": 106328873,
+      "sha256": "02fe458be20493fbdf43f61ea20610b811ee6c738ab1676c61b9cfcd1a33c860",
+      "integrity_source": "https://api.github.com/repos/PowerShell/PowerShell/releases/tags/v7.6.6",
+      "files": [{ "path": "pwsh.exe", "sha256": "bfb46af89433268872ddb43d1ca7a3f433452ee91ed356a9786940f90118e285" }]
+    },
+    {
+      "id": "innoextract", "version": "1.9", "group": "native", "shell": "all", "kind": "zip", "filename": "innoextract-1.9-windows.zip",
+      "url": "https://constexpr.org/innoextract/files/innoextract-1.9-windows.zip", "bytes": 520705,
+      "sha256": "6989342c9b026a00a72a38f23b62a8e6a22cc5de69805cf47d68ac2fec993065",
+      "integrity_source": "docs/codex/evidence/T03-pdftk-acquisition.json (official detached signature verified with gpgv)",
+      "files": [{ "path": "innoextract.exe", "sha256": "946bd06d8b3722a791fea4d84f496139eef6faef61640924cb72f5f1998a68e1" }]
+    },
+    {
+      "id": "pdftk", "version": "2.02", "group": "native", "shell": "all", "kind": "inno", "filename": "pdftk_server-2.02-win-setup.exe",
+      "url": "https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/pdftk_server-2.02-win-setup.exe", "bytes": 3054862,
+      "sha256": "cc8f6a43fc91026bb739ad0ad9a124c24750d6127662fb3638ec1d44403aabd2",
+      "integrity_source": "https://raw.githubusercontent.com/microsoft/winget-pkgs/master/manifests/p/PDFLabs/PDFtk/Server/2.02/PDFLabs.PDFtk.Server.installer.yaml",
+      "files": [
+        { "path": "app/bin/pdftk.exe", "sha256": "5e5cbe817ecc3cc1875369d81119472559c9624d55c7176852c8827750afa00a" },
+        { "path": "app/bin/libiconv2.dll", "sha256": "cb016e794d3311c71f21d87803e10a0e1133995f62a485eb37b321cd9b9e1087" }
+      ]
+    },
+    {
+      "id": "ghostscript", "version": "10.08.0", "group": "native", "shell": "all", "kind": "sevenzip", "filename": "gs10080w64.exe",
+      "url": "https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10080/gs10080w64.exe", "bytes": 65093120,
+      "sha256": "52a91b8bf09298788d7a57b9206127026c23eacd75405f0a131e26dc381dce50",
+      "integrity_source": "https://api.github.com/repos/ArtifexSoftware/ghostpdl-downloads/releases/tags/gs10080",
+      "files": [
+        { "path": "bin/gswin64c.exe", "sha256": "9b29d3b5128c6d53bb4e9eee77e3919d05038cdfdd8e07697af4d9c319f9d5ad" },
+        { "path": "bin/gsdll64.dll", "sha256": "a134ed0d3af749bdab93c66029180e676d36d9cc624c192ea287f73c891fb0af" }
+      ]
+    }
+  ]
+}

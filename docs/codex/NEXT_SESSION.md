@@ -1,6 +1,6 @@
 # Next session
 
-Current task: T24 - add safe Windows CI and machine-readable reports, pending.
+Current task: T24 - add safe Windows CI and machine-readable reports, in_progress.
 Read AGENTS/INDEX/STATUS, T24 TASKS entry/tasks/T24.md and relevant workflow,
 test/dependency/security specifications and AC054/AC055. Keep one conceptual
 task. Recheck repository/branch/clean state, both origin destinations and live

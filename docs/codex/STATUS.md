@@ -3,7 +3,7 @@
 Target: published and independently verified v1.0.0 in PikkuJanne/WinPDFMerger.
 Completed milestones: M1/M2/M3 within recorded Windows/test/review scope.
 Current milestone: M4, in_progress. Completed tasks: T01 through T23.
-Current task: T24 - safe Windows CI and machine-readable reports, pending.
+Current task: T24 - safe Windows CI and machine-readable reports, in_progress.
 Publication: NOT STARTED. No release or tag is created.
 
 T23 AC052/AC053 pass at clean C1 `8fa2032c66f94199b121fc1914792d6d71bb6202`:
