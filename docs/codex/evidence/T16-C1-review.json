@@ -1,0 +1,266 @@
+{
+  "SchemaVersion": 1,
+  "Task": "T16",
+  "CommitUnderTest": "26ac1b73e3733a23099de53d944e00e4ee412982",
+  "Baseline": "fe8210d9ca604435de8f7261e7afdd9774291951",
+  "ReviewedAtUtc": "2026-10-08T07:00:48.989153+00:00",
+  "GitState": {
+    "HEAD": "26ac1b73e3733a23099de53d944e00e4ee412982",
+    "Clean": true,
+    "Branch": "codex/v1.0.0-readiness"
+  },
+  "SourceBindings": [
+    {
+      "Path": "WinPDFMerge.ps1",
+      "RawSHA256": "2feed6060b04b4ac8ba172e37f7310d2b1f486ce093b5ae029f2b432d3deb620",
+      "GitBlob": "be741d23d864da3dd37cfac5c89be5b28676d7bb"
+    },
+    {
+      "Path": "src/WinPDFMerge.Helpers.ps1",
+      "RawSHA256": "b89159da0334120d942ad76c8fe304ceb94450b3d1af89974482a873f9061364",
+      "GitBlob": "7d98c8c9fc26aa931f0a193a8dd6e8bcc30a9c0e"
+    },
+    {
+      "Path": "tools/test/Invoke-Tests.ps1",
+      "RawSHA256": "1b25806651a0b814b047432a8fae8e6a1186681b83bbb98aea1890d4b3cbca5a",
+      "GitBlob": "477f655cb2fb900cf0f91cc30e376db5a10b2772"
+    },
+    {
+      "Path": "tests/faults/FaultIO.Tests.ps1",
+      "RawSHA256": "8d9f446ca98f73a01b4a9e7f5d2dbfa13f87799ad4ced21fc41a5e62af980fae",
+      "GitBlob": "7e432a681a36e0dea0259a7835859468e829fa3a"
+    },
+    {
+      "Path": "tests/pdf/EmailOutcome.Native.Tests.ps1",
+      "RawSHA256": "14991f03ed9dcd324ca5b880cc07f8efc7f1c76b5f4b996ae6f649498cae6488",
+      "GitBlob": "7b5f70e802fa996b6e1047ace3865386caeffcca"
+    },
+    {
+      "Path": "tests/cli/Parameters.Tests.ps1",
+      "RawSHA256": "f7a7b3a0534a2062fb75f19c14cb049227fbb2cf7cd40346ded528b337f76547",
+      "GitBlob": "3abffae55c4ba0cd7be7d4747f285494ccca03ed"
+    },
+    {
+      "Path": "tests/cli/Parameters.Native.Tests.ps1",
+      "RawSHA256": "e83dfe7cf66d993815f8a3f3fff622dda90c43bbee5cdbd85bff9b17338f459f",
+      "GitBlob": "d4773fe23cbc212eb6d4dc199c3bd66ab002cb20"
+    }
+  ],
+  "CodeReview": {
+    "Result": "pass",
+    "BlockingFindings": [],
+    "Scope": "Independent review of root-authored T16 entry/helper/runner changes, new Parameters sources, README changes and required task/product/technical/test/workflow contracts.",
+    "Observations": [
+      "SourceFolder remains the only positional argument; OutputFolder remains explicit and defaults to the entry-script directory.",
+      "Entry and job ValidateSet accept only screen/ebook before their bodies; invalid values, even with SkipEmail, and unsupported extra arguments fail before import/output/native side effects.",
+      "Missing input prints usage before helper import and cancellation-context compilation; the public source parameter is optional and no prompt is introduced.",
+      "An explicit valid preset combined with SkipEmail is explained in console and guarded log; omitted default preset is not described as explicitly ignored.",
+      "SkipEmail bypasses GS discovery/probe/job; SkipEmail false preserves ordinary preset processing.",
+      "A case-insensitive switch emits exactly one literal screen/ebook flag. Existing safety flags, direct executable invocation and child GS_OPTIONS removal remain.",
+      "Master call contract, strict derivative page-count/envelope/native ownership validation, smaller-only publication, source/foreign preservation, no-overwrite and explicit exit states are retained.",
+      "Parameters unit source has31 decision cases with controlled native receipts; native source has9 actual engine/delivery cases per shell with disclosed copied wrappers and skip sentinels.",
+      "Runner adds two narrow tiers and keeps actual BAT/Windows PowerShell5.1 delivery distinct from physical Explorer interaction."
+    ],
+    "IndependenceLimits": [
+      "This reviewer authored only the two legacy copied-wrapper EmailPreset parameter additions; those additions are disclosed authored compatibility edits, not claimed as independent authored-code review.",
+      "The T15 owned-launch adapter was previously authored by this reviewer and is unchanged; no renewed independent adapter audit is claimed.",
+      "This receipt does not claim test execution or final public archive verification; those have separate executed evidence."
+    ]
+  },
+  "StaticAnalysisReview": {
+    "Result": "pass",
+    "ScopeFileCount": 7,
+    "Scope": [
+      "WinPDFMerge.ps1",
+      "src/WinPDFMerge.Helpers.ps1",
+      "tools/test/Invoke-Tests.ps1",
+      "tests/faults/FaultIO.Tests.ps1",
+      "tests/pdf/EmailOutcome.Native.Tests.ps1",
+      "tests/cli/Parameters.Tests.ps1",
+      "tests/cli/Parameters.Native.Tests.ps1"
+    ],
+    "Reports": [
+      {
+        "ShellVersion": "5.1.26100.9444",
+        "AnalyzerVersion": "1.25.0",
+        "Errors": 0,
+        "Warnings": 71,
+        "Information": 34,
+        "RawReport": "tests/.work/T16-C1-analyzer-ps51.json",
+        "RawReportSHA256": "293c2d4680959212a0fc3f6bda997fcbecbd8ba38be4391e9ea8efd4e3406f36",
+        "Groups": [
+          {
+            "RuleName": "PSAvoidAssignmentToAutomaticVariable",
+            "Severity": "Warning",
+            "Count": 3
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": "Information",
+            "Count": 28
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": "Warning",
+            "Count": 30
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": "Warning",
+            "Count": 7
+          },
+          {
+            "RuleName": "PSUseApprovedVerbs",
+            "Severity": "Warning",
+            "Count": 3
+          },
+          {
+            "RuleName": "PSUseBOMForUnicodeEncodedFile",
+            "Severity": "Warning",
+            "Count": 1
+          },
+          {
+            "RuleName": "PSUseDeclaredVarsMoreThanAssignments",
+            "Severity": "Warning",
+            "Count": 10
+          },
+          {
+            "RuleName": "PSUseOutputTypeCorrectly",
+            "Severity": "Information",
+            "Count": 6
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": "Warning",
+            "Count": 11
+          },
+          {
+            "RuleName": "PSUseSingularNouns",
+            "Severity": "Warning",
+            "Count": 6
+          }
+        ],
+        "CaptureBindings": [
+          {
+            "Path": "tests/.work/T16-C1-analyzer-execution-ps51-661443a3bad247db89c247ae1a228bdf/execution.json",
+            "SHA256": "ae0d89edad60d9ce3d81beb7878daa0c6380c9b4cd679b70d4014affb9434ceb"
+          },
+          {
+            "Path": "tests/.work/T16-C1-analyzer-execution-ps51-661443a3bad247db89c247ae1a228bdf/invocation.json",
+            "SHA256": "85625cf5129fd5f48770ac9891843e79b0cbe68b1f9ded905e892a361d06929d"
+          },
+          {
+            "Path": "tests/.work/T16-C1-analyzer-execution-ps51-661443a3bad247db89c247ae1a228bdf/stderr.txt",
+            "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "Path": "tests/.work/T16-C1-analyzer-execution-ps51-661443a3bad247db89c247ae1a228bdf/stdout.txt",
+            "SHA256": "948e6d2804033c8aca9a76944a7133e3831f4fa0e5968a73a96deac52a347f8c"
+          }
+        ]
+      },
+      {
+        "ShellVersion": "7.6.6",
+        "AnalyzerVersion": "1.25.0",
+        "Errors": 0,
+        "Warnings": 71,
+        "Information": 34,
+        "RawReport": "tests/.work/T16-C1-analyzer-ps7.json",
+        "RawReportSHA256": "03fe892b003bfaf313b5512240c465f6174d4d3225975e151d7ab7f6292f2d61",
+        "Groups": [
+          {
+            "RuleName": "PSAvoidAssignmentToAutomaticVariable",
+            "Severity": "Warning",
+            "Count": 3
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": "Information",
+            "Count": 28
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": "Warning",
+            "Count": 30
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": "Warning",
+            "Count": 7
+          },
+          {
+            "RuleName": "PSUseApprovedVerbs",
+            "Severity": "Warning",
+            "Count": 3
+          },
+          {
+            "RuleName": "PSUseBOMForUnicodeEncodedFile",
+            "Severity": "Warning",
+            "Count": 1
+          },
+          {
+            "RuleName": "PSUseDeclaredVarsMoreThanAssignments",
+            "Severity": "Warning",
+            "Count": 10
+          },
+          {
+            "RuleName": "PSUseOutputTypeCorrectly",
+            "Severity": "Information",
+            "Count": 6
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": "Warning",
+            "Count": 11
+          },
+          {
+            "RuleName": "PSUseSingularNouns",
+            "Severity": "Warning",
+            "Count": 6
+          }
+        ],
+        "CaptureBindings": [
+          {
+            "Path": "tests/.work/T16-C1-analyzer-execution-ps7-b71e3354f46741949a790f8a24956f27/execution.json",
+            "SHA256": "d8f6be2bf59c87d605717036fab67f1b89cd9c0bb49bb702b093bb5ef9bdedb0"
+          },
+          {
+            "Path": "tests/.work/T16-C1-analyzer-execution-ps7-b71e3354f46741949a790f8a24956f27/invocation.json",
+            "SHA256": "3e78ed27b5805330d85b40d2e41c3063d9ef2381ec3d52fd4e00e1a881df96e1"
+          },
+          {
+            "Path": "tests/.work/T16-C1-analyzer-execution-ps7-b71e3354f46741949a790f8a24956f27/stderr.txt",
+            "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "Path": "tests/.work/T16-C1-analyzer-execution-ps7-b71e3354f46741949a790f8a24956f27/stdout.txt",
+            "SHA256": "55879113489fc4c5d8d875637c4753669f1e9cb91c52d68192009c5132ed3212"
+          }
+        ]
+      }
+    ],
+    "BlockingFindings": [],
+    "Disposition": [
+      "WriteHost is deliberate CLI/report output captured by actual supported hosts; internal naming, output metadata and ShouldProcess style findings do not change T16 behavior.",
+      "The entry BOM warning concerns pre-existing non-ASCII comment/documentation text; actual PS5.1 parsing and execution is separately tested. No automatic encoding rewrite was made.",
+      "Pester callback/dynamic use explains cross-block unused variable/parameter reports; test helper positional/naming style findings are nonblocking.",
+      "The three automatic input assignments are local test fixture path variables in helpers with no pipeline input dependency; no runtime pipeline contract is affected."
+    ],
+    "Limits": [
+      "Scoped seven-file PSScriptAnalyzer1.25.0 review only; no repository-wide static/security proof or suppressed findings.",
+      "Each report is a fresh actual clean-C1 execution in its stated pinned Windows shell; dirty precommit receipts remain separate."
+    ]
+  },
+  "EvidenceAudit": {
+    "Result": "not_run",
+    "Scope": "Full clean tier/aggregate and sanitized public archive audit is assigned separately; native retained-PDF audit has a separate receipt."
+  },
+  "RemainingLimits": [
+    "No T17 preset-quality/fidelity acceptance, physical Explorer/manual evidence, arbitrary PDF security/fidelity, package/release or all-Windows-version claim.",
+    "No runtime network/dependency acquisition or expanded public diagnostic/preview interface introduced."
+  ],
+  "ReviewBuilder": {
+    "Path": "tests/.work/Build-T16SourceReview.py",
+    "SHA256": "6ec101869070697936b7772697e2dccfb2f37803f24f133159f88b2c1f8f73b5"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "Task": "T16",
+  "Kind": "Independent native audit; no application or suite rerun",
+  "CommitUnderTest": "26ac1b73e3733a23099de53d944e00e4ee412982",
+  "StartedAtUtc": "2026-10-08T07:02:23.399350+00:00",
+  "Command": [
+    "<USERPROFILE>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "-B",
+    "<repo>\\tests\\.work\\Audit-T16Native.py",
+    "--commit",
+    "26ac1b73e3733a23099de53d944e00e4ee412982",
+    "--observations",
+    "<repo>\\tests\\.work\\parameters\\46ebbd1befa64153a889432a990eb45a\\native-observations.json",
+    "--observations",
+    "<repo>\\tests\\.work\\parameters\\23bfd4e4ba16417da2de6fe0cc4d630f\\native-observations.json",
+    "--run-snapshot",
+    "ps51=<repo>\\tests\\.work\\T16-native-audit-attempts\\20261008T070223394413Z-927e9435b555469ca2bf643d3fe299ad\\clean-runs-at-audit-ps51.json",
+    "--run-snapshot",
+    "ps7=<repo>\\tests\\.work\\T16-native-audit-attempts\\20261008T070223394413Z-927e9435b555469ca2bf643d3fe299ad\\clean-runs-at-audit-ps7.json",
+    "--prior-attempt",
+    "<repo>\\tests\\.work\\T16-native-audit-attempts\\20261008T070117307550Z-a2be6750100a4b7ea7eb0de28ce91ffe",
+    "--output",
+    "<repo>\\tests\\.work\\T16-native-audit-attempts\\20261008T070223394413Z-927e9435b555469ca2bf643d3fe299ad\\report.json"
+  ],
+  "AuditScript": "tests/.work/Audit-T16Native.py",
+  "AuditScriptSHA256": "b735bf5c27fe8e27f9aa866ae33902e1c610084986919d042216c34766f98574",
+  "PythonSHA256": "dd5f8d19f6755d6491ee7c4bef2fe35ddd521334cc3ca3ed8fc93ebcadf135d0",
+  "SourceSnapshots": {
+    "tests/.work/T16-native-audit-attempts/20261008T070223394413Z-927e9435b555469ca2bf643d3fe299ad/auditor-source.py": "b735bf5c27fe8e27f9aa866ae33902e1c610084986919d042216c34766f98574",
+    "tests/.work/T16-native-audit-attempts/20261008T070223394413Z-927e9435b555469ca2bf643d3fe299ad/capture-wrapper-source.py": "f277c9dd00a45a1f1420fbb8be8fc5eba9b5d9d5a9f29b1eff64de6ce2ce2b55"
+  },
+  "ObservationBindings": {
+    "tests/.work/parameters/46ebbd1befa64153a889432a990eb45a/native-observations.json": "413fe6393caee5864876d294ee319e96f6c062c8938dccfc01fec7320547ab8a",
+    "tests/.work/parameters/23bfd4e4ba16417da2de6fe0cc4d630f/native-observations.json": "e1c57d16fe0a634a79c01205434611c243b93cea8c9ad6630012dde7fd2aeb10"
+  },
+  "RunSnapshots": {
+    "ps51": {
+      "Source": "tests/.work/T16-C1-ps51/runs.json",
+      "SourceSHA256AtCapture": "028b0bdde91e1b761329ec3c8cf64fc5ce7c6b38caaa9a6778f94eb2ea14ed4d",
+      "Snapshot": "tests/.work/T16-native-audit-attempts/20261008T070223394413Z-927e9435b555469ca2bf643d3fe299ad/clean-runs-at-audit-ps51.json",
+      "SnapshotSHA256": "028b0bdde91e1b761329ec3c8cf64fc5ce7c6b38caaa9a6778f94eb2ea14ed4d"
+    },
+    "ps7": {
+      "Source": "tests/.work/T16-C1-ps7/runs.json",
+      "SourceSHA256AtCapture": "c6b44f7ae3198a345aacbb8d9d4d53023f817bfa8d99acb21ba662c621e7f46d",
+      "Snapshot": "tests/.work/T16-native-audit-attempts/20261008T070223394413Z-927e9435b555469ca2bf643d3fe299ad/clean-runs-at-audit-ps7.json",
+      "SnapshotSHA256": "c6b44f7ae3198a345aacbb8d9d4d53023f817bfa8d99acb21ba662c621e7f46d"
+    }
+  },
+  "PriorAttempts": [
+    "tests/.work/T16-native-audit-attempts/20261008T070117307550Z-a2be6750100a4b7ea7eb0de28ce91ffe"
+  ]
+}

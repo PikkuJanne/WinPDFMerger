@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="15" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2026-10-08" time="09.00.50">
+  <environment os-version="10.0.26300" nunit-version="2.5.8.0" machine-name="REDACTED" cwd="REDACTED" user-domain="REDACTED" platform="Microsoft Windows 11 Pro|C:\Windows|\Device\Harddisk0\Partition3" clr-version="10.0.12" user="REDACTED" />
+  <culture-info current-culture="fi-FI" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="39.7546" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="[repo]\tests\filesafety\Destination.Native.Tests.ps1" executed="True" result="Success" success="True" time="39.7546" asserts="0" description="[repo]\tests\filesafety\Destination.Native.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="AC022: actual entry destination preflight and standard-user writability" executed="True" result="Success" success="True" time="20.9068" asserts="0" description="AC022: actual entry destination preflight and standard-user writability">
+            <results>
+              <test-case description="keeps the omitted destination beside the entry script and uses actual engines without editing sources" name="AC022: actual entry destination preflight and standard-user writability.keeps the omitted destination beside the entry script and uses actual engines without editing sources" time="3.9874" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="accepts a named literal writable OutputFolder with punctuation and Latin Unicode" name="AC022: actual entry destination preflight and standard-user writability.accepts a named literal writable OutputFolder with punctuation and Latin Unicode" time="3.5686" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="refuses a denied-write default installation and recovers through an explicit writable destination" name="AC022: actual entry destination preflight and standard-user writability.refuses a denied-write default installation and recovers through an explicit writable destination" time="4.901" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="removes its successful owned writability probe when later dependency preflight fails" name="AC022: actual entry destination preflight and standard-user writability.removes its successful owned writability probe when later dependency preflight fails" time="1.5866" asserts="0" success="True" result="Success" executed="True" />
+              <test-suite type="ParameterizedTest" name="AC022: actual entry destination preflight and standard-user writability.rejects a &lt;Kind&gt; destination before dependency lookup, names or outputs" executed="True" result="Success" success="True" time="6.8032" asserts="0" description="rejects a &lt;Kind&gt; destination before dependency lookup, names or outputs">
+                <results>
+                  <test-case description="rejects a nonexistent destination before dependency lookup, names or outputs" name="AC022: actual entry destination preflight and standard-user writability.rejects a nonexistent destination before dependency lookup, names or outputs" time="2.0562" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects a file destination before dependency lookup, names or outputs" name="AC022: actual entry destination preflight and standard-user writability.rejects a file destination before dependency lookup, names or outputs" time="1.852" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects a wildcard destination before dependency lookup, names or outputs" name="AC022: actual entry destination preflight and standard-user writability.rejects a wildcard destination before dependency lookup, names or outputs" time="1.5226" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects a nonfilesystem provider destination before dependency lookup, names or outputs" name="AC022: actual entry destination preflight and standard-user writability.rejects a nonfilesystem provider destination before dependency lookup, names or outputs" time="1.3723" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="AC023: real directory identity and NTFS junction protection" executed="True" result="Success" success="True" time="32.7731" asserts="0" description="AC023: real directory identity and NTFS junction protection">
+            <results>
+              <test-suite type="ParameterizedTest" name="AC023: real directory identity and NTFS junction protection.refuses source/output &lt;Kind&gt; before any native dependency or output creation" executed="True" result="Success" success="True" time="5.038" asserts="0" description="refuses source/output &lt;Kind&gt; before any native dependency or output creation">
+                <results>
+                  <test-case description="refuses source/output same directory before any native dependency or output creation" name="AC023: real directory identity and NTFS junction protection.refuses source/output same directory before any native dependency or output creation" time="3.1424" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="refuses source/output case alias before any native dependency or output creation" name="AC023: real directory identity and NTFS junction protection.refuses source/output case alias before any native dependency or output creation" time="1.8956" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="ParameterizedTest" name="AC023: real directory identity and NTFS junction protection.refuses an actual &lt;Kind&gt; junction without traversing, self-merging or touching its target" executed="True" result="Success" success="True" time="6.8184" asserts="0" description="refuses an actual &lt;Kind&gt; junction without traversing, self-merging or touching its target">
+                <results>
+                  <test-case description="refuses an actual output leaf to source junction without traversing, self-merging or touching its target" name="AC023: real directory identity and NTFS junction protection.refuses an actual output leaf to source junction without traversing, self-merging or touching its target" time="1.8662" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="refuses an actual source leaf to output junction without traversing, self-merging or touching its target" name="AC023: real directory identity and NTFS junction protection.refuses an actual source leaf to output junction without traversing, self-merging or touching its target" time="1.9483" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="refuses an actual output ancestor junction without traversing, self-merging or touching its target" name="AC023: real directory identity and NTFS junction protection.refuses an actual output ancestor junction without traversing, self-merging or touching its target" time="1.4471" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="refuses an actual source ancestor junction without traversing, self-merging or touching its target" name="AC023: real directory identity and NTFS junction protection.refuses an actual source ancestor junction without traversing, self-merging or touching its target" time="1.5568" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="AC024: actual simultaneous run identities and unchanged existing results" executed="True" result="Success" success="True" time="37.2263" asserts="0" description="AC024: actual simultaneous run identities and unchanged existing results">
+            <results>
+              <test-case description="gives overlapping real application runs distinct shared master/email/log identities in one output directory" name="AC024: actual simultaneous run identities and unchanged existing results.gives overlapping real application runs distinct shared master/email/log identities in one output directory" time="4.4475" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>
