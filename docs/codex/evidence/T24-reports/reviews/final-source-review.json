@@ -1,0 +1,290 @@
+{
+  "schema_version": 1,
+  "task": "T24",
+  "evidence_class": "independent-final-C1b-source-pin-privilege-boundary-review",
+  "observed_at_utc": "2026-10-08T16:36:51.7371954Z",
+  "reviewed_commit": "e626e45a5ba375456f23b506f0ded7ca7d68f1e3",
+  "clean_worktree": true,
+  "live_head_command": "git ls-remote --exit-code --heads origin refs/heads/codex/v1.0.0-readiness",
+  "live_head_output": "e626e45a5ba375456f23b506f0ded7ca7d68f1e3\trefs/heads/codex/v1.0.0-readiness",
+  "source_bindings": [
+    {
+      "path": ".github/workflows/windows-tests.yml",
+      "sha256": "910a39e0b827a3698f6db875514fd50c8e5d8766cd38b5f5faa6d3c9a2db74fe"
+    },
+    {
+      "path": ".gitattributes",
+      "sha256": "0cf31f78abc031b7d9b8de52dfb7dd2c97af0362d2e692060ae9e2bc4899155a"
+    },
+    {
+      "path": "tools/test/Invoke-CiTests.ps1",
+      "sha256": "31665cff79680576425e5292bf0e43d70437d243d99d7f4807be62f4f22e630b"
+    },
+    {
+      "path": "tools/test/Invoke-CiFailureProbe.ps1",
+      "sha256": "f9e47112b4335ede7d81aabb68b6ecff21271ae3195b8438040a1e05577b33e1"
+    },
+    {
+      "path": "tools/test/CiRunSupport.ps1",
+      "sha256": "c9f289fba6ee3fd019d32781e405bf86a0ba1c9820d969bf9c4c6a42c2c497b8"
+    },
+    {
+      "path": "tools/test/CiReportSupport.ps1",
+      "sha256": "531908186e0204053535124a0c1f229247ce6748dc70c467af73357fffc6d83d"
+    },
+    {
+      "path": "tools/test/Initialize-CiDependencies.ps1",
+      "sha256": "4657e772c6a3996582182e8b52ef76259ffd29da06b0b8e24e30eea4086aece4"
+    },
+    {
+      "path": "tools/test/CiDependencySupport.ps1",
+      "sha256": "f40724e63fd3d6af71cb3802ee1c6dcf23892d6f0e0f2e4e9d93a5e900f7db42"
+    },
+    {
+      "path": "tools/test/Invoke-Tests.ps1",
+      "sha256": "a5d5e74d9a62234f4e948cceb466aecc27c1df5f5534564e971284eb94fc43c8"
+    },
+    {
+      "path": "tests/ci-dependencies.json",
+      "sha256": "781fd70c3ed4aee791c9ba314a6f9503dc26447be8d4d7876c922c57c76998d3"
+    },
+    {
+      "path": "tests/pdf/CiSmoke.Native.Tests.ps1",
+      "sha256": "5f7c78b4c44a35ed469309ed0d3f405683608d57172291ad9266db448276152d"
+    },
+    {
+      "path": "tests/unit/CiRunSupport.Tests.ps1",
+      "sha256": "3e8927d28e8ac592b18f76b1ccdf07692fe9973bc1f4af9881dd8902688b9643"
+    },
+    {
+      "path": "tests/unit/CiReportSupport.Tests.ps1",
+      "sha256": "4dfe75cbb402e7cf68afafcd53f3ad5bc27d58ecdedea1d3e9ddfdc674dc8131"
+    },
+    {
+      "path": "docs/DEVELOPMENT.md",
+      "sha256": "5bbcb08325b464655cf8221c00014260d8b40605dc9cb326620936f94839aa6e"
+    }
+  ],
+  "result": "pass",
+  "blockers": [],
+  "action_pins": [
+    {
+      "repository": "actions/checkout",
+      "tag": "v7.0.1",
+      "sha": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "command": "git ls-remote https://github.com/actions/checkout.git refs/tags/v7.0.1",
+      "actual_output": "3d3c42e5aac5ba805825da76410c181273ba90b1\trefs/tags/v7.0.1",
+      "matches": true
+    },
+    {
+      "repository": "actions/upload-artifact",
+      "tag": "v7.0.2",
+      "sha": "cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+      "command": "git ls-remote https://github.com/actions/upload-artifact.git refs/tags/v7.0.2",
+      "actual_output": "cf430e030ddbb5b0abf93d22962f4752f3646cd9\trefs/tags/v7.0.2",
+      "matches": true
+    }
+  ],
+  "dependencies": [
+    {
+      "id": "pester",
+      "version": "6.2.0",
+      "url": "https://www.powershellgallery.com/api/v2/package/Pester/6.2.0",
+      "bytes": 465109,
+      "sha256": "e6ac7418d4f12500269aaca58ae56cf1caafbbf1afa2cec334e289d1cf50a239",
+      "matches_previously_verified_primary_provenance": true,
+      "files": [
+        {
+          "path": "Pester.psd1",
+          "sha256": "ea8445218d46eeb69dd08827d38222f1d23c592966722ecfd0bdc419bf045543"
+        }
+      ]
+    },
+    {
+      "id": "analyzer",
+      "version": "1.25.0",
+      "url": "https://github.com/PowerShell/PSScriptAnalyzer/releases/download/1.25.0/PSScriptAnalyzer.1.25.0.nupkg",
+      "bytes": 14658674,
+      "sha256": "14e634c828eb98efb9f40b2918ba90f139ed5eccdf663a2a747736d996995d60",
+      "matches_previously_verified_primary_provenance": true,
+      "files": [
+        {
+          "path": "PSScriptAnalyzer.psd1",
+          "sha256": "2b219f688bcdd67101040f845e530b22907d39bbf49089b4b5b2afaba7996791"
+        }
+      ]
+    },
+    {
+      "id": "powershell",
+      "version": "7.6.6",
+      "url": "https://github.com/PowerShell/PowerShell/releases/download/v7.6.6/PowerShell-7.6.6-win-x64.zip",
+      "bytes": 106328873,
+      "sha256": "02fe458be20493fbdf43f61ea20610b811ee6c738ab1676c61b9cfcd1a33c860",
+      "matches_previously_verified_primary_provenance": true,
+      "files": [
+        {
+          "path": "pwsh.exe",
+          "sha256": "bfb46af89433268872ddb43d1ca7a3f433452ee91ed356a9786940f90118e285"
+        }
+      ]
+    },
+    {
+      "id": "innoextract",
+      "version": "1.9",
+      "url": "https://constexpr.org/innoextract/files/innoextract-1.9-windows.zip",
+      "bytes": 520705,
+      "sha256": "6989342c9b026a00a72a38f23b62a8e6a22cc5de69805cf47d68ac2fec993065",
+      "matches_previously_verified_primary_provenance": true,
+      "files": [
+        {
+          "path": "innoextract.exe",
+          "sha256": "946bd06d8b3722a791fea4d84f496139eef6faef61640924cb72f5f1998a68e1"
+        }
+      ]
+    },
+    {
+      "id": "pdftk",
+      "version": "2.02",
+      "url": "https://www.pdflabs.com/tools/pdftk-the-pdf-toolkit/pdftk_server-2.02-win-setup.exe",
+      "bytes": 3054862,
+      "sha256": "cc8f6a43fc91026bb739ad0ad9a124c24750d6127662fb3638ec1d44403aabd2",
+      "matches_previously_verified_primary_provenance": true,
+      "files": [
+        {
+          "path": "app/bin/pdftk.exe",
+          "sha256": "5e5cbe817ecc3cc1875369d81119472559c9624d55c7176852c8827750afa00a"
+        },
+        {
+          "path": "app/bin/libiconv2.dll",
+          "sha256": "cb016e794d3311c71f21d87803e10a0e1133995f62a485eb37b321cd9b9e1087"
+        }
+      ]
+    },
+    {
+      "id": "ghostscript",
+      "version": "10.08.0",
+      "url": "https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs10080/gs10080w64.exe",
+      "bytes": 65093120,
+      "sha256": "52a91b8bf09298788d7a57b9206127026c23eacd75405f0a131e26dc381dce50",
+      "matches_previously_verified_primary_provenance": true,
+      "files": [
+        {
+          "path": "bin/gswin64c.exe",
+          "sha256": "9b29d3b5128c6d53bb4e9eee77e3919d05038cdfdd8e07697af4d9c319f9d5ad"
+        },
+        {
+          "path": "bin/gsdll64.dll",
+          "sha256": "a134ed0d3af749bdab93c66029180e676d36d9cc624c192ea287f73c891fb0af"
+        }
+      ]
+    }
+  ],
+  "fresh_official_vendor_asset_checks": [
+    {
+      "id": "powershell",
+      "release_api_url": "https://api.github.com/repos/PowerShell/PowerShell/releases/tags/v7.6.6",
+      "asset": "PowerShell-7.6.6-win-x64.zip",
+      "digest": "sha256:02fe458be20493fbdf43f61ea20610b811ee6c738ab1676c61b9cfcd1a33c860",
+      "matches": true
+    },
+    {
+      "id": "analyzer",
+      "release_api_url": "https://api.github.com/repos/PowerShell/PSScriptAnalyzer/releases/tags/1.25.0",
+      "asset": "PSScriptAnalyzer.1.25.0.nupkg",
+      "digest": "sha256:14e634c828eb98efb9f40b2918ba90f139ed5eccdf663a2a747736d996995d60",
+      "matches": true
+    },
+    {
+      "id": "ghostscript",
+      "release_api_url": "https://api.github.com/repos/ArtifexSoftware/ghostpdl-downloads/releases/tags/gs10080",
+      "asset": "gs10080w64.exe",
+      "digest": "sha256:52a91b8bf09298788d7a57b9206127026c23eacd75405f0a131e26dc381dce50",
+      "matches": true
+    }
+  ],
+  "ci_manifest_sha256": "781fd70c3ed4aee791c9ba314a6f9503dc26447be8d4d7876c922c57c76998d3",
+  "native_smoke_review": {
+    "engine_file_hash_and_actual_version_gate": true,
+    "real_pdftk_three_page_merge_and_fresh_dump_read": true,
+    "real_ghostscript_screen_and_ebook_pdf_validation": true,
+    "safer_flags_asserted": true,
+    "strict_smaller_publication_and_no_benefit_state_checked": true,
+    "both_engine_existing_output_prelaunch_refusal": true,
+    "source_hash_length_timestamp_attributes_preserved": true,
+    "owned_staging_removed": true,
+    "expected_cases": 4,
+    "observed_engine_dependency_claim": "Pinned actual PDFtk/GS helper smoke and PDFtk structural page counts",
+    "independent_renderer_claim": false,
+    "standard_user_acl_claim": false,
+    "desktop_or_fidelity_claim": false
+  },
+  "scope_adjustment": {
+    "previous_hosted_failures_disclosed": true,
+    "native_job_tiers": [
+      "NativeFixture",
+      "SourceDiscovery",
+      "CiNativeSmoke"
+    ],
+    "existing_T23_ACL_ToolPaths_and_runtime_delta": [],
+    "existing_T23_ACL_ToolPaths_and_runtime_unchanged": true,
+    "new_skip_added": false,
+    "license_attribute_command": "git check-attr text -- LICENSE",
+    "license_attribute_output": "LICENSE: text: unset",
+    "reason": "Hosted administrator tokens invalidate the standard-user ACL negative expectation. Separate real-engine hosted smoke preserves that original local suite and adds no skip; license byte contract survives hosted checkout."
+  },
+  "privilege_and_module_boundary": {
+    "contents_read_only": true,
+    "persist_credentials": false,
+    "no_privileged_target_secrets_or_release_publish": true,
+    "runner_label": "windows-2025",
+    "actual_runner_image_recorded": true,
+    "outer_process_PSModulePath_removed": true,
+    "same_selected_shell_tier_children_inherit_compatible_driver_module_path": true,
+    "explicit_Pester_analyzer_import_paths": true,
+    "no_persistent_policy_environment_or_installation": true,
+    "actual_admin_token_observed_by_driver": true,
+    "sanitized_json_xml_only_upload": true,
+    "missing_receipts_or_nonzero_failures_exit_nonzero": true,
+    "native_analyzer_optional_arg_omitted": true
+  },
+  "previous_actual_hosted_privilege_proof": {
+    "file": "tests/.work/T24-final-privilege-review.json",
+    "sha256": "49529a9072b31741b9ad0f6d3331b77c43829f341c89103422a6eda7dbb3c2c9",
+    "scope": "C1a same unchanged workflow token/Action pins observed in all8 actual job logs; C1b workflow pins/permissions unchanged. C1b actual privilege evidence must be retained when runs complete."
+  },
+  "hosted_run_snapshots": [
+    {
+      "id": 37809951854,
+      "event": "push",
+      "head_branch": "codex/t24-ci-failure-probe",
+      "head_sha": "e626e45a5ba375456f23b506f0ded7ca7d68f1e3",
+      "status": "in_progress",
+      "conclusion": null,
+      "html_url": "https://github.com/PikkuJanne/WinPDFMerger/actions/runs/37809951854"
+    },
+    {
+      "id": 37809856744,
+      "event": "pull_request",
+      "head_branch": "codex/v1.0.0-readiness",
+      "head_sha": "e626e45a5ba375456f23b506f0ded7ca7d68f1e3",
+      "status": "in_progress",
+      "conclusion": null,
+      "html_url": "https://github.com/PikkuJanne/WinPDFMerger/actions/runs/37809856744"
+    },
+    {
+      "id": 37809847683,
+      "event": "push",
+      "head_branch": "codex/v1.0.0-readiness",
+      "head_sha": "e626e45a5ba375456f23b506f0ded7ca7d68f1e3",
+      "status": "in_progress",
+      "conclusion": null,
+      "html_url": "https://github.com/PikkuJanne/WinPDFMerger/actions/runs/37809847683"
+    }
+  ],
+  "limitations": [
+    "Source review only; reviewer did not execute tests/native tools or write to parent-exclusive pester/static raw report directories.",
+    "Current C1b hosted workflow snapshots are pending/running. Actual successful artifact/count checks and deliberate failing Pester workflow remain mandatory parent AC054 evidence.",
+    "Archived initial parser, module/checkout and hosted ACL preparation failures remain failures and require accurate disclosure.",
+    "No claim that hosted Server/admin smoke replaces required standard-user Windows11/Explorer/rendering/feature/package/release gates."
+  ]
+}

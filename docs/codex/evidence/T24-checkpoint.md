@@ -77,3 +77,23 @@ PowerShell files parse and pass the selected 41 analyzer rules per host with no
 findings/suppressions. Seven root CI regressions pass again, and the autocrlf
 checkout probe now retains the exact original license SHA. Final C1b will rerun
 the complete selected CI driver against clean source in both hosts and on GitHub.
+
+Final clean C1b `e626e45a5ba375456f23b506f0ded7ca7d68f1e3` is normally pushed
+and fresh live-ref/clean-tree equality verified. Normal push37809847683 and
+PR37809856744 each pass four jobs /1306 checks /18 sanitized pairs. Actual PR
+synthetic merge `1c42402a05f4b18f0df35cf2a4225ffb928405df` has C1b as parent
+and the identical Git tree. Exact C1b on the dedicated negative branch produces
+run37809951854: one deliberate assertion fails per unit host, both native jobs
+pass and the workflow fails. All four artifacts upload. Clean local driver
+exits0 for all four groups,1306 passes /18 pairs and no bad counts. Static64
+files/41 rules per host pass, no findings/suppressions; advisories0/325/175 retained.
+
+Independent final hosted/local audits pass28950/5511 integrity checks, distinct
+from application counts; privilege/pins/source-context review passes AC055.
+All20 downloaded ZIP digests independently match API digests. AC054/AC055 now
+pass; earlier failures remain truthful and separate. Public archive review
+catches local identities in copied privacy-regex literals; those become generic
+and repository lookup is adapted for the archived location. Sanitized report/
+review bytes remain retained. Manifest binds307 files excluding itself.
+Completion/results/status and T25 continuation form records-only C2; its own
+clean push/live equality is checked after push in session without a future SHA.

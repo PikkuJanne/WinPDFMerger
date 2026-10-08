@@ -1,0 +1,32 @@
+{
+  "task": "T24",
+  "review": "final-public-evidence-pack-read-only-byte-preservation-manifest-and-privacy",
+  "observed_at_utc": "2026-10-08T16:52:21.699183+00:00",
+  "result": "pass",
+  "checks": 1505,
+  "manifest_sha256": "68d6346ed1a6b82d0c1b4ba32ac681c7b8e66b23325d02ed04d21587b8b31987",
+  "manifest_entries": 307,
+  "files_including_manifest": 308,
+  "byte_identical_original_copies": 301,
+  "one_redacted_local_invocation_aggregate": true,
+  "one_parser_validation_record_checked_against_live_GitHub": true,
+  "copies": {
+    "hosted": 248,
+    "local": 45,
+    "reviews": 9,
+    "scripts": 4,
+    "root": 1
+  },
+  "archived_audit_script_portability_privacy_changes": [
+    "Audit-T24C1bHosted.py",
+    "Audit-T24C1bLocal.py",
+    "Audit-T24FailedRuns.py"
+  ],
+  "findings": [],
+  "limitations": [
+    "Auditor only reads public pack and retained original downloads/local outputs; no application or Pester test is invoked.",
+    "Copied audit scripts deliberately differ from originals only where repository lookup/privacy checks were made portable or generic; original audit receipt totals remain exact saved original bytes.",
+    "Audits still require the original ignored ZIP/input trees for archive digest rechecks.",
+    "Preparation failures, normal passes, and deliberate probe failures remain distinct; no manual desktop acceptance is asserted."
+  ]
+}

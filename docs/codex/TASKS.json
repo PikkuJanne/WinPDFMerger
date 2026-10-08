@@ -746,7 +746,7 @@
       "id": "T24",
       "milestone": "M4",
       "title": "Add safe Windows CI and machine-readable reports",
-      "status": "in_progress",
+      "status": "done",
       "depends_on": [
         "T23"
       ],
@@ -762,9 +762,15 @@
         "AC055"
       ],
       "evidence": [
-        "docs/codex/evidence/T24-checkpoint.md"
+        "docs/codex/evidence/T24-checkpoint.md",
+        "docs/codex/evidence/T24-completion.md",
+        "docs/codex/evidence/T24-results.json",
+        "docs/codex/evidence/T24-reports/manifest.json",
+        "docs/codex/evidence/T24-reports/reviews/final-hosted-artifact-review.json",
+        "docs/codex/evidence/T24-reports/reviews/final-hosted-privilege-review.json",
+        "docs/codex/evidence/T24-reports/reviews/final-local-artifact-review.json"
       ],
-      "notes": "Implementation and actual hosted CI/failure verification in progress; AC054/AC055 not yet accepted."
+      "notes": "AC054/AC055 pass at clean C1b e626e45a5ba375456f23b506f0ded7ca7d68f1e3: actual push/PR 4/4, 1306 passes each; same-tree PR synthetic merge; deliberate failure fails both unit jobs with one real failure per host; all four artifacts retained. Independently reviewed pins/minimum permissions/sanitization and downloaded artifact digests. Local selected driver 1306 passes; hosted admin/Server evidence has explicit native-smoke scope. Records-only checkpoint is verified after push in session; T25 next."
     },
     {
       "id": "T25",

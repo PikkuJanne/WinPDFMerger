@@ -1,0 +1,673 @@
+{
+  "schema_version": 1,
+  "task": "T24",
+  "evidence_class": "independent-final-source-action-pin-and-actual-hosted-privilege-review",
+  "observed_at_utc": "2026-10-08T16:30:27.8022426Z",
+  "reviewed_commit": "4eb308236ebe25e62225ebb76f99642d961548e1",
+  "dirty_worktree_at_review": true,
+  "live_branch_command": "git ls-remote --exit-code --heads origin refs/heads/codex/v1.0.0-readiness",
+  "live_branch_output": "4eb308236ebe25e62225ebb76f99642d961548e1\trefs/heads/codex/v1.0.0-readiness",
+  "source_bindings": [
+    {
+      "path": ".github/workflows/windows-tests.yml",
+      "sha256": "910a39e0b827a3698f6db875514fd50c8e5d8766cd38b5f5faa6d3c9a2db74fe"
+    },
+    {
+      "path": "tools/test/Invoke-CiTests.ps1",
+      "sha256": "eefd17848ef369d3eed19fb05b3838fa5bbf13481cf53eecc7911bc64cfa094f"
+    },
+    {
+      "path": "tools/test/Invoke-CiFailureProbe.ps1",
+      "sha256": "f9e47112b4335ede7d81aabb68b6ecff21271ae3195b8438040a1e05577b33e1"
+    },
+    {
+      "path": "tools/test/CiRunSupport.ps1",
+      "sha256": "c9f289fba6ee3fd019d32781e405bf86a0ba1c9820d969bf9c4c6a42c2c497b8"
+    },
+    {
+      "path": "tools/test/CiReportSupport.ps1",
+      "sha256": "29babed9422f8abb423163d931ef4a85e8b9a158e1ac7b3e85e09e096ff50a10"
+    },
+    {
+      "path": "tools/test/Initialize-CiDependencies.ps1",
+      "sha256": "4657e772c6a3996582182e8b52ef76259ffd29da06b0b8e24e30eea4086aece4"
+    },
+    {
+      "path": "tools/test/CiDependencySupport.ps1",
+      "sha256": "f40724e63fd3d6af71cb3802ee1c6dcf23892d6f0e0f2e4e9d93a5e900f7db42"
+    },
+    {
+      "path": "tests/ci-dependencies.json",
+      "sha256": "781fd70c3ed4aee791c9ba314a6f9503dc26447be8d4d7876c922c57c76998d3"
+    },
+    {
+      "path": "docs/DEVELOPMENT.md",
+      "sha256": "9398317fd1ba153551dfc699b3e467f65a08b07a452925ac168d157bba1be33c"
+    },
+    {
+      "path": "tests/unit/CiRunSupport.Tests.ps1",
+      "sha256": "8fd5732a19b86656b25bab62e34f88360df89d19aec4fdcc458a86ff5d6d9982"
+    }
+  ],
+  "source_review_result": "pass",
+  "unresolved_source_privilege_findings": [],
+  "action_pins": [
+    {
+      "repository": "actions/checkout",
+      "tag": "v7.0.1",
+      "sha": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+      "command": "git ls-remote https://github.com/actions/checkout.git refs/tags/v7.0.1",
+      "live_output": "3d3c42e5aac5ba805825da76410c181273ba90b1\trefs/tags/v7.0.1",
+      "matches": true
+    },
+    {
+      "repository": "actions/upload-artifact",
+      "tag": "v7.0.2",
+      "sha": "cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+      "command": "git ls-remote https://github.com/actions/upload-artifact.git refs/tags/v7.0.2",
+      "live_output": "cf430e030ddbb5b0abf93d22962f4752f3646cd9\trefs/tags/v7.0.2",
+      "matches": true
+    }
+  ],
+  "workflow_review": {
+    "contents_read_only": true,
+    "persist_credentials": false,
+    "events": [
+      "push",
+      "pull_request",
+      "workflow_dispatch"
+    ],
+    "privileged_target_or_workflow_run": false,
+    "environment_secrets_or_write_token": false,
+    "release_publication_steps": false,
+    "fixed_runner_label": "windows-2025",
+    "runner_image_is_rolling": true,
+    "runner_temp_used_only_step_env_or_with": true,
+    "native_analyzer_argument_omitted": true,
+    "child_module_path_default_reconstruction": true,
+    "artifact_allowlist": "Dedicated sanitized-reports/**/*.json and **/*.xml only",
+    "artifact_missing_upload_failure_rejects": true,
+    "raw_reports_uploaded": false,
+    "report_counts_and_xml_source_guards_retained": true
+  },
+  "context_fix": {
+    "initial_commit": "7f3426deac5834c9e070855f65eaab02059aa0bf",
+    "initial_failed_run_id": 37808521621,
+    "initial_run_jobs": 0,
+    "reason": "runner context cannot be used at jobs.<job_id>.env; corrected CI_REPORTS runner.temp expression is in permitted step.env contexts",
+    "corrected_commit": "4eb308236ebe25e62225ebb76f99642d961548e1",
+    "regression_file": "tests/unit/CiRunSupport.Tests.ps1",
+    "primary_docs": "https://docs.github.com/en/actions/reference/workflows-and-actions/contexts#context-availability"
+  },
+  "actual_hosted_runs": [
+    {
+      "id": 37808743156,
+      "event": "push",
+      "head_sha": "4eb308236ebe25e62225ebb76f99642d961548e1",
+      "status": "completed",
+      "conclusion": "failure",
+      "html_url": "https://github.com/PikkuJanne/WinPDFMerger/actions/runs/37808743156",
+      "jobs": [
+        {
+          "id": 113419786127,
+          "name": "unit / PS51",
+          "status": "completed",
+          "conclusion": "failure",
+          "labels": [
+            "windows-2025"
+          ],
+          "token_permissions": {
+            "Metadata": "read",
+            "Contents": "read"
+          },
+          "token_permissions_match_minimum": true,
+          "downloaded_action_pins": [
+            {
+              "repository": "actions/checkout",
+              "requested_sha": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+              "downloaded_sha": "3d3c42e5aac5ba805825da76410c181273ba90b1"
+            },
+            {
+              "repository": "actions/upload-artifact",
+              "requested_sha": "cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+              "downloaded_sha": "cf430e030ddbb5b0abf93d22962f4752f3646cd9"
+            }
+          ],
+          "actual_image": "windows-2025-vs2026",
+          "actual_image_version": "20260925.250.1",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Check out the tested commit",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Prepare verified temporary test dependencies",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run the selected tests and export sanitized receipts",
+              "status": "completed",
+              "conclusion": "failure"
+            },
+            {
+              "name": "Upload sanitized reports only",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Check out the tested commit",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ],
+          "log_api_url": "https://api.github.com/repos/PikkuJanne/WinPDFMerger/actions/jobs/113419786127/logs",
+          "raw_log_retained": false
+        },
+        {
+          "id": 113419786427,
+          "name": "native / PS51",
+          "status": "completed",
+          "conclusion": "failure",
+          "labels": [
+            "windows-2025"
+          ],
+          "token_permissions": {
+            "Metadata": "read",
+            "Contents": "read"
+          },
+          "token_permissions_match_minimum": true,
+          "downloaded_action_pins": [
+            {
+              "repository": "actions/checkout",
+              "requested_sha": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+              "downloaded_sha": "3d3c42e5aac5ba805825da76410c181273ba90b1"
+            },
+            {
+              "repository": "actions/upload-artifact",
+              "requested_sha": "cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+              "downloaded_sha": "cf430e030ddbb5b0abf93d22962f4752f3646cd9"
+            }
+          ],
+          "actual_image": "windows-2025-vs2026",
+          "actual_image_version": "20260925.250.1",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Check out the tested commit",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Prepare verified temporary test dependencies",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run the selected tests and export sanitized receipts",
+              "status": "completed",
+              "conclusion": "failure"
+            },
+            {
+              "name": "Upload sanitized reports only",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Check out the tested commit",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ],
+          "log_api_url": "https://api.github.com/repos/PikkuJanne/WinPDFMerger/actions/jobs/113419786427/logs",
+          "raw_log_retained": false
+        },
+        {
+          "id": 113419786477,
+          "name": "unit / PS7",
+          "status": "completed",
+          "conclusion": "failure",
+          "labels": [
+            "windows-2025"
+          ],
+          "token_permissions": {
+            "Metadata": "read",
+            "Contents": "read"
+          },
+          "token_permissions_match_minimum": true,
+          "downloaded_action_pins": [
+            {
+              "repository": "actions/checkout",
+              "requested_sha": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+              "downloaded_sha": "3d3c42e5aac5ba805825da76410c181273ba90b1"
+            },
+            {
+              "repository": "actions/upload-artifact",
+              "requested_sha": "cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+              "downloaded_sha": "cf430e030ddbb5b0abf93d22962f4752f3646cd9"
+            }
+          ],
+          "actual_image": "windows-2025-vs2026",
+          "actual_image_version": "20260925.250.1",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Check out the tested commit",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Prepare verified temporary test dependencies",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run the selected tests and export sanitized receipts",
+              "status": "completed",
+              "conclusion": "failure"
+            },
+            {
+              "name": "Upload sanitized reports only",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Check out the tested commit",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ],
+          "log_api_url": "https://api.github.com/repos/PikkuJanne/WinPDFMerger/actions/jobs/113419786477/logs",
+          "raw_log_retained": false
+        },
+        {
+          "id": 113419786522,
+          "name": "native / PS7",
+          "status": "completed",
+          "conclusion": "failure",
+          "labels": [
+            "windows-2025"
+          ],
+          "token_permissions": {
+            "Metadata": "read",
+            "Contents": "read"
+          },
+          "token_permissions_match_minimum": true,
+          "downloaded_action_pins": [
+            {
+              "repository": "actions/checkout",
+              "requested_sha": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+              "downloaded_sha": "3d3c42e5aac5ba805825da76410c181273ba90b1"
+            },
+            {
+              "repository": "actions/upload-artifact",
+              "requested_sha": "cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+              "downloaded_sha": "cf430e030ddbb5b0abf93d22962f4752f3646cd9"
+            }
+          ],
+          "actual_image": "windows-2025-vs2026",
+          "actual_image_version": "20260925.250.1",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Check out the tested commit",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Prepare verified temporary test dependencies",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run the selected tests and export sanitized receipts",
+              "status": "completed",
+              "conclusion": "failure"
+            },
+            {
+              "name": "Upload sanitized reports only",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Check out the tested commit",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ],
+          "log_api_url": "https://api.github.com/repos/PikkuJanne/WinPDFMerger/actions/jobs/113419786522/logs",
+          "raw_log_retained": false
+        }
+      ]
+    },
+    {
+      "id": 37808743041,
+      "event": "pull_request",
+      "head_sha": "4eb308236ebe25e62225ebb76f99642d961548e1",
+      "status": "completed",
+      "conclusion": "failure",
+      "html_url": "https://github.com/PikkuJanne/WinPDFMerger/actions/runs/37808743041",
+      "jobs": [
+        {
+          "id": 113419784604,
+          "name": "native / PS51",
+          "status": "completed",
+          "conclusion": "failure",
+          "labels": [
+            "windows-2025"
+          ],
+          "token_permissions": {
+            "Metadata": "read",
+            "Contents": "read"
+          },
+          "token_permissions_match_minimum": true,
+          "downloaded_action_pins": [
+            {
+              "repository": "actions/checkout",
+              "requested_sha": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+              "downloaded_sha": "3d3c42e5aac5ba805825da76410c181273ba90b1"
+            },
+            {
+              "repository": "actions/upload-artifact",
+              "requested_sha": "cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+              "downloaded_sha": "cf430e030ddbb5b0abf93d22962f4752f3646cd9"
+            }
+          ],
+          "actual_image": "windows-2025-vs2026",
+          "actual_image_version": "20260925.250.1",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Check out the tested commit",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Prepare verified temporary test dependencies",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run the selected tests and export sanitized receipts",
+              "status": "completed",
+              "conclusion": "failure"
+            },
+            {
+              "name": "Upload sanitized reports only",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Check out the tested commit",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ],
+          "log_api_url": "https://api.github.com/repos/PikkuJanne/WinPDFMerger/actions/jobs/113419784604/logs",
+          "raw_log_retained": false
+        },
+        {
+          "id": 113419784844,
+          "name": "unit / PS7",
+          "status": "completed",
+          "conclusion": "failure",
+          "labels": [
+            "windows-2025"
+          ],
+          "token_permissions": {
+            "Metadata": "read",
+            "Contents": "read"
+          },
+          "token_permissions_match_minimum": true,
+          "downloaded_action_pins": [
+            {
+              "repository": "actions/checkout",
+              "requested_sha": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+              "downloaded_sha": "3d3c42e5aac5ba805825da76410c181273ba90b1"
+            },
+            {
+              "repository": "actions/upload-artifact",
+              "requested_sha": "cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+              "downloaded_sha": "cf430e030ddbb5b0abf93d22962f4752f3646cd9"
+            }
+          ],
+          "actual_image": "windows-2025-vs2026",
+          "actual_image_version": "20260925.250.1",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Check out the tested commit",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Prepare verified temporary test dependencies",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run the selected tests and export sanitized receipts",
+              "status": "completed",
+              "conclusion": "failure"
+            },
+            {
+              "name": "Upload sanitized reports only",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Check out the tested commit",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ],
+          "log_api_url": "https://api.github.com/repos/PikkuJanne/WinPDFMerger/actions/jobs/113419784844/logs",
+          "raw_log_retained": false
+        },
+        {
+          "id": 113419784911,
+          "name": "native / PS7",
+          "status": "completed",
+          "conclusion": "failure",
+          "labels": [
+            "windows-2025"
+          ],
+          "token_permissions": {
+            "Metadata": "read",
+            "Contents": "read"
+          },
+          "token_permissions_match_minimum": true,
+          "downloaded_action_pins": [
+            {
+              "repository": "actions/checkout",
+              "requested_sha": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+              "downloaded_sha": "3d3c42e5aac5ba805825da76410c181273ba90b1"
+            },
+            {
+              "repository": "actions/upload-artifact",
+              "requested_sha": "cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+              "downloaded_sha": "cf430e030ddbb5b0abf93d22962f4752f3646cd9"
+            }
+          ],
+          "actual_image": "windows-2025-vs2026",
+          "actual_image_version": "20260925.250.1",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Check out the tested commit",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Prepare verified temporary test dependencies",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run the selected tests and export sanitized receipts",
+              "status": "completed",
+              "conclusion": "failure"
+            },
+            {
+              "name": "Upload sanitized reports only",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Check out the tested commit",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ],
+          "log_api_url": "https://api.github.com/repos/PikkuJanne/WinPDFMerger/actions/jobs/113419784911/logs",
+          "raw_log_retained": false
+        },
+        {
+          "id": 113419785195,
+          "name": "unit / PS51",
+          "status": "completed",
+          "conclusion": "failure",
+          "labels": [
+            "windows-2025"
+          ],
+          "token_permissions": {
+            "Metadata": "read",
+            "Contents": "read"
+          },
+          "token_permissions_match_minimum": true,
+          "downloaded_action_pins": [
+            {
+              "repository": "actions/checkout",
+              "requested_sha": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+              "downloaded_sha": "3d3c42e5aac5ba805825da76410c181273ba90b1"
+            },
+            {
+              "repository": "actions/upload-artifact",
+              "requested_sha": "cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+              "downloaded_sha": "cf430e030ddbb5b0abf93d22962f4752f3646cd9"
+            }
+          ],
+          "actual_image": "windows-2025-vs2026",
+          "actual_image_version": "20260925.250.1",
+          "steps": [
+            {
+              "name": "Set up job",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Check out the tested commit",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Prepare verified temporary test dependencies",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Run the selected tests and export sanitized receipts",
+              "status": "completed",
+              "conclusion": "failure"
+            },
+            {
+              "name": "Upload sanitized reports only",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Post Check out the tested commit",
+              "status": "completed",
+              "conclusion": "success"
+            },
+            {
+              "name": "Complete job",
+              "status": "completed",
+              "conclusion": "success"
+            }
+          ],
+          "log_api_url": "https://api.github.com/repos/PikkuJanne/WinPDFMerger/actions/jobs/113419785195/logs",
+          "raw_log_retained": false
+        }
+      ]
+    }
+  ],
+  "pr_source_identity": {
+    "number": 24,
+    "head_sha": "4eb308236ebe25e62225ebb76f99642d961548e1",
+    "synthetic_merge_sha": "5bf9491874d3da887cc0349a4224d911ec911c54",
+    "note": "Run API head_sha is PR source head. Artifact commit_under_test/GITHUB_SHA on pull_request identifies the tested synthetic merge; do not infer equality from API head_sha."
+  },
+  "limitations": [
+    "Both inspected corrected hosted runs completed with failure at this snapshot; these results are never recorded as successful CI acceptance.",
+    "Actual jobs prove read-only token, matching full Action SHA downloads and successful sanitized upload steps. Underlying unit/native failures remain parent remediation/AC054 work.",
+    "Raw log text was read only in memory; receipt keeps safe fixed permissions/action/image/job metadata and no raw identities, paths, document names, stack text or token values.",
+    "No application/Pester execution or pester/static directory writes by reviewer during parent driver run.",
+    "Windows hosted Server/admin evidence does not close Windows11 standard-user/Explorer/manual/package/release gates."
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "task": "T24",
+  "evidence_class": "independent-source-and-existing-receipt-review",
+  "observed_at_utc": "2026-10-08T16:24:17.4611691Z",
+  "repository_head_at_review": "cda0d8aed7a9892ec8679b82c3938a021d6320ac",
+  "dirty_worktree_at_review": true,
+  "source_bindings": [
+    {
+      "path": ".github/workflows/windows-tests.yml",
+      "sha256": "915b326ef1f78d5eb02b0cef75a78067589474c26252e89724ac12ad20548ffc"
+    },
+    {
+      "path": "tools/test/Invoke-CiTests.ps1",
+      "sha256": "de2e51f8b61e8a2a59d73d19e74da02f5f08f438898896313e19e47927940130"
+    },
+    {
+      "path": "tools/test/Invoke-CiFailureProbe.ps1",
+      "sha256": "f9e47112b4335ede7d81aabb68b6ecff21271ae3195b8438040a1e05577b33e1"
+    },
+    {
+      "path": "tools/test/CiRunSupport.ps1",
+      "sha256": "c9f289fba6ee3fd019d32781e405bf86a0ba1c9820d969bf9c4c6a42c2c497b8"
+    },
+    {
+      "path": "tools/test/CiReportSupport.ps1",
+      "sha256": "29babed9422f8abb423163d931ef4a85e8b9a158e1ac7b3e85e09e096ff50a10"
+    },
+    {
+      "path": "tools/test/Initialize-CiDependencies.ps1",
+      "sha256": "4657e772c6a3996582182e8b52ef76259ffd29da06b0b8e24e30eea4086aece4"
+    },
+    {
+      "path": "tools/test/CiDependencySupport.ps1",
+      "sha256": "f40724e63fd3d6af71cb3802ee1c6dcf23892d6f0e0f2e4e9d93a5e900f7db42"
+    },
+    {
+      "path": "tests/ci-dependencies.json",
+      "sha256": "781fd70c3ed4aee791c9ba314a6f9503dc26447be8d4d7876c922c57c76998d3"
+    },
+    {
+      "path": "docs/DEVELOPMENT.md",
+      "sha256": "9398317fd1ba153551dfc699b3e467f65a08b07a452925ac168d157bba1be33c"
+    }
+  ],
+  "review_result": "pass-with-required-hosted-execution-pending",
+  "unresolved_source_findings": [],
+  "resolved_initial_findings": [
+    {
+      "priority": 1,
+      "title": "Native bootstrap used absent analyzer root",
+      "file": "tools/test/Initialize-CiDependencies.ps1",
+      "original": "analyzer is acquired only for unit group but analyzer_path was unconditionally joined from absent roots.analyzer",
+      "resolution": "Analyzer output is now constructed only for unit group; native output remains empty.",
+      "verified_by": "Final source inspection"
+    },
+    {
+      "priority": 1,
+      "title": "PS51 outer shell discarded empty native analyzer argv",
+      "file": ".github/workflows/windows-tests.yml",
+      "original": "Outer powershell invocation always supplied AnalyzerModulePath, including empty native output; Windows PowerShell5.1 drops empty native argv and script failed before tests.",
+      "resolution": "Analyzer switch/value now conditionally appended only for unit jobs.",
+      "verified_by": "Actual controlled PS51 outer to PS51 script invocation: original form reported MissingArgument AnalyzerModulePath exit1; corrected form parsed all arguments and reached intentional expected-clean-source refusal exit1 before application/Pester execution."
+    },
+    {
+      "priority": 2,
+      "title": "Runner metadata used outdated label",
+      "file": "tools/test/Initialize-CiDependencies.ps1",
+      "original": "Dependency receipt/preinstalled extractor source described windows-2022 while workflow selected windows-2025.",
+      "resolution": "Manifest records windows-2025 and bootstrap checks/copies that exact label.",
+      "verified_by": "Final source inspection"
+    }
+  ],
+  "boundary_review": [
+    "Workflow runs ordinary push/PR/explicit dispatch, full verified official Action SHAs, contents:read only, no retained checkout credentials, secrets or release/attestation steps.",
+    "PS7 driver starts with PSModulePath removed in transient outer shell; tier/static subprocess receives blank child PSModulePath to let selected shell reconstruct compatible defaults; no persistent policy/path/module installation mutation.",
+    "Dependency bootstrap is explicitly hosted-Windows gated, uses unique owned RUNNER_TEMP roots, verifies known archive length/SHA256 before extraction or execution, rejects unsafe ZIP/native-list paths and reparse points, and verifies selected native/module files.",
+    "PDFtk and GS installers are read as data; extractor is direct ProcessStartInfo without shell evaluation, bounded waiting and drained output. Hosted preinstalled full7z is recorded separately with actual file version/hash.",
+    "Mock/controlled and real native jobs/tier evidence remain separate; hosted Server/admin runner limitations and manual_desktop_acceptance:false are explicit.",
+    "Exporter requires guarded source/host/count JSON and matching NUnit roots/cases before rewriting public XML. It strips raw identities, paths, descriptions, diagnostics and extra attributes; JSON uses generated allowed fields only; XML external entities are prohibited.",
+    "Child nonzero exit, failed/skipped/unrun/empty/discovery/changed-source counts, missing/invalid receipt or artifact upload failure cannot turn into job pass. Deliberate failing probe remains a failed receipt/nonzero driver result.",
+    "Native acquisition optional analyzer and workflow empty-argument boundaries corrected; no remaining source blocker found in final reviewed bytes."
+  ],
+  "supplemental_receipt_check": {
+    "command": "Dot-source tools/test/CiReportSupport.ps1; invoke Export-CiTestReport over Unit, Static, Launcher, NativeRunner, ToolInvocation, PublicDocs, NativeFixture, SourceDiscovery, PdftkPaths and GhostscriptPaths for both T23 PS51 and PS7 report pairs using their recorded commit/shell; scan generated public XML for repository/user/machine/path/raw environment markers.",
+    "scope": "Existing T23 source-bound sanitized raw report compatibility/export only; no rerun, no CI/application/native acceptance claim",
+    "source_commit": "8fa2032c66f94199b121fc1914792d6d71bb6202",
+    "helper_sha256": "29babed9422f8abb423163d931ef4a85e8b9a158e1ac7b3e85e09e096ff50a10",
+    "report_pairs_exported": 20,
+    "all_accepted_and_privacy_marker_checks_pass": true,
+    "oracle_file": "tests/.work/T24-review-oracle-3af4ef696db74f67afae32292ce2dd5a/oracle.json",
+    "oracle_sha256": "95aedfb204b16572054000810bf6b9dca9999f987e662c93f757a3e7f5d53280"
+  },
+  "limitations": [
+    "Source/design review and export of existing T23 receipts are neither a new application/native execution nor GitHub CI acceptance.",
+    "Actual successful workflow jobs, artifacts and deliberate failure workflow evidence at committed intended sources remain mandatory AC054 work for the parent.",
+    "No claim that GitHub hosted Server/admin evidence closes standard-user/desktop/Explorer/package/publication gates.",
+    "No tracked files changed by this reviewer; ignored review/oracle artifacts only."
+  ]
+}
