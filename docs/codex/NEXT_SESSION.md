@@ -1,24 +1,39 @@
 # Next session
 
-Current task: T21 — synthetic corpus and source-safety coverage, in_progress.
-Read AGENTS/INDEX/STATUS, T21 TASKS entry and tasks/T21.md, relevant
-PRODUCT/TEST/GITHUB_WORKFLOW specifications and AC048/AC049.
-Recheck repository/branch/clean state/origin/live refs/PR/main/tags/releases.
+Current task: T22 â€” fault tests and static analysis coverage, pending/unstarted.
+Read AGENTS/INDEX/STATUS, the T22 TASKS entry and tasks/T22.md; load relevant
+PRODUCT/TEST/GITHUB_WORKFLOW specifications and AC050/AC051. Inspect current
+code and fault suites before edits. Keep one conceptual task in this thread.
+Recheck repo/branch/clean state, fetch/push origin, live refs/main/PR/tags/releases.
 
-T20 records96d325f35fc89a8c5f44dbeb93edb963a7552510 were clean/live verified
-at T21 start; owner merged PR20 into live main8540ed2, the same tree.
-T21 checkpoint records actual preparation. Required clean implementation
-reconstruct/review and dual-shell corpus execution are still pending.
-Do not infer application/desktop/package/publication acceptance from prep tests.
+T21 passes AC048/AC049 at clean tested C1b
+`abf8976e84f2c3f851efc42a844037a880519b26`: 451 checks per actual Windows
+PS5.1.26100.9444 and pinned PS7.6.6, 902 total/22 reports, no bad counts; 40 Python tests,
+23 independent semantic checks, two reconstructions verified again at C1b,
+native audit: 42 observations/38 fresh retained PDFium reads/880 snapshot checks.
+Runtime PS1/BAT/helpers/native flags/defaults unchanged. Normal C1b push and
+clean live sync passed; draft PR21 head matched. Records-only C2 is verified
+after its push in the session. Recheck current local/live HEAD afresh.
 
-Reuse verified Pester6.2.0/PDFtk2.02/GS10.08.0/PSA1.25.0/PS7.6.6 caches;
-workspace bundle26.1007.11041 Python3.12.14/package pins are unchanged, Python
-exe bytes differ from T19 and exact observed hashes are in test-only pins.
-No acquisition/admin/persistent policy/environment/security changes. Child
-RemoteSigned/module-path cleanup remains scoped. Preserve top-level/nonhidden,
-natural order, output beside entry, screen default, owned staging/no-overwrite,
-master retention and strict-smaller email contracts.
+Reuse verified Pester 6.2.0/PDFtk 2.02/GS 10.08.0/PSA 1.25.0/PS7.6.6 caches.
+Workspace bundle 26.1007.11041 retains Python 3.12.14/package pins, but Python exe
+and PDFium DLL bytes both differ from T19. Only the two exact observed hashes
+are accepted in test readers/oracle; native caches unchanged, 348 selected files
+rehashed. No acquisition/admin/persistent policy/environment/security changes.
+Scoped child RemoteSigned/module-path cleanup remains authorized. The existing
+BAT/percent route retains process-only Bypass; do not bypass enterprise policy.
 
-T22 starts only after T21 passes and clean/live synchronization. Keep measured
-preservation wording and originals. Physical Explorer/full native/lint/security/
-CI/package/publication gates remain open. Publication remains NOT STARTED.
+T22 should cover the runner/serializer/discovery/result/staging fault matrix,
+keep visible pass/fail/skip counts, parse application code in both required shells
+and run pinned analyzer with selected justified rules. No blanket suppression or
+changed assertions to hide behavior. T21 scoped eight-file analyzer reports
+0 errors/44 warnings/59 information per host; reviewed test-harness findings
+are not full lint completion. T21 preparation/C1a failures are retained separately.
+Directory last-write is excluded after a measured pre-invocation metadata change;
+all file invariants and tree inventory/attributes remain strict.
+
+Preserve top-level/nonhidden inputs, natural order, output beside scripts, screen
+default, owned staging/no-overwrite, master retention and strict-smaller email.
+No source PDF upload. Keep measured preservation wording and originals. T23
+broader native, CI, physical Explorer, OS/UNC, security, package and publication
+gates remain later tasks. Publication is NOT STARTED; only v1.0.0 is authorized.

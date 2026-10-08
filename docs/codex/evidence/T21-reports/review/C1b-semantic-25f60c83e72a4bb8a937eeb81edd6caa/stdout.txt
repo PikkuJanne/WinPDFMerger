@@ -1,0 +1,237 @@
+{
+  "task": "T21",
+  "reviewer": "/root/review",
+  "authorship": "Independent subagent; did not author tracked implementation, tests or records. Authored only this ignored reviewer producer.",
+  "observed_at_utc": "2026-10-08T13:11:49.325764+00:00",
+  "commit_under_test": "abf8976e84f2c3f851efc42a844037a880519b26",
+  "task_start_commit": "96d325f35fc89a8c5f44dbeb93edb963a7552510",
+  "dirty_worktree": false,
+  "source_files": [
+    {
+      "path": "tools/test/corpus.py",
+      "sha256": "1c30c73f60a7eb6c51f0f9be19e06376859f41282127797970b401a714331b13",
+      "bytes": 22465
+    },
+    {
+      "path": "tools/test/tests/test_corpus.py",
+      "sha256": "059cf0f42633094c4930be7ba01bd4832de80368eb2df6301eaa824dbbd43a81",
+      "bytes": 10831
+    },
+    {
+      "path": "tests/fixtures/corpus.json",
+      "sha256": "71b57b3032b61c34a0ee9accaf9f3054f0f00a6f63d89f11b05a2584a4472d89",
+      "bytes": 37495
+    },
+    {
+      "path": "tests/fixtures/README.md",
+      "sha256": "7805bd2028cae54b1dcbc3030e2b2317dea30d469067fd47017bdbecbcdecd28",
+      "bytes": 8291
+    },
+    {
+      "path": "tests/CorpusSafetySupport.ps1",
+      "sha256": "cf823e130fce650888dc5ad08c35d826e3bddb89fd499be0eb2e7bec9fc8b036",
+      "bytes": 4939
+    },
+    {
+      "path": "tests/unit/CorpusSafetySupport.Tests.ps1",
+      "sha256": "ee8d608f40b15366154acb5a661d9485bd916eaade8e7dd9986db5a14066d158",
+      "bytes": 5403
+    },
+    {
+      "path": "tests/pdf/CorpusSafety.Native.Tests.ps1",
+      "sha256": "dc532b49e7dce63eebdd1acdb4f711ad4bac602c60cf664d1ec8abd852cda339",
+      "bytes": 32399
+    },
+    {
+      "path": "tools/test/Invoke-Tests.ps1",
+      "sha256": "80fa03aaa7af64cbb9c96cdd03df3cdc050d6d662a7c59155ba25e8aff3deee3",
+      "bytes": 13486
+    },
+    {
+      "path": "tools/test/README.md",
+      "sha256": "63452c059bfdba310cc97d3bf0e0a68b9476f128fd8f79d10910aad63bce0661",
+      "bytes": 5171
+    },
+    {
+      "path": "tests/TestDependencies.psd1",
+      "sha256": "1c034e1d7f5cde1688ffa5d24cf64e44c931877a575bdb5ea451bc071281bd55",
+      "bytes": 814
+    },
+    {
+      "path": "tests/cli/Parameters.Native.Tests.ps1",
+      "sha256": "0e2f40ba62d13a2faabf93d7773fce6e3a97cbef126b9fedc6de5e5a64766452",
+      "bytes": 30417
+    },
+    {
+      "path": "tests/help/Diagnostics.Native.Tests.ps1",
+      "sha256": "85a8f398abf4e47b35b3cddb076dec74584e24ec9fc3ab0e279f3f6fe50e024b",
+      "bytes": 36793
+    },
+    {
+      "path": "tests/pdf/Preservation.Native.Tests.ps1",
+      "sha256": "eeaf654ab1ee3d59c49636e5e124a4b1ae59b3280c699c74f49ec3fe01f422e7",
+      "bytes": 15434
+    },
+    {
+      "path": "tests/pdf/SizeReporting.Native.Tests.ps1",
+      "sha256": "99fd5d286de36b202aea91bc01cc08c2a4491a818d94b0b6e3fb1bf9fa30b1bb",
+      "bytes": 33699
+    },
+    {
+      "path": "tools/test/feature_oracle.py",
+      "sha256": "3e0a0c46204cbdadffcc687e1881ffced75d72c4fae061538fb0e4b9ed019526",
+      "bytes": 28876
+    },
+    {
+      "path": "tools/test/tests/test_feature_oracle.py",
+      "sha256": "0ad4fde671a4ec59b2073ac5a7184ddca2d9e574695d233b806d558c1ee61180",
+      "bytes": 11395
+    }
+  ],
+  "producer_sha256": "8b1b4dee2aabdcb0f68bd3e6a7213ae4ee7a105084fbef944c3a605ec21c5925",
+  "checks": [
+    {
+      "name": "runtime-public-contract-bytes-preserved",
+      "pass": true,
+      "basis": "All six current file bytes match the immutable T20 report hashes.",
+      "kind": "executed-source-check"
+    },
+    {
+      "name": "tracked-change-scope",
+      "pass": true,
+      "basis": "Diff against task starting HEAD is confined to test/tool/evidence records.",
+      "kind": "executed-source-check"
+    },
+    {
+      "name": "catalog-pinned-recipes",
+      "pass": true,
+      "basis": "Independent load of exact tracked catalog reconstruction, numbered/presets/features/envelopes.",
+      "kind": "executed-source-check"
+    },
+    {
+      "name": "earlier-recipes-unchanged",
+      "pass": true,
+      "basis": "Earlier generator implementations remain unchanged.",
+      "kind": "executed-source-check"
+    },
+    {
+      "name": "provenance-and-development-scope",
+      "pass": true,
+      "basis": "Each group records original synthetic provenance/license and recipe source SHA; no application import or network acquisition.",
+      "kind": "executed-source-check"
+    },
+    {
+      "name": "intended-artifact-inventory-fixed",
+      "pass": true,
+      "basis": "Expected inventory derives from tracked catalog, including hidden/nested/file-versus-directory sentinels.",
+      "kind": "executed-source-check"
+    },
+    {
+      "name": "explicit-order-and-page-totals",
+      "pass": true,
+      "basis": "Catalog page totals and explicit semantic order are independent of application sorting.",
+      "kind": "executed-source-check"
+    },
+    {
+      "name": "rejection-provenance",
+      "pass": true,
+      "basis": "Rejected whole-set scenarios are explicit original synthetic inputs; passwords are corpus-only credentials.",
+      "kind": "executed-source-check"
+    },
+    {
+      "name": "native-linearized-byte-variation-disclosed",
+      "pass": true,
+      "basis": "Native linearized bytes are receipt-bound and structurally verified instead of falsely claiming determinism of dates/IDs.",
+      "kind": "executed-source-check"
+    },
+    {
+      "name": "same-version-PDFium-DLL-exact-trust-pins",
+      "pass": true,
+      "basis": "Fresh bundle retains PDFium153.0.7999.0 but changed DLL bytes; exactly original and freshly observed trusted hashes are allowed, actual current hash is independently read/recorded, wrong versions/other bytes still fail before inspection.",
+      "kind": "executed-source-check"
+    },
+    {
+      "name": "materialization-and-parser-fail-closed",
+      "pass": true,
+      "basis": "New explicitly owned tests/.work output only; unsafe/device/traversal names rejected; receipt/catalog/inventory verification is read-only and rejects differing bytes, attributes, extras and missing entries.",
+      "kind": "independent-manual-source-diff-review"
+    },
+    {
+      "name": "oracle-independent-final-pages",
+      "pass": true,
+      "basis": "Pinned native PDFium checks exact visible identifiers at each page index and count; repeats compare semantic sequence and count rather than native byte identity.",
+      "kind": "independent-manual-source-diff-review"
+    },
+    {
+      "name": "source-tree-preservation",
+      "pass": true,
+      "basis": "Forced recursive snapshots include source root/directories and hidden/nested/non-PDF entries. File SHA256/length/attributes/creation/modified timestamps remain exact; directory presence/content/attributes/creation remain exact. Directory LastWrite is excluded and disclosed after unrelated prepared-stage metadata changed about1ms in a failed preparation.",
+      "kind": "independent-manual-source-diff-review"
+    },
+    {
+      "name": "invalid-sibling-no-silent-omission",
+      "pass": true,
+      "basis": "Every bad sibling case logs the full ordered set, names the bad input, exits1, advertises no master/email, leaves only the owned log and preserves all source/foreign bytes.",
+      "kind": "independent-manual-source-diff-review"
+    },
+    {
+      "name": "intentional-exclusions-and-uppercase",
+      "pass": true,
+      "basis": "Uppercase input and legitimate result-prefix input are merged; hidden/nested/non-PDF/PDF-named directories are explicit exclusions; only-excluded source fails zero-visible.",
+      "kind": "independent-manual-source-diff-review"
+    },
+    {
+      "name": "overlap-before-work",
+      "pass": true,
+      "basis": "Exact/case/trailing-separator source/output aliases fail before native stages or writes; source/output trees remain unchanged.",
+      "kind": "independent-manual-source-diff-review"
+    },
+    {
+      "name": "repeat-existing-output-preservation",
+      "pass": true,
+      "basis": "Repeat tests snapshot foreign objects plus prior final PDFs/logs and compare exactly after each new run in both cultures.",
+      "kind": "independent-manual-source-diff-review"
+    },
+    {
+      "name": "concurrent-entry-evidence-scoped",
+      "pass": true,
+      "basis": "Two actual entry children pass a test-only barrier; independently recorded entry intervals prove overlap, unique run/stage identities and exact ordered masters; no same-second scheduling claim is invented.",
+      "kind": "independent-manual-source-diff-review"
+    },
+    {
+      "name": "existing-same-second-staging-supplement",
+      "pass": true,
+      "basis": "Existing Staging integration separately exercises fixed timestamp native jobs and second live-stage survival; its controlled scheduling remains identified separately from real native conversions.",
+      "kind": "independent-manual-source-diff-review"
+    },
+    {
+      "name": "feature-preservation-limits-honest",
+      "pass": true,
+      "basis": "Catalog retains measured T19 master/email limitations separately and T17 preset visual findings; it does not promise signatures/XFA/PDF-A/accessibility/malware/general archival safety.",
+      "kind": "independent-manual-source-diff-review"
+    },
+    {
+      "name": "no-runtime-acquisition-or-policy-changes",
+      "pass": true,
+      "basis": "Implementation edits contain no application changes, dependency acquisition or persistent environment/policy changes; native test children use previously authorized scoped policy and explicit cache paths.",
+      "kind": "independent-manual-source-diff-review"
+    },
+    {
+      "name": "fresh-bundle-identity-disclosed",
+      "pass": true,
+      "basis": "Existing Python3.12.14 and PDFium153.0.7999.0 retain versions but BOTH Python exe and native PDFium DLL bytes changed in bundle26.1007.11041. Test guards explicitly allow exactly the original/fresh observed hashes and record actual hashes; PDFtk/Ghostscript vendor cache files remain exact. The failed C1a PreservationNative guard and unrun later tiers are retained and are not final acceptance passes.",
+      "kind": "independent-manual-source-diff-review"
+    },
+    {
+      "name": "evidence-classes-kept-distinct",
+      "pass": true,
+      "basis": "Corpus tooling/oracle unit regressions are development evidence; actual entry and native suites are integration evidence; physical Explorer/package/release checks remain later gates.",
+      "kind": "independent-manual-source-diff-review"
+    }
+  ],
+  "checks_total": 23,
+  "failed": 0,
+  "blocking_findings": [],
+  "result": "pass",
+  "scope": "Independent semantic source review for AC048/AC049 design; execution and raw native/archive audit are separate receipts."
+}

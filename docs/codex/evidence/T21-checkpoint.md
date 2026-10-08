@@ -82,3 +82,14 @@ Required AC048/AC049 remain not_run until a frozen implementation is committed
 and the reconstruct/review and relevant dual-shell corpus tiers pass against it.
 Physical Explorer, full native/lint/security/CI/package/publication gates remain
 later tasks. Publication remains NOT STARTED. No tag or release was created.
+
+## Final resolution
+
+Corrected clean C1b `abf8976e84f2c3f851efc42a844037a880519b26` passes all
+eleven relevant tiers: 451 per actual PS5.1/pinned PS7.6.6, 902 total, all bad counts
+zero. AC048/AC049 pass with independent review/native/archive audits; 40 Python tests.
+Normal implementation push and fresh clean/live synchronization passed; draft
+PR21 head matched. See T21-completion.md/T21-results.json for final commands,
+environment, source bindings and limitations. Earlier failures above remain
+historical and are not accepted aggregates. T22 is next; publication NOT STARTED.
+Records-only C2 synchronization is verified after its normal push in the session.

@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='utf-8'?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="18" errors="0" failures="2" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2026-10-08" time="14.50.32">
+  <environment machine-name="&lt;COMPUTERNAME&gt;" platform="Microsoft Windows 11 Pro|C:\Windows|\Device\Harddisk0\Partition3" user-domain="&lt;COMPUTERNAME&gt;" os-version="10.0.26300" user="&lt;USERNAME&gt;" nunit-version="2.5.8.0" cwd="&lt;REPO&gt;" clr-version="10.0.12" />
+  <culture-info current-culture="fi-FI" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Failure" success="False" time="68.768" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="&lt;REPO&gt;\tests\pdf\CorpusSafety.Native.Tests.ps1" executed="True" result="Failure" success="False" time="68.768" asserts="0" description="&lt;REPO&gt;\tests\pdf\CorpusSafety.Native.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="AC049: full synthetic corpus source and output safety with real engines" executed="True" result="Failure" success="False" time="62.7342" asserts="0" description="AC049: full synthetic corpus source and output safety with real engines">
+            <results>
+              <test-case description="treats hidden PDFs, nested PDFs, non-PDFs and directories as documented exclusions and refuses zero visible top-level PDFs" name="AC049: full synthetic corpus source and output safety with real engines.treats hidden PDFs, nested PDFs, non-PDFs and directories as documented exclusions and refuses zero visible top-level PDFs" time="1.4561" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected regular expression '(?m)^PDF count: 0\r?$' to match '==== WinPDFMerge run 2026-10-08 14:51:31 ====
+Stage: Invocation preflight; elapsed: 0.802 s
+Source folder: &lt;REPO&gt;\tests\.work\corpus-safety\3c4663c67ac84d8db9541cc017881f4b\4a2edbe73d884696b2f08acd71385eb3\source [x] ! &amp; (a) ' ä
+Output folder: &lt;REPO&gt;\tests\.work\corpus-safety\3c4663c67ac84d8db9541cc017881f4b\4a2edbe73d884696b2f08acd71385eb3\output [x] ! &amp; (a) '
+Run identity: WinPDFMerge_source [x] ! &amp; (a) ' ä_20261008_145131_349b0def79664d0c
+Planned master output: &lt;REPO&gt;\tests\.work\corpus-safety\3c4663c67ac84d8db9541cc017881f4b\4a2edbe73d884696b2f08acd71385eb3\output [x] ! &amp; (a) '\WinPDFMerge_source [x] ! &amp; (a) ' ä_20261008_145131_349b0def79664d0c.pdf
+Planned email output: &lt;REPO&gt;\tests\.work\corpus-safety\3c4663c67ac84d8db9541cc017881f4b\4a2edbe73d884696b2f08acd71385eb3\output [x] ! &amp; (a) '\WinPDFMerge_source [x] ! &amp; (a) ' ä_20261008_145131_349b0def79664d0c_email.pdf
+Diagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.
+PowerShell: 7.6.6 (Core)
+Stage: Input discovery; elapsed: 0.815 s
+Source preflight failed: No PDFs found in: '&lt;REPO&gt;\tests\.work\corpus-safety\3c4663c67ac84d8db9541cc017881f4b\4a2edbe73d884696b2f08acd71385eb3\source [x] ! &amp; (a) ' ä'. Only visible top-level .pdf files are included.
+Elapsed time: 0.845 s
+PowerShell: 7.6.6 (Core)
+PDFtk version: not probed
+Ghostscript version: not probed
+Input summary: not discovered; expected pages: not inspected
+Result: Failure; exit code: 1
+', but it did not match.</message>
+                  <stack-trace>at $run.Log | Should -Match '(?m)^PDF count: 0\r?$', &lt;REPO&gt;\tests\pdf\CorpusSafety.Native.Tests.ps1:324</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="runs two actual entries concurrently over one full matrix and preserves both independent masters, logs and all foreign objects" name="AC049: full synthetic corpus source and output safety with real engines.runs two actual entries concurrently over one full matrix and preserves both independent masters, logs and all foreign objects" time="5.8863" asserts="0" success="True" result="Success" executed="True" />
+              <test-suite type="ParameterizedTest" name="AC049: full synthetic corpus source and output safety with real engines.keeps every &lt;Scenario&gt; source and foreign object unchanged through an actual entry merge and independent page oracle" executed="True" result="Success" success="True" time="20.9908" asserts="0" description="keeps every &lt;Scenario&gt; source and foreign object unchanged through an actual entry merge and independent page oracle">
+                <results>
+                  <test-case description="keeps every numbered source and foreign object unchanged through an actual entry merge and independent page oracle" name="AC049: full synthetic corpus source and output safety with real engines.keeps every numbered source and foreign object unchanged through an actual entry merge and independent page oracle" time="4.3661" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="keeps every features source and foreign object unchanged through an actual entry merge and independent page oracle" name="AC049: full synthetic corpus source and output safety with real engines.keeps every features source and foreign object unchanged through an actual entry merge and independent page oracle" time="3.8606" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="keeps every presets source and foreign object unchanged through an actual entry merge and independent page oracle" name="AC049: full synthetic corpus source and output safety with real engines.keeps every presets source and foreign object unchanged through an actual entry merge and independent page oracle" time="6.5532" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="keeps every envelopes source and foreign object unchanged through an actual entry merge and independent page oracle" name="AC049: full synthetic corpus source and output safety with real engines.keeps every envelopes source and foreign object unchanged through an actual entry merge and independent page oracle" time="3.4953" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="keeps every single-uppercase source and foreign object unchanged through an actual entry merge and independent page oracle" name="AC049: full synthetic corpus source and output safety with real engines.keeps every single-uppercase source and foreign object unchanged through an actual entry merge and independent page oracle" time="2.7157" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="ParameterizedTest" name="AC049: full synthetic corpus source and output safety with real engines.repeats the hostile-name, hidden, uppercase, leading-zero and long-number matrix twice with exact page order under &lt;Culture&gt;" executed="True" result="Success" success="True" time="20.3479" asserts="0" description="repeats the hostile-name, hidden, uppercase, leading-zero and long-number matrix twice with exact page order under &lt;Culture&gt;">
+                <results>
+                  <test-case description="repeats the hostile-name, hidden, uppercase, leading-zero and long-number matrix twice with exact page order under en-US" name="AC049: full synthetic corpus source and output safety with real engines.repeats the hostile-name, hidden, uppercase, leading-zero and long-number matrix twice with exact page order under en-US" time="10.5887" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="repeats the hostile-name, hidden, uppercase, leading-zero and long-number matrix twice with exact page order under tr-TR" name="AC049: full synthetic corpus source and output safety with real engines.repeats the hostile-name, hidden, uppercase, leading-zero and long-number matrix twice with exact page order under tr-TR" time="9.7592" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="ParameterizedTest" name="AC049: full synthetic corpus source and output safety with real engines.fails the complete &lt;Scenario&gt; input set without omitting the named bad input or publishing a partial master" executed="True" result="Failure" success="False" time="10.425" asserts="0" description="fails the complete &lt;Scenario&gt; input set without omitting the named bad input or publishing a partial master">
+                <results>
+                  <test-case description="fails the complete invalid-empty input set without omitting the named bad input or publishing a partial master" name="AC049: full synthetic corpus source and output safety with real engines.fails the complete invalid-empty input set without omitting the named bad input or publishing a partial master" time="1.5365" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="fails the complete invalid-truncated input set without omitting the named bad input or publishing a partial master" name="AC049: full synthetic corpus source and output safety with real engines.fails the complete invalid-truncated input set without omitting the named bad input or publishing a partial master" time="1.7742" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="fails the complete invalid-malformed input set without omitting the named bad input or publishing a partial master" name="AC049: full synthetic corpus source and output safety with real engines.fails the complete invalid-malformed input set without omitting the named bad input or publishing a partial master" time="1.7596" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="fails the complete invalid-encrypted input set without omitting the named bad input or publishing a partial master" name="AC049: full synthetic corpus source and output safety with real engines.fails the complete invalid-encrypted input set without omitting the named bad input or publishing a partial master" time="1.8869" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="fails the complete invalid-owner-restricted input set without omitting the named bad input or publishing a partial master" name="AC049: full synthetic corpus source and output safety with real engines.fails the complete invalid-owner-restricted input set without omitting the named bad input or publishing a partial master" time="1.7083" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="fails the complete names-unicode input set without omitting the named bad input or publishing a partial master" name="AC049: full synthetic corpus source and output safety with real engines.fails the complete names-unicode input set without omitting the named bad input or publishing a partial master" time="1.7596" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>Expected regular expression '2-漢字\.pdf' to match 'CORPUS_ENTRY_START 639270606886503672
+Stage: Invocation preflight; elapsed: 0.070 s
+==== WinPDFMerge run 2026-10-08 14:51:29 ====
+Stage: Invocation preflight; elapsed: 0.652 s
+Source folder: &lt;REPO&gt;\tests\.work\corpus-safety\3c4663c67ac84d8db9541cc017881f4b\b86f227daf92430f9db0d8bccea4b778\source [x] ! &amp; (a) ' �
+Output folder: &lt;REPO&gt;\tests\.work\corpus-safety\3c4663c67ac84d8db9541cc017881f4b\b86f227daf92430f9db0d8bccea4b778\output [x] ! &amp; (a) '
+Run identity: WinPDFMerge_source [x] ! &amp; (a) ' �_20261008_145129_56291168376346e7
+Planned master output: &lt;REPO&gt;\tests\.work\corpus-safety\3c4663c67ac84d8db9541cc017881f4b\b86f227daf92430f9db0d8bccea4b778\output [x] ! &amp; (a) '\WinPDFMerge_source [x] ! &amp; (a) ' �_20261008_145129_56291168376346e7.pdf
+Planned email output: &lt;REPO&gt;\tests\.work\corpus-safety\3c4663c67ac84d8db9541cc017881f4b\b86f227daf92430f9db0d8bccea4b778\output [x] ! &amp; (a) '\WinPDFMerge_source [x] ! &amp; (a) ' �_20261008_145129_56291168376346e7_email.pdf
+Diagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.
+PowerShell: 7.6.6 (Core)
+Stage: Input discovery; elapsed: 0.660 s
+PDF count: 2
+Input 1: &lt;REPO&gt;\tests\.work\corpus-safety\3c4663c67ac84d8db9541cc017881f4b\b86f227daf92430f9db0d8bccea4b778\source [x] ! &amp; (a) ' �\1.pdf
+Input 2: &lt;REPO&gt;\tests\.work\corpus-safety\3c4663c67ac84d8db9541cc017881f4b\b86f227daf92430f9db0d8bccea4b778\source [x] ! &amp; (a) ' �\2-??.pdf
+Stage: PDFtk preflight; elapsed: 0.735 s
+PDFtk: &lt;USERPROFILE&gt;\AppData\Local\WinPDFMergerDevCache\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\pdftk-server-2.02\app\bin\pdftk.exe (version 2.02)
+Stage: Input inspection; elapsed: 0.924 s
+PDFtk failed during input preflight or logging. No merge was started. PDF input '&lt;REPO&gt;\tests\.work\corpus-safety\3c4663c67ac84d8db9541cc017881f4b\b86f227daf92430f9db0d8bccea4b778\source [x] ! &amp; (a) ' �\2-??.pdf' failed preflight: PDFtk document inspection failed (exit code: 1). See native launch/capture/timeout details and both streams; protected or unparseable inputs are unsupported without passwords or repair.
+Elapsed time: 1.197 s
+PowerShell: 7.6.6 (Core)
+PDFtk version: 2.02
+Ghostscript version: not probed
+Input summary: 2 PDF(s); expected pages: not inspected
+Result: Failure; exit code: 1
+Log: &lt;REPO&gt;\tests\.work\corpus-safety\3c4663c67ac84d8db9541cc017881f4b\b86f227daf92430f9db0d8bccea4b778\output [x] ! &amp; (a) '\WinPDFMerge_source [x] ! &amp; (a) ' �_20261008_145129_56291168376346e7.log
+CORPUS_ENTRY_END 639270606899019373
+', but it did not match.</message>
+                      <stack-trace>at ($result.Stdout + $result.Stderr) | Should -Match ([regex]::Escape($rejected[0].path)), &lt;REPO&gt;\tests\pdf\CorpusSafety.Native.Tests.ps1:303</stack-trace>
+                    </failure>
+                  </test-case>
+                </results>
+              </test-suite>
+              <test-suite type="ParameterizedTest" name="AC049: full synthetic corpus source and output safety with real engines.refuses source/output overlap through the &lt;Alias&gt; spelling before native work or any source/output write" executed="True" result="Success" success="True" time="3.5733" asserts="0" description="refuses source/output overlap through the &lt;Alias&gt; spelling before native work or any source/output write">
+                <results>
+                  <test-case description="refuses source/output overlap through the exact spelling before native work or any source/output write" name="AC049: full synthetic corpus source and output safety with real engines.refuses source/output overlap through the exact spelling before native work or any source/output write" time="1.1296" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="refuses source/output overlap through the uppercase spelling before native work or any source/output write" name="AC049: full synthetic corpus source and output safety with real engines.refuses source/output overlap through the uppercase spelling before native work or any source/output write" time="1.1782" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="refuses source/output overlap through the trailing-separator spelling before native work or any source/output write" name="AC049: full synthetic corpus source and output safety with real engines.refuses source/output overlap through the trailing-separator spelling before native work or any source/output write" time="1.2655" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

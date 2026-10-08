@@ -1,0 +1,1670 @@
+{
+  "schema_version": 1,
+  "catalog_sha256": "71b57b3032b61c34a0ee9accaf9f3054f0f00a6f63d89f11b05a2584a4472d89",
+  "versions": {
+    "python": "3.12.14",
+    "reportlab": "4.4.9",
+    "pypdf": "6.10.0",
+    "pillow": "12.3.0",
+    "pypdfium2": "5.13.0",
+    "pdfium": "153.0.7999.0"
+  },
+  "groups": {
+    "numbered": {
+      "generator": "tools/test/generate_numbered_fixtures.py",
+      "generator_sha256": "3a1d5386a7ca327efcae128e5f64114300df89649eedaa9b48c377f8f0979be1",
+      "manifest": "tests/fixtures/numbered/manifest.json",
+      "manifest_sha256": "62cbc4b3a86464693c3568be9b0ef487212abd7fc560f08320739b5a2aaa810f",
+      "provenance": "Original synthetic text and vector artwork created by this repository's generator.",
+      "license": "Repository LICENSE; no external document, image or font file included.",
+      "fixtures": [
+        {
+          "file": "1.pdf",
+          "sha256": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+          "bytes": 1786,
+          "page_count": 1,
+          "page_identifiers": [
+            "T03-01-P01"
+          ],
+          "page_size_points": [
+            432,
+            288
+          ]
+        },
+        {
+          "file": "2.pdf",
+          "sha256": "7821d0ff4c3d655511e4421559d317013a64356a370d7b07a47079e5f02ad901",
+          "bytes": 2452,
+          "page_count": 2,
+          "page_identifiers": [
+            "T03-02-P01",
+            "T03-02-P02"
+          ],
+          "page_size_points": [
+            432,
+            288
+          ]
+        },
+        {
+          "file": "10.pdf",
+          "sha256": "9fa79c41feb7be692b100bc0fe44ed063029e0955900d3bb2f8552a10afb6aaa",
+          "bytes": 1788,
+          "page_count": 1,
+          "page_identifiers": [
+            "T03-10-P01"
+          ],
+          "page_size_points": [
+            432,
+            288
+          ]
+        }
+      ],
+      "merge_order": [
+        "1.pdf",
+        "2.pdf",
+        "10.pdf"
+      ],
+      "expected_page_count": 4,
+      "expected_page_identifiers": [
+        "T03-01-P01",
+        "T03-02-P01",
+        "T03-02-P02",
+        "T03-10-P01"
+      ]
+    },
+    "presets": {
+      "generator": "tests/fixtures/presets/generate_presets.py",
+      "generator_sha256": "1aaabe651bd4d468b09e617607b1f276d3a894b67e15081d380cc45e91a62db6",
+      "manifest": "tests/fixtures/presets/manifest.json",
+      "manifest_sha256": "383ec07bec823f131ab86cf07de2ffb96e10803ad4f2f4997ba834835ee01e1f",
+      "provenance": "Original synthetic vector text/diagrams and seeded raster pixels; no external documents, user data, OCR or network.",
+      "license": "CC0-1.0",
+      "fixtures": [
+        {
+          "file": "small-print.pdf",
+          "category": "vector_small_print",
+          "bytes": 2619,
+          "sha256": "7074f0ca973ccf90ce555ee427fa4cc041c06b8a248cb7eb5344680959b34920",
+          "page_count": 1,
+          "page_identifiers": [
+            "T03-17-P01"
+          ],
+          "page_size_points": [
+            612,
+            792
+          ]
+        },
+        {
+          "file": "scan.pdf",
+          "category": "original_scanned_text_diagram",
+          "bytes": 3133596,
+          "sha256": "2de91e376e39a99e1fd3d3760a05737023b503a7aca5ee4365eabc7971b7be03",
+          "page_count": 1,
+          "page_identifiers": [
+            "T03-17-P02"
+          ],
+          "page_size_points": [
+            612,
+            792
+          ]
+        },
+        {
+          "file": "mixed.pdf",
+          "category": "mixed_vector_raster",
+          "bytes": 3135054,
+          "sha256": "3ce010ec530ed27bfb168462f487f9591877398e9bddac5789f31386c56d6eaa",
+          "page_count": 2,
+          "page_identifiers": [
+            "T03-17-P03",
+            "T03-17-P04"
+          ],
+          "page_size_points": [
+            612,
+            792
+          ]
+        }
+      ],
+      "merge_order": [
+        "mixed.pdf",
+        "scan.pdf",
+        "small-print.pdf"
+      ],
+      "expected_page_count": 4,
+      "expected_page_identifiers": [
+        "T03-17-P03",
+        "T03-17-P04",
+        "T03-17-P02",
+        "T03-17-P01"
+      ]
+    },
+    "features": {
+      "generator": "tests/fixtures/features/generate_features.py",
+      "generator_sha256": "a6c4146fba847ccb4c961c11277456503bed61dc3db3672cc9a0fb2aebfddbd8",
+      "manifest": "tests/fixtures/features/manifest.json",
+      "manifest_sha256": "73b1c8cd478f8f8e709005550f42a7d9177ab71dcbb738ba2614edc37b1dc846",
+      "provenance": "Original text, vector marks, form appearances, annotations and embedded attachment bytes authored by this recipe; no external content.",
+      "license": "CC0-1.0",
+      "fixtures": [
+        {
+          "file": "1-feature-A.pdf",
+          "sha256": "7b3654527046994091cc27e6b9bab71542b8215fc26c9e9b0efd6d9e773270ce",
+          "bytes": 191533,
+          "page_count": 2,
+          "page_identifiers": [
+            "T19-A-P1",
+            "T19-A-P2"
+          ],
+          "media_boxes": [
+            [
+              0,
+              0,
+              612,
+              792
+            ],
+            [
+              0,
+              0,
+              612,
+              792
+            ]
+          ],
+          "structural_rotations": [
+            0,
+            90
+          ],
+          "canonical_field": {
+            "name": "shared_text",
+            "value": "value-A",
+            "field_type": "/Tx",
+            "widget_count": 2
+          },
+          "named_destination": {
+            "name": "T19-A-second",
+            "page_index": 1
+          },
+          "uri": "https://example.invalid/T19/A",
+          "bookmark_titles": [
+            "T19 A introduction",
+            "T19 A rotated second page"
+          ],
+          "annotation_counts": {
+            "/Widget": 2,
+            "/Link": 4,
+            "/Text": 2,
+            "/Highlight": 2,
+            "/FileAttachment": 1
+          },
+          "attachment": {
+            "name": "T19-A-attachment.txt",
+            "bytes": 136,
+            "sha256": "acb74ede3be0730a6a07a8d1b364dedd4e8eb3734c3c20db1d74a636ed456b96"
+          },
+          "minimal_tags": {
+            "struct_parent_keys": [
+              0,
+              1
+            ],
+            "mcids_per_page": [
+              [
+                0
+              ],
+              [
+                0
+              ]
+            ],
+            "paragraph_elements": 2
+          },
+          "artificial_size_weighting": {
+            "kind": "nonpainting seeded high-entropy hex comments in page content",
+            "hex_characters_per_page": 65536,
+            "seeds": [
+              190001,
+              190002
+            ],
+            "comment_bytes_per_page": [
+              88496,
+              88496
+            ],
+            "purpose": "Exercise publication of a smaller rewritten email derivative; not representative compression or fidelity evidence."
+          }
+        },
+        {
+          "file": "2-feature-B.pdf",
+          "sha256": "2b93755e742b5b8430893e04eb23e40f5d58a9ba37fbc87b81c16b4858d7cc51",
+          "bytes": 191534,
+          "page_count": 2,
+          "page_identifiers": [
+            "T19-B-P1",
+            "T19-B-P2"
+          ],
+          "media_boxes": [
+            [
+              0,
+              0,
+              612,
+              792
+            ],
+            [
+              0,
+              0,
+              612,
+              792
+            ]
+          ],
+          "structural_rotations": [
+            0,
+            270
+          ],
+          "canonical_field": {
+            "name": "shared_text",
+            "value": "value-B",
+            "field_type": "/Tx",
+            "widget_count": 2
+          },
+          "named_destination": {
+            "name": "T19-B-second",
+            "page_index": 1
+          },
+          "uri": "https://example.invalid/T19/B",
+          "bookmark_titles": [
+            "T19 B introduction",
+            "T19 B rotated second page"
+          ],
+          "annotation_counts": {
+            "/Widget": 2,
+            "/Link": 4,
+            "/Text": 2,
+            "/Highlight": 2,
+            "/FileAttachment": 1
+          },
+          "attachment": {
+            "name": "T19-B-attachment.txt",
+            "bytes": 136,
+            "sha256": "e9cdfece16874ed212c8083be1017a0b09848d9cf2080fd1cd12a47665a1e4ed"
+          },
+          "minimal_tags": {
+            "struct_parent_keys": [
+              0,
+              1
+            ],
+            "mcids_per_page": [
+              [
+                0
+              ],
+              [
+                0
+              ]
+            ],
+            "paragraph_elements": 2
+          },
+          "artificial_size_weighting": {
+            "kind": "nonpainting seeded high-entropy hex comments in page content",
+            "hex_characters_per_page": 65536,
+            "seeds": [
+              190101,
+              190102
+            ],
+            "comment_bytes_per_page": [
+              88496,
+              88496
+            ],
+            "purpose": "Exercise publication of a smaller rewritten email derivative; not representative compression or fidelity evidence."
+          }
+        }
+      ],
+      "merge_order": [
+        "1-feature-A.pdf",
+        "2-feature-B.pdf"
+      ],
+      "expected_page_count": 4,
+      "expected_page_identifiers": [
+        "T19-A-P1",
+        "T19-A-P2",
+        "T19-B-P1",
+        "T19-B-P2"
+      ]
+    },
+    "envelopes": {
+      "generator": "tools/test/generate_pdf_envelope_fixtures.py",
+      "generator_sha256": "7eac6f773c1ee3a075de4f1c647b49f9c8c4ab5364e98432c7a185a861bfe59f",
+      "provenance": "Original manual PDF objects; approved Ghostscript creates only the linearized derivative.",
+      "license": "Repository LICENSE",
+      "fixtures": [
+        {
+          "file": "conventional-lf.pdf",
+          "bytes": 591,
+          "sha256": "3c0b5cc802f4bf81511fefc4dbf04e0d952496082d183ece565722e30abf5d77",
+          "page_count": 1,
+          "page_identifiers": [
+            "T03-01-P01"
+          ]
+        },
+        {
+          "file": "conventional-cr.pdf",
+          "bytes": 591,
+          "sha256": "37f2789cf6b7923f904c2fa3d7bf901579421ea3f6f2fd9ad12f85bc55d52e67",
+          "page_count": 1,
+          "page_identifiers": [
+            "T03-01-P01"
+          ]
+        },
+        {
+          "file": "incremental.pdf",
+          "bytes": 762,
+          "sha256": "45674a7a2955032ed34995470fe2ba2c4eeca6c0c6f4d6529e303e2808b93b26",
+          "page_count": 1,
+          "page_identifiers": [
+            "T03-01-P01"
+          ]
+        },
+        {
+          "file": "xref-stream.pdf",
+          "bytes": 583,
+          "sha256": "b18595b0c54f4ad7af653fff0fddc888079853aca384e8988282b402de03a2ab",
+          "page_count": 1,
+          "page_identifiers": [
+            "T03-01-P01"
+          ]
+        }
+      ],
+      "variable_fixture": {
+        "file": "linearized.pdf",
+        "page_count": 1,
+        "page_identifiers": [
+          "T03-01-P01"
+        ],
+        "expected_linearized": true,
+        "byte_reproducibility": "Receipt binds actual bytes; native dates/IDs may vary."
+      },
+      "merge_order": [
+        "conventional-cr.pdf",
+        "conventional-lf.pdf",
+        "incremental.pdf",
+        "linearized.pdf",
+        "xref-stream.pdf"
+      ],
+      "expected_page_count": 5,
+      "expected_page_identifiers": [
+        "T03-01-P01",
+        "T03-01-P01",
+        "T03-01-P01",
+        "T03-01-P01",
+        "T03-01-P01"
+      ]
+    }
+  },
+  "safety": {
+    "generator": "tools/test/corpus.py",
+    "license": "Repository LICENSE",
+    "encryption": {
+      "algorithm": "RC4-128",
+      "user_password": "T21-user",
+      "owner_password": "T21-owner",
+      "restricted_user_password": "",
+      "purpose": "Synthetic unsupported-input rejection; no production encryption advice."
+    },
+    "scenarios": {
+      "matrix": {
+        "source_directory": "safety/matrix",
+        "source_files": [
+          {
+            "path": "0.pdf",
+            "sha256": "c51a3316daf330d9e5e6c62c8e9517af8ad008e001b332ae24c116fa7d1b7ee8",
+            "bytes": 1786,
+            "hidden": false,
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-21-P01"
+            ],
+            "disposition": "included"
+          },
+          {
+            "path": "00.pdf",
+            "sha256": "66e307525dc4c500816e7eeda076dfe22a6424ae9f0116f090f05fa570689d7a",
+            "bytes": 1788,
+            "hidden": false,
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-21-P02"
+            ],
+            "disposition": "included"
+          },
+          {
+            "path": "1.PDF",
+            "sha256": "425818e0d74641693bcfcf730ee187815fd66917cb733aba34b1f34ec71c8720",
+            "bytes": 1786,
+            "hidden": false,
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-21-P03"
+            ],
+            "disposition": "included"
+          },
+          {
+            "path": "01.pdf",
+            "sha256": "c6c8e5e5c93198316af39e53623799d702eeded82390e8af9d3340c3455e18d3",
+            "bytes": 1788,
+            "hidden": false,
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-21-P04"
+            ],
+            "disposition": "included"
+          },
+          {
+            "path": "2 [x] ! & (y's).pdf",
+            "sha256": "2c7cb638fcc7dd65df783c4bd79eed3774fc5f68790cd56ef9c0448e0f24fab0",
+            "bytes": 1818,
+            "hidden": false,
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-21-P05"
+            ],
+            "disposition": "included"
+          },
+          {
+            "path": "10.pdf",
+            "sha256": "8f390d559c14cd98b02fad7903bb5e2b168a33ebd9102e3ee0a3fa5c9f030f14",
+            "bytes": 2455,
+            "hidden": false,
+            "page_count": 2,
+            "page_identifiers": [
+              "T03-21-P06",
+              "T03-21-P90"
+            ],
+            "disposition": "included"
+          },
+          {
+            "path": "12-caf\u00e9.pdf",
+            "sha256": "05d2985c502574714ed83d7059275dc29966a40019a1160c4fd1ff22f565588e",
+            "bytes": 1803,
+            "hidden": false,
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-21-P07"
+            ],
+            "disposition": "included"
+          },
+          {
+            "path": "13-\u00c5.pdf",
+            "sha256": "538b634375c58513e1e3767023252c4919a3aeb17a20415143e0d20327658076",
+            "bytes": 1798,
+            "hidden": false,
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-21-P08"
+            ],
+            "disposition": "included"
+          },
+          {
+            "path": "14-\u00e4.pdf",
+            "sha256": "438a09dd8ac8710b4566c186c117313f0e5f180395f2f2a75b65dc23dc4874e5",
+            "bytes": 1798,
+            "hidden": false,
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-21-P09"
+            ],
+            "disposition": "included"
+          },
+          {
+            "path": "20-part2.pdf",
+            "sha256": "9c4466dfbcd052e545aa14eee2248f02e812b8aac6219d2d74118164f2b64acd",
+            "bytes": 1800,
+            "hidden": false,
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-21-P10"
+            ],
+            "disposition": "included"
+          },
+          {
+            "path": "20-part02.pdf",
+            "sha256": "0531bc102c7fedf59500e27f1f4e3ea615936f0c1cde28336ad7159b81d7a0e8",
+            "bytes": 1801,
+            "hidden": false,
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-21-P11"
+            ],
+            "disposition": "included"
+          },
+          {
+            "path": "20-part10.pdf",
+            "sha256": "dfba90bd13c0a18d85d4892ad7f1f796126b31cfd561b2a1a789fb26aa0b1918",
+            "bytes": 1801,
+            "hidden": false,
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-21-P12"
+            ],
+            "disposition": "included"
+          },
+          {
+            "path": "2147483648.pdf",
+            "sha256": "9022dcb333e4f2180ee2bc5b67e16174b8967602c070d388907a9a571063b442",
+            "bytes": 1803,
+            "hidden": false,
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-21-P13"
+            ],
+            "disposition": "included"
+          },
+          {
+            "path": "99999999999999999999999999999999999999.pdf",
+            "sha256": "e0fc14d42a127a3879f115889552ac9692754aeb3e415ba3783c474fa1d25231",
+            "bytes": 1859,
+            "hidden": false,
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-21-P14"
+            ],
+            "disposition": "included"
+          },
+          {
+            "path": "100000000000000000000000000000000000000.pdf",
+            "sha256": "417e00942ecb07a7bec92d90e005bcc6ca397213dbd78c56e1e18795166d1956",
+            "bytes": 1861,
+            "hidden": false,
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-21-P15"
+            ],
+            "disposition": "included"
+          },
+          {
+            "path": "item2-part2.pdf",
+            "sha256": "b7028e242eaaba16edee39debc452e76aa62c4f440f465bec71945d0a31cbbe2",
+            "bytes": 1806,
+            "hidden": false,
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-21-P16"
+            ],
+            "disposition": "included"
+          },
+          {
+            "path": "item2-part10.pdf",
+            "sha256": "515919fcf9b852ee7f3a857cc55676ad2b1960f5f330c1289d004adf54c0fbb1",
+            "bytes": 1808,
+            "hidden": false,
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-21-P17"
+            ],
+            "disposition": "included"
+          },
+          {
+            "path": "WinPDFMerge_legitimate.pdf",
+            "sha256": "ddbab7a90fcd983b173491fe84ebae9bcfaf1f2c4127ff7cb2f45c7e14d02b4c",
+            "bytes": 1827,
+            "hidden": false,
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-21-P18"
+            ],
+            "disposition": "included"
+          },
+          {
+            "path": "hidden.PDF",
+            "sha256": "93188c9aa4d8f492782a8f2d19ee70bd35b34c085720af36db60a49379a226ea",
+            "bytes": 1796,
+            "hidden": true,
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-21-P91"
+            ],
+            "disposition": "hidden"
+          },
+          {
+            "path": "nested/3.PDF",
+            "sha256": "63a7698f7d5d818f531f2b000762ca2b62e116fca5374cbef786511862c2ea06",
+            "bytes": 1800,
+            "hidden": false,
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-21-P91"
+            ],
+            "disposition": "nested"
+          },
+          {
+            "path": "notes.txt",
+            "sha256": "f7b724702ad40f20fc7751c32e1a927a91dda42da217fb6ee284f749ea9b03b4",
+            "bytes": 37,
+            "hidden": false,
+            "page_count": null,
+            "page_identifiers": [],
+            "disposition": "non_pdf"
+          },
+          {
+            "path": "directory.pdf",
+            "hidden": false,
+            "disposition": "directory"
+          }
+        ],
+        "ordered_names": [
+          "0.pdf",
+          "00.pdf",
+          "1.PDF",
+          "01.pdf",
+          "2 [x] ! & (y's).pdf",
+          "10.pdf",
+          "12-caf\u00e9.pdf",
+          "13-\u00c5.pdf",
+          "14-\u00e4.pdf",
+          "20-part2.pdf",
+          "20-part02.pdf",
+          "20-part10.pdf",
+          "2147483648.pdf",
+          "99999999999999999999999999999999999999.pdf",
+          "100000000000000000000000000000000000000.pdf",
+          "item2-part2.pdf",
+          "item2-part10.pdf",
+          "WinPDFMerge_legitimate.pdf"
+        ],
+        "expected_page_count": 19,
+        "expected_page_identifiers": [
+          "T03-21-P01",
+          "T03-21-P02",
+          "T03-21-P03",
+          "T03-21-P04",
+          "T03-21-P05",
+          "T03-21-P06",
+          "T03-21-P90",
+          "T03-21-P07",
+          "T03-21-P08",
+          "T03-21-P09",
+          "T03-21-P10",
+          "T03-21-P11",
+          "T03-21-P12",
+          "T03-21-P13",
+          "T03-21-P14",
+          "T03-21-P15",
+          "T03-21-P16",
+          "T03-21-P17",
+          "T03-21-P18"
+        ],
+        "expected_exit_code": 0
+      },
+      "single-uppercase": {
+        "source_directory": "safety/single-uppercase",
+        "source_files": [
+          {
+            "path": "single.PDF",
+            "sha256": "1f0d803d21716e55322e040f449e3cac739314da25fcd28af0edb4fc9b9623e3",
+            "bytes": 1796,
+            "hidden": false,
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-21-P01"
+            ],
+            "disposition": "included"
+          }
+        ],
+        "ordered_names": [
+          "single.PDF"
+        ],
+        "expected_page_count": 1,
+        "expected_page_identifiers": [
+          "T03-21-P01"
+        ],
+        "expected_exit_code": 0
+      },
+      "names-unicode": {
+        "source_directory": "safety/names-unicode",
+        "source_files": [
+          {
+            "path": "1.pdf",
+            "sha256": "c241650f64c102cdc5034eaec2deb1301f9a4b21d11e056512ad726a9418873f",
+            "bytes": 1786,
+            "hidden": false,
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-21-P01"
+            ],
+            "disposition": "included"
+          },
+          {
+            "path": "2-\u6f22\u5b57.pdf",
+            "sha256": "666a7b6f07cdb7ea0f72930f260109cf0ef1555db647a2eefdc2c208cceef027",
+            "bytes": 2113,
+            "hidden": false,
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-21-P02"
+            ],
+            "disposition": "rejected"
+          }
+        ],
+        "ordered_names": [
+          "1.pdf",
+          "2-\u6f22\u5b57.pdf"
+        ],
+        "expected_page_count": null,
+        "expected_page_identifiers": [],
+        "expected_exit_code": 1
+      },
+      "invalid-empty": {
+        "source_directory": "safety/invalid/empty",
+        "source_files": [
+          {
+            "path": "1.pdf",
+            "sha256": "c241650f64c102cdc5034eaec2deb1301f9a4b21d11e056512ad726a9418873f",
+            "bytes": 1786,
+            "hidden": false,
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-21-P01"
+            ],
+            "disposition": "included"
+          },
+          {
+            "path": "10.pdf",
+            "sha256": "051bf2d672ba8efe66d17d1955b79f836b76633bec2e70c264e07f39427263ab",
+            "bytes": 1788,
+            "hidden": false,
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-21-P02"
+            ],
+            "disposition": "included"
+          },
+          {
+            "path": "5_empty.pdf",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+            "bytes": 0,
+            "hidden": false,
+            "page_count": null,
+            "page_identifiers": [],
+            "disposition": "rejected"
+          }
+        ],
+        "ordered_names": [
+          "1.pdf",
+          "5_empty.pdf",
+          "10.pdf"
+        ],
+        "expected_page_count": null,
+        "expected_page_identifiers": [],
+        "expected_exit_code": 1
+      },
+      "invalid-truncated": {
+        "source_directory": "safety/invalid/truncated",
+        "source_files": [
+          {
+            "path": "1.pdf",
+            "sha256": "c241650f64c102cdc5034eaec2deb1301f9a4b21d11e056512ad726a9418873f",
+            "bytes": 1786,
+            "hidden": false,
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-21-P01"
+            ],
+            "disposition": "included"
+          },
+          {
+            "path": "10.pdf",
+            "sha256": "051bf2d672ba8efe66d17d1955b79f836b76633bec2e70c264e07f39427263ab",
+            "bytes": 1788,
+            "hidden": false,
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-21-P02"
+            ],
+            "disposition": "included"
+          },
+          {
+            "path": "5_truncated.pdf",
+            "sha256": "964ca978d76a22df561657900a4077bb808d3f83ada16a838306e8b7648fbcc3",
+            "bytes": 900,
+            "hidden": false,
+            "page_count": null,
+            "page_identifiers": [],
+            "disposition": "rejected"
+          }
+        ],
+        "ordered_names": [
+          "1.pdf",
+          "5_truncated.pdf",
+          "10.pdf"
+        ],
+        "expected_page_count": null,
+        "expected_page_identifiers": [],
+        "expected_exit_code": 1
+      },
+      "invalid-malformed": {
+        "source_directory": "safety/invalid/malformed",
+        "source_files": [
+          {
+            "path": "1.pdf",
+            "sha256": "c241650f64c102cdc5034eaec2deb1301f9a4b21d11e056512ad726a9418873f",
+            "bytes": 1786,
+            "hidden": false,
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-21-P01"
+            ],
+            "disposition": "included"
+          },
+          {
+            "path": "10.pdf",
+            "sha256": "051bf2d672ba8efe66d17d1955b79f836b76633bec2e70c264e07f39427263ab",
+            "bytes": 1788,
+            "hidden": false,
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-21-P02"
+            ],
+            "disposition": "included"
+          },
+          {
+            "path": "5_malformed.pdf",
+            "sha256": "820db678218cb3a47199d5a3de095c8522565397a05dfaa52d842e2c1af0c847",
+            "bytes": 62,
+            "hidden": false,
+            "page_count": null,
+            "page_identifiers": [],
+            "disposition": "rejected"
+          }
+        ],
+        "ordered_names": [
+          "1.pdf",
+          "5_malformed.pdf",
+          "10.pdf"
+        ],
+        "expected_page_count": null,
+        "expected_page_identifiers": [],
+        "expected_exit_code": 1
+      },
+      "invalid-encrypted": {
+        "source_directory": "safety/invalid/encrypted",
+        "source_files": [
+          {
+            "path": "1.pdf",
+            "sha256": "c241650f64c102cdc5034eaec2deb1301f9a4b21d11e056512ad726a9418873f",
+            "bytes": 1786,
+            "hidden": false,
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-21-P01"
+            ],
+            "disposition": "included"
+          },
+          {
+            "path": "10.pdf",
+            "sha256": "051bf2d672ba8efe66d17d1955b79f836b76633bec2e70c264e07f39427263ab",
+            "bytes": 1788,
+            "hidden": false,
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-21-P02"
+            ],
+            "disposition": "included"
+          },
+          {
+            "path": "5_encrypted.pdf",
+            "sha256": "deda73dee6225f4ed1c599aa249bfb8cb27b7b68814ba93bae9d611f7b2477f3",
+            "bytes": 2160,
+            "hidden": false,
+            "page_count": null,
+            "page_identifiers": [],
+            "disposition": "rejected"
+          }
+        ],
+        "ordered_names": [
+          "1.pdf",
+          "5_encrypted.pdf",
+          "10.pdf"
+        ],
+        "expected_page_count": null,
+        "expected_page_identifiers": [],
+        "expected_exit_code": 1
+      },
+      "invalid-owner-restricted": {
+        "source_directory": "safety/invalid/owner-restricted",
+        "source_files": [
+          {
+            "path": "1.pdf",
+            "sha256": "c241650f64c102cdc5034eaec2deb1301f9a4b21d11e056512ad726a9418873f",
+            "bytes": 1786,
+            "hidden": false,
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-21-P01"
+            ],
+            "disposition": "included"
+          },
+          {
+            "path": "10.pdf",
+            "sha256": "051bf2d672ba8efe66d17d1955b79f836b76633bec2e70c264e07f39427263ab",
+            "bytes": 1788,
+            "hidden": false,
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-21-P02"
+            ],
+            "disposition": "included"
+          },
+          {
+            "path": "5_owner-restricted.pdf",
+            "sha256": "cfe5e5f7ad37381d3335bd54e6097f51f6295c885b5e80037ee156a8b0f60656",
+            "bytes": 2160,
+            "hidden": false,
+            "page_count": null,
+            "page_identifiers": [],
+            "disposition": "rejected"
+          }
+        ],
+        "ordered_names": [
+          "1.pdf",
+          "5_owner-restricted.pdf",
+          "10.pdf"
+        ],
+        "expected_page_count": null,
+        "expected_page_identifiers": [],
+        "expected_exit_code": 1
+      },
+      "numbered": {
+        "source_directory": "numbered",
+        "source_files": [
+          {
+            "path": "1.pdf",
+            "hidden": false,
+            "disposition": "included",
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-01-P01"
+            ],
+            "sha256": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+            "bytes": 1786
+          },
+          {
+            "path": "2.pdf",
+            "hidden": false,
+            "disposition": "included",
+            "page_count": 2,
+            "page_identifiers": [
+              "T03-02-P01",
+              "T03-02-P02"
+            ],
+            "sha256": "7821d0ff4c3d655511e4421559d317013a64356a370d7b07a47079e5f02ad901",
+            "bytes": 2452
+          },
+          {
+            "path": "10.pdf",
+            "hidden": false,
+            "disposition": "included",
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-10-P01"
+            ],
+            "sha256": "9fa79c41feb7be692b100bc0fe44ed063029e0955900d3bb2f8552a10afb6aaa",
+            "bytes": 1788
+          }
+        ],
+        "ordered_names": [
+          "1.pdf",
+          "2.pdf",
+          "10.pdf"
+        ],
+        "expected_page_count": 4,
+        "expected_page_identifiers": [
+          "T03-01-P01",
+          "T03-02-P01",
+          "T03-02-P02",
+          "T03-10-P01"
+        ],
+        "expected_exit_code": 0
+      },
+      "presets": {
+        "source_directory": "presets",
+        "source_files": [
+          {
+            "path": "small-print.pdf",
+            "hidden": false,
+            "disposition": "included",
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-17-P01"
+            ],
+            "sha256": "7074f0ca973ccf90ce555ee427fa4cc041c06b8a248cb7eb5344680959b34920",
+            "bytes": 2619
+          },
+          {
+            "path": "scan.pdf",
+            "hidden": false,
+            "disposition": "included",
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-17-P02"
+            ],
+            "sha256": "2de91e376e39a99e1fd3d3760a05737023b503a7aca5ee4365eabc7971b7be03",
+            "bytes": 3133596
+          },
+          {
+            "path": "mixed.pdf",
+            "hidden": false,
+            "disposition": "included",
+            "page_count": 2,
+            "page_identifiers": [
+              "T03-17-P03",
+              "T03-17-P04"
+            ],
+            "sha256": "3ce010ec530ed27bfb168462f487f9591877398e9bddac5789f31386c56d6eaa",
+            "bytes": 3135054
+          }
+        ],
+        "ordered_names": [
+          "mixed.pdf",
+          "scan.pdf",
+          "small-print.pdf"
+        ],
+        "expected_page_count": 4,
+        "expected_page_identifiers": [
+          "T03-17-P03",
+          "T03-17-P04",
+          "T03-17-P02",
+          "T03-17-P01"
+        ],
+        "expected_exit_code": 0
+      },
+      "features": {
+        "source_directory": "features",
+        "source_files": [
+          {
+            "path": "1-feature-A.pdf",
+            "hidden": false,
+            "disposition": "included",
+            "page_count": 2,
+            "page_identifiers": [
+              "T19-A-P1",
+              "T19-A-P2"
+            ],
+            "sha256": "7b3654527046994091cc27e6b9bab71542b8215fc26c9e9b0efd6d9e773270ce",
+            "bytes": 191533
+          },
+          {
+            "path": "2-feature-B.pdf",
+            "hidden": false,
+            "disposition": "included",
+            "page_count": 2,
+            "page_identifiers": [
+              "T19-B-P1",
+              "T19-B-P2"
+            ],
+            "sha256": "2b93755e742b5b8430893e04eb23e40f5d58a9ba37fbc87b81c16b4858d7cc51",
+            "bytes": 191534
+          }
+        ],
+        "ordered_names": [
+          "1-feature-A.pdf",
+          "2-feature-B.pdf"
+        ],
+        "expected_page_count": 4,
+        "expected_page_identifiers": [
+          "T19-A-P1",
+          "T19-A-P2",
+          "T19-B-P1",
+          "T19-B-P2"
+        ],
+        "expected_exit_code": 0
+      },
+      "envelopes": {
+        "source_directory": "envelopes",
+        "source_files": [
+          {
+            "path": "conventional-lf.pdf",
+            "hidden": false,
+            "disposition": "included",
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-01-P01"
+            ],
+            "sha256": "3c0b5cc802f4bf81511fefc4dbf04e0d952496082d183ece565722e30abf5d77",
+            "bytes": 591
+          },
+          {
+            "path": "conventional-cr.pdf",
+            "hidden": false,
+            "disposition": "included",
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-01-P01"
+            ],
+            "sha256": "37f2789cf6b7923f904c2fa3d7bf901579421ea3f6f2fd9ad12f85bc55d52e67",
+            "bytes": 591
+          },
+          {
+            "path": "incremental.pdf",
+            "hidden": false,
+            "disposition": "included",
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-01-P01"
+            ],
+            "sha256": "45674a7a2955032ed34995470fe2ba2c4eeca6c0c6f4d6529e303e2808b93b26",
+            "bytes": 762
+          },
+          {
+            "path": "xref-stream.pdf",
+            "hidden": false,
+            "disposition": "included",
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-01-P01"
+            ],
+            "sha256": "b18595b0c54f4ad7af653fff0fddc888079853aca384e8988282b402de03a2ab",
+            "bytes": 583
+          },
+          {
+            "path": "linearized.pdf",
+            "hidden": false,
+            "disposition": "included",
+            "page_count": 1,
+            "page_identifiers": [
+              "T03-01-P01"
+            ]
+          }
+        ],
+        "ordered_names": [
+          "conventional-cr.pdf",
+          "conventional-lf.pdf",
+          "incremental.pdf",
+          "linearized.pdf",
+          "xref-stream.pdf"
+        ],
+        "expected_page_count": 5,
+        "expected_page_identifiers": [
+          "T03-01-P01",
+          "T03-01-P01",
+          "T03-01-P01",
+          "T03-01-P01",
+          "T03-01-P01"
+        ],
+        "expected_exit_code": 0
+      }
+    }
+  },
+  "inventory": [
+    {
+      "path": "envelopes",
+      "kind": "directory",
+      "hidden": false
+    },
+    {
+      "path": "envelopes/conventional-cr.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 591,
+      "sha256": "37f2789cf6b7923f904c2fa3d7bf901579421ea3f6f2fd9ad12f85bc55d52e67"
+    },
+    {
+      "path": "envelopes/conventional-lf.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 591,
+      "sha256": "3c0b5cc802f4bf81511fefc4dbf04e0d952496082d183ece565722e30abf5d77"
+    },
+    {
+      "path": "envelopes/incremental.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 762,
+      "sha256": "45674a7a2955032ed34995470fe2ba2c4eeca6c0c6f4d6529e303e2808b93b26"
+    },
+    {
+      "path": "envelopes/linearized.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 4107,
+      "sha256": "76137e9d12132a339d1de886d30d607cbb645a180e30558d3548b5eb1e639cd3"
+    },
+    {
+      "path": "envelopes/manifest.json",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 7114,
+      "sha256": "021d3e09faad646a22aff886c606847f5d92350befeda233b526a75706deb15d"
+    },
+    {
+      "path": "envelopes/xref-stream.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 583,
+      "sha256": "b18595b0c54f4ad7af653fff0fddc888079853aca384e8988282b402de03a2ab"
+    },
+    {
+      "path": "features",
+      "kind": "directory",
+      "hidden": false
+    },
+    {
+      "path": "features/1-feature-A.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 191533,
+      "sha256": "7b3654527046994091cc27e6b9bab71542b8215fc26c9e9b0efd6d9e773270ce"
+    },
+    {
+      "path": "features/2-feature-B.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 191534,
+      "sha256": "2b93755e742b5b8430893e04eb23e40f5d58a9ba37fbc87b81c16b4858d7cc51"
+    },
+    {
+      "path": "features/generation.json",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 5481,
+      "sha256": "73b1c8cd478f8f8e709005550f42a7d9177ab71dcbb738ba2614edc37b1dc846"
+    },
+    {
+      "path": "features/manifest.json",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 5481,
+      "sha256": "73b1c8cd478f8f8e709005550f42a7d9177ab71dcbb738ba2614edc37b1dc846"
+    },
+    {
+      "path": "numbered",
+      "kind": "directory",
+      "hidden": false
+    },
+    {
+      "path": "numbered/1.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 1786,
+      "sha256": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109"
+    },
+    {
+      "path": "numbered/10.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 1788,
+      "sha256": "9fa79c41feb7be692b100bc0fe44ed063029e0955900d3bb2f8552a10afb6aaa"
+    },
+    {
+      "path": "numbered/2.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 2452,
+      "sha256": "7821d0ff4c3d655511e4421559d317013a64356a370d7b07a47079e5f02ad901"
+    },
+    {
+      "path": "numbered/manifest.json",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 1438,
+      "sha256": "62cbc4b3a86464693c3568be9b0ef487212abd7fc560f08320739b5a2aaa810f"
+    },
+    {
+      "path": "presets",
+      "kind": "directory",
+      "hidden": false
+    },
+    {
+      "path": "presets/manifest.json",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 1700,
+      "sha256": "f58fc40e48aba30641767d69f48f32214499820b6221b652aabeb5ad8e8f255f"
+    },
+    {
+      "path": "presets/mixed.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 3135054,
+      "sha256": "3ce010ec530ed27bfb168462f487f9591877398e9bddac5789f31386c56d6eaa"
+    },
+    {
+      "path": "presets/scan.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 3133596,
+      "sha256": "2de91e376e39a99e1fd3d3760a05737023b503a7aca5ee4365eabc7971b7be03"
+    },
+    {
+      "path": "presets/small-print.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 2619,
+      "sha256": "7074f0ca973ccf90ce555ee427fa4cc041c06b8a248cb7eb5344680959b34920"
+    },
+    {
+      "path": "safety",
+      "kind": "directory",
+      "hidden": false
+    },
+    {
+      "path": "safety/invalid",
+      "kind": "directory",
+      "hidden": false
+    },
+    {
+      "path": "safety/invalid/empty",
+      "kind": "directory",
+      "hidden": false
+    },
+    {
+      "path": "safety/invalid/empty/1.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 1786,
+      "sha256": "c241650f64c102cdc5034eaec2deb1301f9a4b21d11e056512ad726a9418873f"
+    },
+    {
+      "path": "safety/invalid/empty/10.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 1788,
+      "sha256": "051bf2d672ba8efe66d17d1955b79f836b76633bec2e70c264e07f39427263ab"
+    },
+    {
+      "path": "safety/invalid/empty/5_empty.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "safety/invalid/encrypted",
+      "kind": "directory",
+      "hidden": false
+    },
+    {
+      "path": "safety/invalid/encrypted/1.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 1786,
+      "sha256": "c241650f64c102cdc5034eaec2deb1301f9a4b21d11e056512ad726a9418873f"
+    },
+    {
+      "path": "safety/invalid/encrypted/10.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 1788,
+      "sha256": "051bf2d672ba8efe66d17d1955b79f836b76633bec2e70c264e07f39427263ab"
+    },
+    {
+      "path": "safety/invalid/encrypted/5_encrypted.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 2160,
+      "sha256": "deda73dee6225f4ed1c599aa249bfb8cb27b7b68814ba93bae9d611f7b2477f3"
+    },
+    {
+      "path": "safety/invalid/malformed",
+      "kind": "directory",
+      "hidden": false
+    },
+    {
+      "path": "safety/invalid/malformed/1.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 1786,
+      "sha256": "c241650f64c102cdc5034eaec2deb1301f9a4b21d11e056512ad726a9418873f"
+    },
+    {
+      "path": "safety/invalid/malformed/10.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 1788,
+      "sha256": "051bf2d672ba8efe66d17d1955b79f836b76633bec2e70c264e07f39427263ab"
+    },
+    {
+      "path": "safety/invalid/malformed/5_malformed.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 62,
+      "sha256": "820db678218cb3a47199d5a3de095c8522565397a05dfaa52d842e2c1af0c847"
+    },
+    {
+      "path": "safety/invalid/owner-restricted",
+      "kind": "directory",
+      "hidden": false
+    },
+    {
+      "path": "safety/invalid/owner-restricted/1.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 1786,
+      "sha256": "c241650f64c102cdc5034eaec2deb1301f9a4b21d11e056512ad726a9418873f"
+    },
+    {
+      "path": "safety/invalid/owner-restricted/10.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 1788,
+      "sha256": "051bf2d672ba8efe66d17d1955b79f836b76633bec2e70c264e07f39427263ab"
+    },
+    {
+      "path": "safety/invalid/owner-restricted/5_owner-restricted.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 2160,
+      "sha256": "cfe5e5f7ad37381d3335bd54e6097f51f6295c885b5e80037ee156a8b0f60656"
+    },
+    {
+      "path": "safety/invalid/truncated",
+      "kind": "directory",
+      "hidden": false
+    },
+    {
+      "path": "safety/invalid/truncated/1.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 1786,
+      "sha256": "c241650f64c102cdc5034eaec2deb1301f9a4b21d11e056512ad726a9418873f"
+    },
+    {
+      "path": "safety/invalid/truncated/10.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 1788,
+      "sha256": "051bf2d672ba8efe66d17d1955b79f836b76633bec2e70c264e07f39427263ab"
+    },
+    {
+      "path": "safety/invalid/truncated/5_truncated.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 900,
+      "sha256": "964ca978d76a22df561657900a4077bb808d3f83ada16a838306e8b7648fbcc3"
+    },
+    {
+      "path": "safety/matrix",
+      "kind": "directory",
+      "hidden": false
+    },
+    {
+      "path": "safety/matrix/0.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 1786,
+      "sha256": "c51a3316daf330d9e5e6c62c8e9517af8ad008e001b332ae24c116fa7d1b7ee8"
+    },
+    {
+      "path": "safety/matrix/00.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 1788,
+      "sha256": "66e307525dc4c500816e7eeda076dfe22a6424ae9f0116f090f05fa570689d7a"
+    },
+    {
+      "path": "safety/matrix/01.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 1788,
+      "sha256": "c6c8e5e5c93198316af39e53623799d702eeded82390e8af9d3340c3455e18d3"
+    },
+    {
+      "path": "safety/matrix/1.PDF",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 1786,
+      "sha256": "425818e0d74641693bcfcf730ee187815fd66917cb733aba34b1f34ec71c8720"
+    },
+    {
+      "path": "safety/matrix/10.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 2455,
+      "sha256": "8f390d559c14cd98b02fad7903bb5e2b168a33ebd9102e3ee0a3fa5c9f030f14"
+    },
+    {
+      "path": "safety/matrix/100000000000000000000000000000000000000.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 1861,
+      "sha256": "417e00942ecb07a7bec92d90e005bcc6ca397213dbd78c56e1e18795166d1956"
+    },
+    {
+      "path": "safety/matrix/12-caf\u00e9.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 1803,
+      "sha256": "05d2985c502574714ed83d7059275dc29966a40019a1160c4fd1ff22f565588e"
+    },
+    {
+      "path": "safety/matrix/13-\u00c5.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 1798,
+      "sha256": "538b634375c58513e1e3767023252c4919a3aeb17a20415143e0d20327658076"
+    },
+    {
+      "path": "safety/matrix/14-\u00e4.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 1798,
+      "sha256": "438a09dd8ac8710b4566c186c117313f0e5f180395f2f2a75b65dc23dc4874e5"
+    },
+    {
+      "path": "safety/matrix/2 [x] ! & (y's).pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 1818,
+      "sha256": "2c7cb638fcc7dd65df783c4bd79eed3774fc5f68790cd56ef9c0448e0f24fab0"
+    },
+    {
+      "path": "safety/matrix/20-part02.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 1801,
+      "sha256": "0531bc102c7fedf59500e27f1f4e3ea615936f0c1cde28336ad7159b81d7a0e8"
+    },
+    {
+      "path": "safety/matrix/20-part10.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 1801,
+      "sha256": "dfba90bd13c0a18d85d4892ad7f1f796126b31cfd561b2a1a789fb26aa0b1918"
+    },
+    {
+      "path": "safety/matrix/20-part2.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 1800,
+      "sha256": "9c4466dfbcd052e545aa14eee2248f02e812b8aac6219d2d74118164f2b64acd"
+    },
+    {
+      "path": "safety/matrix/2147483648.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 1803,
+      "sha256": "9022dcb333e4f2180ee2bc5b67e16174b8967602c070d388907a9a571063b442"
+    },
+    {
+      "path": "safety/matrix/99999999999999999999999999999999999999.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 1859,
+      "sha256": "e0fc14d42a127a3879f115889552ac9692754aeb3e415ba3783c474fa1d25231"
+    },
+    {
+      "path": "safety/matrix/WinPDFMerge_legitimate.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 1827,
+      "sha256": "ddbab7a90fcd983b173491fe84ebae9bcfaf1f2c4127ff7cb2f45c7e14d02b4c"
+    },
+    {
+      "path": "safety/matrix/directory.pdf",
+      "kind": "directory",
+      "hidden": false
+    },
+    {
+      "path": "safety/matrix/hidden.PDF",
+      "kind": "file",
+      "hidden": true,
+      "bytes": 1796,
+      "sha256": "93188c9aa4d8f492782a8f2d19ee70bd35b34c085720af36db60a49379a226ea"
+    },
+    {
+      "path": "safety/matrix/item2-part10.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 1808,
+      "sha256": "515919fcf9b852ee7f3a857cc55676ad2b1960f5f330c1289d004adf54c0fbb1"
+    },
+    {
+      "path": "safety/matrix/item2-part2.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 1806,
+      "sha256": "b7028e242eaaba16edee39debc452e76aa62c4f440f465bec71945d0a31cbbe2"
+    },
+    {
+      "path": "safety/matrix/nested",
+      "kind": "directory",
+      "hidden": false
+    },
+    {
+      "path": "safety/matrix/nested/3.PDF",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 1800,
+      "sha256": "63a7698f7d5d818f531f2b000762ca2b62e116fca5374cbef786511862c2ea06"
+    },
+    {
+      "path": "safety/matrix/notes.txt",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 37,
+      "sha256": "f7b724702ad40f20fc7751c32e1a927a91dda42da217fb6ee284f749ea9b03b4"
+    },
+    {
+      "path": "safety/names-unicode",
+      "kind": "directory",
+      "hidden": false
+    },
+    {
+      "path": "safety/names-unicode/1.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 1786,
+      "sha256": "c241650f64c102cdc5034eaec2deb1301f9a4b21d11e056512ad726a9418873f"
+    },
+    {
+      "path": "safety/names-unicode/2-\u6f22\u5b57.pdf",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 2113,
+      "sha256": "666a7b6f07cdb7ea0f72930f260109cf0ef1555db647a2eefdc2c208cceef027"
+    },
+    {
+      "path": "safety/single-uppercase",
+      "kind": "directory",
+      "hidden": false
+    },
+    {
+      "path": "safety/single-uppercase/single.PDF",
+      "kind": "file",
+      "hidden": false,
+      "bytes": 1796,
+      "sha256": "1f0d803d21716e55322e040f449e3cac739314da25fcd28af0edb4fc9b9623e3"
+    }
+  ]
+}

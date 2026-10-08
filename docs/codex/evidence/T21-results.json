@@ -1,0 +1,380 @@
+{
+  "schema_version": 1,
+  "task": "T21",
+  "records_review": "T21-records-review.json",
+  "tested_commit": "abf8976e84f2c3f851efc42a844037a880519b26",
+  "acceptance": {
+    "AC048": {
+      "result": "pass",
+      "mode": "review",
+      "semantic_checks": 23,
+      "python_regressions": 40,
+      "independent_reconstructions": 2,
+      "reconstruction_execution_commit": "c2dd655ef9ec4ea42b53b8f1482c68a60d219721",
+      "read_only_verification_commit": "abf8976e84f2c3f851efc42a844037a880519b26",
+      "inventory_entries": 73,
+      "unique_valid_pdfs": 46,
+      "fixed_entries_equal": 71,
+      "variable_entries": [
+        "envelopes/linearized.pdf",
+        "envelopes/manifest.json"
+      ],
+      "semantic_report": "T21-reports/review/C1b-semantic-25f60c83e72a4bb8a937eeb81edd6caa/stdout.txt",
+      "catalog_sha256": "71b57b3032b61c34a0ee9accaf9f3054f0f00a6f63d89f11b05a2584a4472d89"
+    },
+    "AC049": {
+      "result": "pass",
+      "mode": "integration",
+      "corpus_safety_cases_per_host": 18,
+      "entry_observations": 42,
+      "native_audit": "T21-reports/native-audit/C1b-final-audit.json"
+    }
+  },
+  "environment": {
+    "os": "Windows reference desktop, Windows10.0.26300.0; OS support channel unestablished",
+    "account": "standard user",
+    "filesystem": "local NTFS",
+    "pdftk": "2.02",
+    "ghostscript": "10.08.0",
+    "python": "3.12.14",
+    "workspace_bundle": "26.1007.11041",
+    "reportlab": "4.4.9",
+    "pypdf": "6.10.0",
+    "pypdfium2": "5.13.0",
+    "pdfium": "153.0.7999.0",
+    "pillow": "12.3.0",
+    "dependency_acquisition": false,
+    "persistent_environment_or_security_change": false,
+    "ordinary_ps51_policy": "Restricted; all five scopes Undefined",
+    "ordinary_ps7_policy": "LocalMachine RemoteSigned",
+    "scoped_child_policy": "Previously authorized RemoteSigned and case-insensitive PSModulePath cleanup",
+    "prior_bat_route_policy": "Existing child-process Bypass, unchanged",
+    "selected_dependency_files_rehashed": 348,
+    "receipt": "T21-reports/context/T21-environment.json"
+  },
+  "pester": {
+    "passed": 902,
+    "reports": 22,
+    "failed": 0,
+    "failed_blocks": 0,
+    "failed_containers": 0,
+    "skipped": 0,
+    "not_run": 0,
+    "hosts": [
+      {
+        "shell": "ps51",
+        "version": "5.1.26100.9444",
+        "edition": "Desktop",
+        "x64": true,
+        "pester": "6.2.0",
+        "child_execution_policy": "RemoteSigned",
+        "passed": 451,
+        "tiers": [
+          {
+            "tier": "Unit",
+            "passed": 339,
+            "evidence_class": "unit-controlled-process-and-filesystem",
+            "summary": "T21-reports/ps51/Unit.summary.json",
+            "nunit": "T21-reports/ps51/Unit.results.xml"
+          },
+          {
+            "tier": "SourceDiscovery",
+            "passed": 4,
+            "evidence_class": "windows-entry-source-discovery-real-pdftk",
+            "summary": "T21-reports/ps51/SourceDiscovery.summary.json",
+            "nunit": "T21-reports/ps51/SourceDiscovery.results.xml"
+          },
+          {
+            "tier": "InputPreflight",
+            "passed": 22,
+            "evidence_class": "windows-real-pdftk-input-preflight-and-independent-pdfium-order",
+            "summary": "T21-reports/ps51/InputPreflight.summary.json",
+            "nunit": "T21-reports/ps51/InputPreflight.results.xml"
+          },
+          {
+            "tier": "MasterValidation",
+            "passed": 7,
+            "evidence_class": "windows-real-pdftk-master-validation-entry-and-independent-pdfium-order-rotation",
+            "summary": "T21-reports/ps51/MasterValidation.summary.json",
+            "nunit": "T21-reports/ps51/MasterValidation.results.xml"
+          },
+          {
+            "tier": "Staging",
+            "passed": 9,
+            "evidence_class": "windows-real-pdftk-gs-staging-publication-controlled-scheduling-and-filesystem",
+            "summary": "T21-reports/ps51/Staging.summary.json",
+            "nunit": "T21-reports/ps51/Staging.results.xml"
+          },
+          {
+            "tier": "Destination",
+            "passed": 15,
+            "evidence_class": "windows-real-entry-destination-identity-ACL-junction-concurrency",
+            "summary": "T21-reports/ps51/Destination.summary.json",
+            "nunit": "T21-reports/ps51/Destination.results.xml"
+          },
+          {
+            "tier": "SizeReportingNative",
+            "passed": 11,
+            "evidence_class": "windows-real-entry-size-accounting-and-controlled-equal-size-boundary; visual-manual-observations-separate",
+            "summary": "T21-reports/ps51/SizeReportingNative.summary.json",
+            "nunit": "T21-reports/ps51/SizeReportingNative.results.xml"
+          },
+          {
+            "tier": "PreservationNative",
+            "passed": 6,
+            "evidence_class": "windows-real-entry-master-screen-ebook-feature-characterization; strict-pypdf-and-independent-pdfium; visual review separate",
+            "summary": "T21-reports/ps51/PreservationNative.summary.json",
+            "nunit": "T21-reports/ps51/PreservationNative.results.xml"
+          },
+          {
+            "tier": "ParametersNative",
+            "passed": 9,
+            "evidence_class": "windows-real-entry-preset-and-defaults-actual-cmd-batch-delivery-not-Explorer",
+            "summary": "T21-reports/ps51/ParametersNative.summary.json",
+            "nunit": "T21-reports/ps51/ParametersNative.results.xml"
+          },
+          {
+            "tier": "DiagnosticsNative",
+            "passed": 11,
+            "evidence_class": "windows-real-help-examples-CLI-entry-diagnostics-and-independent-pdfium; not Explorer or manual desktop acceptance",
+            "summary": "T21-reports/ps51/DiagnosticsNative.summary.json",
+            "nunit": "T21-reports/ps51/DiagnosticsNative.results.xml"
+          },
+          {
+            "tier": "CorpusSafety",
+            "passed": 18,
+            "evidence_class": "windows-real-entry-synthetic-corpus-repeat-order-source-tree-and-concurrency; independent-pdfium; not Explorer",
+            "summary": "T21-reports/ps51/CorpusSafety.summary.json",
+            "nunit": "T21-reports/ps51/CorpusSafety.results.xml"
+          }
+        ],
+        "aggregate": "T21-reports/ps51/aggregate.json",
+        "source_guard": "T21-reports/ps51/source-guard.json"
+      },
+      {
+        "shell": "ps7",
+        "version": "7.6.6",
+        "edition": "Core",
+        "x64": true,
+        "pester": "6.2.0",
+        "child_execution_policy": "RemoteSigned",
+        "passed": 451,
+        "tiers": [
+          {
+            "tier": "Unit",
+            "passed": 339,
+            "evidence_class": "unit-controlled-process-and-filesystem",
+            "summary": "T21-reports/ps7/Unit.summary.json",
+            "nunit": "T21-reports/ps7/Unit.results.xml"
+          },
+          {
+            "tier": "SourceDiscovery",
+            "passed": 4,
+            "evidence_class": "windows-entry-source-discovery-real-pdftk",
+            "summary": "T21-reports/ps7/SourceDiscovery.summary.json",
+            "nunit": "T21-reports/ps7/SourceDiscovery.results.xml"
+          },
+          {
+            "tier": "InputPreflight",
+            "passed": 22,
+            "evidence_class": "windows-real-pdftk-input-preflight-and-independent-pdfium-order",
+            "summary": "T21-reports/ps7/InputPreflight.summary.json",
+            "nunit": "T21-reports/ps7/InputPreflight.results.xml"
+          },
+          {
+            "tier": "MasterValidation",
+            "passed": 7,
+            "evidence_class": "windows-real-pdftk-master-validation-entry-and-independent-pdfium-order-rotation",
+            "summary": "T21-reports/ps7/MasterValidation.summary.json",
+            "nunit": "T21-reports/ps7/MasterValidation.results.xml"
+          },
+          {
+            "tier": "Staging",
+            "passed": 9,
+            "evidence_class": "windows-real-pdftk-gs-staging-publication-controlled-scheduling-and-filesystem",
+            "summary": "T21-reports/ps7/Staging.summary.json",
+            "nunit": "T21-reports/ps7/Staging.results.xml"
+          },
+          {
+            "tier": "Destination",
+            "passed": 15,
+            "evidence_class": "windows-real-entry-destination-identity-ACL-junction-concurrency",
+            "summary": "T21-reports/ps7/Destination.summary.json",
+            "nunit": "T21-reports/ps7/Destination.results.xml"
+          },
+          {
+            "tier": "SizeReportingNative",
+            "passed": 11,
+            "evidence_class": "windows-real-entry-size-accounting-and-controlled-equal-size-boundary; visual-manual-observations-separate",
+            "summary": "T21-reports/ps7/SizeReportingNative.summary.json",
+            "nunit": "T21-reports/ps7/SizeReportingNative.results.xml"
+          },
+          {
+            "tier": "PreservationNative",
+            "passed": 6,
+            "evidence_class": "windows-real-entry-master-screen-ebook-feature-characterization; strict-pypdf-and-independent-pdfium; visual review separate",
+            "summary": "T21-reports/ps7/PreservationNative.summary.json",
+            "nunit": "T21-reports/ps7/PreservationNative.results.xml"
+          },
+          {
+            "tier": "ParametersNative",
+            "passed": 9,
+            "evidence_class": "windows-real-entry-preset-and-defaults-actual-cmd-batch-delivery-not-Explorer",
+            "summary": "T21-reports/ps7/ParametersNative.summary.json",
+            "nunit": "T21-reports/ps7/ParametersNative.results.xml"
+          },
+          {
+            "tier": "DiagnosticsNative",
+            "passed": 11,
+            "evidence_class": "windows-real-help-examples-CLI-entry-diagnostics-and-independent-pdfium; not Explorer or manual desktop acceptance",
+            "summary": "T21-reports/ps7/DiagnosticsNative.summary.json",
+            "nunit": "T21-reports/ps7/DiagnosticsNative.results.xml"
+          },
+          {
+            "tier": "CorpusSafety",
+            "passed": 18,
+            "evidence_class": "windows-real-entry-synthetic-corpus-repeat-order-source-tree-and-concurrency; independent-pdfium; not Explorer",
+            "summary": "T21-reports/ps7/CorpusSafety.summary.json",
+            "nunit": "T21-reports/ps7/CorpusSafety.results.xml"
+          }
+        ],
+        "aggregate": "T21-reports/ps7/aggregate.json",
+        "source_guard": "T21-reports/ps7/source-guard.json"
+      }
+    ]
+  },
+  "independent_native_audit": {
+    "observations": 42,
+    "snapshot_objects_rechecked": 880,
+    "fresh_pdfium_inspections": 38,
+    "source_bindings_per_host": 49,
+    "dependency_files_rehashed": 348,
+    "concurrent_overlap_seconds": {
+      "ps51": 5.5664608,
+      "ps7": 5.0705287
+    },
+    "publication_union_files_per_host": 6,
+    "owned_residue": 0,
+    "authorship_disclosure": "Auditor also authored corpus.py; this reader is independent from the native safety suite and root driver.",
+    "report": "T21-reports/native-audit/C1b-final-audit.json"
+  },
+  "scoped_analyzer": {
+    "hosts": [
+      {
+        "shell": "ps51",
+        "version": "1.25.0",
+        "files": [
+          "tests/unit/CorpusSafetySupport.Tests.ps1",
+          "tests/CorpusSafetySupport.ps1",
+          "tests/pdf/CorpusSafety.Native.Tests.ps1",
+          "tests/pdf/Preservation.Native.Tests.ps1",
+          "tests/pdf/SizeReporting.Native.Tests.ps1",
+          "tests/cli/Parameters.Native.Tests.ps1",
+          "tests/help/Diagnostics.Native.Tests.ps1",
+          "tools/test/Invoke-Tests.ps1"
+        ],
+        "errors": 0,
+        "warnings": 44,
+        "information": 59,
+        "report": "T21-reports/analyzer/T21-C1b-analyzer-ps51-1abcaefe4fbf4933b425414c4531f1bf/analysis.json"
+      },
+      {
+        "shell": "ps7",
+        "version": "1.25.0",
+        "files": [
+          "tests/unit/CorpusSafetySupport.Tests.ps1",
+          "tests/CorpusSafetySupport.ps1",
+          "tests/pdf/CorpusSafety.Native.Tests.ps1",
+          "tests/pdf/Preservation.Native.Tests.ps1",
+          "tests/pdf/SizeReporting.Native.Tests.ps1",
+          "tests/cli/Parameters.Native.Tests.ps1",
+          "tests/help/Diagnostics.Native.Tests.ps1",
+          "tools/test/Invoke-Tests.ps1"
+        ],
+        "errors": 0,
+        "warnings": 44,
+        "information": 59,
+        "report": "T21-reports/analyzer/T21-C1b-analyzer-ps7-9c650f35081b400bab2d4209004720d2/analysis.json"
+      }
+    ],
+    "review": "Nonblocking scoped harness findings; not full T22 or lint-clean completion."
+  },
+  "unchanged_runtime_sha256": {
+    "WinPDFMerge.ps1": "e702b0b1583ab841589494cc524da1d9bd4148cf8849577793b08fd8f54b641d",
+    "WinPDFMerge.bat": "288287beefea974c64d39b34266332d83112b9106c952efd8c304edfedebff83",
+    "src/WinPDFMerge.Helpers.ps1": "3df10eafeac04493b06300d276cff05a9c5ef196a01b7b157a6afd3d2768eaa7"
+  },
+  "c1_sync": {
+    "repository": "PikkuJanne/WinPDFMerger",
+    "branch": "codex/v1.0.0-readiness",
+    "local_head": "abf8976e84f2c3f851efc42a844037a880519b26",
+    "live_remote_head": "abf8976e84f2c3f851efc42a844037a880519b26",
+    "clean": true,
+    "synchronized": true,
+    "checked_at": "2026-10-08T13:19:12.709607+00:00",
+    "method": "live git ls-remote; no fetch, push or checkout mutation"
+  },
+  "pull_request": {
+    "baseRefOid": "8540ed2849c8db219b1172bdb4f23851741f10fe",
+    "headRefOid": "abf8976e84f2c3f851efc42a844037a880519b26",
+    "isDraft": true,
+    "number": 21,
+    "state": "OPEN",
+    "url": "https://github.com/PikkuJanne/WinPDFMerger/pull/21"
+  },
+  "archive": {
+    "manifest": "T21-reports/manifest.json",
+    "sha256": "069b71c4dfcfaa1df5abd70c960095a57cf171b27a407102bc33371072056214",
+    "selected_text_files": 409,
+    "independent_review": "T21-archive-review.json",
+    "privacy": "Declared consistent path/identity substitutions; raw/public bindings. No PDF/render/executable/DLL contents."
+  },
+  "late_audit_invocation_supplement": {
+    "manifest": "T21-audit-invocation/manifest.json",
+    "sha256": "699728e102591fd62d6c245fb2e79443d1e4ef303d53cca784addbebec4a2540",
+    "selected_text_files": 5,
+    "independent_review": "T21-supplement-review.json",
+    "scope": "Four late captured read-only audit files plus exact sanitizer producer; duplicate audit facts are not additional application tests."
+  },
+  "preparation": {
+    "initial_native_safety": {
+      "ps51": {
+        "passed": 13,
+        "failed": 5
+      },
+      "ps7": {
+        "passed": 16,
+        "failed": 2
+      }
+    },
+    "next_native_safety": {
+      "ps51": {
+        "passed": 18,
+        "failed": 0
+      },
+      "ps7": {
+        "passed": 17,
+        "failed": 1
+      }
+    },
+    "final_dirty_native_safety_per_host": 18,
+    "failed_clean_C1a": {
+      "commit": "c2dd655ef9ec4ea42b53b8f1482c68a60d219721",
+      "first_seven_tiers_passed_per_host": 407,
+      "PreservationNative": {
+        "passed": 0,
+        "failed": 6,
+        "failed_containers": 1
+      },
+      "full_aggregate_accepted": false
+    },
+    "notes": "Test-only encoding/log/metadata and exact refreshed dependency guards corrected. Earlier results are separate from final clean acceptance; see checkpoint/completion and retained preparation streams."
+  },
+  "limits": [
+    "Unit/controlled checks are distinct from actual native integration.",
+    "Directory modified timestamps excluded after a measured pre-invocation change; file and tree invariants remain strict.",
+    "Ghostscript linearized bytes/generation receipt explicitly variable; 71 fixed inventory entries reproduce.",
+    "T22 fault/static, T23 broader native, CI, physical Explorer, OS/UNC, security, package and publication gates remain open.",
+    "No new manual visual, signature, PDF-A, accessibility, malware or universal archival preservation claim."
+  ]
+}

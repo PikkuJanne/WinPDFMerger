@@ -271,3 +271,21 @@ MIT/license/runtime/defaults/nativeflags/priorPDFobservations unchanged. No acqu
 or persistent policy/environment/security change. Supporting AST readerPS7.6.5 only
 proves syntax; required test evidence usesPS7.6.6. Broad OS/UNC/fullnative/lint/security/
 CI/package/release gates remain open. Evidence:evidence/T20-completion.md.
+
+## T21 synthetic corpus and source-safety checkpoint
+
+Clean C1b `abf8976e84f2c3f851efc42a844037a880519b26`, standard-user Windows
+reference desktop/build 26300/local NTFS: 451 checks per actual PS5.1.26100.9444
+and pinned PS7.6.6 x64, 902 total/22 NUnit pairs, all bad counts zero. AC048
+review/AC049 native integration pass; 40 Python tests, 23 semantic checks, 73 corpus entries/
+46 valid PDFs, 71 fixed entries reproducible. Native audit: 42 observations,
+880 snapshot object checks, 38 fresh PDFium reads, 348 dependency files rehashed.
+Actual concurrent intervals overlap 5.57s/5.07s with separate identity/stages and
+exact new-output union. Directory modified timestamps excluded after observed
+pre-invocation metadata change; all file invariants and tree inventory remain.
+Scoped eight-file PSA 1.25.0: 0 errors/44 warnings/59 information per host, reviewed
+nonblocking harness findings, not full T22. Runtime/defaults/native flags unchanged.
+No acquisition/admin/persistent policy/environment/security changes. Earlier
+preparation/C1a guard failures remain separate. Full fault/static/broader native,
+Explorer/OS/UNC/CI/security/package/release gates remain open. Evidence:
+evidence/T21-completion.md, results, manifest and archive review. T22 next.

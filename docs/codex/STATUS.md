@@ -2,20 +2,24 @@
 
 Target: published and independently verified v1.0.0 in PikkuJanne/WinPDFMerger.
 Completed milestones: M1/M2/M3 within recorded local Windows/test/review scope.
-Current milestone: M4, in_progress. Completed tasks: T01 through T20.
-Current task: T21 — synthetic corpus and source-safety coverage, in_progress.
-Next task after successful T21: T22 — fault tests and static analysis coverage.
+Current milestone: M4, in_progress. Completed tasks: T01 through T21.
+Current task: T22 â€” fault tests and static analysis coverage, pending/unstarted.
 Publication: NOT STARTED. No release or tag is created.
 
-T20 final records commit96d325f35fc89a8c5f44dbeb93edb963a7552510 was freshly
-verified clean/live at T21 start. Owner merged PR20; live main8540ed2 has the
-same tree. T20 AC046/AC047 evidence remains unchanged and valid for its scope.
+T21 AC048 review and AC049 Windows integration pass at clean implementation
+`abf8976e84f2c3f851efc42a844037a880519b26`: 451 Pester checks in each actual
+PS5.1 and pinned PS7.6.6, 902 total/22 reports, all bad counts zero; 40 Python tests,
+independent corpus/native/archive reviews. Corpus: 73 entries/46 valid PDFs,
+71 fixed entries reproducible; native audit: 42 observations/38 fresh PDFium reads.
+Runtime PS1/BAT/helpers/defaults/native arguments are unchanged. Scoped analyzer
+has zero errors and reviewed harness findings; full T22 is still open.
 
-T21 consolidates earlier synthetic corpus provenance and adds real entry safety
-regressions. AC048/AC049 remain not_run until immutable implementation execution
-and independent review. See evidence/T21-checkpoint.md for actual preparation,
-including refreshed workspace Python executable bytes with unchanged pins.
-No runtime/BAT/helper/default/native-flag change. Sources are preserved.
+Normal implementation push and fresh clean/live sync passed; draft PR21 head
+matched tested C1b. Records-only C2 is checked after push in the session, avoiding
+self-referential evidence. Owner merged PR20 into main at 8540ed2 (task-start tree).
+See evidence/T21-completion.md, results and archive review for actual commands,
+environment, preparation failures, source/hash bindings and scoped limitations.
 
-Retain original signed/feature-rich PDFs and measured T19 limitations. Physical
-Explorer, full native/lint/security/CI/package/publication gates remain open.
+Retain signed/feature-rich originals and measured T19 preservation limitations.
+Full fault/static/native, physical Explorer, CI, security, OS/UNC, package and
+publication gates remain open. A tag/draft is never release completion.

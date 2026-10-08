@@ -1,3 +1,15 @@
 # Preserve the exact receipt/report bytes whose SHA-256 values are recorded.
 /T03-fake-probe.txt -text
 /T03-C2-reports/*.xml -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Preserve T21 report bytes and recorded hashes through Windows checkouts.
+T21-reports/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+T21-audit-invocation/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+T21-*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Retain the actual diagnostic's empty PDFtk file-version field, including its
+# trailing separator space, in these four source-bound stdout receipts.
+T21-reports/ps51/SourceDiscovery.stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+T21-reports/ps7/SourceDiscovery.stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+T21-reports/preparation/T21-C1-ps51-d04b44048fbe46c88b1ce67c6d6779e3/SourceDiscovery.stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+T21-reports/preparation/T21-C1-ps7-5aadd6ad006341ca87859d5d11c5f6d1/SourceDiscovery.stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
