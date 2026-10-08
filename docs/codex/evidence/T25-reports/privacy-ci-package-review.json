@@ -1,0 +1,117 @@
+{
+  "schema_version": 1,
+  "evidence_class": "independent read-only source/history/CI/package-boundary review",
+  "result": "pass within stated source-review scope",
+  "checked_at_utc": "2026-10-08T17:15:41.3474064Z",
+  "commit_under_review": "18a47ee304afa2dfee7efb353fae15fa5f55d026",
+  "review_environment": {
+    "os": "actual Windows local desktop",
+    "shell": "7.6.5",
+    "python": "bundled workspace 26.1007.11041 Python3.12.14",
+    "native_or_desktop_test_run": false
+  },
+  "scope": {
+    "reachable_commits": 84,
+    "reachable_objects": 7463,
+    "unique_reachable_blobs": 6456,
+    "total_reachable_blob_bytes": 209830889,
+    "unique_historical_paths": 7748,
+    "index_entries": 7748,
+    "final_staged_changed_paths": 0,
+    "initial_review_staged_changed_paths": 7,
+    "c1_changed_paths_reviewed": 7,
+    "raw_secret_values_printed": false
+  },
+  "findings": {
+    "actionable": 0,
+    "recognized_secret_candidate_blobs": 0,
+    "commit_tag_secret_candidates": 0,
+    "vendor_binary_document_archive_suffix_paths": 0,
+    "PE_or_DOS_magic": 0,
+    "known_synthetic_pdf_paths": 3,
+    "current_actual_identity_matching_blobs": {
+      "account": 0,
+      "machine": 0,
+      "domain": 0,
+      "profile_path": 0
+    },
+    "profile_candidate_blobs": 29,
+    "profile_occurrences": 82,
+    "profile_candidates_resolved": "all synthetic fixture/task replacement identities or privacy-audit regex literals; no immutable evidence bytes changed",
+    "unknown_NUL_binary_blobs": 0,
+    "media_magic_classes": {
+      "ICO": 1,
+      "PNG": 2,
+      "PDF": 3
+    }
+  },
+  "live_repository_security": {
+    "private_vulnerability_reporting_enabled": false,
+    "secret_scanning_alerts": 0,
+    "candidate_values_output": false,
+    "settings_modified": false
+  },
+  "actions": {
+    "checkout_tag": "v7.0.1",
+    "checkout_sha": "3d3c42e5aac5ba805825da76410c181273ba90b1",
+    "checkout_matches_pin": true,
+    "upload_tag": "v7.0.2",
+    "upload_sha": "cf430e030ddbb5b0abf93d22962f4752f3646cd9",
+    "upload_matches_pin": true
+  },
+  "ci": {
+    "workflows": 1,
+    "trigger_types": [
+      "push",
+      "pull_request",
+      "workflow_dispatch"
+    ],
+    "privileged_pull_request_target": false,
+    "token_permission": "contents: read only",
+    "checkout_credentials_persisted": false,
+    "runner_label": "windows-2025",
+    "upload_globs": [
+      "RUNNER_TEMP/sanitized-reports/**/*.json",
+      "RUNNER_TEMP/sanitized-reports/**/*.xml"
+    ],
+    "hidden_files_uploaded": false,
+    "raw_log_pdf_binary_upload": false,
+    "dependency_download_boundary": "explicit hosted CI; HTTPS official host allowlist; pinned size/SHA256 before bounded safe fresh extraction; selected file digest verification",
+    "system_installation_or_vendor_installer_execution": false,
+    "routine_release_publication_capability": false,
+    "report_privacy_boundary": "strict source/tier/count validation, JSON field allowlist, XML attribute allowlist and generated names; DTD prohibited/resolver null; existing synthetic privacy/receipt regressions inspected"
+  },
+  "package": {
+    "actual_builder_present": false,
+    "explicit_release_file_allowlist_present": false,
+    "package_created_or_tested": false,
+    "package_contract_and_handoff_verifier_reviewed": true,
+    "scheduled_task": "T28, depends T27",
+    "later_required": "explicit tracked runtime/user docs/license allowlist including required helper/version source; exclude tests/dev evidence/PDF/log/poster/icon/vendor binaries; clean source and exact BUILD_INFO inventory/hash gates"
+  },
+  "staged_c1_review": "Seven intended documentation/handoff/PublicDocs changes reviewed with git diff --cached and git diff --cached --check before commit; subsequent full all-refs scan contains committed C1 versions.",
+  "commands": [
+    "git rev-parse HEAD",
+    "git rev-list --all",
+    "git rev-list --objects --all",
+    "git ls-tree -r -z <each reachable commit>",
+    "git ls-files --stage -z",
+    "git cat-file --batch",
+    "git diff --cached --stat",
+    "git diff --cached --check",
+    "git diff --cached -- <seven C1 intended paths>",
+    "gh api repos/PikkuJanne/WinPDFMerger/private-vulnerability-reporting",
+    "gh api repos/PikkuJanne/WinPDFMerger/secret-scanning/alerts --paginate (count/state summary only)",
+    "gh api repos/actions/checkout/git/ref/tags/v7.0.1",
+    "gh api repos/actions/upload-artifact/git/ref/tags/v7.0.2",
+    "python privacy-review.py <repo> <external-review-dir>",
+    "python identity-metadata-review.py <repo> <external-review-dir>"
+  ],
+  "limitations": [
+    "Heuristic source/history review is not comprehensive secret or malware certification; opaque encoded credentials and unknown token formats may escape patterns.",
+    "All local reachable refs checked. Live branch inventory contains main/readiness/failure-probe; remote refs not present locally, unreachable objects, reflogs/forks, external logs/artifacts and private storage excluded.",
+    "Current local account/machine/domain/profile comparisons were private literal UTF8 substring tests with no identity values retained; public Git author metadata is intentional and not treated as a document secret.",
+    "Initial scanner supported literal user-profile paths; final scanner expanded JSON backslash handling, producing 29 candidates, all context reviewed. Initial scan cost was 210MB, completed successfully; no skipped blobs or installed secret scanner.",
+    "No native/runtime/manual/desktop or actual package test performed in this review. T26/T28 and release verification remain separate required work."
+  ]
+}

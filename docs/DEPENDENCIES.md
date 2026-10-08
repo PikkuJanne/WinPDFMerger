@@ -38,8 +38,8 @@ lists 7.6.6 as the current PowerShell LTS update; the 7.6 line ends support on
 [Microsoft's September advisory](https://github.com/PowerShell/Announcements/issues/98)
 identifies 7.6.6 as patched for CVE-2026-62801. The tested 7.6.6 pin is retained.
 
-[Ghostscript's vendor download page](https://www.ghostscript.com/releases/gsdnld.html)
-lists 10.08.0. Its [CVE table](https://www.ghostscript.com/releases/cve/index.html)
+[Ghostscript's official release page](https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/tag/gs10080)
+identifies 10.08.0. Its [CVE table](https://www.ghostscript.com/releases/cve/index.html)
 lists CVE-2026-19547 and CVE-2026-39919 as fixed in 10.08.0. The tested native pin
 is retained; `-dSAFER` remains enabled and is not a complete security boundary.
 
