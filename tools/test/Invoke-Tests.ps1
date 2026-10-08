@@ -2,7 +2,7 @@
 [CmdletBinding()]
 param(
     [string]$PesterModulePath,
-    [ValidateSet('Unit', 'NativeFixture', 'SourceDiscovery', 'Launcher', 'LauncherNative', 'DependencyEntry', 'NativeRunner', 'ToolInvocation', 'PdftkPaths', 'GhostscriptPaths', 'Destination', 'InputPreflight', 'Staging', 'MasterValidation', 'EmailOutcome', 'FaultIO', 'FaultRecovery', 'Parameters', 'ParametersNative', 'SizeReporting', 'SizeReportingNative')][string]$Tier = 'Unit',
+    [ValidateSet('Unit', 'NativeFixture', 'SourceDiscovery', 'Launcher', 'LauncherNative', 'DependencyEntry', 'NativeRunner', 'ToolInvocation', 'PdftkPaths', 'GhostscriptPaths', 'Destination', 'InputPreflight', 'Staging', 'MasterValidation', 'EmailOutcome', 'FaultIO', 'FaultRecovery', 'Parameters', 'ParametersNative', 'SizeReporting', 'SizeReportingNative', 'Diagnostics', 'DiagnosticsNative')][string]$Tier = 'Unit',
     [string]$PdftkPath,
     [string]$GhostscriptPath,
     [string]$PythonPath
@@ -35,7 +35,13 @@ $config.Output.Verbosity = 'Detailed'
 $config.TestResult.Enabled = $true
 $config.TestResult.OutputPath = Join-Path $work 'results.xml'
 $config.TestResult.OutputFormat = 'NUnitXml'
-if ($Tier -eq 'Unit') {
+if ($Tier -eq 'Diagnostics') {
+    $config.Run.Path = Join-Path $repo 'tests/help/Diagnostics.Tests.ps1'
+} elseif ($Tier -eq 'DiagnosticsNative') {
+    if (-not $PdftkPath -or -not $GhostscriptPath -or -not $PythonPath) { throw 'DiagnosticsNative requires explicit real PDFtk/Ghostscript and pinned development Python paths.' }
+    $config.Run.Container = New-PesterContainer -Path (Join-Path $repo 'tests/help/Diagnostics.Native.Tests.ps1') `
+        -Data @{ PdftkPath=$PdftkPath; GhostscriptPath=$GhostscriptPath; PythonPath=$PythonPath }
+} elseif ($Tier -eq 'Unit') {
     $config.Run.Path = Join-Path $repo 'tests/unit'
 } elseif ($Tier -eq 'SizeReporting') {
     $config.Run.Path = Join-Path $repo 'tests/pdf/SizeReporting.Tests.ps1'
@@ -124,6 +130,8 @@ if ($Tier -eq 'Parameters') { $summary.evidence_class = 'unit-actual-parameter-b
 if ($Tier -eq 'ParametersNative') { $summary.evidence_class = 'windows-real-entry-preset-and-defaults-actual-cmd-batch-delivery-not-Explorer' }
 if ($Tier -eq 'SizeReporting') { $summary.evidence_class = 'unit-numeric-size-reporting-and-controlled-entry-decisions' }
 if ($Tier -eq 'SizeReportingNative') { $summary.evidence_class = 'windows-real-entry-size-accounting-and-controlled-equal-size-boundary; visual-manual-observations-separate' }
+if ($Tier -eq 'Diagnostics') { $summary.evidence_class = 'unit-help-stage-summary-and-controlled-probe-entry-diagnostics; no PDF-engine-support claim' }
+if ($Tier -eq 'DiagnosticsNative') { $summary.evidence_class = 'windows-real-help-examples-CLI-entry-diagnostics-and-independent-pdfium; not Explorer or manual desktop acceptance' }
 $summary | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath (Join-Path $work 'summary.json') -Encoding UTF8
 $summary | ConvertTo-Json -Depth 4
 Write-Host ('Reports: ' + $work)

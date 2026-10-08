@@ -1,90 +1,52 @@
 <#
-WinPDFMerge.ps1
-Lossless folder PDF merge + email-friendly copy
+.SYNOPSIS
+Merges the visible top-level PDFs in one folder and optionally creates a smaller email copy.
+.DESCRIPTION
+Orders inputs naturally by filename and uses local PDFtk to publish a validated
+merged master without intentional page rasterization or image downsampling.
+Optional Ghostscript rewrites an email candidate with the fixed screen default
+or ebook preset. Only a validated candidate smaller than the master is published.
+Sources and existing outputs are never replaced. No application network calls,
+downloads, telemetry, recursion or OCR are performed.
+.PARAMETER SourceFolder
+One existing filesystem directory containing visible top-level PDFs. This is the
+only positional argument. Hidden files and subfolders are not scanned.
+.PARAMETER OutputFolder
+An existing writable directory separate from SourceFolder. The default is the
+entry script's directory. Unsupported reparse paths are refused with guidance.
+.PARAMETER SkipEmail
+Publishes only the validated master and bypasses Ghostscript discovery and use.
+An explicitly supplied EmailPreset is reported as ignored.
+.PARAMETER EmailPreset
+Selects the fixed screen or ebook Ghostscript preset; screen is the default.
+The email copy can lose detail. Inspect it before sharing; no target size is promised.
+.EXAMPLE
+.\WinPDFMerge.ps1 'C:\Work\Papers\ToMerge'
 
-Author: Janne Vuorela
-Target OS: Windows 10/11
-PowerShell: Windows PowerShell 5.1+, also works on PowerShell 7
-Dependencies: PDFtk Server (pdftk.exe in PATH), Ghostscript (gswin64c.exe), .bat wrapper for drag-and-drop
+Writes the master, any smaller validated screen email copy, and log beside the script.
+.EXAMPLE
+.\WinPDFMerge.ps1 'C:\Work\Papers\ToMerge' -OutputFolder 'C:\Work\Merged'
 
-SYNOPSIS
-    Merges all top-level PDFs from a given folder into a single, lossless PDF via PDFtk,
-    writes outputs next to the script (.ps1/.bat), and creates a smaller
-    email-friendly copy using Ghostscript. Produces a timestamped log.
+Uses the existing separate output directory.
+.EXAMPLE
+.\WinPDFMerge.ps1 'C:\Work\Papers\ToMerge' -SkipEmail
 
-WHAT THIS IS (AND ISN’T)
-    - Personal, purpose-built helper for quick PDF bundling and emailing.
-      Favors reliability, simple behavior, and repeatability over knobs.
-    - Designed for drag-and-drop via the .bat wrapper, but works from PowerShell directly.
-    - Not a full PDF editor, no page re-ordering UI, no metadata editing, no OCR.
+Creates the master without discovering or launching Ghostscript.
+.EXAMPLE
+.\WinPDFMerge.ps1 'C:\Work\Papers\ToMerge' -EmailPreset ebook
 
-FEATURES
-    - Lossless merge uses PDFtk “cat” to concatenate PDFs without rasterizing pages.
-    - Natural sort: 1, 01, 001, 2, 10… by ASCII digit magnitude and ordinal text.
-      Top-level only, no recursion; original base name/path break ties ordinally.
-    - Dual outputs:
-        - Archive-safe master, lossless
-        - Email copy, size-optimized via Ghostscript profile
-    - Clean file naming:
-        WinPDFMerge_<SourceFolder>_<yyyyMMdd_HHmmss>_<run>.pdf
-        WinPDFMerge_<SourceFolder>_<yyyyMMdd_HHmmss>_<run>_email.pdf
-        WinPDFMerge_<SourceFolder>_<yyyyMMdd_HHmmss>_<run>.log
-    - Robust logging, full command lines + Ghostscript stdout/stderr appended to .log.
-    - Bounded native execution with closed stdin, both streams captured, and child-only GS_OPTIONS removal.
-
-MY INTENDED USAGE
-    - I drag a folder with invoices/contracts/etc. onto WinPDFMerge.bat.
-    - Script writes the merged PDF (lossless) and, an email-friendly copy next to the scripts, plus a log.
-
-SETUP
-    1) Install PDFtk Server and ensure `pdftk` is on PATH.
-    2) Install Ghostscript and ensure `gswin64c.exe` is on PATH.
-    3) Keep these files together in the same directory:
-         - WinPDFMerge.ps1
-         - WinPDFMerge.bat  (enables drag-and-drop)
-
-USAGE
-    A) Drag & Drop (recommended)
-       - Drag a folder onto WinPDFMerge.bat.
-       - Output: merged PDFs + log are created in the script’s directory.
-    B) Direct PowerShell (positional arg; simplest path handling)
-       - .\WinPDFMerge.ps1 "C:\Work\Papers\ToMerge"
-       - .\WinPDFMerge.ps1 "C:\Work\Papers\ToMerge" -OutputFolder "C:\Work\Merged"
-       - .\WinPDFMerge.ps1 "C:\Work\Papers\ToMerge" -SkipEmail
-       - .\WinPDFMerge.ps1 "C:\Work\Papers\ToMerge" -EmailPreset ebook
-       - OutputFolder must already exist, be writable, and differ from SourceFolder.
-         Omitted means the entry-script directory. Junction/reparse paths are refused.
-
-QUALITY / SIZE PRESETS (email copy)
-    - Default profile: `/screen` (smallest typical email size, good for on-screen reading).
-    - Select `/ebook` with -EmailPreset ebook; only screen and ebook are accepted.
-    - -SkipEmail bypasses Ghostscript and explains any explicitly supplied preset is ignored.
-
-NOTES
-    - Source scan quality is preserved in the lossless master, Ghostscript only affects the email copy.
-    - No recursion, only visible PDFs directly in the provided folder are merged; hidden PDFs are omitted.
-    - Filenames with spaces/special chars are handled, sort is by base name, then path.
-
-LIMITATIONS
-    - Encrypted/permission-restricted PDFs may fail to merge (PDFtk limitation).
-    - Interactive elements (forms/annotations/bookmarks) may be altered by Ghostscript
-      in the email copy, the lossless master retains original page content.
-    - No page-level selection/reorder, merge order is filename-based.
-
-TROUBLESHOOTING
-    - “PDFtk not found”: install PDFtk Server.
-    - “Ghostscript not found”: install Ghostscript or skip the email copy (lossless merge still works).
-    - Email copy not produced:
-        - Check the .log, warnings are captured even when the run succeeds.
-        - Try -EmailPreset ebook to select the alternative fixed profile.
-        - Ensure the target email PDF isn’t open in a viewer (file lock).
-    - NativeCommandError or odd GS warnings:
-        - Both native streams are captured by the bounded runner and appended to the UTF-8 run log
-          to avoid PowerShell pipeline errors, consult the .log for details.
-
-LICENSE / WARRANTY
-    - Personal tool, provided as-is without warranty. Use at your own risk.
-
+Selects the ebook email preset. A candidate without a size benefit is omitted.
+.NOTES
+Author: Janne Vuorela. Personal tool, provided as-is without warranty.
+Requires Windows PowerShell 5.1 or a separately validated PowerShell 7 build,
+PDFtk Server, and optional Ghostscript. Processing stays local. Diagnostic logs
+are UTF-8 and can contain document names, full paths and native PDF metadata;
+they are not redacted or encrypted. Sanitize a copy before sharing a public report.
+Missing input exits 1. A validated master with skipped/unavailable/no-size-benefit
+email exits 0; email failure after master publication exits 2 and retains the master.
+Binding, source or destination failures may occur before a safe log is available.
+Neither output guarantees PDF/A, signature validity, universal feature retention,
+archival certification or malware removal. Keep original documents.
 #>
 
 [CmdletBinding(PositionalBinding=$false)]
@@ -100,6 +62,7 @@ param(
 
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
+$runTimer = [Diagnostics.Stopwatch]::StartNew()
 
 function Get-ScriptDir {
     if ($PSCommandPath) { return (Split-Path -Parent $PSCommandPath) }
@@ -109,14 +72,34 @@ function Get-ScriptDir {
 $ScriptDir = Get-ScriptDir
 if ([string]::IsNullOrWhiteSpace($SourceFolder)) {
     Write-Host "Usage: WinPDFMerge.ps1 <FolderWithPDFs> [-OutputFolder <ExistingDirectory>] [-SkipEmail] [-EmailPreset screen|ebook]" -ForegroundColor Yellow
+    Write-Host 'No run log was created: a source and safe output directory are required.'
     exit 1
 }
 . (Join-Path $ScriptDir 'src/WinPDFMerge.Helpers.ps1')
+$logPath = $null
+$pdftkVersion = 'not probed'
+$gsVersion = if ($SkipEmail) { 'not used (SkipEmail)' } else { 'not probed' }
+$discoveredCount = $null
+$expectedPageCount = $null
+function Write-EarlyRunFailure {
+    param([string]$Message)
+    $lines = @($Message) + @(Get-PdfRunSummary -ElapsedMilliseconds $runTimer.ElapsedMilliseconds -ShellVersion $PSVersionTable.PSVersion.ToString() -ShellEdition $PSVersionTable.PSEdition -PdftkVersion $pdftkVersion -GhostscriptVersion $gsVersion -InputCount $discoveredCount -ExpectedPageCount $expectedPageCount | ForEach-Object { $_.Lines }) + @('Result: Failure; exit code: 1')
+    foreach ($line in $lines) {
+        Write-Host $line
+        if ($logPath) {
+            try { $line | Write-RunLog -LiteralPath $logPath -Append | Out-Null }
+            catch { Write-Host ("Failure diagnostic could not be logged: {0}" -f $_.Exception.Message) -ForegroundColor Yellow }
+        }
+    }
+    if ($logPath) { Write-Host ("Log: {0}" -f $logPath) }
+    else { Write-Host 'No run log was created: preflight has not established a safe writable output directory.' }
+}
+Write-PdfRunStage -Stage 'Invocation preflight' -Timer $runTimer
 $cancellation = $null
 try {
 try { $cancellation = New-PdfCancellationContext }
 catch {
-    Write-Host ("Cancellation setup failed: {0}" -f $_.Exception.Message) -ForegroundColor Red
+    Write-EarlyRunFailure -Message ("Cancellation setup failed: {0}" -f $_.Exception.Message)
     exit 1
 }
 $cancellationToken = $cancellation.Token
@@ -129,7 +112,7 @@ if ($SkipEmail -and $PSBoundParameters.ContainsKey('EmailPreset')) {
 # Only SourceFolder is positional; OutputFolder must be explicitly named.
 try { $SourceFolder = Resolve-SourceDirectory -Path $SourceFolder }
 catch {
-    Write-Error ("Source preflight failed: {0}" -f $_.Exception.Message) -ErrorAction Continue
+    Write-EarlyRunFailure -Message ("Source preflight failed: {0}" -f $_.Exception.Message)
     exit 1
 }
 try {
@@ -139,77 +122,74 @@ try {
     $run = New-MergeRunIdentity -SourceFolder $SourceFolder -OutputFolder $OutputFolder
     Test-OutputDirectoryWritable -OutputFolder $OutputFolder
 } catch {
-    Write-Host 'Destination preflight failed.' -ForegroundColor Red
-    Write-Host $_.Exception.Message
+    Write-EarlyRunFailure -Message ("Destination preflight failed. {0}" -f $_.Exception.Message)
     Write-Host 'Choose a separate existing writable directory with -OutputFolder. No merge was started.'
     exit 1
 }
+# Claim the CreateNew log only after source/output identity and writability checks.
+# Early discovery/dependency failures now retain diagnostics in this owned log.
+$outLossless = $run.MasterPath
+$outEmail = $run.EmailPath
 try {
+    Reserve-MergeRunIdentity -Identity $run
+    $logPath = $run.LogPath
+    "==== WinPDFMerge run $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss') ====" | Write-RunLog -LiteralPath $logPath -Append
+    Write-PdfRunStage -Stage 'Invocation preflight' -Timer $runTimer -LiteralPath $logPath
+    "Source folder: $SourceFolder" | Write-RunLog -LiteralPath $logPath -Append
+    "Output folder: $OutputFolder" | Write-RunLog -LiteralPath $logPath -Append
+    if ($ignoredPresetMessage) { $ignoredPresetMessage | Write-RunLog -LiteralPath $logPath -Append }
+    "Run identity: $($run.BaseName)" | Write-RunLog -LiteralPath $logPath -Append
+    "Planned master output: $outLossless" | Write-RunLog -LiteralPath $logPath -Append
+    "Planned email output: $outEmail" | Write-RunLog -LiteralPath $logPath -Append
+    "Diagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing." | Write-RunLog -LiteralPath $logPath -Append
+    ("PowerShell: {0} ({1})" -f $PSVersionTable.PSVersion, $PSVersionTable.PSEdition) | Write-RunLog -LiteralPath $logPath -Append
+} catch {
+    Write-EarlyRunFailure -Message ("Run identity/log creation failed in OutputFolder. {0}" -f $_.Exception.Message)
+    Write-Host 'Choose an existing writable -OutputFolder. No merge was started.'
+    exit 1
+}
+try {
+    Write-PdfRunStage -Stage 'Input discovery' -Timer $runTimer -LiteralPath $logPath
     $pdfs = @(Get-SourcePdfFiles -SourceFolder $SourceFolder)
     $pdfs = @(Sort-PdfInputs -Inputs $pdfs)
+    $discoveredCount = $pdfs.Count
+    "PDF count: $($pdfs.Count)" | Write-RunLog -LiteralPath $logPath -Append
+    for ($index = 0; $index -lt $pdfs.Count; $index++) {
+        ("Input {0}: {1}" -f ($index + 1), $pdfs[$index].FullName) | Write-RunLog -LiteralPath $logPath -Append
+    }
 } catch {
-    Write-Error ("Source preflight failed: {0}" -f $_.Exception.Message) -ErrorAction Continue
+    Write-EarlyRunFailure -Message ("Source preflight failed: {0}" -f $_.Exception.Message)
     exit 1
 }
 
 $pdftkPath = $null
 try {
+    Write-PdfRunStage -Stage 'PDFtk preflight' -Timer $runTimer -LiteralPath $logPath
     $pdftkPath = Find-Pdftk
     if (-not $pdftkPath) { throw 'PDFtk Server not found.' }
-    $pdftkVersion = Get-NativeToolVersion -Path $pdftkPath -Tool PdfTk -CancellationToken $cancellationToken
+    $pdftkVersion = 'not determined'
+    $pdftkVersion = Get-NativeToolVersion -Path $pdftkPath -Tool PdfTk -CancellationToken $cancellationToken -LogPath $logPath
 } catch {
-    # Plain diagnostic lines stay copyable even when PS5.1 formats long errors.
-    Write-Host 'PDFtk preflight failed.' -ForegroundColor Red
-    Write-Host ("Selected executable: '{0}'" -f $pdftkPath)
-    Write-Host $_.Exception.Message
+    Write-EarlyRunFailure -Message ("PDFtk preflight failed. Selected executable: '{0}'. {1}" -f $pdftkPath, $_.Exception.Message)
     Write-Host "Install PDFtk Server and ensure 'pdftk.exe' is in PATH."
     exit 1
 }
 
-# Claim one identity for the log/master/email. CreateNew refuses collisions;
-# every log write appends to this run's reserved file.
-$outLossless = $run.MasterPath
-$outEmail = $run.EmailPath
-$logPath = $run.LogPath
 try {
-    Reserve-MergeRunIdentity -Identity $run
-    "==== WinPDFMerge run $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss') ====" | Write-RunLog -LiteralPath $logPath -Append
-} catch {
-    Write-Host 'Run identity/log creation failed in OutputFolder.' -ForegroundColor Red
-    Write-Host $_.Exception.Message
-    Write-Host 'Choose an existing writable -OutputFolder. No merge was started.'
-    exit 1
-}
-try {
-"PDFtk: $pdftkPath (version $pdftkVersion)" | Write-RunLog -LiteralPath $logPath -Append
-"Source folder: $SourceFolder" | Write-RunLog -LiteralPath $logPath -Append
-"Output folder: $OutputFolder" | Write-RunLog -LiteralPath $logPath -Append
-if ($ignoredPresetMessage) { $ignoredPresetMessage | Write-RunLog -LiteralPath $logPath -Append }
-"Run identity: $($run.BaseName)" | Write-RunLog -LiteralPath $logPath -Append
-"Planned master output: $outLossless" | Write-RunLog -LiteralPath $logPath -Append
-"Planned email output: $outEmail" | Write-RunLog -LiteralPath $logPath -Append
-"PDF count: $($pdfs.Count)" | Write-RunLog -LiteralPath $logPath -Append
-for ($index = 0; $index -lt $pdfs.Count; $index++) {
-    ("Input {0}: {1}" -f ($index + 1), $pdfs[$index].FullName) | Write-RunLog -LiteralPath $logPath -Append
-}
+    "PDFtk: $pdftkPath (version $pdftkVersion)" | Write-RunLog -LiteralPath $logPath -Append
 
 # Inspect every frozen ordered input before starting the merge. The expected
 # total is frozen input evidence for the staged master validation gate.
+    Write-PdfRunStage -Stage 'Input inspection' -Timer $runTimer -LiteralPath $logPath
     $inventory = Get-PdfInputInventory -Executable $pdftkPath -Inputs $pdfs -LogPath $logPath -CancellationToken $cancellationToken
+    $expectedPageCount = $inventory.ExpectedPageCount
     for ($index = 0; $index -lt $inventory.Inputs.Count; $index++) {
         ("Input {0} pages: {1}" -f ($index + 1), $inventory.Inputs[$index].PageCount) | Write-RunLog -LiteralPath $logPath -Append
     }
     ("Expected page total: {0}" -f $inventory.ExpectedPageCount) | Write-RunLog -LiteralPath $logPath -Append
     Assert-PdfInputInventory -Inventory $inventory
 } catch {
-    $preflightError = $_.Exception.Message
-    Write-Host 'PDFtk failed during input preflight or logging. No merge was started.' -ForegroundColor Red
-    Write-Host $preflightError
-    try {
-        'PDFtk failed during input preflight or logging. No merge was started.' | Write-RunLog -LiteralPath $logPath -Append | Out-Null
-        $preflightError | Write-RunLog -LiteralPath $logPath -Append | Out-Null
-    } catch { Write-Host ("Failure diagnostic could not be logged: {0}" -f $_.Exception.Message) -ForegroundColor Yellow }
-    Write-Host "See log: $logPath" -ForegroundColor Red
+    Write-EarlyRunFailure -Message ("PDFtk failed during input preflight or logging. No merge was started. {0}" -f $_.Exception.Message)
     exit 1
 }
 
@@ -226,6 +206,7 @@ try {
     $staging = New-PdfStaging -OutputFolder $OutputFolder -RunIdentity $run.BaseName
     ("Private staging: {0}" -f $staging.DirectoryPath) | Write-RunLog -LiteralPath $logPath -Append
     Assert-PdfInputInventory -Inventory $inventory
+    Write-PdfRunStage -Stage 'Master processing' -Timer $runTimer -LiteralPath $logPath
     $merge = Invoke-PdfToolJob -Tool Pdftk -Executable $pdftkPath -InputPaths @($inventory.Inputs.FullName) -OutputPath $outLossless -Staging $staging -ExpectedPageCount $inventory.ExpectedPageCount -CancellationToken $cancellationToken
     $masterPublished = ($merge.OutputPublished -and $merge.OutputValidated)
     if ($masterPublished) {
@@ -246,13 +227,17 @@ try {
         # Explicit skip bypasses discovery, version probes and native GS launch.
         $emailState = 'skipped'
     } else {
+        Write-PdfRunStage -Stage 'Email preflight' -Timer $runTimer -LiteralPath $logPath
         $gsPath = Find-Ghostscript
         if (-not $gsPath) {
             $emailState = 'unavailable'
+            $gsVersion = 'unavailable'
         } else {
-            try { $gsVersion = Get-NativeToolVersion -Path $gsPath -Tool Ghostscript -CancellationToken $cancellationToken }
+            $gsVersion = 'not determined'
+            try { $gsVersion = Get-NativeToolVersion -Path $gsPath -Tool Ghostscript -CancellationToken $cancellationToken -LogPath $logPath }
             catch { throw ("Ghostscript version preflight failed for '{0}': {1}" -f $gsPath, $_.Exception.Message) }
             "Ghostscript: $gsPath (version $gsVersion)" | Write-RunLog -LiteralPath $logPath -Append
+            Write-PdfRunStage -Stage 'Email processing' -Timer $runTimer -LiteralPath $logPath
             $email = Invoke-PdfToolJob -Tool Ghostscript -Executable $gsPath -InputPaths @($outLossless) -OutputPath $outEmail -Staging $staging -ExpectedPageCount $merge.ValidatedPageCount -InspectionExecutable $pdftkPath -EmailPreset $EmailPreset -CancellationToken $cancellationToken
             if ($email.Succeeded -and $email.OutputValidated -and $email.OutputPublished -and $email.OutputState -eq 'published') {
                 $emailState = 'published'
@@ -303,6 +288,9 @@ if ($cancellationToken.IsCancellationRequested) {
 }
 $outcome = Get-PdfMergeOutcome -MasterPublished $masterPublished -EmailState $emailState -MasterPath $outLossless -EmailPath $outEmail -RunFailed:$runFailed
 try {
+    Write-PdfRunStage -Stage 'Summary' -Timer $runTimer -LiteralPath $logPath
+    $runSummary = Get-PdfRunSummary -ElapsedMilliseconds $runTimer.ElapsedMilliseconds -ShellVersion $PSVersionTable.PSVersion.ToString() -ShellEdition $PSVersionTable.PSEdition -PdftkVersion $pdftkVersion -GhostscriptVersion $gsVersion -InputCount $discoveredCount -ExpectedPageCount $expectedPageCount
+    foreach ($line in $runSummary.Lines) { $line | Write-RunLog -LiteralPath $logPath -Append }
     ("Email result: {0}" -f $emailState) | Write-RunLog -LiteralPath $logPath -Append
     $outcome.EmailMessage | Write-RunLog -LiteralPath $logPath -Append
     if ($null -ne $sizeReport) {
@@ -320,8 +308,11 @@ try {
     $runFailed = $true
     $outcome = Get-PdfMergeOutcome -MasterPublished $masterPublished -EmailState $emailState -MasterPath $outLossless -EmailPath $outEmail -RunFailed
 }
+$runSummary = Get-PdfRunSummary -ElapsedMilliseconds $runTimer.ElapsedMilliseconds -ShellVersion $PSVersionTable.PSVersion.ToString() -ShellEdition $PSVersionTable.PSEdition -PdftkVersion $pdftkVersion -GhostscriptVersion $gsVersion -InputCount $discoveredCount -ExpectedPageCount $expectedPageCount
 $detail = if ($failureMessage) { $failureMessage } else { $outcome.EmailMessage }
 Write-Host ("`n{0}: {1}" -f $outcome.Summary, $detail)
+Write-Host ("Result: {0}; exit code: {1}" -f $outcome.Summary, $outcome.ExitCode)
+foreach ($line in $runSummary.Lines) { Write-Host $line }
 if ($null -ne $sizeReport) {
     foreach ($line in $sizeReport.Lines) { Write-Host $line }
 }

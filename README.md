@@ -8,8 +8,8 @@ Natural sort by base filename (1, 2, 10…).
 Drag & drop workflow: I drop a folder onto the .bat, outputs land next to the scripts with a timestamped log.
 
 **Requirements**
-Windows 10/11
-PowerShell (Windows PowerShell 5.1, PowerShell 7 also works)
+Windows 11 x64 reference environment; Windows 10, ARM and 32-bit hosts are unvalidated.
+Windows PowerShell 5.1 and separately tested PowerShell 7.6.6 x64.
 PDFtk Server in PATH (or in a known install location)
 Ghostscript in PATH for the email-friendly copy
 
@@ -34,8 +34,9 @@ each installation tries 64-bit then 32-bit and skips incomplete installations.
 
 The selected executable runs directly with `--version`, with a five-second
 probe limit and cleared child-only `GS_OPTIONS`. Its path and actual version
-appear in the console/log. Unusable PDFtk fails before output/log creation with
-installation guidance. Missing optional Ghostscript permits a master-only result;
+appear in the console/log. Unusable PDFtk fails before PDF creation with
+installation guidance and a local diagnostic log after destination preflight.
+Missing optional Ghostscript permits a master-only result;
 a found Ghostscript that fails version preflight retains the master, omits the
 email copy and returns partial success (2). Version detection does not establish
 trust or compatibility for every native build; native acceptance remains separate.
@@ -78,6 +79,35 @@ an explicitly supplied `-EmailPreset` is explained as ignored in the console
 and run log. Its value must still be valid. Missing source input prints usage
 and exits 1 without an interactive parameter prompt. The batch launcher keeps
 the one-folder workflow and defaults; use the `.ps1` for named options.
+
+PowerShell's built-in help describes each option and gives runnable examples:
+
+```powershell
+Get-Help .\WinPDFMerge.ps1 -Examples
+```
+
+**Progress and diagnostics**
+The console and UTF-8 log show named stages and measured elapsed time, rather
+than an estimated completion percentage. The final summary records the shell
+and selected tool versions, discovered input count, inspected page total,
+actual sizes, outcome/exit code, validated published paths and log path.
+Unknown counts or unprobed/unused tools are labelled explicitly. Native jobs
+and version probes record executable, arguments, exit/timing/failure flags,
+stdout and stderr, including empty streams and warnings on successful runs.
+
+Once source and destination are safely validated, the run reserves its own log
+before input discovery and dependency probes. Empty folders, missing/unusable
+PDFtk and input-inspection failures therefore have a log when logging succeeds.
+Invalid parameter binding, missing/invalid source, unsafe/unwritable destination
+or failure to reserve/write the log can occur before a usable log exists; use
+the console diagnostic. A published master survives later email/log failures.
+
+Processing and logs remain local. Logs can contain document names, full paths,
+user or machine locations, and PDF metadata in native output. They are not
+redacted, encrypted, or protected by a special application ACL. Before sharing
+a report publicly, make a copy and replace private names/paths and sensitive
+metadata consistently, retaining useful stage, version, exit and size facts.
+Do not attach private PDFs. The application never uploads diagnostics or PDFs.
 
 **Input preflight**
 Before merging, the script inspects every visible top-level PDF in the frozen

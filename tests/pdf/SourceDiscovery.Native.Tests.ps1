@@ -124,7 +124,7 @@ Describe 'AC007: actual entry source discovery with real PDFtk' {
         Assert-DiscoveryNativeMaster $application 5 4 -ExpectedInputNames @('1.pdf', '2.PDF', '10.pdf', 'WinPDFMerge_legitimate.pdf')
     }
 
-    It 'fails zero visible top-level inputs before producing PDFs or a run log' {
+    It 'fails zero visible top-level inputs with a useful owned log and no PDFs or staging' {
         $application = New-DiscoveryApplication
         [void](Copy-DiscoveryNativeFixture (Join-Path $application.Source 'nested') '1.pdf' 'nested.pdf')
         $hidden = Copy-DiscoveryNativeFixture $application.Source '1.pdf' 'hidden.PDF'
@@ -133,7 +133,14 @@ Describe 'AC007: actual entry source discovery with real PDFtk' {
         $result = Invoke-TestChildProcess -Executable $shell -Arguments @('-NoProfile', '-ExecutionPolicy', 'RemoteSigned', '-File', $application.Entry, $application.Source) -ChildPath $childPath -ChildEnvironment $application.ChildEnvironment
         $result.ExitCode | Should -Be 1
         ($result.Stdout + $result.Stderr) | Should -Match 'No PDFs found'
-        @(Get-ChildItem -LiteralPath $application.App -Filter 'WinPDFMerge_*' -File -Force).Count | Should -Be 0
+        @(Get-ChildItem -LiteralPath $application.App -Filter 'WinPDFMerge_*.pdf' -File -Force).Count | Should -Be 0
+        $logs = @(Get-ChildItem -LiteralPath $application.App -Filter 'WinPDFMerge_*.log' -File -Force)
+        $logs.Count | Should -Be 1
+        $log = Get-Content -LiteralPath $logs[0].FullName -Raw
+        $log | Should -Match 'No PDFs found'
+        $log | Should -Match '(?m)^Input summary: not discovered; expected pages: not inspected\r?$'
+        $log | Should -Match '(?m)^Result: Failure; exit code: 1\r?$'
+        @(Get-ChildItem -LiteralPath $application.App -Directory -Force | Where-Object Name -like '.WinPDFMerge*').Count | Should -Be 0
         (@(Get-DiscoveryNativeSnapshot $application.Source) -join "`n") | Should -BeExactly $before
         [Environment]::GetEnvironmentVariable('PATH', 'Process') | Should -BeExactly $parentPath
         [Environment]::GetEnvironmentVariable('ProgramFiles', 'Process') | Should -BeExactly $parentProgramFiles

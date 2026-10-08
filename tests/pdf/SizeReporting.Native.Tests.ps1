@@ -162,7 +162,7 @@ function Invoke-PdfToolJob {
 if('__CONTROL__' -eq 'skip') {
  function Find-Ghostscript {[IO.File]::WriteAllText('__CAPTURE__/unexpected-GS-discovery.txt','T17 controlled sentinel');throw 'T17 controlled GS discovery sentinel reached'}
  function Get-NativeToolVersion {
-  [CmdletBinding()]param([string]$Path,[string]$Tool,[int]$TimeoutMilliseconds=10000,[Threading.CancellationToken]$CancellationToken=[Threading.CancellationToken]::None)
+  [CmdletBinding()]param([string]$Path,[string]$Tool,[int]$TimeoutMilliseconds=10000,[Threading.CancellationToken]$CancellationToken=[Threading.CancellationToken]::None,[string]$LogPath)
   if($Tool -eq 'Ghostscript'){[IO.File]::WriteAllText('__CAPTURE__/unexpected-GS-probe.txt','T17 controlled sentinel');throw 'T17 controlled GS version sentinel reached'}
   & $script:t17OriginalVersion @PSBoundParameters
  }

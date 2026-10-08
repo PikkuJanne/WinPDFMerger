@@ -134,14 +134,26 @@ BeforeAll {
         foreach ($detail in $ExpectedDetails) { $text | Should -Match $detail }
         $text | Should -Match '(?i)install PDFtk Server'
         $text | Should -Not -Match '(?im)^SUCCESS:|PDFtk merge OK|Master validation OK|Merged master published|Merge completed successfully'
-        @(Get-ChildItem -LiteralPath $Application.App -File -Force -Recurse | Where-Object { $_.Extension -in @('.pdf', '.log') }).Count | Should -Be 0
+        @(Get-ChildItem -LiteralPath $Application.App -File -Force -Recurse | Where-Object Extension -eq '.pdf').Count | Should -Be 0
+        @(Get-ChildItem -LiteralPath $Application.App -Directory -Force -Recurse | Where-Object Name -Like '.WinPDFMerge_*').Count | Should -Be 0
+        $logs = @(Get-ChildItem -LiteralPath $Application.App -File -Filter 'WinPDFMerge_*.log')
+        $logs.Count | Should -Be 1
+        $log = [IO.File]::ReadAllText($logs[0].FullName)
+        $log | Should -Match $ExpectedDiagnostic
+        foreach ($detail in $ExpectedDetails) { $log | Should -Match $detail }
+        $log | Should -Match 'Stage: PDFtk preflight; elapsed: [0-9]+\.[0-9]{3} s'
+        $log | Should -Match 'Elapsed time: [0-9]+\.[0-9]{3} s'
+        $log | Should -Match 'PowerShell:'
+        $log | Should -Match 'Result: Failure; exit code: 1'
+        $log | Should -Not -Match 'Result: SUCCESS|Published master:'
+        $text | Should -Match ([regex]::Escape($logs[0].FullName))
         (@(Get-DependencyEntrySourceSnapshot $Application.Source) -join "`n") | Should -BeExactly $before
         Assert-DependencyEntryParentUnchanged
     }
 }
 
 Describe 'AC015: actual Windows entry rejects absent or unusable PDFtk before outputs' {
-    It 'rejects missing PDFtk with installation guidance and no PDF or run log' {
+    It 'rejects missing PDFtk with installation guidance, a local failure log and no PDF' {
         $application = New-DependencyEntryApplication
         Assert-RequiredDependencyEntryFailure $application '(?i)PDFtk.*(?:not found|missing|unavailable)'
     }

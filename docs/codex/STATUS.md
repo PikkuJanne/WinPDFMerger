@@ -4,29 +4,26 @@ Target: published and independently verified `v1.0.0` in `PikkuJanne/WinPDFMerge
 Completed milestones: M1 and M2 within recorded local Windows scope.
 Current milestone: M3 — focused usability and honest documentation, in progress.
 Completed tasks: T01 through T17.
-Selected task: T18 — improve help, progress and private-by-default diagnostics.
+Selected task: T18 — improve help, progress and private-by-default diagnostics, in progress.
 Publication: NOT STARTED.
 
-T17 AC040 integration/AC041 manual pass at clean C1 `040176695fdb79e614ba2a821118fbc979a33115`.
-16tiers579each1158total/32reports in actualPS5.1.26100.9444 and pinnedPS7.6.6;
-all bad counts0. Exact master/email bytes, binary sizes and decimal reduction;
-equal/larger candidates labelled not published with retained master/success0.
-Root Codex actual40page10unique144DPI original/master/preset visual review:
-screen scan small text/outlines degraded; ebook clearer; vector-only grew/omitted.
-Codex visual scope is separate from owner/physical Explorer acceptance.
+T17 remains complete at tested C1 `040176695fdb79e614ba2a821118fbc979a33115`;
+its records C2 `0cf2f49d4e9ab572a60bcdabbdbf33a033e33034` was freshly clean/live
+verified at T18 start. Owner merged PR17 to main `4e4501a34541c8e231c6c32528819efa16cba3bb`;
+that main tree matches the starting feature tree. No tag/release was found.
 
-Independent source/runtime/native/archive reviews pass; archive11660
-checks/632plannedfiles; actual public write matches reviewed hashes.
-PSA1.25.0 scoped5PSfiles0errors51warnings14info each reviewed nonblocking,
-not lint-clean/fullT22. Exact commands/environment/raw-public hashes/review
-support, initial failed preparation and honest absences in T17 completion.
+T18 implementation provides actual comment help, measured named stages/summary,
+early trusted local logging and full native version-probe diagnostics. New
+36-case controlled diagnostics and 11-case native help/routes suites have dirty
+development evidence in both required shells. Initial help formatting failures
+and reviewer/test preparation failures are retained, not counted as acceptance.
+Required AC042 integration and AC043 review remain not_run until clean C1 gates.
+See evidence/T18-checkpoint.md. A records-only C2 must bind actual C1 execution,
+review and synchronization; C2's own push/equality is reported afterward.
 
-C1 normalpush/freshcleanlive verified; draftPR follows owner-mergedPR16/main7d7eba4.
-Records-onlyC2bindsC1; own SHA/live equality reported in session after push.
-Approved caches reused; standard-user NTFS/build26300; ordinaryRestricted/
-all scopesUndefined, authorized childRemoteSigned; no acquisition/admin/
-persistent environment/policy/security changes. Source/master/final safety,
-fixed screen/ebook flags and screen/output-beside-entry defaults preserved.
-T18pending. PhysicalExplorer/abrupt crash cleanup, broadOS/UNC/CI/security/
-package/release gates remain. No universal preservation/signature/PDF-A/
-archival/security guarantee. No tag/release/full-project completion.
+Approved caches only; standard-user NTFS/build26300, ordinary Restricted/all
+scopes Undefined; authorized child RemoteSigned, no acquisition/admin or
+persistent environment/policy/security changes. Screen/output-beside-entry,
+source preservation, native safety/ownership/no-overwrite and published-master
+retention remain. Physical Explorer/abrupt crash, broad OS/UNC/CI/security,
+feature preservation/package/release gates remain open. No full-project claim.

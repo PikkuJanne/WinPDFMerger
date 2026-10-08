@@ -1,32 +1,29 @@
 # Next session
 
-Selected task: T18 — improve help, progress and private-by-default diagnostics, M3.
+Selected task: T18 — complete clean acceptance and synchronized records, M3.
 Read AGENTS/INDEX/STATUS/T18 TASKS entry/brief, PRODUCT/TECHNICAL/TEST/GITHUB
 specifications and AC042 integration/AC043 review. Recheck current branch,
 clean state, origin/live refs/PR/tags/releases; preserve unrelated work.
 
-T17 complete at clean C1 `040176695fdb79e614ba2a821118fbc979a33115`:16tiers579each/1158total,
-32reports actualPS5.1.26100.9444/pinnedPS7.6.6,allbadcounts0. AC040integration/
-AC041manual pass. Actual Codex40page10unique144DPI visual review confirms
-screen raster small-text/outline degradation vs clearer ebook; vector-only
-candidates grow/omit; master pixels match original in synthetic corpus.
-Exact bytes/human sizes/reduction and no-size-benefit success0 are truthful.
-Independent source/runtime/native/archive reviews pass, archive11660
-checks/632files; PSA0errors51warnings14info each5PSfiles nonblocking.
-Clean C1 normalpush/live equality; draftPR follows owner-mergedPR16.
-RecordsC2ownSHA/live reported in session; verify again. Publication not started.
+T18 code/tests are prepared with dirty development evidence. Recognized
+comment-based help has four runnable examples; named stages use actual elapsed
+time without progress percentages. Log reservation follows source/destination
+safety and precedes discovery/dependency probes. Each probe logs both streams
+before refusing failures, retaining its single-string version API. Final
+summary distinguishes not probed/not determined/unused/unavailable states.
+Initial Get-Help formatting failures and test/reviewer preparation failures
+are retained; dirty/mock/static observations are not clean/native/manual passes.
 
-Preserve screen default, output beside entry, fixed allowlisted screen/ebook,
-SourceFolder one-folder/top-level workflow, explicit writable OutputFolder,
-SkipEmail bypass, direct local engines, ownership/cancel/strictinspection/
-strictsmaller/no-overwrite and validated master after email failure. T18 adds
-real comment-based help/stages/elapsed/versions/outcome/paths, no invented
-percentages. Note sensitive local diagnostic paths and public sanitization.
-T18 is pending, not started. Physical Explorer remains separate AC058/T26.
+Finish actual clean C1 testing in PS5.1.26100.9444 and pinned PS7.6.6, independent
+source/diagnostic/records reviews, sanitized evidence and records-only C2. Push
+matching feature branch and freshly verify clean local/live equality and PR head.
+Only after these gates mark T18/AC042/AC043 complete and select T19. T19 has
+not been started. T17 prior completion remains; publication is NOT STARTED.
 
-Reuse approved rehashed PS7.6.6/Pester6.2.0/PDFtk2.02/GS10.08.0/PSA1.25.0
-and developmentPython/PDFium/rendering pins. Authorized childRemoteSigned
-persists; remove inheritedPSModulePath only in testchildren. No acquisition/
-admin/persistent environment/policy/security change. BroadOS/UNC/CI/security/
-package/release and abrupt crash cleanup remain open; no signature/PDF-A/
-malware-removal/universal preservation/archival guarantee. M3inprogress.
+Reuse rehashed approved Pester6.2.0/PDFtk2.02/GS10.08.0/PSA1.25.0/Python3.12.14
+and PDFium pins. Child-only module-path removal and previously authorized
+child RemoteSigned; no acquisition/admin/persistent policy/security changes.
+Preserve fixed screen/ebook/defaults/top-level workflow/SkipEmail bypass,
+ownership/cancel/strict inspection/strict-smaller/no-overwrite/master retention.
+Logs are local and may be sensitive; sanitize public copies separately.
+Physical Explorer remains AC058/T26; broader release gates remain open.

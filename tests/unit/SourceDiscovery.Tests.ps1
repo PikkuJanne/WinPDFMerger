@@ -227,11 +227,17 @@ Describe 'AC008: entry preflight failures precede dependencies and output creati
         $result.Outputs.Count | Should -Be 0
     }
 
-    It 'reports zero PDFs before trying to find PDFtk' {
+    It 'logs zero PDFs before trying to find PDFtk without creating a PDF' {
         $result = Invoke-DiscoveryEntry -Arguments @($source)
         $result.ExitCode | Should -Be 1
         $result.Text | Should -Match 'No PDFs found'
         $result.Text | Should -Not -Match 'PDFtk Server not found'
-        $result.Outputs.Count | Should -Be 0
+        $result.Outputs.Count | Should -Be 1
+        $result.Outputs[0].Extension | Should -BeExactly '.log'
+        $log = [IO.File]::ReadAllText($result.Outputs[0].FullName)
+        $log | Should -Match 'No PDFs found'
+        $log | Should -Match 'Stage: Input discovery; elapsed:'
+        $log | Should -Match 'Result: Failure; exit code: 1'
+        $log | Should -Not -Match 'PDFtk version probe executable:|Published Merged master:'
     }
 }

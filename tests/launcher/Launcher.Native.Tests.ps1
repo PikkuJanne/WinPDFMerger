@@ -89,13 +89,20 @@ Describe 'AC010: actual cmd batch and application with real PDFtk, narrow smoke'
         Assert-NativeLauncherParentUnchanged
     }
 
-    It 'returns failure for an empty source before producing a PDF or run log' {
+    It 'returns failure for an empty source with a useful owned log and no PDF or staging' {
         $application = New-NativeLauncherApplication
         $result = Invoke-LauncherCommand -BatchPath $application.Batch -SourceArguments @($application.Source) -ChildEnvironment $application.Environment
         $result.ExitCode | Should -Be 1
         ($result.Stdout + $result.Stderr) | Should -Match 'No PDFs found'
         $result.Stdout | Should -Match 'Merge failed with exit code 1'
-        @(Get-ChildItem -LiteralPath $application.App -Filter 'WinPDFMerge_*' -File -Force).Count | Should -Be 0
+        @(Get-ChildItem -LiteralPath $application.App -Filter 'WinPDFMerge_*.pdf' -File -Force).Count | Should -Be 0
+        $logs = @(Get-ChildItem -LiteralPath $application.App -Filter 'WinPDFMerge_*.log' -File -Force)
+        $logs.Count | Should -Be 1
+        $log = Get-Content -LiteralPath $logs[0].FullName -Raw
+        $log | Should -Match 'No PDFs found'
+        $log | Should -Match '(?m)^Input summary: not discovered; expected pages: not inspected\r?$'
+        $log | Should -Match '(?m)^Result: Failure; exit code: 1\r?$'
+        @(Get-ChildItem -LiteralPath $application.App -Directory -Force | Where-Object Name -like '.WinPDFMerge*').Count | Should -Be 0
         @(Get-ChildItem -LiteralPath $application.Source -Force).Count | Should -Be 0
         Assert-NativeLauncherParentUnchanged
     }

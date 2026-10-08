@@ -273,6 +273,44 @@ function Write-RunLog {
     }
 }
 
+function Write-PdfRunStage {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory=$true)][string]$Stage,
+        [Parameter(Mandatory=$true)][Diagnostics.Stopwatch]$Timer,
+        [string]$LiteralPath
+    )
+    $seconds = ([decimal]$Timer.ElapsedMilliseconds / 1000).ToString('0.000', [Globalization.CultureInfo]::InvariantCulture)
+    $line = 'Stage: {0}; elapsed: {1} s' -f $Stage, $seconds
+    if ($LiteralPath) { $line | Write-RunLog -LiteralPath $LiteralPath -Append }
+    else { Write-Host $line }
+}
+
+function Get-PdfRunSummary {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory=$true)][long]$ElapsedMilliseconds,
+        [Parameter(Mandatory=$true)][string]$ShellVersion,
+        [Parameter(Mandatory=$true)][string]$ShellEdition,
+        [string]$PdftkVersion = 'not probed',
+        [string]$GhostscriptVersion = 'not probed',
+        [Nullable[long]]$InputCount,
+        [Nullable[long]]$ExpectedPageCount
+    )
+    if ($ElapsedMilliseconds -lt 0 -or ($null -ne $InputCount -and $InputCount -lt 0) -or
+        ($null -ne $ExpectedPageCount -and $ExpectedPageCount -lt 0)) { throw 'Run summary counts and elapsed time cannot be negative.' }
+    $seconds = ([decimal]$ElapsedMilliseconds / 1000).ToString('0.000', [Globalization.CultureInfo]::InvariantCulture)
+    $inputs = if ($null -eq $InputCount) { 'not discovered' } else { '{0} PDF(s)' -f $InputCount }
+    $pages = if ($null -eq $ExpectedPageCount) { 'not inspected' } else { $ExpectedPageCount.ToString([Globalization.CultureInfo]::InvariantCulture) }
+    [pscustomobject]@{ Lines = @(
+        ('Elapsed time: {0} s' -f $seconds)
+        ('PowerShell: {0} ({1})' -f $ShellVersion, $ShellEdition)
+        ('PDFtk version: {0}' -f $PdftkVersion)
+        ('Ghostscript version: {0}' -f $GhostscriptVersion)
+        ('Input summary: {0}; expected pages: {1}' -f $inputs, $pages)
+    ) }
+}
+
 function ConvertTo-NativeArgumentString {
     [CmdletBinding()]
     param(
@@ -1718,11 +1756,14 @@ function Invoke-DependencyVersionProbe {
     param(
         [Parameter(Mandatory=$true)][string]$Path,
         [ValidateRange(1, 60000)][int]$TimeoutMilliseconds = 5000,
-        [Threading.CancellationToken]$CancellationToken = [Threading.CancellationToken]::None
+        [Threading.CancellationToken]$CancellationToken = [Threading.CancellationToken]::None,
+        [string]$LogPath,
+        [string]$LogLabel = 'Dependency version probe'
     )
 
     $result = Invoke-NativeProcess -Executable $Path -Arguments @('--version') `
         -TimeoutMilliseconds $TimeoutMilliseconds -RemoveEnvironmentVariables @('GS_OPTIONS') -CancellationToken $CancellationToken
+    if ($LogPath) { Write-NativeProcessLog -Result $result -LiteralPath $LogPath -Label $LogLabel | Out-Null }
     if ($result.TerminationError) { Write-Warning $result.TerminationError }
     if ($result.LaunchError) { throw $result.LaunchError }
     if ($result.TimedOut) { throw "Version probe timed out after $TimeoutMilliseconds ms." }
@@ -1739,10 +1780,13 @@ function Get-NativeToolVersion {
     param(
         [Parameter(Mandatory=$true)][string]$Path,
         [Parameter(Mandatory=$true)][ValidateSet('PdfTk', 'Ghostscript')][string]$Tool,
-        [Threading.CancellationToken]$CancellationToken = [Threading.CancellationToken]::None
+        [Threading.CancellationToken]$CancellationToken = [Threading.CancellationToken]::None,
+        [string]$LogPath
     )
 
-    $probe = Invoke-DependencyVersionProbe -Path $Path -CancellationToken $CancellationToken
+    $probeParameters = @{ Path=$Path; CancellationToken=$CancellationToken }
+    if ($LogPath) { $probeParameters.LogPath=$LogPath; $probeParameters.LogLabel=($Tool + ' version probe') }
+    $probe = Invoke-DependencyVersionProbe @probeParameters
     $diagnostic = 'stdout: {0}; stderr: {1}' -f $probe.Stdout.Trim(), $probe.Stderr.Trim()
     if ($diagnostic.Length -gt 2048) { $diagnostic = $diagnostic.Substring(0, 2048) + ' [truncated]' }
     if ($probe.ExitCode -ne 0) { throw "$Tool version probe failed (exit $($probe.ExitCode)). $diagnostic" }
