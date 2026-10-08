@@ -161,3 +161,20 @@ universal validity/security,signatures,OS support-channel/UNC/Explorer/CI/packag
 release acceptance. T14/T15 and later gates remain. No new acquisition/admin/
 persistent policy/PATH/security/runtime network/engine change. Exact commands,
 reports/history/reviews/native audit/live receipt: T13 completion/C1 evidence.
+
+T14 clean C1 `588a96586518059ed38e2de01ad2312003defc7c` passes476relevant cases each actual
+PS5.1.26100.9444 / supportedPS7.6.6,952total,all bad counts0. AC032/33integration
+and AC034unit pass: explicit skip/missingGS/no-benefit master-only0, separately
+validated strictly-smaller email0, realGS partial/count/post-master failure2 with
+validated master retained, actualBAT0/1/2 and explicit final publication state.
+PinnedPDFium reads visibleID/count/rotation/dimensions; source/master/foreign
+snapshots match. Controlled corruptinput/wrongcount/discovery/logger faults and
+owned staging4096whitespace preparation remain disclosed. GS CJKstage conversion0
+then PDFtk2.02 inspectionfailure refuses publication on this host. No new broad
+path-support/fidelity claim. ScopedPSA0errors108warnings42info each10files retained/
+reviewed nonblocking. HistoricalPS5.1 host/locale test failures remain separate
+from corrected dirty passes and clean952. Independent code/static/native/evidence
+review and fresh C1live equality retained. No acquisition/admin/persistent policy/
+PATH/security/runtime network change. T15/T16/T17 and OS/UNC/Explorer/fidelity/CI/
+package/release gates remain. Exact commands/hashes/results/limits/history:
+T14 completion/C1results/reports/review/native audit/live receipt.

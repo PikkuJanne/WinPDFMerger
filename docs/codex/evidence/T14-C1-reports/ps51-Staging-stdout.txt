@@ -1,0 +1,40 @@
+Pester v6.2.0
+
+Running tests from 1 files.
+
+Running tests from '<repo>\tests\filesafety\Staging.Native.Tests.ps1'
+Describing AC027: actual engines preserve source and existing final bytes
+  [+] uses one private stage for actual PDFtk and Ghostscript, then cleans only the caller-owned stage 1.63s
+  [+] refuses an existing Pdftk final before native launch and keeps its SHA256 95ms
+  [+] refuses an existing Ghostscript final before native launch and keeps its SHA256 162ms
+  [+] keeps a foreign file at the Pdftk final inserted after real native success at the actual no-overwrite move 661ms
+  [+] keeps a foreign file at the Ghostscript final inserted after real native success at the actual no-overwrite move 735ms
+  [+] keeps a foreign directory at the Pdftk final inserted after real native success at the actual no-overwrite move 305ms
+  [+] keeps a foreign directory at the Ghostscript final inserted after real native success at the actual no-overwrite move 765ms
+  [+] cleans owned staging after actual PDFtk rejects bad data without replacing sources or an existing final 161ms
+
+Describing AC028: actual same-second concurrent runs isolate staging, final moves and cleanup
+  [+] starts two real native jobs behind a shared barrier and preserves the live second run staging while the first cleans 3.26s
+Staging observations: <repo>\tests\.work\staging\d27c3bc993594813b16bb06cf243828e\native-observations.json
+Tests completed in 9.83s
+Tests Passed: 9, Failed: 0, Skipped: 0, Inconclusive: 0, NotRun: 0
+{
+    "observed_at_utc":  "2026-10-08T05:16:09.2502432Z",
+    "commit_under_test":  "588a96586518059ed38e2de01ad2312003defc7c",
+    "dirty_worktree":  false,
+    "shell_version":  "5.1.26100.9444",
+    "shell_edition":  "Desktop",
+    "process_64_bit":  true,
+    "execution_policy":  "RemoteSigned",
+    "pester_version":  "6.2.0",
+    "tier":  "Staging",
+    "evidence_class":  "windows-real-pdftk-gs-staging-publication-controlled-scheduling-and-filesystem",
+    "passed":  9,
+    "failed":  0,
+    "failed_blocks":  0,
+    "failed_containers":  0,
+    "skipped":  0,
+    "not_run":  0,
+    "total":  9
+}
+Reports: <repo>\tests\.work\pester\6aef117d735f471cae31cb8d29d0a302

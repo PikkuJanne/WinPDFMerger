@@ -1,25 +1,31 @@
 # Next session
 
-Selected task: finish T14 — make optional email processing and result states explicit.
-Read AGENTS/INDEX/STATUS,T14 TASKS entry/brief,PRODUCT_SPEC,TECHNICAL_SPEC,
-TEST_STRATEGY/GITHUB_WORKFLOW and AC032/33/34. Recheck branch/clean/origin/live refs/
-PR/tags/releases. Never reset,stash or discard work silently.
+Selected task: T15 — close interruption, environment and IO failure paths.
+Read AGENTS/INDEX/STATUS,T15 TASKS entry/brief,PRODUCT_SPEC,TECHNICAL_SPEC,
+TEST_STRATEGY/GITHUB_WORKFLOW and relevant acceptance cases. Recheck current
+branch/clean/origin/live refs/PR/tags/releases; never reset,stash or discard work.
 
-T14 implementation is ready for clean C1 thirteen-tier dual-shell tests,
-independent review/native audit, normal same-branch push and fresh clean equality.
-Dirty focused122/122 and nativeEmail11/11 pass each actualPS5.1.26100.9444 /
-supportedPS7.6.6. Test-host module-path and localized oracle failures remain
-historical with exact raw receipts and honest missing-summary/XML classifications.
-Read T14-checkpoint.md before interpreting dirty runs or controlled fault coverage.
+T14 is complete at clean C1 `588a96586518059ed38e2de01ad2312003defc7c`: thirteen relevant tiers,
+476each952total in actualPS5.1.26100.9444 / supportedPS7.6.6,all bad counts0.
+AC032/33integration and AC034unit pass. Exact commands,pins,raw/sanitized hashes,
+historical failures/corrected dirty passes,independent code/static/native/evidence
+review and fresh C1live equality are in T14 completion/results/manifest/review/
+native audit/live receipt. FinalrecordsC2 own live equality reported in session;
+reverify current refs. DraftPR URL in completion follows owner-mergedPR13.
 
-Retain explicit state-based0/1/2 outcomes, SkipEmail bypass, separate complete
-bounded staged email inspection/exact frozen count, stable strictly-smaller
-publication, master preservation and known-only owned cleanup. Keep /screen/
-output-beside-entry defaults, PS5.1/import-only helpers and direct local engines.
-T13 and earlier immutable evidence remain; owner merged PR13 before T14 began.
+Retain explicit0/1/2 state and final listing, SkipEmail GS discovery/probe/launch
+bypass, mandatory separate complete bounded staged inspection/exact frozen master
+page count, stable strictly-smaller email publication and master preservation.
+Equal/larger valid derivative is successful no-benefit and unpublished. FoundGS
+or post-master failures return2. Real partial/count fault integration is controlled
+and disclosed; no unit/mock becomes an actualnative pass. Owned staging race
+masters receive4096ASCIIspaces preparation before preservation snapshots. GS
+CJKstage can convert but selectedPDFtk2.02 inspection refusal blocks publication.
 
-Reuse verified authorized PS7.6.6,Pester6.2.0,PDFtk2.02,GS10.08.0,PSA1.25.0 and
-development Python3.12.14/PDFium oracle. Child-only RemoteSigned persists;
-no acquisition/admin/persistent environment/security change. T15 interruption/
-environment/IO follows completed T14. T16/T17 and broad fidelity/OS/UNC/Explorer/
-CI/package/release gates stay open. Do not begin T15 in this T14 thread.
+T15 covers interruption/descendants, environment and IO. Preserve import-only
+helpers,PS5.1/direct executables,/screen/output-beside-entry/local-processing and
+source/final ownership contracts. Reuse verified authorizedPS7.6.6,Pester6.2.0,
+PDFtk2.02,GS10.08.0,PSA1.25.0 and developmentPython3.12.14/PDFium. Child-only
+RemoteSigned authorization persists; no silent acquisition/admin/persistent
+environment/security change. T16/T17 and OS/UNC/Explorer/fidelity/CI/package/release
+gates stay open. Do not reinterpret narrow structure as full PDF preservation.
