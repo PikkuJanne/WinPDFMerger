@@ -79,3 +79,36 @@ static guard/doc refinement uses full untracked status and clarifies that vendor
 command/type compatibility profiles are outside the selected gate.
 T23 broader integration, CI, physical Explorer/desktop, security, compatibility,
 package and publication gates remain later tasks. No tag/release is created.
+
+
+## Final resolution
+
+Clean C1 `d159486cdfb66c39cf3ca6b35a23ebd08e1b2932` passes all18 affected tiers in both actual
+hosts: 715 each/1430 total/36 report pairs, every required bad count
+zero; all source guards pass. Full53file parser/analyzer gate passes41 rules
+with no findings/suppressions. Supplemental helper skip remains separately
+qualified. Independent source-bound/raw/archive/records reviews pass; normal
+C1 push and fresh cleanlive proof passed, draft PR22 head matches. T23 next;
+publication NOT STARTED. Records-only C2 is verified after its push in session.
+
+The structural plan check run while the final records audit was still pending
+failed closed on the expected missing T22-records-review.json. The final check
+is repeated after that audit exists. Evidence-specific Git attributes preserve
+the exact T22 outer JSON and supplemental audit producer bytes through staging
+and future Windows checkouts, alongside the C1 report-tree attribute; no runtime
+source or earlier evidence attribute is changed by the records checkpoint.
+
+The first staged whitespace check identified four captured stdout streams: two
+real PDFtk empty file-version fields and two Pester report-IO diagnostic blank
+lines. Their bytes are preserved. Four exact-path whitespace attributes permit
+those actual captured lines, without changing source rules, raw/public outcome
+facts or manifest hashes. The final staged check is repeated after this narrow
+evidence formatting correction and refreshed independent records review.
+
+The staged-byte guard then detected 34 unstaged XML/JSON receipts under copied
+synthetic repositories: their retained `.gitignore` fixtures also apply inside
+the public evidence tree. After confirming that exact ignore rule and each
+manifest digest, only those 34 approved public report paths are explicitly
+force-added. No ignore file or raw/public receipt is changed, and no ignored
+working PDF, binary, dependency or unrelated file is staged. The independent
+records audit and the complete staged-byte/plan checks are repeated afterward.

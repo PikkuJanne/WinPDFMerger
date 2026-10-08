@@ -1,0 +1,111 @@
+Pester v6.2.0
+
+Running tests from 2 files.
+
+Running tests from '<REPO>\tests\unit\FaultMatrix.Tests.ps1'
+Describing AC050 source discovery does not return a partial collection after IO faults
+  [+] reports an inaccessible source resolution with its original reason 664ms
+  [+] reports an item access failure after literal resolution and before enumeration 77ms
+  [+] withholds an already enumerated PDF when later enumeration throws access denial 152ms
+  [+] withholds an already enumerated PDF when later enumeration throws IO failure 53ms
+
+Describing AC050 native prelaunch faults return explicit failure receipts
+  [+] refuses a null argument vector before any runtime initialization 178ms
+  [+] refuses a null element argument vector before any runtime initialization 49ms
+  [+] refuses a integer element argument vector before any runtime initialization 23ms
+  [+] refuses a NUL element argument vector before any runtime initialization 32ms
+  [+] refuses a empty child environment name without changing caller state 51ms
+  [+] refuses a whitespace child environment name without changing caller state 26ms
+  [+] refuses a equals child environment name without changing caller state 24ms
+  [+] refuses a NUL child environment name without changing caller state 19ms
+
+Describing AC050 stream capture preserves fault and retention boundaries
+  [+] drains 8192 characters to EOF with an exact 8192-character retention limit 202ms
+  [+] drains 8193 characters to EOF with an exact 8192-character retention limit 27ms
+  [+] records a faulted asynchronous read without replacing previously retained bytes 42ms
+  [+] records a next-read IO failure after retaining the completed current chunk 22ms
+
+Describing AC050 a locked source fails read-only preflight without a native call
+  [+] returns the exact source diagnostic and no parseable page count for real sharing denial 75ms
+
+Describing AC050 a separate run failure overrides every explicit email stage outcome
+  [+] retains only recorded publications and reports partial success for not_started 61ms
+  [+] retains only recorded publications and reports partial success for skipped 31ms
+  [+] retains only recorded publications and reports partial success for unavailable 33ms
+  [+] retains only recorded publications and reports partial success for published 26ms
+  [+] retains only recorded publications and reports partial success for no_size_benefit 22ms
+  [+] retains only recorded publications and reports partial success for failed 25ms
+
+Running tests from '<REPO>\tests\native\NativeRunner.Tests.ps1'
+Controlled native fixture build receipt: <REPO>\tests\.work\fake-native\940175e2fee54f41a700f4b066c85452\build-info.json
+Controlled native fixture SHA256: 6900b69bbd3e39c04a38a84f13baa1a0d7946a936a2693e854088bc8d238acc8
+Describing AC016: Windows native vector round-trip through the compiled argument echo
+  [+] preserves zero payload arguments argument boundaries 420ms
+  [+] preserves single empty value argument boundaries 94ms
+  [+] preserves empty first middle and last values argument boundaries 138ms
+  [+] preserves spaces and leading/trailing whitespace argument boundaries 96ms
+  [+] preserves tabs and newlines argument boundaries 117ms
+  [+] preserves quotes and consecutive quotes argument boundaries 143ms
+  [+] preserves backslashes before embedded quotes argument boundaries 83ms
+  [+] preserves trailing separators and space-containing roots argument boundaries 117ms
+  [+] preserves literal shell characters argument boundaries 104ms
+  [+] preserves Unicode argument boundaries 92ms
+  [+] accepts an empty serializer vector without inventing an operand 12ms
+  [+] rejects null vector instead of silently changing the argument vector 15ms
+  [+] rejects null element instead of silently changing the argument vector 10ms
+  [+] rejects nonstring element instead of silently changing the argument vector 8ms
+  [+] rejects NUL character instead of silently changing the argument vector 5ms
+  [+] sanitizes rendered control characters while delivering their original values 73ms
+
+Describing AC017: bounded dual-stream capture and explicit native failure results
+  [+] captures Unicode stdout and stderr independently under ErrorAction Stop 74ms
+  [+] fully drains simultaneous multi-megabyte streams without deadlock 323ms
+  [+] caps retained stream memory while draining excess output and reports incomplete capture 216ms
+  [+] treats a exact-limit Stdout stream independently of the other complete stream 122ms
+  [+] treats a exact-limit Stderr stream independently of the other complete stream 60ms
+  [+] treats a one-character-over Stdout stream independently of the other complete stream 77ms
+  [+] treats a one-character-over Stderr stream independently of the other complete stream 117ms
+  [+] releases an actual owned child when capture polling throws before the child exits 120ms
+  [+] returns nonzero exit and both diagnostic streams without native-warning pipeline failure 100ms
+  [+] returns explicit launch errors for a missing executable 24ms
+  [+] returns explicit launch errors for a invalid image executable 16ms
+  [+] returns explicit launch errors for a relative executable 10ms
+  [+] closes redirected stdin so a prompt reader sees EOF immediately 109ms
+  [+] releases its owned inherited-pipe descendant when the parent exits first 83ms
+
+Describing AC018: bounded owned-process timeout, cancellation and termination failure
+  [+] times out only its exact sleeping child while an unrelated same-image process survives 591ms
+  [+] honors cancellation requested before launch without creating a child 13ms
+  [+] cancels an active sleeping child while an unrelated same-image process survives 1.07s
+  [+] reports injected explicit-stop failure while fallback job closure releases the owned child 588ms
+
+Describing T08: child-only environment and consistent Unicode native diagnostics
+GS_OPTIONS requested unset; observed caller state unset
+  [+] removes only child GS_OPTIONS and preserves actual caller unset state 87ms
+GS_OPTIONS requested empty; observed caller state empty
+  [+] removes only child GS_OPTIONS and preserves actual caller empty state 66ms
+GS_OPTIONS requested value; observed caller state value
+  [+] removes only child GS_OPTIONS and preserves actual caller value state 67ms
+  [+] inherits caller GS_OPTIONS when no explicit child removal is requested 60ms
+  [+] logs both streams, Unicode paths, result flags, elapsed time and nonzero exit consistently 164ms
+  [+] logs launch errors explicitly without inventing a zero exit status 21ms
+  [+] surfaces logging IO failure while preserving the caller environment 69ms
+Tests completed in 9.07s
+Tests Passed: 64, Failed: 0, Skipped: 0, Inconclusive: 0, NotRun: 0
+{
+    "commit_under_test":  "75df26187202104995e58f020c2442d973c7b075",
+    "dirty_worktree":  true,
+    "shell_version":  "5.1.26100.9444",
+    "shell_edition":  "Desktop",
+    "process_64_bit":  true,
+    "execution_policy":  "RemoteSigned",
+    "pester_version":  "6.2.0",
+    "passed":  64,
+    "failed":  0,
+    "failed_blocks":  0,
+    "failed_containers":  0,
+    "skipped":  0,
+    "not_run":  0,
+    "total":  64,
+    "native_fixture_build_receipt":  "<REPO>\\tests\\.work\\fake-native\\940175e2fee54f41a700f4b066c85452\\build-info.json"
+}

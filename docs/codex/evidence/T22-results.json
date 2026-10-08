@@ -1,0 +1,344 @@
+{
+  "schema_version": 1,
+  "task": "T22",
+  "tested_commit": "d159486cdfb66c39cf3ca6b35a23ebd08e1b2932",
+  "acceptance": {
+    "AC050": {
+      "result": "pass",
+      "mode": "unit",
+      "fault_matrix": "T22-reports/preparation/fault-focused/coverage-matrix.md",
+      "new_application_fault_cases": 28,
+      "new_test_receipt_cases": 62,
+      "copied_runner_audit_observations": 18,
+      "source_bound_capture_probe_observations": 4
+    },
+    "AC051": {
+      "result": "pass",
+      "mode": "static",
+      "files_per_host": 53,
+      "selected_rules": 41,
+      "selected_findings": 0,
+      "selected_suppressions": 0,
+      "parser_failures": 0,
+      "analyzer_not_run": 0,
+      "advisory_per_host": {
+        "errors": 0,
+        "warnings": 298,
+        "information": 161
+      },
+      "reports": [
+        "T22-reports/static/ps51/analysis.json",
+        "T22-reports/static/ps7/analysis.json"
+      ]
+    }
+  },
+  "pester": {
+    "passed": 1430,
+    "reports": 36,
+    "failed": 0,
+    "failed_blocks": 0,
+    "failed_containers": 0,
+    "skipped": 0,
+    "not_run": 0,
+    "inconclusive": 0,
+    "hosts": [
+      {
+        "shell": "ps51",
+        "version": "5.1.26100.9444",
+        "edition": "Desktop",
+        "passed": 715,
+        "tiers": [
+          {
+            "tier": "Unit",
+            "passed": 424,
+            "evidence_class": "unit-controlled-process-and-filesystem",
+            "summary": "T22-reports/ps51/Unit.summary.json",
+            "nunit": "T22-reports/ps51/Unit.results.xml"
+          },
+          {
+            "tier": "NativeRunner",
+            "passed": 41,
+            "evidence_class": "windows-controlled-native-argument-process; no PDF-engine-support claim",
+            "summary": "T22-reports/ps51/NativeRunner.summary.json",
+            "nunit": "T22-reports/ps51/NativeRunner.results.xml"
+          },
+          {
+            "tier": "ToolInvocation",
+            "passed": 12,
+            "evidence_class": "unit-controlled-native-job-and-filesystem",
+            "summary": "T22-reports/ps51/ToolInvocation.summary.json",
+            "nunit": "T22-reports/ps51/ToolInvocation.results.xml"
+          },
+          {
+            "tier": "FaultIO",
+            "passed": 32,
+            "evidence_class": "unit-controlled-IO-logging-outcomes-and-real-file-locks",
+            "summary": "T22-reports/ps51/FaultIO.summary.json",
+            "nunit": "T22-reports/ps51/FaultIO.results.xml"
+          },
+          {
+            "tier": "FaultRecovery",
+            "passed": 14,
+            "evidence_class": "windows-real-engines-environment-and-controlled-owned-native-cancellation",
+            "summary": "T22-reports/ps51/FaultRecovery.summary.json",
+            "nunit": "T22-reports/ps51/FaultRecovery.results.xml"
+          },
+          {
+            "tier": "SourceDiscovery",
+            "passed": 4,
+            "evidence_class": "windows-entry-source-discovery-real-pdftk",
+            "summary": "T22-reports/ps51/SourceDiscovery.summary.json",
+            "nunit": "T22-reports/ps51/SourceDiscovery.results.xml"
+          },
+          {
+            "tier": "MasterValidation",
+            "passed": 7,
+            "evidence_class": "windows-real-pdftk-master-validation-entry-and-independent-pdfium-order-rotation",
+            "summary": "T22-reports/ps51/MasterValidation.summary.json",
+            "nunit": "T22-reports/ps51/MasterValidation.results.xml"
+          },
+          {
+            "tier": "Staging",
+            "passed": 9,
+            "evidence_class": "windows-real-pdftk-gs-staging-publication-controlled-scheduling-and-filesystem",
+            "summary": "T22-reports/ps51/Staging.summary.json",
+            "nunit": "T22-reports/ps51/Staging.results.xml"
+          },
+          {
+            "tier": "Destination",
+            "passed": 15,
+            "evidence_class": "windows-real-entry-destination-identity-ACL-junction-concurrency",
+            "summary": "T22-reports/ps51/Destination.summary.json",
+            "nunit": "T22-reports/ps51/Destination.results.xml"
+          },
+          {
+            "tier": "EmailOutcome",
+            "passed": 11,
+            "evidence_class": "windows-real-pdftk-gs-email-outcomes-actual-batch-and-controlled-fault-scheduling",
+            "summary": "T22-reports/ps51/EmailOutcome.summary.json",
+            "nunit": "T22-reports/ps51/EmailOutcome.results.xml"
+          },
+          {
+            "tier": "SizeReportingNative",
+            "passed": 11,
+            "evidence_class": "windows-real-entry-size-accounting-and-controlled-equal-size-boundary; visual-manual-observations-separate",
+            "summary": "T22-reports/ps51/SizeReportingNative.summary.json",
+            "nunit": "T22-reports/ps51/SizeReportingNative.results.xml"
+          },
+          {
+            "tier": "ParametersNative",
+            "passed": 9,
+            "evidence_class": "windows-real-entry-preset-and-defaults-actual-cmd-batch-delivery-not-Explorer",
+            "summary": "T22-reports/ps51/ParametersNative.summary.json",
+            "nunit": "T22-reports/ps51/ParametersNative.results.xml"
+          },
+          {
+            "tier": "PdftkPaths",
+            "passed": 13,
+            "evidence_class": "windows-real-tool-path-prompt-integration",
+            "summary": "T22-reports/ps51/PdftkPaths.summary.json",
+            "nunit": "T22-reports/ps51/PdftkPaths.results.xml"
+          },
+          {
+            "tier": "GhostscriptPaths",
+            "passed": 13,
+            "evidence_class": "windows-real-tool-path-prompt-integration",
+            "summary": "T22-reports/ps51/GhostscriptPaths.summary.json",
+            "nunit": "T22-reports/ps51/GhostscriptPaths.results.xml"
+          },
+          {
+            "tier": "Launcher",
+            "passed": 24,
+            "evidence_class": "windows-cmd-actual-batch-controlled-ps51-receiver",
+            "summary": "T22-reports/ps51/Launcher.summary.json",
+            "nunit": "T22-reports/ps51/Launcher.results.xml"
+          },
+          {
+            "tier": "Parameters",
+            "passed": 31,
+            "evidence_class": "unit-actual-parameter-binding-and-controlled-entry-native-decisions",
+            "summary": "T22-reports/ps51/Parameters.summary.json",
+            "nunit": "T22-reports/ps51/Parameters.results.xml"
+          },
+          {
+            "tier": "Diagnostics",
+            "passed": 36,
+            "evidence_class": "unit-help-stage-summary-and-controlled-probe-entry-diagnostics; no PDF-engine-support claim",
+            "summary": "T22-reports/ps51/Diagnostics.summary.json",
+            "nunit": "T22-reports/ps51/Diagnostics.results.xml"
+          },
+          {
+            "tier": "Static",
+            "passed": 9,
+            "evidence_class": "unit-static-checker-synthetic-refusal-and-report-regressions; no native PDF-engine-support claim",
+            "summary": "T22-reports/ps51/Static.summary.json",
+            "nunit": "T22-reports/ps51/Static.results.xml"
+          }
+        ]
+      },
+      {
+        "shell": "ps7",
+        "version": "7.6.6",
+        "edition": "Core",
+        "passed": 715,
+        "tiers": [
+          {
+            "tier": "Unit",
+            "passed": 424,
+            "evidence_class": "unit-controlled-process-and-filesystem",
+            "summary": "T22-reports/ps7/Unit.summary.json",
+            "nunit": "T22-reports/ps7/Unit.results.xml"
+          },
+          {
+            "tier": "NativeRunner",
+            "passed": 41,
+            "evidence_class": "windows-controlled-native-argument-process; no PDF-engine-support claim",
+            "summary": "T22-reports/ps7/NativeRunner.summary.json",
+            "nunit": "T22-reports/ps7/NativeRunner.results.xml"
+          },
+          {
+            "tier": "ToolInvocation",
+            "passed": 12,
+            "evidence_class": "unit-controlled-native-job-and-filesystem",
+            "summary": "T22-reports/ps7/ToolInvocation.summary.json",
+            "nunit": "T22-reports/ps7/ToolInvocation.results.xml"
+          },
+          {
+            "tier": "FaultIO",
+            "passed": 32,
+            "evidence_class": "unit-controlled-IO-logging-outcomes-and-real-file-locks",
+            "summary": "T22-reports/ps7/FaultIO.summary.json",
+            "nunit": "T22-reports/ps7/FaultIO.results.xml"
+          },
+          {
+            "tier": "FaultRecovery",
+            "passed": 14,
+            "evidence_class": "windows-real-engines-environment-and-controlled-owned-native-cancellation",
+            "summary": "T22-reports/ps7/FaultRecovery.summary.json",
+            "nunit": "T22-reports/ps7/FaultRecovery.results.xml"
+          },
+          {
+            "tier": "SourceDiscovery",
+            "passed": 4,
+            "evidence_class": "windows-entry-source-discovery-real-pdftk",
+            "summary": "T22-reports/ps7/SourceDiscovery.summary.json",
+            "nunit": "T22-reports/ps7/SourceDiscovery.results.xml"
+          },
+          {
+            "tier": "MasterValidation",
+            "passed": 7,
+            "evidence_class": "windows-real-pdftk-master-validation-entry-and-independent-pdfium-order-rotation",
+            "summary": "T22-reports/ps7/MasterValidation.summary.json",
+            "nunit": "T22-reports/ps7/MasterValidation.results.xml"
+          },
+          {
+            "tier": "Staging",
+            "passed": 9,
+            "evidence_class": "windows-real-pdftk-gs-staging-publication-controlled-scheduling-and-filesystem",
+            "summary": "T22-reports/ps7/Staging.summary.json",
+            "nunit": "T22-reports/ps7/Staging.results.xml"
+          },
+          {
+            "tier": "Destination",
+            "passed": 15,
+            "evidence_class": "windows-real-entry-destination-identity-ACL-junction-concurrency",
+            "summary": "T22-reports/ps7/Destination.summary.json",
+            "nunit": "T22-reports/ps7/Destination.results.xml"
+          },
+          {
+            "tier": "EmailOutcome",
+            "passed": 11,
+            "evidence_class": "windows-real-pdftk-gs-email-outcomes-actual-batch-and-controlled-fault-scheduling",
+            "summary": "T22-reports/ps7/EmailOutcome.summary.json",
+            "nunit": "T22-reports/ps7/EmailOutcome.results.xml"
+          },
+          {
+            "tier": "SizeReportingNative",
+            "passed": 11,
+            "evidence_class": "windows-real-entry-size-accounting-and-controlled-equal-size-boundary; visual-manual-observations-separate",
+            "summary": "T22-reports/ps7/SizeReportingNative.summary.json",
+            "nunit": "T22-reports/ps7/SizeReportingNative.results.xml"
+          },
+          {
+            "tier": "ParametersNative",
+            "passed": 9,
+            "evidence_class": "windows-real-entry-preset-and-defaults-actual-cmd-batch-delivery-not-Explorer",
+            "summary": "T22-reports/ps7/ParametersNative.summary.json",
+            "nunit": "T22-reports/ps7/ParametersNative.results.xml"
+          },
+          {
+            "tier": "PdftkPaths",
+            "passed": 13,
+            "evidence_class": "windows-real-tool-path-prompt-integration",
+            "summary": "T22-reports/ps7/PdftkPaths.summary.json",
+            "nunit": "T22-reports/ps7/PdftkPaths.results.xml"
+          },
+          {
+            "tier": "GhostscriptPaths",
+            "passed": 13,
+            "evidence_class": "windows-real-tool-path-prompt-integration",
+            "summary": "T22-reports/ps7/GhostscriptPaths.summary.json",
+            "nunit": "T22-reports/ps7/GhostscriptPaths.results.xml"
+          },
+          {
+            "tier": "Launcher",
+            "passed": 24,
+            "evidence_class": "windows-cmd-actual-batch-controlled-ps51-receiver",
+            "summary": "T22-reports/ps7/Launcher.summary.json",
+            "nunit": "T22-reports/ps7/Launcher.results.xml"
+          },
+          {
+            "tier": "Parameters",
+            "passed": 31,
+            "evidence_class": "unit-actual-parameter-binding-and-controlled-entry-native-decisions",
+            "summary": "T22-reports/ps7/Parameters.summary.json",
+            "nunit": "T22-reports/ps7/Parameters.results.xml"
+          },
+          {
+            "tier": "Diagnostics",
+            "passed": 36,
+            "evidence_class": "unit-help-stage-summary-and-controlled-probe-entry-diagnostics; no PDF-engine-support claim",
+            "summary": "T22-reports/ps7/Diagnostics.summary.json",
+            "nunit": "T22-reports/ps7/Diagnostics.results.xml"
+          },
+          {
+            "tier": "Static",
+            "passed": 9,
+            "evidence_class": "unit-static-checker-synthetic-refusal-and-report-regressions; no native PDF-engine-support claim",
+            "summary": "T22-reports/ps7/Static.summary.json",
+            "nunit": "T22-reports/ps7/Static.results.xml"
+          }
+        ]
+      }
+    ]
+  },
+  "python": {
+    "fixture_oracle": {
+      "passed": 40,
+      "failed": 0,
+      "skipped": 0
+    },
+    "handoff_helpers": {
+      "passed": 26,
+      "failed": 0,
+      "skipped": 1,
+      "total": 27,
+      "skip_reason": "Symlink creation not permitted; unchanged development helper supplemental check, not required AC050/AC051 and not native/manual acceptance"
+    }
+  },
+  "environment_receipt": "T22-reports/context/T22-environment.json",
+  "raw_review": "T22-reports/review/C1-reports-review.json",
+  "archive_review": "T22-archive-review.json",
+  "records_review": "T22-records-review.json",
+  "manifest_sha256": "47d5e26ddf516ec7e6ed168fdd88aec5b9f62adc491792c54bb94d42f157990a",
+  "manifest_selected_files": 830,
+  "synchronization": "Clean C1/live equality retained. Records-only C2 is verified after push in the session; these records make no claim to their own future commit.",
+  "limitations": [
+    "OS support channel unestablished",
+    "Controlled tests are not native PDF-engine/manual passes",
+    "Vendor default style and Pester-scope findings retained advisory; command/type profiles not selected",
+    "Pre-invocation dependency/setup errors remain actual process failures without completed test reports",
+    "Developer Pester Run.Path discovery under bracketed repository root remains disclosed; application literal source-path contract unchanged",
+    "Full T23 native, CI, physical Explorer/desktop, security, compatibility, packaging and publication remain later gates"
+  ]
+}

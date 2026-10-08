@@ -1,0 +1,627 @@
+{
+  "task": "T22",
+  "acceptance_id": "AC050",
+  "source_commit": "d159486cdfb66c39cf3ca6b35a23ebd08e1b2932",
+  "observed_at_utc": "2026-10-08T14:05:33.0200809Z",
+  "mapping_path": "tests/.work/T22-fault-focused/coverage-matrix.md",
+  "mapping_sha256": "f1ee26b624cb282317b8e865c5fa6fb1a74fe15d8fcf60c0ea281ab592b248bb",
+  "source_bindings": [
+    {
+      "path": "src/WinPDFMerge.Helpers.ps1",
+      "sha256": "22ac56c2922bc5333240503ad041b8388e42cc06ec4057a77346201935408536"
+    },
+    {
+      "path": "tests/faults/FaultIO.Tests.ps1",
+      "sha256": "e4d09bc6eb7d761a426d12b1caea64fdb299d0ab1f603070b175495f7b3e654f"
+    },
+    {
+      "path": "tests/faults/FaultRecovery.Native.Tests.ps1",
+      "sha256": "6dd902451bcab759315899ef9d95c257a66c5be638e72fcf660ea99b2551fc3d"
+    },
+    {
+      "path": "tests/filesafety/Staging.Native.Tests.ps1",
+      "sha256": "762f92889196f4e1e7f2331930cfb9390f35c302c24b40582ebb35130ffcf105"
+    },
+    {
+      "path": "tests/native/NativeRunner.Tests.ps1",
+      "sha256": "0e82f149f21006905c7588ec53140cd6aaef2a02ee9a9bcadce5fb9c329f2759"
+    },
+    {
+      "path": "tests/native/ToolInvocation.Tests.ps1",
+      "sha256": "1a0e88d717fe8d44d0265b9317bae4e6a1a555306aab42e5f6ea552158b41e5b"
+    },
+    {
+      "path": "tests/pdf/EmailOutcome.Native.Tests.ps1",
+      "sha256": "45c4a2b62b7f0ff5ee79616032631964aa235b65ccaf58a7ffc90791a6335fda"
+    },
+    {
+      "path": "tests/pdf/InputPreflight.Native.Tests.ps1",
+      "sha256": "422b67debd62f401ba89158957237ce861a9bfe74f097c9647d41c8467b41cb1"
+    },
+    {
+      "path": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+      "sha256": "191bcd2f23fe7d869fbd6d338bffe1cdc627cc3522df7888975313aa8fd2f643"
+    },
+    {
+      "path": "tests/unit/EmailOutcome.Tests.ps1",
+      "sha256": "120d915d434678013634424748fdc28d5cb05b816744db1c9b75a8270237cc38"
+    },
+    {
+      "path": "tests/unit/FaultMatrix.Tests.ps1",
+      "sha256": "0450bc41ef75edd36388649d10d43bec5225e9f969559ba5d58600c12f2a0c30"
+    },
+    {
+      "path": "tests/unit/InputPreflight.Tests.ps1",
+      "sha256": "f2cc3cd9dedc2a55f76ae47fb0902be372befb94338aa7dc472cd131dd5c5fff"
+    },
+    {
+      "path": "tests/unit/MasterValidation.Tests.ps1",
+      "sha256": "5b507afaf3f2abd79f7193700544c1f70fcd497f1f020183ce5eb64636d647bb"
+    },
+    {
+      "path": "tests/unit/NativeCommand.Tests.ps1",
+      "sha256": "123fe700b112bb56695a2245c60b2a55c35b6c641a35afd2113342aab684db55"
+    },
+    {
+      "path": "tests/unit/PdfEnvelope.Tests.ps1",
+      "sha256": "2dc0844b249140d3100a6ae894d5f505e0310090d6ef978734a2bd2b23033122"
+    },
+    {
+      "path": "tests/unit/SourceDiscovery.Tests.ps1",
+      "sha256": "2cd137f0e8c9cf3c5851acda6c5456f80413c7a16e946ace3d06d0b3b5724b02"
+    },
+    {
+      "path": "tests/unit/Staging.Tests.ps1",
+      "sha256": "d557c482f85b8d96db728c6ef876a31b5103dd5b6c10aceb640c414e0d24a960"
+    },
+    {
+      "path": "tests/unit/TestRunSupport.Tests.ps1",
+      "sha256": "3f3157c80b8120b80e594b14d75037286c65fd70ddbb466c742f7f50fef47417"
+    }
+  ],
+  "primary_anchors": [
+    {
+      "path": "tests/native/NativeRunner.Tests.ps1",
+      "line": 83,
+      "text": "It 'preserves <Label> argument boundaries' -TestCases @("
+    },
+    {
+      "path": "tests/unit/NativeCommand.Tests.ps1",
+      "line": 6,
+      "text": "It 'counts executable, quotes, separator and NUL, including surrogate pairs' {"
+    },
+    {
+      "path": "tests/unit/FaultMatrix.Tests.ps1",
+      "line": 62,
+      "text": "It 'refuses a <Label> argument vector before any runtime initialization' -TestCases @("
+    },
+    {
+      "path": "tests/native/NativeRunner.Tests.ps1",
+      "line": 137,
+      "text": "It 'fully drains simultaneous multi-megabyte streams without deadlock' {"
+    },
+    {
+      "path": "tests/unit/FaultMatrix.Tests.ps1",
+      "line": 106,
+      "text": "It 'drains <Length> characters to EOF with an exact 8192-character retention limit' -TestCases @("
+    },
+    {
+      "path": "src/WinPDFMerge.Helpers.ps1",
+      "line": 408,
+      "text": "$length = $State.PendingRead.GetAwaiter().GetResult()"
+    },
+    {
+      "path": "tests/native/NativeRunner.Tests.ps1",
+      "line": 167,
+      "text": "It 'treats a <Boundary> <Stream> stream independently of the other complete stream' -TestCases @("
+    },
+    {
+      "path": "tests/unit/SourceDiscovery.Tests.ps1",
+      "line": 55,
+      "text": "It 'reports zero top-level visible PDFs clearly' {"
+    },
+    {
+      "path": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+      "line": 100,
+      "text": "It 'merges one uppercase-extension PDF without scalar Count failure or source edits' {"
+    },
+    {
+      "path": "tests/unit/FaultMatrix.Tests.ps1",
+      "line": 20,
+      "text": "It 'reports an inaccessible source resolution with its original reason' {"
+    },
+    {
+      "path": "tests/unit/InputPreflight.Tests.ps1",
+      "line": 27,
+      "text": "It 'rejects <Label> without inventing a count' -TestCases @("
+    },
+    {
+      "path": "tests/unit/PdfEnvelope.Tests.ps1",
+      "line": 89,
+      "text": "It 'rejects <Label> instead of trusting a backend-repaired count' -TestCases @("
+    },
+    {
+      "path": "tests/unit/MasterValidation.Tests.ps1",
+      "line": 156,
+      "text": "It 'rejects native exit zero with <Kind> staged data before any inspection process or final move' -TestCases @("
+    },
+    {
+      "path": "tests/pdf/InputPreflight.Native.Tests.ps1",
+      "line": 259,
+      "text": "It 'rejects a named <Kind> file among valid inputs before master/email processing' -TestCases @("
+    },
+    {
+      "path": "tests/unit/FaultMatrix.Tests.ps1",
+      "line": 165,
+      "text": "It 'returns the exact source diagnostic and no parseable page count for real sharing denial' {"
+    },
+    {
+      "path": "tests/unit/EmailOutcome.Tests.ps1",
+      "line": 53,
+      "text": "It 'reports <State> after a published master as code <Code> with only explicit outputs' -TestCases @("
+    },
+    {
+      "path": "tests/pdf/EmailOutcome.Native.Tests.ps1",
+      "line": 151,
+      "text": "It 'returns master-only zero with optional GS absent from scoped child discovery' {"
+    },
+    {
+      "path": "tests/unit/FaultMatrix.Tests.ps1",
+      "line": 187,
+      "text": "It 'retains only recorded publications and reports partial success for <State>' -TestCases @("
+    },
+    {
+      "path": "tests/unit/Staging.Tests.ps1",
+      "line": 45,
+      "text": "It 'refuses an existing same-suffix <Kind> without modifying foreign contents' -TestCases @("
+    },
+    {
+      "path": "tests/native/ToolInvocation.Tests.ps1",
+      "line": 188,
+      "text": "It 'does not publish a partial file after an explicit native failure' {"
+    },
+    {
+      "path": "tests/faults/FaultIO.Tests.ps1",
+      "line": 243,
+      "text": "It 'refuses a real locked existing <Tool> final before native work and keeps its hash' -TestCases @(@{Tool='Pdftk'},@{Tool='Ghostscript'}) {"
+    },
+    {
+      "path": "tests/filesafety/Staging.Native.Tests.ps1",
+      "line": 269,
+      "text": "It 'keeps a foreign <Kind> at the <Tool> final inserted after real native success at the actual no-overwrite move' -TestCases @("
+    },
+    {
+      "path": "tests/faults/FaultRecovery.Native.Tests.ps1",
+      "line": 241,
+      "text": "It 'preserves genuine OS <State> state after actual entry <Mode>' -TestCases @("
+    },
+    {
+      "path": "tests/unit/TestRunSupport.Tests.ps1",
+      "line": 23,
+      "text": "Describe 'AC050 development runner result trust boundary' {"
+    }
+  ],
+  "new_application_fault_cases": {
+    "FaultMatrix": 23,
+    "NativeRunner": 5,
+    "total": 28
+  },
+  "current_completed_report_snapshot_only": true,
+  "completed_reports_xml_audited": [
+    {
+      "host": "ps51",
+      "tier": "Unit",
+      "summary_path": "tests/.work/T22-C1-ps51-0fae50d57c7c49818f970ae765a91908/Unit.summary.json",
+      "xml_path": "tests/.work/T22-C1-ps51-0fae50d57c7c49818f970ae765a91908/Unit.results.xml",
+      "source_bound_clean": true,
+      "xml_cases": 424,
+      "xml_passed": 424,
+      "summary_passed": 424,
+      "summary_total": 424,
+      "failed": 0,
+      "failed_blocks": 0,
+      "failed_containers": 0,
+      "skipped": 0,
+      "not_run": 0,
+      "inconclusive": 0,
+      "result": "pass",
+      "scope": "unit-controlled-process-and-filesystem",
+      "summary_sha256": "d0f8943b82fe866cef8acb82cb5e43528d25b93ff4b97a184118207dbfe9a48d",
+      "xml_sha256": "3413899e0354f1c803ca64293ef6ecabc39e6665a0e47a2a801389b467307e84"
+    },
+    {
+      "host": "ps51",
+      "tier": "NativeRunner",
+      "summary_path": "tests/.work/T22-C1-ps51-0fae50d57c7c49818f970ae765a91908/NativeRunner.summary.json",
+      "xml_path": "tests/.work/T22-C1-ps51-0fae50d57c7c49818f970ae765a91908/NativeRunner.results.xml",
+      "source_bound_clean": true,
+      "xml_cases": 41,
+      "xml_passed": 41,
+      "summary_passed": 41,
+      "summary_total": 41,
+      "failed": 0,
+      "failed_blocks": 0,
+      "failed_containers": 0,
+      "skipped": 0,
+      "not_run": 0,
+      "inconclusive": 0,
+      "result": "pass",
+      "scope": "windows-controlled-native-argument-process; no PDF-engine-support claim",
+      "summary_sha256": "4bb3ac8872f5b8bfc234afa7a76cb118512b27799fda6a4b32b9a95a2f401ca0",
+      "xml_sha256": "36b3c563372c05c9d217303ebbb0f9e7313b7b28dd3dded2925497e0fd6e531a"
+    },
+    {
+      "host": "ps51",
+      "tier": "ToolInvocation",
+      "summary_path": "tests/.work/T22-C1-ps51-0fae50d57c7c49818f970ae765a91908/ToolInvocation.summary.json",
+      "xml_path": "tests/.work/T22-C1-ps51-0fae50d57c7c49818f970ae765a91908/ToolInvocation.results.xml",
+      "source_bound_clean": true,
+      "xml_cases": 12,
+      "xml_passed": 12,
+      "summary_passed": 12,
+      "summary_total": 12,
+      "failed": 0,
+      "failed_blocks": 0,
+      "failed_containers": 0,
+      "skipped": 0,
+      "not_run": 0,
+      "inconclusive": 0,
+      "result": "pass",
+      "scope": "unit-controlled-native-job-and-filesystem",
+      "summary_sha256": "3879433712eba974861d7f1add3b698b037933530546272bef59a34487f3d671",
+      "xml_sha256": "5c1fa11f4ec62a0461c0e510eb6f5433ce8798b1243f52b20937c5b618930811"
+    },
+    {
+      "host": "ps51",
+      "tier": "FaultIO",
+      "summary_path": "tests/.work/T22-C1-ps51-0fae50d57c7c49818f970ae765a91908/FaultIO.summary.json",
+      "xml_path": "tests/.work/T22-C1-ps51-0fae50d57c7c49818f970ae765a91908/FaultIO.results.xml",
+      "source_bound_clean": true,
+      "xml_cases": 32,
+      "xml_passed": 32,
+      "summary_passed": 32,
+      "summary_total": 32,
+      "failed": 0,
+      "failed_blocks": 0,
+      "failed_containers": 0,
+      "skipped": 0,
+      "not_run": 0,
+      "inconclusive": 0,
+      "result": "pass",
+      "scope": "unit-controlled-IO-logging-outcomes-and-real-file-locks",
+      "summary_sha256": "b2a06dd925dee0110835f6552839e34748cc8a69dad94bf8e683116b423991a3",
+      "xml_sha256": "ae1e5613e7251085fcf12ab3e79e8371c38506bd6a616fbcc162e62cbde3300a"
+    },
+    {
+      "host": "ps51",
+      "tier": "FaultRecovery",
+      "summary_path": "tests/.work/T22-C1-ps51-0fae50d57c7c49818f970ae765a91908/FaultRecovery.summary.json",
+      "xml_path": "tests/.work/T22-C1-ps51-0fae50d57c7c49818f970ae765a91908/FaultRecovery.results.xml",
+      "source_bound_clean": true,
+      "xml_cases": 14,
+      "xml_passed": 14,
+      "summary_passed": 14,
+      "summary_total": 14,
+      "failed": 0,
+      "failed_blocks": 0,
+      "failed_containers": 0,
+      "skipped": 0,
+      "not_run": 0,
+      "inconclusive": 0,
+      "result": "pass",
+      "scope": "windows-real-engines-environment-and-controlled-owned-native-cancellation",
+      "summary_sha256": "2428b394d7e3e6dc746cba735309b8a48c06c03ef04400904042cac141aa6a94",
+      "xml_sha256": "7150ca7c3d43df5e80028948a249a27f284623b6b2e286b5d387dfd0b353f7ff"
+    },
+    {
+      "host": "ps51",
+      "tier": "SourceDiscovery",
+      "summary_path": "tests/.work/T22-C1-ps51-0fae50d57c7c49818f970ae765a91908/SourceDiscovery.summary.json",
+      "xml_path": "tests/.work/T22-C1-ps51-0fae50d57c7c49818f970ae765a91908/SourceDiscovery.results.xml",
+      "source_bound_clean": true,
+      "xml_cases": 4,
+      "xml_passed": 4,
+      "summary_passed": 4,
+      "summary_total": 4,
+      "failed": 0,
+      "failed_blocks": 0,
+      "failed_containers": 0,
+      "skipped": 0,
+      "not_run": 0,
+      "inconclusive": 0,
+      "result": "pass",
+      "scope": "windows-entry-source-discovery-real-pdftk",
+      "summary_sha256": "473ca564dda78bc8c5ac7f8c187ae0aebafda1832d7ccad13f22afbf92ba5043",
+      "xml_sha256": "234d2a608c56f7b88e46fb8ec85e48f154f86c3aaec5296ff8096d6f38e4fa75"
+    },
+    {
+      "host": "ps51",
+      "tier": "MasterValidation",
+      "summary_path": "tests/.work/T22-C1-ps51-0fae50d57c7c49818f970ae765a91908/MasterValidation.summary.json",
+      "xml_path": "tests/.work/T22-C1-ps51-0fae50d57c7c49818f970ae765a91908/MasterValidation.results.xml",
+      "source_bound_clean": true,
+      "xml_cases": 7,
+      "xml_passed": 7,
+      "summary_passed": 7,
+      "summary_total": 7,
+      "failed": 0,
+      "failed_blocks": 0,
+      "failed_containers": 0,
+      "skipped": 0,
+      "not_run": 0,
+      "inconclusive": 0,
+      "result": "pass",
+      "scope": "windows-real-pdftk-master-validation-entry-and-independent-pdfium-order-rotation",
+      "summary_sha256": "7f11663a7e6189c675b3b807962f355d957c28ff2ad12de0ee55dcecd4bc9d85",
+      "xml_sha256": "cff38af34793a700b09944770ace265af1cb37d8f985bc60353b0ade14bdc324"
+    },
+    {
+      "host": "ps51",
+      "tier": "Staging",
+      "summary_path": "tests/.work/T22-C1-ps51-0fae50d57c7c49818f970ae765a91908/Staging.summary.json",
+      "xml_path": "tests/.work/T22-C1-ps51-0fae50d57c7c49818f970ae765a91908/Staging.results.xml",
+      "source_bound_clean": true,
+      "xml_cases": 9,
+      "xml_passed": 9,
+      "summary_passed": 9,
+      "summary_total": 9,
+      "failed": 0,
+      "failed_blocks": 0,
+      "failed_containers": 0,
+      "skipped": 0,
+      "not_run": 0,
+      "inconclusive": 0,
+      "result": "pass",
+      "scope": "windows-real-pdftk-gs-staging-publication-controlled-scheduling-and-filesystem",
+      "summary_sha256": "796e2b7935019d76856c20f6e89d510ed234017db93c58c1f78a6b8bd8d72c63",
+      "xml_sha256": "2f0abba11ab500cabb4cd743ada08aa233f961741504b1babb007c61ea5cbba9"
+    },
+    {
+      "host": "ps51",
+      "tier": "Destination",
+      "summary_path": "tests/.work/T22-C1-ps51-0fae50d57c7c49818f970ae765a91908/Destination.summary.json",
+      "xml_path": "tests/.work/T22-C1-ps51-0fae50d57c7c49818f970ae765a91908/Destination.results.xml",
+      "source_bound_clean": true,
+      "xml_cases": 15,
+      "xml_passed": 15,
+      "summary_passed": 15,
+      "summary_total": 15,
+      "failed": 0,
+      "failed_blocks": 0,
+      "failed_containers": 0,
+      "skipped": 0,
+      "not_run": 0,
+      "inconclusive": 0,
+      "result": "pass",
+      "scope": "windows-real-entry-destination-identity-ACL-junction-concurrency",
+      "summary_sha256": "4d860a4409d5c8d2aae633d91c12949a6cddf925e83ba7f4fe267a63eb502773",
+      "xml_sha256": "eba3ab3115f1aa33488e43d035e7cb41650f61917fc2f23fe2ed5c6d30875c31"
+    },
+    {
+      "host": "ps51",
+      "tier": "EmailOutcome",
+      "summary_path": "tests/.work/T22-C1-ps51-0fae50d57c7c49818f970ae765a91908/EmailOutcome.summary.json",
+      "xml_path": "tests/.work/T22-C1-ps51-0fae50d57c7c49818f970ae765a91908/EmailOutcome.results.xml",
+      "source_bound_clean": true,
+      "xml_cases": 11,
+      "xml_passed": 11,
+      "summary_passed": 11,
+      "summary_total": 11,
+      "failed": 0,
+      "failed_blocks": 0,
+      "failed_containers": 0,
+      "skipped": 0,
+      "not_run": 0,
+      "inconclusive": 0,
+      "result": "pass",
+      "scope": "windows-real-pdftk-gs-email-outcomes-actual-batch-and-controlled-fault-scheduling",
+      "summary_sha256": "66b451179b02b7631e8c087f3b0dce4a39e6dd3eb5cefb7c23bff434ea69c26e",
+      "xml_sha256": "5873ff9d6f8e5b9636d7e4f4f5276540f7e52c84e7ab5b3995e417c20b30e06f"
+    },
+    {
+      "host": "ps7",
+      "tier": "Unit",
+      "summary_path": "tests/.work/T22-C1-ps7-6ddab43d94f841708e103192ede47dd1/Unit.summary.json",
+      "xml_path": "tests/.work/T22-C1-ps7-6ddab43d94f841708e103192ede47dd1/Unit.results.xml",
+      "source_bound_clean": true,
+      "xml_cases": 424,
+      "xml_passed": 424,
+      "summary_passed": 424,
+      "summary_total": 424,
+      "failed": 0,
+      "failed_blocks": 0,
+      "failed_containers": 0,
+      "skipped": 0,
+      "not_run": 0,
+      "inconclusive": 0,
+      "result": "pass",
+      "scope": "unit-controlled-process-and-filesystem",
+      "summary_sha256": "6d4dac6739294ed9981a8f5922f522a62d9d4d232c192c8711544197c0cb8098",
+      "xml_sha256": "6c7ee940d742d9bd684ce7f9fdbed22bf4e5bd080d8a69d1d32c01610de53d42"
+    },
+    {
+      "host": "ps7",
+      "tier": "NativeRunner",
+      "summary_path": "tests/.work/T22-C1-ps7-6ddab43d94f841708e103192ede47dd1/NativeRunner.summary.json",
+      "xml_path": "tests/.work/T22-C1-ps7-6ddab43d94f841708e103192ede47dd1/NativeRunner.results.xml",
+      "source_bound_clean": true,
+      "xml_cases": 41,
+      "xml_passed": 41,
+      "summary_passed": 41,
+      "summary_total": 41,
+      "failed": 0,
+      "failed_blocks": 0,
+      "failed_containers": 0,
+      "skipped": 0,
+      "not_run": 0,
+      "inconclusive": 0,
+      "result": "pass",
+      "scope": "windows-controlled-native-argument-process; no PDF-engine-support claim",
+      "summary_sha256": "52e22a2beacb96876f16b03dce4259b2aac76ebc44d23d79f0a1f593ac9bc5a7",
+      "xml_sha256": "ccb5203c1cd999f97902e0f5a5586bbe8902036a325576048ad24438ffbecdee"
+    },
+    {
+      "host": "ps7",
+      "tier": "ToolInvocation",
+      "summary_path": "tests/.work/T22-C1-ps7-6ddab43d94f841708e103192ede47dd1/ToolInvocation.summary.json",
+      "xml_path": "tests/.work/T22-C1-ps7-6ddab43d94f841708e103192ede47dd1/ToolInvocation.results.xml",
+      "source_bound_clean": true,
+      "xml_cases": 12,
+      "xml_passed": 12,
+      "summary_passed": 12,
+      "summary_total": 12,
+      "failed": 0,
+      "failed_blocks": 0,
+      "failed_containers": 0,
+      "skipped": 0,
+      "not_run": 0,
+      "inconclusive": 0,
+      "result": "pass",
+      "scope": "unit-controlled-native-job-and-filesystem",
+      "summary_sha256": "751bf42e25c3ae95c3fb80ffa687ac09b5b9fcb1e7d90a6934ba5b3069313bc7",
+      "xml_sha256": "be3a8026aea4cc4e929fecae85251b155895c4ebd19cc4b44abfa92cf1f470af"
+    },
+    {
+      "host": "ps7",
+      "tier": "FaultIO",
+      "summary_path": "tests/.work/T22-C1-ps7-6ddab43d94f841708e103192ede47dd1/FaultIO.summary.json",
+      "xml_path": "tests/.work/T22-C1-ps7-6ddab43d94f841708e103192ede47dd1/FaultIO.results.xml",
+      "source_bound_clean": true,
+      "xml_cases": 32,
+      "xml_passed": 32,
+      "summary_passed": 32,
+      "summary_total": 32,
+      "failed": 0,
+      "failed_blocks": 0,
+      "failed_containers": 0,
+      "skipped": 0,
+      "not_run": 0,
+      "inconclusive": 0,
+      "result": "pass",
+      "scope": "unit-controlled-IO-logging-outcomes-and-real-file-locks",
+      "summary_sha256": "7dac37fd544f06e198e62c9c3780e041bb2235a96c952c2abeb1b19b0e3805f4",
+      "xml_sha256": "a9b1ce832ef77ebda8be8cd5fd35ab45b93ea6ab7dabfff9c0a211150a09eefb"
+    },
+    {
+      "host": "ps7",
+      "tier": "FaultRecovery",
+      "summary_path": "tests/.work/T22-C1-ps7-6ddab43d94f841708e103192ede47dd1/FaultRecovery.summary.json",
+      "xml_path": "tests/.work/T22-C1-ps7-6ddab43d94f841708e103192ede47dd1/FaultRecovery.results.xml",
+      "source_bound_clean": true,
+      "xml_cases": 14,
+      "xml_passed": 14,
+      "summary_passed": 14,
+      "summary_total": 14,
+      "failed": 0,
+      "failed_blocks": 0,
+      "failed_containers": 0,
+      "skipped": 0,
+      "not_run": 0,
+      "inconclusive": 0,
+      "result": "pass",
+      "scope": "windows-real-engines-environment-and-controlled-owned-native-cancellation",
+      "summary_sha256": "747be49eecf174bd539352d3edd1df93eedf66d6504505608fce01e5c938cf80",
+      "xml_sha256": "efdcdb5f0250cf1ed321eccd0e78c35c8020089e39e127c0323b274d46288a5a"
+    },
+    {
+      "host": "ps7",
+      "tier": "SourceDiscovery",
+      "summary_path": "tests/.work/T22-C1-ps7-6ddab43d94f841708e103192ede47dd1/SourceDiscovery.summary.json",
+      "xml_path": "tests/.work/T22-C1-ps7-6ddab43d94f841708e103192ede47dd1/SourceDiscovery.results.xml",
+      "source_bound_clean": true,
+      "xml_cases": 4,
+      "xml_passed": 4,
+      "summary_passed": 4,
+      "summary_total": 4,
+      "failed": 0,
+      "failed_blocks": 0,
+      "failed_containers": 0,
+      "skipped": 0,
+      "not_run": 0,
+      "inconclusive": 0,
+      "result": "pass",
+      "scope": "windows-entry-source-discovery-real-pdftk",
+      "summary_sha256": "dac2252ea44be161008e63f88499a57e74785ab0d1000c4d31f25e22f1e5e197",
+      "xml_sha256": "43a8f60cfbfaf032223a34dafe628c78eeece2808cdac00057aaed245be4b08e"
+    },
+    {
+      "host": "ps7",
+      "tier": "MasterValidation",
+      "summary_path": "tests/.work/T22-C1-ps7-6ddab43d94f841708e103192ede47dd1/MasterValidation.summary.json",
+      "xml_path": "tests/.work/T22-C1-ps7-6ddab43d94f841708e103192ede47dd1/MasterValidation.results.xml",
+      "source_bound_clean": true,
+      "xml_cases": 7,
+      "xml_passed": 7,
+      "summary_passed": 7,
+      "summary_total": 7,
+      "failed": 0,
+      "failed_blocks": 0,
+      "failed_containers": 0,
+      "skipped": 0,
+      "not_run": 0,
+      "inconclusive": 0,
+      "result": "pass",
+      "scope": "windows-real-pdftk-master-validation-entry-and-independent-pdfium-order-rotation",
+      "summary_sha256": "88ca86310f2817a99c454ace253e1c5d77237c1097c2f9951a22a7a85a21df84",
+      "xml_sha256": "05e5e7a646b39bce69957d56fe047a8ebd8fc1979966c4ca3e58a8cc7bf9209e"
+    },
+    {
+      "host": "ps7",
+      "tier": "Staging",
+      "summary_path": "tests/.work/T22-C1-ps7-6ddab43d94f841708e103192ede47dd1/Staging.summary.json",
+      "xml_path": "tests/.work/T22-C1-ps7-6ddab43d94f841708e103192ede47dd1/Staging.results.xml",
+      "source_bound_clean": true,
+      "xml_cases": 9,
+      "xml_passed": 9,
+      "summary_passed": 9,
+      "summary_total": 9,
+      "failed": 0,
+      "failed_blocks": 0,
+      "failed_containers": 0,
+      "skipped": 0,
+      "not_run": 0,
+      "inconclusive": 0,
+      "result": "pass",
+      "scope": "windows-real-pdftk-gs-staging-publication-controlled-scheduling-and-filesystem",
+      "summary_sha256": "6d5874785b42be94bd2ea72336c300847f17275529fb98bcd8cde5ef82f0dfd8",
+      "xml_sha256": "998b48e25cc89a557ae2869ba39258e96bd982d1d1c84ab2f0df4922e8cd194a"
+    },
+    {
+      "host": "ps7",
+      "tier": "Destination",
+      "summary_path": "tests/.work/T22-C1-ps7-6ddab43d94f841708e103192ede47dd1/Destination.summary.json",
+      "xml_path": "tests/.work/T22-C1-ps7-6ddab43d94f841708e103192ede47dd1/Destination.results.xml",
+      "source_bound_clean": true,
+      "xml_cases": 15,
+      "xml_passed": 15,
+      "summary_passed": 15,
+      "summary_total": 15,
+      "failed": 0,
+      "failed_blocks": 0,
+      "failed_containers": 0,
+      "skipped": 0,
+      "not_run": 0,
+      "inconclusive": 0,
+      "result": "pass",
+      "scope": "windows-real-entry-destination-identity-ACL-junction-concurrency",
+      "summary_sha256": "44cb374a810b1522c93406ad1ee373c45f2c981d31df90ef525fa6fd932da68d",
+      "xml_sha256": "80bb942af0b7a4cf08fe137fdbfdad02203020b70d5b17518617d4717baece3a"
+    }
+  ],
+  "remaining_tiers_not_claimed": "Root consolidated18-tier runs are still in progress. This snapshot audits only available complete summaries plus their NUnit actual test-case nodes.",
+  "historical_focused": {
+    "red_passed_each_host": 63,
+    "red_failed_each_host": 1,
+    "red_total_each_host": 64,
+    "fixed_passed_each_host": 64,
+    "fixed_failed_each_host": 0,
+    "fixed_total_each_host": 64,
+    "source_binding": "Retrospective focused hashes and post-green two assertion syntax changes are disclosed in metadata.json. Final C1 uses clean source start/end guards."
+  },
+  "classes": [
+    "unit-controlled-faults-and-real-local-IO",
+    "actual-Windows-controlled-native-process",
+    "Windows-native-PDFtk-Ghostscript-with-disclosed-controlled-seams"
+  ],
+  "limit": "No mock/process fixture is relabeled native PDF support. Simulated disk-full is not physical disk exhaustion. No manual Explorer/UNC/crash/platform/security/package/release acceptance."
+}

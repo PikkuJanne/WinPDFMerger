@@ -8,6 +8,13 @@
 
 # Preserve the exact selected T22 public report bytes and manifest digests.
 /docs/codex/evidence/T22-reports/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T22-*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T22-audit-invocation/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+# Four captured diagnostic streams intentionally contain empty-field/blank lines.
+/docs/codex/evidence/T22-reports/ps51/SourceDiscovery.stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T22-reports/ps7/SourceDiscovery.stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T22-reports/review/C1-9494cf7cdc77449bb25101a439b27b9e/ps51/xml_write_fault/stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T22-reports/review/preparation/preparation-5c768a77c61f43ac8eab5a12f8adf231/ps51/xml_write_fault/stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 
 # Preserve selected T20 documentation review/report bytes and recorded hashes.
 /docs/codex/evidence/T20-reports/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
