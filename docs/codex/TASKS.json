@@ -380,7 +380,7 @@
       "id": "T12",
       "milestone": "M2",
       "title": "Introduce no-overwrite staging and publication",
-      "status": "in_progress",
+      "status": "done",
       "depends_on": [
         "T11"
       ],
@@ -395,8 +395,18 @@
         "AC028",
         "AC029"
       ],
-      "evidence": [],
-      "notes": "Implementing atomic per-run staging, ownership marker, no-overwrite final publication and bounded cleanup. Required AC027/28/29 pending actual dual-shell execution and clean checkpoint synchronization."
+      "evidence": [
+        "docs/codex/evidence/T12-completion.md",
+        "docs/codex/evidence/T12-C1-results.json",
+        "docs/codex/evidence/T12-C1-reports/manifest.json",
+        "docs/codex/evidence/T12-C1-review.json",
+        "docs/codex/evidence/T12-C1-native-audit.json",
+        "docs/codex/evidence/T12-C1-live-sync.json",
+        "docs/codex/evidence/T12-cache-verification.json",
+        "docs/codex/evidence/T12-environment.json",
+        "docs/codex/evidence/T12-checkpoint.md"
+      ],
+      "notes": "Clean C1 1a4901b8914d02af6c539bc5b82181705ca3c2e9: ten focused tiers in each actual PS5.1.26100.9444 / supported PS7.6.6,324 passes each/648 total,all failure/skip/not_run counts0. AC027/28/29 pass: atomic new per-run stage,held readable immutable marker,original directory identity/reparse guards,real no-overwrite file/directory races,source/foreign/master preservation,live concurrent second stage survives first cleanup. Known-only nonrecursive cleanup reports locks/unknown/changed ownership; directory-delete failure restores marker best effort with identity guard. Static0errors/51warnings/11info per shell over five-file scope retained/reviewed nonblocking. Original dirty sharing/diagnostic6pass6fail per shell and unit fixture-only27/1 retained/disclosed separately. C1 normal push/cleanliveverified; final records C2 own sync reported in session. New draftPR recorded in completion. T13 structural master validation next; current nonempty-only gate is not full PDF validation, email size/fidelity/Explorer/release acceptance."
     },
     {
       "id": "T13",

@@ -1,0 +1,305 @@
+Pester v6.2.0
+
+Running tests from 10 files.
+
+Running tests from '<repo>\tests\unit\Dependencies.Tests.ps1'
+Describing T07: controlled dependency discovery and version regressions
+ Describing AC013: strict PDFtk executable selection
+   [+] ignores a Alias named pdftk and requests applications only 500ms
+   [+] ignores a Function named pdftk and requests applications only 94ms
+   [+] selects a valid PATH application before common installations and prefers ApplicationInfo.Path 73ms
+   [+] uses the first existing PATH application when multiple candidates are returned 23ms
+   [+] resolves the actual ProgramFiles(x86) legacy PDFtk candidate 40ms
+   [+] falls through to the ProgramFiles(x86) PDFtk Server candidate 35ms
+   [+] preserves documented common-location priority 38ms
+   [+] rejects wrong executable names and continues to a valid common candidate 33ms
+   [+] rejects a missing PATH file and continues to the next real file 32ms
+   [+] rejects a directory named pdftk.exe instead of accepting it as an executable 63ms
+   [+] uses literal common-root paths containing brackets 41ms
+   [+] returns no path when required PDFtk is absent 36ms
+ Describing AC014: optional Ghostscript selection and numeric installation versions
+   [+] ignores a Alias named Ghostscript and requests applications only 92ms
+   [+] ignores a Function named Ghostscript and requests applications only 43ms
+   [+] prioritizes PATH gswin64c before PATH gswin32c and common installations 43ms
+   [+] falls back to valid PATH gswin32c when PATH gswin64c is missing or incorrectly named 38ms
+   [+] orders gs10.2 after gs9.99 numerically rather than lexically 61ms
+   [+] continues past an incomplete newest recognized installation 49ms
+   [+] ignores unrelated and malformed version directories even when they contain executables 62ms
+   [+] accepts supported two, three and four component folder versions and sorts them numerically 79ms
+   [+] ignores overflowing two, three and four component directory versions 54ms
+   [+] prefers gswin64c before gswin32c within the same installation 32ms
+   [+] uses gswin32c from a recognized common installation when its gswin64c is absent 59ms
+   [+] considers the x86 root globally by version before an older ProgramFiles installation 39ms
+   [+] prefers ProgramFiles to the x86 root when installation versions tie 36ms
+   [+] uses literal Ghostscript installation roots containing brackets 38ms
+   [+] returns no path when optional Ghostscript is absent 27ms
+ Describing AC013: native version parsing through the agreed controlled process seam
+   [+] parses the exact PDFtk banner version and calls the selected executable path 134ms
+   [+] parses bare Ghostscript version 10.06 while preserving component zeros 50ms
+   [+] parses bare Ghostscript version 10.06.0 while preserving component zeros 56ms
+   [+] parses bare Ghostscript version 10.06.0.1 while preserving component zeros 29ms
+   [+] uses recognizable stderr version output when stdout is empty 36ms
+   [+] recognizes an anchored stderr version when stdout contains only unrelated diagnostics 75ms
+   [+] does not let unrelated stderr override a successful stdout version 44ms
+   [+] rejects a nonzero probe exit even when its output contains a recognizable version 75ms
+   [+] rejects unrecognized version output rather than guessing from generic digits 38ms
+   [+] rejects Ghostscript output unrelated application 10.06.0 without a complete valid version 34ms
+   [+] rejects Ghostscript output 10.06.0garbage without a complete valid version 20ms
+   [+] rejects Ghostscript output 2147483648.0 without a complete valid version 28ms
+   [+] rejects Ghostscript output 10.2.2147483648 without a complete valid version 19ms
+   [+] rejects Ghostscript output 10.2.1.2147483648 without a complete valid version 22ms
+   [+] propagates a version-probe exception instead of inventing a version 43ms
+
+Running tests from '<repo>\tests\unit\Destination.Tests.ps1'
+Describing AC022: literal destination validation and owned writable probe
+  [+] accepts a literal existing destination with brackets and a trailing separator 30ms
+  [+] rejects null rather than treating it as an omitted option 9ms
+  [+] rejects empty rather than treating it as an omitted option 6ms
+  [+] rejects whitespace rather than treating it as an omitted option 9ms
+  [+] rejects nonfilesystem rather than treating it as an omitted option 7ms
+  [+] does not create a missing destination 20ms
+  [+] refuses a file or wildcard destination 19ms
+  [+] writes and flushes its owned probe without touching an existing sentinel or leaving residue 42ms
+
+Describing AC023: directory identity is physical and reparse paths are checked before probing
+  [+] accepts distinct existing directories 660ms
+  [+] rejects the same directory and its case alias without creating files 74ms
+  [+] refuses two spelling-distinct paths with a matching physical identity 50ms
+  [+] fails closed when a physical identity cannot be established 41ms
+
+Describing AC024: bounded shared output names
+  [+] uses a safe ordinary folder token and common identity for all artifacts 42ms
+  [+] uses a safe drive root folder token and common identity for all artifacts 15ms
+  [+] uses a safe empty leaf folder token and common identity for all artifacts 11ms
+  [+] uses a safe dot-only leaf folder token and common identity for all artifacts 7ms
+  [+] uses a safe trailing dots and spaces folder token and common identity for all artifacts 9ms
+  [+] uses a safe trailing separators folder token and common identity for all artifacts 11ms
+  [+] uses a safe reserved token folder token and common identity for all artifacts 9ms
+  [+] preserves supported punctuation and Unicode in the folder label 7ms
+  [+] bounds long labels without splitting a surrogate pair 20ms
+  [+] adapts the token to the complete destination budget 9ms
+  [+] rejects a destination without room for the native private output before creating anything 8ms
+  [+] formats the timestamp independently of the current culture calendar 27ms
+  [+] gives same-second runs independent random identities 77ms
+
+Describing AC024: create-new log reservation cannot steal an existing identity
+  [+] reserves one log and appends the first line without overwriting it 45ms
+  [+] refuses an existing master before log reservation 17ms
+  [+] refuses an existing email before log reservation 10ms
+  [+] refuses an existing log before log reservation 12ms
+  [+] refuses an existing master directory before log reservation 8ms
+
+Running tests from '<repo>\tests\unit\FakeNative.Tests.ps1'
+Describing T03 controlled process fixture (not PDFtk or Ghostscript)
+  [+] echoes individual space, empty, Unicode and trailing-backslash arguments 103ms
+  [+] exposes the baseline Start-Process array splitting defect 76ms
+  [+] emits both streams independently 62ms
+  [+] returns nonzero after making a deliberately invalid partial file and refuses overwrite 115ms
+  [+] provides a finite sleep for later timeout tests 173ms
+  [+] provides high volume on both streams for later capture tests 128ms
+
+Running tests from '<repo>\tests\unit\Helpers.Tests.ps1'
+Describing AC005: importing baseline helpers
+  [+] has only function definitions at file scope 69ms
+  [+] returns to the caller without native work, outputs, location or preference changes 40ms
+  [+] preserves GS_OPTIONS unset 15ms
+  [+] preserves GS_OPTIONS empty 9ms
+  [+] preserves GS_OPTIONS value 17ms
+
+Describing Existing helper behavior and corrected ordering regressions
+  [+] replaces invalid filename characters and trims ordinary whitespace 7ms
+  [+] orders the formerly defective numeric example naturally 28ms
+  [+] orders the formerly overflowing Int32 example without fixed-width parsing 10ms
+
+Running tests from '<repo>\tests\unit\InputPreflight.Tests.ps1'
+Describing T11: document-data page count parsing
+  [+] uses the one complete labeled count amid unrelated metadata and noise 27ms
+  [+] parses a positive Int64 count independently of culture 6ms
+  [+] rejects empty output without inventing a count 7ms
+  [+] rejects digits without a label without inventing a count 3ms
+  [+] rejects count inside metadata only without inventing a count 3ms
+  [+] rejects split label/value without inventing a count 3ms
+  [+] rejects zero pages without inventing a count 3ms
+  [+] rejects negative count without inventing a count 4ms
+  [+] rejects explicit plus without inventing a count 3ms
+  [+] rejects fraction without inventing a count 4ms
+  [+] rejects exponent without inventing a count 3ms
+  [+] rejects non-ASCII digits without inventing a count 3ms
+  [+] rejects trailing text without inventing a count 11ms
+  [+] rejects overflow without inventing a count 4ms
+  [+] rejects duplicate label without inventing a count 4ms
+  [+] rejects malformed duplicate without inventing a count 5ms
+
+Describing T11: frozen input metadata
+  [+] records literal path, length and UTC timestamp without editing the source 36ms
+  [+] rejects empty input by name 16ms
+  [+] rejects missing input by name 10ms
+  [+] rejects a directory instead of an input file 11ms
+  [+] detects a length change after the snapshot 13ms
+  [+] detects timestamp change even when length is unchanged 17ms
+
+Describing T11: bounded read-only PDFtk inspection wiring
+  [+] uses one absolute input, fixed document-data operation and dont_ask with injected bound 98ms
+  [+] rejects nonzero exit even when stdout contains a plausible count 33ms
+  [+] rejects timeout even when stdout contains a plausible count 26ms
+  [+] rejects cancellation even when stdout contains a plausible count 23ms
+  [+] rejects capture failure even when stdout contains a plausible count 27ms
+  [+] rejects truncated stdout even when stdout contains a plausible count 28ms
+  [+] rejects termination failure even when stdout contains a plausible count 22ms
+  [+] never treats a count in stderr as document data 32ms
+  [+] refuses an unsupported long operand before launching the native process 21ms
+  [+] retains benign stderr warnings while using only the labeled stdout count 26ms
+
+Describing T11: complete ordered page inventory
+  [+] retains all given inputs and their order, sums pages and rechecks before merge 90ms
+  [+] stops on a rejected file without returning a partial inventory 33ms
+  [+] detects mutation of the file during native inspection 31ms
+  [+] snapshots every file before the first inspection and detects a later-file mutation 44ms
+  [+] detects an earlier-file mutation during a later inspection at the final check 44ms
+  [+] does not return success if native evidence logging fails 56ms
+  [+] returns exactly one inventory object when the native logger emits text 60ms
+  [+] guards the expected total against Int64 overflow 34ms
+  [+] rejects an empty inventory before inspection 21ms
+
+Running tests from '<repo>\tests\unit\NativeCommand.Tests.ps1'
+Describing AC021: complete serialized command length
+  [+] counts executable, quotes, separator and NUL, including surrogate pairs 27ms
+  [+] accepts the exact bound and rejects one code unit above it 14ms
+  [+] includes executable and terminator when there are no arguments 4ms
+  [+] refuses oversized arguments before Process.Start with explicit launch state 291ms
+  [+] applies an injectable smaller limit before launch 8ms
+
+Running tests from '<repo>\tests\unit\Ordering.Tests.ps1'
+Describing AC011: ASCII numeric magnitude and leading-zero order
+  [+] orders 1, 01, 001, 2 and 10 by the documented run rules 24ms
+  [+] handles tokens beyond Int32, Int64 and decimal without overflow 11ms
+  [+] uses ordinal digits to distinguish very long values of the same significant length 8ms
+  [+] orders equal long magnitudes by original numeric-run length 9ms
+  [+] continues through multiple numeric groups 9ms
+
+Describing AC012: deterministic natural segments and final ties
+  [+] orders all-zero numeric runs by their original length 11ms
+  [+] applies an equal-magnitude run-length tie before comparing later numeric groups 7ms
+  [+] compares later natural segments before the original case-sensitive name tie 7ms
+  [+] orders exhausted token sequences before extensions despite original-case differences 7ms
+  [+] compares mixed digit and text punctuation tokens ordinally rather than putting all numbers first 17ms
+  [+] uses the ordinal original basename before the ordinal full-path tie 9ms
+  [+] compares already canonical absolute full paths ordinally when basenames tie 11ms
+  [+] returns zero when natural name, original name and canonical full path are identical 5ms
+  [+] treats Arabic-Indic and fullwidth digits as ordinal text rather than numeric runs 10ms
+  [+] gives the same documented order and reversed-input result in en-US 20ms
+  [+] gives the same documented order and reversed-input result in tr-TR 20ms
+  [+] preserves object identities and the original collection while sorting a copy 12ms
+  [+] normalizes empty and single-input collections without copying their objects 9ms
+  [+] is reflexive, antisymmetric and transitive on a concise mixed corpus 421ms
+
+Running tests from '<repo>\tests\unit\PdfEnvelope.Tests.ps1'
+Describing T11: bounded PDF byte-envelope plausibility
+  [+] accepts a conventional target with LF and preserves exact bytes 78ms
+  [+] accepts a conventional target with CR and preserves exact bytes 9ms
+  [+] accepts a conventional target with CRLF and preserves exact bytes 9ms
+  [+] accepts an indirect-object target shape for cross-reference streams 12ms
+  [+] accepts a PDF comment as the delimiter immediately after obj 13ms
+  [+] accepts comments separating indirect-object header tokens 9ms
+  [+] rejects a case-changed header PDF keyword 16ms
+  [+] rejects a case-changed xref PDF keyword 7ms
+  [+] rejects a case-changed obj PDF keyword 6ms
+  [+] rejects a case-changed footer PDF keyword 6ms
+  [+] accepts horizontal whitespace around the final numeric offset 11ms
+  [+] uses byte offsets when the prefix contains binary characters 16ms
+  [+] uses the final footer after an earlier dummy startxref0 and EOF 7ms
+  [+] allows PDF whitespace after the terminal EOF 10ms
+  [+] rejects missing header instead of trusting a backend-repaired count 14ms
+  [+] rejects missing EOF instead of trusting a backend-repaired count 6ms
+  [+] rejects zero final offset instead of trusting a backend-repaired count 10ms
+  [+] rejects out-of-file offset instead of trusting a backend-repaired count 6ms
+  [+] rejects overflow offset instead of trusting a backend-repaired count 5ms
+  [+] rejects invalid target instead of trusting a backend-repaired count 7ms
+  [+] rejects trailing garbage instead of trusting a backend-repaired count 5ms
+  [+] rejects footer beyond supported window instead of trusting a backend-repaired count 26ms
+
+Running tests from '<repo>\tests\unit\SourceDiscovery.Tests.ps1'
+Describing AC007: real filesystem source collection boundaries
+  [+] reports zero top-level visible PDFs clearly 28ms
+  [+] returns one PDF as a FileInfo that callers can normalize to an array 24ms
+  [+] includes multiple top-level PDFs and uppercase extensions without prefix omission 25ms
+  [+] omits subfolder and hidden PDFs while preserving every source byte, name and metadata 40ms
+  [+] reports no inputs when the only top-level PDF is hidden 13ms
+  [+] freezes the discovered collection before a later file arrives 14ms
+
+Describing AC008: literal source directory validation
+  [+] resolves bracket names literally instead of selecting a wildcard sibling 28ms
+  [+] resolves a relative directory and a trailing separator without changing location 16ms
+  [+] accepts an explicitly qualified FileSystem directory 8ms
+  [+] preserves supported punctuation, Unicode and apostrophes in directory and input names 19ms
+  [+] rejects null input with a SourceFolder diagnostic 10ms
+  [+] rejects empty input with a SourceFolder diagnostic 4ms
+  [+] rejects whitespace input with a SourceFolder diagnostic 3ms
+  [+] rejects a missing directory 7ms
+  [+] rejects a file instead of a directory 9ms
+  [+] rejects nonfilesystem providers even when the provider path exists 7ms
+  [+] rejects wildcard expansion instead of resolving one or multiple matching directories 11ms
+  [+] rejects a directory array instead of combining source folders 8ms
+
+Describing AC008: entry preflight failures precede dependencies and output creation
+  [+] shows usage and exits one for omitted input without an interactive prompt 604ms
+  [+] fails a missing directory before dependency resolution and outputs 2.12s
+  [+] fails a file argument before dependency resolution and outputs 2.31s
+  [+] fails a nonfilesystem provider before dependency resolution and outputs 2.55s
+  [+] rejects extra source paths before creating outputs 2.11s
+  [+] reports zero PDFs before trying to find PDFtk 2.9s
+
+Running tests from '<repo>\tests\unit\Staging.Tests.ps1'
+Describing AC029: owned staging reservation and cleanup boundaries
+  [+] reserves a literal private directory with fixed owned paths and a held ownership marker 192ms
+  [+] refuses an existing same-suffix directory without modifying foreign contents 30ms
+  [+] refuses an existing same-suffix file without modifying foreign contents 23ms
+  [+] rejects an invalid suffix before any staging directory appears 13ms
+  [+] keeps two live stages and their known files independent during cleanup 156ms
+  [+] cleans only known owned files and leaves adjacent prefix-matching artifacts unchanged 88ms
+  [+] refuses all cleanup when an unknown file is present and retains the ownership marker 73ms
+  [+] refuses all cleanup when an unknown directory is present and retains the ownership marker 96ms
+  [+] reports an exact orphan path when a known staged file is locked 60ms
+  [+] refuses publication and cleanup after the held ownership handle has been disposed 47ms
+  [+] reports a late unknown child and restores its marker only while directory identity remains unchanged 122ms
+  [+] reports a late unknown child and restores its marker only while directory identity remains changed 116ms
+  [+] refuses a changed DirectoryIdentity before publication or cleanup can touch a staged file 105ms
+  [+] refuses a changed OutputDirectoryIdentity before publication or cleanup can touch a staged file 114ms
+  [+] refuses a changed MarkerText before publication or cleanup can touch a staged file 108ms
+  [+] does not acquire another directory by changing the context path 52ms
+  [+] refuses a real junction at a known staged path and retains the unrelated target contents 100ms
+
+Describing AC027: literal staged publication uses no-overwrite direct-child moves
+  [+] moves only the known master to a literal final path and leaves other staged/final files intact 207ms
+  [+] moves only the known email to a literal final path and leaves other staged/final files intact 156ms
+  [+] refuses a preexisting final file without changing either candidate 85ms
+  [+] refuses a preexisting final directory without changing either candidate 69ms
+  [+] refuses an output in another directory or a nested directory 86ms
+  [+] refuses relative or noncanonical final operands before the move 80ms
+  [+] refuses an empty, missing or directory staged master without publishing it 85ms
+  [+] refuses an empty, missing or directory staged master without publishing it 73ms
+  [+] refuses an empty, missing or directory staged master without publishing it 64ms
+  [+] refuses an unknown staged operand inside or outside the private directory 78ms
+  [+] reports the actual locked-file move failure while keeping its candidate private 75ms
+Tests completed in 25.28s
+Tests Passed: 225, Failed: 0, Skipped: 0, Inconclusive: 0, NotRun: 0
+{
+  "observed_at_utc": "2026-10-08T03:34:53.6621968Z",
+  "commit_under_test": "1a4901b8914d02af6c539bc5b82181705ca3c2e9",
+  "dirty_worktree": false,
+  "shell_version": "7.6.6",
+  "shell_edition": "Core",
+  "process_64_bit": true,
+  "execution_policy": "RemoteSigned",
+  "pester_version": "6.2.0",
+  "tier": "Unit",
+  "evidence_class": "unit-controlled-process-and-filesystem",
+  "passed": 225,
+  "failed": 0,
+  "failed_blocks": 0,
+  "failed_containers": 0,
+  "skipped": 0,
+  "not_run": 0,
+  "total": 225
+}
+Reports: <repo>\tests\.work\pester\75d9c01219f7491e99baf13ecb9f21b2

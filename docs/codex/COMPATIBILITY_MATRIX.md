@@ -115,7 +115,7 @@ concurrently live PDFtk2.02/GS10.08.0 applications with distinct shared identiti
 Sources/foreign finals and owned probe/stage cleanup are checked. Unit naming/
 metadata mocks remain separate. Static0errors/29warnings/5info retained/reviewed
 nonblocking. Known caches reverified without acquisition/system changes. Earlier
-full NativeRunner/Launcher/Python fixture suites were not repeated; T11–T15,
+full NativeRunner/Launcher/Python fixture suites were not repeated; T11â€“T15,
 OS support-channel/UNC/Explorer/fidelity/CI/full-release gates remain pending.
 See T10 completion/C1 reports/review/live sync and cache audit.
 
@@ -130,6 +130,20 @@ parser/overflow/logging cases remain unit evidence. Guard is bounded plausibilit
 not universal corruption/encryption detection, full fidelity or transactional
 snapshot. Static0errors/31warnings/6information retained/reviewed nonblocking;
 selected approved caches reverified with no new acquisition/system change.
-T12–T15, OS support-channel/UNC/Explorer/fidelity/CI/package/release gates remain.
+T12â€“T15, OS support-channel/UNC/Explorer/fidelity/CI/package/release gates remain.
 Exact commands/hashes/results/limits and separate failed/tolerance-only history:
 T11 completion/C1 reports/results/review/live receipts.
+
+T12 clean C1 `1a4901b8914d02af6c539bc5b82181705ca3c2e9` passes324 focused cases in each actual
+PS5.1.26100.9444 / supportedPS7.6.6 host,648 total,all bad counts zero.
+AC027/28/29 pass: genuine PDFtk2.02/GS10.08.0 successful shared staging,
+file/directory collisions after real native success,actual same-second overlapping
+selected-shell processes with independent staging/final identities,and preserved
+source/foreign/master snapshots. Controlled collision scheduling and barriers
+remain disclosed; locks/changed ownership/late-child marker restoration are unit
+filesystem evidence. Static0errors/51warnings/11info over five-file scope is
+retained/reviewed nonblocking. Current nonempty-only publication is not structural
+master/email acceptance or full fidelity;T13–T15 and later gates remain.
+No acquisition,admin,persistent policy/PATH/security change or broader OS/UNC/
+Explorer/release claim. Exact commands/results/reviews/history/live receipt:
+T12 completion/C1 results/reports/native audit.

@@ -1,0 +1,336 @@
+{
+  "schema_version": 1,
+  "task": "T12",
+  "checkpoint": "C1",
+  "audit_kind": "Independent read-only examination of completed actual Windows native observations and retained synthetic files",
+  "audited_at_utc": "2026-10-08T03:38:26.4857070Z",
+  "implementation_commit": "1a4901b8914d02af6c539bc5b82181705ca3c2e9",
+  "current_head": "1a4901b8914d02af6c539bc5b82181705ca3c2e9",
+  "audit_shell_version": "7.6.6",
+  "audit_process_64bit": true,
+  "engine_pins": [
+    {
+      "leaf": "pdftk.exe",
+      "sha256": "5e5cbe817ecc3cc1875369d81119472559c9624d55c7176852c8827750afa00a",
+      "acquisition_match": true
+    },
+    {
+      "leaf": "libiconv2.dll",
+      "sha256": "cb016e794d3311c71f21d87803e10a0e1133995f62a485eb37b321cd9b9e1087",
+      "acquisition_match": true
+    },
+    {
+      "leaf": "gswin64c.exe",
+      "sha256": "9b29d3b5128c6d53bb4e9eee77e3919d05038cdfdd8e07697af4d9c319f9d5ad",
+      "acquisition_match": true
+    },
+    {
+      "leaf": "gsdll64.dll",
+      "sha256": "a134ed0d3af749bdab93c66029180e676d36d9cc624c192ea287f73c891fb0af",
+      "acquisition_match": true
+    }
+  ],
+  "shell_audits": [
+    {
+      "shell": "ps51",
+      "tested_shell_version": "5.1.26100.9444",
+      "observations": 9,
+      "pester_passed": 9,
+      "clean_commit": "1a4901b8914d02af6c539bc5b82181705ca3c2e9",
+      "receipts": [
+        {
+          "kind": "suite_stdout",
+          "path": "tests/.work/T12-C1-ps51/Staging.txt",
+          "sha256": "9303265be66c756c09343092f5e2348c3f218e85146b6a98b9ec5a9760e85769"
+        },
+        {
+          "kind": "native_observations",
+          "path": "tests/.work/staging/fd57e919a5654822929eeb4ab6d230b9/native-observations.json",
+          "sha256": "fc74f575ec695e93a4bf21f36833d79bfc9a6aba63607f919b547ac7133af360"
+        },
+        {
+          "kind": "summary",
+          "path": "tests/.work/pester/d7cac8f980874784b16b2a340cca05f7/summary.json",
+          "sha256": "e5ae3897302d7d27205706d8d5ce60f4d20d005ec9d9c9546f2ea8f57e1d980b"
+        },
+        {
+          "kind": "nunit_xml",
+          "path": "tests/.work/pester/d7cac8f980874784b16b2a340cca05f7/results.xml",
+          "sha256": "886a3ba0acb67eaaf3739bfc179b03633babc702306ebf60c8a8a598d3e29f08"
+        }
+      ],
+      "label_audits": [
+        {
+          "label": "real-tools-one-owned-stage",
+          "scoped_audit": "Compared native flags, recorded unchanged snapshots and current retained file hashes; scoped checks above."
+        },
+        {
+          "label": "preexisting-final-Pdftk",
+          "scoped_audit": "Compared native flags, recorded unchanged snapshots and current retained file hashes; scoped checks above."
+        },
+        {
+          "label": "preexisting-final-Ghostscript",
+          "scoped_audit": "Compared native flags, recorded unchanged snapshots and current retained file hashes; scoped checks above."
+        },
+        {
+          "label": "actual-move-file-collision-after-real-Pdftk",
+          "scoped_audit": "Compared native flags, recorded unchanged snapshots and current retained file hashes; scoped checks above."
+        },
+        {
+          "label": "actual-move-file-collision-after-real-Ghostscript",
+          "scoped_audit": "Compared native flags, recorded unchanged snapshots and current retained file hashes; scoped checks above."
+        },
+        {
+          "label": "actual-move-directory-collision-after-real-Pdftk",
+          "scoped_audit": "Compared native flags, recorded unchanged snapshots and current retained file hashes; scoped checks above."
+        },
+        {
+          "label": "actual-move-directory-collision-after-real-Ghostscript",
+          "scoped_audit": "Compared native flags, recorded unchanged snapshots and current retained file hashes; scoped checks above."
+        },
+        {
+          "label": "actual-pdftk-bad-input-owned-cleanup",
+          "scoped_audit": "Compared native flags, recorded unchanged snapshots and current retained file hashes; scoped checks above."
+        },
+        {
+          "label": "actual-same-second-live-concurrent-stage-isolation",
+          "scoped_audit": "Compared native flags, recorded unchanged snapshots and current retained file hashes; scoped checks above."
+        }
+      ],
+      "independent_pdf_inspections": [
+        {
+          "path": "tests/.work/staging/fd57e919a5654822929eeb4ab6d230b9/83b5b0e752e64b9cb4d6f77196bb3c9f/output/master-final.pdf",
+          "sha256": "8db45ffabe888234792d40602514dca7697ef8d542a09421c4b79b771fedd2c9",
+          "engine": "Approved real PDFtk 2.02",
+          "argument_vector": "<retained synthetic absolute PDF> dump_data_utf8 output - dont_ask",
+          "exit_code": 0,
+          "NumberOfPages": 3,
+          "stdout": "InfoBegin\r\nInfoKey: Creator\r\nInfoValue: pdftk 2.02 - www.pdftk.com\r\nInfoBegin\r\nInfoKey: Producer\r\nInfoValue: itext-paulo-155 (itextpdf.sf.net-lowagie.com)\r\nInfoBegin\r\nInfoKey: ModDate\r\nInfoValue: D:20261008023450-01'00'\r\nInfoBegin\r\nInfoKey: CreationDate\r\nInfoValue: D:20261008023450-01'00'\r\nPdfID0: 499c23b443fdec5d2635d18471fbd049\r\nPdfID1: c4718c35403dcc2939b689d905fa3347\r\nNumberOfPages: 3\r\nPageMediaBegin\r\nPageMediaNumber: 1\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 2\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 3\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\n",
+          "stderr": ""
+        },
+        {
+          "path": "tests/.work/staging/fd57e919a5654822929eeb4ab6d230b9/83b5b0e752e64b9cb4d6f77196bb3c9f/output/email-final.pdf",
+          "sha256": "524a1dc192d12e872050dd54ab29d1e42f2b5d63f0382a391554e54fd3335bd6",
+          "engine": "Approved real PDFtk 2.02",
+          "argument_vector": "<retained synthetic absolute PDF> dump_data_utf8 output - dont_ask",
+          "exit_code": 0,
+          "NumberOfPages": 3,
+          "stdout": "InfoBegin\r\nInfoKey: Creator\r\nInfoValue: pdftk 2.02 - www.pdftk.com\r\nInfoBegin\r\nInfoKey: Producer\r\nInfoValue: GPL Ghostscript 10.08.0\r\nInfoBegin\r\nInfoKey: ModDate\r\nInfoValue: D:20261008053450+02'00'\r\nInfoBegin\r\nInfoKey: CreationDate\r\nInfoValue: D:20261008053450+02'00'\r\nPdfID0: a385b077abb8c59cb676af4193c4bacc\r\nPdfID1: a385b077abb8c59cb676af4193c4bacc\r\nNumberOfPages: 3\r\nPageMediaBegin\r\nPageMediaNumber: 1\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 2\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 3\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\n",
+          "stderr": ""
+        },
+        {
+          "path": "tests/.work/staging/fd57e919a5654822929eeb4ab6d230b9/67add9b7643a41e990ba60ca32542415/output/master-final.pdf",
+          "sha256": "e6dfc61c268a5bbd7674970c3c6226d45f3d86b8724ff10741a4537b23ab6a7f",
+          "engine": "Approved real PDFtk 2.02",
+          "argument_vector": "<retained synthetic absolute PDF> dump_data_utf8 output - dont_ask",
+          "exit_code": 0,
+          "NumberOfPages": 3,
+          "stdout": "InfoBegin\r\nInfoKey: Creator\r\nInfoValue: pdftk 2.02 - www.pdftk.com\r\nInfoBegin\r\nInfoKey: Producer\r\nInfoValue: itext-paulo-155 (itextpdf.sf.net-lowagie.com)\r\nInfoBegin\r\nInfoKey: ModDate\r\nInfoValue: D:20261008023452-01'00'\r\nInfoBegin\r\nInfoKey: CreationDate\r\nInfoValue: D:20261008023452-01'00'\r\nPdfID0: ebf1ce01b50eaf984365bfb5d67ec8f3\r\nPdfID1: 8c260e7a056ead63913b89f341ccc673\r\nNumberOfPages: 3\r\nPageMediaBegin\r\nPageMediaNumber: 1\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 2\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 3\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\n",
+          "stderr": ""
+        },
+        {
+          "path": "tests/.work/staging/fd57e919a5654822929eeb4ab6d230b9/75e798d52abc4cbcb3c4b54070975579/output/master-final.pdf",
+          "sha256": "e1d71189d8aa8c86d9ed8ebdca6118ee62d38a9f02fc89a070faeb4ab2403630",
+          "engine": "Approved real PDFtk 2.02",
+          "argument_vector": "<retained synthetic absolute PDF> dump_data_utf8 output - dont_ask",
+          "exit_code": 0,
+          "NumberOfPages": 3,
+          "stdout": "InfoBegin\r\nInfoKey: Creator\r\nInfoValue: pdftk 2.02 - www.pdftk.com\r\nInfoBegin\r\nInfoKey: Producer\r\nInfoValue: itext-paulo-155 (itextpdf.sf.net-lowagie.com)\r\nInfoBegin\r\nInfoKey: ModDate\r\nInfoValue: D:20261008023453-01'00'\r\nInfoBegin\r\nInfoKey: CreationDate\r\nInfoValue: D:20261008023453-01'00'\r\nPdfID0: 2ffbf87cdd49105411fd310782329af7\r\nPdfID1: df944966e5efe3f24ad4aa3761d05fd4\r\nNumberOfPages: 3\r\nPageMediaBegin\r\nPageMediaNumber: 1\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 2\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 3\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\n",
+          "stderr": ""
+        },
+        {
+          "path": "tests/.work/staging/fd57e919a5654822929eeb4ab6d230b9/6b59407595bf4f14bff2e98ceb3e452f/output/WinPDFMerge_source_20261008_123456_aaaaaaaaaaaaaaaa.pdf",
+          "sha256": "129d20053486966b7ee91e3488dbc441825332b8d54da5aa44394219b9153cba",
+          "engine": "Approved real PDFtk 2.02",
+          "argument_vector": "<retained synthetic absolute PDF> dump_data_utf8 output - dont_ask",
+          "exit_code": 0,
+          "NumberOfPages": 3,
+          "stdout": "InfoBegin\r\nInfoKey: Creator\r\nInfoValue: pdftk 2.02 - www.pdftk.com\r\nInfoBegin\r\nInfoKey: Producer\r\nInfoValue: itext-paulo-155 (itextpdf.sf.net-lowagie.com)\r\nInfoBegin\r\nInfoKey: ModDate\r\nInfoValue: D:20261008023455-01'00'\r\nInfoBegin\r\nInfoKey: CreationDate\r\nInfoValue: D:20261008023455-01'00'\r\nPdfID0: e90f71f27d98ed3110347ce6785f177c\r\nPdfID1: 51027c1915b73565c24a5a00a1af8a77\r\nNumberOfPages: 3\r\nPageMediaBegin\r\nPageMediaNumber: 1\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 2\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 3\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\n",
+          "stderr": ""
+        },
+        {
+          "path": "tests/.work/staging/fd57e919a5654822929eeb4ab6d230b9/6b59407595bf4f14bff2e98ceb3e452f/output/WinPDFMerge_source_20261008_123456_aaaaaaaaaaaaaaaa_email.pdf",
+          "sha256": "ab1aa5d39cec645b6930e34399a4994b670924926159269e2b85049d51d0b566",
+          "engine": "Approved real PDFtk 2.02",
+          "argument_vector": "<retained synthetic absolute PDF> dump_data_utf8 output - dont_ask",
+          "exit_code": 0,
+          "NumberOfPages": 3,
+          "stdout": "InfoBegin\r\nInfoKey: Creator\r\nInfoValue: pdftk 2.02 - www.pdftk.com\r\nInfoBegin\r\nInfoKey: Producer\r\nInfoValue: GPL Ghostscript 10.08.0\r\nInfoBegin\r\nInfoKey: ModDate\r\nInfoValue: D:20261008053456+02'00'\r\nInfoBegin\r\nInfoKey: CreationDate\r\nInfoValue: D:20261008053456+02'00'\r\nPdfID0: 8b7cdc25886d2242e930dd4d806fdd3e\r\nPdfID1: 8b7cdc25886d2242e930dd4d806fdd3e\r\nNumberOfPages: 3\r\nPageMediaBegin\r\nPageMediaNumber: 1\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 2\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 3\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\n",
+          "stderr": ""
+        },
+        {
+          "path": "tests/.work/staging/fd57e919a5654822929eeb4ab6d230b9/6b59407595bf4f14bff2e98ceb3e452f/output/WinPDFMerge_source_20261008_123456_bbbbbbbbbbbbbbbb.pdf",
+          "sha256": "d3f906a705fa461fa51eff561e67fd047eb2d6c42478b26b9c6def087d9a5e2c",
+          "engine": "Approved real PDFtk 2.02",
+          "argument_vector": "<retained synthetic absolute PDF> dump_data_utf8 output - dont_ask",
+          "exit_code": 0,
+          "NumberOfPages": 3,
+          "stdout": "InfoBegin\r\nInfoKey: Creator\r\nInfoValue: pdftk 2.02 - www.pdftk.com\r\nInfoBegin\r\nInfoKey: Producer\r\nInfoValue: itext-paulo-155 (itextpdf.sf.net-lowagie.com)\r\nInfoBegin\r\nInfoKey: ModDate\r\nInfoValue: D:20261008023455-01'00'\r\nInfoBegin\r\nInfoKey: CreationDate\r\nInfoValue: D:20261008023455-01'00'\r\nPdfID0: b40dff9d922f0ae24985173e589eb7ee\r\nPdfID1: 30612a786865e63a24fabd71faafae45\r\nNumberOfPages: 3\r\nPageMediaBegin\r\nPageMediaNumber: 1\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 2\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 3\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\n",
+          "stderr": ""
+        },
+        {
+          "path": "tests/.work/staging/fd57e919a5654822929eeb4ab6d230b9/6b59407595bf4f14bff2e98ceb3e452f/output/WinPDFMerge_source_20261008_123456_bbbbbbbbbbbbbbbb_email.pdf",
+          "sha256": "0af331e763ccd2eb6263bb56546953770ea09f368eb983fa22b638aa324b54f8",
+          "engine": "Approved real PDFtk 2.02",
+          "argument_vector": "<retained synthetic absolute PDF> dump_data_utf8 output - dont_ask",
+          "exit_code": 0,
+          "NumberOfPages": 3,
+          "stdout": "InfoBegin\r\nInfoKey: Creator\r\nInfoValue: pdftk 2.02 - www.pdftk.com\r\nInfoBegin\r\nInfoKey: Producer\r\nInfoValue: GPL Ghostscript 10.08.0\r\nInfoBegin\r\nInfoKey: ModDate\r\nInfoValue: D:20261008053456+02'00'\r\nInfoBegin\r\nInfoKey: CreationDate\r\nInfoValue: D:20261008053456+02'00'\r\nPdfID0: 46906d12c2b56560afc657df3720e2ac\r\nPdfID1: 46906d12c2b56560afc657df3720e2ac\r\nNumberOfPages: 3\r\nPageMediaBegin\r\nPageMediaNumber: 1\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 2\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 3\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\n",
+          "stderr": ""
+        }
+      ]
+    },
+    {
+      "shell": "ps7",
+      "tested_shell_version": "7.6.6",
+      "observations": 9,
+      "pester_passed": 9,
+      "clean_commit": "1a4901b8914d02af6c539bc5b82181705ca3c2e9",
+      "receipts": [
+        {
+          "kind": "suite_stdout",
+          "path": "tests/.work/T12-C1-ps7/Staging.txt",
+          "sha256": "34567c336a2a124185e6de8dbd84676af397543197fb3d4355fd095852c74dd0"
+        },
+        {
+          "kind": "native_observations",
+          "path": "tests/.work/staging/0df2ac7f7321486b913976a60da60863/native-observations.json",
+          "sha256": "e7ea2f3c2ed78a3aee61f554bca8846e93d596fcf8e724871b0614a7488a0199"
+        },
+        {
+          "kind": "summary",
+          "path": "tests/.work/pester/b8a58d8a6c5a4a6d95db5ea3da60aa70/summary.json",
+          "sha256": "d76f2fa41ed9142e71fa0a21df78fa2382845cbf1d43423deafa71ee13206235"
+        },
+        {
+          "kind": "nunit_xml",
+          "path": "tests/.work/pester/b8a58d8a6c5a4a6d95db5ea3da60aa70/results.xml",
+          "sha256": "b3378a3ce38f9b08d4bc3dd802df332c04cf16ba346aeb0b822bf85dfe0ad4f3"
+        }
+      ],
+      "label_audits": [
+        {
+          "label": "real-tools-one-owned-stage",
+          "scoped_audit": "Compared native flags, recorded unchanged snapshots and current retained file hashes; scoped checks above."
+        },
+        {
+          "label": "preexisting-final-Pdftk",
+          "scoped_audit": "Compared native flags, recorded unchanged snapshots and current retained file hashes; scoped checks above."
+        },
+        {
+          "label": "preexisting-final-Ghostscript",
+          "scoped_audit": "Compared native flags, recorded unchanged snapshots and current retained file hashes; scoped checks above."
+        },
+        {
+          "label": "actual-move-file-collision-after-real-Pdftk",
+          "scoped_audit": "Compared native flags, recorded unchanged snapshots and current retained file hashes; scoped checks above."
+        },
+        {
+          "label": "actual-move-file-collision-after-real-Ghostscript",
+          "scoped_audit": "Compared native flags, recorded unchanged snapshots and current retained file hashes; scoped checks above."
+        },
+        {
+          "label": "actual-move-directory-collision-after-real-Pdftk",
+          "scoped_audit": "Compared native flags, recorded unchanged snapshots and current retained file hashes; scoped checks above."
+        },
+        {
+          "label": "actual-move-directory-collision-after-real-Ghostscript",
+          "scoped_audit": "Compared native flags, recorded unchanged snapshots and current retained file hashes; scoped checks above."
+        },
+        {
+          "label": "actual-pdftk-bad-input-owned-cleanup",
+          "scoped_audit": "Compared native flags, recorded unchanged snapshots and current retained file hashes; scoped checks above."
+        },
+        {
+          "label": "actual-same-second-live-concurrent-stage-isolation",
+          "scoped_audit": "Compared native flags, recorded unchanged snapshots and current retained file hashes; scoped checks above."
+        }
+      ],
+      "independent_pdf_inspections": [
+        {
+          "path": "tests/.work/staging/0df2ac7f7321486b913976a60da60863/18718e197c644965a6dd82dc76328f92/output/master-final.pdf",
+          "sha256": "2fc68c4f23d0e07d572685929270e7662a17d370b330122996452acc4c3971b2",
+          "engine": "Approved real PDFtk 2.02",
+          "argument_vector": "<retained synthetic absolute PDF> dump_data_utf8 output - dont_ask",
+          "exit_code": 0,
+          "NumberOfPages": 3,
+          "stdout": "InfoBegin\r\nInfoKey: Creator\r\nInfoValue: pdftk 2.02 - www.pdftk.com\r\nInfoBegin\r\nInfoKey: Producer\r\nInfoValue: itext-paulo-155 (itextpdf.sf.net-lowagie.com)\r\nInfoBegin\r\nInfoKey: ModDate\r\nInfoValue: D:20261008023458-01'00'\r\nInfoBegin\r\nInfoKey: CreationDate\r\nInfoValue: D:20261008023458-01'00'\r\nPdfID0: 45f62a7dedc9a087a76e2d4878fd922d\r\nPdfID1: aaaf810d729bb1fa5aabb46caaed66ea\r\nNumberOfPages: 3\r\nPageMediaBegin\r\nPageMediaNumber: 1\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 2\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 3\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\n",
+          "stderr": ""
+        },
+        {
+          "path": "tests/.work/staging/0df2ac7f7321486b913976a60da60863/18718e197c644965a6dd82dc76328f92/output/email-final.pdf",
+          "sha256": "5616942d56f7c8bfc97f575af78772e8a8b04e28c4f4e2b758fbc4c716a32339",
+          "engine": "Approved real PDFtk 2.02",
+          "argument_vector": "<retained synthetic absolute PDF> dump_data_utf8 output - dont_ask",
+          "exit_code": 0,
+          "NumberOfPages": 3,
+          "stdout": "InfoBegin\r\nInfoKey: Creator\r\nInfoValue: pdftk 2.02 - www.pdftk.com\r\nInfoBegin\r\nInfoKey: Producer\r\nInfoValue: GPL Ghostscript 10.08.0\r\nInfoBegin\r\nInfoKey: ModDate\r\nInfoValue: D:20261008053459+02'00'\r\nInfoBegin\r\nInfoKey: CreationDate\r\nInfoValue: D:20261008053459+02'00'\r\nPdfID0: b42b6dac62a8f9f386daa7ec0cbe6737\r\nPdfID1: b42b6dac62a8f9f386daa7ec0cbe6737\r\nNumberOfPages: 3\r\nPageMediaBegin\r\nPageMediaNumber: 1\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 2\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 3\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\n",
+          "stderr": ""
+        },
+        {
+          "path": "tests/.work/staging/0df2ac7f7321486b913976a60da60863/86d742fe2f0a40d58ee65ad754067aaa/output/master-final.pdf",
+          "sha256": "cb2eb00f22f337b202134be7b289e87c4e401bb4ee443385fecfe6f810b9f6d9",
+          "engine": "Approved real PDFtk 2.02",
+          "argument_vector": "<retained synthetic absolute PDF> dump_data_utf8 output - dont_ask",
+          "exit_code": 0,
+          "NumberOfPages": 3,
+          "stdout": "InfoBegin\r\nInfoKey: Creator\r\nInfoValue: pdftk 2.02 - www.pdftk.com\r\nInfoBegin\r\nInfoKey: Producer\r\nInfoValue: itext-paulo-155 (itextpdf.sf.net-lowagie.com)\r\nInfoBegin\r\nInfoKey: ModDate\r\nInfoValue: D:20261008023501-01'00'\r\nInfoBegin\r\nInfoKey: CreationDate\r\nInfoValue: D:20261008023501-01'00'\r\nPdfID0: 8ca838e0027f9cadd82d9222f3d6d7d3\r\nPdfID1: ce115531f29223a9044f88633f2e10e8\r\nNumberOfPages: 3\r\nPageMediaBegin\r\nPageMediaNumber: 1\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 2\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 3\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\n",
+          "stderr": ""
+        },
+        {
+          "path": "tests/.work/staging/0df2ac7f7321486b913976a60da60863/25bfb982155a40ce8429abb7ca4ea068/output/master-final.pdf",
+          "sha256": "2acee7abf45b9f2f481ad66c61973d5af08721c0c5826af655b83d8f88f51dc6",
+          "engine": "Approved real PDFtk 2.02",
+          "argument_vector": "<retained synthetic absolute PDF> dump_data_utf8 output - dont_ask",
+          "exit_code": 0,
+          "NumberOfPages": 3,
+          "stdout": "InfoBegin\r\nInfoKey: Creator\r\nInfoValue: pdftk 2.02 - www.pdftk.com\r\nInfoBegin\r\nInfoKey: Producer\r\nInfoValue: itext-paulo-155 (itextpdf.sf.net-lowagie.com)\r\nInfoBegin\r\nInfoKey: ModDate\r\nInfoValue: D:20261008023502-01'00'\r\nInfoBegin\r\nInfoKey: CreationDate\r\nInfoValue: D:20261008023502-01'00'\r\nPdfID0: 167f7df081ed8d1cb510fd3856f19a61\r\nPdfID1: b74511842f2946caa73b1d69bffb1add\r\nNumberOfPages: 3\r\nPageMediaBegin\r\nPageMediaNumber: 1\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 2\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 3\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\n",
+          "stderr": ""
+        },
+        {
+          "path": "tests/.work/staging/0df2ac7f7321486b913976a60da60863/11ae0233c8834988a63ad8fe115074b8/output/WinPDFMerge_source_20261008_123456_aaaaaaaaaaaaaaaa.pdf",
+          "sha256": "087d6101275ac6e6bf751278cfd78d4beae7b69b51e218cdd522776c14fb8307",
+          "engine": "Approved real PDFtk 2.02",
+          "argument_vector": "<retained synthetic absolute PDF> dump_data_utf8 output - dont_ask",
+          "exit_code": 0,
+          "NumberOfPages": 3,
+          "stdout": "InfoBegin\r\nInfoKey: Creator\r\nInfoValue: pdftk 2.02 - www.pdftk.com\r\nInfoBegin\r\nInfoKey: Producer\r\nInfoValue: itext-paulo-155 (itextpdf.sf.net-lowagie.com)\r\nInfoBegin\r\nInfoKey: ModDate\r\nInfoValue: D:20261008023506-01'00'\r\nInfoBegin\r\nInfoKey: CreationDate\r\nInfoValue: D:20261008023506-01'00'\r\nPdfID0: beced4a0e0d9a7f23ae7db1023b58d4b\r\nPdfID1: 9d2a5db604a40f4608a5291ff92a0da2\r\nNumberOfPages: 3\r\nPageMediaBegin\r\nPageMediaNumber: 1\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 2\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 3\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\n",
+          "stderr": ""
+        },
+        {
+          "path": "tests/.work/staging/0df2ac7f7321486b913976a60da60863/11ae0233c8834988a63ad8fe115074b8/output/WinPDFMerge_source_20261008_123456_aaaaaaaaaaaaaaaa_email.pdf",
+          "sha256": "98ac7ef1d3b2b362c6775d819e400a36adf41c4d08988319fe684697e6f6b157",
+          "engine": "Approved real PDFtk 2.02",
+          "argument_vector": "<retained synthetic absolute PDF> dump_data_utf8 output - dont_ask",
+          "exit_code": 0,
+          "NumberOfPages": 3,
+          "stdout": "InfoBegin\r\nInfoKey: Creator\r\nInfoValue: pdftk 2.02 - www.pdftk.com\r\nInfoBegin\r\nInfoKey: Producer\r\nInfoValue: GPL Ghostscript 10.08.0\r\nInfoBegin\r\nInfoKey: ModDate\r\nInfoValue: D:20261008053507+02'00'\r\nInfoBegin\r\nInfoKey: CreationDate\r\nInfoValue: D:20261008053507+02'00'\r\nPdfID0: 4d9682bdc299492d30bfd21bcfe26b24\r\nPdfID1: 4d9682bdc299492d30bfd21bcfe26b24\r\nNumberOfPages: 3\r\nPageMediaBegin\r\nPageMediaNumber: 1\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 2\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 3\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\n",
+          "stderr": ""
+        },
+        {
+          "path": "tests/.work/staging/0df2ac7f7321486b913976a60da60863/11ae0233c8834988a63ad8fe115074b8/output/WinPDFMerge_source_20261008_123456_bbbbbbbbbbbbbbbb.pdf",
+          "sha256": "08f36988e2948036aacfb9c3be7c876453769a02266d51daf4f36349e4b2b243",
+          "engine": "Approved real PDFtk 2.02",
+          "argument_vector": "<retained synthetic absolute PDF> dump_data_utf8 output - dont_ask",
+          "exit_code": 0,
+          "NumberOfPages": 3,
+          "stdout": "InfoBegin\r\nInfoKey: Creator\r\nInfoValue: pdftk 2.02 - www.pdftk.com\r\nInfoBegin\r\nInfoKey: Producer\r\nInfoValue: itext-paulo-155 (itextpdf.sf.net-lowagie.com)\r\nInfoBegin\r\nInfoKey: ModDate\r\nInfoValue: D:20261008023506-01'00'\r\nInfoBegin\r\nInfoKey: CreationDate\r\nInfoValue: D:20261008023506-01'00'\r\nPdfID0: bc28e1e50a108b33eef8994b0477ce37\r\nPdfID1: 5e86669b1b0a9eed916cb5725322feb6\r\nNumberOfPages: 3\r\nPageMediaBegin\r\nPageMediaNumber: 1\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 2\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 3\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\n",
+          "stderr": ""
+        },
+        {
+          "path": "tests/.work/staging/0df2ac7f7321486b913976a60da60863/11ae0233c8834988a63ad8fe115074b8/output/WinPDFMerge_source_20261008_123456_bbbbbbbbbbbbbbbb_email.pdf",
+          "sha256": "0a07509be5d064ec2f2ecf203286d2e43d648300200ddcae34c7eec3b585df67",
+          "engine": "Approved real PDFtk 2.02",
+          "argument_vector": "<retained synthetic absolute PDF> dump_data_utf8 output - dont_ask",
+          "exit_code": 0,
+          "NumberOfPages": 3,
+          "stdout": "InfoBegin\r\nInfoKey: Creator\r\nInfoValue: pdftk 2.02 - www.pdftk.com\r\nInfoBegin\r\nInfoKey: Producer\r\nInfoValue: GPL Ghostscript 10.08.0\r\nInfoBegin\r\nInfoKey: ModDate\r\nInfoValue: D:20261008053508+02'00'\r\nInfoBegin\r\nInfoKey: CreationDate\r\nInfoValue: D:20261008053508+02'00'\r\nPdfID0: b98a69e645c0857d8dd053f2e8445d1e\r\nPdfID1: b98a69e645c0857d8dd053f2e8445d1e\r\nNumberOfPages: 3\r\nPageMediaBegin\r\nPageMediaNumber: 1\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 2\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 3\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\n",
+          "stderr": ""
+        }
+      ]
+    }
+  ],
+  "findings": [],
+  "result": "pass",
+  "limitations": "Read-only local synthetic NTFS evidence; file/directory race insertion and pipe barriers are explicitly controlled scheduling around real PDFtk/GS and original no-overwrite File.Move. PDFtk page counts are narrow structural checks, not visual fidelity, T13 final validation, T14 size/outcomes, desktop, UNC, package or release acceptance. No new suite orchestration or tracked write."
+}
