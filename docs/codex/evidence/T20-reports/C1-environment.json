@@ -1,0 +1,45 @@
+{
+  "Shell": "5.1.26100.9444",
+  "Edition": "Desktop",
+  "OS": "10.0.26300.0",
+  "Process64Bit": true,
+  "Administrator": false,
+  "OrdinaryExecutionPolicy": "Restricted",
+  "Policies": [
+    {
+      "Scope": "MachinePolicy",
+      "Policy": "Undefined"
+    },
+    {
+      "Scope": "UserPolicy",
+      "Policy": "Undefined"
+    },
+    {
+      "Scope": "Process",
+      "Policy": "Undefined"
+    },
+    {
+      "Scope": "CurrentUser",
+      "Policy": "Undefined"
+    },
+    {
+      "Scope": "LocalMachine",
+      "Policy": "Undefined"
+    }
+  ],
+  "task": "T20",
+  "result": "pass",
+  "observed_at_utc": "2026-10-08T11:45:53.953663+00:00",
+  "argv": [
+    "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "-NoProfile",
+    "-Command",
+    "$identity=[Security.Principal.WindowsIdentity]::GetCurrent();$principal=New-Object Security.Principal.WindowsPrincipal($identity);[ordered]@{Shell=$PSVersionTable.PSVersion.ToString();Edition=$PSVersionTable.PSEdition;OS=[Environment]::OSVersion.Version.ToString();Process64Bit=[Environment]::Is64BitProcess;Administrator=$principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator);OrdinaryExecutionPolicy=(Get-ExecutionPolicy).ToString();Policies=@(Get-ExecutionPolicy -List | ForEach-Object {[ordered]@{Scope=$_.Scope.ToString();Policy=$_.ExecutionPolicy.ToString()}})}|ConvertTo-Json -Depth 8"
+  ],
+  "commit_under_test": "a9e93319ad260646d57278f207872a0e03dbb155",
+  "exit_code": 0,
+  "stdout_sha256": "b615c7d13921d010751cd3c1a56254a7ae5daa351f45661440e98c7140ea28dc",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "child_modulepath_removed": true,
+  "scope": "Read-only ordinary policy/token observation with child-only module-path cleanup; selected test children are separately scoped RemoteSigned. No native/manual/compatibility claim."
+}

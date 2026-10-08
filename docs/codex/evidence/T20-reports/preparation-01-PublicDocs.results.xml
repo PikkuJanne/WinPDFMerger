@@ -1,0 +1,691 @@
+<?xml version='1.0' encoding='utf-8'?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="18" errors="0" failures="7" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2026-10-08" time="13.37.32">
+  <environment clr-version="4.0.30319.42000" user-domain="T20Machine" cwd="C:\T20Repo" platform="Microsoft Windows 11 Pro|C:\Windows|\Device\Harddisk0\Partition3" machine-name="T20Machine" nunit-version="2.5.8.0" os-version="10.0.26300" user="T20User" />
+  <culture-info current-culture="fi-FI" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Failure" success="False" time="1.8522" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="C:\T20Repo\tests\help\PublicDocs.Tests.ps1" executed="True" result="Failure" success="False" time="1.8522" asserts="0" description="C:\T20Repo\tests\help\PublicDocs.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="AC046 usable public instructions" executed="True" result="Failure" success="False" time="0.8158" asserts="0" description="AC046 usable public instructions">
+            <results>
+              <test-case description="keeps the complete installation layout and established launchers visible" name="AC046 usable public instructions.keeps the complete installation layout and established launchers visible" time="0.2095" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected regular expression 'src[/\\]WinPDFMerge\.Helpers\.ps1' to match '# WinPDFMerger
+WinPDFMerger merges the visible top-level PDFs in one folder into a new master
+using PDFtk without intentional page rasterization or image downsampling. Optional
+Ghostscript creates a potentially lossy email rewrite, published only when it is
+validated and smaller than the master. Source PDFs and existing outputs are preserved.
+Keep originals and inspect the results before sharing them.
+The repository is **WinPDFMerger**; the established launchers remain
+**WinPDFMerge.ps1** and **WinPDFMerge.bat**. Processing stays local, with no application
+downloads, uploads, telemetry or self-update. This is a folder-based Windows tool;
+website work, cloud conversion, OCR, a GUI editor and an installer are outside its scope.
+## Install
+1. Use a Windows 11 x64 computer and a normal user account. Windows PowerShell 5.1
+   is the batch launcher's host. Direct invocation has also been tested on PowerShell
+   7.6.6 x64. These are scoped test observations, not completed release certification.
+   Windows 10, ARM, 32-bit hosts and live UNC shares are unvalidated.
+2. Install [PDFtk Server for Windows](https://www.pdflabs.com/tools/pdftk-server/)
+   from its vendor. PDFtk is required. Install
+   [Ghostscript](https://www.ghostscript.com/releases/gsdnld.html) only if you want
+   an email copy; it is optional. Review the separate
+   [dependency terms and selection rules](docs/DEPENDENCIES.md).
+3. Extract the whole project folder to a location such as `C:\Tools\WinPDFMerge`.
+   Keep the relative layout below; copying just the two launchers is insufficient.
+   The `docs` folder supplies the linked public instructions. Native dependencies
+   are installed separately, and Python is not needed to run the application.
+```text
+C:\Tools\WinPDFMerge\
+    WinPDFMerge.ps1
+    WinPDFMerge.bat
+    README.md
+    LICENSE
+    SECURITY.md
+    src\
+        WinPDFMerge.Helpers.ps1
+    docs\
+        USAGE.md
+        TROUBLESHOOTING.md
+        DEPENDENCIES.md
+        PDF_LIMITATIONS.md
+        EMAIL_PRESETS.md
+```
+4. In PowerShell, verify a PATH installation with `pdftk.exe --version` and,
+   if installed, `gswin64c.exe --version`. A tool outside PATH can still be selected
+   from the documented standard locations; the run reports its actual path/version.
+   Version detection does not establish trust. The application installs nothing.
+5. Choose a source folder and a **separate existing writable output folder**.
+   By default, output is beside `WinPDFMerge.ps1`, so that script directory must
+   be writable. Use `-OutputFolder` if it is not. The application does not create
+   destinations or silently choose another location.
+The scripts are unsigned. Downloaded scripts or enterprise policy may block them.
+Verify the source and follow your organization's approved process; do not disable
+security controls or change machine-wide execution policy. See
+[security and signing limits](SECURITY.md) and [blocked-script guidance](docs/TROUBLESHOOTING.md#script-blocked).
+The planned v1.0.0 release is not yet published; current source instructions do
+not imply a tested release ZIP is available.
+## Use
+Put the intended PDFs directly in one source folder. Subfolders and hidden files
+are not scanned; `.pdf` and `.PDF` are included. One PDF is valid; zero PDFs fails.
+Files sort naturally by base filename: `1, 01, 001, 2, 10`. Rename your own working
+copies if you need a different order, and check the numbered input list in the log.
+Existing results placed in the source folder are inputs too; there is no filename-prefix exclusion.
+For the default workflow, drag **exactly one folder** onto `WinPDFMerge.bat` in
+Explorer. It uses Windows PowerShell 5.1, writes beside the scripts, and pauses to
+show the result and log path. Double-click without a folder shows usage and fails;
+there is no folder picker. Physical Explorer acceptance remains a release gate.
+For named options, open PowerShell in the extracted script directory:
+```powershell
+Set-Location -LiteralPath 'C:\Tools\WinPDFMerge'
+.\WinPDFMerge.ps1 "C:\Work\Docs\ToMerge"
+.\WinPDFMerge.ps1 "C:\Work\Docs\ToMerge" -OutputFolder "C:\Work\Merged"
+.\WinPDFMerge.ps1 "C:\Work\Docs\ToMerge" -EmailPreset ebook
+.\WinPDFMerge.ps1 "C:\Work\Docs\ToMerge" -SkipEmail
+```
+Replace the example paths with your existing folders. `SourceFolder` is the only
+positional argument. `-EmailPreset` accepts `screen` (default) or `ebook` only.
+`-SkipEmail` bypasses Ghostscript discovery and execution; an explicitly supplied,
+valid preset is reported as ignored. The batch launcher accepts one source folder,
+so use the `.ps1` for options. Built-in help is available without running a merge:
+```powershell
+Get-Help .\WinPDFMerge.ps1 -Examples
+```
+`cmd.exe` can expand a paired `%NAME%` token in a quoted source or script path
+before the batch file starts. From PowerShell, use the `.ps1` directly to retain
+literal percent characters (replace both paths with your actual locations):
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File 'C:\Tools\WinPDFMerge\WinPDFMerge.ps1' -SourceFolder 'C:\Work\source%NAME%'
+```
+This is the launcher's existing process-scoped policy flag; it changes no user or
+machine setting and does not override Group Policy. Use it only where local policy
+permits this route. [Microsoft describes the policy scopes and precedence](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-5.1).
+## Results and exit codes
+The master, optional `_email.pdf` and UTF-8 `.log` share a name such as
+`WinPDFMerge_ToMerge_20261008_120000_&lt;run&gt;.pdf`, with a random run suffix.
+Existing files are never overwritten. The master is validated and published
+before optional email processing; it survives an email failure. A larger or equal
+email candidate is omitted with a **no size benefit** message.
+| Code | Result | What to do |
+| --- | --- | --- |
+| `0` | Validated master; email produced, explicitly skipped, Ghostscript absent, or no smaller candidate | Use the reported master; an email copy exists only if listed as published. |
+| `1` | Invalid invocation/input/destination, missing or unusable PDFtk, or failure before master publication | Read the console/log; no validated master is advertised. Correct the cause and rerun. |
+| `2` | Partial success: validated master retained, but email or a later operation failed/interrupted | Keep the reported master and inspect the diagnostic; no failed email candidate is advertised. |
+The batch file returns the exact code after its pause. For a direct script call,
+read `$LASTEXITCODE` immediately afterward. Warnings on stderr alone do not decide
+success. Closing the window, killing the host or a crash cannot guarantee a code
+or cleanup. See [usage details and recovery](docs/USAGE.md).
+## Quality, privacy and help
+The email presets can lose small text, image detail, editable fields and other
+features; there is no guaranteed attachment size. Inspect the actual copy.
+See [observed preset tradeoffs](docs/EMAIL_PRESETS.md) and
+[PDF preservation limits](docs/PDF_LIMITATIONS.md). Neither output guarantees
+PDF/A, signature validity, accessibility, universal feature retention, archival
+certification or malware removal. Retain signed and feature-rich originals.
+Logs show stages, elapsed time, ordered paths, tool versions, page totals, native
+arguments/stdout/stderr, sizes and final state. They can contain confidential
+document names, full paths and PDF metadata. They are local, unredacted and
+unencrypted; sanitize a copy before sharing and do not attach private PDFs.
+Some invocation or unsafe-destination failures happen before a log can be created.
+See [troubleshooting](docs/TROUBLESHOOTING.md),
+[full usage and path limits](docs/USAGE.md), [dependency policy](docs/DEPENDENCIES.md)
+and [security/privacy policy](SECURITY.md). Project code and documentation retain
+the [MIT license](LICENSE), provided as-is without warranty; vendor dependencies
+have separate licenses.
+', but it did not match.</message>
+                  <stack-trace>at foreach ($required in @('WinPDFMerge\.ps1','WinPDFMerge\.bat','src[/\\]WinPDFMerge\.Helpers\.ps1')) { $readme | Should -Match $required }, C:\T20Repo\tests\help\PublicDocs.Tests.ps1:99</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="makes optional Ghostscript and explicit master-only use clear" name="AC046 usable public instructions.makes optional Ghostscript and explicit master-only use clear" time="0.0296" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="states top-level visible input and retained defaults without a blanket platform claim" name="AC046 usable public instructions.states top-level visible input and retained defaults without a blanket platform claim" time="0.0193" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected regular expression '\b(?:no|without)\s+recursion\b|\bsubfolders\b.{0,60}\b(?:not|never)\b' to match '# WinPDFMerger
+WinPDFMerger merges the visible top-level PDFs in one folder into a new master
+using PDFtk without intentional page rasterization or image downsampling. Optional
+Ghostscript creates a potentially lossy email rewrite, published only when it is
+validated and smaller than the master. Source PDFs and existing outputs are preserved.
+Keep originals and inspect the results before sharing them.
+The repository is **WinPDFMerger**; the established launchers remain
+**WinPDFMerge.ps1** and **WinPDFMerge.bat**. Processing stays local, with no application
+downloads, uploads, telemetry or self-update. This is a folder-based Windows tool;
+website work, cloud conversion, OCR, a GUI editor and an installer are outside its scope.
+## Install
+1. Use a Windows 11 x64 computer and a normal user account. Windows PowerShell 5.1
+   is the batch launcher's host. Direct invocation has also been tested on PowerShell
+   7.6.6 x64. These are scoped test observations, not completed release certification.
+   Windows 10, ARM, 32-bit hosts and live UNC shares are unvalidated.
+2. Install [PDFtk Server for Windows](https://www.pdflabs.com/tools/pdftk-server/)
+   from its vendor. PDFtk is required. Install
+   [Ghostscript](https://www.ghostscript.com/releases/gsdnld.html) only if you want
+   an email copy; it is optional. Review the separate
+   [dependency terms and selection rules](docs/DEPENDENCIES.md).
+3. Extract the whole project folder to a location such as `C:\Tools\WinPDFMerge`.
+   Keep the relative layout below; copying just the two launchers is insufficient.
+   The `docs` folder supplies the linked public instructions. Native dependencies
+   are installed separately, and Python is not needed to run the application.
+```text
+C:\Tools\WinPDFMerge\
+    WinPDFMerge.ps1
+    WinPDFMerge.bat
+    README.md
+    LICENSE
+    SECURITY.md
+    src\
+        WinPDFMerge.Helpers.ps1
+    docs\
+        USAGE.md
+        TROUBLESHOOTING.md
+        DEPENDENCIES.md
+        PDF_LIMITATIONS.md
+        EMAIL_PRESETS.md
+```
+4. In PowerShell, verify a PATH installation with `pdftk.exe --version` and,
+   if installed, `gswin64c.exe --version`. A tool outside PATH can still be selected
+   from the documented standard locations; the run reports its actual path/version.
+   Version detection does not establish trust. The application installs nothing.
+5. Choose a source folder and a **separate existing writable output folder**.
+   By default, output is beside `WinPDFMerge.ps1`, so that script directory must
+   be writable. Use `-OutputFolder` if it is not. The application does not create
+   destinations or silently choose another location.
+The scripts are unsigned. Downloaded scripts or enterprise policy may block them.
+Verify the source and follow your organization's approved process; do not disable
+security controls or change machine-wide execution policy. See
+[security and signing limits](SECURITY.md) and [blocked-script guidance](docs/TROUBLESHOOTING.md#script-blocked).
+The planned v1.0.0 release is not yet published; current source instructions do
+not imply a tested release ZIP is available.
+## Use
+Put the intended PDFs directly in one source folder. Subfolders and hidden files
+are not scanned; `.pdf` and `.PDF` are included. One PDF is valid; zero PDFs fails.
+Files sort naturally by base filename: `1, 01, 001, 2, 10`. Rename your own working
+copies if you need a different order, and check the numbered input list in the log.
+Existing results placed in the source folder are inputs too; there is no filename-prefix exclusion.
+For the default workflow, drag **exactly one folder** onto `WinPDFMerge.bat` in
+Explorer. It uses Windows PowerShell 5.1, writes beside the scripts, and pauses to
+show the result and log path. Double-click without a folder shows usage and fails;
+there is no folder picker. Physical Explorer acceptance remains a release gate.
+For named options, open PowerShell in the extracted script directory:
+```powershell
+Set-Location -LiteralPath 'C:\Tools\WinPDFMerge'
+.\WinPDFMerge.ps1 "C:\Work\Docs\ToMerge"
+.\WinPDFMerge.ps1 "C:\Work\Docs\ToMerge" -OutputFolder "C:\Work\Merged"
+.\WinPDFMerge.ps1 "C:\Work\Docs\ToMerge" -EmailPreset ebook
+.\WinPDFMerge.ps1 "C:\Work\Docs\ToMerge" -SkipEmail
+```
+Replace the example paths with your existing folders. `SourceFolder` is the only
+positional argument. `-EmailPreset` accepts `screen` (default) or `ebook` only.
+`-SkipEmail` bypasses Ghostscript discovery and execution; an explicitly supplied,
+valid preset is reported as ignored. The batch launcher accepts one source folder,
+so use the `.ps1` for options. Built-in help is available without running a merge:
+```powershell
+Get-Help .\WinPDFMerge.ps1 -Examples
+```
+`cmd.exe` can expand a paired `%NAME%` token in a quoted source or script path
+before the batch file starts. From PowerShell, use the `.ps1` directly to retain
+literal percent characters (replace both paths with your actual locations):
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File 'C:\Tools\WinPDFMerge\WinPDFMerge.ps1' -SourceFolder 'C:\Work\source%NAME%'
+```
+This is the launcher's existing process-scoped policy flag; it changes no user or
+machine setting and does not override Group Policy. Use it only where local policy
+permits this route. [Microsoft describes the policy scopes and precedence](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-5.1).
+## Results and exit codes
+The master, optional `_email.pdf` and UTF-8 `.log` share a name such as
+`WinPDFMerge_ToMerge_20261008_120000_&lt;run&gt;.pdf`, with a random run suffix.
+Existing files are never overwritten. The master is validated and published
+before optional email processing; it survives an email failure. A larger or equal
+email candidate is omitted with a **no size benefit** message.
+| Code | Result | What to do |
+| --- | --- | --- |
+| `0` | Validated master; email produced, explicitly skipped, Ghostscript absent, or no smaller candidate | Use the reported master; an email copy exists only if listed as published. |
+| `1` | Invalid invocation/input/destination, missing or unusable PDFtk, or failure before master publication | Read the console/log; no validated master is advertised. Correct the cause and rerun. |
+| `2` | Partial success: validated master retained, but email or a later operation failed/interrupted | Keep the reported master and inspect the diagnostic; no failed email candidate is advertised. |
+The batch file returns the exact code after its pause. For a direct script call,
+read `$LASTEXITCODE` immediately afterward. Warnings on stderr alone do not decide
+success. Closing the window, killing the host or a crash cannot guarantee a code
+or cleanup. See [usage details and recovery](docs/USAGE.md).
+## Quality, privacy and help
+The email presets can lose small text, image detail, editable fields and other
+features; there is no guaranteed attachment size. Inspect the actual copy.
+See [observed preset tradeoffs](docs/EMAIL_PRESETS.md) and
+[PDF preservation limits](docs/PDF_LIMITATIONS.md). Neither output guarantees
+PDF/A, signature validity, accessibility, universal feature retention, archival
+certification or malware removal. Retain signed and feature-rich originals.
+Logs show stages, elapsed time, ordered paths, tool versions, page totals, native
+arguments/stdout/stderr, sizes and final state. They can contain confidential
+document names, full paths and PDF metadata. They are local, unredacted and
+unencrypted; sanitize a copy before sharing and do not attach private PDFs.
+Some invocation or unsafe-destination failures happen before a log can be created.
+See [troubleshooting](docs/TROUBLESHOOTING.md),
+[full usage and path limits](docs/USAGE.md), [dependency policy](docs/DEPENDENCIES.md)
+and [security/privacy policy](SECURITY.md). Project code and documentation retain
+the [MIT license](LICENSE), provided as-is without warranty; vendor dependencies
+have separate licenses.
+# Usage details
+Start with the [installation and commands](../README.md). Keep
+`WinPDFMerge.ps1`, `WinPDFMerge.bat` and `src/WinPDFMerge.Helpers.ps1` in their
+relative layout. The repository name is WinPDFMerger; launcher filenames retain
+WinPDFMerge. Processing requires PDFtk and optionally Ghostscript, with no Python
+runtime dependency.
+## Parameters and shells
+| Parameter | Meaning |
+| --- | --- |
+| `SourceFolder` | Exactly one existing filesystem directory; optional positional binding, but missing input prints usage and exits `1`. |
+| `-OutputFolder` | An existing writable directory separate from the source. Default: directory of the entry script. No automatic creation or fallback. |
+| `-SkipEmail` | Publish only the validated master; never discover or launch Ghostscript. |
+| `-EmailPreset screen\|ebook` | Fixed Ghostscript profile, default `screen`. No arbitrary native argument strings. |
+Invalid presets, extra positional directories and unknown options fail before
+output creation. A valid explicit preset with `-SkipEmail` is ignored and explained.
+PowerShell 7.6.6 x64 was separately tested; the batch launcher always uses Windows
+PowerShell 5.1 with `-NoProfile`. To use the PS7 host explicitly, open `pwsh.exe`
+and run this inside that PowerShell session, replacing the paths:
+```powershell
+&amp; 'C:\Tools\WinPDFMerge\WinPDFMerge.ps1' -SourceFolder 'C:\Work\Docs\ToMerge' -OutputFolder 'C:\Work\Merged' -SkipEmail
+$LASTEXITCODE
+```
+This example runs in the current host. It does not change execution policy or
+override script-blocking rules. `Get-Help .\WinPDFMerge.ps1 -Full` reads help
+without starting application orchestration. See [blocked scripts](TROUBLESHOOTING.md#script-blocked).
+## Inputs and merge order
+Only visible top-level files with a case-insensitive `.pdf` extension are inputs.
+Hidden files and subfolders are excluded. One PDF is accepted; an empty folder is
+an error. A file named `WinPDFMerge_*.pdf` is still a legitimate input: keep previous
+results out of the source folder if you do not want them included.
+ASCII digit runs sort by integer magnitude without fixed-width integer limits.
+For equal numeric values, shorter digit runs sort first (`1, 01, 001`), then
+subsequent segments decide the order. Text comparison is ordinal and case-insensitive;
+the original base name and canonical full path break remaining ties ordinally.
+Non-ASCII digits are text. The log records the final numbered input list.
+The input set is frozen before processing. Every input is inspected by PDFtk's
+read-only `dump_data_utf8` and must have a positive unambiguous page count. Empty,
+unparseable, zero-page or unsupported password-protected files stop the whole run;
+none is silently omitted. There is no password, repair or flatten option.
+PDFtk-readable encryption with an empty password is not automatically refused.
+For protected documents, obtain an authorized readable working copy while keeping
+the original; do not remove restrictions without authorization.
+The preliminary envelope check requires a PDF header at the start, a final
+`startxref`/`%%EOF` within the last 8192 bytes, and a positive in-file cross-reference
+offset targeting `xref` or a plausible indirect-object header within 1024 bytes.
+Non-whitespace after final EOF and layouts beyond those bounds are refused.
+This is bounded structural screening, not universal PDF validation or a malware scan.
+Keep sources stable while merging. Length and UTC modification-time checks around
+inspection and before assembly detect obvious changes but do not provide a
+filesystem snapshot. Newly added files are not added to the frozen set. The tool
+does not edit, rename, replace or delete source PDFs.
+## Paths and destinations
+Source and output must identify different directories, including case variants
+and supported short-name aliases. Junctions, symbolic links and other reparse
+directories at either path or an ancestor are refused; use direct directory paths.
+The output directory must already exist and be writable. A short create-new probe
+is removed when its owned handle closes; existing files are never used as probes.
+Native file operands must be shorter than 260 UTF-16 characters, including their
+directories. The destination must also leave room for private staging. A complete
+serialized native command is limited to 30,000 UTF-16 characters including the
+executable, quotes, separator and terminator. Oversized jobs fail before native
+launch; use fewer inputs or shorter paths. There is no chunked or long-path workaround.
+In the tested Windows PDFtk Server 2.02 backend, spaces, brackets, exclamation
+marks, ampersands, parentheses, apostrophes and Latin `ä` worked in operands.
+CJK source/input and output paths failed in that backend, although a CJK tool
+installation directory worked. These observations do not promise all Unicode
+names work. Unsupported inputs fail without renaming sources. Live UNC shares,
+Windows 10, ARM and 32-bit hosts are unvalidated.
+For paired `%NAME%` characters in source or installation paths, use the
+[direct PowerShell route](../README.md#use): `cmd.exe` may expand them before
+the batch launcher receives the path. The launcher cannot recover the original.
+## Publication and email quality
+Outputs use `WinPDFMerge_&lt;Folder&gt;_&lt;yyyyMMdd_HHmmss&gt;_&lt;run&gt;` with a random
+16-hex-character suffix shared by the master, `_email.pdf` and `.log`.
+Folder labels are bounded to 64 UTF-16 characters and shortened further for the
+destination. Root/empty labels become `root`, and trailing dots/spaces are removed
+from the derived output label. Inputs are never renamed.
+Native work happens in one private `.WinPDFMerge_&lt;32 hex characters&gt;.tmp`
+directory under the output directory. Final files are moved into place only after
+validation, with no-overwrite semantics. The validated master is published before
+email processing and survives later failure. A separately validated email candidate
+is published only if smaller than the master; otherwise it is discarded from this
+run's staging and reported as no size benefit. Existing outputs remain untouched.
+`screen` maps to `-dPDFSETTINGS=/screen`; `ebook` maps to `/ebook`. Ghostscript's
+pdfwrite device rewrites the document with fixed flags including `-dSAFER` and
+`-dPDFSTOPONERROR`. No public parameter relaxes those restrictions. The script
+clears `GS_OPTIONS` only in selected children; the caller's environment remains intact.
+These flags do not certify hostile-file isolation or PDF preservation.
+Reports show exact byte counts, binary units (`KiB` = 1024 bytes, `MiB` = 1048576)
+and percentage reduction relative to the master. Readable units use two decimals
+and percentages one; exact bytes are authoritative. Larger/equal candidates can
+show zero/negative reduction but are never listed as published email outputs.
+Skipped, absent or failed email processing reports only the retained master size.
+There is no target attachment-size guarantee. See [preset tradeoffs](EMAIL_PRESETS.md)
+and [feature preservation limits](PDF_LIMITATIONS.md).
+## Diagnostics, interruption and cleanup
+The console/log records stage names and measured elapsed time, not an estimated
+percentage. The UTF-8 log is reserved after safe source/destination validation and
+before discovery/dependency probes. It contains versions, numbered inputs, page
+counts, native executable/arguments, both streams, timing/failure flags, sizes and
+published paths. Unknown counts or unused tools are labelled explicitly.
+Missing input, binding errors and unsafe/unwritable destinations can fail before
+a log exists. Use the console then. [Logs can be confidential](../SECURITY.md#privacy-and-logs).
+Each native job has a 15-minute execution limit; version probes have five seconds.
+Standard input is closed. Controlled Ctrl+C requests cancellation when the console
+host delivers the event. Controlled timeout/cancellation returns `1` before master
+publication or `2` afterward, retaining validated published PDFs. The batch pause
+propagates the exact result when the host survives. Abrupt host/window/machine
+termination cannot guarantee cleanup, a final log or an exit code.
+The ownership marker `owner.json` records run identity, creation time, process ID
+and known temporary files. Cleanup touches only the current run's owned known
+paths, never sweeps old staging and preserves published PDFs. If process termination,
+ownership or cleanup is uncertain, staging can remain for manual inspection.
+A cleanup-only warning can accompany success after valid outputs are published.
+See [safe orphan cleanup](TROUBLESHOOTING.md#orphan-staging); do not delete an active
+run's folder or another run's files. The [exit-code table](../README.md#results-and-exit-codes)
+is the public result contract.
+', but it did not match.</message>
+                  <stack-trace>at $public | Should -Match '\b(?:no|without)\s+recursion\b|\bsubfolders\b.{0,60}\b(?:not|never)\b', C:\T20Repo\tests\help\PublicDocs.Tests.ps1:112</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="parses and binds every public app example to the actual isolated parameter block" name="AC046 usable public instructions.parses and binds every public app example to the actual isolated parameter block" time="0.0564" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="rejects an unsupported public option in the binding control" name="AC046 usable public instructions.rejects an unsupported public option in the binding control" time="0.0343" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="rejects an invalid preset in the binding control" name="AC046 usable public instructions.rejects an invalid preset in the binding control" time="0.0134" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="keeps README default, output, ebook and master-only examples distinct" name="AC046 usable public instructions.keeps README default, output, ebook and master-only examples distinct" time="0.0474" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>PropertyNotFoundException: The property 'EmailPreset' cannot be found on this object. Verify that the property exists.</message>
+                  <stack-trace>at &lt;ScriptBlock&gt;, C:\T20Repo\tests\help\PublicDocs.Tests.ps1:139
+at &lt;ScriptBlock&gt;, C:\T20Repo\tests\help\PublicDocs.Tests.ps1:139</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="documents percent-token recovery with a direct PowerShell route" name="AC046 usable public instructions.documents percent-token recovery with a direct PowerShell route" time="0.0167" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="matches documented success code to the real master-only outcome" name="AC046 usable public instructions.matches documented success code to the real master-only outcome" time="0.0301" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected regular expression '\b(?:success|successful)\b' to match '| `0` | Validated master; email produced, explicitly skipped, Ghostscript absent, or no smaller candidate | Use the reported master; an email copy exists only if listed as published. |', but it did not match.</message>
+                  <stack-trace>at $rows[0] | Should -Match '\b(?:success|successful)\b', C:\T20Repo\tests\help\PublicDocs.Tests.ps1:152</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="matches documented failure code to the real pre-master outcome" name="AC046 usable public instructions.matches documented failure code to the real pre-master outcome" time="0.0232" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="matches documented partial success to the real retained-master outcome" name="AC046 usable public instructions.matches documented partial success to the real retained-master outcome" time="0.0225" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="keeps public local links inside the repository and resolves their targets" name="AC046 usable public instructions.keeps public local links inside the repository and resolves their targets" time="0.2501" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="AC047 licensing, privacy and scope" executed="True" result="Failure" success="False" time="0.9931" asserts="0" description="AC047 licensing, privacy and scope">
+            <results>
+              <test-case description="preserves the original MIT license bytes" name="AC047 licensing, privacy and scope.preserves the original MIT license bytes" time="0.017" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="separates project MIT terms from externally installed vendor licenses" name="AC047 licensing, privacy and scope.separates project MIT terms from externally installed vendor licenses" time="0.0339" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="discloses local sensitive logs and sanitizing a copy before public sharing" name="AC047 licensing, privacy and scope.discloses local sensitive logs and sanitizing a copy before public sharing" time="0.028" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected regular expression '\b(?:do\s+not|never)\b.{0,80}\b(?:upload|attach|send)\b.{0,80}\b(?:private|personal|confidential)\b.{0,40}\bPDFs?\b' to match '# Security and privacy policy
+WinPDFMerger is a local folder-based PDF tool. Application processing makes no
+network calls, uploads, telemetry, dependency downloads or automatic updates.
+It does not send PDFs or logs to the maintainer. Dependency installation, repository
+access and user-initiated issue reporting are separate actions. Website work, cloud
+processing, OCR, a GUI editor and an installer are outside the project scope.
+## Documents and native processing
+Run as a normal user with trusted dependency installations. PDFtk is required;
+Ghostscript is optional. Native tools parse the supplied PDFs and are separate
+vendor products with their own licenses and security maintenance. Check current
+vendor updates/security notices; tested versions do not promise continuing safety.
+See [dependencies and terms](docs/DEPENDENCIES.md).
+Ghostscript restrictions remain enabled; no option turns off `-dSAFER`. Safety
+flags, Windows process containment, structural checks and a successful page count
+do not make this tool a sandbox or PDF malware sanitizer. Native parsers run with
+your user account's permissions. Do not treat processing an untrusted PDF as proof
+it is safe. The tool does not provide password recovery, repair, OCR, PDF/A
+certification, valid signature preservation or universal archival safety.
+See [measured PDF preservation limits](docs/PDF_LIMITATIONS.md).
+Source PDFs and existing outputs are preserved. New outputs are validated in owned
+private staging and published without overwrite. Here, private means owned by one
+run, not an access-isolated or encrypted directory. A published master survives
+email failure. An abrupt crash can leave staging; use the documented
+[manual ownership check](docs/TROUBLESHOOTING.md#orphan-staging) before cleanup.
+Processing protection does not replace backups or keeping signed/feature-rich originals.
+## Privacy and logs
+Outputs and UTF-8 diagnostic logs are local. Logs can include full document/source/
+output/executable paths, folder names, user or machine locations, input order,
+page counts, tool versions, command arguments, native stdout/stderr, PDF metadata,
+sizes and failure details. Staging's `owner.json` includes run identity, creation
+time, process ID and known temporary paths. These files can be confidential.
+Logs and outputs are not automatically redacted, encrypted or given a special
+application ACL. They inherit ordinary directory/filesystem access controls.
+The default output directory is beside the scripts; choose a suitable existing
+private writable `-OutputFolder` when needed. The application has no log-retention
+or automatic deletion schedule. Manage access, retention and disposal yourself,
+including orphan staging after stopped runs. A sync/backup service or network
+folder can copy files independently of this application; choose storage accordingly.
+Before sharing a report, copy the log and consistently replace confidential
+paths, names and metadata. Keep useful stage, version, exit and size facts.
+Review the entire copy, including both native streams; redacting only the filename
+is insufficient. Use a synthetic reproduction. Do not publish private PDFs,
+unsanitized logs, credentials, environment dumps, certificates or access tokens.
+## Unsigned scripts and integrity
+The application PowerShell scripts are unsigned. An unsigned ZIP/script may be
+blocked by downloaded-file checks, SmartScreen, execution policy or enterprise
+controls. No promise is made that organizational policy will permit it. The BAT
+retains its existing process-only `-ExecutionPolicy Bypass`; it changes no user or
+machine setting and cannot override Group Policy. Follow approved trust procedures;
+do not disable protections, request elevation for normal use or relax enterprise policy.
+See [Microsoft's execution-policy documentation](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies).
+A SHA-256 checksum verifies agreement with expected bytes; it is not a digital
+signature, proof of publisher identity or a malware verdict. A checksum obtained
+from the same site as a download does not independently establish who published
+it. No paid signing service or private signing key is required by this project.
+The v1.0.0 release is still in preparation; this policy is not publication evidence.
+## Reporting
+For an ordinary bug, use [GitHub issues](https://github.com/PikkuJanne/WinPDFMerger/issues)
+with sanitized version/stage/exit details and synthetic input. Never attach private
+documents or secrets to a public issue. No support SLA or guaranteed response time
+is offered; the [MIT license](LICENSE) supplies the warranty terms.
+No dedicated private vulnerability reporting route is currently configured on
+the repository. Check the [Security tab](https://github.com/PikkuJanne/WinPDFMerger/security)
+for any later change. For a potential vulnerability, a public issue should request
+a private contact channel without sensitive details, exploit payloads or private
+PDFs; wait for that channel before sending confidential material. Report dependency
+vulnerabilities through the vendor's reporting process. Do not post unsanitized
+diagnostics in an issue or pull request.
+', but it did not match.</message>
+                  <stack-trace>at $security | Should -Match '\b(?:do\s+not|never)\b.{0,80}\b(?:upload|attach|send)\b.{0,80}\b(?:private|personal|confidential)\b.{0,40}\bPDFs?\b', C:\T20Repo\tests\help\PublicDocs.Tests.ps1:217</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="states offline application processing without download, telemetry or trust promises" name="AC047 licensing, privacy and scope.states offline application processing without download, telemetry or trust promises" time="0.02" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected regular expression '\b(?:no|not|never)\b.{0,60}\btelemetry\b' to match '# Security and privacy policy
+WinPDFMerger is a local folder-based PDF tool. Application processing makes no
+network calls, uploads, telemetry, dependency downloads or automatic updates.
+It does not send PDFs or logs to the maintainer. Dependency installation, repository
+access and user-initiated issue reporting are separate actions. Website work, cloud
+processing, OCR, a GUI editor and an installer are outside the project scope.
+## Documents and native processing
+Run as a normal user with trusted dependency installations. PDFtk is required;
+Ghostscript is optional. Native tools parse the supplied PDFs and are separate
+vendor products with their own licenses and security maintenance. Check current
+vendor updates/security notices; tested versions do not promise continuing safety.
+See [dependencies and terms](docs/DEPENDENCIES.md).
+Ghostscript restrictions remain enabled; no option turns off `-dSAFER`. Safety
+flags, Windows process containment, structural checks and a successful page count
+do not make this tool a sandbox or PDF malware sanitizer. Native parsers run with
+your user account's permissions. Do not treat processing an untrusted PDF as proof
+it is safe. The tool does not provide password recovery, repair, OCR, PDF/A
+certification, valid signature preservation or universal archival safety.
+See [measured PDF preservation limits](docs/PDF_LIMITATIONS.md).
+Source PDFs and existing outputs are preserved. New outputs are validated in owned
+private staging and published without overwrite. Here, private means owned by one
+run, not an access-isolated or encrypted directory. A published master survives
+email failure. An abrupt crash can leave staging; use the documented
+[manual ownership check](docs/TROUBLESHOOTING.md#orphan-staging) before cleanup.
+Processing protection does not replace backups or keeping signed/feature-rich originals.
+## Privacy and logs
+Outputs and UTF-8 diagnostic logs are local. Logs can include full document/source/
+output/executable paths, folder names, user or machine locations, input order,
+page counts, tool versions, command arguments, native stdout/stderr, PDF metadata,
+sizes and failure details. Staging's `owner.json` includes run identity, creation
+time, process ID and known temporary paths. These files can be confidential.
+Logs and outputs are not automatically redacted, encrypted or given a special
+application ACL. They inherit ordinary directory/filesystem access controls.
+The default output directory is beside the scripts; choose a suitable existing
+private writable `-OutputFolder` when needed. The application has no log-retention
+or automatic deletion schedule. Manage access, retention and disposal yourself,
+including orphan staging after stopped runs. A sync/backup service or network
+folder can copy files independently of this application; choose storage accordingly.
+Before sharing a report, copy the log and consistently replace confidential
+paths, names and metadata. Keep useful stage, version, exit and size facts.
+Review the entire copy, including both native streams; redacting only the filename
+is insufficient. Use a synthetic reproduction. Do not publish private PDFs,
+unsanitized logs, credentials, environment dumps, certificates or access tokens.
+## Unsigned scripts and integrity
+The application PowerShell scripts are unsigned. An unsigned ZIP/script may be
+blocked by downloaded-file checks, SmartScreen, execution policy or enterprise
+controls. No promise is made that organizational policy will permit it. The BAT
+retains its existing process-only `-ExecutionPolicy Bypass`; it changes no user or
+machine setting and cannot override Group Policy. Follow approved trust procedures;
+do not disable protections, request elevation for normal use or relax enterprise policy.
+See [Microsoft's execution-policy documentation](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies).
+A SHA-256 checksum verifies agreement with expected bytes; it is not a digital
+signature, proof of publisher identity or a malware verdict. A checksum obtained
+from the same site as a download does not independently establish who published
+it. No paid signing service or private signing key is required by this project.
+The v1.0.0 release is still in preparation; this policy is not publication evidence.
+## Reporting
+For an ordinary bug, use [GitHub issues](https://github.com/PikkuJanne/WinPDFMerger/issues)
+with sanitized version/stage/exit details and synthetic input. Never attach private
+documents or secrets to a public issue. No support SLA or guaranteed response time
+is offered; the [MIT license](LICENSE) supplies the warranty terms.
+No dedicated private vulnerability reporting route is currently configured on
+the repository. Check the [Security tab](https://github.com/PikkuJanne/WinPDFMerger/security)
+for any later change. For a potential vulnerability, a public issue should request
+a private contact channel without sensitive details, exploit payloads or private
+PDFs; wait for that channel before sending confidential material. Report dependency
+vulnerabilities through the vendor's reporting process. Do not post unsanitized
+diagnostics in an issue or pull request.
+', but it did not match.</message>
+                  <stack-trace>at $security | Should -Match '\b(?:no|not|never)\b.{0,60}\btelemetry\b', C:\T20Repo\tests\help\PublicDocs.Tests.ps1:222</stack-trace>
+                </failure>
+              </test-case>
+              <test-case description="discloses unsigned status and does not instruct persistent policy bypass" name="AC047 licensing, privacy and scope.discloses unsigned status and does not instruct persistent policy bypass" time="0.0277" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="makes the local command-line scope explicit" name="AC047 licensing, privacy and scope.makes the local command-line scope explicit" time="0.0282" asserts="0" success="False" result="Failure" executed="True">
+                <failure>
+                  <message>Expected regular expression '\b(?:no|not|without|out\s+of\s+scope)\b.{0,100}\b(?:website|web\s+service|cloud)\b|\b(?:website|web\s+service|cloud)\b.{0,100}\b(?:not|no|out\s+of\s+scope)\b' to match '# WinPDFMerger
+WinPDFMerger merges the visible top-level PDFs in one folder into a new master
+using PDFtk without intentional page rasterization or image downsampling. Optional
+Ghostscript creates a potentially lossy email rewrite, published only when it is
+validated and smaller than the master. Source PDFs and existing outputs are preserved.
+Keep originals and inspect the results before sharing them.
+The repository is **WinPDFMerger**; the established launchers remain
+**WinPDFMerge.ps1** and **WinPDFMerge.bat**. Processing stays local, with no application
+downloads, uploads, telemetry or self-update. This is a folder-based Windows tool;
+website work, cloud conversion, OCR, a GUI editor and an installer are outside its scope.
+## Install
+1. Use a Windows 11 x64 computer and a normal user account. Windows PowerShell 5.1
+   is the batch launcher's host. Direct invocation has also been tested on PowerShell
+   7.6.6 x64. These are scoped test observations, not completed release certification.
+   Windows 10, ARM, 32-bit hosts and live UNC shares are unvalidated.
+2. Install [PDFtk Server for Windows](https://www.pdflabs.com/tools/pdftk-server/)
+   from its vendor. PDFtk is required. Install
+   [Ghostscript](https://www.ghostscript.com/releases/gsdnld.html) only if you want
+   an email copy; it is optional. Review the separate
+   [dependency terms and selection rules](docs/DEPENDENCIES.md).
+3. Extract the whole project folder to a location such as `C:\Tools\WinPDFMerge`.
+   Keep the relative layout below; copying just the two launchers is insufficient.
+   The `docs` folder supplies the linked public instructions. Native dependencies
+   are installed separately, and Python is not needed to run the application.
+```text
+C:\Tools\WinPDFMerge\
+    WinPDFMerge.ps1
+    WinPDFMerge.bat
+    README.md
+    LICENSE
+    SECURITY.md
+    src\
+        WinPDFMerge.Helpers.ps1
+    docs\
+        USAGE.md
+        TROUBLESHOOTING.md
+        DEPENDENCIES.md
+        PDF_LIMITATIONS.md
+        EMAIL_PRESETS.md
+```
+4. In PowerShell, verify a PATH installation with `pdftk.exe --version` and,
+   if installed, `gswin64c.exe --version`. A tool outside PATH can still be selected
+   from the documented standard locations; the run reports its actual path/version.
+   Version detection does not establish trust. The application installs nothing.
+5. Choose a source folder and a **separate existing writable output folder**.
+   By default, output is beside `WinPDFMerge.ps1`, so that script directory must
+   be writable. Use `-OutputFolder` if it is not. The application does not create
+   destinations or silently choose another location.
+The scripts are unsigned. Downloaded scripts or enterprise policy may block them.
+Verify the source and follow your organization's approved process; do not disable
+security controls or change machine-wide execution policy. See
+[security and signing limits](SECURITY.md) and [blocked-script guidance](docs/TROUBLESHOOTING.md#script-blocked).
+The planned v1.0.0 release is not yet published; current source instructions do
+not imply a tested release ZIP is available.
+## Use
+Put the intended PDFs directly in one source folder. Subfolders and hidden files
+are not scanned; `.pdf` and `.PDF` are included. One PDF is valid; zero PDFs fails.
+Files sort naturally by base filename: `1, 01, 001, 2, 10`. Rename your own working
+copies if you need a different order, and check the numbered input list in the log.
+Existing results placed in the source folder are inputs too; there is no filename-prefix exclusion.
+For the default workflow, drag **exactly one folder** onto `WinPDFMerge.bat` in
+Explorer. It uses Windows PowerShell 5.1, writes beside the scripts, and pauses to
+show the result and log path. Double-click without a folder shows usage and fails;
+there is no folder picker. Physical Explorer acceptance remains a release gate.
+For named options, open PowerShell in the extracted script directory:
+```powershell
+Set-Location -LiteralPath 'C:\Tools\WinPDFMerge'
+.\WinPDFMerge.ps1 "C:\Work\Docs\ToMerge"
+.\WinPDFMerge.ps1 "C:\Work\Docs\ToMerge" -OutputFolder "C:\Work\Merged"
+.\WinPDFMerge.ps1 "C:\Work\Docs\ToMerge" -EmailPreset ebook
+.\WinPDFMerge.ps1 "C:\Work\Docs\ToMerge" -SkipEmail
+```
+Replace the example paths with your existing folders. `SourceFolder` is the only
+positional argument. `-EmailPreset` accepts `screen` (default) or `ebook` only.
+`-SkipEmail` bypasses Ghostscript discovery and execution; an explicitly supplied,
+valid preset is reported as ignored. The batch launcher accepts one source folder,
+so use the `.ps1` for options. Built-in help is available without running a merge:
+```powershell
+Get-Help .\WinPDFMerge.ps1 -Examples
+```
+`cmd.exe` can expand a paired `%NAME%` token in a quoted source or script path
+before the batch file starts. From PowerShell, use the `.ps1` directly to retain
+literal percent characters (replace both paths with your actual locations):
+```powershell
+powershell.exe -NoProfile -ExecutionPolicy Bypass -File 'C:\Tools\WinPDFMerge\WinPDFMerge.ps1' -SourceFolder 'C:\Work\source%NAME%'
+```
+This is the launcher's existing process-scoped policy flag; it changes no user or
+machine setting and does not override Group Policy. Use it only where local policy
+permits this route. [Microsoft describes the policy scopes and precedence](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-5.1).
+## Results and exit codes
+The master, optional `_email.pdf` and UTF-8 `.log` share a name such as
+`WinPDFMerge_ToMerge_20261008_120000_&lt;run&gt;.pdf`, with a random run suffix.
+Existing files are never overwritten. The master is validated and published
+before optional email processing; it survives an email failure. A larger or equal
+email candidate is omitted with a **no size benefit** message.
+| Code | Result | What to do |
+| --- | --- | --- |
+| `0` | Validated master; email produced, explicitly skipped, Ghostscript absent, or no smaller candidate | Use the reported master; an email copy exists only if listed as published. |
+| `1` | Invalid invocation/input/destination, missing or unusable PDFtk, or failure before master publication | Read the console/log; no validated master is advertised. Correct the cause and rerun. |
+| `2` | Partial success: validated master retained, but email or a later operation failed/interrupted | Keep the reported master and inspect the diagnostic; no failed email candidate is advertised. |
+The batch file returns the exact code after its pause. For a direct script call,
+read `$LASTEXITCODE` immediately afterward. Warnings on stderr alone do not decide
+success. Closing the window, killing the host or a crash cannot guarantee a code
+or cleanup. See [usage details and recovery](docs/USAGE.md).
+## Quality, privacy and help
+The email presets can lose small text, image detail, editable fields and other
+features; there is no guaranteed attachment size. Inspect the actual copy.
+See [observed preset tradeoffs](docs/EMAIL_PRESETS.md) and
+[PDF preservation limits](docs/PDF_LIMITATIONS.md). Neither output guarantees
+PDF/A, signature validity, accessibility, universal feature retention, archival
+certification or malware removal. Retain signed and feature-rich originals.
+Logs show stages, elapsed time, ordered paths, tool versions, page totals, native
+arguments/stdout/stderr, sizes and final state. They can contain confidential
+document names, full paths and PDF metadata. They are local, unredacted and
+unencrypted; sanitize a copy before sharing and do not attach private PDFs.
+Some invocation or unsafe-destination failures happen before a log can be created.
+See [troubleshooting](docs/TROUBLESHOOTING.md),
+[full usage and path limits](docs/USAGE.md), [dependency policy](docs/DEPENDENCIES.md)
+and [security/privacy policy](SECURITY.md). Project code and documentation retain
+the [MIT license](LICENSE), provided as-is without warranty; vendor dependencies
+have separate licenses.
+', but it did not match.</message>
+                  <stack-trace>at $readme | Should -Match '\b(?:no|not|without|out\s+of\s+scope)\b.{0,100}\b(?:website|web\s+service|cloud)\b|\b(?:website|web\s+service|cloud)\b.{0,100}\b(?:not|no|out\s+of\s+scope)\b', C:\T20Repo\tests\help\PublicDocs.Tests.ps1:237</stack-trace>
+                </failure>
+              </test-case>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

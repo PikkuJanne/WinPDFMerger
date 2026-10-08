@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "task": "T20",
+  "review": "concrete-public-archive-integrity-and-privacy",
+  "result": "pass",
+  "blockers": [],
+  "tested_commit": "a9e93319ad260646d57278f207872a0e03dbb155",
+  "manifest_sha256": "ae84589610b8ea3cdd770dd7279f1aeced3c07239beeeb52028af597fad0631a",
+  "selection_sha256": "26ccae8f984a1a12b967aebb60a01535ec605732d6401a1e7813d675c7a90bc8",
+  "exporter_sha256": "f8a9c1e553ff67438f02aff9ac0a6d534a3993c91010850e825c02f673643308",
+  "selected_text_files": 99,
+  "manifest_additional_files": 1,
+  "actual_raw_public_bindings": 99,
+  "formats": {
+    ".json": 56,
+    ".xml": 14,
+    ".py": 9,
+    ".txt": 18,
+    ".ps1": 2
+  },
+  "verified_invariants": [
+    "Every selected raw/public byte hash, size and disclosed source/class matches; no missing, duplicate, extra or nested archive file.",
+    "All decoded JSON keys, string values and list order match declared substitutions without key loss; numeric/boolean/null facts unchanged.",
+    "Decoded XML tag/attribute/text/tail/child order facts match only declared substitutions, including entity escapes.",
+    "Public manifest and text/decoded strings contain no original repository/profile/account/machine/domain identity, including JSON-escaped paths in plaintext captures.",
+    "All selected payloads are allowed UTF-8 text; no PDF/EXE/PNG/ZIP magic or private PDF/binary file is archived.",
+    "Eight clean summaries/XML pairs agree on C1, x64 shell versions, Pester 6.2.0 and scoped RemoteSigned context; 99 cases per shell, 198 total, all failure/block/container/skip/not-run zero.",
+    "Each scoped PSA 1.25.0 run preserves 0 errors, 4 disclosed warnings and 0 information; its scope is two test-tooling files.",
+    "Corrected ordinary policy observation stays standard-user x64, Restricted/all scopes Undefined, separate from test children.",
+    "Preparation/failure receipts remain separately classified and do not inflate clean acceptance totals.",
+    "The exact frozen manifest and all public bytes remain unchanged throughout review."
+  ],
+  "exporter_review_history": "Decoded XML/key-collision/binary guard recommendations were implemented before first export. Initial literal-path audit missed four JSON-escaped repository paths inside plaintext stdout; expanded review correctly failed and root was notified before records commitment. Final independent check binds the newly supplied exact manifest and decoded embedded JSON facts.",
+  "detailed_local_receipt": {
+    "path": "tests/.work/T20-policy-source-audit/corrected-archive-final/archive-review.json",
+    "sha256": "a4d5f167d0729934048bf8ae1acd6493bd97953b60aa4a93bacc753396c21683"
+  },
+  "escaped_path_privacy_hits": [],
+  "scope": "Exact concrete selected text archive raw/public binding, declared privacy substitution, decoded JSON/XML integrity and unchanged typed facts; no native/manual/PDF/package/release acceptance or broad history secret scan.",
+  "limitations": [
+    "Per-file binding and semantic invariants are grouped review checks, not additional application tests.",
+    "Selected failures/preparation receipts are retained separately from clean C1 acceptance.",
+    "No private identity values, PDFs or binary payloads are included in this review receipt."
+  ],
+  "_public_binding": {
+    "raw_source": "tests/.work/T20-policy-source-audit/corrected-archive-final/archive-review-summary.json",
+    "raw_sha256": "3f89c5db1d0011a999b4241a8f488f3cf0c36905b9a8829999d78eff5faf5758",
+    "privacy": "Consistent decoded JSON repository/profile/account/machine/domain substitutions; original remains local. No result/count/numeric/boolean changes."
+  }
+}

@@ -1,0 +1,412 @@
+{
+  "schema_version": 1,
+  "task": "T20",
+  "acceptance_case": "AC047",
+  "reviewer": "independent-policy-source-review",
+  "observed_at_utc": "2026-10-08T11:44:35.840587+00:00",
+  "label": "clean-C1",
+  "starting_commit": "440ea7f6f4d92892fd6302d349848955b440f93d",
+  "commit_at_review": "a9e93319ad260646d57278f207872a0e03dbb155",
+  "dirty_worktree": false,
+  "scope": "Source/document/current-official-reference review only. Regex consistency checks support manually inspected claims; no application, native parser, Windows manual/Explorer, redistribution clearance, full secret audit or release acceptance.",
+  "environment": {
+    "os_family": "Windows",
+    "review_python": "3.12.14"
+  },
+  "source_bindings": [
+    {
+      "path": "README.md",
+      "sha256": "2a13671dc1a22dd164c2be06defd8eeaac8b2e45a141b48984fe5a2d8d085381",
+      "bytes": 8216,
+      "retained_source": "tests/.work/T20-policy-source-audit/clean-C1/README.md.source.txt"
+    },
+    {
+      "path": "SECURITY.md",
+      "sha256": "2a4592c271a20facb810151bd6fe17bcd84c946fb7d544ccc4b75c8205491398",
+      "bytes": 5233,
+      "retained_source": "tests/.work/T20-policy-source-audit/clean-C1/SECURITY.md.source.txt"
+    },
+    {
+      "path": "docs/DEPENDENCIES.md",
+      "sha256": "68b029f35da66d459bd5df6a94812093fa9ea4ffb4d923d74df716a751d61152",
+      "bytes": 4211,
+      "retained_source": "tests/.work/T20-policy-source-audit/clean-C1/docs-DEPENDENCIES.md.source.txt"
+    },
+    {
+      "path": "docs/USAGE.md",
+      "sha256": "021878c135ee913337ef1a8bbcc940cbb557319eb11fb77dd7e86c51a047ee32",
+      "bytes": 8799,
+      "retained_source": "tests/.work/T20-policy-source-audit/clean-C1/docs-USAGE.md.source.txt"
+    },
+    {
+      "path": "docs/TROUBLESHOOTING.md",
+      "sha256": "a0401c15186331f2b025a94abd835a9b8f76149749802b10a703220dfb568248",
+      "bytes": 6941,
+      "retained_source": "tests/.work/T20-policy-source-audit/clean-C1/docs-TROUBLESHOOTING.md.source.txt"
+    },
+    {
+      "path": "docs/PDF_LIMITATIONS.md",
+      "sha256": "ee8c4f1b73d62ba75abebc4709f2a543fde7d260503069e714ecaa679c965503",
+      "bytes": 5853,
+      "retained_source": "tests/.work/T20-policy-source-audit/clean-C1/docs-PDF_LIMITATIONS.md.source.txt"
+    },
+    {
+      "path": "docs/EMAIL_PRESETS.md",
+      "sha256": "ff77346ea43a0a5142526e9b0517faff40ce1cf306da444d762b58b65bf3db39",
+      "bytes": 2883,
+      "retained_source": "tests/.work/T20-policy-source-audit/clean-C1/docs-EMAIL_PRESETS.md.source.txt"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "714ffa7a21614e637d7dbb17a2e86e4575d7ecd2b6d36b5b67ab3fdcc4193477",
+      "bytes": 1070,
+      "retained_source": "tests/.work/T20-policy-source-audit/clean-C1/LICENSE.source.txt"
+    },
+    {
+      "path": "WinPDFMerge.ps1",
+      "sha256": "e702b0b1583ab841589494cc524da1d9bd4148cf8849577793b08fd8f54b641d",
+      "bytes": 18637,
+      "retained_source": "tests/.work/T20-policy-source-audit/clean-C1/WinPDFMerge.ps1.source.txt"
+    },
+    {
+      "path": "WinPDFMerge.bat",
+      "sha256": "288287beefea974c64d39b34266332d83112b9106c952efd8c304edfedebff83",
+      "bytes": 1782,
+      "retained_source": "tests/.work/T20-policy-source-audit/clean-C1/WinPDFMerge.bat.source.txt"
+    },
+    {
+      "path": "src/WinPDFMerge.Helpers.ps1",
+      "sha256": "3df10eafeac04493b06300d276cff05a9c5ef196a01b7b157a6afd3d2768eaa7",
+      "bytes": 101346,
+      "retained_source": "tests/.work/T20-policy-source-audit/clean-C1/src-WinPDFMerge.Helpers.ps1.source.txt"
+    }
+  ],
+  "checks": [
+    {
+      "id": "head",
+      "result": "pass",
+      "observation": "The review is bound to the explicitly requested current Git head; dirty source hashes are separate.",
+      "evidence": [
+        "git rev-parse HEAD"
+      ]
+    },
+    {
+      "id": "clean-if-required",
+      "result": "pass",
+      "observation": "Clean status is required only for the clean checkpoint review.",
+      "evidence": [
+        "git status --porcelain=v1"
+      ]
+    },
+    {
+      "id": "unchanged-LICENSE",
+      "result": "pass",
+      "observation": "Exact LICENSE/application/BAT/helper bytes match the T19 starting source.",
+      "evidence": [
+        "LICENSE",
+        "source-audit.json"
+      ]
+    },
+    {
+      "id": "unchanged-WinPDFMerge.ps1",
+      "result": "pass",
+      "observation": "Exact LICENSE/application/BAT/helper bytes match the T19 starting source.",
+      "evidence": [
+        "WinPDFMerge.ps1",
+        "source-audit.json"
+      ]
+    },
+    {
+      "id": "unchanged-WinPDFMerge.bat",
+      "result": "pass",
+      "observation": "Exact LICENSE/application/BAT/helper bytes match the T19 starting source.",
+      "evidence": [
+        "WinPDFMerge.bat",
+        "source-audit.json"
+      ]
+    },
+    {
+      "id": "unchanged-src-WinPDFMerge.Helpers.ps1",
+      "result": "pass",
+      "observation": "Exact LICENSE/application/BAT/helper bytes match the T19 starting source.",
+      "evidence": [
+        "src/WinPDFMerge.Helpers.ps1",
+        "source-audit.json"
+      ]
+    },
+    {
+      "id": "mit-separate",
+      "result": "pass",
+      "observation": "Project MIT attribution and unchanged copyright are separate from dependency licenses.",
+      "evidence": [
+        "LICENSE",
+        "docs/DEPENDENCIES.md"
+      ]
+    },
+    {
+      "id": "pdftk-vendor-terms",
+      "result": "pass",
+      "observation": "PDFtk GPLv2 and vendor redistribution information match the official vendor source.",
+      "evidence": [
+        "docs/DEPENDENCIES.md",
+        "https://www.pdflabs.com/docs/pdftk-license/"
+      ]
+    },
+    {
+      "id": "gs-vendor-terms",
+      "result": "pass",
+      "observation": "Ghostscript AGPLv3/commercial alternatives are separate from project MIT.",
+      "evidence": [
+        "docs/DEPENDENCIES.md",
+        "https://artifex.com/licensing"
+      ]
+    },
+    {
+      "id": "no-license-exemption",
+      "result": "pass",
+      "observation": "The prose makes no legal integration/redistribution exemption claim.",
+      "evidence": [
+        "docs/DEPENDENCIES.md"
+      ]
+    },
+    {
+      "id": "independent-dependencies",
+      "result": "pass",
+      "observation": "Declared package policy excludes vendor binaries without asserting an unbuilt package is verified; development libraries are not runtime requirements.",
+      "evidence": [
+        "README.md",
+        "docs/DEPENDENCIES.md",
+        "docs/codex/SECURITY_AND_DEPENDENCIES.md"
+      ]
+    },
+    {
+      "id": "required-pdftk-optional-gs",
+      "result": "pass",
+      "observation": "Required PDFtk and optional Ghostscript are clearly separated.",
+      "evidence": [
+        "README.md",
+        "SECURITY.md",
+        "WinPDFMerge.ps1"
+      ]
+    },
+    {
+      "id": "runtime-local-source",
+      "result": "pass",
+      "observation": "Actual entry/helper/BAT contain no application network acquisition, telemetry endpoint, or shell evaluation call.",
+      "evidence": [
+        "WinPDFMerge.ps1",
+        "WinPDFMerge.bat",
+        "src/WinPDFMerge.Helpers.ps1"
+      ]
+    },
+    {
+      "id": "local-scope-prose",
+      "result": "pass",
+      "observation": "Runtime processing is local; dependency/repository/reporting actions are accurately distinguished.",
+      "evidence": [
+        "docs/DEPENDENCIES.md",
+        "SECURITY.md"
+      ]
+    },
+    {
+      "id": "native-safety-not-sandbox",
+      "result": "pass",
+      "observation": "Fixed GS restrictions stay enabled; native parser user permissions and absence of hostile-file isolation are disclosed.",
+      "evidence": [
+        "SECURITY.md",
+        "src/WinPDFMerge.Helpers.ps1",
+        "https://ghostscript.readthedocs.io/en/latest/Use.html#dsafer"
+      ]
+    },
+    {
+      "id": "child-only-environment",
+      "result": "pass",
+      "observation": "GS_OPTIONS removal is limited to selected child environment; caller environment remains intact.",
+      "evidence": [
+        "docs/USAGE.md",
+        "src/WinPDFMerge.Helpers.ps1"
+      ]
+    },
+    {
+      "id": "confidential-log-details",
+      "result": "pass",
+      "observation": "Log streams and ownership markers can expose names, paths, metadata and run/process facts.",
+      "evidence": [
+        "SECURITY.md",
+        "Write-NativeProcessLog",
+        "New-PdfStaging"
+      ]
+    },
+    {
+      "id": "ordinary-permissions",
+      "result": "pass",
+      "observation": "No special encryption/ACL/redaction or private-staging isolation is promised.",
+      "evidence": [
+        "SECURITY.md",
+        "src/WinPDFMerge.Helpers.ps1"
+      ]
+    },
+    {
+      "id": "retention-and-external-storage",
+      "result": "pass",
+      "observation": "Owner controls retention and storage; external services can independently copy local data.",
+      "evidence": [
+        "SECURITY.md"
+      ]
+    },
+    {
+      "id": "sanitized-sharing",
+      "result": "pass",
+      "observation": "Public reports require a reviewed sanitized copy and synthetic reproduction; private documents/secrets are excluded.",
+      "evidence": [
+        "SECURITY.md",
+        "docs/TROUBLESHOOTING.md"
+      ]
+    },
+    {
+      "id": "safe-orphan-cleanup",
+      "result": "pass",
+      "observation": "Manual cleanup preserves active/unknown/foreign staging and validated finals.",
+      "evidence": [
+        "docs/TROUBLESHOOTING.md",
+        "src/WinPDFMerge.Helpers.ps1"
+      ]
+    },
+    {
+      "id": "unsigned-accurate",
+      "result": "pass",
+      "observation": "Actual NotSigned PS source status and existing BAT process Bypass limits are accurately disclosed.",
+      "evidence": [
+        "SECURITY.md",
+        "Get-AuthenticodeSignature read-only observation",
+        "WinPDFMerge.bat"
+      ]
+    },
+    {
+      "id": "no-persistent-policy-workaround",
+      "result": "pass",
+      "observation": "No instructions weaken persistent execution policy, enterprise policy or security software.",
+      "evidence": [
+        "docs/TROUBLESHOOTING.md",
+        "SECURITY.md",
+        "https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-5.1"
+      ]
+    },
+    {
+      "id": "checksum-not-authentication",
+      "result": "pass",
+      "observation": "SHA-256 integrity is distinguished from signatures, publisher identity and safety.",
+      "evidence": [
+        "SECURITY.md"
+      ]
+    },
+    {
+      "id": "no-admin-normal-use",
+      "result": "pass",
+      "observation": "Normal standard-user use is documented without elevation or control disablement.",
+      "evidence": [
+        "docs/DEPENDENCIES.md",
+        "SECURITY.md"
+      ]
+    },
+    {
+      "id": "tested-scope-limits",
+      "result": "pass",
+      "observation": "Known Windows/PS/native observations do not become broad support, future-security, Explorer or release certification.",
+      "evidence": [
+        "docs/DEPENDENCIES.md",
+        "README.md",
+        "docs/codex/COMPATIBILITY_MATRIX.md"
+      ]
+    },
+    {
+      "id": "current-vendor-maintenance",
+      "result": "pass",
+      "observation": "Correct current vendor CVE route replaces the actual 404 and updates remain an owner/vendor action.",
+      "evidence": [
+        "docs/DEPENDENCIES.md",
+        "https://www.ghostscript.com/releases/cve/index.html"
+      ]
+    },
+    {
+      "id": "reporting-truthful",
+      "result": "pass",
+      "observation": "Fresh API disabled-state observation is disclosed without inventing a private channel, exploit disclosure request or response deadline.",
+      "evidence": [
+        "SECURITY.md",
+        "gh api repos/PikkuJanne/WinPDFMerger/private-vulnerability-reporting"
+      ]
+    },
+    {
+      "id": "feature-safety-limits",
+      "result": "pass",
+      "observation": "Preservation/sanitization limitations remain explicit and original retention is advised.",
+      "evidence": [
+        "README.md",
+        "SECURITY.md",
+        "docs/PDF_LIMITATIONS.md"
+      ]
+    },
+    {
+      "id": "no-website-scope",
+      "result": "pass",
+      "observation": "No website/cloud/OCR/editor/installer/update expansion is introduced.",
+      "evidence": [
+        "README.md",
+        "SECURITY.md",
+        "AGENTS.md"
+      ]
+    },
+    {
+      "id": "release-not-claimed",
+      "result": "pass",
+      "observation": "Public instructions do not claim an available tested/public v1.0.0 ZIP or completed release.",
+      "evidence": [
+        "README.md",
+        "SECURITY.md"
+      ]
+    },
+    {
+      "id": "public-privacy",
+      "result": "pass",
+      "observation": "Candidate public prose contains synthetic examples and no observed profile paths or standard secret-key/token markers.",
+      "evidence": [
+        "README.md",
+        "SECURITY.md",
+        "docs/DEPENDENCIES.md",
+        "docs/USAGE.md",
+        "docs/TROUBLESHOOTING.md",
+        "docs/PDF_LIMITATIONS.md",
+        "docs/EMAIL_PRESETS.md"
+      ]
+    },
+    {
+      "id": "stable-read",
+      "result": "pass",
+      "observation": "All reviewed source/document bytes remained unchanged through the snapshot/check pass.",
+      "evidence": [
+        "before/after SHA-256 bindings"
+      ]
+    }
+  ],
+  "check_count": 33,
+  "passed": 33,
+  "blockers": [],
+  "result": "pass",
+  "official_reference_observations": "source-audit.json plus final session verification of PowerShell project MIT and Microsoft installation links; observed 2026-10-08, not perpetual latest/safe claims.",
+  "actual_read_only_observations": {
+    "authenticode": "WinPDFMerge.ps1 and helper NotSigned/no signer",
+    "private_vulnerability_reporting": {
+      "enabled": false
+    },
+    "old_cve_route_http_status": 404,
+    "correct_cve_route": "https://www.ghostscript.com/releases/cve/index.html"
+  },
+  "resolved_finding": "Original final-candidate dependencies used an obsolete 404 CVE route; root corrected it before this exact candidate review. No runtime or license change was required.",
+  "limitations": [
+    "Public secret scan is limited to reviewed candidate prose and common markers, not a T25 full tracked-history audit.",
+    "No privileged/security setting changes, install, runtime/native execution, paid signing, publishing or Git mutation performed.",
+    "Clean C1 rebinding is required before using dirty-candidate results as clean implementation evidence.",
+    "Vendor licenses are separate primary references; no legal compatibility/exemption determination is made."
+  ]
+}
