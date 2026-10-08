@@ -1,0 +1,48 @@
+Pester v6.2.0
+
+Running tests from 1 files.
+
+Running tests from '<repo>\tests\filesafety\Destination.Native.Tests.ps1'
+Describing AC022: actual entry destination preflight and standard-user writability
+  [+] keeps the omitted destination beside the entry script and uses actual engines without editing sources 3.19s
+  [+] accepts a named literal writable OutputFolder with punctuation and Latin Unicode 2.72s
+  [+] rejects a nonexistent destination before dependency lookup, names or outputs 564ms
+  [+] rejects a file destination before dependency lookup, names or outputs 540ms
+  [+] rejects a wildcard destination before dependency lookup, names or outputs 558ms
+  [+] rejects a nonfilesystem provider destination before dependency lookup, names or outputs 647ms
+  [+] refuses a denied-write default installation and recovers through an explicit writable destination 3.73s
+  [+] removes its successful owned writability probe when later dependency preflight fails 1.06s
+
+Describing AC023: real directory identity and NTFS junction protection
+  [+] refuses source/output same directory before any native dependency or output creation 1.82s
+  [+] refuses source/output case alias before any native dependency or output creation 856ms
+  [+] refuses an actual output leaf to source junction without traversing, self-merging or touching its target 720ms
+  [+] refuses an actual source leaf to output junction without traversing, self-merging or touching its target 638ms
+  [+] refuses an actual output ancestor junction without traversing, self-merging or touching its target 683ms
+  [+] refuses an actual source ancestor junction without traversing, self-merging or touching its target 679ms
+
+Describing AC024: actual simultaneous run identities and unchanged existing results
+  [+] gives overlapping real application runs distinct shared master/email/log identities in one output directory 3.36s
+Native observations: <repo>\tests\.work\destination\91d623fb4cfc4029a3944e3e2c5f5e96\native-observations.json
+Tests completed in 23.69s
+Tests Passed: 15, Failed: 0, Skipped: 0, Inconclusive: 0, NotRun: 0
+{
+    "observed_at_utc":  "2026-10-08T04:02:19.5049340Z",
+    "commit_under_test":  "e74ffa92588eff876c12ebd3321e2f3b0d6f110c",
+    "dirty_worktree":  false,
+    "shell_version":  "5.1.26100.9444",
+    "shell_edition":  "Desktop",
+    "process_64_bit":  true,
+    "execution_policy":  "RemoteSigned",
+    "pester_version":  "6.2.0",
+    "tier":  "Destination",
+    "evidence_class":  "windows-real-entry-destination-identity-ACL-junction-concurrency",
+    "passed":  15,
+    "failed":  0,
+    "failed_blocks":  0,
+    "failed_containers":  0,
+    "skipped":  0,
+    "not_run":  0,
+    "total":  15
+}
+Reports: <repo>\tests\.work\pester\a2debf0317da4553ad38bfbcd2418398

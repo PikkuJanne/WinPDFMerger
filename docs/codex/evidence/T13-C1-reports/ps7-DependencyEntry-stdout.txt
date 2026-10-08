@@ -1,0 +1,46 @@
+Pester v6.2.0
+
+Running tests from 1 files.
+
+Running tests from '<repo>\tests\dependencies\Dependencies.Entry.Tests.ps1'
+Real PDFtk SHA256: 5E5CBE817ECC3CC1875369D81119472559C9624D55C7176852C8827750AFA00A
+Real PDFtk file version: 
+Describing AC015: actual Windows entry rejects absent or unusable PDFtk before outputs
+  [+] rejects missing PDFtk with installation guidance and no PDF or run log 1.75s
+  [+] rejects a discovered pdftk.exe file that is not an executable before outputs 1.66s
+  [+] rejects the controlled nonzero-exit version probe before outputs 1.65s
+  [+] rejects the controlled unrecognized-banner version probe before outputs 1.43s
+  [+] rejects the controlled finite timeout version probe before outputs 6.15s
+
+Describing T07 actual entry dependency diagnostics with real PDFtk, narrow native smoke
+  [+] reports selected real PDFtk path and version and merges two pages with optional GS absent 1.73s
+  [+] retains a real two-page master and returns partial success when a controlled GS version probe fails 1.71s
+
+Describing T07 real dependency version-probe helper with a controlled executable, no PDF or GS support claim
+GS_OPTIONS requested unset; observed caller state unset
+GS_OPTIONS requested empty; observed caller state empty
+GS_OPTIONS requested value; observed caller state value
+  [+] clears GS_OPTIONS only in the version child across requested unset, empty and value caller states 245ms
+  [+] uses an injected 200ms version-probe timeout and observes its exact fixture PID exited at return 254ms
+Tests completed in 17.68s
+Tests Passed: 9, Failed: 0, Skipped: 0, Inconclusive: 0, NotRun: 0
+{
+  "observed_at_utc": "2026-10-08T04:04:11.9740674Z",
+  "commit_under_test": "e74ffa92588eff876c12ebd3321e2f3b0d6f110c",
+  "dirty_worktree": false,
+  "shell_version": "7.6.6",
+  "shell_edition": "Core",
+  "process_64_bit": true,
+  "execution_policy": "RemoteSigned",
+  "pester_version": "6.2.0",
+  "tier": "DependencyEntry",
+  "evidence_class": "windows-entry-dependency-faults-controlled-process-and-real-pdftk",
+  "passed": 9,
+  "failed": 0,
+  "failed_blocks": 0,
+  "failed_containers": 0,
+  "skipped": 0,
+  "not_run": 0,
+  "total": 9
+}
+Reports: <repo>\tests\.work\pester\34f68d02fc584e47b16f02b6445668ba

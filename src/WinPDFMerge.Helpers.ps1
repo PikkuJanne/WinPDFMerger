@@ -969,16 +969,26 @@ function Invoke-PdfToolJob {
         [Parameter(Mandatory=$true)][AllowEmptyCollection()][object[]]$InputPaths,
         [Parameter(Mandatory=$true)][string]$OutputPath,
         $Staging,
+        [long]$ExpectedPageCount = 0,
         [ValidateRange(1, 2147483647)][int]$TimeoutMilliseconds = 900000
     )
 
     $native = $null
     $outputError = $null
     $cleanupError = $null
+    $validation = $null
+    $validated = $false
+    $validatedPages = $null
     $published = $false
     $ownedStaging = $null
     $stagedOutput = $null
     try {
+        if ($Tool -eq 'Pdftk' -and $ExpectedPageCount -le 0) {
+            throw 'PDFtk master merging requires a positive frozen ExpectedPageCount; no merge was started.'
+        }
+        if ($Tool -eq 'Ghostscript' -and $PSBoundParameters.ContainsKey('ExpectedPageCount')) {
+            throw 'ExpectedPageCount applies only to PDFtk master merging.'
+        }
         if ($InputPaths.Count -eq 0 -or ($Tool -eq 'Ghostscript' -and $InputPaths.Count -ne 1)) {
             throw 'PDFtk requires at least one input; Ghostscript requires exactly one master input.'
         }
@@ -1026,8 +1036,46 @@ function Invoke-PdfToolJob {
         if (-not [IO.File]::Exists($stagedOutput) -or (Get-Item -LiteralPath $stagedOutput).Length -eq 0) {
             throw "$Tool did not produce a nonempty private output."
         }
-        # File.Move refuses an existing target, including a collision after the
-        # preflight. Structural/page-total validation is a separate later gate.
+        if ($Tool -eq 'Pdftk') {
+            # Native success is only the staging result. Inspect the owned
+            # master before the no-overwrite move can create a final file.
+            Assert-PdfStaging -Staging $Staging
+            $stagedFile = Get-Item -LiteralPath $stagedOutput -Force -ErrorAction Stop
+            if ($stagedFile -isnot [IO.FileInfo] -or
+                ($stagedFile.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0) {
+                throw 'Master validation requires a regular owned staged PDF; no final master was published.'
+            }
+            $snapshot = Get-PdfInputSnapshot -LiteralPath $stagedOutput
+            $validation = Get-PdfDocumentInspection -Executable $Executable -LiteralPath $stagedOutput -TimeoutMilliseconds $TimeoutMilliseconds
+            if (-not $validation.Succeeded -or $null -eq $validation.NativeResult -or -not $validation.NativeResult.Succeeded) {
+                throw "Master validation failed; no final master was published. $($validation.InputError)"
+            }
+            $validationNative = $validation.NativeResult
+            if (-not $validationNative.Started -or $validationNative.ExitCode -ne 0 -or
+                $validationNative.TimedOut -or $validationNative.Cancelled -or $validationNative.LaunchError -or
+                $validationNative.CaptureError -or $validationNative.TerminationError) {
+                throw 'Master validation native execution was incomplete or unsuccessful; no final master was published.'
+            }
+            if ($validation.NativeResult.StdoutTruncated -or $validation.NativeResult.StderrTruncated) {
+                throw 'Master validation capture was incomplete; no final master was published.'
+            }
+            if ($validation.PageCount -ne $ExpectedPageCount) {
+                throw "Master validation page count mismatch: expected $ExpectedPageCount, inspected $($validation.PageCount). No final master was published."
+            }
+            Assert-PdfStaging -Staging $Staging
+            $current = Get-PdfInputSnapshot -LiteralPath $stagedOutput
+            $currentFile = Get-Item -LiteralPath $stagedOutput -Force -ErrorAction Stop
+            if (($currentFile.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0) {
+                throw 'Staged master became a reparse file during validation; no final master was published.'
+            }
+            if ($current.Length -ne $snapshot.Length -or $current.LastWriteTimeUtcTicks -ne $snapshot.LastWriteTimeUtcTicks) {
+                throw 'Staged master changed during validation; no final master was published. Use stable source documents and run again.'
+            }
+            $validatedPages = [long]$validation.PageCount
+            $validated = $true
+        }
+        # File.Move refuses an existing target, including a collision after
+        # validation. Email structural validation remains its separate gate.
         Publish-PdfStagedOutput -Staging $Staging -StagedPath $stagedOutput -OutputPath $OutputPath
         $published = $true
     } catch {
@@ -1040,12 +1088,15 @@ function Invoke-PdfToolJob {
     }
     return [pscustomobject]@{
         NativeResult = $native
+        ValidationResult = $validation
+        OutputValidated = $validated
+        ValidatedPageCount = $validatedPages
         OutputPath = $OutputPath
         OutputPublished = $published
         OutputError = $outputError
         CleanupError = $cleanupError
         StagingPath = $(if ($null -ne $Staging) { $Staging.DirectoryPath } else { $null })
-        Succeeded = ($published -and -not $outputError)
+        Succeeded = ($published -and -not $outputError -and ($Tool -ne 'Pdftk' -or $validated))
     }
 }
 

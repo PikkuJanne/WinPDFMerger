@@ -1,0 +1,2964 @@
+{
+  "schema_version": 1,
+  "task": "T13",
+  "checkpoint": "C1",
+  "implementation_commit": "e74ffa92588eff876c12ebd3321e2f3b0d6f110c",
+  "audit_kind": "Independent read-only observation/source/retained-file audit; no suite rerun",
+  "audit_observed_at_utc": "2026-10-08T04:01:39.9515304Z",
+  "audit_shell_version": "7.6.6",
+  "audit_process_64bit": true,
+  "audit_standard_user": true,
+  "engine_pins": [
+    {
+      "leaf": "pdftk.exe",
+      "sha256": "5e5cbe817ecc3cc1875369d81119472559c9624d55c7176852c8827750afa00a"
+    },
+    {
+      "leaf": "libiconv2.dll",
+      "sha256": "cb016e794d3311c71f21d87803e10a0e1133995f62a485eb37b321cd9b9e1087"
+    },
+    {
+      "leaf": "gswin64c.exe",
+      "sha256": "9b29d3b5128c6d53bb4e9eee77e3919d05038cdfdd8e07697af4d9c319f9d5ad"
+    },
+    {
+      "leaf": "gsdll64.dll",
+      "sha256": "a134ed0d3af749bdab93c66029180e676d36d9cc624c192ea287f73c891fb0af"
+    }
+  ],
+  "audit_python_sha256": "dd5f8d19f6755d6491ee7c4bef2fe35ddd521334cc3ca3ed8fc93ebcadf135d0",
+  "audit_oracle_sha256": "d86066c649d7b6b4827cd773993f2187f1e5f3b6880a43774a3e885ea3b02cff",
+  "raw_receipts": [
+    {
+      "kind": "ps51/MasterValidation/stdout",
+      "path": "tests/.work/T13-C1-ps51/MasterValidation.txt",
+      "sha256": "e31547a6022ae3dba9f9142bdb78b11b366a93cf355a6958747107929ee0c9dc"
+    },
+    {
+      "kind": "ps51/MasterValidation/observations",
+      "path": "tests/.work/master-validation/118cd88cbfc046c5a28c85b11222d087/native-observations.json",
+      "sha256": "327df86599b9ce4179494de8000951d28906662058274ca30e39449d467cd8e6"
+    },
+    {
+      "kind": "ps51/MasterValidation/summary",
+      "path": "tests/.work/pester/02c2060b70984774bf3012f6cda03866/summary.json",
+      "sha256": "8d89752d2e20278e290a81ee812b301867bec954310b08eae2468c7a35f98885"
+    },
+    {
+      "kind": "ps51/MasterValidation/XML",
+      "path": "tests/.work/pester/02c2060b70984774bf3012f6cda03866/results.xml",
+      "sha256": "693fb1e732f9132911297102516a45799d933e3a3305a40a993e77a632b424b6"
+    },
+    {
+      "kind": "ps51/executed suite PDFium oracle",
+      "path": "tests/.work/master-validation/118cd88cbfc046c5a28c85b11222d087/inspect-master.py",
+      "sha256": "ec39d64b22687ea1b6d4cdb5038f7791c18672b6df9aacc549488f17e03c1b22"
+    },
+    {
+      "kind": "ps51/actual-entry-single-multipage-validated/entry log",
+      "path": "tests/.work/master-validation/118cd88cbfc046c5a28c85b11222d087/57c83fa0b3e244ddba74aed51580b54b/output/WinPDFMerge_source_20261008_060043_a961ac02bc8d4e75.log",
+      "sha256": "8f416a42b50d9d08dddc472fad15dc97220c58faae96474fe06c7f6fb0526a48"
+    },
+    {
+      "kind": "ps51/actual-entry-natural-five-pages-mixed-rotation/entry log",
+      "path": "tests/.work/master-validation/118cd88cbfc046c5a28c85b11222d087/bdabf49a36f44d968c080703be7947bc/output/WinPDFMerge_source_20261008_060046_d643f43e399248b0.log",
+      "sha256": "3fb52672450776afcce3ba5e00eb3e86141291aaac257f3bfb5a14dc344615ff"
+    },
+    {
+      "kind": "ps51/Staging/stdout",
+      "path": "tests/.work/T13-C1-ps51/Staging.txt",
+      "sha256": "a9ea5267722df65f49017ffec5ee068b395b0a6ae5dc14d8266b23d0dbb38d72"
+    },
+    {
+      "kind": "ps51/Staging/observations",
+      "path": "tests/.work/staging/4f17afcfd6e84b7db6f96a53bab349f6/native-observations.json",
+      "sha256": "93ed13dec9e1abcb55b04e3bfd706fd9e4ce1287bd42f3c70a7e5a68e927ba3a"
+    },
+    {
+      "kind": "ps51/Staging/summary",
+      "path": "tests/.work/pester/224218bca1d74b708702c2b3d5b73af1/summary.json",
+      "sha256": "756bf7e7c02e67fe3f00b1fbeb97bffc63450a6d6882f2bf3b9b34794820988f"
+    },
+    {
+      "kind": "ps51/Staging/XML",
+      "path": "tests/.work/pester/224218bca1d74b708702c2b3d5b73af1/results.xml",
+      "sha256": "ba8aebfe1cdad79897e65eac4bc68671de5690261ef9e184b2d107bae3aaa7b1"
+    },
+    {
+      "kind": "ps7/MasterValidation/stdout",
+      "path": "tests/.work/T13-C1-ps7/MasterValidation.txt",
+      "sha256": "7bdb011d6ae0f461aec64d391c5da81e9c63f94dfb390de025b74c4f9d2bdbeb"
+    },
+    {
+      "kind": "ps7/MasterValidation/observations",
+      "path": "tests/.work/master-validation/d116deb9acff41419727695df3463032/native-observations.json",
+      "sha256": "2cbd357c265748cbd2420526de9a2d99f8ecd0e03f9846ce3d5d297c20a44821"
+    },
+    {
+      "kind": "ps7/MasterValidation/summary",
+      "path": "tests/.work/pester/83098c4a653f4695a59ea4175513cd5f/summary.json",
+      "sha256": "0d40084629f07355b04038314a8b1f62890460371fb6f7e72d1232ffee3832b4"
+    },
+    {
+      "kind": "ps7/MasterValidation/XML",
+      "path": "tests/.work/pester/83098c4a653f4695a59ea4175513cd5f/results.xml",
+      "sha256": "9f269cd432395615c6ecf281910725754766c57adfe49bebcd45a217fbf0d28a"
+    },
+    {
+      "kind": "ps7/executed suite PDFium oracle",
+      "path": "tests/.work/master-validation/d116deb9acff41419727695df3463032/inspect-master.py",
+      "sha256": "ec39d64b22687ea1b6d4cdb5038f7791c18672b6df9aacc549488f17e03c1b22"
+    },
+    {
+      "kind": "ps7/actual-entry-single-multipage-validated/entry log",
+      "path": "tests/.work/master-validation/d116deb9acff41419727695df3463032/55ca9e2e4d4a40fa96ba024da3b41800/output/WinPDFMerge_source_20261008_060044_6afae7324ddd4f44.log",
+      "sha256": "bcf2c5fd9fcf8a52021f279891927f5b4cdfa585ea0e0cc09927780fe909a620"
+    },
+    {
+      "kind": "ps7/actual-entry-natural-five-pages-mixed-rotation/entry log",
+      "path": "tests/.work/master-validation/d116deb9acff41419727695df3463032/572e70ba5ccd41abbe1c6e7c5dc689a8/output/WinPDFMerge_source_20261008_060048_5c7b86185b574d91.log",
+      "sha256": "a50de35a2315f3328b3abdefbe1e22e99efa7663203f22b31da607a0a0b1f4aa"
+    },
+    {
+      "kind": "ps7/Staging/stdout",
+      "path": "tests/.work/T13-C1-ps7/Staging.txt",
+      "sha256": "1352a1c8a5a548f9207168e4cdacebd3526cb265ba8da5f7cd74c7e8ab8a58c3"
+    },
+    {
+      "kind": "ps7/Staging/observations",
+      "path": "tests/.work/staging/b7302d9dcf014545aca8f1dde3442663/native-observations.json",
+      "sha256": "34157fe8ce6d4bfa5cfd99df1ab9cc27d2f28104861167ede2b16732f57f8249"
+    },
+    {
+      "kind": "ps7/Staging/summary",
+      "path": "tests/.work/pester/d31afca80c3c46eeb72fffde0235e5fd/summary.json",
+      "sha256": "a52475c43e46604f04d9b761f697c3f7f015dab941bbcde7353b1fd9b6c8129f"
+    },
+    {
+      "kind": "ps7/Staging/XML",
+      "path": "tests/.work/pester/d31afca80c3c46eeb72fffde0235e5fd/results.xml",
+      "sha256": "0786fb6b67a4efad549b88f463b9959e64e5c8504f1d630ae1b973030b74a355"
+    }
+  ],
+  "fresh_readonly_master_inspections": [
+    {
+      "shell": "ps51",
+      "case": "single",
+      "final": "tests/.work/master-validation/118cd88cbfc046c5a28c85b11222d087/57c83fa0b3e244ddba74aed51580b54b/output/WinPDFMerge_source_20261008_060043_a961ac02bc8d4e75.pdf",
+      "sha256": "10d3cfdf3dedb9e2added3ca3a71a6ef864fd808773996d66c31178c0eac8d1c",
+      "pdftk_command": "<approved PDFtk2.02> <retained synthetic final> dump_data_utf8 output - dont_ask",
+      "pdftk_exit": 0,
+      "pdftk_stdout": "InfoBegin\r\nInfoKey: Creator\r\nInfoValue: pdftk 2.02 - www.pdftk.com\r\nInfoBegin\r\nInfoKey: Producer\r\nInfoValue: itext-paulo-155 (itextpdf.sf.net-lowagie.com)\r\nInfoBegin\r\nInfoKey: ModDate\r\nInfoValue: D:20261008030044-01'00'\r\nInfoBegin\r\nInfoKey: CreationDate\r\nInfoValue: D:20261008030044-01'00'\r\nPdfID0: 33008fadc82f6e602cd6929645e113b9\r\nPdfID1: ba41e00043bbe52da3266ed4742b389f\r\nNumberOfPages: 2\r\nPageMediaBegin\r\nPageMediaNumber: 1\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 2\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\n",
+      "pdftk_stderr": "",
+      "pdfium_command": "<approved Python3.12.14> -B <ignored audit oracle> <retained synthetic final>",
+      "pdfium_exit": 0,
+      "pdfium_result": {
+        "page_count": 2,
+        "pages": [
+          {
+            "identifier": "T03-02-P01",
+            "rotation_degrees": 0,
+            "rotation_quarter_turns": 0,
+            "size_points": [
+              432.0,
+              288.0
+            ]
+          },
+          {
+            "identifier": "T03-02-P02",
+            "rotation_degrees": 0,
+            "rotation_quarter_turns": 0,
+            "size_points": [
+              432.0,
+              288.0
+            ]
+          }
+        ],
+        "python": "3.12.14",
+        "pypdfium2": "5.13.0",
+        "pdfium": "153.0.7999.0"
+      }
+    },
+    {
+      "shell": "ps51",
+      "case": "mixed",
+      "final": "tests/.work/master-validation/118cd88cbfc046c5a28c85b11222d087/bdabf49a36f44d968c080703be7947bc/output/WinPDFMerge_source_20261008_060046_d643f43e399248b0.pdf",
+      "sha256": "e67fb68c4bd9ebb730b044f84042268496a270a5934c844b7080f704a296f746",
+      "pdftk_command": "<approved PDFtk2.02> <retained synthetic final> dump_data_utf8 output - dont_ask",
+      "pdftk_exit": 0,
+      "pdftk_stdout": "InfoBegin\r\nInfoKey: Creator\r\nInfoValue: pdftk 2.02 - www.pdftk.com\r\nInfoBegin\r\nInfoKey: Producer\r\nInfoValue: itext-paulo-155 (itextpdf.sf.net-lowagie.com)\r\nInfoBegin\r\nInfoKey: ModDate\r\nInfoValue: D:20261008030048-01'00'\r\nInfoBegin\r\nInfoKey: CreationDate\r\nInfoValue: D:20261008030048-01'00'\r\nPdfID0: ab86d6206c68f6d922fe8a82af13bbba\r\nPdfID1: 95ee36f1036c5284f91158e869c919cd\r\nNumberOfPages: 5\r\nPageMediaBegin\r\nPageMediaNumber: 1\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 2\r\nPageMediaRotation: 90\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 3\r\nPageMediaRotation: 180\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 4\r\nPageMediaRotation: 270\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 5\r\nPageMediaRotation: 270\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\n",
+      "pdftk_stderr": "",
+      "pdfium_command": "<approved Python3.12.14> -B <ignored audit oracle> <retained synthetic final>",
+      "pdfium_exit": 0,
+      "pdfium_result": {
+        "page_count": 5,
+        "pages": [
+          {
+            "identifier": "T03-01-P01",
+            "rotation_degrees": 0,
+            "rotation_quarter_turns": 0,
+            "size_points": [
+              432.0,
+              288.0
+            ]
+          },
+          {
+            "identifier": "T03-01-P01",
+            "rotation_degrees": 90,
+            "rotation_quarter_turns": 1,
+            "size_points": [
+              288.0,
+              432.0
+            ]
+          },
+          {
+            "identifier": "T03-02-P01",
+            "rotation_degrees": 180,
+            "rotation_quarter_turns": 2,
+            "size_points": [
+              432.0,
+              288.0
+            ]
+          },
+          {
+            "identifier": "T03-02-P02",
+            "rotation_degrees": 270,
+            "rotation_quarter_turns": 3,
+            "size_points": [
+              288.0,
+              432.0
+            ]
+          },
+          {
+            "identifier": "T03-10-P01",
+            "rotation_degrees": 270,
+            "rotation_quarter_turns": 3,
+            "size_points": [
+              288.0,
+              432.0
+            ]
+          }
+        ],
+        "python": "3.12.14",
+        "pypdfium2": "5.13.0",
+        "pdfium": "153.0.7999.0"
+      }
+    },
+    {
+      "shell": "ps7",
+      "case": "single",
+      "final": "tests/.work/master-validation/d116deb9acff41419727695df3463032/55ca9e2e4d4a40fa96ba024da3b41800/output/WinPDFMerge_source_20261008_060044_6afae7324ddd4f44.pdf",
+      "sha256": "33b4524f71b817ec5597941b405b205cef51aa67df27f9ae64956e11dae67425",
+      "pdftk_command": "<approved PDFtk2.02> <retained synthetic final> dump_data_utf8 output - dont_ask",
+      "pdftk_exit": 0,
+      "pdftk_stdout": "InfoBegin\r\nInfoKey: Creator\r\nInfoValue: pdftk 2.02 - www.pdftk.com\r\nInfoBegin\r\nInfoKey: Producer\r\nInfoValue: itext-paulo-155 (itextpdf.sf.net-lowagie.com)\r\nInfoBegin\r\nInfoKey: ModDate\r\nInfoValue: D:20261008030045-01'00'\r\nInfoBegin\r\nInfoKey: CreationDate\r\nInfoValue: D:20261008030045-01'00'\r\nPdfID0: 00d7c8071712a59f3de2e2e399462277\r\nPdfID1: e494cec9bcd813c4029b7639abf5ce05\r\nNumberOfPages: 2\r\nPageMediaBegin\r\nPageMediaNumber: 1\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 2\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\n",
+      "pdftk_stderr": "",
+      "pdfium_command": "<approved Python3.12.14> -B <ignored audit oracle> <retained synthetic final>",
+      "pdfium_exit": 0,
+      "pdfium_result": {
+        "page_count": 2,
+        "pages": [
+          {
+            "identifier": "T03-02-P01",
+            "rotation_degrees": 0,
+            "rotation_quarter_turns": 0,
+            "size_points": [
+              432.0,
+              288.0
+            ]
+          },
+          {
+            "identifier": "T03-02-P02",
+            "rotation_degrees": 0,
+            "rotation_quarter_turns": 0,
+            "size_points": [
+              432.0,
+              288.0
+            ]
+          }
+        ],
+        "python": "3.12.14",
+        "pypdfium2": "5.13.0",
+        "pdfium": "153.0.7999.0"
+      }
+    },
+    {
+      "shell": "ps7",
+      "case": "mixed",
+      "final": "tests/.work/master-validation/d116deb9acff41419727695df3463032/572e70ba5ccd41abbe1c6e7c5dc689a8/output/WinPDFMerge_source_20261008_060048_5c7b86185b574d91.pdf",
+      "sha256": "d064ac1bc7c5b0397928d9dc025076d730d4942df3c056213ad2dc20d533ecaf",
+      "pdftk_command": "<approved PDFtk2.02> <retained synthetic final> dump_data_utf8 output - dont_ask",
+      "pdftk_exit": 0,
+      "pdftk_stdout": "InfoBegin\r\nInfoKey: Creator\r\nInfoValue: pdftk 2.02 - www.pdftk.com\r\nInfoBegin\r\nInfoKey: Producer\r\nInfoValue: itext-paulo-155 (itextpdf.sf.net-lowagie.com)\r\nInfoBegin\r\nInfoKey: ModDate\r\nInfoValue: D:20261008030049-01'00'\r\nInfoBegin\r\nInfoKey: CreationDate\r\nInfoValue: D:20261008030049-01'00'\r\nPdfID0: e037d79c69d8c8c49406eb96ec68fe59\r\nPdfID1: 052449fd8bd96ba7d1cacd760f8f9f76\r\nNumberOfPages: 5\r\nPageMediaBegin\r\nPageMediaNumber: 1\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 2\r\nPageMediaRotation: 90\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 3\r\nPageMediaRotation: 180\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 4\r\nPageMediaRotation: 270\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 5\r\nPageMediaRotation: 270\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\n",
+      "pdftk_stderr": "",
+      "pdfium_command": "<approved Python3.12.14> -B <ignored audit oracle> <retained synthetic final>",
+      "pdfium_exit": 0,
+      "pdfium_result": {
+        "page_count": 5,
+        "pages": [
+          {
+            "identifier": "T03-01-P01",
+            "rotation_degrees": 0,
+            "rotation_quarter_turns": 0,
+            "size_points": [
+              432.0,
+              288.0
+            ]
+          },
+          {
+            "identifier": "T03-01-P01",
+            "rotation_degrees": 90,
+            "rotation_quarter_turns": 1,
+            "size_points": [
+              288.0,
+              432.0
+            ]
+          },
+          {
+            "identifier": "T03-02-P01",
+            "rotation_degrees": 180,
+            "rotation_quarter_turns": 2,
+            "size_points": [
+              432.0,
+              288.0
+            ]
+          },
+          {
+            "identifier": "T03-02-P02",
+            "rotation_degrees": 270,
+            "rotation_quarter_turns": 3,
+            "size_points": [
+              288.0,
+              432.0
+            ]
+          },
+          {
+            "identifier": "T03-10-P01",
+            "rotation_degrees": 270,
+            "rotation_quarter_turns": 3,
+            "size_points": [
+              288.0,
+              432.0
+            ]
+          }
+        ],
+        "python": "3.12.14",
+        "pypdfium2": "5.13.0",
+        "pdfium": "153.0.7999.0"
+      }
+    }
+  ],
+  "checks": [
+    {
+      "check": "Approved engine pin/pdftk.exe",
+      "pass": true
+    },
+    {
+      "check": "Approved engine pin/libiconv2.dll",
+      "pass": true
+    },
+    {
+      "check": "Approved engine pin/gswin64c.exe",
+      "pass": true
+    },
+    {
+      "check": "Approved engine pin/gsdll64.dll",
+      "pass": true
+    },
+    {
+      "check": "Unchanged original synthetic corpus/1.pdf",
+      "pass": true
+    },
+    {
+      "check": "Unchanged original synthetic corpus/2.pdf",
+      "pass": true
+    },
+    {
+      "check": "Unchanged original synthetic corpus/10.pdf",
+      "pass": true
+    },
+    {
+      "check": "ps51/MasterValidation: clean exact C1 execution",
+      "pass": true
+    },
+    {
+      "check": "ps51/MasterValidation: exact real x64 standard-user shell",
+      "pass": true
+    },
+    {
+      "check": "ps51/MasterValidation: complete Pester summary",
+      "pass": true
+    },
+    {
+      "check": "ps51/MasterValidation: executed XML and observation counts",
+      "pass": true
+    },
+    {
+      "check": "ps51/MasterValidation: exact PDFtk version",
+      "pass": true
+    },
+    {
+      "check": "ps51/MasterValidation: engine receipt pdftk.exe",
+      "pass": true
+    },
+    {
+      "check": "ps51/MasterValidation: engine receipt libiconv2.dll",
+      "pass": true
+    },
+    {
+      "check": "ps51: exact independent development oracle versions",
+      "pass": true
+    },
+    {
+      "check": "ps51: original executed oracle source hash",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-single-multipage-validated: unchanged recorded source/foreign snapshots",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-single-multipage-validated: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-single-multipage-validated: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-single-multipage-validated: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-single-multipage-validated: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-single-multipage-validated: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-single-multipage-validated: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-single-multipage-validated: actual entry and independent suite oracle success",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-single-multipage-validated: current final master exact bytes",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-single-multipage-validated: suite oracle expected data hash",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-single-multipage-validated/recorded PDFium: exact page total",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-single-multipage-validated/recorded PDFium: visible order/clockwise rotation/size page1",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-single-multipage-validated/recorded PDFium: visible order/clockwise rotation/size page2",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-single-multipage-validated: retained log exact text",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-single-multipage-validated: separate merge/inspection/publication log order",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-single-multipage-validated: genuine separate real read-only inspection process",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-single-multipage-validated: scoped controlled GS absence and no conversion",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-single-multipage-validated: no owned staging residue",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-single-multipage-validated: fresh independent actual PDFtk page inspection",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-single-multipage-validated: fresh independent actual PDFium read",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-single-multipage-validated/fresh independent PDFium: exact page total",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-single-multipage-validated/fresh independent PDFium: visible order/clockwise rotation/size page1",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-single-multipage-validated/fresh independent PDFium: visible order/clockwise rotation/size page2",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation: unchanged recorded source/foreign snapshots",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation: actual entry and independent suite oracle success",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation: current final master exact bytes",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation: suite oracle expected data hash",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation/recorded PDFium: exact page total",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation/recorded PDFium: visible order/clockwise rotation/size page1",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation/recorded PDFium: visible order/clockwise rotation/size page2",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation/recorded PDFium: visible order/clockwise rotation/size page3",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation/recorded PDFium: visible order/clockwise rotation/size page4",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation/recorded PDFium: visible order/clockwise rotation/size page5",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation: retained log exact text",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation: separate merge/inspection/publication log order",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation: genuine separate real read-only inspection process",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation: scoped controlled GS absence and no conversion",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation: no owned staging residue",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation: three original rotated fixture derivatives",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation/fixture 1.pdf: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation: exact original owned rotated fixture bytes",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation/fixture 2.pdf: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation: exact original owned rotated fixture bytes",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation/fixture 10.pdf: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation: exact original owned rotated fixture bytes",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation: all natural order input log entries",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation: natural order index1",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation: natural order index2",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation: natural order index3",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation: natural order index4",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation: fresh independent actual PDFtk page inspection",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation: fresh independent actual PDFium read",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation/fresh independent PDFium: exact page total",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation/fresh independent PDFium: visible order/clockwise rotation/size page1",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation/fresh independent PDFium: visible order/clockwise rotation/size page2",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation/fresh independent PDFium: visible order/clockwise rotation/size page3",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation/fresh independent PDFium: visible order/clockwise rotation/size page4",
+      "pass": true
+    },
+    {
+      "check": "ps51/actual-entry-natural-five-pages-mixed-rotation/fresh independent PDFium: visible order/clockwise rotation/size page5",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-merge-and-inspection-wrong-expected-count: unchanged recorded source/foreign snapshots",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-merge-and-inspection-wrong-expected-count: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-merge-and-inspection-wrong-expected-count: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-merge-and-inspection-wrong-expected-count: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-merge-and-inspection-wrong-expected-count: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-merge-and-inspection-wrong-expected-count: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-merge-and-inspection-wrong-expected-count: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-merge-and-inspection-wrong-expected-count/merge: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-merge-and-inspection-wrong-expected-count: no invalid final advertisement/file and owned cleanup",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-merge-and-inspection-wrong-expected-count/inspection: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-merge-and-inspection-wrong-expected-count: real read-only strict count mismatch",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-missing: unchanged recorded source/foreign snapshots",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-missing: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-missing: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-missing: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-missing: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-missing: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-missing: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-missing/merge: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-missing: no invalid final advertisement/file and owned cleanup",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-missing: controlled substituted missing/empty/nonPDF refused before inspector native",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-missing: actual engine result and controlled substitution correctly disclosed",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-empty: unchanged recorded source/foreign snapshots",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-empty: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-empty: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-empty: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-empty: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-empty: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-empty: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-empty/merge: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-empty: no invalid final advertisement/file and owned cleanup",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-empty: controlled substituted missing/empty/nonPDF refused before inspector native",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-empty: actual engine result and controlled substitution correctly disclosed",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-non-PDF: unchanged recorded source/foreign snapshots",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-non-PDF: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-non-PDF: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-non-PDF: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-non-PDF: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-non-PDF: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-non-PDF: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-non-PDF/merge: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-non-PDF: no invalid final advertisement/file and owned cleanup",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-non-PDF: controlled substituted missing/empty/nonPDF refused before inspector native",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-non-PDF: actual engine result and controlled substitution correctly disclosed",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-wrong-page: unchanged recorded source/foreign snapshots",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-wrong-page: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-wrong-page: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-wrong-page: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-wrong-page: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-wrong-page: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-wrong-page: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-wrong-page/merge: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-wrong-page: no invalid final advertisement/file and owned cleanup",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-wrong-page/inspection: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-wrong-page: real read-only strict count mismatch",
+      "pass": true
+    },
+    {
+      "check": "ps51/real-native-success-controlled-staged-wrong-page: actual engine result and controlled substitution correctly disclosed",
+      "pass": true
+    },
+    {
+      "check": "ps51/Staging: clean exact C1 execution",
+      "pass": true
+    },
+    {
+      "check": "ps51/Staging: exact real x64 standard-user shell",
+      "pass": true
+    },
+    {
+      "check": "ps51/Staging: complete Pester summary",
+      "pass": true
+    },
+    {
+      "check": "ps51/Staging: executed XML and observation counts",
+      "pass": true
+    },
+    {
+      "check": "ps51/Staging: exact PDFtk version",
+      "pass": true
+    },
+    {
+      "check": "ps51/Staging: engine receipt pdftk.exe",
+      "pass": true
+    },
+    {
+      "check": "ps51/Staging: engine receipt libiconv2.dll",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/real-tools-one-owned-stage: recorded preserved sources/foreign",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/real-tools-one-owned-stage: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/real-tools-one-owned-stage: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/real-tools-one-owned-stage: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/real-tools-one-owned-stage: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/real-tools-one-owned-stage: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/real-tools-one-owned-stage: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/real-tools-one-owned-stage: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/real-tools-one-owned-stage: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/real-tools-one-owned-stage: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/real-tools-one-owned-stage: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/real-tools-one-owned-stage: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/real-tools-one-owned-stage: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/real-tools-one-owned-stage: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/real-tools-one-owned-stage: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/real-tools-one-owned-stage: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/real-tools-one-owned-stage: owned cleanup success",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/real-tools-one-owned-stage/merge: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/real-tools-one-owned-stage/inspection: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/real-tools-one-owned-stage: explicit expected positive master validation",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/real-tools-one-owned-stage: separate merge and read-only staged inspection",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/real-tools-one-owned-stage/GS: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/real-tools-one-owned-stage: validated master plus same stage GS publication",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/preexisting-final-Pdftk: recorded preserved snapshots",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/preexisting-final-Pdftk: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/preexisting-final-Pdftk: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/preexisting-final-Pdftk: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/preexisting-final-Pdftk: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/preexisting-final-Pdftk: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/preexisting-final-Pdftk: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/preexisting-final-Pdftk: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/preexisting-final-Pdftk: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/preexisting-final-Pdftk: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/preexisting-final-Pdftk: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/preexisting-final-Pdftk: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/preexisting-final-Pdftk: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/preexisting-final-Pdftk: owned cleanup success",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/preexisting-final-Pdftk: preexisting refusal before native launch",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/preexisting-final-Ghostscript: recorded preserved snapshots",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/preexisting-final-Ghostscript: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/preexisting-final-Ghostscript: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/preexisting-final-Ghostscript: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/preexisting-final-Ghostscript: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/preexisting-final-Ghostscript: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/preexisting-final-Ghostscript: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/preexisting-final-Ghostscript: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/preexisting-final-Ghostscript: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/preexisting-final-Ghostscript: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/preexisting-final-Ghostscript: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/preexisting-final-Ghostscript: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/preexisting-final-Ghostscript: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/preexisting-final-Ghostscript: owned cleanup success",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/preexisting-final-Ghostscript: preexisting refusal before native launch",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-file-collision-after-real-Pdftk: recorded preserved snapshots",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-file-collision-after-real-Pdftk: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-file-collision-after-real-Pdftk: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-file-collision-after-real-Pdftk: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-file-collision-after-real-Pdftk: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-file-collision-after-real-Pdftk: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-file-collision-after-real-Pdftk: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-file-collision-after-real-Pdftk: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-file-collision-after-real-Pdftk: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-file-collision-after-real-Pdftk: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-file-collision-after-real-Pdftk: owned cleanup success",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-file-collision-after-real-Pdftk/merge: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-file-collision-after-real-Pdftk/inspection: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-file-collision-after-real-Pdftk: explicit expected positive master validation",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-file-collision-after-real-Pdftk: separate merge and read-only staged inspection",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-file-collision-after-real-Pdftk: original real move refused final collision, sentinel intact, stage cleaned",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-file-collision-after-real-Pdftk: controlled insertion accurately labeled",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-file-collision-after-real-Ghostscript: recorded preserved snapshots",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-file-collision-after-real-Ghostscript: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-file-collision-after-real-Ghostscript: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-file-collision-after-real-Ghostscript: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-file-collision-after-real-Ghostscript: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-file-collision-after-real-Ghostscript: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-file-collision-after-real-Ghostscript: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-file-collision-after-real-Ghostscript: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-file-collision-after-real-Ghostscript: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-file-collision-after-real-Ghostscript: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-file-collision-after-real-Ghostscript: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-file-collision-after-real-Ghostscript: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-file-collision-after-real-Ghostscript: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-file-collision-after-real-Ghostscript: owned cleanup success",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-file-collision-after-real-Ghostscript/GS: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-file-collision-after-real-Ghostscript: original real move refused final collision, sentinel intact, stage cleaned",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-file-collision-after-real-Ghostscript: controlled insertion accurately labeled",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-directory-collision-after-real-Pdftk: recorded preserved snapshots",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-directory-collision-after-real-Pdftk: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-directory-collision-after-real-Pdftk: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-directory-collision-after-real-Pdftk: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-directory-collision-after-real-Pdftk: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-directory-collision-after-real-Pdftk: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-directory-collision-after-real-Pdftk: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-directory-collision-after-real-Pdftk: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-directory-collision-after-real-Pdftk: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-directory-collision-after-real-Pdftk: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-directory-collision-after-real-Pdftk: owned cleanup success",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-directory-collision-after-real-Pdftk/merge: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-directory-collision-after-real-Pdftk/inspection: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-directory-collision-after-real-Pdftk: explicit expected positive master validation",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-directory-collision-after-real-Pdftk: separate merge and read-only staged inspection",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-directory-collision-after-real-Pdftk: original real move refused final collision, sentinel intact, stage cleaned",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-directory-collision-after-real-Pdftk: controlled insertion accurately labeled",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-directory-collision-after-real-Pdftk: collided directory survives",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-directory-collision-after-real-Ghostscript: recorded preserved snapshots",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-directory-collision-after-real-Ghostscript: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-directory-collision-after-real-Ghostscript: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-directory-collision-after-real-Ghostscript: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-directory-collision-after-real-Ghostscript: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-directory-collision-after-real-Ghostscript: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-directory-collision-after-real-Ghostscript: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-directory-collision-after-real-Ghostscript: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-directory-collision-after-real-Ghostscript: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-directory-collision-after-real-Ghostscript: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-directory-collision-after-real-Ghostscript: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-directory-collision-after-real-Ghostscript: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-directory-collision-after-real-Ghostscript: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-directory-collision-after-real-Ghostscript: owned cleanup success",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-directory-collision-after-real-Ghostscript/GS: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-directory-collision-after-real-Ghostscript: original real move refused final collision, sentinel intact, stage cleaned",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-directory-collision-after-real-Ghostscript: controlled insertion accurately labeled",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-move-directory-collision-after-real-Ghostscript: collided directory survives",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-pdftk-bad-input-owned-cleanup: recorded preserved snapshots",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-pdftk-bad-input-owned-cleanup: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-pdftk-bad-input-owned-cleanup: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-pdftk-bad-input-owned-cleanup: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-pdftk-bad-input-owned-cleanup: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-pdftk-bad-input-owned-cleanup: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-pdftk-bad-input-owned-cleanup: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-pdftk-bad-input-owned-cleanup: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-pdftk-bad-input-owned-cleanup: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-pdftk-bad-input-owned-cleanup: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-pdftk-bad-input-owned-cleanup: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-pdftk-bad-input-owned-cleanup: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-pdftk-bad-input-owned-cleanup: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-pdftk-bad-input-owned-cleanup: owned cleanup success",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-same-second-live-concurrent-stage-isolation: recorded preserved sources/foreign",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-same-second-live-concurrent-stage-isolation: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-same-second-live-concurrent-stage-isolation: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-same-second-live-concurrent-stage-isolation: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-same-second-live-concurrent-stage-isolation: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-same-second-live-concurrent-stage-isolation: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-same-second-live-concurrent-stage-isolation: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-same-second-live-concurrent-stage-isolation: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-same-second-live-concurrent-stage-isolation: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-same-second-live-concurrent-stage-isolation: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-same-second-live-concurrent-stage-isolation: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-same-second-live-concurrent-stage-isolation: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-same-second-live-concurrent-stage-isolation: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-same-second-live-concurrent-stage-isolation: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-same-second-live-concurrent-stage-isolation: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-same-second-live-concurrent-stage-isolation: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-same-second-live-concurrent-stage-isolation: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-same-second-live-concurrent-stage-isolation: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-same-second-live-concurrent-stage-isolation: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-same-second-live-concurrent-stage-isolation: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-same-second-live-concurrent-stage-isolation: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-same-second-live-concurrent-stage-isolation: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-same-second-live-concurrent-stage-isolation: actual child and frozen same-second stage/final identities differ",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-same-second-live-concurrent-stage-isolation: live second known stage sentinel survives first cleanup",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-same-second-live-concurrent-stage-isolation: two first-run and four final snapshots",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-same-second-live-concurrent-stage-isolation: first final unaffected by second job",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-same-second-live-concurrent-stage-isolation: first final unaffected by second job",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-same-second-live-concurrent-stage-isolation/merge: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-same-second-live-concurrent-stage-isolation/inspection: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-same-second-live-concurrent-stage-isolation: explicit expected positive master validation",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-same-second-live-concurrent-stage-isolation: separate merge and read-only staged inspection",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-same-second-live-concurrent-stage-isolation/GS: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-same-second-live-concurrent-stage-isolation: actual concurrent run validates, publishes and cleans independently",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-same-second-live-concurrent-stage-isolation/merge: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-same-second-live-concurrent-stage-isolation/inspection: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-same-second-live-concurrent-stage-isolation: explicit expected positive master validation",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-same-second-live-concurrent-stage-isolation: separate merge and read-only staged inspection",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-same-second-live-concurrent-stage-isolation/GS: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps51/staging/actual-same-second-live-concurrent-stage-isolation: actual concurrent run validates, publishes and cleans independently",
+      "pass": true
+    },
+    {
+      "check": "ps51: actual engine file/directory publication race matrix complete",
+      "pass": true
+    },
+    {
+      "check": "ps7/MasterValidation: clean exact C1 execution",
+      "pass": true
+    },
+    {
+      "check": "ps7/MasterValidation: exact real x64 standard-user shell",
+      "pass": true
+    },
+    {
+      "check": "ps7/MasterValidation: complete Pester summary",
+      "pass": true
+    },
+    {
+      "check": "ps7/MasterValidation: executed XML and observation counts",
+      "pass": true
+    },
+    {
+      "check": "ps7/MasterValidation: exact PDFtk version",
+      "pass": true
+    },
+    {
+      "check": "ps7/MasterValidation: engine receipt pdftk.exe",
+      "pass": true
+    },
+    {
+      "check": "ps7/MasterValidation: engine receipt libiconv2.dll",
+      "pass": true
+    },
+    {
+      "check": "ps7: exact independent development oracle versions",
+      "pass": true
+    },
+    {
+      "check": "ps7: original executed oracle source hash",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-single-multipage-validated: unchanged recorded source/foreign snapshots",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-single-multipage-validated: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-single-multipage-validated: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-single-multipage-validated: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-single-multipage-validated: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-single-multipage-validated: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-single-multipage-validated: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-single-multipage-validated: actual entry and independent suite oracle success",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-single-multipage-validated: current final master exact bytes",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-single-multipage-validated: suite oracle expected data hash",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-single-multipage-validated/recorded PDFium: exact page total",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-single-multipage-validated/recorded PDFium: visible order/clockwise rotation/size page1",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-single-multipage-validated/recorded PDFium: visible order/clockwise rotation/size page2",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-single-multipage-validated: retained log exact text",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-single-multipage-validated: separate merge/inspection/publication log order",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-single-multipage-validated: genuine separate real read-only inspection process",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-single-multipage-validated: scoped controlled GS absence and no conversion",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-single-multipage-validated: no owned staging residue",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-single-multipage-validated: fresh independent actual PDFtk page inspection",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-single-multipage-validated: fresh independent actual PDFium read",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-single-multipage-validated/fresh independent PDFium: exact page total",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-single-multipage-validated/fresh independent PDFium: visible order/clockwise rotation/size page1",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-single-multipage-validated/fresh independent PDFium: visible order/clockwise rotation/size page2",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation: unchanged recorded source/foreign snapshots",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation: actual entry and independent suite oracle success",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation: current final master exact bytes",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation: suite oracle expected data hash",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation/recorded PDFium: exact page total",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation/recorded PDFium: visible order/clockwise rotation/size page1",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation/recorded PDFium: visible order/clockwise rotation/size page2",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation/recorded PDFium: visible order/clockwise rotation/size page3",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation/recorded PDFium: visible order/clockwise rotation/size page4",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation/recorded PDFium: visible order/clockwise rotation/size page5",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation: retained log exact text",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation: separate merge/inspection/publication log order",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation: genuine separate real read-only inspection process",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation: scoped controlled GS absence and no conversion",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation: no owned staging residue",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation: three original rotated fixture derivatives",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation/fixture 1.pdf: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation: exact original owned rotated fixture bytes",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation/fixture 2.pdf: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation: exact original owned rotated fixture bytes",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation/fixture 10.pdf: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation: exact original owned rotated fixture bytes",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation: all natural order input log entries",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation: natural order index1",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation: natural order index2",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation: natural order index3",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation: natural order index4",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation: fresh independent actual PDFtk page inspection",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation: fresh independent actual PDFium read",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation/fresh independent PDFium: exact page total",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation/fresh independent PDFium: visible order/clockwise rotation/size page1",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation/fresh independent PDFium: visible order/clockwise rotation/size page2",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation/fresh independent PDFium: visible order/clockwise rotation/size page3",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation/fresh independent PDFium: visible order/clockwise rotation/size page4",
+      "pass": true
+    },
+    {
+      "check": "ps7/actual-entry-natural-five-pages-mixed-rotation/fresh independent PDFium: visible order/clockwise rotation/size page5",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-merge-and-inspection-wrong-expected-count: unchanged recorded source/foreign snapshots",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-merge-and-inspection-wrong-expected-count: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-merge-and-inspection-wrong-expected-count: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-merge-and-inspection-wrong-expected-count: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-merge-and-inspection-wrong-expected-count: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-merge-and-inspection-wrong-expected-count: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-merge-and-inspection-wrong-expected-count: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-merge-and-inspection-wrong-expected-count/merge: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-merge-and-inspection-wrong-expected-count: no invalid final advertisement/file and owned cleanup",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-merge-and-inspection-wrong-expected-count/inspection: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-merge-and-inspection-wrong-expected-count: real read-only strict count mismatch",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-missing: unchanged recorded source/foreign snapshots",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-missing: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-missing: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-missing: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-missing: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-missing: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-missing: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-missing/merge: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-missing: no invalid final advertisement/file and owned cleanup",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-missing: controlled substituted missing/empty/nonPDF refused before inspector native",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-missing: actual engine result and controlled substitution correctly disclosed",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-empty: unchanged recorded source/foreign snapshots",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-empty: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-empty: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-empty: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-empty: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-empty: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-empty: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-empty/merge: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-empty: no invalid final advertisement/file and owned cleanup",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-empty: controlled substituted missing/empty/nonPDF refused before inspector native",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-empty: actual engine result and controlled substitution correctly disclosed",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-non-PDF: unchanged recorded source/foreign snapshots",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-non-PDF: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-non-PDF: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-non-PDF: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-non-PDF: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-non-PDF: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-non-PDF: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-non-PDF/merge: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-non-PDF: no invalid final advertisement/file and owned cleanup",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-non-PDF: controlled substituted missing/empty/nonPDF refused before inspector native",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-non-PDF: actual engine result and controlled substitution correctly disclosed",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-wrong-page: unchanged recorded source/foreign snapshots",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-wrong-page: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-wrong-page: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-wrong-page: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-wrong-page: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-wrong-page: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-wrong-page: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-wrong-page/merge: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-wrong-page: no invalid final advertisement/file and owned cleanup",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-wrong-page/inspection: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-wrong-page: real read-only strict count mismatch",
+      "pass": true
+    },
+    {
+      "check": "ps7/real-native-success-controlled-staged-wrong-page: actual engine result and controlled substitution correctly disclosed",
+      "pass": true
+    },
+    {
+      "check": "ps7/Staging: clean exact C1 execution",
+      "pass": true
+    },
+    {
+      "check": "ps7/Staging: exact real x64 standard-user shell",
+      "pass": true
+    },
+    {
+      "check": "ps7/Staging: complete Pester summary",
+      "pass": true
+    },
+    {
+      "check": "ps7/Staging: executed XML and observation counts",
+      "pass": true
+    },
+    {
+      "check": "ps7/Staging: exact PDFtk version",
+      "pass": true
+    },
+    {
+      "check": "ps7/Staging: engine receipt pdftk.exe",
+      "pass": true
+    },
+    {
+      "check": "ps7/Staging: engine receipt libiconv2.dll",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/real-tools-one-owned-stage: recorded preserved sources/foreign",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/real-tools-one-owned-stage: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/real-tools-one-owned-stage: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/real-tools-one-owned-stage: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/real-tools-one-owned-stage: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/real-tools-one-owned-stage: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/real-tools-one-owned-stage: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/real-tools-one-owned-stage: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/real-tools-one-owned-stage: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/real-tools-one-owned-stage: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/real-tools-one-owned-stage: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/real-tools-one-owned-stage: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/real-tools-one-owned-stage: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/real-tools-one-owned-stage: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/real-tools-one-owned-stage: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/real-tools-one-owned-stage: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/real-tools-one-owned-stage: owned cleanup success",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/real-tools-one-owned-stage/merge: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/real-tools-one-owned-stage/inspection: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/real-tools-one-owned-stage: explicit expected positive master validation",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/real-tools-one-owned-stage: separate merge and read-only staged inspection",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/real-tools-one-owned-stage/GS: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/real-tools-one-owned-stage: validated master plus same stage GS publication",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/preexisting-final-Pdftk: recorded preserved snapshots",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/preexisting-final-Pdftk: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/preexisting-final-Pdftk: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/preexisting-final-Pdftk: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/preexisting-final-Pdftk: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/preexisting-final-Pdftk: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/preexisting-final-Pdftk: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/preexisting-final-Pdftk: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/preexisting-final-Pdftk: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/preexisting-final-Pdftk: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/preexisting-final-Pdftk: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/preexisting-final-Pdftk: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/preexisting-final-Pdftk: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/preexisting-final-Pdftk: owned cleanup success",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/preexisting-final-Pdftk: preexisting refusal before native launch",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/preexisting-final-Ghostscript: recorded preserved snapshots",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/preexisting-final-Ghostscript: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/preexisting-final-Ghostscript: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/preexisting-final-Ghostscript: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/preexisting-final-Ghostscript: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/preexisting-final-Ghostscript: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/preexisting-final-Ghostscript: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/preexisting-final-Ghostscript: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/preexisting-final-Ghostscript: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/preexisting-final-Ghostscript: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/preexisting-final-Ghostscript: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/preexisting-final-Ghostscript: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/preexisting-final-Ghostscript: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/preexisting-final-Ghostscript: owned cleanup success",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/preexisting-final-Ghostscript: preexisting refusal before native launch",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-file-collision-after-real-Pdftk: recorded preserved snapshots",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-file-collision-after-real-Pdftk: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-file-collision-after-real-Pdftk: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-file-collision-after-real-Pdftk: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-file-collision-after-real-Pdftk: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-file-collision-after-real-Pdftk: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-file-collision-after-real-Pdftk: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-file-collision-after-real-Pdftk: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-file-collision-after-real-Pdftk: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-file-collision-after-real-Pdftk: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-file-collision-after-real-Pdftk: owned cleanup success",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-file-collision-after-real-Pdftk/merge: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-file-collision-after-real-Pdftk/inspection: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-file-collision-after-real-Pdftk: explicit expected positive master validation",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-file-collision-after-real-Pdftk: separate merge and read-only staged inspection",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-file-collision-after-real-Pdftk: original real move refused final collision, sentinel intact, stage cleaned",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-file-collision-after-real-Pdftk: controlled insertion accurately labeled",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-file-collision-after-real-Ghostscript: recorded preserved snapshots",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-file-collision-after-real-Ghostscript: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-file-collision-after-real-Ghostscript: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-file-collision-after-real-Ghostscript: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-file-collision-after-real-Ghostscript: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-file-collision-after-real-Ghostscript: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-file-collision-after-real-Ghostscript: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-file-collision-after-real-Ghostscript: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-file-collision-after-real-Ghostscript: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-file-collision-after-real-Ghostscript: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-file-collision-after-real-Ghostscript: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-file-collision-after-real-Ghostscript: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-file-collision-after-real-Ghostscript: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-file-collision-after-real-Ghostscript: owned cleanup success",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-file-collision-after-real-Ghostscript/GS: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-file-collision-after-real-Ghostscript: original real move refused final collision, sentinel intact, stage cleaned",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-file-collision-after-real-Ghostscript: controlled insertion accurately labeled",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-directory-collision-after-real-Pdftk: recorded preserved snapshots",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-directory-collision-after-real-Pdftk: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-directory-collision-after-real-Pdftk: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-directory-collision-after-real-Pdftk: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-directory-collision-after-real-Pdftk: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-directory-collision-after-real-Pdftk: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-directory-collision-after-real-Pdftk: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-directory-collision-after-real-Pdftk: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-directory-collision-after-real-Pdftk: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-directory-collision-after-real-Pdftk: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-directory-collision-after-real-Pdftk: owned cleanup success",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-directory-collision-after-real-Pdftk/merge: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-directory-collision-after-real-Pdftk/inspection: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-directory-collision-after-real-Pdftk: explicit expected positive master validation",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-directory-collision-after-real-Pdftk: separate merge and read-only staged inspection",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-directory-collision-after-real-Pdftk: original real move refused final collision, sentinel intact, stage cleaned",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-directory-collision-after-real-Pdftk: controlled insertion accurately labeled",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-directory-collision-after-real-Pdftk: collided directory survives",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-directory-collision-after-real-Ghostscript: recorded preserved snapshots",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-directory-collision-after-real-Ghostscript: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-directory-collision-after-real-Ghostscript: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-directory-collision-after-real-Ghostscript: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-directory-collision-after-real-Ghostscript: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-directory-collision-after-real-Ghostscript: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-directory-collision-after-real-Ghostscript: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-directory-collision-after-real-Ghostscript: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-directory-collision-after-real-Ghostscript: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-directory-collision-after-real-Ghostscript: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-directory-collision-after-real-Ghostscript: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-directory-collision-after-real-Ghostscript: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-directory-collision-after-real-Ghostscript: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-directory-collision-after-real-Ghostscript: owned cleanup success",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-directory-collision-after-real-Ghostscript/GS: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-directory-collision-after-real-Ghostscript: original real move refused final collision, sentinel intact, stage cleaned",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-directory-collision-after-real-Ghostscript: controlled insertion accurately labeled",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-move-directory-collision-after-real-Ghostscript: collided directory survives",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-pdftk-bad-input-owned-cleanup: recorded preserved snapshots",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-pdftk-bad-input-owned-cleanup: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-pdftk-bad-input-owned-cleanup: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-pdftk-bad-input-owned-cleanup: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-pdftk-bad-input-owned-cleanup: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-pdftk-bad-input-owned-cleanup: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-pdftk-bad-input-owned-cleanup: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-pdftk-bad-input-owned-cleanup: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-pdftk-bad-input-owned-cleanup: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-pdftk-bad-input-owned-cleanup: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-pdftk-bad-input-owned-cleanup: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-pdftk-bad-input-owned-cleanup: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-pdftk-bad-input-owned-cleanup: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-pdftk-bad-input-owned-cleanup: owned cleanup success",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-same-second-live-concurrent-stage-isolation: recorded preserved sources/foreign",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-same-second-live-concurrent-stage-isolation: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-same-second-live-concurrent-stage-isolation: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-same-second-live-concurrent-stage-isolation: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-same-second-live-concurrent-stage-isolation: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-same-second-live-concurrent-stage-isolation: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-same-second-live-concurrent-stage-isolation: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-same-second-live-concurrent-stage-isolation: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-same-second-live-concurrent-stage-isolation: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-same-second-live-concurrent-stage-isolation: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-same-second-live-concurrent-stage-isolation: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-same-second-live-concurrent-stage-isolation: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-same-second-live-concurrent-stage-isolation: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-same-second-live-concurrent-stage-isolation: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-same-second-live-concurrent-stage-isolation: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-same-second-live-concurrent-stage-isolation: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-same-second-live-concurrent-stage-isolation: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-same-second-live-concurrent-stage-isolation: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-same-second-live-concurrent-stage-isolation: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-same-second-live-concurrent-stage-isolation: owned synthetic snapshot path",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-same-second-live-concurrent-stage-isolation: snapshot retained",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-same-second-live-concurrent-stage-isolation: current bytes/length/UTCmtime unchanged",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-same-second-live-concurrent-stage-isolation: actual child and frozen same-second stage/final identities differ",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-same-second-live-concurrent-stage-isolation: live second known stage sentinel survives first cleanup",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-same-second-live-concurrent-stage-isolation: two first-run and four final snapshots",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-same-second-live-concurrent-stage-isolation: first final unaffected by second job",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-same-second-live-concurrent-stage-isolation: first final unaffected by second job",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-same-second-live-concurrent-stage-isolation/merge: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-same-second-live-concurrent-stage-isolation/inspection: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-same-second-live-concurrent-stage-isolation: explicit expected positive master validation",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-same-second-live-concurrent-stage-isolation: separate merge and read-only staged inspection",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-same-second-live-concurrent-stage-isolation/GS: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-same-second-live-concurrent-stage-isolation: actual concurrent run validates, publishes and cleans independently",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-same-second-live-concurrent-stage-isolation/merge: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-same-second-live-concurrent-stage-isolation/inspection: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-same-second-live-concurrent-stage-isolation: explicit expected positive master validation",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-same-second-live-concurrent-stage-isolation: separate merge and read-only staged inspection",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-same-second-live-concurrent-stage-isolation/GS: actual pinned successful native process/capture",
+      "pass": true
+    },
+    {
+      "check": "ps7/staging/actual-same-second-live-concurrent-stage-isolation: actual concurrent run validates, publishes and cleans independently",
+      "pass": true
+    },
+    {
+      "check": "ps7: actual engine file/directory publication race matrix complete",
+      "pass": true
+    },
+    {
+      "check": "Four retained actual entry masters independently reread",
+      "pass": true
+    }
+  ],
+  "findings": [],
+  "result": "pass",
+  "limitations": "Actual Windows local NTFS original synthetic files; strict structural counts and small-corpus visible IDs/rotation/dimensions do not certify universal PDF validity/security, feature/signature preservation or full fidelity. Staged substitutions/final collision insertion and concurrency barriers are controlled scheduling disclosed separately from real engines/inspection/File.Move. Scoped child dependency absence is not a global host installation claim. No full suite orchestration, tracked writes, desktop, UNC, T14 email size/outcomes, package or release claim."
+}

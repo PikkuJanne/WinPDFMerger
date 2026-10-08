@@ -165,7 +165,7 @@ try {
 "Source folder: $SourceFolder" | Write-RunLog -LiteralPath $logPath -Append
 "Output folder: $OutputFolder" | Write-RunLog -LiteralPath $logPath -Append
 "Run identity: $($run.BaseName)" | Write-RunLog -LiteralPath $logPath -Append
-"Output (lossless): $outLossless" | Write-RunLog -LiteralPath $logPath -Append
+"Planned master output: $outLossless" | Write-RunLog -LiteralPath $logPath -Append
 "Planned email output: $outEmail" | Write-RunLog -LiteralPath $logPath -Append
 "PDF count: $($pdfs.Count)" | Write-RunLog -LiteralPath $logPath -Append
 for ($index = 0; $index -lt $pdfs.Count; $index++) {
@@ -173,7 +173,7 @@ for ($index = 0; $index -lt $pdfs.Count; $index++) {
 }
 
 # Inspect every frozen ordered input before starting the merge. The expected
-# total is input evidence; staged master/email validation belongs to later gates.
+# total is frozen input evidence for the staged master validation gate.
 try {
     $inventory = Get-PdfInputInventory -Executable $pdftkPath -Inputs $pdfs -LogPath $logPath
     for ($index = 0; $index -lt $inventory.Inputs.Count; $index++) {
@@ -202,9 +202,13 @@ try {
         exit 1
     }
     # --- PDFtk merge through bounded, prompt-free private output ---
-    $merge = Invoke-PdfToolJob -Tool Pdftk -Executable $pdftkPath -InputPaths @($inventory.Inputs.FullName) -OutputPath $outLossless -Staging $staging
+    Assert-PdfInputInventory -Inventory $inventory
+    $merge = Invoke-PdfToolJob -Tool Pdftk -Executable $pdftkPath -InputPaths @($inventory.Inputs.FullName) -OutputPath $outLossless -Staging $staging -ExpectedPageCount $inventory.ExpectedPageCount
     if ($null -ne $merge.NativeResult) {
         Write-NativeProcessLog -Result $merge.NativeResult -LiteralPath $logPath -Label PDFtk
+    }
+    if ($null -ne $merge.ValidationResult -and $null -ne $merge.ValidationResult.NativeResult) {
+        Write-NativeProcessLog -Result $merge.ValidationResult.NativeResult -LiteralPath $logPath -Label 'Master validation'
     }
     if ($merge.CleanupError) { $merge.CleanupError | Write-RunLog -LiteralPath $logPath -Append }
     if (-not $merge.Succeeded) {
@@ -212,7 +216,7 @@ try {
         Write-Host "PDFtk failed. See log: $logPath" -ForegroundColor Red
         exit 1
     }
-    "PDFtk merge OK." | Write-RunLog -LiteralPath $logPath -Append
+    ("Master validation OK: {0} expected pages inspected. Merged master published: {1}" -f $merge.ValidatedPageCount, $outLossless) | Write-RunLog -LiteralPath $logPath -Append
 
     # --- Email-friendly copy with GhostScript ---
     $gsPath = Find-Ghostscript

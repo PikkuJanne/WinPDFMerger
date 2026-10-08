@@ -42,6 +42,8 @@ BeforeAll {
     [void][IO.Directory]::CreateDirectory($work)
     $observations = New-Object 'System.Collections.Generic.List[object]'
     $fixture = Join-Path $repo 'tests/fixtures/numbered/2.pdf'
+    $expectedPageCountArguments = @{}
+    if ($ToolBackend -eq 'Pdftk') { $expectedPageCountArguments.ExpectedPageCount = [long]2 }
     $version = Get-NativeToolVersion -Path $engine -Tool $ToolBackend
     Write-Host ('Actual native tool: ' + $ToolBackend + ' ' + $version)
     Write-Host ('Engine SHA256: ' + (Get-FileHash -LiteralPath $engine -Algorithm SHA256).Hash)
@@ -103,6 +105,7 @@ BeforeAll {
             InputPaths = @($Paths); InputLengths = @($Paths | ForEach-Object { $_.Length })
             OutputPath = $Job.OutputPath; Published = $Job.OutputPublished
             Succeeded = $Job.Succeeded; OutputError = $Job.OutputError; CleanupError = $Job.CleanupError
+            OutputValidated = $Job.OutputValidated; ValidatedPageCount = $Job.ValidatedPageCount; ValidationResult = $Job.ValidationResult
             NativeStarted = if ($null -eq $native) { $false } else { $native.Started }
             ExitCode = if ($null -eq $native) { $null } else { $native.ExitCode }
             TimedOut = if ($null -eq $native) { $false } else { $native.TimedOut }
@@ -132,6 +135,16 @@ BeforeAll {
         $Job.NativeResult.TimedOut | Should -BeFalse
         $Job.NativeResult.CaptureError | Should -BeNullOrEmpty
         $Job.CleanupError | Should -BeNullOrEmpty
+        if ($ToolBackend -eq 'Pdftk') {
+            $Job.OutputValidated | Should -BeTrue
+            $Job.ValidatedPageCount | Should -Be 2
+            $Job.ValidationResult.Succeeded | Should -BeTrue
+            $Job.ValidationResult.PageCount | Should -Be 2
+            $Job.ValidationResult.NativeResult.Started | Should -BeTrue
+            $Job.ValidationResult.NativeResult.ExitCode | Should -Be 0
+            $Job.ValidationResult.NativeResult.ProcessId | Should -Not -Be $Job.NativeResult.ProcessId
+            $Job.ValidationResult.NativeResult.RenderedArguments | Should -Match 'dump_data_utf8'
+        }
         [IO.File]::Exists($Output) | Should -BeTrue
         Assert-ToolPathPageTotal $Output
     }
@@ -160,7 +173,7 @@ Describe 'AC019: actual native source, output and installation path vectors' {
         $case = New-ToolPathCase $Name
         $selected = Copy-ToolPathEngine $case.Root $Name
         $before = Get-ToolPathSnapshot @($case.Input)
-        $job = Invoke-PdfToolJob -Tool $ToolBackend -Executable $selected -InputPaths @($case.Input) -OutputPath $case.Output -TimeoutMilliseconds 10000
+        $job = Invoke-PdfToolJob @expectedPageCountArguments -Tool $ToolBackend -Executable $selected -InputPaths @($case.Input) -OutputPath $case.Output -TimeoutMilliseconds 10000
         Add-ToolPathObservation ('supported-' + $Label) $job @($case.Input)
         Assert-ToolPathSuccess $job $case.Output
         (Get-ToolPathSnapshot @($case.Input)) | Should -BeExactly $before
@@ -171,7 +184,7 @@ Describe 'AC019: actual native source, output and installation path vectors' {
         $case = New-ToolPathCase
         $selected = Copy-ToolPathEngine $case.Root ('CJK-' + [char]0x65e5)
         $before = Get-ToolPathSnapshot @($case.Input)
-        $job = Invoke-PdfToolJob -Tool $ToolBackend -Executable $selected -InputPaths @($case.Input) -OutputPath $case.Output -TimeoutMilliseconds 10000
+        $job = Invoke-PdfToolJob @expectedPageCountArguments -Tool $ToolBackend -Executable $selected -InputPaths @($case.Input) -OutputPath $case.Output -TimeoutMilliseconds 10000
         Add-ToolPathObservation 'CJK-install-only' $job @($case.Input)
         Assert-ToolPathSuccess $job $case.Output
         (Get-ToolPathSnapshot @($case.Input)) | Should -BeExactly $before
@@ -192,7 +205,7 @@ Describe 'AC019: actual native source, output and installation path vectors' {
             $case.Output = Join-Path $directory 'result.pdf'
         }
         $before = Get-ToolPathSnapshot @($case.Input, $input | Select-Object -Unique)
-        $job = Invoke-PdfToolJob -Tool $ToolBackend -Executable $engine -InputPaths @($input) -OutputPath $case.Output -TimeoutMilliseconds 10000
+        $job = Invoke-PdfToolJob @expectedPageCountArguments -Tool $ToolBackend -Executable $engine -InputPaths @($input) -OutputPath $case.Output -TimeoutMilliseconds 10000
         Add-ToolPathObservation ('CJK-' + $Operand) $job @($input)
         if ($ToolBackend -eq 'Pdftk') {
             # The pinned 2.02 engine accepts Latin ä but fails these operands.
@@ -218,14 +231,14 @@ Describe 'AC019: actual native source, output and installation path vectors' {
         $input.Length | Should -Be 258
         [IO.File]::Copy($fixture, $input, $false)
         $before = Get-ToolPathSnapshot @($input)
-        $job = Invoke-PdfToolJob -Tool $ToolBackend -Executable $engine -InputPaths @($input) -OutputPath $case.Output -TimeoutMilliseconds 10000
+        $job = Invoke-PdfToolJob @expectedPageCountArguments -Tool $ToolBackend -Executable $engine -InputPaths @($input) -OutputPath $case.Output -TimeoutMilliseconds 10000
         Add-ToolPathObservation '258-character-input' $job @($input)
         Assert-ToolPathSuccess $job $case.Output
         (Get-ToolPathSnapshot @($input)) | Should -BeExactly $before
         $tooLong = $input.Substring(0, $input.Length - 4) + 'xx.pdf'
         $tooLong.Length | Should -Be 260
         $guardOutput = Join-Path $case.OutputDirectory 'length-rejected.pdf'
-        $guard = Invoke-PdfToolJob -Tool $ToolBackend -Executable $engine -InputPaths @($tooLong) -OutputPath $guardOutput -TimeoutMilliseconds 10000
+        $guard = Invoke-PdfToolJob @expectedPageCountArguments -Tool $ToolBackend -Executable $engine -InputPaths @($tooLong) -OutputPath $guardOutput -TimeoutMilliseconds 10000
         Add-ToolPathObservation '260-character-preflight' $guard @($tooLong)
         $guard.Succeeded | Should -BeFalse
         $guard.NativeResult | Should -BeNullOrEmpty
@@ -285,7 +298,7 @@ Describe 'AC020: real prompt-free encrypted, locked and collision outcomes' {
         $creation = Invoke-TestChildProcess -Executable $PdftkPath -Arguments @($case.Input, 'output', $encrypted, 'user_pw', 'synthetic-t09-user', 'owner_pw', 'synthetic-t09-owner', 'encrypt_128bit', 'dont_ask') -TimeoutMilliseconds 10000
         $creation.ExitCode | Should -Be 0 -Because $creation.Stderr
         $before = Get-ToolPathSnapshot @($case.Input, $encrypted)
-        $job = Invoke-PdfToolJob -Tool $ToolBackend -Executable $engine -InputPaths @($encrypted) -OutputPath $case.Output -TimeoutMilliseconds 3000
+        $job = Invoke-PdfToolJob @expectedPageCountArguments -Tool $ToolBackend -Executable $engine -InputPaths @($encrypted) -OutputPath $case.Output -TimeoutMilliseconds 3000
         Add-ToolPathObservation 'encrypted-input-no-password' $job @($encrypted)
         $job.Succeeded | Should -BeFalse
         $job.OutputPublished | Should -BeFalse
@@ -334,7 +347,7 @@ Describe 'AC020: real prompt-free encrypted, locked and collision outcomes' {
         $before = Get-ToolPathSnapshot @($case.Input)
         $handle = [IO.File]::Open($case.Input, [IO.FileMode]::Open, [IO.FileAccess]::Read, [IO.FileShare]::None)
         try {
-            $job = Invoke-PdfToolJob -Tool $ToolBackend -Executable $engine -InputPaths @($case.Input) -OutputPath $case.Output -TimeoutMilliseconds 3000
+            $job = Invoke-PdfToolJob @expectedPageCountArguments -Tool $ToolBackend -Executable $engine -InputPaths @($case.Input) -OutputPath $case.Output -TimeoutMilliseconds 3000
             Add-ToolPathObservation 'locked-input' $job @($case.Input)
             $job.Succeeded | Should -BeFalse
             $job.OutputPublished | Should -BeFalse
@@ -362,7 +375,7 @@ Describe 'AC020: real prompt-free encrypted, locked and collision outcomes' {
                 # descriptor is restored even if invocation/assertions fail.
                 Set-Acl -LiteralPath $case.Input -AclObject $deniedAcl
                 { [IO.File]::ReadAllBytes($case.Input) } | Should -Throw
-                $job = Invoke-PdfToolJob -Tool $ToolBackend -Executable $engine -InputPaths @($case.Input) -OutputPath $case.Output -TimeoutMilliseconds 3000
+                $job = Invoke-PdfToolJob @expectedPageCountArguments -Tool $ToolBackend -Executable $engine -InputPaths @($case.Input) -OutputPath $case.Output -TimeoutMilliseconds 3000
                 Add-ToolPathObservation 'owned-current-user-ReadData-ACL-denial' $job @($case.Input)
                 $job.Succeeded | Should -BeFalse
                 $job.OutputPublished | Should -BeFalse
@@ -381,7 +394,7 @@ Describe 'AC020: real prompt-free encrypted, locked and collision outcomes' {
         $case = New-ToolPathCase
         [IO.File]::WriteAllText($case.Output, 'T09 synthetic existing-final sentinel')
         $before = Get-ToolPathSnapshot @($case.Input, $case.Output)
-        $job = Invoke-PdfToolJob -Tool $ToolBackend -Executable $engine -InputPaths @($case.Input) -OutputPath $case.Output -TimeoutMilliseconds 3000
+        $job = Invoke-PdfToolJob @expectedPageCountArguments -Tool $ToolBackend -Executable $engine -InputPaths @($case.Input) -OutputPath $case.Output -TimeoutMilliseconds 3000
         Add-ToolPathObservation 'existing-final-refused' $job @($case.Input)
         $job.Succeeded | Should -BeFalse
         $job.OutputPublished | Should -BeFalse

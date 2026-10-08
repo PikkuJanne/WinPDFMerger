@@ -23,6 +23,7 @@ BeforeAll {
             Succeeded = $Succeeded; Started = $true; ExitCode = $ExitCode
             TimedOut = $false; Cancelled = $false; LaunchError = $null
             CaptureError = $null; TerminationError = $null
+            StdoutTruncated = $false; StderrTruncated = $false
             Stdout = 'T09 controlled native stdout'; Stderr = ''
         }
     }
@@ -41,6 +42,11 @@ BeforeEach {
     $script:t09CapturedRemovedEnvironment = $null
     $script:t09CapturedTimeout = $null
     $script:t09CapturedStage = $null
+    Mock Get-PdfDocumentInspection {
+        $native = New-ToolInvocationResult
+        $native.Stdout = 'NumberOfPages: 3'
+        [pscustomobject]@{ Succeeded = $true; PageCount = [long]3; InputError = $null; NativeResult = $native }
+    }
 }
 
 Describe 'T09: fixed tool vectors and private fresh native outputs' {
@@ -59,9 +65,11 @@ Describe 'T09: fixed tool vectors and private fresh native outputs' {
             [IO.File]::Copy($case.Inputs[0], $script:t09CapturedStage, $false)
             New-ToolInvocationResult
         }
-        $result = Invoke-PdfToolJob -Tool Pdftk -Executable $case.Executable -InputPaths $case.Inputs -OutputPath $case.Output -TimeoutMilliseconds 3210
+        $result = Invoke-PdfToolJob -Tool Pdftk -Executable $case.Executable -InputPaths $case.Inputs -OutputPath $case.Output -ExpectedPageCount 3 -TimeoutMilliseconds 3210
         $result.Succeeded | Should -BeTrue -Because $result.OutputError
         $result.OutputPublished | Should -BeTrue
+        $result.OutputValidated | Should -BeTrue
+        $result.ValidatedPageCount | Should -Be 3
         $result.OutputPath | Should -BeExactly $case.Output
         $script:t09CapturedExecutable | Should -BeExactly $case.Executable
         $script:t09CapturedTimeout | Should -Be 3210
@@ -114,7 +122,7 @@ Describe 'T09: collision refusal and bounded native failures' {
         $output = $case.Output
         if ($Operand -eq 'input') { $inputs = @($longPath) } else { $output = $longPath }
         Mock Invoke-NativeProcess { throw 'Overlong operands must fail before native launch.' }
-        $result = Invoke-PdfToolJob -Tool Pdftk -Executable $case.Executable -InputPaths $inputs -OutputPath $output
+        $result = Invoke-PdfToolJob -Tool Pdftk -Executable $case.Executable -InputPaths $inputs -OutputPath $output -ExpectedPageCount 3
         $result.Succeeded | Should -BeFalse
         $result.NativeResult | Should -BeNullOrEmpty
         $result.OutputError | Should -Match '260'
@@ -132,7 +140,7 @@ Describe 'T09: collision refusal and bounded native failures' {
         $final.Length | Should -BeLessThan 260
         ($parent.Length + $stagedSuffixLength) | Should -Be 260
         Mock Invoke-NativeProcess { throw 'A long private staged operand must fail before native launch.' }
-        $result = Invoke-PdfToolJob -Tool Pdftk -Executable $case.Executable -InputPaths $case.Inputs -OutputPath $final
+        $result = Invoke-PdfToolJob -Tool Pdftk -Executable $case.Executable -InputPaths $case.Inputs -OutputPath $final -ExpectedPageCount 3
         $result.Succeeded | Should -BeFalse
         $result.NativeResult | Should -BeNullOrEmpty
         $result.OutputError | Should -Match '(?i)private.*260|260.*private'
@@ -149,7 +157,9 @@ Describe 'T09: collision refusal and bounded native failures' {
         [IO.File]::WriteAllText($case.Output, 'T09 foreign final sentinel')
         $existingHash = (Get-FileHash -LiteralPath $case.Output -Algorithm SHA256).Hash
         Mock Invoke-NativeProcess { throw 'Existing final must fail before launching any process.' }
-        $result = Invoke-PdfToolJob -Tool $Tool -Executable $case.Executable -InputPaths @($case.Inputs[0]) -OutputPath $case.Output
+        $expectedPages = @{}
+        if ($Tool -eq 'Pdftk') { $expectedPages.ExpectedPageCount = [long]3 }
+        $result = Invoke-PdfToolJob -Tool $Tool -Executable $case.Executable -InputPaths @($case.Inputs[0]) -OutputPath $case.Output @expectedPages
         $result.Succeeded | Should -BeFalse
         $result.OutputPublished | Should -BeFalse
         $result.NativeResult | Should -BeNullOrEmpty
@@ -161,7 +171,7 @@ Describe 'T09: collision refusal and bounded native failures' {
 
     It 'refuses a final path equal to a source without launching or editing the source' {
         Mock Invoke-NativeProcess { throw 'A source final must fail before launching any process.' }
-        $result = Invoke-PdfToolJob -Tool Pdftk -Executable $case.Executable -InputPaths $case.Inputs -OutputPath $case.Inputs[0]
+        $result = Invoke-PdfToolJob -Tool Pdftk -Executable $case.Executable -InputPaths $case.Inputs -OutputPath $case.Inputs[0] -ExpectedPageCount 3
         $result.Succeeded | Should -BeFalse
         $result.NativeResult | Should -BeNullOrEmpty
         (Get-ToolInvocationHashes $case.Inputs) | Should -BeExactly $before
@@ -177,7 +187,7 @@ Describe 'T09: collision refusal and bounded native failures' {
             [IO.File]::WriteAllText($script:t09CapturedStage, 'T09 invalid partial PDF')
             New-ToolInvocationResult -Succeeded $false -ExitCode 7
         }
-        $result = Invoke-PdfToolJob -Tool Pdftk -Executable $case.Executable -InputPaths $case.Inputs -OutputPath $case.Output
+        $result = Invoke-PdfToolJob -Tool Pdftk -Executable $case.Executable -InputPaths $case.Inputs -OutputPath $case.Output -ExpectedPageCount 3
         $result.Succeeded | Should -BeFalse
         $result.OutputPublished | Should -BeFalse
         $result.NativeResult.ExitCode | Should -Be 7
@@ -196,7 +206,7 @@ Describe 'T09: collision refusal and bounded native failures' {
             $native.CaptureError = 'T09 controlled incomplete stream capture'
             $native
         }
-        $result = Invoke-PdfToolJob -Tool Pdftk -Executable $case.Executable -InputPaths $case.Inputs -OutputPath $case.Output
+        $result = Invoke-PdfToolJob -Tool Pdftk -Executable $case.Executable -InputPaths $case.Inputs -OutputPath $case.Output -ExpectedPageCount 3
         $result.Succeeded | Should -BeFalse
         $result.OutputPublished | Should -BeFalse
         $result.NativeResult.ExitCode | Should -Be 0
@@ -207,7 +217,7 @@ Describe 'T09: collision refusal and bounded native failures' {
 
     It 'does not publish when the native process reports success without making a file' {
         Mock Invoke-NativeProcess { New-ToolInvocationResult }
-        $result = Invoke-PdfToolJob -Tool Pdftk -Executable $case.Executable -InputPaths $case.Inputs -OutputPath $case.Output
+        $result = Invoke-PdfToolJob -Tool Pdftk -Executable $case.Executable -InputPaths $case.Inputs -OutputPath $case.Output -ExpectedPageCount 3
         $result.Succeeded | Should -BeFalse
         $result.OutputPublished | Should -BeFalse
         $result.OutputError | Should -Not -BeNullOrEmpty
@@ -223,7 +233,7 @@ Describe 'T09: collision refusal and bounded native failures' {
             [IO.File]::WriteAllText($case.Output, 'T09 concurrent foreign final')
             New-ToolInvocationResult
         }
-        $result = Invoke-PdfToolJob -Tool Pdftk -Executable $case.Executable -InputPaths $case.Inputs -OutputPath $case.Output
+        $result = Invoke-PdfToolJob -Tool Pdftk -Executable $case.Executable -InputPaths $case.Inputs -OutputPath $case.Output -ExpectedPageCount 3
         $result.Succeeded | Should -BeFalse
         $result.OutputPublished | Should -BeFalse
         $result.OutputError | Should -Not -BeNullOrEmpty

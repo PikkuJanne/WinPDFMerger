@@ -1,0 +1,46 @@
+Pester v6.2.0
+
+Running tests from 1 files.
+
+Running tests from '<repo>\tests\dependencies\Dependencies.Entry.Tests.ps1'
+Real PDFtk SHA256: 5E5CBE817ECC3CC1875369D81119472559C9624D55C7176852C8827750AFA00A
+Real PDFtk file version: 
+Describing AC015: actual Windows entry rejects absent or unusable PDFtk before outputs
+  [+] rejects missing PDFtk with installation guidance and no PDF or run log 937ms
+  [+] rejects a discovered pdftk.exe file that is not an executable before outputs 949ms
+  [+] rejects the controlled nonzero-exit version probe before outputs 1.03s
+  [+] rejects the controlled unrecognized-banner version probe before outputs 935ms
+  [+] rejects the controlled finite timeout version probe before outputs 5.82s
+
+Describing T07 actual entry dependency diagnostics with real PDFtk, narrow native smoke
+  [+] reports selected real PDFtk path and version and merges two pages with optional GS absent 1.94s
+  [+] retains a real two-page master and returns partial success when a controlled GS version probe fails 1.64s
+
+Describing T07 real dependency version-probe helper with a controlled executable, no PDF or GS support claim
+GS_OPTIONS requested unset; observed caller state unset
+GS_OPTIONS requested empty; observed caller state unset
+GS_OPTIONS requested value; observed caller state value
+  [+] clears GS_OPTIONS only in the version child across requested unset, empty and value caller states 296ms
+  [+] uses an injected 200ms version-probe timeout and observes its exact fixture PID exited at return 282ms
+Tests completed in 14.94s
+Tests Passed: 9, Failed: 0, Skipped: 0, Inconclusive: 0, NotRun: 0
+{
+    "observed_at_utc":  "2026-10-08T04:03:52.1335294Z",
+    "commit_under_test":  "e74ffa92588eff876c12ebd3321e2f3b0d6f110c",
+    "dirty_worktree":  false,
+    "shell_version":  "5.1.26100.9444",
+    "shell_edition":  "Desktop",
+    "process_64_bit":  true,
+    "execution_policy":  "RemoteSigned",
+    "pester_version":  "6.2.0",
+    "tier":  "DependencyEntry",
+    "evidence_class":  "windows-entry-dependency-faults-controlled-process-and-real-pdftk",
+    "passed":  9,
+    "failed":  0,
+    "failed_blocks":  0,
+    "failed_containers":  0,
+    "skipped":  0,
+    "not_run":  0,
+    "total":  9
+}
+Reports: <repo>\tests\.work\pester\975f84e7bf874b3281516090db693cdd

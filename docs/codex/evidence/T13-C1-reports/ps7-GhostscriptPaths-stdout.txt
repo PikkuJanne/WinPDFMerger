@@ -1,0 +1,47 @@
+Pester v6.2.0
+
+Running tests from 1 files.
+
+Running tests from '<repo>\tests\pdf\ToolPaths.Native.Tests.ps1'
+Actual native tool: Ghostscript 10.08.0
+Engine SHA256: 9B29D3B5128C6D53BB4E9EEE77E3919D05038CDFDD8E07697AF4D9C319F9D5AD
+PDFtk inspection oracle SHA256: 5e5cbe817ecc3cc1875369d81119472559c9624d55c7176852c8827750afa00a
+Describing AC019: actual native source, output and installation path vectors
+  [+] processes spaces in input, output and selected install paths without source edits 4.96s
+  [+] processes shell and wildcard characters in input, output and selected install paths without source edits 3.29s
+  [+] processes Latin Unicode in input, output and selected install paths without source edits 3.19s
+  [+] selects an executable in a CJK install directory while keeping PDF operands supported 2.99s
+  [+] records the CJK input result with unchanged sources and explicit backend diagnostics 426ms
+  [+] records the CJK output-directory result with unchanged sources and explicit backend diagnostics 407ms
+  [+] supports a 258-character PDFtk input operand and refuses the 260-character guard before launch 458ms
+  [+] runs the actual application from special and Latin paths with the same real selected engines 6s
+
+Describing AC020: real prompt-free encrypted, locked and collision outcomes
+  [+] fails a synthetic password-protected input promptly without asking for a password or publishing a final 378ms
+  [+] fails the actual encrypted-only application workflow through PDFtk before any Ghostscript conversion 2.17s
+  [+] fails a genuinely exclusively locked input within the finite native bound without changing source bytes 296ms
+  [+] fails an actual current-user ReadData ACL denial promptly and restores the owned fixture descriptor 397ms
+  [+] refuses a preexisting final before actual native execution without an overwrite prompt or byte change 20ms
+Native observations: <repo>\tests\.work\tool-paths\5883dcabef4c4747a1ec4a6e64b67e49\native-observations.json
+Tests completed in 26.51s
+Tests Passed: 13, Failed: 0, Skipped: 0, Inconclusive: 0, NotRun: 0
+{
+  "observed_at_utc": "2026-10-08T04:03:20.7830021Z",
+  "commit_under_test": "e74ffa92588eff876c12ebd3321e2f3b0d6f110c",
+  "dirty_worktree": false,
+  "shell_version": "7.6.6",
+  "shell_edition": "Core",
+  "process_64_bit": true,
+  "execution_policy": "RemoteSigned",
+  "pester_version": "6.2.0",
+  "tier": "GhostscriptPaths",
+  "evidence_class": "windows-real-tool-path-prompt-integration",
+  "passed": 13,
+  "failed": 0,
+  "failed_blocks": 0,
+  "failed_containers": 0,
+  "skipped": 0,
+  "not_run": 0,
+  "total": 13
+}
+Reports: <repo>\tests\.work\pester\77403ee10d8645bf9bc43228233aae72
