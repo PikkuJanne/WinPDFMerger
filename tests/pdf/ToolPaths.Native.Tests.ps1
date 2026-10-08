@@ -42,8 +42,8 @@ BeforeAll {
     [void][IO.Directory]::CreateDirectory($work)
     $observations = New-Object 'System.Collections.Generic.List[object]'
     $fixture = Join-Path $repo 'tests/fixtures/numbered/2.pdf'
-    $expectedPageCountArguments = @{}
-    if ($ToolBackend -eq 'Pdftk') { $expectedPageCountArguments.ExpectedPageCount = [long]2 }
+    $expectedPageCountArguments = @{ExpectedPageCount=[long]2}
+    if ($ToolBackend -eq 'Ghostscript') { $expectedPageCountArguments.InspectionExecutable = $PdftkPath }
     $version = Get-NativeToolVersion -Path $engine -Tool $ToolBackend
     Write-Host ('Actual native tool: ' + $ToolBackend + ' ' + $version)
     Write-Host ('Engine SHA256: ' + (Get-FileHash -LiteralPath $engine -Algorithm SHA256).Hash)
@@ -106,6 +106,7 @@ BeforeAll {
             OutputPath = $Job.OutputPath; Published = $Job.OutputPublished
             Succeeded = $Job.Succeeded; OutputError = $Job.OutputError; CleanupError = $Job.CleanupError
             OutputValidated = $Job.OutputValidated; ValidatedPageCount = $Job.ValidatedPageCount; ValidationResult = $Job.ValidationResult
+            OutputState = $Job.OutputState; OutputBytes = $Job.OutputBytes; MasterBytes = $Job.MasterBytes
             NativeStarted = if ($null -eq $native) { $false } else { $native.Started }
             ExitCode = if ($null -eq $native) { $null } else { $native.ExitCode }
             TimedOut = if ($null -eq $native) { $false } else { $native.TimedOut }
@@ -129,13 +130,12 @@ BeforeAll {
 
     function Assert-ToolPathSuccess($Job, [string]$Output) {
         $Job.Succeeded | Should -BeTrue -Because ($Job.OutputError + $Job.CleanupError)
-        $Job.OutputPublished | Should -BeTrue
         $Job.NativeResult.Started | Should -BeTrue
         $Job.NativeResult.ExitCode | Should -Be 0 -Because ($Job.NativeResult.Stdout + $Job.NativeResult.Stderr)
         $Job.NativeResult.TimedOut | Should -BeFalse
         $Job.NativeResult.CaptureError | Should -BeNullOrEmpty
         $Job.CleanupError | Should -BeNullOrEmpty
-        if ($ToolBackend -eq 'Pdftk') {
+        if ($ToolBackend -in @('Pdftk','Ghostscript')) {
             $Job.OutputValidated | Should -BeTrue
             $Job.ValidatedPageCount | Should -Be 2
             $Job.ValidationResult.Succeeded | Should -BeTrue
@@ -145,8 +145,18 @@ BeforeAll {
             $Job.ValidationResult.NativeResult.ProcessId | Should -Not -Be $Job.NativeResult.ProcessId
             $Job.ValidationResult.NativeResult.RenderedArguments | Should -Match 'dump_data_utf8'
         }
-        [IO.File]::Exists($Output) | Should -BeTrue
-        Assert-ToolPathPageTotal $Output
+        if ($Job.OutputState -eq 'published') {
+            $Job.OutputPublished | Should -BeTrue
+            [IO.File]::Exists($Output) | Should -BeTrue
+            Assert-ToolPathPageTotal $Output
+            if ($ToolBackend -eq 'Ghostscript') { $Job.OutputBytes | Should -BeLessThan $Job.MasterBytes }
+        } else {
+            $ToolBackend | Should -BeExactly 'Ghostscript'
+            $Job.OutputState | Should -BeExactly 'no_size_benefit'
+            $Job.OutputPublished | Should -BeFalse
+            [IO.File]::Exists($Output) | Should -BeFalse
+            ($Job.OutputBytes -ge $Job.MasterBytes) | Should -BeTrue
+        }
     }
 }
 
@@ -218,6 +228,18 @@ Describe 'AC019: actual native source, output and installation path vectors' {
             $job.NativeResult.Stderr | Should -Match ([string][char]0x65e5)
             $job.OutputError | Should -Match '(?i)Unicode|backend'
             [IO.File]::Exists($case.Output) | Should -BeFalse
+        } elseif ($Operand -eq 'output-directory') {
+            # GS can write this owned CJK stage, but mandatory PDFtk2.02
+            # inspection cannot read it on this reference host. No fallback,
+            # source renaming or unvalidated final publication is permitted.
+            $job.NativeResult.Succeeded | Should -BeTrue
+            $job.NativeResult.ExitCode | Should -Be 0
+            $job.ValidationResult.NativeResult.Started | Should -BeTrue
+            $job.ValidationResult.NativeResult.ExitCode | Should -Not -Be 0
+            $job.OutputValidated | Should -BeFalse
+            $job.OutputPublished | Should -BeFalse
+            $job.Succeeded | Should -BeFalse
+            [IO.File]::Exists($case.Output) | Should -BeFalse
         } else { Assert-ToolPathSuccess $job $case.Output }
         (Get-ToolPathSnapshot @($case.Input, $input | Select-Object -Unique)) | Should -BeExactly $before
     }
@@ -276,8 +298,14 @@ Describe 'AC019: actual native source, output and installation path vectors' {
         $log | Should -Match 'dont_ask'
         if ($ToolBackend -eq 'Ghostscript') {
             $emails = @(Get-ChildItem -LiteralPath $app -File -Filter '*_email.pdf')
-            $emails.Count | Should -Be 1
-            Assert-ToolPathPageTotal $emails[0].FullName
+            if ($emails.Count -eq 1) {
+                Assert-ToolPathPageTotal $emails[0].FullName
+                $emails[0].Length | Should -BeLessThan $masters[0].Length
+            } else {
+                $emails.Count | Should -Be 0
+                $log | Should -Match '(?i)no size benefit'
+                $result.Stdout | Should -Not -Match '(?m)^ - Email'
+            }
             $log | Should -Match '(?m)^Ghostscript stdout:'
             $log | Should -Match '(?m)^Ghostscript stderr:'
             $log | Should -Match '-dSAFER'

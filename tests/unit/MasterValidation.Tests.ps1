@@ -117,12 +117,12 @@ Describe 'AC030: master publication follows explicit complete structural validat
         @(Get-ChildItem -LiteralPath $case.Output -Force).Count | Should -Be 1
     }
 
-    It 'does not apply a bound master expected page count to Ghostscript' {
+    It 'refuses a positive Ghostscript page count without its selected PDFtk inspector' {
         Mock Publish-PdfStagedOutput { throw 'Unexpected publication' }
         $result = Invoke-PdfToolJob -Tool Ghostscript -Executable $case.Executable -InputPaths @($case.Input) -OutputPath $case.Final -ExpectedPageCount 1
         Assert-MasterValidationRefusal $result
         $result.NativeResult | Should -BeNullOrEmpty
-        $result.OutputError | Should -Match 'only.*PDFtk'
+        $result.OutputError | Should -Match 'InspectionExecutable|inspector'
         $state.MergeCalls | Should -Be 0
         $state.InspectionCalls | Should -Be 0
     }

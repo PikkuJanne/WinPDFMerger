@@ -109,11 +109,16 @@ BeforeAll {
         $stem | Should -Match '^WinPDFMerge_.+_[0-9]{8}_[0-9]{6}_[0-9a-fA-F]{16}$'
         $email = Join-Path $Directory ($stem + '_email.pdf')
         $logPath = Join-Path $Directory ($stem + '.log')
-        [IO.File]::Exists($email) | Should -BeTrue
         [IO.File]::Exists($logPath) | Should -BeTrue
         Assert-DestinationPageCount $masters[0].FullName
-        Assert-DestinationPageCount $email
         $log = [IO.File]::ReadAllText($logPath, [Text.Encoding]::UTF8)
+        if ([IO.File]::Exists($email)) {
+            Assert-DestinationPageCount $email
+            (Get-Item -LiteralPath $email).Length | Should -BeLessThan $masters[0].Length
+        } else {
+            $log | Should -Match '(?i)no size benefit'
+            $Result.Stdout | Should -Not -Match '(?m)^ - Email'
+        }
         $log | Should -Match '(?m)^PDFtk stdout:'
         $log | Should -Match '(?m)^Ghostscript stdout:'
         $log | Should -Match ([regex]::Escape($masters[0].FullName))
@@ -399,16 +404,19 @@ Describe 'AC024: actual simultaneous run identities and unchanged existing resul
             $masters = @($newFiles | Where-Object { $_.Name -like '*.pdf' -and $_.Name -notlike '*_email.pdf' })
             $masters.Count | Should -Be 2
             @($masters | Select-Object -ExpandProperty BaseName -Unique).Count | Should -Be 2
-            $newFiles.Count | Should -Be 6
+            $emailFiles=@($newFiles | Where-Object Name -like '*_email.pdf')
+            $newFiles.Count | Should -Be (4 + $emailFiles.Count)
             foreach ($master in $masters) {
                 $master.BaseName | Should -Match '^WinPDFMerge_.+_[0-9]{8}_[0-9]{6}_[0-9a-fA-F]{16}$'
                 $email = Join-Path $application.Output ($master.BaseName + '_email.pdf')
                 $logPath = Join-Path $application.Output ($master.BaseName + '.log')
-                [IO.File]::Exists($email) | Should -BeTrue
                 [IO.File]::Exists($logPath) | Should -BeTrue
                 Assert-DestinationPageCount $master.FullName
-                Assert-DestinationPageCount $email
                 $log = [IO.File]::ReadAllText($logPath, [Text.Encoding]::UTF8)
+                if ([IO.File]::Exists($email)) {
+                    Assert-DestinationPageCount $email
+                    (Get-Item -LiteralPath $email).Length | Should -BeLessThan $master.Length
+                } else { $log | Should -Match '(?i)no size benefit' }
                 $log | Should -Match ([regex]::Escape($master.FullName))
                 $log | Should -Match ([regex]::Escape($email))
                 $matchingResults = @(@($one, $two) | Where-Object { $_.Stdout.Contains($master.FullName) })

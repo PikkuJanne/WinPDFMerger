@@ -970,6 +970,7 @@ function Invoke-PdfToolJob {
         [Parameter(Mandatory=$true)][string]$OutputPath,
         $Staging,
         [long]$ExpectedPageCount = 0,
+        [string]$InspectionExecutable,
         [ValidateRange(1, 2147483647)][int]$TimeoutMilliseconds = 900000
     )
 
@@ -979,15 +980,19 @@ function Invoke-PdfToolJob {
     $validation = $null
     $validated = $false
     $validatedPages = $null
+    $outputState = 'failed'
+    $masterSnapshot = $null
+    $masterBytes = $null
+    $outputBytes = $null
     $published = $false
     $ownedStaging = $null
     $stagedOutput = $null
     try {
-        if ($Tool -eq 'Pdftk' -and $ExpectedPageCount -le 0) {
-            throw 'PDFtk master merging requires a positive frozen ExpectedPageCount; no merge was started.'
+        if ($ExpectedPageCount -le 0) {
+            throw "$Tool requires a positive frozen ExpectedPageCount; no native job was started."
         }
-        if ($Tool -eq 'Ghostscript' -and $PSBoundParameters.ContainsKey('ExpectedPageCount')) {
-            throw 'ExpectedPageCount applies only to PDFtk master merging.'
+        if ($Tool -eq 'Ghostscript' -and [string]::IsNullOrWhiteSpace($InspectionExecutable)) {
+            throw 'Ghostscript email jobs require the selected PDFtk InspectionExecutable; no native job was started.'
         }
         if ($InputPaths.Count -eq 0 -or ($Tool -eq 'Ghostscript' -and $InputPaths.Count -ne 1)) {
             throw 'PDFtk requires at least one input; Ghostscript requires exactly one master input.'
@@ -1004,6 +1009,20 @@ function Invoke-PdfToolJob {
         foreach ($inputPath in $InputPaths) {
             if (-not [IO.File]::Exists($inputPath)) { throw "PDF input is missing or inaccessible: '$inputPath'." }
             if ($inputPath -ieq $OutputPath) { throw 'PDF output must be separate from every source file.' }
+        }
+        if ($Tool -eq 'Ghostscript') {
+            if (-not [IO.Path]::IsPathRooted($InspectionExecutable) -or
+                [IO.Path]::GetFullPath($InspectionExecutable) -ine $InspectionExecutable -or $InspectionExecutable.Length -ge 260) {
+                throw 'Selected PDFtk InspectionExecutable must be a literal absolute path shorter than 260 UTF-16 characters.'
+            }
+            if (-not [IO.File]::Exists($InspectionExecutable)) { throw 'Selected PDFtk InspectionExecutable is missing; no email job was started.' }
+            $masterFile = Get-Item -LiteralPath $InputPaths[0] -Force -ErrorAction Stop
+            if ($masterFile -isnot [IO.FileInfo] -or ($masterFile.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0) {
+                throw 'Email conversion requires a regular published master.'
+            }
+            $masterSnapshot = Get-PdfInputSnapshot -LiteralPath $InputPaths[0]
+            if ($masterSnapshot.Length -le 0) { throw 'Email conversion requires a nonempty published master.' }
+            $masterBytes = $masterSnapshot.Length
         }
         if (Test-Path -LiteralPath $OutputPath) { throw "PDF output already exists: '$OutputPath'. Choose a fresh output; existing files are never overwritten." }
         $parent = [IO.Path]::GetDirectoryName($OutputPath)
@@ -1036,48 +1055,68 @@ function Invoke-PdfToolJob {
         if (-not [IO.File]::Exists($stagedOutput) -or (Get-Item -LiteralPath $stagedOutput).Length -eq 0) {
             throw "$Tool did not produce a nonempty private output."
         }
-        if ($Tool -eq 'Pdftk') {
-            # Native success is only the staging result. Inspect the owned
-            # master before the no-overwrite move can create a final file.
-            Assert-PdfStaging -Staging $Staging
-            $stagedFile = Get-Item -LiteralPath $stagedOutput -Force -ErrorAction Stop
-            if ($stagedFile -isnot [IO.FileInfo] -or
-                ($stagedFile.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0) {
-                throw 'Master validation requires a regular owned staged PDF; no final master was published.'
-            }
-            $snapshot = Get-PdfInputSnapshot -LiteralPath $stagedOutput
-            $validation = Get-PdfDocumentInspection -Executable $Executable -LiteralPath $stagedOutput -TimeoutMilliseconds $TimeoutMilliseconds
-            if (-not $validation.Succeeded -or $null -eq $validation.NativeResult -or -not $validation.NativeResult.Succeeded) {
-                throw "Master validation failed; no final master was published. $($validation.InputError)"
-            }
-            $validationNative = $validation.NativeResult
-            if (-not $validationNative.Started -or $validationNative.ExitCode -ne 0 -or
-                $validationNative.TimedOut -or $validationNative.Cancelled -or $validationNative.LaunchError -or
-                $validationNative.CaptureError -or $validationNative.TerminationError) {
-                throw 'Master validation native execution was incomplete or unsuccessful; no final master was published.'
-            }
-            if ($validation.NativeResult.StdoutTruncated -or $validation.NativeResult.StderrTruncated) {
-                throw 'Master validation capture was incomplete; no final master was published.'
-            }
-            if ($validation.PageCount -ne $ExpectedPageCount) {
-                throw "Master validation page count mismatch: expected $ExpectedPageCount, inspected $($validation.PageCount). No final master was published."
-            }
-            Assert-PdfStaging -Staging $Staging
-            $current = Get-PdfInputSnapshot -LiteralPath $stagedOutput
-            $currentFile = Get-Item -LiteralPath $stagedOutput -Force -ErrorAction Stop
-            if (($currentFile.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0) {
-                throw 'Staged master became a reparse file during validation; no final master was published.'
-            }
-            if ($current.Length -ne $snapshot.Length -or $current.LastWriteTimeUtcTicks -ne $snapshot.LastWriteTimeUtcTicks) {
-                throw 'Staged master changed during validation; no final master was published. Use stable source documents and run again.'
-            }
-            $validatedPages = [long]$validation.PageCount
-            $validated = $true
+        $validationLabel = if ($Tool -eq 'Pdftk') { 'Master' } else { 'Email' }
+        $inspector = if ($Tool -eq 'Pdftk') { $Executable } else { $InspectionExecutable }
+        # Native success is only staging. Inspect every owned PDF before the
+        # no-overwrite move can create a final master or smaller email copy.
+        Assert-PdfStaging -Staging $Staging
+        $stagedFile = Get-Item -LiteralPath $stagedOutput -Force -ErrorAction Stop
+        if ($stagedFile -isnot [IO.FileInfo] -or
+            ($stagedFile.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0) {
+            throw "$validationLabel validation requires a regular owned staged PDF; no final output was published."
         }
+        $snapshot = Get-PdfInputSnapshot -LiteralPath $stagedOutput
+        $validation = Get-PdfDocumentInspection -Executable $inspector -LiteralPath $stagedOutput -TimeoutMilliseconds $TimeoutMilliseconds
+        if (-not $validation.Succeeded -or $null -eq $validation.NativeResult -or -not $validation.NativeResult.Succeeded) {
+            throw "$validationLabel validation failed; no final output was published. $($validation.InputError)"
+        }
+        $validationNative = $validation.NativeResult
+        foreach ($field in @('Started','ExitCode','Succeeded','TimedOut','Cancelled','LaunchError','CaptureError','TerminationError','StdoutTruncated','StderrTruncated')) {
+            if ($null -eq $validationNative.PSObject.Properties[$field]) {
+                throw "$validationLabel validation receipt is incomplete ($field); no final output was published."
+            }
+        }
+        if (-not $validationNative.Started -or $validationNative.ExitCode -ne 0 -or
+            $validationNative.TimedOut -or $validationNative.Cancelled -or $validationNative.LaunchError -or
+            $validationNative.CaptureError -or $validationNative.TerminationError) {
+            throw "$validationLabel validation native execution was incomplete or unsuccessful; no final output was published."
+        }
+        if ($validation.NativeResult.StdoutTruncated -or $validation.NativeResult.StderrTruncated) {
+            throw "$validationLabel validation capture was incomplete; no final output was published."
+        }
+        if ($validation.PageCount -ne $ExpectedPageCount) {
+            throw "$validationLabel validation page count mismatch: expected $ExpectedPageCount, inspected $($validation.PageCount). No final output was published."
+        }
+        Assert-PdfStaging -Staging $Staging
+        $current = Get-PdfInputSnapshot -LiteralPath $stagedOutput
+        $currentFile = Get-Item -LiteralPath $stagedOutput -Force -ErrorAction Stop
+        if (($currentFile.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0) {
+            throw "Staged $validationLabel became a reparse file during validation; no final output was published."
+        }
+        if ($current.Length -ne $snapshot.Length -or $current.LastWriteTimeUtcTicks -ne $snapshot.LastWriteTimeUtcTicks) {
+            throw "Staged $validationLabel changed during validation; no final output was published. Use stable source documents and run again."
+        }
+        if ($Tool -eq 'Ghostscript') {
+            $currentMaster = Get-PdfInputSnapshot -LiteralPath $InputPaths[0]
+            $currentMasterFile = Get-Item -LiteralPath $InputPaths[0] -Force -ErrorAction Stop
+            if (($currentMasterFile.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0 -or
+                $currentMaster.Length -ne $masterSnapshot.Length -or
+                $currentMaster.LastWriteTimeUtcTicks -ne $masterSnapshot.LastWriteTimeUtcTicks) {
+                throw 'Published master changed during email processing; no email output was published. Use stable documents and run again.'
+            }
+        }
+        $validatedPages = [long]$validation.PageCount
+        $outputBytes = $current.Length
+        $validated = $true
         # File.Move refuses an existing target, including a collision after
-        # validation. Email structural validation remains its separate gate.
-        Publish-PdfStagedOutput -Staging $Staging -StagedPath $stagedOutput -OutputPath $OutputPath
-        $published = $true
+        # validation and the strictly smaller email decision.
+        if ($Tool -eq 'Ghostscript' -and $outputBytes -ge $masterBytes) {
+            $outputState = 'no_size_benefit'
+        } else {
+            Publish-PdfStagedOutput -Staging $Staging -StagedPath $stagedOutput -OutputPath $OutputPath
+            $published = $true
+            $outputState = 'published'
+        }
     } catch {
         $outputError = $_.Exception.Message
     } finally {
@@ -1091,13 +1130,52 @@ function Invoke-PdfToolJob {
         ValidationResult = $validation
         OutputValidated = $validated
         ValidatedPageCount = $validatedPages
+        OutputState = $outputState
+        MasterBytes = $masterBytes
+        OutputBytes = $outputBytes
         OutputPath = $OutputPath
         OutputPublished = $published
         OutputError = $outputError
         CleanupError = $cleanupError
         StagingPath = $(if ($null -ne $Staging) { $Staging.DirectoryPath } else { $null })
-        Succeeded = ($published -and -not $outputError -and ($Tool -ne 'Pdftk' -or $validated))
+        Succeeded = ($validated -and -not $outputError -and ($published -or $outputState -eq 'no_size_benefit'))
     }
+}
+
+function Get-PdfMergeOutcome {
+    param(
+        [Parameter(Mandatory=$true)][bool]$MasterPublished,
+        [ValidateSet('not_started','skipped','unavailable','published','no_size_benefit','failed')][string]$EmailState = 'not_started',
+        [string]$MasterPath,
+        [string]$EmailPath
+    )
+
+    $paths = @()
+    $exitCode = 1
+    $summary = 'FAILURE'
+    $message = 'No validated master was published.'
+    if ($MasterPublished) {
+        if ([string]::IsNullOrWhiteSpace($MasterPath)) { throw 'A published master requires its explicit output path.' }
+        $paths += [pscustomobject]@{ Label='Merged master'; Path=$MasterPath }
+        $exitCode = 0
+        $summary = 'SUCCESS'
+        switch ($EmailState) {
+            'skipped' { $message = 'Email explicitly skipped; validated master retained.' }
+            'unavailable' { $message = 'Ghostscript not found; skipping email-optimized copy.' }
+            'no_size_benefit' { $message = 'Validated email copy offers no size benefit; master retained.' }
+            'published' {
+                if ([string]::IsNullOrWhiteSpace($EmailPath)) { throw 'A published email result requires its explicit output path.' }
+                $message = 'Validated smaller email copy published.'
+                $paths += [pscustomobject]@{ Label='Email-optimized'; Path=$EmailPath }
+            }
+            default {
+                $exitCode = 2
+                $summary = 'PARTIAL SUCCESS'
+                $message = 'Email processing failed; validated master retained.'
+            }
+        }
+    }
+    return [pscustomobject]@{ ExitCode=$exitCode; Summary=$summary; EmailMessage=$message; EmailState=$EmailState; PublishedPaths=@($paths) }
 }
 
 function Get-DependencyExecutablePath {
