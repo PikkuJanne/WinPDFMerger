@@ -1,0 +1,1138 @@
+{
+  "SchemaVersion": 1,
+  "Task": "T13",
+  "Phase": "C1",
+  "ReviewedAtUtc": "2026-10-08T04:01:33.6973249Z",
+  "ReviewerRole": "Independent safety/code/test/static review agent",
+  "CommitUnderReview": "e74ffa92588eff876c12ebd3321e2f3b0d6f110c",
+  "DirtyWorktreeAtReview": false,
+  "Scope": "Read-only inspection of committed strict master validation, entry wiring, regression design and clean-shell analyzer reports. Reviewer did not execute application test tiers or edit tracked files.",
+  "SourceFiles": [
+    {
+      "Path": "WinPDFMerge.ps1",
+      "SHA256": "0e805e5e38b52c8bdc83cc4588c474f751bd79acdada2cf602b3be301814e3c8"
+    },
+    {
+      "Path": "src/WinPDFMerge.Helpers.ps1",
+      "SHA256": "543cdddbabe3a0770f073131d27f7acf7e9d444022c65afe636e5430f1801ed0"
+    },
+    {
+      "Path": "tests/dependencies/Dependencies.Entry.Tests.ps1",
+      "SHA256": "75a6e7253f1de5b0e4de815d82397707d1ce63eb97d877c0911f51c612b59800"
+    },
+    {
+      "Path": "tests/filesafety/Staging.Native.Tests.ps1",
+      "SHA256": "d9e3e8f4b9d10f2fff525d8498f540bd7fef1f199a7c1814d1e6c4b8cf8396cf"
+    },
+    {
+      "Path": "tests/native/ToolInvocation.Tests.ps1",
+      "SHA256": "98c606ea5939366593eb17397119fdce73e22f94d14f1ca37512900883c10ede"
+    },
+    {
+      "Path": "tests/pdf/InputPreflight.Native.Tests.ps1",
+      "SHA256": "422b67debd62f401ba89158957237ce861a9bfe74f097c9647d41c8467b41cb1"
+    },
+    {
+      "Path": "tests/pdf/MasterValidation.Native.Tests.ps1",
+      "SHA256": "72dfde5b6a40df8c1b1a10f5b6eb56cb7850cd8c26b4417c3f777f6a8b5d2740"
+    },
+    {
+      "Path": "tests/pdf/ToolPaths.Native.Tests.ps1",
+      "SHA256": "aa5d8bed2a1cb009de006b0d5e89c58a627ec0d192709d586b3df0989e725d72"
+    },
+    {
+      "Path": "tests/unit/MasterValidation.Tests.ps1",
+      "SHA256": "0ac8a620e980e5c99eb7e0e2dd94ffb9f5611a1eaab20e6375510fc1bcf26cd6"
+    },
+    {
+      "Path": "tools/test/Invoke-Tests.ps1",
+      "SHA256": "21e535a40b3352ceb679034a85e1c2baa6a2413a882e3bf7db4a31cb72d7d86c"
+    }
+  ],
+  "CommitScopeFiles": [
+    {
+      "Path": "WinPDFMerge.ps1",
+      "SHA256": "0e805e5e38b52c8bdc83cc4588c474f751bd79acdada2cf602b3be301814e3c8"
+    },
+    {
+      "Path": "docs/codex/NEXT_SESSION.md",
+      "SHA256": "48ff8fe9a8bc79d96887620b83fe96e43d6732225fc89408f45b05f30a90796f"
+    },
+    {
+      "Path": "docs/codex/STATUS.md",
+      "SHA256": "b2b1088a1cc4cfb189f3772201bab2e948a712c660e44a106dc3e6573643145b"
+    },
+    {
+      "Path": "docs/codex/TASKS.json",
+      "SHA256": "b464f55aa38b858ca84a55a2798c7e395f9465ec109c07da58ee062b132c232e"
+    },
+    {
+      "Path": "docs/codex/evidence/T13-checkpoint.md",
+      "SHA256": "7cd82d0c2e87679a01511ad1a3c9b7dad2cb603e3314494f95ef3681d1c72e2c"
+    },
+    {
+      "Path": "src/WinPDFMerge.Helpers.ps1",
+      "SHA256": "543cdddbabe3a0770f073131d27f7acf7e9d444022c65afe636e5430f1801ed0"
+    },
+    {
+      "Path": "tests/dependencies/Dependencies.Entry.Tests.ps1",
+      "SHA256": "75a6e7253f1de5b0e4de815d82397707d1ce63eb97d877c0911f51c612b59800"
+    },
+    {
+      "Path": "tests/filesafety/Staging.Native.Tests.ps1",
+      "SHA256": "d9e3e8f4b9d10f2fff525d8498f540bd7fef1f199a7c1814d1e6c4b8cf8396cf"
+    },
+    {
+      "Path": "tests/native/ToolInvocation.Tests.ps1",
+      "SHA256": "98c606ea5939366593eb17397119fdce73e22f94d14f1ca37512900883c10ede"
+    },
+    {
+      "Path": "tests/pdf/InputPreflight.Native.Tests.ps1",
+      "SHA256": "422b67debd62f401ba89158957237ce861a9bfe74f097c9647d41c8467b41cb1"
+    },
+    {
+      "Path": "tests/pdf/MasterValidation.Native.Tests.ps1",
+      "SHA256": "72dfde5b6a40df8c1b1a10f5b6eb56cb7850cd8c26b4417c3f777f6a8b5d2740"
+    },
+    {
+      "Path": "tests/pdf/ToolPaths.Native.Tests.ps1",
+      "SHA256": "aa5d8bed2a1cb009de006b0d5e89c58a627ec0d192709d586b3df0989e725d72"
+    },
+    {
+      "Path": "tests/unit/MasterValidation.Tests.ps1",
+      "SHA256": "0ac8a620e980e5c99eb7e0e2dd94ffb9f5611a1eaab20e6375510fc1bcf26cd6"
+    },
+    {
+      "Path": "tools/test/Invoke-Tests.ps1",
+      "SHA256": "21e535a40b3352ceb679034a85e1c2baa6a2413a882e3bf7db4a31cb72d7d86c"
+    }
+  ],
+  "CodeReview": {
+    "Result": "no_blocking_findings",
+    "BlockingFindings": [],
+    "ObservedChecks": [
+      "Every PDFtk merge requires a positive explicit frozen expected page count before stage creation or native launch. Binding that parameter for Ghostscript is refused.",
+      "Successful merge execution and a nonempty regular owned staged master precede the existing bounded envelope, PDFtk dump_data_utf8 and strict positive Int64 page-count inspector.",
+      "Separate validation receipt must report success, started process, exit zero, no timeout/cancel/launch/capture/termination failures and complete stdout/stderr.",
+      "Inspected page count must equal the frozen total before OutputValidated is set or final publication is attempted.",
+      "Staging ownership, stage and destination identities, reparse status and staged length/last-write metadata are checked around inspection.",
+      "Publication and cleanup reuse unchanged T12 owned staging and no-overwrite File.Move helpers.",
+      "Merge and inspection receipts stay separate. Final publication state remains false on refused inspection or collision.",
+      "Entry labels pre-run output as planned, rechecks frozen inputs immediately before merge, logs both native receipts, and announces validated publication only after successful gate and move.",
+      "Ghostscript work follows successful master validation and publication; its structural and smaller-only gate remains T14.",
+      "No new runtime network calls, replacement engines, defaults, recursive cleanup, source mutation or framework were introduced. Syntax remains compatible with Windows PowerShell 5.1."
+    ],
+    "TestDesignReview": [
+      "New 38-case unit suite covers missing/empty/non-PDF/truncated/directory staged output, strict malformed/zero/duplicate/overflow labels, wrong expected total, incomplete/failing inspection receipts, inspector exceptions, changed staging ownership or metadata and final collision.",
+      "Unit rejection cases assert no publication, preserved input and foreign hashes, and owned cleanup where applicable. Controlled native receipts are not claimed as native structural acceptance.",
+      "Existing 12-case invocation tier explicitly isolates wiring through mocked inspection while actual PDFtk path/staging tiers supply expected totals and retain separate real validation receipts.",
+      "New seven-case native tier uses actual entry runs for single multipage and natural 1/01/2/10 ordering with rotated owned fixture derivatives; independent pinned PDFium checks visible IDs, rotation units and page dimensions.",
+      "Native invalid-data substitutions explicitly disclose controlled scheduling after actual PDFtk merge success and before the original real inspector. Missing/empty/non-PDF fail before native inspection; valid wrong-page data invokes real inspection.",
+      "Two existing refusal assertions now forbid Master validation OK and Merged master published text, extending nine dependency and 22 input-preflight cases without increasing their counts."
+    ],
+    "NonblockingFindings": [
+      {
+        "Category": "Test fixture naming",
+        "Detail": "Eight analyzer findings concern assigning the automatic variable input in isolated fixture tests, including three new master cases. Rename when these tests are next edited; reviewed direct non-pipeline usage does not weaken the runtime validation gate."
+      }
+    ]
+  },
+  "StaticAnalysisReview": {
+    "Result": "reviewed_nonblocking",
+    "ScopeFileCount": 10,
+    "ScopeFiles": [
+      "WinPDFMerge.ps1",
+      "src/WinPDFMerge.Helpers.ps1",
+      "tests/dependencies/Dependencies.Entry.Tests.ps1",
+      "tests/filesafety/Staging.Native.Tests.ps1",
+      "tests/native/ToolInvocation.Tests.ps1",
+      "tests/pdf/InputPreflight.Native.Tests.ps1",
+      "tests/pdf/MasterValidation.Native.Tests.ps1",
+      "tests/pdf/ToolPaths.Native.Tests.ps1",
+      "tests/unit/MasterValidation.Tests.ps1",
+      "tools/test/Invoke-Tests.ps1"
+    ],
+    "Reports": [
+      {
+        "Report": "tests/.work/T13-C1-analyzer-ps51.json",
+        "SHA256": "4ae8ae343968bf84e2a9a4e1f7791e85616d2f55bc5b60bc9ff2f926e8702450",
+        "CommitUnderTest": "e74ffa92588eff876c12ebd3321e2f3b0d6f110c",
+        "DirtyWorktree": false,
+        "ShellVersion": "5.1.26100.9444",
+        "AnalyzerVersion": "1.25.0",
+        "Errors": 0,
+        "Warnings": 112,
+        "Information": 49,
+        "Groups": [
+          {
+            "Rule": "PSAvoidUsingPositionalParameters",
+            "Severity": "Information",
+            "Count": 43
+          },
+          {
+            "Rule": "PSUseOutputTypeCorrectly",
+            "Severity": "Information",
+            "Count": 6
+          },
+          {
+            "Rule": "PSAvoidAssignmentToAutomaticVariable",
+            "Severity": "Warning",
+            "Count": 8
+          },
+          {
+            "Rule": "PSAvoidUsingWriteHost",
+            "Severity": "Warning",
+            "Count": 35
+          },
+          {
+            "Rule": "PSReviewUnusedParameter",
+            "Severity": "Warning",
+            "Count": 21
+          },
+          {
+            "Rule": "PSUseApprovedVerbs",
+            "Severity": "Warning",
+            "Count": 3
+          },
+          {
+            "Rule": "PSUseBOMForUnicodeEncodedFile",
+            "Severity": "Warning",
+            "Count": 2
+          },
+          {
+            "Rule": "PSUseDeclaredVarsMoreThanAssignments",
+            "Severity": "Warning",
+            "Count": 17
+          },
+          {
+            "Rule": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": "Warning",
+            "Count": 19
+          },
+          {
+            "Rule": "PSUseSingularNouns",
+            "Severity": "Warning",
+            "Count": 7
+          }
+        ]
+      },
+      {
+        "Report": "tests/.work/T13-C1-analyzer-ps7.json",
+        "SHA256": "d715a549350410b0ae052705f5bb96dc08d699ea4a966222d3c6105f5ceb987f",
+        "CommitUnderTest": "e74ffa92588eff876c12ebd3321e2f3b0d6f110c",
+        "DirtyWorktree": false,
+        "ShellVersion": "7.6.6",
+        "AnalyzerVersion": "1.25.0",
+        "Errors": 0,
+        "Warnings": 112,
+        "Information": 49,
+        "Groups": [
+          {
+            "Rule": "PSAvoidUsingPositionalParameters",
+            "Severity": "Information",
+            "Count": 43
+          },
+          {
+            "Rule": "PSUseOutputTypeCorrectly",
+            "Severity": "Information",
+            "Count": 6
+          },
+          {
+            "Rule": "PSAvoidAssignmentToAutomaticVariable",
+            "Severity": "Warning",
+            "Count": 8
+          },
+          {
+            "Rule": "PSAvoidUsingWriteHost",
+            "Severity": "Warning",
+            "Count": 35
+          },
+          {
+            "Rule": "PSReviewUnusedParameter",
+            "Severity": "Warning",
+            "Count": 21
+          },
+          {
+            "Rule": "PSUseApprovedVerbs",
+            "Severity": "Warning",
+            "Count": 3
+          },
+          {
+            "Rule": "PSUseBOMForUnicodeEncodedFile",
+            "Severity": "Warning",
+            "Count": 2
+          },
+          {
+            "Rule": "PSUseDeclaredVarsMoreThanAssignments",
+            "Severity": "Warning",
+            "Count": 17
+          },
+          {
+            "Rule": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": "Warning",
+            "Count": 19
+          },
+          {
+            "Rule": "PSUseSingularNouns",
+            "Severity": "Warning",
+            "Count": 7
+          }
+        ]
+      }
+    ],
+    "Assessment": [
+      "Both actual shell reports have zero errors, 112 warnings and 49 information findings, with identical category counts.",
+      "35 Write-Host findings concern console entry or test diagnostics.",
+      "19 ShouldProcess findings concern private owned-resource/process and test fixture helpers; this change adds no public WhatIf interface.",
+      "21 unused parameter and 17 declaration-use findings concern reviewed Pester mock/cross-block/test display scope. They do not identify a T13 gate failure.",
+      "Seven singular-noun and three approved-verb findings are naming suggestions.",
+      "Eight automatic input variable assignments are test-only fixture naming issues with direct non-pipeline usage; three are newly introduced and nonblocking.",
+      "Two missing-BOM findings refer to non-ASCII comments in the existing entry and PDFtk path test, not executable path literals.",
+      "Information findings comprise 43 positional test-helper calls and six existing missing OutputType declarations.",
+      "Reports are retained with all findings. This is a scoped review, not a lint-clean or full T22 claim."
+    ]
+  },
+  "RemainingLimitations": [
+    "The envelope and actual PDFtk metadata gate establishes this narrow structural/page-count contract; it does not prove universal validity, security, feature fidelity, signatures or archival suitability.",
+    "Length/last-write and ownership/reparse rechecks do not prove immunity to every malicious file mutation between checks and publication.",
+    "Email structural validation, smaller-only publication and consolidated outcomes remain T14.",
+    "Process descendants, cancellation and interruption remain T15.",
+    "Unit mocks and controlled native staging substitutions are distinct from actual entry, PDFtk and independent PDFium observations.",
+    "No Explorer, live UNC, other OS/architecture, full feature fidelity, CI, packaging or published release acceptance is claimed."
+  ],
+  "EvidenceAudit": {
+    "Result": "pass",
+    "AuditedAtUtc": "2026-10-08T04:10:32.978711+00:00",
+    "CommitUnderTest": "e74ffa92588eff876c12ebd3321e2f3b0d6f110c",
+    "DirtyWorktreeAtAudit": true,
+    "CurrentChangesAreNewEvidenceOnly": false,
+    "CurrentChangesAreEvidenceOrBytePreservationAttributesOnly": true,
+    "Method": "Independent read-only raw driver command/aggregate/summary/NUnit/stream, native observation, retained synthetic/runtime/dependency hash, recorded native-audit, exact archive payload/privacy and fresh live-ref inspection. No suite or PDF-engine execution by this reviewer.",
+    "TotalTiers": 22,
+    "PassedPerShell": 369,
+    "TotalPassed": 738,
+    "AllFailuresSkipsNotRun": 0,
+    "TierAudits": [
+      {
+        "Shell": "ps51",
+        "ShellVersion": "5.1.26100.9444",
+        "Tier": "Unit",
+        "Passed": 263,
+        "Failed": 0,
+        "Skipped": 0,
+        "NotRun": 0,
+        "DriverExitCode": 0,
+        "SummaryAndNUnitAgree": true,
+        "ExecutedCommandVectorChecked": true
+      },
+      {
+        "Shell": "ps51",
+        "ShellVersion": "5.1.26100.9444",
+        "Tier": "MasterValidation",
+        "Passed": 7,
+        "Failed": 0,
+        "Skipped": 0,
+        "NotRun": 0,
+        "DriverExitCode": 0,
+        "SummaryAndNUnitAgree": true,
+        "ExecutedCommandVectorChecked": true
+      },
+      {
+        "Shell": "ps51",
+        "ShellVersion": "5.1.26100.9444",
+        "Tier": "Staging",
+        "Passed": 9,
+        "Failed": 0,
+        "Skipped": 0,
+        "NotRun": 0,
+        "DriverExitCode": 0,
+        "SummaryAndNUnitAgree": true,
+        "ExecutedCommandVectorChecked": true
+      },
+      {
+        "Shell": "ps51",
+        "ShellVersion": "5.1.26100.9444",
+        "Tier": "InputPreflight",
+        "Passed": 22,
+        "Failed": 0,
+        "Skipped": 0,
+        "NotRun": 0,
+        "DriverExitCode": 0,
+        "SummaryAndNUnitAgree": true,
+        "ExecutedCommandVectorChecked": true
+      },
+      {
+        "Shell": "ps51",
+        "ShellVersion": "5.1.26100.9444",
+        "Tier": "Destination",
+        "Passed": 15,
+        "Failed": 0,
+        "Skipped": 0,
+        "NotRun": 0,
+        "DriverExitCode": 0,
+        "SummaryAndNUnitAgree": true,
+        "ExecutedCommandVectorChecked": true
+      },
+      {
+        "Shell": "ps51",
+        "ShellVersion": "5.1.26100.9444",
+        "Tier": "ToolInvocation",
+        "Passed": 12,
+        "Failed": 0,
+        "Skipped": 0,
+        "NotRun": 0,
+        "DriverExitCode": 0,
+        "SummaryAndNUnitAgree": true,
+        "ExecutedCommandVectorChecked": true
+      },
+      {
+        "Shell": "ps51",
+        "ShellVersion": "5.1.26100.9444",
+        "Tier": "PdftkPaths",
+        "Passed": 13,
+        "Failed": 0,
+        "Skipped": 0,
+        "NotRun": 0,
+        "DriverExitCode": 0,
+        "SummaryAndNUnitAgree": true,
+        "ExecutedCommandVectorChecked": true
+      },
+      {
+        "Shell": "ps51",
+        "ShellVersion": "5.1.26100.9444",
+        "Tier": "GhostscriptPaths",
+        "Passed": 13,
+        "Failed": 0,
+        "Skipped": 0,
+        "NotRun": 0,
+        "DriverExitCode": 0,
+        "SummaryAndNUnitAgree": true,
+        "ExecutedCommandVectorChecked": true
+      },
+      {
+        "Shell": "ps51",
+        "ShellVersion": "5.1.26100.9444",
+        "Tier": "SourceDiscovery",
+        "Passed": 4,
+        "Failed": 0,
+        "Skipped": 0,
+        "NotRun": 0,
+        "DriverExitCode": 0,
+        "SummaryAndNUnitAgree": true,
+        "ExecutedCommandVectorChecked": true
+      },
+      {
+        "Shell": "ps51",
+        "ShellVersion": "5.1.26100.9444",
+        "Tier": "DependencyEntry",
+        "Passed": 9,
+        "Failed": 0,
+        "Skipped": 0,
+        "NotRun": 0,
+        "DriverExitCode": 0,
+        "SummaryAndNUnitAgree": true,
+        "ExecutedCommandVectorChecked": true
+      },
+      {
+        "Shell": "ps51",
+        "ShellVersion": "5.1.26100.9444",
+        "Tier": "LauncherNative",
+        "Passed": 2,
+        "Failed": 0,
+        "Skipped": 0,
+        "NotRun": 0,
+        "DriverExitCode": 0,
+        "SummaryAndNUnitAgree": true,
+        "ExecutedCommandVectorChecked": true
+      },
+      {
+        "Shell": "ps7",
+        "ShellVersion": "7.6.6",
+        "Tier": "Unit",
+        "Passed": 263,
+        "Failed": 0,
+        "Skipped": 0,
+        "NotRun": 0,
+        "DriverExitCode": 0,
+        "SummaryAndNUnitAgree": true,
+        "ExecutedCommandVectorChecked": true
+      },
+      {
+        "Shell": "ps7",
+        "ShellVersion": "7.6.6",
+        "Tier": "MasterValidation",
+        "Passed": 7,
+        "Failed": 0,
+        "Skipped": 0,
+        "NotRun": 0,
+        "DriverExitCode": 0,
+        "SummaryAndNUnitAgree": true,
+        "ExecutedCommandVectorChecked": true
+      },
+      {
+        "Shell": "ps7",
+        "ShellVersion": "7.6.6",
+        "Tier": "Staging",
+        "Passed": 9,
+        "Failed": 0,
+        "Skipped": 0,
+        "NotRun": 0,
+        "DriverExitCode": 0,
+        "SummaryAndNUnitAgree": true,
+        "ExecutedCommandVectorChecked": true
+      },
+      {
+        "Shell": "ps7",
+        "ShellVersion": "7.6.6",
+        "Tier": "InputPreflight",
+        "Passed": 22,
+        "Failed": 0,
+        "Skipped": 0,
+        "NotRun": 0,
+        "DriverExitCode": 0,
+        "SummaryAndNUnitAgree": true,
+        "ExecutedCommandVectorChecked": true
+      },
+      {
+        "Shell": "ps7",
+        "ShellVersion": "7.6.6",
+        "Tier": "Destination",
+        "Passed": 15,
+        "Failed": 0,
+        "Skipped": 0,
+        "NotRun": 0,
+        "DriverExitCode": 0,
+        "SummaryAndNUnitAgree": true,
+        "ExecutedCommandVectorChecked": true
+      },
+      {
+        "Shell": "ps7",
+        "ShellVersion": "7.6.6",
+        "Tier": "ToolInvocation",
+        "Passed": 12,
+        "Failed": 0,
+        "Skipped": 0,
+        "NotRun": 0,
+        "DriverExitCode": 0,
+        "SummaryAndNUnitAgree": true,
+        "ExecutedCommandVectorChecked": true
+      },
+      {
+        "Shell": "ps7",
+        "ShellVersion": "7.6.6",
+        "Tier": "PdftkPaths",
+        "Passed": 13,
+        "Failed": 0,
+        "Skipped": 0,
+        "NotRun": 0,
+        "DriverExitCode": 0,
+        "SummaryAndNUnitAgree": true,
+        "ExecutedCommandVectorChecked": true
+      },
+      {
+        "Shell": "ps7",
+        "ShellVersion": "7.6.6",
+        "Tier": "GhostscriptPaths",
+        "Passed": 13,
+        "Failed": 0,
+        "Skipped": 0,
+        "NotRun": 0,
+        "DriverExitCode": 0,
+        "SummaryAndNUnitAgree": true,
+        "ExecutedCommandVectorChecked": true
+      },
+      {
+        "Shell": "ps7",
+        "ShellVersion": "7.6.6",
+        "Tier": "SourceDiscovery",
+        "Passed": 4,
+        "Failed": 0,
+        "Skipped": 0,
+        "NotRun": 0,
+        "DriverExitCode": 0,
+        "SummaryAndNUnitAgree": true,
+        "ExecutedCommandVectorChecked": true
+      },
+      {
+        "Shell": "ps7",
+        "ShellVersion": "7.6.6",
+        "Tier": "DependencyEntry",
+        "Passed": 9,
+        "Failed": 0,
+        "Skipped": 0,
+        "NotRun": 0,
+        "DriverExitCode": 0,
+        "SummaryAndNUnitAgree": true,
+        "ExecutedCommandVectorChecked": true
+      },
+      {
+        "Shell": "ps7",
+        "ShellVersion": "7.6.6",
+        "Tier": "LauncherNative",
+        "Passed": 2,
+        "Failed": 0,
+        "Skipped": 0,
+        "NotRun": 0,
+        "DriverExitCode": 0,
+        "SummaryAndNUnitAgree": true,
+        "ExecutedCommandVectorChecked": true
+      }
+    ],
+    "Receipts": [
+      {
+        "Path": "tests/.work/Collect-T09C3Evidence.py",
+        "SHA256": "2e8953bf5a5b78a3849fca1c2a966910ca4a6758a6f42effcf2cc1b6a840ac83"
+      },
+      {
+        "Path": "tests/.work/Collect-T13Evidence.py",
+        "SHA256": "1381e1c1530e3fcd6f2e2c91da20796da9e997678e5aa2ff27f032b343d1fe30"
+      },
+      {
+        "Path": "tests/.work/Run-T13Checkpoint.ps1",
+        "SHA256": "7a493b8c0a63add02dbc9241131eae19437cbe6c755e409213b2bbbad3b16db6"
+      },
+      {
+        "Path": "tests/.work/T13-C1-analyzer-ps51.json",
+        "SHA256": "4ae8ae343968bf84e2a9a4e1f7791e85616d2f55bc5b60bc9ff2f926e8702450"
+      },
+      {
+        "Path": "tests/.work/T13-C1-analyzer-ps7.json",
+        "SHA256": "d715a549350410b0ae052705f5bb96dc08d699ea4a966222d3c6105f5ceb987f"
+      },
+      {
+        "Path": "tests/.work/T13-C1-independent-native-audit.json",
+        "SHA256": "9ada5dac2f525834bbc7fc7e56a1f2def788af0d18abc12c2f4943890947c2db"
+      },
+      {
+        "Path": "tests/.work/T13-C1-live-sync.json",
+        "SHA256": "08ecd9ade3e0a037067531a8d8258c44246882690001573174cef5ae5eef9c0c"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps51/DependencyEntry.stderr.txt",
+        "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps51/DependencyEntry.txt",
+        "SHA256": "66be3381626f99f3ce2448ccba4df8c36981c058c99ddfc43888093198cf1de1"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps51/Destination.stderr.txt",
+        "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps51/Destination.txt",
+        "SHA256": "468f304339530c11b3c9d71dfe637f499c43899e8143ca2e1d50b8b1df63a9a2"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps51/GhostscriptPaths.stderr.txt",
+        "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps51/GhostscriptPaths.txt",
+        "SHA256": "6484a3ae4e47a6de945c99f766263d40a605e7c779ccfd94515f0f79bf8abe08"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps51/InputPreflight.stderr.txt",
+        "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps51/InputPreflight.txt",
+        "SHA256": "707ef6ca280c146cc7ba72089f41649b5a841471457b05b4061e5255a9d96195"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps51/LauncherNative.stderr.txt",
+        "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps51/LauncherNative.txt",
+        "SHA256": "2ffc91733e76b402bb9d60c67c9886d8b55d8d6b609cd8526c3fa6ed6fafca34"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps51/MasterValidation.stderr.txt",
+        "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps51/MasterValidation.txt",
+        "SHA256": "e31547a6022ae3dba9f9142bdb78b11b366a93cf355a6958747107929ee0c9dc"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps51/PdftkPaths.stderr.txt",
+        "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps51/PdftkPaths.txt",
+        "SHA256": "93d6b41d025b9c9d66a5eefafed96c25850e446c340348a2e1543188057c8a97"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps51/SourceDiscovery.stderr.txt",
+        "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps51/SourceDiscovery.txt",
+        "SHA256": "8d95aaf3eee1618805efdb02bc52cb04f6b9d93e36d28750a969804a3883cd9e"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps51/Staging.stderr.txt",
+        "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps51/Staging.txt",
+        "SHA256": "a9ea5267722df65f49017ffec5ee068b395b0a6ae5dc14d8266b23d0dbb38d72"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps51/ToolInvocation.stderr.txt",
+        "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps51/ToolInvocation.txt",
+        "SHA256": "26138446d044c24c538335fafb0372219a425fb636bae5642abb21d76eb1c22d"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps51/Unit.stderr.txt",
+        "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps51/Unit.txt",
+        "SHA256": "f4168bc4ecb6cd9281567d98b2687db9a75c6836995d44b2cb8b0d4321372510"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps51/aggregate.json",
+        "SHA256": "7996a30d3c9ba2fd1c8a6664ffa1e9ad3d615535afd6b0b70bea02ddf14c8286"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps51/collector.json",
+        "SHA256": "702db74e335e98fe19831f022559badcc7596317399ff29d52f225d1ee0b7a93"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps51/runs.json",
+        "SHA256": "83aaf01582e85f44118a95878a19ee9294d5414f7ef1f23dcfc995a4181e3c24"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps7/DependencyEntry.stderr.txt",
+        "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps7/DependencyEntry.txt",
+        "SHA256": "0605bb4164bb73736d53416bcde2c7203f3801d2d1fe51ca62925a2b526fec84"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps7/Destination.stderr.txt",
+        "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps7/Destination.txt",
+        "SHA256": "f5e155db5334b017faba442993ab6c8bea3ed188adf3abfe1ac753e456e8e7a4"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps7/GhostscriptPaths.stderr.txt",
+        "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps7/GhostscriptPaths.txt",
+        "SHA256": "f4b862b54a96a3df0dc7bb283bd22aab436c8a9fa6ef0abd77a338bbfba47328"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps7/InputPreflight.stderr.txt",
+        "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps7/InputPreflight.txt",
+        "SHA256": "7a47c3fe0054349409dfc107cebdf6e6725b208afe9f0ef9908bfda1a6f7cf5d"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps7/LauncherNative.stderr.txt",
+        "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps7/LauncherNative.txt",
+        "SHA256": "d7f4897dcf15cd273bf9e6db9c98c87c553e7129f7de8a9b921f5141e19f8303"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps7/MasterValidation.stderr.txt",
+        "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps7/MasterValidation.txt",
+        "SHA256": "7bdb011d6ae0f461aec64d391c5da81e9c63f94dfb390de025b74c4f9d2bdbeb"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps7/PdftkPaths.stderr.txt",
+        "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps7/PdftkPaths.txt",
+        "SHA256": "7680879d233c2edf9af54b8f4968e1cac9c7e6cdaf08b3352e70b8bc27d14059"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps7/SourceDiscovery.stderr.txt",
+        "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps7/SourceDiscovery.txt",
+        "SHA256": "49c045af05169b2112c08c2793a38b649a398b4a76834150375b4a7548e1b01e"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps7/Staging.stderr.txt",
+        "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps7/Staging.txt",
+        "SHA256": "1352a1c8a5a548f9207168e4cdacebd3526cb265ba8da5f7cd74c7e8ab8a58c3"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps7/ToolInvocation.stderr.txt",
+        "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps7/ToolInvocation.txt",
+        "SHA256": "a45b030ee11e413e4dce3d59867d5d7df706bc2dfe5168032f51b50749cd3603"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps7/Unit.stderr.txt",
+        "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps7/Unit.txt",
+        "SHA256": "d6608a15eb9535cea0aaf4068e246ca59924cccff89f97f08066692291d1150a"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps7/aggregate.json",
+        "SHA256": "7f6300d66aab1c6cdd99d45c3c7123eb322535dce89d6129cb6f43c2d9001b5e"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps7/collector.json",
+        "SHA256": "7c2a7bb1aa8e38aacb29ff80ddbc34929801e3ea215cab776b427c987d736976"
+      },
+      {
+        "Path": "tests/.work/T13-C1-ps7/runs.json",
+        "SHA256": "b00121f94c61d5b78784cd2974b519a0ad13b9f94b8cdfa9d64b9224e23c3112"
+      },
+      {
+        "Path": "tests/.work/T13-cache-verification.json",
+        "SHA256": "f2345a220f268d4df288621c4dd5a2d07f7b869316715a931ccb3ed8be3658c2"
+      },
+      {
+        "Path": "tests/.work/T13-environment.json",
+        "SHA256": "7c59a62b581807f8840507e36fca2805ee1e6594ebe57455527d5125a2c6d061"
+      },
+      {
+        "Path": "tests/.work/T13-expected-counts.json",
+        "SHA256": "95ef0d318920b0acbfaa4555ef266f5570f6261e30e513253685610b79c18ba0"
+      },
+      {
+        "Path": "tests/.work/destination/4a51925d59714e7ebe14e01554d1dd04/native-observations.json",
+        "SHA256": "affbd2ece0e5fdb186a1f43bf9cfc2be13501d65a97958f8fa259d6b9da010ae"
+      },
+      {
+        "Path": "tests/.work/destination/91d623fb4cfc4029a3944e3e2c5f5e96/native-observations.json",
+        "SHA256": "a2fe3b94d0ad793f9db78ef03abf95f18a60069469acfb3f1cbd4d3a126b1962"
+      },
+      {
+        "Path": "tests/.work/input-preflight/06efc9bfaa1d4c30a28fe73dd9438917/native-observations.json",
+        "SHA256": "b2c2d501dcde81205edd30ac1958da3f290adf79e64fc55dc5a582f5f3de3cc0"
+      },
+      {
+        "Path": "tests/.work/input-preflight/2e4dca0dcca245998e6ea1b6c7b7f3f4/native-observations.json",
+        "SHA256": "36278269ebf6a30bc6e8db55aad6db5536ab216ee06618c836dc9662df8ff335"
+      },
+      {
+        "Path": "tests/.work/master-validation/118cd88cbfc046c5a28c85b11222d087/57c83fa0b3e244ddba74aed51580b54b/output/WinPDFMerge_source_20261008_060043_a961ac02bc8d4e75.log",
+        "SHA256": "8f416a42b50d9d08dddc472fad15dc97220c58faae96474fe06c7f6fb0526a48"
+      },
+      {
+        "Path": "tests/.work/master-validation/118cd88cbfc046c5a28c85b11222d087/57c83fa0b3e244ddba74aed51580b54b/output/WinPDFMerge_source_20261008_060043_a961ac02bc8d4e75.pdf",
+        "SHA256": "10d3cfdf3dedb9e2added3ca3a71a6ef864fd808773996d66c31178c0eac8d1c"
+      },
+      {
+        "Path": "tests/.work/master-validation/118cd88cbfc046c5a28c85b11222d087/59c050186bcc4eb1a4b77767bcc1ccc4-expected.json",
+        "SHA256": "dcd185e97773274acda0ac0184e71a133c191c149c4da7fa7520a4b2ff9d1a0e"
+      },
+      {
+        "Path": "tests/.work/master-validation/118cd88cbfc046c5a28c85b11222d087/bdabf49a36f44d968c080703be7947bc/output/WinPDFMerge_source_20261008_060046_d643f43e399248b0.log",
+        "SHA256": "3fb52672450776afcce3ba5e00eb3e86141291aaac257f3bfb5a14dc344615ff"
+      },
+      {
+        "Path": "tests/.work/master-validation/118cd88cbfc046c5a28c85b11222d087/bdabf49a36f44d968c080703be7947bc/output/WinPDFMerge_source_20261008_060046_d643f43e399248b0.pdf",
+        "SHA256": "e67fb68c4bd9ebb730b044f84042268496a270a5934c844b7080f704a296f746"
+      },
+      {
+        "Path": "tests/.work/master-validation/118cd88cbfc046c5a28c85b11222d087/f40b70d5e8ba42dab220bc1ef1b46424-expected.json",
+        "SHA256": "6fb6312034b8b9a68ba21e63ceb64462f2a68171593353be12fb2ddc70b29dad"
+      },
+      {
+        "Path": "tests/.work/master-validation/118cd88cbfc046c5a28c85b11222d087/inspect-master.py",
+        "SHA256": "ec39d64b22687ea1b6d4cdb5038f7791c18672b6df9aacc549488f17e03c1b22"
+      },
+      {
+        "Path": "tests/.work/master-validation/118cd88cbfc046c5a28c85b11222d087/native-observations.json",
+        "SHA256": "327df86599b9ce4179494de8000951d28906662058274ca30e39449d467cd8e6"
+      },
+      {
+        "Path": "tests/.work/master-validation/d116deb9acff41419727695df3463032/1731e5a1bd40412da44c50f19dd9db6e-expected.json",
+        "SHA256": "d5020829721e7a7789d120e5ce5dfcb01cf054da01930183c934ea828758b2b4"
+      },
+      {
+        "Path": "tests/.work/master-validation/d116deb9acff41419727695df3463032/35c35d3307b74f649ad6ceaeca8c9a06-expected.json",
+        "SHA256": "a5c136ffbcb3e1a524e7eaa83fc395105dc06b028c64d0e3d23da6bc71d590be"
+      },
+      {
+        "Path": "tests/.work/master-validation/d116deb9acff41419727695df3463032/55ca9e2e4d4a40fa96ba024da3b41800/output/WinPDFMerge_source_20261008_060044_6afae7324ddd4f44.log",
+        "SHA256": "bcf2c5fd9fcf8a52021f279891927f5b4cdfa585ea0e0cc09927780fe909a620"
+      },
+      {
+        "Path": "tests/.work/master-validation/d116deb9acff41419727695df3463032/55ca9e2e4d4a40fa96ba024da3b41800/output/WinPDFMerge_source_20261008_060044_6afae7324ddd4f44.pdf",
+        "SHA256": "33b4524f71b817ec5597941b405b205cef51aa67df27f9ae64956e11dae67425"
+      },
+      {
+        "Path": "tests/.work/master-validation/d116deb9acff41419727695df3463032/572e70ba5ccd41abbe1c6e7c5dc689a8/output/WinPDFMerge_source_20261008_060048_5c7b86185b574d91.log",
+        "SHA256": "a50de35a2315f3328b3abdefbe1e22e99efa7663203f22b31da607a0a0b1f4aa"
+      },
+      {
+        "Path": "tests/.work/master-validation/d116deb9acff41419727695df3463032/572e70ba5ccd41abbe1c6e7c5dc689a8/output/WinPDFMerge_source_20261008_060048_5c7b86185b574d91.pdf",
+        "SHA256": "d064ac1bc7c5b0397928d9dc025076d730d4942df3c056213ad2dc20d533ecaf"
+      },
+      {
+        "Path": "tests/.work/master-validation/d116deb9acff41419727695df3463032/inspect-master.py",
+        "SHA256": "ec39d64b22687ea1b6d4cdb5038f7791c18672b6df9aacc549488f17e03c1b22"
+      },
+      {
+        "Path": "tests/.work/master-validation/d116deb9acff41419727695df3463032/native-observations.json",
+        "SHA256": "2cbd357c265748cbd2420526de9a2d99f8ecd0e03f9846ce3d5d297c20a44821"
+      },
+      {
+        "Path": "tests/.work/pester/02c2060b70984774bf3012f6cda03866/results.xml",
+        "SHA256": "693fb1e732f9132911297102516a45799d933e3a3305a40a993e77a632b424b6"
+      },
+      {
+        "Path": "tests/.work/pester/02c2060b70984774bf3012f6cda03866/summary.json",
+        "SHA256": "8d89752d2e20278e290a81ee812b301867bec954310b08eae2468c7a35f98885"
+      },
+      {
+        "Path": "tests/.work/pester/04e1d3485ecb44959d7bec82f6f7823c/results.xml",
+        "SHA256": "e8b54867e2678bcb35596b10366c046b88c575fd22d1fe60f3a60d628907221f"
+      },
+      {
+        "Path": "tests/.work/pester/04e1d3485ecb44959d7bec82f6f7823c/summary.json",
+        "SHA256": "3be791bd466a658687a1e659f5386b604b4f8bd0ddbeaa7653feab74397bc564"
+      },
+      {
+        "Path": "tests/.work/pester/06b049f2c2e34fd9ab5a86ab7eeb7573/results.xml",
+        "SHA256": "1dea1913904406cb5c4f02fd871c46e5a49cfe248f62e9c32d5313c8c77df456"
+      },
+      {
+        "Path": "tests/.work/pester/06b049f2c2e34fd9ab5a86ab7eeb7573/summary.json",
+        "SHA256": "70c2f43d604704188504420401b40070c9cf238685d971203443113f1ffd4fa1"
+      },
+      {
+        "Path": "tests/.work/pester/0d1ded1732394d4b98b02641a7f63c7e/results.xml",
+        "SHA256": "85ea80c329a80c4d6226ab277ed810119b54ed7dd7d17dcf7a4ed5189e12bd0c"
+      },
+      {
+        "Path": "tests/.work/pester/0d1ded1732394d4b98b02641a7f63c7e/summary.json",
+        "SHA256": "d9d3fa246316fbe3153ab46974fcf484bd4e833a553e1f1847251d951aa0b3f0"
+      },
+      {
+        "Path": "tests/.work/pester/1dfbe4b7ec664cd383e0290976255ff2/results.xml",
+        "SHA256": "122e108acf1384929e1f4ade060889a75c14785b2582e000cdce35ee7f46060d"
+      },
+      {
+        "Path": "tests/.work/pester/1dfbe4b7ec664cd383e0290976255ff2/summary.json",
+        "SHA256": "0dc64721140c1d6149cff1ef1ab2a96728390baa7c4dfdcb790b25bf51fce20e"
+      },
+      {
+        "Path": "tests/.work/pester/224218bca1d74b708702c2b3d5b73af1/results.xml",
+        "SHA256": "ba8aebfe1cdad79897e65eac4bc68671de5690261ef9e184b2d107bae3aaa7b1"
+      },
+      {
+        "Path": "tests/.work/pester/224218bca1d74b708702c2b3d5b73af1/summary.json",
+        "SHA256": "756bf7e7c02e67fe3f00b1fbeb97bffc63450a6d6882f2bf3b9b34794820988f"
+      },
+      {
+        "Path": "tests/.work/pester/2c167c1d8e674848bf7918b1531bcfc6/results.xml",
+        "SHA256": "fae99ac67302322c6aac8a9b5c49a696e720682785630b33d79728171fd6c0f6"
+      },
+      {
+        "Path": "tests/.work/pester/2c167c1d8e674848bf7918b1531bcfc6/summary.json",
+        "SHA256": "30afaf134e2f0b752c0a71c76af844bf706820071752bd33185dba5786c2f293"
+      },
+      {
+        "Path": "tests/.work/pester/34f68d02fc584e47b16f02b6445668ba/results.xml",
+        "SHA256": "f624bc86084a0240f51ebb55140c3e3721f6ae44039932b16e8de91f4d817425"
+      },
+      {
+        "Path": "tests/.work/pester/34f68d02fc584e47b16f02b6445668ba/summary.json",
+        "SHA256": "81f3992105b7f6c535130b6ec295d04430fe450c21fe3207775a2143a46b3e75"
+      },
+      {
+        "Path": "tests/.work/pester/3ce9fbb0217d4d9d9a60aba5af742db8/results.xml",
+        "SHA256": "a6047fdd7f88c38215d3f2031379da860c9462bcf8755389ffd5a11f2fcbd3d7"
+      },
+      {
+        "Path": "tests/.work/pester/3ce9fbb0217d4d9d9a60aba5af742db8/summary.json",
+        "SHA256": "3be615696dd2b8a0238ddac4cdc0ff1a37eefda335e49606773adc32c6e9c569"
+      },
+      {
+        "Path": "tests/.work/pester/5c25dd4d4a684083a22fca7d9fad6de6/results.xml",
+        "SHA256": "d1c8735e9c13b4aebf7f510e97d8ba7a3864e0a0303427ee05f641de3f6ae927"
+      },
+      {
+        "Path": "tests/.work/pester/5c25dd4d4a684083a22fca7d9fad6de6/summary.json",
+        "SHA256": "5b3528e5d923475297f604cca5ba933abf9369fe0469ab999917b7a60bb9c744"
+      },
+      {
+        "Path": "tests/.work/pester/6b8553020226413f96c872df0fe98865/results.xml",
+        "SHA256": "cb252c351376ab4421e695993abde092b62f241d34a25703c2bc32cb6617e194"
+      },
+      {
+        "Path": "tests/.work/pester/6b8553020226413f96c872df0fe98865/summary.json",
+        "SHA256": "2e1e051b8397c659d009fde620af6a53f50e727f1b2fa19ea550c3e2d07e6727"
+      },
+      {
+        "Path": "tests/.work/pester/77403ee10d8645bf9bc43228233aae72/results.xml",
+        "SHA256": "44d450b9642aabbcb7ec7b7882e409dd689b446ad8732218124f724e5e6da397"
+      },
+      {
+        "Path": "tests/.work/pester/77403ee10d8645bf9bc43228233aae72/summary.json",
+        "SHA256": "c60d77ef263e09496ed188d297110a0c84655db0e31f39ba6517d0174a15db06"
+      },
+      {
+        "Path": "tests/.work/pester/83098c4a653f4695a59ea4175513cd5f/results.xml",
+        "SHA256": "9f269cd432395615c6ecf281910725754766c57adfe49bebcd45a217fbf0d28a"
+      },
+      {
+        "Path": "tests/.work/pester/83098c4a653f4695a59ea4175513cd5f/summary.json",
+        "SHA256": "0d40084629f07355b04038314a8b1f62890460371fb6f7e72d1232ffee3832b4"
+      },
+      {
+        "Path": "tests/.work/pester/975f84e7bf874b3281516090db693cdd/results.xml",
+        "SHA256": "8b700313ee81257d329c6fb648e0eb2772bbae55b534fb7bc1a45f16320343c5"
+      },
+      {
+        "Path": "tests/.work/pester/975f84e7bf874b3281516090db693cdd/summary.json",
+        "SHA256": "29024307caecc1206ab90f58ee42be1575aa52a804fef53c88b103b60cb07446"
+      },
+      {
+        "Path": "tests/.work/pester/9a67e590396345dfb246eeec225786d9/results.xml",
+        "SHA256": "c83a070b5af211d051d3dfe9c8c11d488e434bd00b40b16b7c6348b8c13fe71f"
+      },
+      {
+        "Path": "tests/.work/pester/9a67e590396345dfb246eeec225786d9/summary.json",
+        "SHA256": "8c0a742bed52e40a36e3bfde90ce1aeb2de2a38be7e3d9b836f53e20a01fac0d"
+      },
+      {
+        "Path": "tests/.work/pester/a2debf0317da4553ad38bfbcd2418398/results.xml",
+        "SHA256": "cdb742eba61a14123513e0b932323f75a0823a243296de630ee3dcc1d8c525e9"
+      },
+      {
+        "Path": "tests/.work/pester/a2debf0317da4553ad38bfbcd2418398/summary.json",
+        "SHA256": "272b94392ac7e3ef1e83ee08fd15c7b5c0096a7fd334a57ee7133a28fc69de20"
+      },
+      {
+        "Path": "tests/.work/pester/a7d9c15f6c0a4ed983556a06edac22c6/results.xml",
+        "SHA256": "9ce9e2f06808c8af68e2f08ee455893543046a74c85c1bc8ead5a44a206421e8"
+      },
+      {
+        "Path": "tests/.work/pester/a7d9c15f6c0a4ed983556a06edac22c6/summary.json",
+        "SHA256": "bbf49bbb56102531cf78bd0313c02ba8f308e4aa950c9940488a99c6a313ea11"
+      },
+      {
+        "Path": "tests/.work/pester/cba3080834d146e0a267e75f88168887/results.xml",
+        "SHA256": "938834b84db95eefd3b864b35e54ddefccdefc7fafefdb4beda859fbb7b78ab4"
+      },
+      {
+        "Path": "tests/.work/pester/cba3080834d146e0a267e75f88168887/summary.json",
+        "SHA256": "0d30552bd900eeac3a41a8de54d0f0318635af7101a513fdd0bfc1a65e26af49"
+      },
+      {
+        "Path": "tests/.work/pester/cdc93a07d45b4bbeb639aed85a1dcd32/results.xml",
+        "SHA256": "a15399a1114f4b1a3a810db45b47d60a7a8f95c472dfddcf20c9b75f35a39776"
+      },
+      {
+        "Path": "tests/.work/pester/cdc93a07d45b4bbeb639aed85a1dcd32/summary.json",
+        "SHA256": "ebf875ba9c408e3f4f5259c3d0498715c4a9e62981490ac46604258a922116f8"
+      },
+      {
+        "Path": "tests/.work/pester/d31afca80c3c46eeb72fffde0235e5fd/results.xml",
+        "SHA256": "0786fb6b67a4efad549b88f463b9959e64e5c8504f1d630ae1b973030b74a355"
+      },
+      {
+        "Path": "tests/.work/pester/d31afca80c3c46eeb72fffde0235e5fd/summary.json",
+        "SHA256": "a52475c43e46604f04d9b761f697c3f7f015dab941bbcde7353b1fd9b6c8129f"
+      },
+      {
+        "Path": "tests/.work/pester/e5486f011fd04ffa982eaa56dfa80515/results.xml",
+        "SHA256": "4e28943aee831db7c7e617d19f6907d0529ca863f318be530b4717f89635dfe1"
+      },
+      {
+        "Path": "tests/.work/pester/e5486f011fd04ffa982eaa56dfa80515/summary.json",
+        "SHA256": "f091d044634a5c895b425369111bb0f67f0c00152a83cab4f77ae6c86cfb86f8"
+      },
+      {
+        "Path": "tests/.work/pester/ec25f841518647188e4efded79c1fb7d/results.xml",
+        "SHA256": "e2735b9e779d97ad166df6b54e6ff302794da51c62bd40cbaad6416cca12a5a2"
+      },
+      {
+        "Path": "tests/.work/pester/ec25f841518647188e4efded79c1fb7d/summary.json",
+        "SHA256": "38d753800dc9bdc80497de513f29c8ea57fd3faf5cc7a393c1588a4a6815b8a8"
+      },
+      {
+        "Path": "tests/.work/staging/4f17afcfd6e84b7db6f96a53bab349f6/native-observations.json",
+        "SHA256": "93ed13dec9e1abcb55b04e3bfd706fd9e4ce1287bd42f3c70a7e5a68e927ba3a"
+      },
+      {
+        "Path": "tests/.work/staging/b7302d9dcf014545aca8f1dde3442663/native-observations.json",
+        "SHA256": "34157fe8ce6d4bfa5cfd99df1ab9cc27d2f28104861167ede2b16732f57f8249"
+      },
+      {
+        "Path": "tests/.work/tool-paths/201aab769d0d49f780e9ef7880253806/native-observations.json",
+        "SHA256": "e79f9b6ab10c76560a9e1d4e382fb8e1ab0569295f2a96a702daedfe77b80746"
+      },
+      {
+        "Path": "tests/.work/tool-paths/5883dcabef4c4747a1ec4a6e64b67e49/native-observations.json",
+        "SHA256": "4fbc79a49ae9c9adbe97acd124a425af9755c7a380bbec2cc0ca96e1b7e2c14a"
+      },
+      {
+        "Path": "tests/.work/tool-paths/7a0ce7f821c74b63b6b5a07622cfa89b/native-observations.json",
+        "SHA256": "8e9934c40dfe12b1757324f78813dcdd0bd62e3d2c48dd7aefb33c8944646711"
+      },
+      {
+        "Path": "tests/.work/tool-paths/7ccc254da0f74b4996e29634124a4180/native-observations.json",
+        "SHA256": "e67e181cb51fda30621270b481660df8704562a5852aed6d2372c9469bea1cbd"
+      }
+    ],
+    "MasterNativeObservationsPerShell": 7,
+    "StagingNativeObservationsPerShell": 9,
+    "RetainedSnapshotFilesChecked": 110,
+    "RetainedRuntimeCopiesChecked": 28,
+    "SelectedCacheFilesChecked": 14,
+    "DevelopmentOracleBinariesChecked": 2,
+    "IndependentNativeAuditResult": "pass",
+    "IndependentNativeAuditRecordedChecks": 652,
+    "RecordedFreshReadOnlyMasterInspectionHashesChecked": 4,
+    "FreshLocalLiveC1Match": true,
+    "ArchiveAudit": {
+      "Result": "pass",
+      "Manifest": "docs/codex/evidence/T13-C1-reports/manifest.json",
+      "ManifestSHA256": "92d60663d0f0b21a3fbdb85a42519727619a475fbe53d9b4f48edd53ff4f8919",
+      "Results": "docs/codex/evidence/T13-C1-results.json",
+      "ResultsSHA256": "57af3865c9eb5c1dc832ab245bc68d3971f995332ad0dd9664b0f30107fff578",
+      "ArchiveDirectoryFiles": 156,
+      "SiblingFiles": 3,
+      "TotalArtifactFiles": 159,
+      "ManifestHashBindingsChecked": 162,
+      "CoreRawToArchivedContentComparisons": 108,
+      "PrivacyFilesChecked": 159,
+      "HistoricalRecordsExcluded": 9,
+      "BlockingFindings": []
+    },
+    "BlockingFindings": [],
+    "Limits": [
+      "Reviewer checked recorded PDFtk/PDFium observations and current retained hashes; the four fresh native rereads were executed by the independent native-audit agent, not this reviewer.",
+      "Unit mocks, controlled staged substitutions, final collision insertion and concurrency barriers are disclosed separately from real entry, PDFtk, inspection and filesystem execution.",
+      "Scoped structural counts and synthetic visible IDs/rotation/dimensions do not prove universal validity/security, feature/signature preservation or full fidelity.",
+      "Ordinary PS5.1 Restricted policy is a separate inventory; child test hosts explicitly use process-only RemoteSigned and no persistent change is claimed.",
+      "No full runner/launcher sweep, Explorer, live UNC, other platform/architecture, T14 email size/outcomes, T15 interruption, CI, package or release pass is claimed.",
+      "C2 documentation/commit/push and live synchronization remain the root checkpoint responsibility."
+    ]
+  }
+}

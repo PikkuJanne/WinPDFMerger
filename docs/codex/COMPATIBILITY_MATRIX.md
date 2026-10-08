@@ -147,3 +147,17 @@ master/email acceptance or full fidelity;T13–T15 and later gates remain.
 No acquisition,admin,persistent policy/PATH/security change or broader OS/UNC/
 Explorer/release claim. Exact commands/results/reviews/history/live receipt:
 T12 completion/C1 results/reports/native audit.
+
+T13 clean C1 `e74ffa92588eff876c12ebd3321e2f3b0d6f110c` passes369focused cases each actual
+PS5.1.26100.9444 / supportedPS7.6.6,738total,all bad counts0. AC030/31pass:
+separate complete bounded masterinspection/exact frozen count before publication,
+actual single2page and natural1/01/2/10 fivepage mixed0/90/180/270rotations,
+independent PDFium IDs/rotation/dimensions and unchanged source/foreign hashes.
+Native substitutions and scheduling are disclosed,not naturally failing vendor
+output. Independent audit rereads four masters with realPDFtk/pinnedPDFium.
+Static0errors112warnings49information over10files eachshell retained/reviewed
+nonblocking. Narrow structural/localWindows evidence is not full fidelity,
+universal validity/security,signatures,OS support-channel/UNC/Explorer/CI/package/
+release acceptance. T14/T15 and later gates remain. No new acquisition/admin/
+persistent policy/PATH/security/runtime network/engine change. Exact commands,
+reports/history/reviews/native audit/live receipt: T13 completion/C1 evidence.

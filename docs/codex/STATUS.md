@@ -2,48 +2,39 @@
 
 Target: published and independently verified `v1.0.0` in `PikkuJanne/WinPDFMerger`.
 Completed milestone: M1 — paths, ordering and native execution.
-Completed tasks: T01 through T12.
-Active task: T13 — validate and publish the master truthfully, in M2.
+Completed tasks: T01 through T13.
+Next task: T14 — make optional email processing and result states explicit, in M2.
 Publication: NOT STARTED.
 
-T13 is in progress. Mandatory frozen positive expected pages, separate bounded
-staged-master inspection and exact count now precede publication; planned and
-published logs differ. Dirty focused unit/native runs pass, with scope/history in
-T13 checkpoint. Required AC030/31 await committed clean dual-shell eleven tiers
-(369each/738total expected), independent review/audit and fresh pushed equality.
-T12 PR12 is now owner-merged; starting readiness d9e2038/main c7cb75e were checked.
+T13 and required AC030/AC031 pass at clean C1 `e74ffa92588eff876c12ebd3321e2f3b0d6f110c`.
+Eleven focused tiers pass in each actual PS5.1.26100.9444 / supportedPS7.6.6:
+369each738total,all failure/skip/not_run counts0. Native merge success and nonempty
+output require separate complete bounded staged PDFtk inspection and an exact
+positive frozen expected page total before final no-overwrite move. Stage/parent
+ownership,reparse guards and staged metadata are rechecked. Merge and validation
+receipts stay separate; planned/validated/published states remain truthful.
 
-T12 and required AC027/AC028/AC029 pass at clean implementation C1 `1a4901b8914d02af6c539bc5b82181705ca3c2e9`.
-Ten focused tiers pass in each actual PS5.1.26100.9444 / supported PS7.6.6:
-324 each,648 total,all failure/skip/not_run counts zero. Atomic new run staging
-beneath the destination shares master/email work and holds a readable immutable
-owner.json. Original stage/parent identities and reparse guards precede known-file
-publication/cleanup. Final sibling moves refuse collision files/directories even
-after genuine native success. Published master and all source/foreign snapshots
-survive failure and overlapping cleanup. No recursive/prefix/orphan sweep exists.
+Actual single2page and natural1/01/2/10 fivepage masters preserve independently
+checked visible IDs,0/90/180/270rotations,dimensions and all source/foreign hashes.
+Real wrong expected count refuses publication. Controlled native/unit faults and
+staged substitutions are disclosed separately; no mock becomes an actualengine
+pass. T12 shared atomic staging,immutable readable marker,known-only cleanup,
+exact orphan diagnostics,source/final preservation and collisions still pass.
 
-Locked/unknown/changed-ownership cleanup reports the exact retained folder for
-manual inspection after all runs stop. Failed empty-directory removal restores
-marker evidence best effort only after original identity checks, disclosing
-restoration failure. Explicit email publication state avoids advertising a
-collision file. Defaults and direct PDFtk/optionalGS processing remain preserved.
+Independent code/static/evidence review and native audit are retained. Scoped
+PSA1.25.0 over10files:0errors112warnings49information eachshell,reviewed nonblocking,
+not lint-clean/fullT22. Historical dirty50/50 focused runs,earlier49/49 and native
+smoke pass separately from clean738. Exact commands,historical reports,pins and
+raw/sanitized hashes are in T13 completion/results/manifest/review/native audit.
 
-Original dirty marker-sharing/path-diagnostic6/6 failures per shell and late-child
-unit fixture-only27/1 remain historical, separate from clean totals. Scoped
-static analysis0errors/51warnings/11information per shell includes five files;
-retained/reviewed nonblocking,not lint-clean/fullT22. See T12 completion, clean
-reports/results, independent reviews/native audit and fresh live receipt.
+C1 normal push and fresh clean local/live equality are verified. Draft T13 PR
+follows owner-merged PR12/main c7cb75e; exact URL is in completion. Final records
+C2's own post-push SHA/equality is reported in the session without self-reference.
+Known authorized caches reused; no acquisition/admin/PATH/persistent policy/
+security change. Actual local NTFS Windows11x64/build26300 standard-user synthetic
+evidence; ordinary PS5.1 Restricted/allUndefined remains,child-only RemoteSigned.
 
-C1 normal push and fresh clean/local/live equality are verified. Draft T12 PR
-follows owner-merged PR11/main ce27e08; its exact URL is in T12 completion.
-Final records-only C2 has its own post-push SHA/equality reported in the session
-without self-reference. Known authorized external caches reused; no acquisition,
-admin/PATH/persistent policy/security change. Local NTFS Windows11x64/build26300
-standard-user synthetic evidence; ordinary Restricted/allUndefined remains.
-
-T11 frozen per-input bounded inspection/expected inventory, natural order and
-change checks remain passing. T12's historical publication gate was nonempty-only;
-T13's structural master validation is implemented pending clean acceptance.
-T14 email validation/size/outcomes is next after T13 closure.
-T15 interruption/descendants,remaining options,fidelity,OS support-channel/UNC/
-Explorer,CI/security/package/release gates remain. No full project/release claim.
+Structural checks do not certify universal validity/security,fidelity/features/
+signatures or transactional snapshots. T14 email validation/size/outcomes,T15
+interruption/descendants and options,fidelity,OS support-channel/UNC/Explorer,
+CI/security/package/release gates remain. No full project/release claim.

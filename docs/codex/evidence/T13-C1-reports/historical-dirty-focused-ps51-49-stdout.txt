@@ -1,0 +1,62 @@
+Pester v6.2.0
+
+Running tests from 2 files.
+
+Running tests from '<repo>\tests\unit\MasterValidation.Tests.ps1'
+Describing AC030: master publication follows explicit complete structural validation
+  [+] rejects omitted expected page inventory before creating staging or calling native code 543ms
+  [+] rejects zero expected page inventory before creating staging or calling native code 67ms
+  [+] rejects negative expected page inventory before creating staging or calling native code 62ms
+  [+] does not apply a bound master expected page count to Ghostscript 65ms
+  [+] publishes only after merge success, real envelope and strict page-label inspection at the requested bound 865ms
+  [+] compares an Int64 maximum expected count without summing or overflowing it 150ms
+  [+] rejects native exit zero with missing staged data before any inspection process or final move 113ms
+  [+] rejects native exit zero with empty staged data before any inspection process or final move 112ms
+  [+] rejects native exit zero with non-PDF staged data before any inspection process or final move 123ms
+  [+] rejects native exit zero with truncated staged data before any inspection process or final move 145ms
+  [+] rejects native exit zero with directory staged data before any inspection process or final move 118ms
+  [+] rejects unparseable inspection document data through the actual strict label parser 171ms
+  [+] rejects zero-page inspection document data through the actual strict label parser 141ms
+  [+] rejects duplicate inspection document data through the actual strict label parser 143ms
+  [+] rejects malformed duplicate inspection document data through the actual strict label parser 183ms
+  [+] rejects overflow inspection document data through the actual strict label parser 149ms
+  [+] rejects metadata-only inspection document data through the actual strict label parser 112ms
+  [+] rejects a parsed positive count differing from the frozen expected total 179ms
+  [+] refuses not started failed inspection even with plausible stdout 184ms
+  [+] refuses nonzero exit failed inspection even with plausible stdout 114ms
+  [+] refuses timeout failed inspection even with plausible stdout 108ms
+  [+] refuses cancellation failed inspection even with plausible stdout 145ms
+  [+] refuses launch failure failed inspection even with plausible stdout 202ms
+  [+] refuses capture failure failed inspection even with plausible stdout 120ms
+  [+] refuses termination failure failed inspection even with plausible stdout 108ms
+  [+] refuses truncated stdout failed inspection even with plausible stdout 112ms
+  [+] refuses truncated stderr failed inspection even with plausible stdout 129ms
+  [+] refuses a controlled malformed success receipt containing not-started state 109ms
+  [+] refuses a controlled malformed success receipt containing nonzero exit 130ms
+  [+] refuses a controlled malformed success receipt containing capture error 114ms
+  [+] refuses a controlled malformed success receipt containing truncated stderr 111ms
+  [+] captures an inspection exception as validation failure and cleans only its automatic stage 124ms
+  [+] rejects a staged master whose length changes during inspection 209ms
+  [+] rejects a staged master whose timestamp changes during inspection 172ms
+  [+] rechecks caller-owned staging identity before validation can allow publication 143ms
+  [+] leaves rejected master bytes in caller-owned staging until its caller performs known-path cleanup 158ms
+  [+] retains a foreign final collision while distinguishing validated from published output 168ms
+
+Running tests from '<repo>\tests\native\ToolInvocation.Tests.ps1'
+Describing T09 isolated PDF tool job behavior
+ Describing T09: fixed tool vectors and private fresh native outputs
+   [+] passes literal PDFtk input operands and dont_ask only to a fresh owned staged output 225ms
+   [+] retains the fixed Ghostscript profile and safety flags while removing only child GS_OPTIONS 109ms
+ Describing T09: collision refusal and bounded native failures
+   [+] rejects a 260-character input before launching any native process 50ms
+   [+] rejects a 260-character output before launching any native process 44ms
+   [+] rejects a short final when its private staged operand would reach 260 characters 55ms
+   [+] refuses an existing Pdftk final before native execution and retains its exact bytes 55ms
+   [+] refuses an existing Ghostscript final before native execution and retains its exact bytes 55ms
+   [+] refuses a final path equal to a source without launching or editing the source 43ms
+   [+] does not publish a partial file after an explicit native failure 74ms
+   [+] does not infer success from exit zero when capture failed after creating a staged file 76ms
+   [+] does not publish when the native process reports success without making a file 63ms
+   [+] preserves a final created during the native call and discards only this job staging 93ms
+Tests completed in 8.61s
+Tests Passed: 49, Failed: 0, Skipped: 0, Inconclusive: 0, NotRun: 0
