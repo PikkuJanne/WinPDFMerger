@@ -38,3 +38,18 @@ These preparation checks do not complete AC052/AC053. C1 will run all 29 tiers
 in each shell, plus the scoped static and fixture/oracle checks. The warning
 fixture calls the original native helper directly and is expressly refused by
 application envelope preflight; it does not broaden accepted-input support.
+
+Clean C1 is `8fa2032c66f94199b121fc1914792d6d71bb6202`. All 29 tiers pass in
+both required shells (854 checks each / 1708 total / 58 original reports),
+with every bad count zero and clean source/cache guards. Scoped static checks
+and the 40 fixture/oracle tests pass. Independent raw review and eight additional
+PDFium audit reads pass. C1 was pushed normally; fresh live verification proved
+clean equality and draft PR23 matches C1. Full evidence and limitations are in
+T23-completion/results/reports. C2 will preserve those bytes and close task/case
+records; its own post-push equality will be reported in the session.
+
+The final staged check identified only eight captured empty file-version fields
+and whitespace in two immutable ignored producer receipts. Exact path-specific
+attributes and manifest-bound justification preserve these bytes. Maintained
+application/test code has no waiver. C2's staged diff is restricted to records
+and byte-preservation metadata; T23-byte-preservation.json retains the details.

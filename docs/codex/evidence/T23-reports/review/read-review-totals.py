@@ -1,0 +1,2 @@
+import pathlib,json,hashlib
+p=pathlib.Path('tests/.work/T23-review/C1-raw-native-review.json');j=json.loads(p.read_text());print('producer_sha256',j['producer_sha256']);print('native',json.dumps(j['native_acceptance'],separators=(',',':')));print('byclass',json.dumps(j['pester_checks_by_declared_evidence_class'],indent=2));print('binding_count',len(j['raw_bindings']));print('reviewbytes',p.stat().st_size)

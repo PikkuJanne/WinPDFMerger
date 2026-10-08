@@ -1,0 +1,27 @@
+import datetime,hashlib,json,pathlib
+root=pathlib.Path('tests/.work/T23-review');producer=root/'audit-C1.py'
+note={
+ 'schema_version':1,'kind':'retrospective-independent-audit-preparation-failure-note',
+ 'recorded_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
+ 'failure_time_utc':None,
+ 'actual_command':['<USERPROFILE>/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe','-B','tests/.work/T23-review/audit-C1.py'],
+ 'cwd':'<REPO>',
+ 'source_of_failure_observation':'Actual functions.exec tool output from the first complete clean-C1 audit invocation; original stream was not separately captured to a file.',
+ 'observed_tool_output':'''Traceback (most recent call last):
+  File "<REPO>\\tests\\.work\\T23-review\\audit-C1.py", line 150, in <module>
+    check(receipt['CommitUnderTest']==C1 and receipt['DirtyWorktree'] is False,'Native top receipt C1/clean source')
+          ~~~~~~~^^^^^^^^^^^^^^^^^^^
+KeyError: 'CommitUnderTest'
+''',
+ 'explicit_exit_code_separately_retained':False,
+ 'initial_producer_startup_sha256':None,
+ 'initial_producer_sha256_retained':False,
+ 'retrospective_final_producer_sha256':hashlib.sha256(producer.read_bytes()).hexdigest(),
+ 'retrospective_hash_scope':'Current repaired producer bytes after the successful audit, not a hash observed at the failed invocation startup.',
+ 'cause':'Audit incorrectly required a commit property on the older PreservationNative feature-observations schema, which records shell/observations/captures/scope but no own commit/dirty fields.',
+ 'repair':'Explicitly recognize only the known PreservationNative legacy schema and bind its original receipt through the exact C1-clean tier XML/summary/source inventory/full sourceguard; require commit/dirty metadata on every other native top-level receipt. Shell metadata remains independently checked.',
+ 'scope':'Independent read-only evidence audit preparation failure; no application test failure, no tracked source changes, no Pester/native acceptance pass counted for this attempt.',
+ 'successful_rerun':'C1-raw-native-review.json; result pass, 15507 audit checks, 58 original XML reports, 854 per shell/1708 mixed-class Pester checks, 8 separate PDFium audit reads, final clean worktree check.'
+}
+(root/'audit-preparation-failure.json').write_text(json.dumps(note,indent=2),encoding='utf-8')
+print(hashlib.sha256((root/'audit-preparation-failure.json').read_bytes()).hexdigest())
