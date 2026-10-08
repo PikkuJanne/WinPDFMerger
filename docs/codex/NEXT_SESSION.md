@@ -1,6 +1,6 @@
 # Next session
 
-Selected task: T17 — report real compression benefit and preset tradeoffs, M3.
+Current task: T17 — report real compression benefit and preset tradeoffs, in progress in M3.
 Read AGENTS/INDEX/STATUS/T17 TASKS entry/brief, PRODUCT/TECHNICAL/TEST/GITHUB
 specifications and AC040 integration/AC041 manual. Recheck current branch,
 clean state, origin/live refs/PR/tags/releases; preserve unrelated work.

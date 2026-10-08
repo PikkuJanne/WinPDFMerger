@@ -1542,6 +1542,57 @@ function Invoke-PdfToolJob {
     }
 }
 
+function Format-PdfByteSize {
+    param([Parameter(Mandatory=$true)][ValidateRange(0,9223372036854775807)][long]$Bytes)
+
+    $units = @('B','KiB','MiB','GiB','TiB','PiB','EiB')
+    $value = [decimal]$Bytes
+    $unit = 0
+    while ($value -ge 1024 -and $unit -lt ($units.Count - 1)) {
+        $value /= 1024
+        $unit++
+    }
+    $format = if ($unit -eq 0) { '0' } else { '0.00' }
+    return ('{0} {1}' -f $value.ToString($format, [Globalization.CultureInfo]::InvariantCulture), $units[$unit])
+}
+
+function Get-PdfSizeReport {
+    param(
+        [Parameter(Mandatory=$true)][ValidateRange(1,9223372036854775807)][long]$MasterBytes,
+        [ValidateRange(1,9223372036854775807)][long]$EmailBytes,
+        [switch]$EmailPublished
+    )
+
+    $hasEmail = $PSBoundParameters.ContainsKey('EmailBytes')
+    if ($EmailPublished -and (-not $hasEmail -or $EmailBytes -ge $MasterBytes)) {
+        throw 'Published email size reporting requires a strictly smaller validated email result.'
+    }
+    if ($hasEmail -and -not $EmailPublished -and $EmailBytes -lt $MasterBytes) {
+        throw 'Unpublished email size reporting requires a validated candidate with no size benefit.'
+    }
+    $lines = @('Master size: {0} bytes ({1}).' -f $MasterBytes.ToString([Globalization.CultureInfo]::InvariantCulture), (Format-PdfByteSize -Bytes $MasterBytes))
+    $reduction = $null
+    if ($hasEmail) {
+        $reduction = [decimal]100 * (([decimal]$MasterBytes - [decimal]$EmailBytes) / [decimal]$MasterBytes)
+        $percentage = $reduction.ToString('0.0', [Globalization.CultureInfo]::InvariantCulture)
+        $bytes = $EmailBytes.ToString([Globalization.CultureInfo]::InvariantCulture)
+        $human = Format-PdfByteSize -Bytes $EmailBytes
+        if ($EmailPublished) {
+            $lines += 'Email size: {0} bytes ({1}).' -f $bytes, $human
+            $lines += 'Email reduction: {0}%.' -f $percentage
+        } else {
+            $lines += 'Validated email candidate size: {0} bytes ({1}); not published.' -f $bytes, $human
+            $lines += 'Email candidate reduction: {0}% (no size benefit; candidate not published).' -f $percentage
+        }
+    }
+    return [pscustomobject]@{
+        MasterBytes = $MasterBytes
+        EmailBytes = $(if ($hasEmail) { $EmailBytes } else { $null })
+        ReductionPercent = $reduction
+        Lines = @($lines)
+    }
+}
+
 function Get-PdfMergeOutcome {
     param(
         [Parameter(Mandatory=$true)][bool]$MasterPublished,

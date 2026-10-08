@@ -217,6 +217,7 @@ for ($index = 0; $index -lt $pdfs.Count; $index++) {
 # logging so later optional/log exceptions retain the validated master outcome.
 $staging = $null
 $masterPublished = $false
+$sizeReport = $null
 $emailState = 'not_started'
 $failureMessage = $null
 $runFailed = $false
@@ -227,6 +228,9 @@ try {
     Assert-PdfInputInventory -Inventory $inventory
     $merge = Invoke-PdfToolJob -Tool Pdftk -Executable $pdftkPath -InputPaths @($inventory.Inputs.FullName) -OutputPath $outLossless -Staging $staging -ExpectedPageCount $inventory.ExpectedPageCount -CancellationToken $cancellationToken
     $masterPublished = ($merge.OutputPublished -and $merge.OutputValidated)
+    if ($masterPublished) {
+        $sizeReport = Get-PdfSizeReport -MasterBytes (Get-PdfInputSnapshot -LiteralPath $outLossless).Length
+    }
     if ($null -ne $merge.NativeResult) {
         Write-NativeProcessLog -Result $merge.NativeResult -LiteralPath $logPath -Label PDFtk
     }
@@ -256,6 +260,9 @@ try {
                 $emailState = 'no_size_benefit'
             } else {
                 $emailState = 'failed'
+            }
+            if ($emailState -in @('published','no_size_benefit')) {
+                $sizeReport = Get-PdfSizeReport -MasterBytes $email.MasterBytes -EmailBytes $email.OutputBytes -EmailPublished:($emailState -eq 'published')
             }
             if ($null -ne $email.NativeResult) {
                 Write-NativeProcessLog -Result $email.NativeResult -LiteralPath $logPath -Label Ghostscript
@@ -298,6 +305,9 @@ $outcome = Get-PdfMergeOutcome -MasterPublished $masterPublished -EmailState $em
 try {
     ("Email result: {0}" -f $emailState) | Write-RunLog -LiteralPath $logPath -Append
     $outcome.EmailMessage | Write-RunLog -LiteralPath $logPath -Append
+    if ($null -ne $sizeReport) {
+        foreach ($line in $sizeReport.Lines) { $line | Write-RunLog -LiteralPath $logPath -Append }
+    }
     foreach ($output in $outcome.PublishedPaths) {
         ("Published {0}: {1}" -f $output.Label, $output.Path) | Write-RunLog -LiteralPath $logPath -Append
     }
@@ -312,6 +322,9 @@ try {
 }
 $detail = if ($failureMessage) { $failureMessage } else { $outcome.EmailMessage }
 Write-Host ("`n{0}: {1}" -f $outcome.Summary, $detail)
+if ($null -ne $sizeReport) {
+    foreach ($line in $sizeReport.Lines) { Write-Host $line }
+}
 foreach ($output in $outcome.PublishedPaths) { Write-Host (" - {0}: {1}" -f $output.Label, $output.Path) }
 Write-Host "Log: $logPath"
 exit $outcome.ExitCode

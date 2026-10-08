@@ -4,7 +4,7 @@ Target: published and independently verified `v1.0.0` in `PikkuJanne/WinPDFMerge
 Completed milestones: M1 and M2 within recorded local Windows scope.
 Current milestone: M3 — focused usability and honest documentation, in progress.
 Completed tasks: T01 through T16.
-Next task: T17 — report real compression benefit and preset tradeoffs.
+Current task: T17 — report real compression benefit and preset tradeoffs, in progress.
 Publication: NOT STARTED.
 
 T16 and AC038 integration/AC039 unit pass at clean implementation C1

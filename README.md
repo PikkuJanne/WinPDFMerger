@@ -118,10 +118,28 @@ The longest final path and private native output must fit below 260 characters;
 an excessively long destination fails with instructions to choose a shorter path.
 
 **Email-friendly copy (quality/size)**
-Default profile: -dPDFSETTINGS=/screen (small, on-screen reading).
-Select the fixed /ebook profile with `-EmailPreset ebook`. Presets can change
-appearance and size; neither guarantees a particular attachment size. Only a
-separately validated derivative smaller than the master is published.
+The default remains `-dPDFSETTINGS=/screen`; select the fixed `/ebook` profile
+with `-EmailPreset ebook`. Presets can change appearance and size; neither
+guarantees a particular attachment size. Only a separately validated derivative
+smaller than the master is published.
+
+The console and log show exact master/email byte counts, readable binary sizes
+(`KiB` = 1,024 bytes, `MiB` = 1,048,576 bytes), and percentage reduction relative
+to the master. `B` uses whole bytes, `KiB` and larger units use two decimal
+places, and percentages use one; the exact byte counts are authoritative.
+For example, a 2,048-byte master and
+1,024-byte email copy report `2.00 KiB`, `1.00 KiB` and `50.0%` reduction.
+
+An equal or larger validated candidate is labelled as **not published**, its
+actual candidate size and zero/negative reduction are shown, and the validated
+master is retained with success code 0. It is never listed as an email output.
+Skipped, unavailable or failed email processing reports the master size without
+advertising a partial candidate. Check the produced file before sending it;
+compression benefit and readable detail depend on the content.
+
+See [observed preset tradeoffs](docs/EMAIL_PRESETS.md) for original small-print,
+scanned and mixed examples, including the detail lost by `/screen` in the
+smallest scanned text.
 
 **Batch wrapper (included)**
 WinPDFMerge.bat (drag-and-drop + double-click)
