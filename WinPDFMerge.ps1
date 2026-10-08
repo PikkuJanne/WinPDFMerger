@@ -104,6 +104,14 @@ function Get-ScriptDir {
 # --- Entry ---
 $ScriptDir = Get-ScriptDir
 . (Join-Path $ScriptDir 'src/WinPDFMerge.Helpers.ps1')
+$cancellation = $null
+try {
+try { $cancellation = New-PdfCancellationContext }
+catch {
+    Write-Host ("Cancellation setup failed: {0}" -f $_.Exception.Message) -ForegroundColor Red
+    exit 1
+}
+$cancellationToken = $cancellation.Token
 if ([string]::IsNullOrWhiteSpace($SourceFolder)) {
     Write-Host "Usage: WinPDFMerge.ps1 <FolderWithPDFs> [-OutputFolder <ExistingDirectory>] [-SkipEmail]" -ForegroundColor Yellow
     exit 1
@@ -139,7 +147,7 @@ $pdftkPath = $null
 try {
     $pdftkPath = Find-Pdftk
     if (-not $pdftkPath) { throw 'PDFtk Server not found.' }
-    $pdftkVersion = Get-NativeToolVersion -Path $pdftkPath -Tool PdfTk
+    $pdftkVersion = Get-NativeToolVersion -Path $pdftkPath -Tool PdfTk -CancellationToken $cancellationToken
 } catch {
     # Plain diagnostic lines stay copyable even when PS5.1 formats long errors.
     Write-Host 'PDFtk preflight failed.' -ForegroundColor Red
@@ -163,6 +171,7 @@ try {
     Write-Host 'Choose an existing writable -OutputFolder. No merge was started.'
     exit 1
 }
+try {
 "PDFtk: $pdftkPath (version $pdftkVersion)" | Write-RunLog -LiteralPath $logPath -Append
 "Source folder: $SourceFolder" | Write-RunLog -LiteralPath $logPath -Append
 "Output folder: $OutputFolder" | Write-RunLog -LiteralPath $logPath -Append
@@ -176,16 +185,20 @@ for ($index = 0; $index -lt $pdfs.Count; $index++) {
 
 # Inspect every frozen ordered input before starting the merge. The expected
 # total is frozen input evidence for the staged master validation gate.
-try {
-    $inventory = Get-PdfInputInventory -Executable $pdftkPath -Inputs $pdfs -LogPath $logPath
+    $inventory = Get-PdfInputInventory -Executable $pdftkPath -Inputs $pdfs -LogPath $logPath -CancellationToken $cancellationToken
     for ($index = 0; $index -lt $inventory.Inputs.Count; $index++) {
         ("Input {0} pages: {1}" -f ($index + 1), $inventory.Inputs[$index].PageCount) | Write-RunLog -LiteralPath $logPath -Append
     }
     ("Expected page total: {0}" -f $inventory.ExpectedPageCount) | Write-RunLog -LiteralPath $logPath -Append
     Assert-PdfInputInventory -Inventory $inventory
 } catch {
-    'PDFtk failed during input preflight. No merge was started.' | Write-RunLog -LiteralPath $logPath -Append
-    $_.Exception.Message | Write-RunLog -LiteralPath $logPath -Append
+    $preflightError = $_.Exception.Message
+    Write-Host 'PDFtk failed during input preflight or logging. No merge was started.' -ForegroundColor Red
+    Write-Host $preflightError
+    try {
+        'PDFtk failed during input preflight or logging. No merge was started.' | Write-RunLog -LiteralPath $logPath -Append | Out-Null
+        $preflightError | Write-RunLog -LiteralPath $logPath -Append | Out-Null
+    } catch { Write-Host ("Failure diagnostic could not be logged: {0}" -f $_.Exception.Message) -ForegroundColor Yellow }
     Write-Host "See log: $logPath" -ForegroundColor Red
     exit 1
 }
@@ -196,11 +209,13 @@ $staging = $null
 $masterPublished = $false
 $emailState = 'not_started'
 $failureMessage = $null
+$runFailed = $false
 try {
+    $cancellationToken.ThrowIfCancellationRequested()
     $staging = New-PdfStaging -OutputFolder $OutputFolder -RunIdentity $run.BaseName
     ("Private staging: {0}" -f $staging.DirectoryPath) | Write-RunLog -LiteralPath $logPath -Append
     Assert-PdfInputInventory -Inventory $inventory
-    $merge = Invoke-PdfToolJob -Tool Pdftk -Executable $pdftkPath -InputPaths @($inventory.Inputs.FullName) -OutputPath $outLossless -Staging $staging -ExpectedPageCount $inventory.ExpectedPageCount
+    $merge = Invoke-PdfToolJob -Tool Pdftk -Executable $pdftkPath -InputPaths @($inventory.Inputs.FullName) -OutputPath $outLossless -Staging $staging -ExpectedPageCount $inventory.ExpectedPageCount -CancellationToken $cancellationToken
     $masterPublished = ($merge.OutputPublished -and $merge.OutputValidated)
     if ($null -ne $merge.NativeResult) {
         Write-NativeProcessLog -Result $merge.NativeResult -LiteralPath $logPath -Label PDFtk
@@ -212,6 +227,7 @@ try {
     if (-not $merge.Succeeded) { throw ("PDFtk master processing failed. {0}" -f $merge.OutputError) }
     ("Master validation OK: {0} expected pages inspected. Merged master published: {1}" -f $merge.ValidatedPageCount, $outLossless) | Write-RunLog -LiteralPath $logPath -Append
 
+    $cancellationToken.ThrowIfCancellationRequested()
     if ($SkipEmail) {
         # Explicit skip bypasses discovery, version probes and native GS launch.
         $emailState = 'skipped'
@@ -220,10 +236,10 @@ try {
         if (-not $gsPath) {
             $emailState = 'unavailable'
         } else {
-            try { $gsVersion = Get-NativeToolVersion -Path $gsPath -Tool Ghostscript }
+            try { $gsVersion = Get-NativeToolVersion -Path $gsPath -Tool Ghostscript -CancellationToken $cancellationToken }
             catch { throw ("Ghostscript version preflight failed for '{0}': {1}" -f $gsPath, $_.Exception.Message) }
             "Ghostscript: $gsPath (version $gsVersion)" | Write-RunLog -LiteralPath $logPath -Append
-            $email = Invoke-PdfToolJob -Tool Ghostscript -Executable $gsPath -InputPaths @($outLossless) -OutputPath $outEmail -Staging $staging -ExpectedPageCount $merge.ValidatedPageCount -InspectionExecutable $pdftkPath
+            $email = Invoke-PdfToolJob -Tool Ghostscript -Executable $gsPath -InputPaths @($outLossless) -OutputPath $outEmail -Staging $staging -ExpectedPageCount $merge.ValidatedPageCount -InspectionExecutable $pdftkPath -CancellationToken $cancellationToken
             if ($email.Succeeded -and $email.OutputValidated -and $email.OutputPublished -and $email.OutputState -eq 'published') {
                 $emailState = 'published'
             } elseif ($email.Succeeded -and $email.OutputValidated -and -not $email.OutputPublished -and $email.OutputState -eq 'no_size_benefit') {
@@ -241,14 +257,21 @@ try {
             if ($emailState -eq 'failed') { throw ("Ghostscript email processing failed. {0}" -f $email.OutputError) }
         }
     }
+    $cancellationToken.ThrowIfCancellationRequested()
 } catch {
     $failureMessage = $_.Exception.Message
-    if ($masterPublished) { $emailState = 'failed' }
+    $runFailed = $true
+    if ($masterPublished -and $emailState -eq 'not_started') { $emailState = 'failed' }
     try { $failureMessage | Write-RunLog -LiteralPath $logPath -Append | Out-Null }
     catch { Write-Host ("Failure diagnostic could not be logged: {0}" -f $_.Exception.Message) -ForegroundColor Yellow }
 } finally {
     if ($null -ne $staging) {
-        $cleanup = Remove-PdfStaging -Staging $staging
+        try { $cleanup = Remove-PdfStaging -Staging $staging }
+        catch {
+            $runFailed = $true
+            $failureMessage = "Staging cleanup failed; retained path '$($staging.DirectoryPath)'. $($_.Exception.Message)"
+            $cleanup = [pscustomobject]@{ CleanupError=$failureMessage }
+        }
         if ($cleanup.CleanupError) {
             Write-Host $cleanup.CleanupError -ForegroundColor Yellow
             try { $cleanup.CleanupError | Write-RunLog -LiteralPath $logPath -Append | Out-Null }
@@ -257,22 +280,31 @@ try {
     }
 }
 
-$outcome = Get-PdfMergeOutcome -MasterPublished $masterPublished -EmailState $emailState -MasterPath $outLossless -EmailPath $outEmail
+if ($cancellationToken.IsCancellationRequested) {
+    $runFailed = $true
+    if (-not $failureMessage) { $failureMessage = 'Run cancelled; validated published outputs retained.' }
+}
+$outcome = Get-PdfMergeOutcome -MasterPublished $masterPublished -EmailState $emailState -MasterPath $outLossless -EmailPath $outEmail -RunFailed:$runFailed
 try {
     ("Email result: {0}" -f $emailState) | Write-RunLog -LiteralPath $logPath -Append
     $outcome.EmailMessage | Write-RunLog -LiteralPath $logPath -Append
-    ("Result: {0}; exit code: {1}" -f $outcome.Summary, $outcome.ExitCode) | Write-RunLog -LiteralPath $logPath -Append
     foreach ($output in $outcome.PublishedPaths) {
         ("Published {0}: {1}" -f $output.Label, $output.Path) | Write-RunLog -LiteralPath $logPath -Append
     }
     'Done.' | Write-RunLog -LiteralPath $logPath -Append
+    # Write the result only after every other summary write has succeeded.
+    $cancellationToken.ThrowIfCancellationRequested()
+    ("Result: {0}; exit code: {1}" -f $outcome.Summary, $outcome.ExitCode) | Write-RunLog -LiteralPath $logPath -Append
 } catch {
     $failureMessage = "Result logging failed: {0}" -f $_.Exception.Message
-    if ($masterPublished) { $emailState = 'failed' }
-    $outcome = Get-PdfMergeOutcome -MasterPublished $masterPublished -EmailState $emailState -MasterPath $outLossless -EmailPath $outEmail
+    $runFailed = $true
+    $outcome = Get-PdfMergeOutcome -MasterPublished $masterPublished -EmailState $emailState -MasterPath $outLossless -EmailPath $outEmail -RunFailed
 }
 $detail = if ($failureMessage) { $failureMessage } else { $outcome.EmailMessage }
 Write-Host ("`n{0}: {1}" -f $outcome.Summary, $detail)
 foreach ($output in $outcome.PublishedPaths) { Write-Host (" - {0}: {1}" -f $output.Label, $output.Path) }
 Write-Host "Log: $logPath"
 exit $outcome.ExitCode
+} finally {
+    if ($null -ne $cancellation) { $cancellation.Dispose() }
+}

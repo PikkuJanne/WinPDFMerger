@@ -1,31 +1,36 @@
 # Next session
 
-Selected task: T15 — close interruption, environment and IO failure paths.
-Read AGENTS/INDEX/STATUS,T15 TASKS entry/brief,PRODUCT_SPEC,TECHNICAL_SPEC,
-TEST_STRATEGY/GITHUB_WORKFLOW and relevant acceptance cases. Recheck current
-branch/clean/origin/live refs/PR/tags/releases; never reset,stash or discard work.
+Selected task: T16 — add the small public parameter interface, in M3.
+Read AGENTS/INDEX/STATUS, T16 TASKS entry/brief, PRODUCT_SPEC and relevant
+technical/test/workflow specifications and acceptance cases. Recheck current
+branch, clean state, origin/live refs/PR/tags/releases; preserve unrelated work.
 
-T14 is complete at clean C1 `588a96586518059ed38e2de01ad2312003defc7c`: thirteen relevant tiers,
-476each952total in actualPS5.1.26100.9444 / supportedPS7.6.6,all bad counts0.
-AC032/33integration and AC034unit pass. Exact commands,pins,raw/sanitized hashes,
-historical failures/corrected dirty passes,independent code/static/native/evidence
-review and fresh C1live equality are in T14 completion/results/manifest/review/
-native audit/live receipt. FinalrecordsC2 own live equality reported in session;
-reverify current refs. DraftPR URL in completion follows owner-mergedPR13.
+T15 and M2 are complete within recorded scope at clean C1
+`53d0923c95a86ae6a44bc89bab51cac6786c1e32`. Actual PS5.1.26100.9444 / pinned PS7.6.6 pass
+17 tiers and559 each /1118 total, all bad counts zero. AC035/036 integration and
+AC037 unit pass. M2 review, scoped static findings, independent native2515-check/
+26-PDF read audit, archive4611-check review, original/public byte bindings and
+fresh C1 live sync are in T15 completion/evidence. Records-only C2's own live
+equality is reported in session; verify current refs again. Draft PR15 follows
+owner-merged PR14 and is linked in completion. Publication has not started.
 
-Retain explicit0/1/2 state and final listing, SkipEmail GS discovery/probe/launch
-bypass, mandatory separate complete bounded staged inspection/exact frozen master
-page count, stable strictly-smaller email publication and master preservation.
-Equal/larger valid derivative is successful no-benefit and unpublished. FoundGS
-or post-master failures return2. Real partial/count fault integration is controlled
-and disclosed; no unit/mock becomes an actualnative pass. Owned staging race
-masters receive4096ASCIIspaces preparation before preservation snapshots. GS
-CJKstage can convert but selectedPDFtk2.02 inspection refusal blocks publication.
+Preserve owned job creation and bounded waits/capture, child-only GS_OPTIONS,
+controlled token propagation and immediate pre-move checks. Native receipts
+must confirm ownership release; missing/false keeps the known stage and closes
+its marker handle without deletion. Fail before master is1; controlled cancel
+or later log/IO failure after publication is2 with valid final paths preserved.
+Physical Ctrl+C/host/window/crash cleanup remains explicitly uncertified.
 
-T15 covers interruption/descendants, environment and IO. Preserve import-only
-helpers,PS5.1/direct executables,/screen/output-beside-entry/local-processing and
-source/final ownership contracts. Reuse verified authorizedPS7.6.6,Pester6.2.0,
-PDFtk2.02,GS10.08.0,PSA1.25.0 and developmentPython3.12.14/PDFium. Child-only
-RemoteSigned authorization persists; no silent acquisition/admin/persistent
-environment/security change. T16/T17 and OS/UNC/Explorer/fidelity/CI/package/release
-gates stay open. Do not reinterpret narrow structure as full PDF preservation.
+Retain complete separate inspection/exact frozen pages, stable no-overwrite
+publication, strictly-smaller email and SkipEmail discovery/probe/launch bypass.
+Keep import-only PS5.1/direct executables,/screen/output-beside-entry/local
+processing and source/final preservation. Read T16 to select only its explicit
+options; do not silently change familiar defaults or broaden into T17.
+
+Reuse verified authorized PS7.6.6/Pester6.2.0/PDFtk2.02/GS10.08.0/PSA1.25.0 and
+development Python3.12.14/PDFium. Child-only RemoteSigned authorization persists;
+remove inherited PSModulePath only in test children. No silent acquisition,
+admin, permanent environment or security changes. T17 and broad OS/UNC/Explorer/
+fidelity/CI/package/release gates remain; structural checks are not universal
+preservation, signature, PDF/A or malware guarantees. Dirty/preparation failures
+are retained honestly and excluded from clean counts.

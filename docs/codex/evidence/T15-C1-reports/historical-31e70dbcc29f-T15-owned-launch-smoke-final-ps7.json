@@ -1,0 +1,103 @@
+{
+  "Task": "T15",
+  "Kind": "Ignored owned-launch adapter smoke only",
+  "ShellLabel": "ps7",
+  "ShellVersion": "7.6.6",
+  "ShellEdition": "Core",
+  "Process64Bit": true,
+  "ObservedAtUtc": "2026-10-08T06:01:54.0608204Z",
+  "CommitAtSmoke": "f896457acf695831b4bf8f07f2eec3775e3213a8",
+  "DirtyWorktreeAtSmoke": true,
+  "AdapterSource": "tests/.work/T15-OwnedNativeLaunch.txt",
+  "AdapterSHA256": "ec6ebcbce7adce79ccdb07907dab4b4477c3d34a27f85ca18c941f209e3e6a2b",
+  "SmokeSource": "tests/.work/T15-OwnedNativeSmoke.ps1",
+  "SmokeSHA256": "4b61c0148675a1ff613d671d7a1bc43ca327f7f033ef4a194fb287465dfafe7b",
+  "Fixture": "tests/.work/fake-native/709a36af0ac2488da31320985258e1b8/FakeNative.exe",
+  "FixtureSHA256": "949a6b5a65e19e72e04d8c33456b9e17a309a50c3b43a531fcea4dba18e94e16",
+  "FixtureBuildReceiptSHA256": "69540ec4298b0ee0c4613140a2f2181ca0004e1c31e8c9ac8905d7148769c5d6",
+  "FixtureSourceSHA256": "30c0e8e7adb20352c58747d61462717f18c59bfd75031de0ef8f6ad7de167143",
+  "Result": "pass",
+  "Cases": [
+    {
+      "Label": "dual-stream-success",
+      "Pass": true,
+      "NativeProcessId": 18368,
+      "ExitCode": 0,
+      "Stdout": "T15 stdout\r\n",
+      "Stderr": "T15 stderr\r\n",
+      "TerminationConfirmed": true
+    },
+    {
+      "Label": "stdin-EOF",
+      "Pass": true,
+      "NativeProcessId": 9224,
+      "ExitCode": 0,
+      "Stdout": "stdin-characters:0\r\n",
+      "Stderr": "",
+      "TerminationConfirmed": true
+    },
+    {
+      "Label": "child-environment-removal",
+      "Pass": true,
+      "NativeProcessId": 21772,
+      "ExitCode": 0,
+      "Stdout": "<unset>\r\n",
+      "Stderr": "",
+      "TerminationConfirmed": true
+    },
+    {
+      "Label": "child-environment-value",
+      "Pass": true,
+      "NativeProcessId": 29556,
+      "ExitCode": 0,
+      "Stdout": "[\"T15 child-only sentinel\"]\r\n",
+      "Stderr": "",
+      "TerminationConfirmed": true
+    },
+    {
+      "Label": "child-environment-empty-block",
+      "Pass": true,
+      "NativeProcessId": 15456,
+      "ExitCode": 0,
+      "Stdout": "[\"\"]\r\n",
+      "Stderr": "",
+      "TerminationConfirmed": true
+    },
+    {
+      "Label": "controlled-token-active-stop",
+      "Pass": true,
+      "NativeProcessId": 8468,
+      "ExitCode": 1,
+      "TokenCancelled": true,
+      "TerminationConfirmed": true,
+      "UnrelatedSameImageSurvived": true,
+      "ConsoleHandlerRegistered": false,
+      "ConsoleHandlerError": null,
+      "HostLimit": "Controlled token cancellation is supported. Console event availability depends on the host; abrupt host/window/machine termination cannot guarantee cleanup or an exit code.",
+      "ElapsedMilliseconds": 184
+    },
+    {
+      "Label": "parent-exited-descendant-held-pipes",
+      "Pass": true,
+      "NativeProcessId": 10460,
+      "ParentExitCode": 0,
+      "DescendantProcessId": 7508,
+      "DescendantWasAlive": true,
+      "DescendantStopped": true,
+      "TerminationConfirmed": true,
+      "Stdout": "held-pipe-child:7508\r\n",
+      "Stderr": "held-pipe-stderr\r\n"
+    },
+    {
+      "Label": "invalid-image-fail-closed",
+      "Pass": true,
+      "Started": false,
+      "Error": "Exception calling \"Start\" with \"1\" argument(s): \"CreateProcessW with owned job failed.\""
+    }
+  ],
+  "Limits": [
+    "Controlled process fixture and adapter only; no PDFtk/GS/application acceptance or Pester suite pass.",
+    "Console metadata reflects this noninteractive smoke host; physical Ctrl+C/PowerShell-host interception and hard-crash behavior were not exercised.",
+    "No application source was edited by this reviewer. Parent integration and full fault/native regression remain pending."
+  ]
+}

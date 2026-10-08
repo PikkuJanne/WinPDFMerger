@@ -4,6 +4,7 @@ using System;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
 
@@ -58,6 +59,8 @@ internal static class FakeNative
                     return 0;
                 case "hold-pipes":
                     return HoldPipes(args);
+                case "owned-tree":
+                    return OwnedTree(args);
                 default:
                     return Usage("Unknown mode. Use echo, streams, fail, sleep, flood, stdin, environment, or hold-pipes.");
             }
@@ -80,8 +83,8 @@ internal static class FakeNative
         start.Arguments = "sleep " + milliseconds.ToString(CultureInfo.InvariantCulture);
         start.UseShellExecute = false;
         start.CreateNoWindow = true;
-        // Deliberately inherit the two redirected handles. The runner owns the
-        // parent only; the test reads this exact PID and cleans up its child.
+        // Deliberately inherit both redirected handles. The invocation's owned
+        // job must release this child even when its parent exits first.
         using (Process child = Process.Start(start))
         {
             try
@@ -100,6 +103,65 @@ internal static class FakeNative
             Console.Error.Flush();
         }
         return 0;
+    }
+
+    private static int OwnedTree(string[] args)
+    {
+        if (args.Length != 6)
+            return Usage("owned-tree <milliseconds 1..300000> <absolute receipt prefix> <absolute partial path or -> <stay|exit-parent|child|grandchild> <parent PID>");
+        int milliseconds = ParseBoundedInteger(args[1], 1, MaximumSleepMilliseconds);
+        string prefix = args[2];
+        if (!Path.IsPathRooted(prefix) || Path.GetFullPath(prefix) != prefix)
+            throw new ArgumentException("Tree receipt prefix must be absolute and normalized.");
+        string role = args[4];
+        if (role != "stay" && role != "exit-parent" && role != "child" && role != "grandchild")
+            throw new ArgumentException("Unsupported owned tree role.");
+        int parentPid = ParseBoundedInteger(args[5], 0, Int32.MaxValue);
+        string name = role == "stay" || role == "exit-parent" ? "parent" : role;
+        using (Process current = Process.GetCurrentProcess())
+        {
+            string record = "{\"role\":\"" + name + "\",\"pid\":" + current.Id.ToString(CultureInfo.InvariantCulture)
+                + ",\"parent_pid\":" + parentPid.ToString(CultureInfo.InvariantCulture)
+                + ",\"start_utc_ticks\":" + current.StartTime.ToUniversalTime().Ticks.ToString(CultureInfo.InvariantCulture) + "}";
+            WriteNewReceipt(prefix + "-" + name + ".json", record);
+            if (name == "parent" && args[3] != "-")
+                WriteNewReceipt(args[3], "T15 CONTROLLED OWNED PARTIAL: not a PDF\r\n");
+            if (name != "grandchild")
+            {
+                ProcessStartInfo start = new ProcessStartInfo();
+                start.FileName = System.Reflection.Assembly.GetExecutingAssembly().Location;
+                start.Arguments = "owned-tree " + milliseconds.ToString(CultureInfo.InvariantCulture) + " " + Quote(prefix)
+                    + " - " + (name == "parent" ? "child" : "grandchild") + " " + current.Id.ToString(CultureInfo.InvariantCulture);
+                start.UseShellExecute = false;
+                start.CreateNoWindow = true;
+                // These handles and job membership are inherited by both levels.
+                using (Process descendant = Process.Start(start)) { }
+            }
+            if (name == "parent")
+            {
+                Stopwatch ready = Stopwatch.StartNew();
+                while (!File.Exists(prefix + "-child.json") || !File.Exists(prefix + "-grandchild.json"))
+                {
+                    if (ready.ElapsedMilliseconds >= 2000)
+                        throw new TimeoutException("Owned tree descendants did not produce exact receipts within two seconds.");
+                    Thread.Sleep(10);
+                }
+                WriteNewReceipt(prefix + "-ready.txt", "three owned processes recorded");
+            }
+            Console.Out.WriteLine("owned-tree:" + name + ":" + current.Id.ToString(CultureInfo.InvariantCulture));
+            Console.Out.Flush();
+            if (role == "exit-parent")
+                return 0;
+            Thread.Sleep(milliseconds);
+        }
+        return 0;
+    }
+
+    private static string Quote(string value)
+    {
+        if (value.IndexOf('"') >= 0)
+            throw new ArgumentException("Fixture paths cannot contain quotes.");
+        return "\"" + value + "\"";
     }
 
     private static void WriteNewReceipt(string path, string value)
@@ -197,5 +259,54 @@ internal static class FakeNative
             json.Append('"');
         }
         return json.Append(']').ToString();
+    }
+}
+
+// Presence/value oracle distinguishes a genuinely empty Win32 environment
+// entry from an unset one, including .NET Framework/Windows PowerShell5.1.
+public static class FakeNativeEnvironment
+{
+    [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+    private static extern bool SetEnvironmentVariableW(string name, string value);
+    [DllImport("kernel32.dll", CharSet = CharSet.Unicode)]
+    private static extern IntPtr GetEnvironmentStringsW();
+    [DllImport("kernel32.dll", CharSet = CharSet.Unicode)]
+    private static extern bool FreeEnvironmentStringsW(IntPtr block);
+
+    public static void Set(string name, string value)
+    {
+        if (!SetEnvironmentVariableW(name, value))
+            throw new System.ComponentModel.Win32Exception(Marshal.GetLastWin32Error());
+    }
+
+    public static void Delete(string name)
+    {
+        // PowerShell's binder can turn a null string argument into empty. Keep
+        // the actual null deletion operand entirely inside managed code.
+        if (!SetEnvironmentVariableW(name, null))
+            throw new System.ComponentModel.Win32Exception(Marshal.GetLastWin32Error());
+    }
+
+    public static string[] Snapshot(string name)
+    {
+        IntPtr block = GetEnvironmentStringsW();
+        if (block == IntPtr.Zero)
+            throw new System.ComponentModel.Win32Exception(Marshal.GetLastWin32Error());
+        try
+        {
+            IntPtr cursor = block;
+            while (Marshal.ReadInt16(cursor) != 0)
+            {
+                string entry = Marshal.PtrToStringUni(cursor);
+                if (entry.StartsWith(name + "=", StringComparison.OrdinalIgnoreCase))
+                {
+                    string value = entry.Substring(name.Length + 1);
+                    return new string[] { value.Length == 0 ? "empty" : "value", value };
+                }
+                cursor = IntPtr.Add(cursor, (entry.Length + 1) * 2);
+            }
+            return new string[] { "unset", null };
+        }
+        finally { FreeEnvironmentStringsW(block); }
     }
 }

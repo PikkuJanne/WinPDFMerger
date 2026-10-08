@@ -1,43 +1,44 @@
 # Project status
 
 Target: published and independently verified `v1.0.0` in `PikkuJanne/WinPDFMerger`.
-Completed milestone: M1 — paths, ordering and native execution.
-Completed tasks: T01 through T14.
-Next task: T15 — close interruption, environment and IO failure paths, in M2.
+Completed milestones: M1 — paths, ordering and native execution; M2 — PDF validation and non-destructive results, within the recorded local Windows scope.
+Completed tasks: T01 through T15.
+Next task: T16 — add the small public parameter interface, in M3.
 Publication: NOT STARTED.
 
-T14 and required AC032/AC033 integration +AC034 unit pass at clean C1 `588a96586518059ed38e2de01ad2312003defc7c`.
-Thirteen relevant tiers pass in each actualPS5.1.26100.9444 / supportedPS7.6.6:
-476each952total,all failure/block/container/skip/not_run counts0. Separate complete
-bounded email inspection/exact frozen master pages, staging/master stability and
-strictly-smaller publication now precede any advertised email final.
+T15 and required AC035/AC036 integration plus AC037 unit pass at clean C1
+`53d0923c95a86ae6a44bc89bab51cac6786c1e32`. Seventeen relevant tiers pass in actual
+Windows PowerShell 5.1.26100.9444 Desktop x64 and pinned PowerShell 7.6.6 Core x64:
+559 each, 1,118 total, all failure/block/container/skip/not-run counts zero.
 
-Explicit SkipEmail bypasses GS discovery/version/launch. Skip, missing optionalGS,
-valid no-benefit output and published smaller email return0. Real email or post-
-master failure returns2 with validated master retained; pre-master failure1.
-Result paths follow explicit states. BAT remains unchanged; actualcmd/BAT cases
-verify0/1/2 through its realPS5.1 child. RealGS smaller/no-benefit/partial output
-and pinnedPDFium visibleID/count/rotation/dimensions checks match preserved source/
-master/foreign hashes. Controlled corrupt-input/count/discovery/logger faults and
-owned staging whitespace preparation are disclosed. GS CJKstage native0 with
-PDFtk2.02 inspection failure refuses publication; no broader support claim.
+Native launches own a Windows job from creation, with bounded waits and exact
+stream handles. Controlled cancellation returns 1 before a master and 2 after
+publication; owned descendants stop while unrelated processes and validated
+published PDFs survive. Publication requires confirmed ownership release;
+unconfirmed release retains staging for inspection. Child-specific GS_OPTIONS
+preserves actual parent unset/empty/value. Locks and injected IO/write/log/cleanup
+faults produce truthful outcomes and preserve validated final paths.
 
-Independent code/static/native/evidence reviews and exact raw/sanitized bindings
-are retained. PSA1.25.0:0errors108warnings42info each10files,reviewed nonblocking,
-not lint-clean/fullT22. Historical failedPS5.1 focused host module-path and native
-localized assertion attempts remain explicit, separate from corrected122/122 and
-11/11 dirty passes and clean952. No missing summary/XML is fabricated.
+Independent M2 code/static review finds no blocks. Native audit passes 2,515
+checks with 26 fresh retained PDFtk/PDFium reads; archive review passes 4,611
+checks. Scoped PSA1.25.0 reports 0 errors, 152 warnings and 45 information findings
+each over 13 files, reviewed nonblocking; this is not lint-clean or full T22.
+Dirty development and evidence-preparation failures remain explicit and excluded
+from clean totals. Missing bootstrap summary/XML is not fabricated.
 
-C1 normal push/fresh clean local-live equality verified; exact draftPR follows
-owner-mergedPR13/main f91882c and is in T14 completion. Records-onlyC2 binds C1;
-C2's own SHA/clean/live equality is reported in session without self-reference.
-Known approved caches reused; no acquisition/admin/persistent PATH/policy/security
-change. Standard-user localNTFS Windows11x64/build26300 evidence; ordinaryPS5.1
-Restricted/allUndefined remains,authorized test-child-onlyRemoteSigned.
+C1 normal push and fresh clean local/live equality are verified. Draft PR15
+follows owner-merged PR14/main 5e66f40b; links and exact commands, environment,
+hashes, results, histories and limitations are in T15 completion and evidence.
+Records-only C2 binds C1; its own SHA and subsequent clean live equality are
+reported in session. Approved caches reused; no acquisition/admin/persistent
+PATH/policy/security change. Standard-user local NTFS build26300 evidence;
+ordinary PS5.1 Restricted/all scopes Undefined, authorized test-child RemoteSigned.
 
-Defaults /screen/output-beside-entry, local engines, import-onlyPS5.1-compatible
-helpers, source/final preservation and owned staging remain. T15 interruption/
-environment/IO,T16options,T17fidelity/size reporting and OS/UNC/Explorer/CI/security/
-package/release gates remain. Structure/page/snapshot checks do not certify
-universal validity/security,fidelity/signatures,PDF/A or archival safety. No
-full project/publication claim; no tag/release is created.
+Physical Ctrl+C delivery and abrupt host/window/machine termination cannot
+guarantee cleanup, exit or logging. Owned jobs cover ordinary inherited children,
+not arbitrary external brokers or a security sandbox. Narrow structural/page/
+snapshot tests do not certify universal validity/security, feature fidelity,
+signature validity, PDF/A or archival safety. T16 options, T17 fidelity/size and
+broader OS/UNC/Explorer/CI/security/package/release gates remain. Defaults /screen,
+output beside entry, local engines, import-only PS5.1 helpers and source/final
+preservation remain. No full-project or release-completion claim; no tag/release.

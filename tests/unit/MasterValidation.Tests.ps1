@@ -8,7 +8,7 @@ BeforeAll {
     function New-MasterValidationNativeResult([string]$Text = 'NumberOfPages: 1') {
         [pscustomobject]@{
             Succeeded=$true; Started=$true; ExitCode=0; ProcessId=12345
-            TimedOut=$false; Cancelled=$false; LaunchError=$null; CaptureError=$null; TerminationError=$null
+            TimedOut=$false; Cancelled=$false; LaunchError=$null; CaptureError=$null; TerminationError=$null; OwnershipReleased=$true
             StdoutTruncated=$false; StderrTruncated=$false; Stdout=$Text; Stderr=''
         }
     }
