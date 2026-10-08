@@ -7,7 +7,7 @@ Ghostscript or development tools. Vendor downloads and their terms remain separa
 | Component | Runtime role | Installation and terms |
 | --- | --- | --- |
 | Windows PowerShell 5.1 | BAT host; direct script host | Windows component, subject to Microsoft's terms and the host Windows lifecycle. |
-| PowerShell 7 | Optional direct script host | Separately tested 7.6.6 x64; install from [Microsoft](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows). [PowerShell project license](https://github.com/PowerShell/PowerShell/blob/master/LICENSE.txt) and third-party notices are separate. |
+| PowerShell 7 | Optional direct script host | Separately tested 7.6.6 x64; install from [Microsoft](https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows). [PowerShell 7.6.6 project license](https://github.com/PowerShell/PowerShell/blob/v7.6.6/LICENSE.txt) and third-party notices are separate. |
 | PDFtk Server | Required for input inspection, assembly and output validation | [Vendor Windows download](https://www.pdflabs.com/tools/pdftk-server/) and [PDFtk license/redistribution information](https://www.pdflabs.com/docs/pdftk-license/): GPL version 2 and vendor licensing terms. |
 | Ghostscript | Optional email rewrite | [Vendor download](https://www.ghostscript.com/releases/gsdnld.html) and [Artifex licensing](https://artifex.com/licensing): AGPL version 3 or commercial licensing. |
 
@@ -19,14 +19,40 @@ their obligations. Development Python, fixture libraries, Pester and PSScriptAna
 are not application runtime requirements; development pins belong in test tooling.
 
 Windows PowerShell 5.1 and PowerShell 7.6.6 x64 have actual scoped test evidence on
-the Windows 11 x64 reference desktop. PDFtk Server 2.02 and Ghostscript 10.08.0 were
-the native builds used. These observations do not certify every build or complete
-release acceptance. Windows 10, ARM, 32-bit hosts and live UNC shares are unvalidated.
+the reference desktop reporting Windows 11 Pro, build 26300 / 26H2. Its Windows
+support channel is unestablished; Windows PowerShell support follows the host
+Windows lifecycle. PDFtk Server 2.02 and Ghostscript 10.08.0 were the native builds
+used. These observations do not certify OS support, every build or complete release
+acceptance. Windows 10, ARM, 32-bit hosts and live UNC shares are unvalidated.
 Version numbers here identify tests, not perpetual newest/safe versions. Before
 installation or release, check current vendor downloads, security notices and the
 [PowerShell support lifecycle](https://learn.microsoft.com/en-us/powershell/scripting/install/powershell-support-lifecycle).
 The [Ghostscript CVE page](https://www.ghostscript.com/releases/cve/index.html) lists vendor
 security information. Keep security restrictions enabled.
+
+## Vendor information checked 2026-10-08
+
+[Microsoft's lifecycle page](https://learn.microsoft.com/en-us/powershell/scripting/install/powershell-support-lifecycle)
+lists 7.6.6 as the current PowerShell LTS update; the 7.6 line ends support on
+2028-11-14, subject to a supported host OS and current servicing updates.
+[Microsoft's September advisory](https://github.com/PowerShell/Announcements/issues/98)
+identifies 7.6.6 as patched for CVE-2026-62801. The tested 7.6.6 pin is retained.
+
+[Ghostscript's vendor download page](https://www.ghostscript.com/releases/gsdnld.html)
+lists 10.08.0. Its [CVE table](https://www.ghostscript.com/releases/cve/index.html)
+lists CVE-2026-19547 and CVE-2026-39919 as fixed in 10.08.0. The tested native pin
+is retained; `-dSAFER` remains enabled and is not a complete security boundary.
+
+[PDF Labs](https://www.pdflabs.com/tools/pdftk-server/) still supplies PDFtk Server
+2.02 for Windows 10/11 and corresponding source. Its
+[distribution terms](https://www.pdflabs.com/docs/pdftk-license/) include GPLv2 and
+a separate redistribution license. No dedicated current security-advisory feed
+was identified on those vendor pages; availability and age do not prove it is
+free of vulnerabilities. This project redistributes no native vendor executable.
+
+These are dated vendor observations, not perpetual security assurances. Recheck
+official notices before release and maintain dependencies separately. Native
+discovery and a version string do not authenticate an executable or patch level.
 
 ## Selection and diagnostics
 

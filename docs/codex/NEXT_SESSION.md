@@ -1,6 +1,13 @@
 # Next session
 
-Current task: T25 - focused security and public-repository review, pending.
+Current task: T25 - focused security and public-repository review, in_progress.
+T25 current review/update is described in evidence/T25-checkpoint.md. Runtime
+bytes remain unchanged. Retain required AC056/AC057 as not_run until clean
+dual-host documentation/static checks, final privacy review and normal
+push/live equality are recorded. Fresh PR24 state is merged; readiness was
+safely fast-forwarded to identical-tree main
+`8331924c2cf4a50d02dd8612d7592c7e5d05936f`. Historical draft/unmerged statements
+below describe T24's observation, not current GitHub state.
 Read AGENTS/INDEX/STATUS, T25 TASKS entry/tasks/T25.md and relevant product,
 workflow, test/dependency/security specifications and AC056/AC057. Keep one
 conceptual task. Recheck repository/branch/clean state, both origin destinations

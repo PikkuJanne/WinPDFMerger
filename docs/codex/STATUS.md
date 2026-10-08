@@ -3,8 +3,23 @@
 Target: published and independently verified v1.0.0 in PikkuJanne/WinPDFMerger.
 Completed milestones: M1/M2/M3 within recorded Windows/test/review scope.
 Current milestone: M4, in_progress. Completed tasks: T01 through T24.
-Current task: T25 - focused security and public-repository review, pending.
+Current task: T25 - focused security and public-repository review, in_progress.
 Publication: NOT STARTED. No release or tag is created.
+
+T25 independent runtime review found no actionable defect in the unchanged
+application/launchers/helpers. Current official dependency/security information
+supports the retained native/PS7 pins; public dependency docs now distinguish
+actual test observations from the unestablished host Windows support channel.
+Unsigned release acceptance is explicit. Two public-documentation regressions
+pass in dirty PS5.1 preparation (20 total); clean source/dual-host evidence and
+final privacy/staged/history review are still required. AC056/AC057 remain
+not_run until that final review. See evidence/T25-checkpoint.md.
+
+Fresh GitHub state: PR24 is now merged. Live main
+`8331924c2cf4a50d02dd8612d7592c7e5d05936f` has the identical tree to the prior
+readiness HEAD `624f0f1bc077073901db4cdaf3f716a9f311b66c`; this branch was safely
+fast-forwarded. The historical T24 draft/unmerged observation below is superseded
+by this fresh read. T25 checkpoint pushes still need verification.
 
 T24 AC054/AC055 pass at clean C1b
 `e626e45a5ba375456f23b506f0ded7ca7d68f1e3`. Actual Windows hosted push/PR
