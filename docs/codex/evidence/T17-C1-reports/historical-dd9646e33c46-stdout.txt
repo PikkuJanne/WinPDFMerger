@@ -1,0 +1,57 @@
+Pester v6.2.0
+
+Running tests from 1 files.
+
+Running tests from '<repo>\tests\pdf\SizeReporting.Native.Tests.ps1'
+Describing AC040 real size accounting and AC041 render-ready native corpus
+  [+] reports real small-print screen master and validated candidate lengths with the selected fixed native flags 4.67s
+  [+] reports real small-print ebook master and validated candidate lengths with the selected fixed native flags 4.03s
+  [+] reports real scan screen master and validated candidate lengths with the selected fixed native flags 5.26s
+  [+] reports real scan ebook master and validated candidate lengths with the selected fixed native flags 6.65s
+  [+] reports real mixed screen master and validated candidate lengths with the selected fixed native flags 6.72s
+  [+] reports real mixed ebook master and validated candidate lengths with the selected fixed native flags 6.57s
+  [-] omits a genuinely larger real tiny-text rewrite, reports negative benefit and returns zero 3.16s
+   PropertyNotFoundException: The property 'page_count' cannot be found on this object. Verify that the property exists.
+   at Assert-SizeResult, <repo>\tests\pdf\SizeReporting.Native.Tests.ps1:219
+   at <ScriptBlock>, <repo>\tests\pdf\SizeReporting.Native.Tests.ps1:319
+  [-] rejects controlled exact equality after real GS success and actual strict candidate inspection 3.52s
+   PropertyNotFoundException: The property 'page_count' cannot be found on this object. Verify that the property exists.
+   at Assert-SizeResult, <repo>\tests\pdf\SizeReporting.Native.Tests.ps1:219
+   at <ScriptBlock>, <repo>\tests\pdf\SizeReporting.Native.Tests.ps1:325
+
+Describing AC040 master-only honest size accounting
+  [-] prints only master metrics for skip and retains the source and foreign final 2.65s
+   PropertyNotFoundException: The property 'page_count' cannot be found on this object. Verify that the property exists.
+   at Assert-SizeResult, <repo>\tests\pdf\SizeReporting.Native.Tests.ps1:219
+   at <ScriptBlock>, <repo>\tests\pdf\SizeReporting.Native.Tests.ps1:342
+  [-] prints only master metrics for missing and retains the source and foreign final 3.22s
+   PropertyNotFoundException: The property 'page_count' cannot be found on this object. Verify that the property exists.
+   at Assert-SizeResult, <repo>\tests\pdf\SizeReporting.Native.Tests.ps1:219
+   at <ScriptBlock>, <repo>\tests\pdf\SizeReporting.Native.Tests.ps1:342
+  [-] prints only master metrics for failure and retains the source and foreign final 2.98s
+   PropertyNotFoundException: The property 'page_count' cannot be found on this object. Verify that the property exists.
+   at Assert-SizeResult, <repo>\tests\pdf\SizeReporting.Native.Tests.ps1:219
+   at <ScriptBlock>, <repo>\tests\pdf\SizeReporting.Native.Tests.ps1:342
+Size reporting observations: <repo>\tests\.work\size-reporting\479bb74b8ca14c5d9bed5305592a9648\native-observations.json
+Tests completed in 56.07s
+Tests Passed: 6, Failed: 5, Skipped: 0, Inconclusive: 0, NotRun: 0
+{
+  "observed_at_utc": "2026-10-08T07:33:39.8944866Z",
+  "commit_under_test": "27527e839e3b6b37bc554356618bba2ec169a83a",
+  "dirty_worktree": true,
+  "shell_version": "7.6.6",
+  "shell_edition": "Core",
+  "process_64_bit": true,
+  "execution_policy": "RemoteSigned",
+  "pester_version": "6.2.0",
+  "tier": "SizeReportingNative",
+  "evidence_class": "windows-real-entry-size-accounting-and-controlled-equal-size-boundary; visual-manual-observations-separate",
+  "passed": 6,
+  "failed": 5,
+  "failed_blocks": 0,
+  "failed_containers": 0,
+  "skipped": 0,
+  "not_run": 0,
+  "total": 11
+}
+Reports: <repo>\tests\.work\pester\6e55005f541340b987a12e68dcfcee94

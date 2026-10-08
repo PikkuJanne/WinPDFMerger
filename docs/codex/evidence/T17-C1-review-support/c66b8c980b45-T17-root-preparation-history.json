@@ -1,0 +1,29 @@
+{
+  "Task": "T17",
+  "Classification": "Root evidence orchestration preparation; excluded from application/native/manual acceptance counts",
+  "Attempts": [
+    {
+      "Producer": "tests/.work/Commit-T17C1.py",
+      "Result": "initial preparation failure",
+      "ExitCode": 1,
+      "Error": "KeyError: Result while reading the nested independent source-review schema",
+      "Effect": "Guard failed before any tracked record update, staging or commit. Corrected schema reader; the subsequent invocation committed clean C1 040176695fdb79e614ba2a821118fbc979a33115.",
+      "RawOutputRetention": "Actual stdout/stderr returned only in the tool transcript, not separately saved; no output files reconstructed.",
+      "InitialFullSourceRetention": "Initial full producer source was not snapshotted before correction; current source is explicitly final, not a recreated historical source."
+    },
+    {
+      "Producer": "tests/.work/Run-T17Closure.py",
+      "Result": "initial wrapper argument preparation failure",
+      "ExitCode": 2,
+      "Error": "argparse rejected --phase before Render-T17Presets.py was launched",
+      "Effect": "No renderer/native process or PDF authoring ran. Corrected wrapper to forward producer arguments with parse_known_args; subsequent actual renderer execution has unique real stdout/stderr/source capture.",
+      "RawOutputRetention": "Actual usage/error returned only in tool transcript, not separately saved; no output files reconstructed.",
+      "InitialFullSourceRetention": "Original wrapper bytes are retained in the earlier successful prefix-capture directory T17-prefix-capture-b94699af067347afa08719c152b76e9d/wrapper-source.py. This snapshot was created for the earlier prefix command, not relabelled as a failed-command source capture."
+    }
+  ],
+  "Limits": [
+    "Successful rendering is not visual acceptance; only explicit actual root view_image inspection binds AC041.",
+    "No preparation run changes the clean 579-per-shell/1158 expected acceptance totals.",
+    "No application code or regression tests changed for these evidence-preparation corrections."
+  ]
+}

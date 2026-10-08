@@ -1,0 +1,157 @@
+# Preserve synthetic PDF bytes through Windows checkout/line-ending conversion.
+/tests/fixtures/numbered/*.pdf binary
+
+# Existing entry is stored with CRLF; preserve its bytes and check real whitespace.
+/WinPDFMerge.ps1 -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/WinPDFMerge.bat -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/README.md -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Preserve retained T04 report/receipt bytes and their recorded hashes.
+/docs/codex/evidence/T04-C1-reports/* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T04-C1-results.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T04-C1-live-sync.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Preserve retained T05 report/receipt bytes and their recorded hashes.
+/docs/codex/evidence/T05-C1-reports/* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T05-C1-results.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T05-C1-live-sync.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Preserve retained T06 report/receipt bytes and their recorded hashes.
+/docs/codex/evidence/T06-C1-reports/* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T06-C1-results.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T06-C1-live-sync.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Preserve retained T07 report/build-receipt bytes and their recorded hashes.
+/docs/codex/evidence/T07-C1-reports/* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T07-C1-results.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T07-C1-live-sync.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Preserve retained T08 report/build-receipt bytes and their recorded hashes.
+/docs/codex/evidence/T08-C1-reports/* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T08-C1-results.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T08-C1-live-sync.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Preserve retained T09 exact report/build/observation bytes and their hashes.
+/docs/codex/evidence/T09-C1-reports/* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T09-C1-results.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T09-C1-live-sync.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Preserve T09 acquisition receipt bytes and recorded hashes.
+/docs/codex/evidence/T09-gs-acquisition.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T09-ps7-acquisition.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T09-analyzer-acquisition.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Preserve clean T09 followup report/provenance bytes and hashes.
+/docs/codex/evidence/T09-C3-reports/* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T09-C3-results.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T09-C3-live-sync.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T09-C3-review.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Preserve T10 reused dependency audit receipt bytes.
+/docs/codex/evidence/T10-cache-verification.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Preserve exact T10 checkpoint report/provenance bytes and recorded hashes.
+/docs/codex/evidence/T10-C1-reports/* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T10-C1-results.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T10-C1-review.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T10-C1-live-sync.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Historical XML embeds exact captured empty diagnostic values after ': '.
+# Keep those bytes/digests; waive only trailing spaces in these two data files.
+/docs/codex/evidence/T10-C1-reports/historical-dirty-3-Destination-results.xml -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T10-C1-reports/historical-dirty-4-Destination-results.xml -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Preserve exact T11 checkpoint report/provenance bytes and recorded hashes.
+/docs/codex/evidence/T11-C1-reports/* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T11-C1-results.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T11-C1-review.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T11-C1-live-sync.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T11-cache-verification.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T11-environment.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Preserve exact T12 checkpoint report/provenance bytes and recorded hashes.
+/docs/codex/evidence/T12-C1-reports/* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T12-C1-*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T12-cache-verification.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T12-environment.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Preserve six captured empty FileVersion diagnostics after ': ', including
+# their byte hashes. Waive trailing-space lint only for these data files.
+/docs/codex/evidence/T12-C1-reports/ps51-DependencyEntry-stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T12-C1-reports/ps51-LauncherNative-stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T12-C1-reports/ps51-SourceDiscovery-stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T12-C1-reports/ps7-DependencyEntry-stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T12-C1-reports/ps7-LauncherNative-stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T12-C1-reports/ps7-SourceDiscovery-stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Preserve exact T13 checkpoint report/provenance bytes and recorded hashes.
+/docs/codex/evidence/T13-C1-reports/* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T13-C1-*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T13-cache-verification.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T13-environment.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Preserve six captured empty FileVersion diagnostics and their hashes;
+# waive trailing-space lint only in those exact data files.
+/docs/codex/evidence/T13-C1-reports/ps51-DependencyEntry-stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T13-C1-reports/ps51-LauncherNative-stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T13-C1-reports/ps51-SourceDiscovery-stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T13-C1-reports/ps7-DependencyEntry-stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T13-C1-reports/ps7-LauncherNative-stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T13-C1-reports/ps7-SourceDiscovery-stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Preserve exact T14 checkpoint report/provenance bytes and recorded hashes.
+/docs/codex/evidence/T14-C1-reports/* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T14-C1-*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T14-cache-verification.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T14-environment.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Preserve six captured empty FileVersion diagnostics and their hashes;
+# waive trailing-space lint only in those exact data files.
+/docs/codex/evidence/T14-C1-reports/ps51-DependencyEntry-stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T14-C1-reports/ps51-LauncherNative-stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T14-C1-reports/ps51-SourceDiscovery-stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T14-C1-reports/ps7-DependencyEntry-stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T14-C1-reports/ps7-LauncherNative-stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T14-C1-reports/ps7-SourceDiscovery-stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Preserve four historical PowerShell error diagnostics, including trailing
+# spaces in exact line/caret records and the final diagnostic blank line.
+# Waive trailing-space/blank-EOF lint only for these four raw data files.
+/docs/codex/evidence/T14-C1-reports/historical-T14-focused-ps51-7f30fb0a9acf4836a693f24fd7d52573-stderr.txt -text whitespace=-blank-at-eol,-blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T14-C1-reports/historical-T14-focused-ps51-9a767746909344699c905ce840b971bc-stderr.txt -text whitespace=-blank-at-eol,-blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T14-C1-reports/historical-T14-focused-ps51-a2e6039ee6624e5d8522490581df3943-stderr.txt -text whitespace=-blank-at-eol,-blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T14-C1-reports/historical-T14-focused-ps51-ac20eddc2c3b46988e625dea1f221572-stderr.txt -text whitespace=-blank-at-eol,-blank-at-eof,space-before-tab,cr-at-eol
+
+# Preserve exact T15 generated evidence bytes and their separate raw/public hashes.
+/docs/codex/evidence/T15-C1-reports/* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T15-C1-review-support/* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T15-C1-*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T15-cache-verification.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T15-environment.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T15-completion.md -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Exact captured diagnostic/source data only: preserve literal trailing spaces or final blank lines.
+/docs/codex/evidence/T15-C1-reports/historical-2c9e69bd16cc-ps51.stderr.txt -text whitespace=-blank-at-eol,-blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T15-C1-reports/ps51-DependencyEntry-stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T15-C1-reports/ps51-LauncherNative-stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T15-C1-reports/ps51-NativeFixture-stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T15-C1-reports/ps51-SourceDiscovery-stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T15-C1-reports/ps7-DependencyEntry-stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T15-C1-reports/ps7-LauncherNative-stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T15-C1-reports/ps7-NativeFixture-stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T15-C1-reports/ps7-SourceDiscovery-stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Preserve exact T16 evidence bytes and distinct raw/public hashes.
+/docs/codex/evidence/T16-C1-reports/* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T16-C1-review-support/* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T16-C1-*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T16-cache-verification.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T16-environment.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T16-completion.md -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Exact captured diagnostic/source files only: preserve literal whitespace.
+/docs/codex/evidence/T16-C1-reports/historical-1435a649ddc8-stdout.diff -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T16-C1-reports/ps51-LauncherNative-stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T16-C1-reports/ps7-LauncherNative-stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T16-C1-review-support/07875b071506-stdout.diff -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T16-C1-review-support/2990105102a2-source-diff.stdout.diff -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

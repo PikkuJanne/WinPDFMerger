@@ -1,0 +1,186 @@
+{
+  "SchemaVersion": 1,
+  "Task": "T17",
+  "EvidenceClass": "original synthetic corpus authoring and preliminary visual QA; not clean C1 preset acceptance",
+  "ArtifactMarker": {
+    "Executable": "<USERPROFILE>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\node\\bin\\node.exe",
+    "Script": "<USERPROFILE>\\.cache\\codex-runtimes\\codex-primary-runtime\\plugins\\openai-primary-runtime\\plugins\\pdf\\skills\\pdf\\container_tools\\mark_artifact_operation_started.mjs",
+    "Arguments": [
+      "--operation-kind",
+      "create",
+      "--expected-output-count",
+      "3",
+      "--output-format",
+      "pdf"
+    ],
+    "ObservedExitCode": 0,
+    "SuccessfulInvocationCount": 1,
+    "Scheduling": "Marker tool command completed successfully immediately before first three-PDF generator authoring command.",
+    "RawCaptureLimit": "Actual tool transcript reports exit0 with empty output; no separate local stdout/stderr files were captured for this marker. It was not run again."
+  },
+  "Generator": {
+    "Executable": "<USERPROFILE>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "Arguments": [
+      "-B",
+      "tests/fixtures/presets/generate_presets.py",
+      "--output",
+      "<repo>\\tests\\.work\\T17-original-presets-5912939f506e4774bcf1b2b2f1bc1e76"
+    ],
+    "Source": {
+      "Path": "<repo>\\tests\\fixtures\\presets\\generate_presets.py",
+      "SHA256": "1aaabe651bd4d468b09e617607b1f276d3a894b67e15081d380cc45e91a62db6",
+      "Bytes": 7703
+    },
+    "RawStdout": {
+      "Path": "<repo>\\tests\\.work\\T17-original-presets-5912939f506e4774bcf1b2b2f1bc1e76\\generation.json",
+      "SHA256": "f58fc40e48aba30641767d69f48f32214499820b6221b652aabeb5ad8e8f255f",
+      "Bytes": 1700
+    },
+    "Result": {
+      "schema_version": 1,
+      "license": "CC0-1.0",
+      "versions": {
+        "python": "3.12.14",
+        "reportlab": "4.4.9",
+        "pillow": "12.3.0"
+      },
+      "provenance": "Original synthetic vector text/diagrams and seeded raster pixels; no external documents, user data, OCR or network.",
+      "scan_pixel_dimensions": [
+        2250,
+        2800
+      ],
+      "scan_seed": 170041,
+      "generator_sha256": "1aaabe651bd4d468b09e617607b1f276d3a894b67e15081d380cc45e91a62db6",
+      "fixtures": [
+        {
+          "file": "small-print.pdf",
+          "category": "vector_small_print",
+          "bytes": 2619,
+          "sha256": "7074f0ca973ccf90ce555ee427fa4cc041c06b8a248cb7eb5344680959b34920",
+          "page_count": 1,
+          "page_identifiers": [
+            "T03-17-P01"
+          ],
+          "page_size_points": [
+            612,
+            792
+          ]
+        },
+        {
+          "file": "scan.pdf",
+          "category": "original_scanned_text_diagram",
+          "bytes": 3133596,
+          "sha256": "2de91e376e39a99e1fd3d3760a05737023b503a7aca5ee4365eabc7971b7be03",
+          "page_count": 1,
+          "page_identifiers": [
+            "T03-17-P02"
+          ],
+          "page_size_points": [
+            612,
+            792
+          ]
+        },
+        {
+          "file": "mixed.pdf",
+          "category": "mixed_vector_raster",
+          "bytes": 3135054,
+          "sha256": "3ce010ec530ed27bfb168462f487f9591877398e9bddac5789f31386c56d6eaa",
+          "page_count": 2,
+          "page_identifiers": [
+            "T03-17-P03",
+            "T03-17-P04"
+          ],
+          "page_size_points": [
+            612,
+            792
+          ]
+        }
+      ],
+      "scope": "Development fixture recipe and structural expectations; visual preset acceptance requires actual rendered master/derivative review."
+    },
+    "CaptureLimit": "Initial shell generation JSON redirection retained; separate generator stderr/native exit receipt not captured in this authoring command. Both subsequent actual shell suites reran generator via captured direct child and independently verified exact manifest hashes with native exit0."
+  },
+  "OriginalPdfs": [
+    {
+      "Path": "<repo>\\tests\\.work\\T17-original-presets-5912939f506e4774bcf1b2b2f1bc1e76\\small-print.pdf",
+      "SHA256": "7074f0ca973ccf90ce555ee427fa4cc041c06b8a248cb7eb5344680959b34920",
+      "Bytes": 2619
+    },
+    {
+      "Path": "<repo>\\tests\\.work\\T17-original-presets-5912939f506e4774bcf1b2b2f1bc1e76\\scan.pdf",
+      "SHA256": "2de91e376e39a99e1fd3d3760a05737023b503a7aca5ee4365eabc7971b7be03",
+      "Bytes": 3133596
+    },
+    {
+      "Path": "<repo>\\tests\\.work\\T17-original-presets-5912939f506e4774bcf1b2b2f1bc1e76\\mixed.pdf",
+      "SHA256": "3ce010ec530ed27bfb168462f487f9591877398e9bddac5789f31386c56d6eaa",
+      "Bytes": 3135054
+    }
+  ],
+  "Renderer": {
+    "Executable": "<USERPROFILE>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\native\\poppler\\Library\\bin\\pdftoppm.exe",
+    "ExecutableSHA256": "3f2440140fef98ddd1ef0772a10d8e58dc3564a9b15a14b4611b5bbd5bdcd37f",
+    "ArgumentsTemplate": [
+      "-r",
+      "100",
+      "-png",
+      "<original-pdf>",
+      "<owned-renders-prefix>"
+    ],
+    "ObservedExitCodes": [
+      0,
+      0,
+      0
+    ],
+    "Images": [
+      {
+        "Path": "<repo>\\tests\\.work\\T17-original-presets-5912939f506e4774bcf1b2b2f1bc1e76\\renders\\mixed-1.png",
+        "SHA256": "e98802f67ea3ced1c5699f1f9c31e6760adbd049122a2c89aa33fcd1de3bc695",
+        "Bytes": 72622,
+        "PixelDimensions": [
+          850,
+          1100
+        ]
+      },
+      {
+        "Path": "<repo>\\tests\\.work\\T17-original-presets-5912939f506e4774bcf1b2b2f1bc1e76\\renders\\mixed-2.png",
+        "SHA256": "2a0f8e1664ec594f69c32a31e8e5b1e95c2fd2d6ec26f505f97f062dd26a56a2",
+        "Bytes": 354998,
+        "PixelDimensions": [
+          850,
+          1100
+        ]
+      },
+      {
+        "Path": "<repo>\\tests\\.work\\T17-original-presets-5912939f506e4774bcf1b2b2f1bc1e76\\renders\\scan-1.png",
+        "SHA256": "5d9b33d9280b79900b24b6cc40e99608a1b0f95a21ef7f783bf6d6433c0f1d8a",
+        "Bytes": 355165,
+        "PixelDimensions": [
+          850,
+          1100
+        ]
+      },
+      {
+        "Path": "<repo>\\tests\\.work\\T17-original-presets-5912939f506e4774bcf1b2b2f1bc1e76\\renders\\small-print-1.png",
+        "SHA256": "8b5c454ee2758f40740da8b3ed04bc1f197ca88b3e56077add80aed189d7e78d",
+        "Bytes": 72318,
+        "PixelDimensions": [
+          850,
+          1100
+        ]
+      }
+    ],
+    "RawCaptureLimit": "Expanded original rendering commands checked each native exit0. Font-cache warnings about unavailable unrelated display fonts appeared in actual tool output; separate raw stderr files were not retained for initial corpus rendering. Rendered fixture glyphs were visually intact."
+  },
+  "ActualCodexOriginalVisualInspection": {
+    "PagesInspected": 4,
+    "ImagesInspected": [
+      "<repo>\\tests\\.work\\T17-original-presets-5912939f506e4774bcf1b2b2f1bc1e76\\renders\\mixed-1.png",
+      "<repo>\\tests\\.work\\T17-original-presets-5912939f506e4774bcf1b2b2f1bc1e76\\renders\\mixed-2.png",
+      "<repo>\\tests\\.work\\T17-original-presets-5912939f506e4774bcf1b2b2f1bc1e76\\renders\\scan-1.png",
+      "<repo>\\tests\\.work\\T17-original-presets-5912939f506e4774bcf1b2b2f1bc1e76\\renders\\small-print-1.png"
+    ],
+    "Observation": "All complete original pages inspected: headers/footer IDs, 5-12pt vector and 6-12pt scanned ladders, fine rules, grayscale/color blocks, circles and table unclipped and readable at the viewed scale.",
+    "Limitation": "Original-authoring QA only. No derived-image manual acceptance, owner/Explorer input, printer test or universal small-print/fidelity claim."
+  }
+}

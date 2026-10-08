@@ -1,0 +1,182 @@
+diff --git a/README.md b/README.md
+index 88332cb..9531c3b 100644
+--- a/README.md
++++ b/README.md
+@@ -118,10 +118,24 @@ The longest final path and private native output must fit below 260 characters;
+ an excessively long destination fails with instructions to choose a shorter path.
+ 
+ **Email-friendly copy (quality/size)**
+-Default profile: -dPDFSETTINGS=/screen (small, on-screen reading).
+-Select the fixed /ebook profile with `-EmailPreset ebook`. Presets can change
+-appearance and size; neither guarantees a particular attachment size. Only a
+-separately validated derivative smaller than the master is published.
++The default remains `-dPDFSETTINGS=/screen`; select the fixed `/ebook` profile
++with `-EmailPreset ebook`. Presets can change appearance and size; neither
++guarantees a particular attachment size. Only a separately validated derivative
++smaller than the master is published.
++
++The console and log show exact master/email byte counts, readable binary sizes
++(`KiB` = 1,024 bytes, `MiB` = 1,048,576 bytes), and percentage reduction relative
++to the master. `B` uses whole bytes, `KiB` and larger units use two decimal
++places, and percentages use one; the exact byte counts are authoritative.
++For example, a 2,048-byte master and
++1,024-byte email copy report `2.00 KiB`, `1.00 KiB` and `50.0%` reduction.
++
++An equal or larger validated candidate is labelled as **not published**, its
++actual candidate size and zero/negative reduction are shown, and the validated
++master is retained with success code 0. It is never listed as an email output.
++Skipped, unavailable or failed email processing reports the master size without
++advertising a partial candidate. Check the produced file before sending it;
++compression benefit and readable detail depend on the content.
+ 
+ **Batch wrapper (included)**
+ WinPDFMerge.bat (drag-and-drop + double-click)
+diff --git a/WinPDFMerge.ps1 b/WinPDFMerge.ps1
+index be741d2..03ff824 100644
+--- a/WinPDFMerge.ps1
++++ b/WinPDFMerge.ps1
+@@ -217,6 +217,7 @@ for ($index = 0; $index -lt $pdfs.Count; $index++) {
+ # logging so later optional/log exceptions retain the validated master outcome.
+ $staging = $null
+ $masterPublished = $false
++$sizeReport = $null
+ $emailState = 'not_started'
+ $failureMessage = $null
+ $runFailed = $false
+@@ -227,6 +228,9 @@ try {
+     Assert-PdfInputInventory -Inventory $inventory
+     $merge = Invoke-PdfToolJob -Tool Pdftk -Executable $pdftkPath -InputPaths @($inventory.Inputs.FullName) -OutputPath $outLossless -Staging $staging -ExpectedPageCount $inventory.ExpectedPageCount -CancellationToken $cancellationToken
+     $masterPublished = ($merge.OutputPublished -and $merge.OutputValidated)
++    if ($masterPublished) {
++        $sizeReport = Get-PdfSizeReport -MasterBytes (Get-PdfInputSnapshot -LiteralPath $outLossless).Length
++    }
+     if ($null -ne $merge.NativeResult) {
+         Write-NativeProcessLog -Result $merge.NativeResult -LiteralPath $logPath -Label PDFtk
+     }
+@@ -257,6 +261,9 @@ try {
+             } else {
+                 $emailState = 'failed'
+             }
++            if ($emailState -in @('published','no_size_benefit')) {
++                $sizeReport = Get-PdfSizeReport -MasterBytes $email.MasterBytes -EmailBytes $email.OutputBytes -EmailPublished:($emailState -eq 'published')
++            }
+             if ($null -ne $email.NativeResult) {
+                 Write-NativeProcessLog -Result $email.NativeResult -LiteralPath $logPath -Label Ghostscript
+             }
+@@ -298,6 +305,9 @@ $outcome = Get-PdfMergeOutcome -MasterPublished $masterPublished -EmailState $em
+ try {
+     ("Email result: {0}" -f $emailState) | Write-RunLog -LiteralPath $logPath -Append
+     $outcome.EmailMessage | Write-RunLog -LiteralPath $logPath -Append
++    if ($null -ne $sizeReport) {
++        foreach ($line in $sizeReport.Lines) { $line | Write-RunLog -LiteralPath $logPath -Append }
++    }
+     foreach ($output in $outcome.PublishedPaths) {
+         ("Published {0}: {1}" -f $output.Label, $output.Path) | Write-RunLog -LiteralPath $logPath -Append
+     }
+@@ -312,6 +322,9 @@ try {
+ }
+ $detail = if ($failureMessage) { $failureMessage } else { $outcome.EmailMessage }
+ Write-Host ("`n{0}: {1}" -f $outcome.Summary, $detail)
++if ($null -ne $sizeReport) {
++    foreach ($line in $sizeReport.Lines) { Write-Host $line }
++}
+ foreach ($output in $outcome.PublishedPaths) { Write-Host (" - {0}: {1}" -f $output.Label, $output.Path) }
+ Write-Host "Log: $logPath"
+ exit $outcome.ExitCode
+diff --git a/src/WinPDFMerge.Helpers.ps1 b/src/WinPDFMerge.Helpers.ps1
+index 7d98c8c..69f9d1c 100644
+--- a/src/WinPDFMerge.Helpers.ps1
++++ b/src/WinPDFMerge.Helpers.ps1
+@@ -1542,6 +1542,57 @@ function Invoke-PdfToolJob {
+     }
+ }
+ 
++function Format-PdfByteSize {
++    param([Parameter(Mandatory=$true)][ValidateRange(0,9223372036854775807)][long]$Bytes)
++
++    $units = @('B','KiB','MiB','GiB','TiB','PiB','EiB')
++    $value = [decimal]$Bytes
++    $unit = 0
++    while ($value -ge 1024 -and $unit -lt ($units.Count - 1)) {
++        $value /= 1024
++        $unit++
++    }
++    $format = if ($unit -eq 0) { '0' } else { '0.00' }
++    return ('{0} {1}' -f $value.ToString($format, [Globalization.CultureInfo]::InvariantCulture), $units[$unit])
++}
++
++function Get-PdfSizeReport {
++    param(
++        [Parameter(Mandatory=$true)][ValidateRange(1,9223372036854775807)][long]$MasterBytes,
++        [ValidateRange(1,9223372036854775807)][long]$EmailBytes,
++        [switch]$EmailPublished
++    )
++
++    $hasEmail = $PSBoundParameters.ContainsKey('EmailBytes')
++    if ($EmailPublished -and (-not $hasEmail -or $EmailBytes -ge $MasterBytes)) {
++        throw 'Published email size reporting requires a strictly smaller validated email result.'
++    }
++    if ($hasEmail -and -not $EmailPublished -and $EmailBytes -lt $MasterBytes) {
++        throw 'Unpublished email size reporting requires a validated candidate with no size benefit.'
++    }
++    $lines = @('Master size: {0} bytes ({1}).' -f $MasterBytes.ToString([Globalization.CultureInfo]::InvariantCulture), (Format-PdfByteSize -Bytes $MasterBytes))
++    $reduction = $null
++    if ($hasEmail) {
++        $reduction = [decimal]100 * (([decimal]$MasterBytes - [decimal]$EmailBytes) / [decimal]$MasterBytes)
++        $percentage = $reduction.ToString('0.0', [Globalization.CultureInfo]::InvariantCulture)
++        $bytes = $EmailBytes.ToString([Globalization.CultureInfo]::InvariantCulture)
++        $human = Format-PdfByteSize -Bytes $EmailBytes
++        if ($EmailPublished) {
++            $lines += 'Email size: {0} bytes ({1}).' -f $bytes, $human
++            $lines += 'Email reduction: {0}%.' -f $percentage
++        } else {
++            $lines += 'Validated email candidate size: {0} bytes ({1}); not published.' -f $bytes, $human
++            $lines += 'Email candidate reduction: {0}% (no size benefit; candidate not published).' -f $percentage
++        }
++    }
++    return [pscustomobject]@{
++        MasterBytes = $MasterBytes
++        EmailBytes = $(if ($hasEmail) { $EmailBytes } else { $null })
++        ReductionPercent = $reduction
++        Lines = @($lines)
++    }
++}
++
+ function Get-PdfMergeOutcome {
+     param(
+         [Parameter(Mandatory=$true)][bool]$MasterPublished,
+diff --git a/tools/test/Invoke-Tests.ps1 b/tools/test/Invoke-Tests.ps1
+index 477f655..75b29ae 100644
+--- a/tools/test/Invoke-Tests.ps1
++++ b/tools/test/Invoke-Tests.ps1
+@@ -2,7 +2,7 @@
+ [CmdletBinding()]
+ param(
+     [string]$PesterModulePath,
+-    [ValidateSet('Unit', 'NativeFixture', 'SourceDiscovery', 'Launcher', 'LauncherNative', 'DependencyEntry', 'NativeRunner', 'ToolInvocation', 'PdftkPaths', 'GhostscriptPaths', 'Destination', 'InputPreflight', 'Staging', 'MasterValidation', 'EmailOutcome', 'FaultIO', 'FaultRecovery', 'Parameters', 'ParametersNative')][string]$Tier = 'Unit',
++    [ValidateSet('Unit', 'NativeFixture', 'SourceDiscovery', 'Launcher', 'LauncherNative', 'DependencyEntry', 'NativeRunner', 'ToolInvocation', 'PdftkPaths', 'GhostscriptPaths', 'Destination', 'InputPreflight', 'Staging', 'MasterValidation', 'EmailOutcome', 'FaultIO', 'FaultRecovery', 'Parameters', 'ParametersNative', 'SizeReporting', 'SizeReportingNative')][string]$Tier = 'Unit',
+     [string]$PdftkPath,
+     [string]$GhostscriptPath,
+     [string]$PythonPath
+@@ -37,6 +37,12 @@ $config.TestResult.OutputPath = Join-Path $work 'results.xml'
+ $config.TestResult.OutputFormat = 'NUnitXml'
+ if ($Tier -eq 'Unit') {
+     $config.Run.Path = Join-Path $repo 'tests/unit'
++} elseif ($Tier -eq 'SizeReporting') {
++    $config.Run.Path = Join-Path $repo 'tests/pdf/SizeReporting.Tests.ps1'
++} elseif ($Tier -eq 'SizeReportingNative') {
++    if (-not $PdftkPath -or -not $GhostscriptPath -or -not $PythonPath) { throw 'SizeReportingNative requires explicit real PDFtk/Ghostscript and pinned development Python paths.' }
++    $config.Run.Container = New-PesterContainer -Path (Join-Path $repo 'tests/pdf/SizeReporting.Native.Tests.ps1') `
++        -Data @{ PdftkPath=$PdftkPath; GhostscriptPath=$GhostscriptPath; PythonPath=$PythonPath }
+ } elseif ($Tier -eq 'Parameters') {
+     $config.Run.Path = Join-Path $repo 'tests/cli/Parameters.Tests.ps1'
+ } elseif ($Tier -eq 'ParametersNative') {
+@@ -116,6 +122,8 @@ if ($Tier -eq 'FaultIO') { $summary.evidence_class = 'unit-controlled-IO-logging
+ if ($Tier -eq 'FaultRecovery') { $summary.evidence_class = 'windows-real-engines-environment-and-controlled-owned-native-cancellation' }
+ if ($Tier -eq 'Parameters') { $summary.evidence_class = 'unit-actual-parameter-binding-and-controlled-entry-native-decisions' }
+ if ($Tier -eq 'ParametersNative') { $summary.evidence_class = 'windows-real-entry-preset-and-defaults-actual-cmd-batch-delivery-not-Explorer' }
++if ($Tier -eq 'SizeReporting') { $summary.evidence_class = 'unit-numeric-size-reporting-and-controlled-entry-decisions' }
++if ($Tier -eq 'SizeReportingNative') { $summary.evidence_class = 'windows-real-entry-size-accounting-and-controlled-equal-size-boundary; visual-manual-observations-separate' }
+ $summary | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath (Join-Path $work 'summary.json') -Encoding UTF8
+ $summary | ConvertTo-Json -Depth 4
+ Write-Host ('Reports: ' + $work)

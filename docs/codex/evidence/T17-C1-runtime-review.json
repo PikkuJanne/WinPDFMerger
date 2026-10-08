@@ -1,0 +1,2642 @@
+{
+  "SchemaVersion": 1,
+  "Task": "T17",
+  "Phase": "C1",
+  "ReviewedAtUtc": "2026-10-08T07:55:12.999470+00:00",
+  "ImplementationCommit": "040176695fdb79e614ba2a821118fbc979a33115",
+  "DirtyWorktreeAtReview": false,
+  "Result": "no_blocking_findings",
+  "Findings": [],
+  "ReviewerRole": "Size-reporting unit agent separately reviewing root-authored runtime, runner and README",
+  "IndependenceLimit": "Reviewer authored SizeReporting.Tests.ps1. This review does not independently assess its own 32 test cases, native PDF oracle or visual/manual observations. Root authored the reviewed runtime/runner/README. Raw driver/summary/XML counts and owned receipt bindings were checked independently; this is not independent own-test design or native/visual oracle review.",
+  "Sources": [
+    {
+      "Path": "WinPDFMerge.ps1",
+      "WorkingSHA256": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4",
+      "C1GitBlobSHA256": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4",
+      "NormalizedWorkingEqualsC1Blob": true,
+      "RawSourceSnapshots": [
+        {
+          "Path": "tests/.work/T17-C1-runtime-source-capture-ed38df46bc5c4e34b5fd809d84b40c2a/working-WinPDFMerge.ps1",
+          "SHA256": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4",
+          "Bytes": 17642
+        },
+        {
+          "Path": "tests/.work/T17-C1-runtime-source-capture-ed38df46bc5c4e34b5fd809d84b40c2a/C1-blob-WinPDFMerge.ps1",
+          "SHA256": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4",
+          "Bytes": 17642
+        },
+        {
+          "Path": "tests/.work/T17-C1-runtime-source-capture-ed38df46bc5c4e34b5fd809d84b40c2a/baseline-blob-WinPDFMerge.ps1",
+          "SHA256": "2feed6060b04b4ac8ba172e37f7310d2b1f486ce093b5ae029f2b432d3deb620",
+          "Bytes": 16995
+        }
+      ],
+      "BaselineGitBlobSHA256": "2feed6060b04b4ac8ba172e37f7310d2b1f486ce093b5ae029f2b432d3deb620"
+    },
+    {
+      "Path": "src/WinPDFMerge.Helpers.ps1",
+      "WorkingSHA256": "5e4cec2cb31b85e72e551b7f8b291c8c67809c42cf435ad00ee1bc555fec38a0",
+      "C1GitBlobSHA256": "617926d380dc789f6280c0eac8e5192d706c08df5897fdbd1d4278fa3fe1dc4c",
+      "NormalizedWorkingEqualsC1Blob": true,
+      "RawSourceSnapshots": [
+        {
+          "Path": "tests/.work/T17-C1-runtime-source-capture-ed38df46bc5c4e34b5fd809d84b40c2a/working-src__WinPDFMerge.Helpers.ps1",
+          "SHA256": "5e4cec2cb31b85e72e551b7f8b291c8c67809c42cf435ad00ee1bc555fec38a0",
+          "Bytes": 99054
+        },
+        {
+          "Path": "tests/.work/T17-C1-runtime-source-capture-ed38df46bc5c4e34b5fd809d84b40c2a/C1-blob-src__WinPDFMerge.Helpers.ps1",
+          "SHA256": "617926d380dc789f6280c0eac8e5192d706c08df5897fdbd1d4278fa3fe1dc4c",
+          "Bytes": 97230
+        },
+        {
+          "Path": "tests/.work/T17-C1-runtime-source-capture-ed38df46bc5c4e34b5fd809d84b40c2a/baseline-blob-src__WinPDFMerge.Helpers.ps1",
+          "SHA256": "db22d1b808cd47f7a82c18e0ceddc5419cc8e66ea0a1475dcb6ee6e9c457dbf8",
+          "Bytes": 94878
+        }
+      ],
+      "BaselineGitBlobSHA256": "db22d1b808cd47f7a82c18e0ceddc5419cc8e66ea0a1475dcb6ee6e9c457dbf8"
+    },
+    {
+      "Path": "tools/test/Invoke-Tests.ps1",
+      "WorkingSHA256": "d2df7969d0bb5762bdfd647be45803772a1836c222a745411524cda8ed7c65c9",
+      "C1GitBlobSHA256": "d2df7969d0bb5762bdfd647be45803772a1836c222a745411524cda8ed7c65c9",
+      "NormalizedWorkingEqualsC1Blob": true,
+      "RawSourceSnapshots": [
+        {
+          "Path": "tests/.work/T17-C1-runtime-source-capture-ed38df46bc5c4e34b5fd809d84b40c2a/working-tools__test__Invoke-Tests.ps1",
+          "SHA256": "d2df7969d0bb5762bdfd647be45803772a1836c222a745411524cda8ed7c65c9",
+          "Bytes": 10694
+        },
+        {
+          "Path": "tests/.work/T17-C1-runtime-source-capture-ed38df46bc5c4e34b5fd809d84b40c2a/C1-blob-tools__test__Invoke-Tests.ps1",
+          "SHA256": "d2df7969d0bb5762bdfd647be45803772a1836c222a745411524cda8ed7c65c9",
+          "Bytes": 10694
+        },
+        {
+          "Path": "tests/.work/T17-C1-runtime-source-capture-ed38df46bc5c4e34b5fd809d84b40c2a/baseline-blob-tools__test__Invoke-Tests.ps1",
+          "SHA256": "1b25806651a0b814b047432a8fae8e6a1186681b83bbb98aea1890d4b3cbca5a",
+          "Bytes": 9800
+        }
+      ],
+      "BaselineGitBlobSHA256": "1b25806651a0b814b047432a8fae8e6a1186681b83bbb98aea1890d4b3cbca5a"
+    },
+    {
+      "Path": "README.md",
+      "WorkingSHA256": "6ec1381b459b7cec68c417ddbaa3d3d40eb648b4d70dd2e4e5cc8261e3dfd647",
+      "C1GitBlobSHA256": "6ec1381b459b7cec68c417ddbaa3d3d40eb648b4d70dd2e4e5cc8261e3dfd647",
+      "NormalizedWorkingEqualsC1Blob": true,
+      "RawSourceSnapshots": [
+        {
+          "Path": "tests/.work/T17-C1-runtime-source-capture-ed38df46bc5c4e34b5fd809d84b40c2a/working-README.md",
+          "SHA256": "6ec1381b459b7cec68c417ddbaa3d3d40eb648b4d70dd2e4e5cc8261e3dfd647",
+          "Bytes": 14468
+        },
+        {
+          "Path": "tests/.work/T17-C1-runtime-source-capture-ed38df46bc5c4e34b5fd809d84b40c2a/C1-blob-README.md",
+          "SHA256": "6ec1381b459b7cec68c417ddbaa3d3d40eb648b4d70dd2e4e5cc8261e3dfd647",
+          "Bytes": 14468
+        },
+        {
+          "Path": "tests/.work/T17-C1-runtime-source-capture-ed38df46bc5c4e34b5fd809d84b40c2a/baseline-blob-README.md",
+          "SHA256": "fbeb02d8a10feb9068d8911cb823dc721c6d376fdbcf23ad15bf0a5751325b39",
+          "Bytes": 13412
+        }
+      ],
+      "BaselineGitBlobSHA256": "fbeb02d8a10feb9068d8911cb823dc721c6d376fdbcf23ad15bf0a5751325b39"
+    },
+    {
+      "Path": "docs/EMAIL_PRESETS.md",
+      "WorkingSHA256": "ff77346ea43a0a5142526e9b0517faff40ce1cf306da444d762b58b65bf3db39",
+      "C1GitBlobSHA256": "ff77346ea43a0a5142526e9b0517faff40ce1cf306da444d762b58b65bf3db39",
+      "NormalizedWorkingEqualsC1Blob": true,
+      "RawSourceSnapshots": [
+        {
+          "Path": "tests/.work/T17-C1-runtime-source-capture-ed38df46bc5c4e34b5fd809d84b40c2a/working-docs__EMAIL_PRESETS.md",
+          "SHA256": "ff77346ea43a0a5142526e9b0517faff40ce1cf306da444d762b58b65bf3db39",
+          "Bytes": 2883
+        },
+        {
+          "Path": "tests/.work/T17-C1-runtime-source-capture-ed38df46bc5c4e34b5fd809d84b40c2a/C1-blob-docs__EMAIL_PRESETS.md",
+          "SHA256": "ff77346ea43a0a5142526e9b0517faff40ce1cf306da444d762b58b65bf3db39",
+          "Bytes": 2883
+        }
+      ]
+    }
+  ],
+  "SourceRecheck": {
+    "Path": "tests/.work/T17-C1-runtime-source-check.json",
+    "SHA256": "aef2d0e5757a9eaebd6a5f2636a3f3d2bbe4cd20a96ee46977b37bf4716f346e",
+    "Bytes": 16262
+  },
+  "PriorDirtyReview": {
+    "Path": "tests/.work/T17-runtime-review-dirty.json",
+    "SHA256": "576ecdd557457dee2590c99d5994913787bfdcd4b8acc4b8f7fb5368185107b4",
+    "Bytes": 10015
+  },
+  "RetainedBaselineInvariants": [
+    "fixed screen/ebook vectors and screen default",
+    "skip bypass and early binding/source/destination gates",
+    "owned Win32 job/cancellation/capture and missing-ownership quarantine",
+    "strict full-capture envelope/page/snapshot validation",
+    "strict-smaller email and two-argument no-overwrite publication",
+    "explicit published paths and truthful 0/1/2 with master preservation",
+    "known-child-only best-effort cleanup and no orphan sweep"
+  ],
+  "DocumentObservationContext": {
+    "RetainedDirtyVisualReceipt": {
+      "Path": "tests/.work/T17-dirty-visual-review.json",
+      "SHA256": "bafef17f75ad4b145a0dc9e255945837c9ac1f952fa717d67ecfeffa7266ae89",
+      "Bytes": 23505
+    },
+    "Observer": "root Codex actual visual inspection",
+    "NewManualOrPixelReviewClaimed": false,
+    "CleanC1VisualAcceptancePending": true
+  },
+  "PrimaryDocumentationCheck": {
+    "URL": "https://ghostscript.readthedocs.io/en/gs10.08.0/VectorDevices.html#controls-and-features-specific-to-postscript-and-pdf-input",
+    "CheckedThrough": "web open/find tool in review conversation",
+    "ConfirmedContract": "screen low-resolution, ebook medium-resolution; presets may change output appearance",
+    "RawPageSnapshotRetained": false
+  },
+  "AcceptanceContext": {
+    "Method": "Read-only independent exact-C1 driver/collector/count metadata and all32 raw summary/NUnit reports; no application rerun.",
+    "TiersPerShell": 16,
+    "Reports": 32,
+    "PassedEach": 579,
+    "PassedTotal": 1158,
+    "BadCounts": 0,
+    "ExpectedTierCounts": {
+      "Unit": 335,
+      "SizeReporting": 32,
+      "SizeReportingNative": 11,
+      "Parameters": 31,
+      "ParametersNative": 9,
+      "EmailOutcome": 11,
+      "MasterValidation": 7,
+      "Staging": 9,
+      "InputPreflight": 22,
+      "Destination": 15,
+      "ToolInvocation": 12,
+      "GhostscriptPaths": 13,
+      "Launcher": 24,
+      "LauncherNative": 2,
+      "FaultIO": 32,
+      "FaultRecovery": 14
+    },
+    "ExpectedCounts": {
+      "Path": "tests/.work/T17-expected-counts.json",
+      "SHA256": "140b63ad36ba874513542b1cee769ae5404761ca885064f2ac9a2279fa38c3b6",
+      "Bytes": 372
+    },
+    "OrchestrationSource": {
+      "Path": "tests/.work/Run-T17Checkpoint.ps1",
+      "SHA256": "547e9297bf67d6c83226ce80f29d3f590232f7e565c194bf07554625d0db3c71",
+      "Bytes": 16216
+    },
+    "Shells": [
+      {
+        "Shell": "ps51",
+        "Version": "5.1.26100.9444",
+        "Edition": "Desktop",
+        "Passed": 579,
+        "BadCounts": 0,
+        "Collector": {
+          "Path": "tests/.work/T17-C1-ps51/collector.json",
+          "SHA256": "e4d57fd25f4ee1f33f86316dd3efe9b69a79848de44a19529ae1fa46efb8ef0c",
+          "Bytes": 1524
+        },
+        "Aggregate": {
+          "Path": "tests/.work/T17-C1-ps51/aggregate.json",
+          "SHA256": "b3920c853175bd9dee0e730d7d1eeb2c9094c7a8aa5cbb6f5d9f976e024f8a07",
+          "Bytes": 540
+        },
+        "Runs": {
+          "Path": "tests/.work/T17-C1-ps51/runs.json",
+          "SHA256": "8cfdae94dccffac862875e8a38698e905c39267d116c81283278e78caf38d800",
+          "Bytes": 43838
+        },
+        "Reports": [
+          {
+            "Tier": "Unit",
+            "Passed": 335,
+            "BadCounts": 0,
+            "EvidenceClass": "unit-controlled-process-and-filesystem",
+            "Summary": {
+              "Path": "tests/.work/pester/10daaad30c4d4903bed1050a05aac1d5/summary.json",
+              "SHA256": "45188689c5b8d4f8c263768bd5b86905bd11526355e1d1bf1b5907f7aaad9ca9",
+              "Bytes": 591
+            },
+            "NUnitXml": {
+              "Path": "tests/.work/pester/10daaad30c4d4903bed1050a05aac1d5/results.xml",
+              "SHA256": "9da59c0a7de6517075ff6b5ce7c23383fd8813fddd00021845e1a815a2d75233",
+              "Bytes": 146277
+            },
+            "Stdout": {
+              "Path": "tests/.work/T17-C1-ps51/Unit.txt",
+              "SHA256": "f57d97813ff377e2a5aa7746032f5f61df5510d44fd92bd1cc87c49084be0e15",
+              "Bytes": 30770
+            },
+            "Stderr": {
+              "Path": "tests/.work/T17-C1-ps51/Unit.stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            "Command": [
+              "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+              "-NoProfile",
+              "-ExecutionPolicy",
+              "RemoteSigned",
+              "-File",
+              "<REPO>\\tools\\test\\Invoke-Tests.ps1",
+              "-PesterModulePath",
+              "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1",
+              "-Tier",
+              "Unit"
+            ]
+          },
+          {
+            "Tier": "SizeReporting",
+            "Passed": 32,
+            "BadCounts": 0,
+            "EvidenceClass": "unit-numeric-size-reporting-and-controlled-entry-decisions",
+            "Summary": {
+              "Path": "tests/.work/pester/ff9933d1d689470083b876df958288cb/summary.json",
+              "SHA256": "d8f26ac1a0f2abf1ad7da7bddfa74cd6fa41c947bd158344319b1ec146e795ec",
+              "Bytes": 618
+            },
+            "NUnitXml": {
+              "Path": "tests/.work/pester/ff9933d1d689470083b876df958288cb/results.xml",
+              "SHA256": "99f703d14aa158be72d99914c83d5f981b2cce4a2c395e2dd36315bd6a2c6c6e",
+              "Bytes": 13699
+            },
+            "Stdout": {
+              "Path": "tests/.work/T17-C1-ps51/SizeReporting.txt",
+              "SHA256": "0fe6b92a63fc84585da4bfe51d70d5b2ab5bdd3a8a1fec4d63fc437179e1cf69",
+              "Bytes": 141371
+            },
+            "Stderr": {
+              "Path": "tests/.work/T17-C1-ps51/SizeReporting.stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            "Command": [
+              "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+              "-NoProfile",
+              "-ExecutionPolicy",
+              "RemoteSigned",
+              "-File",
+              "<REPO>\\tools\\test\\Invoke-Tests.ps1",
+              "-PesterModulePath",
+              "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1",
+              "-Tier",
+              "SizeReporting"
+            ]
+          },
+          {
+            "Tier": "SizeReportingNative",
+            "Passed": 11,
+            "BadCounts": 0,
+            "EvidenceClass": "windows-real-entry-size-accounting-and-controlled-equal-size-boundary; visual-manual-observations-separate",
+            "Summary": {
+              "Path": "tests/.work/pester/f2d6c958005e42a894f82e0748e020ee/summary.json",
+              "SHA256": "f37101734ba3ddc41959acb3a95702f2c0771553b16622976568ed1a3bfa3c76",
+              "Bytes": 672
+            },
+            "NUnitXml": {
+              "Path": "tests/.work/pester/f2d6c958005e42a894f82e0748e020ee/results.xml",
+              "SHA256": "68c2642ab9ab2e754e693ef98ba58e5d28f429e55dbb5888ee2611b6a95da289",
+              "Bytes": 6955
+            },
+            "Stdout": {
+              "Path": "tests/.work/T17-C1-ps51/SizeReportingNative.txt",
+              "SHA256": "52469ca2ed52a467919493e1a5e146f89ed6c37f2822010b1f4b0e5c8f795fa2",
+              "Bytes": 2435
+            },
+            "Stderr": {
+              "Path": "tests/.work/T17-C1-ps51/SizeReportingNative.stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            "Command": [
+              "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+              "-NoProfile",
+              "-ExecutionPolicy",
+              "RemoteSigned",
+              "-File",
+              "<REPO>\\tools\\test\\Invoke-Tests.ps1",
+              "-PesterModulePath",
+              "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1",
+              "-Tier",
+              "SizeReportingNative",
+              "-PdftkPath",
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe",
+              "-GhostscriptPath",
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-gs-e84c278f46724e9a97dd8dbcdbb8d66f\\ghostscript-10.08.0-x64\\bin\\gswin64c.exe",
+              "-PythonPath",
+              "<USERPROFILE>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe"
+            ]
+          },
+          {
+            "Tier": "Parameters",
+            "Passed": 31,
+            "BadCounts": 0,
+            "EvidenceClass": "unit-actual-parameter-binding-and-controlled-entry-native-decisions",
+            "Summary": {
+              "Path": "tests/.work/pester/75130c4d1a5546c6ae95b83247e8c381/summary.json",
+              "SHA256": "10c311cfbe51cb83bf27bc119e918e3b382591698b7135d64184aa7521cfd221",
+              "Bytes": 624
+            },
+            "NUnitXml": {
+              "Path": "tests/.work/pester/75130c4d1a5546c6ae95b83247e8c381/results.xml",
+              "SHA256": "931fb8d75f6ab1aec1fb499844eb154266a446f8095473d53f27b5673c6a9a35",
+              "Bytes": 16387
+            },
+            "Stdout": {
+              "Path": "tests/.work/T17-C1-ps51/Parameters.txt",
+              "SHA256": "0dc456ca2d3036530f70c923815e05be315fcfb7535994136d1418dba4a7e17a",
+              "Bytes": 134108
+            },
+            "Stderr": {
+              "Path": "tests/.work/T17-C1-ps51/Parameters.stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            "Command": [
+              "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+              "-NoProfile",
+              "-ExecutionPolicy",
+              "RemoteSigned",
+              "-File",
+              "<REPO>\\tools\\test\\Invoke-Tests.ps1",
+              "-PesterModulePath",
+              "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1",
+              "-Tier",
+              "Parameters"
+            ]
+          },
+          {
+            "Tier": "ParametersNative",
+            "Passed": 9,
+            "BadCounts": 0,
+            "EvidenceClass": "windows-real-entry-preset-and-defaults-actual-cmd-batch-delivery-not-Explorer",
+            "Summary": {
+              "Path": "tests/.work/pester/b3bc73791c8b4834b7878ef9219a59b8/summary.json",
+              "SHA256": "338c75a26e7983041705130a21a992a0ca0332e249af37b475810ea924270ef1",
+              "Bytes": 638
+            },
+            "NUnitXml": {
+              "Path": "tests/.work/pester/b3bc73791c8b4834b7878ef9219a59b8/results.xml",
+              "SHA256": "1a7e3dd7478037829c325200ae147f77fd66eba79de1d178e13b98f3331fcfc3",
+              "Bytes": 6420
+            },
+            "Stdout": {
+              "Path": "tests/.work/T17-C1-ps51/ParametersNative.txt",
+              "SHA256": "54bb962363039e9f5d58f3a33a28ee8d9b3820e84c4ea7113ee4b993eb7d2a22",
+              "Bytes": 2042
+            },
+            "Stderr": {
+              "Path": "tests/.work/T17-C1-ps51/ParametersNative.stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            "Command": [
+              "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+              "-NoProfile",
+              "-ExecutionPolicy",
+              "RemoteSigned",
+              "-File",
+              "<REPO>\\tools\\test\\Invoke-Tests.ps1",
+              "-PesterModulePath",
+              "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1",
+              "-Tier",
+              "ParametersNative",
+              "-PdftkPath",
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe",
+              "-GhostscriptPath",
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-gs-e84c278f46724e9a97dd8dbcdbb8d66f\\ghostscript-10.08.0-x64\\bin\\gswin64c.exe",
+              "-PythonPath",
+              "<USERPROFILE>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe"
+            ]
+          },
+          {
+            "Tier": "EmailOutcome",
+            "Passed": 11,
+            "BadCounts": 0,
+            "EvidenceClass": "windows-real-pdftk-gs-email-outcomes-actual-batch-and-controlled-fault-scheduling",
+            "Summary": {
+              "Path": "tests/.work/pester/3d4d64b10fec45ff86ef8cf4ec29e3e4/summary.json",
+              "SHA256": "8b06d666121f3f954ab6572426c5da08cc5387452b9cc52885b70cd0bb05957c",
+              "Bytes": 640
+            },
+            "NUnitXml": {
+              "Path": "tests/.work/pester/3d4d64b10fec45ff86ef8cf4ec29e3e4/results.xml",
+              "SHA256": "f10d607f9c3b003f382c10b53fbabebffd02fb2de0d0bf32b2809645e8e019c5",
+              "Bytes": 6609
+            },
+            "Stdout": {
+              "Path": "tests/.work/T17-C1-ps51/EmailOutcome.txt",
+              "SHA256": "ad50eebe76bdfc2d4ae6ee67a4db79142609704864884abff075fa11655073a9",
+              "Bytes": 2375
+            },
+            "Stderr": {
+              "Path": "tests/.work/T17-C1-ps51/EmailOutcome.stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            "Command": [
+              "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+              "-NoProfile",
+              "-ExecutionPolicy",
+              "RemoteSigned",
+              "-File",
+              "<REPO>\\tools\\test\\Invoke-Tests.ps1",
+              "-PesterModulePath",
+              "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1",
+              "-Tier",
+              "EmailOutcome",
+              "-PdftkPath",
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe",
+              "-GhostscriptPath",
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-gs-e84c278f46724e9a97dd8dbcdbb8d66f\\ghostscript-10.08.0-x64\\bin\\gswin64c.exe",
+              "-PythonPath",
+              "<USERPROFILE>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe"
+            ]
+          },
+          {
+            "Tier": "MasterValidation",
+            "Passed": 7,
+            "BadCounts": 0,
+            "EvidenceClass": "windows-real-pdftk-master-validation-entry-and-independent-pdfium-order-rotation",
+            "Summary": {
+              "Path": "tests/.work/pester/5fc26cd9a3f74109babe3273d5f5cea9/summary.json",
+              "SHA256": "99e595781a4e57ff531e3afa4bd25ffa42f5eb458f706ac5c6f264b4c602d14c",
+              "Bytes": 641
+            },
+            "NUnitXml": {
+              "Path": "tests/.work/pester/5fc26cd9a3f74109babe3273d5f5cea9/results.xml",
+              "SHA256": "4c4108125783f77e94be42ae225a66353a2779526e73a78a6739344c81fefba6",
+              "Bytes": 5299
+            },
+            "Stdout": {
+              "Path": "tests/.work/T17-C1-ps51/MasterValidation.txt",
+              "SHA256": "2193c3428a66702b2642626941baa5339754c23f9be6d7abac81c53901dbfb83",
+              "Bytes": 2020
+            },
+            "Stderr": {
+              "Path": "tests/.work/T17-C1-ps51/MasterValidation.stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            "Command": [
+              "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+              "-NoProfile",
+              "-ExecutionPolicy",
+              "RemoteSigned",
+              "-File",
+              "<REPO>\\tools\\test\\Invoke-Tests.ps1",
+              "-PesterModulePath",
+              "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1",
+              "-Tier",
+              "MasterValidation",
+              "-PdftkPath",
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe",
+              "-PythonPath",
+              "<USERPROFILE>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe"
+            ]
+          },
+          {
+            "Tier": "Staging",
+            "Passed": 9,
+            "BadCounts": 0,
+            "EvidenceClass": "windows-real-pdftk-gs-staging-publication-controlled-scheduling-and-filesystem",
+            "Summary": {
+              "Path": "tests/.work/pester/c6327dbf69824ea6a1353bc83ea0576a/summary.json",
+              "SHA256": "cf9d63abba98ff027decec3ef3685e3c2ae0cc5f99b2b41e1276a84e9e9afff0",
+              "Bytes": 630
+            },
+            "NUnitXml": {
+              "Path": "tests/.work/pester/c6327dbf69824ea6a1353bc83ea0576a/results.xml",
+              "SHA256": "e308683d50008da1df167ae2102bddd720ee590424f422ce86da05aced11461c",
+              "Bytes": 6505
+            },
+            "Stdout": {
+              "Path": "tests/.work/T17-C1-ps51/Staging.txt",
+              "SHA256": "08ab2ae73407c9bb861a2c73d4338ce9d059adb9acfc48858ece0d2b72abf7fc",
+              "Bytes": 2277
+            },
+            "Stderr": {
+              "Path": "tests/.work/T17-C1-ps51/Staging.stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            "Command": [
+              "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+              "-NoProfile",
+              "-ExecutionPolicy",
+              "RemoteSigned",
+              "-File",
+              "<REPO>\\tools\\test\\Invoke-Tests.ps1",
+              "-PesterModulePath",
+              "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1",
+              "-Tier",
+              "Staging",
+              "-PdftkPath",
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe",
+              "-GhostscriptPath",
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-gs-e84c278f46724e9a97dd8dbcdbb8d66f\\ghostscript-10.08.0-x64\\bin\\gswin64c.exe"
+            ]
+          },
+          {
+            "Tier": "InputPreflight",
+            "Passed": 22,
+            "BadCounts": 0,
+            "EvidenceClass": "windows-real-pdftk-input-preflight-and-independent-pdfium-order",
+            "Summary": {
+              "Path": "tests/.work/pester/84b415f570a34e4ca3b02e8dd0601c29/summary.json",
+              "SHA256": "2569154e06c593f10bdbc337df994aa68cd90848a8793bbbb4aff8a229ff2901",
+              "Bytes": 624
+            },
+            "NUnitXml": {
+              "Path": "tests/.work/pester/84b415f570a34e4ca3b02e8dd0601c29/results.xml",
+              "SHA256": "a5334b30e3065b4ae2bfd07a8a1988af2796bba3db0e4234dba05ea2186cb70e",
+              "Bytes": 11165
+            },
+            "Stdout": {
+              "Path": "tests/.work/T17-C1-ps51/InputPreflight.txt",
+              "SHA256": "03c83d696eb206039d22cc2772df4135c9e8dc244e07b5b13b85ee12075674c6",
+              "Bytes": 3474
+            },
+            "Stderr": {
+              "Path": "tests/.work/T17-C1-ps51/InputPreflight.stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            "Command": [
+              "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+              "-NoProfile",
+              "-ExecutionPolicy",
+              "RemoteSigned",
+              "-File",
+              "<REPO>\\tools\\test\\Invoke-Tests.ps1",
+              "-PesterModulePath",
+              "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1",
+              "-Tier",
+              "InputPreflight",
+              "-PdftkPath",
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe",
+              "-GhostscriptPath",
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-gs-e84c278f46724e9a97dd8dbcdbb8d66f\\ghostscript-10.08.0-x64\\bin\\gswin64c.exe",
+              "-PythonPath",
+              "<USERPROFILE>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe"
+            ]
+          },
+          {
+            "Tier": "Destination",
+            "Passed": 15,
+            "BadCounts": 0,
+            "EvidenceClass": "windows-real-entry-destination-identity-ACL-junction-concurrency",
+            "Summary": {
+              "Path": "tests/.work/pester/4fc363576bef4f74a75f7e1400af08c5/summary.json",
+              "SHA256": "6d63895f0b2de8da0708fed7d6404fbcee7dfe5bd8212f8f81d2b16fb6869087",
+              "Bytes": 622
+            },
+            "NUnitXml": {
+              "Path": "tests/.work/pester/4fc363576bef4f74a75f7e1400af08c5/results.xml",
+              "SHA256": "c4b373041d7d7c36d07c9bd17df48f63c87e61d9225c085222ccc709af7eb064",
+              "Bytes": 9301
+            },
+            "Stdout": {
+              "Path": "tests/.work/T17-C1-ps51/Destination.txt",
+              "SHA256": "12d750b638d9f7e1644a637952db0d5ae465e33caa212c11ba6aa3f892adfce1",
+              "Bytes": 2855
+            },
+            "Stderr": {
+              "Path": "tests/.work/T17-C1-ps51/Destination.stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            "Command": [
+              "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+              "-NoProfile",
+              "-ExecutionPolicy",
+              "RemoteSigned",
+              "-File",
+              "<REPO>\\tools\\test\\Invoke-Tests.ps1",
+              "-PesterModulePath",
+              "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1",
+              "-Tier",
+              "Destination",
+              "-PdftkPath",
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe",
+              "-GhostscriptPath",
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-gs-e84c278f46724e9a97dd8dbcdbb8d66f\\ghostscript-10.08.0-x64\\bin\\gswin64c.exe"
+            ]
+          },
+          {
+            "Tier": "ToolInvocation",
+            "Passed": 12,
+            "BadCounts": 0,
+            "EvidenceClass": "unit-controlled-native-job-and-filesystem",
+            "Summary": {
+              "Path": "tests/.work/pester/c29f27b7304e4901b7c1613842f93914/summary.json",
+              "SHA256": "e6c4151c9a9cba3c19439046bab6e5183e0a2247ac972160197005d8f81f70e0",
+              "Bytes": 602
+            },
+            "NUnitXml": {
+              "Path": "tests/.work/pester/c29f27b7304e4901b7c1613842f93914/results.xml",
+              "SHA256": "f6f8e4ed52254111b0c6fd1f4eb454e8732d7cea7065bbb66f312949b70596bd",
+              "Bytes": 7818
+            },
+            "Stdout": {
+              "Path": "tests/.work/T17-C1-ps51/ToolInvocation.txt",
+              "SHA256": "f9922828b8c9dc23e031a4930bf92d80886bd0b19cb7a10d596329ccbd792fa2",
+              "Bytes": 2202
+            },
+            "Stderr": {
+              "Path": "tests/.work/T17-C1-ps51/ToolInvocation.stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            "Command": [
+              "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+              "-NoProfile",
+              "-ExecutionPolicy",
+              "RemoteSigned",
+              "-File",
+              "<REPO>\\tools\\test\\Invoke-Tests.ps1",
+              "-PesterModulePath",
+              "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1",
+              "-Tier",
+              "ToolInvocation"
+            ]
+          },
+          {
+            "Tier": "GhostscriptPaths",
+            "Passed": 13,
+            "BadCounts": 0,
+            "EvidenceClass": "windows-real-tool-path-prompt-integration",
+            "Summary": {
+              "Path": "tests/.work/pester/7826d501f82a4e589cf960f7446a45b5/summary.json",
+              "SHA256": "4fb719e6835edab370a5fe10ff7f036d6297e3d07a49c05c4c30d7ab44f1ffcc",
+              "Bytes": 604
+            },
+            "NUnitXml": {
+              "Path": "tests/.work/pester/7826d501f82a4e589cf960f7446a45b5/results.xml",
+              "SHA256": "ad09431efcfab7779540c7539d14f198ea02b96660c64b83c70ad8681e1129b5",
+              "Bytes": 7832
+            },
+            "Stdout": {
+              "Path": "tests/.work/T17-C1-ps51/GhostscriptPaths.txt",
+              "SHA256": "624b11631f961ec4aee002b6972cb9bee380a646d674e240532648c28c2ebcf8",
+              "Bytes": 2818
+            },
+            "Stderr": {
+              "Path": "tests/.work/T17-C1-ps51/GhostscriptPaths.stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            "Command": [
+              "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+              "-NoProfile",
+              "-ExecutionPolicy",
+              "RemoteSigned",
+              "-File",
+              "<REPO>\\tools\\test\\Invoke-Tests.ps1",
+              "-PesterModulePath",
+              "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1",
+              "-Tier",
+              "GhostscriptPaths",
+              "-PdftkPath",
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe",
+              "-GhostscriptPath",
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-gs-e84c278f46724e9a97dd8dbcdbb8d66f\\ghostscript-10.08.0-x64\\bin\\gswin64c.exe"
+            ]
+          },
+          {
+            "Tier": "Launcher",
+            "Passed": 24,
+            "BadCounts": 0,
+            "EvidenceClass": "windows-cmd-actual-batch-controlled-ps51-receiver",
+            "Summary": {
+              "Path": "tests/.work/pester/5f04ce539f5b48828fd400e50ee97070/summary.json",
+              "SHA256": "ef5b973ce41e84df8713cfff64cacc9484c24557c22234a4adb371c2215d6de8",
+              "Bytes": 604
+            },
+            "NUnitXml": {
+              "Path": "tests/.work/pester/5f04ce539f5b48828fd400e50ee97070/results.xml",
+              "SHA256": "15ff3c56ae48ef63f9910246834ba090cc1b494e5c8523f9a03998a6f5e68234",
+              "Bytes": 10901
+            },
+            "Stdout": {
+              "Path": "tests/.work/T17-C1-ps51/Launcher.txt",
+              "SHA256": "c6328f188445ba6c0328a3699fc9e472dac98484e67994bf9d9b8bf48c256be9",
+              "Bytes": 3366
+            },
+            "Stderr": {
+              "Path": "tests/.work/T17-C1-ps51/Launcher.stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            "Command": [
+              "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+              "-NoProfile",
+              "-ExecutionPolicy",
+              "RemoteSigned",
+              "-File",
+              "<REPO>\\tools\\test\\Invoke-Tests.ps1",
+              "-PesterModulePath",
+              "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1",
+              "-Tier",
+              "Launcher"
+            ]
+          },
+          {
+            "Tier": "LauncherNative",
+            "Passed": 2,
+            "BadCounts": 0,
+            "EvidenceClass": "windows-cmd-actual-batch-entry-real-pdftk",
+            "Summary": {
+              "Path": "tests/.work/pester/58bd48555a924c939c32617ccdc91c64/summary.json",
+              "SHA256": "d525540ba49577dfbf734d882d2315e1b0e4f569c04529c03847bd2803fe9eba",
+              "Bytes": 600
+            },
+            "NUnitXml": {
+              "Path": "tests/.work/pester/58bd48555a924c939c32617ccdc91c64/results.xml",
+              "SHA256": "efec169c56eaf756a4a5f224afcdd1a93811e4512f034ceaded8cbbeb1d55602",
+              "Bytes": 2271
+            },
+            "Stdout": {
+              "Path": "tests/.work/T17-C1-ps51/LauncherNative.txt",
+              "SHA256": "8cd4fb7d53b517319a7de26b9af0b178f64f2e5c7823acbeaf65230a15e6c29f",
+              "Bytes": 1275
+            },
+            "Stderr": {
+              "Path": "tests/.work/T17-C1-ps51/LauncherNative.stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            "Command": [
+              "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+              "-NoProfile",
+              "-ExecutionPolicy",
+              "RemoteSigned",
+              "-File",
+              "<REPO>\\tools\\test\\Invoke-Tests.ps1",
+              "-PesterModulePath",
+              "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1",
+              "-Tier",
+              "LauncherNative",
+              "-PdftkPath",
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe"
+            ]
+          },
+          {
+            "Tier": "FaultIO",
+            "Passed": 32,
+            "BadCounts": 0,
+            "EvidenceClass": "unit-controlled-IO-logging-outcomes-and-real-file-locks",
+            "Summary": {
+              "Path": "tests/.work/pester/4b217e19e34940b09c999c0ee50b3e1d/summary.json",
+              "SHA256": "da39027f04ec1d51304888df3a106384d34734f9ad2a4b317d41268c5f9126fd",
+              "Bytes": 609
+            },
+            "NUnitXml": {
+              "Path": "tests/.work/pester/4b217e19e34940b09c999c0ee50b3e1d/results.xml",
+              "SHA256": "118d24dc85b201a92d7a71e0b51198816a5f138157965284861357a022c041d3",
+              "Bytes": 17589
+            },
+            "Stdout": {
+              "Path": "tests/.work/T17-C1-ps51/FaultIO.txt",
+              "SHA256": "66c3ba814dd53dcf5c72c31d9271292e4edf54739b2bf82d0abaf765cdf5f9ee",
+              "Bytes": 91367
+            },
+            "Stderr": {
+              "Path": "tests/.work/T17-C1-ps51/FaultIO.stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            "Command": [
+              "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+              "-NoProfile",
+              "-ExecutionPolicy",
+              "RemoteSigned",
+              "-File",
+              "<REPO>\\tools\\test\\Invoke-Tests.ps1",
+              "-PesterModulePath",
+              "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1",
+              "-Tier",
+              "FaultIO"
+            ]
+          },
+          {
+            "Tier": "FaultRecovery",
+            "Passed": 14,
+            "BadCounts": 0,
+            "EvidenceClass": "windows-real-engines-environment-and-controlled-owned-native-cancellation",
+            "Summary": {
+              "Path": "tests/.work/pester/22a88cef7210445b899954fe9ea36cb7/summary.json",
+              "SHA256": "8dcec682fce26e2dfff7762db76ef5ace2b9581b9dd94ece55e462fff3064a5a",
+              "Bytes": 897
+            },
+            "NUnitXml": {
+              "Path": "tests/.work/pester/22a88cef7210445b899954fe9ea36cb7/results.xml",
+              "SHA256": "1269443bb992ec0e66e8542857442dc2bcffaf8e0cf14845c329fa757c818450",
+              "Bytes": 9031
+            },
+            "Stdout": {
+              "Path": "tests/.work/T17-C1-ps51/FaultRecovery.txt",
+              "SHA256": "cb09f39a20d2c225e4225aa732ff161a0af1a1b6bd8893800ed2651471def535",
+              "Bytes": 2899
+            },
+            "Stderr": {
+              "Path": "tests/.work/T17-C1-ps51/FaultRecovery.stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            "Command": [
+              "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+              "-NoProfile",
+              "-ExecutionPolicy",
+              "RemoteSigned",
+              "-File",
+              "<REPO>\\tools\\test\\Invoke-Tests.ps1",
+              "-PesterModulePath",
+              "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1",
+              "-Tier",
+              "FaultRecovery",
+              "-PdftkPath",
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe",
+              "-GhostscriptPath",
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-gs-e84c278f46724e9a97dd8dbcdbb8d66f\\ghostscript-10.08.0-x64\\bin\\gswin64c.exe",
+              "-PythonPath",
+              "<USERPROFILE>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe"
+            ]
+          }
+        ]
+      },
+      {
+        "Shell": "ps7",
+        "Version": "7.6.6",
+        "Edition": "Core",
+        "Passed": 579,
+        "BadCounts": 0,
+        "Collector": {
+          "Path": "tests/.work/T17-C1-ps7/collector.json",
+          "SHA256": "b723e9ee50a81017a842924227974817ddd922028c3f11b857d476e401eec387",
+          "Bytes": 1517
+        },
+        "Aggregate": {
+          "Path": "tests/.work/T17-C1-ps7/aggregate.json",
+          "SHA256": "e30ee03c7cff6fdbab8da02cd167cd970b34348b53a5ee352db4f2ab89318cf2",
+          "Bytes": 513
+        },
+        "Runs": {
+          "Path": "tests/.work/T17-C1-ps7/runs.json",
+          "SHA256": "895af8ca1028bba9e20e31996fa47d7b1e3245b5263ed53035e585f011ae6e93",
+          "Bytes": 33448
+        },
+        "Reports": [
+          {
+            "Tier": "Unit",
+            "Passed": 335,
+            "BadCounts": 0,
+            "EvidenceClass": "unit-controlled-process-and-filesystem",
+            "Summary": {
+              "Path": "tests/.work/pester/051ff900a35944eca6c59cd4d7df0e5b/summary.json",
+              "SHA256": "2ee3170c09a494cb925f7a1c24c81f1a9e7b1718e612d790977890091fdfe7b6",
+              "Bytes": 525
+            },
+            "NUnitXml": {
+              "Path": "tests/.work/pester/051ff900a35944eca6c59cd4d7df0e5b/results.xml",
+              "SHA256": "a29bfcecb3c9fba9a4baa7fc6541ddb678c3f5c7e4f7daca1d02084af02b5a5d",
+              "Bytes": 146268
+            },
+            "Stdout": {
+              "Path": "tests/.work/T17-C1-ps7/Unit.txt",
+              "SHA256": "a67a736c3df175c308c3de4f26814d61dfca9229019c88c9f0348de1845a59c4",
+              "Bytes": 31071
+            },
+            "Stderr": {
+              "Path": "tests/.work/T17-C1-ps7/Unit.stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            "Command": [
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+              "-NoProfile",
+              "-ExecutionPolicy",
+              "RemoteSigned",
+              "-File",
+              "<REPO>\\tools\\test\\Invoke-Tests.ps1",
+              "-PesterModulePath",
+              "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1",
+              "-Tier",
+              "Unit"
+            ]
+          },
+          {
+            "Tier": "SizeReporting",
+            "Passed": 32,
+            "BadCounts": 0,
+            "EvidenceClass": "unit-numeric-size-reporting-and-controlled-entry-decisions",
+            "Summary": {
+              "Path": "tests/.work/pester/f2cfa213b0ff4cc3948b09c854548e5d/summary.json",
+              "SHA256": "ab708577963f18cc578a0bba8d72f2c049282f250b576d34509e5c82958a876a",
+              "Bytes": 552
+            },
+            "NUnitXml": {
+              "Path": "tests/.work/pester/f2cfa213b0ff4cc3948b09c854548e5d/results.xml",
+              "SHA256": "b9c57a2d6c359b709da49823b69a636cc0bdc28287836a77bc9ba382548aa073",
+              "Bytes": 13690
+            },
+            "Stdout": {
+              "Path": "tests/.work/T17-C1-ps7/SizeReporting.txt",
+              "SHA256": "025931f515ae3c2dc68474318740f9ec4a2b34523dfe274ec69f0e81235d067a",
+              "Bytes": 140400
+            },
+            "Stderr": {
+              "Path": "tests/.work/T17-C1-ps7/SizeReporting.stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            "Command": [
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+              "-NoProfile",
+              "-ExecutionPolicy",
+              "RemoteSigned",
+              "-File",
+              "<REPO>\\tools\\test\\Invoke-Tests.ps1",
+              "-PesterModulePath",
+              "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1",
+              "-Tier",
+              "SizeReporting"
+            ]
+          },
+          {
+            "Tier": "SizeReportingNative",
+            "Passed": 11,
+            "BadCounts": 0,
+            "EvidenceClass": "windows-real-entry-size-accounting-and-controlled-equal-size-boundary; visual-manual-observations-separate",
+            "Summary": {
+              "Path": "tests/.work/pester/ca6ee503bfe249048338ce6179aead69/summary.json",
+              "SHA256": "82d73b2b87188305647c5f89801a5d79d33a5425c2213c0ac0044dd74eb8744f",
+              "Bytes": 606
+            },
+            "NUnitXml": {
+              "Path": "tests/.work/pester/ca6ee503bfe249048338ce6179aead69/results.xml",
+              "SHA256": "273c86dc703033d9bc158a6fefd7ccfc742f80ea55ca24c8d89f684b598aeeda",
+              "Bytes": 6949
+            },
+            "Stdout": {
+              "Path": "tests/.work/T17-C1-ps7/SizeReportingNative.txt",
+              "SHA256": "364a3637e71193f67bd7bce8aace94efc4da8f6490000e42e0f3bf85e7e599df",
+              "Bytes": 2394
+            },
+            "Stderr": {
+              "Path": "tests/.work/T17-C1-ps7/SizeReportingNative.stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            "Command": [
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+              "-NoProfile",
+              "-ExecutionPolicy",
+              "RemoteSigned",
+              "-File",
+              "<REPO>\\tools\\test\\Invoke-Tests.ps1",
+              "-PesterModulePath",
+              "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1",
+              "-Tier",
+              "SizeReportingNative",
+              "-PdftkPath",
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe",
+              "-GhostscriptPath",
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-gs-e84c278f46724e9a97dd8dbcdbb8d66f\\ghostscript-10.08.0-x64\\bin\\gswin64c.exe",
+              "-PythonPath",
+              "<USERPROFILE>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe"
+            ]
+          },
+          {
+            "Tier": "Parameters",
+            "Passed": 31,
+            "BadCounts": 0,
+            "EvidenceClass": "unit-actual-parameter-binding-and-controlled-entry-native-decisions",
+            "Summary": {
+              "Path": "tests/.work/pester/9617d38b603a47eab3106d48e7301f03/summary.json",
+              "SHA256": "9cbe4fd5d2963ac868d85c6ebff5ec8a462ffb17a6d0d096c2c61f23e6eac30b",
+              "Bytes": 558
+            },
+            "NUnitXml": {
+              "Path": "tests/.work/pester/9617d38b603a47eab3106d48e7301f03/results.xml",
+              "SHA256": "f51d973412d2c44656e7255c70b23e7a14e7659a397af0d8c801a1bede712660",
+              "Bytes": 16382
+            },
+            "Stdout": {
+              "Path": "tests/.work/T17-C1-ps7/Parameters.txt",
+              "SHA256": "9c26e266af641fd6c59c534c1a327bdf32ca6165445e3e4c20b62ef11a8e7ea6",
+              "Bytes": 135669
+            },
+            "Stderr": {
+              "Path": "tests/.work/T17-C1-ps7/Parameters.stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            "Command": [
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+              "-NoProfile",
+              "-ExecutionPolicy",
+              "RemoteSigned",
+              "-File",
+              "<REPO>\\tools\\test\\Invoke-Tests.ps1",
+              "-PesterModulePath",
+              "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1",
+              "-Tier",
+              "Parameters"
+            ]
+          },
+          {
+            "Tier": "ParametersNative",
+            "Passed": 9,
+            "BadCounts": 0,
+            "EvidenceClass": "windows-real-entry-preset-and-defaults-actual-cmd-batch-delivery-not-Explorer",
+            "Summary": {
+              "Path": "tests/.work/pester/fe60223c70ec4c629ddfc21a39ddb890/summary.json",
+              "SHA256": "7a99b71846ecdd633311faebcf3e7263a4a033a5f5cae44d5f198bdf4af8531f",
+              "Bytes": 572
+            },
+            "NUnitXml": {
+              "Path": "tests/.work/pester/fe60223c70ec4c629ddfc21a39ddb890/results.xml",
+              "SHA256": "c6e3d25164dd2ddb84977a1f49ea78fa42078bce0b93628d68bed1c28f34c390",
+              "Bytes": 6411
+            },
+            "Stdout": {
+              "Path": "tests/.work/T17-C1-ps7/ParametersNative.txt",
+              "SHA256": "ccfa17d47553195b755298f05da60e05c188e10fd0ceba2b907343c0dec8c3cd",
+              "Bytes": 1998
+            },
+            "Stderr": {
+              "Path": "tests/.work/T17-C1-ps7/ParametersNative.stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            "Command": [
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+              "-NoProfile",
+              "-ExecutionPolicy",
+              "RemoteSigned",
+              "-File",
+              "<REPO>\\tools\\test\\Invoke-Tests.ps1",
+              "-PesterModulePath",
+              "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1",
+              "-Tier",
+              "ParametersNative",
+              "-PdftkPath",
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe",
+              "-GhostscriptPath",
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-gs-e84c278f46724e9a97dd8dbcdbb8d66f\\ghostscript-10.08.0-x64\\bin\\gswin64c.exe",
+              "-PythonPath",
+              "<USERPROFILE>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe"
+            ]
+          },
+          {
+            "Tier": "EmailOutcome",
+            "Passed": 11,
+            "BadCounts": 0,
+            "EvidenceClass": "windows-real-pdftk-gs-email-outcomes-actual-batch-and-controlled-fault-scheduling",
+            "Summary": {
+              "Path": "tests/.work/pester/e44b2e8d092349ad91810819c074a65e/summary.json",
+              "SHA256": "46463ca58ae7129c2a65bd821e4c104a49843cab117b9c1fc6f9ec2c18d7cb24",
+              "Bytes": 574
+            },
+            "NUnitXml": {
+              "Path": "tests/.work/pester/e44b2e8d092349ad91810819c074a65e/results.xml",
+              "SHA256": "19e622b9f6adda413e3a66791d62be5f03928516193ed9a1e4fb592a6ee56b61",
+              "Bytes": 6600
+            },
+            "Stdout": {
+              "Path": "tests/.work/T17-C1-ps7/EmailOutcome.txt",
+              "SHA256": "3fd4d7e6d1752dfc9885dc07b0352ccf5befe22a29b833bfd4c7b72b4609700f",
+              "Bytes": 2335
+            },
+            "Stderr": {
+              "Path": "tests/.work/T17-C1-ps7/EmailOutcome.stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            "Command": [
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+              "-NoProfile",
+              "-ExecutionPolicy",
+              "RemoteSigned",
+              "-File",
+              "<REPO>\\tools\\test\\Invoke-Tests.ps1",
+              "-PesterModulePath",
+              "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1",
+              "-Tier",
+              "EmailOutcome",
+              "-PdftkPath",
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe",
+              "-GhostscriptPath",
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-gs-e84c278f46724e9a97dd8dbcdbb8d66f\\ghostscript-10.08.0-x64\\bin\\gswin64c.exe",
+              "-PythonPath",
+              "<USERPROFILE>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe"
+            ]
+          },
+          {
+            "Tier": "MasterValidation",
+            "Passed": 7,
+            "BadCounts": 0,
+            "EvidenceClass": "windows-real-pdftk-master-validation-entry-and-independent-pdfium-order-rotation",
+            "Summary": {
+              "Path": "tests/.work/pester/1286a13196b84498bb8f0922e492ca6e/summary.json",
+              "SHA256": "5efe166cbb32fe8d487b1145c25e5e9b6dc6a0e2a6afd17249fed8a233a99e26",
+              "Bytes": 575
+            },
+            "NUnitXml": {
+              "Path": "tests/.work/pester/1286a13196b84498bb8f0922e492ca6e/results.xml",
+              "SHA256": "f21596698299005ceb7de57fd694b1a1f4390e205c5e88272d3886fd99a14919",
+              "Bytes": 5290
+            },
+            "Stdout": {
+              "Path": "tests/.work/T17-C1-ps7/MasterValidation.txt",
+              "SHA256": "072734d917ea76cb9258bd901f29dea6038406878e6d337a50c6e999830c4339",
+              "Bytes": 1973
+            },
+            "Stderr": {
+              "Path": "tests/.work/T17-C1-ps7/MasterValidation.stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            "Command": [
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+              "-NoProfile",
+              "-ExecutionPolicy",
+              "RemoteSigned",
+              "-File",
+              "<REPO>\\tools\\test\\Invoke-Tests.ps1",
+              "-PesterModulePath",
+              "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1",
+              "-Tier",
+              "MasterValidation",
+              "-PdftkPath",
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe",
+              "-PythonPath",
+              "<USERPROFILE>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe"
+            ]
+          },
+          {
+            "Tier": "Staging",
+            "Passed": 9,
+            "BadCounts": 0,
+            "EvidenceClass": "windows-real-pdftk-gs-staging-publication-controlled-scheduling-and-filesystem",
+            "Summary": {
+              "Path": "tests/.work/pester/ddb48895e56b4058a164583ec09da6c6/summary.json",
+              "SHA256": "18d9521e6d39b63fdfb202474b5c2d678245d6e0502b1e5ffed14a6b6866a697",
+              "Bytes": 564
+            },
+            "NUnitXml": {
+              "Path": "tests/.work/pester/ddb48895e56b4058a164583ec09da6c6/results.xml",
+              "SHA256": "61ea8629b8dd1e4a85c8a924c51d75b7113a499ba17deaa7036a2c240f068474",
+              "Bytes": 6499
+            },
+            "Stdout": {
+              "Path": "tests/.work/T17-C1-ps7/Staging.txt",
+              "SHA256": "6c4d73ccb860ded81d28bdd8997157f5b294569b448138fd9310484b0f0da4ae",
+              "Bytes": 2232
+            },
+            "Stderr": {
+              "Path": "tests/.work/T17-C1-ps7/Staging.stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            "Command": [
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+              "-NoProfile",
+              "-ExecutionPolicy",
+              "RemoteSigned",
+              "-File",
+              "<REPO>\\tools\\test\\Invoke-Tests.ps1",
+              "-PesterModulePath",
+              "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1",
+              "-Tier",
+              "Staging",
+              "-PdftkPath",
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe",
+              "-GhostscriptPath",
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-gs-e84c278f46724e9a97dd8dbcdbb8d66f\\ghostscript-10.08.0-x64\\bin\\gswin64c.exe"
+            ]
+          },
+          {
+            "Tier": "InputPreflight",
+            "Passed": 22,
+            "BadCounts": 0,
+            "EvidenceClass": "windows-real-pdftk-input-preflight-and-independent-pdfium-order",
+            "Summary": {
+              "Path": "tests/.work/pester/6c6d8cd24cd9455c99cf02f4a730bb92/summary.json",
+              "SHA256": "1f0ef3ad7827385c716302ed4a6c1657da50b531e5efbe6e849bdb9440b5c1fa",
+              "Bytes": 558
+            },
+            "NUnitXml": {
+              "Path": "tests/.work/pester/6c6d8cd24cd9455c99cf02f4a730bb92/results.xml",
+              "SHA256": "6183178cb7db503b59ca1992d8a22855e7436a6679403b6e53abee7700fd203c",
+              "Bytes": 11155
+            },
+            "Stdout": {
+              "Path": "tests/.work/T17-C1-ps7/InputPreflight.txt",
+              "SHA256": "d82c516cfde785af0b9e04a1d45ac7c81adab57a4681eae3cd41025c16327639",
+              "Bytes": 3443
+            },
+            "Stderr": {
+              "Path": "tests/.work/T17-C1-ps7/InputPreflight.stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            "Command": [
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+              "-NoProfile",
+              "-ExecutionPolicy",
+              "RemoteSigned",
+              "-File",
+              "<REPO>\\tools\\test\\Invoke-Tests.ps1",
+              "-PesterModulePath",
+              "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1",
+              "-Tier",
+              "InputPreflight",
+              "-PdftkPath",
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe",
+              "-GhostscriptPath",
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-gs-e84c278f46724e9a97dd8dbcdbb8d66f\\ghostscript-10.08.0-x64\\bin\\gswin64c.exe",
+              "-PythonPath",
+              "<USERPROFILE>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe"
+            ]
+          },
+          {
+            "Tier": "Destination",
+            "Passed": 15,
+            "BadCounts": 0,
+            "EvidenceClass": "windows-real-entry-destination-identity-ACL-junction-concurrency",
+            "Summary": {
+              "Path": "tests/.work/pester/27aac530ce214df1b0106de708ce7f61/summary.json",
+              "SHA256": "96cf4b98f00475df8269f6e8938338cf09ceb722898411f3787dc936bb019c95",
+              "Bytes": 556
+            },
+            "NUnitXml": {
+              "Path": "tests/.work/pester/27aac530ce214df1b0106de708ce7f61/results.xml",
+              "SHA256": "93b1126b0156b092ccd415d8986b7f202e47093d2a666eace77dda8a85576518",
+              "Bytes": 9292
+            },
+            "Stdout": {
+              "Path": "tests/.work/T17-C1-ps7/Destination.txt",
+              "SHA256": "77af8ac69225b86d89dfb1e2778ecdd9cccc0b10c2684979237a29049963c0e0",
+              "Bytes": 2813
+            },
+            "Stderr": {
+              "Path": "tests/.work/T17-C1-ps7/Destination.stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            "Command": [
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+              "-NoProfile",
+              "-ExecutionPolicy",
+              "RemoteSigned",
+              "-File",
+              "<REPO>\\tools\\test\\Invoke-Tests.ps1",
+              "-PesterModulePath",
+              "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1",
+              "-Tier",
+              "Destination",
+              "-PdftkPath",
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe",
+              "-GhostscriptPath",
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-gs-e84c278f46724e9a97dd8dbcdbb8d66f\\ghostscript-10.08.0-x64\\bin\\gswin64c.exe"
+            ]
+          },
+          {
+            "Tier": "ToolInvocation",
+            "Passed": 12,
+            "BadCounts": 0,
+            "EvidenceClass": "unit-controlled-native-job-and-filesystem",
+            "Summary": {
+              "Path": "tests/.work/pester/0d7eeb56594741d9a774a61d35db8698/summary.json",
+              "SHA256": "89de10150115f48a0a400c52fb2289ac39c828d1f47a332995a337d41bb0fdb0",
+              "Bytes": 536
+            },
+            "NUnitXml": {
+              "Path": "tests/.work/pester/0d7eeb56594741d9a774a61d35db8698/results.xml",
+              "SHA256": "21ecacda2c0ae8b1f9c18080c2c74cc22e60e73ba60f0bd521dcd5eaebd9f3a2",
+              "Bytes": 7810
+            },
+            "Stdout": {
+              "Path": "tests/.work/T17-C1-ps7/ToolInvocation.txt",
+              "SHA256": "cf8cf1aefc1d5120f1897440e299c60899079b46b574bce5820abe074312bc52",
+              "Bytes": 2160
+            },
+            "Stderr": {
+              "Path": "tests/.work/T17-C1-ps7/ToolInvocation.stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            "Command": [
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+              "-NoProfile",
+              "-ExecutionPolicy",
+              "RemoteSigned",
+              "-File",
+              "<REPO>\\tools\\test\\Invoke-Tests.ps1",
+              "-PesterModulePath",
+              "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1",
+              "-Tier",
+              "ToolInvocation"
+            ]
+          },
+          {
+            "Tier": "GhostscriptPaths",
+            "Passed": 13,
+            "BadCounts": 0,
+            "EvidenceClass": "windows-real-tool-path-prompt-integration",
+            "Summary": {
+              "Path": "tests/.work/pester/b30b3a54b7e24b4c890b138950d099e8/summary.json",
+              "SHA256": "667a8b4bb7780f61cc3c6fde9a649101d3c2b3f9e309a5e01c41f303effef8c5",
+              "Bytes": 538
+            },
+            "NUnitXml": {
+              "Path": "tests/.work/pester/b30b3a54b7e24b4c890b138950d099e8/results.xml",
+              "SHA256": "0710e2b2fa9d91a154145c69ce2a0c2314e23c14ba75494389068ca6a6d8f06e",
+              "Bytes": 7827
+            },
+            "Stdout": {
+              "Path": "tests/.work/T17-C1-ps7/GhostscriptPaths.txt",
+              "SHA256": "a2b43256e46c4eca3ad239b6f27c91c73154a5f2e70f8ebc3a69481f786bdc68",
+              "Bytes": 2778
+            },
+            "Stderr": {
+              "Path": "tests/.work/T17-C1-ps7/GhostscriptPaths.stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            "Command": [
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+              "-NoProfile",
+              "-ExecutionPolicy",
+              "RemoteSigned",
+              "-File",
+              "<REPO>\\tools\\test\\Invoke-Tests.ps1",
+              "-PesterModulePath",
+              "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1",
+              "-Tier",
+              "GhostscriptPaths",
+              "-PdftkPath",
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe",
+              "-GhostscriptPath",
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-gs-e84c278f46724e9a97dd8dbcdbb8d66f\\ghostscript-10.08.0-x64\\bin\\gswin64c.exe"
+            ]
+          },
+          {
+            "Tier": "Launcher",
+            "Passed": 24,
+            "BadCounts": 0,
+            "EvidenceClass": "windows-cmd-actual-batch-controlled-ps51-receiver",
+            "Summary": {
+              "Path": "tests/.work/pester/bd427f65581a46499ab088ce5f902de8/summary.json",
+              "SHA256": "72cfd4c36382003cec54987d0d2037d8218071b3a9b0832855c28ba0838c22f5",
+              "Bytes": 538
+            },
+            "NUnitXml": {
+              "Path": "tests/.work/pester/bd427f65581a46499ab088ce5f902de8/results.xml",
+              "SHA256": "3314357aa8c8c575741e36a23c3a3f3c7655efc29b868b7d2c0b629f6793e93f",
+              "Bytes": 10890
+            },
+            "Stdout": {
+              "Path": "tests/.work/T17-C1-ps7/Launcher.txt",
+              "SHA256": "1a5014dfc6039295dee973883666e2ebe4fd0c8f446512f9cc45d428f583e704",
+              "Bytes": 3339
+            },
+            "Stderr": {
+              "Path": "tests/.work/T17-C1-ps7/Launcher.stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            "Command": [
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+              "-NoProfile",
+              "-ExecutionPolicy",
+              "RemoteSigned",
+              "-File",
+              "<REPO>\\tools\\test\\Invoke-Tests.ps1",
+              "-PesterModulePath",
+              "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1",
+              "-Tier",
+              "Launcher"
+            ]
+          },
+          {
+            "Tier": "LauncherNative",
+            "Passed": 2,
+            "BadCounts": 0,
+            "EvidenceClass": "windows-cmd-actual-batch-entry-real-pdftk",
+            "Summary": {
+              "Path": "tests/.work/pester/c7e1222a7d57478c932aeb9cb9b4fb4f/summary.json",
+              "SHA256": "34eceeb8ffe1fbed9a91d8c6c1ec94f2f6d8a120a7cf42969df234ba11057609",
+              "Bytes": 534
+            },
+            "NUnitXml": {
+              "Path": "tests/.work/pester/c7e1222a7d57478c932aeb9cb9b4fb4f/results.xml",
+              "SHA256": "8398e96be28abb6e81690789ab96ede9440a51c7cbee3df0ba4913cfe02a54fa",
+              "Bytes": 2262
+            },
+            "Stdout": {
+              "Path": "tests/.work/T17-C1-ps7/LauncherNative.txt",
+              "SHA256": "e867f80b106a2c16875bf70792c0542dd663c380b23e2a9bfc3e681a3a887257",
+              "Bytes": 1224
+            },
+            "Stderr": {
+              "Path": "tests/.work/T17-C1-ps7/LauncherNative.stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            "Command": [
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+              "-NoProfile",
+              "-ExecutionPolicy",
+              "RemoteSigned",
+              "-File",
+              "<REPO>\\tools\\test\\Invoke-Tests.ps1",
+              "-PesterModulePath",
+              "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1",
+              "-Tier",
+              "LauncherNative",
+              "-PdftkPath",
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe"
+            ]
+          },
+          {
+            "Tier": "FaultIO",
+            "Passed": 32,
+            "BadCounts": 0,
+            "EvidenceClass": "unit-controlled-IO-logging-outcomes-and-real-file-locks",
+            "Summary": {
+              "Path": "tests/.work/pester/ac747c375659469b894b0c805814ca3b/summary.json",
+              "SHA256": "4a4aa3dac431670c183eafff436b764e3157d10c346ed744ba82700af6185989",
+              "Bytes": 543
+            },
+            "NUnitXml": {
+              "Path": "tests/.work/pester/ac747c375659469b894b0c805814ca3b/results.xml",
+              "SHA256": "76916feef8be12bde63a4ec2eac5a3214a076454d517e0f644bb5dd61f03968f",
+              "Bytes": 17591
+            },
+            "Stdout": {
+              "Path": "tests/.work/T17-C1-ps7/FaultIO.txt",
+              "SHA256": "abccf72c1a1604c034c62bd00c28721178572156a533dbf7ac8c1677dc010486",
+              "Bytes": 91250
+            },
+            "Stderr": {
+              "Path": "tests/.work/T17-C1-ps7/FaultIO.stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            "Command": [
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+              "-NoProfile",
+              "-ExecutionPolicy",
+              "RemoteSigned",
+              "-File",
+              "<REPO>\\tools\\test\\Invoke-Tests.ps1",
+              "-PesterModulePath",
+              "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1",
+              "-Tier",
+              "FaultIO"
+            ]
+          },
+          {
+            "Tier": "FaultRecovery",
+            "Passed": 14,
+            "BadCounts": 0,
+            "EvidenceClass": "windows-real-engines-environment-and-controlled-owned-native-cancellation",
+            "Summary": {
+              "Path": "tests/.work/pester/9bac88382dc74ce5b054f8774c4b8ca5/summary.json",
+              "SHA256": "ceae21906792d5de5e10c52eb1d0e066003b865fe5a0d7d36afddd5cf4a7d69b",
+              "Bytes": 825
+            },
+            "NUnitXml": {
+              "Path": "tests/.work/pester/9bac88382dc74ce5b054f8774c4b8ca5/results.xml",
+              "SHA256": "f09e2dbd22081e1f6eed9d76a3e028a2b63110608bc79f0192dcfed4cc1908be",
+              "Bytes": 9024
+            },
+            "Stdout": {
+              "Path": "tests/.work/T17-C1-ps7/FaultRecovery.txt",
+              "SHA256": "b793965c8e59a185b75fd46f9f4b163c984b140e59a6ed0319d8d16139f51dbf",
+              "Bytes": 2853
+            },
+            "Stderr": {
+              "Path": "tests/.work/T17-C1-ps7/FaultRecovery.stderr.txt",
+              "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+              "Bytes": 0
+            },
+            "Command": [
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+              "-NoProfile",
+              "-ExecutionPolicy",
+              "RemoteSigned",
+              "-File",
+              "<REPO>\\tools\\test\\Invoke-Tests.ps1",
+              "-PesterModulePath",
+              "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1",
+              "-Tier",
+              "FaultRecovery",
+              "-PdftkPath",
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe",
+              "-GhostscriptPath",
+              "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-gs-e84c278f46724e9a97dd8dbcdbb8d66f\\ghostscript-10.08.0-x64\\bin\\gswin64c.exe",
+              "-PythonPath",
+              "<USERPROFILE>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe"
+            ]
+          }
+        ]
+      }
+    ],
+    "NewSizeReportingUnitRawCheck": [
+      {
+        "Shell": "ps51",
+        "RawObservationFile": {
+          "Path": "tests/.work/T17-size-reporting/909c2a299e8a46c89179b2364f9719a3/size-reporting-observations.json",
+          "SHA256": "b27e0752e85cf0f58d8982c2bbb90c3f610734e3fec8a4aadf9ad373e1f754eb",
+          "Bytes": 246764
+        },
+        "NumericDecisions": 25,
+        "ControlledEntries": 7,
+        "Passed": 32,
+        "IndependentCountAndReceiptBindingOnly": true,
+        "IndependentOwnTestDesignClaimed": false
+      },
+      {
+        "Shell": "ps7",
+        "RawObservationFile": {
+          "Path": "tests/.work/T17-size-reporting/0e0d6e6687444f6185ae2ea7bea9f833/size-reporting-observations.json",
+          "SHA256": "791bda91081af41e6d18f3a48b5de5c6cf81678c8867669071458b974cc704e4",
+          "Bytes": 163289
+        },
+        "NumericDecisions": 25,
+        "ControlledEntries": 7,
+        "Passed": 32,
+        "IndependentCountAndReceiptBindingOnly": true,
+        "IndependentOwnTestDesignClaimed": false
+      }
+    ]
+  },
+  "Checks": [
+    {
+      "Check": "Source review bound to exact clean C1",
+      "Passed": true
+    },
+    {
+      "Check": "Reviewed source remains unchanged: WinPDFMerge.ps1",
+      "Passed": true
+    },
+    {
+      "Check": "Reviewed source remains unchanged: src/WinPDFMerge.Helpers.ps1",
+      "Passed": true
+    },
+    {
+      "Check": "Reviewed source remains unchanged: tools/test/Invoke-Tests.ps1",
+      "Passed": true
+    },
+    {
+      "Check": "Reviewed source remains unchanged: README.md",
+      "Passed": true
+    },
+    {
+      "Check": "Reviewed source remains unchanged: docs/EMAIL_PRESETS.md",
+      "Passed": true
+    },
+    {
+      "Check": "Frozen16 tier counts compute579 each",
+      "Passed": true
+    },
+    {
+      "Check": "Clean driver identity/counts: ps51",
+      "Passed": true
+    },
+    {
+      "Check": "Clean collector identity and child-only environment scope: ps51",
+      "Passed": true
+    },
+    {
+      "Check": "Frozen counts and orchestration byte hashes: ps51",
+      "Passed": true
+    },
+    {
+      "Check": "All16 tiers uniquely represented: ps51",
+      "Passed": true
+    },
+    {
+      "Check": "Actual driver success and bounded capture: ps51/Unit",
+      "Passed": true
+    },
+    {
+      "Check": "Raw summary equals recorded driver summary: ps51/Unit",
+      "Passed": true
+    },
+    {
+      "Check": "Raw clean actual shell/Pester/policy metadata: ps51/Unit",
+      "Passed": true
+    },
+    {
+      "Check": "Raw passed/total and all bad counts: ps51/Unit",
+      "Passed": true
+    },
+    {
+      "Check": "Raw NUnit case count, successful execution and zero error categories: ps51/Unit",
+      "Passed": true
+    },
+    {
+      "Check": "Actual driver success and bounded capture: ps51/SizeReporting",
+      "Passed": true
+    },
+    {
+      "Check": "Raw summary equals recorded driver summary: ps51/SizeReporting",
+      "Passed": true
+    },
+    {
+      "Check": "Raw clean actual shell/Pester/policy metadata: ps51/SizeReporting",
+      "Passed": true
+    },
+    {
+      "Check": "Raw passed/total and all bad counts: ps51/SizeReporting",
+      "Passed": true
+    },
+    {
+      "Check": "Raw NUnit case count, successful execution and zero error categories: ps51/SizeReporting",
+      "Passed": true
+    },
+    {
+      "Check": "Exactly one32-observation unit marker: ps51",
+      "Passed": true
+    },
+    {
+      "Check": "New unit raw32-case numeric25/entry7 split: ps51",
+      "Passed": true
+    },
+    {
+      "Check": "Unit scopes accurately distinguish controls from PDF engines: ps51",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled source/foreign preservation: ps51/entry-published",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled copied entry uses reviewed C1 entry bytes: ps51/entry-published",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled final count follows explicit outcome: ps51/entry-published",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled owned final bytes/hash: ps51/entry-published/WinPDFMerge_source [x] ! &_20261008_094603_4fb0c44f14984454.pdf",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled owned final bytes/hash: ps51/entry-published/WinPDFMerge_source [x] ! &_20261008_094603_4fb0c44f14984454_email.pdf",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled receipt raw SHA: ps51/entry-published",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled source/foreign preservation: ps51/entry-equal",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled copied entry uses reviewed C1 entry bytes: ps51/entry-equal",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled final count follows explicit outcome: ps51/entry-equal",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled owned final bytes/hash: ps51/entry-equal/WinPDFMerge_source [x] ! &_20261008_094606_bfdb6002812748f7.pdf",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled receipt raw SHA: ps51/entry-equal",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled source/foreign preservation: ps51/entry-larger",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled copied entry uses reviewed C1 entry bytes: ps51/entry-larger",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled final count follows explicit outcome: ps51/entry-larger",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled owned final bytes/hash: ps51/entry-larger/WinPDFMerge_source [x] ! &_20261008_094608_ba0560f13d5742c5.pdf",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled receipt raw SHA: ps51/entry-larger",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled source/foreign preservation: ps51/entry-skipped",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled copied entry uses reviewed C1 entry bytes: ps51/entry-skipped",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled final count follows explicit outcome: ps51/entry-skipped",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled owned final bytes/hash: ps51/entry-skipped/WinPDFMerge_source [x] ! &_20261008_094611_9c76d15d10904ac5.pdf",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled receipt raw SHA: ps51/entry-skipped",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled source/foreign preservation: ps51/entry-unavailable",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled copied entry uses reviewed C1 entry bytes: ps51/entry-unavailable",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled final count follows explicit outcome: ps51/entry-unavailable",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled owned final bytes/hash: ps51/entry-unavailable/WinPDFMerge_source [x] ! &_20261008_094613_96eaf242290b46f8.pdf",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled receipt raw SHA: ps51/entry-unavailable",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled source/foreign preservation: ps51/entry-failed",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled copied entry uses reviewed C1 entry bytes: ps51/entry-failed",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled final count follows explicit outcome: ps51/entry-failed",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled owned final bytes/hash: ps51/entry-failed/WinPDFMerge_source [x] ! &_20261008_094616_fb6a7c53bbce4225.pdf",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled receipt raw SHA: ps51/entry-failed",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled source/foreign preservation: ps51/entry-log-failed",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled copied entry uses reviewed C1 entry bytes: ps51/entry-log-failed",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled final count follows explicit outcome: ps51/entry-log-failed",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled owned final bytes/hash: ps51/entry-log-failed/WinPDFMerge_source [x] ! &_20261008_094619_91acaf7f938d4d5f.pdf",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled owned final bytes/hash: ps51/entry-log-failed/WinPDFMerge_source [x] ! &_20261008_094619_91acaf7f938d4d5f_email.pdf",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled receipt raw SHA: ps51/entry-log-failed",
+      "Passed": true
+    },
+    {
+      "Check": "Actual driver success and bounded capture: ps51/SizeReportingNative",
+      "Passed": true
+    },
+    {
+      "Check": "Raw summary equals recorded driver summary: ps51/SizeReportingNative",
+      "Passed": true
+    },
+    {
+      "Check": "Raw clean actual shell/Pester/policy metadata: ps51/SizeReportingNative",
+      "Passed": true
+    },
+    {
+      "Check": "Raw passed/total and all bad counts: ps51/SizeReportingNative",
+      "Passed": true
+    },
+    {
+      "Check": "Raw NUnit case count, successful execution and zero error categories: ps51/SizeReportingNative",
+      "Passed": true
+    },
+    {
+      "Check": "Actual driver success and bounded capture: ps51/Parameters",
+      "Passed": true
+    },
+    {
+      "Check": "Raw summary equals recorded driver summary: ps51/Parameters",
+      "Passed": true
+    },
+    {
+      "Check": "Raw clean actual shell/Pester/policy metadata: ps51/Parameters",
+      "Passed": true
+    },
+    {
+      "Check": "Raw passed/total and all bad counts: ps51/Parameters",
+      "Passed": true
+    },
+    {
+      "Check": "Raw NUnit case count, successful execution and zero error categories: ps51/Parameters",
+      "Passed": true
+    },
+    {
+      "Check": "Actual driver success and bounded capture: ps51/ParametersNative",
+      "Passed": true
+    },
+    {
+      "Check": "Raw summary equals recorded driver summary: ps51/ParametersNative",
+      "Passed": true
+    },
+    {
+      "Check": "Raw clean actual shell/Pester/policy metadata: ps51/ParametersNative",
+      "Passed": true
+    },
+    {
+      "Check": "Raw passed/total and all bad counts: ps51/ParametersNative",
+      "Passed": true
+    },
+    {
+      "Check": "Raw NUnit case count, successful execution and zero error categories: ps51/ParametersNative",
+      "Passed": true
+    },
+    {
+      "Check": "Actual driver success and bounded capture: ps51/EmailOutcome",
+      "Passed": true
+    },
+    {
+      "Check": "Raw summary equals recorded driver summary: ps51/EmailOutcome",
+      "Passed": true
+    },
+    {
+      "Check": "Raw clean actual shell/Pester/policy metadata: ps51/EmailOutcome",
+      "Passed": true
+    },
+    {
+      "Check": "Raw passed/total and all bad counts: ps51/EmailOutcome",
+      "Passed": true
+    },
+    {
+      "Check": "Raw NUnit case count, successful execution and zero error categories: ps51/EmailOutcome",
+      "Passed": true
+    },
+    {
+      "Check": "Actual driver success and bounded capture: ps51/MasterValidation",
+      "Passed": true
+    },
+    {
+      "Check": "Raw summary equals recorded driver summary: ps51/MasterValidation",
+      "Passed": true
+    },
+    {
+      "Check": "Raw clean actual shell/Pester/policy metadata: ps51/MasterValidation",
+      "Passed": true
+    },
+    {
+      "Check": "Raw passed/total and all bad counts: ps51/MasterValidation",
+      "Passed": true
+    },
+    {
+      "Check": "Raw NUnit case count, successful execution and zero error categories: ps51/MasterValidation",
+      "Passed": true
+    },
+    {
+      "Check": "Actual driver success and bounded capture: ps51/Staging",
+      "Passed": true
+    },
+    {
+      "Check": "Raw summary equals recorded driver summary: ps51/Staging",
+      "Passed": true
+    },
+    {
+      "Check": "Raw clean actual shell/Pester/policy metadata: ps51/Staging",
+      "Passed": true
+    },
+    {
+      "Check": "Raw passed/total and all bad counts: ps51/Staging",
+      "Passed": true
+    },
+    {
+      "Check": "Raw NUnit case count, successful execution and zero error categories: ps51/Staging",
+      "Passed": true
+    },
+    {
+      "Check": "Actual driver success and bounded capture: ps51/InputPreflight",
+      "Passed": true
+    },
+    {
+      "Check": "Raw summary equals recorded driver summary: ps51/InputPreflight",
+      "Passed": true
+    },
+    {
+      "Check": "Raw clean actual shell/Pester/policy metadata: ps51/InputPreflight",
+      "Passed": true
+    },
+    {
+      "Check": "Raw passed/total and all bad counts: ps51/InputPreflight",
+      "Passed": true
+    },
+    {
+      "Check": "Raw NUnit case count, successful execution and zero error categories: ps51/InputPreflight",
+      "Passed": true
+    },
+    {
+      "Check": "Actual driver success and bounded capture: ps51/Destination",
+      "Passed": true
+    },
+    {
+      "Check": "Raw summary equals recorded driver summary: ps51/Destination",
+      "Passed": true
+    },
+    {
+      "Check": "Raw clean actual shell/Pester/policy metadata: ps51/Destination",
+      "Passed": true
+    },
+    {
+      "Check": "Raw passed/total and all bad counts: ps51/Destination",
+      "Passed": true
+    },
+    {
+      "Check": "Raw NUnit case count, successful execution and zero error categories: ps51/Destination",
+      "Passed": true
+    },
+    {
+      "Check": "Actual driver success and bounded capture: ps51/ToolInvocation",
+      "Passed": true
+    },
+    {
+      "Check": "Raw summary equals recorded driver summary: ps51/ToolInvocation",
+      "Passed": true
+    },
+    {
+      "Check": "Raw clean actual shell/Pester/policy metadata: ps51/ToolInvocation",
+      "Passed": true
+    },
+    {
+      "Check": "Raw passed/total and all bad counts: ps51/ToolInvocation",
+      "Passed": true
+    },
+    {
+      "Check": "Raw NUnit case count, successful execution and zero error categories: ps51/ToolInvocation",
+      "Passed": true
+    },
+    {
+      "Check": "Actual driver success and bounded capture: ps51/GhostscriptPaths",
+      "Passed": true
+    },
+    {
+      "Check": "Raw summary equals recorded driver summary: ps51/GhostscriptPaths",
+      "Passed": true
+    },
+    {
+      "Check": "Raw clean actual shell/Pester/policy metadata: ps51/GhostscriptPaths",
+      "Passed": true
+    },
+    {
+      "Check": "Raw passed/total and all bad counts: ps51/GhostscriptPaths",
+      "Passed": true
+    },
+    {
+      "Check": "Raw NUnit case count, successful execution and zero error categories: ps51/GhostscriptPaths",
+      "Passed": true
+    },
+    {
+      "Check": "Actual driver success and bounded capture: ps51/Launcher",
+      "Passed": true
+    },
+    {
+      "Check": "Raw summary equals recorded driver summary: ps51/Launcher",
+      "Passed": true
+    },
+    {
+      "Check": "Raw clean actual shell/Pester/policy metadata: ps51/Launcher",
+      "Passed": true
+    },
+    {
+      "Check": "Raw passed/total and all bad counts: ps51/Launcher",
+      "Passed": true
+    },
+    {
+      "Check": "Raw NUnit case count, successful execution and zero error categories: ps51/Launcher",
+      "Passed": true
+    },
+    {
+      "Check": "Actual driver success and bounded capture: ps51/LauncherNative",
+      "Passed": true
+    },
+    {
+      "Check": "Raw summary equals recorded driver summary: ps51/LauncherNative",
+      "Passed": true
+    },
+    {
+      "Check": "Raw clean actual shell/Pester/policy metadata: ps51/LauncherNative",
+      "Passed": true
+    },
+    {
+      "Check": "Raw passed/total and all bad counts: ps51/LauncherNative",
+      "Passed": true
+    },
+    {
+      "Check": "Raw NUnit case count, successful execution and zero error categories: ps51/LauncherNative",
+      "Passed": true
+    },
+    {
+      "Check": "Actual driver success and bounded capture: ps51/FaultIO",
+      "Passed": true
+    },
+    {
+      "Check": "Raw summary equals recorded driver summary: ps51/FaultIO",
+      "Passed": true
+    },
+    {
+      "Check": "Raw clean actual shell/Pester/policy metadata: ps51/FaultIO",
+      "Passed": true
+    },
+    {
+      "Check": "Raw passed/total and all bad counts: ps51/FaultIO",
+      "Passed": true
+    },
+    {
+      "Check": "Raw NUnit case count, successful execution and zero error categories: ps51/FaultIO",
+      "Passed": true
+    },
+    {
+      "Check": "Actual driver success and bounded capture: ps51/FaultRecovery",
+      "Passed": true
+    },
+    {
+      "Check": "Raw summary equals recorded driver summary: ps51/FaultRecovery",
+      "Passed": true
+    },
+    {
+      "Check": "Raw clean actual shell/Pester/policy metadata: ps51/FaultRecovery",
+      "Passed": true
+    },
+    {
+      "Check": "Raw passed/total and all bad counts: ps51/FaultRecovery",
+      "Passed": true
+    },
+    {
+      "Check": "Raw NUnit case count, successful execution and zero error categories: ps51/FaultRecovery",
+      "Passed": true
+    },
+    {
+      "Check": "Clean driver identity/counts: ps7",
+      "Passed": true
+    },
+    {
+      "Check": "Clean collector identity and child-only environment scope: ps7",
+      "Passed": true
+    },
+    {
+      "Check": "Frozen counts and orchestration byte hashes: ps7",
+      "Passed": true
+    },
+    {
+      "Check": "All16 tiers uniquely represented: ps7",
+      "Passed": true
+    },
+    {
+      "Check": "Actual driver success and bounded capture: ps7/Unit",
+      "Passed": true
+    },
+    {
+      "Check": "Raw summary equals recorded driver summary: ps7/Unit",
+      "Passed": true
+    },
+    {
+      "Check": "Raw clean actual shell/Pester/policy metadata: ps7/Unit",
+      "Passed": true
+    },
+    {
+      "Check": "Raw passed/total and all bad counts: ps7/Unit",
+      "Passed": true
+    },
+    {
+      "Check": "Raw NUnit case count, successful execution and zero error categories: ps7/Unit",
+      "Passed": true
+    },
+    {
+      "Check": "Actual driver success and bounded capture: ps7/SizeReporting",
+      "Passed": true
+    },
+    {
+      "Check": "Raw summary equals recorded driver summary: ps7/SizeReporting",
+      "Passed": true
+    },
+    {
+      "Check": "Raw clean actual shell/Pester/policy metadata: ps7/SizeReporting",
+      "Passed": true
+    },
+    {
+      "Check": "Raw passed/total and all bad counts: ps7/SizeReporting",
+      "Passed": true
+    },
+    {
+      "Check": "Raw NUnit case count, successful execution and zero error categories: ps7/SizeReporting",
+      "Passed": true
+    },
+    {
+      "Check": "Exactly one32-observation unit marker: ps7",
+      "Passed": true
+    },
+    {
+      "Check": "New unit raw32-case numeric25/entry7 split: ps7",
+      "Passed": true
+    },
+    {
+      "Check": "Unit scopes accurately distinguish controls from PDF engines: ps7",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled source/foreign preservation: ps7/entry-published",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled copied entry uses reviewed C1 entry bytes: ps7/entry-published",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled final count follows explicit outcome: ps7/entry-published",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled owned final bytes/hash: ps7/entry-published/WinPDFMerge_source [x] ! &_20261008_094606_0bfc8a4ee3014691_email.pdf",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled owned final bytes/hash: ps7/entry-published/WinPDFMerge_source [x] ! &_20261008_094606_0bfc8a4ee3014691.pdf",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled receipt raw SHA: ps7/entry-published",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled source/foreign preservation: ps7/entry-equal",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled copied entry uses reviewed C1 entry bytes: ps7/entry-equal",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled final count follows explicit outcome: ps7/entry-equal",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled owned final bytes/hash: ps7/entry-equal/WinPDFMerge_source [x] ! &_20261008_094609_eb0b14c227824823.pdf",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled receipt raw SHA: ps7/entry-equal",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled source/foreign preservation: ps7/entry-larger",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled copied entry uses reviewed C1 entry bytes: ps7/entry-larger",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled final count follows explicit outcome: ps7/entry-larger",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled owned final bytes/hash: ps7/entry-larger/WinPDFMerge_source [x] ! &_20261008_094611_a99efc98d4f14d92.pdf",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled receipt raw SHA: ps7/entry-larger",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled source/foreign preservation: ps7/entry-skipped",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled copied entry uses reviewed C1 entry bytes: ps7/entry-skipped",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled final count follows explicit outcome: ps7/entry-skipped",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled owned final bytes/hash: ps7/entry-skipped/WinPDFMerge_source [x] ! &_20261008_094614_49126272b9514def.pdf",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled receipt raw SHA: ps7/entry-skipped",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled source/foreign preservation: ps7/entry-unavailable",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled copied entry uses reviewed C1 entry bytes: ps7/entry-unavailable",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled final count follows explicit outcome: ps7/entry-unavailable",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled owned final bytes/hash: ps7/entry-unavailable/WinPDFMerge_source [x] ! &_20261008_094617_94a4aef2b47442e7.pdf",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled receipt raw SHA: ps7/entry-unavailable",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled source/foreign preservation: ps7/entry-failed",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled copied entry uses reviewed C1 entry bytes: ps7/entry-failed",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled final count follows explicit outcome: ps7/entry-failed",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled owned final bytes/hash: ps7/entry-failed/WinPDFMerge_source [x] ! &_20261008_094620_ef1e28bdfd3d4f56.pdf",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled receipt raw SHA: ps7/entry-failed",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled source/foreign preservation: ps7/entry-log-failed",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled copied entry uses reviewed C1 entry bytes: ps7/entry-log-failed",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled final count follows explicit outcome: ps7/entry-log-failed",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled owned final bytes/hash: ps7/entry-log-failed/WinPDFMerge_source [x] ! &_20261008_094622_707277a1f81144a7_email.pdf",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled owned final bytes/hash: ps7/entry-log-failed/WinPDFMerge_source [x] ! &_20261008_094622_707277a1f81144a7.pdf",
+      "Passed": true
+    },
+    {
+      "Check": "Controlled receipt raw SHA: ps7/entry-log-failed",
+      "Passed": true
+    },
+    {
+      "Check": "Actual driver success and bounded capture: ps7/SizeReportingNative",
+      "Passed": true
+    },
+    {
+      "Check": "Raw summary equals recorded driver summary: ps7/SizeReportingNative",
+      "Passed": true
+    },
+    {
+      "Check": "Raw clean actual shell/Pester/policy metadata: ps7/SizeReportingNative",
+      "Passed": true
+    },
+    {
+      "Check": "Raw passed/total and all bad counts: ps7/SizeReportingNative",
+      "Passed": true
+    },
+    {
+      "Check": "Raw NUnit case count, successful execution and zero error categories: ps7/SizeReportingNative",
+      "Passed": true
+    },
+    {
+      "Check": "Actual driver success and bounded capture: ps7/Parameters",
+      "Passed": true
+    },
+    {
+      "Check": "Raw summary equals recorded driver summary: ps7/Parameters",
+      "Passed": true
+    },
+    {
+      "Check": "Raw clean actual shell/Pester/policy metadata: ps7/Parameters",
+      "Passed": true
+    },
+    {
+      "Check": "Raw passed/total and all bad counts: ps7/Parameters",
+      "Passed": true
+    },
+    {
+      "Check": "Raw NUnit case count, successful execution and zero error categories: ps7/Parameters",
+      "Passed": true
+    },
+    {
+      "Check": "Actual driver success and bounded capture: ps7/ParametersNative",
+      "Passed": true
+    },
+    {
+      "Check": "Raw summary equals recorded driver summary: ps7/ParametersNative",
+      "Passed": true
+    },
+    {
+      "Check": "Raw clean actual shell/Pester/policy metadata: ps7/ParametersNative",
+      "Passed": true
+    },
+    {
+      "Check": "Raw passed/total and all bad counts: ps7/ParametersNative",
+      "Passed": true
+    },
+    {
+      "Check": "Raw NUnit case count, successful execution and zero error categories: ps7/ParametersNative",
+      "Passed": true
+    },
+    {
+      "Check": "Actual driver success and bounded capture: ps7/EmailOutcome",
+      "Passed": true
+    },
+    {
+      "Check": "Raw summary equals recorded driver summary: ps7/EmailOutcome",
+      "Passed": true
+    },
+    {
+      "Check": "Raw clean actual shell/Pester/policy metadata: ps7/EmailOutcome",
+      "Passed": true
+    },
+    {
+      "Check": "Raw passed/total and all bad counts: ps7/EmailOutcome",
+      "Passed": true
+    },
+    {
+      "Check": "Raw NUnit case count, successful execution and zero error categories: ps7/EmailOutcome",
+      "Passed": true
+    },
+    {
+      "Check": "Actual driver success and bounded capture: ps7/MasterValidation",
+      "Passed": true
+    },
+    {
+      "Check": "Raw summary equals recorded driver summary: ps7/MasterValidation",
+      "Passed": true
+    },
+    {
+      "Check": "Raw clean actual shell/Pester/policy metadata: ps7/MasterValidation",
+      "Passed": true
+    },
+    {
+      "Check": "Raw passed/total and all bad counts: ps7/MasterValidation",
+      "Passed": true
+    },
+    {
+      "Check": "Raw NUnit case count, successful execution and zero error categories: ps7/MasterValidation",
+      "Passed": true
+    },
+    {
+      "Check": "Actual driver success and bounded capture: ps7/Staging",
+      "Passed": true
+    },
+    {
+      "Check": "Raw summary equals recorded driver summary: ps7/Staging",
+      "Passed": true
+    },
+    {
+      "Check": "Raw clean actual shell/Pester/policy metadata: ps7/Staging",
+      "Passed": true
+    },
+    {
+      "Check": "Raw passed/total and all bad counts: ps7/Staging",
+      "Passed": true
+    },
+    {
+      "Check": "Raw NUnit case count, successful execution and zero error categories: ps7/Staging",
+      "Passed": true
+    },
+    {
+      "Check": "Actual driver success and bounded capture: ps7/InputPreflight",
+      "Passed": true
+    },
+    {
+      "Check": "Raw summary equals recorded driver summary: ps7/InputPreflight",
+      "Passed": true
+    },
+    {
+      "Check": "Raw clean actual shell/Pester/policy metadata: ps7/InputPreflight",
+      "Passed": true
+    },
+    {
+      "Check": "Raw passed/total and all bad counts: ps7/InputPreflight",
+      "Passed": true
+    },
+    {
+      "Check": "Raw NUnit case count, successful execution and zero error categories: ps7/InputPreflight",
+      "Passed": true
+    },
+    {
+      "Check": "Actual driver success and bounded capture: ps7/Destination",
+      "Passed": true
+    },
+    {
+      "Check": "Raw summary equals recorded driver summary: ps7/Destination",
+      "Passed": true
+    },
+    {
+      "Check": "Raw clean actual shell/Pester/policy metadata: ps7/Destination",
+      "Passed": true
+    },
+    {
+      "Check": "Raw passed/total and all bad counts: ps7/Destination",
+      "Passed": true
+    },
+    {
+      "Check": "Raw NUnit case count, successful execution and zero error categories: ps7/Destination",
+      "Passed": true
+    },
+    {
+      "Check": "Actual driver success and bounded capture: ps7/ToolInvocation",
+      "Passed": true
+    },
+    {
+      "Check": "Raw summary equals recorded driver summary: ps7/ToolInvocation",
+      "Passed": true
+    },
+    {
+      "Check": "Raw clean actual shell/Pester/policy metadata: ps7/ToolInvocation",
+      "Passed": true
+    },
+    {
+      "Check": "Raw passed/total and all bad counts: ps7/ToolInvocation",
+      "Passed": true
+    },
+    {
+      "Check": "Raw NUnit case count, successful execution and zero error categories: ps7/ToolInvocation",
+      "Passed": true
+    },
+    {
+      "Check": "Actual driver success and bounded capture: ps7/GhostscriptPaths",
+      "Passed": true
+    },
+    {
+      "Check": "Raw summary equals recorded driver summary: ps7/GhostscriptPaths",
+      "Passed": true
+    },
+    {
+      "Check": "Raw clean actual shell/Pester/policy metadata: ps7/GhostscriptPaths",
+      "Passed": true
+    },
+    {
+      "Check": "Raw passed/total and all bad counts: ps7/GhostscriptPaths",
+      "Passed": true
+    },
+    {
+      "Check": "Raw NUnit case count, successful execution and zero error categories: ps7/GhostscriptPaths",
+      "Passed": true
+    },
+    {
+      "Check": "Actual driver success and bounded capture: ps7/Launcher",
+      "Passed": true
+    },
+    {
+      "Check": "Raw summary equals recorded driver summary: ps7/Launcher",
+      "Passed": true
+    },
+    {
+      "Check": "Raw clean actual shell/Pester/policy metadata: ps7/Launcher",
+      "Passed": true
+    },
+    {
+      "Check": "Raw passed/total and all bad counts: ps7/Launcher",
+      "Passed": true
+    },
+    {
+      "Check": "Raw NUnit case count, successful execution and zero error categories: ps7/Launcher",
+      "Passed": true
+    },
+    {
+      "Check": "Actual driver success and bounded capture: ps7/LauncherNative",
+      "Passed": true
+    },
+    {
+      "Check": "Raw summary equals recorded driver summary: ps7/LauncherNative",
+      "Passed": true
+    },
+    {
+      "Check": "Raw clean actual shell/Pester/policy metadata: ps7/LauncherNative",
+      "Passed": true
+    },
+    {
+      "Check": "Raw passed/total and all bad counts: ps7/LauncherNative",
+      "Passed": true
+    },
+    {
+      "Check": "Raw NUnit case count, successful execution and zero error categories: ps7/LauncherNative",
+      "Passed": true
+    },
+    {
+      "Check": "Actual driver success and bounded capture: ps7/FaultIO",
+      "Passed": true
+    },
+    {
+      "Check": "Raw summary equals recorded driver summary: ps7/FaultIO",
+      "Passed": true
+    },
+    {
+      "Check": "Raw clean actual shell/Pester/policy metadata: ps7/FaultIO",
+      "Passed": true
+    },
+    {
+      "Check": "Raw passed/total and all bad counts: ps7/FaultIO",
+      "Passed": true
+    },
+    {
+      "Check": "Raw NUnit case count, successful execution and zero error categories: ps7/FaultIO",
+      "Passed": true
+    },
+    {
+      "Check": "Actual driver success and bounded capture: ps7/FaultRecovery",
+      "Passed": true
+    },
+    {
+      "Check": "Raw summary equals recorded driver summary: ps7/FaultRecovery",
+      "Passed": true
+    },
+    {
+      "Check": "Raw clean actual shell/Pester/policy metadata: ps7/FaultRecovery",
+      "Passed": true
+    },
+    {
+      "Check": "Raw passed/total and all bad counts: ps7/FaultRecovery",
+      "Passed": true
+    },
+    {
+      "Check": "Raw NUnit case count, successful execution and zero error categories: ps7/FaultRecovery",
+      "Passed": true
+    }
+  ],
+  "CheckCount": 255,
+  "SupportProducer": {
+    "Path": "tests/.work/Record-T17C1RuntimeReview.py",
+    "SHA256": "180707967819b112bdc846f5546d6ecce6c0992598d2ec252a62c89bad0d41e1",
+    "Bytes": 20832
+  },
+  "HistoricalUnitContext": {
+    "History": {
+      "Path": "tests/.work/T17-unit-dirty-history.json",
+      "SHA256": "739cff90b572f5b4044029883da749b76fcfc169ea3342996b9e43d9864d0478",
+      "Bytes": 113277
+    },
+    "SourceRetentionDisclosure": {
+      "Path": "tests/.work/T17-unit-source-retention.json",
+      "SHA256": "006c01a75789ebc0102a5117c1ea587d2a22e21aa15fd699be47c6c0539bb06a",
+      "Bytes": 2598
+    },
+    "FinalDirtyPassedEach": 32,
+    "EarlierDirtyPassedFailedEach": [
+      26,
+      6
+    ],
+    "ExcludedFromCleanTotals": true
+  },
+  "Limitations": [
+    "Root owns live synchronization/closure and actual AC041 manual render review. This receipt does not claim new pixel inspection.",
+    "Safety/native agents own scoped static analysis and fresh native PDF/PDFium audit; this source/count review does not duplicate those reads.",
+    "No broad PDF fidelity/security/signature/PDF-A, full lint-clean, Explorer/OS/UNC or release-completion claim.",
+    "No application rerun or tracked write by this producer."
+  ],
+  "Privacy": "Displayed commands sanitize profile/workspace identity; exact original commands and raw bytes remain hash-bound in ignored driver support. Original raw source hashes are preserved separately from normalized text and sanitized public bytes."
+}

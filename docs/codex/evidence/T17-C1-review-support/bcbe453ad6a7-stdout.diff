@@ -1,0 +1,265 @@
+diff --git a/.gitattributes b/.gitattributes
+index 237fa06..8eeca9f 100644
+--- a/.gitattributes
++++ b/.gitattributes
+@@ -155,3 +155,26 @@
+ /docs/codex/evidence/T16-C1-reports/ps7-LauncherNative-stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+ /docs/codex/evidence/T16-C1-review-support/07875b071506-stdout.diff -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+ /docs/codex/evidence/T16-C1-review-support/2990105102a2-source-diff.stdout.diff -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
++
++# Preserve exact T17 evidence bytes and distinct raw/public hashes.
++/docs/codex/evidence/T17-C1-reports/* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
++/docs/codex/evidence/T17-C1-review-support/* -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
++/docs/codex/evidence/T17-C1-*.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
++/docs/codex/evidence/T17-cache-verification.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
++/docs/codex/evidence/T17-environment.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
++/docs/codex/evidence/T17-completion.md -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
++
++# Exact captured T17 files only: preserve literal diagnostic whitespace.
++/docs/codex/evidence/T17-C1-reports/historical-028ac7a5cfc9-baseline.diff -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
++/docs/codex/evidence/T17-C1-reports/historical-200ba2b20c62-baseline.diff -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
++/docs/codex/evidence/T17-C1-reports/historical-56f2854733b3-source-diff.stdout.diff -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
++/docs/codex/evidence/T17-C1-reports/historical-62815cf3046d-baseline.diff -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
++/docs/codex/evidence/T17-C1-reports/historical-b7eb6e842775-baseline.diff -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
++/docs/codex/evidence/T17-C1-reports/ps51-LauncherNative-stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
++/docs/codex/evidence/T17-C1-reports/ps7-LauncherNative-stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
++/docs/codex/evidence/T17-C1-review-support/643dceb7dc36-baseline.diff -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
++/docs/codex/evidence/T17-C1-review-support/856b8e185cef-source-diff.stdout.diff -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
++/docs/codex/evidence/T17-C1-review-support/cc8d8f578bfe-baseline.diff -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
++/docs/codex/evidence/T17-C1-review-support/e1b5c0264e96-source-diff.stdout.diff -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
++/docs/codex/evidence/T17-C1-review-support/ea4c7cb2aa7e-baseline.diff -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
++/docs/codex/evidence/T17-C1-review-support/f62f5b6a7fc5-baseline.diff -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+diff --git a/docs/codex/ACCEPTANCE_CASES.json b/docs/codex/ACCEPTANCE_CASES.json
+index dd1840e..0d59c0a 100644
+--- a/docs/codex/ACCEPTANCE_CASES.json
++++ b/docs/codex/ACCEPTANCE_CASES.json
+@@ -690,8 +690,18 @@
+       "mode": "integration",
+       "required": true,
+       "stage": "pre_release",
+-      "result": "not_run",
+-      "evidence": [],
++      "result": "pass",
++      "evidence": [
++        "docs/codex/evidence/T17-completion.md",
++        "docs/codex/evidence/T17-C1-results.json",
++        "docs/codex/evidence/T17-C1-reports/manifest.json",
++        "docs/codex/evidence/T17-C1-review.json",
++        "docs/codex/evidence/T17-C1-runtime-review.json",
++        "docs/codex/evidence/T17-C1-native-audit.json",
++        "docs/codex/evidence/T17-C1-evidence-review.json",
++        "docs/codex/evidence/T17-C1-visual-review.json",
++        "docs/codex/evidence/T17-C1-review-provenance.json"
++      ],
+       "exclusion_reason": null
+     },
+     {
+@@ -702,8 +712,18 @@
+       "mode": "manual",
+       "required": true,
+       "stage": "pre_release",
+-      "result": "not_run",
+-      "evidence": [],
++      "result": "pass",
++      "evidence": [
++        "docs/codex/evidence/T17-completion.md",
++        "docs/codex/evidence/T17-C1-results.json",
++        "docs/codex/evidence/T17-C1-reports/manifest.json",
++        "docs/codex/evidence/T17-C1-review.json",
++        "docs/codex/evidence/T17-C1-runtime-review.json",
++        "docs/codex/evidence/T17-C1-native-audit.json",
++        "docs/codex/evidence/T17-C1-evidence-review.json",
++        "docs/codex/evidence/T17-C1-visual-review.json",
++        "docs/codex/evidence/T17-C1-review-provenance.json"
++      ],
+       "exclusion_reason": null
+     },
+     {
+diff --git a/docs/codex/COMPATIBILITY_MATRIX.md b/docs/codex/COMPATIBILITY_MATRIX.md
+index 0ee783e..ed5d534 100644
+--- a/docs/codex/COMPATIBILITY_MATRIX.md
++++ b/docs/codex/COMPATIBILITY_MATRIX.md
+@@ -211,3 +211,17 @@ release/signatures/PDF-A/universal preservation remain unclaimed. Approved
+ cache reuse,no acquisition/admin/persistentpolicy/PATH/security changes.
+ M3inprogress,T17next; exact commands/context/hashes/limits:T16completion,
+ results,manifest,reviews,provenance and C1live receipt.
++
++T17 clean C1 `040176695fdb79e614ba2a821118fbc979a33115`:16tiers579each actualPS5.1.26100.9444/
++pinnedPS7.6.6,1158total32reports,allbadcounts0. AC040integration/AC041manual
++pass on standarduser/localNTFS/build26300. Real exactsize/decimalreduction/
++candidate omission/success0 plus actual Codex40page10unique144DPI synthetic
++visual review bothshells; screen smallest rastertext/outlines degrade, ebook
++clearer, vector-only grows/omits. Not owner/Explorer/manualdesktop acceptance.
++Independent source/runtime/native/archive reviews pass; archive11660
++checks/632files. PSA5PSfiles0errors51warnings14info each nonblocking,
++notfullT22. Dirty/preparation/absences separate. Approved cache reuse/noacquisition/
++admin/persistentpolicy/environment/security changes. PhysicalExplorer/broadOS/
++UNC/CI/security/package/release/universalfidelity/signatures/PDF-A remain open.
++M3inprogress,T18nextpending; exact commands/hashes/context/limits:T17completion/
++results/manifest/manualreview/source/runtime/native/archive/provenance/C1live.
+diff --git a/docs/codex/NEXT_SESSION.md b/docs/codex/NEXT_SESSION.md
+index d265406..5ee43bf 100644
+--- a/docs/codex/NEXT_SESSION.md
++++ b/docs/codex/NEXT_SESSION.md
+@@ -1,35 +1,32 @@
+ # Next session
+ 
+-Current task: T17 — report real compression benefit and preset tradeoffs, in progress in M3.
+-Read AGENTS/INDEX/STATUS/T17 TASKS entry/brief, PRODUCT/TECHNICAL/TEST/GITHUB
+-specifications and AC040 integration/AC041 manual. Recheck current branch,
++Selected task: T18 — improve help, progress and private-by-default diagnostics, M3.
++Read AGENTS/INDEX/STATUS/T18 TASKS entry/brief, PRODUCT/TECHNICAL/TEST/GITHUB
++specifications and AC042 integration/AC043 review. Recheck current branch,
+ clean state, origin/live refs/PR/tags/releases; preserve unrelated work.
+ 
+-T16 is complete at clean C1 `26ac1b73e3733a23099de53d944e00e4ee412982`:14tiers,
+-536each/1072total in actualPS5.1.26100.9444 and pinnedPS7.6.6, all bad counts0.
+-AC038integration/AC039unit pass. Runtime/source reviews no blocks; native2273/
+-18case/28read audit and archive6397checks/335files pass. PSA
+-0errors71warnings34info each7files reviewed nonblocking, not fullT22.
+-DraftPR16 follows owner-merged PR15; clean C1 live equality recorded. RecordsC2
+-own SHA/live equality reported in session; verify current live refs again.
+-Publication not started. Dirty/preparation failures remain separately bound.
++T17 complete at clean C1 `040176695fdb79e614ba2a821118fbc979a33115`:16tiers579each/1158total,
++32reports actualPS5.1.26100.9444/pinnedPS7.6.6,allbadcounts0. AC040integration/
++AC041manual pass. Actual Codex40page10unique144DPI visual review confirms
++screen raster small-text/outline degradation vs clearer ebook; vector-only
++candidates grow/omit; master pixels match original in synthetic corpus.
++Exact bytes/human sizes/reduction and no-size-benefit success0 are truthful.
++Independent source/runtime/native/archive reviews pass, archive11660
++checks/632files; PSA0errors51warnings14info each5PSfiles nonblocking.
++Clean C1 normalpush/live equality; draftPR follows owner-mergedPR16.
++RecordsC2ownSHA/live reported in session; verify again. Publication not started.
+ 
+-Keep fixed EmailPreset screen|ebook (defaultscreen), existing writable literal
+-OutputFolder (default beside entry), optional positional/named SourceFolder,
+-early binder refusals/no-source usage, SkipEmail no discovery/probe/launch and
+-explicit ignored-preset console/log explanation. Preserve ownership/cancel/
+-staging/inspection/strictly-smaller/no-overwrite gates; valid master survives
+-email failures and source/finals remain untouched. Do not broaden public options.
++Preserve screen default, output beside entry, fixed allowlisted screen/ebook,
++SourceFolder one-folder/top-level workflow, explicit writable OutputFolder,
++SkipEmail bypass, direct local engines, ownership/cancel/strictinspection/
++strictsmaller/no-overwrite and validated master after email failure. T18 adds
++real comment-based help/stages/elapsed/versions/outcome/paths, no invented
++percentages. Note sensitive local diagnostic paths and public sanitization.
++T18 is pending, not started. Physical Explorer remains separate AC058/T26.
+ 
+-T17 reports actual master/email bytes, human sizes and computed reduction, plus
+-honest screen/ebook observations on synthetic small-print/scanned/mixed inputs.
+-No target-size or universal fidelity promise; defaultscreen remains. Physical
+-Explorer is still a separate manual/release gate, actual BAT delivery is tested.
+-T17 manual evidence is not supplied by T16 count/ID/geometry/native size checks.
+-
+-Reuse approved rehashed PS7.6.6/Pester6.2.0/PDFtk2.02/GS10.08.0/PSA1.25.0 and
+-development Python3.12.14/pypdfium2 5.13.0/PDFium153.0.7999.0. Child-only
+-RemoteSigned authorization persists; remove inherited PSModulePath only in test
+-children. No acquisition/admin/persistent environment/policy/security changes.
+-Broad OS/UNC/CI/security/package/release and physical crash-cleanup gates remain;
+-no signature/PDF-A/malware/universal preservation or archival guarantee.
++Reuse approved rehashed PS7.6.6/Pester6.2.0/PDFtk2.02/GS10.08.0/PSA1.25.0
++and developmentPython/PDFium/rendering pins. Authorized childRemoteSigned
++persists; remove inheritedPSModulePath only in testchildren. No acquisition/
++admin/persistent environment/policy/security change. BroadOS/UNC/CI/security/
++package/release and abrupt crash cleanup remain open; no signature/PDF-A/
++malware-removal/universal preservation/archival guarantee. M3inprogress.
+diff --git a/docs/codex/STATUS.md b/docs/codex/STATUS.md
+index dc9a7ec..cfd72ae 100644
+--- a/docs/codex/STATUS.md
++++ b/docs/codex/STATUS.md
+@@ -3,36 +3,30 @@
+ Target: published and independently verified `v1.0.0` in `PikkuJanne/WinPDFMerger`.
+ Completed milestones: M1 and M2 within recorded local Windows scope.
+ Current milestone: M3 — focused usability and honest documentation, in progress.
+-Completed tasks: T01 through T16.
+-Current task: T17 — report real compression benefit and preset tradeoffs, in progress.
++Completed tasks: T01 through T17.
++Selected task: T18 — improve help, progress and private-by-default diagnostics.
+ Publication: NOT STARTED.
+ 
+-T16 and AC038 integration/AC039 unit pass at clean implementation C1
+-`26ac1b73e3733a23099de53d944e00e4ee412982`. Fourteen relevant tiers pass536each/1072total
+-in actual Windows PowerShell5.1.26100.9444 Desktop x64 and pinnedPS7.6.6 Core x64,
+-all failure/block/container/skip/not-run counts zero. Fixed screen/ebook flags,
+-legacy positional/named invocation, default/named destination, actual cmd/BAT,
+-closed-stdin usage, early refusals and SkipEmail bypass/explanation are covered.
++T17 AC040 integration/AC041 manual pass at clean C1 `040176695fdb79e614ba2a821118fbc979a33115`.
++16tiers579each1158total/32reports in actualPS5.1.26100.9444 and pinnedPS7.6.6;
++all bad counts0. Exact master/email bytes, binary sizes and decimal reduction;
++equal/larger candidates labelled not published with retained master/success0.
++Root Codex actual40page10unique144DPI original/master/preset visual review:
++screen scan small text/outlines degraded; ebook clearer; vector-only grew/omitted.
++Codex visual scope is separate from owner/physical Explorer acceptance.
+ 
+-Independent runtime/source reviews no blocks; native2273checks/18case audits/
+-28fresh retained PDFtk/PDFium reads pass. Archive review6397checks
+-passes the335-file plan; actual public write matches it. Scoped PSA1.25.0 over
+-7changed PowerShell files reports0errors71warnings34info each, reviewed
+-nonblocking, not lint-clean/fullT22. Dirty/preparation failures remain excluded
+-from clean counts; absent historical files are disclosed without reconstruction.
++Independent source/runtime/native/archive reviews pass; archive11660
++checks/632plannedfiles; actual public write matches reviewed hashes.
++PSA1.25.0 scoped5PSfiles0errors51warnings14info each reviewed nonblocking,
++not lint-clean/fullT22. Exact commands/environment/raw-public hashes/review
++support, initial failed preparation and honest absences in T17 completion.
+ 
+-Clean C1 normal push/fresh live equality verified; draftPR16 follows owner-merged
+-PR15/mainc1fdb3b. Records-only C2 binds C1; own SHA/clean live equality is reported
+-in session after commit/push. Exact commands/environment/raw-public hashes,
+-controls, original support, reports/reviews/history are in T16 completion.
+-Approved caches reused, no acquisition/admin/persistent PATH/policy/security
+-or parent environment change. Standard-user NTFS/Windows build26300; ordinary
+-PS5.1 Restricted/all scopes Undefined, authorized test-child RemoteSigned.
+-
+-Preserve validated masters after email failure; owned temporary outputs and
+-native jobs, exact page inspections, strict smaller-email/no-overwrite gates,
+-import-only PS5.1 helpers, local direct engines and source/final preservation.
+-Defaults remain /screen and output beside entry. Physical Explorer and abrupt
+-Ctrl+C/host/window/crash cleanup, T17 fidelity/size reporting, broad OS/UNC/CI/
+-security/package/release gates remain open. No signature/PDF-A/malware-removal/
+-universal preservation or archival guarantee. No tag/release/full completion.
++C1 normalpush/freshcleanlive verified; draftPR follows owner-mergedPR16/main7d7eba4.
++Records-onlyC2bindsC1; own SHA/live equality reported in session after push.
++Approved caches reused; standard-user NTFS/build26300; ordinaryRestricted/
++all scopesUndefined, authorized childRemoteSigned; no acquisition/admin/
++persistent environment/policy/security changes. Source/master/final safety,
++fixed screen/ebook flags and screen/output-beside-entry defaults preserved.
++T18pending. PhysicalExplorer/abrupt crash cleanup, broadOS/UNC/CI/security/
++package/release gates remain. No universal preservation/signature/PDF-A/
++archival/security guarantee. No tag/release/full-project completion.
+diff --git a/docs/codex/TASKS.json b/docs/codex/TASKS.json
+index 3628888..6cb18d0 100644
+--- a/docs/codex/TASKS.json
++++ b/docs/codex/TASKS.json
+@@ -544,7 +544,7 @@
+       "id": "T17",
+       "milestone": "M3",
+       "title": "Report real compression benefit and preset tradeoffs",
+-      "status": "in_progress",
++      "status": "done",
+       "depends_on": [
+         "T16"
+       ],
+@@ -560,9 +560,21 @@
+         "AC041"
+       ],
+       "evidence": [
++        "docs/codex/evidence/T17-completion.md",
++        "docs/codex/evidence/T17-C1-results.json",
++        "docs/codex/evidence/T17-C1-reports/manifest.json",
++        "docs/codex/evidence/T17-C1-review.json",
++        "docs/codex/evidence/T17-C1-runtime-review.json",
++        "docs/codex/evidence/T17-C1-native-audit.json",
++        "docs/codex/evidence/T17-C1-evidence-review.json",
++        "docs/codex/evidence/T17-C1-visual-review.json",
++        "docs/codex/evidence/T17-C1-review-provenance.json",
++        "docs/codex/evidence/T17-C1-live-sync.json",
++        "docs/codex/evidence/T17-cache-verification.json",
++        "docs/codex/evidence/T17-environment.json",
+         "docs/codex/evidence/T17-checkpoint.md"
+       ],
+-      "notes": "T17 reporting implementation frozen for clean C1 validation: exact master/email bytes, binary readable sizes and decimal reduction; equal/larger validated candidate labelled not published and existing master-only success0 preserved. Screen default/fixed flags unchanged. Dirty Unit335, SizeReporting32 and SizeReportingNative11 pass in each PS5.1.26100.9444/pinnedPS7.6.6. Initial focused unit26pass6fail each (logger emits earlier truthful lines) and native6pass5fail each (test fixture name collision) corrected in tests only; raw history retained, initial unit fullsource unavailable explicitly disclosed. Dirty20-page/10unique actual Codex visual comparisons show screen scan small-text/outline degradation and clearer ebook; not clean AC041. PSA1.25.0 scoped5PSfiles0errors51warnings14info each reviewed nonblocking. AC040/041 remain not_run pending clean16-tier579each/1158, actual clean visual review, independent review and live synchronization. T18 not started; broader Windows/Explorer/CI/package/security/publication gates remain."
++      "notes": "Clean C1 040176695fdb79e614ba2a821118fbc979a33115:16 relevant tiers579each1158total,32reports actualPS5.1.26100.9444/pinnedPS7.6.6 allbadcounts0. AC040integration/AC041manual pass:exactsize/reduction/strictsmaller reporting plus actual Codex40page10unique144DPI synthetic visual review bothshells. Screen scan smalltext/outlines degraded vs clearer ebook; vector-only candidates grew/omitted. Screen default/local/source/master/final safety unchanged. Independent runtime/source/native/archive reviews pass; archive11660checks/632files. PSA5PSfiles0errors51warnings14info each nonblocking notfullT22. Dirty/preparation failures/absences excluded and disclosed. C1normalpush/freshcleanlive;draftPR. RecordsC2ownSHA/cleanlive in session. T18nextpending,M3inprogress,PublicationNOTSTARTED;physicalExplorer/OS/UNC/CI/security/package/release gates remain."
+     },
+     {
+       "id": "T18",

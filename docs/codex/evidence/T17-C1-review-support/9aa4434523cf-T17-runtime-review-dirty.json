@@ -1,0 +1,255 @@
+{
+  "SchemaVersion": 1,
+  "Task": "T17",
+  "Phase": "dirty-development",
+  "ReviewedAtUtc": "2026-10-08T07:34:23.343847+00:00",
+  "CommitAtReview": "27527e839e3b6b37bc554356618bba2ec169a83a",
+  "DirtyWorktreeAtReview": true,
+  "Result": "no_blocking_findings",
+  "Findings": [],
+  "ReviewerRole": "Size-reporting unit agent separately reviewing root-authored runtime, runner and README",
+  "IndependenceLimit": "Reviewer authored SizeReporting.Tests.ps1. This review does not independently assess its own 32 test cases, native PDF oracle or visual/manual observations. Root authored the reviewed runtime/runner/README.",
+  "Sources": [
+    {
+      "Path": "WinPDFMerge.ps1",
+      "WorkingSHA256": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4",
+      "BaselineGitBlobSHA256": "2feed6060b04b4ac8ba172e37f7310d2b1f486ce093b5ae029f2b432d3deb620"
+    },
+    {
+      "Path": "src/WinPDFMerge.Helpers.ps1",
+      "WorkingSHA256": "5e4cec2cb31b85e72e551b7f8b291c8c67809c42cf435ad00ee1bc555fec38a0",
+      "BaselineGitBlobSHA256": "db22d1b808cd47f7a82c18e0ceddc5419cc8e66ea0a1475dcb6ee6e9c457dbf8"
+    },
+    {
+      "Path": "tools/test/Invoke-Tests.ps1",
+      "WorkingSHA256": "d2df7969d0bb5762bdfd647be45803772a1836c222a745411524cda8ed7c65c9",
+      "BaselineGitBlobSHA256": "1b25806651a0b814b047432a8fae8e6a1186681b83bbb98aea1890d4b3cbca5a"
+    },
+    {
+      "Path": "README.md",
+      "WorkingSHA256": "073caa2eb8fbade24c36e7460d59539bc925eafb126c519a49fccbe623b4afe1",
+      "BaselineGitBlobSHA256": "fbeb02d8a10feb9068d8911cb823dc721c6d376fdbcf23ad15bf0a5751325b39"
+    }
+  ],
+  "Checks": [
+    {
+      "Check": "All existing helper/native adapter/validation/publication/outcome functions exactly match T16 baseline after newline normalization",
+      "Passed": true
+    },
+    {
+      "Check": "Byte formatter uses decimal value and invariant binary unit thresholds",
+      "Passed": true
+    },
+    {
+      "Check": "Formatter explicitly fixes B integer and larger two-decimal display",
+      "Passed": true
+    },
+    {
+      "Check": "Both size-report operands are positive Int64 values",
+      "Passed": true
+    },
+    {
+      "Check": "Optional email is distinguished by binding rather than default zero",
+      "Passed": true
+    },
+    {
+      "Check": "Published email requires a supplied strictly smaller byte count",
+      "Passed": true
+    },
+    {
+      "Check": "Unpublished smaller candidates cannot be mislabeled no-benefit",
+      "Passed": true
+    },
+    {
+      "Check": "Decimal conversion precedes subtraction/division and percent multiplication",
+      "Passed": true
+    },
+    {
+      "Check": "Byte and percent text use invariant culture without group separators",
+      "Passed": true
+    },
+    {
+      "Check": "Candidate text explicitly states not-published with no-benefit and negative/zero reduction",
+      "Passed": true
+    },
+    {
+      "Check": "Helper addition has no orchestration/import-time invocation or file/native IO",
+      "Passed": true
+    },
+    {
+      "Check": "Entry adds exactly one reporting block: $sizeReport = $null",
+      "Passed": true
+    },
+    {
+      "Check": "Entry adds exactly one reporting block: if ($masterPublished) {",
+      "Passed": true
+    },
+    {
+      "Check": "Entry adds exactly one reporting block: if ($emailState -in @('published','no_size_benefit')) {",
+      "Passed": true
+    },
+    {
+      "Check": "Entry adds exactly one reporting block: if ($null -ne $sizeReport) {",
+      "Passed": true
+    },
+    {
+      "Check": "Entry adds exactly one reporting block: if ($null -ne $sizeReport) {",
+      "Passed": true
+    },
+    {
+      "Check": "Entire entry matches baseline after only reporting additions are removed",
+      "Passed": true
+    },
+    {
+      "Check": "Master publication truth is assigned before actual published-master size snapshot",
+      "Passed": true
+    },
+    {
+      "Check": "Only published/no-benefit validated email receipts update reported metrics",
+      "Passed": true
+    },
+    {
+      "Check": "Size snapshot/report exceptions use existing guarded run-failed/master-preservation path",
+      "Passed": true
+    },
+    {
+      "Check": "Size log writes precede final success line in existing protected result block",
+      "Passed": true
+    },
+    {
+      "Check": "Reporting failure recomputes RunFailed while preserving explicit publication paths",
+      "Passed": true
+    },
+    {
+      "Check": "Console summary reports measured lines and only outcome-published paths",
+      "Passed": true
+    },
+    {
+      "Check": "New unit runner tier is isolated from existing Unit directory",
+      "Passed": true
+    },
+    {
+      "Check": "New native runner tier requires explicit real selected engine and dev oracle paths",
+      "Passed": true
+    },
+    {
+      "Check": "Runner clearly distinguishes controlled numeric decisions and native/manual scope",
+      "Passed": true
+    },
+    {
+      "Check": "README keeps screen default, fixed ebook selection, strict-smaller publication and no target-size guarantee",
+      "Passed": true
+    },
+    {
+      "Check": "README defines binary units, exact byte authority and decimal precision",
+      "Passed": true
+    },
+    {
+      "Check": "README states candidate omission/code0 and invalid/failed candidate omission",
+      "Passed": true
+    },
+    {
+      "Check": "README changes stay within existing quality-size section",
+      "Passed": true
+    },
+    {
+      "Check": "Reviewed source bytes and HEAD remain unchanged through review",
+      "Passed": true
+    }
+  ],
+  "CheckCount": 31,
+  "RetainedBaselineInvariants": [
+    "fixed screen/ebook vectors and screen default",
+    "skip bypass and early binding/source/destination gates",
+    "owned Win32 job/cancellation/capture and missing-ownership quarantine",
+    "strict full-capture envelope/page/snapshot validation",
+    "strict-smaller email and two-argument no-overwrite publication",
+    "explicit published paths and truthful 0/1/2 with master preservation",
+    "known-child-only best-effort cleanup and no orphan sweep"
+  ],
+  "OwnControlledUnitContext": {
+    "History": {
+      "Path": "tests/.work/T17-unit-dirty-history.json",
+      "SHA256": "739cff90b572f5b4044029883da749b76fcfc169ea3342996b9e43d9864d0478",
+      "Bytes": 113277
+    },
+    "FinalPassedEach": 32,
+    "EarlierPassedFailedEach": [
+      26,
+      6
+    ],
+    "ExcludedFromCleanTotals": true,
+    "NoIndependentOwnTestReview": true
+  },
+  "ReviewSupport": {
+    "Producer": {
+      "Path": "tests/.work/Record-T17RuntimeReview.py",
+      "SHA256": "4f1af18fdf4167d57a390e7e29dcd31ac33d0f14bd589887455e65bb58531089",
+      "Bytes": 11739
+    },
+    "SourceAndDiffCaptures": [
+      {
+        "Path": "tests/.work/T17-runtime-review-source-7e2a6556a8d446a2812c923bb80ac494/baseline-README.md",
+        "SHA256": "fbeb02d8a10feb9068d8911cb823dc721c6d376fdbcf23ad15bf0a5751325b39",
+        "Bytes": 13412
+      },
+      {
+        "Path": "tests/.work/T17-runtime-review-source-7e2a6556a8d446a2812c923bb80ac494/baseline-src__WinPDFMerge.Helpers.ps1",
+        "SHA256": "db22d1b808cd47f7a82c18e0ceddc5419cc8e66ea0a1475dcb6ee6e9c457dbf8",
+        "Bytes": 94878
+      },
+      {
+        "Path": "tests/.work/T17-runtime-review-source-7e2a6556a8d446a2812c923bb80ac494/baseline-tools__test__Invoke-Tests.ps1",
+        "SHA256": "1b25806651a0b814b047432a8fae8e6a1186681b83bbb98aea1890d4b3cbca5a",
+        "Bytes": 9800
+      },
+      {
+        "Path": "tests/.work/T17-runtime-review-source-7e2a6556a8d446a2812c923bb80ac494/baseline-WinPDFMerge.ps1",
+        "SHA256": "2feed6060b04b4ac8ba172e37f7310d2b1f486ce093b5ae029f2b432d3deb620",
+        "Bytes": 16995
+      },
+      {
+        "Path": "tests/.work/T17-runtime-review-source-7e2a6556a8d446a2812c923bb80ac494/source-diff.execution.json",
+        "SHA256": "531605f1c1728b5aee53945094343e15855cc803b0f884b30b110df9405b6765",
+        "Bytes": 559
+      },
+      {
+        "Path": "tests/.work/T17-runtime-review-source-7e2a6556a8d446a2812c923bb80ac494/source-diff.stderr.txt",
+        "SHA256": "4edbb3ee8cdf28147e1e040f8c5b3b94dd189d464b103d967506ae368f51bf5c",
+        "Bytes": 120
+      },
+      {
+        "Path": "tests/.work/T17-runtime-review-source-7e2a6556a8d446a2812c923bb80ac494/source-diff.stdout.diff",
+        "SHA256": "b6b0063d698531f77be6de19809e347ebc67065b16aabfc0e0e8d270505e204b",
+        "Bytes": 10268
+      },
+      {
+        "Path": "tests/.work/T17-runtime-review-source-7e2a6556a8d446a2812c923bb80ac494/working-README.md",
+        "SHA256": "073caa2eb8fbade24c36e7460d59539bc925eafb126c519a49fccbe623b4afe1",
+        "Bytes": 14285
+      },
+      {
+        "Path": "tests/.work/T17-runtime-review-source-7e2a6556a8d446a2812c923bb80ac494/working-src__WinPDFMerge.Helpers.ps1",
+        "SHA256": "5e4cec2cb31b85e72e551b7f8b291c8c67809c42cf435ad00ee1bc555fec38a0",
+        "Bytes": 99054
+      },
+      {
+        "Path": "tests/.work/T17-runtime-review-source-7e2a6556a8d446a2812c923bb80ac494/working-tools__test__Invoke-Tests.ps1",
+        "SHA256": "d2df7969d0bb5762bdfd647be45803772a1836c222a745411524cda8ed7c65c9",
+        "Bytes": 10694
+      },
+      {
+        "Path": "tests/.work/T17-runtime-review-source-7e2a6556a8d446a2812c923bb80ac494/working-WinPDFMerge.ps1",
+        "SHA256": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4",
+        "Bytes": 17642
+      }
+    ]
+  },
+  "Limitations": [
+    "Dirty source review only; no clean C1/full-count/synchronization claim yet.",
+    "Numeric decisions and controlled entry receipts do not substitute for AC040 real-engine integration or AC041 manual fidelity observations.",
+    "No physical Explorer, universal fidelity/security/signature/PDF-A, full lint-clean or release-completion claim.",
+    "No application rerun or tracked write by this producer."
+  ],
+  "Privacy": "Synthetic fixtures only. Raw support contains local workspace/profile/cache identities; sanitize public copies and retain original raw hashes separately."
+}

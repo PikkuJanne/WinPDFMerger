@@ -1,0 +1,407 @@
+{
+  "SchemaVersion": 1,
+  "Task": "T17",
+  "Phase": "C1",
+  "CommitUnderTest": "040176695fdb79e614ba2a821118fbc979a33115",
+  "Baseline": "27527e839e3b6b37bc554356618bba2ec169a83a",
+  "ReviewedAtUtc": "2026-10-08T07:46:52.065803+00:00",
+  "GitState": {
+    "HEAD": "040176695fdb79e614ba2a821118fbc979a33115",
+    "Branch": "codex/v1.0.0-readiness",
+    "Clean": true,
+    "TrackedStatus": ""
+  },
+  "SourceBindings": [
+    {
+      "Path": "WinPDFMerge.ps1",
+      "SHA256": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4"
+    },
+    {
+      "Path": "src/WinPDFMerge.Helpers.ps1",
+      "SHA256": "5e4cec2cb31b85e72e551b7f8b291c8c67809c42cf435ad00ee1bc555fec38a0"
+    },
+    {
+      "Path": "tools/test/Invoke-Tests.ps1",
+      "SHA256": "d2df7969d0bb5762bdfd647be45803772a1836c222a745411524cda8ed7c65c9"
+    },
+    {
+      "Path": "tests/pdf/SizeReporting.Tests.ps1",
+      "SHA256": "de6fcc7a106e90ec461fe06aac8b96e1eb13b7308e66a7cef66b24893bcb3273"
+    },
+    {
+      "Path": "tests/pdf/SizeReporting.Native.Tests.ps1",
+      "SHA256": "07cf1bc40f65de01497af16b94dafbe6b5dea8b34ebba93f9c6d1933710d53d6"
+    },
+    {
+      "Path": "README.md",
+      "SHA256": "6ec1381b459b7cec68c417ddbaa3d3d40eb648b4d70dd2e4e5cc8261e3dfd647"
+    },
+    {
+      "Path": "tests/fixtures/presets/generate_presets.py",
+      "SHA256": "1aaabe651bd4d468b09e617607b1f276d3a894b67e15081d380cc45e91a62db6"
+    },
+    {
+      "Path": "tests/fixtures/presets/manifest.json",
+      "SHA256": "383ec07bec823f131ab86cf07de2ffb96e10803ad4f2f4997ba834835ee01e1f"
+    },
+    {
+      "Path": "docs/EMAIL_PRESETS.md",
+      "SHA256": "ff77346ea43a0a5142526e9b0517faff40ce1cf306da444d762b58b65bf3db39"
+    }
+  ],
+  "CodeReview": {
+    "Result": "pass",
+    "BlockingFindings": [],
+    "Scope": "Independent read-only review of root entry/helper/runner/README and both new test sources, generator and required T17 contracts.",
+    "Observations": [
+      "Existing entry logic, job/native runner/owned launch, safety flags, strict validation, cancellation, staging ownership, no-overwrite publication and smaller-only gate remain logically unchanged outside the enumerated reporting additions.",
+      "Published master size is read after explicit confirmed publication and before native logging; only validated published/no-benefit GS receipts can replace it with candidate metrics.",
+      "Failed or invalid candidates are not advertised in size lines. Report/logging exceptions preserve recorded publication state and existing partial-success code2.",
+      "Positive Int64 inputs are converted to decimal before subtraction/division/multiplication. Binary thresholds and invariant byte/size/percentage formatting are independent of process culture.",
+      "Published size reports require a strictly smaller validated candidate. Unpublished candidate reporting rejects a smaller candidate, so no-benefit text cannot contradict the metric relation.",
+      "Numeric source has 25 helper cases and 7 controlled copied-entry decisions. Native source has 11 actual Windows cases, including explicitly disclosed equality, corrupt-input and skip controls.",
+      "The default screen fixed native flag is retained. README distinguishes exact authoritative bytes, integer B, two-decimal binary units and one-decimal percentage, with no target-size promise.",
+      "Generator is development-only original seeded vector/raster/mixed CC0 content with exact package pins; AST/source review does not execute or visually accept its PDFs."
+    ],
+    "ExistingSourceComparison": [
+      {
+        "Path": "WinPDFMerge.ps1",
+        "Baseline": "27527e839e3b6b37bc554356618bba2ec169a83a",
+        "ExistingLogicalSourceUnchanged": true,
+        "ComparedEncoding": "UTF-8 with optional BOM; CRLF normalized only for this comparison",
+        "ExistingLogicalSourceSHA256": "8ae2b9fd7681d6b083d3c697b6a0258f8df2ba86eb4c028d1ce432bfffcc83ef"
+      },
+      {
+        "Path": "src/WinPDFMerge.Helpers.ps1",
+        "Baseline": "27527e839e3b6b37bc554356618bba2ec169a83a",
+        "ExistingLogicalSourceUnchanged": true,
+        "ComparedEncoding": "UTF-8 with optional BOM; CRLF normalized only for this comparison",
+        "ExistingLogicalSourceSHA256": "db22d1b808cd47f7a82c18e0ceddc5419cc8e66ea0a1475dcb6ee6e9c457dbf8"
+      },
+      {
+        "Path": "tools/test/Invoke-Tests.ps1",
+        "Baseline": "27527e839e3b6b37bc554356618bba2ec169a83a",
+        "ExistingLogicalSourceUnchanged": true,
+        "ComparedEncoding": "UTF-8 with optional BOM; CRLF normalized only for this comparison",
+        "ExistingLogicalSourceSHA256": "1b25806651a0b814b047432a8fae8e6a1186681b83bbb98aea1890d4b3cbca5a"
+      }
+    ],
+    "IndependenceLimits": [
+      "This reviewer authored only ignored audit/static capture scripts in T17; no tracked T17 runtime, tests or generator code was authored by this reviewer.",
+      "The T15 owned-launch adapter was originally authored by this reviewer and is unchanged; no renewed independent adapter implementation audit is claimed.",
+      "This receipt does not claim application/suite execution, manual visual fidelity, final evidence archive verification, Explorer, package or release acceptance."
+    ]
+  },
+  "StaticAnalysisReview": {
+    "Result": "pass",
+    "ScopeFileCount": 5,
+    "Scope": [
+      "WinPDFMerge.ps1",
+      "src/WinPDFMerge.Helpers.ps1",
+      "tools/test/Invoke-Tests.ps1",
+      "tests/pdf/SizeReporting.Tests.ps1",
+      "tests/pdf/SizeReporting.Native.Tests.ps1"
+    ],
+    "Reports": [
+      {
+        "Selection": "ps51",
+        "ShellVersion": "5.1.26100.9444",
+        "AnalyzerVersion": "1.25.0",
+        "Errors": 0,
+        "Warnings": 51,
+        "Information": 14,
+        "ReportPath": "tests/.work/T17-C1-analyzer-ps51.json",
+        "ReportSHA256": "9fffb49e27a2ac9f1368834382443ad441ec9474be877b5f25b8ab7ecc02a26f",
+        "Groups": [
+          {
+            "RuleName": "PSAvoidAssignmentToAutomaticVariable",
+            "Severity": "Warning",
+            "Count": 1
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": "Information",
+            "Count": 8
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": "Warning",
+            "Count": 28
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": "Warning",
+            "Count": 3
+          },
+          {
+            "RuleName": "PSUseApprovedVerbs",
+            "Severity": "Warning",
+            "Count": 3
+          },
+          {
+            "RuleName": "PSUseBOMForUnicodeEncodedFile",
+            "Severity": "Warning",
+            "Count": 1
+          },
+          {
+            "RuleName": "PSUseDeclaredVarsMoreThanAssignments",
+            "Severity": "Warning",
+            "Count": 3
+          },
+          {
+            "RuleName": "PSUseOutputTypeCorrectly",
+            "Severity": "Information",
+            "Count": 6
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": "Warning",
+            "Count": 8
+          },
+          {
+            "RuleName": "PSUseSingularNouns",
+            "Severity": "Warning",
+            "Count": 4
+          }
+        ],
+        "CaptureDirectory": "tests/.work/T17-C1-analyzer-execution-ps51-474e3f76068d45edb7ad9ab956c71423",
+        "CaptureExecutionSHA256": "29b2a072828c4354acc25b10c00d143653b07461b149fdce1f4e612971c502dd"
+      },
+      {
+        "Selection": "ps7",
+        "ShellVersion": "7.6.6",
+        "AnalyzerVersion": "1.25.0",
+        "Errors": 0,
+        "Warnings": 51,
+        "Information": 14,
+        "ReportPath": "tests/.work/T17-C1-analyzer-ps7.json",
+        "ReportSHA256": "5bf85aeed73b92a801ef8118a6de45baeea09e7ea662ef0f4e2c5a46a12fc5df",
+        "Groups": [
+          {
+            "RuleName": "PSAvoidAssignmentToAutomaticVariable",
+            "Severity": "Warning",
+            "Count": 1
+          },
+          {
+            "RuleName": "PSAvoidUsingPositionalParameters",
+            "Severity": "Information",
+            "Count": 8
+          },
+          {
+            "RuleName": "PSAvoidUsingWriteHost",
+            "Severity": "Warning",
+            "Count": 28
+          },
+          {
+            "RuleName": "PSReviewUnusedParameter",
+            "Severity": "Warning",
+            "Count": 3
+          },
+          {
+            "RuleName": "PSUseApprovedVerbs",
+            "Severity": "Warning",
+            "Count": 3
+          },
+          {
+            "RuleName": "PSUseBOMForUnicodeEncodedFile",
+            "Severity": "Warning",
+            "Count": 1
+          },
+          {
+            "RuleName": "PSUseDeclaredVarsMoreThanAssignments",
+            "Severity": "Warning",
+            "Count": 3
+          },
+          {
+            "RuleName": "PSUseOutputTypeCorrectly",
+            "Severity": "Information",
+            "Count": 6
+          },
+          {
+            "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+            "Severity": "Warning",
+            "Count": 8
+          },
+          {
+            "RuleName": "PSUseSingularNouns",
+            "Severity": "Warning",
+            "Count": 4
+          }
+        ],
+        "CaptureDirectory": "tests/.work/T17-C1-analyzer-execution-ps7-d9c386f3df0b42f29f5f353695d141d9",
+        "CaptureExecutionSHA256": "17501a69338c99440617f3a03216fce879c851d23cd3e7b93019f207e813c3ad"
+      }
+    ],
+    "BlockingFindings": [],
+    "Disposition": [
+      "The 28 WriteHost warnings concern deliberate CLI or evidence presentation. The 3 verb, 4 singular-noun and 8 ShouldProcess warnings concern internal names or existing explicit state-changing operations, not a new public dry-run contract.",
+      "The 3 unused-parameter and 3 unused-variable warnings are dynamic Pester cross-block inputs/policy/oracle/culture values used in callbacks. The 8 positional and 6 output-type information findings are internal test-call or metadata style.",
+      "The pre-existing entry Unicode/BOM style finding is retained; both actual approved shell syntax/runtime checks are separately evidenced.",
+      "The single automatic-variable warning is the native test helper local input path at line 107, with no pipeline-input contract. No findings were suppressed or automatically rewritten; unchanged runtime safety is separately bound above."
+    ],
+    "Limits": [
+      "Only default PSScriptAnalyzer1.25.0 findings for the stated five files; no repository-wide T22 static/security claim.",
+      "Python generator is separately AST-parsed and hashed; it is not analysed by PSScriptAnalyzer or executed by this review."
+    ]
+  },
+  "GeneratorSourceReview": {
+    "Result": "pass",
+    "Path": "tests/fixtures/presets/generate_presets.py",
+    "SHA256": "1aaabe651bd4d468b09e617607b1f276d3a894b67e15081d380cc45e91a62db6",
+    "ASTParsing": "pass",
+    "ManifestPath": "tests/fixtures/presets/manifest.json",
+    "ManifestSHA256": "383ec07bec823f131ab86cf07de2ffb96e10803ad4f2f4997ba834835ee01e1f",
+    "Limitations": [
+      "Caller supplies a new unique owned output directory; development generator per-file existence checks are not a transactional product no-overwrite guarantee.",
+      "Font/page/render fidelity, deterministic generated bytes and package behavior require separate actual generation/native/visual observations."
+    ]
+  },
+  "EvidenceAudit": {
+    "Result": "not_run",
+    "Scope": "Native retained-file and final archive review have separate receipts after clean C1 runs."
+  },
+  "ManualAcceptance": {
+    "Result": "not_run",
+    "Scope": "AC041 requires actual recorded inspection of bound original/master/screen/ebook renders; structural/count tests alone are not manual fidelity proof.",
+    "ContractInterpretation": "TEST_STRATEGY permits Codex output inspection; focused owner check is needed when output cannot be inspected. Actual Codex visual observations must be labelled distinctly from owner and Explorer desktop acceptance."
+  },
+  "CaptureBindings": [
+    {
+      "Path": "tests/.work/T17-C1-analyzer-execution-ps51-474e3f76068d45edb7ad9ab956c71423/baseline.diff",
+      "SHA256": "dc748ed7902619c20362de93e1c2055d36e3a137571e9762b3368d0359342a42"
+    },
+    {
+      "Path": "tests/.work/T17-C1-analyzer-execution-ps51-474e3f76068d45edb7ad9ab956c71423/execution.json",
+      "SHA256": "29b2a072828c4354acc25b10c00d143653b07461b149fdce1f4e612971c502dd"
+    },
+    {
+      "Path": "tests/.work/T17-C1-analyzer-execution-ps51-474e3f76068d45edb7ad9ab956c71423/invocation.json",
+      "SHA256": "afc92e61d43b083f1f4fa04757fca6bcfcd5b6b241f2f1e9cecbba821a83afcc"
+    },
+    {
+      "Path": "tests/.work/T17-C1-analyzer-execution-ps51-474e3f76068d45edb7ad9ab956c71423/report.json",
+      "SHA256": "9fffb49e27a2ac9f1368834382443ad441ec9474be877b5f25b8ab7ecc02a26f"
+    },
+    {
+      "Path": "tests/.work/T17-C1-analyzer-execution-ps51-474e3f76068d45edb7ad9ab956c71423/sources/Analyze-T17.ps1",
+      "SHA256": "632284a46d022d6174d9c35a2c7a3460ec85a8469fc5079475852b7487d29aad"
+    },
+    {
+      "Path": "tests/.work/T17-C1-analyzer-execution-ps51-474e3f76068d45edb7ad9ab956c71423/sources/README.md",
+      "SHA256": "6ec1381b459b7cec68c417ddbaa3d3d40eb648b4d70dd2e4e5cc8261e3dfd647"
+    },
+    {
+      "Path": "tests/.work/T17-C1-analyzer-execution-ps51-474e3f76068d45edb7ad9ab956c71423/sources/Run-T17Analyzer.py",
+      "SHA256": "8e3bda2556e59dde958ade2968fc413511272148b87b9b7fac843460f92a646f"
+    },
+    {
+      "Path": "tests/.work/T17-C1-analyzer-execution-ps51-474e3f76068d45edb7ad9ab956c71423/sources/src/WinPDFMerge.Helpers.ps1",
+      "SHA256": "5e4cec2cb31b85e72e551b7f8b291c8c67809c42cf435ad00ee1bc555fec38a0"
+    },
+    {
+      "Path": "tests/.work/T17-C1-analyzer-execution-ps51-474e3f76068d45edb7ad9ab956c71423/sources/tests/fixtures/presets/generate_presets.py",
+      "SHA256": "1aaabe651bd4d468b09e617607b1f276d3a894b67e15081d380cc45e91a62db6"
+    },
+    {
+      "Path": "tests/.work/T17-C1-analyzer-execution-ps51-474e3f76068d45edb7ad9ab956c71423/sources/tests/pdf/SizeReporting.Native.Tests.ps1",
+      "SHA256": "07cf1bc40f65de01497af16b94dafbe6b5dea8b34ebba93f9c6d1933710d53d6"
+    },
+    {
+      "Path": "tests/.work/T17-C1-analyzer-execution-ps51-474e3f76068d45edb7ad9ab956c71423/sources/tests/pdf/SizeReporting.Tests.ps1",
+      "SHA256": "de6fcc7a106e90ec461fe06aac8b96e1eb13b7308e66a7cef66b24893bcb3273"
+    },
+    {
+      "Path": "tests/.work/T17-C1-analyzer-execution-ps51-474e3f76068d45edb7ad9ab956c71423/sources/tools/test/Invoke-Tests.ps1",
+      "SHA256": "d2df7969d0bb5762bdfd647be45803772a1836c222a745411524cda8ed7c65c9"
+    },
+    {
+      "Path": "tests/.work/T17-C1-analyzer-execution-ps51-474e3f76068d45edb7ad9ab956c71423/sources/WinPDFMerge.ps1",
+      "SHA256": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4"
+    },
+    {
+      "Path": "tests/.work/T17-C1-analyzer-execution-ps51-474e3f76068d45edb7ad9ab956c71423/stderr.txt",
+      "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "Path": "tests/.work/T17-C1-analyzer-execution-ps51-474e3f76068d45edb7ad9ab956c71423/stdout.txt",
+      "SHA256": "b8c1029d63e7c73fa1df86830acf30536f03463182a6cdd7356f904e4e7f34f7"
+    },
+    {
+      "Path": "tests/.work/T17-C1-analyzer-execution-ps7-d9c386f3df0b42f29f5f353695d141d9/baseline.diff",
+      "SHA256": "dc748ed7902619c20362de93e1c2055d36e3a137571e9762b3368d0359342a42"
+    },
+    {
+      "Path": "tests/.work/T17-C1-analyzer-execution-ps7-d9c386f3df0b42f29f5f353695d141d9/execution.json",
+      "SHA256": "17501a69338c99440617f3a03216fce879c851d23cd3e7b93019f207e813c3ad"
+    },
+    {
+      "Path": "tests/.work/T17-C1-analyzer-execution-ps7-d9c386f3df0b42f29f5f353695d141d9/invocation.json",
+      "SHA256": "91682698c65a29754036f984589a8418758b53c447f1b12dce90a8a66748cf4d"
+    },
+    {
+      "Path": "tests/.work/T17-C1-analyzer-execution-ps7-d9c386f3df0b42f29f5f353695d141d9/report.json",
+      "SHA256": "5bf85aeed73b92a801ef8118a6de45baeea09e7ea662ef0f4e2c5a46a12fc5df"
+    },
+    {
+      "Path": "tests/.work/T17-C1-analyzer-execution-ps7-d9c386f3df0b42f29f5f353695d141d9/sources/Analyze-T17.ps1",
+      "SHA256": "632284a46d022d6174d9c35a2c7a3460ec85a8469fc5079475852b7487d29aad"
+    },
+    {
+      "Path": "tests/.work/T17-C1-analyzer-execution-ps7-d9c386f3df0b42f29f5f353695d141d9/sources/README.md",
+      "SHA256": "6ec1381b459b7cec68c417ddbaa3d3d40eb648b4d70dd2e4e5cc8261e3dfd647"
+    },
+    {
+      "Path": "tests/.work/T17-C1-analyzer-execution-ps7-d9c386f3df0b42f29f5f353695d141d9/sources/Run-T17Analyzer.py",
+      "SHA256": "8e3bda2556e59dde958ade2968fc413511272148b87b9b7fac843460f92a646f"
+    },
+    {
+      "Path": "tests/.work/T17-C1-analyzer-execution-ps7-d9c386f3df0b42f29f5f353695d141d9/sources/src/WinPDFMerge.Helpers.ps1",
+      "SHA256": "5e4cec2cb31b85e72e551b7f8b291c8c67809c42cf435ad00ee1bc555fec38a0"
+    },
+    {
+      "Path": "tests/.work/T17-C1-analyzer-execution-ps7-d9c386f3df0b42f29f5f353695d141d9/sources/tests/fixtures/presets/generate_presets.py",
+      "SHA256": "1aaabe651bd4d468b09e617607b1f276d3a894b67e15081d380cc45e91a62db6"
+    },
+    {
+      "Path": "tests/.work/T17-C1-analyzer-execution-ps7-d9c386f3df0b42f29f5f353695d141d9/sources/tests/pdf/SizeReporting.Native.Tests.ps1",
+      "SHA256": "07cf1bc40f65de01497af16b94dafbe6b5dea8b34ebba93f9c6d1933710d53d6"
+    },
+    {
+      "Path": "tests/.work/T17-C1-analyzer-execution-ps7-d9c386f3df0b42f29f5f353695d141d9/sources/tests/pdf/SizeReporting.Tests.ps1",
+      "SHA256": "de6fcc7a106e90ec461fe06aac8b96e1eb13b7308e66a7cef66b24893bcb3273"
+    },
+    {
+      "Path": "tests/.work/T17-C1-analyzer-execution-ps7-d9c386f3df0b42f29f5f353695d141d9/sources/tools/test/Invoke-Tests.ps1",
+      "SHA256": "d2df7969d0bb5762bdfd647be45803772a1836c222a745411524cda8ed7c65c9"
+    },
+    {
+      "Path": "tests/.work/T17-C1-analyzer-execution-ps7-d9c386f3df0b42f29f5f353695d141d9/sources/WinPDFMerge.ps1",
+      "SHA256": "27c3652b2d1bb7ccc2d1c12fa1d34be4c5f1180279cb028dd0aec1ea775226a4"
+    },
+    {
+      "Path": "tests/.work/T17-C1-analyzer-execution-ps7-d9c386f3df0b42f29f5f353695d141d9/stderr.txt",
+      "SHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "Path": "tests/.work/T17-C1-analyzer-execution-ps7-d9c386f3df0b42f29f5f353695d141d9/stdout.txt",
+      "SHA256": "15ab2461a3a48f8108c2392ebf5493510ea23d96ba98cd62a97fb55c432de86e"
+    }
+  ],
+  "DocsReview": {
+    "Result": "pass",
+    "Scope": [
+      "README.md",
+      "docs/EMAIL_PRESETS.md"
+    ],
+    "Observations": [
+      "Exact byte accounting, binary units, strict-smaller publication and exit semantics agree with the unchanged runtime contract.",
+      "The screen default and fixed ebook option are retained. Rounded corpus examples are explicitly observations, not targets or universal fidelity promises.",
+      "Visual corpus observations are explicitly labelled Codex comparison at144DPI, not owner/Explorer/manual-desktop evidence. Forms, signatures, PDF/A and accessibility remain outside this limited fidelity claim."
+    ],
+    "VisualObservationEvidenceReview": "not_run; clean C1 native/render bindings and actual visual observations have separate receipts"
+  },
+  "ReviewBuilder": {
+    "Path": "tests/.work/Build-T17C1SourceReview.py",
+    "SHA256": "8bed163c56070fe040facb45aa0a4b2a0bf3692e1e6792bebdf1de66cf18a87f"
+  }
+}
