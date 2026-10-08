@@ -1,0 +1,1 @@
+Describe 'T22 controlled source mutation' { It 'mutates only synthetic source' { [IO.File]::WriteAllText((Join-Path $PSScriptRoot '../../WinPDFMerge.ps1'), '# T22 controlled modified bytes'); 1 | Should -Be 1 } }

@@ -109,13 +109,13 @@ print(json.dumps({'page_count':len(pages),'pages':pages,'pypdfium2':str(pdfium.P
         [IO.File]::Copy((Join-Path $repo 'src/WinPDFMerge.Helpers.ps1'),$helper,$false)
         $foreign = @(Join-Path $app 'foreign-existing.pdf'; Join-Path $output 'foreign-existing.pdf')
         foreach ($path in $foreign) { [IO.File]::Copy($fixturePath,$path,$false) }
-        $input = Join-Path $source '1.pdf'; $generation = $null
-        if ($Tiny) { [IO.File]::Copy($fixturePath,$input,$false) }
+        $fixtureInput = Join-Path $source '1.pdf'; $generation = $null
+        if ($Tiny) { [IO.File]::Copy($fixturePath,$fixtureInput,$false) }
         else {
-            $generated = Invoke-TestChildProcess -Executable $PythonPath -Arguments @('-B',$generator,$input) -TimeoutMilliseconds 10000
+            $generated = Invoke-TestChildProcess -Executable $PythonPath -Arguments @('-B',$generator,$fixtureInput) -TimeoutMilliseconds 10000
             $generated.ExitCode | Should -Be 0 -Because $generated.Stderr
             $generation = $generated.Stdout | ConvertFrom-Json
-            (Get-FileHash -LiteralPath $input -Algorithm SHA256).Hash.ToLowerInvariant() | Should -BeExactly $generation.sha256
+            (Get-FileHash -LiteralPath $fixtureInput -Algorithm SHA256).Hash.ToLowerInvariant() | Should -BeExactly $generation.sha256
         }
         $capture = Join-Path $root 'captured-calls'; [void][IO.Directory]::CreateDirectory($capture)
         $captureSource = @'
@@ -156,7 +156,7 @@ if('__SKIP__' -eq 'True') {
         $captureSource = $captureSource.Replace('__CAPTURE__',($capture -replace "'","''")).Replace('__ENTRY__',((Join-Path $app 'WinPDFMerge.ps1') -replace "'","''")).Replace('__SKIP__',[string][bool]$SkipSentinels)
         [IO.File]::AppendAllText($helper,"`n"+$captureSource,(New-Object Text.UTF8Encoding($false)))
         $path = [IO.Path]::GetDirectoryName($GhostscriptPath) + ';' + [IO.Path]::GetDirectoryName($PdftkPath) + ';' + (Join-Path $env:SystemRoot 'System32') + ';' + (Join-Path $env:SystemRoot 'System32/WindowsPowerShell/v1.0')
-        [pscustomobject]@{Root=$root; App=$app; Source=$source; Output=$output; Foreign=$foreign; Input=$input; Entry=(Join-Path $app 'WinPDFMerge.ps1'); Batch=(Join-Path $app 'WinPDFMerge.bat'); Helper=$helper; Capture=$capture; Generation=$generation; ChildEnvironment=@{PATH=$path; ProgramFiles=$noCommon; 'ProgramFiles(x86)'=$noCommon; GS_OPTIONS='-T16-invalid-inherited-child-option'}; SkipSentinels=[bool]$SkipSentinels}
+        [pscustomobject]@{Root=$root; App=$app; Source=$source; Output=$output; Foreign=$foreign; Input=$fixtureInput; Entry=(Join-Path $app 'WinPDFMerge.ps1'); Batch=(Join-Path $app 'WinPDFMerge.bat'); Helper=$helper; Capture=$capture; Generation=$generation; ChildEnvironment=@{PATH=$path; ProgramFiles=$noCommon; 'ProgramFiles(x86)'=$noCommon; GS_OPTIONS='-T16-invalid-inherited-child-option'}; SkipSentinels=[bool]$SkipSentinels}
     }
     function Invoke-ParameterEntry($App,[string]$Mode='Positional',[string[]]$Extra=@()) {
         if ($Mode -eq 'Batch') { return Invoke-LauncherCommand -BatchPath $App.Batch -SourceArguments @($App.Source) -ChildEnvironment $App.ChildEnvironment -TimeoutMilliseconds 40000 }

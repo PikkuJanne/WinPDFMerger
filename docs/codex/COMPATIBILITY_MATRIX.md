@@ -289,3 +289,16 @@ No acquisition/admin/persistent policy/environment/security changes. Earlier
 preparation/C1a guard failures remain separate. Full fault/static/broader native,
 Explorer/OS/UNC/CI/security/package/release gates remain open. Evidence:
 evidence/T21-completion.md, results, manifest and archive review. T22 next.
+
+
+T22 passes scoped fault/static checks at clean C1 `d159486cdfb66c39cf3ca6b35a23ebd08e1b2932`:
+actual PS5.1.26100.9444 Desktop/pinned PS7.6.6 Core, 715 checks each,
+53 maintained PS files/41 selected analyzer1.25.0 rules, all required bad counts
+zero and no suppressions. Vendor-default advisory0errors/298warnings/161info
+remain visible. Real engines are used only in the explicitly classified affected
+native tiers; no mock/skip/inconclusive or missing environment is native evidence.
+The unchanged supplemental handoff helper symlink case skipped because creation
+was not permitted. This does not certify live UNC, physical Explorer, OS support,
+CI, package/release or the full T23 integration gate. T22 environment rehashed348
+selected dependency files unchanged, using scoped child policies and standard
+user localNTFS with no persistent security/environment change. See T22-completion.

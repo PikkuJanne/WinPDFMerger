@@ -189,8 +189,8 @@ AfterAll {
 Describe 'AC031: actual entry master pages, natural order, rotation and original source preservation' {
     It 'publishes a single multipage input only after separate real staged inspection' {
         $app=New-MasterApplication
-        $input=Copy-MasterFixture $app '2.pdf' '2.pdf'
-        $paths=@($input,$app.Foreign)
+        $fixtureInput=Copy-MasterFixture $app '2.pdf' '2.pdf'
+        $paths=@($fixtureInput,$app.Foreign)
         $before=Get-MasterSnapshot $paths
         $expected=@((New-MasterPage 'T03-02-P01'),(New-MasterPage 'T03-02-P02'))
         $entry=Invoke-MasterEntry $app
@@ -220,11 +220,11 @@ Describe 'AC031: actual entry master pages, natural order, rotation and original
 Describe 'AC030 native supplement: native success never substitutes for a valid expected master' {
     It 'refuses a real two-page merge when the explicit frozen expected count is three' {
         $app=New-MasterApplication
-        $input=Copy-MasterFixture $app '2.pdf' '2.pdf'
-        $paths=@($input,$app.Foreign)
+        $fixtureInput=Copy-MasterFixture $app '2.pdf' '2.pdf'
+        $paths=@($fixtureInput,$app.Foreign)
         $before=Get-MasterSnapshot $paths
         $final=Join-Path $app.Output 'master-final.pdf'
-        $job=Invoke-PdfToolJob -Tool PdfTk -Executable $PdftkPath -InputPaths @($input) -OutputPath $final -ExpectedPageCount 3 -TimeoutMilliseconds 10000
+        $job=Invoke-PdfToolJob -Tool PdfTk -Executable $PdftkPath -InputPaths @($fixtureInput) -OutputPath $final -ExpectedPageCount 3 -TimeoutMilliseconds 10000
         $job.NativeResult.Succeeded | Should -BeTrue
         $job.NativeResult.ExitCode | Should -Be 0
         $job.ValidationResult.Succeeded | Should -BeTrue
@@ -247,8 +247,8 @@ Describe 'AC030 native supplement: native success never substitutes for a valid 
     ) {
         param($Kind)
         $app=New-MasterApplication
-        $input=Copy-MasterFixture $app '2.pdf' '2.pdf'
-        $paths=@($input,$app.Foreign)
+        $fixtureInput=Copy-MasterFixture $app '2.pdf' '2.pdf'
+        $paths=@($fixtureInput,$app.Foreign)
         $before=Get-MasterSnapshot $paths
         $final=Join-Path $app.Output 'master-final.pdf'
         $script:t13ProducedStagedHash=$null
@@ -263,7 +263,7 @@ Describe 'AC030 native supplement: native success never substitutes for a valid 
             }
             & $script:t13OriginalInspector -Executable $Executable -LiteralPath $LiteralPath -TimeoutMilliseconds $TimeoutMilliseconds
         }
-        $job=Invoke-PdfToolJob -Tool PdfTk -Executable $PdftkPath -InputPaths @($input) -OutputPath $final -ExpectedPageCount 2 -TimeoutMilliseconds 10000
+        $job=Invoke-PdfToolJob -Tool PdfTk -Executable $PdftkPath -InputPaths @($fixtureInput) -OutputPath $final -ExpectedPageCount 2 -TimeoutMilliseconds 10000
         $script:t13ProducedStagedHash | Should -Not -BeNullOrEmpty
         $job.NativeResult.Started | Should -BeTrue
         $job.NativeResult.Succeeded | Should -BeTrue

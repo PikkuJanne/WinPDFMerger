@@ -1,0 +1,286 @@
+{
+  "task": "T22",
+  "evidence_class": "unit-controlled-faults-and-Windows-owned-controlled-executable",
+  "start_commit": "75df26187202104995e58f020c2442d973c7b075",
+  "dirty_worktree": true,
+  "observed_at_utc": "2026-10-08T13:57:17.3118309Z",
+  "paths_current_hashes": [
+    {
+      "path": "tests/unit/FaultMatrix.Tests.ps1",
+      "current_sha256": "0450bc41ef75edd36388649d10d43bec5225e9f969559ba5d58600c12f2a0c30",
+      "hash_observed_after_focus_runs": true
+    },
+    {
+      "path": "tests/native/NativeRunner.Tests.ps1",
+      "current_sha256": "0e82f149f21006905c7588ec53140cd6aaef2a02ee9a9bcadce5fb9c329f2759",
+      "hash_observed_after_focus_runs": true
+    },
+    {
+      "path": "tests/native/FakeNative.cs",
+      "current_sha256": "e435d3532282cd54e0f4642e198243edc9714bd8b00bc3f1bb909275b5879ea9",
+      "hash_observed_after_focus_runs": true
+    },
+    {
+      "path": "src/WinPDFMerge.Helpers.ps1",
+      "current_sha256": "22ac56c2922bc5333240503ad041b8388e42cc06ec4057a77346201935408536",
+      "hash_observed_after_focus_runs": true
+    },
+    {
+      "path": "tests/.work/T22-fault-focused/Invoke-Focused.ps1",
+      "current_sha256": "83455ceb164a001c109dad3f222c993721e5f9c2bb62eaa67fbcccec05afe90a",
+      "hash_observed_after_focus_runs": true
+    }
+  ],
+  "runs": [
+    {
+      "phase": "preparation",
+      "host": "ps51",
+      "argv": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "<REPO>\\tests\\.work\\T22-fault-focused\\Invoke-Focused.ps1",
+        "-ReportRoot",
+        "<REPO>\\tests\\.work\\T22-fault-focused\\preparation-ps51"
+      ],
+      "parent_command_preparation": "$env:PSModulePath=$null (scoped exec child only)",
+      "stdout_stderr_combined": "<REPO>\\tests\\.work\\T22-fault-focused\\preparation-ps51.log",
+      "summary": "<REPO>\\tests\\.work\\T22-fault-focused\\preparation-ps51\\summary.json",
+      "nunit": "<REPO>\\tests\\.work\\T22-fault-focused\\preparation-ps51\\results.xml",
+      "process_exit_code": 1,
+      "counts": {
+        "commit_under_test": "75df26187202104995e58f020c2442d973c7b075",
+        "dirty_worktree": true,
+        "shell_version": "5.1.26100.9444",
+        "shell_edition": "Desktop",
+        "process_64_bit": true,
+        "execution_policy": "RemoteSigned",
+        "pester_version": "6.2.0",
+        "passed": 63,
+        "failed": 1,
+        "failed_blocks": 0,
+        "failed_containers": 0,
+        "skipped": 0,
+        "not_run": 0,
+        "total": 64,
+        "native_fixture_build_receipt": "<REPO>\\tests\\.work\\fake-native\\330dea893df747259dba49c578dbf49b\\build-info.json"
+      },
+      "compiled_source_binding": "<REPO>\\tests\\.work\\fake-native\\330dea893df747259dba49c578dbf49b\\build-info.json",
+      "hashes": [
+        {
+          "path": "<REPO>\\tests\\.work\\T22-fault-focused\\preparation-ps51.log",
+          "sha256": "0869e3950048f941a908cd900ff756a2c998ea960013e498720eab24ab936924"
+        },
+        {
+          "path": "<REPO>\\tests\\.work\\T22-fault-focused\\preparation-ps51\\summary.json",
+          "sha256": "47a69ebaca526443b0b8cd27164030b66ca96cf785a90f1b1f4b3cbf0b1dc35c"
+        },
+        {
+          "path": "<REPO>\\tests\\.work\\T22-fault-focused\\preparation-ps51\\results.xml",
+          "sha256": "0160226b0974b9b8c0d5c6139d8855228e68a917c5c50dbcb1fb3cf4ac825707"
+        }
+      ]
+    },
+    {
+      "phase": "preparation",
+      "host": "ps7",
+      "argv": [
+        "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "<REPO>\\tests\\.work\\T22-fault-focused\\Invoke-Focused.ps1",
+        "-ReportRoot",
+        "<REPO>\\tests\\.work\\T22-fault-focused\\preparation-ps7"
+      ],
+      "parent_command_preparation": "$env:PSModulePath=$null (scoped exec child only)",
+      "stdout_stderr_combined": "<REPO>\\tests\\.work\\T22-fault-focused\\preparation-ps7.log",
+      "summary": "<REPO>\\tests\\.work\\T22-fault-focused\\preparation-ps7\\summary.json",
+      "nunit": "<REPO>\\tests\\.work\\T22-fault-focused\\preparation-ps7\\results.xml",
+      "process_exit_code": 1,
+      "counts": {
+        "commit_under_test": "75df26187202104995e58f020c2442d973c7b075",
+        "dirty_worktree": true,
+        "shell_version": "7.6.6",
+        "shell_edition": "Core",
+        "process_64_bit": true,
+        "execution_policy": "RemoteSigned",
+        "pester_version": "6.2.0",
+        "passed": 63,
+        "failed": 1,
+        "failed_blocks": 0,
+        "failed_containers": 0,
+        "skipped": 0,
+        "not_run": 0,
+        "total": 64,
+        "native_fixture_build_receipt": "<REPO>\\tests\\.work\\fake-native\\34139838ca5344a987baf0f9efc790fb\\build-info.json"
+      },
+      "compiled_source_binding": "<REPO>\\tests\\.work\\fake-native\\34139838ca5344a987baf0f9efc790fb\\build-info.json",
+      "hashes": [
+        {
+          "path": "<REPO>\\tests\\.work\\T22-fault-focused\\preparation-ps7.log",
+          "sha256": "eb6ae153d5aa653b87183ce500cb696d94a6a058f60f8810ccdc531c852e4a95"
+        },
+        {
+          "path": "<REPO>\\tests\\.work\\T22-fault-focused\\preparation-ps7\\summary.json",
+          "sha256": "0cf1d11dcfeb7cf321e04831429a87c59cd6ec0e95b1bb2acc6ce2eadec46e30"
+        },
+        {
+          "path": "<REPO>\\tests\\.work\\T22-fault-focused\\preparation-ps7\\results.xml",
+          "sha256": "ca1c0060dbbf9adeb6b0a22681bb8cc566dafee9c011e767f0af86998ebc8aa7"
+        }
+      ]
+    },
+    {
+      "phase": "fixed",
+      "host": "ps51",
+      "argv": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "<REPO>\\tests\\.work\\T22-fault-focused\\Invoke-Focused.ps1",
+        "-ReportRoot",
+        "<REPO>\\tests\\.work\\T22-fault-focused\\fixed-ps51"
+      ],
+      "parent_command_preparation": "$env:PSModulePath=$null (scoped exec child only)",
+      "stdout_stderr_combined": "<REPO>\\tests\\.work\\T22-fault-focused\\fixed-ps51.log",
+      "summary": "<REPO>\\tests\\.work\\T22-fault-focused\\fixed-ps51\\summary.json",
+      "nunit": "<REPO>\\tests\\.work\\T22-fault-focused\\fixed-ps51\\results.xml",
+      "process_exit_code": 0,
+      "counts": {
+        "commit_under_test": "75df26187202104995e58f020c2442d973c7b075",
+        "dirty_worktree": true,
+        "shell_version": "5.1.26100.9444",
+        "shell_edition": "Desktop",
+        "process_64_bit": true,
+        "execution_policy": "RemoteSigned",
+        "pester_version": "6.2.0",
+        "passed": 64,
+        "failed": 0,
+        "failed_blocks": 0,
+        "failed_containers": 0,
+        "skipped": 0,
+        "not_run": 0,
+        "total": 64,
+        "native_fixture_build_receipt": "<REPO>\\tests\\.work\\fake-native\\940175e2fee54f41a700f4b066c85452\\build-info.json"
+      },
+      "compiled_source_binding": "<REPO>\\tests\\.work\\fake-native\\940175e2fee54f41a700f4b066c85452\\build-info.json",
+      "hashes": [
+        {
+          "path": "<REPO>\\tests\\.work\\T22-fault-focused\\fixed-ps51.log",
+          "sha256": "c0954c50addb8338e943349f54e75b748ed2148edcb6f404a19d7623a7b1d70b"
+        },
+        {
+          "path": "<REPO>\\tests\\.work\\T22-fault-focused\\fixed-ps51\\summary.json",
+          "sha256": "f17d70079005788bd65df960b349ba932990ebd4da0c6a6cd61b8ed0f4cb2447"
+        },
+        {
+          "path": "<REPO>\\tests\\.work\\T22-fault-focused\\fixed-ps51\\results.xml",
+          "sha256": "cbcb9be06b7f1420be76a45e07348acc247ce70995c17225d6c4280e941606d1"
+        }
+      ]
+    },
+    {
+      "phase": "fixed",
+      "host": "ps7",
+      "argv": [
+        "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+        "-NoProfile",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "<REPO>\\tests\\.work\\T22-fault-focused\\Invoke-Focused.ps1",
+        "-ReportRoot",
+        "<REPO>\\tests\\.work\\T22-fault-focused\\fixed-ps7"
+      ],
+      "parent_command_preparation": "$env:PSModulePath=$null (scoped exec child only)",
+      "stdout_stderr_combined": "<REPO>\\tests\\.work\\T22-fault-focused\\fixed-ps7.log",
+      "summary": "<REPO>\\tests\\.work\\T22-fault-focused\\fixed-ps7\\summary.json",
+      "nunit": "<REPO>\\tests\\.work\\T22-fault-focused\\fixed-ps7\\results.xml",
+      "process_exit_code": 0,
+      "counts": {
+        "commit_under_test": "75df26187202104995e58f020c2442d973c7b075",
+        "dirty_worktree": true,
+        "shell_version": "7.6.6",
+        "shell_edition": "Core",
+        "process_64_bit": true,
+        "execution_policy": "RemoteSigned",
+        "pester_version": "6.2.0",
+        "passed": 64,
+        "failed": 0,
+        "failed_blocks": 0,
+        "failed_containers": 0,
+        "skipped": 0,
+        "not_run": 0,
+        "total": 64,
+        "native_fixture_build_receipt": "<REPO>\\tests\\.work\\fake-native\\c777ded65abe462c863b25cbe089134e\\build-info.json"
+      },
+      "compiled_source_binding": "<REPO>\\tests\\.work\\fake-native\\c777ded65abe462c863b25cbe089134e\\build-info.json",
+      "hashes": [
+        {
+          "path": "<REPO>\\tests\\.work\\T22-fault-focused\\fixed-ps7.log",
+          "sha256": "2214b3c9452acfdd621c8d650affed9ad21d8c130c1bbb829197a1d7a2db05bc"
+        },
+        {
+          "path": "<REPO>\\tests\\.work\\T22-fault-focused\\fixed-ps7\\summary.json",
+          "sha256": "4303e7c6dfaca62fbd05253fb1c78dc0d90aad3ab47f552a687360e46137b525"
+        },
+        {
+          "path": "<REPO>\\tests\\.work\\T22-fault-focused\\fixed-ps7\\results.xml",
+          "sha256": "9c1efebb5b506e90cfe706f458db892ca4be8a06f1bcddfab45f6558dac73aad"
+        }
+      ]
+    }
+  ],
+  "runtime_red_binding": "Receive-NativeStreamCapture red uses Task<int>.Result in unchanged task-start helper at HEAD75df261. Green substitutes GetAwaiter().GetResult() only after IsCompleted guard; no source byte hashes captured at red/green execution. Current source hashes are retrospective and must not be described as startup guards.",
+  "post_green_delta": "After both64/64 green reports, NativeRunner assertion dynamic properties at two lines changed from $result.($Stream + 'Truncated') and otherStream form to $result.PSObject.Properties[key].Value to pass PSAvoidInvokingEmptyMembers. No assertions/expected states or application runtime changed after green. Root clean consolidated execution validates final bytes.",
+  "coverage": [
+    {
+      "added": 8,
+      "area": "serializer and launch",
+      "proof": "4 invalid argument-vector faults;4 invalid child-environment removal-name faults. Started=false, no PID/exit, zero runtime initialization, empty streams, no capture/termination fault, ownership released. Existing Windows echo10 vectors/serializer rejection/length tests cover quotes/slashes/control/NUL/limit."
+    },
+    {
+      "added": 4,
+      "area": "discovery",
+      "proof": "Controlled Resolve-Path access denial, Get-Item IO fault, two enumeration exceptions after first real FileInfo; zero leaked items and unchanged actual synthetic source hash. Existing top-level/hidden/one/multiple/literal/provider/order-frozen tests retained."
+    },
+    {
+      "added": 4,
+      "area": "stream reader",
+      "proof": "Actual memory StreamReader exact8192/8193 retention and complete EOF draining; injected faulted asynchronous Task<int> with retained prefix; actual disposed reader failure on next-read after retained current chunk. Faulted Task test exposes and fixes hidden getter exception."
+    },
+    {
+      "added": 5,
+      "area": "runner",
+      "proof": "Actual Windows controlled executable4 independent stdout/stderr exact64/one-over boundary cases; injected capture-poll IOException while actual sleeping child alive verifies bounded child termination and ownership release. Existing large simultaneous streams, truncation, nonzero, invalid/missing launch, stdinEOF, timeout, cancellation, termination error, inherited descendants and caller environment tests retained."
+    },
+    {
+      "added": 1,
+      "area": "parser and IO",
+      "proof": "Real FileShare.None source lock causes read-only envelope preflight failure, null page/native result, zero launch, unchanged source hash/time. Existing strict page-label and inventory/validation/envelope tests retain parser faults."
+    },
+    {
+      "added": 6,
+      "area": "result",
+      "proof": "RunFailed across all six explicit email states yields code2 with only recorded publications and retained master/email hashes; existing no-master/unknown state/path decisions remain."
+    },
+    {
+      "added": 0,
+      "area": "staging",
+      "proof": "Existing Staging unit/ToolInvocation/FaultIO/FaultRecovery and real Windows Staging suites cover marker ownership, known path-only cleanup, collision/no-overwrite, two runs, locks, junctions, identity races, exact orphan, simulated disk-full/access/log/publication failures and quarantine receipts. Root consolidates them."
+    }
+  ],
+  "limitations": [
+    "Focused runs use actual Windows shells with controlled exceptions/process fixture; they are not native PDF-engine/manual acceptance evidence.",
+    "Faulted Task<int> is synthetic completion failure through original helper; native capture-poll case controls thrown error while lifecycle uses actual owned executable.",
+    "Disk-full faults are simulated IO exceptions, not physical disk exhaustion.",
+    "No startup source-hash guards in this focused wrapper; final source-bound clean consolidated reports supplied by root.",
+    "Physical Explorer/UNC/broader native/CI/security/package/release gates remain assigned later tasks."
+  ]
+}

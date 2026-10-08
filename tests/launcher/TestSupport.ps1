@@ -51,6 +51,7 @@ function Invoke-LauncherCommand {
                 } catch {
                     # File creation and JSON writes are not atomic; retry only
                     # this GUID-owned receipt while the test deadline permits.
+                    Write-Verbose -Message ('Retrying owned receiver receipt after a transient read error: ' + $_.Exception.Message)
                 }
                 if ($null -eq $receipt) { Start-Sleep -Milliseconds 50 }
             }

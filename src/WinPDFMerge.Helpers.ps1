@@ -402,8 +402,10 @@ function Receive-NativeStreamCapture {
 
     if ($null -eq $State -or $State.Closed -or -not $State.PendingRead.IsCompleted) { return $false }
     try {
-        # Result is read only after IsCompleted; this never waits for a pipe.
-        $length = $State.PendingRead.Result
+        # Observe completed task faults through a method: PowerShell property
+        # access can hide Task.Result getter exceptions. IsCompleted ensures
+        # GetResult never waits for a pipe while IO failures reach this catch.
+        $length = $State.PendingRead.GetAwaiter().GetResult()
         if ($length -eq 0) {
             $State.Closed = $true
             $State.PendingRead = $null

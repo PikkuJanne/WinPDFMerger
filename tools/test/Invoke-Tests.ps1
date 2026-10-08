@@ -2,7 +2,8 @@
 [CmdletBinding()]
 param(
     [string]$PesterModulePath,
-    [ValidateSet('Unit', 'NativeFixture', 'SourceDiscovery', 'Launcher', 'LauncherNative', 'DependencyEntry', 'NativeRunner', 'ToolInvocation', 'PdftkPaths', 'GhostscriptPaths', 'Destination', 'InputPreflight', 'Staging', 'MasterValidation', 'EmailOutcome', 'FaultIO', 'FaultRecovery', 'Parameters', 'ParametersNative', 'SizeReporting', 'SizeReportingNative', 'Diagnostics', 'DiagnosticsNative', 'PreservationDocs', 'PreservationNative', 'PublicDocs', 'CorpusSafety')][string]$Tier = 'Unit',
+    [ValidateSet('Unit', 'Static', 'NativeFixture', 'SourceDiscovery', 'Launcher', 'LauncherNative', 'DependencyEntry', 'NativeRunner', 'ToolInvocation', 'PdftkPaths', 'GhostscriptPaths', 'Destination', 'InputPreflight', 'Staging', 'MasterValidation', 'EmailOutcome', 'FaultIO', 'FaultRecovery', 'Parameters', 'ParametersNative', 'SizeReporting', 'SizeReportingNative', 'Diagnostics', 'DiagnosticsNative', 'PreservationDocs', 'PreservationNative', 'PublicDocs', 'CorpusSafety')][string]$Tier = 'Unit',
+    [string]$AnalyzerModulePath,
     [string]$PdftkPath,
     [string]$GhostscriptPath,
     [string]$PythonPath
@@ -10,6 +11,7 @@ param(
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 $repo = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot '../..')).Path
+. (Join-Path $PSScriptRoot 'TestRunSupport.ps1')
 $pins = Import-PowerShellDataFile -LiteralPath (Join-Path $repo 'tests/TestDependencies.psd1')
 $pesterName = 'Pester'
 if ($PesterModulePath) { $pesterName = $PesterModulePath }
@@ -35,7 +37,10 @@ $config.Output.Verbosity = 'Detailed'
 $config.TestResult.Enabled = $true
 $config.TestResult.OutputPath = Join-Path $work 'results.xml'
 $config.TestResult.OutputFormat = 'NUnitXml'
-if ($Tier -eq 'CorpusSafety') {
+if ($Tier -eq 'Static') {
+    if (-not $AnalyzerModulePath) { throw 'Static requires an explicit pinned PSScriptAnalyzer module path.' }
+    $config.Run.Container = New-PesterContainer -Path (Join-Path $repo 'tests/static/StaticChecks.Tests.ps1') -Data @{ AnalyzerModulePath=$AnalyzerModulePath }
+} elseif ($Tier -eq 'CorpusSafety') {
     if (-not $PdftkPath -or -not $GhostscriptPath -or -not $PythonPath) { throw 'CorpusSafety requires explicit real PDFtk/Ghostscript and pinned development Python paths.' }
     $config.Run.Container = New-PesterContainer -Path (Join-Path $repo 'tests/pdf/CorpusSafety.Native.Tests.ps1') -Data @{ PdftkPath=$PdftkPath; GhostscriptPath=$GhostscriptPath; PythonPath=$PythonPath }
 } elseif ($Tier -eq 'PublicDocs') {
@@ -103,11 +108,37 @@ if ($Tier -eq 'CorpusSafety') {
     $container = New-PesterContainer -Path (Join-Path $repo $testFile) -Data @{ PdftkPath = $PdftkPath }
     $config.Run.Container = $container
 }
-$result = Invoke-Pester -Configuration $config
+$sourceStart = Get-TestSourceSnapshot -Repo $repo
+$startedAt = [DateTime]::UtcNow.ToString('o')
+$result = $null
+$runnerError = $null
+try { $result = Invoke-Pester -Configuration $config }
+catch { $runnerError = $_.Exception.Message }
+if ($null -eq $result -and -not $runnerError) { $runnerError = 'Invoke-Pester returned no completed result receipt.' }
+$sourceEnd = $null
+$sourceUnchanged = $false
+try {
+    $sourceEnd = Get-TestSourceSnapshot -Repo $repo
+    $sourceUnchanged = ($sourceStart | ConvertTo-Json -Depth 6 -Compress) -ceq ($sourceEnd | ConvertTo-Json -Depth 6 -Compress)
+} catch {
+    $runnerError = (@($runnerError, $_.Exception.Message) | Where-Object { $_ }) -join '; '
+}
+$counts = @{}
+foreach ($field in @('PassedCount','FailedCount','FailedBlocksCount','FailedContainersCount','SkippedCount','NotRunCount','InconclusiveCount','TotalCount')) {
+    $counts[$field] = $null
+    if ($null -ne $result -and $null -ne $result.PSObject.Properties[$field]) { $counts[$field] = $result.PSObject.Properties[$field].Value }
+}
+$accepted = -not $runnerError -and $sourceUnchanged -and (Test-TestRunResult -Result $result)
 $summary = [ordered]@{
     observed_at_utc = [DateTime]::UtcNow.ToString('o')
-    commit_under_test = (& git -C $repo rev-parse HEAD)
-    dirty_worktree = (@(& git -C $repo status --porcelain=v1).Count -ne 0)
+    started_at_utc = $startedAt
+    commit_under_test = $sourceStart.commit
+    dirty_worktree = ($sourceStart.status.Count -ne 0)
+    source_start = $sourceStart
+    source_end = $sourceEnd
+    source_unchanged = $sourceUnchanged
+    runner_error = $runnerError
+    result = $(if ($accepted) { 'pass' } else { 'fail' })
     shell_version = $PSVersionTable.PSVersion.ToString()
     shell_edition = $PSVersionTable.PSEdition
     process_64_bit = [Environment]::Is64BitProcess
@@ -115,13 +146,14 @@ $summary = [ordered]@{
     pester_version = $selected.Version.ToString()
     tier = $Tier
     evidence_class = $(if ($Tier -eq 'Unit') { 'unit-controlled-process-and-filesystem' } elseif ($Tier -eq 'SourceDiscovery') { 'windows-entry-source-discovery-real-pdftk' } elseif ($Tier -eq 'Launcher') { 'windows-cmd-actual-batch-controlled-ps51-receiver' } elseif ($Tier -eq 'LauncherNative') { 'windows-cmd-actual-batch-entry-real-pdftk' } elseif ($Tier -eq 'DependencyEntry') { 'windows-entry-dependency-faults-controlled-process-and-real-pdftk' } elseif ($Tier -eq 'NativeRunner') { 'windows-controlled-native-argument-process; no PDF-engine-support claim' } else { 'native-pdftk-fixture-inspection' })
-    passed = $result.PassedCount
-    failed = $result.FailedCount
-    failed_blocks = $result.FailedBlocksCount
-    failed_containers = $result.FailedContainersCount
-    skipped = $result.SkippedCount
-    not_run = $result.NotRunCount
-    total = $result.TotalCount
+    passed = $counts.PassedCount
+    failed = $counts.FailedCount
+    failed_blocks = $counts.FailedBlocksCount
+    failed_containers = $counts.FailedContainersCount
+    skipped = $counts.SkippedCount
+    not_run = $counts.NotRunCount
+    inconclusive = $counts.InconclusiveCount
+    total = $counts.TotalCount
 }
 if ($Tier -in @('NativeRunner','FaultRecovery')) {
     $summary.native_fixture_build_receipt = $nativeFixtureBuildReceipt
@@ -136,6 +168,7 @@ if ($Tier -eq 'Staging') { $summary.evidence_class = 'windows-real-pdftk-gs-stag
 if ($Tier -eq 'MasterValidation') { $summary.evidence_class = 'windows-real-pdftk-master-validation-entry-and-independent-pdfium-order-rotation' }
 if ($Tier -eq 'EmailOutcome') { $summary.evidence_class = 'windows-real-pdftk-gs-email-outcomes-actual-batch-and-controlled-fault-scheduling' }
 if ($Tier -eq 'FaultIO') { $summary.evidence_class = 'unit-controlled-IO-logging-outcomes-and-real-file-locks' }
+if ($Tier -eq 'Static') { $summary.evidence_class = 'unit-static-checker-synthetic-refusal-and-report-regressions; no native PDF-engine-support claim' }
 if ($Tier -eq 'FaultRecovery') { $summary.evidence_class = 'windows-real-engines-environment-and-controlled-owned-native-cancellation' }
 if ($Tier -eq 'Parameters') { $summary.evidence_class = 'unit-actual-parameter-binding-and-controlled-entry-native-decisions' }
 if ($Tier -eq 'ParametersNative') { $summary.evidence_class = 'windows-real-entry-preset-and-defaults-actual-cmd-batch-delivery-not-Explorer' }
@@ -147,8 +180,8 @@ if ($Tier -eq 'PreservationDocs') { $summary.evidence_class = 'documentation-con
 if ($Tier -eq 'PreservationNative') { $summary.evidence_class = 'windows-real-entry-master-screen-ebook-feature-characterization; strict-pypdf-and-independent-pdfium; visual review separate' }
 if ($Tier -eq 'PublicDocs') { $summary.evidence_class = 'public-documentation-contract-isolated-real-parameter-binding-and-controlled-helper-outcomes; no application/native/manual acceptance' }
 if ($Tier -eq 'CorpusSafety') { $summary.evidence_class = 'windows-real-entry-synthetic-corpus-repeat-order-source-tree-and-concurrency; independent-pdfium; not Explorer' }
-$summary | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath (Join-Path $work 'summary.json') -Encoding UTF8
-$summary | ConvertTo-Json -Depth 4
+$summary | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath (Join-Path $work 'summary.json') -Encoding UTF8
+$summary | ConvertTo-Json -Depth 8
 Write-Host ('Reports: ' + $work)
-if ($result.Result -ne 'Passed' -or $result.PassedCount -ne $result.TotalCount -or $result.TotalCount -eq 0) { exit 1 }
+if (-not $accepted) { exit 1 }
 exit 0

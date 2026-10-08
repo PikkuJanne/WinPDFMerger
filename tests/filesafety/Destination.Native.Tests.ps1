@@ -50,10 +50,10 @@ BeforeAll {
         foreach ($directory in @((Join-Path $app 'src'), $source, $output, $noCommon)) { [void][IO.Directory]::CreateDirectory($directory) }
         [IO.File]::Copy((Join-Path $repo 'WinPDFMerge.ps1'), (Join-Path $app 'WinPDFMerge.ps1'), $false)
         [IO.File]::Copy((Join-Path $repo 'src/WinPDFMerge.Helpers.ps1'), (Join-Path $app 'src/WinPDFMerge.Helpers.ps1'), $false)
-        $input = Join-Path $source 'input.pdf'
-        [IO.File]::Copy($fixture, $input, $false)
+        $fixtureInput = Join-Path $source 'input.pdf'
+        [IO.File]::Copy($fixture, $fixtureInput, $false)
         [pscustomobject]@{
-            Root = $root; App = $app; Source = $source; Output = $output; Input = $input
+            Root = $root; App = $app; Source = $source; Output = $output; Input = $fixtureInput
             Entry = (Join-Path $app 'WinPDFMerge.ps1')
             ChildEnvironment = @{ ProgramFiles = $noCommon; 'ProgramFiles(x86)' = $noCommon; GS_OPTIONS = '-T10-invalid-inherited-child-option' }
         }
@@ -348,9 +348,9 @@ Describe 'AC023: real directory identity and NTFS junction protection' {
             'output leaf to source' { $target = $application.Source; $output = $link }
             'source leaf to output' {
                 $target = $application.Output
-                $input = Join-Path $target 'input.pdf'
-                [IO.File]::Copy($fixture, $input, $false)
-                $paths += $input
+                $fixtureInput = Join-Path $target 'input.pdf'
+                [IO.File]::Copy($fixture, $fixtureInput, $false)
+                $paths += $fixtureInput
                 $source = $link
             }
             'output ancestor' {
@@ -361,9 +361,9 @@ Describe 'AC023: real directory identity and NTFS junction protection' {
             'source ancestor' {
                 $target = Join-Path $application.Root 'real-source-parent'
                 [void][IO.Directory]::CreateDirectory((Join-Path $target 'nested'))
-                $input = Join-Path $target 'nested/input.pdf'
-                [IO.File]::Copy($fixture, $input, $false)
-                $paths += $input
+                $fixtureInput = Join-Path $target 'nested/input.pdf'
+                [IO.File]::Copy($fixture, $fixtureInput, $false)
+                $paths += $fixtureInput
                 $source = Join-Path $link 'nested'
             }
         }

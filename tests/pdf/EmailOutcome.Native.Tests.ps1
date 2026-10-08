@@ -71,10 +71,10 @@ print(json.dumps({'page_count':len(pages),'pages':pages,'pypdfium2':str(pdfium.P
   foreach($leaf in @('WinPDFMerge.ps1','WinPDFMerge.bat')){[IO.File]::Copy((Join-Path $repo $leaf),(Join-Path $app $leaf),$false)}
   [IO.File]::Copy((Join-Path $repo 'src/WinPDFMerge.Helpers.ps1'),(Join-Path $app 'src/WinPDFMerge.Helpers.ps1'),$false)
   $foreign=Join-Path $output 'foreign-existing.pdf';[IO.File]::Copy((Join-Path $repo 'tests/fixtures/numbered/1.pdf'),$foreign,$false)
-  $input=Join-Path $source 'input.pdf';$generation=$null
-  if($Fixture -eq 'raster'){$g=Invoke-TestChildProcess -Executable $PythonPath -Arguments @('-B',$generator,$input) -TimeoutMilliseconds 10000;$g.ExitCode | Should -Be 0 -Because $g.Stderr;$generation=$g.Stdout | ConvertFrom-Json;(Get-FileHash -LiteralPath $input -Algorithm SHA256).Hash.ToLowerInvariant() | Should -BeExactly $generation.sha256}
-  elseif($Fixture -ne 'empty'){[IO.File]::Copy((Join-Path $repo 'tests/fixtures/numbered/1.pdf'),$input,$false)}
-  [pscustomobject]@{Root=$root;App=$app;Source=$source;Output=$output;Foreign=$foreign;Input=$input;Entry=(Join-Path $app 'WinPDFMerge.ps1');Batch=(Join-Path $app 'WinPDFMerge.bat');Helper=(Join-Path $app 'src/WinPDFMerge.Helpers.ps1');Capture=(Join-Path $root 'email-job.json');Discovery=(Join-Path $root 'discovery-reached.txt');Generation=$generation;ChildEnvironment=@{ProgramFiles=$noCommon;'ProgramFiles(x86)'=$noCommon;GS_OPTIONS='-T14-invalid-inherited-child-option'}}
+  $fixtureInput=Join-Path $source 'input.pdf';$generation=$null
+  if($Fixture -eq 'raster'){$g=Invoke-TestChildProcess -Executable $PythonPath -Arguments @('-B',$generator,$fixtureInput) -TimeoutMilliseconds 10000;$g.ExitCode | Should -Be 0 -Because $g.Stderr;$generation=$g.Stdout | ConvertFrom-Json;(Get-FileHash -LiteralPath $fixtureInput -Algorithm SHA256).Hash.ToLowerInvariant() | Should -BeExactly $generation.sha256}
+  elseif($Fixture -ne 'empty'){[IO.File]::Copy((Join-Path $repo 'tests/fixtures/numbered/1.pdf'),$fixtureInput,$false)}
+  [pscustomobject]@{Root=$root;App=$app;Source=$source;Output=$output;Foreign=$foreign;Input=$fixtureInput;Entry=(Join-Path $app 'WinPDFMerge.ps1');Batch=(Join-Path $app 'WinPDFMerge.bat');Helper=(Join-Path $app 'src/WinPDFMerge.Helpers.ps1');Capture=(Join-Path $root 'email-job.json');Discovery=(Join-Path $root 'discovery-reached.txt');Generation=$generation;ChildEnvironment=@{ProgramFiles=$noCommon;'ProgramFiles(x86)'=$noCommon;GS_OPTIONS='-T14-invalid-inherited-child-option'}}
  }
  function Get-EmailSnapshot([string[]]$Paths){(@($Paths | ForEach-Object {$file=Get-Item -LiteralPath $_ -Force;[pscustomobject]@{Path=$file.FullName;SHA256=(Get-FileHash -LiteralPath $_ -Algorithm SHA256).Hash;Length=$file.Length;ModifiedUtcTicks=$file.LastWriteTimeUtc.Ticks} | ConvertTo-Json -Compress}) -join "`n")}
  function Add-EmailJobCapture($App,[string]$Mode='capture'){

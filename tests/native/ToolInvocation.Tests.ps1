@@ -9,13 +9,13 @@ BeforeAll {
     function New-ToolInvocationCase {
         $root = Join-Path $work ([Guid]::NewGuid().ToString('N'))
         [void][IO.Directory]::CreateDirectory($root)
-        $input = Join-Path $root "input [1] & ! (x) apostrophe's.pdf"
+        $fixtureInput = Join-Path $root "input [1] & ! (x) apostrophe's.pdf"
         $second = Join-Path $root 'input 2.pdf'
-        [IO.File]::Copy((Join-Path $repo 'tests/fixtures/numbered/1.pdf'), $input, $false)
+        [IO.File]::Copy((Join-Path $repo 'tests/fixtures/numbered/1.pdf'), $fixtureInput, $false)
         [IO.File]::Copy((Join-Path $repo 'tests/fixtures/numbered/2.pdf'), $second, $false)
         $exe = Join-Path $root 'pdftk.exe'
         [IO.File]::WriteAllText($exe, 'T09 controlled placeholder, never executed.')
-        [pscustomobject]@{ Root = $root; Inputs = @($input, $second); Executable = $exe; Output = (Join-Path $root 'master result.pdf') }
+        [pscustomobject]@{ Root = $root; Inputs = @($fixtureInput, $second); Executable = $exe; Output = (Join-Path $root 'master result.pdf') }
     }
 
     function New-ToolInvocationResult([bool]$Succeeded = $true, [int]$ExitCode = 0) {

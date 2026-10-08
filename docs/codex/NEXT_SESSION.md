@@ -1,39 +1,44 @@
 # Next session
 
-Current task: T22 — fault tests and static analysis coverage, pending/unstarted.
-Read AGENTS/INDEX/STATUS, the T22 TASKS entry and tasks/T22.md; load relevant
-PRODUCT/TEST/GITHUB_WORKFLOW specifications and AC050/AC051. Inspect current
-code and fault suites before edits. Keep one conceptual task in this thread.
-Recheck repo/branch/clean state, fetch/push origin, live refs/main/PR/tags/releases.
+Current task: T23 - full native integration in both required shells, pending/unstarted.
+Read AGENTS/INDEX/STATUS, T23 TASKS entry/tasks/T23.md and relevant PRODUCT,
+TECHNICAL/TEST/GITHUB_WORKFLOW specifications and AC052/AC053. Keep one
+conceptual task. Check repo/branch/clean state, fetch/push origins and live
+branch/main/PR/tag/release state before edits; never reset to the old baseline.
 
-T21 passes AC048/AC049 at clean tested C1b
-`abf8976e84f2c3f851efc42a844037a880519b26`: 451 checks per actual Windows
-PS5.1.26100.9444 and pinned PS7.6.6, 902 total/22 reports, no bad counts; 40 Python tests,
-23 independent semantic checks, two reconstructions verified again at C1b,
-native audit: 42 observations/38 fresh retained PDFium reads/880 snapshot checks.
-Runtime PS1/BAT/helpers/native flags/defaults unchanged. Normal C1b push and
-clean live sync passed; draft PR21 head matched. Records-only C2 is verified
-after its push in the session. Recheck current local/live HEAD afresh.
+T22 required AC050/AC051 pass at clean C1 `d159486cdfb66c39cf3ca6b35a23ebd08e1b2932`:
+715 per actual PS5.1.26100.9444 and pinned PS7.6.6 (1430/36 reports),
+all required failure/block/container/skip/not_run/inconclusive counts zero.
+All53 maintained PS files parse/analyze against41 justified safety rules;
+no selected findings/suppressions, advisory0errors/298warnings/161information.
+Nine checker regressions pass; independent runner18/capture4 source-bound audits.
+Python fixture/oracle40pass; handoff helper26pass/1skip (symlink creation not
+permitted, supplemental only). See T22 evidence for actual commands/bindings,
+all earlier failures and the independent raw/archive/records audits.
 
-Reuse verified Pester 6.2.0/PDFtk 2.02/GS 10.08.0/PSA 1.25.0/PS7.6.6 caches.
-Workspace bundle 26.1007.11041 retains Python 3.12.14/package pins, but Python exe
-and PDFium DLL bytes both differ from T19. Only the two exact observed hashes
-are accepted in test readers/oracle; native caches unchanged, 348 selected files
-rehashed. No acquisition/admin/persistent policy/environment/security changes.
-Scoped child RemoteSigned/module-path cleanup remains authorized. The existing
-BAT/percent route retains process-only Bypass; do not bypass enterprise policy.
+The only runtime change is GetAwaiter().GetResult() after IsCompleted for read
+faults; both hosts prove old getter concealed errors and fixed capture retains
+prefix/closes/errors. Test local/BOM/diagnostic changes and all affected native
+suites passed. This does not complete broader T23 native acceptance. Full
+vendor command/type compatibility profiles are not selected static checks.
 
-T22 should cover the runner/serializer/discovery/result/staging fault matrix,
-keep visible pass/fail/skip counts, parse application code in both required shells
-and run pinned analyzer with selected justified rules. No blanket suppression or
-changed assertions to hide behavior. T21 scoped eight-file analyzer reports
-0 errors/44 warnings/59 information per host; reviewed test-harness findings
-are not full lint completion. T21 preparation/C1a failures are retained separately.
-Directory last-write is excluded after a measured pre-invocation metadata change;
-all file invariants and tree inventory/attributes remain strict.
+Reuse verified Pester6.2.0, analyzer1.25.0, PDFtk2.02, GS10.08.0, pinnedPS7.6.6
+caches; T22 rehashed348 selected files unchanged. Workspace26.1007.11041 retains
+Python3.12.14 and exact approved same-version executable/PDFium allowlists.
+No acquisition/admin/persistent policy/environment/security changes. Authorized
+scoped child RemoteSigned/module-path cleanup remains; ordinary PS5.1Restricted,
+ordinary PS7LocalMachineRemoteSigned; existing BAT process-only Bypass unchanged.
+Never bypass enterprise policy or relabel a missing environment as a pass.
 
-Preserve top-level/nonhidden inputs, natural order, output beside scripts, screen
-default, owned staging/no-overwrite, master retention and strict-smaller email.
-No source PDF upload. Keep measured preservation wording and originals. T23
-broader native, CI, physical Explorer, OS/UNC, security, package and publication
-gates remain later tasks. Publication is NOT STARTED; only v1.0.0 is authorized.
+Normal C1 push/cleanlive proof and draftPR22 head match are retained. Records-only
+C2 own HEAD/live equality is checked after push in the session; recheck afresh.
+Developer bracketed Git-root Pester Run.Path discovery remains a disclosed tooling
+limitation: safe exit1/no result. Bootstrap/pin/config errors before invocation
+remain actual failures without completed summaries. Null counters never imply0.
+
+Preserve top-level/nonhidden/literal discovery, natural order, output beside
+scripts, screen default, owned staging/no-overwrite, strict-smaller email and
+validated master retention. Keep originals/T19 preservation limits. No source
+PDF upload. Physical Explorer/manual, CI, security, OS/UNC, package and
+publication remain open. OS support channel unestablished. Publication NOT
+STARTED; only v1.0.0 is authorized after the M6 gates.

@@ -1,0 +1,1 @@
+Describe 'T22 controlled report IO fault' { BeforeAll { $runs=Join-Path $PSScriptRoot '../.work/pester'; $run=@(Get-ChildItem -LiteralPath $runs -Directory); if($run.Count -ne 1){throw 'Expected one controlled report directory'}; [void][IO.Directory]::CreateDirectory((Join-Path $run[0].FullName 'results.xml')) }; It 'passes before report writing throws' { 1 | Should -Be 1 } }
