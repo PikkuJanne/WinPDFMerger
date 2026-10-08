@@ -1,0 +1,42 @@
+Pester v6.2.0
+
+Running tests from 1 files.
+
+Running tests from '<repo>\tests\native\ToolInvocation.Tests.ps1'
+Describing T09 isolated PDF tool job behavior
+ Describing T09: fixed tool vectors and private fresh native outputs
+   [+] passes literal PDFtk input operands and dont_ask only to a fresh owned staged output 1.42s
+   [+] retains the fixed Ghostscript profile and safety flags while removing only child GS_OPTIONS 146ms
+ Describing T09: collision refusal and bounded native failures
+   [+] rejects a 260-character input before launching any native process 90ms
+   [+] rejects a 260-character output before launching any native process 103ms
+   [+] rejects a short final when its private staged operand would reach 260 characters 78ms
+   [+] refuses an existing Pdftk final before native execution and retains its exact bytes 53ms
+   [+] refuses an existing Ghostscript final before native execution and retains its exact bytes 59ms
+   [+] refuses a final path equal to a source without launching or editing the source 38ms
+   [+] does not publish a partial file after an explicit native failure 98ms
+   [+] does not infer success from exit zero when capture failed after creating a staged file 84ms
+   [+] does not publish when the native process reports success without making a file 151ms
+   [+] preserves a final created during the native call and discards only this job staging 128ms
+Tests completed in 3.53s
+Tests Passed: 12, Failed: 0, Skipped: 0, Inconclusive: 0, NotRun: 0
+{
+    "observed_at_utc":  "2026-10-08T07:01:13.0571012Z",
+    "commit_under_test":  "26ac1b73e3733a23099de53d944e00e4ee412982",
+    "dirty_worktree":  false,
+    "shell_version":  "5.1.26100.9444",
+    "shell_edition":  "Desktop",
+    "process_64_bit":  true,
+    "execution_policy":  "RemoteSigned",
+    "pester_version":  "6.2.0",
+    "tier":  "ToolInvocation",
+    "evidence_class":  "unit-controlled-native-job-and-filesystem",
+    "passed":  12,
+    "failed":  0,
+    "failed_blocks":  0,
+    "failed_containers":  0,
+    "skipped":  0,
+    "not_run":  0,
+    "total":  12
+}
+Reports: <repo>\tests\.work\pester\f08dab9e15ab41539494d6328107c379

@@ -1,0 +1,57 @@
+Pester v6.2.0
+
+Running tests from 1 files.
+
+Running tests from '<repo>\tests\launcher\Launcher.Tests.ps1'
+Describing AC009: actual cmd batch path safety with a synthetic PowerShell receiver
+  [+] preserves spaces in installation and source paths 984ms
+  [+] preserves exclamation marks in installation and source paths 617ms
+  [+] preserves ampersands in installation and source paths 725ms
+  [+] preserves parentheses in installation and source paths 916ms
+  [+] preserves brackets in installation and source paths 553ms
+  [+] preserves combined metacharacters in installation and source paths 567ms
+  [+] does not execute an ampersand-separated command embedded in an installation path 663ms
+  [+] quotes an invalid source diagnostic without executing its embedded echo command 75ms
+T05 boundary observation: cmd expanded source%T05_SENTINEL% to sourceEXPANDED before the launcher received it.
+  [+] characterizes paired percent expansion in the outer cmd command before the batch receives input 622ms
+T05 boundary observation: cmd selected installEXPANDED when given install%T05_SENTINEL% in its outer command.
+  [+] characterizes paired percent expansion in the installation path at the outer cmd boundary 603ms
+T05 boundary alternative: direct powershell.exe -File receives the literal percent-bearing SourceFolder without cmd parsing.
+  [+] preserves the literal paired-percent source through the direct PowerShell alternative 537ms
+  [+] passes a trailing source separator without absorbing the closing native quote 578ms
+  [+] passes multiple trailing source separators without losing the argument boundary 545ms
+  [+] preserves a filesystem root argument through the trailing-backslash quoting path 539ms
+
+Describing AC010: actual cmd batch invocation and exit contract with a synthetic receiver
+  [+] presents exit 0 and propagates the exact code 709ms
+  [+] presents exit 1 and propagates the exact code 625ms
+  [+] presents exit 2 and propagates the exact code 628ms
+  [+] presents exit 7 and propagates the exact code 692ms
+  [+] retains an actual pause until controlled stdin is supplied 1.15s
+  [+] rejects zero arguments with usage and exit one before invoking the receiver 71ms
+  [+] rejects multiple dropped source paths with usage rather than ignoring the second 67ms
+  [+] rejects an explicitly empty second argument as an extra argument 76ms
+  [+] uses the actual child exit when an inherited ERRORLEVEL environment variable is present 629ms
+  [+] reports a missing adjacent script safely in a metacharacter installation directory 78ms
+Tests completed in 14.26s
+Tests Passed: 24, Failed: 0, Skipped: 0, Inconclusive: 0, NotRun: 0
+{
+    "observed_at_utc":  "2026-10-08T07:02:17.1327702Z",
+    "commit_under_test":  "26ac1b73e3733a23099de53d944e00e4ee412982",
+    "dirty_worktree":  false,
+    "shell_version":  "5.1.26100.9444",
+    "shell_edition":  "Desktop",
+    "process_64_bit":  true,
+    "execution_policy":  "RemoteSigned",
+    "pester_version":  "6.2.0",
+    "tier":  "Launcher",
+    "evidence_class":  "windows-cmd-actual-batch-controlled-ps51-receiver",
+    "passed":  24,
+    "failed":  0,
+    "failed_blocks":  0,
+    "failed_containers":  0,
+    "skipped":  0,
+    "not_run":  0,
+    "total":  24
+}
+Reports: <repo>\tests\.work\pester\426ef25f23c446e090fd8e9114da0886

@@ -197,3 +197,17 @@ Approved selected cache bytes reused, no acquisition/admin/persistent policy/
 PATH/security changes. M2 complete within stated scope; T16/T17 and later gates
 remain. Exact commands/environment/hashes/limits: T15 completion/results/manifest,
 M2review/nativeaudit/evidencereview/provenance/C1live receipt.
+
+T16 clean C1 `26ac1b73e3733a23099de53d944e00e4ee412982`:14tiers,536each actual
+PS5.1.26100.9444/pinnedPS7.6.6,1072total,all badcounts0. AC038integration and
+AC039unit pass,standarduser/localNTFS/build26300. Real fixedscreen/ebook and
+case-insensitive selection,named/default destination,actualcmd/BAT PS5.1,
+closedstdinusage and SkipEmail bypass/explanation. Native2273checks/18cases/
+28freshretainedPDFtk+PDFiumreads; archive6397checks/335files pass.
+Source/runtime reviews no blocks; PSA0errors71warnings34info each7files
+nonblocking,not lint-clean/fullT22. Dirty/preparation failures kept separate.
+PhysicalExplorer,T17fidelity/size reporting,broadOS/UNC/CI/security/package/
+release/signatures/PDF-A/universal preservation remain unclaimed. Approved
+cache reuse,no acquisition/admin/persistentpolicy/PATH/security changes.
+M3inprogress,T17next; exact commands/context/hashes/limits:T16completion,
+results,manifest,reviews,provenance and C1live receipt.

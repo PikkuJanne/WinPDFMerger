@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "<repo>\tests\.work\Collect-T16Evidence.py", line 376, in <module>
+    if __name__=='__main__':main()
+                            ^^^^^^
+  File "<repo>\tests\.work\Collect-T16Evidence.py", line 367, in main
+    shells=[collector.clean_shell(label,collector.work/('T16-C1-'+label)) for label in ('ps51','ps7')]
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>\tests\.work\Collect-T16Evidence.py", line 81, in clean_shell
+    elif tier=='ParametersNative':self.parameters_native(label,job,metadata,aggregate['shell_version'])
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<repo>\tests\.work\Collect-T16Evidence.py", line 164, in parameters_native
+    require('sentinel' in row['ControlledHooks'] and 'available' in row['ControlledHooks'],'Skip controls not disclosed')
+  File "<repo>\tests\.work\Collect-T09C3Evidence.py", line 33, in require
+    raise ValueError(message)
+ValueError: Skip controls not disclosed
