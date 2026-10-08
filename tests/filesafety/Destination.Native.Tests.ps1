@@ -290,7 +290,14 @@ Describe 'AC022: actual entry destination preflight and standard-user writabilit
         $result.ExitCode | Should -Be 1
         ($result.Stdout + $result.Stderr) | Should -Match 'PDFtk preflight failed'
         Assert-NoDestinationResidue $application.Output
-        @(Get-ChildItem -LiteralPath $application.Output -File).Count | Should -Be 1
+        @(Get-ChildItem -LiteralPath $application.Output -File).Count | Should -Be 2
+        $logs = @(Get-ChildItem -LiteralPath $application.Output -File -Filter 'WinPDFMerge_*.log')
+        $logs.Count | Should -Be 1
+        $log = [IO.File]::ReadAllText($logs[0].FullName)
+        $log | Should -Match 'PDFtk preflight failed'
+        $log | Should -Match 'Stage: PDFtk preflight; elapsed:'
+        $log | Should -Match 'Result: Failure; exit code: 1'
+        $log | Should -Not -Match 'PDFtk version probe executable:|Published Merged master:'
         (Get-DestinationSnapshot @($application.Input, $foreign)) | Should -BeExactly $before
         Add-DestinationObservation 'owned-probe-cleanup-before-later-dependency-failure' $result $application $application.Output $before
     }

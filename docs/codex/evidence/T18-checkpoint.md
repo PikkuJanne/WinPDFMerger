@@ -53,3 +53,15 @@ record its actual SHA, clean executed commands/results, public original/hash
 bindings, independent review and C1 live synchronization. C2 cannot contain its
 own future SHA; verify/report it in session after normal push. No manual desktop,
 Explorer, broader OS/UNC, full preservation/security/package/release claims.
+
+Initial clean C1a `cc76ccf4ba945f38ba7c90c767fdf865f461b316` was normally
+pushed and freshly clean/live verified. Actual seventeen-tier drivers stopped
+after sixteen: first fifteen566pass each; Destination14pass/1fail each because
+an old test counted only the preserved foreign file, not the correct early log.
+Staging was not executed. No final590/1180 pass claim. Root corrected only that
+expectation, retaining owned-probe cleanup/foreign/source checks and asserting
+one useful failure log. Clean C1b follows a normal test-only checkpoint; no
+reset/amend/history rewrite. Application entry/helper/runner/README bytes remain
+as C1a. All partial/failure streams/summary/XML and available sources retained.
+Fresh C1a scoped PSA elevenfiles0errors83warnings69information each, reviewed
+nonblocking, is separate from forthcoming C1b twelve-file analysis.

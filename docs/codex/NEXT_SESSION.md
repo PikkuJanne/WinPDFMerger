@@ -27,3 +27,10 @@ Preserve fixed screen/ebook/defaults/top-level workflow/SkipEmail bypass,
 ownership/cancel/strict inspection/strict-smaller/no-overwrite/master retention.
 Logs are local and may be sensitive; sanitize public copies separately.
 Physical Explorer remains AC058/T26; broader release gates remain open.
+
+Initial clean C1a cc76ccf was pushed/live verified, then full drivers stopped
+on one legacy Destination test expectation (correct early log plus foreign
+file); native/help and first fifteen tiers passed. Actual580pass/1fail each
+across sixteen executed tiers; Staging not executed. Application source stays
+unchanged; test-only checkpoint and full clean C1b acceptance remain required.
+T18/AC042/AC043 are not yet checkpoint-complete; T19/publication remain unstarted.

@@ -27,3 +27,10 @@ persistent environment/policy/security changes. Screen/output-beside-entry,
 source preservation, native safety/ownership/no-overwrite and published-master
 retention remain. Physical Explorer/abrupt crash, broad OS/UNC/CI/security,
 feature preservation/package/release gates remain open. No full-project claim.
+
+Initial clean C1a cc76ccf was pushed/live verified, then full drivers stopped
+on one legacy Destination test expectation (correct early log plus foreign
+file); native/help and first fifteen tiers passed. Actual580pass/1fail each
+across sixteen executed tiers; Staging not executed. Application source stays
+unchanged; test-only checkpoint and full clean C1b acceptance remain required.
+T18/AC042/AC043 are not yet checkpoint-complete; T19/publication remain unstarted.
