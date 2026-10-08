@@ -3,7 +3,7 @@
 Target: published and independently verified v1.0.0 in PikkuJanne/WinPDFMerger.
 Completed milestones: M1/M2/M3 within recorded local Windows/test/review scope.
 Current milestone: M4, in_progress. Completed tasks: T01 through T22.
-Current task: T23 - full native integration in both required shells, pending/unstarted.
+Current task: T23 - full native integration in both required shells, in_progress.
 Publication: NOT STARTED. No release or tag is created.
 
 T22 AC050 fault/unit and AC051 static pass at clean C1 `d159486cdfb66c39cf3ca6b35a23ebd08e1b2932`:

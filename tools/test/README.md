@@ -91,3 +91,11 @@ work on import. An exception from `Invoke-Pester` produces a failed summary;
 unavailable count fields remain null rather than implying zero executed failures.
 Dependency import and setup failures before invocation still exit with their
 actual error, and are not successful or completed test reports.
+
+T23 adds `-Tier NativeAcceptance`, requiring explicit approved PDFtk,
+Ghostscript and development Python paths. It measures representative native
+jobs and the command-length boundary, checks final page IDs with the independent
+PDFium oracle, and retains a genuine nonfatal engine warning with successful
+structural validation. Sources and existing output sentinels are checked before
+and after each job. The same suite must pass in both required Windows shells;
+controlled process tests and Explorer acceptance retain their separate scope.

@@ -2,7 +2,7 @@
 [CmdletBinding()]
 param(
     [string]$PesterModulePath,
-    [ValidateSet('Unit', 'Static', 'NativeFixture', 'SourceDiscovery', 'Launcher', 'LauncherNative', 'DependencyEntry', 'NativeRunner', 'ToolInvocation', 'PdftkPaths', 'GhostscriptPaths', 'Destination', 'InputPreflight', 'Staging', 'MasterValidation', 'EmailOutcome', 'FaultIO', 'FaultRecovery', 'Parameters', 'ParametersNative', 'SizeReporting', 'SizeReportingNative', 'Diagnostics', 'DiagnosticsNative', 'PreservationDocs', 'PreservationNative', 'PublicDocs', 'CorpusSafety')][string]$Tier = 'Unit',
+    [ValidateSet('Unit', 'Static', 'NativeFixture', 'SourceDiscovery', 'Launcher', 'LauncherNative', 'DependencyEntry', 'NativeRunner', 'ToolInvocation', 'PdftkPaths', 'GhostscriptPaths', 'Destination', 'InputPreflight', 'Staging', 'MasterValidation', 'EmailOutcome', 'FaultIO', 'FaultRecovery', 'Parameters', 'ParametersNative', 'SizeReporting', 'SizeReportingNative', 'Diagnostics', 'DiagnosticsNative', 'PreservationDocs', 'PreservationNative', 'PublicDocs', 'CorpusSafety', 'NativeAcceptance')][string]$Tier = 'Unit',
     [string]$AnalyzerModulePath,
     [string]$PdftkPath,
     [string]$GhostscriptPath,
@@ -40,6 +40,9 @@ $config.TestResult.OutputFormat = 'NUnitXml'
 if ($Tier -eq 'Static') {
     if (-not $AnalyzerModulePath) { throw 'Static requires an explicit pinned PSScriptAnalyzer module path.' }
     $config.Run.Container = New-PesterContainer -Path (Join-Path $repo 'tests/static/StaticChecks.Tests.ps1') -Data @{ AnalyzerModulePath=$AnalyzerModulePath }
+} elseif ($Tier -eq 'NativeAcceptance') {
+    if (-not $PdftkPath -or -not $GhostscriptPath -or -not $PythonPath) { throw 'NativeAcceptance requires explicit approved PDFtk/Ghostscript and pinned development Python paths.' }
+    $config.Run.Container = New-PesterContainer -Path (Join-Path $repo 'tests/pdf/NativeAcceptance.Native.Tests.ps1') -Data @{ PdftkPath=$PdftkPath; GhostscriptPath=$GhostscriptPath; PythonPath=$PythonPath }
 } elseif ($Tier -eq 'CorpusSafety') {
     if (-not $PdftkPath -or -not $GhostscriptPath -or -not $PythonPath) { throw 'CorpusSafety requires explicit real PDFtk/Ghostscript and pinned development Python paths.' }
     $config.Run.Container = New-PesterContainer -Path (Join-Path $repo 'tests/pdf/CorpusSafety.Native.Tests.ps1') -Data @{ PdftkPath=$PdftkPath; GhostscriptPath=$GhostscriptPath; PythonPath=$PythonPath }
@@ -180,6 +183,7 @@ if ($Tier -eq 'PreservationDocs') { $summary.evidence_class = 'documentation-con
 if ($Tier -eq 'PreservationNative') { $summary.evidence_class = 'windows-real-entry-master-screen-ebook-feature-characterization; strict-pypdf-and-independent-pdfium; visual review separate' }
 if ($Tier -eq 'PublicDocs') { $summary.evidence_class = 'public-documentation-contract-isolated-real-parameter-binding-and-controlled-helper-outcomes; no application/native/manual acceptance' }
 if ($Tier -eq 'CorpusSafety') { $summary.evidence_class = 'windows-real-entry-synthetic-corpus-repeat-order-source-tree-and-concurrency; independent-pdfium; not Explorer' }
+if ($Tier -eq 'NativeAcceptance') { $summary.evidence_class = 'windows-real-pdftk-gs-helper-representative-limits-presets-and-nonfatal-warning; independent-pdfium; warning-envelope-refused-by-app; not Explorer' }
 $summary | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath (Join-Path $work 'summary.json') -Encoding UTF8
 $summary | ConvertTo-Json -Depth 8
 Write-Host ('Reports: ' + $work)

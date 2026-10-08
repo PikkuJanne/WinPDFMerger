@@ -1,6 +1,6 @@
 # Next session
 
-Current task: T23 - full native integration in both required shells, pending/unstarted.
+Current task: T23 - full native integration in both required shells, in_progress.
 Read AGENTS/INDEX/STATUS, T23 TASKS entry/tasks/T23.md and relevant PRODUCT,
 TECHNICAL/TEST/GITHUB_WORKFLOW specifications and AC052/AC053. Keep one
 conceptual task. Check repo/branch/clean state, fetch/push origins and live
