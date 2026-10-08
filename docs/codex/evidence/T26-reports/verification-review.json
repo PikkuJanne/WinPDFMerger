@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "task": "T26",
+  "reviewed_at_utc": "2026-10-08T17:57:04Z",
+  "reviewer": "Codex compatibility/M4 reviewer; author of the T26 compatibility docs/regression, independent of the root test capture",
+  "tested_commit": "6fba16e226bc02b5205ded6665fcbef970258917",
+  "result": "approved within documentation/static/inventory and copied-source preparation scope",
+  "actionable_findings": 0,
+  "new_tests_or_execution_replays": false,
+  "manual_desktop_acceptance": false,
+  "AC058_pass_approved": false,
+  "AC059_pass_approved": false,
+  "raw_review": {
+    "index": "invocations.json",
+    "verified_file_hashes": 12,
+    "hash_scope": "six raw invocation outputs, two raw PublicDocs JSON summaries, two original NUnit XML files and two raw static JSON reports",
+    "original_and_sanitized_XML_leaves_per_host": 21,
+    "preserved_XML_leaf_attributes": ["result", "success", "executed", "time", "asserts"],
+    "typed_JSON_counts_and_host_facts_preserved": true,
+    "opaque_sanitized_case_names_checked": true,
+    "source_bindings_per_host": 94,
+    "current_source_hash_checks": 188,
+    "clean_C1_before_after_source_guards": true,
+    "before_after_source_snapshots_equal": true
+  },
+  "documentation_results": {
+    "passed": 42,
+    "reports": 2,
+    "passed_per_host": 21,
+    "failed": 0,
+    "failed_blocks": 0,
+    "failed_containers": 0,
+    "skipped": 0,
+    "not_run": 0,
+    "inconclusive": 0,
+    "evidence_class": "public documentation, isolated real parameter binding and controlled helper outcomes; no application/native/manual acceptance"
+  },
+  "static_results_per_host": {
+    "files": 1,
+    "source": "tests/help/PublicDocs.Tests.ps1",
+    "selected_rules": 41,
+    "selected_findings": 0,
+    "selected_suppressions": 0,
+    "parser_failures": 0,
+    "analyzer_failures": 0,
+    "analyzer_not_run": 0,
+    "source_guard_failures": 0,
+    "checkpoint_guard_failures": 0,
+    "skipped": 0,
+    "advisory_errors": 0,
+    "advisory_warnings": 3,
+    "advisory_information": 0,
+    "analyzer_version": "1.25.0"
+  },
+  "actual_hosts": [
+    {"shell": "PS51", "version": "5.1.26100.9444", "edition": "Desktop", "x64": true, "administrator": false, "full_OS_build": "26300.9457"},
+    {"shell": "PS7", "version": "7.6.6", "edition": "Core", "x64": true, "administrator": false, "full_OS_build": "26300.9457"}
+  ],
+  "archive_review_before_this_file": {
+    "manifest": "manifest.json",
+    "manifest_sha256": "289b75ee1311dbad7c3641e0fc4fa145aa889dcfe2226d580ebf2257ca70a863",
+    "manifest_payload_files_checked": 16,
+    "manifest_payload_bytes": 57919,
+    "unlisted_or_missing_payload_files": 0,
+    "payload_hash_or_length_mismatches": 0,
+    "archive_original_byte_copies_checked": 13,
+    "archive_original_byte_mismatches": 0,
+    "privacy_check": "Heuristic scan of six sanitized documentation/static reports found no drive/profile/cache identity candidates; not comprehensive secret certification."
+  },
+  "copied_source_preparation_review": {
+    "candidate_commit": "e2451141217efdd00a1d49d72a04df054872dffc",
+    "kit_manifest": "kit-manifest.json",
+    "source_copies_equal_to_exact_candidate_Git_blobs": 10,
+    "synthetic_fixture_copy_hash_and_length_checks": 16,
+    "runtime_canonical_candidate_C1_and_actual_kit_byte_checks": 3,
+    "runtime_equivalence_receipt": "runtime-source-equivalence.json",
+    "runtime_and_workflow_diff_from_candidate_to_C1_empty": true,
+    "method": "Python subprocess reads exact git show bytes and compares them with actual private kit copies; helper worktree CRLF bytes are not relabeled canonical blob bytes.",
+    "copied_README_and_docs_are_candidate_snapshot_not_newer_T26_docs": true,
+    "application_or_native_launch": false,
+    "distribution_ZIP_acceptance": false,
+    "all_manual_results": "not_run"
+  },
+  "audit_preparation_note": "An initial read-only archive-copy check guessed the kit manifest filename and failed. The actual kit-manifest.json filename was inspected and the corrected read-only byte check completed with zero mismatches. No source changed; the initial failure exists only in tool output, not an invented retained execution receipt.",
+  "limitations": [
+    "These verification counts are evidence-review checks, not extra Pester/application tests.",
+    "The reference build matches the dated official GA history; null channel registry values do not establish Insider enrollment or the machine support channel.",
+    "Required real standard-user Explorer and visible-PDF observations are absent; AC058 and complete AC059 remain uncompleted.",
+    "The reviewed 16-file manifest predates this review file. Root must add this file and regenerate the final manifest without a self-hash cycle."
+  ]
+}

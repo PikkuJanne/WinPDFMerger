@@ -84,6 +84,10 @@ explicit skip must be observed honestly; process-only CLI PATH does not prove an
 existing Explorer process's dependency environment. Required absent or failing
 observations keep T26 and M4 incomplete. T27 is not dependency-ready.
 
-Clean documentation/static test results and the final synchronization checkpoint
-will be added after their execution using the C1/C2 method. No manual, package,
-publication or downloaded-operation pass is asserted here.
+Clean C1 `6fba16e226bc02b5205ded6665fcbef970258917` passes21 documentation cases
+and changed-file parser/41 selected analyzer rules in EACH actual PS5.1.26100.9444
+and pinnedPS7.6.6. Selected findings/suppressions and all bad test counts are0;
+3 advisory warnings per host remain disclosed. C1 normal push/fresh clean live
+equality is retained. See `T26-checkpoint.md`, `T26-results.json` and the report
+manifest/review for actual commands/provenance and supporting evidence limits.
+No manual, package, publication or downloaded-operation pass is asserted.

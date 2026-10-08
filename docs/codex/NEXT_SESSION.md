@@ -1,6 +1,6 @@
 # Next session
 
-Current task: T26 - desktop acceptance and compatibility scoping, in_progress.
+Current task: T26 - desktop acceptance and compatibility scoping, blocked.
 Read AGENTS/INDEX/STATUS, T26 TASKS entry/tasks/T26.md, relevant PRODUCT_SPEC,
 GITHUB_WORKFLOW, TEST_STRATEGY, SECURITY_AND_DEPENDENCIES and AC058-AC062.
 Freshly verify repo/branch/clean state, both origin routes and live main/readiness/
@@ -35,7 +35,10 @@ admin/persistent policy/PATH/security change. Prior authorization permits child
 Process RemoteSigned; BAT's existing process-only Bypass respects Group Policy.
 An existing Explorer's environment is not proved by a CLI-only PATH adjustment.
 
-Clean T26 test/push evidence will be recorded after execution using C1/C2;
-verify the final records commit's own clean/live equality in the session.
+Clean C1 6fba16e passes PublicDocs21 per actual required host plus selected
+changed-file parser/analyzer1/41 rules per host; all bad counts/findings0,3
+advisory warnings each. C1 normal push/fresh clean live equality is retained;
+draftPR26open/unmerged. See evidence/T26-checkpoint.md/results/report manifest.
+Verify the final records C2 own clean/live equality after push in the session.
 T28/later still own explicit allowlisted packaging and exact package checks.
 Publication NOT STARTED; M4 and later gates remain incomplete.
