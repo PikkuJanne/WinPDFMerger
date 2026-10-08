@@ -174,3 +174,19 @@ exact folder when cleanup fails. After all merge runs have stopped, inspect that
 folder and its ownership marker manually before removing it. A missing marker or
 unexpected content needs manual investigation. The application never sweeps old
 staging folders or files that merely share its filename prefix.
+
+Controlled cancellation or timeout returns 1 before master publication and 2
+afterward, retaining every validated published PDF. Ctrl+C requests cancellation
+when the console host delivers the event; host behavior can interrupt PowerShell
+itself. Closing the window, killing the host or a machine crash cannot guarantee
+an exit code, a complete log or filesystem cleanup.
+
+Native processes and their descendants are contained in a separate Windows job
+at creation. Cancellation releases that invocation's job, without selecting
+processes by name or scanning other sessions. If termination cannot be confirmed,
+the exact private staging directory and ownership marker are retained for manual
+inspection. Locked files and write/log failures are reported as failure (1) before
+the master or partial success (2) afterward. A cleanup-only warning can accompany
+success when the validated outputs are already published. `GS_OPTIONS` is removed
+only from the selected child environment; the caller's unset, empty or value state
+is preserved.

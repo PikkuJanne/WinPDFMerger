@@ -2,7 +2,7 @@
 [CmdletBinding()]
 param(
     [string]$PesterModulePath,
-    [ValidateSet('Unit', 'NativeFixture', 'SourceDiscovery', 'Launcher', 'LauncherNative', 'DependencyEntry', 'NativeRunner', 'ToolInvocation', 'PdftkPaths', 'GhostscriptPaths', 'Destination', 'InputPreflight', 'Staging', 'MasterValidation', 'EmailOutcome')][string]$Tier = 'Unit',
+    [ValidateSet('Unit', 'NativeFixture', 'SourceDiscovery', 'Launcher', 'LauncherNative', 'DependencyEntry', 'NativeRunner', 'ToolInvocation', 'PdftkPaths', 'GhostscriptPaths', 'Destination', 'InputPreflight', 'Staging', 'MasterValidation', 'EmailOutcome', 'FaultIO', 'FaultRecovery')][string]$Tier = 'Unit',
     [string]$PdftkPath,
     [string]$GhostscriptPath,
     [string]$PythonPath
@@ -21,7 +21,7 @@ if ($Tier -in @('GhostscriptPaths', 'Destination', 'InputPreflight', 'Staging', 
 if ($Tier -in @('InputPreflight','MasterValidation','EmailOutcome') -and -not $PythonPath) { throw "$Tier requires an explicit development Python executable with the pinned PDFium oracle." }
 $nativeFixturePath = $null
 $nativeFixtureBuildReceipt = $null
-if ($Tier -eq 'NativeRunner') {
+if ($Tier -in @('NativeRunner','FaultRecovery')) {
     $nativeFixturePath = & (Join-Path $repo 'tools/test/Build-FakeNative.ps1')
     $nativeFixtureBuildReceipt = Join-Path ([IO.Path]::GetDirectoryName($nativeFixturePath)) 'build-info.json'
     if (-not [IO.File]::Exists($nativeFixtureBuildReceipt)) { throw 'Missing controlled native fixture build receipt.' }
@@ -37,6 +37,12 @@ $config.TestResult.OutputPath = Join-Path $work 'results.xml'
 $config.TestResult.OutputFormat = 'NUnitXml'
 if ($Tier -eq 'Unit') {
     $config.Run.Path = Join-Path $repo 'tests/unit'
+} elseif ($Tier -eq 'FaultIO') {
+    $config.Run.Path = Join-Path $repo 'tests/faults/FaultIO.Tests.ps1'
+} elseif ($Tier -eq 'FaultRecovery') {
+    if (-not $PdftkPath -or -not $GhostscriptPath -or -not $PythonPath) { throw 'FaultRecovery requires explicit real PDFtk/Ghostscript and pinned development Python paths.' }
+    $config.Run.Container = New-PesterContainer -Path (Join-Path $repo 'tests/faults/FaultRecovery.Native.Tests.ps1') `
+        -Data @{ PdftkPath=$PdftkPath; GhostscriptPath=$GhostscriptPath; PythonPath=$PythonPath; FakeNativePath=$nativeFixturePath; BuildReceiptPath=$nativeFixtureBuildReceipt }
 } elseif ($Tier -eq 'Launcher') {
     $config.Run.Path = Join-Path $repo 'tests/launcher/Launcher.Tests.ps1'
 } elseif ($Tier -eq 'NativeRunner') {
@@ -88,7 +94,7 @@ $summary = [ordered]@{
     not_run = $result.NotRunCount
     total = $result.TotalCount
 }
-if ($Tier -eq 'NativeRunner') {
+if ($Tier -in @('NativeRunner','FaultRecovery')) {
     $summary.native_fixture_build_receipt = $nativeFixtureBuildReceipt
     $summary.native_fixture_build_receipt_sha256 = (Get-FileHash -LiteralPath $nativeFixtureBuildReceipt -Algorithm SHA256).Hash.ToLowerInvariant()
 }
@@ -100,6 +106,8 @@ if ($Tier -eq 'InputPreflight') { $summary.evidence_class = 'windows-real-pdftk-
 if ($Tier -eq 'Staging') { $summary.evidence_class = 'windows-real-pdftk-gs-staging-publication-controlled-scheduling-and-filesystem' }
 if ($Tier -eq 'MasterValidation') { $summary.evidence_class = 'windows-real-pdftk-master-validation-entry-and-independent-pdfium-order-rotation' }
 if ($Tier -eq 'EmailOutcome') { $summary.evidence_class = 'windows-real-pdftk-gs-email-outcomes-actual-batch-and-controlled-fault-scheduling' }
+if ($Tier -eq 'FaultIO') { $summary.evidence_class = 'unit-controlled-IO-logging-outcomes-and-real-file-locks' }
+if ($Tier -eq 'FaultRecovery') { $summary.evidence_class = 'windows-real-engines-environment-and-controlled-owned-native-cancellation' }
 $summary | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath (Join-Path $work 'summary.json') -Encoding UTF8
 $summary | ConvertTo-Json -Depth 4
 Write-Host ('Reports: ' + $work)

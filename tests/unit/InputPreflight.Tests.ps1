@@ -4,7 +4,7 @@ BeforeAll {
     function New-InputPreflightResult([string]$Text = "NumberOfPages: 2`n") {
         [pscustomobject]@{
             Succeeded = $true; Started = $true; ExitCode = 0; TimedOut = $false
-            Cancelled = $false; LaunchError = $null; CaptureError = $null; TerminationError = $null
+            Cancelled = $false; LaunchError = $null; CaptureError = $null; TerminationError = $null; OwnershipReleased = $true
             StdoutTruncated = $false; StderrTruncated = $false; Stdout = $Text; Stderr = ''
         }
     }

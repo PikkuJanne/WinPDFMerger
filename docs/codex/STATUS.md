@@ -3,7 +3,7 @@
 Target: published and independently verified `v1.0.0` in `PikkuJanne/WinPDFMerger`.
 Completed milestone: M1 — paths, ordering and native execution.
 Completed tasks: T01 through T14.
-Next task: T15 — close interruption, environment and IO failure paths, in M2.
+Current task: T15 — interruption, environment and IO failure paths, in progress in M2.
 Publication: NOT STARTED.
 
 T14 and required AC032/AC033 integration +AC034 unit pass at clean C1 `588a96586518059ed38e2de01ad2312003defc7c`.

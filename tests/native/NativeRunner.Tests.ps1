@@ -22,6 +22,7 @@ BeforeAll {
     [void][IO.Directory]::CreateDirectory($toolDirectory)
     $fixture = Join-Path $toolDirectory 'FakeNative.exe'
     [IO.File]::Copy($FakeNativePath, $fixture)
+    [void][Reflection.Assembly]::LoadFrom($fixture)
 
     function Assert-NativeRunnerSuccess($Result) {
         $Result.Started | Should -BeTrue
@@ -33,6 +34,7 @@ BeforeAll {
         $Result.LaunchError | Should -BeNullOrEmpty
         $Result.CaptureError | Should -BeNullOrEmpty
         $Result.TerminationError | Should -BeNullOrEmpty
+        $Result.OwnershipReleased | Should -BeTrue
         $Result.Executable | Should -BeExactly $fixture
         $Result.ElapsedMilliseconds | Should -BeGreaterOrEqual 0
     }
@@ -72,8 +74,8 @@ BeforeAll {
     }
 
     function Set-NativeRunnerEnvironmentState([object]$Value) {
-        if ($null -eq $Value) { Remove-Item -LiteralPath 'Env:\GS_OPTIONS' -ErrorAction SilentlyContinue }
-        else { [Environment]::SetEnvironmentVariable('GS_OPTIONS', [string]$Value, 'Process') }
+        if ($null -eq $Value) { [FakeNativeEnvironment]::Delete('GS_OPTIONS') }
+        else { [FakeNativeEnvironment]::Set('GS_OPTIONS', [string]$Value) }
     }
 }
 
@@ -198,7 +200,7 @@ Describe 'AC017: bounded dual-stream capture and explicit native failure results
         $result.Stdout | Should -Match '^stdin-characters:0\r?\n$'
     }
 
-    It 'bounds stream capture when an exited parent leaves inherited pipe handles open' {
+    It 'releases its owned inherited-pipe descendant when the parent exits first' {
         $receipt = Join-Path $work ([Guid]::NewGuid().ToString('N') + '-descendant-pid.txt')
         try {
             $watch = [Diagnostics.Stopwatch]::StartNew()
@@ -208,13 +210,14 @@ Describe 'AC017: bounded dual-stream capture and explicit native failure results
             $result.Started | Should -BeTrue
             $result.ExitCode | Should -Be 0
             $result.TimedOut | Should -BeFalse
-            $result.Succeeded | Should -BeFalse
-            $result.CaptureError | Should -Match '(?i)capture.*timed out|capture.*timeout'
+            $result.Succeeded | Should -BeTrue
+            $result.CaptureError | Should -BeNullOrEmpty
+            $result.OwnershipReleased | Should -BeTrue
             $result.Stdout | Should -Match ('held-pipe-child:' + $childProcessId)
             $result.Stderr | Should -Match 'held-pipe-stderr'
             $watch.ElapsedMilliseconds | Should -BeLessThan 4000
             @(Get-Process -Id $result.ProcessId -ErrorAction SilentlyContinue).Count | Should -Be 0
-            @(Get-Process -Id $childProcessId -ErrorAction SilentlyContinue).Count | Should -Be 1
+            @(Get-Process -Id $childProcessId -ErrorAction SilentlyContinue).Count | Should -Be 0
         } finally { Stop-NativeFixtureReceipt $receipt }
     }
 }
@@ -276,10 +279,10 @@ Describe 'AC018: bounded owned-process timeout, cancellation and termination fai
         } finally { $cancellation.Dispose(); Stop-NativeFixtureReceipt $receipt; Stop-NativeFixtureProcess $unrelated }
     }
 
-    It 'reports injected failure to terminate and returns within bounded capture time' {
+    It 'reports injected explicit-stop failure while fallback job closure releases the owned child' {
         $script:stoppedNativeFixtureProcessId = $null
         Mock Stop-OwnedNativeProcess {
-            param($Process, $TimeoutMilliseconds)
+            param($Process, $TimeoutMilliseconds, $OwnedLaunch)
             # Read the owned PID during the call; the runner disposes its Process
             # object before returning and later mock inspection cannot use it.
             $script:stoppedNativeFixtureProcessId = $Process.Id
@@ -294,11 +297,11 @@ Describe 'AC018: bounded owned-process timeout, cancellation and termination fai
             $result.ProcessId | Should -Be ([int][IO.File]::ReadAllText($receipt))
             $result.TimedOut | Should -BeTrue
             $result.Succeeded | Should -BeFalse
-            $result.ExitCode | Should -BeNullOrEmpty
+            $result.OwnershipReleased | Should -BeTrue
             $result.TerminationError | Should -Match 'T08 controlled termination failure'
-            $result.CaptureError | Should -Match '(?i)capture.*timed out|capture.*timeout'
+            $result.CaptureError | Should -BeNullOrEmpty
             $watch.ElapsedMilliseconds | Should -BeLessThan 4000
-            @(Get-Process -Id $result.ProcessId -ErrorAction SilentlyContinue).Count | Should -Be 1
+            @(Get-Process -Id $result.ProcessId -ErrorAction SilentlyContinue).Count | Should -Be 0
             $script:stoppedNativeFixtureProcessId | Should -Be $result.ProcessId
             Should -Invoke Stop-OwnedNativeProcess -Times 1 -Exactly -ParameterFilter { $TimeoutMilliseconds -eq 100 }
         } finally { Stop-NativeFixtureReceipt $receipt }
@@ -312,25 +315,26 @@ Describe 'T08: child-only environment and consistent Unicode native diagnostics'
         @{ Label = 'value'; Value = 'T08 synthetic caller option sentinel' }
     ) {
         param($Label, $Value)
-        $saved = [Environment]::GetEnvironmentVariable('GS_OPTIONS', 'Process')
+        $saved = [FakeNativeEnvironment]::Snapshot('GS_OPTIONS')[1]
         try {
             Set-NativeRunnerEnvironmentState $Value
-            $before = [Environment]::GetEnvironmentVariable('GS_OPTIONS', 'Process')
-            $observed = if ($null -eq $before) { 'unset' } elseif ($before -eq '') { 'empty' } else { 'value' }
+            $before = [FakeNativeEnvironment]::Snapshot('GS_OPTIONS')
+            $observed = $before[0]
+            $observed | Should -BeExactly $Label
             Write-Host ('GS_OPTIONS requested ' + $Label + '; observed caller state ' + $observed)
             $result = Invoke-NativeProcess -Executable $fixture -Arguments @('environment', 'GS_OPTIONS') -RemoveEnvironmentVariables @('GS_OPTIONS')
             Assert-NativeRunnerSuccess $result
             $result.Stdout.TrimEnd([char[]]"`r`n") | Should -BeExactly '<unset>'
-            [Environment]::GetEnvironmentVariable('GS_OPTIONS', 'Process') | Should -BeExactly $before
+            ([FakeNativeEnvironment]::Snapshot('GS_OPTIONS') | ConvertTo-Json -Compress) | Should -BeExactly ($before | ConvertTo-Json -Compress)
             $failure = Invoke-NativeProcess -Executable (Join-Path $work 'no-such-environment-exe.exe') -Arguments @() -RemoveEnvironmentVariables @('GS_OPTIONS')
             $failure.Started | Should -BeFalse
             $failure.LaunchError | Should -Not -BeNullOrEmpty
-            [Environment]::GetEnvironmentVariable('GS_OPTIONS', 'Process') | Should -BeExactly $before
+            ([FakeNativeEnvironment]::Snapshot('GS_OPTIONS') | ConvertTo-Json -Compress) | Should -BeExactly ($before | ConvertTo-Json -Compress)
         } finally { Set-NativeRunnerEnvironmentState $saved }
     }
 
     It 'inherits caller GS_OPTIONS when no explicit child removal is requested' {
-        $saved = [Environment]::GetEnvironmentVariable('GS_OPTIONS', 'Process')
+        $saved = [FakeNativeEnvironment]::Snapshot('GS_OPTIONS')[1]
         try {
             Set-NativeRunnerEnvironmentState 'T08 inherited synthetic sentinel'
             $result = Invoke-NativeProcess -Executable $fixture -Arguments @('environment', 'GS_OPTIONS')
@@ -379,7 +383,7 @@ Describe 'T08: child-only environment and consistent Unicode native diagnostics'
     }
 
     It 'surfaces logging IO failure while preserving the caller environment' {
-        $saved = [Environment]::GetEnvironmentVariable('GS_OPTIONS', 'Process')
+        $saved = [FakeNativeEnvironment]::Snapshot('GS_OPTIONS')[1]
         try {
             Set-NativeRunnerEnvironmentState 'T08 logging failure caller sentinel'
             $result = Invoke-NativeProcess -Executable $fixture -Arguments @('streams') -RemoveEnvironmentVariables @('GS_OPTIONS')

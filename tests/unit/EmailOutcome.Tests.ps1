@@ -12,7 +12,7 @@ BeforeAll {
         [pscustomobject]@{
             Executable='controlled placeholder'; RenderedArguments='controlled argument vector'
             Succeeded=$true; Started=$true; ExitCode=0; ProcessId=12345; ElapsedMilliseconds=1
-            TimedOut=$false; Cancelled=$false; LaunchError=$null; CaptureError=$null; TerminationError=$null
+            TimedOut=$false; Cancelled=$false; LaunchError=$null; CaptureError=$null; TerminationError=$null; OwnershipReleased=$true
             StdoutTruncated=$false; StderrTruncated=$false; Stdout=$Text; Stderr=''
         }
     }

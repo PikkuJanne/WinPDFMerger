@@ -1,6 +1,6 @@
 # Next session
 
-Selected task: T15 — close interruption, environment and IO failure paths.
+Current task: T15 — interruption, environment and IO failure paths, in progress.
 Read AGENTS/INDEX/STATUS,T15 TASKS entry/brief,PRODUCT_SPEC,TECHNICAL_SPEC,
 TEST_STRATEGY/GITHUB_WORKFLOW and relevant acceptance cases. Recheck current
 branch/clean/origin/live refs/PR/tags/releases; never reset,stash or discard work.

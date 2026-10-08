@@ -386,17 +386,368 @@ function Receive-NativeStreamCapture {
     return $true
 }
 
+function Initialize-OwnedNativeRuntime {
+    if ('WinPDFMerger.OwnedNativeLaunch' -as [type]) { return }
+    Add-Type -TypeDefinition @'
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
+using System.IO;
+using System.Runtime.InteropServices;
+using System.Text;
+using System.Threading;
+using Microsoft.Win32.SafeHandles;
+
+namespace WinPDFMerger {
+    public sealed class OwnedNativeLaunch : IDisposable {
+        private IntPtr job;
+        private readonly object gate = new object();
+        private bool disposed;
+        public Process Process { get; private set; }
+        public StreamReader StandardOutput { get; private set; }
+        public StreamReader StandardError { get; private set; }
+        public bool TerminationConfirmed { get; private set; }
+        public string TerminationError { get; private set; }
+
+        [StructLayout(LayoutKind.Sequential)]
+        private struct SECURITY_ATTRIBUTES {
+            public int Length;
+            public IntPtr Descriptor;
+            [MarshalAs(UnmanagedType.Bool)] public bool Inherit;
+        }
+        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
+        private struct STARTUPINFO {
+            public int Size;
+            public IntPtr Reserved, Desktop, Title;
+            public uint X, Y, XSize, YSize, XChars, YChars, Fill, Flags;
+            public ushort ShowWindow, ReservedBytes;
+            public IntPtr ReservedData, Input, Output, Error;
+        }
+        [StructLayout(LayoutKind.Sequential)]
+        private struct STARTUPINFOEX {
+            public STARTUPINFO Info;
+            public IntPtr Attributes;
+        }
+        [StructLayout(LayoutKind.Sequential)]
+        private struct PROCESS_INFORMATION {
+            public IntPtr Process, Thread;
+            public uint ProcessId, ThreadId;
+        }
+        [StructLayout(LayoutKind.Sequential)]
+        private struct BASIC_LIMITS {
+            public long ProcessTime, JobTime;
+            public uint Flags;
+            public UIntPtr MinimumWorkingSet, MaximumWorkingSet;
+            public uint ActiveProcessLimit;
+            public UIntPtr Affinity;
+            public uint Priority, Scheduling;
+        }
+        [StructLayout(LayoutKind.Sequential)]
+        private struct IO_COUNTERS {
+            public ulong ReadOperations, WriteOperations, OtherOperations;
+            public ulong ReadBytes, WriteBytes, OtherBytes;
+        }
+        [StructLayout(LayoutKind.Sequential)]
+        private struct EXTENDED_LIMITS {
+            public BASIC_LIMITS Basic;
+            public IO_COUNTERS IO;
+            public UIntPtr ProcessMemory, JobMemory, PeakProcessMemory, PeakJobMemory;
+        }
+        [StructLayout(LayoutKind.Sequential)]
+        private struct BASIC_ACCOUNTING {
+            public long UserTime, KernelTime, PeriodUserTime, PeriodKernelTime;
+            public uint PageFaults, TotalProcesses, ActiveProcesses, TerminatedProcesses;
+        }
+
+        [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+        private static extern IntPtr CreateJobObjectW(IntPtr attributes, string name);
+        [DllImport("kernel32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool SetInformationJobObject(IntPtr job, int kind, ref EXTENDED_LIMITS limits, uint size);
+        [DllImport("kernel32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool QueryInformationJobObject(IntPtr job, int kind, out BASIC_ACCOUNTING accounting, uint size, IntPtr returned);
+        [DllImport("kernel32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool TerminateJobObject(IntPtr job, uint exitCode);
+        [DllImport("kernel32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool CreatePipe(out IntPtr read, out IntPtr write, ref SECURITY_ATTRIBUTES attributes, uint size);
+        [DllImport("kernel32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool SetHandleInformation(IntPtr handle, uint mask, uint flags);
+        [DllImport("kernel32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool CloseHandle(IntPtr handle);
+        [DllImport("kernel32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool InitializeProcThreadAttributeList(IntPtr list, int count, uint flags, ref IntPtr bytes);
+        [DllImport("kernel32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool UpdateProcThreadAttribute(IntPtr list, uint flags, UIntPtr attribute, IntPtr value, UIntPtr bytes, IntPtr previous, IntPtr returned);
+        [DllImport("kernel32.dll")]
+        private static extern void DeleteProcThreadAttributeList(IntPtr list);
+        [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool CreateProcessW(string application, StringBuilder command, IntPtr processAttributes,
+            IntPtr threadAttributes, [MarshalAs(UnmanagedType.Bool)] bool inheritHandles, uint flags,
+            IntPtr environment, string directory, ref STARTUPINFOEX startup, out PROCESS_INFORMATION information);
+        [DllImport("kernel32.dll", SetLastError = true)]
+        private static extern uint ResumeThread(IntPtr thread);
+
+        private static Win32Exception Error(string operation) {
+            return new Win32Exception(Marshal.GetLastWin32Error(), operation + " failed.");
+        }
+        private static void Close(ref IntPtr handle) {
+            if (handle != IntPtr.Zero && handle != new IntPtr(-1)) {
+                CloseHandle(handle);
+                handle = IntPtr.Zero;
+            }
+        }
+        private static StreamReader Reader(ref IntPtr handle) {
+            SafeFileHandle safe = new SafeFileHandle(handle, true);
+            handle = IntPtr.Zero;
+            try {
+                FileStream stream = new FileStream(safe, FileAccess.Read, 4096, false);
+                try { return new StreamReader(stream, new UTF8Encoding(false), false, 4096); }
+                catch { stream.Dispose(); throw; }
+            } catch { safe.Dispose(); throw; }
+        }
+        private static IntPtr EnvironmentBlock(ProcessStartInfo info) {
+            List<string> names = new List<string>();
+            foreach (string name in info.EnvironmentVariables.Keys) {
+                if (String.IsNullOrEmpty(name) || name.IndexOf('\0') >= 0 || name.IndexOf('=') > 0 ||
+                    (name[0] == '=' && (name.Length != 3 || name[2] != ':' || !Char.IsLetter(name[1]))))
+                    throw new ArgumentException("Invalid child environment variable name.");
+                names.Add(name);
+            }
+            names.Sort(StringComparer.OrdinalIgnoreCase);
+            StringBuilder block = new StringBuilder();
+            foreach (string name in names) {
+                string value = info.EnvironmentVariables[name];
+                if (value == null) continue;
+                if (value.IndexOf('\0') >= 0) throw new ArgumentException("Invalid child environment variable value.");
+                block.Append(name).Append('=').Append(value).Append('\0');
+            }
+            if (block.Length == 0) block.Append('\0');
+            block.Append('\0');
+            return Marshal.StringToHGlobalUni(block.ToString());
+        }
+
+        public static OwnedNativeLaunch Start(ProcessStartInfo info) {
+            if (info == null) throw new ArgumentNullException("info");
+            if (Environment.OSVersion.Platform != PlatformID.Win32NT)
+                throw new PlatformNotSupportedException("Owned native launch requires Windows 10 or later.");
+            if (info.UseShellExecute || !info.RedirectStandardInput || !info.RedirectStandardOutput || !info.RedirectStandardError)
+                throw new ArgumentException("Owned native launch requires direct execution and all three redirected streams.");
+            string executable = info.FileName;
+            if (String.IsNullOrWhiteSpace(executable) || !Path.IsPathRooted(executable) ||
+                !String.Equals(Path.GetFullPath(executable), executable, StringComparison.OrdinalIgnoreCase) ||
+                executable.IndexOf('"') >= 0 || executable.IndexOf('\0') >= 0 ||
+                !String.Equals(Path.GetExtension(executable), ".exe", StringComparison.OrdinalIgnoreCase))
+                throw new ArgumentException("Owned native launch requires an exact absolute executable path.");
+            string arguments = info.Arguments ?? "";
+            if (arguments.IndexOf('\0') >= 0) throw new ArgumentException("Native arguments contain NUL.");
+            OwnedNativeLaunch owned = new OwnedNativeLaunch();
+            IntPtr stdinRead = IntPtr.Zero, stdinWrite = IntPtr.Zero, stdoutRead = IntPtr.Zero, stdoutWrite = IntPtr.Zero;
+            IntPtr stderrRead = IntPtr.Zero, stderrWrite = IntPtr.Zero, attributes = IntPtr.Zero;
+            IntPtr handleList = IntPtr.Zero, jobList = IntPtr.Zero, environment = IntPtr.Zero;
+            PROCESS_INFORMATION processInfo = new PROCESS_INFORMATION();
+            bool attributesInitialized = false;
+            bool resumed = false;
+            try {
+                // Unnamed, noninheritable job. No breakaway or UI restriction flags.
+                owned.job = CreateJobObjectW(IntPtr.Zero, null);
+                if (owned.job == IntPtr.Zero) throw Error("CreateJobObjectW");
+                EXTENDED_LIMITS limits = new EXTENDED_LIMITS();
+                limits.Basic.Flags = 0x00002000; // JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE
+                if (!SetInformationJobObject(owned.job, 9, ref limits, (uint)Marshal.SizeOf(typeof(EXTENDED_LIMITS))))
+                    throw Error("SetInformationJobObject");
+                SECURITY_ATTRIBUTES security = new SECURITY_ATTRIBUTES();
+                security.Length = Marshal.SizeOf(typeof(SECURITY_ATTRIBUTES));
+                security.Inherit = true;
+                if (!CreatePipe(out stdinRead, out stdinWrite, ref security, 0)) throw Error("CreatePipe stdin");
+                if (!CreatePipe(out stdoutRead, out stdoutWrite, ref security, 0)) throw Error("CreatePipe stdout");
+                if (!CreatePipe(out stderrRead, out stderrWrite, ref security, 0)) throw Error("CreatePipe stderr");
+                if (!SetHandleInformation(stdinWrite, 1, 0) || !SetHandleInformation(stdoutRead, 1, 0) || !SetHandleInformation(stderrRead, 1, 0))
+                    throw Error("SetHandleInformation");
+                IntPtr attributeBytes = IntPtr.Zero;
+                InitializeProcThreadAttributeList(IntPtr.Zero, 2, 0, ref attributeBytes);
+                if (attributeBytes.ToInt64() <= 0) throw Error("Size process attributes");
+                attributes = Marshal.AllocHGlobal(attributeBytes);
+                if (!InitializeProcThreadAttributeList(attributes, 2, 0, ref attributeBytes)) throw Error("Initialize process attributes");
+                attributesInitialized = true;
+                handleList = Marshal.AllocHGlobal(3 * IntPtr.Size);
+                Marshal.WriteIntPtr(handleList, 0, stdinRead);
+                Marshal.WriteIntPtr(handleList, IntPtr.Size, stdoutWrite);
+                Marshal.WriteIntPtr(handleList, 2 * IntPtr.Size, stderrWrite);
+                if (!UpdateProcThreadAttribute(attributes, 0, new UIntPtr(0x00020002), handleList,
+                    new UIntPtr((uint)(3 * IntPtr.Size)), IntPtr.Zero, IntPtr.Zero)) throw Error("Set inherited handle list");
+                jobList = Marshal.AllocHGlobal(IntPtr.Size);
+                Marshal.WriteIntPtr(jobList, owned.job);
+                if (!UpdateProcThreadAttribute(attributes, 0, new UIntPtr(0x0002000D), jobList,
+                    new UIntPtr((uint)IntPtr.Size), IntPtr.Zero, IntPtr.Zero)) throw Error("Set atomic job list");
+                environment = EnvironmentBlock(info);
+                STARTUPINFOEX startup = new STARTUPINFOEX();
+                startup.Info.Size = Marshal.SizeOf(typeof(STARTUPINFOEX));
+                startup.Info.Flags = 0x00000100; // STARTF_USESTDHANDLES
+                startup.Info.Input = stdinRead;
+                startup.Info.Output = stdoutWrite;
+                startup.Info.Error = stderrWrite;
+                startup.Attributes = attributes;
+                StringBuilder command = new StringBuilder("\"" + executable + "\"" + (arguments.Length == 0 ? "" : " " + arguments));
+                if (command.Length + 1 > 32767) throw new ArgumentException("Native command exceeds the Windows process limit.");
+                // Job association occurs as part of creation, before any child code.
+                // Suspension allows acquiring a managed process handle before fast exit.
+                uint flags = 0x08000000 | 0x00080000 | 0x00000400 | 0x00000004;
+                string directory = String.IsNullOrEmpty(info.WorkingDirectory) ? null : info.WorkingDirectory;
+                if (!CreateProcessW(executable, command, IntPtr.Zero, IntPtr.Zero, true, flags, environment, directory, ref startup, out processInfo))
+                    throw Error("CreateProcessW with owned job");
+                owned.Process = System.Diagnostics.Process.GetProcessById((int)processInfo.ProcessId);
+                IntPtr managedHandle = owned.Process.Handle;
+                owned.StandardOutput = Reader(ref stdoutRead);
+                owned.StandardError = Reader(ref stderrRead);
+                Close(ref stdinRead); Close(ref stdoutWrite); Close(ref stderrWrite);
+                Close(ref stdinWrite); // Immediate EOF; never permit a password prompt.
+                if (ResumeThread(processInfo.Thread) == UInt32.MaxValue) throw Error("Resume owned native thread");
+                resumed = true;
+                return owned;
+            } catch (Exception error) {
+                string termination = owned.CloseJob(1000);
+                try { owned.Dispose(); } catch { }
+                if (termination != null) {
+                    string state = processInfo.ProcessId != 0 && !resumed ?
+                        " Owned process was created suspended and never resumed; no PDF writer was launched." : "";
+                    throw new IOException(error.Message + state + " " + termination, error);
+                }
+                throw;
+            } finally {
+                Close(ref processInfo.Thread); Close(ref processInfo.Process);
+                Close(ref stdinRead); Close(ref stdinWrite); Close(ref stdoutRead); Close(ref stdoutWrite);
+                Close(ref stderrRead); Close(ref stderrWrite);
+                if (environment != IntPtr.Zero) Marshal.FreeHGlobal(environment);
+                if (jobList != IntPtr.Zero) Marshal.FreeHGlobal(jobList);
+                if (handleList != IntPtr.Zero) Marshal.FreeHGlobal(handleList);
+                if (attributesInitialized) DeleteProcThreadAttributeList(attributes);
+                if (attributes != IntPtr.Zero) Marshal.FreeHGlobal(attributes);
+            }
+        }
+
+        private uint ActiveProcesses() {
+            BASIC_ACCOUNTING accounting;
+            if (!QueryInformationJobObject(job, 1, out accounting, (uint)Marshal.SizeOf(typeof(BASIC_ACCOUNTING)), IntPtr.Zero))
+                throw Error("Query owned job accounting");
+            return accounting.ActiveProcesses;
+        }
+        private string StopCore(int timeout) {
+            if (timeout < 1 || timeout > 60000) throw new ArgumentOutOfRangeException("timeout");
+            if (TerminationConfirmed) return null;
+            if (job == IntPtr.Zero) return "Owned job was closed without confirmed termination; cleanup was best effort.";
+            try {
+                if (ActiveProcesses() == 0) { TerminationConfirmed = true; TerminationError = null; return null; }
+                if (!TerminateJobObject(job, 1)) throw Error("Terminate owned job");
+                Stopwatch watch = Stopwatch.StartNew();
+                do {
+                    if (ActiveProcesses() == 0) { TerminationConfirmed = true; TerminationError = null; return null; }
+                    int remaining = timeout - (int)watch.ElapsedMilliseconds;
+                    if (remaining <= 0) break;
+                    Thread.Sleep(Math.Min(10, remaining));
+                } while (watch.ElapsedMilliseconds < timeout);
+                TerminationError = "Owned job termination was not confirmed within " + timeout + " ms; cleanup was best effort.";
+            } catch (Exception error) {
+                TerminationError = "Owned job termination failed; cleanup was best effort. " + error.Message;
+            }
+            return TerminationError;
+        }
+        public string Stop(int timeout) { lock (gate) { return StopCore(timeout); } }
+        public string CloseJob() { return CloseJob(1000); }
+        public string CloseJob(int timeout) {
+            lock (gate) {
+                string error = StopCore(timeout);
+                Close(ref job); // KILL_ON_JOB_CLOSE is the final exact-job safeguard.
+                return error;
+            }
+        }
+        public void Dispose() {
+            lock (gate) {
+                if (disposed) return;
+                disposed = true;
+                CloseJob(1000);
+                try { if (StandardOutput != null) StandardOutput.Dispose(); }
+                finally {
+                    try { if (StandardError != null) StandardError.Dispose(); }
+                    finally { if (Process != null) Process.Dispose(); }
+                }
+            }
+        }
+    }
+
+    public sealed class PdfCancellationContext : IDisposable {
+        private readonly CancellationTokenSource source = new CancellationTokenSource();
+        private readonly object gate = new object();
+        private ConsoleCancelEventHandler handler;
+        private bool disposed;
+        public CancellationToken Token { get { return source.Token; } }
+        public bool ConsoleHandlerRegistered { get; private set; }
+        public string ConsoleHandlerError { get; private set; }
+        public string HostLimit { get { return "Controlled token cancellation is supported. Console event availability depends on the host; abrupt host/window/machine termination cannot guarantee cleanup or an exit code."; } }
+        public PdfCancellationContext() {
+            try {
+                if (Console.IsInputRedirected) return;
+                handler = delegate(object sender, ConsoleCancelEventArgs args) {
+                    lock (gate) {
+                        if (disposed) return;
+                        args.Cancel = true;
+                        try { source.Cancel(); }
+                        catch (Exception error) { ConsoleHandlerError = error.Message; }
+                    }
+                };
+                Console.CancelKeyPress += handler;
+                ConsoleHandlerRegistered = true;
+            } catch (Exception error) { ConsoleHandlerError = error.Message; }
+        }
+        public void Cancel() { lock (gate) { if (!disposed) source.Cancel(); } }
+        public void CancelAfter(int milliseconds) { lock (gate) { if (!disposed) source.CancelAfter(milliseconds); } }
+        public void Dispose() {
+            lock (gate) {
+                if (disposed) return;
+                disposed = true;
+                try {
+                    if (ConsoleHandlerRegistered) {
+                        Console.CancelKeyPress -= handler;
+                        ConsoleHandlerRegistered = false;
+                    }
+                } catch (Exception error) { ConsoleHandlerError = "Console handler removal failed: " + error.Message; }
+                // A stale handler observes disposed and leaves the host event untouched.
+                // Context cleanup must never replace the application's recorded outcome.
+                try { source.Dispose(); }
+                catch (Exception error) { ConsoleHandlerError = "Cancellation context cleanup failed: " + error.Message; }
+            }
+        }
+    }
+}
+'@ -ErrorAction Stop | Out-Null
+}
+
+function New-PdfCancellationContext {
+    Initialize-OwnedNativeRuntime
+    return [WinPDFMerger.PdfCancellationContext]::new()
+}
+
 function Stop-OwnedNativeProcess {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory=$true)][Diagnostics.Process]$Process,
-        [ValidateRange(1, 60000)][int]$TimeoutMilliseconds = 1000
+        [ValidateRange(1, 60000)][int]$TimeoutMilliseconds = 1000,
+        $OwnedLaunch
     )
 
     try {
+        if ($null -ne $OwnedLaunch) { return $OwnedLaunch.Stop($TimeoutMilliseconds) }
         if ($Process.HasExited) { return $null }
-        # Kill exactly this Process instance. Descendant ownership/cancellation
-        # is a later task; never use image-name-wide termination here.
+        # Compatibility for callers providing only an exact retained Process.
+        # Runtime launches always supply their invocation-specific job wrapper.
         $Process.Kill()
         if (-not $Process.WaitForExit($TimeoutMilliseconds)) {
             return "Owned native process termination timed out after $TimeoutMilliseconds ms; cleanup was best effort."
@@ -423,6 +774,8 @@ function Invoke-NativeProcess {
 
     $timer = [Diagnostics.Stopwatch]::StartNew()
     $process = $null
+    $ownedLaunch = $null
+    $ownershipReleased = $true
     $stdout = $null
     $stderr = $null
     $exitCode = $null
@@ -477,15 +830,15 @@ function Invoke-NativeProcess {
             if ($CancellationToken.IsCancellationRequested) {
                 $cancelled = $true
             } else {
-                $process = New-Object Diagnostics.Process
-                $process.StartInfo = $startInfo
-                $started = $process.Start()
-                if (-not $started) { throw 'Native process did not start.' }
+                Initialize-OwnedNativeRuntime
+                $ownedLaunch = [WinPDFMerger.OwnedNativeLaunch]::Start($startInfo)
+                $process = $ownedLaunch.Process
+                $started = $true
+                $ownershipReleased = $false
                 $processId = $process.Id
-                $process.StandardInput.Close()
                 # Start both asynchronous reads before any exit wait.
-                $stdout = New-NativeStreamCapture -Reader $process.StandardOutput
-                $stderr = New-NativeStreamCapture -Reader $process.StandardError
+                $stdout = New-NativeStreamCapture -Reader $ownedLaunch.StandardOutput
+                $stderr = New-NativeStreamCapture -Reader $ownedLaunch.StandardError
                 while (-not $process.HasExited) {
                     if ($CancellationToken.IsCancellationRequested) { $cancelled = $true; break }
                     if ($timer.ElapsedMilliseconds -ge $TimeoutMilliseconds) { $timedOut = $true; break }
@@ -503,11 +856,17 @@ function Invoke-NativeProcess {
         }
 
         if ($started) {
+            if ($CancellationToken.IsCancellationRequested) { $cancelled = $true }
             try {
                 if (-not $process.HasExited) {
                     $terminationAttempted = $true
-                    $terminationError = Stop-OwnedNativeProcess -Process $process -TimeoutMilliseconds $TerminationTimeoutMilliseconds
+                    $terminationError = Stop-OwnedNativeProcess -Process $process -TimeoutMilliseconds $TerminationTimeoutMilliseconds -OwnedLaunch $ownedLaunch
                 }
+                # A parent that has exited may have left descendants holding the
+                # redirected pipes. Release only this invocation's whole job.
+                $closeError = $ownedLaunch.CloseJob($TerminationTimeoutMilliseconds)
+                $ownershipReleased = $ownedLaunch.TerminationConfirmed
+                if ($closeError) { $terminationError = $closeError }
             } catch {
                 $terminationError = 'Owned native process termination failed; cleanup was best effort. ' + $_.Exception.Message
             }
@@ -530,18 +889,24 @@ function Invoke-NativeProcess {
             }
         }
     } finally {
-        # Also protect the immediate child if an unexpected exception interrupts
-        # lifecycle/capture work. A failed stop is attempted once, never retried
-        # with an unbounded wait or an image-name-wide operation.
+        # Closing the retained job also covers exceptions and host cancellation.
+        # Every wait stays bounded; no PID sweep or image-name termination.
         if ($started -and -not $terminationAttempted) {
             try {
                 if (-not $process.HasExited) {
                     $terminationAttempted = $true
-                    $terminationError = Stop-OwnedNativeProcess -Process $process -TimeoutMilliseconds $TerminationTimeoutMilliseconds
+                    $terminationError = Stop-OwnedNativeProcess -Process $process -TimeoutMilliseconds $TerminationTimeoutMilliseconds -OwnedLaunch $ownedLaunch
                 }
             } catch {
                 $terminationError = 'Owned native process termination failed; cleanup was best effort. ' + $_.Exception.Message
             }
+        }
+        if ($null -ne $ownedLaunch -and -not $ownedLaunch.TerminationConfirmed) {
+            try {
+                $closeError = $ownedLaunch.CloseJob($TerminationTimeoutMilliseconds)
+                $ownershipReleased = $ownedLaunch.TerminationConfirmed
+                if ($closeError) { $terminationError = $closeError }
+            } catch { $terminationError = 'Owned job release failed. ' + $_.Exception.Message }
         }
         foreach ($stream in @($stdout, $stderr)) {
             if ($null -eq $stream) { continue }
@@ -554,8 +919,8 @@ function Invoke-NativeProcess {
             # Observe already completed faults without waiting for inherited pipes.
             if ($null -ne $stream.PendingRead -and $stream.PendingRead.IsFaulted) { $null = $stream.PendingRead.Exception }
         }
-        if ($null -ne $process) {
-            try { $process.Dispose() } catch { $captureErrors.Add($_.Exception.Message) }
+        if ($null -ne $ownedLaunch) {
+            try { $ownedLaunch.Dispose() } catch { $captureErrors.Add($_.Exception.Message) }
         }
         $timer.Stop()
     }
@@ -574,10 +939,11 @@ function Invoke-NativeProcess {
         LaunchError = $launchError
         CaptureError = $captureError
         TerminationError = $terminationError
+        OwnershipReleased = $ownershipReleased
         StdoutTruncated = ($null -ne $stdout -and $stdout.Truncated)
         StderrTruncated = ($null -ne $stderr -and $stderr.Truncated)
         Succeeded = ($started -and $exitCode -eq 0 -and -not $timedOut -and -not $cancelled -and
-            -not $launchError -and -not $captureError -and -not $terminationError)
+            -not $launchError -and -not $captureError -and -not $terminationError -and $ownershipReleased)
     }
 }
 
@@ -712,20 +1078,22 @@ function Get-PdfDocumentInspection {
     param(
         [Parameter(Mandatory=$true)][string]$Executable,
         [Parameter(Mandatory=$true)][string]$LiteralPath,
-        [ValidateRange(1, 2147483647)][int]$TimeoutMilliseconds = 900000
+        [ValidateRange(1, 2147483647)][int]$TimeoutMilliseconds = 900000,
+        [Threading.CancellationToken]$CancellationToken = [Threading.CancellationToken]::None
     )
 
     $native = $null
     $count = $null
     $inputError = $null
     try {
+        $CancellationToken.ThrowIfCancellationRequested()
         $null = Get-PdfInputSnapshot -LiteralPath $LiteralPath
         Assert-PdfInputEnvelope -LiteralPath $LiteralPath
         # Read-only operation and explicit stdout target: no output PDF, password
         # workflow or repair operation. Shared runner closes stdin and bounds
-        # execution, both streams, capture and immediate-owned termination.
+        # execution, both streams, capture and invocation-owned termination.
         $native = Invoke-NativeProcess -Executable $Executable `
-            -Arguments @($LiteralPath, 'dump_data_utf8', 'output', '-', 'dont_ask') -TimeoutMilliseconds $TimeoutMilliseconds
+            -Arguments @($LiteralPath, 'dump_data_utf8', 'output', '-', 'dont_ask') -TimeoutMilliseconds $TimeoutMilliseconds -CancellationToken $CancellationToken
         if (-not $native.Succeeded) {
             throw "PDFtk document inspection failed (exit code: $($native.ExitCode)). See native launch/capture/timeout details and both streams; protected or unparseable inputs are unsupported without passwords or repair."
         }
@@ -745,7 +1113,8 @@ function Get-PdfInputInventory {
         [Parameter(Mandatory=$true)][string]$Executable,
         [Parameter(Mandatory=$true)][AllowEmptyCollection()][object[]]$Inputs,
         [string]$LogPath,
-        [ValidateRange(1, 2147483647)][int]$TimeoutMilliseconds = 900000
+        [ValidateRange(1, 2147483647)][int]$TimeoutMilliseconds = 900000,
+        [Threading.CancellationToken]$CancellationToken = [Threading.CancellationToken]::None
     )
 
     if ($Inputs.Count -eq 0) { throw 'The page inventory requires at least one input file.' }
@@ -753,6 +1122,7 @@ function Get-PdfInputInventory {
     # Freeze every metadata record before inspecting the first input. Discovery
     # remains the sole enumeration; later files are never added to this run.
     foreach ($inputFile in $Inputs) {
+        $CancellationToken.ThrowIfCancellationRequested()
         if ($inputFile -isnot [IO.FileInfo]) { throw 'The page inventory requires discovered filesystem input files.' }
         $snapshots.Add((Get-PdfInputSnapshot -LiteralPath $inputFile.FullName))
     }
@@ -761,7 +1131,7 @@ function Get-PdfInputInventory {
     for ($index = 0; $index -lt $snapshots.Count; $index++) {
         $snapshot = $snapshots[$index]
         Assert-PdfInputSnapshot -Snapshot $snapshot
-        $inspection = Get-PdfDocumentInspection -Executable $Executable -LiteralPath $snapshot.FullName -TimeoutMilliseconds $TimeoutMilliseconds
+        $inspection = Get-PdfDocumentInspection -Executable $Executable -LiteralPath $snapshot.FullName -TimeoutMilliseconds $TimeoutMilliseconds -CancellationToken $CancellationToken
         if ($LogPath -and $null -ne $inspection.NativeResult) {
             # The logger echoes strings on the success stream. Keep raw evidence
             # in the file without mixing it into this function's result object.
@@ -889,7 +1259,8 @@ function Assert-PdfStaging {
 function Publish-PdfStagedOutput {
     param([Parameter(Mandatory=$true)]$Staging,
         [Parameter(Mandatory=$true)][string]$StagedPath,
-        [Parameter(Mandatory=$true)][string]$OutputPath)
+        [Parameter(Mandatory=$true)][string]$OutputPath,
+        [Threading.CancellationToken]$CancellationToken = [Threading.CancellationToken]::None)
 
     Assert-PdfStaging -Staging $Staging
     if ($StagedPath -cne $Staging.MasterPath -and $StagedPath -cne $Staging.EmailPath) {
@@ -906,6 +1277,7 @@ function Publish-PdfStagedOutput {
     # Two-argument File.Move never replaces an existing file. This operation,
     # not Test-Path, decides the collision outcome. Parent identity/reparse
     # checks keep the sibling move on the original destination volume.
+    $CancellationToken.ThrowIfCancellationRequested()
     [IO.File]::Move($StagedPath, $OutputPath)
 }
 
@@ -913,6 +1285,13 @@ function Remove-PdfStaging {
     param([Parameter(Mandatory=$true)]$Staging)
 
     if ($Staging.Cleaned) { return [pscustomobject]@{ Cleaned=$true; CleanupError=$null; OrphanPath=$null } }
+    if ($null -ne $Staging.PSObject.Properties['RetainForOwnedProcess'] -and $Staging.RetainForOwnedProcess) {
+        $retainedError = "Native process ownership could not be released; private staging retained at '$($Staging.DirectoryPath)'. Inspect manually after all owned processes have stopped."
+        try { if ($null -ne $Staging.MarkerStream) { $Staging.MarkerStream.Dispose() } }
+        catch { $retainedError += ' Marker handle release failed: ' + $_.Exception.Message }
+        return [pscustomobject]@{ Cleaned=$false; OrphanPath=$Staging.DirectoryPath;
+            CleanupError=$retainedError }
+    }
     $errorText = $null
     $markerDeleted = $false
     try {
@@ -971,7 +1350,8 @@ function Invoke-PdfToolJob {
         $Staging,
         [long]$ExpectedPageCount = 0,
         [string]$InspectionExecutable,
-        [ValidateRange(1, 2147483647)][int]$TimeoutMilliseconds = 900000
+        [ValidateRange(1, 2147483647)][int]$TimeoutMilliseconds = 900000,
+        [Threading.CancellationToken]$CancellationToken = [Threading.CancellationToken]::None
     )
 
     $native = $null
@@ -988,6 +1368,7 @@ function Invoke-PdfToolJob {
     $ownedStaging = $null
     $stagedOutput = $null
     try {
+        $CancellationToken.ThrowIfCancellationRequested()
         if ($ExpectedPageCount -le 0) {
             throw "$Tool requires a positive frozen ExpectedPageCount; no native job was started."
         }
@@ -1048,7 +1429,11 @@ function Invoke-PdfToolJob {
             $removeEnvironment = @('GS_OPTIONS')
         }
         $native = Invoke-NativeProcess -Executable $Executable -Arguments $arguments `
-            -TimeoutMilliseconds $TimeoutMilliseconds -RemoveEnvironmentVariables $removeEnvironment
+            -TimeoutMilliseconds $TimeoutMilliseconds -RemoveEnvironmentVariables $removeEnvironment -CancellationToken $CancellationToken
+        if ($null -eq $native -or $null -eq $native.PSObject.Properties['OwnershipReleased'] -or -not $native.OwnershipReleased) {
+            $Staging | Add-Member -NotePropertyName RetainForOwnedProcess -NotePropertyValue $true -Force
+            throw 'Native termination was not confirmed; no output will be published and private staging is retained.'
+        }
         if (-not $native.Succeeded) {
             throw "$Tool failed. Check native exit/launch/capture/timeout details and both streams in the log. The backend may reject Unicode or long paths; source files were not renamed."
         }
@@ -1066,12 +1451,16 @@ function Invoke-PdfToolJob {
             throw "$validationLabel validation requires a regular owned staged PDF; no final output was published."
         }
         $snapshot = Get-PdfInputSnapshot -LiteralPath $stagedOutput
-        $validation = Get-PdfDocumentInspection -Executable $inspector -LiteralPath $stagedOutput -TimeoutMilliseconds $TimeoutMilliseconds
+        $validation = Get-PdfDocumentInspection -Executable $inspector -LiteralPath $stagedOutput -TimeoutMilliseconds $TimeoutMilliseconds -CancellationToken $CancellationToken
+        if ($null -ne $validation.NativeResult -and ($null -eq $validation.NativeResult.PSObject.Properties['OwnershipReleased'] -or -not $validation.NativeResult.OwnershipReleased)) {
+            $Staging | Add-Member -NotePropertyName RetainForOwnedProcess -NotePropertyValue $true -Force
+            throw 'Inspection termination was not confirmed; no output will be published and private staging is retained.'
+        }
         if (-not $validation.Succeeded -or $null -eq $validation.NativeResult -or -not $validation.NativeResult.Succeeded) {
             throw "$validationLabel validation failed; no final output was published. $($validation.InputError)"
         }
         $validationNative = $validation.NativeResult
-        foreach ($field in @('Started','ExitCode','Succeeded','TimedOut','Cancelled','LaunchError','CaptureError','TerminationError','StdoutTruncated','StderrTruncated')) {
+        foreach ($field in @('Started','ExitCode','Succeeded','TimedOut','Cancelled','LaunchError','CaptureError','TerminationError','StdoutTruncated','StderrTruncated','OwnershipReleased')) {
             if ($null -eq $validationNative.PSObject.Properties[$field]) {
                 throw "$validationLabel validation receipt is incomplete ($field); no final output was published."
             }
@@ -1108,12 +1497,13 @@ function Invoke-PdfToolJob {
         $validatedPages = [long]$validation.PageCount
         $outputBytes = $current.Length
         $validated = $true
+        $CancellationToken.ThrowIfCancellationRequested()
         # File.Move refuses an existing target, including a collision after
         # validation and the strictly smaller email decision.
         if ($Tool -eq 'Ghostscript' -and $outputBytes -ge $masterBytes) {
             $outputState = 'no_size_benefit'
         } else {
-            Publish-PdfStagedOutput -Staging $Staging -StagedPath $stagedOutput -OutputPath $OutputPath
+            Publish-PdfStagedOutput -Staging $Staging -StagedPath $stagedOutput -OutputPath $OutputPath -CancellationToken $CancellationToken
             $published = $true
             $outputState = 'published'
         }
@@ -1121,8 +1511,12 @@ function Invoke-PdfToolJob {
         $outputError = $_.Exception.Message
     } finally {
         if ($null -ne $ownedStaging) {
-            $cleanup = Remove-PdfStaging -Staging $ownedStaging
-            $cleanupError = $cleanup.CleanupError
+            try {
+                $cleanup = Remove-PdfStaging -Staging $ownedStaging
+                $cleanupError = $cleanup.CleanupError
+            } catch {
+                $cleanupError = "Owned staging cleanup failed; retained path '$($ownedStaging.DirectoryPath)'. $($_.Exception.Message)"
+            }
         }
     }
     return [pscustomobject]@{
@@ -1147,7 +1541,8 @@ function Get-PdfMergeOutcome {
         [Parameter(Mandatory=$true)][bool]$MasterPublished,
         [ValidateSet('not_started','skipped','unavailable','published','no_size_benefit','failed')][string]$EmailState = 'not_started',
         [string]$MasterPath,
-        [string]$EmailPath
+        [string]$EmailPath,
+        [switch]$RunFailed
     )
 
     $paths = @()
@@ -1174,6 +1569,11 @@ function Get-PdfMergeOutcome {
                 $message = 'Email processing failed; validated master retained.'
             }
         }
+    }
+    if ($RunFailed -and $MasterPublished) {
+        $exitCode = 2
+        $summary = 'PARTIAL SUCCESS'
+        if ($EmailState -ne 'failed') { $message = 'Run failed; validated published outputs retained.' }
     }
     return [pscustomobject]@{ ExitCode=$exitCode; Summary=$summary; EmailMessage=$message; EmailState=$EmailState; PublishedPaths=@($paths) }
 }
@@ -1260,11 +1660,12 @@ function Invoke-DependencyVersionProbe {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory=$true)][string]$Path,
-        [ValidateRange(1, 60000)][int]$TimeoutMilliseconds = 5000
+        [ValidateRange(1, 60000)][int]$TimeoutMilliseconds = 5000,
+        [Threading.CancellationToken]$CancellationToken = [Threading.CancellationToken]::None
     )
 
     $result = Invoke-NativeProcess -Executable $Path -Arguments @('--version') `
-        -TimeoutMilliseconds $TimeoutMilliseconds -RemoveEnvironmentVariables @('GS_OPTIONS')
+        -TimeoutMilliseconds $TimeoutMilliseconds -RemoveEnvironmentVariables @('GS_OPTIONS') -CancellationToken $CancellationToken
     if ($result.TerminationError) { Write-Warning $result.TerminationError }
     if ($result.LaunchError) { throw $result.LaunchError }
     if ($result.TimedOut) { throw "Version probe timed out after $TimeoutMilliseconds ms." }
@@ -1280,10 +1681,11 @@ function Get-NativeToolVersion {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory=$true)][string]$Path,
-        [Parameter(Mandatory=$true)][ValidateSet('PdfTk', 'Ghostscript')][string]$Tool
+        [Parameter(Mandatory=$true)][ValidateSet('PdfTk', 'Ghostscript')][string]$Tool,
+        [Threading.CancellationToken]$CancellationToken = [Threading.CancellationToken]::None
     )
 
-    $probe = Invoke-DependencyVersionProbe -Path $Path
+    $probe = Invoke-DependencyVersionProbe -Path $Path -CancellationToken $CancellationToken
     $diagnostic = 'stdout: {0}; stderr: {1}' -f $probe.Stdout.Trim(), $probe.Stderr.Trim()
     if ($diagnostic.Length -gt 2048) { $diagnostic = $diagnostic.Substring(0, 2048) + ' [truncated]' }
     if ($probe.ExitCode -ne 0) { throw "$Tool version probe failed (exit $($probe.ExitCode)). $diagnostic" }

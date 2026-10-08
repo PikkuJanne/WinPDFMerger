@@ -22,7 +22,7 @@ BeforeAll {
         [pscustomobject]@{
             Succeeded = $Succeeded; Started = $true; ExitCode = $ExitCode
             TimedOut = $false; Cancelled = $false; LaunchError = $null
-            CaptureError = $null; TerminationError = $null
+            CaptureError = $null; TerminationError = $null; OwnershipReleased = $true
             StdoutTruncated = $false; StderrTruncated = $false
             Stdout = 'T09 controlled native stdout'; Stderr = ''
         }
