@@ -114,6 +114,17 @@ Describe 'AC046 usable public instructions' {
         (Test-PublicParagraph $public @('\bdefault\b','\b(?:entry[- ]script|scripts?|launcher)\b','\b(?:next\s+to|beside|directory|folder)\b')) | Should -BeTrue
         (Test-PublicParagraph $public @('\bWindows\s+10\b','\b(?:unvalidated|not\s+validated|untested)\b')) | Should -BeTrue
     }
+    It 'keeps host OS support separate from scoped dependency test observations' {
+        $dependencies = [string]$surfaces['docs/DEPENDENCIES.md']
+        (Test-PublicParagraph $dependencies @('Windows.*support\s+channel','\bunestablished\b','Windows\s+PowerShell','\blifecycle\b')) | Should -BeTrue
+        (Test-PublicParagraph $dependencies @('\bobservations\b','\bdo\s+not\s+certify\b','\bOS\s+support\b')) | Should -BeTrue
+    }
+    It 'retains dated official dependency notices and an explicitly acceptable unsigned release' {
+        $dependencies = [string]$surfaces['docs/DEPENDENCIES.md']
+        $dependencies | Should -Match 'Vendor\s+information\s+checked\s+\d{4}-\d{2}-\d{2}'
+        foreach ($official in @('https://github\.com/PowerShell/Announcements/','https://www\.ghostscript\.com/releases/cve/','https://www\.pdflabs\.com/docs/pdftk-license/')) { $dependencies | Should -Match $official }
+        (Test-PublicParagraph ([string]$surfaces['SECURITY.md']) @('\bunsigned\b','\bacceptable\b','\boptional\b')) | Should -BeTrue
+    }
     It 'parses and binds every public app example to the actual isolated parameter block' {
         $examples.Count | Should -BeGreaterThan 5
         $results = New-Object 'System.Collections.Generic.List[object]'
