@@ -3,7 +3,7 @@
 Target: published and independently verified v1.0.0 in PikkuJanne/WinPDFMerger.
 Completed milestones: M1/M2/M3 within recorded local Windows/test/review scope.
 Current milestone: M4, in_progress. Completed tasks: T01 through T21.
-Current task: T22 — fault tests and static analysis coverage, pending/unstarted.
+Current task: T22 - fault tests and static analysis coverage, in_progress.
 Publication: NOT STARTED. No release or tag is created.
 
 T21 AC048 review and AC049 Windows integration pass at clean implementation

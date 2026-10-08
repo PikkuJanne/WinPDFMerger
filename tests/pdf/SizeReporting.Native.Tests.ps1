@@ -105,10 +105,10 @@ print(json.dumps({'page_count':len(pages),'pages':pages,'pypdfium2':str(pdfium.P
         $helper = Join-Path $app 'src/WinPDFMerge.Helpers.ps1'
         [IO.File]::Copy((Join-Path $repo 'src/WinPDFMerge.Helpers.ps1'),$helper,$false)
         $foreign = Join-Path $output 'foreign-existing.pdf'; [IO.File]::Copy($fixturePath,$foreign,$false)
-        $input = Join-Path $source '1.pdf'
+        $fixtureInput = Join-Path $source '1.pdf'
         $expectation = if ($Fixture -eq 'tiny') { $tinyExpectation } else { @($presetManifest.fixtures | Where-Object file -eq ($Fixture+'.pdf'))[0] }
         $original = if ($Fixture -eq 'tiny') { $fixturePath } else { Join-Path $originals $expectation.file }
-        [IO.File]::Copy($original,$input,$false)
+        [IO.File]::Copy($original,$fixtureInput,$false)
         $bad = Join-Path $root 'owned-corrupt-gs-input.pdf'
         if ($Control -eq 'corrupt') { [IO.File]::WriteAllText($bad,"%PDF-1.4`nT17 owned synthetic corrupt PDF`n%%EOF`n",[Text.Encoding]::ASCII) }
         $recordingSource = @'
@@ -171,7 +171,7 @@ if('__CONTROL__' -eq 'skip') {
 '@
         foreach ($pair in @(@('__CONTROL__',$Control),@('__CAPTURE__',$capture),@('__BAD__',$bad))) { $recordingSource=$recordingSource.Replace($pair[0],($pair[1] -replace "'","''")) }
         [IO.File]::AppendAllText($helper,"`n"+$recordingSource,(New-Object Text.UTF8Encoding($false)))
-        [pscustomobject]@{Root=$root;App=$app;Source=$source;Output=$output;Foreign=$foreign;Input=$input;Original=$original;Expectation=$expectation;Entry=(Join-Path $app 'WinPDFMerge.ps1');Helper=$helper;Capture=$capture;Control=$Control;Bad=$bad;ChildEnvironment=@{ProgramFiles=$noCommon;'ProgramFiles(x86)'=$noCommon;GS_OPTIONS='-T17-invalid-inherited-child-option'}}
+        [pscustomobject]@{Root=$root;App=$app;Source=$source;Output=$output;Foreign=$foreign;Input=$fixtureInput;Original=$original;Expectation=$expectation;Entry=(Join-Path $app 'WinPDFMerge.ps1');Helper=$helper;Capture=$capture;Control=$Control;Bad=$bad;ChildEnvironment=@{ProgramFiles=$noCommon;'ProgramFiles(x86)'=$noCommon;GS_OPTIONS='-T17-invalid-inherited-child-option'}}
     }
     function Invoke-SizeEntry($App,[string]$Preset='screen',[switch]$DefaultPreset,[switch]$MissingGs,[switch]$Skip) {
         $path=[IO.Path]::GetDirectoryName($PdftkPath)+';'+(Join-Path $env:SystemRoot 'System32')

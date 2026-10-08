@@ -164,6 +164,56 @@ Describe 'AC017: bounded dual-stream capture and explicit native failure results
         $result.TerminationError | Should -BeNullOrEmpty
     }
 
+    It 'treats a <Boundary> <Stream> stream independently of the other complete stream' -TestCases @(
+        @{ Stream='Stdout'; Boundary='exact-limit'; PayloadLength=62; Truncated=$false },
+        @{ Stream='Stderr'; Boundary='exact-limit'; PayloadLength=62; Truncated=$false },
+        @{ Stream='Stdout'; Boundary='one-character-over'; PayloadLength=63; Truncated=$true },
+        @{ Stream='Stderr'; Boundary='one-character-over'; PayloadLength=63; Truncated=$true }
+    ) {
+        param($Stream,$Boundary,$PayloadLength,$Truncated)
+        $payload = 'x' * $PayloadLength
+        $arguments = if ($Stream -ceq 'Stdout') { @('streams', $payload, 'safe') } else { @('streams', 'safe', $payload) }
+        $otherStream = if ($Stream -ceq 'Stdout') { 'Stderr' } else { 'Stdout' }
+        $result = Invoke-NativeProcess -Executable $fixture -Arguments $arguments -MaximumCaptureCharacters 64 -TimeoutMilliseconds 5000
+        $result.Started | Should -BeTrue
+        $result.ExitCode | Should -Be 0
+        $result.TimedOut | Should -BeFalse
+        $result.Cancelled | Should -BeFalse
+        $result.OwnershipReleased | Should -BeTrue
+        $result.LaunchError | Should -BeNullOrEmpty
+        $result.TerminationError | Should -BeNullOrEmpty
+        $expected = $payload + [Environment]::NewLine
+        $result.$Stream | Should -BeExactly $expected.Substring(0,64)
+        $result.$otherStream | Should -BeExactly ('safe' + [Environment]::NewLine)
+        $result.PSObject.Properties[$Stream + 'Truncated'].Value | Should -Be $Truncated
+        $result.PSObject.Properties[$otherStream + 'Truncated'].Value | Should -BeFalse
+        $result.Succeeded | Should -Be (-not $Truncated)
+        if ($Truncated) {
+            $result.CaptureError | Should -Match ('Native ' + $Stream.ToLowerInvariant() + ' capture exceeded 64 characters')
+            $result.CaptureError | Should -Not -Match ('Native ' + $otherStream.ToLowerInvariant() + ' capture exceeded')
+        } else { $result.CaptureError | Should -BeNullOrEmpty }
+        @(Get-Process -Id $result.ProcessId -ErrorAction SilentlyContinue).Count | Should -Be 0
+    }
+
+    It 'releases an actual owned child when capture polling throws before the child exits' {
+        Mock Receive-NativeStreamCapture { throw [IO.IOException]::new('AC050 controlled capture polling IO failure') }
+        $watch = [Diagnostics.Stopwatch]::StartNew()
+        $result = Invoke-NativeProcess -Executable $fixture -Arguments @('sleep', '30000') -TimeoutMilliseconds 10000
+        $watch.Stop()
+        $result.Started | Should -BeTrue
+        $result.ProcessId | Should -BeGreaterThan 0
+        $result.Succeeded | Should -BeFalse
+        $result.TimedOut | Should -BeFalse
+        $result.Cancelled | Should -BeFalse
+        $result.LaunchError | Should -BeNullOrEmpty
+        $result.CaptureError | Should -Match 'AC050 controlled capture polling IO failure'
+        $result.TerminationError | Should -BeNullOrEmpty
+        $result.OwnershipReleased | Should -BeTrue
+        $watch.ElapsedMilliseconds | Should -BeLessThan 5000
+        @(Get-Process -Id $result.ProcessId -ErrorAction SilentlyContinue).Count | Should -Be 0
+        Should -Invoke Receive-NativeStreamCapture -Times 1 -Scope It -ParameterFilter { $null -ne $State -and $MaximumCaptureCharacters -eq 8388608 }
+    }
+
     It 'returns nonzero exit and both diagnostic streams without native-warning pipeline failure' {
         $result = Invoke-NativeProcess -Executable $fixture -Arguments @('fail', '7') -ErrorAction Stop
         $result.Started | Should -BeTrue

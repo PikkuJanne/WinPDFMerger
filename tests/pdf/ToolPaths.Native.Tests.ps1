@@ -1,4 +1,4 @@
-# Actual Windows PDF engines, synthetic documents only. The PDFtk oracle checks
+﻿# Actual Windows PDF engines, synthetic documents only. The PDFtk oracle checks
 # page totals; these cases do not certify visible fidelity or feature retention.
 param(
     [Parameter(Mandatory=$true)][string]$PdftkPath,
@@ -62,9 +62,9 @@ BeforeAll {
         $output = Join-Path $root ('output ' + $Name)
         [void][IO.Directory]::CreateDirectory($source)
         [void][IO.Directory]::CreateDirectory($output)
-        $input = Join-Path $source ('input ' + $Name + '.pdf')
-        [IO.File]::Copy($fixture, $input, $false)
-        [pscustomobject]@{ Root = $root; Source = $source; Input = $input; OutputDirectory = $output; Output = (Join-Path $output ('result ' + $Name + '.pdf')) }
+        $fixtureInput = Join-Path $source ('input ' + $Name + '.pdf')
+        [IO.File]::Copy($fixture, $fixtureInput, $false)
+        [pscustomobject]@{ Root = $root; Source = $source; Input = $fixtureInput; OutputDirectory = $output; Output = (Join-Path $output ('result ' + $Name + '.pdf')) }
     }
 
     function Copy-ToolPathEngine([string]$Root, [string]$Name) {
@@ -206,17 +206,17 @@ Describe 'AC019: actual native source, output and installation path vectors' {
         param($Operand)
         $case = New-ToolPathCase
         if ($Operand -eq 'input') {
-            $input = Join-Path $case.Source ('input-' + [char]0x65e5 + '.pdf')
-            [IO.File]::Copy($fixture, $input, $false)
+            $fixtureInput = Join-Path $case.Source ('input-' + [char]0x65e5 + '.pdf')
+            [IO.File]::Copy($fixture, $fixtureInput, $false)
         } else {
-            $input = $case.Input
+            $fixtureInput = $case.Input
             $directory = Join-Path $case.Root ('output-' + [char]0x65e5)
             [void][IO.Directory]::CreateDirectory($directory)
             $case.Output = Join-Path $directory 'result.pdf'
         }
-        $before = Get-ToolPathSnapshot @($case.Input, $input | Select-Object -Unique)
-        $job = Invoke-PdfToolJob @expectedPageCountArguments -Tool $ToolBackend -Executable $engine -InputPaths @($input) -OutputPath $case.Output -TimeoutMilliseconds 10000
-        Add-ToolPathObservation ('CJK-' + $Operand) $job @($input)
+        $before = Get-ToolPathSnapshot @($case.Input, $fixtureInput | Select-Object -Unique)
+        $job = Invoke-PdfToolJob @expectedPageCountArguments -Tool $ToolBackend -Executable $engine -InputPaths @($fixtureInput) -OutputPath $case.Output -TimeoutMilliseconds 10000
+        Add-ToolPathObservation ('CJK-' + $Operand) $job @($fixtureInput)
         if ($ToolBackend -eq 'Pdftk') {
             # The pinned 2.02 engine accepts Latin ä but fails these operands.
             # Its captured Unicode diagnostic must stay readable in UTF8 logs.
@@ -241,7 +241,7 @@ Describe 'AC019: actual native source, output and installation path vectors' {
             $job.Succeeded | Should -BeFalse
             [IO.File]::Exists($case.Output) | Should -BeFalse
         } else { Assert-ToolPathSuccess $job $case.Output }
-        (Get-ToolPathSnapshot @($case.Input, $input | Select-Object -Unique)) | Should -BeExactly $before
+        (Get-ToolPathSnapshot @($case.Input, $fixtureInput | Select-Object -Unique)) | Should -BeExactly $before
     }
 
     It 'supports a 258-character PDFtk input operand and refuses the 260-character guard before launch' {
@@ -249,15 +249,15 @@ Describe 'AC019: actual native source, output and installation path vectors' {
         $suffix = '\input.pdf'
         $directory = Join-Path $case.Root ('p' * (258 - $case.Root.Length - 1 - $suffix.Length))
         [void][IO.Directory]::CreateDirectory($directory)
-        $input = Join-Path $directory 'input.pdf'
-        $input.Length | Should -Be 258
-        [IO.File]::Copy($fixture, $input, $false)
-        $before = Get-ToolPathSnapshot @($input)
-        $job = Invoke-PdfToolJob @expectedPageCountArguments -Tool $ToolBackend -Executable $engine -InputPaths @($input) -OutputPath $case.Output -TimeoutMilliseconds 10000
-        Add-ToolPathObservation '258-character-input' $job @($input)
+        $fixtureInput = Join-Path $directory 'input.pdf'
+        $fixtureInput.Length | Should -Be 258
+        [IO.File]::Copy($fixture, $fixtureInput, $false)
+        $before = Get-ToolPathSnapshot @($fixtureInput)
+        $job = Invoke-PdfToolJob @expectedPageCountArguments -Tool $ToolBackend -Executable $engine -InputPaths @($fixtureInput) -OutputPath $case.Output -TimeoutMilliseconds 10000
+        Add-ToolPathObservation '258-character-input' $job @($fixtureInput)
         Assert-ToolPathSuccess $job $case.Output
-        (Get-ToolPathSnapshot @($input)) | Should -BeExactly $before
-        $tooLong = $input.Substring(0, $input.Length - 4) + 'xx.pdf'
+        (Get-ToolPathSnapshot @($fixtureInput)) | Should -BeExactly $before
+        $tooLong = $fixtureInput.Substring(0, $fixtureInput.Length - 4) + 'xx.pdf'
         $tooLong.Length | Should -Be 260
         $guardOutput = Join-Path $case.OutputDirectory 'length-rejected.pdf'
         $guard = Invoke-PdfToolJob @expectedPageCountArguments -Tool $ToolBackend -Executable $engine -InputPaths @($tooLong) -OutputPath $guardOutput -TimeoutMilliseconds 10000
@@ -266,7 +266,7 @@ Describe 'AC019: actual native source, output and installation path vectors' {
         $guard.NativeResult | Should -BeNullOrEmpty
         $guard.OutputError | Should -Match '260'
         [IO.File]::Exists($guardOutput) | Should -BeFalse
-        (Get-ToolPathSnapshot @($input)) | Should -BeExactly $before
+        (Get-ToolPathSnapshot @($fixtureInput)) | Should -BeExactly $before
     }
 
     It 'runs the actual application from special and Latin paths with the same real selected engines' {

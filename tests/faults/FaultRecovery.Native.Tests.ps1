@@ -87,12 +87,12 @@ print(json.dumps({'provenance':'Original deterministic stdlib-only raster and sy
         foreach($directory in @((Join-Path $app 'src'),$source,$output,$noCommon)){[void][IO.Directory]::CreateDirectory($directory)}
         [IO.File]::Copy((Join-Path $repo 'WinPDFMerge.ps1'),(Join-Path $app 'WinPDFMerge.ps1'),$false)
         $helper=Join-Path $app 'src/WinPDFMerge.Helpers.ps1';[IO.File]::Copy((Join-Path $repo 'src/WinPDFMerge.Helpers.ps1'),$helper,$false)
-        $input=Join-Path $source 'input.pdf';$foreign=Join-Path $output 'foreign-existing.pdf';[IO.File]::Copy((Join-Path $repo 'tests/fixtures/numbered/1.pdf'),$foreign,$false)
+        $fixtureInput=Join-Path $source 'input.pdf';$foreign=Join-Path $output 'foreign-existing.pdf';[IO.File]::Copy((Join-Path $repo 'tests/fixtures/numbered/1.pdf'),$foreign,$false)
         $generation=$null
-        if($Mode -eq 'log-fault'){$generated=Invoke-TestChildProcess -Executable $PythonPath -Arguments @('-B',$generator,$input) -TimeoutMilliseconds 10000;$generated.ExitCode | Should -Be 0 -Because $generated.Stderr;$generation=$generated.Stdout | ConvertFrom-Json;(Get-FileHash -LiteralPath $input -Algorithm SHA256).Hash.ToLowerInvariant() | Should -BeExactly $generation.sha256}
-        else{[IO.File]::Copy((Join-Path $repo 'tests/fixtures/numbered/1.pdf'),$input,$false)}
+        if($Mode -eq 'log-fault'){$generated=Invoke-TestChildProcess -Executable $PythonPath -Arguments @('-B',$generator,$fixtureInput) -TimeoutMilliseconds 10000;$generated.ExitCode | Should -Be 0 -Because $generated.Stderr;$generation=$generated.Stdout | ConvertFrom-Json;(Get-FileHash -LiteralPath $fixtureInput -Algorithm SHA256).Hash.ToLowerInvariant() | Should -BeExactly $generation.sha256}
+        else{[IO.File]::Copy((Join-Path $repo 'tests/fixtures/numbered/1.pdf'),$fixtureInput,$false)}
         $invalid=Join-Path $root 'owned-invalid-image.exe';[IO.File]::WriteAllText($invalid,'T15 controlled invalid native image.',[Text.Encoding]::ASCII)
-        $context=[pscustomobject]@{Root=$root;App=$app;Source=$source;Output=$output;Input=$input;Foreign=$foreign;Entry=(Join-Path $app 'WinPDFMerge.ps1');Helper=$helper;Capture=(Join-Path $root 'fault-capture.json');Prefix=(Join-Path $root 'tree');Invalid=$invalid;NoCommon=$noCommon;Mode=$Mode;Generation=$generation}
+        $context=[pscustomobject]@{Root=$root;App=$app;Source=$source;Output=$output;Input=$fixtureInput;Foreign=$foreign;Entry=(Join-Path $app 'WinPDFMerge.ps1');Helper=$helper;Capture=(Join-Path $root 'fault-capture.json');Prefix=(Join-Path $root 'tree');Invalid=$invalid;NoCommon=$noCommon;Mode=$Mode;Generation=$generation}
         $seam=@'
 [void][Reflection.Assembly]::LoadFrom('__FIXTURE__')
 function Get-T15CallerEnvironment {

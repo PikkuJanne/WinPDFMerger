@@ -80,3 +80,14 @@ Package/library pins and synthetic expected bytes remain checked separately.
 The feature oracle likewise allows only the two recorded PDFium DLL hashes
 from those same-version reference bundles and records the selected actual hash.
 Nothing downloads dependencies or adds Python to application runtime packaging.
+
+T22 adds fail-closed result checks and start/end source receipts to the runner.
+The JSON summary retains real pass/fail/block/container/skip/not-run counts,
+the observed HEAD and dirty status, and SHA256 bindings for tracked and
+nonignored new application/test sources. A source or Git-state change during
+execution fails the run even when Pester reports success. Ignored owned test
+outputs do not change the source inventory. `TestRunSupport.ps1` performs no
+work on import. An exception from `Invoke-Pester` produces a failed summary;
+unavailable count fields remain null rather than implying zero executed failures.
+Dependency import and setup failures before invocation still exit with their
+actual error, and are not successful or completed test reports.

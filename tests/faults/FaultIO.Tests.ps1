@@ -53,8 +53,8 @@ BeforeAll {
         $entry=Join-Path $app 'WinPDFMerge.ps1'; $helper=Join-Path $app 'src/WinPDFMerge.Helpers.ps1'
         [IO.File]::Copy((Join-Path $repo 'WinPDFMerge.ps1'),$entry,$false)
         [IO.File]::Copy((Join-Path $repo 'src/WinPDFMerge.Helpers.ps1'),$helper,$false)
-        $input=Join-Path $source 'input [1] & !.pdf'; $foreign=Join-Path $output 'foreign-existing.pdf'
-        foreach($path in @($input,$foreign)){[IO.File]::Copy($fixture,$path,$false)}
+        $fixtureInput=Join-Path $source 'input [1] & !.pdf'; $foreign=Join-Path $output 'foreign-existing.pdf'
+        foreach($path in @($fixtureInput,$foreign)){[IO.File]::Copy($fixture,$path,$false)}
         $pdftk=Join-Path $app 'pdftk.exe'; $gs=Join-Path $app 'gswin64c.exe'
         foreach($path in @($pdftk,$gs)){[IO.File]::WriteAllText($path,'T15 placeholder, never executed')}
         $receipt=Join-Path $root 'receipt.json'
@@ -149,7 +149,7 @@ function Remove-PdfStaging {
 Save-T15FaultReceipt
 '@
         [IO.File]::AppendAllText($helper,[Environment]::NewLine+$controlled,(New-Object Text.UTF8Encoding($false)))
-        [pscustomobject]@{Root=$root;Entry=$entry;Input=$input;Foreign=$foreign;Source=$source;Output=$output;Receipt=$receipt;Mode=$Mode}
+        [pscustomobject]@{Root=$root;Entry=$entry;Input=$fixtureInput;Foreign=$foreign;Source=$source;Output=$output;Receipt=$receipt;Mode=$Mode}
     }
 }
 

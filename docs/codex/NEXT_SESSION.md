@@ -1,6 +1,6 @@
 # Next session
 
-Current task: T22 — fault tests and static analysis coverage, pending/unstarted.
+Current task: T22 - fault tests and static analysis coverage, in_progress.
 Read AGENTS/INDEX/STATUS, the T22 TASKS entry and tasks/T22.md; load relevant
 PRODUCT/TEST/GITHUB_WORKFLOW specifications and AC050/AC051. Inspect current
 code and fault suites before edits. Keep one conceptual task in this thread.
