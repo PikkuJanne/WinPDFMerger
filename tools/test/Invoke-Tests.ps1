@@ -2,7 +2,7 @@
 [CmdletBinding()]
 param(
     [string]$PesterModulePath,
-    [ValidateSet('Unit', 'Static', 'NativeFixture', 'SourceDiscovery', 'Launcher', 'LauncherNative', 'DependencyEntry', 'NativeRunner', 'ToolInvocation', 'PdftkPaths', 'GhostscriptPaths', 'Destination', 'InputPreflight', 'Staging', 'MasterValidation', 'EmailOutcome', 'FaultIO', 'FaultRecovery', 'Parameters', 'ParametersNative', 'SizeReporting', 'SizeReportingNative', 'Diagnostics', 'DiagnosticsNative', 'PreservationDocs', 'PreservationNative', 'PublicDocs', 'CorpusSafety', 'NativeAcceptance')][string]$Tier = 'Unit',
+    [ValidateSet('Unit', 'Static', 'NativeFixture', 'SourceDiscovery', 'Launcher', 'LauncherNative', 'DependencyEntry', 'NativeRunner', 'ToolInvocation', 'PdftkPaths', 'GhostscriptPaths', 'Destination', 'InputPreflight', 'Staging', 'MasterValidation', 'EmailOutcome', 'FaultIO', 'FaultRecovery', 'Parameters', 'ParametersNative', 'SizeReporting', 'SizeReportingNative', 'Diagnostics', 'DiagnosticsNative', 'PreservationDocs', 'PreservationNative', 'PublicDocs', 'CorpusSafety', 'NativeAcceptance', 'CiNativeSmoke')][string]$Tier = 'Unit',
     [string]$AnalyzerModulePath,
     [string]$PdftkPath,
     [string]$GhostscriptPath,
@@ -18,8 +18,8 @@ if ($PesterModulePath) { $pesterName = $PesterModulePath }
 Import-Module -Name $pesterName -RequiredVersion $pins.PesterVersion -ErrorAction Stop
 $selected = Get-Module Pester
 if ($selected.Version.ToString() -ne $pins.PesterVersion) { throw 'Unexpected Pester version.' }
-if ($Tier -in @('NativeFixture', 'SourceDiscovery', 'LauncherNative', 'DependencyEntry', 'PdftkPaths', 'GhostscriptPaths', 'Destination', 'InputPreflight', 'Staging', 'MasterValidation', 'EmailOutcome') -and -not $PdftkPath) { throw "$Tier requires an explicit real PDFtk executable path." }
-if ($Tier -in @('GhostscriptPaths', 'Destination', 'InputPreflight', 'Staging', 'EmailOutcome') -and -not $GhostscriptPath) { throw "$Tier requires an explicit real Ghostscript executable path." }
+if ($Tier -in @('NativeFixture', 'SourceDiscovery', 'LauncherNative', 'DependencyEntry', 'PdftkPaths', 'GhostscriptPaths', 'Destination', 'InputPreflight', 'Staging', 'MasterValidation', 'EmailOutcome', 'CiNativeSmoke') -and -not $PdftkPath) { throw "$Tier requires an explicit real PDFtk executable path." }
+if ($Tier -in @('GhostscriptPaths', 'Destination', 'InputPreflight', 'Staging', 'EmailOutcome', 'CiNativeSmoke') -and -not $GhostscriptPath) { throw "$Tier requires an explicit real Ghostscript executable path." }
 if ($Tier -in @('InputPreflight','MasterValidation','EmailOutcome') -and -not $PythonPath) { throw "$Tier requires an explicit development Python executable with the pinned PDFium oracle." }
 $nativeFixturePath = $null
 $nativeFixtureBuildReceipt = $null
@@ -40,6 +40,8 @@ $config.TestResult.OutputFormat = 'NUnitXml'
 if ($Tier -eq 'Static') {
     if (-not $AnalyzerModulePath) { throw 'Static requires an explicit pinned PSScriptAnalyzer module path.' }
     $config.Run.Container = New-PesterContainer -Path (Join-Path $repo 'tests/static/StaticChecks.Tests.ps1') -Data @{ AnalyzerModulePath=$AnalyzerModulePath }
+} elseif ($Tier -eq 'CiNativeSmoke') {
+    $config.Run.Container = New-PesterContainer -Path (Join-Path $repo 'tests/pdf/CiSmoke.Native.Tests.ps1') -Data @{ PdftkPath=$PdftkPath; GhostscriptPath=$GhostscriptPath }
 } elseif ($Tier -eq 'NativeAcceptance') {
     if (-not $PdftkPath -or -not $GhostscriptPath -or -not $PythonPath) { throw 'NativeAcceptance requires explicit approved PDFtk/Ghostscript and pinned development Python paths.' }
     $config.Run.Container = New-PesterContainer -Path (Join-Path $repo 'tests/pdf/NativeAcceptance.Native.Tests.ps1') -Data @{ PdftkPath=$PdftkPath; GhostscriptPath=$GhostscriptPath; PythonPath=$PythonPath }
@@ -184,6 +186,7 @@ if ($Tier -eq 'PreservationNative') { $summary.evidence_class = 'windows-real-en
 if ($Tier -eq 'PublicDocs') { $summary.evidence_class = 'public-documentation-contract-isolated-real-parameter-binding-and-controlled-helper-outcomes; no application/native/manual acceptance' }
 if ($Tier -eq 'CorpusSafety') { $summary.evidence_class = 'windows-real-entry-synthetic-corpus-repeat-order-source-tree-and-concurrency; independent-pdfium; not Explorer' }
 if ($Tier -eq 'NativeAcceptance') { $summary.evidence_class = 'windows-real-pdftk-gs-helper-representative-limits-presets-and-nonfatal-warning; independent-pdfium; warning-envelope-refused-by-app; not Explorer' }
+if ($Tier -eq 'CiNativeSmoke') { $summary.evidence_class = 'windows-real-pinned-pdftk-gs-helper-CI-smoke-with-pdftk-structural-page-counts; no standard-user-ACL-desktop-rendering-feature-preservation-or-independent-renderer-acceptance' }
 $summary | ConvertTo-Json -Depth 8 | Set-Content -LiteralPath (Join-Path $work 'summary.json') -Encoding UTF8
 $summary | ConvertTo-Json -Depth 8
 Write-Host ('Reports: ' + $work)

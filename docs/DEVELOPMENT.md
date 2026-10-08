@@ -36,7 +36,7 @@ the readiness branch, and ordinary pull requests to `main`. It uses the fixed
 | Group | Shells | Scope |
 |---|---|---|
 | unit | Windows PowerShell 5.1; portable PowerShell 7.6.6 | Unit, Static checker regressions, actual controlled batch receiver, controlled NativeRunner, ToolInvocation, PublicDocs; plus parser/analyzer on all maintained PowerShell files |
-| native | Windows PowerShell 5.1; portable PowerShell 7.6.6 | NativeFixture, SourceDiscovery, PdftkPaths, GhostscriptPaths using actual PDFtk 2.02 and Ghostscript 10.08.0 |
+| native | Windows PowerShell 5.1; portable PowerShell 7.6.6 | NativeFixture, SourceDiscovery, CiNativeSmoke using actual PDFtk 2.02 and Ghostscript 10.08.0; validated merge, both rewrite presets and no-overwrite checks |
 
 This restrained regression selection supplements the full local/native release
 gates. Controlled processes do not establish PDF engine support. Hosted Windows
@@ -44,6 +44,9 @@ runners use administrator tokens with UAC disabled; they do not establish
 standard-user, Windows 11 desktop, Explorer drag-and-drop, visual fidelity,
 package or release acceptance. Runner images roll even with a fixed label;
 each job records its actual image and tool versions.
+Standard-user ACL/path characterization remains in the full local native
+suites; hosted CI does not select it. The existing license byte hash is
+preserved through checkout by the explicit `LICENSE -text` attribute.
 
 The two official Actions use verified full commit SHAs. The token has only
 `contents: read`; checkout retains no credentials. Fork PRs use the ordinary

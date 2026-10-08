@@ -86,6 +86,11 @@ Describe 'Windows CI policy contract' {
         $yaml | Should -Match 'retention-days: 7'
         # runner context is available to step env, not job env.
         $yaml | Should -Not -Match '(?m)^      CI_REPORTS:.*runner\.temp'
+        $driver = [IO.File]::ReadAllText((Join-Path $repo 'tools/test/Invoke-CiTests.ps1'))
+        $driver | Should -Not -Match "PSModulePath=''"
+        $yaml | Should -Match '\$env:PSModulePath = \$null'
+        (& git -C $repo check-attr text -- LICENSE) | Should -Match 'LICENSE: text: unset$'
+        $driver | Should -Match "@\('NativeFixture','SourceDiscovery','CiNativeSmoke'\)"
         # PS5.1 drops empty native argv values; the native job has no analyzer.
         $yaml | Should -Match "if \(\`$env:CI_GROUP -eq 'unit'\) \{ \`$arguments \+= @\('-AnalyzerModulePath', \`$env:CI_ANALYZER\) \}"
     }

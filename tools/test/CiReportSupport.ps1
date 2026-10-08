@@ -8,7 +8,7 @@ function Get-CiReportEvidenceClass {
         'Static' { return 'static' }
         'CiFailureProbe' { return 'ci-controlled-deliberate-failure' }
         { $_ -cin @('PreservationDocs','PublicDocs') } { return 'documentation' }
-        { $_ -cin @('NativeFixture','SourceDiscovery','LauncherNative','DependencyEntry','PdftkPaths','GhostscriptPaths','Destination','InputPreflight','Staging','MasterValidation','EmailOutcome','FaultRecovery','ParametersNative','SizeReportingNative','DiagnosticsNative','PreservationNative','CorpusSafety','NativeAcceptance') } { return 'windows-native-integration' }
+        { $_ -cin @('NativeFixture','SourceDiscovery','CiNativeSmoke','LauncherNative','DependencyEntry','PdftkPaths','GhostscriptPaths','Destination','InputPreflight','Staging','MasterValidation','EmailOutcome','FaultRecovery','ParametersNative','SizeReportingNative','DiagnosticsNative','PreservationNative','CorpusSafety','NativeAcceptance') } { return 'windows-native-integration' }
         default { throw 'Unknown CI test tier.' }
     }
 }

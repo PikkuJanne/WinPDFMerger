@@ -46,3 +46,34 @@ context-availability contract excludes `runner`. The setting is moved into
 step-level `env`, where it is supported, with a workflow regression assertion.
 The next clean implementation checkpoint and hosted rerun will supersede this
 failed preparation, retaining its actual run ID and zero executed jobs.
+
+Corrected C1a `4eb308236ebe25e62225ebb76f99642d961548e1` was clean/live
+synchronized. Push run `37808743156` and PR run `37808743041` each executed
+four jobs and uploaded four sanitized artifacts. Both workflows failed their
+underlying tests. Eight downloaded artifact ZIP hashes independently match
+GitHub API digests; no result is relabeled passed.
+
+The local clean driver reproduced PS5.1 Launcher's 18 failures: an explicitly
+empty child module path could not survive a test's unset/restore roundtrip.
+The selected driver already starts with its runtime's reconstructed compatible
+default path. Tier children now inherit that nonempty selected-shell path.
+A workflow/driver regression guards the boundary. PublicDocs case13 fails on
+hosted checkout's license EOL rewrite; a per-command autocrlf checkout probe
+reproduces the changed SHA without altering the preserved local license.
+An explicit LICENSE -text attribute retains its original tested bytes.
+
+Each native job had NativeFixture1 and SourceDiscovery4 passes, but case12 of
+each 13-case backend path suite failed (current-user ReadData ACL denial).
+Those standard-user/path characterizations remain required in their local
+native scope and retain T23 evidence. Hosted Server/admin CI now uses a
+dedicated genuine-engine merge/preset/no-overwrite smoke suite, rather than
+claiming those desktop/ACL checks. The original failed counts and scoped
+replacement are disclosed. Normal green and deliberate failure runs against
+the final implementation remain pending.
+
+The focused genuine-engine CiNativeSmoke tier passes four checks per actual
+local shell with unchanged source guards in dirty preparation. Its two changed
+PowerShell files parse and pass the selected 41 analyzer rules per host with no
+findings/suppressions. Seven root CI regressions pass again, and the autocrlf
+checkout probe now retains the exact original license SHA. Final C1b will rerun
+the complete selected CI driver against clean source in both hosts and on GitHub.

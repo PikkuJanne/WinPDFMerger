@@ -28,7 +28,7 @@ if ($Group -eq 'unit' -and -not $AnalyzerModulePath) { throw 'The unit job requi
 if ($Group -eq 'native' -and (-not $PdftkPath -or -not $GhostscriptPath)) { throw 'The native job requires both verified real engines.' }
 $process = [Diagnostics.Process]::GetCurrentProcess()
 try { $executable = $process.MainModule.FileName } finally { $process.Dispose() }
-$tiers = if ($Group -eq 'unit') { @('Unit','Static','Launcher','NativeRunner','ToolInvocation','PublicDocs') } else { @('NativeFixture','SourceDiscovery','PdftkPaths','GhostscriptPaths') }
+$tiers = if ($Group -eq 'unit') { @('Unit','Static','Launcher','NativeRunner','ToolInvocation','PublicDocs') } else { @('NativeFixture','SourceDiscovery','CiNativeSmoke') }
 if ($FailureProbe -and $Group -eq 'unit') { $tiers += 'CiFailureProbe' }
 [void][IO.Directory]::CreateDirectory($ReportDirectory)
 $rawRoot = Join-Path $repo 'tests/.work/pester'
@@ -44,7 +44,7 @@ foreach ($tier in $tiers) {
         if ($tier -eq 'Static') { $arguments += @('-AnalyzerModulePath',$AnalyzerModulePath) }
         if ($Group -eq 'native') { $arguments += @('-PdftkPath',$PdftkPath,'-GhostscriptPath',$GhostscriptPath) }
     }
-    $child = Invoke-TestChildProcess -Executable $executable -Arguments $arguments -ChildEnvironment @{PSModulePath=''} -TimeoutMilliseconds 900000
+    $child = Invoke-TestChildProcess -Executable $executable -Arguments $arguments -TimeoutMilliseconds 900000
     $raw = Get-CiNewReportDirectory -Root $rawRoot -Before $before
     # Keep original diagnostics in the ignored local tree; upload only exports.
     [IO.File]::WriteAllText((Join-Path $raw 'child.stdout.txt'), $child.Stdout)
@@ -61,7 +61,7 @@ if ($Group -eq 'unit') {
     [void][IO.Directory]::CreateDirectory($staticRoot)
     $before = @(Get-ChildItem -LiteralPath $staticRoot -Directory | Select-Object -ExpandProperty FullName)
     $child = Invoke-TestChildProcess -Executable $executable -Arguments @('-NoProfile','-NonInteractive','-ExecutionPolicy','RemoteSigned','-File',
-        (Join-Path $repo 'tools/test/Invoke-StaticChecks.ps1'),'-AnalyzerModulePath',$AnalyzerModulePath) -ChildEnvironment @{PSModulePath=''} -TimeoutMilliseconds 600000
+        (Join-Path $repo 'tools/test/Invoke-StaticChecks.ps1'),'-AnalyzerModulePath',$AnalyzerModulePath) -TimeoutMilliseconds 600000
     $raw = Get-CiNewReportDirectory -Root $staticRoot -Before $before
     [IO.File]::WriteAllText((Join-Path $raw 'child.stdout.txt'), $child.Stdout)
     [IO.File]::WriteAllText((Join-Path $raw 'child.stderr.txt'), $child.Stderr)
@@ -95,7 +95,7 @@ $job = [ordered]@{
     administrator_token = $administrator
     manual_desktop_acceptance = $false
     failure_probe_requested = [bool]$FailureProbe
-    child_default_module_path = $true
+    child_inherits_selected_shell_module_path = $true
     source_unchanged = ($source | ConvertTo-Json -Depth 6 -Compress) -ceq ($end | ConvertTo-Json -Depth 6 -Compress)
     tiers = @($receipts | Select-Object tier, result, process_exit_code, passed, failed, failed_blocks, failed_containers, skipped, not_run, inconclusive, total)
     result = $(if ($jobAccepted) { 'pass' } else { 'fail' })
