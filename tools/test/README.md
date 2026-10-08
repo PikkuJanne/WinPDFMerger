@@ -60,3 +60,8 @@ host explicitly rather than assuming the first PATH pwsh is current. Tests
 use process-only RemoteSigned under existing authorization. The harness does
 not install/download dependencies. Scoped clean native results/commands are
 in `docs/codex/evidence/T09-completion.md` and `T09-C3-results.json`.
+
+T12 adds `-Tier Staging` for real PDFtk/Ghostscript no-overwrite publication,
+source/final hash preservation and overlapping same-second run isolation.
+It requires both explicit native paths. Unit cleanup/ownership faults remain in
+`-Tier Unit`. See [Staging.md](Staging.md) for the scope and controlled scheduling.

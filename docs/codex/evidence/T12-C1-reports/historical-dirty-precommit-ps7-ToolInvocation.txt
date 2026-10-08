@@ -1,0 +1,55 @@
+Pester v6.2.0
+
+Running tests from 1 files.
+
+Running tests from '<repo>\tests\native\ToolInvocation.Tests.ps1'
+Describing T09 isolated PDF tool job behavior
+ Describing T09: fixed tool vectors and private fresh native outputs
+   [-] passes literal PDFtk input operands and dont_ask only to a fresh owned staged output 1.99s
+    Expected $true, because Exception calling "ReadAllText" with "2" argument(s): "The process cannot access the file '<repo>\tests\.work\tool-invocation\e60f0c6b34424e96b66fdef70b628eae\3d16751d75914d4f872821073b677204\.WinPDFMerge_c4b9bb3ee68740789e0855800833ac1c.tmp\owner.json' it is being used by another process.", but got $false.
+    at $result.Succeeded | Should -BeTrue -Because $result.OutputError, <repo>\tests\native\ToolInvocation.Tests.ps1:63
+   [-] retains the fixed Ghostscript profile and safety flags while removing only child GS_OPTIONS 71ms
+    Expected $true, because Exception calling "ReadAllText" with "2" argument(s): "The process cannot access the file '<repo>\tests\.work\tool-invocation\e60f0c6b34424e96b66fdef70b628eae\43db4af5a13d4e65824488884743e279\.WinPDFMerge_4ab33d82231e4c3eb8d7a983a26f045a.tmp\owner.json' it is being used by another process.", but got $false.
+    at $result.Succeeded | Should -BeTrue -Because $result.OutputError, <repo>\tests\native\ToolInvocation.Tests.ps1:93
+ Describing T09: collision refusal and bounded native failures
+   [+] rejects a 260-character input before launching any native process 142ms
+   [+] rejects a 260-character output before launching any native process 24ms
+   [-] rejects a short final when its private staged operand would reach 260 characters 55ms
+    Expected regular expression '(?i)private.*260|260.*private' to match 'Output folder is too long for private native output. Choose a shorter -OutputFolder.', but it did not match.
+    at $result.OutputError | Should -Match '(?i)private.*260|260.*private', <repo>\tests\native\ToolInvocation.Tests.ps1:138
+   [+] refuses an existing Pdftk final before native execution and retains its exact bytes 34ms
+   [+] refuses an existing Ghostscript final before native execution and retains its exact bytes 25ms
+   [+] refuses a final path equal to a source without launching or editing the source 50ms
+   [-] does not publish a partial file after an explicit native failure 60ms
+    PropertyNotFoundException: The property 'ExitCode' cannot be found on this object. Verify that the property exists.
+    at <ScriptBlock>, <repo>\tests\native\ToolInvocation.Tests.ps1:183
+   [-] does not infer success from exit zero when capture failed after creating a staged file 55ms
+    PropertyNotFoundException: The property 'ExitCode' cannot be found on this object. Verify that the property exists.
+    at <ScriptBlock>, <repo>\tests\native\ToolInvocation.Tests.ps1:202
+   [+] does not publish when the native process reports success without making a file 52ms
+   [-] preserves a final created during the native call and discards only this job staging 62ms
+    FileNotFoundException: Could not find file '<repo>\tests\.work\tool-invocation\e60f0c6b34424e96b66fdef70b628eae\111a2a0834664f28af39760792ce1b3e\master result.pdf'.
+    MethodInvocationException: Exception calling "ReadAllText" with "1" argument(s): "Could not find file '<repo>\tests\.work\tool-invocation\e60f0c6b34424e96b66fdef70b628eae\111a2a0834664f28af39760792ce1b3e\master result.pdf'."
+    at <ScriptBlock>, <repo>\tests\native\ToolInvocation.Tests.ps1:230
+Tests completed in 4.15s
+Tests Passed: 6, Failed: 6, Skipped: 0, Inconclusive: 0, NotRun: 0
+{
+  "observed_at_utc": "2026-10-08T03:29:18.8923041Z",
+  "commit_under_test": "280468546a63cc89dc617491f29d823790db6bab",
+  "dirty_worktree": true,
+  "shell_version": "7.6.6",
+  "shell_edition": "Core",
+  "process_64_bit": true,
+  "execution_policy": "RemoteSigned",
+  "pester_version": "6.2.0",
+  "tier": "ToolInvocation",
+  "evidence_class": "unit-controlled-native-job-and-filesystem",
+  "passed": 6,
+  "failed": 6,
+  "failed_blocks": 0,
+  "failed_containers": 0,
+  "skipped": 0,
+  "not_run": 0,
+  "total": 12
+}
+Reports: <repo>\tests\.work\pester\57aac91c636a4f68b692e967baeb3722

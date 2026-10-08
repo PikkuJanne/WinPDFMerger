@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="12" errors="0" failures="6" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2026-10-08" time="05.29.13">
+  <environment clr-version="4.0.30319.42000" user-domain="REDACTED" cwd="REDACTED" platform="Microsoft Windows 11 Pro|C:\Windows|\Device\Harddisk0\Partition3" machine-name="REDACTED" nunit-version="2.5.8.0" os-version="10.0.26300" user="REDACTED" />
+  <culture-info current-culture="fi-FI" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Failure" success="False" time="2.6985" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="[repo]\tests\native\ToolInvocation.Tests.ps1" executed="True" result="Failure" success="False" time="2.6985" asserts="0" description="[repo]\tests\native\ToolInvocation.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="T09 isolated PDF tool job behavior" executed="True" result="Failure" success="False" time="1.9667" asserts="0" description="T09 isolated PDF tool job behavior">
+            <results>
+              <test-suite type="TestFixture" name="T09 isolated PDF tool job behavior.T09: fixed tool vectors and private fresh native outputs" executed="True" result="Failure" success="False" time="1.2042" asserts="0" description="T09 isolated PDF tool job behavior.T09: fixed tool vectors and private fresh native outputs">
+                <results>
+                  <test-case description="passes literal PDFtk input operands and dont_ask only to a fresh owned staged output" name="T09 isolated PDF tool job behavior.T09: fixed tool vectors and private fresh native outputs.passes literal PDFtk input operands and dont_ask only to a fresh owned staged output" time="1.0773" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>Expected $true, because Exception calling "ReadAllText" with "2" argument(s): "The process cannot access the file '[repo]\tests\.work\tool-invocation\139578cf31af433aa9208641ed9ab0eb\ed8916f7a0884211aa40bfac97435acd\.WinPDFMerge_9db338ca373f4e3eb697215a220421c6.tmp\owner.json' it is being used by another process.", but got $false.</message>
+                      <stack-trace>at $result.Succeeded | Should -BeTrue -Because $result.OutputError, [repo]\tests\native\ToolInvocation.Tests.ps1:63</stack-trace>
+                    </failure>
+                  </test-case>
+                  <test-case description="retains the fixed Ghostscript profile and safety flags while removing only child GS_OPTIONS" name="T09 isolated PDF tool job behavior.T09: fixed tool vectors and private fresh native outputs.retains the fixed Ghostscript profile and safety flags while removing only child GS_OPTIONS" time="0.0701" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>Expected $true, because Exception calling "ReadAllText" with "2" argument(s): "The process cannot access the file '[repo]\tests\.work\tool-invocation\139578cf31af433aa9208641ed9ab0eb\d5a029494064440aa98a34c703f0bb3a\.WinPDFMerge_bbb79f6212ca4017a04e87567ba3d298.tmp\owner.json' it is being used by another process.", but got $false.</message>
+                      <stack-trace>at $result.Succeeded | Should -BeTrue -Because $result.OutputError, [repo]\tests\native\ToolInvocation.Tests.ps1:93</stack-trace>
+                    </failure>
+                  </test-case>
+                </results>
+              </test-suite>
+              <test-suite type="TestFixture" name="T09 isolated PDF tool job behavior.T09: collision refusal and bounded native failures" executed="True" result="Failure" success="False" time="1.9321" asserts="0" description="T09 isolated PDF tool job behavior.T09: collision refusal and bounded native failures">
+                <results>
+                  <test-case description="rejects a short final when its private staged operand would reach 260 characters" name="T09 isolated PDF tool job behavior.T09: collision refusal and bounded native failures.rejects a short final when its private staged operand would reach 260 characters" time="0.045" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>Expected regular expression '(?i)private.*260|260.*private' to match 'Output folder is too long for private native output. Choose a shorter -OutputFolder.', but it did not match.</message>
+                      <stack-trace>at $result.OutputError | Should -Match '(?i)private.*260|260.*private', [repo]\tests\native\ToolInvocation.Tests.ps1:138</stack-trace>
+                    </failure>
+                  </test-case>
+                  <test-case description="refuses a final path equal to a source without launching or editing the source" name="T09 isolated PDF tool job behavior.T09: collision refusal and bounded native failures.refuses a final path equal to a source without launching or editing the source" time="0.0398" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="does not publish a partial file after an explicit native failure" name="T09 isolated PDF tool job behavior.T09: collision refusal and bounded native failures.does not publish a partial file after an explicit native failure" time="0.0873" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>PropertyNotFoundException: The property 'ExitCode' cannot be found on this object. Verify that the property exists.</message>
+                      <stack-trace>at &lt;ScriptBlock&gt;, [repo]\tests\native\ToolInvocation.Tests.ps1:183</stack-trace>
+                    </failure>
+                  </test-case>
+                  <test-case description="does not infer success from exit zero when capture failed after creating a staged file" name="T09 isolated PDF tool job behavior.T09: collision refusal and bounded native failures.does not infer success from exit zero when capture failed after creating a staged file" time="0.0553" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>PropertyNotFoundException: The property 'ExitCode' cannot be found on this object. Verify that the property exists.</message>
+                      <stack-trace>at &lt;ScriptBlock&gt;, [repo]\tests\native\ToolInvocation.Tests.ps1:202</stack-trace>
+                    </failure>
+                  </test-case>
+                  <test-case description="does not publish when the native process reports success without making a file" name="T09 isolated PDF tool job behavior.T09: collision refusal and bounded native failures.does not publish when the native process reports success without making a file" time="0.0424" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="preserves a final created during the native call and discards only this job staging" name="T09 isolated PDF tool job behavior.T09: collision refusal and bounded native failures.preserves a final created during the native call and discards only this job staging" time="0.1099" asserts="0" success="False" result="Failure" executed="True">
+                    <failure>
+                      <message>FileNotFoundException: Could not find file '[repo]\tests\.work\tool-invocation\139578cf31af433aa9208641ed9ab0eb\89c74c2b76764f0999db6be5d1763c67\master result.pdf'.
+MethodInvocationException: Exception calling "ReadAllText" with "1" argument(s): "Could not find file '[repo]\tests\.work\tool-invocation\139578cf31af433aa9208641ed9ab0eb\89c74c2b76764f0999db6be5d1763c67\master result.pdf'."</message>
+                      <stack-trace>at &lt;ScriptBlock&gt;, [repo]\tests\native\ToolInvocation.Tests.ps1:230</stack-trace>
+                    </failure>
+                  </test-case>
+                  <test-suite type="ParameterizedTest" name="T09 isolated PDF tool job behavior.T09: collision refusal and bounded native failures.rejects a 260-character &lt;Operand&gt; before launching any native process" executed="True" result="Success" success="True" time="0.2471" asserts="0" description="rejects a 260-character &lt;Operand&gt; before launching any native process">
+                    <results>
+                      <test-case description="rejects a 260-character input before launching any native process" name="T09 isolated PDF tool job behavior.T09: collision refusal and bounded native failures.rejects a 260-character input before launching any native process" time="0.214" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="rejects a 260-character output before launching any native process" name="T09 isolated PDF tool job behavior.T09: collision refusal and bounded native failures.rejects a 260-character output before launching any native process" time="0.0332" asserts="0" success="True" result="Success" executed="True" />
+                    </results>
+                  </test-suite>
+                  <test-suite type="ParameterizedTest" name="T09 isolated PDF tool job behavior.T09: collision refusal and bounded native failures.refuses an existing &lt;Tool&gt; final before native execution and retains its exact bytes" executed="True" result="Success" success="True" time="0.0812" asserts="0" description="refuses an existing &lt;Tool&gt; final before native execution and retains its exact bytes">
+                    <results>
+                      <test-case description="refuses an existing Pdftk final before native execution and retains its exact bytes" name="T09 isolated PDF tool job behavior.T09: collision refusal and bounded native failures.refuses an existing Pdftk final before native execution and retains its exact bytes" time="0.0448" asserts="0" success="True" result="Success" executed="True" />
+                      <test-case description="refuses an existing Ghostscript final before native execution and retains its exact bytes" name="T09 isolated PDF tool job behavior.T09: collision refusal and bounded native failures.refuses an existing Ghostscript final before native execution and retains its exact bytes" time="0.0364" asserts="0" success="True" result="Success" executed="True" />
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

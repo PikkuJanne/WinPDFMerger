@@ -162,3 +162,15 @@ Native execution limits: complete serialized commands are limited to 30,000 UTF-
 PDFtk Server 2.02 on the tested Windows host accepts spaces, brackets, exclamation marks, ampersands, parentheses, apostrophes, and Latin `ä` in file paths. CJK input paths and output directories fail in that backend, even though a CJK tool-installation directory works. Unsupported paths fail without renaming sources. These observations do not promise every Unicode name works.
 
 Each native job has a 15-minute execution limit (version probes: 5 seconds), closed standard input, and bounded final capture/owned-process termination. PDFtk uses `dont_ask` only for a fresh private output; final moves never replace an existing PDF. Inputs requiring an unavailable password fail without asking for one. A failed Ghostscript conversion returns partial success (2) and retains the merged master.
+
+Master and email work share a private `.WinPDFMerge_<32 hex characters>.tmp`
+directory inside the output folder. Its `owner.json` records the run identity,
+creation time, process ID and known temporary files. Final moves refuse existing
+files, including a file created by another process during conversion. Cleanup
+touches only this run's known temporary paths; it preserves published files.
+
+A crash or cleanup failure can leave staging behind. The console/log names the
+exact folder when cleanup fails. After all merge runs have stopped, inspect that
+folder and its ownership marker manually before removing it. A missing marker or
+unexpected content needs manual investigation. The application never sweeps old
+staging folders or files that merely share its filename prefix.

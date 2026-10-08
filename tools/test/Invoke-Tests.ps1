@@ -2,7 +2,7 @@
 [CmdletBinding()]
 param(
     [string]$PesterModulePath,
-    [ValidateSet('Unit', 'NativeFixture', 'SourceDiscovery', 'Launcher', 'LauncherNative', 'DependencyEntry', 'NativeRunner', 'ToolInvocation', 'PdftkPaths', 'GhostscriptPaths', 'Destination', 'InputPreflight')][string]$Tier = 'Unit',
+    [ValidateSet('Unit', 'NativeFixture', 'SourceDiscovery', 'Launcher', 'LauncherNative', 'DependencyEntry', 'NativeRunner', 'ToolInvocation', 'PdftkPaths', 'GhostscriptPaths', 'Destination', 'InputPreflight', 'Staging')][string]$Tier = 'Unit',
     [string]$PdftkPath,
     [string]$GhostscriptPath,
     [string]$PythonPath
@@ -16,8 +16,8 @@ if ($PesterModulePath) { $pesterName = $PesterModulePath }
 Import-Module -Name $pesterName -RequiredVersion $pins.PesterVersion -ErrorAction Stop
 $selected = Get-Module Pester
 if ($selected.Version.ToString() -ne $pins.PesterVersion) { throw 'Unexpected Pester version.' }
-if ($Tier -in @('NativeFixture', 'SourceDiscovery', 'LauncherNative', 'DependencyEntry', 'PdftkPaths', 'GhostscriptPaths', 'Destination', 'InputPreflight') -and -not $PdftkPath) { throw "$Tier requires an explicit real PDFtk executable path." }
-if ($Tier -in @('GhostscriptPaths', 'Destination', 'InputPreflight') -and -not $GhostscriptPath) { throw "$Tier requires an explicit real Ghostscript executable path." }
+if ($Tier -in @('NativeFixture', 'SourceDiscovery', 'LauncherNative', 'DependencyEntry', 'PdftkPaths', 'GhostscriptPaths', 'Destination', 'InputPreflight', 'Staging') -and -not $PdftkPath) { throw "$Tier requires an explicit real PDFtk executable path." }
+if ($Tier -in @('GhostscriptPaths', 'Destination', 'InputPreflight', 'Staging') -and -not $GhostscriptPath) { throw "$Tier requires an explicit real Ghostscript executable path." }
 if ($Tier -eq 'InputPreflight' -and -not $PythonPath) { throw 'InputPreflight requires an explicit development Python executable with the pinned PDFium oracle.' }
 $nativeFixturePath = $null
 $nativeFixtureBuildReceipt = $null
@@ -50,6 +50,9 @@ if ($Tier -eq 'Unit') {
         -Data @{ ToolBackend = $backend; PdftkPath = $PdftkPath; GhostscriptPath = $GhostscriptPath }
 } elseif ($Tier -eq 'Destination') {
     $config.Run.Container = New-PesterContainer -Path (Join-Path $repo 'tests/filesafety/Destination.Native.Tests.ps1') `
+        -Data @{ PdftkPath = $PdftkPath; GhostscriptPath = $GhostscriptPath }
+} elseif ($Tier -eq 'Staging') {
+    $config.Run.Container = New-PesterContainer -Path (Join-Path $repo 'tests/filesafety/Staging.Native.Tests.ps1') `
         -Data @{ PdftkPath = $PdftkPath; GhostscriptPath = $GhostscriptPath }
 } elseif ($Tier -eq 'InputPreflight') {
     $config.Run.Container = New-PesterContainer -Path (Join-Path $repo 'tests/pdf/InputPreflight.Native.Tests.ps1') `
@@ -88,6 +91,7 @@ if ($Tier -in @('ToolInvocation', 'PdftkPaths', 'GhostscriptPaths')) {
 }
 if ($Tier -eq 'Destination') { $summary.evidence_class = 'windows-real-entry-destination-identity-ACL-junction-concurrency' }
 if ($Tier -eq 'InputPreflight') { $summary.evidence_class = 'windows-real-pdftk-input-preflight-and-independent-pdfium-order' }
+if ($Tier -eq 'Staging') { $summary.evidence_class = 'windows-real-pdftk-gs-staging-publication-controlled-scheduling-and-filesystem' }
 $summary | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath (Join-Path $work 'summary.json') -Encoding UTF8
 $summary | ConvertTo-Json -Depth 4
 Write-Host ('Reports: ' + $work)

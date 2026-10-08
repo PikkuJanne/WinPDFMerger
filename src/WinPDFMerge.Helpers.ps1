@@ -209,7 +209,7 @@ function New-MergeRunIdentity {
     }
     $label = (Sanitize-FileName $leaf).TrimEnd([char[]]' .')
     if ([string]::IsNullOrWhiteSpace($label)) { $label = 'root' }
-    # Include the actual T09 private output layout in preflight, before probe,
+    # Include the private output layout in preflight, before probe,
     # log or native work. Existing native backend operands stay below260.
     $stage = [IO.Path]::Combine([IO.Path]::Combine($OutputFolder, ('.WinPDFMerge_' + ('0' * 32) + '.tmp')), 'output.pdf')
     $fixedEmail = [IO.Path]::Combine($OutputFolder, ('WinPDFMerge__' + $stamp + '_' + $suffix + '_email.pdf'))
@@ -792,6 +792,175 @@ function Assert-PdfInputInventory {
     foreach ($entry in $Inventory.Inputs) { Assert-PdfInputSnapshot -Snapshot $entry }
 }
 
+function New-PdfStaging {
+    [CmdletBinding()]
+    param(
+        [Parameter(Mandatory=$true)][string]$OutputFolder,
+        [string]$RunIdentity = [Guid]::NewGuid().ToString('N'),
+        [ValidatePattern('^[0-9a-fA-F]{32}$')][string]$StageSuffix = [Guid]::NewGuid().ToString('N')
+    )
+
+    $parent = Resolve-OutputDirectory -Path $OutputFolder
+    Assert-MergeDirectoryPath -Path $parent -Role OutputFolder
+    $parentIdentity = Get-MergeDirectoryIdentity -Path $parent
+    $directory = [IO.Path]::Combine($parent, ('.WinPDFMerge_' + $StageSuffix.ToLowerInvariant() + '.tmp'))
+    $master = [IO.Path]::Combine($directory, 'master.pdf')
+    if ($master.Length -ge 260) { throw 'Output folder is too long for private native output (260-character limit). Choose a shorter -OutputFolder.' }
+    # Directory.CreateDirectory accepts an existing directory. Use the Windows
+    # create-new operation so a losing race never acquires cleanup ownership.
+    if (-not ('WinPDFMerger.StagingDirectory' -as [type])) {
+        Add-Type -TypeDefinition @'
+using System;
+using System.ComponentModel;
+using System.IO;
+using System.Runtime.InteropServices;
+namespace WinPDFMerger {
+    public static class StagingDirectory {
+        [DllImport("kernel32.dll", CharSet=CharSet.Unicode, ExactSpelling=true, SetLastError=true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        private static extern bool CreateDirectoryW(string path, IntPtr security);
+        public static void CreateNew(string path) {
+            if (!CreateDirectoryW(path, IntPtr.Zero))
+                throw new IOException("Cannot reserve new private staging directory: " + path,
+                    new Win32Exception(Marshal.GetLastWin32Error()));
+        }
+    }
+}
+'@ -ErrorAction Stop
+    }
+    [WinPDFMerger.StagingDirectory]::CreateNew($directory)
+    $marker = [IO.Path]::Combine($directory, 'owner.json')
+    $stream = $null
+    try {
+        $directoryIdentity = Get-MergeDirectoryIdentity -Path $directory
+        $text = [ordered]@{ SchemaVersion=1; RunIdentity=$RunIdentity; StageSuffix=$StageSuffix.ToLowerInvariant();
+            CreatedUtc=[datetime]::UtcNow.ToString('o'); ProcessId=$PID; KnownFiles=@('master.pdf','email.pdf') } | ConvertTo-Json -Compress
+        # Create and flush the marker, then retain a read handle without
+        # delete/write sharing. Other readers can inspect ownership evidence;
+        # a crash closes the handle but leaves the marker for manual inspection.
+        $stream = [IO.File]::Open($marker, [IO.FileMode]::CreateNew, [IO.FileAccess]::ReadWrite, [IO.FileShare]::Read)
+        $bytes = (New-Object Text.UTF8Encoding($false)).GetBytes($text)
+        $stream.Write($bytes, 0, $bytes.Length)
+        $stream.Flush()
+        $stream.Dispose()
+        $stream = [IO.File]::Open($marker, [IO.FileMode]::Open, [IO.FileAccess]::Read, [IO.FileShare]::Read)
+        if ([IO.File]::ReadAllText($marker, [Text.Encoding]::UTF8) -cne $text) { throw 'Ownership marker changed during initialization.' }
+        return [pscustomobject]@{
+            OutputFolder=$parent; OutputDirectoryIdentity=$parentIdentity
+            DirectoryPath=$directory; DirectoryIdentity=$directoryIdentity
+            MasterPath=$master; EmailPath=[IO.Path]::Combine($directory, 'email.pdf')
+            MarkerPath=$marker; MarkerStream=$stream; MarkerText=$text; Cleaned=$false
+        }
+    } catch {
+        $reason = $_.Exception.Message
+        if ($null -ne $stream) { $stream.Dispose() }
+        # A partly initialized directory is deliberately retained: cleanup has
+        # not established its full ownership record. Never guess at its files.
+        throw "Private staging initialization failed: $reason Staging may remain at '$directory'. Inspect it manually after all runs have stopped; no automatic orphan sweep is performed."
+    }
+}
+
+function Assert-PdfStaging {
+    param([Parameter(Mandatory=$true)]$Staging)
+
+    if ($Staging.Cleaned -or $null -eq $Staging.MarkerStream -or -not $Staging.MarkerStream.CanRead) {
+        throw 'Private staging ownership handle is no longer active.'
+    }
+    $parent = [IO.Path]::GetFullPath($Staging.OutputFolder)
+    $directory = [IO.Path]::GetFullPath($Staging.DirectoryPath)
+    if ($parent -cne $Staging.OutputFolder -or $directory -cne $Staging.DirectoryPath -or
+        [IO.Path]::GetDirectoryName($directory) -ine $parent -or
+        [IO.Path]::GetFileName($directory) -cnotmatch '^\.WinPDFMerge_[0-9a-f]{32}\.tmp$' -or
+        $Staging.MasterPath -cne [IO.Path]::Combine($directory,'master.pdf') -or
+        $Staging.EmailPath -cne [IO.Path]::Combine($directory,'email.pdf') -or
+        $Staging.MarkerPath -cne [IO.Path]::Combine($directory,'owner.json')) {
+        throw 'Private staging layout does not match the owned known paths.'
+    }
+    Assert-MergeDirectoryPath -Path $directory -Role 'Private staging'
+    if ((Get-MergeDirectoryIdentity -Path $parent) -cne $Staging.OutputDirectoryIdentity -or
+        (Get-MergeDirectoryIdentity -Path $directory) -cne $Staging.DirectoryIdentity) {
+        throw 'Private staging directory identity changed; no files will be moved or cleaned.'
+    }
+    if ([IO.File]::ReadAllText($Staging.MarkerPath, [Text.Encoding]::UTF8) -cne $Staging.MarkerText) {
+        throw 'Private staging ownership marker changed; no files will be moved or cleaned.'
+    }
+}
+
+function Publish-PdfStagedOutput {
+    param([Parameter(Mandatory=$true)]$Staging,
+        [Parameter(Mandatory=$true)][string]$StagedPath,
+        [Parameter(Mandatory=$true)][string]$OutputPath)
+
+    Assert-PdfStaging -Staging $Staging
+    if ($StagedPath -cne $Staging.MasterPath -and $StagedPath -cne $Staging.EmailPath) {
+        throw 'Publication requires a known owned staged PDF path.'
+    }
+    if (-not [IO.Path]::IsPathRooted($OutputPath) -or [IO.Path]::GetFullPath($OutputPath) -cne $OutputPath -or
+        [IO.Path]::GetDirectoryName($OutputPath) -ine $Staging.OutputFolder -or $OutputPath.Length -ge 260) {
+        throw 'Publication requires a literal final path directly in the same output directory and volume.'
+    }
+    $file = Get-Item -LiteralPath $StagedPath -Force -ErrorAction Stop
+    if ($file.PSIsContainer -or ($file.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0 -or $file.Length -eq 0) {
+        throw 'Publication requires a nonempty regular owned staged PDF.'
+    }
+    # Two-argument File.Move never replaces an existing file. This operation,
+    # not Test-Path, decides the collision outcome. Parent identity/reparse
+    # checks keep the sibling move on the original destination volume.
+    [IO.File]::Move($StagedPath, $OutputPath)
+}
+
+function Remove-PdfStaging {
+    param([Parameter(Mandatory=$true)]$Staging)
+
+    if ($Staging.Cleaned) { return [pscustomobject]@{ Cleaned=$true; CleanupError=$null; OrphanPath=$null } }
+    $errorText = $null
+    $markerDeleted = $false
+    try {
+        Assert-PdfStaging -Staging $Staging
+        # Inspect only this owned directory, never scan for other run prefixes.
+        # Unknown children/reparse files retain the marker and all contents.
+        $known = @($Staging.MasterPath, $Staging.EmailPath, $Staging.MarkerPath)
+        foreach ($child in @(Get-ChildItem -LiteralPath $Staging.DirectoryPath -Force -ErrorAction Stop)) {
+            if ($child.FullName -cnotin $known -or $child.PSIsContainer -or
+                ($child.Attributes -band [IO.FileAttributes]::ReparsePoint) -ne 0) {
+                throw 'Unexpected content in private staging; retained for manual inspection.'
+            }
+        }
+        foreach ($path in @($Staging.MasterPath, $Staging.EmailPath)) {
+            if ([IO.File]::Exists($path)) { [IO.File]::Delete($path) }
+        }
+        $Staging.MarkerStream.Dispose()
+        [IO.File]::Delete($Staging.MarkerPath)
+        $markerDeleted = $true
+        [IO.Directory]::Delete($Staging.DirectoryPath, $false)
+        $Staging.Cleaned = $true
+    } catch {
+        $errorText = "Private staging cleanup was best effort: $($_.Exception.Message) Staging remains at '$($Staging.DirectoryPath)'. Inspect it manually after all runs have stopped; no automatic orphan sweep is performed."
+        # Directory removal can fail after deleting the marker (for example a
+        # new unknown child). Restore evidence only in the same owned directory,
+        # using CreateNew so an existing marker is never replaced.
+        if ($markerDeleted -and -not [IO.File]::Exists($Staging.MarkerPath)) {
+            $restore = $null
+            try {
+                Assert-MergeDirectoryPath -Path $Staging.DirectoryPath -Role 'Private staging'
+                if ((Get-MergeDirectoryIdentity -Path $Staging.DirectoryPath) -cne $Staging.DirectoryIdentity -or
+                    (Get-MergeDirectoryIdentity -Path $Staging.OutputFolder) -cne $Staging.OutputDirectoryIdentity) {
+                    throw 'Original staging directory identity is unavailable.'
+                }
+                $restore = [IO.File]::Open($Staging.MarkerPath, [IO.FileMode]::CreateNew, [IO.FileAccess]::Write, [IO.FileShare]::Read)
+                $bytes = (New-Object Text.UTF8Encoding($false)).GetBytes($Staging.MarkerText)
+                $restore.Write($bytes, 0, $bytes.Length)
+                $restore.Flush()
+            } catch { $errorText += ' Ownership marker could not be retained: ' + $_.Exception.Message }
+            finally { if ($null -ne $restore) { $restore.Dispose() } }
+        }
+    } finally {
+        if ($null -ne $Staging.MarkerStream) { $Staging.MarkerStream.Dispose() }
+    }
+    return [pscustomobject]@{ Cleaned=$Staging.Cleaned; CleanupError=$errorText;
+        OrphanPath=$(if ($Staging.Cleaned) { $null } else { $Staging.DirectoryPath }) }
+}
+
 function Invoke-PdfToolJob {
     [CmdletBinding()]
     param(
@@ -799,6 +968,7 @@ function Invoke-PdfToolJob {
         [Parameter(Mandatory=$true)][string]$Executable,
         [Parameter(Mandatory=$true)][AllowEmptyCollection()][object[]]$InputPaths,
         [Parameter(Mandatory=$true)][string]$OutputPath,
+        $Staging,
         [ValidateRange(1, 2147483647)][int]$TimeoutMilliseconds = 900000
     )
 
@@ -806,7 +976,7 @@ function Invoke-PdfToolJob {
     $outputError = $null
     $cleanupError = $null
     $published = $false
-    $ownedDirectory = $null
+    $ownedStaging = $null
     $stagedOutput = $null
     try {
         if ($InputPaths.Count -eq 0 -or ($Tool -eq 'Ghostscript' -and $InputPaths.Count -ne 1)) {
@@ -828,15 +998,14 @@ function Invoke-PdfToolJob {
         if (Test-Path -LiteralPath $OutputPath) { throw "PDF output already exists: '$OutputPath'. Choose a fresh output; existing files are never overwritten." }
         $parent = [IO.Path]::GetDirectoryName($OutputPath)
         if (-not [IO.Directory]::Exists($parent)) { throw "PDF output directory does not exist: '$parent'." }
-        $candidate = Join-Path $parent ('.WinPDFMerge_' + [Guid]::NewGuid().ToString('N') + '.tmp')
-        $stagedOutput = Join-Path $candidate 'output.pdf'
-        if ($stagedOutput.Length -ge 260) {
-            throw 'Output folder is too long for a private native output path (260-character limit). Use a shorter output folder.'
+        if ($null -eq $Staging) {
+            $ownedStaging = New-PdfStaging -OutputFolder $parent
+            $Staging = $ownedStaging
         }
-        # New-Item without Force refuses an existing directory. Only after that
-        # succeeds do we own this exact directory and its one known output file.
-        $null = New-Item -ItemType Directory -Path $candidate -ErrorAction Stop
-        $ownedDirectory = $candidate
+        Assert-PdfStaging -Staging $Staging
+        if ($parent -ine $Staging.OutputFolder) { throw 'Private staging must belong to this output directory.' }
+        $stagedOutput = if ($Tool -eq 'Pdftk') { $Staging.MasterPath } else { $Staging.EmailPath }
+        if (Test-Path -LiteralPath $stagedOutput) { throw 'Owned staged PDF already exists. Refusing native overwrite; use a fresh run.' }
         if ($Tool -eq 'Pdftk') {
             $arguments = @($InputPaths) + @('cat', 'output', $stagedOutput, 'compress', 'dont_ask')
             $removeEnvironment = @()
@@ -859,17 +1028,14 @@ function Invoke-PdfToolJob {
         }
         # File.Move refuses an existing target, including a collision after the
         # preflight. Structural/page-total validation is a separate later gate.
-        [IO.File]::Move($stagedOutput, $OutputPath)
+        Publish-PdfStagedOutput -Staging $Staging -StagedPath $stagedOutput -OutputPath $OutputPath
         $published = $true
     } catch {
         $outputError = $_.Exception.Message
     } finally {
-        if ($null -ne $ownedDirectory) {
-            try {
-                # Remove only the known run-owned file, then the empty directory.
-                if ([IO.File]::Exists($stagedOutput)) { [IO.File]::Delete($stagedOutput) }
-                [IO.Directory]::Delete($ownedDirectory, $false)
-            } catch { $cleanupError = 'Private native output cleanup was best effort: ' + $_.Exception.Message }
+        if ($null -ne $ownedStaging) {
+            $cleanup = Remove-PdfStaging -Staging $ownedStaging
+            $cleanupError = $cleanup.CleanupError
         }
     }
     return [pscustomobject]@{
@@ -878,6 +1044,7 @@ function Invoke-PdfToolJob {
         OutputPublished = $published
         OutputError = $outputError
         CleanupError = $cleanupError
+        StagingPath = $(if ($null -ne $Staging) { $Staging.DirectoryPath } else { $null })
         Succeeded = ($published -and -not $outputError)
     }
 }

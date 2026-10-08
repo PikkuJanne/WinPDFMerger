@@ -188,59 +188,85 @@ try {
     exit 1
 }
 
-# --- PDFtk merge through bounded, prompt-free private output ---
-$merge = Invoke-PdfToolJob -Tool Pdftk -Executable $pdftkPath -InputPaths @($inventory.Inputs.FullName) -OutputPath $outLossless
-if ($null -ne $merge.NativeResult) {
-    Write-NativeProcessLog -Result $merge.NativeResult -LiteralPath $logPath -Label PDFtk
-}
-if ($merge.CleanupError) { $merge.CleanupError | Write-RunLog -LiteralPath $logPath -Append }
-if (-not $merge.Succeeded) {
-    $merge.OutputError | Write-RunLog -LiteralPath $logPath -Append
-    Write-Host "PDFtk failed. See log: $logPath" -ForegroundColor Red
-    exit 1
-}
-"PDFtk merge OK." | Write-RunLog -LiteralPath $logPath -Append
-
-# --- Email-friendly copy with GhostScript ---
-$gsPath = Find-Ghostscript
-$gsVersionFailure = $false
-$gsFailureMessage = 'Ghostscript version preflight failed.'
-if ($gsPath) {
+# One owned stage for master and email. The finally block also runs on an
+# early exit; orphan diagnostics never scan/delete another run's files.
+$staging = $null
+$emailPublished = $false
+try {
     try {
-        $gsVersion = Get-NativeToolVersion -Path $gsPath -Tool Ghostscript
+        $staging = New-PdfStaging -OutputFolder $OutputFolder -RunIdentity $run.BaseName
+        ("Private staging: {0}" -f $staging.DirectoryPath) | Write-RunLog -LiteralPath $logPath -Append
     } catch {
-        ("Ghostscript version preflight failed for '{0}': {1} Skipping email copy. Master retained." -f $gsPath, $_.Exception.Message) | Write-RunLog -LiteralPath $logPath -Append
-        $gsVersionFailure = $true
+        Write-Host 'Private staging creation failed. No merge was started.' -ForegroundColor Red
+        Write-Host $_.Exception.Message
+        exit 1
     }
-}
-if ($gsPath -and -not $gsVersionFailure) {
-    "Ghostscript: $gsPath (version $gsVersion)" | Write-RunLog -LiteralPath $logPath -Append
-    $email = Invoke-PdfToolJob -Tool Ghostscript -Executable $gsPath -InputPaths @($outLossless) -OutputPath $outEmail
-    if ($null -ne $email.NativeResult) {
-        Write-NativeProcessLog -Result $email.NativeResult -LiteralPath $logPath -Label Ghostscript
+    # --- PDFtk merge through bounded, prompt-free private output ---
+    $merge = Invoke-PdfToolJob -Tool Pdftk -Executable $pdftkPath -InputPaths @($inventory.Inputs.FullName) -OutputPath $outLossless -Staging $staging
+    if ($null -ne $merge.NativeResult) {
+        Write-NativeProcessLog -Result $merge.NativeResult -LiteralPath $logPath -Label PDFtk
     }
-    if ($email.CleanupError) { $email.CleanupError | Write-RunLog -LiteralPath $logPath -Append }
-    if ($email.Succeeded) {
-        "Email-optimized PDF created." | Write-RunLog -LiteralPath $logPath -Append
-    } else {
-        $email.OutputError | Write-RunLog -LiteralPath $logPath -Append
-        "Ghostscript conversion failed. Master retained; see log for details." | Write-RunLog -LiteralPath $logPath -Append
-        $gsVersionFailure = $true
-        $gsFailureMessage = 'Ghostscript conversion failed. Master retained.'
+    if ($merge.CleanupError) { $merge.CleanupError | Write-RunLog -LiteralPath $logPath -Append }
+    if (-not $merge.Succeeded) {
+        $merge.OutputError | Write-RunLog -LiteralPath $logPath -Append
+        Write-Host "PDFtk failed. See log: $logPath" -ForegroundColor Red
+        exit 1
     }
-} elseif (-not $gsVersionFailure) {
-    "Ghostscript not found; skipping email-optimized copy." | Write-RunLog -LiteralPath $logPath -Append
-}
+    "PDFtk merge OK." | Write-RunLog -LiteralPath $logPath -Append
 
-"Done." | Write-RunLog -LiteralPath $logPath -Append
-if ($gsVersionFailure) {
-    Write-Host "`nPARTIAL SUCCESS: $gsFailureMessage"
+    # --- Email-friendly copy with GhostScript ---
+    $gsPath = Find-Ghostscript
+    $gsVersionFailure = $false
+    $gsFailureMessage = 'Ghostscript version preflight failed.'
+    if ($gsPath) {
+        try {
+            $gsVersion = Get-NativeToolVersion -Path $gsPath -Tool Ghostscript
+        } catch {
+            ("Ghostscript version preflight failed for '{0}': {1} Skipping email copy. Master retained." -f $gsPath, $_.Exception.Message) | Write-RunLog -LiteralPath $logPath -Append
+            $gsVersionFailure = $true
+        }
+    }
+    if ($gsPath -and -not $gsVersionFailure) {
+        "Ghostscript: $gsPath (version $gsVersion)" | Write-RunLog -LiteralPath $logPath -Append
+        $email = Invoke-PdfToolJob -Tool Ghostscript -Executable $gsPath -InputPaths @($outLossless) -OutputPath $outEmail -Staging $staging
+        if ($null -ne $email.NativeResult) {
+            Write-NativeProcessLog -Result $email.NativeResult -LiteralPath $logPath -Label Ghostscript
+        }
+        if ($email.CleanupError) { $email.CleanupError | Write-RunLog -LiteralPath $logPath -Append }
+        if ($email.Succeeded) {
+            $emailPublished = $email.OutputPublished
+            "Email-optimized PDF created." | Write-RunLog -LiteralPath $logPath -Append
+        } else {
+            $email.OutputError | Write-RunLog -LiteralPath $logPath -Append
+            "Ghostscript conversion failed. Master retained; see log for details." | Write-RunLog -LiteralPath $logPath -Append
+            $gsVersionFailure = $true
+            $gsFailureMessage = 'Ghostscript conversion failed. Master retained.'
+        }
+    } elseif (-not $gsVersionFailure) {
+        "Ghostscript not found; skipping email-optimized copy." | Write-RunLog -LiteralPath $logPath -Append
+    }
+
+    "Done." | Write-RunLog -LiteralPath $logPath -Append
+    if ($gsVersionFailure) {
+        Write-Host "`nPARTIAL SUCCESS: $gsFailureMessage"
+        Write-Host " - Lossless: $outLossless"
+        Write-Host "Log: $logPath"
+        exit 2
+    }
+    Write-Host "`nSUCCESS:"
     Write-Host " - Lossless: $outLossless"
+    if ($emailPublished) { Write-Host " - Email-optimized: $outEmail" }
     Write-Host "Log: $logPath"
-    exit 2
+    exit 0
+} finally {
+    if ($null -ne $staging) {
+        $cleanup = Remove-PdfStaging -Staging $staging
+        if ($cleanup.CleanupError) {
+            # Console reporting survives a failed log append. Published files
+            # are never cleanup targets, even when an email stage fails.
+            Write-Host $cleanup.CleanupError -ForegroundColor Yellow
+            try { $cleanup.CleanupError | Write-RunLog -LiteralPath $logPath -Append | Out-Null }
+            catch { Write-Host ("Staging cleanup diagnostic could not be logged: {0}" -f $_.Exception.Message) -ForegroundColor Yellow }
+        }
+    }
 }
-Write-Host "`nSUCCESS:"
-Write-Host " - Lossless: $outLossless"
-if (Test-Path -LiteralPath $outEmail) { Write-Host " - Email-optimized: $outEmail" }
-Write-Host "Log: $logPath"
-exit 0
