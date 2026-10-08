@@ -65,3 +65,16 @@ T12 adds `-Tier Staging` for real PDFtk/Ghostscript no-overwrite publication,
 source/final hash preservation and overlapping same-second run isolation.
 It requires both explicit native paths. Unit cleanup/ownership faults remain in
 `-Tier Unit`. See [Staging.md](Staging.md) for the scope and controlled scheduling.
+
+T21 adds `-Tier CorpusSafety`, requiring explicit PDFtk, Ghostscript and Python
+paths. It executes the actual entry on reconstructed synthetic scenarios, checks
+full source trees and existing output sentinels, reads final page IDs with PDFium,
+repeats ordering across cultures, refuses invalid siblings and overlapping
+directories, and launches two entries behind a test-only start barrier. These
+checks do not certify Explorer interaction. See the fixture corpus catalogue in
+[tests/fixtures/README.md](../../tests/fixtures/README.md).
+
+`tests/TestDependencies.psd1` lists both exact observed Python3.12.14 executable
+hashes from the earlier reference runtime and workspace bundle26.1007.11041.
+Package/library pins and synthetic expected bytes remain checked separately.
+Nothing downloads dependencies or adds Python to application runtime packaging.

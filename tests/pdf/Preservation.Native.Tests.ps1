@@ -25,7 +25,8 @@ BeforeAll {
         if ($expectedFile.Count -ne 1) { throw 'Missing approved engine file pin.' }
         (Get-FileHash -LiteralPath $selection.Path -Algorithm SHA256).Hash.ToLowerInvariant() | Should -BeExactly $expectedFile[0].sha256
     }
-    (Get-FileHash -LiteralPath $PythonPath -Algorithm SHA256).Hash.ToLowerInvariant() | Should -BeExactly 'dd5f8d19f6755d6491ee7c4bef2fe35ddd521334cc3ca3ed8fc93ebcadf135d0'
+    $pythonPins = Import-PowerShellDataFile -LiteralPath (Join-Path $repo 'tests/TestDependencies.psd1')
+    $pythonPins.DevelopmentPythonSHA256 | Should -Contain (Get-FileHash -LiteralPath $PythonPath -Algorithm SHA256).Hash.ToLowerInvariant()
     (Get-NativeToolVersion -Path $PdftkPath -Tool PdfTk) | Should -BeExactly '2.02'
     (Get-NativeToolVersion -Path $GhostscriptPath -Tool Ghostscript) | Should -BeExactly '10.08.0'
     $shell = [Diagnostics.Process]::GetCurrentProcess().MainModule.FileName

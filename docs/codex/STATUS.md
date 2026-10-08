@@ -2,30 +2,20 @@
 
 Target: published and independently verified v1.0.0 in PikkuJanne/WinPDFMerger.
 Completed milestones: M1/M2/M3 within recorded local Windows/test/review scope.
-Current milestone: M4, pending. Completed tasks: T01 through T20.
-Next task: T21 â€” complete synthetic regression corpus and source-safety coverage, pending.
+Current milestone: M4, in_progress. Completed tasks: T01 through T20.
+Current task: T21 — synthetic corpus and source-safety coverage, in_progress.
+Next task after successful T21: T22 — fault tests and static analysis coverage.
 Publication: NOT STARTED. No release or tag is created.
 
-T20 AC046 public-instructions review and AC047 license/scope review pass at
-clean implementation C1 `a9e93319ad260646d57278f207872a0e03dbb155`. PublicDocs18,
-PreservationDocs14, Parameters31 and Diagnostics36 passed per actual
-PS5.1.26100.9444/PS7.6.6 x64 host:99each/198total/eight reports, all bad counts0.
-Independent reviews:31semantic/35local-link/6immutable and33policy checks pass.
-Scoped PSA1.25.0:0errors/4reviewed nonblocking warnings/0information per host.
-See evidence/T20-completion.md, T20-results.json and T20-reports/manifest.json.
+T20 final records commit96d325f35fc89a8c5f44dbeb93edb963a7552510 was freshly
+verified clean/live at T21 start. Owner merged PR20; live main8540ed2 has the
+same tree. T20 AC046/AC047 evidence remains unchanged and valid for its scope.
 
-README installation now includes the required src helper, optional Ghostscript,
-the original command routes and0/1/2 exits. Public usage/troubleshooting/dependency/
-privacy/security docs match completed behavior. MIT LICENSE and application/BAT/
-helper bytes, defaults, native flags and prior PDF limitation/preset docs are unchanged.
-C1 was normally pushed; fresh read-only sync proved local=live and clean, and
-draft PR20 head matched C1. Records-only C2 is checked after normal push and
-reported in the session, without inventing its future SHA or synchronization.
-Owner merged prior PR19; origin/development branch remain unchanged.
+T21 consolidates earlier synthetic corpus provenance and adds real entry safety
+regressions. AC048/AC049 remain not_run until immutable implementation execution
+and independent review. See evidence/T21-checkpoint.md for actual preparation,
+including refreshed workspace Python executable bytes with unchanged pins.
+No runtime/BAT/helper/default/native-flag change. Sources are preserved.
 
-T19 synthetic preservation observations still apply: master fields can be renamed,
-document attachment indexes/tag trees lost, editable email fields/widgets lost,
-and screen orientation changed. Keep originals; no signature/XFA/PDF-A/accessibility/
-malware/universal archival guarantees. Doc/isolated-binding/controlled tests remain
-distinct from native/manual evidence. Physical Explorer, full native/lint/security/
-CI/package/publication gates remain open. T21 is pending and unstarted.
+Retain original signed/feature-rich PDFs and measured T19 limitations. Physical
+Explorer, full native/lint/security/CI/package/publication gates remain open.
