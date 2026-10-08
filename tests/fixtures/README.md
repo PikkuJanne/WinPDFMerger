@@ -34,4 +34,37 @@ These checks inspect real PDFs with an independent native parser. They prove
 the tiny corpus and its oracle, and must be recorded separately from controlled
 fake-process tests. They do not prove PDFtk/Ghostscript execution, product
 merging, feature preservation or desktop acceptance. Mixed sizes, rotation,
-images/scans, corrupt/encrypted and feature-rich PDFs belong to later tasks.
+images/scans and corrupt/encrypted PDFs belong to later tasks.
+
+## T19 synthetic feature corpus
+
+`features/generate_features.py` creates two original CC0 PDFs in an explicitly
+selected development directory. `features/manifest.json` binds their exact
+bytes and expected four-page order. The corpus covers links and internal
+destinations, bookmarks, AcroForm values and repeated field names, two widgets
+per field, annotations, rotations, document and page attachments, and minimal
+tag relationships. It contains no user documents or external artwork.
+
+```text
+python -B tests/fixtures/features/generate_features.py --output tests/.work/features
+python -B tools/test/feature_oracle.py --pdf tests/.work/features/1-feature-A.pdf --output tests/.work/features-A.json --render-dir tests/.work/features-A-renders
+python -B -m unittest discover -s tools/test/tests -p test_feature_oracle.py -v
+```
+
+Use the pinned Python 3.12.14 and development dependencies recorded in the
+manifest and `tools/test/requirements-fixtures.txt`. These tools neither install
+dependencies nor participate in the application runtime. The read-only oracle
+uses pypdf for raw document structures and native PDFium for identifiers and
+rendered pages. It does not merge, repair, fill, flatten or rewrite tested PDFs.
+
+`PreservationNative` runs the unchanged application with explicitly selected
+PDFtk and Ghostscript paths and records originals, masters, screen copies and
+ebook copies separately. Artificial, nonpainting page-stream comments make the
+synthetic inputs large enough for the normal smaller-email publication rule;
+these sizes do not measure representative compression or image fidelity.
+
+Tag relationships do not certify accessibility. Signatures and XFA have no
+validated preservation guarantee in this corpus. See `docs/PDF_LIMITATIONS.md`
+for measured native results and limits. Generated PDFs and rendered QA images
+remain in ignored development directories; public evidence retains text and
+hashes without private PDFs.

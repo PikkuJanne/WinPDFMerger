@@ -1,8 +1,10 @@
-# WinPDFMerge — Lossless folder PDF merge + email-friendly copy (PowerShell + PDFtk + GhostScript)
+# WinPDFMerge — Folder PDF merge + optional email copy (PowerShell + PDFtk + Ghostscript)
 Minimal, no-frills PDF merger I use to bundle invoices/contracts/etc. into one file and, produce a smaller email copy. It’s a personal, purpose-built tool. I don’t expect most people to need this. It trades options for reliability and repeatability.
 
 **Synopsis**
-Merges all top-level PDFs from a folder into a single, lossless PDF via PDFtk.
+Merges visible top-level PDFs into a master via PDFtk without intentional page
+rasterization or image downsampling. The optional email copy is a potentially
+lossy Ghostscript rewrite. Neither output is an archival or feature-retention guarantee.
 Creates a smaller “email-friendly” copy via Ghostscript (configurable profile).
 Natural sort by base filename (1, 2, 10…).
 Drag & drop workflow: I drop a folder onto the .bat, outputs land next to the scripts with a timestamped log.
@@ -44,7 +46,7 @@ trust or compatibility for every native build; native acceptance remains separat
 **Usage**
 Drag & Drop (recommended)
 Drag a folder containing PDFs onto WinPDFMerge.bat.
-The merged PDF (lossless), optional email copy, and a log file are created in the same directory as the scripts.
+The merged master, optional email copy, and a log file are created in the same directory as the scripts.
 Window stays open so you can see status/log path.
 Command line
 One folder (top-level PDFs only, no recursion):
@@ -108,6 +110,11 @@ redacted, encrypted, or protected by a special application ACL. Before sharing
 a report publicly, make a copy and replace private names/paths and sensitive
 metadata consistently, retaining useful stage, version, exit and size facts.
 Do not attach private PDFs. The application never uploads diagnostics or PDFs.
+
+**Preservation**
+See [PDF preservation limits](docs/PDF_LIMITATIONS.md) before merging forms,
+attachments, tagged or signed documents. Keep original feature-rich and signed
+PDFs; readable pages and a successful page count do not prove retained features.
 
 **Input preflight**
 Before merging, the script inspects every visible top-level PDF in the frozen
@@ -196,7 +203,7 @@ it changes no user or machine setting and does not override organizational Group
 Policy. [Microsoft execution-policy documentation](https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies?view=powershell-5.1).
 
 **Technical details**
-Merge (lossless): pdftk file1.pdf file2.pdf ... cat output out.pdf
+Master: PDFtk concatenates pages and compresses page streams; this does not certify document-level features.
 Order: ASCII digit groups by magnitude (1, 01, 001, 2, 10), then subsequent groups.
 Text compares ordinally without case; original base name and full path break ties ordinally.
 No fixed-width numeric conversion or culture-dependent ordering.
@@ -211,7 +218,7 @@ Subfolders are not scanned; move the intended inputs into one source folder.
 
 **Troubleshooting**
 “pdftk not found” -> install PDFtk Server, ensure pdftk is in PATH or lives in a standard location (the script checks common paths).
-“gswin64c not found” -> install Ghostscript or skip the email copy (lossless master still produced).
+“gswin64c not found” -> install Ghostscript or skip the email copy (validated master still produced).
 Email copy missing -> check the .log created next to the outputs, warnings are captured even when the merge succeeds.
 “File in use” -> close any viewer holding _email.pdf or the master.
 Encrypted/secured PDFs -> PDFtk may fail, decrypt/remove restrictions first.
