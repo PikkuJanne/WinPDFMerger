@@ -1,29 +1,30 @@
 # Project status
 
 Target: published and independently verified v1.0.0 in PikkuJanne/WinPDFMerger.
-Completed milestones: M1/M2/M3 within recorded local Windows/test/review scope.
-Current milestone: M4, in_progress. Completed tasks: T01 through T22.
-Current task: T23 - full native integration in both required shells, pending/unstarted.
+Completed milestones: M1/M2/M3 within recorded Windows/test/review scope.
+Current milestone: M4, in_progress. Completed tasks: T01 through T23.
+Current task: T24 - safe Windows CI and machine-readable reports, pending.
 Publication: NOT STARTED. No release or tag is created.
 
-T22 AC050 fault/unit and AC051 static pass at clean C1 `d159486cdfb66c39cf3ca6b35a23ebd08e1b2932`:
-715 Pester checks per actual PS5.1.26100.9444 and pinned PS7.6.6,
-1430 total/36 reports, every required bad count and source guard zero/pass.
-All53 maintained PowerShell files parse/pass41 selected analyzer1.25.0 rules
-in both hosts, no suppressions; advisory0errors/298warnings/161information each.
-Independent copied runner18 observations, historical/current capture4 probes,
-raw/archive/records reviews; fixture Python40pass, supplemental helper26pass/1skip.
+T23 AC052/AC053 pass at clean C1 `8fa2032c66f94199b121fc1914792d6d71bb6202`:
+29 relevant tiers each in actual PS5.1.26100.9444 and pinned PS7.6.6,
+854 checks each / 1708 total / 58 original report pairs; all bad counts zero.
+Internal/external source guards and 348 selected dependency rehashes pass.
+The total retains distinct unit/controlled/native/documentation classes.
+Six new cases per host verify a 138-page / 29475-character command success,
+180-input / 38337-character prelaunch refusal, both presets on 24 original mixed
+pages, and genuine GS warning retention/validation/no-size-benefit omission.
+The malformed warning source stays rejected by application preflight.
+Runtime/native flags/launchers/defaults unchanged.
 
-Minimal runtime fix observes completed asynchronous read faults through GetResult,
-preserving retained bytes and owned process/output safety. Test-only local/BOM
-and retry diagnostics plus fail-closed receipt/source checks are demonstrated.
-Native arguments, launchers, defaults and public interface remain unchanged.
-See evidence/T22-completion.md, results, manifest and reviews for commands,
-source bindings, preparation failures and exact controlled/native distinctions.
+Independent raw/native review passes 15507 checks plus eight extra PDFium audit reads;
+scoped static checks pass two files / 41 rules per host, no suppressions; advisories 0 errors /
+9 warnings / 8 information each retained. Fixture/oracle Python tests pass 40/40.
+Preparation revisions/probes and corrected audit-schema assumption disclosed.
+See evidence/T23-completion.md, results, manifest and independent reviews.
 
-Normal C1 push and clean fresh live equality passed; draft PR22 matches tested C1.
-Records-only C2 is verified after push in the session without self-reference.
-Retain T19 measured preservation limits and originals. T23 broader native, CI,
-physical Explorer/desktop, security, OS/UNC, package and publication gates remain.
-OS support channel unestablished; developer bracketed-root Pester discovery and
-supplemental helper symlink creation limits are disclosed, never passing evidence.
+C1 normal push/fresh clean live equality and draft PR23 head match are retained.
+Records/byte-preservation C2 own clean/live equality will be verified after push in
+the session without self-reference. T24 next. Retain originals/T19 limits.
+OS support channel, CI, physical Explorer/desktop, security, broader OS/UNC,
+package and publication gates remain; no later gate is closed by T23.

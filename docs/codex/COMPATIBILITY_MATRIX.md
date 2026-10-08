@@ -7,11 +7,11 @@ observations are not application compatibility certification. Evidence:
 
 | Environment | Release scope | Version/build | Evidence | Status |
 |---|---|---|---|---|
-| Windows 11 x64 standard-user desktop | Required | Pro 10.0.26300/build 26300, DisplayVersion 26H2; non-administrator observation token; NTFS fixed drive | T02 baseline/environment | INVENTORIED; application/Explorer acceptance NOT TESTED; OS support channel unestablished |
-| Windows PowerShell 5.1 on reference desktop | Required | 5.1.26100.9444 Desktop x64; test Process RemoteSigned; ordinary Restricted/all scopes Undefined | T09 completion/C3 reports + prior task evidence | T09/M1 narrow217cases PASS with actualPDFtk/GS; full interruption/fidelity/Explorer/release NOT TESTED |
-| Supported PowerShell 7 x64 on reference desktop | Required | Supported portable7.6.6 Core x64; Microsoft-signed host; Process RemoteSigned | T09 PS7 acquisition + completion/C3 reports | T09/M1 narrow217cases PASS with actualPDFtk/GS; full application/release compatibility NOT VALIDATED |
-| PDFtk native Windows build | Required | Vendor Server2.02 unsigned x86; approved exact external cache | T03 acquisition + T09 completion/C3 | Tested punctuation/Latin paths andCJKinstall PASS; CJKoperands safeFAIL;258PASS/260preflight; bounded encrypted/lock/ACL/collision PASS; no fidelity/release claim |
-| Ghostscript native Windows build | Required for email support | Verified10.08.0 x64 console/interpreter unsigned; signed installer; explicit external cache | T09 GS acquisition + completion/C3 | Tested punctuation/Latin/CJK paths,258input, boundedfailure/entry PASS; PDFSTOPONERROR nativeerror regression PASS; full email validation/fidelity/release NOT TESTED |
+| Windows 11 x64 standard-user desktop | Required | Pro 10.0.26300/build 26300, DisplayVersion 26H2; non-administrator observation token; NTFS fixed drive | T02 baseline/environment + T23 completion/reports | T23 actual native application tests PASS; physical Explorer/desktop acceptance remains; OS support channel unestablished |
+| Windows PowerShell 5.1 on reference desktop | Required | 5.1.26100.9444 Desktop x64; test Process RemoteSigned; ordinary Restricted/all scopes Undefined | T23 completion/results/reports + prior task evidence | T23 full relevant suite: 854 checks / 29 tiers PASS; controlled classes separate; physical Explorer, CI and release gates remain |
+| Supported PowerShell 7 x64 on reference desktop | Required | Supported portable7.6.6 Core x64; Microsoft-signed host; Process RemoteSigned | T09 PS7 acquisition + T23 completion/results/reports | T23 same relevant suite: 854 checks / 29 tiers PASS; OS channel unestablished; broader desktop/release compatibility remains |
+| PDFtk native Windows build | Required | Vendor Server2.02 unsigned x86; approved exact external cache | T03 acquisition + T23 completion/reports | T23 paths, ordered pages, structural validation, job bounds and source/publication safety PASS; CJK operands/inspection remain safely refused; no broader release claim |
+| Ghostscript native Windows build | Required for email support | Verified10.08.0 x64 console/interpreter unsigned; signed installer; explicit external cache | T09 GS acquisition + T23 completion/reports | T23 paths, both presets, validation, warning disposition and email outcomes PASS; PDFtk inspection limits retained; visual/desktop/package/release gates remain |
 | GitHub Windows runner | Required CI evidence; not desktop certification | UNKNOWN | None | NOT TESTED |
 | Windows 10 | Optional/excludable | UNKNOWN | None | NOT TESTED |
 | Live UNC network share | Optional/excludable | UNKNOWN | None | NOT TESTED |
@@ -302,3 +302,25 @@ was not permitted. This does not certify live UNC, physical Explorer, OS support
 CI, package/release or the full T23 integration gate. T22 environment rehashed348
 selected dependency files unchanged, using scoped child policies and standard
 user localNTFS with no persistent security/environment change. See T22-completion.
+
+## T23 current native integration scope
+
+Clean C1 `8fa2032c66f94199b121fc1914792d6d71bb6202` passes the same 29
+relevant tiers in both actual required hosts: 854 checks each, 1708 total,
+58 original NUnit/JSON pairs, every failure/block/container/skip/not_run/
+inconclusive count zero. Declared controlled and documentation classes remain
+separate from actual PDF-engine evidence. All source guards and 348 selected
+approved dependency rehashes pass. Runtime and familiar defaults are unchanged.
+
+New real-helper cases verify 138 distinct pages at a 29475-character command,
+180-input / 38337-character prelaunch refusal, both presets on 24 original
+vector/raster pages, and logged nonfatal GS warnings with strict validation and
+no-size-benefit omission. The malformed warning fixture is explicitly refused
+by application preflight. Original reports, independent raw/public audits and
+eight extra PDFium audit reads support the scoped results; modest sample timings
+are not a throughput or fidelity guarantee. See `evidence/T23-completion.md`
+and `evidence/T23-results.json`.
+
+OS support channel remains unestablished. Physical Explorer/desktop, CI,
+security, broader OS/UNC, distribution and final publication remain subsequent
+gates. No Windows 10, ARM, 32-bit host or live UNC pass is inferred.
