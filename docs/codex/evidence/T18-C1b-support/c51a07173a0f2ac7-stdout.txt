@@ -1,0 +1,35 @@
+{
+  "observed_at_utc": "2026-10-08T09:07:15.4904459Z",
+  "shell_version": "5.1.26100.9444",
+  "process_64_bit": true,
+  "administrator": false,
+  "policy": "Restricted",
+  "scopes": [
+    "MachinePolicy=Undefined",
+    "UserPolicy=Undefined",
+    "Process=Undefined",
+    "CurrentUser=Undefined",
+    "LocalMachine=Undefined"
+  ],
+  "os_version": "10.0.26300.0",
+  "filesystem": "NTFS",
+  "process_execution_policy_argument": false,
+  "application_or_native_test_claim": false,
+  "task": "T18",
+  "argv": [
+    "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "-NoProfile",
+    "-Command",
+    "$identity=[Security.Principal.WindowsIdentity]::GetCurrent()\ntry { $admin=(New-Object Security.Principal.WindowsPrincipal($identity)).IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator) } finally { $identity.Dispose() }\n$record=[ordered]@{observed_at_utc=[DateTime]::UtcNow.ToString(\"o\");shell_version=$PSVersionTable.PSVersion.ToString();process_64_bit=[Environment]::Is64BitProcess;administrator=$admin;policy=(Get-ExecutionPolicy).ToString();scopes=@(Get-ExecutionPolicy -List | ForEach-Object {\"$($_.Scope)=$($_.ExecutionPolicy)\"});os_version=[Environment]::OSVersion.Version.ToString();filesystem=(New-Object IO.DriveInfo(\"C:\\\")).DriveFormat;process_execution_policy_argument=$false;application_or_native_test_claim=$false}\n$record | ConvertTo-Json -Depth 5\n"
+  ],
+  "exit_code": 0,
+  "commit_under_inventory": "0cf2f49d4e9ab572a60bcdabbdbf33a033e33034",
+  "dirty_worktree": true,
+  "child_only_modulepath_removed": true,
+  "persistent_environment_policy_security_changes": false,
+  "acquisition_performed": false,
+  "os_support_channel_established": false,
+  "source_sha256": "6ef4869cc03a05f081629d98c2dbb73ef2a7aac78acc447071836087c0cd260f",
+  "raw_stdout_sha256": "249a550c3aa6252e31cf9a3829fd3ae4dfefa7248ad381325551656ad9b28424",
+  "raw_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

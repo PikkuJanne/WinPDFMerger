@@ -1,0 +1,110 @@
+Pester v6.2.0
+
+Running tests from 1 files.
+
+Running tests from '<REPO>\tests\help\Diagnostics.Native.Tests.ps1'
+Describing AC042 actual help and every documented application command
+  [-] returns genuine Get-Help synopsis, description, parameters and four executable examples 1.11s
+   Expected strings to be the same, but they were different.
+   Expected length: 232
+   Actual length:   508
+   Strings differ at index 43.
+   Expected: '.\WinPDFMerge.ps1 'C:\Work\Papers\ToMerge'␊.\WinPDFMerge.ps1 'C:\Work\Papers\ToMerge' -OutputFolder ...'
+   But was:  '.\WinPDFMerge.ps1 'C:\Work\Papers\ToMerge'␊Writes the master, any smaller validated screen email cop...'
+              -------------------------------------------^
+   at (@($proof.Help.Examples | ForEach-Object { $_.Code.Trim() }) -join "`n") | Should -BeExactly ($expectedHelpCodes -join "`n"), <REPO>\tests\help\Diagnostics.Native.Tests.ps1:289
+  [-] executes the actual help example and matching README route positional-default 753ms
+   Expected strings to be the same, but they were different.
+   Expected length: 42
+   Actual length:   129
+   Strings differ at index 42.
+   Expected: '.\WinPDFMerge.ps1 'C:\Work\Papers\ToMerge''
+   But was:  '.\WinPDFMerge.ps1 'C:\Work\Papers\ToMerge'␊Writes the master, any smaller validated screen email cop...'
+              ------------------------------------------^
+   at $code.Trim() | Should -BeExactly $expectedHelpCodes[$Index], <REPO>\tests\help\Diagnostics.Native.Tests.ps1:168
+   at <ScriptBlock>, <REPO>\tests\help\Diagnostics.Native.Tests.ps1:298
+  [-] executes the actual help example and matching README route explicit-output 666ms
+   Expected strings to be the same, but they were different.
+   Expected length: 73
+   Actual length:   118
+   Strings differ at index 73.
+   Expected: '.\WinPDFMerge.ps1 'C:\Work\Papers\ToMerge' -OutputFolder 'C:\Work\Merged''
+   But was:  '.\WinPDFMerge.ps1 'C:\Work\Papers\ToMerge' -OutputFolder 'C:\Work\Merged'␊Uses the existing separate...'
+              -------------------------------------------------------------------------^
+   at $code.Trim() | Should -BeExactly $expectedHelpCodes[$Index], <REPO>\tests\help\Diagnostics.Native.Tests.ps1:168
+   at <ScriptBlock>, <REPO>\tests\help\Diagnostics.Native.Tests.ps1:298
+  [-] executes the actual help example and matching README route SkipEmail 654ms
+   Expected strings to be the same, but they were different.
+   Expected length: 53
+   Actual length:   118
+   Strings differ at index 53.
+   Expected: '.\WinPDFMerge.ps1 'C:\Work\Papers\ToMerge' -SkipEmail'
+   But was:  '.\WinPDFMerge.ps1 'C:\Work\Papers\ToMerge' -SkipEmail␊Creates the master without discovering or laun...'
+              -----------------------------------------------------^
+   at $code.Trim() | Should -BeExactly $expectedHelpCodes[$Index], <REPO>\tests\help\Diagnostics.Native.Tests.ps1:168
+   at <ScriptBlock>, <REPO>\tests\help\Diagnostics.Native.Tests.ps1:298
+  [-] executes the actual help example and matching README route ebook 623ms
+   Expected strings to be the same, but they were different.
+   Expected length: 61
+   Actual length:   140
+   Strings differ at index 61.
+   Expected: '.\WinPDFMerge.ps1 'C:\Work\Papers\ToMerge' -EmailPreset ebook'
+   But was:  '.\WinPDFMerge.ps1 'C:\Work\Papers\ToMerge' -EmailPreset ebook␊Selects the ebook email preset. A cand...'
+              -------------------------------------------------------------^
+   at $code.Trim() | Should -BeExactly $expectedHelpCodes[$Index], <REPO>\tests\help\Diagnostics.Native.Tests.ps1:168
+   at <ScriptBlock>, <REPO>\tests\help\Diagnostics.Native.Tests.ps1:298
+  [+] runs the documented direct powershell.exe literal-percent route without cmd expansion 3.15s
+
+Describing AC043 actual early/failure diagnostics supporting separate review
+  [+] logs useful actual PDFtk failure for an owned corrupt copied input with both native stream labels 2s
+  [-] retains early trusted-path failure diagnostics when selected PDFtk is missing in a scoped child environment 1.29s
+   Expected regular expression '(?m)^.+ executable:' to not match '==== WinPDFMerge run 2026-10-08 11.00.42 ====
+   Stage: Invocation preflight; elapsed: 0.680 s
+   Source folder: <REPO>\tests\.work\diagnostics\f380623f3cfd4d0ea141ae68a62428d5\21b28d4ca31c4710b0479890bd4044be\source folder
+   Output folder: <REPO>\tests\.work\diagnostics\f380623f3cfd4d0ea141ae68a62428d5\21b28d4ca31c4710b0479890bd4044be\app with spaces
+   Run identity: WinPDFMerge_source folder_20261008_110042_9d9f83f16eda4314
+   Planned master output: <REPO>\tests\.work\diagnostics\f380623f3cfd4d0ea141ae68a62428d5\21b28d4ca31c4710b0479890bd4044be\app with spaces\WinPDFMerge_source folder_20261008_110042_9d9f83f16eda4314.pdf
+   Planned email output: <REPO>\tests\.work\diagnostics\f380623f3cfd4d0ea141ae68a62428d5\21b28d4ca31c4710b0479890bd4044be\app with spaces\WinPDFMerge_source folder_20261008_110042_9d9f83f16eda4314_email.pdf
+   Diagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.
+   PowerShell: 7.6.6 (Core)
+   Stage: Input discovery; elapsed: 0.692 s
+   PDF count: 3
+   Input 1: <REPO>\tests\.work\diagnostics\f380623f3cfd4d0ea141ae68a62428d5\21b28d4ca31c4710b0479890bd4044be\source folder\1.pdf
+   Input 2: <REPO>\tests\.work\diagnostics\f380623f3cfd4d0ea141ae68a62428d5\21b28d4ca31c4710b0479890bd4044be\source folder\2.pdf
+   Input 3: <REPO>\tests\.work\diagnostics\f380623f3cfd4d0ea141ae68a62428d5\21b28d4ca31c4710b0479890bd4044be\source folder\10.pdf
+   Stage: PDFtk preflight; elapsed: 0.749 s
+   PDFtk preflight failed. Selected executable: ''. PDFtk Server not found.
+   Elapsed time: 0.802 s
+   PowerShell: 7.6.6 (Core)
+   PDFtk version: not probed
+   Ghostscript version: not probed
+   Input summary: 3 PDF(s); expected pages: not inspected
+   Result: Failure; exit code: 1
+   ', but it did match.
+   at $log.Text | Should -Match 'PDFtk Server not found'; $log.Text | Should -Not -Match '(?m)^.+ executable:', <REPO>\tests\help\Diagnostics.Native.Tests.ps1:341
+  [+] reports source preflight clearly on console before an unsafe diagnostic location can be established 1.02s
+  [+] reports destination preflight clearly on console before an unsafe diagnostic location can be established 1.02s
+  [+] prints missing-input usage without prompting or importing the application helper 498ms
+Diagnostics native observations: <REPO>\tests\.work\diagnostics\f380623f3cfd4d0ea141ae68a62428d5\native-observations.json
+Tests completed in 15.28s
+Tests Passed: 5, Failed: 6, Skipped: 0, Inconclusive: 0, NotRun: 0
+{
+  "observed_at_utc": "2026-10-08T09:00:46.1289725Z",
+  "commit_under_test": "0cf2f49d4e9ab572a60bcdabbdbf33a033e33034",
+  "dirty_worktree": true,
+  "shell_version": "7.6.6",
+  "shell_edition": "Core",
+  "process_64_bit": true,
+  "execution_policy": "RemoteSigned",
+  "pester_version": "6.2.0",
+  "tier": "DiagnosticsNative",
+  "evidence_class": "windows-real-help-examples-CLI-entry-diagnostics-and-independent-pdfium; not Explorer or manual desktop acceptance",
+  "passed": 5,
+  "failed": 6,
+  "failed_blocks": 0,
+  "failed_containers": 0,
+  "skipped": 0,
+  "not_run": 0,
+  "total": 11
+}
+Reports: <REPO>\tests\.work\pester\1b9e42982c8845148d6a211ed7921357

@@ -1,0 +1,6 @@
+[Console]::OutputEncoding=New-Object Text.UTF8Encoding($false)
+$ErrorActionPreference='Stop'
+$help=Get-Help -Name '<REPO>\tests\.work\diagnostics\12ce4ca9b4a443a19968e8f81ceb89ce\aba2a4e6821141c1a02e57f2f3af0e58\app with spaces\WinPDFMerge.ps1' -Full
+$examples=@(foreach($example in $help.examples.example){[ordered]@{Title=[string]$example.title;Code=[string]$example.code;Remarks=@($example.remarks | ForEach-Object text)}})
+$record=[ordered]@{Synopsis=[string]$help.Synopsis;Description=@($help.Description | ForEach-Object text);Parameters=@($help.parameters.parameter | ForEach-Object name);Examples=$examples;FullText=($help | Out-String -Width 240);ExamplesText=(Get-Help -Name '<REPO>\tests\.work\diagnostics\12ce4ca9b4a443a19968e8f81ceb89ce\aba2a4e6821141c1a02e57f2f3af0e58\app with spaces\WinPDFMerge.ps1' -Examples | Out-String -Width 240);ShellVersion=$PSVersionTable.PSVersion.ToString();ShellEdition=$PSVersionTable.PSEdition;Executable=[Diagnostics.Process]::GetCurrentProcess().MainModule.FileName}
+[IO.File]::WriteAllText('<REPO>\tests\.work\diagnostics\12ce4ca9b4a443a19968e8f81ceb89ce\aba2a4e6821141c1a02e57f2f3af0e58\help.json',($record | ConvertTo-Json -Depth 8),(New-Object Text.UTF8Encoding($false)))

@@ -1,0 +1,83 @@
+diff --git a/docs/codex/NEXT_SESSION.md b/docs/codex/NEXT_SESSION.md
+index 6740874..4e73ecc 100644
+--- a/docs/codex/NEXT_SESSION.md
++++ b/docs/codex/NEXT_SESSION.md
+@@ -27,3 +27,10 @@ Preserve fixed screen/ebook/defaults/top-level workflow/SkipEmail bypass,
+ ownership/cancel/strict inspection/strict-smaller/no-overwrite/master retention.
+ Logs are local and may be sensitive; sanitize public copies separately.
+ Physical Explorer remains AC058/T26; broader release gates remain open.
++
++Initial clean C1a cc76ccf was pushed/live verified, then full drivers stopped
++on one legacy Destination test expectation (correct early log plus foreign
++file); native/help and first fifteen tiers passed. Actual580pass/1fail each
++across sixteen executed tiers; Staging not executed. Application source stays
++unchanged; test-only checkpoint and full clean C1b acceptance remain required.
++T18/AC042/AC043 are not yet checkpoint-complete; T19/publication remain unstarted.
+diff --git a/docs/codex/STATUS.md b/docs/codex/STATUS.md
+index a52a0f8..6ea4abc 100644
+--- a/docs/codex/STATUS.md
++++ b/docs/codex/STATUS.md
+@@ -27,3 +27,10 @@ persistent environment/policy/security changes. Screen/output-beside-entry,
+ source preservation, native safety/ownership/no-overwrite and published-master
+ retention remain. Physical Explorer/abrupt crash, broad OS/UNC/CI/security,
+ feature preservation/package/release gates remain open. No full-project claim.
++
++Initial clean C1a cc76ccf was pushed/live verified, then full drivers stopped
++on one legacy Destination test expectation (correct early log plus foreign
++file); native/help and first fifteen tiers passed. Actual580pass/1fail each
++across sixteen executed tiers; Staging not executed. Application source stays
++unchanged; test-only checkpoint and full clean C1b acceptance remain required.
++T18/AC042/AC043 are not yet checkpoint-complete; T19/publication remain unstarted.
+diff --git a/docs/codex/TASKS.json b/docs/codex/TASKS.json
+index 7238f67..0bba142 100644
+--- a/docs/codex/TASKS.json
++++ b/docs/codex/TASKS.json
+@@ -598,7 +598,7 @@
+       "evidence": [
+         "docs/codex/evidence/T18-checkpoint.md"
+       ],
+-      "notes": "Implementation and dirty development checks prepared; clean implementation acceptance and synchronized records checkpoint remain required."
++      "notes": "Initial clean C1a native/help and first fifteen tiers pass; legacy Destination file-count expectation failed14/1 each. Test-only fix and clean C1b acceptance remain in progress."
+     },
+     {
+       "id": "T19",
+diff --git a/docs/codex/evidence/T18-checkpoint.md b/docs/codex/evidence/T18-checkpoint.md
+index 0f0ea22..fc563a4 100644
+--- a/docs/codex/evidence/T18-checkpoint.md
++++ b/docs/codex/evidence/T18-checkpoint.md
+@@ -53,3 +53,15 @@ record its actual SHA, clean executed commands/results, public original/hash
+ bindings, independent review and C1 live synchronization. C2 cannot contain its
+ own future SHA; verify/report it in session after normal push. No manual desktop,
+ Explorer, broader OS/UNC, full preservation/security/package/release claims.
++
++Initial clean C1a `cc76ccf4ba945f38ba7c90c767fdf865f461b316` was normally
++pushed and freshly clean/live verified. Actual seventeen-tier drivers stopped
++after sixteen: first fifteen566pass each; Destination14pass/1fail each because
++an old test counted only the preserved foreign file, not the correct early log.
++Staging was not executed. No final590/1180 pass claim. Root corrected only that
++expectation, retaining owned-probe cleanup/foreign/source checks and asserting
++one useful failure log. Clean C1b follows a normal test-only checkpoint; no
++reset/amend/history rewrite. Application entry/helper/runner/README bytes remain
++as C1a. All partial/failure streams/summary/XML and available sources retained.
++Fresh C1a scoped PSA elevenfiles0errors83warnings69information each, reviewed
++nonblocking, is separate from forthcoming C1b twelve-file analysis.
+diff --git a/tests/filesafety/Destination.Native.Tests.ps1 b/tests/filesafety/Destination.Native.Tests.ps1
+index 3c29a6a..158f2e5 100644
+--- a/tests/filesafety/Destination.Native.Tests.ps1
++++ b/tests/filesafety/Destination.Native.Tests.ps1
+@@ -290,7 +290,14 @@ Describe 'AC022: actual entry destination preflight and standard-user writabilit
+         $result.ExitCode | Should -Be 1
+         ($result.Stdout + $result.Stderr) | Should -Match 'PDFtk preflight failed'
+         Assert-NoDestinationResidue $application.Output
+-        @(Get-ChildItem -LiteralPath $application.Output -File).Count | Should -Be 1
++        @(Get-ChildItem -LiteralPath $application.Output -File).Count | Should -Be 2
++        $logs = @(Get-ChildItem -LiteralPath $application.Output -File -Filter 'WinPDFMerge_*.log')
++        $logs.Count | Should -Be 1
++        $log = [IO.File]::ReadAllText($logs[0].FullName)
++        $log | Should -Match 'PDFtk preflight failed'
++        $log | Should -Match 'Stage: PDFtk preflight; elapsed:'
++        $log | Should -Match 'Result: Failure; exit code: 1'
++        $log | Should -Not -Match 'PDFtk version probe executable:|Published Merged master:'
+         (Get-DestinationSnapshot @($application.Input, $foreign)) | Should -BeExactly $before
+         Add-DestinationObservation 'owned-probe-cleanup-before-later-dependency-failure' $result $application $application.Output $before
+     }

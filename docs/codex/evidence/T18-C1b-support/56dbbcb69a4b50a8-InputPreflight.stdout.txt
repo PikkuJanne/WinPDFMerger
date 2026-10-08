@@ -1,0 +1,53 @@
+Pester v6.2.0
+
+Running tests from 1 files.
+
+Running tests from '<REPO>\tests\pdf\InputPreflight.Native.Tests.ps1'
+Describing AC025: actual per-file PDFtk input rejection without a partial merge
+  [+] rejects a named empty file among valid inputs before master/email processing 3s
+  [+] rejects a named truncated file among valid inputs before master/email processing 2.36s
+  [+] rejects a named malformed file among valid inputs before master/email processing 2.58s
+  [+] rejects a named non-PDF file among valid inputs before master/email processing 2.51s
+  [+] rejects a named password-encrypted file among valid inputs before master/email processing 2.35s
+  [+] rejects a named owner-password-restricted file among valid inputs before master/email processing 2.27s
+  [+] rejects a named zero-page file among valid inputs before master/email processing 2.54s
+  [+] rejects a named missing-eof file among valid inputs before master/email processing 2.67s
+  [+] rejects a named truncated-tail file among valid inputs before master/email processing 2.22s
+  [+] rejects a named startxref-zero file among valid inputs before master/email processing 2.48s
+  [+] rejects a named broken-xref file among valid inputs before master/email processing 2.25s
+  [+] rejects a named trailing-garbage file among valid inputs before master/email processing 2.24s
+
+Describing AC026: real input totals and independently observed natural page order
+  [+] accepts the known valid conventional-cr.pdf envelope without losing its visible page or exact inventory 3.04s
+  [+] accepts the known valid incremental.pdf envelope without losing its visible page or exact inventory 2.75s
+  [+] accepts the known valid xref-stream.pdf envelope without losing its visible page or exact inventory 2.87s
+  [+] accepts the known valid linearized.pdf envelope without losing its visible page or exact inventory 2.99s
+  [+] refuses real metadata that injects a counterfeit anchored page-count label before merging valid siblings 2.46s
+  [+] inspects one uppercase-extension input and logs its exact positive page total 3.01s
+  [+] freezes 1,01,2,10 natural ordering and exact totals without omitting repeated visible content 3.37s
+  [+] logs and merges multiple numeric segments in their exact natural order 3.3s
+  [+] uses the actual labeled page total despite NumberOfPages digits embedded in PDF metadata 3.27s
+  [+] rejects an exclusively locked input at the bounded read-only envelope boundary without native launch or source edits 46ms
+Native observations: <REPO>\tests\.work\input-preflight\d6c1db40640e4a0b9c1d73f0b885a854\native-observations.json
+Tests completed in 60.24s
+Tests Passed: 22, Failed: 0, Skipped: 0, Inconclusive: 0, NotRun: 0
+{
+  "observed_at_utc": "2026-10-08T09:35:39.1846383Z",
+  "commit_under_test": "e506d73797379f355a1a0b731c857e71f4c1d251",
+  "dirty_worktree": false,
+  "shell_version": "7.6.6",
+  "shell_edition": "Core",
+  "process_64_bit": true,
+  "execution_policy": "RemoteSigned",
+  "pester_version": "6.2.0",
+  "tier": "InputPreflight",
+  "evidence_class": "windows-real-pdftk-input-preflight-and-independent-pdfium-order",
+  "passed": 22,
+  "failed": 0,
+  "failed_blocks": 0,
+  "failed_containers": 0,
+  "skipped": 0,
+  "not_run": 0,
+  "total": 22
+}
+Reports: <REPO>\tests\.work\pester\833b0e10a5e042b8ba33197c9a5933f0

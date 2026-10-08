@@ -3,30 +3,30 @@
 Target: published and independently verified `v1.0.0` in `PikkuJanne/WinPDFMerger`.
 Completed milestones: M1 and M2 within recorded local Windows scope.
 Current milestone: M3 — focused usability and honest documentation, in progress.
-Completed tasks: T01 through T17.
-Selected task: T18 — improve help, progress and private-by-default diagnostics.
+Completed tasks: T01 through T18.
+Selected next task: T19 — characterize feature-rich PDF preservation, pending.
 Publication: NOT STARTED.
 
-T17 AC040 integration/AC041 manual pass at clean C1 `040176695fdb79e614ba2a821118fbc979a33115`.
-16tiers579each1158total/32reports in actualPS5.1.26100.9444 and pinnedPS7.6.6;
-all bad counts0. Exact master/email bytes, binary sizes and decimal reduction;
-equal/larger candidates labelled not published with retained master/success0.
-Root Codex actual40page10unique144DPI original/master/preset visual review:
-screen scan small text/outlines degraded; ebook clearer; vector-only grew/omitted.
-Codex visual scope is separate from owner/physical Explorer acceptance.
+T18 clean C1b `e506d73797379f355a1a0b731c857e71f4c1d251` passes 590 tests in each of actual
+PS5.1.26100.9444 Desktop x64 and pinned PS7.6.6 Core x64: 1,180 total across
+17 tiers/34 reports, all bad counts zero. AC042 integration and independent
+AC043 review pass. Actual comment help, measured named stages/summary, earlier
+trusted owned logs and both version-probe streams improve diagnostics without
+changing defaults/publication safeguards. Logs stay local and can be sensitive.
+Source/diagnostic/runtime/native/public archive reviews pass; twelve changed
+PS files have zero PSA errors with reviewed 97 warnings/82 information each.
+Not lint-clean/full T22. Dirty/C1a/preparation failures and absences remain
+separate. See evidence/T18-completion.md and its results/manifest/provenance.
 
-Independent source/runtime/native/archive reviews pass; archive11660
-checks/632plannedfiles; actual public write matches reviewed hashes.
-PSA1.25.0 scoped5PSfiles0errors51warnings14info each reviewed nonblocking,
-not lint-clean/fullT22. Exact commands/environment/raw-public hashes/review
-support, initial failed preparation and honest absences in T17 completion.
+C1a runtime bytes remain identical in test-only C1b. C1b was clean/live verified
+after tests. Records-only C2 binds that actual checkpoint; C2's own synchronization
+and PR head are reported afterward in the session and rechecked next session.
+Owner merged PR17 to main `4e4501a34541c8e231c6c32528819efa16cba3bb`.
+[Draft T18 PR](https://github.com/PikkuJanne/WinPDFMerger/pull/18) contains current implementation/closure.
+No tag/release created. T19/AC044/AC045 remain unstarted.
 
-C1 normalpush/freshcleanlive verified; draftPR follows owner-mergedPR16/main7d7eba4.
-Records-onlyC2bindsC1; own SHA/live equality reported in session after push.
-Approved caches reused; standard-user NTFS/build26300; ordinaryRestricted/
-all scopesUndefined, authorized childRemoteSigned; no acquisition/admin/
-persistent environment/policy/security changes. Source/master/final safety,
-fixed screen/ebook flags and screen/output-beside-entry defaults preserved.
-T18pending. PhysicalExplorer/abrupt crash cleanup, broadOS/UNC/CI/security/
-package/release gates remain. No universal preservation/signature/PDF-A/
-archival/security guarantee. No tag/release/full-project completion.
+Approved caches only; standard user/local NTFS/build26300, ordinary Restricted/
+policy scopes Undefined, authorized child RemoteSigned and existing explicit
+BAT/percent-route process-only Bypass. No acquisition/admin/persistent policy/
+environment/security changes. Physical Explorer/abrupt crash, broad OS/UNC/CI/
+security, feature preservation/package/release gates remain open.

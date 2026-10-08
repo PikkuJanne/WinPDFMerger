@@ -225,3 +225,18 @@ admin/persistentpolicy/environment/security changes. PhysicalExplorer/broadOS/
 UNC/CI/security/package/release/universalfidelity/signatures/PDF-A remain open.
 M3inprogress,T18nextpending; exact commands/hashes/context/limits:T17completion/
 results/manifest/manualreview/source/runtime/native/archive/provenance/C1live.
+
+T18 clean C1b `e506d73797379f355a1a0b731c857e71f4c1d251`:17tiers590each actual
+PS5.1.26100.9444/pinnedPS7.6.6 x64,1180total34reports,allbadcounts0.
+AC042integration/AC043independentreview pass,standarduser/localNTFS/build26300.
+Real Get-Help/four examples/five documented routes (explicit percent route
+uses PS5.1 under either outer context), measured stages/local owned logs,
+truthful count/page/version/size/outcome and both native streams. Controlled
+faults remain distinct. Source/runtime/native/diagnostic/archive reviews pass;
+diagnostic5720checks/94observations/90native receipts. PSA12PSfiles0errors/
+97warnings/82info each reviewed nonblocking,notfullT22/lint-clean. Actual
+dirty/C1a/preparation failures kept separate. No fresh visual/manual desktop
+claim,private binary upload,acquisition/admin/persistentpolicy/environment/
+security change. PhysicalExplorer/broadOS/UNC/CI/security/featurepreservation/
+package/release/signatures/PDF-A remain open. M3inprogress,T19nextpending;
+exact commands/hashes/context/limits:T18completion/results/manifest/provenance.

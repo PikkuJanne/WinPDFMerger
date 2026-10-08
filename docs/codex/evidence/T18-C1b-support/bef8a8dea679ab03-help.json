@@ -1,0 +1,63 @@
+{
+  "Synopsis": "Merges the visible top-level PDFs in one folder and optionally creates a smaller email copy.",
+  "Description": [
+    "Orders inputs naturally by filename and uses local PDFtk to publish a validated\nmerged master without intentional page rasterization or image downsampling.\nOptional Ghostscript rewrites an email candidate with the fixed screen default\nor ebook preset. Only a validated candidate smaller than the master is published.\nSources and existing outputs are never replaced. No application network calls,\ndownloads, telemetry, recursion or OCR are performed."
+  ],
+  "Parameters": [
+    "SourceFolder",
+    "OutputFolder",
+    "SkipEmail",
+    "EmailPreset"
+  ],
+  "Examples": [
+    {
+      "Title": "-------------------------- EXAMPLE 1 --------------------------",
+      "Code": ".\\WinPDFMerge.ps1 'C:\\Work\\Papers\\ToMerge'",
+      "Remarks": [
+        "Writes the master, any smaller validated screen email copy, and log beside the script.",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "Title": "-------------------------- EXAMPLE 2 --------------------------",
+      "Code": ".\\WinPDFMerge.ps1 'C:\\Work\\Papers\\ToMerge' -OutputFolder 'C:\\Work\\Merged'",
+      "Remarks": [
+        "Uses the existing separate output directory.",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "Title": "-------------------------- EXAMPLE 3 --------------------------",
+      "Code": ".\\WinPDFMerge.ps1 'C:\\Work\\Papers\\ToMerge' -SkipEmail",
+      "Remarks": [
+        "Creates the master without discovering or launching Ghostscript.",
+        "",
+        "",
+        "",
+        ""
+      ]
+    },
+    {
+      "Title": "-------------------------- EXAMPLE 4 --------------------------",
+      "Code": ".\\WinPDFMerge.ps1 'C:\\Work\\Papers\\ToMerge' -EmailPreset ebook",
+      "Remarks": [
+        "Selects the ebook email preset. A candidate without a size benefit is omitted.",
+        "",
+        "",
+        "",
+        ""
+      ]
+    }
+  ],
+  "FullText": "\r\nNAME\r\n    <REPO>\\tests\\.work\\diagnostics\\12ce4ca9b4a443a19968e8f81ceb89ce\\2bf1ce18351f4c918cc502309b79cc45\\app with spaces\\WinPDFMerge.ps1\r\n    \r\nSYNOPSIS\r\n    Merges the visible top-level PDFs in one folder and optionally creates a smaller email copy.\r\n    \r\n    \r\nSYNTAX\r\n    <REPO>\\tests\\.work\\diagnostics\\12ce4ca9b4a443a19968e8f81ceb89ce\\2bf1ce18351f4c918cc502309b79cc45\\app with spaces\\WinPDFMerge.ps1 [[-SourceFolder] <String>] [-OutputFolder <String>] [-SkipEmail] [-EmailPreset <Stri\r\n    ng>] [<CommonParameters>]\r\n    \r\n    \r\nDESCRIPTION\r\n    Orders inputs naturally by filename and uses local PDFtk to publish a validated\r\n    merged master without intentional page rasterization or image downsampling.\r\n    Optional Ghostscript rewrites an email candidate with the fixed screen default\r\n    or ebook preset. Only a validated candidate smaller than the master is published.\r\n    Sources and existing outputs are never replaced. No application network calls,\r\n    downloads, telemetry, recursion or OCR are performed.\r\n    \r\n\r\nPARAMETERS\r\n    -SourceFolder <String>\r\n        One existing filesystem directory containing visible top-level PDFs. This is the\r\n        only positional argument. Hidden files and subfolders are not scanned.\r\n        \r\n        Required?                    false\r\n        Position?                    1\r\n        Default value                \r\n        Accept pipeline input?       false\r\n        Aliases                      \r\n        Accept wildcard characters?  false\r\n        \r\n    -OutputFolder <String>\r\n        An existing writable directory separate from SourceFolder. The default is the\r\n        entry script's directory. Unsupported reparse paths are refused with guidance.\r\n        \r\n        Required?                    false\r\n        Position?                    named\r\n        Default value                \r\n        Accept pipeline input?       false\r\n        Aliases                      \r\n        Accept wildcard characters?  false\r\n        \r\n    -SkipEmail [<SwitchParameter>]\r\n        Publishes only the validated master and bypasses Ghostscript discovery and use.\r\n        An explicitly supplied EmailPreset is reported as ignored.\r\n        \r\n        Required?                    false\r\n        Position?                    named\r\n        Default value                False\r\n        Accept pipeline input?       false\r\n        Aliases                      \r\n        Accept wildcard characters?  false\r\n        \r\n    -EmailPreset <String>\r\n        Selects the fixed screen or ebook Ghostscript preset; screen is the default.\r\n        The email copy can lose detail. Inspect it before sharing; no target size is promised.\r\n        \r\n        Required?                    false\r\n        Position?                    named\r\n        Default value                screen\r\n        Accept pipeline input?       false\r\n        Aliases                      \r\n        Accept wildcard characters?  false\r\n        \r\n    <CommonParameters>\r\n        This cmdlet supports the common parameters: Verbose, Debug,\r\n        ErrorAction, ErrorVariable, WarningAction, WarningVariable,\r\n        OutBuffer, PipelineVariable, and OutVariable. For more information, see\r\n        about_CommonParameters (https://go.microsoft.com/fwlink/?LinkID=113216). \r\n    \r\nINPUTS\r\n    \r\nOUTPUTS\r\n    \r\nNOTES\r\n    \r\n    \r\n        Author: Janne Vuorela. Personal tool, provided as-is without warranty.\r\n        Requires Windows PowerShell 5.1 or a separately validated PowerShell 7 build,\r\n        PDFtk Server, and optional Ghostscript. Processing stays local. Diagnostic logs\r\n        are UTF-8 and can contain document names, full paths and native PDF metadata;\r\n        they are not redacted or encrypted. Sanitize a copy before sharing a public report.\r\n        Missing input exits 1. A validated master with skipped/unavailable/no-size-benefit\r\n        email exits 0; email failure after master publication exits 2 and retains the master.\r\n        Binding, source or destination failures may occur before a safe log is available.\r\n        Neither output guarantees PDF/A, signature validity, universal feature retention,\r\n        archival certification or malware removal. Keep original documents.\r\n    \r\n    -------------------------- EXAMPLE 1 --------------------------\r\n    \r\n    PS > .\\WinPDFMerge.ps1 'C:\\Work\\Papers\\ToMerge'\r\n    \r\n    Writes the master, any smaller validated screen email copy, and log beside the script.\r\n    \r\n    \r\n    \r\n    \r\n    -------------------------- EXAMPLE 2 --------------------------\r\n    \r\n    PS > .\\WinPDFMerge.ps1 'C:\\Work\\Papers\\ToMerge' -OutputFolder 'C:\\Work\\Merged'\r\n    \r\n    Uses the existing separate output directory.\r\n    \r\n    \r\n    \r\n    \r\n    -------------------------- EXAMPLE 3 --------------------------\r\n    \r\n    PS > .\\WinPDFMerge.ps1 'C:\\Work\\Papers\\ToMerge' -SkipEmail\r\n    \r\n    Creates the master without discovering or launching Ghostscript.\r\n    \r\n    \r\n    \r\n    \r\n    -------------------------- EXAMPLE 4 --------------------------\r\n    \r\n    PS > .\\WinPDFMerge.ps1 'C:\\Work\\Papers\\ToMerge' -EmailPreset ebook\r\n    \r\n    Selects the ebook email preset. A candidate without a size benefit is omitted.\r\n    \r\n    \r\n    \r\n    \r\n    \r\nRELATED LINKS\r\n\r\n\r\n",
+  "ExamplesText": "\r\nNAME\r\n    <REPO>\\tests\\.work\\diagnostics\\12ce4ca9b4a443a19968e8f81ceb89ce\\2bf1ce18351f4c918cc502309b79cc45\\app with spaces\\WinPDFMerge.ps1\r\n    \r\nSYNOPSIS\r\n    Merges the visible top-level PDFs in one folder and optionally creates a smaller email copy.\r\n    \r\n    \r\n    -------------------------- EXAMPLE 1 --------------------------\r\n    \r\n    PS > .\\WinPDFMerge.ps1 'C:\\Work\\Papers\\ToMerge'\r\n    \r\n    Writes the master, any smaller validated screen email copy, and log beside the script.\r\n    \r\n    \r\n    \r\n    \r\n    -------------------------- EXAMPLE 2 --------------------------\r\n    \r\n    PS > .\\WinPDFMerge.ps1 'C:\\Work\\Papers\\ToMerge' -OutputFolder 'C:\\Work\\Merged'\r\n    \r\n    Uses the existing separate output directory.\r\n    \r\n    \r\n    \r\n    \r\n    -------------------------- EXAMPLE 3 --------------------------\r\n    \r\n    PS > .\\WinPDFMerge.ps1 'C:\\Work\\Papers\\ToMerge' -SkipEmail\r\n    \r\n    Creates the master without discovering or launching Ghostscript.\r\n    \r\n    \r\n    \r\n    \r\n    -------------------------- EXAMPLE 4 --------------------------\r\n    \r\n    PS > .\\WinPDFMerge.ps1 'C:\\Work\\Papers\\ToMerge' -EmailPreset ebook\r\n    \r\n    Selects the ebook email preset. A candidate without a size benefit is omitted.\r\n    \r\n    \r\n    \r\n    \r\n\r\n\r\n",
+  "ShellVersion": "7.6.6",
+  "ShellEdition": "Core",
+  "Executable": "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe"
+}
