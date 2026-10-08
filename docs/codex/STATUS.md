@@ -3,8 +3,13 @@
 Target: published and independently verified `v1.0.0` in `PikkuJanne/WinPDFMerger`.
 Completed milestone: M1 — paths, ordering and native execution.
 Completed tasks: T01 through T11.
-Next task: T12 — no-overwrite staging and publication, in M2.
+Current task: T12 — no-overwrite staging and publication, in M2 (in progress).
 Publication: NOT STARTED.
+
+T12 per-run atomic staging/marker, no-overwrite publication and bounded owned
+cleanup are implemented; dirty Unit225/ToolInvocation12/Staging9 pass in each
+actual PS5.1/7.6.6. Clean committed acceptance and synchronization are pending.
+See `evidence/T12-checkpoint.md`. T11 results below remain historical and valid.
 
 T11 and required AC025/AC026 pass at clean implementation C1 `822f84eb4f7f0d75736887d9d79d0d363ae551a7`.
 All nine focused tiers pass in each actual PS5.1.26100.9444 / supported PS7.6.6:

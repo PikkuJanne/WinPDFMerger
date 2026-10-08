@@ -1,6 +1,12 @@
 # Next session
 
 Selected task: T12 — introduce no-overwrite staging and publication.
+T12 implementation is in progress; see `evidence/T12-checkpoint.md` for the
+implemented ownership/publication boundaries and dirty corrected checks.
+Before completion, run the affected tiers at its clean committed implementation,
+review results, push normally and verify local/live equality. Required cases
+remain not_run until clean evidence is retained. T13 remains the next task after
+T12 completion.
 Read AGENTS/INDEX/STATUS, T12 TASKS entry/brief, PRODUCT_SPEC, TECHNICAL_SPEC,
 TEST_STRATEGY/GITHUB_WORKFLOW and AC027/AC028/AC029. Inspect the current code and
 recheck branch/clean state/origin/live refs/PR/tags/releases before edits. Never
