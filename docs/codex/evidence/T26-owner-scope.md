@@ -1,0 +1,11 @@
+# T26 owner-directed validation scope
+
+Recorded 2026-10-09. Starting synchronized source: `f2077786e64695158c60e723dce261414fa8bdf8`, branch `codex/v1.0.0-readiness`, origin `https://github.com/PikkuJanne/WinPDFMerger.git`. PR26 was draft/open/unmerged; main remained `e2451141217efdd00a1d49d72a04df054872dffc`; no tag or release existed at this inspection.
+
+The owner explicitly instructed: "Human standard user test is out of scope for this project". D25 implements that instruction. AC058 is now optional/excluded and was not performed. This supersedes the former T26 human standard-user Explorer, visible-PDF, account-class and Settings evidence gate. Exclusion is never a manual pass. The required AC059 review must still reconcile actual recorded Windows/native PS5.1/PS7/CI evidence, public claims and validation limits. Windows10/liveUNC/ARM/32-bit-host exclusions remain unchanged.
+
+Earlier in the same session, the owner reported Admin, Windows11 26H2, not enrolled in the Windows Insider Program, and PowerShell7.6.6. The supplied walkthrough setup transcript shows `Resolve-Path` failed for a cached `pdftk.exe` before application execution. It has no application/native/Explorer/PDF acceptance result. No private account/device identifiers or cache paths are reproduced here. The enrollment statement is owner-supplied and separate from the 2026-10-08 registry full26300.9457 observation and official release-history review. Existing T26 blocked reports and manifests remain immutable historical records.
+
+Actual automated Windows candidate-ZIP and independently downloaded published-ZIP operation/source preservation remain required under AC067/AC068/AC076, with environment/token/tool/source/asset bindings. Packaging, accepted release source, final publication, independent download verification and synchronized closure remain incomplete. T27 must preserve these exclusions and limits in final release notes. Normal-user safety guidance remains; no elevation, silent dependency acquisition, persistent policy/PATH or security changes are introduced. No runtime/workflow behavior changes are part of this scope amendment.
+
+Fresh documentation/static execution and independent compatibility review are recorded in new follow-up evidence rather than relabeling old reports.

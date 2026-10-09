@@ -997,23 +997,24 @@
       "id": "AC058",
       "task_id": "T26",
       "title": "Explorer acceptance",
-      "expected": "A real Windows 11 standard-user Explorer drag/drop and visible PDF inspection pass with observer/environment/commit evidence.",
+      "expected": "Owner D25 excludes human standard-user Explorer drag/drop and visible PDF acceptance; record the exclusion without a manual pass.",
       "mode": "manual",
-      "required": true,
+      "required": false,
       "stage": "pre_release",
-      "result": "not_run",
+      "result": "excluded",
       "evidence": [
         "docs/codex/evidence/T26-compatibility-review.md",
         "docs/codex/evidence/T26-checkpoint.md",
-        "docs/codex/evidence/T26-walkthrough.md"
+        "docs/codex/evidence/T26-walkthrough.md",
+        "docs/codex/evidence/T26-owner-scope.md"
       ],
-      "exclusion_reason": null
+      "exclusion_reason": "Owner instruction on 2026-10-09: \"Human standard user test is out of scope for this project\" (D25). Human standard-user/Explorer/visible-PDF validation was not performed and is excluded; synthetic kit preparation and its reported setup failure are not application acceptance results."
     },
     {
       "id": "AC059",
       "task_id": "T26",
       "title": "Compatibility honesty",
-      "expected": "Required PS5.1/PS7/desktop evidence is present; public claims match the matrix and all scope exclusions are explicit.",
+      "expected": "Actual recorded Windows PS5.1/PS7/native and hosted CI evidence retains its scope; public claims match the matrix and D25 human-validation/other-host exclusions are explicit.",
       "mode": "review",
       "required": true,
       "stage": "pre_release",
@@ -1021,7 +1022,8 @@
       "evidence": [
         "docs/codex/evidence/T26-compatibility-review.md",
         "docs/codex/evidence/T26-checkpoint.md",
-        "docs/codex/evidence/T26-M4-review.md"
+        "docs/codex/evidence/T26-M4-review.md",
+        "docs/codex/evidence/T26-owner-scope.md"
       ],
       "exclusion_reason": null
     },
@@ -1122,7 +1124,7 @@
       "id": "AC067",
       "task_id": "T29",
       "title": "Clean ZIP install",
-      "expected": "The actual ZIP works from a clean extracted folder as a standard user without hidden developer files or working-directory assumptions.",
+      "expected": "The actual candidate ZIP works in an automated Windows smoke from a clean extracted folder without hidden developer files or working-directory assumptions; record OS, shell, token and selected dependencies.",
       "mode": "package",
       "required": true,
       "stage": "pre_release",
@@ -1230,8 +1232,8 @@
       "id": "AC076",
       "task_id": "T33",
       "title": "Downloaded package smoke",
-      "expected": "Independently downloaded published ZIP runs the documented standard-user merge workflow and preserves sources; evidence binds result to the published asset hash.",
-      "mode": "manual",
+      "expected": "An automated actual Windows smoke runs the documented merge workflow from the independently downloaded published ZIP and preserves sources; record environment/token and bind operation to the published asset hash.",
+      "mode": "package",
       "required": true,
       "stage": "published",
       "result": "not_run",

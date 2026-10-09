@@ -51,7 +51,7 @@ Required real Windows/native evidence plus scoped, truthful compatibility claims
 - T23: Run full native integration in both required shells.
 - T24: Add safe Windows CI and machine-readable reports.
 - T25: Perform focused security and public-repository review.
-- T26: Complete desktop acceptance and compatibility scoping.
+- T26: Complete Windows compatibility scoping and M4 review; record D25's human standard-user exclusion without a pass claim.
 
 ## M5 — Packaging and accepted release source
 
@@ -72,3 +72,8 @@ Only v1.0.0 is publicly released; exact assets, downloaded operation and final s
 - T34: Synchronize closure evidence and declare completion.
 
 The final milestone includes publication, not just a prepared ZIP. Real missing platform permissions or required test evidence remain explicit blockers. No intermediate public GitHub Releases, website, server-side conversion, engine replacement, or additional product platform is included.
+
+D25 (2026-10-09) excludes human standard-user acceptance (AC058); it is
+nonrequired and excluded, never passed. Candidate/final/downloaded ZIP operation
+and source safety remain actual Windows tests, which may be automated. No human
+account-class/Explorer/PDF-viewer walkthrough is added at a later milestone.

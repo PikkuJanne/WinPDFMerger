@@ -1,14 +1,16 @@
 # Compatibility scope
 
-Scope recorded 2026-10-08 for the planned v1.0.0 release. The release is not yet
-published, and required desktop acceptance remains incomplete. These statements
-describe actual scoped tests and explicit validation exclusions.
+Scope recorded 2026-10-09 for the planned v1.0.0 release. The release is not yet
+published. These statements describe actual scoped tests and explicit validation
+exclusions; exact release ZIP and downloaded-package checks remain later gates.
 
-The required reference environment is Windows 11 x64 under a standard user
-account, with Windows PowerShell 5.1 and one recorded supported PowerShell 7 x64
-build. Actual synthetic/native tests used Windows PowerShell 5.1.26100.9444 and
-PowerShell 7.6.6 x64 on a desktop reporting Windows 11 Pro, build 26300 / 26H2,
-with local NTFS storage, PDFtk Server 2.02 and Ghostscript 10.08.0.
+The tested reference environment is Windows 11 x64 with Windows PowerShell 5.1
+and one recorded supported PowerShell 7 x64 build. Actual synthetic/native tests
+used Windows PowerShell 5.1.26100.9444 and
+PowerShell 7.6.6 x64 on Windows with base OSVersion 10.0.26300.0, a non-elevated
+x64 token, local NTFS storage, PDFtk Server 2.02 and Ghostscript 10.08.0.
+The separate later registry check below identifies Windows 11 Pro / 26H2; it
+does not add an edition or full revision to the earlier test receipt.
 
 The earlier tests did not record the full OS revision. A fresh registry check on
 2026-10-08 observed Windows 11 Pro 26H2, full build 26300.9457.
@@ -18,16 +20,20 @@ from 2026-09-29; the table's latest 26H2 build was 26300.9550. This is a current
 build match, not a retroactive full-revision claim for earlier tests or a desktop
 acceptance pass.
 
-The machine's Insider enrollment and Windows support channel are unestablished;
-the build-history match does not establish the machine's enrollment. Windows
-PowerShell support follows the host Windows lifecycle, and PowerShell 7 support
-also depends on a supported host OS. The recorded tests do not certify that OS
-support channel. See the dated [dependency observations](DEPENDENCIES.md).
+On 2026-10-09 the owner reports that this computer is not enrolled in the Windows
+Insider Program. This is owner-reported enrollment information, separate from
+the dated registry/build-history observation; it does not add a Settings
+inspection or a full revision to older test receipts. Windows PowerShell support
+follows the host Windows lifecycle, and PowerShell 7 support also depends on a
+supported host OS. The recorded tests do not certify ongoing OS support. See
+the dated [dependency observations](DEPENDENCIES.md).
 
-Actual batch/CLI and native PDF tests provide scoped evidence. Physical Explorer
-drag-and-drop and visible inspection of its output still require a standard-user
-desktop walkthrough. Hosted Windows Server tests and renderer inspections do not
-complete that desktop acceptance.
+Scoped automated Windows native, dual-shell, batch/CLI and hosted CI tests remain
+the validation evidence. At the owner's direction, human standard-user and
+Explorer validation is excluded from project scope and was not performed.
+This exclusion is not a manual pass: hosted Windows Server tests, controlled
+BAT execution and renderer inspections do not establish human Explorer,
+standard-user account or interactive visible-output acceptance.
 
 | Environment | Validation scope | Rationale |
 | --- | --- | --- |

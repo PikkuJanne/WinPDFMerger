@@ -1,39 +1,28 @@
 # Compatibility and test environments
 
-T02 measured the following environment on 2026-10-07 at
-`4ad96bfe67ffa86753ace9a728dbad21192bb556`. Inventory and isolated primitive
-observations are not application compatibility certification. Evidence:
-`evidence/T02-baseline.md`, `T02-environment.json`, `T02-probe-ps7.json`.
+Current scope updated on 2026-10-09 under owner decision D25. Human standard-user Explorer/visible-PDF acceptance is excluded and was not performed. Existing automated observations keep their original source SHAs, dates and limits. Required actual Windows package/download operation and publication gates remain later work.
 
 | Environment | Release scope | Version/build | Evidence | Status |
 |---|---|---|---|---|
-| Windows 11 x64 standard-user desktop | Required | Earlier receipts: Pro 10.0.26300/build 26300, DisplayVersion 26H2; T26 current registry: Pro 26H2 full26300.9457; non-administrator observation token; NTFS fixed drive | T02 baseline/environment + T23 completion/reports; evidence/T26-compatibility-review.md | T23 actual native application tests PASS; current full revision matches Microsoft's GA history; physical Explorer/desktop acceptance and machine enrollment/channel evidence remain |
-| Windows PowerShell 5.1 on reference desktop | Required | 5.1.26100.9444 Desktop x64; test Process RemoteSigned; ordinary Restricted/all scopes Undefined | T23 completion/results/reports + prior task evidence | T23 full relevant suite: 854 checks / 29 tiers PASS; controlled classes separate; physical Explorer, CI and release gates remain |
-| Supported PowerShell 7 x64 on reference desktop | Required | Supported portable7.6.6 Core x64; Microsoft-signed host; Process RemoteSigned | T09 PS7 acquisition + T23 completion/results/reports | T23 same relevant suite: 854 checks / 29 tiers PASS; OS channel unestablished; broader desktop/release compatibility remains |
-| PDFtk native Windows build | Required | Vendor Server2.02 unsigned x86; approved exact external cache | T03 acquisition + T23 completion/reports | T23 paths, ordered pages, structural validation, job bounds and source/publication safety PASS; CJK operands/inspection remain safely refused; no broader release claim |
-| Ghostscript native Windows build | Required for email support | Verified10.08.0 x64 console/interpreter unsigned; signed installer; explicit external cache | T09 GS acquisition + T23 completion/reports | T23 paths, both presets, validation, warning disposition and email outcomes PASS; PDFtk inspection limits retained; visual/desktop/package/release gates remain |
-| GitHub Windows runner | Required CI evidence; not desktop certification | windows-2025; actual Server10.0.26100.0/admin, image20260925.250.1; PS5.1.26100.33438 / pinned PS7.6.6 | T24 completion/results/sanitized reports | AC054/AC055 PASS; actual push/PR4/4 and deliberate failure gate; separate controlled/unit and scoped native smoke; no desktop/standard-user ACL claim |
-| Windows 10 | Optional; excluded from validated v1.0.0 support (AC060) | UNKNOWN | evidence/T26-compatibility-review.md; ../COMPATIBILITY.md | EXCLUDED; no actual Windows 10 host test; desktop/Server receipts do not establish it |
-| Live UNC network share | Optional; excluded from validated v1.0.0 support (AC061) | UNKNOWN | evidence/T26-compatibility-review.md; ../COMPATIBILITY.md | EXCLUDED; no actual live network-share test; UNC string units and local NTFS runs are not network integration |
-| Windows on ARM | Optional; excluded from validated v1.0.0 support (AC062) | UNKNOWN | evidence/T26-compatibility-review.md; ../COMPATIBILITY.md | EXCLUDED; no actual ARM host test; tested hosts use x64 |
-| 32-bit host | Optional; excluded from validated v1.0.0 support (AC062) | UNKNOWN | evidence/T26-compatibility-review.md; ../COMPATIBILITY.md | EXCLUDED; no actual 32-bit host test; x86 PDFtk on x64 does not establish x86-host compatibility |
+| Windows 11 x64 automated local testing | Required recorded Windows evidence | T23 OSVersion10.0.26300.0/non-elevated x64 token/local NTFS; separate T26 2026-10-08 registry Pro26H2 full26300.9457 | T23 completion/reports; evidence/T26-compatibility-review.md; evidence/T26-owner-scope.md | T23 actual native tests PASS within recorded scope; no human/Explorer acceptance pass |
+| Human standard-user Explorer/visible-PDF acceptance | Excluded by owner D25 (AC058) | Owner reports Admin, Win11 26H2, PS7.6.6 on 2026-10-09 | evidence/T26-owner-scope.md | EXCLUDED and not performed; kit setup error does not establish application failure or success |
+| Windows PowerShell 5.1 | Required recorded host | T23: 5.1.26100.9444 Desktop x64; authorized child Process RemoteSigned | T23 completion/results/reports | T23 854 checks / 29 tiers PASS; controlled/documentation classes separate; package/release gates remain |
+| Supported PowerShell 7 x64 | Required recorded host | T23: pinned portable7.6.6 Core x64; Microsoft-signed host; child Process RemoteSigned | T09 acquisition; T23 completion/results/reports | T23 same 854 checks / 29 tiers PASS; broader validation is not inferred |
+| PDFtk native Windows build | Required | Vendor Server2.02 unsigned x86; approved external cache | T03 acquisition; T23 completion/reports | Scoped actual native paths/order/structure/bounds/source-safety PASS; CJK operands/inspection remain safely refused |
+| Ghostscript native Windows build | Required for email support | Verified10.08.0 x64 unsigned console/interpreter; signed installer; external cache | T09 acquisition; T23 completion/reports | Scoped actual native presets/validation/warnings/email outcomes PASS; no universal fidelity guarantee |
+| GitHub Windows runner | Required CI evidence | T24 windows-2025 Server10.0.26100.0/admin image20260925.250.1; PS5.1.26100.33438 / pinnedPS7.6.6 | T24 completion/results/reports | AC054/AC055 PASS; real push/PR4/4 and deliberate failure gate; controlled/unit and native smoke separate; no human desktop/account certification |
+| Windows 10 | Optional; excluded from validated v1.0.0 support (AC060) | UNKNOWN | evidence/T26-compatibility-review.md; ../COMPATIBILITY.md | EXCLUDED; no actual Windows10 host test |
+| Live UNC network share | Optional; excluded from validated v1.0.0 support (AC061) | UNKNOWN | evidence/T26-compatibility-review.md; ../COMPATIBILITY.md | EXCLUDED; no actual live share test; UNC string units/local NTFS are not network integration |
+| Windows on ARM | Optional; excluded from validated v1.0.0 support (AC062) | UNKNOWN | evidence/T26-compatibility-review.md; ../COMPATIBILITY.md | EXCLUDED; no actual ARM host test |
+| 32-bit host | Optional; excluded from validated v1.0.0 support (AC062) | UNKNOWN | evidence/T26-compatibility-review.md; ../COMPATIBILITY.md | EXCLUDED; no actual 32-bit host test; x86 PDFtk on x64 does not establish it |
 
-Record tool version, architecture, execution-policy context, input/output filesystem, and test commit. Redact private host/user details. README and release notes must not claim broader validation than this matrix supports. A scoped exclusion can satisfy honesty requirements, but it is not a passing compatibility test.
+Record tool version, architecture, execution-policy context, filesystem, token and test commit. Redact private host/user details. Public claims must match this matrix. Exclusions are not passes. No human account-class/Explorer/Settings observation is required by D25; actual Windows package, source-safety and independently downloaded published-asset operation remain required.
 
-T26 recorded these optional scope exclusions on 2026-10-08. They are explicit
-validation boundaries, not test passes or assertions that every excluded host
-will fail. Required Explorer/visible desktop acceptance (AC058) and complete
-required-environment compatibility review (AC059) remain uncompleted. Existing
-T23 PS5.1/PS7 native receipts retain their own source commit and scope; neither
-those receipts, hosted Server/admin CI nor renderer observations establish a
-physical Explorer pass. Fresh T26 registry observation identifies Pro 26H2 full
-build26300.9457. The official [Windows release history](https://learn.microsoft.com/en-us/windows/release-health/windows11-release-information),
-checked2026-10-08, lists that exact build in the General Availability Channel from
-2026-09-29, with26300.9550 the listed latest26H2 revision. This current build match
-does not retroactively amend older receipts or establish the machine's Insider
-enrollment/support channel, which remain unestablished pending direct evidence.
-See `evidence/T26-compatibility-review.md` and public `../COMPATIBILITY.md` for the
-scope and rationale that T27 release documentation must retain.
+The full26300.9457 revision read on 2026-10-08 matches the General Availability history in Microsoft's [Windows release information](https://learn.microsoft.com/en-us/windows/release-health/windows11-release-information), checked that date. The owner separately reports on 2026-10-09 that this machine is not in the Windows Insider Program. This is owner-supplied enrollment information, not a new Settings or registry proof, and does not rewrite prior dated receipts. Scope and rationale are recorded in `evidence/T26-owner-scope.md` and public `../COMPATIBILITY.md`; T27 release notes must retain them.
+
+## Historical task observations
+
+The following T02-T24 entries retain their original dates/source SHAs and prior gate wording. D25 supersedes their forward-looking human desktop/account-class/Settings gates; the actual recorded results and limitations remain unchanged. T02 inventory at `4ad96bfe67ffa86753ace9a728dbad21192bb556` is not application compatibility certification (`evidence/T02-baseline.md`, `T02-environment.json`, `T02-probe-ps7.json`).
 
 No policy/dependency installation change was made in T02. Pester 3.4.0 is
 available but unpinned/unexecuted; PSScriptAnalyzer was not discovered. Windows

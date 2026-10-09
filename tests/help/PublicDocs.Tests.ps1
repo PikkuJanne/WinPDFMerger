@@ -116,8 +116,19 @@ Describe 'AC046 usable public instructions' {
     }
     It 'keeps host OS support separate from scoped dependency test observations' {
         $dependencies = [string]$surfaces['docs/DEPENDENCIES.md']
-        (Test-PublicParagraph $dependencies @('Windows.*support\s+channel','\bunestablished\b','Windows\s+PowerShell','\blifecycle\b')) | Should -BeTrue
+        (Test-PublicParagraph $dependencies @('Windows\s+PowerShell','\blifecycle\b')) | Should -BeTrue
+        (Test-PublicParagraph $dependencies @('\bowner\s+reports\b','\bnot\s+enrolled\b','\bWindows\s+Insider\b','\bseparate\b','\bregistry\b')) | Should -BeTrue
         (Test-PublicParagraph $dependencies @('\bobservations\b','\bdo\s+not\s+certify\b','\bOS\s+support\b')) | Should -BeTrue
+    }
+    It 'discloses the owner-directed human validation exclusion without a stale release gate or manual pass' {
+        foreach ($relative in @('README.md','docs/COMPATIBILITY.md','docs/DEPENDENCIES.md')) {
+            $text = [string]$surfaces[$relative]
+            (Test-PublicParagraph $text @('\bhuman\b','\bstandard[- ]user\b','\bExplorer\b','\bexcluded\b','\bnot\s+performed\b','\bnot\s+a\s+manual\s+pass\b')) | Should -BeTrue
+            (Test-PublicParagraph $text @('\bscoped\b','\bautomated\b','\bnative\b','\bdual[- ]shell\b','\bCI\b')) | Should -BeTrue
+            (Test-PublicParagraph $text @('\bexact\s+release\s+ZIP\b','\bdownloaded[- ]package\b','\bremain\s+later\s+gates\b')) | Should -BeTrue
+            $text | Should -Not -Match '(?is)(?:physical\s+Explorer\s+acceptance\s+remains\s+a\s+release\s+gate|required\s+(?:standard[- ]user|desktop|human)\s+(?:acceptance|walkthrough)|(?:require|requires)\s+a\s+standard[- ]user\s+desktop\s+walkthrough)'
+        }
+        Add-PublicDocsObservation 'owner-directed-human-validation-exclusion' @{Surfaces=@('README.md','docs/COMPATIBILITY.md','docs/DEPENDENCIES.md');HumanValidationStatus='excluded';ManualAcceptance=$false;ApplicationInvoked=$false;NativeInvoked=$false;ReleaseZipAccepted=$false}
     }
     It 'publishes reasoned Windows 10, live UNC and other-host validation exclusions' {
         $compatibility = [string]$surfaces['docs/COMPATIBILITY.md']

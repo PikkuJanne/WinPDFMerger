@@ -1,6 +1,6 @@
 # Coverage of all 17 accepted improvements
 
-No accepted work is silently dropped. Detailed requirements live in the specs and corresponding acceptance cases. Optional preview/diagnostic modes remain optional; release readiness is not substituted for publication.
+No accepted work is silently dropped. Detailed requirements live in the specs and corresponding acceptance cases; D25 records the owner's 2026-10-09 scope change excluding human standard-user acceptance (AC058), never counting it as passed. Automated actual Windows/native/package/download and source-safety coverage remains required. Optional preview/diagnostic modes remain optional; release readiness is not substituted for publication.
 
 | # | Accepted improvement | Tasks |
 |---|---|---|
@@ -22,4 +22,9 @@ No accepted work is silently dropped. Detailed requirements live in the specs an
 | 16 | Restrained GitHub automation | T24, T31 |
 | 17 | Clean traceable public release package | T20, T25, T27, T28, T29, T30, T31, T32, T33, T34 |
 
-All 34 task records start pending. All 78 acceptance cases start not_run. Only the explicitly scoped Windows 10, live UNC, and other-architecture cases may be excluded with recorded rationale. Publication and independent downloaded-package operation are required final cases.
+All 34 task records started pending. All 78 acceptance cases started not_run.
+The owner-excluded human standard-user case AC058 and the explicitly scoped
+Windows 10, live UNC and other-architecture cases may be excluded with recorded
+rationale; exclusions are never passes. Publication and actual independent
+downloaded-package operation remain required final cases, without a human
+account-class/Explorer/PDF-viewer prerequisite.

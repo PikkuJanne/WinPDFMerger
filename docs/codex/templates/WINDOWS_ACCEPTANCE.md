@@ -1,4 +1,11 @@
-# Windows acceptance — TEMPLATE, NOT A PASS
+# Windows acceptance — SUPERSEDED TEMPLATE, NOT A PASS
+
+D25 records the owner's 2026-10-09 instruction: "Human standard user test is out
+of scope for this project". AC058 is nonrequired and excluded, never passed.
+This former walkthrough is retained for reference only. Do not request its
+execution or use it as a T26/package/download completion gate. Actual automated
+Windows/native/package/download/source-safety checks remain governed by
+TEST_STRATEGY.md and RELEASE_RUNBOOK.md.
 
 Observer:
 Date/time UTC:

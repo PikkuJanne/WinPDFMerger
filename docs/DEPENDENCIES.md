@@ -19,9 +19,9 @@ their obligations. Development Python, fixture libraries, Pester and PSScriptAna
 are not application runtime requirements; development pins belong in test tooling.
 
 Windows PowerShell 5.1 and PowerShell 7.6.6 x64 have actual scoped test evidence on
-the reference desktop reporting Windows 11 Pro, build 26300 / 26H2. Its machine
-enrollment and Windows support channel are unestablished; Windows PowerShell support follows the host
-Windows lifecycle. PDFtk Server 2.02 and Ghostscript 10.08.0 were the native builds
+the reference desktop reporting Windows 11 Pro, build 26300 / 26H2. Windows
+PowerShell support follows the host Windows lifecycle. PDFtk Server 2.02 and
+Ghostscript 10.08.0 were the native builds
 used. These observations do not certify OS support, every build or complete release
 acceptance. Windows 10, ARM, 32-bit hosts and live UNC shares are unvalidated and
 excluded from validated v1.0.0 support; see the [compatibility scope](COMPATIBILITY.md).
@@ -36,8 +36,16 @@ A separate 2026-10-08 registry check observed Windows 11 Pro 26H2, full build
 checked that day, lists that build in the General Availability Channel from
 2026-09-29; its latest 26H2 build was 26300.9550. The exact current build match
 does not establish Insider enrollment, retroactively add the revision to older
-test receipts, or complete standard-user Explorer acceptance. See the dated
+test receipts, or supply a human desktop observation. On 2026-10-09 the owner
+reports that this computer is not enrolled in the Windows Insider Program;
+that owner report is separate from the registry/build-history observation and
+does not imply a Settings inspection. See the dated
 [compatibility scope](COMPATIBILITY.md).
+
+Validation evidence covers scoped automated Windows native, dual-shell and hosted
+CI tests. At the owner's direction, human standard-user and Explorer validation
+is excluded from project scope and was not performed. This exclusion is not a
+manual pass. Exact release ZIP and downloaded-package checks remain later gates.
 
 ## Vendor information checked 2026-10-08
 

@@ -1,44 +1,9 @@
 # Next session
 
-Current task: T26 - desktop acceptance and compatibility scoping, blocked.
-Read AGENTS/INDEX/STATUS, T26 TASKS entry/tasks/T26.md, relevant PRODUCT_SPEC,
-GITHUB_WORKFLOW, TEST_STRATEGY, SECURITY_AND_DEPENDENCIES and AC058-AC062.
-Freshly verify repo/branch/clean state, both origin routes and live main/readiness/
-PR/tag/release state before edits. Preserve unrelated work and immutable receipts.
+Current task: T26 compatibility review and owner-directed validation scoping, in_progress. Read AGENTS/INDEX/STATUS, T26 task/brief, PRODUCT_SPEC, TEST_STRATEGY, GITHUB_WORKFLOW, D25 and evidence/T26-owner-scope.md. Freshly confirm repository/branch/dirty state, both origin routes, live readiness/main/PR/tag/release before edits. Preserve unrelated work and historical receipts.
 
-Required AC058 and AC059 remain not_run. Obtain the focused human standard-user
-Explorer drag/drop and visible PDF walkthrough from evidence/T26-walkthrough.md
-and templates/WINDOWS_ACCEPTANCE.md; record actual observer/time/source SHA,
-environment/tool/shell/policy context, ordered readable PDFs, safe rejection and
-special-character folder, and source hashes. Missing required observations remain
-a blocker; do not replace them with cmd/BAT, renderer, native tests or hosted CI.
+Owner D25 excludes unperformed human standard-user/Explorer/visible-PDF validation; AC058 is excluded, never passed. No human account-class or Settings observation is required. Required AC059 compatibility/claims review and fresh documentation/static checks must complete and synchronize before T27. Windows10/liveUNC/ARM/32-bit-host exclusions remain. Actual automated Windows extracted-candidate-ZIP and independently downloaded published-ZIP operation/source-safety/asset-hash checks remain required later tasks.
 
-Current targeted registry observation gives Pro26H2/full26300.9457. Microsoft
-lists that exact revision under General Availability, but actual Insider
-enrollment/channel/expiry wording still needs a Settings observation. Share no
-account/device/product identifiers. See evidence/T26-compatibility-review.md.
+Reuse approved external Pester6.2.0/analyzer1.25.0/PDFtk2.02/GS10.08.0/pinnedPS7.6.6 caches and workspace Python3.12.14. No silent acquisition/install/elevation/persistent policy/PATH/security change. Authorized child Process RemoteSigned remains scoped; launcher process Bypass respects Group Policy. The reported kit cached-PDFtk setup error is not an application failure or acceptance result.
 
-AC060-AC062 explicitly exclude Windows10, liveUNC, ARM and32-bit hosts from
-validated v1.0.0 support. Public rationale is in docs/COMPATIBILITY.md, README and
-the matrix; exclusions are not passes. T27 must retain them in release notes.
-Advance to T27 only after required T26 evidence and the M4 review are complete.
-
-PR25 is freshly MERGED at main e245114; readiness safely fast-forwarded from
-same-tree6180b73. Historical T25 draft/open observations remain immutable.
-T23 full scoped dual-shell native receipts and T24 hosted CI remain supporting
-evidence; T25 runtime/dependency/privacy review remains scoped. No package,
-publication or downloaded-operation acceptance follows from T26 preparation.
-
-Reuse approved external Pester6.2.0/analyzer1.25.0/PDFtk2.02/GS10.08.0/pinnedPS7.6.6
-caches and workspace26.1007.11041 Python3.12.14. No silent acquisition/install/
-admin/persistent policy/PATH/security change. Prior authorization permits child
-Process RemoteSigned; BAT's existing process-only Bypass respects Group Policy.
-An existing Explorer's environment is not proved by a CLI-only PATH adjustment.
-
-Clean C1 6fba16e passes PublicDocs21 per actual required host plus selected
-changed-file parser/analyzer1/41 rules per host; all bad counts/findings0,3
-advisory warnings each. C1 normal push/fresh clean live equality is retained;
-draftPR26open/unmerged. See evidence/T26-checkpoint.md/results/report manifest.
-Verify the final records C2 own clean/live equality after push in the session.
-T28/later still own explicit allowlisted packaging and exact package checks.
-Publication NOT STARTED; M4 and later gates remain incomplete.
+PR26 is draft/open/unmerged at the starting f207778 inspection; main is e245114. No release/tag exists. Finish T26 evidence and own clean/live synchronization, then T27 version/final release notes; packaging/publication/closure remain incomplete.

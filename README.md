@@ -65,6 +65,12 @@ security controls or change machine-wide execution policy. See
 The planned v1.0.0 release is not yet published; current source instructions do
 not imply a tested release ZIP is available.
 
+Validation evidence covers scoped automated Windows native, dual-shell and hosted
+CI tests. At the owner's direction, human standard-user and Explorer validation
+is excluded from project scope and was not performed. This exclusion is not a
+manual pass. Exact release ZIP and downloaded-package checks remain later gates;
+see the [compatibility scope](docs/COMPATIBILITY.md).
+
 ## Use
 
 Put the intended PDFs directly in one source folder. Subfolders and hidden files
@@ -76,7 +82,8 @@ Existing results placed in the source folder are inputs too; there is no filenam
 For the default workflow, drag **exactly one folder** onto `WinPDFMerge.bat` in
 Explorer. It uses Windows PowerShell 5.1, writes beside the scripts, and pauses to
 show the result and log path. Double-click without a folder shows usage and fails;
-there is no folder picker. Physical Explorer acceptance remains a release gate.
+there is no folder picker. Human Explorer drag-and-drop validation is excluded
+and was not performed.
 
 For named options, open PowerShell in the extracted script directory:
 

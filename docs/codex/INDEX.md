@@ -8,7 +8,7 @@
 |---|---|
 | PRODUCT_SPEC.md | Preserved workflow, parameter defaults, output and exit-status contracts. |
 | TECHNICAL_SPEC.md | Path/native-process/output safety, PDF validation, and minimal internal design. |
-| TEST_STRATEGY.md | Automated, native, visual, and real Windows acceptance requirements. |
+| TEST_STRATEGY.md | Automated, native, visual and actual Windows requirements; D25 excludes the human standard-user walkthrough. |
 | ACCEPTANCE_CASES.json | Executable-test planning catalogue; all initial results are not_run. |
 | GITHUB_WORKFLOW.md | Local/remote synchronization, checkpoints, PR merge, conflict handling. |
 | RELEASE_RUNBOOK.md | Exact progression from accepted commit to published, verified v1.0.0. |
