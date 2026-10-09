@@ -1,0 +1,1034 @@
+{
+  "schema_version": 1,
+  "repository": "PikkuJanne/WinPDFMerger",
+  "target_release": "v1.0.0",
+  "task_statuses": [
+    "pending",
+    "in_progress",
+    "blocked",
+    "done"
+  ],
+  "milestones": [
+    {
+      "id": "M0",
+      "title": "Baseline and safe setup",
+      "goal": "No product rewrite; baseline and synchronization are understood before fixes."
+    },
+    {
+      "id": "M1",
+      "title": "Paths, ordering and native execution",
+      "goal": "Reliable argument boundaries, dependency selection, deterministic order and bounded commands."
+    },
+    {
+      "id": "M2",
+      "title": "PDF validation and non-destructive results",
+      "goal": "Sources/existing outputs stay safe; partial success cannot masquerade as full success."
+    },
+    {
+      "id": "M3",
+      "title": "Focused usability and honest documentation",
+      "goal": "Preserved defaults, small parameter set, useful diagnostics and measured PDF limitations."
+    },
+    {
+      "id": "M4",
+      "title": "Regression, CI and Windows acceptance",
+      "goal": "Required real Windows/native evidence plus scoped, truthful compatibility claims."
+    },
+    {
+      "id": "M5",
+      "title": "Packaging and accepted release source",
+      "goal": "Reviewed package workflow and merged immutable release-source commit R."
+    },
+    {
+      "id": "M6",
+      "title": "Publish, verify and close",
+      "goal": "Only v1.0.0 is publicly released; exact assets, downloaded operation and final sync are verified."
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T01",
+      "milestone": "M0",
+      "title": "Reconcile checkout and safely install the handoff",
+      "status": "done",
+      "depends_on": [],
+      "brief": "docs/codex/tasks/T01.md",
+      "likely_paths": [
+        "docs/codex/**",
+        "AGENTS.md",
+        "tools/codex/**"
+      ],
+      "acceptance_ids": [
+        "AC001",
+        "AC002"
+      ],
+      "evidence": [
+        "docs/codex/evidence/T01-bootstrap.md",
+        "docs/codex/evidence/T01-helper-audit.md",
+        "docs/codex/evidence/T01-checkpoint.md",
+        "docs/codex/evidence/T01-installed-helper-tests.txt",
+        "docs/codex/evidence/T01-C1-live-sync.json"
+      ],
+      "notes": "C1 27fe1afb1a397067cd9f4667282ba6085f295aa0 passed helper/import checks and clean live sync after recorded push failures; draft PR #1 opened. Final records commit must be freshly verified after push. Next thread: T02."
+    },
+    {
+      "id": "T02",
+      "milestone": "M0",
+      "title": "Reproduce the baseline and record environment",
+      "status": "done",
+      "depends_on": [
+        "T01"
+      ],
+      "brief": "docs/codex/tasks/T02.md",
+      "likely_paths": [
+        "docs/codex/evidence/**",
+        "docs/codex/BASELINE.json",
+        "docs/codex/COMPATIBILITY_MATRIX.md"
+      ],
+      "acceptance_ids": [
+        "AC003",
+        "AC004"
+      ],
+      "evidence": [
+        "docs/codex/evidence/T02-baseline.md",
+        "docs/codex/evidence/T02-environment.json",
+        "docs/codex/evidence/T02-probe.ps1",
+        "docs/codex/evidence/T02-probe-ps7.json",
+        "docs/codex/evidence/T02-inventory-command.txt",
+        "docs/codex/evidence/T02-checkpoint.md",
+        "docs/codex/evidence/T02-C1-live-sync.json"
+      ],
+      "notes": "AC003/AC004 review passed; all 13 audit items classified, original hashes preserved; C1 59f7030e2d4e8ee9f34b8c7e1ba563743b33cffc reran isolated probes and matched clean live readiness at 2026-10-07 15:36:32 UTC. Draft PR #2 open; #1 already merged. PDFtk/GS undiscovered, normal PS5.1 script launch denied by Restricted policy, PS7 7.6.5 behind supported update; no application/native/manual pass. Final records commit requires fresh post-push verification; next task T03."
+    },
+    {
+      "id": "T03",
+      "milestone": "M0",
+      "title": "Establish test seams and a minimal fixture harness",
+      "status": "done",
+      "depends_on": [
+        "T02"
+      ],
+      "brief": "docs/codex/tasks/T03.md",
+      "likely_paths": [
+        "tests/**",
+        "WinPDFMerge.ps1",
+        "src/**",
+        "tools/test/**",
+        ".gitignore"
+      ],
+      "acceptance_ids": [
+        "AC005",
+        "AC006"
+      ],
+      "evidence": [
+        "docs/codex/evidence/T03-harness.md",
+        "docs/codex/evidence/T03-checkpoint.md",
+        "docs/codex/evidence/T03-C1-results.json",
+        "docs/codex/evidence/T03-C1-live-sync.json",
+        "docs/codex/evidence/T03-fake-probe.txt",
+        "docs/codex/evidence/T03-pester-acquisition.json",
+        "docs/codex/evidence/T03-pdftk-acquisition.json",
+        "docs/codex/evidence/T03-precommit-results.json",
+        "docs/codex/evidence/T03-completion.md",
+        "docs/codex/evidence/T03-C2-results.json",
+        "docs/codex/evidence/T03-C2-live-sync.json",
+        "docs/codex/evidence/T03-C2-reports/manifest.json"
+      ],
+      "notes": "AC005/AC006 pass at clean corrected C2 fca1e20c0240995d8b888fee25c2f24ddf0da418: pinned Pester6.2.0 14 Unit +1 real PDFtk fixture case per shell, no failures/skips; 10 independent fixture tests and exact reproduction. Owner approved cache acquisition/process-only RemoteSigned; user/machine policy unchanged. C2 pushed and verified clean/live 2026-10-07T16:00:57.088867+00:00. M0 reviewed; PR #3 open/draft; next T04. PS7 testbuild7.6.5 is not current supported-update validation. Final C3 records also need fresh push/live proof."
+    },
+    {
+      "id": "T04",
+      "milestone": "M1",
+      "title": "Harden source discovery and literal paths",
+      "status": "done",
+      "depends_on": [
+        "T03"
+      ],
+      "brief": "docs/codex/tasks/T04.md",
+      "likely_paths": [
+        "WinPDFMerge.ps1",
+        "src/**",
+        "tests/**"
+      ],
+      "acceptance_ids": [
+        "AC007",
+        "AC008"
+      ],
+      "evidence": [
+        "docs/codex/evidence/T04-checkpoint.md",
+        "docs/codex/evidence/T04-precommit-results.json",
+        "docs/codex/evidence/T04-completion.md",
+        "docs/codex/evidence/T04-C1-results.json",
+        "docs/codex/evidence/T04-C1-live-sync.json",
+        "docs/codex/evidence/T04-C1-reports/manifest.json"
+      ],
+      "notes": "AC007/AC008 pass at clean C1 2f15e8291459940473b4e69c49a27f73fb7eb690: Pester6.2.0 Unit38 + actual entry/real PDFtk SourceDiscovery4 in EACH shell, no failures/skips. Literal FileSystem/preflight/arrays/bracket logs fixed; sources preserved. C1 pushed and clean/live verified2026-10-07T16:24:33.769587+00:00. Draft PR4 open; next T05. Actual PS7 7.6.5 is not current supported-update validation; native space/Unicode/GS/publication/desktop gates remain later. Final C2 records also require fresh push/live proof."
+    },
+    {
+      "id": "T05",
+      "milestone": "M1",
+      "title": "Repair the drag-and-drop batch wrapper",
+      "status": "done",
+      "depends_on": [
+        "T04"
+      ],
+      "brief": "docs/codex/tasks/T05.md",
+      "likely_paths": [
+        "WinPDFMerge.bat",
+        "tests/launcher/**"
+      ],
+      "acceptance_ids": [
+        "AC009",
+        "AC010"
+      ],
+      "evidence": [
+        "docs/codex/evidence/T05-checkpoint.md",
+        "docs/codex/evidence/T05-precommit-results.json",
+        "docs/codex/evidence/T05-completion.md",
+        "docs/codex/evidence/T05-C1-results.json",
+        "docs/codex/evidence/T05-C1-live-sync.json",
+        "docs/codex/evidence/T05-C1-reports/manifest.json"
+      ],
+      "notes": "AC009/AC010 pass at clean C1 769817ba9aa8923a3b0001252637865c9a25f7a0: Launcher24 actual cmd/BAT/PS5.1 receiver + LauncherNative2 actual BAT/application/real PDFtk in EACH PS5.1/PS7 driver, all failures/skips/not_run zero. C1 pushed and clean/live verified2026-10-07T16:44:13.051800+00:00. Draft PR5 opened; next T06. Actual children remain PS5.1; PS7 7.6.5 is not current-supported-update validation. Receiver delivery/status and short ASCII native smoke do not certify engine paths, actual email partial success or Explorer/T26. Final C2 records also require fresh push/live proof."
+    },
+    {
+      "id": "T06",
+      "milestone": "M1",
+      "title": "Implement tested deterministic natural order",
+      "status": "done",
+      "depends_on": [
+        "T05"
+      ],
+      "brief": "docs/codex/tasks/T06.md",
+      "likely_paths": [
+        "WinPDFMerge.ps1",
+        "src/**",
+        "tests/**"
+      ],
+      "acceptance_ids": [
+        "AC011",
+        "AC012"
+      ],
+      "evidence": [
+        "docs/codex/evidence/T06-checkpoint.md",
+        "docs/codex/evidence/T06-precommit-results.json",
+        "docs/codex/evidence/T06-completion.md",
+        "docs/codex/evidence/T06-C1-results.json",
+        "docs/codex/evidence/T06-C1-live-sync.json",
+        "docs/codex/evidence/T06-C1-reports/manifest.json"
+      ],
+      "notes": "AC011/AC012 pass at clean C1 c3c839a264ea35608d5ca6116c595bab4f3050d0: Unit57 plus actual entry/real PDFtk SourceDiscovery4 in EACH PS5.1/PS7 shell, all failures/skips/not_run zero. Deterministic ASCII magnitude/leading-zero/multiple-run/ordinal text/name/path ties, en-US/tr-TR/reversed/property cases pass. Numbered native entry log order and2/2/5page totals/source preservation verified; independent final PDF page order remains downstream. C1 normal push and clean/live verified2026-10-07T17:08:38.505910+00:00. Existing draftPR5 reused; next T07. PS7 actual7.6.5 is not current-supported-update validation; no native-path/GS/fidelity/Explorer/release claim. Final C2 records also require fresh push/live proof."
+    },
+    {
+      "id": "T07",
+      "milestone": "M1",
+      "title": "Repair dependency resolution and version reporting",
+      "status": "done",
+      "depends_on": [
+        "T06"
+      ],
+      "brief": "docs/codex/tasks/T07.md",
+      "likely_paths": [
+        "WinPDFMerge.ps1",
+        "src/**",
+        "tests/**"
+      ],
+      "acceptance_ids": [
+        "AC013",
+        "AC014",
+        "AC015"
+      ],
+      "evidence": [
+        "docs/codex/evidence/T07-checkpoint.md",
+        "docs/codex/evidence/T07-precommit-results.json",
+        "docs/codex/evidence/T07-completion.md",
+        "docs/codex/evidence/T07-C1-results.json",
+        "docs/codex/evidence/T07-C1-live-sync.json",
+        "docs/codex/evidence/T07-C1-reports/manifest.json"
+      ],
+      "notes": "AC013/14/15 pass at clean C1 08733007b5dc1ffcbefe225e9cd97fe91b5a9f84: Unit99 (42new dependency cases), DependencyEntry9 (5actual entry faults/2real PDFtk master smokes/2controlled helper cases) and SourceDiscovery4 in EACH actualPS5.1/PS7 shell; all failures/skips/not_run/blocks/containers zero. Strict Application/literal leaf/PATH/x86/numeric GS fallback and actual version/path diagnostics; bounded fixed probes preserve caller GS_OPTIONS and terminate exact owned PID. Real PDFtk2.02 inspects masters/source snapshots; controlled GS version failure alone retains master/returns2. C1 pushed and clean/live verified2026-10-07T17:31:50.341428+00:00. New draftPR6; nextT08. PS7actual7.6.5 not current-supported build; real GS/general native lifecycle/later gates unrun. Final recordsC2 needs fresh push/live proof."
+    },
+    {
+      "id": "T08",
+      "milestone": "M1",
+      "title": "Centralize bounded native execution and logging",
+      "status": "done",
+      "depends_on": [
+        "T07"
+      ],
+      "brief": "docs/codex/tasks/T08.md",
+      "likely_paths": [
+        "WinPDFMerge.ps1",
+        "src/**",
+        "tests/native/**"
+      ],
+      "acceptance_ids": [
+        "AC016",
+        "AC017",
+        "AC018"
+      ],
+      "evidence": [
+        "docs/codex/evidence/T08-checkpoint.md",
+        "docs/codex/evidence/T08-precommit-results.json",
+        "docs/codex/evidence/T08-completion.md",
+        "docs/codex/evidence/T08-C1-results.json",
+        "docs/codex/evidence/T08-C1-live-sync.json",
+        "docs/codex/evidence/T08-C1-reports/manifest.json"
+      ],
+      "notes": "AC016/17/18 pass at clean C1 2726c73ad2ff8660540c964789910a9da1f8b3a8: pinned Pester6.2.0 Unit99, NativeRunner36, DependencyEntry9 and SourceDiscovery4 in each actual PS5.1/PS7 shell; failures/blocks/containers/skips/not_run all zero. Strict Windows vector echo, capped fair dual-stream capture, explicit launch/nonzero/capture errors, exact-PID timeout/token cancellation and unrelated-process survival, child-only GS_OPTIONS, UTF8-noBOM logs. Version probes reuse runner; entry conversion routing/native paths/prompts/length guard remain T09, descendants/full-run cleanup T15. Five real PDFtk masters per shell retain counts/source snapshots. C1 normal push and fresh clean/live equality verified2026-10-07T17:48:58.172949+00:00. DraftPR7 open. ActualPS7 7.6.5 not current-supported-build claim; nativeGS/later gates unrun. Final recordsC2 needs fresh push/live proof."
+    },
+    {
+      "id": "T09",
+      "milestone": "M1",
+      "title": "Fix real tool quoting, noninteractive execution and limits",
+      "status": "done",
+      "depends_on": [
+        "T08"
+      ],
+      "brief": "docs/codex/tasks/T09.md",
+      "likely_paths": [
+        "WinPDFMerge.ps1",
+        "src/**",
+        "tests/native/**",
+        "docs/codex/evidence/**"
+      ],
+      "acceptance_ids": [
+        "AC019",
+        "AC020",
+        "AC021"
+      ],
+      "evidence": [
+        "docs/codex/evidence/T09-checkpoint.md",
+        "docs/codex/evidence/T09-precommit-results.json",
+        "docs/codex/evidence/T09-evidence.md",
+        "docs/codex/evidence/T09-C1-results.json",
+        "docs/codex/evidence/T09-C1-live-sync.json",
+        "docs/codex/evidence/T09-C1-reports/manifest.json",
+        "docs/codex/evidence/T09-C3-checkpoint.md",
+        "docs/codex/evidence/T09-gs-acquisition.json",
+        "docs/codex/evidence/T09-ps7-acquisition.json",
+        "docs/codex/evidence/T09-analyzer-acquisition.json",
+        "docs/codex/evidence/T09-completion.md",
+        "docs/codex/evidence/T09-C3-results.json",
+        "docs/codex/evidence/T09-C3-reports/manifest.json",
+        "docs/codex/evidence/T09-C3-review.json",
+        "docs/codex/evidence/T09-C3-live-sync.json"
+      ],
+      "notes": "CleanC3894bbb4862105ae497bc9801decc46575fedd87a:217Pester passes each actualPS5.1/7.6.6,434total,nineM1tiers,allbadcounts0. RealPDFtk2.02/GS10.08.0 nativepath/noninteractive evidence and AC019/20/21 pass. VendorPDFSTOPONERROR fixes observedGSexit0/passworderror/wrongpage; sources/ownedACL preserved. Owner-authorized exact external dev dependencies acquired/verified. Python10tests/reproduction/PDFium pass; analyzer0errors/20warnings/4info retained/reviewed. M1 complete, nextT10destination/identity. C3push/cleanliveverified; finalrecordsC4 ownsyncreportedinsession. NewdraftPRhttps://github.com/PikkuJanne/WinPDFMerger/pull/9; PR8merged. See completion/manifest/receipts/review; no fidelity/Explorer/full-releaseclaim."
+    },
+    {
+      "id": "T10",
+      "milestone": "M2",
+      "title": "Validate destination and reserve run identity",
+      "status": "done",
+      "depends_on": [
+        "T09"
+      ],
+      "brief": "docs/codex/tasks/T10.md",
+      "likely_paths": [
+        "WinPDFMerge.ps1",
+        "src/**",
+        "tests/**"
+      ],
+      "acceptance_ids": [
+        "AC022",
+        "AC023",
+        "AC024"
+      ],
+      "evidence": [
+        "docs/codex/evidence/T10-completion.md",
+        "docs/codex/evidence/T10-C1-results.json",
+        "docs/codex/evidence/T10-C1-reports/manifest.json",
+        "docs/codex/evidence/T10-C1-review.json",
+        "docs/codex/evidence/T10-C1-live-sync.json",
+        "docs/codex/evidence/T10-cache-verification.json",
+        "docs/codex/evidence/T10-checkpoint.md"
+      ],
+      "notes": "Clean C1 962f05ec1ea9f8edfbeb8e5fc755dacac24156ed:202 focused passes per actualPS5.1/7.6.6,404total,eighttiers,allbadcounts0. AC022/23/24 pass:default/named destination,actual ownedACL denial/recovery/restoration,physical same/case/8.3 and realjunction refusal,bounded invariant names/random16hex/CreateNew log reservation,concurrent realPDFtk2.02/GS10.08.0 identities/source+foreignfinal preservation. Static0errors/29warnings/5info retained/reviewed nonblocking; historicaldirty14/1 failures separately retained. C1push/cleanliveverified; finalrecordsC2 ownsyncreportedinsession. DraftPRhttps://github.com/PikkuJanne/WinPDFMerger/pull/10; PR9merged. Nofullfidelity/Explorer/UNC/releaseclaim. M1complete,nextT11."
+    },
+    {
+      "id": "T11",
+      "milestone": "M2",
+      "title": "Preflight every input PDF and page totals",
+      "status": "done",
+      "depends_on": [
+        "T10"
+      ],
+      "brief": "docs/codex/tasks/T11.md",
+      "likely_paths": [
+        "WinPDFMerge.ps1",
+        "src/**",
+        "tests/pdf/**"
+      ],
+      "acceptance_ids": [
+        "AC025",
+        "AC026"
+      ],
+      "evidence": [
+        "docs/codex/evidence/T11-completion.md",
+        "docs/codex/evidence/T11-C1-results.json",
+        "docs/codex/evidence/T11-C1-reports/manifest.json",
+        "docs/codex/evidence/T11-C1-review.json",
+        "docs/codex/evidence/T11-C1-live-sync.json",
+        "docs/codex/evidence/T11-cache-verification.json",
+        "docs/codex/evidence/T11-environment.json",
+        "docs/codex/evidence/T11-checkpoint.md"
+      ],
+      "notes": "Clean C1 822f84eb4f7f0d75736887d9d79d0d363ae551a7: nine focused tiers in each actual PS5.1.26100.9444 / supported PS7.6.6, 287 passes each / 574 total, all failure/skip/not-run counts zero. AC025/26 pass: named whole-job rejection before merge, bounded envelope plausibility, strict labeled positive Int64 page counts and exact expected totals/natural order independently observed with PDFium. Frozen fresh length/UTCmtime checks catch obvious changes, not a transactional snapshot. Original native9/4 logger failures and tolerated invalid CR stream controls remain historical, separately retained. Corrected CR structural/footer, incremental, xref-stream and actual GS-linearized controls pass. Static0errors/31warnings/6information reviewed nonblocking. Normal C1 push/fresh clean live equality verified; records-only C2 synchronization reported in session. Draft PR https://github.com/PikkuJanne/WinPDFMerger/pull/11. T12 next; no universal validity/encryption detection, full fidelity or release claim."
+    },
+    {
+      "id": "T12",
+      "milestone": "M2",
+      "title": "Introduce no-overwrite staging and publication",
+      "status": "done",
+      "depends_on": [
+        "T11"
+      ],
+      "brief": "docs/codex/tasks/T12.md",
+      "likely_paths": [
+        "WinPDFMerge.ps1",
+        "src/**",
+        "tests/filesafety/**"
+      ],
+      "acceptance_ids": [
+        "AC027",
+        "AC028",
+        "AC029"
+      ],
+      "evidence": [
+        "docs/codex/evidence/T12-completion.md",
+        "docs/codex/evidence/T12-C1-results.json",
+        "docs/codex/evidence/T12-C1-reports/manifest.json",
+        "docs/codex/evidence/T12-C1-review.json",
+        "docs/codex/evidence/T12-C1-native-audit.json",
+        "docs/codex/evidence/T12-C1-live-sync.json",
+        "docs/codex/evidence/T12-cache-verification.json",
+        "docs/codex/evidence/T12-environment.json",
+        "docs/codex/evidence/T12-checkpoint.md"
+      ],
+      "notes": "Clean C1 1a4901b8914d02af6c539bc5b82181705ca3c2e9: ten focused tiers in each actual PS5.1.26100.9444 / supported PS7.6.6,324 passes each/648 total,all failure/skip/not_run counts0. AC027/28/29 pass: atomic new per-run stage,held readable immutable marker,original directory identity/reparse guards,real no-overwrite file/directory races,source/foreign/master preservation,live concurrent second stage survives first cleanup. Known-only nonrecursive cleanup reports locks/unknown/changed ownership; directory-delete failure restores marker best effort with identity guard. Static0errors/51warnings/11info per shell over five-file scope retained/reviewed nonblocking. Original dirty sharing/diagnostic6pass6fail per shell and unit fixture-only27/1 retained/disclosed separately. C1 normal push/cleanliveverified; final records C2 own sync reported in session. New draftPR recorded in completion. T13 structural master validation next; current nonempty-only gate is not full PDF validation, email size/fidelity/Explorer/release acceptance."
+    },
+    {
+      "id": "T13",
+      "milestone": "M2",
+      "title": "Validate and publish the master truthfully",
+      "status": "done",
+      "depends_on": [
+        "T12"
+      ],
+      "brief": "docs/codex/tasks/T13.md",
+      "likely_paths": [
+        "WinPDFMerge.ps1",
+        "src/**",
+        "tests/pdf/**"
+      ],
+      "acceptance_ids": [
+        "AC030",
+        "AC031"
+      ],
+      "evidence": [
+        "docs/codex/evidence/T13-completion.md",
+        "docs/codex/evidence/T13-C1-results.json",
+        "docs/codex/evidence/T13-C1-reports/manifest.json",
+        "docs/codex/evidence/T13-C1-review.json",
+        "docs/codex/evidence/T13-C1-native-audit.json",
+        "docs/codex/evidence/T13-C1-live-sync.json",
+        "docs/codex/evidence/T13-cache-verification.json",
+        "docs/codex/evidence/T13-environment.json",
+        "docs/codex/evidence/T13-checkpoint.md"
+      ],
+      "notes": "Clean C1 e74ffa92588eff876c12ebd3321e2f3b0d6f110c: eleven focused tiers in actual PS5.1.26100.9444 / supportedPS7.6.6,369each738total,all bad counts0. AC030/31pass: positive frozen expected total, separate complete bounded staged inspection and exact count before no-overwrite publication; owned staging/metadata/reparse rechecks; truthful planned/validated/published states. Actual single2 and natural1/01/2/10 fivepage mixed rotations preserve independent visible IDs/rotation/dimensions and all source/foreign hashes. Controlled fault/scheduling cases remain labeled. Independent code/static/evidence/native review and C1 normal push/cleanlive verified. Static0errors112warnings49info eachshell over10files retained/reviewed nonblocking. Historical dirty focused/native passes separate; no observed T13 development failures. Final records C2 own live equality reported in session. DraftPR in completion. T14 email validation/size/outcomes next; narrow structure is not universal validity/security/fidelity/signature/Explorer/release acceptance."
+    },
+    {
+      "id": "T14",
+      "milestone": "M2",
+      "title": "Make optional email processing and result states explicit",
+      "status": "done",
+      "depends_on": [
+        "T13"
+      ],
+      "brief": "docs/codex/tasks/T14.md",
+      "likely_paths": [
+        "WinPDFMerge.ps1",
+        "WinPDFMerge.bat",
+        "src/**",
+        "tests/**"
+      ],
+      "acceptance_ids": [
+        "AC032",
+        "AC033",
+        "AC034"
+      ],
+      "evidence": [
+        "docs/codex/evidence/T14-completion.md",
+        "docs/codex/evidence/T14-C1-results.json",
+        "docs/codex/evidence/T14-C1-reports/manifest.json",
+        "docs/codex/evidence/T14-C1-review.json",
+        "docs/codex/evidence/T14-C1-native-audit.json",
+        "docs/codex/evidence/T14-C1-live-sync.json",
+        "docs/codex/evidence/T14-cache-verification.json",
+        "docs/codex/evidence/T14-environment.json",
+        "docs/codex/evidence/T14-checkpoint.md"
+      ],
+      "notes": "Clean C1 588a96586518059ed38e2de01ad2312003defc7c: thirteen relevant tiers actualPS5.1.26100.9444 / supportedPS7.6.6,476each952total,all bad counts0. AC032/33integration and AC034unit pass: explicit SkipEmail bypass/optionalGS absence/no-benefit master-only0, strictly-smaller separately-inspected exact-page email0, realGS partial and inspection/post-master failures2 with master retained, pre-master failure1. Published paths follow explicit states; actualBAT0/1/2 unchanged. Source/master/foreign snapshots and pinnedPDFium reads match; controlled corrupt input/count/discovery/logging and staging fixturepadding disclosed. Independent code/static/native/evidence review and C1 normal push/cleanlive verified. PSA0errors108warnings42info each10files reviewed nonblocking. Historical PS5.1 test-host module-path/locale assertion failures retained honestly, corrected focused122/122 and native11/11 passes separate from clean totals. FinalrecordsC2 own liveequality reported in session; draftPR in completion. T15 next; T16/T17 and broadfidelity/OS/UNC/Explorer/CI/package/release remain."
+    },
+    {
+      "id": "T15",
+      "milestone": "M2",
+      "title": "Close interruption, environment and IO failure paths",
+      "status": "done",
+      "depends_on": [
+        "T14"
+      ],
+      "brief": "docs/codex/tasks/T15.md",
+      "likely_paths": [
+        "WinPDFMerge.ps1",
+        "src/**",
+        "tests/faults/**"
+      ],
+      "acceptance_ids": [
+        "AC035",
+        "AC036",
+        "AC037"
+      ],
+      "evidence": [
+        "docs/codex/evidence/T15-completion.md",
+        "docs/codex/evidence/T15-C1-results.json",
+        "docs/codex/evidence/T15-C1-reports/manifest.json",
+        "docs/codex/evidence/T15-C1-M2-review.json",
+        "docs/codex/evidence/T15-C1-native-audit.json",
+        "docs/codex/evidence/T15-C1-evidence-review.json",
+        "docs/codex/evidence/T15-C1-review-provenance.json",
+        "docs/codex/evidence/T15-C1-live-sync.json",
+        "docs/codex/evidence/T15-cache-verification.json",
+        "docs/codex/evidence/T15-environment.json",
+        "docs/codex/evidence/T15-checkpoint.md"
+      ],
+      "notes": "Clean C1 53d0923c95a86ae6a44bc89bab51cac6786c1e32: 17 relevant tiers in actual Windows PS5.1.26100.9444 and pinned PS7.6.6; 559 each /1118 total, all bad counts0. AC035/036 integration and AC037 unit pass. Owned job descendants stop on controlled cancellation; before-master1/after-master2, unrelated processes and validated published PDFs survive. Child-only GS_OPTIONS preserves actual unset/empty/value. Lock and controlled IO/log/write/cleanup faults remain truthful; unconfirmed ownership retains stage. Independent M2 code/static review no blocks; native audit2515 checks/26 fresh PDFtk/PDFium reads; archive review4611 checks. PSA0errors152warnings45info each13files reviewed nonblocking, not fullT22. Dirty development/preparation failures and absent bootstrap XML/summary remain separate. Physical Ctrl+C/host/window/crash cleanup and broad OS/UNC/Explorer/fidelity/CI/package/release remain unclaimed. C1 pushed/fresh clean live equality; draft PR15. Final records C2 own clean/live equality reported in session. M2 complete within stated scope; T16 next."
+    },
+    {
+      "id": "T16",
+      "milestone": "M3",
+      "title": "Add the small public parameter interface",
+      "status": "done",
+      "depends_on": [
+        "T15"
+      ],
+      "brief": "docs/codex/tasks/T16.md",
+      "likely_paths": [
+        "WinPDFMerge.ps1",
+        "src/**",
+        "tests/cli/**"
+      ],
+      "acceptance_ids": [
+        "AC038",
+        "AC039"
+      ],
+      "evidence": [
+        "docs/codex/evidence/T16-completion.md",
+        "docs/codex/evidence/T16-C1-results.json",
+        "docs/codex/evidence/T16-C1-reports/manifest.json",
+        "docs/codex/evidence/T16-C1-review.json",
+        "docs/codex/evidence/T16-C1-runtime-review.json",
+        "docs/codex/evidence/T16-C1-native-audit.json",
+        "docs/codex/evidence/T16-C1-evidence-review.json",
+        "docs/codex/evidence/T16-C1-review-provenance.json",
+        "docs/codex/evidence/T16-C1-live-sync.json",
+        "docs/codex/evidence/T16-cache-verification.json",
+        "docs/codex/evidence/T16-environment.json",
+        "docs/codex/evidence/T16-checkpoint.md"
+      ],
+      "notes": "Clean C1 26ac1b73e3733a23099de53d944e00e4ee412982:14relevant tiers/536each/1072total in actual Windows PS5.1.26100.9444 and pinned PS7.6.6, all bad counts0. AC038integration/AC039unit pass:fixedscreen/ebook allowlist,legacy/named/default output,actualcmd/BAT,closedstdinusage,earlybinding/preflight refusals,SkipEmail noGS discovery/probe/launch plus explicit ignored-preset explanation. Independent runtime/source reviews no blocks; native2273checks/18cases/28freshretainedPDFtk+PDFium reads; archive6397checks/335plannedfiles. Scoped PSA0errors71warnings34info each7files reviewednonblocking, notfullT22. Dirty/preparation failures and missing source/output declarations retained separately. PhysicalExplorer/manual/T17fidelity/OS/UNC/CI/package/release remain unclaimed. C1 normalpush/freshcleanlive equality;draftPR16. RecordsC2ownSHA/cleanlive reported in session. M3inprogress,T17next,no tag/release."
+    },
+    {
+      "id": "T17",
+      "milestone": "M3",
+      "title": "Report real compression benefit and preset tradeoffs",
+      "status": "done",
+      "depends_on": [
+        "T16"
+      ],
+      "brief": "docs/codex/tasks/T17.md",
+      "likely_paths": [
+        "WinPDFMerge.ps1",
+        "src/**",
+        "tests/pdf/**",
+        "docs/**"
+      ],
+      "acceptance_ids": [
+        "AC040",
+        "AC041"
+      ],
+      "evidence": [
+        "docs/codex/evidence/T17-completion.md",
+        "docs/codex/evidence/T17-C1-results.json",
+        "docs/codex/evidence/T17-C1-reports/manifest.json",
+        "docs/codex/evidence/T17-C1-review.json",
+        "docs/codex/evidence/T17-C1-runtime-review.json",
+        "docs/codex/evidence/T17-C1-native-audit.json",
+        "docs/codex/evidence/T17-C1-evidence-review.json",
+        "docs/codex/evidence/T17-C1-visual-review.json",
+        "docs/codex/evidence/T17-C1-review-provenance.json",
+        "docs/codex/evidence/T17-C1-live-sync.json",
+        "docs/codex/evidence/T17-cache-verification.json",
+        "docs/codex/evidence/T17-environment.json",
+        "docs/codex/evidence/T17-checkpoint.md"
+      ],
+      "notes": "Clean C1 040176695fdb79e614ba2a821118fbc979a33115:16 relevant tiers579each1158total,32reports actualPS5.1.26100.9444/pinnedPS7.6.6 allbadcounts0. AC040integration/AC041manual pass:exactsize/reduction/strictsmaller reporting plus actual Codex40page10unique144DPI synthetic visual review bothshells. Screen scan smalltext/outlines degraded vs clearer ebook; vector-only candidates grew/omitted. Screen default/local/source/master/final safety unchanged. Independent runtime/source/native/archive reviews pass; archive11660checks/632files. PSA5PSfiles0errors51warnings14info each nonblocking notfullT22. Dirty/preparation failures/absences excluded and disclosed. C1normalpush/freshcleanlive;draftPR. RecordsC2ownSHA/cleanlive in session. T18nextpending,M3inprogress,PublicationNOTSTARTED;physicalExplorer/OS/UNC/CI/security/package/release gates remain."
+    },
+    {
+      "id": "T18",
+      "milestone": "M3",
+      "title": "Improve help, progress and private-by-default diagnostics",
+      "status": "done",
+      "depends_on": [
+        "T17"
+      ],
+      "brief": "docs/codex/tasks/T18.md",
+      "likely_paths": [
+        "WinPDFMerge.ps1",
+        "src/**",
+        "tests/help/**",
+        "docs/**"
+      ],
+      "acceptance_ids": [
+        "AC042",
+        "AC043"
+      ],
+      "evidence": [
+        "docs/codex/evidence/T18-checkpoint.md",
+        "docs/codex/evidence/T18-completion.md",
+        "docs/codex/evidence/T18-C1b-results.json",
+        "docs/codex/evidence/T18-C1b-evidence-manifest.json",
+        "docs/codex/evidence/T18-C2-provenance.json"
+      ],
+      "notes": "Clean C1b 590 cases each actual PS5.1.26100.9444/pinned PS7.6.6; AC042 integration and independent AC043 review pass. C1a runtime unchanged in test-only C1b. Sanitized text evidence and records-only C2; final C2 live equality reported in session. T19 remains pending."
+    },
+    {
+      "id": "T19",
+      "milestone": "M3",
+      "title": "Characterize feature-rich PDF preservation",
+      "status": "done",
+      "depends_on": [
+        "T18"
+      ],
+      "brief": "docs/codex/tasks/T19.md",
+      "likely_paths": [
+        "tests/fixtures/**",
+        "tests/pdf/**",
+        "docs/PDF_LIMITATIONS.md",
+        "docs/codex/evidence/**"
+      ],
+      "acceptance_ids": [
+        "AC044",
+        "AC045"
+      ],
+      "evidence": [
+        "docs/codex/evidence/T19-completion.md",
+        "docs/codex/evidence/T19-results.json",
+        "docs/codex/evidence/T19-C1-reports/manifest.json"
+      ],
+      "notes": "AC044 integration and AC045 independent review pass at clean C1 50220eccd1917e44a52d94cbfe3bf35b1940f3d8; 828 Pester cases/12 reports, all bad counts zero, 12 oracle graph regressions; measured feature losses and exclusions disclosed. C2 synchronization is checked after normal push. T20 remains pending."
+    },
+    {
+      "id": "T20",
+      "milestone": "M3",
+      "title": "Write the public documentation and dependency/privacy policy",
+      "status": "done",
+      "depends_on": [
+        "T19"
+      ],
+      "brief": "docs/codex/tasks/T20.md",
+      "likely_paths": [
+        "README.md",
+        "LICENSE",
+        "SECURITY.md",
+        "docs/**"
+      ],
+      "acceptance_ids": [
+        "AC046",
+        "AC047"
+      ],
+      "evidence": [
+        "docs/codex/evidence/T20-checkpoint.md",
+        "docs/codex/evidence/T20-completion.md",
+        "docs/codex/evidence/T20-results.json",
+        "docs/codex/evidence/T20-reports/manifest.json"
+      ],
+      "notes": "AC046/AC047 independent review pass at clean C1 a9e93319ad260646d57278f207872a0e03dbb155;198 targeted checks/8reports, scoped analyzer0errors. T21 next; no native/manual/package/publication pass inferred. Records-only C2 synchronization is verified after push in the session."
+    },
+    {
+      "id": "T21",
+      "milestone": "M4",
+      "title": "Complete synthetic regression corpus and source-safety coverage",
+      "status": "done",
+      "depends_on": [
+        "T20"
+      ],
+      "brief": "docs/codex/tasks/T21.md",
+      "likely_paths": [
+        "tests/**",
+        "tools/test/**",
+        "docs/codex/evidence/**"
+      ],
+      "acceptance_ids": [
+        "AC048",
+        "AC049"
+      ],
+      "evidence": [
+        "docs/codex/evidence/T21-checkpoint.md",
+        "docs/codex/evidence/T21-completion.md",
+        "docs/codex/evidence/T21-results.json",
+        "docs/codex/evidence/T21-reports/manifest.json",
+        "docs/codex/evidence/T21-archive-review.json",
+        "docs/codex/evidence/T21-audit-invocation/manifest.json",
+        "docs/codex/evidence/T21-supplement-review.json"
+      ],
+      "notes": "AC048 review and AC049 Windows integration pass at clean C1b abf8976e84f2c3f851efc42a844037a880519b26; 902 checks/22 reports, 40 Python tests, independent corpus/native/archive audits. Runtime unchanged. T22 next; records-only C2 synchronization verified after normal push in the session."
+    },
+    {
+      "id": "T22",
+      "milestone": "M4",
+      "title": "Finish fault tests and static analysis coverage",
+      "status": "done",
+      "depends_on": [
+        "T21"
+      ],
+      "brief": "docs/codex/tasks/T22.md",
+      "likely_paths": [
+        "tests/**",
+        "PSScriptAnalyzerSettings.psd1",
+        "tools/test/**"
+      ],
+      "acceptance_ids": [
+        "AC050",
+        "AC051"
+      ],
+      "evidence": [
+        "docs/codex/evidence/T22-checkpoint.md",
+        "docs/codex/evidence/T22-completion.md",
+        "docs/codex/evidence/T22-results.json",
+        "docs/codex/evidence/T22-reports/manifest.json",
+        "docs/codex/evidence/T22-archive-review.json",
+        "docs/codex/evidence/T22-records-review.json"
+      ],
+      "notes": "AC050 unit/fault and AC051 static pass at clean C1 d159486cdfb66c39cf3ca6b35a23ebd08e1b2932; 1430 Pester checks/36 reports, all required bad counts zero; 53 maintained files/41 rules pass both actual hosts, no suppressions. Stream task getter defect fixed with dual-shell regression and independent historical/current probes. Advisory0/298/161 disclosed; supplemental helper26pass/1skip separate. Independent raw/archive/records reviews, normal C1push/live equality; records-only C2 verified after push in session. T23 pending; publication not started."
+    },
+    {
+      "id": "T23",
+      "milestone": "M4",
+      "title": "Run full native integration in both required shells",
+      "status": "done",
+      "depends_on": [
+        "T22"
+      ],
+      "brief": "docs/codex/tasks/T23.md",
+      "likely_paths": [
+        "tests/**",
+        "docs/codex/evidence/**",
+        "docs/codex/COMPATIBILITY_MATRIX.md"
+      ],
+      "acceptance_ids": [
+        "AC052",
+        "AC053"
+      ],
+      "evidence": [
+        "docs/codex/evidence/T23-checkpoint.md",
+        "docs/codex/evidence/T23-completion.md",
+        "docs/codex/evidence/T23-results.json",
+        "docs/codex/evidence/T23-reports/manifest.json",
+        "docs/codex/evidence/T23-archive-review.json",
+        "docs/codex/evidence/T23-records-review.json"
+      ],
+      "notes": "AC052/AC053 pass at clean C1 8fa2032c66f94199b121fc1914792d6d71bb6202:29tiers/854each/1708total/58reports in actualPS5.1.26100.9444 and pinnedPS7.6.6, allbadcounts0/sourceguards pass. Native138page/29475character job, oversized180input refusal, both24page presets and genuine helper warning with app envelope refusal pass. Runtime unchanged. Independent raw15507checks/8extraPDFiumauditreads; static2files/41rules/no suppressions; Python40pass;348selecteddeps unchanged. Preparation/probe/audit-schema limits disclosed. C1normalpush/live equality/draftPR23; evidence/byte-metadata C2 own clean/live equality will be verified after push in the session. T24 next; later gates/publication remain open."
+    },
+    {
+      "id": "T24",
+      "milestone": "M4",
+      "title": "Add safe Windows CI and machine-readable reports",
+      "status": "done",
+      "depends_on": [
+        "T23"
+      ],
+      "brief": "docs/codex/tasks/T24.md",
+      "likely_paths": [
+        ".github/workflows/**",
+        "tests/**",
+        "tools/test/**",
+        "docs/DEVELOPMENT.md"
+      ],
+      "acceptance_ids": [
+        "AC054",
+        "AC055"
+      ],
+      "evidence": [
+        "docs/codex/evidence/T24-checkpoint.md",
+        "docs/codex/evidence/T24-completion.md",
+        "docs/codex/evidence/T24-results.json",
+        "docs/codex/evidence/T24-reports/manifest.json",
+        "docs/codex/evidence/T24-reports/reviews/final-hosted-artifact-review.json",
+        "docs/codex/evidence/T24-reports/reviews/final-hosted-privilege-review.json",
+        "docs/codex/evidence/T24-reports/reviews/final-local-artifact-review.json"
+      ],
+      "notes": "AC054/AC055 pass at clean C1b e626e45a5ba375456f23b506f0ded7ca7d68f1e3: actual push/PR 4/4, 1306 passes each; same-tree PR synthetic merge; deliberate failure fails both unit jobs with one real failure per host; all four artifacts retained. Independently reviewed pins/minimum permissions/sanitization and downloaded artifact digests. Local selected driver 1306 passes; hosted admin/Server evidence has explicit native-smoke scope. Records-only checkpoint is verified after push in session; T25 next."
+    },
+    {
+      "id": "T25",
+      "milestone": "M4",
+      "title": "Perform focused security and public-repository review",
+      "status": "done",
+      "depends_on": [
+        "T24"
+      ],
+      "brief": "docs/codex/tasks/T25.md",
+      "likely_paths": [
+        "WinPDFMerge.ps1",
+        "WinPDFMerge.bat",
+        "src/**",
+        ".github/**",
+        "SECURITY.md",
+        "docs/codex/evidence/**"
+      ],
+      "acceptance_ids": [
+        "AC056",
+        "AC057"
+      ],
+      "evidence": [
+        "docs/codex/evidence/T25-completion.md",
+        "docs/codex/evidence/T25-runtime-review.md",
+        "docs/codex/evidence/T25-dependency-review.md",
+        "docs/codex/evidence/T25-reports/manifest.json"
+      ],
+      "notes": "AC056/AC057 review pass at clean C1 18a47ee304afa2dfee7efb353fae15fa5f55d026; runtime/CI behavior unchanged. PublicDocs20 and focused static1/41 rules pass in EACH actual PS5.1.26100.9444/pinnedPS7.6.6; all bad counts0,3 advisory warnings per host. Independent full reachable-history/privacy/CI review84 commits/6456 blobs resolves all29 profile-like candidates as synthetic/regex;0 recognized secrets/actual identity hits/GitHub alerts. C1 normal push/fresh clean live equality retained; draftPR25 open/unmerged. Evidence-records/citation checkpoint own clean/live equality must be checked after push in session. No native/manual/package/release acceptance claimed; OS channel unestablished. T26 next."
+    },
+    {
+      "id": "T26",
+      "milestone": "M4",
+      "title": "Complete Windows compatibility scoping and M4 review",
+      "status": "done",
+      "depends_on": [
+        "T25"
+      ],
+      "brief": "docs/codex/tasks/T26.md",
+      "likely_paths": [
+        "docs/codex/evidence/**",
+        "docs/codex/COMPATIBILITY_MATRIX.md",
+        "README.md"
+      ],
+      "acceptance_ids": [
+        "AC058",
+        "AC059",
+        "AC060",
+        "AC061",
+        "AC062"
+      ],
+      "evidence": [
+        "docs/codex/evidence/T26-checkpoint.md",
+        "docs/codex/evidence/T26-compatibility-review.md",
+        "docs/codex/evidence/T26-M4-review.md",
+        "docs/codex/evidence/T26-walkthrough.md",
+        "docs/codex/evidence/T26-results.json",
+        "docs/codex/evidence/T26-reports/manifest.json",
+        "docs/codex/evidence/T26-owner-scope.md",
+        "docs/codex/evidence/T26-scope-completion.md",
+        "docs/codex/evidence/T26-scope-review.md",
+        "docs/codex/evidence/T26-scope-results.json",
+        "docs/codex/evidence/T26-scope-reports/manifest.json"
+      ],
+      "notes": "Owner D25 excludes unperformed human standard-user/Explorer acceptance AC058; excluded, never pass. Required AC059 evidence/claims review passes; AC060-62 remain excluded. Clean C1 d8f7945871108b467525bdbe605dff2620d26947 passes PublicDocs22each actual PS5.1.26100.9444/pinnedPS7.6.6,44total; changed-file static1/41rules each,0selected findings/guard/bad counts,3advisory warnings each. Independent265check raw/public audit and M4 authority review pass,2098manifest payloads verified; runtime/workflow and historical evidence unchanged. C1 normalpush/freshcleanlive equality verified; current push37932076626/PR37932081691 platform conclusions4/4success each. Prior f207778 PR acquisition/WAF failure remains disclosed. M4 complete within D25 scope; T27 dependency-ready. Records C2 own clean/live equality must be verified after push in session without self-reference. Packaging/publication/download/closure remain incomplete; no new native/manual/package pass."
+    },
+    {
+      "id": "T27",
+      "milestone": "M5",
+      "title": "Add single-source version and final change notes",
+      "status": "done",
+      "depends_on": [
+        "T26"
+      ],
+      "brief": "docs/codex/tasks/T27.md",
+      "likely_paths": [
+        "WinPDFMerge.ps1",
+        "src/**",
+        "VERSION",
+        "CHANGELOG.md",
+        "docs/RELEASE_NOTES_v1.0.0.md"
+      ],
+      "acceptance_ids": [
+        "AC063",
+        "AC064"
+      ],
+      "evidence": [
+        "docs/codex/evidence/T27-completion.md",
+        "docs/codex/evidence/T27-review.md",
+        "docs/codex/evidence/T27-results.json"
+      ],
+      "notes": "AC063/AC064 pass: single VERSION1.0.0, source/help/log/package-contract agreement and accurate reviewed first-release notes. Clean C1 broad1332checks; title-only C1b follow-up22native. Selected static passes in actual PS5.1/pinnedPS7.6.6. No package/tag/release; T28 is next. C2 own live sync checked after normal push in session."
+    },
+    {
+      "id": "T28",
+      "milestone": "M5",
+      "title": "Implement clean allowlisted packaging and checksums",
+      "status": "done",
+      "depends_on": [
+        "T27"
+      ],
+      "brief": "docs/codex/tasks/T28.md",
+      "likely_paths": [
+        "tools/release/**",
+        "release-files.json",
+        "tests/package/**",
+        "docs/DEVELOPMENT.md"
+      ],
+      "acceptance_ids": [
+        "AC065",
+        "AC066"
+      ],
+      "evidence": [
+        "docs/codex/evidence/T28-completion.md",
+        "docs/codex/evidence/T28-results.json",
+        "docs/codex/evidence/T28-review.md"
+      ],
+      "notes": "Clean specified-source packages and dual-shell package regressions pass AC065/AC066 at 8917938; exact candidate application/native operation remains T29. Final records checkpoint is verified after creation in the session."
+    },
+    {
+      "id": "T29",
+      "milestone": "M5",
+      "title": "Test the candidate ZIP as an end user",
+      "status": "done",
+      "depends_on": [
+        "T28"
+      ],
+      "brief": "docs/codex/tasks/T29.md",
+      "likely_paths": [
+        "tests/package/**",
+        "docs/codex/evidence/**"
+      ],
+      "acceptance_ids": [
+        "AC067",
+        "AC068"
+      ],
+      "evidence": [
+        "docs/codex/evidence/T29-completion.md",
+        "docs/codex/evidence/T29-results.json",
+        "docs/codex/evidence/T29-review.md",
+        "docs/codex/evidence/T29-reports/manifest.json",
+        "docs/codex/evidence/T29-preparation.md"
+      ],
+      "notes": "Actual clean harnessC1 629f506 operates exact retained candidateC1b8917938 ZIPs in PS5.1 and pinnedPS7.6.6:25cases plus2publichelp,17helpers,21PDFs/106pages with independent audits and unchanged sources/runtime/foreign files. AC058 remains excluded. Final C2 push/live-clean verification follows record creation; T30 next."
+    },
+    {
+      "id": "T30",
+      "milestone": "M5",
+      "title": "Audit completeness and establish the merge gate",
+      "status": "done",
+      "depends_on": [
+        "T29"
+      ],
+      "brief": "docs/codex/tasks/T30.md",
+      "likely_paths": [
+        "docs/codex/**",
+        "docs/RELEASE_NOTES_v1.0.0.md"
+      ],
+      "acceptance_ids": [
+        "AC069",
+        "AC070"
+      ],
+      "evidence": [
+        "docs/codex/evidence/T30-checkpoint.md",
+        "docs/codex/evidence/T30-completion.md",
+        "docs/codex/evidence/T30-results.json",
+        "docs/codex/evidence/T30-PR-review.json",
+        "docs/codex/evidence/T30-reports/manifest.json",
+        "docs/codex/evidence/T30-reports/review/coverage-review.json",
+        "docs/codex/evidence/T30-reports/review/source-review.json",
+        "docs/codex/evidence/T30-reports/review/claims-review.json",
+        "docs/codex/evidence/T30-reports/review/final-C1b-original-audit.json",
+        "docs/codex/evidence/T30-reports/review/final-C1b-native-original-audit.json",
+        "docs/codex/evidence/T30-reports/review/final-C1b-ci-original-audit.json",
+        "docs/codex/evidence/T30-reports/review/public-review.json"
+      ],
+      "notes": "All17 improvements scoped and independently reviewed; clean8f76 C1b full32-tier dual-shell1072each/2144total, static68/41, current8CI jobs and guards pass. Failed preps retained, AC058 excluded. Records-only C2 synchronization follows creation; T31 merge/R next."
+    },
+    {
+      "id": "T31",
+      "milestone": "M5",
+      "title": "Merge the accepted PR and freeze release-source commit R",
+      "status": "in_progress",
+      "depends_on": [
+        "T30"
+      ],
+      "brief": "docs/codex/tasks/T31.md",
+      "likely_paths": [
+        "docs/codex/**",
+        ".github/**"
+      ],
+      "acceptance_ids": [
+        "AC071",
+        "AC072"
+      ],
+      "evidence": [
+        "docs/codex/evidence/T31-checkout-fix.md"
+      ],
+      "notes": "PR26 merged normally to first candidate de5f301; fresh checkout exposed required fixture-byte failures. Candidate unaccepted. Five-file byte contract and real true/false Git checkout regression are under reviewed fix; new merged exact-source acceptance remains required."
+    },
+    {
+      "id": "T32",
+      "milestone": "M6",
+      "title": "Build exact R assets, then create final tag and draft",
+      "status": "pending",
+      "depends_on": [
+        "T31"
+      ],
+      "brief": "docs/codex/tasks/T32.md",
+      "likely_paths": [
+        "docs/codex/**",
+        "release staging outside tracked sources"
+      ],
+      "acceptance_ids": [
+        "AC073",
+        "AC074"
+      ],
+      "evidence": [],
+      "notes": null
+    },
+    {
+      "id": "T33",
+      "milestone": "M6",
+      "title": "Publish v1.0.0 and verify public download",
+      "status": "pending",
+      "depends_on": [
+        "T32"
+      ],
+      "brief": "docs/codex/tasks/T33.md",
+      "likely_paths": [
+        "docs/codex/**",
+        "independent download directory"
+      ],
+      "acceptance_ids": [
+        "AC075",
+        "AC076"
+      ],
+      "evidence": [],
+      "notes": null
+    },
+    {
+      "id": "T34",
+      "milestone": "M6",
+      "title": "Synchronize closure evidence and declare completion",
+      "status": "pending",
+      "depends_on": [
+        "T33"
+      ],
+      "brief": "docs/codex/tasks/T34.md",
+      "likely_paths": [
+        "docs/codex/**"
+      ],
+      "acceptance_ids": [
+        "AC077",
+        "AC078"
+      ],
+      "evidence": [],
+      "notes": null
+    }
+  ]
+}

@@ -1,0 +1,86 @@
+--- frozen-original-Export-T31.py
++++ corrected-Export-T31.py
+@@ -15,6 +15,8 @@
+               'selected_suppressions', 'advisory_errors', 'source_guard_failed')
+ POST = ['review/public-review.py', 'review/public-review.json']
+ XML_IDENTITIES = {'user': '<USER>', 'machine-name': '<COMPUTER>', 'user-domain': '<COMPUTER>'}
++GITHUB_EMAIL_IDENTITIES = {'/author/email': '<EMAIL>', '/committer/email': '<EMAIL>',
++                           '/head_commit/author/email': '<EMAIL>', '/head_commit/committer/email': '<EMAIL>'}
+ sha = lambda b: hashlib.sha256(b).hexdigest()
+ 
+ def require(value, reason):
+@@ -41,6 +43,16 @@
+         self.aliases = [(str(self.repo), '<REPO>'), (os.environ['USERPROFILE'], '<USERPROFILE>')]
+         self.private_names = [Path(os.environ['USERPROFILE']).name, os.environ.get('COMPUTERNAME', '')]
+         self.guards = []
++        registry = self.config.get('github_metadata_identity_receipts', [])
++        require(isinstance(registry, list), 'GitHub metadata identity registry must be an explicit list')
++        self.github_identity_receipts = {}
++        for row in registry:
++            label_safe(row['path'])
++            require(re.fullmatch('[0-9a-f]{64}', row['raw_sha256']) and re.fullmatch('[0-9a-f]{40}', row['git_commit_sha']), 'Git identity receipt requires exact raw SHA256 and Git commit SHA')
++            require(row['kind'] in ('git_commit', 'actions_run'), 'Only explicit commit/API-run metadata kinds are supported')
++            if row['kind'] == 'actions_run': require(type(row.get('run_id')) is int and row['run_id'] > 0, 'Actions identity receipt requires exact run ID')
++            require(row['path'] not in self.github_identity_receipts, 'Duplicate Git identity receipt declaration')
++            self.github_identity_receipts[row['path']] = row
+ 
+     def replace(self, text, xml=False):
+         for original, alias in self.aliases:
+@@ -70,6 +82,29 @@
+                 return a.group(1) + a.group(3) + alias + a.group(3)
+             return re.sub(r'''(\b(user|machine-name|user-domain)\s*=\s*)(["'])(.*?)\3''', identity, match.group(0), flags=re.I)
+         return re.sub(r'<environment\b[^>]*>', environment, self.replace(text, xml=True), flags=re.I)
++
++    def github_metadata(self, raw, label):
++        declaration = self.github_identity_receipts[label]
++        require(sha(raw) == declaration['raw_sha256'], 'Declared Git identity receipt raw hash changed')
++        value = json.loads(raw.decode('utf-8-sig'))
++        if declaration['kind'] == 'git_commit':
++            required = {'sha', 'node_id', 'url', 'html_url', 'author', 'committer', 'tree', 'message', 'parents', 'verification'}
++            require(isinstance(value, dict) and required <= set(value) and value['sha'] == declaration['git_commit_sha'], 'Declared identity receipt is not the pinned Git commit API schema')
++            require(all(isinstance(value[k], str) for k in ('node_id', 'url', 'html_url', 'message')) and isinstance(value['tree'], dict) and isinstance(value['tree'].get('sha'), str) and re.fullmatch('[0-9a-f]{40}', value['tree']['sha']) and isinstance(value['parents'], list) and isinstance(value['verification'], dict), 'Git commit API metadata schema mismatch')
++            require(all(isinstance(x, dict) and isinstance(x.get('sha'), str) and re.fullmatch('[0-9a-f]{40}', x['sha']) for x in value['parents']), 'Git commit API parent schema mismatch')
++            commit = value; prefix = ''; person_keys = ('name', 'email', 'date')
++        else:
++            required = {'id', 'head_sha', 'head_commit', 'event', 'status', 'conclusion', 'url', 'html_url'}
++            require(isinstance(value, dict) and required <= set(value) and type(value['id']) is int and value['id'] == declaration['run_id'] and value['head_sha'] == declaration['git_commit_sha'], 'Declared identity receipt is not the pinned Actions run API schema')
++            commit = value['head_commit']
++            require(isinstance(commit, dict) and {'id', 'tree_id', 'message', 'timestamp', 'author', 'committer'} <= set(commit) and commit['id'] == declaration['git_commit_sha'] and isinstance(commit['tree_id'], str) and re.fullmatch('[0-9a-f]{40}', commit['tree_id']) and isinstance(commit['message'], str) and isinstance(commit['timestamp'], str) and all(isinstance(value[k], str) for k in ('event', 'status', 'url', 'html_url')), 'Actions run nested commit metadata schema mismatch')
++            prefix = '/head_commit'; person_keys = ('name', 'email')
++        for identity in ('author', 'committer'):
++            person = commit[identity]
++            require(isinstance(person, dict) and all(isinstance(person.get(k), str) for k in person_keys), 'Git author/committer identity schema mismatch')
++            require(any(name and re.search(re.escape(name), person['email'], re.I) for name in self.private_names), 'Declared Git email has no recorded private identity; do not broaden redaction')
++            person['email'] = GITHUB_EMAIL_IDENTITIES[prefix+'/'+identity+'/email']
++        return (json.dumps(self.typed(value), indent=2, ensure_ascii=False)+'\n').encode('utf-8')
+ 
+     def owned(self, value):
+         path = Path(value)
+@@ -177,13 +212,17 @@
+         self.choose(self.config_path, 'scripts/export-selection.json', 'Exact declarative root/file selection used by this producer')
+         self.choose(Path(__file__).resolve(), 'scripts/Export-T31.py', 'Executed T31 projector source derived from accepted T30 projector')
+         require(len({x.casefold() for x in self.selected}) == len(self.selected), 'Case-insensitive public inventory collision')
++        require(set(self.github_identity_receipts) <= set(self.selected), 'Declared Git identity receipt is not in exact selected inventory')
+ 
+     def payloads(self):
+         staged = []; rows = []
+         for label, (source, provenance) in sorted(self.selected.items()):
+             raw = source.read_bytes()
+             require(not raw.startswith((b'MZ', b'PK\x03\x04', b'%PDF-', b'\x89PNG', b'\x7fELF')), 'Binary payload disguised as text')
+-            if source.suffix.lower() == '.json':
++            if label in self.github_identity_receipts:
++                public = self.github_metadata(raw, label)
++                rule = 'typed-json-github-metadata-email-and-path-prefix-projection'
++            elif source.suffix.lower() == '.json':
+                 public = (json.dumps(self.typed(json.loads(raw.decode('utf-8-sig'))), indent=2, ensure_ascii=False)+'\n').encode('utf-8')
+                 rule = 'typed-json-path-prefix-projection'
+             elif source.suffix.lower() == '.xml':
+@@ -203,6 +242,8 @@
+         existing = destination/'manifest.json'
+         created = read_json(existing)['created_at_utc'] if existing.exists() else datetime.datetime.now(datetime.timezone.utc).isoformat()
+         manifest = {'schema_version': 1, 'task': 'T31', 'source_commit': self.source, 'initial_unaccepted_R': self.config['initial_unaccepted_R'], 'created_at_utc': created, 'aliases': {'repository': '<REPO>', 'user_profile': '<USERPROFILE>'}, 'xml_environment_identity_aliases': XML_IDENTITIES, 'selection_config_raw_sha256': sha(self.config_path.read_bytes()), 'source_map': self.typed(self.config['roots']), 'accepted_guard_results': self.guards, 'payload_count': len(rows), 'public_bytes': sum(x['bytes'] for x in rows), 'files': rows, 'omitted_text_bindings': self.omitted, 'excluded_local_payloads': 'PDF/PNG/ZIP/vendor/cache/native-output bytes stay local. Text roots are explicitly selected, never all .work. Historical failed/partial R and reviewer preparation remain unaccepted. Manifest does not hash itself.', 'post_manifest_review_files': POST, 'scope': {'new_application_or_native_execution': False, 'new_CI_execution': False, 'human_acceptance': 'excluded/unperformed', 'overall_T31_or_release_acceptance_decided_by_producer': False}}
++        manifest['github_metadata_identity_aliases'] = GITHUB_EMAIL_IDENTITIES
++        manifest['github_metadata_identity_receipts'] = self.typed(list(self.github_identity_receipts.values()))
+         manifest_bytes = (json.dumps(manifest, indent=2, ensure_ascii=False)+'\n').encode('utf-8')
+         require(all(not name or not re.search(re.escape(name), manifest_bytes.decode('utf-8'), re.I) for name in self.private_names), 'Private identity remains in manifest')
+         staged.append(('manifest.json', manifest_bytes))

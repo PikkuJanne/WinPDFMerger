@@ -1,0 +1,36 @@
+Pester v6.2.0
+
+Running tests from 1 files.
+
+Running tests from '<REPO>\tests\pdf\SizeReporting.Tests.ps1'
+Describing AC040 import-only binary byte formatting
+  [+] formats 0 bytes as 0 B 124ms
+  [+] formats 1023 bytes as 1023 B 11ms
+  [+] formats 1024 bytes as 1.00 KiB 4ms
+  [+] formats 1048575 bytes as 1024.00 KiB 3ms
+  [+] formats 1048576 bytes as 1.00 MiB 3ms
+  [+] formats 1073741824 bytes as 1.00 GiB 4ms
+  [+] formats 1099511627776 bytes as 1.00 TiB 4ms
+  [+] formats 1125899906842624 bytes as 1.00 PiB 3ms
+  [+] formats 1152921504606846976 bytes as 1.00 EiB 19ms
+  [+] formats 9223372036854775807 bytes as 8.00 EiB 3ms
+  [+] rejects a negative byte count 46ms
+
+Describing AC040 invariant size report and decimal reduction
+  [+] uses identical bytes and decimal punctuation under en-US 43ms
+  [+] uses identical bytes and decimal punctuation under de-DE 10ms
+  [+] reports only master metrics when no validated email size was supplied 24ms
+  [+] retains a fractional decimal reduction independently of display rounding 23ms
+  [+] keeps a positive one-byte reduction at the Int64 boundary without overflow 22ms
+  [+] labels equal validated candidates as unpublished with truthful reduction 22ms
+  [+] labels larger validated candidates as unpublished with truthful reduction 7ms
+  [+] calculates a negative candidate reduction across the full Int64 byte range 11ms
+  [+] rejects empty-master rather than reporting invalid measurements or publication 13ms
+  [+] rejects empty-email rather than reporting invalid measurements or publication 7ms
+  [+] rejects published-without-email rather than reporting invalid measurements or publication 5ms
+  [+] rejects published-equal rather than reporting invalid measurements or publication 3ms
+  [+] rejects published-larger rather than reporting invalid measurements or publication 3ms
+  [+] rejects unpublished-smaller rather than reporting invalid measurements or publication 3ms
+
+Describing AC040 copied-entry measured size reporting with controlled native receipts
+  [+] reports truthful sizes and published paths for published 3.19s

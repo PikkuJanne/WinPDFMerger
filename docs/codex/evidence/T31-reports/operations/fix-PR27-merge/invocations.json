@@ -1,0 +1,427 @@
+[
+  {
+    "label": "initial-head",
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "started_at_utc": "2026-10-09T18:12:45.854588+00:00",
+    "finished_at_utc": "2026-10-09T18:12:45.889740+00:00",
+    "elapsed_seconds": 0.0319999999992433,
+    "exit_code": 0,
+    "stdout_sha256": "acba927b7702817c39976066dd1a40a08a7332b14014bd3086f6f226b0b24800",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "initial-branch",
+    "argv": [
+      "git",
+      "branch",
+      "--show-current"
+    ],
+    "started_at_utc": "2026-10-09T18:12:45.906662+00:00",
+    "finished_at_utc": "2026-10-09T18:12:45.944028+00:00",
+    "elapsed_seconds": 0.0470000000022992,
+    "exit_code": 0,
+    "stdout_sha256": "72397210e66ce1d84a37724ee3d94b3df7a1b4e07e4792d40bef68627803c425",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "initial-status",
+    "argv": [
+      "git",
+      "status",
+      "--porcelain=v1"
+    ],
+    "started_at_utc": "2026-10-09T18:12:45.945044+00:00",
+    "finished_at_utc": "2026-10-09T18:12:46.011402+00:00",
+    "elapsed_seconds": 0.06299999999828287,
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "fetch-origin",
+    "argv": [
+      "git",
+      "remote",
+      "get-url",
+      "--all",
+      "origin"
+    ],
+    "started_at_utc": "2026-10-09T18:12:46.011402+00:00",
+    "finished_at_utc": "2026-10-09T18:12:46.045104+00:00",
+    "elapsed_seconds": 0.030999999999039574,
+    "exit_code": 0,
+    "stdout_sha256": "58f6700c4e67515f2efad4232e0616f25e02b6623ba5df89d0313d71a4298181",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "push-origin",
+    "argv": [
+      "git",
+      "remote",
+      "get-url",
+      "--push",
+      "--all",
+      "origin"
+    ],
+    "started_at_utc": "2026-10-09T18:12:46.045104+00:00",
+    "finished_at_utc": "2026-10-09T18:12:46.084914+00:00",
+    "elapsed_seconds": 0.0470000000022992,
+    "exit_code": 0,
+    "stdout_sha256": "58f6700c4e67515f2efad4232e0616f25e02b6623ba5df89d0313d71a4298181",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "initial-live",
+    "argv": [
+      "git",
+      "ls-remote",
+      "--heads",
+      "origin",
+      "main",
+      "codex/t31-fixture-checkout"
+    ],
+    "started_at_utc": "2026-10-09T18:12:46.085927+00:00",
+    "finished_at_utc": "2026-10-09T18:12:46.690891+00:00",
+    "elapsed_seconds": 0.6090000000003783,
+    "exit_code": 0,
+    "stdout_sha256": "48aa87d6e440e447d164bd24b6cd04910f38bc5b5f6d7b9d086147c2a9ff2da2",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "ready-plan",
+    "argv": [
+      "<USERPROFILE>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "-B",
+      "tools/codex/handoff.py",
+      "check-plan",
+      "--repo",
+      ".",
+      "--require-ready"
+    ],
+    "started_at_utc": "2026-10-09T18:12:46.690891+00:00",
+    "finished_at_utc": "2026-10-09T18:12:46.912928+00:00",
+    "elapsed_seconds": 0.21899999999732245,
+    "exit_code": 0,
+    "stdout_sha256": "bec9613a484afd10683bd343900e375892eba234fc4aa1b23292181d8faa0089",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "repo-permissions",
+    "argv": [
+      "gh",
+      "api",
+      "repos/PikkuJanne/WinPDFMerger",
+      "--jq",
+      "{default_branch,permissions,allow_merge_commit,allow_squash_merge,allow_rebase_merge,archived,disabled}"
+    ],
+    "started_at_utc": "2026-10-09T18:12:46.912928+00:00",
+    "finished_at_utc": "2026-10-09T18:12:47.476238+00:00",
+    "elapsed_seconds": 0.5620000000017171,
+    "exit_code": 0,
+    "stdout_sha256": "99f0c86e738fb9aa3f656a97f471abaedf589e0c6f7d533d3ca8f04d24d53fe7",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "main-protection",
+    "argv": [
+      "gh",
+      "api",
+      "repos/PikkuJanne/WinPDFMerger/branches/main",
+      "--jq",
+      "{name,protected,protection,sha:.commit.sha}"
+    ],
+    "started_at_utc": "2026-10-09T18:12:47.478237+00:00",
+    "finished_at_utc": "2026-10-09T18:12:48.092203+00:00",
+    "elapsed_seconds": 0.6100000000005821,
+    "exit_code": 0,
+    "stdout_sha256": "ec676ccb886e054ffa712571ec6eadb0fb7d3abfe0e54fb6bbabc41ebf8b4971",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "main-rules",
+    "argv": [
+      "gh",
+      "api",
+      "repos/PikkuJanne/WinPDFMerger/rules/branches/main"
+    ],
+    "started_at_utc": "2026-10-09T18:12:48.096040+00:00",
+    "finished_at_utc": "2026-10-09T18:12:48.625933+00:00",
+    "elapsed_seconds": 0.5159999999996217,
+    "exit_code": 0,
+    "stdout_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "rulesets",
+    "argv": [
+      "gh",
+      "api",
+      "repos/PikkuJanne/WinPDFMerger/rulesets?includes_parents=true"
+    ],
+    "started_at_utc": "2026-10-09T18:12:48.628487+00:00",
+    "finished_at_utc": "2026-10-09T18:12:49.092932+00:00",
+    "elapsed_seconds": 0.4530000000013388,
+    "exit_code": 0,
+    "stdout_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "tags",
+    "argv": [
+      "gh",
+      "api",
+      "repos/PikkuJanne/WinPDFMerger/tags"
+    ],
+    "started_at_utc": "2026-10-09T18:12:49.092932+00:00",
+    "finished_at_utc": "2026-10-09T18:12:49.614091+00:00",
+    "elapsed_seconds": 0.5309999999990396,
+    "exit_code": 0,
+    "stdout_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "releases",
+    "argv": [
+      "gh",
+      "api",
+      "repos/PikkuJanne/WinPDFMerger/releases"
+    ],
+    "started_at_utc": "2026-10-09T18:12:49.614091+00:00",
+    "finished_at_utc": "2026-10-09T18:12:50.129417+00:00",
+    "elapsed_seconds": 0.5159999999996217,
+    "exit_code": 0,
+    "stdout_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "PR-before",
+    "argv": [
+      "gh",
+      "pr",
+      "view",
+      "27",
+      "--repo",
+      "PikkuJanne/WinPDFMerger",
+      "--json",
+      "number,url,headRefName,headRefOid,baseRefName,isDraft,state,mergeable,mergeStateStatus,reviewDecision,latestReviews,statusCheckRollup"
+    ],
+    "started_at_utc": "2026-10-09T18:12:50.129417+00:00",
+    "finished_at_utc": "2026-10-09T18:12:50.794713+00:00",
+    "elapsed_seconds": 0.6559999999990396,
+    "exit_code": 0,
+    "stdout_sha256": "b6f87a8f472026b615a2dae82bb79a6101171aabb141244ed2a3a5cb00f29e4b",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "premerge-live-main",
+    "argv": [
+      "git",
+      "ls-remote",
+      "--heads",
+      "origin",
+      "main"
+    ],
+    "started_at_utc": "2026-10-09T18:12:50.794713+00:00",
+    "finished_at_utc": "2026-10-09T18:12:51.354842+00:00",
+    "elapsed_seconds": 0.5620000000017171,
+    "exit_code": 0,
+    "stdout_sha256": "943c241dc23a310387224df32810053bb5617d124df3b5be1ca5f36fb0bb5bf5",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "normal-merge",
+    "argv": [
+      "gh",
+      "pr",
+      "merge",
+      "27",
+      "--repo",
+      "PikkuJanne/WinPDFMerger",
+      "--merge",
+      "--match-head-commit",
+      "30560516a0248636769e988b0420466214c25e3b"
+    ],
+    "started_at_utc": "2026-10-09T18:12:51.355918+00:00",
+    "finished_at_utc": "2026-10-09T18:12:56.183694+00:00",
+    "elapsed_seconds": 4.827999999997701,
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "merged-PR",
+    "argv": [
+      "gh",
+      "pr",
+      "view",
+      "27",
+      "--repo",
+      "PikkuJanne/WinPDFMerger",
+      "--json",
+      "number,url,state,isDraft,headRefOid,baseRefName,mergedAt,mergeCommit"
+    ],
+    "started_at_utc": "2026-10-09T18:12:56.185692+00:00",
+    "finished_at_utc": "2026-10-09T18:12:56.809005+00:00",
+    "elapsed_seconds": 0.625,
+    "exit_code": 0,
+    "stdout_sha256": "19a1114fd7dea873ae2201975c8e2bb1576ec1efda7b50f62372ccfd89dbcc17",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "R-commit",
+    "argv": [
+      "gh",
+      "api",
+      "repos/PikkuJanne/WinPDFMerger/commits/95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+      "--jq",
+      "{sha,tree:.commit.tree.sha,parents:[.parents[].sha],message:.commit.message}"
+    ],
+    "started_at_utc": "2026-10-09T18:12:56.810992+00:00",
+    "finished_at_utc": "2026-10-09T18:12:57.533230+00:00",
+    "elapsed_seconds": 0.7350000000005821,
+    "exit_code": 0,
+    "stdout_sha256": "e9830b3aeccfeb89299558ae29af4270a83e0c263295dad2691ffba3a0fdc17c",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "fetch-main",
+    "argv": [
+      "git",
+      "fetch",
+      "origin",
+      "main"
+    ],
+    "started_at_utc": "2026-10-09T18:12:57.533230+00:00",
+    "finished_at_utc": "2026-10-09T18:12:58.383896+00:00",
+    "elapsed_seconds": 0.8440000000009604,
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "a3e9ed936df3a890a3dd61845d54bb502396080fa99f61f8d7e75d6970948b5a"
+  },
+  {
+    "label": "local-main-ancestor",
+    "argv": [
+      "git",
+      "merge-base",
+      "--is-ancestor",
+      "main",
+      "origin/main"
+    ],
+    "started_at_utc": "2026-10-09T18:12:58.385004+00:00",
+    "finished_at_utc": "2026-10-09T18:12:58.417085+00:00",
+    "elapsed_seconds": 0.030999999999039574,
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "switch-main",
+    "argv": [
+      "git",
+      "switch",
+      "main"
+    ],
+    "started_at_utc": "2026-10-09T18:12:58.417085+00:00",
+    "finished_at_utc": "2026-10-09T18:12:58.540350+00:00",
+    "elapsed_seconds": 0.125,
+    "exit_code": 0,
+    "stdout_sha256": "afc6069686bc4c056731eb4f7e1b92a0e414dd826da1154a9f10699662f39578",
+    "stderr_sha256": "6300963e525f04410f9d2df59c376a7490543a6db6823dd3351451dad11cfcb0"
+  },
+  {
+    "label": "fast-forward-main",
+    "argv": [
+      "git",
+      "merge",
+      "--ff-only",
+      "--quiet",
+      "origin/main"
+    ],
+    "started_at_utc": "2026-10-09T18:12:58.541350+00:00",
+    "finished_at_utc": "2026-10-09T18:12:58.686678+00:00",
+    "elapsed_seconds": 0.13999999999941792,
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "R-local-head",
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "started_at_utc": "2026-10-09T18:12:58.686678+00:00",
+    "finished_at_utc": "2026-10-09T18:12:58.734581+00:00",
+    "elapsed_seconds": 0.0470000000022992,
+    "exit_code": 0,
+    "stdout_sha256": "1763ba356b8308a156e9d311f997c7daa490b72ad2afc57c3f0c3758f2192527",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "R-status",
+    "argv": [
+      "git",
+      "status",
+      "--porcelain=v1"
+    ],
+    "started_at_utc": "2026-10-09T18:12:58.735590+00:00",
+    "finished_at_utc": "2026-10-09T18:12:58.819865+00:00",
+    "elapsed_seconds": 0.09400000000096043,
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "R-live-sync",
+    "argv": [
+      "<USERPROFILE>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "-B",
+      "tools/codex/handoff.py",
+      "sync",
+      "--repo",
+      "."
+    ],
+    "started_at_utc": "2026-10-09T18:12:58.819865+00:00",
+    "finished_at_utc": "2026-10-09T18:12:59.918528+00:00",
+    "elapsed_seconds": 1.0939999999973224,
+    "exit_code": 0,
+    "stdout_sha256": "eb94e095366cb2040334cc61333e51db5e5b5c96cec112583ff571ee23103aee",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "head-to-R-diff",
+    "argv": [
+      "git",
+      "diff",
+      "--name-only",
+      "-z",
+      "30560516a0248636769e988b0420466214c25e3b",
+      "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a"
+    ],
+    "started_at_utc": "2026-10-09T18:12:59.920471+00:00",
+    "finished_at_utc": "2026-10-09T18:12:59.961866+00:00",
+    "elapsed_seconds": 0.0470000000022992,
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "head-tree",
+    "argv": [
+      "git",
+      "rev-parse",
+      "30560516a0248636769e988b0420466214c25e3b^{tree}"
+    ],
+    "started_at_utc": "2026-10-09T18:12:59.966567+00:00",
+    "finished_at_utc": "2026-10-09T18:13:00.006255+00:00",
+    "elapsed_seconds": 0.046999999998661224,
+    "exit_code": 0,
+    "stdout_sha256": "302b57343f73873df370070085cf05e35e4e3004f070bbb5cb2d626cc2d3e661",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

@@ -1,0 +1,629 @@
+{
+  "task": "T31",
+  "audit": "independent_exact_staged_checkout_fix_source_safety_hash_pins_regression_receipts_and_records",
+  "base_unaccepted_R": "de5f30155c68755dbd5af691625a0651e3fb7230",
+  "observed_at_utc": "2026-10-09T18:07:19.728198+00:00",
+  "auditor_sha256": "b8d1818dd2597fd6a4648fc158a1b1224e8379b60cc4dd1d18a1604b7054e155",
+  "checks": 260,
+  "issues": [],
+  "result": "pass",
+  "staged_diff_sha256": "10ba98dad4c8bef2fd1ef2252c31f32e7e195345e6b324fb4a24715487ef5a7e",
+  "staged_snapshot": {
+    ".gitattributes": {
+      "git_oid": "42dfbbaee150161c1a63e0ff98e449ba5096e7bd",
+      "git_blob_sha256": "f05814a3fae0cc3ed4a6780713e0db141172671678a37903532c072806f12aab",
+      "git_blob_bytes": 168507,
+      "working_sha256": "722ca48e88dac300c386339728e17ca3887dcd6d22dbab5229db2a4c505270d9"
+    },
+    "docs/codex/ACCEPTANCE_CASES.json": {
+      "git_oid": "5cca58aba3e1bf7db245e6eb913ee71e2a345a3e",
+      "git_blob_sha256": "8526c25fd30ed516dc446f9d5ac44a2d61f69673e4afb50fcb5e252fe769baae",
+      "git_blob_bytes": 49408,
+      "working_sha256": "8526c25fd30ed516dc446f9d5ac44a2d61f69673e4afb50fcb5e252fe769baae"
+    },
+    "docs/codex/NEXT_SESSION.md": {
+      "git_oid": "cb201fc3e073036f15f203e510a71fb20445c583",
+      "git_blob_sha256": "f0a53d459445cde6f70f7bb15fa3a20219fdb33dce9c6aaaca096c5083ce1721",
+      "git_blob_bytes": 2802,
+      "working_sha256": "f0a53d459445cde6f70f7bb15fa3a20219fdb33dce9c6aaaca096c5083ce1721"
+    },
+    "docs/codex/STATUS.md": {
+      "git_oid": "a55a0af7944704ee2402204ba01389c31c5af0f7",
+      "git_blob_sha256": "bc13b3a01a66b17eaa6e3aeac0cf88b6032e99440066df2889abe86c4e772bcc",
+      "git_blob_bytes": 2995,
+      "working_sha256": "bc13b3a01a66b17eaa6e3aeac0cf88b6032e99440066df2889abe86c4e772bcc"
+    },
+    "docs/codex/TASKS.json": {
+      "git_oid": "3b0c6499adf55258b3bb7cdd968e77768e2e1752",
+      "git_blob_sha256": "4013788d85b2f696496d36092ae20870241f0a0abfd4fd3eb5b6b7634f2e67a7",
+      "git_blob_bytes": 48714,
+      "working_sha256": "4013788d85b2f696496d36092ae20870241f0a0abfd4fd3eb5b6b7634f2e67a7"
+    },
+    "docs/codex/evidence/T31-checkout-fix.md": {
+      "git_oid": "7c30cda1913d44909649bc68885888f4d18677f5",
+      "git_blob_sha256": "c108b7144cba22e1aad182dd2f8d7e6c1e11094c9c2d4c84f371987b3f4bfd1d",
+      "git_blob_bytes": 4789,
+      "working_sha256": "c108b7144cba22e1aad182dd2f8d7e6c1e11094c9c2d4c84f371987b3f4bfd1d"
+    },
+    "tests/fixtures/presets/manifest.json": {
+      "git_oid": "16723c8657aa8d10c0178e3c0c3c9fc174706c45",
+      "git_blob_sha256": "383ec07bec823f131ab86cf07de2ffb96e10803ad4f2f4997ba834835ee01e1f",
+      "git_blob_bytes": 1698,
+      "working_sha256": "383ec07bec823f131ab86cf07de2ffb96e10803ad4f2f4997ba834835ee01e1f"
+    },
+    "tools/test/tests/test_fixture_checkout.py": {
+      "git_oid": "fd6fa280e71642d0c6093af7f2040e82850cc0f7",
+      "git_blob_sha256": "1ad01e47a75b06fed7eff56cdfa1b3eb1ef9394fa897f08c698862df08a0e220",
+      "git_blob_bytes": 3266,
+      "working_sha256": "1ad01e47a75b06fed7eff56cdfa1b3eb1ef9394fa897f08c698862df08a0e220"
+    }
+  },
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "9fbfbbf29857d738a227aea48f7019bddafd7377fa3b30005c7c85b6647d1870",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "72397210e66ce1d84a37724ee3d94b3df7a1b4e07e4792d40bef68627803c425",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--name-only"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "ls-files",
+        "--others",
+        "--exclude-standard"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--name-only",
+        "-z"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "e6203fa079b1613bdb65cc0b0cb37a6efcba0a02d8e3b08ecb8b7b80b7cd0e02",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        ":.gitattributes"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "f05814a3fae0cc3ed4a6780713e0db141172671678a37903532c072806f12aab",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "ls-files",
+        "--stage",
+        "--",
+        ".gitattributes"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "952753e29a6b8b831eb43c42f404d80c18012b0db29949834b2f16f787581d41",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "hash-object",
+        "--path=.gitattributes",
+        ".gitattributes"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "eee5b143b688bc16516e75e2eb897f8b80091dbe7302f77625734c917a48de3e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        ":docs/codex/ACCEPTANCE_CASES.json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "8526c25fd30ed516dc446f9d5ac44a2d61f69673e4afb50fcb5e252fe769baae",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "ls-files",
+        "--stage",
+        "--",
+        "docs/codex/ACCEPTANCE_CASES.json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "a88af3a96e155e3d0ad332e90dbf26f6dd96b7a306a9af3326b346ce37269f82",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "hash-object",
+        "--path=docs/codex/ACCEPTANCE_CASES.json",
+        "docs/codex/ACCEPTANCE_CASES.json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "df46851ebc76f2488d729dcdceeb77a5c14a7752be946758656e6e06063f311a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        ":docs/codex/NEXT_SESSION.md"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "f0a53d459445cde6f70f7bb15fa3a20219fdb33dce9c6aaaca096c5083ce1721",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "ls-files",
+        "--stage",
+        "--",
+        "docs/codex/NEXT_SESSION.md"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "0bb2ed74ee074e72d3c0823a40f0741f0f8bf38acd636d63021d66cb5c5f5c72",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "hash-object",
+        "--path=docs/codex/NEXT_SESSION.md",
+        "docs/codex/NEXT_SESSION.md"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "c49c2b4579e1aaeffc375bbcb69121f67807fec26860e1d1b621426dbeb73f90",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        ":docs/codex/STATUS.md"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "bc13b3a01a66b17eaa6e3aeac0cf88b6032e99440066df2889abe86c4e772bcc",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "ls-files",
+        "--stage",
+        "--",
+        "docs/codex/STATUS.md"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "22b13da0f86ecb198ba6ec42db83f6fed4b0b1fc0d14f0a0e4f65a7825223091",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "hash-object",
+        "--path=docs/codex/STATUS.md",
+        "docs/codex/STATUS.md"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "4d5d9973924868d4cfd935084dfee876dc95e507e55bee368a8f8f4b3339e898",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        ":docs/codex/TASKS.json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "4013788d85b2f696496d36092ae20870241f0a0abfd4fd3eb5b6b7634f2e67a7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "ls-files",
+        "--stage",
+        "--",
+        "docs/codex/TASKS.json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "6a65b204d189d5bee827385f1e34694332f9f638e303c5a00af69317ab36b18f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "hash-object",
+        "--path=docs/codex/TASKS.json",
+        "docs/codex/TASKS.json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "44b3b577029d506cb78fe9b48437b3624273d6d6e22e197ed14160e872a7ba63",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        ":docs/codex/evidence/T31-checkout-fix.md"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "c108b7144cba22e1aad182dd2f8d7e6c1e11094c9c2d4c84f371987b3f4bfd1d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "ls-files",
+        "--stage",
+        "--",
+        "docs/codex/evidence/T31-checkout-fix.md"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "ee2e56180a45e64db27a0f19b50e2d0b4d917cf9252d4c0d9ce9a9c6ef6c763b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "hash-object",
+        "--path=docs/codex/evidence/T31-checkout-fix.md",
+        "docs/codex/evidence/T31-checkout-fix.md"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "88f3471725c3a91aff71fefb3bd2e7f6abbaf952d6ad376f75efa89aa761117e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        ":tests/fixtures/presets/manifest.json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "383ec07bec823f131ab86cf07de2ffb96e10803ad4f2f4997ba834835ee01e1f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "ls-files",
+        "--stage",
+        "--",
+        "tests/fixtures/presets/manifest.json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "ed7741d2960470570d531f7f6ae6f4dbcbec3c9af9a2360a31e93b9e5102c1e1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "hash-object",
+        "--path=tests/fixtures/presets/manifest.json",
+        "tests/fixtures/presets/manifest.json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "86c92a2b3b13eedce9470726a1df241764ac8fcac1b3372ee661c0832128c8f7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        ":tools/test/tests/test_fixture_checkout.py"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "1ad01e47a75b06fed7eff56cdfa1b3eb1ef9394fa897f08c698862df08a0e220",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "ls-files",
+        "--stage",
+        "--",
+        "tools/test/tests/test_fixture_checkout.py"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "eb7c315dd10ea95ebd451fa72fd75f71dc5c91928f777ce3e4db1e6aa0f74ce2",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "hash-object",
+        "--path=tools/test/tests/test_fixture_checkout.py",
+        "tools/test/tests/test_fixture_checkout.py"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "d39467ad6a6658b5b25cc0a00b628f961f301d64bfab17f246a5350065d4bb19",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--binary"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "10ba98dad4c8bef2fd1ef2252c31f32e7e195345e6b324fb4a24715487ef5a7e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        "de5f30155c68755dbd5af691625a0651e3fb7230:.gitattributes"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "5702a1d83e5e36fee0a10367656b916adccd2fce89346259a75c1b3ddfbf819a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        ":tools/test/generate_numbered_fixtures.py"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "3a1d5386a7ca327efcae128e5f64114300df89649eedaa9b48c377f8f0979be1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        ":tests/fixtures/numbered/manifest.json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "62cbc4b3a86464693c3568be9b0ef487212abd7fc560f08320739b5a2aaa810f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        ":tests/fixtures/presets/generate_presets.py"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "1aaabe651bd4d468b09e617607b1f276d3a894b67e15081d380cc45e91a62db6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        ":tests/fixtures/presets/manifest.json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "383ec07bec823f131ab86cf07de2ffb96e10803ad4f2f4997ba834835ee01e1f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        ":tests/fixtures/features/generate_features.py"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "a6c4146fba847ccb4c961c11277456503bed61dc3db3672cc9a0fb2aebfddbd8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        ":tests/fixtures/features/manifest.json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "73b1c8cd478f8f8e709005550f42a7d9177ab71dcbb738ba2614edc37b1dc846",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        ":tools/test/generate_pdf_envelope_fixtures.py"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "7eac6f773c1ee3a075de4f1c647b49f9c8c4ab5364e98432c7a185a861bfe59f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        ":tools/test/generate_numbered_fixtures.py"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "3a1d5386a7ca327efcae128e5f64114300df89649eedaa9b48c377f8f0979be1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        "de5f30155c68755dbd5af691625a0651e3fb7230:tools/test/generate_numbered_fixtures.py"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "3a1d5386a7ca327efcae128e5f64114300df89649eedaa9b48c377f8f0979be1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        ":tests/fixtures/numbered/manifest.json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "62cbc4b3a86464693c3568be9b0ef487212abd7fc560f08320739b5a2aaa810f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        "de5f30155c68755dbd5af691625a0651e3fb7230:tests/fixtures/numbered/manifest.json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "62cbc4b3a86464693c3568be9b0ef487212abd7fc560f08320739b5a2aaa810f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        ":tests/fixtures/presets/generate_presets.py"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "1aaabe651bd4d468b09e617607b1f276d3a894b67e15081d380cc45e91a62db6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        "de5f30155c68755dbd5af691625a0651e3fb7230:tests/fixtures/presets/generate_presets.py"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "1aaabe651bd4d468b09e617607b1f276d3a894b67e15081d380cc45e91a62db6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        ":tools/test/generate_pdf_envelope_fixtures.py"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "7eac6f773c1ee3a075de4f1c647b49f9c8c4ab5364e98432c7a185a861bfe59f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        "de5f30155c68755dbd5af691625a0651e3fb7230:tools/test/generate_pdf_envelope_fixtures.py"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "7eac6f773c1ee3a075de4f1c647b49f9c8c4ab5364e98432c7a185a861bfe59f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        "de5f30155c68755dbd5af691625a0651e3fb7230:tests/fixtures/presets/manifest.json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "df871de92eb9097c92c496c560faa0951a115618fc5f5d24b596016437811c8d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        "de5f30155c68755dbd5af691625a0651e3fb7230:docs/codex/TASKS.json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "38c3ba8c75322218fde7b936334e58617b7e4a624704d00ae7649c05de577ba9",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        "de5f30155c68755dbd5af691625a0651e3fb7230:docs/codex/ACCEPTANCE_CASES.json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "5bf60249b52033be00e8bcb4b23256c1f014542e9bc7ee62b57b38594969922d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "case_counts": {
+    "pass": 66,
+    "excluded": 4,
+    "not_run": 7,
+    "fail": 1
+  },
+  "red_initial_draft_source_sha256": "72e653efc3664c1ab2af58b92b7d7430ca7cadda7b2da8a433c4dc255ccedbfe",
+  "green_final_source_sha256": "1ad01e47a75b06fed7eff56cdfa1b3eb1ef9394fa897f08c698862df08a0e220",
+  "latest_dirty_helper_suites": [
+    {
+      "label": "handoff",
+      "run": 27,
+      "passed": 26,
+      "skipped": 1,
+      "stderr_sha256": "0871a620a3141fc65a653359ed2c5755b30bc59c0ab6c14fde9d6f2a4b53312d"
+    },
+    {
+      "label": "fixture-oracles",
+      "run": 42,
+      "passed": 42,
+      "skipped": 0,
+      "stderr_sha256": "655925fd22427cd266b529d5454cbe53c1c8c9eda385ae9a57966396e6d68610"
+    },
+    {
+      "label": "candidate-helpers",
+      "run": 17,
+      "passed": 17,
+      "skipped": 0,
+      "stderr_sha256": "c43564d005a8c08a6b05163ac6c04aed0bb924bd730e52c5f5c32626ee937bab"
+    }
+  ],
+  "limitations": [
+    "Read-only staged review; no source edits/commit/push/merge or application/native execution by this reviewer.",
+    "Green preparation is at dirty unaccepted base R, not committed fix/new merged source acceptance. Initial red draft source differs from final safety-refined source; raw original draft bytes may require separate provenance.",
+    "New normal fix PR/merge, genuine fresh corrected-source checkout, required exact merged full/native/static/CI and clean/live synchronization remain gates.",
+    "AC058 stays excluded/unperformed. No freeze/tag/final-assets/publication/download acceptance."
+  ]
+}

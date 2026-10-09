@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "task": "T31",
+  "scope": "reviewer-only supplementary label/ready-gate assumption correction",
+  "original_auditor": "<REPO>\\tests\\.work\\T31-review\\audit_original.py",
+  "original_auditor_sha256": "630984a06f4143bc581049c530ca81663e4d1ea8b48c7722a6b26f5359f53399",
+  "corrected_auditor": "<REPO>\\tests\\.work\\T31-review\\audit_original_corrected_R2.py",
+  "corrected_auditor_sha256": "e36bc82d0e50b45c83b0777251c6a071c19eb658bdede3cfef5c231efb439451",
+  "preserved_failed_result": "tests/.work/T31-review/final-R2-gate-audit.json",
+  "original_issue": "All ten required actual supplementary commands",
+  "actual_labels": [
+    "ready-plan",
+    "main-live-sync",
+    "merged-PR"
+  ],
+  "assumed_labels": [
+    "plan",
+    "live-sync",
+    "pr"
+  ],
+  "actual_ready_gate": "--require-ready returns gate=ready; record validation only",
+  "changes": [
+    {
+      "before": "labels = ['handoff', 'fixture-oracles', 'candidate-helpers', 'ps51-environment', 'ps7-environment', 'plan', 'live-sync', 'pr', 'tags', 'releases']",
+      "after": "labels = ['handoff', 'fixture-oracles', 'candidate-helpers', 'ps51-environment', 'ps7-environment', 'ready-plan', 'main-live-sync', 'merged-PR', 'tags', 'releases']"
+    },
+    {
+      "before": "check(extra['python'] == '3.12.14' and extra['python_sha256'] == inventory['python_sha256'], 'Supplementary approved launching Python')",
+      "after": "check(extra['python'] == '3.12.14' and extra['python_sha256'] == inventory['python_sha256'], 'Supplementary approved launching Python')\n        digest(repo / 'tests/.work/T31-ExtrasR2.py', extra['driver_sha256'], 'Supplementary actual R2 producer bytes')"
+    },
+    {
+      "before": "shell = label.split('-')[0]\n                observation = read(row['stdout'])",
+      "after": "shell = label.split('-')[0]\n                wanted_host = Path(os.environ['SystemRoot']) / 'System32/WindowsPowerShell/v1.0/powershell.exe' if shell == 'ps51' else selected['pwsh.exe']\n                check(row['argv'] == [str(wanted_host), '-NoProfile', '-NonInteractive', '-ExecutionPolicy', 'RemoteSigned', '-File', 'docs/codex/evidence/T26-scope-reports/scripts/environment-probe.ps1'], shell + ' actual pinned direct environment probe argv')\n                observation = read(row['stdout'])"
+    },
+    {
+      "before": "elif label == 'plan':",
+      "after": "elif label == 'ready-plan':"
+    },
+    {
+      "before": "check(plan['valid'] is True and plan['gate'] == 'structure-only', 'Actual supplementary plan scope, no execution inference')",
+      "after": "check(row['argv'] == [str(python), '-B', 'tools/codex/handoff.py', 'check-plan', '--repo', '.', '--require-ready'], 'Actual required ready-plan argv')\n                check(plan['valid'] is True and plan['gate'] == 'ready', 'Actual ready record-validation gate; no application execution inference')"
+    },
+    {
+      "before": "elif label == 'live-sync':",
+      "after": "elif label == 'main-live-sync':"
+    },
+    {
+      "before": "current_sync = read(row['stdout'])",
+      "after": "check(row['argv'] == [str(python), '-B', 'tools/codex/handoff.py', 'sync', '--repo', '.'], 'Actual direct read-only main-live-sync argv')\n                current_sync = read(row['stdout'])"
+    },
+    {
+      "before": "elif label == 'pr':",
+      "after": "elif label == 'merged-PR':"
+    },
+    {
+      "before": "check(observed_pr['number'] == pr['number'] and observed_pr['state'] == 'MERGED' and observed_pr['headRefOid'] == operation['reviewed_PR_head'], 'Supplementary actual corrective PR identity/merge scope')",
+      "after": "check(observed_pr['number'] == pr['number'] and observed_pr['state'] == 'MERGED' and observed_pr['headRefOid'] == operation['reviewed_PR_head'] and observed_pr['mergeCommit']['oid'] == expected and observed_pr['baseRefName'] == 'main' and observed_pr['isDraft'] is False and observed_pr['mergedAt'] == operation['merged_at'], 'Supplementary actual corrective PR identity/normal merge/exact R2')"
+    }
+  ],
+  "limitations": "No application, test, runtime, capture producer, source receipt or frozen CI mutation. Corrected auditor must be executed separately and its actual result retained."
+}

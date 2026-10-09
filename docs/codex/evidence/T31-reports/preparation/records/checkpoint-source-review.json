@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "task": "T31",
+  "source_commit": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+  "evidence_class": "read_only_prepared_evidence_checkpoint_source_guard_review",
+  "observed_at_utc": "2026-10-09T18:45:07.062383+00:00",
+  "result": "pass_for_checkpoint_source_preparation",
+  "checks": 18,
+  "issues": [],
+  "reviewed_source": "tests/.work/T31-EvidenceCheckpoint.py",
+  "reviewed_source_sha256": "be07b96840192d91d8dd05593becee0a4aecc3515b12c16a561679b564baed2d",
+  "auditor_source_sha256": "a64ba9cff60f227d495929529111fd5782c31ec1736b3c14f669dc5d78a1a7fb",
+  "checklist": [
+    {
+      "label": "Exact accepted R2 source",
+      "result": "pass"
+    },
+    {
+      "label": "Only intended evidence branch",
+      "result": "pass"
+    },
+    {
+      "label": "Requires passed exact-R2 independent staged review",
+      "result": "pass"
+    },
+    {
+      "label": "Review supplied from ignored work",
+      "result": "pass"
+    },
+    {
+      "label": "Actual current HEAD/source/branch gate",
+      "result": "pass"
+    },
+    {
+      "label": "No unstaged changes before checkpoint",
+      "result": "pass"
+    },
+    {
+      "label": "Exact complete intended staged path set",
+      "result": "pass"
+    },
+    {
+      "label": "Actual binary staged diff equals independent accepted review",
+      "result": "pass"
+    },
+    {
+      "label": "Whitespace and ready-plan gates precede mutation",
+      "result": "pass"
+    },
+    {
+      "label": "Both actual origin routes bound to repository",
+      "result": "pass"
+    },
+    {
+      "label": "Fresh live accepted main and no conflicting prior remote evidence branch",
+      "result": "pass"
+    },
+    {
+      "label": "No unintended nonignored untracked files",
+      "result": "pass"
+    },
+    {
+      "label": "Normal intended commit/push only",
+      "result": "pass"
+    },
+    {
+      "label": "No bypass/history/deletion commands",
+      "result": "pass"
+    },
+    {
+      "label": "Postcommit clean and docs-only source surface",
+      "result": "pass"
+    },
+    {
+      "label": "Actual postpush clean/live evidence SHA and unchanged main",
+      "result": "pass"
+    },
+    {
+      "label": "Retained review/source/actual invocation stream hashes",
+      "result": "pass"
+    },
+    {
+      "label": "All preparation gates before commit and committed-source gate before push",
+      "result": "pass"
+    }
+  ],
+  "expected_staged_inventory": "Frozen manifest payloads + manifest.json + two declared postmanifest public reviews + seven record-writer outputs + existing docs/codex/evidence/.gitattributes",
+  "final_review_schema": {
+    "result": "pass",
+    "issues": [],
+    "source_commit": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+    "staged_diff_sha256": "SHA256 of actual git diff --cached --binary raw bytes"
+  },
+  "limitations": [
+    "Checkpoint was not executed by this reviewer; source preparation review cannot substitute for final staged/index/record review.",
+    "Final E1 actual HEAD/normal push/clean live proof is captured after execution in ignored receipts and session output, avoiding a self-referential public future SHA.",
+    "No extra public review payload is required outside the declared packet; local independent record reviews are retained ignored.",
+    "T32 assets/tag/draft, T33 publication/independent public downloaded operation and T34 synchronized closure remain later gates."
+  ]
+}

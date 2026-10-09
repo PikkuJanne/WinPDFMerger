@@ -1,43 +1,43 @@
 # Next session
 
-Continue exactly T31: merge accepted source and freeze release-source R.
-T01-T30 remain done; T31 in_progress, AC071 not_run, AC072 fail for the
-unaccepted first candidate, later T32-T34 pending.
-Read AGENTS/INDEX/STATUS, T31 TASKS/brief, PRODUCT_SPEC, ACCEPTANCE_CASES,
-GITHUB_WORKFLOW, TEST_STRATEGY, SECURITY_AND_DEPENDENCIES, RELEASE_RUNBOOK,
-DEFINITION_OF_DONE and evidence/T31-checkout-fix.md.
+Complete exactly T32: build exact accepted R assets, then final tag/draft.
+T01-T31 are done. AC071/072 pass; AC073-078 remain not_run.
+Read AGENTS/INDEX/STATUS, T32 TASKS/brief, PRODUCT_SPEC, ACCEPTANCE_CASES,
+GITHUB_WORKFLOW, PACKAGE_CONTRACT, RELEASE_RUNBOOK, DEFINITION_OF_DONE and
+T31 completion/results/frozen independent review evidence.
 
-PR26 was normally merged at2026-10-09T17:46:48Z. First candidate
-de5f30155c68755dbd5af691625a0651e3fb7230 is explicitly unaccepted: fresh
-Windows checkout under existing system autocrlf=true converted four pinned LF
-development fixture files, causing34pass/1failure/5errors. Presets manifest's
-pinned CRLF bytes were also normalized in Git, breaking autocrlf=false. Preserve
-these failures, partial full runs and successful scoped CI/static facts separately.
-Original receipts/producers/reviews remain under ignored tests/.work/T31-*.
+Accepted immutable source R is `95e0a19e6cc5fc01cd4bec4ac15f989f9830840a` after normal
+PR27. Full32each actual Windows PS5.1.26100.9444/pinnedPS7.6.6 pass1072perhost/
+2144total/64pairs. Static68/41 passes with349warning/175information advisory
+each; helpers85pass/1skip and both checkout regressions remain tooling. Actual
+R main-push CI37971716309 passes4jobs/20pairs/1370checks. Independent final
+reviews/public-byte audit and external clean/live-main freeze proof pass.
 
-Reuse codex/t31-fixture-checkout for the reviewed five-file -text fix and actual
-true/false fresh Git checkout regression. No pin/expectation/runtime/version/
-builder/allowlist changes. Verify the preset manifest staged bytes retain SHA
-383ec07bec823f131ab86cf07de2ffb96e10803ad4f2f4997ba834835ee01e1f.
-Dirty-base green preparation42fixture-helper passes are not final acceptance.
-Normally commit/push, verify matching live ref and clean state, review exact fix
-head and CI, then normally merge without admin bypass. Fetch/fast-forward main;
-run required full32-tier regression in actual PS5.1 and pinnedPS7.6.6 plus static,
-helpers and exact new merged CI using a genuinely fresh checkout. Identify exact
-accepted R only after required passes. No freeze/tag/draft/publication yet.
+Recheck repo/branch/clean state, origin/live refs and the prior E1 commit/push/
+clean-live proof from session output. Reuse `codex/v1.0.0-release-evidence`
+for all remaining M6 records, strictly docs/codex only. Freeze runtime/version/
+public docs/native flags/package allowlist/builder at R. Preserve the rejected
+first-R fixture failure,35partial pairs/1549passes and all preparatory failures;
+never relabel them as accepted R or native/manual evidence.
 
-After accepted R, open separate codex/v1.0.0-release-evidence branch. Changes
-then ONLY docs/codex. Future report byte-preservation rules belong in existing
-docs/codex/evidence/.gitattributes. Preserve raw/public hashes, typed JSON and
-entity-escaped XML identity/path projections; no private PDFs/native binaries.
-No record may claim its own future commit/push. Verify clean/live synchronization.
+Build in a clean detached worktree at exact R with reviewed builder/15file
+allowlist and source/dirty guards. VERSION/BUILD_INFO must identify1.0.0/full R.
+Record SHA256 of both exact final ZIP and complete SHA256SUMS before publication.
+Test those exact bytes from fresh extraction with spaces on actual Windows,
+public entries/real dependencies, merge/email/master-only/error paths, independent
+PDF inspection and unchanged sources. T28/T29 candidate8917938/harness629f506
+assets are historical and cannot substitute for final R2 bytes/operation.
 
-Reuse approved348-file caches and workspacePython3.12.14; no silent install,
-elevation or persistent policy/PATH/security/Git-config change. Ambient7.6.5 is
-not pinned7.6.6 evidence. Record actual Professional26H2/full26300.9457 and
-nonadministrator token facts without inferring account class/Insider enrollment.
-AC058 human standard-user/Explorer/viewer acceptance remains excluded,
-unperformed and never pass. Windows10/liveUNC/ARM/32-bit-host exclusions and
-unsigned/dependency/PDF/privacy limits remain. Only T32 final assets, T33 final
-publication/independent download and T34 closure complete the public v1.0.0;
-no extra ceremonial owner approval is required.
+Only after accepted exact assets inspect live releases/tags/workflows, create
+annotated v1.0.0 at R and verify its peeled full SHA. Create final draft with
+--verify-tag, upload exactly accepted ZIP/checksum bytes, redownload draft assets
+to a new directory and verify both independent hashes. Do not move a tag or
+replace conflicting same-name assets. T32 prepared is a later gate, not done now.
+
+AC058 human standard-user/Explorer/viewer is owner-excluded/unperformed, never
+pass or a later gate. Actual Windows/native/package/download/source requirements
+remain. The existing4 scoped exclusions, unsigned/dependency/PDF/privacy limits remain.
+No silent install, elevation, policy/security change or intermediate release.
+T33 publication/independent public download and actual Windows operation, then
+T34 synchronized docs-only closure E descending from R, remain required.
+No extra ceremonial owner publication permission is required within scope.

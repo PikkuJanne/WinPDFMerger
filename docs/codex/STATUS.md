@@ -1,45 +1,38 @@
 # Project status
 
 Target: published and independently verified v1.0.0 in PikkuJanne/WinPDFMerger.
-T01-T30 are done within owner-amended scope. Current milestone M5.
-T31 is in_progress. PR26 merged normally at2026-10-09T17:46:48Z to first
-candidate de5f30155c68755dbd5af691625a0651e3fb7230; it is unaccepted. Fresh
-Windows checkout exposed required fixture-byte provenance failures (34pass,
-1failure,5errors). Reviewed five-file byte-preservation fix and real fresh Git
-checkout regression are needed before a new merged source can be accepted.
-See evidence/T31-checkout-fix.md. AC071 remains not_run; AC072 is fail for the unaccepted first candidate.
-The project is not complete; no tag/release/publication is created.
+T01-T31 are done within owner-amended scope. Current milestone M6; next T32.
+The project is not complete. No tag/draft/public release is created by T31.
 
-T30 AC069/AC070 pass at clean tested C1b
-8f76ba4bce7de100cd56274ca938c4da24b500dc. All17 accepted improvements have
-scoped before-merge evidence; independent coverage/source/security/claims/package
-review finds no unresolved blocker. Public candidate-stage/date/token wording is
-corrected. The stale missing-input no-helper assertion is replaced with stronger
-version/usage/no-native/no-output/file-tree checks. Runtime/defaults are unchanged.
+Accepted release-source R is `95e0a19e6cc5fc01cd4bec4ac15f989f9830840a` after normal
+corrective PR27 merge2026-10-09T18:12:54Z. Exact reviewed C1 tree/parents and
+external final clean/live-main freeze proof pass. Runtime/version/public docs/
+allowlist/builder stay immutable at R; later edits are docs/codex only on
+`codex/v1.0.0-release-evidence`. Evidence-only E1 commit/push/live-clean proof
+follows these records and is reported in the session.
 
-Complete32-tier regression passes1072perhost/2144total in actual PS5.1.26100.9444
-and pinnedPS7.6.6;64JSON/NUnit pairs and all bad counts0. Mixed evidence classes
-remain separate. Static68files/41selectedrules perhost has0selected findings,
-with349warnings/175information advisory each retained. Helpers83pass/1symlink
-skip is developer tooling only. All348 selected cache/source/driver guards pass.
-Fresh Professional26H2/full26300.9457/nonadministrator token facts do not establish
-account class/Insider enrollment. No human walkthrough is claimed.
+AC071/072 pass: both actual32-tier Windows runs1072perhost/2144total/64pairs,
+zero bad counts, PS5.1.26100.9444 Desktop x64 and pinnedPS7.6.6 Core x64.
+Static68files/41selected rules pass;349warning/175information advisories each
+remain. Exact-R2 helpers85pass/1symlinkskip include42fixture checks and both
+actual checkout modes. Exact-R2 main CI37971716309 passes4jobs/20pairs/1370checks.
+Independent source/original/native/CI/final-gate/public reviews bind actual R2.
+Mixed local/native/controlled/unit/helper/hosted classes remain separate.
 
-C1b push/PR CI all eight jobs succeed:1370checks pertrigger/2740total, with exact
-PR synthetic-merge tree verified and downloaded original artifacts independently
-audited. Hosted Server/admin-token scope remains distinct. Failed dirty preparations
-and aborted1e4 full runs822pass/1fail perhost remain unaccepted and separately kept.
-See evidence/T30-completion.md, T30-results.json and T30-reports/review.
+Initial merged R `de5f30155c68755dbd5af691625a0651e3fb7230` was rejected after required
+fixture34pass/1fail/5errors. Stopped35pairs/1549partialpasses (726/823) and
+scoped first-R static/CI successes remain unaccepted. Reviewed checkout-byte
+fix and normal PR27 plus fresh R2 evidence close the failure. Red2errors,
+dirty-base85pass/1skip and260/72review checks remain preparation. R2 itself
+retains the earlier in-progress/fail handoff snapshot; later E1 records supersede
+that snapshot, preserving immutable source history.
 
-Case totals:66pass/4excluded/1fail/7not_run. AC058 D25 is excluded/unperformed,
-never pass; Windows10/liveUNC/ARM/32-bit-host exclusions remain. T28/T29 exact
-premerge ZIP acceptance retains its original candidate8917938/harness629f506,
-25app scenarios/21PDFs/106pages and scope; final R/download acceptance is later.
+Case totals68pass/4excluded/6later not_run;31tasks done. AC058 excluded/
+unperformed, never pass. Windows10/liveUNC/ARM/32-bit-host exclusions unchanged;
+no human account-class/Explorer/viewer or Insider-enrollment inference.
+Unsigned/dependency/PDF/signature/PDF-A/privacy limits remain.
 
-T30 C1b/C2 clean/live synchronization was recorded and PR26's exact eight checks
-were freshly verified before its normal merge. First candidate scoped static/CI
-passes do not supersede the required fixture failure. No release source is frozen;
-release state remains not_started. T31 accepted new merged source/tests,
-T32final exact assets, T33publication/independent downloaded operation and
-T34synchronized closure remain required. Unsigned/dependency/PDF/privacy limits
-remain. First-candidate partial captures and preparation failures are retained.
+See evidence/T31-completion.md, T31-results.json and frozen T31-reports.
+RELEASE_STATE not_started now records exact R with null asset hashes/URL/time.
+T32final exact-R assets/operation/tag/draft, T33publication/independent downloaded
+operation and T34synchronized closure remain required.

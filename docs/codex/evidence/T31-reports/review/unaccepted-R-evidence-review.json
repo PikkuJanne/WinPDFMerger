@@ -1,0 +1,1916 @@
+{
+  "schema_version": 1,
+  "task": "T31",
+  "source_commit": "de5f30155c68755dbd5af691625a0651e3fb7230",
+  "result": "pass_for_truthful_rejected_candidate_receipt_integrity",
+  "release_candidate_acceptance": "fail_unaccepted_first_R",
+  "AC072": "fail_required_fixture_regression_and_full_runs_incomplete",
+  "checks": 1742,
+  "issues": [],
+  "observed_at_utc": "2026-10-09T18:05:58.659693+00:00",
+  "auditor_sha256": "c6c4837ea4169be164e607e1a1b14c67ac4215669d3ce55a3412e93f80cc19e9",
+  "partial_full_hosts": [
+    {
+      "shell": "ps51",
+      "root": "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b",
+      "result": "intentionally_stopped_unaccepted_partial",
+      "requested_tiers": 32,
+      "completed_tiers": 15,
+      "passed": 726,
+      "xml_success": 726,
+      "uncompleted_requested_tiers": 17,
+      "interrupted_tier": "EmailOutcome",
+      "final_aggregate_present": false,
+      "final_outer_guards_present": false,
+      "captured_next_tier_streams_only": [
+        {
+          "path": "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/EmailOutcome.stdout.txt",
+          "sha256": "2ac6087011114624248e30f125dbf44c65323923e72283ad8119650978a6523c",
+          "bytes": 672,
+          "reports_locator_count": 0
+        },
+        {
+          "path": "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/EmailOutcome.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "reports_locator_count": 0
+        }
+      ],
+      "evidence_classes": {
+        "unit-controlled-process-and-filesystem": 545,
+        "unit-static-checker-synthetic-refusal-and-report-regressions; no native PDF-engine-support claim": 9,
+        "native-pdftk-fixture-inspection": 1,
+        "windows-entry-source-discovery-real-pdftk": 4,
+        "windows-cmd-actual-batch-controlled-ps51-receiver": 24,
+        "windows-cmd-actual-batch-entry-real-pdftk": 2,
+        "windows-entry-dependency-faults-controlled-process-and-real-pdftk": 9,
+        "windows-controlled-native-argument-process; no PDF-engine-support claim": 41,
+        "unit-controlled-native-job-and-filesystem": 12,
+        "windows-real-tool-path-prompt-integration": 26,
+        "windows-real-entry-destination-identity-ACL-junction-concurrency": 15,
+        "windows-real-pdftk-input-preflight-and-independent-pdfium-order": 22,
+        "windows-real-pdftk-gs-staging-publication-controlled-scheduling-and-filesystem": 9,
+        "windows-real-pdftk-master-validation-entry-and-independent-pdfium-order-rotation": 7
+      },
+      "completed_receipts": [
+        {
+          "tier": "Unit",
+          "passed": 545,
+          "xml_success": 545,
+          "evidence_class": "unit-controlled-process-and-filesystem",
+          "summary_path": "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/Unit.summary.json",
+          "nunit_path": "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/Unit.results.xml"
+        },
+        {
+          "tier": "Static",
+          "passed": 9,
+          "xml_success": 9,
+          "evidence_class": "unit-static-checker-synthetic-refusal-and-report-regressions; no native PDF-engine-support claim",
+          "summary_path": "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/Static.summary.json",
+          "nunit_path": "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/Static.results.xml"
+        },
+        {
+          "tier": "NativeFixture",
+          "passed": 1,
+          "xml_success": 1,
+          "evidence_class": "native-pdftk-fixture-inspection",
+          "summary_path": "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/NativeFixture.summary.json",
+          "nunit_path": "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/NativeFixture.results.xml"
+        },
+        {
+          "tier": "SourceDiscovery",
+          "passed": 4,
+          "xml_success": 4,
+          "evidence_class": "windows-entry-source-discovery-real-pdftk",
+          "summary_path": "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/SourceDiscovery.summary.json",
+          "nunit_path": "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/SourceDiscovery.results.xml"
+        },
+        {
+          "tier": "Launcher",
+          "passed": 24,
+          "xml_success": 24,
+          "evidence_class": "windows-cmd-actual-batch-controlled-ps51-receiver",
+          "summary_path": "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/Launcher.summary.json",
+          "nunit_path": "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/Launcher.results.xml"
+        },
+        {
+          "tier": "LauncherNative",
+          "passed": 2,
+          "xml_success": 2,
+          "evidence_class": "windows-cmd-actual-batch-entry-real-pdftk",
+          "summary_path": "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/LauncherNative.summary.json",
+          "nunit_path": "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/LauncherNative.results.xml"
+        },
+        {
+          "tier": "DependencyEntry",
+          "passed": 9,
+          "xml_success": 9,
+          "evidence_class": "windows-entry-dependency-faults-controlled-process-and-real-pdftk",
+          "summary_path": "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/DependencyEntry.summary.json",
+          "nunit_path": "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/DependencyEntry.results.xml"
+        },
+        {
+          "tier": "NativeRunner",
+          "passed": 41,
+          "xml_success": 41,
+          "evidence_class": "windows-controlled-native-argument-process; no PDF-engine-support claim",
+          "summary_path": "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/NativeRunner.summary.json",
+          "nunit_path": "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/NativeRunner.results.xml"
+        },
+        {
+          "tier": "ToolInvocation",
+          "passed": 12,
+          "xml_success": 12,
+          "evidence_class": "unit-controlled-native-job-and-filesystem",
+          "summary_path": "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/ToolInvocation.summary.json",
+          "nunit_path": "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/ToolInvocation.results.xml"
+        },
+        {
+          "tier": "PdftkPaths",
+          "passed": 13,
+          "xml_success": 13,
+          "evidence_class": "windows-real-tool-path-prompt-integration",
+          "summary_path": "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/PdftkPaths.summary.json",
+          "nunit_path": "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/PdftkPaths.results.xml"
+        },
+        {
+          "tier": "GhostscriptPaths",
+          "passed": 13,
+          "xml_success": 13,
+          "evidence_class": "windows-real-tool-path-prompt-integration",
+          "summary_path": "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/GhostscriptPaths.summary.json",
+          "nunit_path": "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/GhostscriptPaths.results.xml"
+        },
+        {
+          "tier": "Destination",
+          "passed": 15,
+          "xml_success": 15,
+          "evidence_class": "windows-real-entry-destination-identity-ACL-junction-concurrency",
+          "summary_path": "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/Destination.summary.json",
+          "nunit_path": "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/Destination.results.xml"
+        },
+        {
+          "tier": "InputPreflight",
+          "passed": 22,
+          "xml_success": 22,
+          "evidence_class": "windows-real-pdftk-input-preflight-and-independent-pdfium-order",
+          "summary_path": "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/InputPreflight.summary.json",
+          "nunit_path": "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/InputPreflight.results.xml"
+        },
+        {
+          "tier": "Staging",
+          "passed": 9,
+          "xml_success": 9,
+          "evidence_class": "windows-real-pdftk-gs-staging-publication-controlled-scheduling-and-filesystem",
+          "summary_path": "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/Staging.summary.json",
+          "nunit_path": "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/Staging.results.xml"
+        },
+        {
+          "tier": "MasterValidation",
+          "passed": 7,
+          "xml_success": 7,
+          "evidence_class": "windows-real-pdftk-master-validation-entry-and-independent-pdfium-order-rotation",
+          "summary_path": "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/MasterValidation.summary.json",
+          "nunit_path": "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/MasterValidation.results.xml"
+        }
+      ]
+    },
+    {
+      "shell": "ps7",
+      "root": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40",
+      "result": "intentionally_stopped_unaccepted_partial",
+      "requested_tiers": 32,
+      "completed_tiers": 20,
+      "passed": 823,
+      "xml_success": 823,
+      "uncompleted_requested_tiers": 12,
+      "interrupted_tier": "SizeReporting",
+      "final_aggregate_present": false,
+      "final_outer_guards_present": false,
+      "captured_next_tier_streams_only": [
+        {
+          "path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/SizeReporting.stdout.txt",
+          "sha256": "0def2690d01e5bebda1fd7affaf25d00cddffe5483d73bb598cfbf3e0a6692a7",
+          "bytes": 2144,
+          "reports_locator_count": 0
+        },
+        {
+          "path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/SizeReporting.stderr.txt",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "bytes": 0,
+          "reports_locator_count": 0
+        }
+      ],
+      "evidence_classes": {
+        "unit-controlled-process-and-filesystem": 545,
+        "unit-static-checker-synthetic-refusal-and-report-regressions; no native PDF-engine-support claim": 9,
+        "native-pdftk-fixture-inspection": 1,
+        "windows-entry-source-discovery-real-pdftk": 4,
+        "windows-cmd-actual-batch-controlled-ps51-receiver": 24,
+        "windows-cmd-actual-batch-entry-real-pdftk": 2,
+        "windows-entry-dependency-faults-controlled-process-and-real-pdftk": 9,
+        "windows-controlled-native-argument-process; no PDF-engine-support claim": 41,
+        "unit-controlled-native-job-and-filesystem": 12,
+        "windows-real-tool-path-prompt-integration": 26,
+        "windows-real-entry-destination-identity-ACL-junction-concurrency": 15,
+        "windows-real-pdftk-input-preflight-and-independent-pdfium-order": 22,
+        "windows-real-pdftk-gs-staging-publication-controlled-scheduling-and-filesystem": 9,
+        "windows-real-pdftk-master-validation-entry-and-independent-pdfium-order-rotation": 7,
+        "windows-real-pdftk-gs-email-outcomes-actual-batch-and-controlled-fault-scheduling": 11,
+        "unit-controlled-IO-logging-outcomes-and-real-file-locks": 32,
+        "windows-real-engines-environment-and-controlled-owned-native-cancellation": 14,
+        "unit-actual-parameter-binding-and-controlled-entry-native-decisions": 31,
+        "windows-real-entry-preset-and-defaults-actual-cmd-batch-delivery-not-Explorer": 9
+      },
+      "completed_receipts": [
+        {
+          "tier": "Unit",
+          "passed": 545,
+          "xml_success": 545,
+          "evidence_class": "unit-controlled-process-and-filesystem",
+          "summary_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/Unit.summary.json",
+          "nunit_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/Unit.results.xml"
+        },
+        {
+          "tier": "Static",
+          "passed": 9,
+          "xml_success": 9,
+          "evidence_class": "unit-static-checker-synthetic-refusal-and-report-regressions; no native PDF-engine-support claim",
+          "summary_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/Static.summary.json",
+          "nunit_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/Static.results.xml"
+        },
+        {
+          "tier": "NativeFixture",
+          "passed": 1,
+          "xml_success": 1,
+          "evidence_class": "native-pdftk-fixture-inspection",
+          "summary_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/NativeFixture.summary.json",
+          "nunit_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/NativeFixture.results.xml"
+        },
+        {
+          "tier": "SourceDiscovery",
+          "passed": 4,
+          "xml_success": 4,
+          "evidence_class": "windows-entry-source-discovery-real-pdftk",
+          "summary_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/SourceDiscovery.summary.json",
+          "nunit_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/SourceDiscovery.results.xml"
+        },
+        {
+          "tier": "Launcher",
+          "passed": 24,
+          "xml_success": 24,
+          "evidence_class": "windows-cmd-actual-batch-controlled-ps51-receiver",
+          "summary_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/Launcher.summary.json",
+          "nunit_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/Launcher.results.xml"
+        },
+        {
+          "tier": "LauncherNative",
+          "passed": 2,
+          "xml_success": 2,
+          "evidence_class": "windows-cmd-actual-batch-entry-real-pdftk",
+          "summary_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/LauncherNative.summary.json",
+          "nunit_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/LauncherNative.results.xml"
+        },
+        {
+          "tier": "DependencyEntry",
+          "passed": 9,
+          "xml_success": 9,
+          "evidence_class": "windows-entry-dependency-faults-controlled-process-and-real-pdftk",
+          "summary_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/DependencyEntry.summary.json",
+          "nunit_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/DependencyEntry.results.xml"
+        },
+        {
+          "tier": "NativeRunner",
+          "passed": 41,
+          "xml_success": 41,
+          "evidence_class": "windows-controlled-native-argument-process; no PDF-engine-support claim",
+          "summary_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/NativeRunner.summary.json",
+          "nunit_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/NativeRunner.results.xml"
+        },
+        {
+          "tier": "ToolInvocation",
+          "passed": 12,
+          "xml_success": 12,
+          "evidence_class": "unit-controlled-native-job-and-filesystem",
+          "summary_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/ToolInvocation.summary.json",
+          "nunit_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/ToolInvocation.results.xml"
+        },
+        {
+          "tier": "PdftkPaths",
+          "passed": 13,
+          "xml_success": 13,
+          "evidence_class": "windows-real-tool-path-prompt-integration",
+          "summary_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/PdftkPaths.summary.json",
+          "nunit_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/PdftkPaths.results.xml"
+        },
+        {
+          "tier": "GhostscriptPaths",
+          "passed": 13,
+          "xml_success": 13,
+          "evidence_class": "windows-real-tool-path-prompt-integration",
+          "summary_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/GhostscriptPaths.summary.json",
+          "nunit_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/GhostscriptPaths.results.xml"
+        },
+        {
+          "tier": "Destination",
+          "passed": 15,
+          "xml_success": 15,
+          "evidence_class": "windows-real-entry-destination-identity-ACL-junction-concurrency",
+          "summary_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/Destination.summary.json",
+          "nunit_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/Destination.results.xml"
+        },
+        {
+          "tier": "InputPreflight",
+          "passed": 22,
+          "xml_success": 22,
+          "evidence_class": "windows-real-pdftk-input-preflight-and-independent-pdfium-order",
+          "summary_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/InputPreflight.summary.json",
+          "nunit_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/InputPreflight.results.xml"
+        },
+        {
+          "tier": "Staging",
+          "passed": 9,
+          "xml_success": 9,
+          "evidence_class": "windows-real-pdftk-gs-staging-publication-controlled-scheduling-and-filesystem",
+          "summary_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/Staging.summary.json",
+          "nunit_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/Staging.results.xml"
+        },
+        {
+          "tier": "MasterValidation",
+          "passed": 7,
+          "xml_success": 7,
+          "evidence_class": "windows-real-pdftk-master-validation-entry-and-independent-pdfium-order-rotation",
+          "summary_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/MasterValidation.summary.json",
+          "nunit_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/MasterValidation.results.xml"
+        },
+        {
+          "tier": "EmailOutcome",
+          "passed": 11,
+          "xml_success": 11,
+          "evidence_class": "windows-real-pdftk-gs-email-outcomes-actual-batch-and-controlled-fault-scheduling",
+          "summary_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/EmailOutcome.summary.json",
+          "nunit_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/EmailOutcome.results.xml"
+        },
+        {
+          "tier": "FaultIO",
+          "passed": 32,
+          "xml_success": 32,
+          "evidence_class": "unit-controlled-IO-logging-outcomes-and-real-file-locks",
+          "summary_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/FaultIO.summary.json",
+          "nunit_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/FaultIO.results.xml"
+        },
+        {
+          "tier": "FaultRecovery",
+          "passed": 14,
+          "xml_success": 14,
+          "evidence_class": "windows-real-engines-environment-and-controlled-owned-native-cancellation",
+          "summary_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/FaultRecovery.summary.json",
+          "nunit_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/FaultRecovery.results.xml"
+        },
+        {
+          "tier": "Parameters",
+          "passed": 31,
+          "xml_success": 31,
+          "evidence_class": "unit-actual-parameter-binding-and-controlled-entry-native-decisions",
+          "summary_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/Parameters.summary.json",
+          "nunit_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/Parameters.results.xml"
+        },
+        {
+          "tier": "ParametersNative",
+          "passed": 9,
+          "xml_success": 9,
+          "evidence_class": "windows-real-entry-preset-and-defaults-actual-cmd-batch-delivery-not-Explorer",
+          "summary_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/ParametersNative.summary.json",
+          "nunit_path": "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/ParametersNative.results.xml"
+        }
+      ]
+    }
+  ],
+  "partial_full_report_pairs": 35,
+  "partial_full_passes": 1549,
+  "static_hosts": [
+    {
+      "shell": "ps51",
+      "root": "tests/.work/T31-R-static-ps51-6fca6ae64f9b43eda3625392c8dd9b57",
+      "result": "pass_for_static_scope_only",
+      "files": 68,
+      "selected_rules": 41,
+      "advisory_errors": 0,
+      "advisory_warnings": 349,
+      "advisory_information": 175
+    },
+    {
+      "shell": "ps7",
+      "root": "tests/.work/T31-R-static-ps7-4efbf387d1c24a9a9ccdd18e811020f2",
+      "result": "pass_for_static_scope_only",
+      "files": 68,
+      "selected_rules": 41,
+      "advisory_errors": 0,
+      "advisory_warnings": 349,
+      "advisory_information": 175
+    }
+  ],
+  "supplementary_results": [
+    {
+      "label": "handoff",
+      "run": 27,
+      "passed": 26,
+      "skipped": 1,
+      "failed": 0,
+      "errors": 0,
+      "exit_code": 0
+    },
+    {
+      "label": "fixture-oracles",
+      "run": 40,
+      "passed": 34,
+      "skipped": 0,
+      "failed": 1,
+      "errors": 5,
+      "exit_code": 1
+    }
+  ],
+  "supplementary_later_commands": "Not executed after real fixture/oracle failure; no83pass/1skip aggregate claimed",
+  "CI": {
+    "result": "pass_for_hosted_CI_scope_only",
+    "root": "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d",
+    "run_id": 37968677750,
+    "event": "push",
+    "api_head": "de5f30155c68755dbd5af691625a0651e3fb7230",
+    "artifact_commit": "de5f30155c68755dbd5af691625a0651e3fb7230",
+    "jobs": [
+      {
+        "path": "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-native-PS51-1/job.json",
+        "shell": "PS51",
+        "group": "native",
+        "passed": 9,
+        "administrator_token": true,
+        "os_version": "10.0.26100.0",
+        "shell_version": "5.1.26100.33438"
+      },
+      {
+        "path": "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-native-PS7-1/job.json",
+        "shell": "PS7",
+        "group": "native",
+        "passed": 9,
+        "administrator_token": true,
+        "os_version": "10.0.26100.0",
+        "shell_version": "7.6.6"
+      },
+      {
+        "path": "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS51-1/job.json",
+        "shell": "PS51",
+        "group": "unit",
+        "passed": 676,
+        "administrator_token": true,
+        "os_version": "10.0.26100.0",
+        "shell_version": "5.1.26100.33438"
+      },
+      {
+        "path": "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS7-1/job.json",
+        "shell": "PS7",
+        "group": "unit",
+        "passed": 676,
+        "administrator_token": true,
+        "os_version": "10.0.26100.0",
+        "shell_version": "7.6.6"
+      }
+    ],
+    "report_pairs": 20,
+    "passed": 1370,
+    "static_reports": [
+      {
+        "path": "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS51-1/static.json",
+        "shell": "PS51",
+        "files": 68,
+        "advisory_warnings": 349,
+        "advisory_information": 175
+      },
+      {
+        "path": "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS7-1/static.json",
+        "shell": "PS7",
+        "files": 68,
+        "advisory_warnings": 349,
+        "advisory_information": 175
+      }
+    ],
+    "receipts": [
+      {
+        "path": "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-native-PS51-1/CiNativeSmoke/summary.json",
+        "tier": "CiNativeSmoke",
+        "shell": "PS51",
+        "passed": 4,
+        "xml_success": 4,
+        "evidence_class": "windows-native-integration"
+      },
+      {
+        "path": "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-native-PS51-1/NativeFixture/summary.json",
+        "tier": "NativeFixture",
+        "shell": "PS51",
+        "passed": 1,
+        "xml_success": 1,
+        "evidence_class": "windows-native-integration"
+      },
+      {
+        "path": "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-native-PS51-1/SourceDiscovery/summary.json",
+        "tier": "SourceDiscovery",
+        "shell": "PS51",
+        "passed": 4,
+        "xml_success": 4,
+        "evidence_class": "windows-native-integration"
+      },
+      {
+        "path": "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-native-PS7-1/CiNativeSmoke/summary.json",
+        "tier": "CiNativeSmoke",
+        "shell": "PS7",
+        "passed": 4,
+        "xml_success": 4,
+        "evidence_class": "windows-native-integration"
+      },
+      {
+        "path": "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-native-PS7-1/NativeFixture/summary.json",
+        "tier": "NativeFixture",
+        "shell": "PS7",
+        "passed": 1,
+        "xml_success": 1,
+        "evidence_class": "windows-native-integration"
+      },
+      {
+        "path": "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-native-PS7-1/SourceDiscovery/summary.json",
+        "tier": "SourceDiscovery",
+        "shell": "PS7",
+        "passed": 4,
+        "xml_success": 4,
+        "evidence_class": "windows-native-integration"
+      },
+      {
+        "path": "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS51-1/Launcher/summary.json",
+        "tier": "Launcher",
+        "shell": "PS51",
+        "passed": 24,
+        "xml_success": 24,
+        "evidence_class": "controlled-launcher"
+      },
+      {
+        "path": "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS51-1/NativeRunner/summary.json",
+        "tier": "NativeRunner",
+        "shell": "PS51",
+        "passed": 41,
+        "xml_success": 41,
+        "evidence_class": "controlled-native-process"
+      },
+      {
+        "path": "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS51-1/PublicDocs/summary.json",
+        "tier": "PublicDocs",
+        "shell": "PS51",
+        "passed": 24,
+        "xml_success": 24,
+        "evidence_class": "documentation"
+      },
+      {
+        "path": "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS51-1/Static/summary.json",
+        "tier": "Static",
+        "shell": "PS51",
+        "passed": 9,
+        "xml_success": 9,
+        "evidence_class": "static"
+      },
+      {
+        "path": "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS51-1/ToolInvocation/summary.json",
+        "tier": "ToolInvocation",
+        "shell": "PS51",
+        "passed": 12,
+        "xml_success": 12,
+        "evidence_class": "unit-controlled"
+      },
+      {
+        "path": "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS51-1/Unit/summary.json",
+        "tier": "Unit",
+        "shell": "PS51",
+        "passed": 545,
+        "xml_success": 545,
+        "evidence_class": "unit-controlled"
+      },
+      {
+        "path": "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS51-1/Version/summary.json",
+        "tier": "Version",
+        "shell": "PS51",
+        "passed": 21,
+        "xml_success": 21,
+        "evidence_class": "static-version-contract-and-preflight; no native PDF execution"
+      },
+      {
+        "path": "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS7-1/Launcher/summary.json",
+        "tier": "Launcher",
+        "shell": "PS7",
+        "passed": 24,
+        "xml_success": 24,
+        "evidence_class": "controlled-launcher"
+      },
+      {
+        "path": "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS7-1/NativeRunner/summary.json",
+        "tier": "NativeRunner",
+        "shell": "PS7",
+        "passed": 41,
+        "xml_success": 41,
+        "evidence_class": "controlled-native-process"
+      },
+      {
+        "path": "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS7-1/PublicDocs/summary.json",
+        "tier": "PublicDocs",
+        "shell": "PS7",
+        "passed": 24,
+        "xml_success": 24,
+        "evidence_class": "documentation"
+      },
+      {
+        "path": "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS7-1/Static/summary.json",
+        "tier": "Static",
+        "shell": "PS7",
+        "passed": 9,
+        "xml_success": 9,
+        "evidence_class": "static"
+      },
+      {
+        "path": "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS7-1/ToolInvocation/summary.json",
+        "tier": "ToolInvocation",
+        "shell": "PS7",
+        "passed": 12,
+        "xml_success": 12,
+        "evidence_class": "unit-controlled"
+      },
+      {
+        "path": "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS7-1/Unit/summary.json",
+        "tier": "Unit",
+        "shell": "PS7",
+        "passed": 545,
+        "xml_success": 545,
+        "evidence_class": "unit-controlled"
+      },
+      {
+        "path": "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS7-1/Version/summary.json",
+        "tier": "Version",
+        "shell": "PS7",
+        "passed": 21,
+        "xml_success": 21,
+        "evidence_class": "static-version-contract-and-preflight; no native PDF execution"
+      }
+    ],
+    "original_files": 50
+  },
+  "cancellations": [
+    {
+      "root": "tests/.work/T31-cancel-2fdd0525c8c64fbabeb745f673a18809",
+      "shell": "ps51",
+      "selected_producer_pid": 10280,
+      "terminated_success_lines": 4,
+      "reported_tool_exit_code": 1,
+      "tool_exit_source": "Parent actual tool result; exit code not independently stored in these raw stream files",
+      "unsupported_child_pid": 7752,
+      "scope": "Intentional bounded capture-tree stop after independent fixture failure; no acceptance or retry claim"
+    },
+    {
+      "root": "tests/.work/T31-cancel-196d1617ad434f67a1d75eee94605094",
+      "shell": "ps7",
+      "selected_producer_pid": 12492,
+      "terminated_success_lines": 4,
+      "reported_tool_exit_code": 0,
+      "tool_exit_source": "Captured cancellation.json actual exit/argv, independently matched to target and raw stream hashes",
+      "unsupported_child_pid": null,
+      "scope": "Intentional bounded capture-tree stop after independent fixture failure; no acceptance or retry claim"
+    }
+  ],
+  "fixture_failure_finding": "tests/.work/T31-review/unaccepted-R-checkout-finding.json",
+  "files": {
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/driver.py": {
+      "sha256": "7aa94329c9a493d9e864e81e9fe424d2d2adb9c3dfce42e7ac84641ca4de72c5",
+      "bytes": 9073
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/Unit.stdout.txt": {
+      "sha256": "36c1a0d1d6a015c162e9df472ba9185cd2d2580f619c22fc4d0ee74ff4a3d37c",
+      "bytes": 117941
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/Unit.stderr.txt": {
+      "sha256": "77183575c20bd134e7ac40ef0ecb2951b086d6d0c03c5fcd67cfcf703592c5b9",
+      "bytes": 927
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/Unit.summary.json": {
+      "sha256": "e5dccc1a36700d6e622f589de63548c2b9014bcd5b29c1147e4336dbffdca655",
+      "bytes": 70666
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/Unit.results.xml": {
+      "sha256": "e4830c4d9e9d0ac5032d594400e2e78f1c046dfb0acb727419bae76e5b3cc619",
+      "bytes": 227035
+    },
+    "tests/.work/pester/c0bc680b4ce944de9d1a224f57707c88/summary.json": {
+      "sha256": "e5dccc1a36700d6e622f589de63548c2b9014bcd5b29c1147e4336dbffdca655",
+      "bytes": 70666
+    },
+    "tests/.work/pester/c0bc680b4ce944de9d1a224f57707c88/results.xml": {
+      "sha256": "e4830c4d9e9d0ac5032d594400e2e78f1c046dfb0acb727419bae76e5b3cc619",
+      "bytes": 227035
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/Static.stdout.txt": {
+      "sha256": "66a9d6e6b8fa6ba0502dbd9757ea7aaa916eca51b0cd053633adf5392afaa5fa",
+      "bytes": 71801
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/Static.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/Static.summary.json": {
+      "sha256": "aad7c5f4b7b4f2ae00a9adc0881f2482106c6e4efb9427ab89caa3ef7af0531b",
+      "bytes": 70722
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/Static.results.xml": {
+      "sha256": "1bcd9d5ef2045a5dad01c4891835483d566d012421d7645c641e47f3eff6b154",
+      "bytes": 4346
+    },
+    "tests/.work/pester/c5fcfac57d00420a8c0bc3cc5188fb5a/summary.json": {
+      "sha256": "aad7c5f4b7b4f2ae00a9adc0881f2482106c6e4efb9427ab89caa3ef7af0531b",
+      "bytes": 70722
+    },
+    "tests/.work/pester/c5fcfac57d00420a8c0bc3cc5188fb5a/results.xml": {
+      "sha256": "1bcd9d5ef2045a5dad01c4891835483d566d012421d7645c641e47f3eff6b154",
+      "bytes": 4346
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/NativeFixture.stdout.txt": {
+      "sha256": "e8640bd179a62cb7fd4db19cff954f069c81ea713b8f56de462b02a5f04e8cc9",
+      "bytes": 71220
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/NativeFixture.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/NativeFixture.summary.json": {
+      "sha256": "fe3d74650ee46600a7204e6545e4285bb1ff43cf925f16699c65b75a1151c4be",
+      "bytes": 70664
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/NativeFixture.results.xml": {
+      "sha256": "c1b41a9f6de008ec4a85d78d44e0b1c017c2603a3b63d26a104f6b2926260264",
+      "bytes": 1827
+    },
+    "tests/.work/pester/12803c7b38cc4c029a1870919956e28b/summary.json": {
+      "sha256": "fe3d74650ee46600a7204e6545e4285bb1ff43cf925f16699c65b75a1151c4be",
+      "bytes": 70664
+    },
+    "tests/.work/pester/12803c7b38cc4c029a1870919956e28b/results.xml": {
+      "sha256": "c1b41a9f6de008ec4a85d78d44e0b1c017c2603a3b63d26a104f6b2926260264",
+      "bytes": 1827
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/SourceDiscovery.stdout.txt": {
+      "sha256": "017457b084961544d21fbf43f5db1bb850493470df65772bfd17458df462e896",
+      "bytes": 71548
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/SourceDiscovery.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/SourceDiscovery.summary.json": {
+      "sha256": "ee0d480263345119e75f313a9787c499e46b6236bd1a181c8b0fb1a022179a59",
+      "bytes": 70676
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/SourceDiscovery.results.xml": {
+      "sha256": "fbdb3c002ca2a007c2bc81496bfd320df2d02eeb5396e465c5fb6725544493bc",
+      "bytes": 2934
+    },
+    "tests/.work/pester/fa616b382f734e86899ce63793ce6b2c/summary.json": {
+      "sha256": "ee0d480263345119e75f313a9787c499e46b6236bd1a181c8b0fb1a022179a59",
+      "bytes": 70676
+    },
+    "tests/.work/pester/fa616b382f734e86899ce63793ce6b2c/results.xml": {
+      "sha256": "fbdb3c002ca2a007c2bc81496bfd320df2d02eeb5396e465c5fb6725544493bc",
+      "bytes": 2934
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/Launcher.stdout.txt": {
+      "sha256": "c846ba4109aef7534ee12df0e0d115e4054ceeb6fd40a83225725e437ffa903d",
+      "bytes": 73441
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/Launcher.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/Launcher.summary.json": {
+      "sha256": "d7b0e0d7ff8d085ca57ccc970a9f54dda14f1ec5dd21fe6be97a050a5df2373f",
+      "bytes": 70679
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/Launcher.results.xml": {
+      "sha256": "e525a33ee6edff29245669b764692e73b10d5e1fe28b705c0a8fb20a2f87bd56",
+      "bytes": 10898
+    },
+    "tests/.work/pester/2a17b75ad31849e0b89ee9b832eed9b0/summary.json": {
+      "sha256": "d7b0e0d7ff8d085ca57ccc970a9f54dda14f1ec5dd21fe6be97a050a5df2373f",
+      "bytes": 70679
+    },
+    "tests/.work/pester/2a17b75ad31849e0b89ee9b832eed9b0/results.xml": {
+      "sha256": "e525a33ee6edff29245669b764692e73b10d5e1fe28b705c0a8fb20a2f87bd56",
+      "bytes": 10898
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/LauncherNative.stdout.txt": {
+      "sha256": "41ef0fbec57aafbb824bf2f0a5241a253a96ad22ffcccc3b11cfcaf9c2d8e38f",
+      "bytes": 71363
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/LauncherNative.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/LauncherNative.summary.json": {
+      "sha256": "9499c80b42dce6ca1ff3bfda86fb87018e24bb0a4112d40e4f2f35a09ff6d314",
+      "bytes": 70675
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/LauncherNative.results.xml": {
+      "sha256": "5b1c6007e7ff373671bb9aa0b6276266a84e818a1298ee470408effaf95639eb",
+      "bytes": 2295
+    },
+    "tests/.work/pester/f540d07927004219885134e3c334cd1a/summary.json": {
+      "sha256": "9499c80b42dce6ca1ff3bfda86fb87018e24bb0a4112d40e4f2f35a09ff6d314",
+      "bytes": 70675
+    },
+    "tests/.work/pester/f540d07927004219885134e3c334cd1a/results.xml": {
+      "sha256": "5b1c6007e7ff373671bb9aa0b6276266a84e818a1298ee470408effaf95639eb",
+      "bytes": 2295
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/DependencyEntry.stdout.txt": {
+      "sha256": "b7a79ebbdc619cf94b729fb084676e3316adbd4f8169bb3fe38f0ba6ac6c9913",
+      "bytes": 72443
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/DependencyEntry.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/DependencyEntry.summary.json": {
+      "sha256": "80b768a03b708ea307aca196192a22a996654e755bb19bf6de3dda89276b3d12",
+      "bytes": 70700
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/DependencyEntry.results.xml": {
+      "sha256": "01a3defda8688bf9264b33267ec2800db639eb3c3cb888ad716adfc0d73f11db",
+      "bytes": 6164
+    },
+    "tests/.work/pester/3b92f31f7d204e7588a1aaf717b176fc/summary.json": {
+      "sha256": "80b768a03b708ea307aca196192a22a996654e755bb19bf6de3dda89276b3d12",
+      "bytes": 70700
+    },
+    "tests/.work/pester/3b92f31f7d204e7588a1aaf717b176fc/results.xml": {
+      "sha256": "01a3defda8688bf9264b33267ec2800db639eb3c3cb888ad716adfc0d73f11db",
+      "bytes": 6164
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/NativeRunner.stdout.txt": {
+      "sha256": "bce985ad286f9ee1585e69b3bf25586fd5262528b82cdd99f0ea8e0eaedc7bab",
+      "bytes": 75372
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/NativeRunner.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/NativeRunner.summary.json": {
+      "sha256": "6f77a2b9b8771dca825fe5ba2eb0fa046a2b52e59b02d72baeee438f1d956479",
+      "bytes": 70969
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/NativeRunner.results.xml": {
+      "sha256": "b5b5c537ee8c8399cbfd138a7540ebcfdd48226767de912fc6a0520d17be1d8f",
+      "bytes": 18757
+    },
+    "tests/.work/pester/1079886d6d994ea7b5cf8810611e2868/summary.json": {
+      "sha256": "6f77a2b9b8771dca825fe5ba2eb0fa046a2b52e59b02d72baeee438f1d956479",
+      "bytes": 70969
+    },
+    "tests/.work/pester/1079886d6d994ea7b5cf8810611e2868/results.xml": {
+      "sha256": "b5b5c537ee8c8399cbfd138a7540ebcfdd48226767de912fc6a0520d17be1d8f",
+      "bytes": 18757
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/ToolInvocation.stdout.txt": {
+      "sha256": "103ea531f413786be88bae8291261b6ed0ae37877e68482693eb6a9e145f90c7",
+      "bytes": 72276
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/ToolInvocation.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/ToolInvocation.summary.json": {
+      "sha256": "3bd0130ec56b772a830287febab9cc4f3c699ab74c5abb096cdeadb7bd6d3306",
+      "bytes": 70677
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/ToolInvocation.results.xml": {
+      "sha256": "e30c42c6362b10737fdc7b9c7fec75b3168713678da6bfd28f34ae761d882097",
+      "bytes": 7822
+    },
+    "tests/.work/pester/a28d782d0f7e4762908d661c9b7d063c/summary.json": {
+      "sha256": "3bd0130ec56b772a830287febab9cc4f3c699ab74c5abb096cdeadb7bd6d3306",
+      "bytes": 70677
+    },
+    "tests/.work/pester/a28d782d0f7e4762908d661c9b7d063c/results.xml": {
+      "sha256": "e30c42c6362b10737fdc7b9c7fec75b3168713678da6bfd28f34ae761d882097",
+      "bytes": 7822
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/PdftkPaths.stdout.txt": {
+      "sha256": "20f7251824c4ac2f03ca9a189bf4ae5728ef6afd4f812ae6a6a4dac9e9ce55f0",
+      "bytes": 72878
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/PdftkPaths.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/PdftkPaths.summary.json": {
+      "sha256": "1191e97b07727e55bca9f3f9ed74369ee54d764aa973e143339c1bb59e900a12",
+      "bytes": 70673
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/PdftkPaths.results.xml": {
+      "sha256": "4bd3e3b111fec43c2c5c1a44009406b0058794a19d464a7bb3139f11237d92f1",
+      "bytes": 7832
+    },
+    "tests/.work/pester/70a177c1a6e94572998c346c620bd2ff/summary.json": {
+      "sha256": "1191e97b07727e55bca9f3f9ed74369ee54d764aa973e143339c1bb59e900a12",
+      "bytes": 70673
+    },
+    "tests/.work/pester/70a177c1a6e94572998c346c620bd2ff/results.xml": {
+      "sha256": "4bd3e3b111fec43c2c5c1a44009406b0058794a19d464a7bb3139f11237d92f1",
+      "bytes": 7832
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/GhostscriptPaths.stdout.txt": {
+      "sha256": "651bcef32f955f478f0528d6f24fe556ba207421369752184b5096220e109333",
+      "bytes": 72894
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/GhostscriptPaths.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/GhostscriptPaths.summary.json": {
+      "sha256": "67cf9a39e9971c86d71b0c30cb7c75f9eb9c58213862c02f058186afda6d2d09",
+      "bytes": 70679
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/GhostscriptPaths.results.xml": {
+      "sha256": "47e26fa9bbc90effd6a774e5da932c50daa05ae2aaa943feb18a6f5b33876ab9",
+      "bytes": 7831
+    },
+    "tests/.work/pester/7c44df0662d546dc95f0655de06815c6/summary.json": {
+      "sha256": "67cf9a39e9971c86d71b0c30cb7c75f9eb9c58213862c02f058186afda6d2d09",
+      "bytes": 70679
+    },
+    "tests/.work/pester/7c44df0662d546dc95f0655de06815c6/results.xml": {
+      "sha256": "47e26fa9bbc90effd6a774e5da932c50daa05ae2aaa943feb18a6f5b33876ab9",
+      "bytes": 7831
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/Destination.stdout.txt": {
+      "sha256": "76d74071f709b5ad44e4a9e20ea0f9ebae9c6767bbace59eb21351dfd2f5d340",
+      "bytes": 72929
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/Destination.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/Destination.summary.json": {
+      "sha256": "7c4d7ac6b1aca77e8daff32bbbf63f637e697bcf3329fd50511210dd5aa960d1",
+      "bytes": 70697
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/Destination.results.xml": {
+      "sha256": "69181ec03d6e097ac2425a7586dd9b445326c1e66100b40e155a62d842096537",
+      "bytes": 9299
+    },
+    "tests/.work/pester/a8b2c0c05b3d44a98cd575e97664366d/summary.json": {
+      "sha256": "7c4d7ac6b1aca77e8daff32bbbf63f637e697bcf3329fd50511210dd5aa960d1",
+      "bytes": 70697
+    },
+    "tests/.work/pester/a8b2c0c05b3d44a98cd575e97664366d/results.xml": {
+      "sha256": "69181ec03d6e097ac2425a7586dd9b445326c1e66100b40e155a62d842096537",
+      "bytes": 9299
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/InputPreflight.stdout.txt": {
+      "sha256": "e75f310be9da4536bd095522f097b062fbb4b247cd9665ee1bd5e9e86fccd7e0",
+      "bytes": 73543
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/InputPreflight.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/InputPreflight.summary.json": {
+      "sha256": "58cfde4df6c4139b42d5d392c397de2bc1b24587eb8462b150c7762253c21af3",
+      "bytes": 70699
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/InputPreflight.results.xml": {
+      "sha256": "4da4f58a8148dc161d921b4fe4838530ff34b3f1cdd3dce4fb0beeedf4ffb54f",
+      "bytes": 11163
+    },
+    "tests/.work/pester/2154cc07bfaf4486b95c203ca9e8fb9d/summary.json": {
+      "sha256": "58cfde4df6c4139b42d5d392c397de2bc1b24587eb8462b150c7762253c21af3",
+      "bytes": 70699
+    },
+    "tests/.work/pester/2154cc07bfaf4486b95c203ca9e8fb9d/results.xml": {
+      "sha256": "4da4f58a8148dc161d921b4fe4838530ff34b3f1cdd3dce4fb0beeedf4ffb54f",
+      "bytes": 11163
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/Staging.stdout.txt": {
+      "sha256": "6a68f99f49a65d58b5145fc58ac8c6ec5553a7fbcd4789213347173c1244804b",
+      "bytes": 72350
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/Staging.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/Staging.summary.json": {
+      "sha256": "b0323e800603beb1b1530f26464b3f8acf42ecebe14f91982e03bc4ad3e3201b",
+      "bytes": 70705
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/Staging.results.xml": {
+      "sha256": "005bd0e9cf8c6cbf538f071aa41906b9b6d0752c27b55dc4722c3ae463b36592",
+      "bytes": 6504
+    },
+    "tests/.work/pester/02c02922e0e949ab84f45437d52c6372/summary.json": {
+      "sha256": "b0323e800603beb1b1530f26464b3f8acf42ecebe14f91982e03bc4ad3e3201b",
+      "bytes": 70705
+    },
+    "tests/.work/pester/02c02922e0e949ab84f45437d52c6372/results.xml": {
+      "sha256": "005bd0e9cf8c6cbf538f071aa41906b9b6d0752c27b55dc4722c3ae463b36592",
+      "bytes": 6504
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/MasterValidation.stdout.txt": {
+      "sha256": "11950326660789401caa88ddcaaf143b086e316b0e4c4de89bbb1391d6ea5ced",
+      "bytes": 72095
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/MasterValidation.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/MasterValidation.summary.json": {
+      "sha256": "727ff28562eb0a8c744daba39ab44d0c6af5e99e14c11ce7c7d2330921a953d8",
+      "bytes": 70716
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/MasterValidation.results.xml": {
+      "sha256": "fea8724a44a4767b0617288d68543ffc89a7b7ed7bedd7859ffac7a107134aee",
+      "bytes": 5301
+    },
+    "tests/.work/pester/5f91586625414a4aa4777f5429e814c6/summary.json": {
+      "sha256": "727ff28562eb0a8c744daba39ab44d0c6af5e99e14c11ce7c7d2330921a953d8",
+      "bytes": 70716
+    },
+    "tests/.work/pester/5f91586625414a4aa4777f5429e814c6/results.xml": {
+      "sha256": "fea8724a44a4767b0617288d68543ffc89a7b7ed7bedd7859ffac7a107134aee",
+      "bytes": 5301
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/EmailOutcome.stdout.txt": {
+      "sha256": "2ac6087011114624248e30f125dbf44c65323923e72283ad8119650978a6523c",
+      "bytes": 672
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/EmailOutcome.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/metadata.json": {
+      "sha256": "cb0ef0d084177443dfa64408885367f63946034a3c1ebef3d7d7bb943ca748af",
+      "bytes": 53076
+    },
+    "tests/.work/T31-R-ps51-f1bf443df93546b38b5e0864886a0b4b/runs.json": {
+      "sha256": "516f3ac6265d25ae2987401ef645305d61f77efdcb8b80150af5881348497351",
+      "bytes": 648663
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/driver.py": {
+      "sha256": "7aa94329c9a493d9e864e81e9fe424d2d2adb9c3dfce42e7ac84641ca4de72c5",
+      "bytes": 9073
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/Unit.stdout.txt": {
+      "sha256": "d7e5fc95926aecdbb21b1764c85d44fe700f26e0dedc29b66c21ac4c3f13a038",
+      "bytes": 85165
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/Unit.stderr.txt": {
+      "sha256": "77183575c20bd134e7ac40ef0ecb2951b086d6d0c03c5fcd67cfcf703592c5b9",
+      "bytes": 927
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/Unit.summary.json": {
+      "sha256": "70c5195a5035a23995ab781fa44ebd972a0853d5bf36c293246ffbbee4e5a724",
+      "bytes": 37331
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/Unit.results.xml": {
+      "sha256": "088f7ec4e02bb88c9166ca95a63f03b67c3156a9ffdcdb145fc28625a545f242",
+      "bytes": 227047
+    },
+    "tests/.work/pester/8fbccd4e0ee54a899b526bcfb408fd28/summary.json": {
+      "sha256": "70c5195a5035a23995ab781fa44ebd972a0853d5bf36c293246ffbbee4e5a724",
+      "bytes": 37331
+    },
+    "tests/.work/pester/8fbccd4e0ee54a899b526bcfb408fd28/results.xml": {
+      "sha256": "088f7ec4e02bb88c9166ca95a63f03b67c3156a9ffdcdb145fc28625a545f242",
+      "bytes": 227047
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/Static.stdout.txt": {
+      "sha256": "f24e97db422b2775fb71f86be40e3d45bbed98af4779e0cfd6529991383423b7",
+      "bytes": 38486
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/Static.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/Static.summary.json": {
+      "sha256": "a49459b2543e382d72284f3e085820e20dff01be7aa9d2a0adccb0f68eafaf30",
+      "bytes": 37387
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/Static.results.xml": {
+      "sha256": "e935778bdc386a1f9d2be4303f0627ad20313826a04680539fa312ebac6c58c8",
+      "bytes": 4338
+    },
+    "tests/.work/pester/2328da0cbed94250840f7c3c40fd96ac/summary.json": {
+      "sha256": "a49459b2543e382d72284f3e085820e20dff01be7aa9d2a0adccb0f68eafaf30",
+      "bytes": 37387
+    },
+    "tests/.work/pester/2328da0cbed94250840f7c3c40fd96ac/results.xml": {
+      "sha256": "e935778bdc386a1f9d2be4303f0627ad20313826a04680539fa312ebac6c58c8",
+      "bytes": 4338
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/NativeFixture.stdout.txt": {
+      "sha256": "c2971a34c8bb51728c7d5a964de95de29fd64b7b7f9640ee988fa96bfe7d01f2",
+      "bytes": 37897
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/NativeFixture.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/NativeFixture.summary.json": {
+      "sha256": "0f2b65d0476a3e2198b4465c460ba94ba0b260ce5874a780c8f855e461bf99b8",
+      "bytes": 37329
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/NativeFixture.results.xml": {
+      "sha256": "a595dea4625649181e34913cd918b7b72980e22dfd31c371800024826de005ee",
+      "bytes": 1819
+    },
+    "tests/.work/pester/8e5abbc58dbc400aa839a34f5f64afe5/summary.json": {
+      "sha256": "0f2b65d0476a3e2198b4465c460ba94ba0b260ce5874a780c8f855e461bf99b8",
+      "bytes": 37329
+    },
+    "tests/.work/pester/8e5abbc58dbc400aa839a34f5f64afe5/results.xml": {
+      "sha256": "a595dea4625649181e34913cd918b7b72980e22dfd31c371800024826de005ee",
+      "bytes": 1819
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/SourceDiscovery.stdout.txt": {
+      "sha256": "e02bb7d15c5f0a2f7029c487fe33c35c4c7f324916ca2b08c50655eaf56fd677",
+      "bytes": 38227
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/SourceDiscovery.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/SourceDiscovery.summary.json": {
+      "sha256": "441662f43c9946262b497ebc76e6f62296d6890e10a0cfb0489361c0a1d21966",
+      "bytes": 37341
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/SourceDiscovery.results.xml": {
+      "sha256": "e70674b3519d99491a7ff317179d4f2cb5376dab933bbf9875aaebf07d1e0a78",
+      "bytes": 2927
+    },
+    "tests/.work/pester/da8f8b43e0b84d3c8a5a35f7886e82ab/summary.json": {
+      "sha256": "441662f43c9946262b497ebc76e6f62296d6890e10a0cfb0489361c0a1d21966",
+      "bytes": 37341
+    },
+    "tests/.work/pester/da8f8b43e0b84d3c8a5a35f7886e82ab/results.xml": {
+      "sha256": "e70674b3519d99491a7ff317179d4f2cb5376dab933bbf9875aaebf07d1e0a78",
+      "bytes": 2927
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/Launcher.stdout.txt": {
+      "sha256": "edd3ccadf105d629ee6d0c68fee1bcf59e8607db4f3ba929a5d23f4d70701977",
+      "bytes": 40145
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/Launcher.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/Launcher.summary.json": {
+      "sha256": "6433d73ce2439f49692287403ad3b68b64938e6be12e23773c24cf4b39c359a6",
+      "bytes": 37344
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/Launcher.results.xml": {
+      "sha256": "7580e94f045496717b3bc9b228db627def0e0573dbe487014ddc13e49d19ca22",
+      "bytes": 10888
+    },
+    "tests/.work/pester/aba0577be8364c538e4f139d02b732c7/summary.json": {
+      "sha256": "6433d73ce2439f49692287403ad3b68b64938e6be12e23773c24cf4b39c359a6",
+      "bytes": 37344
+    },
+    "tests/.work/pester/aba0577be8364c538e4f139d02b732c7/results.xml": {
+      "sha256": "7580e94f045496717b3bc9b228db627def0e0573dbe487014ddc13e49d19ca22",
+      "bytes": 10888
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/LauncherNative.stdout.txt": {
+      "sha256": "24ee182620fd8235e85557f472a057901051d73a051a5a4996a88ad3130206ce",
+      "bytes": 38042
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/LauncherNative.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/LauncherNative.summary.json": {
+      "sha256": "de4b5bb5c22e449b99689ca9e84b17975741ce4724ce35bb108c463ea172d2a5",
+      "bytes": 37340
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/LauncherNative.results.xml": {
+      "sha256": "54e5de92cac40ea811600a7f42502a49b90254fc03ff67b5aa3a94f6ee555c26",
+      "bytes": 2287
+    },
+    "tests/.work/pester/9d015c1e703649218bc4d731e6e54209/summary.json": {
+      "sha256": "de4b5bb5c22e449b99689ca9e84b17975741ce4724ce35bb108c463ea172d2a5",
+      "bytes": 37340
+    },
+    "tests/.work/pester/9d015c1e703649218bc4d731e6e54209/results.xml": {
+      "sha256": "54e5de92cac40ea811600a7f42502a49b90254fc03ff67b5aa3a94f6ee555c26",
+      "bytes": 2287
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/DependencyEntry.stdout.txt": {
+      "sha256": "a54e98dadb4e88997810a2714138d3f875f4f877604124b1771272afc3a7443d",
+      "bytes": 39134
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/DependencyEntry.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/DependencyEntry.summary.json": {
+      "sha256": "aa073796f0d5a3225168b7704f13f0260bf5534ddc501bde408177fac758613c",
+      "bytes": 37365
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/DependencyEntry.results.xml": {
+      "sha256": "84374f6db7061cdb10560d16ff0d80a37eb6d1b689454c3114691dbe46ca7013",
+      "bytes": 6158
+    },
+    "tests/.work/pester/9466786e2adf4e43a7eabc9d77d3469e/summary.json": {
+      "sha256": "aa073796f0d5a3225168b7704f13f0260bf5534ddc501bde408177fac758613c",
+      "bytes": 37365
+    },
+    "tests/.work/pester/9466786e2adf4e43a7eabc9d77d3469e/results.xml": {
+      "sha256": "84374f6db7061cdb10560d16ff0d80a37eb6d1b689454c3114691dbe46ca7013",
+      "bytes": 6158
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/NativeRunner.stdout.txt": {
+      "sha256": "7b6079dcb04dca541c5a732a851e0b6b3ebf056907bd990c0eb730db1084be5f",
+      "bytes": 42086
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/NativeRunner.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/NativeRunner.summary.json": {
+      "sha256": "732ffe5b48e883d9ad6f94352f4db172ca2825608f76ba38eeb63f8420a4fd78",
+      "bytes": 37628
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/NativeRunner.results.xml": {
+      "sha256": "e3f452425ef525a10902aa9e0114aa6b23ebb3c578087ee194311293154c62ec",
+      "bytes": 18751
+    },
+    "tests/.work/pester/6eae447458a24f5e8b9c2a8f1b5dfe37/summary.json": {
+      "sha256": "732ffe5b48e883d9ad6f94352f4db172ca2825608f76ba38eeb63f8420a4fd78",
+      "bytes": 37628
+    },
+    "tests/.work/pester/6eae447458a24f5e8b9c2a8f1b5dfe37/results.xml": {
+      "sha256": "e3f452425ef525a10902aa9e0114aa6b23ebb3c578087ee194311293154c62ec",
+      "bytes": 18751
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/ToolInvocation.stdout.txt": {
+      "sha256": "6c93e302a6577c08c11ff186a9f97d3983cf5de43c0c257057766e23ffd79d0c",
+      "bytes": 38964
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/ToolInvocation.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/ToolInvocation.summary.json": {
+      "sha256": "c6eba1a963ebbb11e7fb4e5f65fee3e6c8311abc0200d50150df14ede4ec6e5a",
+      "bytes": 37342
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/ToolInvocation.results.xml": {
+      "sha256": "c72fffde3eaf09bdf3cd48cf892cc55e818bba23d2cffc2f898326ff1b3022dd",
+      "bytes": 7813
+    },
+    "tests/.work/pester/ad4c5b0ca0e248c1b8f605787b39ea1c/summary.json": {
+      "sha256": "c6eba1a963ebbb11e7fb4e5f65fee3e6c8311abc0200d50150df14ede4ec6e5a",
+      "bytes": 37342
+    },
+    "tests/.work/pester/ad4c5b0ca0e248c1b8f605787b39ea1c/results.xml": {
+      "sha256": "c72fffde3eaf09bdf3cd48cf892cc55e818bba23d2cffc2f898326ff1b3022dd",
+      "bytes": 7813
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/PdftkPaths.stdout.txt": {
+      "sha256": "0b51102fff3a21e6157d0ef87a5893a1c8a4dd2128b353a65f131ecc4dfcd03f",
+      "bytes": 39572
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/PdftkPaths.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/PdftkPaths.summary.json": {
+      "sha256": "b46e97f401750fd6c5eed19627ed31c05d103287e2d20a6b6e24018948b92ef8",
+      "bytes": 37338
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/PdftkPaths.results.xml": {
+      "sha256": "af061d409b5eedb119e3ed4faf522cf11030f72a5c8754c964351fc7d254d992",
+      "bytes": 7825
+    },
+    "tests/.work/pester/8fc59bf6701c44e6ad70e055c32c1bc6/summary.json": {
+      "sha256": "b46e97f401750fd6c5eed19627ed31c05d103287e2d20a6b6e24018948b92ef8",
+      "bytes": 37338
+    },
+    "tests/.work/pester/8fc59bf6701c44e6ad70e055c32c1bc6/results.xml": {
+      "sha256": "af061d409b5eedb119e3ed4faf522cf11030f72a5c8754c964351fc7d254d992",
+      "bytes": 7825
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/GhostscriptPaths.stdout.txt": {
+      "sha256": "14aa56fa82c429d3eaa02a0070bf84eb0eae523f4bc8592f0a8e35f42e9febb0",
+      "bytes": 39587
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/GhostscriptPaths.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/GhostscriptPaths.summary.json": {
+      "sha256": "17fa3bfa38ea152eae61b9702fdf7b12d6635360d5f3e25ff0a264684e859ca9",
+      "bytes": 37344
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/GhostscriptPaths.results.xml": {
+      "sha256": "68c83cde7d9a00d2c175c14ce3e4dbadef327187c229d9f7d734c5a0fcee8a68",
+      "bytes": 7828
+    },
+    "tests/.work/pester/3e00148b28974dc3bbeace025cf016de/summary.json": {
+      "sha256": "17fa3bfa38ea152eae61b9702fdf7b12d6635360d5f3e25ff0a264684e859ca9",
+      "bytes": 37344
+    },
+    "tests/.work/pester/3e00148b28974dc3bbeace025cf016de/results.xml": {
+      "sha256": "68c83cde7d9a00d2c175c14ce3e4dbadef327187c229d9f7d734c5a0fcee8a68",
+      "bytes": 7828
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/Destination.stdout.txt": {
+      "sha256": "78f8580eb48c897ff8f5c469cee70d75ffbc1d1b0c5330795e9e5c37782d660b",
+      "bytes": 39622
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/Destination.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/Destination.summary.json": {
+      "sha256": "bb078ed89698c98e2f2b6df1ce57ea8ca10c4c97e8c9643950b28c294cff86ec",
+      "bytes": 37362
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/Destination.results.xml": {
+      "sha256": "b6ea5b6f2ad8abad6e7eca963cd15dee8439cf7774e5ff2d3a483f3eafc4384c",
+      "bytes": 9294
+    },
+    "tests/.work/pester/c83feba86a8240d09159b9cc1e2d38af/summary.json": {
+      "sha256": "bb078ed89698c98e2f2b6df1ce57ea8ca10c4c97e8c9643950b28c294cff86ec",
+      "bytes": 37362
+    },
+    "tests/.work/pester/c83feba86a8240d09159b9cc1e2d38af/results.xml": {
+      "sha256": "b6ea5b6f2ad8abad6e7eca963cd15dee8439cf7774e5ff2d3a483f3eafc4384c",
+      "bytes": 9294
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/InputPreflight.stdout.txt": {
+      "sha256": "efc799db1b26ade8c1cdb76bbb705f30979cec33e3fa7fe677371a9b084b44b4",
+      "bytes": 40248
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/InputPreflight.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/InputPreflight.summary.json": {
+      "sha256": "c77ecbc82edf3faee27fe478e8f1deb55b222cba966d68791b79e777231b87ee",
+      "bytes": 37364
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/InputPreflight.results.xml": {
+      "sha256": "f58e9aa321998be4b2f110b0d44d4c53c595cf98db818c5f39d83c7386691e52",
+      "bytes": 11158
+    },
+    "tests/.work/pester/577c9ed87caf4524b28f83d5713af6d7/summary.json": {
+      "sha256": "c77ecbc82edf3faee27fe478e8f1deb55b222cba966d68791b79e777231b87ee",
+      "bytes": 37364
+    },
+    "tests/.work/pester/577c9ed87caf4524b28f83d5713af6d7/results.xml": {
+      "sha256": "f58e9aa321998be4b2f110b0d44d4c53c595cf98db818c5f39d83c7386691e52",
+      "bytes": 11158
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/Staging.stdout.txt": {
+      "sha256": "7fd64e5ab81add5d3791c5bec5c4995ccb60d03eef9be4eeccca1ba28eea5f00",
+      "bytes": 39038
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/Staging.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/Staging.summary.json": {
+      "sha256": "409a0887864107837cefc00f39cad882276668256f44c80aae8e3b2d8f056503",
+      "bytes": 37370
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/Staging.results.xml": {
+      "sha256": "8b9789fb5975715a4eb214f033272d18d05f46f815d30525063a8cfe9b829608",
+      "bytes": 6496
+    },
+    "tests/.work/pester/71cf983859c443c38857ddfe02ee29f8/summary.json": {
+      "sha256": "409a0887864107837cefc00f39cad882276668256f44c80aae8e3b2d8f056503",
+      "bytes": 37370
+    },
+    "tests/.work/pester/71cf983859c443c38857ddfe02ee29f8/results.xml": {
+      "sha256": "8b9789fb5975715a4eb214f033272d18d05f46f815d30525063a8cfe9b829608",
+      "bytes": 6496
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/MasterValidation.stdout.txt": {
+      "sha256": "a24d4554f540e5f7ae345919ec4af2d54224b397684774269c3966ad9de5a15b",
+      "bytes": 38780
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/MasterValidation.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/MasterValidation.summary.json": {
+      "sha256": "29ad9130d2ce12ae628f567239998f3476cf7042adcb8fa43c699c9179e57d8a",
+      "bytes": 37381
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/MasterValidation.results.xml": {
+      "sha256": "73e9f9eaa27501df1230cfe4b95c856012e8664f2710885f12d95f2b4137ebc8",
+      "bytes": 5293
+    },
+    "tests/.work/pester/751adda70b664318b4f305e6007d19c7/summary.json": {
+      "sha256": "29ad9130d2ce12ae628f567239998f3476cf7042adcb8fa43c699c9179e57d8a",
+      "bytes": 37381
+    },
+    "tests/.work/pester/751adda70b664318b4f305e6007d19c7/results.xml": {
+      "sha256": "73e9f9eaa27501df1230cfe4b95c856012e8664f2710885f12d95f2b4137ebc8",
+      "bytes": 5293
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/EmailOutcome.stdout.txt": {
+      "sha256": "0258c79ac1489daefd3832fdc6afa312fdfa8c474e67d70c12599c8138fa71af",
+      "bytes": 39141
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/EmailOutcome.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/EmailOutcome.summary.json": {
+      "sha256": "fa05456cec44a59d3962a0e7cc1f58051f03fd3697577b6835509d756460c868",
+      "bytes": 37380
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/EmailOutcome.results.xml": {
+      "sha256": "ca9d24e385defcfccd97110045aec0956e3dbafc26efb67b7b64c40ee7a11f99",
+      "bytes": 6600
+    },
+    "tests/.work/pester/63c13b23997948ff9f3d8731c0c30316/summary.json": {
+      "sha256": "fa05456cec44a59d3962a0e7cc1f58051f03fd3697577b6835509d756460c868",
+      "bytes": 37380
+    },
+    "tests/.work/pester/63c13b23997948ff9f3d8731c0c30316/results.xml": {
+      "sha256": "ca9d24e385defcfccd97110045aec0956e3dbafc26efb67b7b64c40ee7a11f99",
+      "bytes": 6600
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/FaultIO.stdout.txt": {
+      "sha256": "0172ed42f84e02cbcd77a3377d8910bcc9018a59c8f37eb52deedb0437237b07",
+      "bytes": 135507
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/FaultIO.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/FaultIO.summary.json": {
+      "sha256": "5e7307f7581d75257b1e345d055d2c0a2ee17cf7b294d0317711eb2eba607272",
+      "bytes": 37349
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/FaultIO.results.xml": {
+      "sha256": "eafa8b535bf29c2c75f2c4003d7a49fe9eea0505e725a825e1145228bf617282",
+      "bytes": 17590
+    },
+    "tests/.work/pester/0dc7d4fd6ec44bcbba8d906b247a036f/summary.json": {
+      "sha256": "5e7307f7581d75257b1e345d055d2c0a2ee17cf7b294d0317711eb2eba607272",
+      "bytes": 37349
+    },
+    "tests/.work/pester/0dc7d4fd6ec44bcbba8d906b247a036f/results.xml": {
+      "sha256": "eafa8b535bf29c2c75f2c4003d7a49fe9eea0505e725a825e1145228bf617282",
+      "bytes": 17590
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/FaultRecovery.stdout.txt": {
+      "sha256": "dc577e5cd2361a5b95ab1293c23bac873bd1ee6e61139c16613b2a32a8e99dc0",
+      "bytes": 39662
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/FaultRecovery.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/FaultRecovery.summary.json": {
+      "sha256": "f2ae52707f3a1c1449d790d52e16180e222717b344dd2b6fc494144cf78b6ec5",
+      "bytes": 37631
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/FaultRecovery.results.xml": {
+      "sha256": "86690f63c3db2be73bd7262bfa30266e6acb2238712520d7e59ce4efeb09b726",
+      "bytes": 9025
+    },
+    "tests/.work/pester/b7684d4aa3b2484d94150c4171fd3ff7/summary.json": {
+      "sha256": "f2ae52707f3a1c1449d790d52e16180e222717b344dd2b6fc494144cf78b6ec5",
+      "bytes": 37631
+    },
+    "tests/.work/pester/b7684d4aa3b2484d94150c4171fd3ff7/results.xml": {
+      "sha256": "86690f63c3db2be73bd7262bfa30266e6acb2238712520d7e59ce4efeb09b726",
+      "bytes": 9025
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/Parameters.stdout.txt": {
+      "sha256": "358a6fcfa01d4082d530e79a43d05e1a427bd16fc2a355253d594ae87548c39a",
+      "bytes": 182728
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/Parameters.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/Parameters.summary.json": {
+      "sha256": "bd0f5f527b82dbb29583a9f37dac0252d38de16ca67f6e9e12df1b463a758d6f",
+      "bytes": 37364
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/Parameters.results.xml": {
+      "sha256": "3d179b4dfe95d4782f0c84ebe214528cfc49ba8121d93cdd9555eaa6b3ab57f9",
+      "bytes": 16378
+    },
+    "tests/.work/pester/3d9fa54837614899b4ccaa12285ab9fe/summary.json": {
+      "sha256": "bd0f5f527b82dbb29583a9f37dac0252d38de16ca67f6e9e12df1b463a758d6f",
+      "bytes": 37364
+    },
+    "tests/.work/pester/3d9fa54837614899b4ccaa12285ab9fe/results.xml": {
+      "sha256": "3d179b4dfe95d4782f0c84ebe214528cfc49ba8121d93cdd9555eaa6b3ab57f9",
+      "bytes": 16378
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/ParametersNative.stdout.txt": {
+      "sha256": "9c03e463d6d36ff090f5aa351db8676f228b275169ad6ace8b732e4556c17b5e",
+      "bytes": 38804
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/ParametersNative.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/ParametersNative.summary.json": {
+      "sha256": "ede9b7f44c67c1280d450e828a097451972646d5116c1d63867ce9d65ea003e7",
+      "bytes": 37378
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/ParametersNative.results.xml": {
+      "sha256": "2c8ba190e675476d67218e57f27138c72871c50400ae65bd68f8e2af883ea151",
+      "bytes": 6406
+    },
+    "tests/.work/pester/41bbda3d81fa4bb9b812c8ba7c305034/summary.json": {
+      "sha256": "ede9b7f44c67c1280d450e828a097451972646d5116c1d63867ce9d65ea003e7",
+      "bytes": 37378
+    },
+    "tests/.work/pester/41bbda3d81fa4bb9b812c8ba7c305034/results.xml": {
+      "sha256": "2c8ba190e675476d67218e57f27138c72871c50400ae65bd68f8e2af883ea151",
+      "bytes": 6406
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/SizeReporting.stdout.txt": {
+      "sha256": "0def2690d01e5bebda1fd7affaf25d00cddffe5483d73bb598cfbf3e0a6692a7",
+      "bytes": 2144
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/SizeReporting.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/metadata.json": {
+      "sha256": "f90d30d939405d6c8afa241fa11fb5e959fa0174698721dc2ce9c974816a42a0",
+      "bytes": 53074
+    },
+    "tests/.work/T31-R-ps7-c99bd22a04c04cdf80b2c3234f81ac40/runs.json": {
+      "sha256": "68e070ee8ed43fee8d94cfb765fb0763b8c845230257a86f52fb643fcfef5320",
+      "bytes": 1021082
+    },
+    "tests/.work/T31-R-static-ps51-6fca6ae64f9b43eda3625392c8dd9b57/driver.py": {
+      "sha256": "2515ac1b8179ad56d7e76b9ae2eadc5f544573a45e4fb0dfd6e3649dfdcdbb33",
+      "bytes": 6385
+    },
+    "tests/.work/T31-R-static-ps51-6fca6ae64f9b43eda3625392c8dd9b57/stdout.txt": {
+      "sha256": "f19fc658bfc74552b2b9b05617335f6d44f257234346f5b350216b9e0ee98cfe",
+      "bytes": 822
+    },
+    "tests/.work/T31-R-static-ps51-6fca6ae64f9b43eda3625392c8dd9b57/stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/static/499f2490346049cd935edfa491eef156/analysis.json": {
+      "sha256": "7e5e914166d7325cd0dc4c62b301d30376b33742296c7e3a2532776ec38c3ee3",
+      "bytes": 414583
+    },
+    "tests/.work/T31-R-static-ps51-6fca6ae64f9b43eda3625392c8dd9b57/analysis.json": {
+      "sha256": "7e5e914166d7325cd0dc4c62b301d30376b33742296c7e3a2532776ec38c3ee3",
+      "bytes": 414583
+    },
+    "tests/.work/T31-R-static-ps51-6fca6ae64f9b43eda3625392c8dd9b57/execution.json": {
+      "sha256": "c3f4f1783a5df781779354e1438b2261e4f88a7eeeab264d0504e9fdc1d5c473",
+      "bytes": 32447
+    },
+    "tests/.work/T31-R-static-ps7-4efbf387d1c24a9a9ccdd18e811020f2/driver.py": {
+      "sha256": "2515ac1b8179ad56d7e76b9ae2eadc5f544573a45e4fb0dfd6e3649dfdcdbb33",
+      "bytes": 6385
+    },
+    "tests/.work/T31-R-static-ps7-4efbf387d1c24a9a9ccdd18e811020f2/stdout.txt": {
+      "sha256": "b0d2a8611a951bf02f207e8b09171a37c540e9b808a4cf5837ebc9163b430c36",
+      "bytes": 748
+    },
+    "tests/.work/T31-R-static-ps7-4efbf387d1c24a9a9ccdd18e811020f2/stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/static/698e86f26f5c47e695e3588146957bfe/analysis.json": {
+      "sha256": "24797616725f9fcf3474d357b1f0ffed27ec0e3af438b150ff08d3fbdb615d0b",
+      "bytes": 217436
+    },
+    "tests/.work/T31-R-static-ps7-4efbf387d1c24a9a9ccdd18e811020f2/analysis.json": {
+      "sha256": "24797616725f9fcf3474d357b1f0ffed27ec0e3af438b150ff08d3fbdb615d0b",
+      "bytes": 217436
+    },
+    "tests/.work/T31-R-static-ps7-4efbf387d1c24a9a9ccdd18e811020f2/execution.json": {
+      "sha256": "b635eca7c15af89458e88f0a06e4343b536746af8b4b45ba8dc7feab5ff23904",
+      "bytes": 32500
+    },
+    "tests/.work/T31-extras-d1b4fda94e89499fbe792a98ba47e09c/handoff.stdout.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-extras-d1b4fda94e89499fbe792a98ba47e09c/handoff.stderr.txt": {
+      "sha256": "8fec03cd999fe17209c9a5ac5ddf275d73347946ba88b262fdca901f0dccb4c2",
+      "bytes": 3058
+    },
+    "tests/.work/T31-extras-d1b4fda94e89499fbe792a98ba47e09c/fixture-oracles.stdout.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-extras-d1b4fda94e89499fbe792a98ba47e09c/fixture-oracles.stderr.txt": {
+      "sha256": "7c11d8c17c901c3ec2b8ddd0bc6c0f775f5b1dac722a3529594b3f0986fbcf88",
+      "bytes": 11657
+    },
+    "tests/.work/T31-extras-d1b4fda94e89499fbe792a98ba47e09c/invocations.json": {
+      "sha256": "39b34219cfeea8248be1ceb784fb4ade1e211df36966d2c0c4a40955caeca95a",
+      "bytes": 1983
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/driver.py": {
+      "sha256": "bec70738bd36fe175ae6ab9718b469abacfd631ca8f3e8ca6777adb394c737ac",
+      "bytes": 4403
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/invocations.json": {
+      "sha256": "26419a25f8334edc01d3850cb622a224cfaae28cab6c4d85cf8b5d2d5458ad53",
+      "bytes": 3514
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/original-file-index.json": {
+      "sha256": "ed98d2ccdbc7c89288cc1bdd99e2dd2209251940e59d86fb3ccadba3bc83b18c",
+      "bytes": 9563
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/gh-version.stdout.txt": {
+      "sha256": "12d3a84351274b3964544be1b210e8d12f848a323e275f6e100efcc86187a661",
+      "bytes": 79
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/gh-version.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/run-view.stdout.txt": {
+      "sha256": "eb578adb3d483cd0bacbfbce642f7a3d084df91468aabf8fe67bfa9cf458e68f",
+      "bytes": 6022
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/run-view.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts-api.stdout.txt": {
+      "sha256": "70868f7775493708189757f4d7c49e17bdf831452ff11de42f100118a717ff14",
+      "bytes": 2803
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts-api.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/run-download.stdout.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/run-download.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-native-PS51-1/CiNativeSmoke/results.xml": {
+      "sha256": "b04122020c8c94e20a1743cb1d6e644ab34a083cc7ad17d4e23aa2d64e05beff",
+      "bytes": 1473
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-native-PS51-1/CiNativeSmoke/summary.json": {
+      "sha256": "8a47f6a0947e6847210fb25acda99aa63dca3392cda49fc2fba416f8554931a1",
+      "bytes": 757
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-native-PS51-1/dependencies.json": {
+      "sha256": "4cd1fc87487416b1324e762d65d5583ca1af9296c55649e24e102742d2855408",
+      "bytes": 5996
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-native-PS51-1/job.json": {
+      "sha256": "713bfaa171944d440742ae0cbd9273fe974b757174d54275fd9ffa432ff5d6ce",
+      "bytes": 2290
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-native-PS51-1/NativeFixture/results.xml": {
+      "sha256": "fbe8c2699ae003ef946466162babed4d5ea7879e36ad00eb51c500512622a14a",
+      "bytes": 891
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-native-PS51-1/NativeFixture/summary.json": {
+      "sha256": "3d99eac02053acf44e987d46eb90ee25949c1df16b2547d0e775d54b75c41676",
+      "bytes": 757
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-native-PS51-1/SourceDiscovery/results.xml": {
+      "sha256": "1b8f46ef6e97c602c2cda8196256330c9c9dc42bf91ab8f7cb460f7a02b72a65",
+      "bytes": 1244
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-native-PS51-1/SourceDiscovery/summary.json": {
+      "sha256": "d788de5a3d5354813d0cbf4b0644d211ce5bee09f3f4d664785a475de1cb4efd",
+      "bytes": 759
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-native-PS7-1/CiNativeSmoke/results.xml": {
+      "sha256": "57fc8ccb38698ceeee888baab00cae6d769390f7fc8137174db65f7be29ddf05",
+      "bytes": 1476
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-native-PS7-1/CiNativeSmoke/summary.json": {
+      "sha256": "11a40b20b4e87df52c2576e7cf903128eb826e3be86bc58d7610f137a1e502a4",
+      "bytes": 671
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-native-PS7-1/dependencies.json": {
+      "sha256": "23091d3e01d7e6da0fe92bad0fd07843cd99adcc92c36f46a7529e4c9f772b5f",
+      "bytes": 6936
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-native-PS7-1/job.json": {
+      "sha256": "7f4027ee8a088c8ba45c19c94b22a744fb52b122e610afe9e16572cdf6d34f01",
+      "bytes": 1559
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-native-PS7-1/NativeFixture/results.xml": {
+      "sha256": "85297fbb9b5f86b8c3748bbe14416c13f7740679af88748f6094567f551f3000",
+      "bytes": 891
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-native-PS7-1/NativeFixture/summary.json": {
+      "sha256": "5c4f069c6a652cc6df6de470540069b8d074407d26e7c2aa3a25809038d19424",
+      "bytes": 671
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-native-PS7-1/SourceDiscovery/results.xml": {
+      "sha256": "d20e4bf5d2c5a3043a2a2184f1784d6995285219733f5dd76aa58a44a52a38ae",
+      "bytes": 1247
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-native-PS7-1/SourceDiscovery/summary.json": {
+      "sha256": "4676f084a9e1205e3a347583da47286c5ec56266f9d374ffd5551c811e10b8f8",
+      "bytes": 673
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS51-1/dependencies.json": {
+      "sha256": "f974b78fbf409a10e982420e90a3c642e086829d5c22e97b9c5b254b4a76a5d7",
+      "bytes": 3062
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS51-1/job.json": {
+      "sha256": "287509e0234842aeba7e8940489cf95112c4bfdf92ea29580fa09ac76994ec71",
+      "bytes": 4279
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS51-1/Launcher/results.xml": {
+      "sha256": "5de6e8a87c3974e2d44005063365ab4286639a42ab4d6e37c59764f9a3b3de4f",
+      "bytes": 4286
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS51-1/Launcher/summary.json": {
+      "sha256": "0c78392088faa0141ecdda28b4b41dbb58d9fdcb78d5c010193d62a6796ec520",
+      "bytes": 747
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS51-1/NativeRunner/results.xml": {
+      "sha256": "009005c9a8dfe44231103eb9a0724fe0e7a5d163ca3203fc60cebbcb5fb34a8e",
+      "bytes": 7438
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS51-1/NativeRunner/summary.json": {
+      "sha256": "ee3c4985d3841be3c023c4c4ada68ef4539756934123e8b4bb5933b7a21bc3a8",
+      "bytes": 757
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS51-1/PublicDocs/results.xml": {
+      "sha256": "e9672e17e03a7beb77c97a73594f022a3131da1043332b55166e805ac6221b8c",
+      "bytes": 3797
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS51-1/PublicDocs/summary.json": {
+      "sha256": "012d2244e06d6710274384adb280422666f417c32990b7c594cbb50fdf997ab0",
+      "bytes": 743
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS51-1/Static/results.xml": {
+      "sha256": "24606748cf0343ebb23d60fd2c6142571e858f47f7797acdbb10d8ec86db4e89",
+      "bytes": 1823
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS51-1/Static/summary.json": {
+      "sha256": "a5ca1ea4d576a58f141a1afc304393227061be6b9b50aa9cf5f4c01dd0637e03",
+      "bytes": 730
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS51-1/static.json": {
+      "sha256": "9ecd522beb04847a411f1987a58e452b89f79d8344cd33750d78fd23bf0511b8",
+      "bytes": 938
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS51-1/ToolInvocation/results.xml": {
+      "sha256": "87c8dc68cae1d841d631b9f80c0d079293dd45e2124a2f2a3f99dfc68da4aa5a",
+      "bytes": 3168
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS51-1/ToolInvocation/summary.json": {
+      "sha256": "3752a130b34f4f41f61106b46427d9b874f7831fc7c151b2514fbd826e4b4286",
+      "bytes": 749
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS51-1/Unit/results.xml": {
+      "sha256": "d851dc44af56542350a08766322d29679e30af2cb825f921bca2a1635878dd9b",
+      "bytes": 94260
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS51-1/Unit/summary.json": {
+      "sha256": "c79a8ec4b5bdc81850b3042fcb09e5849479253cbeec7103b3c0472a44efd3a2",
+      "bytes": 741
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS51-1/Version/results.xml": {
+      "sha256": "8d5632caf17d31e53f6cd1893d144bc07b898f1c8e0cf6952626607bbd031db6",
+      "bytes": 4380
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS51-1/Version/summary.json": {
+      "sha256": "92a256240a6830647262defe35de59abd0b1e13d74b52e5347e946671b6444f0",
+      "bytes": 789
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS7-1/dependencies.json": {
+      "sha256": "afa634a2cfa212b077f0996ce40b020f2a29c322e533c4de0df6558168b0df55",
+      "bytes": 4002
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS7-1/job.json": {
+      "sha256": "c3a4b298e010367d65f83e2c750ba72642d712e01453cbe60b05fda95a576b3e",
+      "bytes": 2687
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS7-1/Launcher/results.xml": {
+      "sha256": "14f7105a161a2ef867ee0c69e785e28f402c74737e5c2bf7bab57f4c9b3a26d6",
+      "bytes": 4286
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS7-1/Launcher/summary.json": {
+      "sha256": "5604713f4a7a836441165e2edb99e60b064824309fa88b8e9569d4c00b77e619",
+      "bytes": 661
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS7-1/NativeRunner/results.xml": {
+      "sha256": "caa89ff5c82293158f229140c4837a64f52f84f3904a377bd2b0ce0108f6ec86",
+      "bytes": 7438
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS7-1/NativeRunner/summary.json": {
+      "sha256": "94d41c077995685c029ffe88ebc21d6ea1321427c967fd9ad4336d12aa465d53",
+      "bytes": 671
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS7-1/PublicDocs/results.xml": {
+      "sha256": "a1382417f78f816b73de13c68ff298f4892ab437c39dacfae8145a36dbd52a9b",
+      "bytes": 3796
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS7-1/PublicDocs/summary.json": {
+      "sha256": "65b5def64dd323592795128bfaa7118f81e9d402b72a3e5012c10648086ea00f",
+      "bytes": 657
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS7-1/Static/results.xml": {
+      "sha256": "5f9a22a857bb9fb94bd0585d48d1492ac5cf6ea1a42b20e67e8158f4ca1be94a",
+      "bytes": 1822
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS7-1/Static/summary.json": {
+      "sha256": "cd528b2dd0e8a6a509b433462f097e99b7ad059219998125472eda66cd91f866",
+      "bytes": 644
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS7-1/static.json": {
+      "sha256": "cbbadef7b863d230b01f29eb6d03180d423947ee49ff4ab6f18a208f816c1cb0",
+      "bytes": 843
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS7-1/ToolInvocation/results.xml": {
+      "sha256": "bec9dc9661d23cf65b226f1e7809639f8733658a5c1e623dcc5be7eead7bcdfc",
+      "bytes": 3165
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS7-1/ToolInvocation/summary.json": {
+      "sha256": "39a32c34d1a3b9a0979fc03c8889388bcb9e288202b5ba54a21800947d983f57",
+      "bytes": 663
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS7-1/Unit/results.xml": {
+      "sha256": "97b2bdbfe62606d1ed686150dd26e71251b6a3ec4d287a0c99369b30021bc197",
+      "bytes": 94250
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS7-1/Unit/summary.json": {
+      "sha256": "a5f8b92029113cffb8bf1a4261ce1111f6032a054e92a4c858eaf12f47418ee4",
+      "bytes": 655
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS7-1/Version/results.xml": {
+      "sha256": "3572d82c4aaa469f1ad107c064df3078c4d68b3ccf48da32e716cab65f5d1e10",
+      "bytes": 4380
+    },
+    "tests/.work/T31-review/ci-original-37968677750-5a9de1062d0041fbbdd71d7bb323069d/artifacts/windows-unit-PS7-1/Version/summary.json": {
+      "sha256": "55e4014e1a67b91a7a66ea6017b0c4008d8b677e2a0c291d140124ba3964f2ed",
+      "bytes": 703
+    },
+    "tests/.work/T31-cancel-2fdd0525c8c64fbabeb745f673a18809/ps51.stderr.txt": {
+      "sha256": "542c40ee1b4f149d55a99a7c63b506578b2b4325acb91d14ab34d997c2843304",
+      "bytes": 140
+    },
+    "tests/.work/T31-cancel-2fdd0525c8c64fbabeb745f673a18809/ps51.stdout.txt": {
+      "sha256": "6062f400171d79b877b7dfc8d5c13a7bdfde6b13317df87a92cf182a7c20bca1",
+      "bytes": 346
+    },
+    "tests/.work/T31-cancel-2fdd0525c8c64fbabeb745f673a18809/selected-processes.json": {
+      "sha256": "85389d89be66c35d0d6188a7cfa9b097d8aef69804a9da3fbf7fa09e48741839",
+      "bytes": 992
+    },
+    "tests/.work/T31-cancel-196d1617ad434f67a1d75eee94605094/cancellation.json": {
+      "sha256": "fa1acc76b471525ae299ddf34edfaf0104b4406dd2cf2050e86902f365572527",
+      "bytes": 1529
+    },
+    "tests/.work/T31-cancel-196d1617ad434f67a1d75eee94605094/ps7.stderr.txt": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "tests/.work/T31-cancel-196d1617ad434f67a1d75eee94605094/ps7.stdout.txt": {
+      "sha256": "b76c41c82350d5633c345097be8756f0b84d81a94395ad330d0c1ed9b3536898",
+      "bytes": 346
+    },
+    "tests/.work/T31-cancel-196d1617ad434f67a1d75eee94605094/selected-processes.json": {
+      "sha256": "ffe65578e581d835d63e90e87954b26f1787a0f81261d75e63e04a3a25a8ff36",
+      "bytes": 464
+    }
+  },
+  "limitations": [
+    "No application or tests were run by this reviewer; this audits existing originals and reads/downloads original hosted artifacts only.",
+    "Completed mixed-class passes do not replace missing requested tiers, captured parent exits, or final outer source/cache/driver guards.",
+    "35completed pairs/1549passes are partial counts; interrupted next-tier streams are retained without acceptance claims.",
+    "Static and hosted CI passed their actual scopes despite the separate required strict fixture regression failure.",
+    "Source snapshots are original first-R execution records; current corrective-branch edits are not relabeled as first-R execution bytes.",
+    "Detailed native retained-output safety is outside this numerical/integrity audit and remains independently reviewed elsewhere.",
+    "CI artifacts are original already-sanitized exporter receipts; downloaded JSON/XML does not independently rehash hosted cache binary payloads.",
+    "AC058 remains owner-excluded/unperformed; no account-class/Explorer/viewer pass. New merged R2/allrequired final checks remain necessary."
+  ]
+}

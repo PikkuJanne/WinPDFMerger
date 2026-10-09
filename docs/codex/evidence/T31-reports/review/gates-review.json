@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "task": "T31",
+  "review": "independent_required_gates_and_capture_prerequisites",
+  "result": "prerequisites_pass_final_R_receipts_pending",
+  "reviewed_head": "277e8cbb7de98b4cb07850def58590473ec636b9",
+  "reviewed_branch": "codex/v1.0.0-readiness",
+  "initial_live_main": "e2451141217efdd00a1d49d72a04df054872dffc",
+  "initial_live_branch_equal": true,
+  "initial_worktree_clean": true,
+  "reviewed_origin": "https://github.com/PikkuJanne/WinPDFMerger.git",
+  "authorities": [
+    "AGENTS.md",
+    "docs/codex/INDEX.md",
+    "docs/codex/STATUS.md",
+    "docs/codex/NEXT_SESSION.md",
+    "docs/codex/TASKS.json#T31",
+    "docs/codex/tasks/T31.md",
+    "docs/codex/PRODUCT_SPEC.md",
+    "docs/codex/TEST_STRATEGY.md",
+    "docs/codex/GITHUB_WORKFLOW.md",
+    "docs/codex/SECURITY_AND_DEPENDENCIES.md",
+    "docs/codex/RELEASE_RUNBOOK.md#Gate-B",
+    "docs/codex/DEFINITION_OF_DONE.md",
+    "docs/codex/ACCEPTANCE_CASES.json#AC071-AC072"
+  ],
+  "required_gates": [
+    {
+      "id": "AC071",
+      "result": "not_run",
+      "requirements": [
+        "Actual accepted PR merge through repository-permitted strategy/reviews/checks, no admin bypass or protection changes",
+        "Safely fetched/fast-forwarded clean local main equals freshly read live origin/main",
+        "Full merged R recorded externally or later evidence commit, not self-referential record",
+        "Runtime/version/native/build/allowlist frozen at R; M6 evidence branch contains only docs/codex changes"
+      ]
+    },
+    {
+      "id": "AC072",
+      "result": "not_run",
+      "requirements": [
+        "Fresh exact-R full release-blocking regression in real Windows x64 PowerShell5.1 and pinned7.6.6, all32unique tiers",
+        "Fresh exact-R maintained-source static check in both real hosts;68files/41selectedrules if source is unchanged",
+        "Actual main-push CI at R with four successful jobs:unit/native times PS51/PS7; original artifact checks tied to R",
+        "Original JSON/NUnit, stdout/stderr, execution argv/exit/timing, source/cache/driver/environment guards reviewed independently",
+        "Any required failed/unrun tier or missing actual native environment blocks acceptance; historical receipts retain original SHA/classes"
+      ]
+    }
+  ],
+  "expected_unchanged_source_counts": {
+    "full_tiers_per_host": 32,
+    "full_passes_per_host": 1072,
+    "full_report_pairs": 64,
+    "full_passes_total": 2144,
+    "full_bad_counts": 0,
+    "static_files_per_host": 68,
+    "static_selected_rules": 41,
+    "static_selected_bad_counts": 0,
+    "static_advisory_errors": 0,
+    "static_advisory_warnings_per_host": 349,
+    "static_advisory_information_per_host": 175,
+    "main_push_CI_jobs": 4,
+    "main_push_CI_report_pairs": 20,
+    "main_push_CI_passes": 1370,
+    "note": "These are T30 unchanged-source reference counts, not fabricated T31 execution results or artificial count goals."
+  },
+  "capture_prerequisites": {
+    "approved_cache_files_rehashed": 348,
+    "cache_missing_or_hash_or_size_mismatches": 0,
+    "inventory_path": "docs/codex/evidence/T23-reports/context/T23-environment.json",
+    "inventory_sha256": "c68fb2ff8018bb0d331a3e146e25704684484bd67bb6b4f3d8933751caa13900",
+    "python_version": "3.12.14",
+    "approved_python_sha256": "10d845f50a2af64e3500bb2fcb348b5bc98a75d8ddada63e45ba1da6a1fc79d1",
+    "derivation": "tests/.work/T31-capture/derivation.json",
+    "delta": "tests/.work/T31-capture/derivation.diff",
+    "full_derivative": "tests/.work/T31-capture/capture-full.py",
+    "full_sha256": "7aa94329c9a493d9e864e81e9fe424d2d2adb9c3dfce42e7ac84641ca4de72c5",
+    "static_derivative": "tests/.work/T31-capture/capture-static.py",
+    "static_sha256": "2515ac1b8179ad56d7e76b9ae2eadc5f544573a45e4fb0dfd6e3649dfdcdbb33",
+    "source_parse_only": "pass; no application/test/producer execution",
+    "guard_requirements": [
+      "Run from clean exactR root with approved Python -B; full driver version/digest assertion remains",
+      "No tracked edits, checkout moves or capture driver changes while either host runs",
+      "Full --tiers may be reordered but must contain all32unique default tiers; subset support is not full acceptance",
+      "Require final full source-guard.json and static execution source_end/result pass; aborted attempts cannot supply missing guards",
+      "Capture fresh environment and actual host executable/token facts; legacy StandardUser fields are not human account-class evidence",
+      "Static launcher Python does not self-check Python pin; root must use already verified exact approved executable",
+      "Reused T30CI capture has fixed historical runIDs/head; capture exactR run separately"
+    ]
+  },
+  "scope_boundaries": [
+    "Full1072 contains unit/control/fault/docs/static/package and real-native classes, not1072 native/manual tests",
+    "Static9Pester regressions are distinct from maintained-source68file/41rule analysis",
+    "A normal exactR main push has four jobs; T30eightjobs/2740 combined push and PR and remains historical",
+    "Supplementary handoff26pass/1symlinkskip, fixture/oracle40pass and package/helper17pass remain developer tooling; the skip never becomes native pass",
+    "AC058 owner-D25 human standard-user/Explorer/PDF-viewer acceptance is excluded/unperformed, never passed",
+    "AC060-062 Windows10/liveUNC/ARM/32bit-host exclusions remain nonrequired and documented",
+    "T28/T29 accept exact premerge candidate assets; final-R package extraction/operation/hashes/tag/draft are T32AC073/074",
+    "Published unauthenticated download and actual Windows operation are T33AC075/076; final evidence-only main closure is T34AC077/078",
+    "No tag/draft/release/publication is part of T31"
+  ],
+  "limitations": [
+    "Reviewer executed no application or tests and made no branch/tracked edits",
+    "Read-only hashing checked cache prerequisites at review time; capture must rehash before/after actual run",
+    "FinalR/source/safety/native/CI/count review awaits root originals; AC071/072 remain not_run in this report"
+  ],
+  "created_at_utc": "2026-10-09T17:48:05.3946208Z"
+}

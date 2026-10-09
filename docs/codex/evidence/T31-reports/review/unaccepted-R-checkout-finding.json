@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "task": "T31",
+  "finding": "T31-COV01",
+  "priority": "release-blocking",
+  "result": "open_at_failed_R",
+  "failed_release_source": "de5f30155c68755dbd5af691625a0651e3fb7230",
+  "title": "Byte-pinned fixture recipes/manifests lack stable Git checkout attributes",
+  "actual_failure": {
+    "path": "tests/.work/T31-extras-d1b4fda94e89499fbe792a98ba47e09c/fixture-oracles.stderr.txt",
+    "sha256": "7c11d8c17c901c3ec2b8ddd0bc6c0f775f5b1dac722a3529594b3f0986fbcf88",
+    "run": 40,
+    "passed": 34,
+    "failed": 1,
+    "errors": 5,
+    "scope": "Developer fixture/oracle tests; required regression infrastructure, not40nativepasses",
+    "diagnostics": [
+      "Strict corpus.load_catalog raises Tracked corpus catalog differs from its pinned recipes/expectations",
+      "Numbered manifest expected_files byte equality fails LF expected versus CRLF checkout"
+    ]
+  },
+  "observed_git_core_autocrlf": "true; command-scoped read only observation",
+  "pin_review": [
+    {
+      "group": "numbered",
+      "kind": "generator",
+      "path": "tools/test/generate_numbered_fixtures.py",
+      "recorded_sha256": "3a1d5386a7ca327efcae128e5f64114300df89649eedaa9b48c377f8f0979be1",
+      "actual_R_working_sha256": "709f58b407aff0bd34d3122e6588da031737deeb2876ff9cc4a9f835514597a8",
+      "working_matches_recorded": false
+    },
+    {
+      "group": "numbered",
+      "kind": "manifest",
+      "path": "tests/fixtures/numbered/manifest.json",
+      "recorded_sha256": "62cbc4b3a86464693c3568be9b0ef487212abd7fc560f08320739b5a2aaa810f",
+      "actual_R_working_sha256": "f781106b398e449360507ecf8bfe5d444a40f05b5df605a8f6e8c5769e7826a9",
+      "working_matches_recorded": false
+    },
+    {
+      "group": "presets",
+      "kind": "generator",
+      "path": "tests/fixtures/presets/generate_presets.py",
+      "recorded_sha256": "1aaabe651bd4d468b09e617607b1f276d3a894b67e15081d380cc45e91a62db6",
+      "actual_R_working_sha256": "48f61c2c8b9c119bf0edd9f3a41d92610b4498135a296ea751ab1bddd9e0f26c",
+      "working_matches_recorded": false
+    },
+    {
+      "group": "presets",
+      "kind": "manifest",
+      "path": "tests/fixtures/presets/manifest.json",
+      "recorded_sha256": "383ec07bec823f131ab86cf07de2ffb96e10803ad4f2f4997ba834835ee01e1f",
+      "actual_R_working_sha256": "383ec07bec823f131ab86cf07de2ffb96e10803ad4f2f4997ba834835ee01e1f",
+      "working_matches_recorded": true
+    },
+    {
+      "group": "features",
+      "kind": "generator",
+      "path": "tests/fixtures/features/generate_features.py",
+      "recorded_sha256": "a6c4146fba847ccb4c961c11277456503bed61dc3db3672cc9a0fb2aebfddbd8",
+      "actual_R_working_sha256": "a6c4146fba847ccb4c961c11277456503bed61dc3db3672cc9a0fb2aebfddbd8",
+      "working_matches_recorded": true
+    },
+    {
+      "group": "features",
+      "kind": "manifest",
+      "path": "tests/fixtures/features/manifest.json",
+      "recorded_sha256": "73b1c8cd478f8f8e709005550f42a7d9177ab71dcbb738ba2614edc37b1dc846",
+      "actual_R_working_sha256": "73b1c8cd478f8f8e709005550f42a7d9177ab71dcbb738ba2614edc37b1dc846",
+      "working_matches_recorded": true
+    },
+    {
+      "group": "envelopes",
+      "kind": "generator",
+      "path": "tools/test/generate_pdf_envelope_fixtures.py",
+      "recorded_sha256": "7eac6f773c1ee3a075de4f1c647b49f9c8c4ab5364e98432c7a185a861bfe59f",
+      "actual_R_working_sha256": "528b526bcab6cb6e6de48eb5ea4d39d6125a92c1559f11dcf3e51cc499763f44",
+      "working_matches_recorded": false
+    }
+  ],
+  "canonical_git_findings": [
+    "Numbered recipe/manifest, presets recipe and envelope recipe canonical R Git blobs match recorded LF pins; current Windows working bytes are CRLF and mismatch",
+    "Presets manifest recorded/currentCRLF383ec07... differs from canonicalRLFdf871de...; fresh autocrlf=false checkout cannot reproduce its recorded pin",
+    "Features recipe/manifest already -text and canonical/working bytes both match"
+  ],
+  "affected_scope": [
+    "CorpusSafety BeforeAll runs strict corpus.py materialize/load_catalog, expected to fail before its18case native execution until fixed",
+    "Numbered fixture bytes regression and5corpus Python cases already failed in actual40testreceipt",
+    "Other full tiers that parse manifestJSON without strict rawcatalog SHA can pass despite this defect",
+    "NativeAcceptance uses its own isolated recipe and is not directly catalog-gated; do not infer its outcome"
+  ],
+  "required_remediation": [
+    "Preserve failedR/source/stream/test receipts as unaccepted; do not rewrite working bytes during active guarded runs",
+    "Normal reviewed source fix PR adds explicit -text to all byte-pinned recipe/manifest/catalog paths and commits intended rawbytes",
+    "Restore LF-pinned source/numbered JSON from their independently verified canonicalR blobs; preserve/commit intentionallyCRLF presets manifest and existingfeatures bytes",
+    "Add a meaningful actual freshGitcheckout regression under command-scoped autocrlf=true andfalse, verifying all catalograwpins, numberedexpectedbytes and strictcatalog load",
+    "Select new actual mergedR2 only after normalreview/CI/merge and cleanlive sync; rerun all required finalchecks on exactR2"
+  ],
+  "limitations": [
+    "Reviewer performed read-only source/hash/receipt analysis only, no application/test rerun",
+    "CorpusSafety failure is static dependency inference until its actual original receipt arrives",
+    "Rfull32/static/CI outcomes still retain their actual pending/completed scope; this blocker prevents AC072pass",
+    "AC058 remains excluded/unperformed; no runtimePDF/sourcefile corruption claimed"
+  ],
+  "observed_at_utc": "2026-10-09T17:53:47.7431131Z"
+}

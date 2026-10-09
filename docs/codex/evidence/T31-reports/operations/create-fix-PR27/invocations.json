@@ -1,0 +1,90 @@
+[
+  {
+    "label": "head",
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "started_at_utc": "2026-10-09T18:08:22.033647+00:00",
+    "finished_at_utc": "2026-10-09T18:08:22.072449+00:00",
+    "exit_code": 0,
+    "stdout_sha256": "acba927b7702817c39976066dd1a40a08a7332b14014bd3086f6f226b0b24800",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "status",
+    "argv": [
+      "git",
+      "status",
+      "--porcelain=v1"
+    ],
+    "started_at_utc": "2026-10-09T18:08:22.085677+00:00",
+    "finished_at_utc": "2026-10-09T18:08:22.164675+00:00",
+    "exit_code": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "prior-PRs",
+    "argv": [
+      "gh",
+      "pr",
+      "list",
+      "--repo",
+      "PikkuJanne/WinPDFMerger",
+      "--head",
+      "codex/t31-fixture-checkout",
+      "--state",
+      "all",
+      "--json",
+      "number,url,state,headRefOid"
+    ],
+    "started_at_utc": "2026-10-09T18:08:22.164675+00:00",
+    "finished_at_utc": "2026-10-09T18:08:22.782123+00:00",
+    "exit_code": 0,
+    "stdout_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "create-PR",
+    "argv": [
+      "gh",
+      "pr",
+      "create",
+      "--repo",
+      "PikkuJanne/WinPDFMerger",
+      "--base",
+      "main",
+      "--head",
+      "codex/t31-fixture-checkout",
+      "--title",
+      "Preserve pinned fixture bytes across Git checkouts",
+      "--body-file",
+      "<REPO>\\tests\\.work\\T31-fix-pr-body.md"
+    ],
+    "started_at_utc": "2026-10-09T18:08:22.782123+00:00",
+    "finished_at_utc": "2026-10-09T18:08:25.684587+00:00",
+    "exit_code": 0,
+    "stdout_sha256": "57b146b8b36b58517813428ebed0f146788ae90137c2b28bb0c65037c1713af8",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "label": "created-PR",
+    "argv": [
+      "gh",
+      "pr",
+      "view",
+      "https://github.com/PikkuJanne/WinPDFMerger/pull/27",
+      "--repo",
+      "PikkuJanne/WinPDFMerger",
+      "--json",
+      "number,url,state,isDraft,headRefOid,baseRefName"
+    ],
+    "started_at_utc": "2026-10-09T18:08:25.684587+00:00",
+    "finished_at_utc": "2026-10-09T18:08:26.251740+00:00",
+    "exit_code": 0,
+    "stdout_sha256": "8105b1fe2b4e3171eca13d94f15a8d8d1078d19ce7c23c47e3a26962adacc5c6",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

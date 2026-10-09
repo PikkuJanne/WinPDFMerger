@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "task": "T31",
+  "result": "prepared_not_executed",
+  "source_head_at_derivation": "277e8cbb7de98b4cb07850def58590473ec636b9",
+  "created_at_utc": "2026-10-09T17:46:09.6838000Z",
+  "allowed_delta": [
+    "T30 to T31 task labels, docstrings and generated output-root prefix",
+    "Capture producer argv via sys.orig_argv; static adds sys import"
+  ],
+  "unchanged_behavior": [
+    "exact expected commit and clean source preconditions",
+    "all tier choices and test execution behavior",
+    "approved inventory path and 348-file guards",
+    "tracked T30 source-snapshot paths",
+    "shell versions and child policy",
+    "source/driver guards and original receipts"
+  ],
+  "producers": [
+    {
+      "kind": "full",
+      "base_path": "docs/codex/evidence/T30-reports/scripts/capture-full.py",
+      "base_sha256": "b859aee7ea0a54162b03479548f39399f5ea90a07473564d685e5b88ae92dd1a",
+      "base_bytes": 9032,
+      "derivative_path": "tests/.work/T31-capture/capture-full.py",
+      "derivative_sha256": "7aa94329c9a493d9e864e81e9fe424d2d2adb9c3dfce42e7ac84641ca4de72c5",
+      "derivative_bytes": 9073
+    },
+    {
+      "kind": "static",
+      "base_path": "docs/codex/evidence/T30-reports/scripts/capture-static.py",
+      "base_sha256": "a51a31031e02ff397beaab6ae058e1aa032eaa7f7eff557202c42f6db9893567",
+      "base_bytes": 6343,
+      "derivative_path": "tests/.work/T31-capture/capture-static.py",
+      "derivative_sha256": "2515ac1b8179ad56d7e76b9ae2eadc5f544573a45e4fb0dfd6e3649dfdcdbb33",
+      "derivative_bytes": 6385
+    }
+  ],
+  "limitations": [
+    "Preparation is not execution or acceptance evidence",
+    "Root must select exact merged R and all32tiers/both shells",
+    "sys.orig_argv records Python launcher flags without executing an additional command"
+  ]
+}
