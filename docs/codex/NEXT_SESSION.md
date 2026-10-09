@@ -3,6 +3,10 @@
 Current task: T30 coverage/claims review and final completeness, in_progress.
 Public candidate/token claims and two regressions are prepared; complete the clean
 C1 full regression and independent reviews before claiming AC069/070 or readiness.
+The1e4f2b79 full attempts fail20th tier on stale ParametersNative helper-import
+expectation (822 pass/one fail per host, unaccepted). Corrected regression and
+SECURITY date qualification pass affected dirty checks; final clean all32-tier
+rerun/static/CI remains required. See T30-checkpoint.md for exact preparation SHAs.
 T01-T29 are done. Read AGENTS/INDEX/STATUS, T30 TASKS/brief,
 PRODUCT_SPEC, ACCEPTANCE_CASES, GITHUB_WORKFLOW, TEST_STRATEGY, RELEASE_RUNBOOK,
 DEFINITION_OF_DONE, IMPROVEMENT_COVERAGE and relevant T23-T29 completion/review

@@ -66,8 +66,12 @@ signature, proof of publisher identity or a malware verdict. A checksum obtained
 from the same site as a download does not independently establish who published
 it. No paid signing service or private signing key is required by this project.
 An accurately disclosed unsigned release is acceptable for v1.0.0; signing is
-optional and is not a completion gate. The v1.0.0 release is still in preparation;
-this policy is not publication evidence. Dated vendor security/support information
+optional and is not a completion gate.
+
+Release status recorded 2026-10-09 before source acceptance and publication.
+At that review, v1.0.0 publication remained pending; this policy is not publication
+evidence. See [GitHub Releases](https://github.com/PikkuJanne/WinPDFMerger/releases)
+for current status. Dated vendor security/support information
 is recorded in [dependencies](docs/DEPENDENCIES.md#vendor-information-checked-2026-10-09).
 
 ## Reporting

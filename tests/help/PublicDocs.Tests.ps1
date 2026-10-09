@@ -103,7 +103,7 @@ Describe 'AC046 usable public instructions' {
         }
         ([string]$surfaces['CHANGELOG.md']) | Should -Match '(?m)^## \[1\.0\.0\] - Unreleased\r?$'
         ([string]$surfaces['docs/RELEASE_NOTES_v1.0.0.md']) | Should -Match 'v1\.0\.0 has not been published'
-        foreach ($relative in @('README.md','CHANGELOG.md','docs/RELEASE_NOTES_v1.0.0.md')) {
+        foreach ($relative in @('README.md','CHANGELOG.md','docs/RELEASE_NOTES_v1.0.0.md','SECURITY.md')) {
             ([string]$surfaces[$relative]) | Should -Match 'Release status recorded \d{4}-\d{2}-\d{2} before source acceptance and publication'
             ([string]$surfaces[$relative]) | Should -Match 'https://github\.com/PikkuJanne/WinPDFMerger/releases'
         }

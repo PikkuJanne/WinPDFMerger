@@ -32,5 +32,18 @@ was pushed before that result was inspected, so it is not an accepted test SHA.
 The anchor is corrected; the full clean-source run must use the subsequent
 corrected commit. Original failed preparation streams/report remain retained.
 
+The failed link receipt's actual commit is the dirty initial681e0e3, not the
+subsequent7aa1d57 preparation commit; corrected dirty24-pass preparations in both
+shells bind7aa1d57. Clean1e4f2b79 full attempts then stop at ParametersNative:
+19 tiers pass/814 checks per shell, followed by8 pass/one fail in that tier.
+Its old assertion forbids helper import, although T27's required startup version
+reads VERSION through function-only helpers before usage. The product requires
+usage/exit1/no prompt/no outputs, not absence of function definitions. The updated
+regression checks the actual version, sole import marker, no native/job/probe
+receipts or stage messages, and exact unchanged file/tree snapshots. Runtime is
+unchanged. A separate residual SECURITY publication sentence is dated and added
+to the public-doc guard. Both failed full attempts remain unaccepted; the final
+corrected clean source must rerun all32 tiers and full static checks in both hosts.
+
 T31 merge/source freeze is later. No tag, release or publication is authorized
 by a successful plan check alone; exact final and downloaded assets remain gates.

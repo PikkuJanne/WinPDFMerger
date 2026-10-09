@@ -5,6 +5,10 @@ T01-T29 are done within recorded owner-amended scope. Current milestone M5.
 Current task T30 coverage/claims review and final completeness is in_progress.
 Public candidate/token claims and two regressions are prepared; full clean-source
 dual-shell/native/package tests and independent review remain pending.
+Unaccepted clean1e4f2b79 full attempts found a stale ParametersNative no-helper
+assertion after T27 VERSION startup. The regression now checks version/usage,
+no native/stage/output work and exact file/tree safety; dirty affected checks
+pass in both shells. Final corrected source must rerun all32 tiers/static/CI.
 PR26 remains draft/open/unmerged; no tag/release is created.
 
 T29 AC067/AC068 pass at clean/live harness C1 629f506, operating exact retained
