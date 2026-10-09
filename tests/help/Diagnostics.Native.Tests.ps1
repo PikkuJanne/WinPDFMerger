@@ -360,7 +360,7 @@ Describe 'AC043 actual early/failure diagnostics supporting separate review' {
         foreach($directory in @($app.App,$app.Output)) { @(Get-ChildItem -LiteralPath $directory -Force | Where-Object Name -like '*WinPDFMerge_*').Count | Should -Be 0 }
         $result.Stdout | Should -Not -Match '(?m)^SUCCESS:|^ - Merged master:|^ - Email-optimized:'
     }
-    It 'prints missing-input usage without prompting or importing the application helper' {
+    It 'prints missing-input usage without prompting or creating outputs' {
         $app=New-DiagnosticApplication; $before=@(Get-DiagnosticSnapshot (@($app.Inputs)+$app.Foreign))
         $result=Invoke-DiagnosticChild $shell @('-NoProfile','-ExecutionPolicy','RemoteSigned','-File',$app.Entry) $app.App $app.ChildEnvironment
         Add-DiagnosticObservation $app 'actual-missing-input-usage-no-prompt' $before ([pscustomobject]@{Result=$result; NoSafeLogLocation=$true})

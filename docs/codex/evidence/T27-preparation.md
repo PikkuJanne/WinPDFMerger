@@ -38,3 +38,22 @@ T27 remains in_progress pending clean dual-shell targeted tests, selected-file
 parser/analyzer, independent AC063/AC064 review and synchronized completion
 records. No dependency acquisition, elevation, persistent policy/PATH/security
 change, package, tag or release occurred. Defaults remain within the product contract.
+
+## Clean C1 results and label correction
+
+C1 `044f3d9654ad9e8a68cda29f53994f6b169089fc` passed666tests per actual
+PS5.1.26100.9444/pinnedPS7.6.6 host (1332total; every bad count0), including
+11DiagnosticsNative per host with actual PDFtk2.02/GS10.08.0 and independent
+PDFium inspection. Each host passed29changed-file parser/analyzer checks under
+41selected rules. The exact tracked capture driver guarded clean C1, source
+and driver bytes before/after and approved cached dependencies. C1 was normally
+pushed and freshly verified clean/live-equal at2026-10-09T13:26:40.564634+00:00.
+Push37936878650 and PR37936882556 each completed4/4jobs successfully; this is
+platform metadata only, not a new artifact reconstruction or test-count claim.
+
+Review found a pre-existing native missing-input case title that now inaccurately
+said helpers were not imported. Safe helper loading is intentional for VERSION
+and the actual no-native/no-output assertions pass. Corrected only that title;
+runtime/public docs and native assertions remain byte-equivalent to C1. Narrow
+clean follow-up DiagnosticsNative/static execution and final independent review
+are pending. Broad raw/public receipts are preserved separately under T27-reports/broad.

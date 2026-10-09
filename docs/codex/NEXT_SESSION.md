@@ -10,7 +10,9 @@ VERSION1.0.0, startup/usage/log consumption, help source guidance, matching
 package contract, CHANGELOG/release notes, complete-layout docs and regression
 test wiring are implemented. Preparation Version21 passes after one fixed
 expected-array assertion failure. Clean implementation tests/review/push proof
-and records completion remain; see evidence/T27-preparation.md. Do not mark
+and records completion remain. Clean C1 now passes1332checks and29changed-file
+static perhost; C1 push/PR jobs all pass. A native case title correction needs
+narrow clean follow-up and final review; see evidence/T27-preparation.md. Do not mark
 AC063/AC064 pass or advance until actual required evidence is reviewed.
 
 Reuse approved external Pester6.2.0/analyzer1.25.0/PDFtk2.02/GS10.08.0/

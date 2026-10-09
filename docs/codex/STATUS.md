@@ -9,7 +9,10 @@ VERSION1.0.0, runtime/usage/log agreement, help, package naming contract and
 first-release notes are implemented. Copy layouts and public documentation carry
 the required metadata. Dirty preparation Version checks pass21 after one
 resolved expected-array assertion failure; clean implementation acceptance and
-independent final review are pending. See evidence/T27-preparation.md.
+Clean C1 passes1332checks total (666perhost), including22native, and29changed
+PowerShell files perhost under41selected rules. Both C1 GitHub runs pass4/4jobs.
+Only a misleading native case title was corrected afterward; narrow clean
+follow-up and independent final review remain pending. See evidence/T27-preparation.md.
 
 D25 excludes human standard-user/Explorer/PDF-viewer testing. AC058 remains
 excluded/unperformed, never passed. AC059 and existing T23 native dual-shell,
