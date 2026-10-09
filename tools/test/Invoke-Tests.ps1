@@ -2,7 +2,7 @@
 [CmdletBinding()]
 param(
     [string]$PesterModulePath,
-    [ValidateSet('Unit', 'Static', 'NativeFixture', 'SourceDiscovery', 'Launcher', 'LauncherNative', 'DependencyEntry', 'NativeRunner', 'ToolInvocation', 'PdftkPaths', 'GhostscriptPaths', 'Destination', 'InputPreflight', 'Staging', 'MasterValidation', 'EmailOutcome', 'FaultIO', 'FaultRecovery', 'Parameters', 'ParametersNative', 'SizeReporting', 'SizeReportingNative', 'Diagnostics', 'DiagnosticsNative', 'PreservationDocs', 'PreservationNative', 'PublicDocs', 'Version', 'CorpusSafety', 'NativeAcceptance', 'CiNativeSmoke')][string]$Tier = 'Unit',
+    [ValidateSet('Unit', 'Static', 'NativeFixture', 'SourceDiscovery', 'Launcher', 'LauncherNative', 'DependencyEntry', 'NativeRunner', 'ToolInvocation', 'PdftkPaths', 'GhostscriptPaths', 'Destination', 'InputPreflight', 'Staging', 'MasterValidation', 'EmailOutcome', 'FaultIO', 'FaultRecovery', 'Parameters', 'ParametersNative', 'SizeReporting', 'SizeReportingNative', 'Diagnostics', 'DiagnosticsNative', 'PreservationDocs', 'PreservationNative', 'PublicDocs', 'Version', 'Package', 'CorpusSafety', 'NativeAcceptance', 'CiNativeSmoke')][string]$Tier = 'Unit',
     [string]$AnalyzerModulePath,
     [string]$PdftkPath,
     [string]$GhostscriptPath,
@@ -50,6 +50,8 @@ if ($Tier -eq 'Static') {
     $config.Run.Container = New-PesterContainer -Path (Join-Path $repo 'tests/pdf/CorpusSafety.Native.Tests.ps1') -Data @{ PdftkPath=$PdftkPath; GhostscriptPath=$GhostscriptPath; PythonPath=$PythonPath }
 } elseif ($Tier -eq 'Version') {
     $config.Run.Path = Join-Path $repo 'tests/help/Version.Tests.ps1'
+} elseif ($Tier -eq 'Package') {
+    $config.Run.Path = Join-Path $repo 'tests/package'
 } elseif ($Tier -eq 'PublicDocs') {
     $config.Run.Path = Join-Path $repo 'tests/help/PublicDocs.Tests.ps1'
 } elseif ($Tier -eq 'PreservationDocs') {
@@ -187,6 +189,7 @@ if ($Tier -eq 'PreservationDocs') { $summary.evidence_class = 'documentation-con
 if ($Tier -eq 'PreservationNative') { $summary.evidence_class = 'windows-real-entry-master-screen-ebook-feature-characterization; strict-pypdf-and-independent-pdfium; visual review separate' }
 if ($Tier -eq 'PublicDocs') { $summary.evidence_class = 'public-documentation-contract-isolated-real-parameter-binding-and-controlled-helper-outcomes; no application/native/manual acceptance' }
 if ($Tier -eq 'Version') { $summary.evidence_class = 'static-version-contract-and-actual-preflight-children; no PDF-engine or package acceptance' }
+if ($Tier -eq 'Package') { $summary.evidence_class = 'windows-real-git-clean-synthetic-repository-and-exact-zip-content-provenance; no application-native-or-download-operation' }
 if ($Tier -eq 'CorpusSafety') { $summary.evidence_class = 'windows-real-entry-synthetic-corpus-repeat-order-source-tree-and-concurrency; independent-pdfium; not Explorer' }
 if ($Tier -eq 'NativeAcceptance') { $summary.evidence_class = 'windows-real-pdftk-gs-helper-representative-limits-presets-and-nonfatal-warning; independent-pdfium; warning-envelope-refused-by-app; not Explorer' }
 if ($Tier -eq 'CiNativeSmoke') { $summary.evidence_class = 'windows-real-pinned-pdftk-gs-helper-CI-smoke-with-pdftk-structural-page-counts; no standard-user-ACL-desktop-rendering-feature-preservation-or-independent-renderer-acceptance' }

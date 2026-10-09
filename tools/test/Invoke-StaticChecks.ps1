@@ -30,7 +30,7 @@ if (-not $explicitScope) {
     # Git excludes ignored generated .work trees. Historical evidence scripts are
     # immutable receipts, not maintained code; the roots below are deliberate.
     $SourcePath = @(& git -C $repo -c core.quotepath=false ls-files --cached --others --exclude-standard -- `
-        WinPDFMerge.ps1 src tests tools/test PSScriptAnalyzerSettings.psd1 |
+        WinPDFMerge.ps1 src tests tools/test tools/release PSScriptAnalyzerSettings.psd1 |
         Where-Object { [IO.Path]::GetExtension($_) -in @('.ps1', '.psm1', '.psd1') } |
         ForEach-Object { Join-Path $repo $_ })
     if ($LASTEXITCODE -ne 0) { throw 'Could not enumerate maintained PowerShell sources.' }

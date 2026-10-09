@@ -45,7 +45,7 @@ and distinct `value-A` and `value-B` values. The generator and manifest are in
 PowerShell 5.1.26100.9444 and pinned PowerShell 7.6.6. Both shells produced the
 same feature observations. pypdf 6.10.0 inspected raw structures; PDFium
 153.0.7999.0 inspected identifiers and rendered pages at 144 DPI. Full receipts
-and scope are in [T19 evidence](codex/evidence/T19-checkpoint.md).
+and scope are in the repository's [T19 evidence](https://github.com/PikkuJanne/WinPDFMerger/blob/95184b2ca4d1cb1b597325db6d77704b04c3b20b/docs/codex/evidence/T19-checkpoint.md).
 
 | Feature | Originals | PDFtk master | Screen and ebook email copies |
 | --- | --- | --- | --- |

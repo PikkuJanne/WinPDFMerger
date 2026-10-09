@@ -81,3 +81,51 @@ ignored temporary files after normal tiers. That assertion must produce
 failed JSON/XML, a nonzero driver exit and a failed workflow. Native jobs
 continue independently because matrix fail-fast is disabled. This probe is
 development evidence, not an application test failure or an accepted skip.
+
+## Clean release packaging
+
+The development-only builder requires Git and either Windows PowerShell 5.1 or
+the pinned PowerShell 7 host. It installs nothing and makes no network calls.
+Choose the full lowercase 40-character source commit from reviewed evidence,
+use a clean checkout at that exact HEAD, and choose a new output directory
+outside the repository. For example:
+
+```powershell
+$sourceCommit = git rev-parse HEAD
+if ($LASTEXITCODE -ne 0) { throw 'Could not read source commit.' }
+$built = & ./tools/release/Build-Release.ps1 -SourceCommit $sourceCommit `
+    -OutputDirectory 'C:\Builds\WinPDFMerger candidate'
+$built | ConvertTo-Json -Depth 10
+```
+
+Run `-Tier Package` with the explicit approved Pester path in each required
+shell for the package regression suite. It uses synthetic committed Git sources
+and actual ZIPs; it does not execute the application or PDF engines.
+
+`release-files.json` lists every permitted tracked payload file. The builder
+reads exact Git blob bytes, including their stored line endings, rather than
+copying a wildcard checkout directory. Missing/untracked files, dirty sources,
+the wrong commit, links, unsafe or duplicate paths and version/contract
+disagreement fail. Only ignored `tests/.work` caches are permitted and remain
+outside the package; other ignored content is refused. The allowlist,
+builder and package contract must themselves belong to the selected commit.
+
+The only output files are `WinPDFMerger-v1.0.0.zip` and `SHA256SUMS.txt`.
+The ZIP contains one `WinPDFMerger-v1.0.0/` root, the reviewed runtime/user
+documentation/license files, and generated `BUILD_INFO.json`. Build metadata
+records the full source commit, VERSION, actual tool identity and complete
+per-file SHA-256 inventory, excluding BUILD_INFO's own hash. The return value
+records the exact ZIP hash and the separate hash of the entire checksum file;
+retain both in acceptance evidence. Neither checksum is a digital signature.
+
+ZIP timestamps, entry order and metadata are fixed; payload bytes come from
+the commit. Repeated builds with the same source and recorded environment are
+byte reproducible. Host/tool identity is included in BUILD_INFO, so changing
+the builder environment can change the ZIP even when payload content agrees.
+The builder refuses existing output directories and output locations within
+the checkout; it does not overwrite prior assets.
+
+Packaging tests establish inventory, provenance and integrity. Exact candidate,
+accepted final-source and independently downloaded published ZIP operation on
+Windows with the real engines, independent PDF inspection and source-safety
+checks remain separate release gates. A candidate build is not a public release.

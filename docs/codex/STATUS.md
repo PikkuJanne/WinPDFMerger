@@ -2,8 +2,9 @@
 
 Target: published and independently verified v1.0.0 in PikkuJanne/WinPDFMerger.
 T01-T27 are done; M1-M4 remain complete within recorded owner-amended scope.
-Current milestone M5. Next task T28 clean allowlisted packaging/checksums is
-pending and dependency-ready. No package, tag or release is created or accepted.
+Current milestone M5. T28 clean allowlisted packaging/checksums is in progress.
+Its builder/test implementation is being prepared; clean-source package evidence
+and synchronized checkpoint remain required. No tag or release is created.
 
 T27 AC063/AC064 pass: VERSION1.0.0 feeds startup/usage/log; help names it;
 public note titles and package naming/build-info contract validate against it.

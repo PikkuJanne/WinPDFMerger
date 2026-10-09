@@ -15,7 +15,7 @@ These observations use original CC0 synthetic documents, PDFtk Server 2.02
 and Ghostscript 10.08.0 on Windows. Original, master and validated candidate
 pages were rendered at the same 144 DPI and visually compared by Codex.
 The recipe and exact original hashes are in
-[`tests/fixtures/presets`](../tests/fixtures/presets/manifest.json).
+[`tests/fixtures/presets`](https://github.com/PikkuJanne/WinPDFMerger/blob/95184b2ca4d1cb1b597325db6d77704b04c3b20b/tests/fixtures/presets/manifest.json).
 Sizes below are rounded examples; native output bytes can vary between runs.
 They are not size targets or promises for other documents.
 

@@ -1,6 +1,6 @@
 # Next session
 
-Next task: T28 clean allowlisted packaging/checksums, pending and dependency-ready.
+Current task: T28 clean allowlisted packaging/checksums, in progress.
 T01-T27 are done. Read AGENTS/INDEX/STATUS, T28 TASKS/brief, PRODUCT_SPEC,
 GITHUB_WORKFLOW, PACKAGE_CONTRACT, RELEASE_RUNBOOK and T27-completion/review.
 Freshly verify repo/branch/clean state, both origin routes and live branch/main/
