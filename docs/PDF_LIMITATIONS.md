@@ -40,10 +40,12 @@ not a malware sanitizer and a parse/page-count check does not remove malicious c
 
 T19 uses two original CC0, two-page inputs with the same `shared_text` field name
 and distinct `value-A` and `value-B` values. The generator and manifest are in
-`tests/fixtures/features`. Actual standard-user Windows runs used PDFtk Server
-2.02 and Ghostscript 10.08.0 with the application's existing flags, under Windows
+`tests/fixtures/features`. Actual automated Windows native runs under a
+nonadministrator token used PDFtk Server 2.02 and Ghostscript 10.08.0 with the
+application's existing flags, under Windows
 PowerShell 5.1.26100.9444 and pinned PowerShell 7.6.6. Both shells produced the
-same feature observations. pypdf 6.10.0 inspected raw structures; PDFium
+same feature observations. These token facts do not establish account class or
+a human walkthrough. pypdf 6.10.0 inspected raw structures; PDFium
 153.0.7999.0 inspected identifiers and rendered pages at 144 DPI. Full receipts
 and scope are in the repository's [T19 evidence](https://github.com/PikkuJanne/WinPDFMerger/blob/95184b2ca4d1cb1b597325db6d77704b04c3b20b/docs/codex/evidence/T19-checkpoint.md).
 

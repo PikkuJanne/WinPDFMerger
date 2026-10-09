@@ -5,9 +5,15 @@ numbers describe separate products and do not change the application version.
 
 ## [1.0.0] - Unreleased
 
-First-release source changes are in preparation. This entry is not a publication
-or package-test claim. See the [release notes](docs/RELEASE_NOTES_v1.0.0.md) for
-tested versions, validation scope and remaining distribution gates.
+Release status recorded 2026-10-09 before source acceptance and publication.
+This Unreleased entry records that review; check
+[GitHub Releases](https://github.com/PikkuJanne/WinPDFMerger/releases) for current status.
+
+First-release changes remain Unreleased. Exact premerge candidate ZIPs passed
+automated Windows operation and unchanged-source checks on 2026-10-09 in both
+required shells. Accepted merged source, final assets and independently downloaded
+published ZIP checks remain later gates; no publication is claimed. See the
+[release notes](docs/RELEASE_NOTES_v1.0.0.md) for validation scope.
 
 ### Retained workflow
 
@@ -52,14 +58,15 @@ tested versions, validation scope and remaining distribution gates.
 
 - Recorded source tests used Windows PowerShell 5.1.26100.9444 and PowerShell
   7.6.6 x64 with PDFtk Server 2.02 and Ghostscript 10.08.0 on Windows 11 x64.
-  Exact candidate, final and independently downloaded ZIP operation remains
-  required before project completion; source/CI tests do not establish it.
+  Exact premerge candidate ZIP operation and unchanged-source checks passed in
+  both shells. Accepted merged source, final assets and independently downloaded
+  published ZIP operation remain required before project completion.
 - Human standard-user/Explorer/PDF-viewer acceptance is excluded by owner scope
   and was not performed; this exclusion is never a passing manual test.
   Windows 10, live UNC shares, Windows on ARM and 32-bit hosts are excluded from
   validated support because actual tests for those environments are absent.
 - Scripts are unsigned; dependencies are installed separately and no vendor
-  executables are included in the planned application package.
+  executables are included in the tested candidate packages.
 - Keep originals. Neither output guarantees PDF/A, signature validity,
   accessibility, universal feature retention, archival certification or malware
   removal. Email output is a potentially lossy rewrite with no attachment-size

@@ -1,7 +1,9 @@
 # Next session
 
-Next task: T30 coverage/claims review and final completeness, pending and
-dependency-ready. T01-T29 are done. Read AGENTS/INDEX/STATUS, T30 TASKS/brief,
+Current task: T30 coverage/claims review and final completeness, in_progress.
+Public candidate/token claims and two regressions are prepared; complete the clean
+C1 full regression and independent reviews before claiming AC069/070 or readiness.
+T01-T29 are done. Read AGENTS/INDEX/STATUS, T30 TASKS/brief,
 PRODUCT_SPEC, ACCEPTANCE_CASES, GITHUB_WORKFLOW, TEST_STRATEGY, RELEASE_RUNBOOK,
 DEFINITION_OF_DONE, IMPROVEMENT_COVERAGE and relevant T23-T29 completion/review
 records. Freshly verify repo/branch/clean state, both origin routes and live branch/

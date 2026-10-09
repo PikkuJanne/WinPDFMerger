@@ -63,14 +63,19 @@ The scripts are unsigned. Downloaded scripts or enterprise policy may block them
 Verify the source and follow your organization's approved process; do not disable
 security controls or change machine-wide execution policy. See
 [security and signing limits](SECURITY.md) and [blocked-script guidance](docs/TROUBLESHOOTING.md#script-blocked).
-The planned v1.0.0 release is not yet published; current source instructions do
-not imply a tested release ZIP is available.
+Release status recorded 2026-10-09 before source acceptance and publication:
+v1.0.0 is not yet published. Exact premerge candidate ZIPs passed
+automated Windows operation and unchanged-source checks in both required shells
+on 2026-10-09. Those local candidates are not a published release download.
+See [GitHub Releases](https://github.com/PikkuJanne/WinPDFMerger/releases) for current
+publication status and assets. The remaining gates below describe this dated review.
 
 Validation evidence covers scoped automated Windows native, dual-shell and hosted
 CI tests. At the owner's direction, human standard-user and Explorer validation
 is excluded from project scope and was not performed. This exclusion is not a
 manual pass. Exact release ZIP and downloaded-package checks remain later gates;
-see the [compatibility scope](docs/COMPATIBILITY.md).
+the accepted merged source and its final assets still require their own checks.
+See the [compatibility scope](docs/COMPATIBILITY.md).
 
 ## Use
 

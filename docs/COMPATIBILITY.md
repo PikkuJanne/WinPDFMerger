@@ -3,6 +3,9 @@
 Scope recorded 2026-10-09 for the planned v1.0.0 release. The release is not yet
 published. These statements describe actual scoped tests and explicit validation
 exclusions; exact release ZIP and downloaded-package checks remain later gates.
+Exact premerge candidate ZIPs passed automated Windows operation and unchanged-source
+checks on 2026-10-09 in both required shells. Accepted merged source and final assets
+still require their own checks; the candidate results do not certify a published download.
 
 The tested reference environment is Windows 11 x64 with Windows PowerShell 5.1
 and one recorded supported PowerShell 7 x64 build. Actual synthetic/native tests

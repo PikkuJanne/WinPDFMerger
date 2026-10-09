@@ -46,8 +46,11 @@ Validation evidence covers scoped automated Windows native, dual-shell and hoste
 CI tests. At the owner's direction, human standard-user and Explorer validation
 is excluded from project scope and was not performed. This exclusion is not a
 manual pass. Exact release ZIP and downloaded-package checks remain later gates.
+Exact premerge candidate ZIPs passed automated Windows operation and unchanged-source
+checks on 2026-10-09 in both required shells using the recorded native pins. Accepted
+merged source and final assets still require their own checks.
 
-## Vendor information checked 2026-10-08
+## Vendor information checked 2026-10-09
 
 [Microsoft's lifecycle page](https://learn.microsoft.com/en-us/powershell/scripting/install/powershell-support-lifecycle)
 lists 7.6.6 as the current PowerShell LTS update; the 7.6 line ends support on

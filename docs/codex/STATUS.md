@@ -2,8 +2,10 @@
 
 Target: published and independently verified v1.0.0 in PikkuJanne/WinPDFMerger.
 T01-T29 are done within recorded owner-amended scope. Current milestone M5.
-Next task T30 coverage/claims review and final completeness is pending and
-dependency-ready. PR26 remains draft/open/unmerged; no tag/release is created.
+Current task T30 coverage/claims review and final completeness is in_progress.
+Public candidate/token claims and two regressions are prepared; full clean-source
+dual-shell/native/package tests and independent review remain pending.
+PR26 remains draft/open/unmerged; no tag/release is created.
 
 T29 AC067/AC068 pass at clean/live harness C1 629f506, operating exact retained
 T28 C1b8917938 ZIPs. Both exact ZIP/checksum hashes, 16-file extraction/BUILD_INFO

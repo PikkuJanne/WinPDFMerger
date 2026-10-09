@@ -1,6 +1,10 @@
 # Preserve synthetic PDF bytes through Windows checkout/line-ending conversion.
 /tests/fixtures/numbered/*.pdf binary
 
+# Preserve T30 captured/sanitized report bytes, including native diagnostics.
+/docs/codex/evidence/T30-reports/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T30-reports/**/*.txt -text whitespace=-blank-at-eol,-blank-at-eof,space-before-tab,cr-at-eol
+
 # Existing entry is stored with CRLF; preserve its bytes and check real whitespace.
 /WinPDFMerge.ps1 -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 /WinPDFMerge.bat -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

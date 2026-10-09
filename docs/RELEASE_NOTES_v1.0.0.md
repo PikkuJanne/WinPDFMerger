@@ -1,10 +1,15 @@
 # WinPDFMerger v1.0.0 release notes
 
-These notes describe the implemented first-release source. The release is in
-preparation: no v1.0.0 release publication or tested application ZIP is claimed
-here. Candidate-package, final-package and independently downloaded published-ZIP
-operation/source-safety checks remain required. The application version comes
-from [VERSION](../VERSION); native tool and shell versions below are separate.
+Release status recorded 2026-10-09 before source acceptance and publication.
+These notes preserve that review; see
+[GitHub Releases](https://github.com/PikkuJanne/WinPDFMerger/releases) for current status.
+
+At this review, the implemented first-release source remains
+Unreleased; v1.0.0 has not been published. Exact premerge candidate ZIPs passed
+automated Windows operation and unchanged-source checks on 2026-10-09 in both
+required shells. Accepted merged source, final assets and independently downloaded
+published ZIP operation remain later gates. The application version comes from
+[VERSION](../VERSION); native tool and shell versions below are separate.
 
 ## Familiar workflow and defaults
 
@@ -63,13 +68,13 @@ See the [README](../README.md) and [usage details](USAGE.md).
 
 Install PDFtk Server separately from its vendor; it is required. Ghostscript is
 optional and must also be installed separately when an email copy is wanted.
-The application needs no Python runtime. The planned package excludes native
+The application needs no Python runtime. The tested candidate packages exclude native
 vendor executables; the project's MIT license does not relicense dependencies.
 See [dependency installation, selection and terms](DEPENDENCIES.md).
 
 | Recorded reference source tests | Observed version/scope |
 | --- | --- |
-| Host | Windows 11 x64, local NTFS; earlier native receipts report base OSVersion `10.0.26300.0` and a non-elevated x64 token |
+| Host | Windows 11 x64, local NTFS; earlier receipts record base OSVersion `10.0.26300.0`; exact-candidate receipts additionally record Professional 26H2/full build `26300.9457` and nonadministrator x64 tokens |
 | Windows PowerShell | `5.1.26100.9444` Desktop x64; also the batch launcher's host |
 | PowerShell 7 | Pinned `7.6.6` Core x64, exercised separately by direct invocation |
 | PDFtk Server | `2.02`, x86 executable on an x64 host |
@@ -84,7 +89,15 @@ Accepted source evidence covers scoped automated Windows/native, dual-shell,
 controlled batch/CLI and hosted CI checks. Unit/fault mocks and controlled
 processes are separate from real PDF-engine results. Hosted Windows Server CI
 does not validate a Windows desktop or another operating system. These are
-source-stage observations, not execution evidence for an exact release asset.
+source-stage observations. Separately, the exact premerge candidate ZIPs were
+extracted to fresh paths with spaces and operated from unrelated working folders
+in both required shells with real PDFtk and Ghostscript. Their 25 application
+scenarios cover defaults, both presets, master-only outcomes, invalid inputs,
+and a genuine Ghostscript initialization failure that retains the master.
+Independent readers inspected 21 final PDFs/106 pages; source, runtime and foreign
+files remained unchanged. Automated original BAT operation preserved exit codes
+0/1/2 and pause behavior; it does not establish physical Explorer interaction.
+These candidate results do not accept the later merged source or final release assets.
 Current dependency security/support information must be checked separately;
 tested version strings do not establish executable trust or continuing safety.
 

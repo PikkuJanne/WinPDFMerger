@@ -7,7 +7,7 @@ BeforeAll {
     $surfaces = @{}
     $bindings = New-Object 'System.Collections.Generic.List[object]'
     $observations = New-Object 'System.Collections.Generic.List[object]'
-    foreach ($relative in @('README.md','docs/USAGE.md','docs/TROUBLESHOOTING.md','docs/DEPENDENCIES.md','docs/COMPATIBILITY.md','SECURITY.md','docs/PDF_LIMITATIONS.md','docs/EMAIL_PRESETS.md','LICENSE','WinPDFMerge.ps1','WinPDFMerge.bat')) {
+    foreach ($relative in @('README.md','CHANGELOG.md','docs/RELEASE_NOTES_v1.0.0.md','docs/USAGE.md','docs/TROUBLESHOOTING.md','docs/DEPENDENCIES.md','docs/COMPATIBILITY.md','SECURITY.md','docs/PDF_LIMITATIONS.md','docs/EMAIL_PRESETS.md','LICENSE','WinPDFMerge.ps1','WinPDFMerge.bat')) {
         $path = Join-Path $repo $relative
         $exists = [IO.File]::Exists($path)
         $hash = $null
@@ -94,6 +94,26 @@ BeforeAll {
 }
 
 Describe 'AC046 usable public instructions' {
+    It 'distinguishes accepted premerge candidate evidence from remaining release gates' {
+        foreach ($relative in @('README.md','CHANGELOG.md','docs/RELEASE_NOTES_v1.0.0.md','docs/DEPENDENCIES.md','docs/COMPATIBILITY.md')) {
+            $text = [string]$surfaces[$relative]
+            (Test-PublicParagraph $text @('\bexact\b','\bpremerge\b','\bcandidate\s+ZIPs?\b','\bpassed\b','\bautomated\b','\bWindows\b','\bunchanged-source\b','\bboth\b','\bshells\b')) | Should -BeTrue
+            (Test-PublicParagraph $text @('\baccepted\b','\bmerged\s+source\b','\bfinal\s+assets\b','\b(?:later\s+gates|still\s+require)\b')) | Should -BeTrue
+            $text | Should -Not -Match '(?is)(?:no[^.\r\n]*tested\s+application\s+ZIP\s+is\s+claimed|exact\s+candidate,\s*final\s+and\s+independently\s+downloaded\s+ZIP\s+operation\s+remains)'
+        }
+        ([string]$surfaces['CHANGELOG.md']) | Should -Match '(?m)^## \[1\.0\.0\] - Unreleased\r?$'
+        ([string]$surfaces['docs/RELEASE_NOTES_v1.0.0.md']) | Should -Match 'v1\.0\.0 has not been published'
+        foreach ($relative in @('README.md','CHANGELOG.md','docs/RELEASE_NOTES_v1.0.0.md')) {
+            ([string]$surfaces[$relative]) | Should -Match 'Release status recorded \d{4}-\d{2}-\d{2} before source acceptance and publication'
+            ([string]$surfaces[$relative]) | Should -Match 'https://github\.com/PikkuJanne/WinPDFMerger/releases'
+        }
+        Add-PublicDocsObservation 'candidate-versus-final-gates' @{CandidateAcceptance='automated premerge only';FinalReleaseAccepted=$false;PublishedDownloadAccepted=$false;ApplicationInvoked=$false;NativeInvoked=$false}
+    }
+    It 'keeps measured PDF token facts separate from human account acceptance' {
+        $limits = [string]$surfaces['docs/PDF_LIMITATIONS.md']
+        (Test-PublicParagraph $limits @('\bautomated\b','\bWindows\s+native\b','\bnonadministrator\s+token\b','\bdo\s+not\s+establish\b','\baccount\s+class\b','\bhuman\s+walkthrough\b')) | Should -BeTrue
+        $limits | Should -Not -Match 'Actual\s+standard-user\s+Windows\s+runs'
+    }
     It 'keeps the complete installation layout and established launchers visible' {
         $readme = [string]$surfaces['README.md']
         foreach ($required in @('WinPDFMerge\.ps1','WinPDFMerge\.bat','src[/\\]WinPDFMerge\.Helpers\.ps1')) { $readme | Should -Match $required }
