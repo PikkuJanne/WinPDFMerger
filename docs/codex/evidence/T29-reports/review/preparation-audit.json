@@ -1,0 +1,5875 @@
+{
+  "task": "T29",
+  "audit": "independent_preparation_projection_and_retained_hashes",
+  "acceptance_evidence": false,
+  "auditor_sha256": "838c3b2d04dd3e18634918422c1349c227345994095f3f378675451df07e9f2c",
+  "command": [
+    "<USERPROFILE>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "-B",
+    "<REPO>\\tests\\.work\\T29-review\\audit_preparation.py",
+    "--repo",
+    "<REPO>",
+    "--report",
+    "tests/.work/T29-review/preparation-audit.json"
+  ],
+  "checks": 1434,
+  "issues": [],
+  "receipts": [
+    {
+      "public_path": "docs/codex/evidence/T29-reports/preparation/initial-context.json",
+      "public_bytes": 2652,
+      "public_sha256": "e940e79480ed3d0d0bce44e50620853ebb13a9af74f79e59a2de93990e3a6f48",
+      "original_path": "tests/.work/T29-context/initial-local-context.json",
+      "original_bytes": 2223,
+      "original_sha256": "e832f2e44ebca5946f0821157ccf33d6f1685cddd5f84edd62f194ff21cb2544"
+    },
+    {
+      "public_path": "docs/codex/evidence/T29-reports/preparation/initial-platform.json",
+      "public_bytes": 6144,
+      "public_sha256": "3e3e86caa121bc1e444c33e67d16d3f522117f081d33aa391a8224a5e098337b",
+      "original_path": "tests/.work/T29-context/initial-platform.json",
+      "original_bytes": 5474,
+      "original_sha256": "38a57ced4e17ef08964403def4152650a1a08765aefa71dbde93012053b36ff8"
+    },
+    {
+      "public_path": "docs/codex/evidence/T29-reports/preparation/initial-probe.json",
+      "public_bytes": 33413,
+      "public_sha256": "74e2432964b39058e7289b968cb9684c8eefb7c56ff6fc50867bb8c18a64348d",
+      "original_path": "tests/.work/T29-experiments/e7e96d8989084c989364cce466358bdf/invocations.json",
+      "original_bytes": 32976,
+      "original_sha256": "7d77a7a366af0c66c78d335c4b482c0188544fe2937a8d883e063490ce363d0b"
+    },
+    {
+      "public_path": "docs/codex/evidence/T29-reports/preparation/initial-raster-probe.json",
+      "public_bytes": 53586,
+      "public_sha256": "0533d22b87f2aa8d30faea2e3550f7b19a460b04e6f9b0e4111b41ee9ec9af95",
+      "original_path": "tests/.work/T29-experiments/c8bd46e95ab14501bf813432579552b1/invocations.json",
+      "original_bytes": 53167,
+      "original_sha256": "8ff39a18e0601d48e60cbff715713877a53c46d36d805c400017b1f57c233868"
+    }
+  ],
+  "observations": {
+    "initial-probe.json": [
+      {
+        "label": "gs-lib-version",
+        "exit_code": 0
+      },
+      {
+        "label": "gs-lib-render",
+        "exit_code": 1
+      },
+      {
+        "label": "candidate-default",
+        "exit_code": 0
+      },
+      {
+        "label": "candidate-default-pdftk-check",
+        "exit_code": 0
+      },
+      {
+        "label": "candidate-skip",
+        "exit_code": 0
+      },
+      {
+        "label": "candidate-skip-pdftk-check",
+        "exit_code": 0
+      },
+      {
+        "label": "candidate-email-failure",
+        "exit_code": 2
+      },
+      {
+        "label": "candidate-email-failure-pdftk-check",
+        "exit_code": 0
+      },
+      {
+        "label": "candidate-experiment-provenance",
+        "exit_code": null
+      }
+    ],
+    "initial-raster-probe.json": [
+      {
+        "label": "gs-lib-version",
+        "exit_code": 0
+      },
+      {
+        "label": "gs-lib-render",
+        "exit_code": 1
+      },
+      {
+        "label": "candidate-default",
+        "exit_code": 0
+      },
+      {
+        "label": "candidate-default-pdftk-check",
+        "exit_code": 0
+      },
+      {
+        "label": "candidate-skip",
+        "exit_code": 0
+      },
+      {
+        "label": "candidate-skip-pdftk-check",
+        "exit_code": 0
+      },
+      {
+        "label": "candidate-email-failure",
+        "exit_code": 2
+      },
+      {
+        "label": "candidate-email-failure-pdftk-check",
+        "exit_code": 0
+      },
+      {
+        "label": "candidate-raster-default",
+        "exit_code": 0
+      },
+      {
+        "label": "candidate-raster-ebook",
+        "exit_code": 0
+      },
+      {
+        "label": "candidate-experiment-provenance",
+        "exit_code": null
+      }
+    ]
+  },
+  "details": [
+    {
+      "check": "preparation contains exactly four projections",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json original byte count/hash",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json exact projection envelope",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json preparation only declared scope",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json only declared path substitutions",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets length preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/0 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/0 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/0/label type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/0/label value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/0/directory type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/0/directory value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/0/files type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/0/files length preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/0/files/0 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/0/files/0 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/0/files/0/name type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/0/files/0/name value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/0/files/0/bytes type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/0/files/0/bytes value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/0/files/0/sha256 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/0/files/0/sha256 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/0/files/1 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/0/files/1 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/0/files/1/name type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/0/files/1/name value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/0/files/1/bytes type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/0/files/1/bytes value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/0/files/1/sha256 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/0/files/1/sha256 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/1 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/1 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/1/label type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/1/label value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/1/directory type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/1/directory value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/1/files type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/1/files length preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/1/files/0 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/1/files/0 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/1/files/0/name type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/1/files/0/name value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/1/files/0/bytes type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/1/files/0/bytes value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/1/files/0/sha256 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/1/files/0/sha256 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/1/files/1 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/1/files/1 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/1/files/1/name type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/1/files/1/name value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/1/files/1/bytes type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/1/files/1/bytes value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/1/files/1/sha256 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/assets/1/files/1/sha256 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/approved_cache_payloads_rehashed type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/approved_cache_payloads_rehashed value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/selected type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/selected keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/selected/pwsh.exe type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/selected/pwsh.exe value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/selected/pdftk.exe type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/selected/pdftk.exe value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/selected/Pester.psd1 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/selected/Pester.psd1 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/selected/gswin64c.exe type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/selected/gswin64c.exe value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/selected/PSScriptAnalyzer.psd1 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/selected/PSScriptAnalyzer.psd1 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/head type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/head value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/original_ledger type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/original_ledger value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/observed_at_utc type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json/payload/observed_at_utc value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-context.json raw repository/user prefix absent",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json original byte count/hash",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json exact projection envelope",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json preparation only declared scope",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json only declared path substitutions",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations length preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/0 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/0 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/0/argv type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/0/argv length preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/0/argv/0 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/0/argv/0 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/0/argv/1 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/0/argv/1 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/0/argv/2 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/0/argv/2 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/0/argv/3 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/0/argv/3 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/0/argv/4 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/0/argv/4 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/0/argv/5 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/0/argv/5 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/0/argv/6 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/0/argv/6 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/0/argv/7 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/0/argv/7 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/0/exit_code type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/0/exit_code value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/0/stderr_sha256 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/0/stderr_sha256 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/0/label type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/0/label value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/0/stdout_sha256 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/0/stdout_sha256 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/0/started_at_utc type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/0/started_at_utc value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/1 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/1 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/1/argv type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/1/argv length preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/1/argv/0 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/1/argv/0 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/1/argv/1 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/1/argv/1 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/1/argv/2 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/1/argv/2 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/1/argv/3 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/1/argv/3 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/1/exit_code type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/1/exit_code value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/1/stderr_sha256 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/1/stderr_sha256 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/1/label type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/1/label value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/1/stdout_sha256 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/1/stdout_sha256 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/1/started_at_utc type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/1/started_at_utc value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/2 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/2 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/2/argv type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/2/argv length preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/2/argv/0 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/2/argv/0 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/2/argv/1 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/2/argv/1 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/2/argv/2 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/2/argv/2 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/2/argv/3 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/2/argv/3 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/2/argv/4 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/2/argv/4 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/2/argv/5 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/2/argv/5 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/2/exit_code type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/2/exit_code value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/2/stderr_sha256 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/2/stderr_sha256 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/2/label type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/2/label value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/2/stdout_sha256 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/2/stdout_sha256 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/2/started_at_utc type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/invocations/2/started_at_utc value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/releases type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/releases length preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/source_head type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/source_head value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/refs type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/refs value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/observed_at_utc type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/observed_at_utc value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/number type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/number value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/mergeable type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/mergeable value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/headRefName type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/headRefName value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/reviewDecision type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/reviewDecision value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/title type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/title value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/state type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/state value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup length preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/0 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/0 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/0/conclusion type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/0/conclusion value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/0/workflowName type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/0/workflowName value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/0/detailsUrl type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/0/detailsUrl value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/0/name type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/0/name value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/0/completedAt type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/0/completedAt value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/0/startedAt type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/0/startedAt value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/0/__typename type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/0/__typename value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/0/status type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/0/status value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/1 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/1 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/1/conclusion type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/1/conclusion value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/1/workflowName type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/1/workflowName value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/1/detailsUrl type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/1/detailsUrl value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/1/name type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/1/name value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/1/completedAt type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/1/completedAt value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/1/startedAt type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/1/startedAt value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/1/__typename type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/1/__typename value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/1/status type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/1/status value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/2 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/2 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/2/conclusion type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/2/conclusion value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/2/workflowName type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/2/workflowName value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/2/detailsUrl type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/2/detailsUrl value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/2/name type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/2/name value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/2/completedAt type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/2/completedAt value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/2/startedAt type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/2/startedAt value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/2/__typename type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/2/__typename value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/2/status type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/2/status value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/3 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/3 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/3/conclusion type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/3/conclusion value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/3/workflowName type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/3/workflowName value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/3/detailsUrl type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/3/detailsUrl value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/3/name type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/3/name value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/3/completedAt type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/3/completedAt value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/3/startedAt type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/3/startedAt value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/3/__typename type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/3/__typename value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/3/status type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/3/status value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/4 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/4 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/4/conclusion type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/4/conclusion value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/4/workflowName type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/4/workflowName value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/4/detailsUrl type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/4/detailsUrl value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/4/name type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/4/name value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/4/completedAt type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/4/completedAt value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/4/startedAt type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/4/startedAt value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/4/__typename type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/4/__typename value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/4/status type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/4/status value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/5 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/5 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/5/conclusion type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/5/conclusion value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/5/workflowName type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/5/workflowName value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/5/detailsUrl type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/5/detailsUrl value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/5/name type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/5/name value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/5/completedAt type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/5/completedAt value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/5/startedAt type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/5/startedAt value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/5/__typename type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/5/__typename value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/5/status type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/5/status value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/6 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/6 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/6/conclusion type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/6/conclusion value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/6/workflowName type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/6/workflowName value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/6/detailsUrl type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/6/detailsUrl value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/6/name type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/6/name value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/6/completedAt type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/6/completedAt value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/6/startedAt type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/6/startedAt value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/6/__typename type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/6/__typename value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/6/status type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/6/status value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/7 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/7 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/7/conclusion type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/7/conclusion value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/7/workflowName type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/7/workflowName value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/7/detailsUrl type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/7/detailsUrl value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/7/name type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/7/name value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/7/completedAt type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/7/completedAt value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/7/startedAt type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/7/startedAt value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/7/__typename type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/7/__typename value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/7/status type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/statusCheckRollup/7/status value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/isDraft type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/isDraft value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/baseRefName type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/baseRefName value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/headRefOid type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/headRefOid value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/url type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json/payload/pr/url value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-platform.json raw repository/user prefix absent",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json original byte count/hash",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json exact projection envelope",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json preparation only declared scope",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json only declared path substitutions",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload length preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/0 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/0 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/0/command type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/0/command length preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/0/command/0 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/0/command/0 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/0/command/1 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/0/command/1 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/0/stdout type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/0/stdout value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/0/exit_code type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/0/exit_code value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/0/label type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/0/label value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/0/stderr type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/0/stderr value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/1 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/1 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/1/command type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/1/command length preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/1/command/0 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/1/command/0 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/1/command/1 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/1/command/1 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/1/command/2 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/1/command/2 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/1/command/3 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/1/command/3 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/1/command/4 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/1/command/4 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/1/command/5 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/1/command/5 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/1/command/6 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/1/command/6 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/1/command/7 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/1/command/7 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/1/stdout type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/1/stdout value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/1/exit_code type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/1/exit_code value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/1/label type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/1/label value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/1/stderr type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/1/stderr value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/command type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/command length preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/command/0 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/command/0 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/command/1 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/command/1 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/command/2 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/command/2 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/command/3 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/command/3 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/command/4 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/command/4 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/command/5 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/command/5 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/command/6 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/command/6 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/command/7 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/command/7 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/command/8 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/command/8 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/command/9 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/command/9 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/stdout type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/stdout value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/outputs type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/outputs length preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/outputs/0 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/outputs/0 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/outputs/0/name type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/outputs/0/name value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/outputs/0/bytes type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/outputs/0/bytes value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/outputs/0/sha256 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/outputs/0/sha256 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/outputs/1 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/outputs/1 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/outputs/1/name type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/outputs/1/name value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/outputs/1/bytes type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/outputs/1/bytes value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/outputs/1/sha256 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/outputs/1/sha256 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/exit_code type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/exit_code value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/label type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/label value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/stderr type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/2/stderr value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/3 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/3 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/3/command type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/3/command length preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/3/command/0 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/3/command/0 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/3/command/1 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/3/command/1 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/3/command/2 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/3/command/2 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/3/stdout type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/3/stdout value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/3/exit_code type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/3/exit_code value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/3/label type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/3/label value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/3/stderr type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/3/stderr value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/command type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/command length preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/command/0 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/command/0 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/command/1 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/command/1 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/command/2 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/command/2 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/command/3 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/command/3 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/command/4 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/command/4 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/command/5 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/command/5 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/command/6 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/command/6 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/command/7 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/command/7 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/command/8 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/command/8 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/command/9 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/command/9 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/command/10 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/command/10 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/stdout type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/stdout value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/outputs type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/outputs length preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/outputs/0 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/outputs/0 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/outputs/0/name type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/outputs/0/name value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/outputs/0/bytes type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/outputs/0/bytes value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/outputs/0/sha256 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/outputs/0/sha256 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/outputs/1 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/outputs/1 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/outputs/1/name type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/outputs/1/name value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/outputs/1/bytes type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/outputs/1/bytes value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/outputs/1/sha256 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/outputs/1/sha256 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/exit_code type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/exit_code value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/label type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/label value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/stderr type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/4/stderr value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/5 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/5 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/5/command type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/5/command length preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/5/command/0 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/5/command/0 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/5/command/1 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/5/command/1 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/5/command/2 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/5/command/2 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/5/stdout type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/5/stdout value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/5/exit_code type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/5/exit_code value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/5/label type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/5/label value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/5/stderr type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/5/stderr value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/command type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/command length preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/command/0 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/command/0 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/command/1 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/command/1 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/command/2 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/command/2 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/command/3 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/command/3 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/command/4 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/command/4 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/command/5 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/command/5 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/command/6 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/command/6 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/command/7 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/command/7 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/command/8 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/command/8 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/command/9 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/command/9 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/stdout type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/stdout value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/outputs type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/outputs length preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/outputs/0 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/outputs/0 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/outputs/0/name type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/outputs/0/name value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/outputs/0/bytes type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/outputs/0/bytes value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/outputs/0/sha256 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/outputs/0/sha256 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/outputs/1 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/outputs/1 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/outputs/1/name type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/outputs/1/name value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/outputs/1/bytes type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/outputs/1/bytes value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/outputs/1/sha256 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/outputs/1/sha256 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/exit_code type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/exit_code value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/label type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/label value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/stderr type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/6/stderr value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/7 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/7 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/7/command type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/7/command length preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/7/command/0 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/7/command/0 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/7/command/1 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/7/command/1 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/7/command/2 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/7/command/2 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/7/stdout type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/7/stdout value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/7/exit_code type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/7/exit_code value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/7/label type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/7/label value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/7/stderr type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/7/stderr value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/8 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/8 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/8/source_unchanged type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/8/source_unchanged value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/8/source_commit type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/8/source_commit value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/8/scope type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/8/scope value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/8/after type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/8/after keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/8/after/2.pdf type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/8/after/2.pdf value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/8/after/1.pdf type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/8/after/1.pdf value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/8/after/10.pdf type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/8/after/10.pdf value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/8/before type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/8/before keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/8/before/2.pdf type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/8/before/2.pdf value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/8/before/1.pdf type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/8/before/1.pdf value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/8/before/10.pdf type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/8/before/10.pdf value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/8/label type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/8/label value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/8/external_root type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/8/external_root value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/8/zip_sha256 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/payload/8/zip_sha256 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json raw repository/user prefix absent",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json original byte count/hash",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json exact projection envelope",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json preparation only declared scope",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json only declared path substitutions",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload length preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/0 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/0 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/0/command type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/0/command length preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/0/command/0 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/0/command/0 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/0/command/1 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/0/command/1 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/0/stdout type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/0/stdout value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/0/exit_code type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/0/exit_code value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/0/label type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/0/label value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/0/stderr type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/0/stderr value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/1 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/1 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/1/command type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/1/command length preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/1/command/0 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/1/command/0 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/1/command/1 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/1/command/1 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/1/command/2 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/1/command/2 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/1/command/3 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/1/command/3 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/1/command/4 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/1/command/4 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/1/command/5 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/1/command/5 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/1/command/6 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/1/command/6 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/1/command/7 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/1/command/7 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/1/stdout type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/1/stdout value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/1/exit_code type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/1/exit_code value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/1/label type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/1/label value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/1/stderr type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/1/stderr value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/command type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/command length preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/command/0 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/command/0 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/command/1 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/command/1 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/command/2 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/command/2 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/command/3 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/command/3 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/command/4 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/command/4 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/command/5 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/command/5 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/command/6 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/command/6 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/command/7 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/command/7 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/command/8 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/command/8 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/command/9 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/command/9 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/stdout type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/stdout value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/outputs type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/outputs length preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/outputs/0 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/outputs/0 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/outputs/0/name type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/outputs/0/name value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/outputs/0/bytes type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/outputs/0/bytes value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/outputs/0/sha256 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/outputs/0/sha256 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/outputs/1 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/outputs/1 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/outputs/1/name type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/outputs/1/name value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/outputs/1/bytes type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/outputs/1/bytes value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/outputs/1/sha256 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/outputs/1/sha256 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/exit_code type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/exit_code value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/label type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/label value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/stderr type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/2/stderr value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/3 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/3 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/3/command type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/3/command length preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/3/command/0 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/3/command/0 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/3/command/1 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/3/command/1 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/3/command/2 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/3/command/2 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/3/stdout type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/3/stdout value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/3/exit_code type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/3/exit_code value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/3/label type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/3/label value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/3/stderr type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/3/stderr value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/command type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/command length preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/command/0 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/command/0 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/command/1 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/command/1 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/command/2 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/command/2 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/command/3 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/command/3 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/command/4 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/command/4 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/command/5 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/command/5 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/command/6 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/command/6 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/command/7 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/command/7 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/command/8 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/command/8 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/command/9 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/command/9 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/command/10 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/command/10 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/stdout type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/stdout value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/outputs type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/outputs length preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/outputs/0 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/outputs/0 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/outputs/0/name type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/outputs/0/name value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/outputs/0/bytes type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/outputs/0/bytes value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/outputs/0/sha256 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/outputs/0/sha256 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/outputs/1 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/outputs/1 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/outputs/1/name type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/outputs/1/name value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/outputs/1/bytes type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/outputs/1/bytes value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/outputs/1/sha256 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/outputs/1/sha256 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/exit_code type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/exit_code value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/label type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/label value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/stderr type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/4/stderr value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/5 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/5 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/5/command type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/5/command length preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/5/command/0 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/5/command/0 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/5/command/1 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/5/command/1 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/5/command/2 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/5/command/2 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/5/stdout type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/5/stdout value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/5/exit_code type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/5/exit_code value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/5/label type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/5/label value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/5/stderr type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/5/stderr value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/command type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/command length preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/command/0 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/command/0 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/command/1 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/command/1 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/command/2 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/command/2 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/command/3 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/command/3 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/command/4 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/command/4 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/command/5 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/command/5 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/command/6 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/command/6 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/command/7 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/command/7 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/command/8 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/command/8 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/command/9 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/command/9 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/stdout type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/stdout value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/outputs type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/outputs length preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/outputs/0 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/outputs/0 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/outputs/0/name type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/outputs/0/name value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/outputs/0/bytes type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/outputs/0/bytes value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/outputs/0/sha256 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/outputs/0/sha256 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/outputs/1 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/outputs/1 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/outputs/1/name type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/outputs/1/name value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/outputs/1/bytes type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/outputs/1/bytes value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/outputs/1/sha256 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/outputs/1/sha256 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/exit_code type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/exit_code value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/label type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/label value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/stderr type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/6/stderr value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/7 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/7 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/7/command type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/7/command length preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/7/command/0 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/7/command/0 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/7/command/1 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/7/command/1 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/7/command/2 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/7/command/2 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/7/stdout type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/7/stdout value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/7/exit_code type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/7/exit_code value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/7/label type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/7/label value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/7/stderr type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/7/stderr value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/command type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/command length preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/command/0 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/command/0 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/command/1 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/command/1 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/command/2 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/command/2 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/command/3 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/command/3 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/command/4 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/command/4 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/command/5 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/command/5 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/command/6 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/command/6 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/command/7 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/command/7 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/command/8 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/command/8 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/command/9 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/command/9 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/stdout type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/stdout value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/outputs type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/outputs length preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/outputs/0 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/outputs/0 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/outputs/0/name type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/outputs/0/name value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/outputs/0/bytes type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/outputs/0/bytes value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/outputs/0/sha256 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/outputs/0/sha256 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/outputs/1 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/outputs/1 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/outputs/1/name type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/outputs/1/name value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/outputs/1/bytes type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/outputs/1/bytes value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/outputs/1/sha256 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/outputs/1/sha256 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/outputs/2 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/outputs/2 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/outputs/2/name type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/outputs/2/name value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/outputs/2/bytes type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/outputs/2/bytes value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/outputs/2/sha256 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/outputs/2/sha256 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/exit_code type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/exit_code value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/label type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/label value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/stderr type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/8/stderr value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/command type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/command length preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/command/0 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/command/0 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/command/1 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/command/1 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/command/2 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/command/2 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/command/3 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/command/3 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/command/4 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/command/4 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/command/5 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/command/5 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/command/6 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/command/6 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/command/7 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/command/7 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/command/8 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/command/8 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/command/9 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/command/9 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/command/10 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/command/10 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/command/11 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/command/11 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/stdout type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/stdout value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/outputs type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/outputs length preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/outputs/0 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/outputs/0 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/outputs/0/name type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/outputs/0/name value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/outputs/0/bytes type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/outputs/0/bytes value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/outputs/0/sha256 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/outputs/0/sha256 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/outputs/1 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/outputs/1 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/outputs/1/name type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/outputs/1/name value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/outputs/1/bytes type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/outputs/1/bytes value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/outputs/1/sha256 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/outputs/1/sha256 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/outputs/2 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/outputs/2 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/outputs/2/name type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/outputs/2/name value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/outputs/2/bytes type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/outputs/2/bytes value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/outputs/2/sha256 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/outputs/2/sha256 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/exit_code type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/exit_code value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/label type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/label value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/stderr type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/9/stderr value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/10 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/10 keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/10/source_unchanged type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/10/source_unchanged value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/10/source_commit type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/10/source_commit value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/10/scope type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/10/scope value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/10/after type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/10/after keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/10/after/2.pdf type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/10/after/2.pdf value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/10/after/1.pdf type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/10/after/1.pdf value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/10/after/10.pdf type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/10/after/10.pdf value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/10/before type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/10/before keys preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/10/before/2.pdf type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/10/before/2.pdf value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/10/before/1.pdf type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/10/before/1.pdf value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/10/before/10.pdf type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/10/before/10.pdf value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/10/label type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/10/label value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/10/external_root type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/10/external_root value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/10/zip_sha256 type preserved",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/payload/10/zip_sha256 value matches declared projection",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json raw repository/user prefix absent",
+      "pass": true
+    },
+    {
+      "check": "initial local observation C0 binding",
+      "pass": true
+    },
+    {
+      "check": "PS51 first exactly ZIP/checksum assets",
+      "pass": true
+    },
+    {
+      "check": "PS51 first/SHA256SUMS.txt retained exact bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "PS51 first/WinPDFMerger-v1.0.0.zip retained exact bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "PS7 first exactly ZIP/checksum assets",
+      "pass": true
+    },
+    {
+      "check": "PS7 first/SHA256SUMS.txt retained exact bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "PS7 first/WinPDFMerger-v1.0.0.zip retained exact bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "approved original cache inventory exactly 348",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 0 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 1 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 2 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 3 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 4 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 5 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 6 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 7 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 8 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 9 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 10 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 11 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 12 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 13 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 14 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 15 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 16 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 17 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 18 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 19 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 20 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 21 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 22 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 23 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 24 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 25 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 26 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 27 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 28 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 29 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 30 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 31 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 32 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 33 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 34 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 35 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 36 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 37 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 38 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 39 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 40 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 41 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 42 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 43 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 44 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 45 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 46 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 47 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 48 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 49 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 50 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 51 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 52 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 53 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 54 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 55 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 56 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 57 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 58 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 59 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 60 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 61 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 62 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 63 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 64 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 65 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 66 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 67 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 68 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 69 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 70 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 71 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 72 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 73 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 74 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 75 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 76 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 77 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 78 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 79 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 80 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 81 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 82 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 83 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 84 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 85 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 86 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 87 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 88 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 89 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 90 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 91 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 92 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 93 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 94 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 95 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 96 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 97 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 98 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 99 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 100 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 101 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 102 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 103 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 104 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 105 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 106 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 107 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 108 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 109 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 110 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 111 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 112 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 113 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 114 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 115 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 116 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 117 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 118 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 119 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 120 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 121 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 122 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 123 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 124 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 125 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 126 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 127 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 128 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 129 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 130 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 131 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 132 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 133 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 134 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 135 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 136 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 137 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 138 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 139 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 140 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 141 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 142 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 143 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 144 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 145 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 146 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 147 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 148 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 149 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 150 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 151 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 152 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 153 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 154 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 155 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 156 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 157 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 158 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 159 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 160 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 161 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 162 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 163 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 164 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 165 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 166 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 167 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 168 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 169 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 170 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 171 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 172 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 173 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 174 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 175 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 176 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 177 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 178 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 179 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 180 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 181 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 182 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 183 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 184 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 185 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 186 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 187 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 188 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 189 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 190 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 191 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 192 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 193 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 194 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 195 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 196 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 197 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 198 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 199 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 200 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 201 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 202 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 203 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 204 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 205 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 206 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 207 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 208 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 209 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 210 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 211 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 212 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 213 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 214 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 215 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 216 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 217 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 218 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 219 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 220 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 221 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 222 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 223 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 224 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 225 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 226 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 227 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 228 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 229 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 230 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 231 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 232 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 233 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 234 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 235 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 236 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 237 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 238 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 239 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 240 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 241 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 242 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 243 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 244 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 245 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 246 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 247 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 248 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 249 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 250 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 251 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 252 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 253 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 254 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 255 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 256 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 257 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 258 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 259 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 260 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 261 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 262 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 263 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 264 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 265 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 266 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 267 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 268 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 269 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 270 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 271 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 272 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 273 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 274 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 275 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 276 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 277 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 278 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 279 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 280 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 281 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 282 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 283 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 284 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 285 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 286 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 287 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 288 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 289 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 290 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 291 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 292 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 293 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 294 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 295 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 296 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 297 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 298 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 299 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 300 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 301 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 302 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 303 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 304 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 305 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 306 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 307 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 308 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 309 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 310 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 311 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 312 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 313 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 314 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 315 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 316 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 317 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 318 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 319 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 320 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 321 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 322 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 323 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 324 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 325 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 326 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 327 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 328 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 329 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 330 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 331 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 332 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 333 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 334 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 335 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 336 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 337 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 338 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 339 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 340 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 341 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 342 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 343 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 344 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 345 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 346 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "approved cache file 347 original SHA256",
+      "pass": true
+    },
+    {
+      "check": "initial platform observation C0 binding",
+      "pass": true
+    },
+    {
+      "check": "initial platform pr actual exit0",
+      "pass": true
+    },
+    {
+      "check": "initial platform pr/stdout raw byte hash",
+      "pass": true
+    },
+    {
+      "check": "initial platform pr/stderr raw byte hash",
+      "pass": true
+    },
+    {
+      "check": "initial platform releases actual exit0",
+      "pass": true
+    },
+    {
+      "check": "initial platform releases/stdout raw byte hash",
+      "pass": true
+    },
+    {
+      "check": "initial platform releases/stderr raw byte hash",
+      "pass": true
+    },
+    {
+      "check": "initial platform refs actual exit0",
+      "pass": true
+    },
+    {
+      "check": "initial platform refs/stdout raw byte hash",
+      "pass": true
+    },
+    {
+      "check": "initial platform refs/stderr raw byte hash",
+      "pass": true
+    },
+    {
+      "check": "initial platform PR26 draft/open C0",
+      "pass": true
+    },
+    {
+      "check": "initial eight checks successful platform metadata only",
+      "pass": true
+    },
+    {
+      "check": "initial no releases/tags and refs bound",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json unique observed labels",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json native version then owned init failure",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/candidate-default actual exploratory exit",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/candidate-default/WinPDFMerge_synthetic inputs_20261009_170635_ef53d34f436945b3.log retained exact bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/candidate-default/WinPDFMerge_synthetic inputs_20261009_170635_ef53d34f436945b3.pdf retained exact bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/candidate-skip actual exploratory exit",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/candidate-skip/WinPDFMerge_synthetic inputs_20261009_170638_1b2015500e0e4249.log retained exact bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/candidate-skip/WinPDFMerge_synthetic inputs_20261009_170638_1b2015500e0e4249.pdf retained exact bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/candidate-email-failure actual exploratory exit",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/candidate-email-failure/WinPDFMerge_synthetic inputs_20261009_170640_618a70b5e5a94153.log retained exact bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json/candidate-email-failure/WinPDFMerge_synthetic inputs_20261009_170640_618a70b5e5a94153.pdf retained exact bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json exact provenance excludes acceptance",
+      "pass": true
+    },
+    {
+      "check": "initial-probe.json recorded source set unchanged",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json unique observed labels",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json native version then owned init failure",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/candidate-default actual exploratory exit",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/candidate-default/WinPDFMerge_synthetic inputs_20261009_170822_f70e9c7100914ab5.log retained exact bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/candidate-default/WinPDFMerge_synthetic inputs_20261009_170822_f70e9c7100914ab5.pdf retained exact bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/candidate-skip actual exploratory exit",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/candidate-skip/WinPDFMerge_synthetic inputs_20261009_170825_3f532746a3e84b5b.log retained exact bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/candidate-skip/WinPDFMerge_synthetic inputs_20261009_170825_3f532746a3e84b5b.pdf retained exact bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/candidate-email-failure actual exploratory exit",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/candidate-email-failure/WinPDFMerge_synthetic inputs_20261009_170828_9da1e72d2d2d4d5e.log retained exact bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json/candidate-email-failure/WinPDFMerge_synthetic inputs_20261009_170828_9da1e72d2d2d4d5e.pdf retained exact bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json exact provenance excludes acceptance",
+      "pass": true
+    },
+    {
+      "check": "initial-raster-probe.json recorded source set unchanged",
+      "pass": true
+    },
+    {
+      "check": "candidate-raster-default exploratory smaller email observed",
+      "pass": true
+    },
+    {
+      "check": "candidate-raster-ebook exploratory smaller email observed",
+      "pass": true
+    },
+    {
+      "check": "preparation note distinguishes init/config fault and pending clean acceptance",
+      "pass": true
+    },
+    {
+      "check": "T29 attribute scoped byte preservation only",
+      "pass": true
+    }
+  ]
+}

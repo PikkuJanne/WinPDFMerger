@@ -1,55 +1,61 @@
 # Next session
 
-Current task: T29 test the exact candidate ZIP, in progress and dependency-ready.
-T01-T28 are done. Read AGENTS/INDEX/STATUS, T29 TASKS/brief, PRODUCT_SPEC,
-GITHUB_WORKFLOW, PACKAGE_CONTRACT, RELEASE_RUNBOOK and T28-completion/review.
-Freshly confirm repository/branch/clean state, both origin routes and live branch/
+Next task: T30 coverage/claims review and final completeness, pending and
+dependency-ready. T01-T29 are done. Read AGENTS/INDEX/STATUS, T30 TASKS/brief,
+PRODUCT_SPEC, ACCEPTANCE_CASES, GITHUB_WORKFLOW, TEST_STRATEGY, RELEASE_RUNBOOK,
+DEFINITION_OF_DONE, IMPROVEMENT_COVERAGE and relevant T23-T29 completion/review
+records. Freshly verify repo/branch/clean state, both origin routes and live branch/
 main/PR/tag/release state. Reuse codex/v1.0.0-readiness and draft/open/unmerged
-PR26; main was e245114 at final T28 inspection. No tag/release exists.
+PR26. Last C1 inspection: main e245114, no tags/releases and eight successful
+current push/PR jobs. Final C2 own clean/live synchronization must be rechecked.
 
-T28 clean C1b is 8917938820f60e499e2c20caa9cb03171678be72. Builder/allowlist/runtime/
-user docs/PS tests are byte-equivalent to C1 fd0acc7; C1b corrects only capture
-labels and adds their regression/failed-capture record. Both sources' pushes/
-PR CI passed4/4; final records C2 own sync is checked in the session and must
-be verified afresh. T28-reports narrow -text rule preserves exact receipts.
+T29 clean harness C1 is629f506fc18c278dd43d1021009a45406a6544e1. Exact candidate
+C1b is8917938820f60e499e2c20caa9cb03171678be72. Retained T28 first-build ZIPs and
+whole checksum files were rehashed/operated without substitution:
+PS51 ZIP013215efbd2777460fdbd53e7ff3e60a9c371961805e1da17ec9efc01e6757a7,
+checksum4b9507628b77c56708688d3832d2c09b81c8edab306cb856b05cbc4fd207f201;
+PS7 ZIPaba36958071fc1306f18f30fe37bc2c4a10a3e25b6c6da14e35b39f1650e4cd9,
+checksum9767694e7b55661142e3d68f76153297616f9e3c804a8dced218e546c4b085a6.
+These are premerge candidates, not final accepted R or independently downloaded assets.
 
-Build-Release.ps1 accepts full lowercase SourceCommit equal to clean HEAD and
-new external OutputDirectory under an existing ordinary parent. It reads 15
-explicit tracked Git blobs, adds BUILD_INFO and publishes only exact ZIP and
-SHA256SUMS. Only ignored tests/.work caches are permitted. It rejects dirty/
-untracked/other ignored files, wrong source/schema/version, links, unsafe paths
-and existing destinations. Never package a wildcard dirty directory. All
-instructions/allowlist details and raw argument/hash ledgers are retained.
+T29 actual 25 application scenarios and two public-help calls pass in PS5.1.26100.9444
+and pinned PS7.6.6 with genuine PDFtk2.02/GS10.08.0. Default/output/preset/master-only/
+absentGS/invalid/no-size-benefit and real initialization-failure results match the
+contract. Original BAT/defaultPS5.1 preserves 0/1/2 and its pause under automated
+input, not Explorer. All source/runtime/foreign/CWD trees, hashes/mtime/attributes,
+348 caches and asset/driver/environment guards pass. Independent audits5610/1356
+have0 issues on21 PDFs/106 pages and decoded data. Helper17pass is separate.
 
-Actual C1b first/repeat builds in each required host match per environment.
-PS51 ZIP 013215efbd2777460fdbd53e7ff3e60a9c371961805e1da17ec9efc01e6757a7,
-manifest 4b9507628b77c56708688d3832d2c09b81c8edab306cb856b05cbc4fd207f201;
-PS7 ZIP aba36958071fc1306f18f30fe37bc2c4a10a3e25b6c6da14e35b39f1650e4cd9,
-manifest 9767694e7b55661142e3d68f76153297616f9e3c804a8dced218e546c4b085a6.
-Original capture ledger is tests/.work/T28-capture/
-68519037bd444e989477da6800b82025/invocations.json; it locates retained external
-assets. Sanitized ledger/build metadata/receipts and independently verified
-manifest are under evidence/T28-reports. No application ZIP is committed/uploaded.
-If using a new source/build, record its exact SHA and hashes and rerun relevant
-package checks; do not silently substitute bytes or call C1b final merged R.
+Original accepted ledger: tests/.work/T29-capture/
+ea4dd9f8ebe74e99b7e44bbe639874b1/invocations.json, locating external extractions/
+outputs and raw host reports. Original T28 assets: tests/.work/T28-capture/
+68519037bd444e989477da6800b82025/invocations.json. Public core receipts/review
+sources/results and 131-payload manifest are under evidence/T29-reports; SHA
+50e35534a4f7b487f042e33cd4129125b9db9ffabd9a11f83877bbaca6d1017e.
+Only two declared post-manifest review files are outside the frozen core; their
+accepted994-check audit confirms projection/privacy/counts. Failed driver/dirty
+preparation and image/public-reviewer assumption errors remain preserved and
+separate from accepted counts. No ZIP/PDF/vendor binary is committed/uploaded.
 
-Complete exactly T29: extract a hash-verified candidate to fresh paths with
-spaces, operate public entries/options with actual approved engines in both
-required hosts, independently inspect actual PDFs and unchanged source/foreign
-files. Package inventory audits and controlled tests do not substitute for
-this operation. T30 owns final completeness/claim refresh before source freeze,
-including preparation/Unreleased notes. No intermediate tag/release. M6 owns
-accepted R, final exact assets, publication and independent download verification.
+Complete exactly T30: reconcile all17 accepted improvements/required before-merge
+cases with actual scoped evidence; review architecture/code/docs/source safety;
+refresh README/CHANGELOG/release-note preparation and Unreleased wording from
+facts, including candidate acceptance while retaining accepted-R/final/download
+operation gates. Recheck current primary vendor/security/support references where
+needed; do not turn dated pins into perpetual newest/safe claims. Correct real
+findings with regressions and appropriate affected checks. Verify fresh actual PR
+head/checks/review and run check-plan --require-ready when T30 is genuinely done.
+Merge/source freeze is T31; no intermediate release/tag or early publication.
 
-Reuse approved Pester 6.2.0/analyzer 1.25.0/PDFtk2.02/GS10.08.0/pinnedPS7.6.6
-caches and workspace Python 3.12.14. No silent install/elevation/persistent
-policy/PATH/security change. Child Process RemoteSigned remains scoped; batch
-process Bypass respects Group Policy. AmbientPS7.6.5 review is not pinned host
-execution. Actual T28 hosts observed Professional26H2/full26300.9457/x64/
-nonadministrator tokens; null channel values do not prove enrollment.
+Reuse approved pinned caches and workspace Python3.12.14; no silent install,
+elevation or persistent policy/PATH/security change. Only actual approved host/
+native execution may be claimed; ambientPS7.6.5 is not pinnedPS7.6.6 evidence.
+Child RemoteSigned and existing batch process Bypass respect Group Policy.
+Observed Professional26H2/full26300.9457/x64/nonadministrator tokens do not infer
+account class/Insider enrollment; null channel registry fields are not proof.
 
-D25 AC058 human standard-user/Explorer/PDF-viewer acceptance remains excluded
-and unperformed, never passed. Windows10/liveUNC/ARM/32-bit-host exclusions and
-all dependency/PDF/unsigned/privacy limits remain. Required Windows/native exact
-candidate/final/downloaded-ZIP operation, independent PDFs/unchanged sources,
-provenance, publication and synchronized closure remain; the project is not done.
+D25 AC058 human standard-user/Explorer/PDF-viewer acceptance is excluded,
+unperformed and never pass. Windows10/liveUNC/ARM/32-bit exclusions and unsigned/
+dependency/PDF/privacy limits remain. Actual accepted-R/final ZIP and independently
+downloaded published ZIP operation/source safety, publication and synchronized
+closure remain required. The project is not complete.

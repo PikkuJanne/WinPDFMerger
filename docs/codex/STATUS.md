@@ -1,41 +1,46 @@
 # Project status
 
 Target: published and independently verified v1.0.0 in PikkuJanne/WinPDFMerger.
-T01-T28 are done; M1-M4 remain complete within recorded owner-amended scope.
-Current milestone M5. Current task T29 exact candidate ZIP operation is in progress and
+T01-T29 are done within recorded owner-amended scope. Current milestone M5.
+Next task T30 coverage/claims review and final completeness is pending and
 dependency-ready. PR26 remains draft/open/unmerged; no tag/release is created.
 
-T29 started 2026-10-09 from clean/live 5f962aa. Fresh GitHub inspection confirms
-PR26 draft/open/unmerged at that head, main e245114, no tags/releases and all eight
-current push/PR jobs successful (platform metadata only). Both retained T28 C1b
-candidate assets and all348 approved cache payloads rehash unchanged. The T29
-operation harness and accepted dual-shell native package capture are still pending.
+T29 AC067/AC068 pass at clean/live harness C1 629f506, operating exact retained
+T28 C1b8917938 ZIPs. Both exact ZIP/checksum hashes, 16-file extraction/BUILD_INFO
+and 15 payload Git blobs are verified. Fresh external paths with spaces and
+unrelated CWDs exercise public CLI in actual PS5.1.26100.9444 and pinned PS7.6.6,
+real PDFtk 2.02/GS 10.08.0 and unchanged source/runtime/foreign files and trees.
+Professional 26H2/full26300.9457/x64/nonadministrator token facts do not establish
+account class or Insider enrollment.
 
-T28 AC065/AC066 pass at clean C1b 8917938: explicit15-file tracked allowlist,
-exact Git blobs, generated BUILD_INFO and safe reproducible package metadata,
-no-overwrite external output and exact ZIP/separate checksum-manifest hashes.
-Actual same-environment pairs pass independent byte/source audits260checks each.
-PS5.1/PS7 container/metadata differ; the15payload blobs match. No exact candidate
-application/native operation is inferred from package inventory/integrity tests.
+There are 25 accepted actual application scenarios (14 PS5.1/11 PS7), plus two
+public-help calls and 17 separate helper regressions. Expected app exits are
+13 code0, nine code1 and three code2; all scenarios pass their contract checks.
+Default screen/ebook smaller emails, skip/ignored preset, no-size-benefit,
+absentGS, invalid invocation/input and genuine GS initialization failure pass.
+Original BAT uses PS5.1 and preserves 0/1/2 plus pause with redirected input.
+The three GS-failure masters survive with no failed email publication. No human
+walkthrough or mock is counted as native/package acceptance.
 
-Both actual PS5.1.26100.9444/pinnedPS7.6.6 x64 hosts pass 663 checks each,1326 total:
-Package 66, Unit 545, Version 21, PublicDocs 22, Static 9. Selected static 7 files/
-41 rules each has0 selected/parser/source failures; vendor advisories remain
-0 errors/18 warnings/0 information each. Three capture-label regressions pass.
-Helper26pass/1symlinkskip remains separate from application/native acceptance.
-Independent full receipt audit3647 checks/0 issues; all31calls/source guards pass.
-Failed dirty preparations and incomplete C1 capture remain truthful separate
-records. See evidence/T28-completion.md, T28-review.md, T28-results.json and
-T28-reports/manifest.json. Prior T23-T27 native/security/compatibility evidence
-and failures remain authoritative within their actual scope.
+Independent original-operation audit 5610/0 and decoded-image audit 1356/0
+inspect 21 final PDFs/106 pages. Twelve normal masters preserve exact seeded
+raster RGB; all five emails are smaller and rewritten (screen downsamples,
+ebook uses lossy JPEG at retained resolution). Sources/foreign/runtime and all
+348 approved cache payloads, assets/driver/parent environment stay unchanged.
+Assistant visual QA inspects six contact sheets/36 pages; AC058 stays unperformed.
+Core archive 131 payloads and public review 994/0 preserve typed original binds,
+review source/results and failed/unaccepted preparation scopes separately.
+See evidence/T29-completion.md, T29-results.json, T29-review.md and T29-reports.
 
-C1 fd0acc7 and C1b 8917938 normal pushes/fresh clean/live equality are recorded;
-push/PR CI each passed4/4 jobs for both sources (platform metadata only).
-Final records C2 advances cases/task/handoff and preserves archived evidence;
-its own push and fresh clean/live equality are verified after creation in the
-session. No later record changes the exact tested C1b package provenance.
+C1 normal push/fresh clean live equality was verified at 15:24:51 UTC; all eight
+C1 push/PR jobs completed successfully (platform metadata only). Final records C2
+store done cases/task/handoff/evidence; their own normal push/fresh clean live
+check follows creation and is reported in the session. Candidate C1b provenance
+is unchanged. Prior T23-T28 evidence retains its actual scope.
 
-D25 AC058 is excluded/unperformed, never pass. Windows10/liveUNC/ARM/32-bit-host
-exclusions remain. Actual exact candidate/final/downloaded-ZIP operation,
-independent PDF/source-safety checks, accepted source R, publication and
-synchronized closure remain required. The project is not complete.
+D25 AC058 remains excluded/unperformed, never pass. Windows10/liveUNC/ARM/
+32-bit-host exclusions and unsigned/dependency/PDF/privacy limits remain.
+T30 must refresh preparation/Unreleased wording and review all coverage/gates
+before source acceptance. Accepted merged R, final exact asset operation,
+publication, independent published-download operation and synchronized closure
+remain later gates. The project is not complete.
