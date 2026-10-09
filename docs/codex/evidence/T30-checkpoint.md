@@ -25,5 +25,12 @@ No tests, future push or merge readiness are claimed here. AC069/070 remain
 not_run; T30 is in_progress. Final records will identify tested C1, actual
 outcomes and independently reviewed evidence without self-referential hashes.
 
+Preparation correction: refreshing the dependency heading date broke SECURITY's
+local section link. The existing public-link regression caught it (PS5.1:
+23 pass/one fail). Preparation commit `7aa1d57bdb5cacd7baffe6cb3ba7cbb2fb03f002`
+was pushed before that result was inspected, so it is not an accepted test SHA.
+The anchor is corrected; the full clean-source run must use the subsequent
+corrected commit. Original failed preparation streams/report remain retained.
+
 T31 merge/source freeze is later. No tag, release or publication is authorized
 by a successful plan check alone; exact final and downloaded assets remain gates.
