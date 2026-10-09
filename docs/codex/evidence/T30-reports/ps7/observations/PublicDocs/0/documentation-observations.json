@@ -1,0 +1,379 @@
+{
+  "Task": "T20",
+  "Scope": "AC046/AC047 public-doc contract, isolated real ParamBlock binding and controlled helper outcomes; no application/native/manual execution",
+  "ShellVersion": "7.6.6",
+  "ShellEdition": "Core",
+  "SourceBindings": [
+    {
+      "Path": "README.md",
+      "Exists": true,
+      "SHA256": "6fb3bfa326c215ef99f152309a12768c967527782e796f60983f9f9f2005a097"
+    },
+    {
+      "Path": "CHANGELOG.md",
+      "Exists": true,
+      "SHA256": "ef62802668744491374c1f1214b1cc4494f026295eaf396c7ec68d3fc34e75bc"
+    },
+    {
+      "Path": "docs/RELEASE_NOTES_v1.0.0.md",
+      "Exists": true,
+      "SHA256": "38866d8ab69626f49a5ed50381f839d21dca9e702dbcc59c4338ee37f8894fbd"
+    },
+    {
+      "Path": "docs/USAGE.md",
+      "Exists": true,
+      "SHA256": "ce90ee1c6f63137c62d95fb0b29093232152b94579be61e457774a2ee9db5334"
+    },
+    {
+      "Path": "docs/TROUBLESHOOTING.md",
+      "Exists": true,
+      "SHA256": "9bc13043665ab6fc3eec1a7d868fa956106156d51fa76843442bf8f8519c32b8"
+    },
+    {
+      "Path": "docs/DEPENDENCIES.md",
+      "Exists": true,
+      "SHA256": "d79cba6694d4335fdb1bc2b6b716c851aa7b88b9301cfb8cc464e1834fe916b3"
+    },
+    {
+      "Path": "docs/COMPATIBILITY.md",
+      "Exists": true,
+      "SHA256": "dbf6f2ee612defed1501298874960cf0275a0dc0585c94a905bb69ba2aa84bfe"
+    },
+    {
+      "Path": "SECURITY.md",
+      "Exists": true,
+      "SHA256": "dadc3249a8f8f24518d9325b5b0c72c480725ad18bfefabdb6faaf56f3334275"
+    },
+    {
+      "Path": "docs/PDF_LIMITATIONS.md",
+      "Exists": true,
+      "SHA256": "1bd08b2cec008fcc41390111f8ccfc0cfef4c3374018fe3b9d6d19589993f58d"
+    },
+    {
+      "Path": "docs/EMAIL_PRESETS.md",
+      "Exists": true,
+      "SHA256": "ece311071d0980dca2e4591989c670f49ec68d41f205dd9bde62beb102a73dbb"
+    },
+    {
+      "Path": "LICENSE",
+      "Exists": true,
+      "SHA256": "714ffa7a21614e637d7dbb17a2e86e4575d7ecd2b6d36b5b67ab3fdcc4193477"
+    },
+    {
+      "Path": "WinPDFMerge.ps1",
+      "Exists": true,
+      "SHA256": "2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902"
+    },
+    {
+      "Path": "WinPDFMerge.bat",
+      "Exists": true,
+      "SHA256": "288287beefea974c64d39b34266332d83112b9106c952efd8c304edfedebff83"
+    }
+  ],
+  "Observations": [
+    {
+      "Label": "candidate-versus-final-gates",
+      "Detail": {
+        "NativeInvoked": false,
+        "ApplicationInvoked": false,
+        "CandidateAcceptance": "automated premerge only",
+        "FinalReleaseAccepted": false,
+        "PublishedDownloadAccepted": false
+      }
+    },
+    {
+      "Label": "complete-layout",
+      "Detail": {
+        "Version": "VERSION",
+        "Helper": "src/WinPDFMerge.Helpers.ps1",
+        "Launchers": [
+          "WinPDFMerge.ps1",
+          "WinPDFMerge.bat"
+        ]
+      }
+    },
+    {
+      "Label": "owner-directed-human-validation-exclusion",
+      "Detail": {
+        "NativeInvoked": false,
+        "HumanValidationStatus": "excluded",
+        "ReleaseZipAccepted": false,
+        "ManualAcceptance": false,
+        "Surfaces": [
+          "README.md",
+          "docs/COMPATIBILITY.md",
+          "docs/DEPENDENCIES.md"
+        ],
+        "ApplicationInvoked": false
+      }
+    },
+    {
+      "Label": "optional-compatibility-exclusions",
+      "Detail": {
+        "NativeInvoked": false,
+        "ApplicationInvoked": false,
+        "ManualAcceptance": false,
+        "Scopes": [
+          "Windows 10",
+          "Live UNC",
+          "Windows on ARM",
+          "32-bit hosts"
+        ]
+      }
+    },
+    {
+      "Label": "isolated-real-parameter-binding",
+      "Detail": {
+        "NativeInvoked": false,
+        "ApplicationInvoked": false,
+        "Examples": [
+          {
+            "Path": "README.md",
+            "Text": ".\\WinPDFMerge.ps1 \"C:\\Work\\Docs\\ToMerge\"",
+            "Bound": {
+              "SourceFolder": "C:\\Work\\Docs\\ToMerge",
+              "OutputFolder": "",
+              "SkipEmail": false,
+              "EmailPreset": "screen"
+            }
+          },
+          {
+            "Path": "README.md",
+            "Text": ".\\WinPDFMerge.ps1 \"C:\\Work\\Docs\\ToMerge\" -OutputFolder \"C:\\Work\\Merged\"",
+            "Bound": {
+              "SourceFolder": "C:\\Work\\Docs\\ToMerge",
+              "OutputFolder": "C:\\Work\\Merged",
+              "SkipEmail": false,
+              "EmailPreset": "screen"
+            }
+          },
+          {
+            "Path": "README.md",
+            "Text": ".\\WinPDFMerge.ps1 \"C:\\Work\\Docs\\ToMerge\" -EmailPreset ebook",
+            "Bound": {
+              "SourceFolder": "C:\\Work\\Docs\\ToMerge",
+              "OutputFolder": "",
+              "SkipEmail": false,
+              "EmailPreset": "ebook"
+            }
+          },
+          {
+            "Path": "README.md",
+            "Text": ".\\WinPDFMerge.ps1 \"C:\\Work\\Docs\\ToMerge\" -SkipEmail",
+            "Bound": {
+              "SourceFolder": "C:\\Work\\Docs\\ToMerge",
+              "OutputFolder": "",
+              "SkipEmail": true,
+              "EmailPreset": "screen"
+            }
+          },
+          {
+            "Path": "README.md",
+            "Text": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File 'C:\\Tools\\WinPDFMerge\\WinPDFMerge.ps1' -SourceFolder 'C:\\Work\\source%NAME%'",
+            "Bound": {
+              "SourceFolder": "C:\\Work\\source%NAME%",
+              "OutputFolder": "",
+              "SkipEmail": false,
+              "EmailPreset": "screen"
+            }
+          },
+          {
+            "Path": "docs/USAGE.md",
+            "Text": "& 'C:\\Tools\\WinPDFMerge\\WinPDFMerge.ps1' -SourceFolder 'C:\\Work\\Docs\\ToMerge' -OutputFolder 'C:\\Work\\Merged' -SkipEmail",
+            "Bound": {
+              "SourceFolder": "C:\\Work\\Docs\\ToMerge",
+              "OutputFolder": "C:\\Work\\Merged",
+              "SkipEmail": true,
+              "EmailPreset": "screen"
+            }
+          }
+        ],
+        "Count": 6
+      }
+    },
+    {
+      "Label": "public-local-links",
+      "Detail": {
+        "Links": [
+          {
+            "From": "README.md",
+            "Target": "docs/COMPATIBILITY.md"
+          },
+          {
+            "From": "README.md",
+            "Target": "docs/DEPENDENCIES.md"
+          },
+          {
+            "From": "README.md",
+            "Target": "SECURITY.md"
+          },
+          {
+            "From": "README.md",
+            "Target": "docs/TROUBLESHOOTING.md#script-blocked"
+          },
+          {
+            "From": "README.md",
+            "Target": "docs/COMPATIBILITY.md"
+          },
+          {
+            "From": "README.md",
+            "Target": "docs/USAGE.md"
+          },
+          {
+            "From": "README.md",
+            "Target": "docs/EMAIL_PRESETS.md"
+          },
+          {
+            "From": "README.md",
+            "Target": "docs/PDF_LIMITATIONS.md"
+          },
+          {
+            "From": "README.md",
+            "Target": "docs/TROUBLESHOOTING.md"
+          },
+          {
+            "From": "README.md",
+            "Target": "docs/COMPATIBILITY.md"
+          },
+          {
+            "From": "README.md",
+            "Target": "docs/USAGE.md"
+          },
+          {
+            "From": "README.md",
+            "Target": "docs/DEPENDENCIES.md"
+          },
+          {
+            "From": "README.md",
+            "Target": "SECURITY.md"
+          },
+          {
+            "From": "README.md",
+            "Target": "LICENSE"
+          },
+          {
+            "From": "docs/USAGE.md",
+            "Target": "../README.md"
+          },
+          {
+            "From": "docs/USAGE.md",
+            "Target": "TROUBLESHOOTING.md#script-blocked"
+          },
+          {
+            "From": "docs/USAGE.md",
+            "Target": "COMPATIBILITY.md"
+          },
+          {
+            "From": "docs/USAGE.md",
+            "Target": "../README.md#use"
+          },
+          {
+            "From": "docs/USAGE.md",
+            "Target": "EMAIL_PRESETS.md"
+          },
+          {
+            "From": "docs/USAGE.md",
+            "Target": "PDF_LIMITATIONS.md"
+          },
+          {
+            "From": "docs/USAGE.md",
+            "Target": "../SECURITY.md#privacy-and-logs"
+          },
+          {
+            "From": "docs/USAGE.md",
+            "Target": "TROUBLESHOOTING.md#orphan-staging"
+          },
+          {
+            "From": "docs/USAGE.md",
+            "Target": "../README.md#results-and-exit-codes"
+          },
+          {
+            "From": "docs/TROUBLESHOOTING.md",
+            "Target": "../README.md#results-and-exit-codes"
+          },
+          {
+            "From": "docs/TROUBLESHOOTING.md",
+            "Target": "../SECURITY.md#unsigned-scripts-and-integrity"
+          },
+          {
+            "From": "docs/TROUBLESHOOTING.md",
+            "Target": "../README.md#install"
+          },
+          {
+            "From": "docs/TROUBLESHOOTING.md",
+            "Target": "USAGE.md#paths-and-destinations"
+          },
+          {
+            "From": "docs/TROUBLESHOOTING.md",
+            "Target": "DEPENDENCIES.md#selection-and-diagnostics"
+          },
+          {
+            "From": "docs/TROUBLESHOOTING.md",
+            "Target": "PDF_LIMITATIONS.md"
+          },
+          {
+            "From": "docs/TROUBLESHOOTING.md",
+            "Target": "../SECURITY.md#reporting"
+          },
+          {
+            "From": "docs/DEPENDENCIES.md",
+            "Target": "../LICENSE"
+          },
+          {
+            "From": "docs/DEPENDENCIES.md",
+            "Target": "COMPATIBILITY.md"
+          },
+          {
+            "From": "docs/DEPENDENCIES.md",
+            "Target": "COMPATIBILITY.md"
+          },
+          {
+            "From": "docs/DEPENDENCIES.md",
+            "Target": "../SECURITY.md"
+          },
+          {
+            "From": "docs/DEPENDENCIES.md",
+            "Target": "TROUBLESHOOTING.md"
+          },
+          {
+            "From": "docs/COMPATIBILITY.md",
+            "Target": "DEPENDENCIES.md"
+          },
+          {
+            "From": "docs/COMPATIBILITY.md",
+            "Target": "USAGE.md"
+          },
+          {
+            "From": "docs/COMPATIBILITY.md",
+            "Target": "PDF_LIMITATIONS.md"
+          },
+          {
+            "From": "docs/COMPATIBILITY.md",
+            "Target": "../SECURITY.md"
+          },
+          {
+            "From": "SECURITY.md",
+            "Target": "docs/DEPENDENCIES.md"
+          },
+          {
+            "From": "SECURITY.md",
+            "Target": "docs/PDF_LIMITATIONS.md"
+          },
+          {
+            "From": "SECURITY.md",
+            "Target": "docs/TROUBLESHOOTING.md#orphan-staging"
+          },
+          {
+            "From": "SECURITY.md",
+            "Target": "docs/DEPENDENCIES.md#vendor-information-checked-2026-10-09"
+          },
+          {
+            "From": "SECURITY.md",
+            "Target": "LICENSE"
+          }
+        ],
+        "Count": 44
+      }
+    }
+  ]
+}

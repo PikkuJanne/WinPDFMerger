@@ -32,6 +32,7 @@ BeforeAll {
         $app = Join-Path $TestDrive ('app-' + [Guid]::NewGuid().ToString('N'))
         [void][IO.Directory]::CreateDirectory((Join-Path $app 'src'))
         [IO.File]::Copy((Join-Path $repo 'WinPDFMerge.ps1'), (Join-Path $app 'WinPDFMerge.ps1'))
+        [IO.File]::Copy((Join-Path $repo 'VERSION'), (Join-Path $app 'VERSION'))
         [IO.File]::Copy($helpers, (Join-Path $app 'src/WinPDFMerge.Helpers.ps1'))
         $entry = Join-Path $app 'WinPDFMerge.ps1'
         $shell = [Diagnostics.Process]::GetCurrentProcess().MainModule.FileName

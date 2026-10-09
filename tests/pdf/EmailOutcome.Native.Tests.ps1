@@ -68,7 +68,7 @@ print(json.dumps({'page_count':len(pages),'pages':pages,'pypdfium2':str(pdfium.P
  function New-EmailApplication([string]$Fixture='tiny',[switch]$Batch){
   $root=Join-Path $work ([Guid]::NewGuid().ToString('N'));$app=Join-Path $root 'app';$source=Join-Path $root 'source';$output=if($Batch){$app}else{Join-Path $root 'output'};$noCommon=Join-Path $root 'no-common-engines'
   foreach($directory in @((Join-Path $app 'src'),$source,$output,$noCommon)){[void][IO.Directory]::CreateDirectory($directory)}
-  foreach($leaf in @('WinPDFMerge.ps1','WinPDFMerge.bat')){[IO.File]::Copy((Join-Path $repo $leaf),(Join-Path $app $leaf),$false)}
+  foreach($leaf in @('WinPDFMerge.ps1','WinPDFMerge.bat','VERSION')){[IO.File]::Copy((Join-Path $repo $leaf),(Join-Path $app $leaf),$false)}
   [IO.File]::Copy((Join-Path $repo 'src/WinPDFMerge.Helpers.ps1'),(Join-Path $app 'src/WinPDFMerge.Helpers.ps1'),$false)
   $foreign=Join-Path $output 'foreign-existing.pdf';[IO.File]::Copy((Join-Path $repo 'tests/fixtures/numbered/1.pdf'),$foreign,$false)
   $fixtureInput=Join-Path $source 'input.pdf';$generation=$null

@@ -179,6 +179,28 @@ Describe 'AC050 source evidence binds the tested bytes' {
         ($before | ConvertTo-Json -Depth 6 -Compress) | Should -Not -Be ($after | ConvertTo-Json -Depth 6 -Compress)
     }
 
+    It 'binds runtime version and release contracts at <RelativePath> to their actual bytes' -TestCases @(
+        @{RelativePath='VERSION'}, @{RelativePath='CHANGELOG.md'},
+        @{RelativePath='docs/RELEASE_NOTES_v1.0.0.md'}, @{RelativePath='docs/codex/PACKAGE_CONTRACT.json'}
+    ) {
+        param($RelativePath)
+        $path = Join-Path $syntheticRepo $RelativePath
+        [void][IO.Directory]::CreateDirectory([IO.Path]::GetDirectoryName($path))
+        [IO.File]::WriteAllText($path, 'T27 first synthetic version/document contract')
+        $before = Get-TestSourceSnapshot -Repo $syntheticRepo
+        $beforeFile = @($before.sources | Where-Object path -CEQ $RelativePath)
+        $beforeFile.Count | Should -Be 1
+        $beforeFile[0].sha256 | Should -BeExactly ((Get-FileHash -LiteralPath $path -Algorithm SHA256).Hash.ToLowerInvariant())
+        [IO.File]::WriteAllText($path, 'T27 second synthetic version/document contract')
+        $after = Get-TestSourceSnapshot -Repo $syntheticRepo
+        $afterFile = @($after.sources | Where-Object path -CEQ $RelativePath)
+        $afterFile.Count | Should -Be 1
+        $afterFile[0].sha256 | Should -BeExactly ((Get-FileHash -LiteralPath $path -Algorithm SHA256).Hash.ToLowerInvariant())
+        $before.commit | Should -BeExactly $after.commit
+        ($before.status -join "`n") | Should -BeExactly ($after.status -join "`n")
+        $beforeFile[0].sha256 | Should -Not -Be $afterFile[0].sha256
+    }
+
     It 'keeps ignored generated work outside source evidence and dirty status' {
         $before = Get-TestSourceSnapshot -Repo $syntheticRepo
         $generated = Join-Path $syntheticRepo 'tests/.work/report'

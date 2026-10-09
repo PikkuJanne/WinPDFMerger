@@ -50,4 +50,18 @@ Abrupt termination or a machine crash cannot guarantee cleanup or an exit code. 
 Use "merged master without intentional page rasterization or image downsampling", not an unqualified "archive-safe" guarantee. Do not promise byte-for-byte identity, PDF/A compliance, preserved signature validity, retained accessibility tags, or universal handling of forms/attachments/XFA/bookmarks. State tested limitations from the fixture corpus. Keep original signed PDFs and originals of feature-rich documents. The email PDF is a potentially lossy rewrite. The tool is not a PDF malware sanitizer. [S03, S04]
 
 ## Compatibility decision
-Required release reference environment: a real Windows 11 x64 desktop, standard-user execution, Windows PowerShell 5.1, and one explicitly recorded supported PowerShell 7 x64 build. CI supplements rather than replaces desktop acceptance. Windows 10, Windows on ARM, 32-bit hosts, and live UNC shares are not release-blocking requirements unless the owner explicitly adds them; mark them untested/not validated and remove blanket support claims. If the required Windows 11 environment is unavailable, record a real blocker instead of inventing evidence.
+Required release reference environment: real Windows 11 x64, Windows PowerShell
+5.1, and one explicitly recorded supported PowerShell 7 x64 build. Actual
+automated Windows/native evidence and CI are required within their recorded
+scope. The owner's 2026-10-09 instruction, "Human standard user test is out of
+scope for this project", excludes the human standard-user/Explorer/PDF-viewer
+walkthrough (AC058); it is nonrequired and never counted as passed. Account class
+is an observed environment fact, not a human acceptance prerequisite. The same
+exclusion applies to candidate, final and independently downloaded ZIP gates;
+actual Windows application/native operation, PDF output inspection and unchanged
+source checks from those exact ZIPs remain required and may be automated. Keep
+normal-use safety guidance and do not request elevation or policy changes for
+testing. Windows 10, Windows on ARM, 32-bit hosts and live UNC shares may be
+explicitly excluded from validated support with rationale. Missing required
+Windows/native/package/download evidence remains a blocker; an owner-reported
+environment or an excluded walkthrough is not an execution pass.

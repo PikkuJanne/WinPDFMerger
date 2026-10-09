@@ -35,6 +35,7 @@ BeforeAll {
         foreach($directory in @((Join-Path $app 'src'),$source,$output)){[void][IO.Directory]::CreateDirectory($directory)}
         $copiedEntry=Join-Path $app 'WinPDFMerge.ps1'; $helper=Join-Path $app 'src/WinPDFMerge.Helpers.ps1'
         [IO.File]::Copy($entry,$copiedEntry,$false)
+        [IO.File]::Copy((Join-Path $repo 'VERSION'),(Join-Path $app 'VERSION'),$false)
         [IO.File]::Copy((Join-Path $repo 'src/WinPDFMerge.Helpers.ps1'),$helper,$false)
         for($index=0;$index -lt $InputCount;$index++){[IO.File]::Copy($fixture,(Join-Path $source (($index+1).ToString($invariant)+'.pdf')),$false)}
         [IO.File]::WriteAllText((Join-Path $source 'preserved-source.txt'),'T18 synthetic source sentinel')
@@ -325,6 +326,9 @@ Describe 'AC043 safe early logs and explicit copied-entry outcomes' {
         $run=Invoke-DiagnosticEntryCase $case @{SourceFolder=$case.Source;OutputFolder=$case.Output;SkipEmail=$true}
         $run.Result.ExitCode | Should -Be 0; $run.Finals.Count | Should -Be 1; $run.Logs.Count | Should -Be 1
         $log=$run.Logs[0].Text
+        $version=Get-WinPDFMergeVersion -ScriptDirectory $repo
+        $run.Result.Stdout | Should -Match ('(?m)^WinPDFMerger '+[regex]::Escape($version)+'\r?$')
+        $log | Should -Match ('(?m)^Application version: '+[regex]::Escape($version)+'\r?$')
         foreach($stage in @('Input discovery','PDFtk preflight','Input inspection','Master processing','Summary')){$log | Should -Match ([regex]::Escape('Stage: '+$stage+'; elapsed: '))}
         $log | Should -Not -Match 'Stage: Email preflight|Stage: Email processing'
         $log | Should -Match 'Input summary: 2 PDF\(s\); expected pages: 2'

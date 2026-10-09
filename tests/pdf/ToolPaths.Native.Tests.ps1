@@ -274,6 +274,7 @@ Describe 'AC019: actual native source, output and installation path vectors' {
         $app = Join-Path $case.Root ("app [x] & ! (a) ' " + [char]0x00e4)
         [void][IO.Directory]::CreateDirectory((Join-Path $app 'src'))
         [IO.File]::Copy((Join-Path $repo 'WinPDFMerge.ps1'), (Join-Path $app 'WinPDFMerge.ps1'), $false)
+        [IO.File]::Copy((Join-Path $repo 'VERSION'), (Join-Path $app 'VERSION'), $false)
         [IO.File]::Copy((Join-Path $repo 'src/WinPDFMerge.Helpers.ps1'), (Join-Path $app 'src/WinPDFMerge.Helpers.ps1'), $false)
         $selected = Copy-ToolPathEngine $case.Root ("tools [x] & ! (a) ' " + [char]0x00e4)
         $pdftkInstall = if ($ToolBackend -eq 'Pdftk') { [IO.Path]::GetDirectoryName($selected) } else { [IO.Path]::GetDirectoryName($PdftkPath) }
@@ -349,6 +350,7 @@ Describe 'AC020: real prompt-free encrypted, locked and collision outcomes' {
         $creation = Invoke-TestChildProcess -Executable $PdftkPath -Arguments @($case.Input, 'output', $encrypted, 'user_pw', 'synthetic-t09-user', 'owner_pw', 'synthetic-t09-owner', 'encrypt_128bit', 'dont_ask') -TimeoutMilliseconds 10000
         $creation.ExitCode | Should -Be 0 -Because $creation.Stderr
         [IO.File]::Copy((Join-Path $repo 'WinPDFMerge.ps1'), (Join-Path $app 'WinPDFMerge.ps1'), $false)
+        [IO.File]::Copy((Join-Path $repo 'VERSION'), (Join-Path $app 'VERSION'), $false)
         [IO.File]::Copy((Join-Path $repo 'src/WinPDFMerge.Helpers.ps1'), (Join-Path $app 'src/WinPDFMerge.Helpers.ps1'), $false)
         $before = Get-ToolPathSnapshot @($case.Input, $encrypted)
         $noCommon = Join-Path $case.Root 'no-common-engines'

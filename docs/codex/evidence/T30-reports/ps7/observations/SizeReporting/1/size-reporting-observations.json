@@ -1,0 +1,2396 @@
+[
+  {
+    "Label": "format-0",
+    "Scope": "unit numeric decision; no native PDF engine",
+    "Data": {
+      "Bytes": 0,
+      "Actual": "0 B",
+      "Expected": "0 B"
+    }
+  },
+  {
+    "Label": "format-1023",
+    "Scope": "unit numeric decision; no native PDF engine",
+    "Data": {
+      "Bytes": 1023,
+      "Actual": "1023 B",
+      "Expected": "1023 B"
+    }
+  },
+  {
+    "Label": "format-1024",
+    "Scope": "unit numeric decision; no native PDF engine",
+    "Data": {
+      "Bytes": 1024,
+      "Actual": "1.00 KiB",
+      "Expected": "1.00 KiB"
+    }
+  },
+  {
+    "Label": "format-1048575",
+    "Scope": "unit numeric decision; no native PDF engine",
+    "Data": {
+      "Bytes": 1048575,
+      "Actual": "1024.00 KiB",
+      "Expected": "1024.00 KiB"
+    }
+  },
+  {
+    "Label": "format-1048576",
+    "Scope": "unit numeric decision; no native PDF engine",
+    "Data": {
+      "Bytes": 1048576,
+      "Actual": "1.00 MiB",
+      "Expected": "1.00 MiB"
+    }
+  },
+  {
+    "Label": "format-1073741824",
+    "Scope": "unit numeric decision; no native PDF engine",
+    "Data": {
+      "Bytes": 1073741824,
+      "Actual": "1.00 GiB",
+      "Expected": "1.00 GiB"
+    }
+  },
+  {
+    "Label": "format-1099511627776",
+    "Scope": "unit numeric decision; no native PDF engine",
+    "Data": {
+      "Bytes": 1099511627776,
+      "Actual": "1.00 TiB",
+      "Expected": "1.00 TiB"
+    }
+  },
+  {
+    "Label": "format-1125899906842624",
+    "Scope": "unit numeric decision; no native PDF engine",
+    "Data": {
+      "Bytes": 1125899906842624,
+      "Actual": "1.00 PiB",
+      "Expected": "1.00 PiB"
+    }
+  },
+  {
+    "Label": "format-1152921504606846976",
+    "Scope": "unit numeric decision; no native PDF engine",
+    "Data": {
+      "Bytes": 1152921504606846976,
+      "Actual": "1.00 EiB",
+      "Expected": "1.00 EiB"
+    }
+  },
+  {
+    "Label": "format-9223372036854775807",
+    "Scope": "unit numeric decision; no native PDF engine",
+    "Data": {
+      "Bytes": 9223372036854775807,
+      "Actual": "8.00 EiB",
+      "Expected": "8.00 EiB"
+    }
+  },
+  {
+    "Label": "format-negative",
+    "Scope": "unit numeric decision; no native PDF engine",
+    "Data": {
+      "Bytes": -1,
+      "Rejected": true
+    }
+  },
+  {
+    "Label": "culture-en-US",
+    "Scope": "unit numeric decision; no native PDF engine",
+    "Data": {
+      "MasterBytes": 1536,
+      "EmailBytes": 1024,
+      "ReductionPercent": 33.333333333333336,
+      "Lines": [
+        "Master size: 1536 bytes (1.50 KiB).",
+        "Email size: 1024 bytes (1.00 KiB).",
+        "Email reduction: 33.3%."
+      ]
+    }
+  },
+  {
+    "Label": "culture-de-DE",
+    "Scope": "unit numeric decision; no native PDF engine",
+    "Data": {
+      "MasterBytes": 1536,
+      "EmailBytes": 1024,
+      "ReductionPercent": 33.333333333333336,
+      "Lines": [
+        "Master size: 1536 bytes (1.50 KiB).",
+        "Email size: 1024 bytes (1.00 KiB).",
+        "Email reduction: 33.3%."
+      ]
+    }
+  },
+  {
+    "Label": "master-only",
+    "Scope": "unit numeric decision; no native PDF engine",
+    "Data": {
+      "MasterBytes": 1048576,
+      "EmailBytes": null,
+      "ReductionPercent": null,
+      "Lines": [
+        "Master size: 1048576 bytes (1.00 MiB)."
+      ]
+    }
+  },
+  {
+    "Label": "fractional-reduction",
+    "Scope": "unit numeric decision; no native PDF engine",
+    "Data": {
+      "MasterBytes": 3,
+      "EmailBytes": 1,
+      "ReductionPercent": 66.66666666666667,
+      "Lines": [
+        "Master size: 3 bytes (3 B).",
+        "Email size: 1 bytes (1 B).",
+        "Email reduction: 66.7%."
+      ]
+    }
+  },
+  {
+    "Label": "int64-one-byte-reduction",
+    "Scope": "unit numeric decision; no native PDF engine",
+    "Data": {
+      "MasterBytes": 9223372036854775807,
+      "EmailBytes": 9223372036854775806,
+      "ReductionPercent": 1.084202172e-17,
+      "Lines": [
+        "Master size: 9223372036854775807 bytes (8.00 EiB).",
+        "Email size: 9223372036854775806 bytes (8.00 EiB).",
+        "Email reduction: 0.0%."
+      ]
+    }
+  },
+  {
+    "Label": "candidate-equal",
+    "Scope": "unit numeric decision; no native PDF engine",
+    "Data": {
+      "MasterBytes": 1024,
+      "EmailBytes": 1024,
+      "ReductionPercent": 0.0,
+      "Lines": [
+        "Master size: 1024 bytes (1.00 KiB).",
+        "Validated email candidate size: 1024 bytes (1.00 KiB); not published.",
+        "Email candidate reduction: 0.0% (no size benefit; candidate not published)."
+      ]
+    }
+  },
+  {
+    "Label": "candidate-larger",
+    "Scope": "unit numeric decision; no native PDF engine",
+    "Data": {
+      "MasterBytes": 1024,
+      "EmailBytes": 2048,
+      "ReductionPercent": -100.0,
+      "Lines": [
+        "Master size: 1024 bytes (1.00 KiB).",
+        "Validated email candidate size: 2048 bytes (2.00 KiB); not published.",
+        "Email candidate reduction: -100.0% (no size benefit; candidate not published)."
+      ]
+    }
+  },
+  {
+    "Label": "int64-negative-reduction",
+    "Scope": "unit numeric decision; no native PDF engine",
+    "Data": {
+      "MasterBytes": 1,
+      "EmailBytes": 9223372036854775807,
+      "ReductionPercent": -9.223372036854776e+20,
+      "Lines": [
+        "Master size: 1 bytes (1 B).",
+        "Validated email candidate size: 9223372036854775807 bytes (8.00 EiB); not published.",
+        "Email candidate reduction: -922337203685477580600.0% (no size benefit; candidate not published)."
+      ]
+    }
+  },
+  {
+    "Label": "rejected-empty-master",
+    "Scope": "unit numeric decision; no native PDF engine",
+    "Data": {
+      "Rejected": true,
+      "Parameters": {
+        "MasterBytes": 0
+      }
+    }
+  },
+  {
+    "Label": "rejected-empty-email",
+    "Scope": "unit numeric decision; no native PDF engine",
+    "Data": {
+      "Rejected": true,
+      "Parameters": {
+        "EmailBytes": 0,
+        "MasterBytes": 2
+      }
+    }
+  },
+  {
+    "Label": "rejected-published-without-email",
+    "Scope": "unit numeric decision; no native PDF engine",
+    "Data": {
+      "Rejected": true,
+      "Parameters": {
+        "MasterBytes": 2,
+        "EmailPublished": true
+      }
+    }
+  },
+  {
+    "Label": "rejected-published-equal",
+    "Scope": "unit numeric decision; no native PDF engine",
+    "Data": {
+      "Rejected": true,
+      "Parameters": {
+        "EmailBytes": 2,
+        "MasterBytes": 2,
+        "EmailPublished": true
+      }
+    }
+  },
+  {
+    "Label": "rejected-published-larger",
+    "Scope": "unit numeric decision; no native PDF engine",
+    "Data": {
+      "Rejected": true,
+      "Parameters": {
+        "EmailBytes": 3,
+        "MasterBytes": 2,
+        "EmailPublished": true
+      }
+    }
+  },
+  {
+    "Label": "rejected-unpublished-smaller",
+    "Scope": "unit numeric decision; no native PDF engine",
+    "Data": {
+      "Rejected": true,
+      "Parameters": {
+        "EmailBytes": 1,
+        "MasterBytes": 2
+      }
+    }
+  },
+  {
+    "Label": "entry-published",
+    "Scope": "actual bounded copied-entry subprocess with controlled native receipts; no PDF-engine/manual claim",
+    "Culture": "de-DE",
+    "Command": [
+      "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+      "-NoLogo",
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "RemoteSigned",
+      "-File",
+      "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\Invoke-Entry.ps1",
+      "-Configuration",
+      "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\app\\size-config.json"
+    ],
+    "ChildEnvironmentRemovedKeys": [
+      "PSModulePath"
+    ],
+    "PersistentEnvironmentChanges": false,
+    "EntrySHA256": "2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902",
+    "HelperWithHooksSHA256": "be3f93fd9d218db144796bce26b48e6ccecdaa50e4f59f9055fa63e4267812c8",
+    "WrapperSHA256": "d0535da1cce7392bdcfaeb982f8b115df8d382df0197bb2a48cf8a596e2f6eb7",
+    "ConfigurationSHA256": "cab57001ea04886d79a95492be64cf68766ed205cefd0e87cb4291ad44031638",
+    "Result": {
+      "Executable": "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+      "RenderedArguments": "\"-NoLogo\" \"-NoProfile\" \"-NonInteractive\" \"-ExecutionPolicy\" \"RemoteSigned\" \"-File\" \"<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\Invoke-Entry.ps1\" \"-Configuration\" \"<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\app\\size-config.json\"",
+      "ExitCode": 0,
+      "Stdout": "WinPDFMerger 1.0.0\r\nStage: Invocation preflight; elapsed: 0.090 s\r\n==== WinPDFMerge run 2026-10-09 18:22:06 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 1.318 s\r\nSource folder: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\source [x] ! &\r\nOutput folder: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\output [x] ! &\r\nRun identity: WinPDFMerge_source [x] ! &_20261009_182206_900df58d3b3d41c4\r\nPlanned master output: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182206_900df58d3b3d41c4.pdf\r\nPlanned email output: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182206_900df58d3b3d41c4_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 7.6.6 (Core)\r\nStage: Input discovery; elapsed: 1.405 s\r\nPDF count: 1\r\nInput 1: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\source [x] ! &\\1.pdf\r\nStage: PDFtk preflight; elapsed: 1.465 s\r\nPDFtk: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\app\\pdftk.exe (version 2.02)\r\nStage: Input inspection; elapsed: 1.487 s\r\nInput 1 pages: 1\r\nExpected page total: 1\r\nPrivate staging: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\output [x] ! &\\.WinPDFMerge_f7de318f86f94d0e8fc2b2fdaab1a3d5.tmp\r\nStage: Master processing; elapsed: 1.980 s\r\nPDFtk executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\app\\pdftk.exe\r\nPDFtk arguments: T17 controlled vector\r\nPDFtk exit: 0; elapsed: 1 ms; PID: 12345\r\nPDFtk started: True; timed out: False; cancelled: False; succeeded: True\r\nPDFtk launch error: \r\nPDFtk capture error: \r\nPDFtk termination error: \r\nPDFtk stdout truncated: False; stderr truncated: False\r\nPDFtk stdout:\r\nT17 controlled conversion\r\nPDFtk stderr:\r\nT17 controlled warning\r\nMaster validation executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\app\\pdftk.exe\r\nMaster validation arguments: T17 controlled vector\r\nMaster validation exit: 0; elapsed: 1 ms; PID: 12345\r\nMaster validation started: True; timed out: False; cancelled: False; succeeded: True\r\nMaster validation launch error: \r\nMaster validation capture error: \r\nMaster validation termination error: \r\nMaster validation stdout truncated: False; stderr truncated: False\r\nMaster validation stdout:\r\nNumberOfPages: 1\r\nMaster validation stderr:\r\nT17 controlled warning\r\nMaster validation OK: 1 expected pages inspected. Merged master published: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182206_900df58d3b3d41c4.pdf\r\nStage: Email preflight; elapsed: 2.496 s\r\nGhostscript: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\app\\gswin64c.exe (version 10.08.0)\r\nStage: Email processing; elapsed: 2.533 s\r\nGhostscript executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\app\\gswin64c.exe\r\nGhostscript arguments: T17 controlled vector\r\nGhostscript exit: 0; elapsed: 1 ms; PID: 12345\r\nGhostscript started: True; timed out: False; cancelled: False; succeeded: True\r\nGhostscript launch error: \r\nGhostscript capture error: \r\nGhostscript termination error: \r\nGhostscript stdout truncated: False; stderr truncated: False\r\nGhostscript stdout:\r\nT17 controlled conversion\r\nGhostscript stderr:\r\nT17 controlled warning\r\nEmail validation executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\app\\pdftk.exe\r\nEmail validation arguments: T17 controlled vector\r\nEmail validation exit: 0; elapsed: 1 ms; PID: 12345\r\nEmail validation started: True; timed out: False; cancelled: False; succeeded: True\r\nEmail validation launch error: \r\nEmail validation capture error: \r\nEmail validation termination error: \r\nEmail validation stdout truncated: False; stderr truncated: False\r\nEmail validation stdout:\r\nNumberOfPages: 1\r\nEmail validation stderr:\r\nT17 controlled warning\r\nStage: Summary; elapsed: 3.005 s\r\nElapsed time: 3.013 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: 2.02\r\nGhostscript version: 10.08.0\r\nInput summary: 1 PDF(s); expected pages: 1\r\nEmail result: published\r\nValidated smaller email copy published.\r\nMaster size: 2810 bytes (2.74 KiB).\r\nEmail size: 1786 bytes (1.74 KiB).\r\nEmail reduction: 36.4%.\r\nPublished Merged master: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182206_900df58d3b3d41c4.pdf\r\nPublished Email-optimized: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182206_900df58d3b3d41c4_email.pdf\r\nDone.\r\nResult: SUCCESS; exit code: 0\r\n\nSUCCESS: Validated smaller email copy published.\r\nResult: SUCCESS; exit code: 0\r\nElapsed time: 3.208 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: 2.02\r\nGhostscript version: 10.08.0\r\nInput summary: 1 PDF(s); expected pages: 1\r\nMaster size: 2810 bytes (2.74 KiB).\r\nEmail size: 1786 bytes (1.74 KiB).\r\nEmail reduction: 36.4%.\r\n - Merged master: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182206_900df58d3b3d41c4.pdf\r\n - Email-optimized: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182206_900df58d3b3d41c4_email.pdf\r\nLog: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182206_900df58d3b3d41c4.log\r\n",
+      "Stderr": "",
+      "ElapsedMilliseconds": 4989,
+      "ProcessId": 20168,
+      "Started": true,
+      "TimedOut": false,
+      "Cancelled": false,
+      "LaunchError": null,
+      "CaptureError": null,
+      "TerminationError": null,
+      "OwnershipReleased": true,
+      "StdoutTruncated": false,
+      "StderrTruncated": false,
+      "Succeeded": true
+    },
+    "ReceiptPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\receipt.json",
+    "ReceiptSHA256": "9d881a5e967a954f68b50888045a965ec1f3e2628ef68f6e026c3d248bd07c80",
+    "Receipt": {
+      "Scope": "copied entry with controlled native receipts; no PDF-engine execution",
+      "Identity": {
+        "OutputFolder": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\output [x] ! &",
+        "FolderLabel": "source [x] ! &",
+        "Timestamp": "20261009_182206",
+        "RunSuffix": "900df58d3b3d41c4",
+        "BaseName": "WinPDFMerge_source [x] ! &_20261009_182206_900df58d3b3d41c4",
+        "MasterPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182206_900df58d3b3d41c4.pdf",
+        "EmailPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182206_900df58d3b3d41c4_email.pdf",
+        "LogPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182206_900df58d3b3d41c4.log"
+      },
+      "GSDiscovery": 1,
+      "Jobs": [
+        {
+          "Tool": "Pdftk",
+          "Job": {
+            "NativeResult": {
+              "Executable": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\app\\pdftk.exe",
+              "RenderedArguments": "T17 controlled vector",
+              "Succeeded": true,
+              "Started": true,
+              "ExitCode": 0,
+              "ProcessId": 12345,
+              "ElapsedMilliseconds": 1,
+              "TimedOut": false,
+              "Cancelled": false,
+              "LaunchError": null,
+              "CaptureError": null,
+              "TerminationError": null,
+              "OwnershipReleased": true,
+              "StdoutTruncated": false,
+              "StderrTruncated": false,
+              "Stdout": "T17 controlled conversion",
+              "Stderr": "T17 controlled warning"
+            },
+            "ValidationResult": {
+              "NativeResult": {
+                "Executable": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\app\\pdftk.exe",
+                "RenderedArguments": "T17 controlled vector",
+                "Succeeded": true,
+                "Started": true,
+                "ExitCode": 0,
+                "ProcessId": 12345,
+                "ElapsedMilliseconds": 1,
+                "TimedOut": false,
+                "Cancelled": false,
+                "LaunchError": null,
+                "CaptureError": null,
+                "TerminationError": null,
+                "OwnershipReleased": true,
+                "StdoutTruncated": false,
+                "StderrTruncated": false,
+                "Stdout": "NumberOfPages: 1",
+                "Stderr": "T17 controlled warning"
+              },
+              "PageCount": 1,
+              "InputError": null,
+              "Succeeded": true
+            },
+            "OutputValidated": true,
+            "ValidatedPageCount": 1,
+            "OutputState": "published",
+            "MasterBytes": null,
+            "OutputBytes": 2810,
+            "OutputPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182206_900df58d3b3d41c4.pdf",
+            "OutputPublished": true,
+            "OutputError": null,
+            "CleanupError": null,
+            "StagingPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\output [x] ! &\\.WinPDFMerge_f7de318f86f94d0e8fc2b2fdaab1a3d5.tmp",
+            "Succeeded": true
+          },
+          "MasterSHA256": "4a954b01b8373fbf13a99229326001bdc7e26cba606358585d7491bea1e2be62"
+        },
+        {
+          "Tool": "Ghostscript",
+          "Job": {
+            "NativeResult": {
+              "Executable": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\app\\gswin64c.exe",
+              "RenderedArguments": "T17 controlled vector",
+              "Succeeded": true,
+              "Started": true,
+              "ExitCode": 0,
+              "ProcessId": 12345,
+              "ElapsedMilliseconds": 1,
+              "TimedOut": false,
+              "Cancelled": false,
+              "LaunchError": null,
+              "CaptureError": null,
+              "TerminationError": null,
+              "OwnershipReleased": true,
+              "StdoutTruncated": false,
+              "StderrTruncated": false,
+              "Stdout": "T17 controlled conversion",
+              "Stderr": "T17 controlled warning"
+            },
+            "ValidationResult": {
+              "NativeResult": {
+                "Executable": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\app\\pdftk.exe",
+                "RenderedArguments": "T17 controlled vector",
+                "Succeeded": true,
+                "Started": true,
+                "ExitCode": 0,
+                "ProcessId": 12345,
+                "ElapsedMilliseconds": 1,
+                "TimedOut": false,
+                "Cancelled": false,
+                "LaunchError": null,
+                "CaptureError": null,
+                "TerminationError": null,
+                "OwnershipReleased": true,
+                "StdoutTruncated": false,
+                "StderrTruncated": false,
+                "Stdout": "NumberOfPages: 1",
+                "Stderr": "T17 controlled warning"
+              },
+              "PageCount": 1,
+              "InputError": null,
+              "Succeeded": true
+            },
+            "OutputValidated": true,
+            "ValidatedPageCount": 1,
+            "OutputState": "published",
+            "MasterBytes": 2810,
+            "OutputBytes": 1786,
+            "OutputPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182206_900df58d3b3d41c4_email.pdf",
+            "OutputPublished": true,
+            "OutputError": null,
+            "CleanupError": null,
+            "StagingPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\output [x] ! &\\.WinPDFMerge_f7de318f86f94d0e8fc2b2fdaab1a3d5.tmp",
+            "Succeeded": true
+          },
+          "MasterSHA256": "4a954b01b8373fbf13a99229326001bdc7e26cba606358585d7491bea1e2be62"
+        }
+      ],
+      "Reports": [
+        {
+          "MasterBytes": 2810,
+          "EmailBytesBound": false,
+          "EmailPublished": false,
+          "ReductionDecimalInvariant": null,
+          "Report": {
+            "MasterBytes": 2810,
+            "EmailBytes": null,
+            "ReductionPercent": null,
+            "Lines": [
+              "Master size: 2810 bytes (2.74 KiB)."
+            ]
+          }
+        },
+        {
+          "MasterBytes": 2810,
+          "EmailBytesBound": true,
+          "EmailPublished": true,
+          "ReductionDecimalInvariant": "36.441281138790035587188612100",
+          "Report": {
+            "MasterBytes": 2810,
+            "EmailBytes": 1786,
+            "ReductionPercent": 36.44128113879004,
+            "Lines": [
+              "Master size: 2810 bytes (2.74 KiB).",
+              "Email size: 1786 bytes (1.74 KiB).",
+              "Email reduction: 36.4%."
+            ]
+          }
+        }
+      ],
+      "Messages": [
+        "==== WinPDFMerge run 2026-10-09 18:22:06 ====",
+        "Application version: 1.0.0",
+        "Stage: Invocation preflight; elapsed: 1.318 s",
+        "Source folder: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\source [x] ! &",
+        "Output folder: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\output [x] ! &",
+        "Run identity: WinPDFMerge_source [x] ! &_20261009_182206_900df58d3b3d41c4",
+        "Planned master output: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182206_900df58d3b3d41c4.pdf",
+        "Planned email output: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182206_900df58d3b3d41c4_email.pdf",
+        "Diagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.",
+        "PowerShell: 7.6.6 (Core)",
+        "Stage: Input discovery; elapsed: 1.405 s",
+        "PDF count: 1",
+        "Input 1: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\source [x] ! &\\1.pdf",
+        "Stage: PDFtk preflight; elapsed: 1.465 s",
+        "PDFtk: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\app\\pdftk.exe (version 2.02)",
+        "Stage: Input inspection; elapsed: 1.487 s",
+        "Input preflight 1 executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\app\\pdftk.exe",
+        "Input preflight 1 arguments: T17 controlled vector",
+        "Input preflight 1 exit: 0; elapsed: 1 ms; PID: 12345",
+        "Input preflight 1 started: True; timed out: False; cancelled: False; succeeded: True",
+        "Input preflight 1 launch error: ",
+        "Input preflight 1 capture error: ",
+        "Input preflight 1 termination error: ",
+        "Input preflight 1 stdout truncated: False; stderr truncated: False",
+        "Input preflight 1 stdout:",
+        "NumberOfPages: 1",
+        "Input preflight 1 stderr:",
+        "T17 controlled warning",
+        "Input 1 pages: 1",
+        "Expected page total: 1",
+        "Private staging: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\output [x] ! &\\.WinPDFMerge_f7de318f86f94d0e8fc2b2fdaab1a3d5.tmp",
+        "Stage: Master processing; elapsed: 1.980 s",
+        "PDFtk executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\app\\pdftk.exe",
+        "PDFtk arguments: T17 controlled vector",
+        "PDFtk exit: 0; elapsed: 1 ms; PID: 12345",
+        "PDFtk started: True; timed out: False; cancelled: False; succeeded: True",
+        "PDFtk launch error: ",
+        "PDFtk capture error: ",
+        "PDFtk termination error: ",
+        "PDFtk stdout truncated: False; stderr truncated: False",
+        "PDFtk stdout:",
+        "T17 controlled conversion",
+        "PDFtk stderr:",
+        "T17 controlled warning",
+        "Master validation executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\app\\pdftk.exe",
+        "Master validation arguments: T17 controlled vector",
+        "Master validation exit: 0; elapsed: 1 ms; PID: 12345",
+        "Master validation started: True; timed out: False; cancelled: False; succeeded: True",
+        "Master validation launch error: ",
+        "Master validation capture error: ",
+        "Master validation termination error: ",
+        "Master validation stdout truncated: False; stderr truncated: False",
+        "Master validation stdout:",
+        "NumberOfPages: 1",
+        "Master validation stderr:",
+        "T17 controlled warning",
+        "Master validation OK: 1 expected pages inspected. Merged master published: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182206_900df58d3b3d41c4.pdf",
+        "Stage: Email preflight; elapsed: 2.496 s",
+        "Ghostscript: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\app\\gswin64c.exe (version 10.08.0)",
+        "Stage: Email processing; elapsed: 2.533 s",
+        "Ghostscript executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\app\\gswin64c.exe",
+        "Ghostscript arguments: T17 controlled vector",
+        "Ghostscript exit: 0; elapsed: 1 ms; PID: 12345",
+        "Ghostscript started: True; timed out: False; cancelled: False; succeeded: True",
+        "Ghostscript launch error: ",
+        "Ghostscript capture error: ",
+        "Ghostscript termination error: ",
+        "Ghostscript stdout truncated: False; stderr truncated: False",
+        "Ghostscript stdout:",
+        "T17 controlled conversion",
+        "Ghostscript stderr:",
+        "T17 controlled warning",
+        "Email validation executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\app\\pdftk.exe",
+        "Email validation arguments: T17 controlled vector",
+        "Email validation exit: 0; elapsed: 1 ms; PID: 12345",
+        "Email validation started: True; timed out: False; cancelled: False; succeeded: True",
+        "Email validation launch error: ",
+        "Email validation capture error: ",
+        "Email validation termination error: ",
+        "Email validation stdout truncated: False; stderr truncated: False",
+        "Email validation stdout:",
+        "NumberOfPages: 1",
+        "Email validation stderr:",
+        "T17 controlled warning",
+        "Stage: Summary; elapsed: 3.005 s",
+        "Elapsed time: 3.013 s",
+        "PowerShell: 7.6.6 (Core)",
+        "PDFtk version: 2.02",
+        "Ghostscript version: 10.08.0",
+        "Input summary: 1 PDF(s); expected pages: 1",
+        "Email result: published",
+        "Validated smaller email copy published.",
+        "Master size: 2810 bytes (2.74 KiB).",
+        "Email size: 1786 bytes (1.74 KiB).",
+        "Email reduction: 36.4%.",
+        "Published Merged master: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182206_900df58d3b3d41c4.pdf",
+        "Published Email-optimized: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182206_900df58d3b3d41c4_email.pdf",
+        "Done.",
+        "Result: SUCCESS; exit code: 0"
+      ],
+      "Outcome": {
+        "ExitCode": 0,
+        "Summary": "SUCCESS",
+        "EmailMessage": "Validated smaller email copy published.",
+        "EmailState": "published",
+        "PublishedPaths": [
+          {
+            "Label": "Merged master",
+            "Path": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182206_900df58d3b3d41c4.pdf"
+          },
+          {
+            "Label": "Email-optimized",
+            "Path": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182206_900df58d3b3d41c4_email.pdf"
+          }
+        ]
+      },
+      "NativeCalls": 5
+    },
+    "Before": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+    "After": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+    "Finals": [
+      {
+        "Path": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182206_900df58d3b3d41c4_email.pdf",
+        "Bytes": 1786,
+        "SHA256": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109"
+      },
+      {
+        "Path": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\803e7d33e9664524aff29c3e1d666d1d\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182206_900df58d3b3d41c4.pdf",
+        "Bytes": 2810,
+        "SHA256": "4a954b01b8373fbf13a99229326001bdc7e26cba606358585d7491bea1e2be62"
+      }
+    ],
+    "StdoutSHA256": "d3dfcc1ef8973f0053ad54ecfaffca9756202833988344d2bbfa57929ff04ca4",
+    "StderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "Label": "entry-equal",
+    "Scope": "actual bounded copied-entry subprocess with controlled native receipts; no PDF-engine/manual claim",
+    "Culture": "de-DE",
+    "Command": [
+      "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+      "-NoLogo",
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "RemoteSigned",
+      "-File",
+      "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\Invoke-Entry.ps1",
+      "-Configuration",
+      "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\app\\size-config.json"
+    ],
+    "ChildEnvironmentRemovedKeys": [
+      "PSModulePath"
+    ],
+    "PersistentEnvironmentChanges": false,
+    "EntrySHA256": "2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902",
+    "HelperWithHooksSHA256": "be3f93fd9d218db144796bce26b48e6ccecdaa50e4f59f9055fa63e4267812c8",
+    "WrapperSHA256": "d0535da1cce7392bdcfaeb982f8b115df8d382df0197bb2a48cf8a596e2f6eb7",
+    "ConfigurationSHA256": "09b5f6be2156fc71119f84c2b8ac3c70d56b143674e7a21dda3579606ecc966f",
+    "Result": {
+      "Executable": "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+      "RenderedArguments": "\"-NoLogo\" \"-NoProfile\" \"-NonInteractive\" \"-ExecutionPolicy\" \"RemoteSigned\" \"-File\" \"<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\Invoke-Entry.ps1\" \"-Configuration\" \"<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\app\\size-config.json\"",
+      "ExitCode": 0,
+      "Stdout": "WinPDFMerger 1.0.0\r\nStage: Invocation preflight; elapsed: 0.098 s\r\n==== WinPDFMerge run 2026-10-09 18:22:10 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 0.967 s\r\nSource folder: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\source [x] ! &\r\nOutput folder: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\output [x] ! &\r\nRun identity: WinPDFMerge_source [x] ! &_20261009_182210_d23199208d8e421f\r\nPlanned master output: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182210_d23199208d8e421f.pdf\r\nPlanned email output: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182210_d23199208d8e421f_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 7.6.6 (Core)\r\nStage: Input discovery; elapsed: 1.054 s\r\nPDF count: 1\r\nInput 1: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\source [x] ! &\\1.pdf\r\nStage: PDFtk preflight; elapsed: 1.112 s\r\nPDFtk: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\app\\pdftk.exe (version 2.02)\r\nStage: Input inspection; elapsed: 1.140 s\r\nInput 1 pages: 1\r\nExpected page total: 1\r\nPrivate staging: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\output [x] ! &\\.WinPDFMerge_7955a065dd094b3fb7efa501bf494727.tmp\r\nStage: Master processing; elapsed: 1.575 s\r\nPDFtk executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\app\\pdftk.exe\r\nPDFtk arguments: T17 controlled vector\r\nPDFtk exit: 0; elapsed: 1 ms; PID: 12345\r\nPDFtk started: True; timed out: False; cancelled: False; succeeded: True\r\nPDFtk launch error: \r\nPDFtk capture error: \r\nPDFtk termination error: \r\nPDFtk stdout truncated: False; stderr truncated: False\r\nPDFtk stdout:\r\nT17 controlled conversion\r\nPDFtk stderr:\r\nT17 controlled warning\r\nMaster validation executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\app\\pdftk.exe\r\nMaster validation arguments: T17 controlled vector\r\nMaster validation exit: 0; elapsed: 1 ms; PID: 12345\r\nMaster validation started: True; timed out: False; cancelled: False; succeeded: True\r\nMaster validation launch error: \r\nMaster validation capture error: \r\nMaster validation termination error: \r\nMaster validation stdout truncated: False; stderr truncated: False\r\nMaster validation stdout:\r\nNumberOfPages: 1\r\nMaster validation stderr:\r\nT17 controlled warning\r\nMaster validation OK: 1 expected pages inspected. Merged master published: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182210_d23199208d8e421f.pdf\r\nStage: Email preflight; elapsed: 2.050 s\r\nGhostscript: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\app\\gswin64c.exe (version 10.08.0)\r\nStage: Email processing; elapsed: 2.091 s\r\nGhostscript executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\app\\gswin64c.exe\r\nGhostscript arguments: T17 controlled vector\r\nGhostscript exit: 0; elapsed: 1 ms; PID: 12345\r\nGhostscript started: True; timed out: False; cancelled: False; succeeded: True\r\nGhostscript launch error: \r\nGhostscript capture error: \r\nGhostscript termination error: \r\nGhostscript stdout truncated: False; stderr truncated: False\r\nGhostscript stdout:\r\nT17 controlled conversion\r\nGhostscript stderr:\r\nT17 controlled warning\r\nEmail validation executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\app\\pdftk.exe\r\nEmail validation arguments: T17 controlled vector\r\nEmail validation exit: 0; elapsed: 1 ms; PID: 12345\r\nEmail validation started: True; timed out: False; cancelled: False; succeeded: True\r\nEmail validation launch error: \r\nEmail validation capture error: \r\nEmail validation termination error: \r\nEmail validation stdout truncated: False; stderr truncated: False\r\nEmail validation stdout:\r\nNumberOfPages: 1\r\nEmail validation stderr:\r\nT17 controlled warning\r\nStage: Summary; elapsed: 2.635 s\r\nElapsed time: 2.647 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: 2.02\r\nGhostscript version: 10.08.0\r\nInput summary: 1 PDF(s); expected pages: 1\r\nEmail result: no_size_benefit\r\nValidated email copy offers no size benefit; master retained.\r\nMaster size: 2810 bytes (2.74 KiB).\r\nValidated email candidate size: 2810 bytes (2.74 KiB); not published.\r\nEmail candidate reduction: 0.0% (no size benefit; candidate not published).\r\nPublished Merged master: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182210_d23199208d8e421f.pdf\r\nDone.\r\nResult: SUCCESS; exit code: 0\r\n\nSUCCESS: Validated email copy offers no size benefit; master retained.\r\nResult: SUCCESS; exit code: 0\r\nElapsed time: 2.851 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: 2.02\r\nGhostscript version: 10.08.0\r\nInput summary: 1 PDF(s); expected pages: 1\r\nMaster size: 2810 bytes (2.74 KiB).\r\nValidated email candidate size: 2810 bytes (2.74 KiB); not published.\r\nEmail candidate reduction: 0.0% (no size benefit; candidate not published).\r\n - Merged master: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182210_d23199208d8e421f.pdf\r\nLog: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182210_d23199208d8e421f.log\r\n",
+      "Stderr": "",
+      "ElapsedMilliseconds": 3592,
+      "ProcessId": 1996,
+      "Started": true,
+      "TimedOut": false,
+      "Cancelled": false,
+      "LaunchError": null,
+      "CaptureError": null,
+      "TerminationError": null,
+      "OwnershipReleased": true,
+      "StdoutTruncated": false,
+      "StderrTruncated": false,
+      "Succeeded": true
+    },
+    "ReceiptPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\receipt.json",
+    "ReceiptSHA256": "d931f6d600808d68bf14ba95aeeb2fdf3fc3e2e272624ae52ac3b1e241ee792b",
+    "Receipt": {
+      "Scope": "copied entry with controlled native receipts; no PDF-engine execution",
+      "Identity": {
+        "OutputFolder": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\output [x] ! &",
+        "FolderLabel": "source [x] ! &",
+        "Timestamp": "20261009_182210",
+        "RunSuffix": "d23199208d8e421f",
+        "BaseName": "WinPDFMerge_source [x] ! &_20261009_182210_d23199208d8e421f",
+        "MasterPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182210_d23199208d8e421f.pdf",
+        "EmailPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182210_d23199208d8e421f_email.pdf",
+        "LogPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182210_d23199208d8e421f.log"
+      },
+      "GSDiscovery": 1,
+      "Jobs": [
+        {
+          "Tool": "Pdftk",
+          "Job": {
+            "NativeResult": {
+              "Executable": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\app\\pdftk.exe",
+              "RenderedArguments": "T17 controlled vector",
+              "Succeeded": true,
+              "Started": true,
+              "ExitCode": 0,
+              "ProcessId": 12345,
+              "ElapsedMilliseconds": 1,
+              "TimedOut": false,
+              "Cancelled": false,
+              "LaunchError": null,
+              "CaptureError": null,
+              "TerminationError": null,
+              "OwnershipReleased": true,
+              "StdoutTruncated": false,
+              "StderrTruncated": false,
+              "Stdout": "T17 controlled conversion",
+              "Stderr": "T17 controlled warning"
+            },
+            "ValidationResult": {
+              "NativeResult": {
+                "Executable": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\app\\pdftk.exe",
+                "RenderedArguments": "T17 controlled vector",
+                "Succeeded": true,
+                "Started": true,
+                "ExitCode": 0,
+                "ProcessId": 12345,
+                "ElapsedMilliseconds": 1,
+                "TimedOut": false,
+                "Cancelled": false,
+                "LaunchError": null,
+                "CaptureError": null,
+                "TerminationError": null,
+                "OwnershipReleased": true,
+                "StdoutTruncated": false,
+                "StderrTruncated": false,
+                "Stdout": "NumberOfPages: 1",
+                "Stderr": "T17 controlled warning"
+              },
+              "PageCount": 1,
+              "InputError": null,
+              "Succeeded": true
+            },
+            "OutputValidated": true,
+            "ValidatedPageCount": 1,
+            "OutputState": "published",
+            "MasterBytes": null,
+            "OutputBytes": 2810,
+            "OutputPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182210_d23199208d8e421f.pdf",
+            "OutputPublished": true,
+            "OutputError": null,
+            "CleanupError": null,
+            "StagingPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\output [x] ! &\\.WinPDFMerge_7955a065dd094b3fb7efa501bf494727.tmp",
+            "Succeeded": true
+          },
+          "MasterSHA256": "4a954b01b8373fbf13a99229326001bdc7e26cba606358585d7491bea1e2be62"
+        },
+        {
+          "Tool": "Ghostscript",
+          "Job": {
+            "NativeResult": {
+              "Executable": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\app\\gswin64c.exe",
+              "RenderedArguments": "T17 controlled vector",
+              "Succeeded": true,
+              "Started": true,
+              "ExitCode": 0,
+              "ProcessId": 12345,
+              "ElapsedMilliseconds": 1,
+              "TimedOut": false,
+              "Cancelled": false,
+              "LaunchError": null,
+              "CaptureError": null,
+              "TerminationError": null,
+              "OwnershipReleased": true,
+              "StdoutTruncated": false,
+              "StderrTruncated": false,
+              "Stdout": "T17 controlled conversion",
+              "Stderr": "T17 controlled warning"
+            },
+            "ValidationResult": {
+              "NativeResult": {
+                "Executable": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\app\\pdftk.exe",
+                "RenderedArguments": "T17 controlled vector",
+                "Succeeded": true,
+                "Started": true,
+                "ExitCode": 0,
+                "ProcessId": 12345,
+                "ElapsedMilliseconds": 1,
+                "TimedOut": false,
+                "Cancelled": false,
+                "LaunchError": null,
+                "CaptureError": null,
+                "TerminationError": null,
+                "OwnershipReleased": true,
+                "StdoutTruncated": false,
+                "StderrTruncated": false,
+                "Stdout": "NumberOfPages: 1",
+                "Stderr": "T17 controlled warning"
+              },
+              "PageCount": 1,
+              "InputError": null,
+              "Succeeded": true
+            },
+            "OutputValidated": true,
+            "ValidatedPageCount": 1,
+            "OutputState": "no_size_benefit",
+            "MasterBytes": 2810,
+            "OutputBytes": 2810,
+            "OutputPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182210_d23199208d8e421f_email.pdf",
+            "OutputPublished": false,
+            "OutputError": null,
+            "CleanupError": null,
+            "StagingPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\output [x] ! &\\.WinPDFMerge_7955a065dd094b3fb7efa501bf494727.tmp",
+            "Succeeded": true
+          },
+          "MasterSHA256": "4a954b01b8373fbf13a99229326001bdc7e26cba606358585d7491bea1e2be62"
+        }
+      ],
+      "Reports": [
+        {
+          "MasterBytes": 2810,
+          "EmailBytesBound": false,
+          "EmailPublished": false,
+          "ReductionDecimalInvariant": null,
+          "Report": {
+            "MasterBytes": 2810,
+            "EmailBytes": null,
+            "ReductionPercent": null,
+            "Lines": [
+              "Master size: 2810 bytes (2.74 KiB)."
+            ]
+          }
+        },
+        {
+          "MasterBytes": 2810,
+          "EmailBytesBound": true,
+          "EmailPublished": false,
+          "ReductionDecimalInvariant": "0",
+          "Report": {
+            "MasterBytes": 2810,
+            "EmailBytes": 2810,
+            "ReductionPercent": 0.0,
+            "Lines": [
+              "Master size: 2810 bytes (2.74 KiB).",
+              "Validated email candidate size: 2810 bytes (2.74 KiB); not published.",
+              "Email candidate reduction: 0.0% (no size benefit; candidate not published)."
+            ]
+          }
+        }
+      ],
+      "Messages": [
+        "==== WinPDFMerge run 2026-10-09 18:22:10 ====",
+        "Application version: 1.0.0",
+        "Stage: Invocation preflight; elapsed: 0.967 s",
+        "Source folder: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\source [x] ! &",
+        "Output folder: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\output [x] ! &",
+        "Run identity: WinPDFMerge_source [x] ! &_20261009_182210_d23199208d8e421f",
+        "Planned master output: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182210_d23199208d8e421f.pdf",
+        "Planned email output: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182210_d23199208d8e421f_email.pdf",
+        "Diagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.",
+        "PowerShell: 7.6.6 (Core)",
+        "Stage: Input discovery; elapsed: 1.054 s",
+        "PDF count: 1",
+        "Input 1: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\source [x] ! &\\1.pdf",
+        "Stage: PDFtk preflight; elapsed: 1.112 s",
+        "PDFtk: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\app\\pdftk.exe (version 2.02)",
+        "Stage: Input inspection; elapsed: 1.140 s",
+        "Input preflight 1 executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\app\\pdftk.exe",
+        "Input preflight 1 arguments: T17 controlled vector",
+        "Input preflight 1 exit: 0; elapsed: 1 ms; PID: 12345",
+        "Input preflight 1 started: True; timed out: False; cancelled: False; succeeded: True",
+        "Input preflight 1 launch error: ",
+        "Input preflight 1 capture error: ",
+        "Input preflight 1 termination error: ",
+        "Input preflight 1 stdout truncated: False; stderr truncated: False",
+        "Input preflight 1 stdout:",
+        "NumberOfPages: 1",
+        "Input preflight 1 stderr:",
+        "T17 controlled warning",
+        "Input 1 pages: 1",
+        "Expected page total: 1",
+        "Private staging: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\output [x] ! &\\.WinPDFMerge_7955a065dd094b3fb7efa501bf494727.tmp",
+        "Stage: Master processing; elapsed: 1.575 s",
+        "PDFtk executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\app\\pdftk.exe",
+        "PDFtk arguments: T17 controlled vector",
+        "PDFtk exit: 0; elapsed: 1 ms; PID: 12345",
+        "PDFtk started: True; timed out: False; cancelled: False; succeeded: True",
+        "PDFtk launch error: ",
+        "PDFtk capture error: ",
+        "PDFtk termination error: ",
+        "PDFtk stdout truncated: False; stderr truncated: False",
+        "PDFtk stdout:",
+        "T17 controlled conversion",
+        "PDFtk stderr:",
+        "T17 controlled warning",
+        "Master validation executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\app\\pdftk.exe",
+        "Master validation arguments: T17 controlled vector",
+        "Master validation exit: 0; elapsed: 1 ms; PID: 12345",
+        "Master validation started: True; timed out: False; cancelled: False; succeeded: True",
+        "Master validation launch error: ",
+        "Master validation capture error: ",
+        "Master validation termination error: ",
+        "Master validation stdout truncated: False; stderr truncated: False",
+        "Master validation stdout:",
+        "NumberOfPages: 1",
+        "Master validation stderr:",
+        "T17 controlled warning",
+        "Master validation OK: 1 expected pages inspected. Merged master published: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182210_d23199208d8e421f.pdf",
+        "Stage: Email preflight; elapsed: 2.050 s",
+        "Ghostscript: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\app\\gswin64c.exe (version 10.08.0)",
+        "Stage: Email processing; elapsed: 2.091 s",
+        "Ghostscript executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\app\\gswin64c.exe",
+        "Ghostscript arguments: T17 controlled vector",
+        "Ghostscript exit: 0; elapsed: 1 ms; PID: 12345",
+        "Ghostscript started: True; timed out: False; cancelled: False; succeeded: True",
+        "Ghostscript launch error: ",
+        "Ghostscript capture error: ",
+        "Ghostscript termination error: ",
+        "Ghostscript stdout truncated: False; stderr truncated: False",
+        "Ghostscript stdout:",
+        "T17 controlled conversion",
+        "Ghostscript stderr:",
+        "T17 controlled warning",
+        "Email validation executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\app\\pdftk.exe",
+        "Email validation arguments: T17 controlled vector",
+        "Email validation exit: 0; elapsed: 1 ms; PID: 12345",
+        "Email validation started: True; timed out: False; cancelled: False; succeeded: True",
+        "Email validation launch error: ",
+        "Email validation capture error: ",
+        "Email validation termination error: ",
+        "Email validation stdout truncated: False; stderr truncated: False",
+        "Email validation stdout:",
+        "NumberOfPages: 1",
+        "Email validation stderr:",
+        "T17 controlled warning",
+        "Stage: Summary; elapsed: 2.635 s",
+        "Elapsed time: 2.647 s",
+        "PowerShell: 7.6.6 (Core)",
+        "PDFtk version: 2.02",
+        "Ghostscript version: 10.08.0",
+        "Input summary: 1 PDF(s); expected pages: 1",
+        "Email result: no_size_benefit",
+        "Validated email copy offers no size benefit; master retained.",
+        "Master size: 2810 bytes (2.74 KiB).",
+        "Validated email candidate size: 2810 bytes (2.74 KiB); not published.",
+        "Email candidate reduction: 0.0% (no size benefit; candidate not published).",
+        "Published Merged master: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182210_d23199208d8e421f.pdf",
+        "Done.",
+        "Result: SUCCESS; exit code: 0"
+      ],
+      "Outcome": {
+        "ExitCode": 0,
+        "Summary": "SUCCESS",
+        "EmailMessage": "Validated email copy offers no size benefit; master retained.",
+        "EmailState": "no_size_benefit",
+        "PublishedPaths": [
+          {
+            "Label": "Merged master",
+            "Path": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182210_d23199208d8e421f.pdf"
+          }
+        ]
+      },
+      "NativeCalls": 5
+    },
+    "Before": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+    "After": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+    "Finals": [
+      {
+        "Path": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\b3069fb346994124ac4c8950e0e50f3f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182210_d23199208d8e421f.pdf",
+        "Bytes": 2810,
+        "SHA256": "4a954b01b8373fbf13a99229326001bdc7e26cba606358585d7491bea1e2be62"
+      }
+    ],
+    "StdoutSHA256": "60b47f3123af76eaec542aae8f184c815a1cf8f34dac911d17ece5771326da28",
+    "StderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "Label": "entry-larger",
+    "Scope": "actual bounded copied-entry subprocess with controlled native receipts; no PDF-engine/manual claim",
+    "Culture": "de-DE",
+    "Command": [
+      "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+      "-NoLogo",
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "RemoteSigned",
+      "-File",
+      "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\Invoke-Entry.ps1",
+      "-Configuration",
+      "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\app\\size-config.json"
+    ],
+    "ChildEnvironmentRemovedKeys": [
+      "PSModulePath"
+    ],
+    "PersistentEnvironmentChanges": false,
+    "EntrySHA256": "2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902",
+    "HelperWithHooksSHA256": "be3f93fd9d218db144796bce26b48e6ccecdaa50e4f59f9055fa63e4267812c8",
+    "WrapperSHA256": "d0535da1cce7392bdcfaeb982f8b115df8d382df0197bb2a48cf8a596e2f6eb7",
+    "ConfigurationSHA256": "4d7b730ca083026440e8a87a47cd729fe57ddb9881891db844bb042aa32d42cf",
+    "Result": {
+      "Executable": "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+      "RenderedArguments": "\"-NoLogo\" \"-NoProfile\" \"-NonInteractive\" \"-ExecutionPolicy\" \"RemoteSigned\" \"-File\" \"<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\Invoke-Entry.ps1\" \"-Configuration\" \"<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\app\\size-config.json\"",
+      "ExitCode": 0,
+      "Stdout": "WinPDFMerger 1.0.0\r\nStage: Invocation preflight; elapsed: 0.096 s\r\n==== WinPDFMerge run 2026-10-09 18:22:13 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 0.959 s\r\nSource folder: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\source [x] ! &\r\nOutput folder: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\output [x] ! &\r\nRun identity: WinPDFMerge_source [x] ! &_20261009_182213_9bfe3cd0d1c04094\r\nPlanned master output: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182213_9bfe3cd0d1c04094.pdf\r\nPlanned email output: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182213_9bfe3cd0d1c04094_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 7.6.6 (Core)\r\nStage: Input discovery; elapsed: 1.050 s\r\nPDF count: 1\r\nInput 1: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\source [x] ! &\\1.pdf\r\nStage: PDFtk preflight; elapsed: 1.131 s\r\nPDFtk: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\app\\pdftk.exe (version 2.02)\r\nStage: Input inspection; elapsed: 1.152 s\r\nInput 1 pages: 1\r\nExpected page total: 1\r\nPrivate staging: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\output [x] ! &\\.WinPDFMerge_f153e365522c4328be0e2d355ed8b91f.tmp\r\nStage: Master processing; elapsed: 1.645 s\r\nPDFtk executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\app\\pdftk.exe\r\nPDFtk arguments: T17 controlled vector\r\nPDFtk exit: 0; elapsed: 1 ms; PID: 12345\r\nPDFtk started: True; timed out: False; cancelled: False; succeeded: True\r\nPDFtk launch error: \r\nPDFtk capture error: \r\nPDFtk termination error: \r\nPDFtk stdout truncated: False; stderr truncated: False\r\nPDFtk stdout:\r\nT17 controlled conversion\r\nPDFtk stderr:\r\nT17 controlled warning\r\nMaster validation executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\app\\pdftk.exe\r\nMaster validation arguments: T17 controlled vector\r\nMaster validation exit: 0; elapsed: 1 ms; PID: 12345\r\nMaster validation started: True; timed out: False; cancelled: False; succeeded: True\r\nMaster validation launch error: \r\nMaster validation capture error: \r\nMaster validation termination error: \r\nMaster validation stdout truncated: False; stderr truncated: False\r\nMaster validation stdout:\r\nNumberOfPages: 1\r\nMaster validation stderr:\r\nT17 controlled warning\r\nMaster validation OK: 1 expected pages inspected. Merged master published: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182213_9bfe3cd0d1c04094.pdf\r\nStage: Email preflight; elapsed: 2.175 s\r\nGhostscript: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\app\\gswin64c.exe (version 10.08.0)\r\nStage: Email processing; elapsed: 2.204 s\r\nGhostscript executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\app\\gswin64c.exe\r\nGhostscript arguments: T17 controlled vector\r\nGhostscript exit: 0; elapsed: 1 ms; PID: 12345\r\nGhostscript started: True; timed out: False; cancelled: False; succeeded: True\r\nGhostscript launch error: \r\nGhostscript capture error: \r\nGhostscript termination error: \r\nGhostscript stdout truncated: False; stderr truncated: False\r\nGhostscript stdout:\r\nT17 controlled conversion\r\nGhostscript stderr:\r\nT17 controlled warning\r\nEmail validation executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\app\\pdftk.exe\r\nEmail validation arguments: T17 controlled vector\r\nEmail validation exit: 0; elapsed: 1 ms; PID: 12345\r\nEmail validation started: True; timed out: False; cancelled: False; succeeded: True\r\nEmail validation launch error: \r\nEmail validation capture error: \r\nEmail validation termination error: \r\nEmail validation stdout truncated: False; stderr truncated: False\r\nEmail validation stdout:\r\nNumberOfPages: 1\r\nEmail validation stderr:\r\nT17 controlled warning\r\nStage: Summary; elapsed: 2.671 s\r\nElapsed time: 2.685 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: 2.02\r\nGhostscript version: 10.08.0\r\nInput summary: 1 PDF(s); expected pages: 1\r\nEmail result: no_size_benefit\r\nValidated email copy offers no size benefit; master retained.\r\nMaster size: 2810 bytes (2.74 KiB).\r\nValidated email candidate size: 3834 bytes (3.74 KiB); not published.\r\nEmail candidate reduction: -36.4% (no size benefit; candidate not published).\r\nPublished Merged master: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182213_9bfe3cd0d1c04094.pdf\r\nDone.\r\nResult: SUCCESS; exit code: 0\r\n\nSUCCESS: Validated email copy offers no size benefit; master retained.\r\nResult: SUCCESS; exit code: 0\r\nElapsed time: 2.873 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: 2.02\r\nGhostscript version: 10.08.0\r\nInput summary: 1 PDF(s); expected pages: 1\r\nMaster size: 2810 bytes (2.74 KiB).\r\nValidated email candidate size: 3834 bytes (3.74 KiB); not published.\r\nEmail candidate reduction: -36.4% (no size benefit; candidate not published).\r\n - Merged master: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182213_9bfe3cd0d1c04094.pdf\r\nLog: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182213_9bfe3cd0d1c04094.log\r\n",
+      "Stderr": "",
+      "ElapsedMilliseconds": 3559,
+      "ProcessId": 3984,
+      "Started": true,
+      "TimedOut": false,
+      "Cancelled": false,
+      "LaunchError": null,
+      "CaptureError": null,
+      "TerminationError": null,
+      "OwnershipReleased": true,
+      "StdoutTruncated": false,
+      "StderrTruncated": false,
+      "Succeeded": true
+    },
+    "ReceiptPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\receipt.json",
+    "ReceiptSHA256": "695c4405ed7d182c1113a72a2442bfe6473c55919aa4ac310c0057082e49488a",
+    "Receipt": {
+      "Scope": "copied entry with controlled native receipts; no PDF-engine execution",
+      "Identity": {
+        "OutputFolder": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\output [x] ! &",
+        "FolderLabel": "source [x] ! &",
+        "Timestamp": "20261009_182213",
+        "RunSuffix": "9bfe3cd0d1c04094",
+        "BaseName": "WinPDFMerge_source [x] ! &_20261009_182213_9bfe3cd0d1c04094",
+        "MasterPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182213_9bfe3cd0d1c04094.pdf",
+        "EmailPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182213_9bfe3cd0d1c04094_email.pdf",
+        "LogPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182213_9bfe3cd0d1c04094.log"
+      },
+      "GSDiscovery": 1,
+      "Jobs": [
+        {
+          "Tool": "Pdftk",
+          "Job": {
+            "NativeResult": {
+              "Executable": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\app\\pdftk.exe",
+              "RenderedArguments": "T17 controlled vector",
+              "Succeeded": true,
+              "Started": true,
+              "ExitCode": 0,
+              "ProcessId": 12345,
+              "ElapsedMilliseconds": 1,
+              "TimedOut": false,
+              "Cancelled": false,
+              "LaunchError": null,
+              "CaptureError": null,
+              "TerminationError": null,
+              "OwnershipReleased": true,
+              "StdoutTruncated": false,
+              "StderrTruncated": false,
+              "Stdout": "T17 controlled conversion",
+              "Stderr": "T17 controlled warning"
+            },
+            "ValidationResult": {
+              "NativeResult": {
+                "Executable": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\app\\pdftk.exe",
+                "RenderedArguments": "T17 controlled vector",
+                "Succeeded": true,
+                "Started": true,
+                "ExitCode": 0,
+                "ProcessId": 12345,
+                "ElapsedMilliseconds": 1,
+                "TimedOut": false,
+                "Cancelled": false,
+                "LaunchError": null,
+                "CaptureError": null,
+                "TerminationError": null,
+                "OwnershipReleased": true,
+                "StdoutTruncated": false,
+                "StderrTruncated": false,
+                "Stdout": "NumberOfPages: 1",
+                "Stderr": "T17 controlled warning"
+              },
+              "PageCount": 1,
+              "InputError": null,
+              "Succeeded": true
+            },
+            "OutputValidated": true,
+            "ValidatedPageCount": 1,
+            "OutputState": "published",
+            "MasterBytes": null,
+            "OutputBytes": 2810,
+            "OutputPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182213_9bfe3cd0d1c04094.pdf",
+            "OutputPublished": true,
+            "OutputError": null,
+            "CleanupError": null,
+            "StagingPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\output [x] ! &\\.WinPDFMerge_f153e365522c4328be0e2d355ed8b91f.tmp",
+            "Succeeded": true
+          },
+          "MasterSHA256": "4a954b01b8373fbf13a99229326001bdc7e26cba606358585d7491bea1e2be62"
+        },
+        {
+          "Tool": "Ghostscript",
+          "Job": {
+            "NativeResult": {
+              "Executable": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\app\\gswin64c.exe",
+              "RenderedArguments": "T17 controlled vector",
+              "Succeeded": true,
+              "Started": true,
+              "ExitCode": 0,
+              "ProcessId": 12345,
+              "ElapsedMilliseconds": 1,
+              "TimedOut": false,
+              "Cancelled": false,
+              "LaunchError": null,
+              "CaptureError": null,
+              "TerminationError": null,
+              "OwnershipReleased": true,
+              "StdoutTruncated": false,
+              "StderrTruncated": false,
+              "Stdout": "T17 controlled conversion",
+              "Stderr": "T17 controlled warning"
+            },
+            "ValidationResult": {
+              "NativeResult": {
+                "Executable": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\app\\pdftk.exe",
+                "RenderedArguments": "T17 controlled vector",
+                "Succeeded": true,
+                "Started": true,
+                "ExitCode": 0,
+                "ProcessId": 12345,
+                "ElapsedMilliseconds": 1,
+                "TimedOut": false,
+                "Cancelled": false,
+                "LaunchError": null,
+                "CaptureError": null,
+                "TerminationError": null,
+                "OwnershipReleased": true,
+                "StdoutTruncated": false,
+                "StderrTruncated": false,
+                "Stdout": "NumberOfPages: 1",
+                "Stderr": "T17 controlled warning"
+              },
+              "PageCount": 1,
+              "InputError": null,
+              "Succeeded": true
+            },
+            "OutputValidated": true,
+            "ValidatedPageCount": 1,
+            "OutputState": "no_size_benefit",
+            "MasterBytes": 2810,
+            "OutputBytes": 3834,
+            "OutputPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182213_9bfe3cd0d1c04094_email.pdf",
+            "OutputPublished": false,
+            "OutputError": null,
+            "CleanupError": null,
+            "StagingPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\output [x] ! &\\.WinPDFMerge_f153e365522c4328be0e2d355ed8b91f.tmp",
+            "Succeeded": true
+          },
+          "MasterSHA256": "4a954b01b8373fbf13a99229326001bdc7e26cba606358585d7491bea1e2be62"
+        }
+      ],
+      "Reports": [
+        {
+          "MasterBytes": 2810,
+          "EmailBytesBound": false,
+          "EmailPublished": false,
+          "ReductionDecimalInvariant": null,
+          "Report": {
+            "MasterBytes": 2810,
+            "EmailBytes": null,
+            "ReductionPercent": null,
+            "Lines": [
+              "Master size: 2810 bytes (2.74 KiB)."
+            ]
+          }
+        },
+        {
+          "MasterBytes": 2810,
+          "EmailBytesBound": true,
+          "EmailPublished": false,
+          "ReductionDecimalInvariant": "-36.441281138790035587188612100",
+          "Report": {
+            "MasterBytes": 2810,
+            "EmailBytes": 3834,
+            "ReductionPercent": -36.44128113879004,
+            "Lines": [
+              "Master size: 2810 bytes (2.74 KiB).",
+              "Validated email candidate size: 3834 bytes (3.74 KiB); not published.",
+              "Email candidate reduction: -36.4% (no size benefit; candidate not published)."
+            ]
+          }
+        }
+      ],
+      "Messages": [
+        "==== WinPDFMerge run 2026-10-09 18:22:13 ====",
+        "Application version: 1.0.0",
+        "Stage: Invocation preflight; elapsed: 0.959 s",
+        "Source folder: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\source [x] ! &",
+        "Output folder: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\output [x] ! &",
+        "Run identity: WinPDFMerge_source [x] ! &_20261009_182213_9bfe3cd0d1c04094",
+        "Planned master output: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182213_9bfe3cd0d1c04094.pdf",
+        "Planned email output: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182213_9bfe3cd0d1c04094_email.pdf",
+        "Diagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.",
+        "PowerShell: 7.6.6 (Core)",
+        "Stage: Input discovery; elapsed: 1.050 s",
+        "PDF count: 1",
+        "Input 1: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\source [x] ! &\\1.pdf",
+        "Stage: PDFtk preflight; elapsed: 1.131 s",
+        "PDFtk: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\app\\pdftk.exe (version 2.02)",
+        "Stage: Input inspection; elapsed: 1.152 s",
+        "Input preflight 1 executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\app\\pdftk.exe",
+        "Input preflight 1 arguments: T17 controlled vector",
+        "Input preflight 1 exit: 0; elapsed: 1 ms; PID: 12345",
+        "Input preflight 1 started: True; timed out: False; cancelled: False; succeeded: True",
+        "Input preflight 1 launch error: ",
+        "Input preflight 1 capture error: ",
+        "Input preflight 1 termination error: ",
+        "Input preflight 1 stdout truncated: False; stderr truncated: False",
+        "Input preflight 1 stdout:",
+        "NumberOfPages: 1",
+        "Input preflight 1 stderr:",
+        "T17 controlled warning",
+        "Input 1 pages: 1",
+        "Expected page total: 1",
+        "Private staging: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\output [x] ! &\\.WinPDFMerge_f153e365522c4328be0e2d355ed8b91f.tmp",
+        "Stage: Master processing; elapsed: 1.645 s",
+        "PDFtk executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\app\\pdftk.exe",
+        "PDFtk arguments: T17 controlled vector",
+        "PDFtk exit: 0; elapsed: 1 ms; PID: 12345",
+        "PDFtk started: True; timed out: False; cancelled: False; succeeded: True",
+        "PDFtk launch error: ",
+        "PDFtk capture error: ",
+        "PDFtk termination error: ",
+        "PDFtk stdout truncated: False; stderr truncated: False",
+        "PDFtk stdout:",
+        "T17 controlled conversion",
+        "PDFtk stderr:",
+        "T17 controlled warning",
+        "Master validation executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\app\\pdftk.exe",
+        "Master validation arguments: T17 controlled vector",
+        "Master validation exit: 0; elapsed: 1 ms; PID: 12345",
+        "Master validation started: True; timed out: False; cancelled: False; succeeded: True",
+        "Master validation launch error: ",
+        "Master validation capture error: ",
+        "Master validation termination error: ",
+        "Master validation stdout truncated: False; stderr truncated: False",
+        "Master validation stdout:",
+        "NumberOfPages: 1",
+        "Master validation stderr:",
+        "T17 controlled warning",
+        "Master validation OK: 1 expected pages inspected. Merged master published: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182213_9bfe3cd0d1c04094.pdf",
+        "Stage: Email preflight; elapsed: 2.175 s",
+        "Ghostscript: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\app\\gswin64c.exe (version 10.08.0)",
+        "Stage: Email processing; elapsed: 2.204 s",
+        "Ghostscript executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\app\\gswin64c.exe",
+        "Ghostscript arguments: T17 controlled vector",
+        "Ghostscript exit: 0; elapsed: 1 ms; PID: 12345",
+        "Ghostscript started: True; timed out: False; cancelled: False; succeeded: True",
+        "Ghostscript launch error: ",
+        "Ghostscript capture error: ",
+        "Ghostscript termination error: ",
+        "Ghostscript stdout truncated: False; stderr truncated: False",
+        "Ghostscript stdout:",
+        "T17 controlled conversion",
+        "Ghostscript stderr:",
+        "T17 controlled warning",
+        "Email validation executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\app\\pdftk.exe",
+        "Email validation arguments: T17 controlled vector",
+        "Email validation exit: 0; elapsed: 1 ms; PID: 12345",
+        "Email validation started: True; timed out: False; cancelled: False; succeeded: True",
+        "Email validation launch error: ",
+        "Email validation capture error: ",
+        "Email validation termination error: ",
+        "Email validation stdout truncated: False; stderr truncated: False",
+        "Email validation stdout:",
+        "NumberOfPages: 1",
+        "Email validation stderr:",
+        "T17 controlled warning",
+        "Stage: Summary; elapsed: 2.671 s",
+        "Elapsed time: 2.685 s",
+        "PowerShell: 7.6.6 (Core)",
+        "PDFtk version: 2.02",
+        "Ghostscript version: 10.08.0",
+        "Input summary: 1 PDF(s); expected pages: 1",
+        "Email result: no_size_benefit",
+        "Validated email copy offers no size benefit; master retained.",
+        "Master size: 2810 bytes (2.74 KiB).",
+        "Validated email candidate size: 3834 bytes (3.74 KiB); not published.",
+        "Email candidate reduction: -36.4% (no size benefit; candidate not published).",
+        "Published Merged master: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182213_9bfe3cd0d1c04094.pdf",
+        "Done.",
+        "Result: SUCCESS; exit code: 0"
+      ],
+      "Outcome": {
+        "ExitCode": 0,
+        "Summary": "SUCCESS",
+        "EmailMessage": "Validated email copy offers no size benefit; master retained.",
+        "EmailState": "no_size_benefit",
+        "PublishedPaths": [
+          {
+            "Label": "Merged master",
+            "Path": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182213_9bfe3cd0d1c04094.pdf"
+          }
+        ]
+      },
+      "NativeCalls": 5
+    },
+    "Before": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+    "After": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+    "Finals": [
+      {
+        "Path": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\7d52d1a975154d88b57edfb1d7e44380\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182213_9bfe3cd0d1c04094.pdf",
+        "Bytes": 2810,
+        "SHA256": "4a954b01b8373fbf13a99229326001bdc7e26cba606358585d7491bea1e2be62"
+      }
+    ],
+    "StdoutSHA256": "013f1a6b3b6417c3c0652529b4ccd9fe1b4428991f75af2013b7ab3175dc92c2",
+    "StderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "Label": "entry-skipped",
+    "Scope": "actual bounded copied-entry subprocess with controlled native receipts; no PDF-engine/manual claim",
+    "Culture": "de-DE",
+    "Command": [
+      "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+      "-NoLogo",
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "RemoteSigned",
+      "-File",
+      "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\Invoke-Entry.ps1",
+      "-Configuration",
+      "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\app\\size-config.json"
+    ],
+    "ChildEnvironmentRemovedKeys": [
+      "PSModulePath"
+    ],
+    "PersistentEnvironmentChanges": false,
+    "EntrySHA256": "2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902",
+    "HelperWithHooksSHA256": "be3f93fd9d218db144796bce26b48e6ccecdaa50e4f59f9055fa63e4267812c8",
+    "WrapperSHA256": "d0535da1cce7392bdcfaeb982f8b115df8d382df0197bb2a48cf8a596e2f6eb7",
+    "ConfigurationSHA256": "07a015fbfe5312cafb24a1004931aa879136ba2dddbccecf66531c951963d8fe",
+    "Result": {
+      "Executable": "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+      "RenderedArguments": "\"-NoLogo\" \"-NoProfile\" \"-NonInteractive\" \"-ExecutionPolicy\" \"RemoteSigned\" \"-File\" \"<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\Invoke-Entry.ps1\" \"-Configuration\" \"<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\app\\size-config.json\"",
+      "ExitCode": 0,
+      "Stdout": "WinPDFMerger 1.0.0\r\nStage: Invocation preflight; elapsed: 0.092 s\r\n==== WinPDFMerge run 2026-10-09 18:22:17 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 0.860 s\r\nSource folder: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\source [x] ! &\r\nOutput folder: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\output [x] ! &\r\nRun identity: WinPDFMerge_source [x] ! &_20261009_182217_2ed8c62624d7482f\r\nPlanned master output: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182217_2ed8c62624d7482f.pdf\r\nPlanned email output: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182217_2ed8c62624d7482f_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 7.6.6 (Core)\r\nStage: Input discovery; elapsed: 0.976 s\r\nPDF count: 1\r\nInput 1: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\source [x] ! &\\1.pdf\r\nStage: PDFtk preflight; elapsed: 1.046 s\r\nPDFtk: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\app\\pdftk.exe (version 2.02)\r\nStage: Input inspection; elapsed: 1.064 s\r\nInput 1 pages: 1\r\nExpected page total: 1\r\nPrivate staging: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\output [x] ! &\\.WinPDFMerge_e528400a7afd43ff9fcd14b4476b9171.tmp\r\nStage: Master processing; elapsed: 1.435 s\r\nPDFtk executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\app\\pdftk.exe\r\nPDFtk arguments: T17 controlled vector\r\nPDFtk exit: 0; elapsed: 1 ms; PID: 12345\r\nPDFtk started: True; timed out: False; cancelled: False; succeeded: True\r\nPDFtk launch error: \r\nPDFtk capture error: \r\nPDFtk termination error: \r\nPDFtk stdout truncated: False; stderr truncated: False\r\nPDFtk stdout:\r\nT17 controlled conversion\r\nPDFtk stderr:\r\nT17 controlled warning\r\nMaster validation executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\app\\pdftk.exe\r\nMaster validation arguments: T17 controlled vector\r\nMaster validation exit: 0; elapsed: 1 ms; PID: 12345\r\nMaster validation started: True; timed out: False; cancelled: False; succeeded: True\r\nMaster validation launch error: \r\nMaster validation capture error: \r\nMaster validation termination error: \r\nMaster validation stdout truncated: False; stderr truncated: False\r\nMaster validation stdout:\r\nNumberOfPages: 1\r\nMaster validation stderr:\r\nT17 controlled warning\r\nMaster validation OK: 1 expected pages inspected. Merged master published: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182217_2ed8c62624d7482f.pdf\r\nStage: Summary; elapsed: 2.058 s\r\nElapsed time: 2.080 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: 2.02\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: 1 PDF(s); expected pages: 1\r\nEmail result: skipped\r\nEmail explicitly skipped; validated master retained.\r\nMaster size: 2810 bytes (2.74 KiB).\r\nPublished Merged master: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182217_2ed8c62624d7482f.pdf\r\nDone.\r\nResult: SUCCESS; exit code: 0\r\n\nSUCCESS: Email explicitly skipped; validated master retained.\r\nResult: SUCCESS; exit code: 0\r\nElapsed time: 2.265 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: 2.02\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: 1 PDF(s); expected pages: 1\r\nMaster size: 2810 bytes (2.74 KiB).\r\n - Merged master: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182217_2ed8c62624d7482f.pdf\r\nLog: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182217_2ed8c62624d7482f.log\r\n",
+      "Stderr": "",
+      "ElapsedMilliseconds": 2933,
+      "ProcessId": 10696,
+      "Started": true,
+      "TimedOut": false,
+      "Cancelled": false,
+      "LaunchError": null,
+      "CaptureError": null,
+      "TerminationError": null,
+      "OwnershipReleased": true,
+      "StdoutTruncated": false,
+      "StderrTruncated": false,
+      "Succeeded": true
+    },
+    "ReceiptPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\receipt.json",
+    "ReceiptSHA256": "19556ec29f56e9abeb870d204b32d22cf4b94d272d149b006e99f48da100c0ee",
+    "Receipt": {
+      "Scope": "copied entry with controlled native receipts; no PDF-engine execution",
+      "Identity": {
+        "OutputFolder": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\output [x] ! &",
+        "FolderLabel": "source [x] ! &",
+        "Timestamp": "20261009_182217",
+        "RunSuffix": "2ed8c62624d7482f",
+        "BaseName": "WinPDFMerge_source [x] ! &_20261009_182217_2ed8c62624d7482f",
+        "MasterPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182217_2ed8c62624d7482f.pdf",
+        "EmailPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182217_2ed8c62624d7482f_email.pdf",
+        "LogPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182217_2ed8c62624d7482f.log"
+      },
+      "GSDiscovery": 0,
+      "Jobs": [
+        {
+          "Tool": "Pdftk",
+          "Job": {
+            "NativeResult": {
+              "Executable": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\app\\pdftk.exe",
+              "RenderedArguments": "T17 controlled vector",
+              "Succeeded": true,
+              "Started": true,
+              "ExitCode": 0,
+              "ProcessId": 12345,
+              "ElapsedMilliseconds": 1,
+              "TimedOut": false,
+              "Cancelled": false,
+              "LaunchError": null,
+              "CaptureError": null,
+              "TerminationError": null,
+              "OwnershipReleased": true,
+              "StdoutTruncated": false,
+              "StderrTruncated": false,
+              "Stdout": "T17 controlled conversion",
+              "Stderr": "T17 controlled warning"
+            },
+            "ValidationResult": {
+              "NativeResult": {
+                "Executable": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\app\\pdftk.exe",
+                "RenderedArguments": "T17 controlled vector",
+                "Succeeded": true,
+                "Started": true,
+                "ExitCode": 0,
+                "ProcessId": 12345,
+                "ElapsedMilliseconds": 1,
+                "TimedOut": false,
+                "Cancelled": false,
+                "LaunchError": null,
+                "CaptureError": null,
+                "TerminationError": null,
+                "OwnershipReleased": true,
+                "StdoutTruncated": false,
+                "StderrTruncated": false,
+                "Stdout": "NumberOfPages: 1",
+                "Stderr": "T17 controlled warning"
+              },
+              "PageCount": 1,
+              "InputError": null,
+              "Succeeded": true
+            },
+            "OutputValidated": true,
+            "ValidatedPageCount": 1,
+            "OutputState": "published",
+            "MasterBytes": null,
+            "OutputBytes": 2810,
+            "OutputPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182217_2ed8c62624d7482f.pdf",
+            "OutputPublished": true,
+            "OutputError": null,
+            "CleanupError": null,
+            "StagingPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\output [x] ! &\\.WinPDFMerge_e528400a7afd43ff9fcd14b4476b9171.tmp",
+            "Succeeded": true
+          },
+          "MasterSHA256": "4a954b01b8373fbf13a99229326001bdc7e26cba606358585d7491bea1e2be62"
+        }
+      ],
+      "Reports": [
+        {
+          "MasterBytes": 2810,
+          "EmailBytesBound": false,
+          "EmailPublished": false,
+          "ReductionDecimalInvariant": null,
+          "Report": {
+            "MasterBytes": 2810,
+            "EmailBytes": null,
+            "ReductionPercent": null,
+            "Lines": [
+              "Master size: 2810 bytes (2.74 KiB)."
+            ]
+          }
+        }
+      ],
+      "Messages": [
+        "==== WinPDFMerge run 2026-10-09 18:22:17 ====",
+        "Application version: 1.0.0",
+        "Stage: Invocation preflight; elapsed: 0.860 s",
+        "Source folder: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\source [x] ! &",
+        "Output folder: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\output [x] ! &",
+        "Run identity: WinPDFMerge_source [x] ! &_20261009_182217_2ed8c62624d7482f",
+        "Planned master output: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182217_2ed8c62624d7482f.pdf",
+        "Planned email output: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182217_2ed8c62624d7482f_email.pdf",
+        "Diagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.",
+        "PowerShell: 7.6.6 (Core)",
+        "Stage: Input discovery; elapsed: 0.976 s",
+        "PDF count: 1",
+        "Input 1: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\source [x] ! &\\1.pdf",
+        "Stage: PDFtk preflight; elapsed: 1.046 s",
+        "PDFtk: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\app\\pdftk.exe (version 2.02)",
+        "Stage: Input inspection; elapsed: 1.064 s",
+        "Input preflight 1 executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\app\\pdftk.exe",
+        "Input preflight 1 arguments: T17 controlled vector",
+        "Input preflight 1 exit: 0; elapsed: 1 ms; PID: 12345",
+        "Input preflight 1 started: True; timed out: False; cancelled: False; succeeded: True",
+        "Input preflight 1 launch error: ",
+        "Input preflight 1 capture error: ",
+        "Input preflight 1 termination error: ",
+        "Input preflight 1 stdout truncated: False; stderr truncated: False",
+        "Input preflight 1 stdout:",
+        "NumberOfPages: 1",
+        "Input preflight 1 stderr:",
+        "T17 controlled warning",
+        "Input 1 pages: 1",
+        "Expected page total: 1",
+        "Private staging: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\output [x] ! &\\.WinPDFMerge_e528400a7afd43ff9fcd14b4476b9171.tmp",
+        "Stage: Master processing; elapsed: 1.435 s",
+        "PDFtk executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\app\\pdftk.exe",
+        "PDFtk arguments: T17 controlled vector",
+        "PDFtk exit: 0; elapsed: 1 ms; PID: 12345",
+        "PDFtk started: True; timed out: False; cancelled: False; succeeded: True",
+        "PDFtk launch error: ",
+        "PDFtk capture error: ",
+        "PDFtk termination error: ",
+        "PDFtk stdout truncated: False; stderr truncated: False",
+        "PDFtk stdout:",
+        "T17 controlled conversion",
+        "PDFtk stderr:",
+        "T17 controlled warning",
+        "Master validation executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\app\\pdftk.exe",
+        "Master validation arguments: T17 controlled vector",
+        "Master validation exit: 0; elapsed: 1 ms; PID: 12345",
+        "Master validation started: True; timed out: False; cancelled: False; succeeded: True",
+        "Master validation launch error: ",
+        "Master validation capture error: ",
+        "Master validation termination error: ",
+        "Master validation stdout truncated: False; stderr truncated: False",
+        "Master validation stdout:",
+        "NumberOfPages: 1",
+        "Master validation stderr:",
+        "T17 controlled warning",
+        "Master validation OK: 1 expected pages inspected. Merged master published: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182217_2ed8c62624d7482f.pdf",
+        "Stage: Summary; elapsed: 2.058 s",
+        "Elapsed time: 2.080 s",
+        "PowerShell: 7.6.6 (Core)",
+        "PDFtk version: 2.02",
+        "Ghostscript version: not used (SkipEmail)",
+        "Input summary: 1 PDF(s); expected pages: 1",
+        "Email result: skipped",
+        "Email explicitly skipped; validated master retained.",
+        "Master size: 2810 bytes (2.74 KiB).",
+        "Published Merged master: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182217_2ed8c62624d7482f.pdf",
+        "Done.",
+        "Result: SUCCESS; exit code: 0"
+      ],
+      "Outcome": {
+        "ExitCode": 0,
+        "Summary": "SUCCESS",
+        "EmailMessage": "Email explicitly skipped; validated master retained.",
+        "EmailState": "skipped",
+        "PublishedPaths": [
+          {
+            "Label": "Merged master",
+            "Path": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182217_2ed8c62624d7482f.pdf"
+          }
+        ]
+      },
+      "NativeCalls": 3
+    },
+    "Before": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+    "After": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+    "Finals": [
+      {
+        "Path": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\391f51c739f74a888a41fdd5cce1e01c\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182217_2ed8c62624d7482f.pdf",
+        "Bytes": 2810,
+        "SHA256": "4a954b01b8373fbf13a99229326001bdc7e26cba606358585d7491bea1e2be62"
+      }
+    ],
+    "StdoutSHA256": "8b9d716ec8fb5c3a1b82a65d51f83d06ebc1c2dd14790a862d21c3020838d7c0",
+    "StderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "Label": "entry-unavailable",
+    "Scope": "actual bounded copied-entry subprocess with controlled native receipts; no PDF-engine/manual claim",
+    "Culture": "de-DE",
+    "Command": [
+      "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+      "-NoLogo",
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "RemoteSigned",
+      "-File",
+      "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\Invoke-Entry.ps1",
+      "-Configuration",
+      "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\app\\size-config.json"
+    ],
+    "ChildEnvironmentRemovedKeys": [
+      "PSModulePath"
+    ],
+    "PersistentEnvironmentChanges": false,
+    "EntrySHA256": "2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902",
+    "HelperWithHooksSHA256": "be3f93fd9d218db144796bce26b48e6ccecdaa50e4f59f9055fa63e4267812c8",
+    "WrapperSHA256": "d0535da1cce7392bdcfaeb982f8b115df8d382df0197bb2a48cf8a596e2f6eb7",
+    "ConfigurationSHA256": "f16e1c688edeaa0a25cc938a35287a5fe03adff7c316d3dbec8fc693b6aaf843",
+    "Result": {
+      "Executable": "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+      "RenderedArguments": "\"-NoLogo\" \"-NoProfile\" \"-NonInteractive\" \"-ExecutionPolicy\" \"RemoteSigned\" \"-File\" \"<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\Invoke-Entry.ps1\" \"-Configuration\" \"<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\app\\size-config.json\"",
+      "ExitCode": 0,
+      "Stdout": "WinPDFMerger 1.0.0\r\nStage: Invocation preflight; elapsed: 0.090 s\r\n==== WinPDFMerge run 2026-10-09 18:22:20 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 0.860 s\r\nSource folder: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\source [x] ! &\r\nOutput folder: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\output [x] ! &\r\nRun identity: WinPDFMerge_source [x] ! &_20261009_182220_fe6cfd0d8c7b4b17\r\nPlanned master output: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182220_fe6cfd0d8c7b4b17.pdf\r\nPlanned email output: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182220_fe6cfd0d8c7b4b17_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 7.6.6 (Core)\r\nStage: Input discovery; elapsed: 0.986 s\r\nPDF count: 1\r\nInput 1: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\source [x] ! &\\1.pdf\r\nStage: PDFtk preflight; elapsed: 1.048 s\r\nPDFtk: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\app\\pdftk.exe (version 2.02)\r\nStage: Input inspection; elapsed: 1.065 s\r\nInput 1 pages: 1\r\nExpected page total: 1\r\nPrivate staging: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\output [x] ! &\\.WinPDFMerge_e61421f78b524422a484892d6035683b.tmp\r\nStage: Master processing; elapsed: 1.484 s\r\nPDFtk executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\app\\pdftk.exe\r\nPDFtk arguments: T17 controlled vector\r\nPDFtk exit: 0; elapsed: 1 ms; PID: 12345\r\nPDFtk started: True; timed out: False; cancelled: False; succeeded: True\r\nPDFtk launch error: \r\nPDFtk capture error: \r\nPDFtk termination error: \r\nPDFtk stdout truncated: False; stderr truncated: False\r\nPDFtk stdout:\r\nT17 controlled conversion\r\nPDFtk stderr:\r\nT17 controlled warning\r\nMaster validation executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\app\\pdftk.exe\r\nMaster validation arguments: T17 controlled vector\r\nMaster validation exit: 0; elapsed: 1 ms; PID: 12345\r\nMaster validation started: True; timed out: False; cancelled: False; succeeded: True\r\nMaster validation launch error: \r\nMaster validation capture error: \r\nMaster validation termination error: \r\nMaster validation stdout truncated: False; stderr truncated: False\r\nMaster validation stdout:\r\nNumberOfPages: 1\r\nMaster validation stderr:\r\nT17 controlled warning\r\nMaster validation OK: 1 expected pages inspected. Merged master published: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182220_fe6cfd0d8c7b4b17.pdf\r\nStage: Email preflight; elapsed: 1.970 s\r\nStage: Summary; elapsed: 2.051 s\r\nElapsed time: 2.067 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: 2.02\r\nGhostscript version: unavailable\r\nInput summary: 1 PDF(s); expected pages: 1\r\nEmail result: unavailable\r\nGhostscript not found; skipping email-optimized copy.\r\nMaster size: 2810 bytes (2.74 KiB).\r\nPublished Merged master: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182220_fe6cfd0d8c7b4b17.pdf\r\nDone.\r\nResult: SUCCESS; exit code: 0\r\n\nSUCCESS: Ghostscript not found; skipping email-optimized copy.\r\nResult: SUCCESS; exit code: 0\r\nElapsed time: 2.253 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: 2.02\r\nGhostscript version: unavailable\r\nInput summary: 1 PDF(s); expected pages: 1\r\nMaster size: 2810 bytes (2.74 KiB).\r\n - Merged master: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182220_fe6cfd0d8c7b4b17.pdf\r\nLog: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182220_fe6cfd0d8c7b4b17.log\r\n",
+      "Stderr": "",
+      "ElapsedMilliseconds": 2896,
+      "ProcessId": 10612,
+      "Started": true,
+      "TimedOut": false,
+      "Cancelled": false,
+      "LaunchError": null,
+      "CaptureError": null,
+      "TerminationError": null,
+      "OwnershipReleased": true,
+      "StdoutTruncated": false,
+      "StderrTruncated": false,
+      "Succeeded": true
+    },
+    "ReceiptPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\receipt.json",
+    "ReceiptSHA256": "67b12516ce1b81d4ddb29eccfad9a03e69135c182201486c473fd14b35002eb9",
+    "Receipt": {
+      "Scope": "copied entry with controlled native receipts; no PDF-engine execution",
+      "Identity": {
+        "OutputFolder": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\output [x] ! &",
+        "FolderLabel": "source [x] ! &",
+        "Timestamp": "20261009_182220",
+        "RunSuffix": "fe6cfd0d8c7b4b17",
+        "BaseName": "WinPDFMerge_source [x] ! &_20261009_182220_fe6cfd0d8c7b4b17",
+        "MasterPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182220_fe6cfd0d8c7b4b17.pdf",
+        "EmailPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182220_fe6cfd0d8c7b4b17_email.pdf",
+        "LogPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182220_fe6cfd0d8c7b4b17.log"
+      },
+      "GSDiscovery": 1,
+      "Jobs": [
+        {
+          "Tool": "Pdftk",
+          "Job": {
+            "NativeResult": {
+              "Executable": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\app\\pdftk.exe",
+              "RenderedArguments": "T17 controlled vector",
+              "Succeeded": true,
+              "Started": true,
+              "ExitCode": 0,
+              "ProcessId": 12345,
+              "ElapsedMilliseconds": 1,
+              "TimedOut": false,
+              "Cancelled": false,
+              "LaunchError": null,
+              "CaptureError": null,
+              "TerminationError": null,
+              "OwnershipReleased": true,
+              "StdoutTruncated": false,
+              "StderrTruncated": false,
+              "Stdout": "T17 controlled conversion",
+              "Stderr": "T17 controlled warning"
+            },
+            "ValidationResult": {
+              "NativeResult": {
+                "Executable": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\app\\pdftk.exe",
+                "RenderedArguments": "T17 controlled vector",
+                "Succeeded": true,
+                "Started": true,
+                "ExitCode": 0,
+                "ProcessId": 12345,
+                "ElapsedMilliseconds": 1,
+                "TimedOut": false,
+                "Cancelled": false,
+                "LaunchError": null,
+                "CaptureError": null,
+                "TerminationError": null,
+                "OwnershipReleased": true,
+                "StdoutTruncated": false,
+                "StderrTruncated": false,
+                "Stdout": "NumberOfPages: 1",
+                "Stderr": "T17 controlled warning"
+              },
+              "PageCount": 1,
+              "InputError": null,
+              "Succeeded": true
+            },
+            "OutputValidated": true,
+            "ValidatedPageCount": 1,
+            "OutputState": "published",
+            "MasterBytes": null,
+            "OutputBytes": 2810,
+            "OutputPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182220_fe6cfd0d8c7b4b17.pdf",
+            "OutputPublished": true,
+            "OutputError": null,
+            "CleanupError": null,
+            "StagingPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\output [x] ! &\\.WinPDFMerge_e61421f78b524422a484892d6035683b.tmp",
+            "Succeeded": true
+          },
+          "MasterSHA256": "4a954b01b8373fbf13a99229326001bdc7e26cba606358585d7491bea1e2be62"
+        }
+      ],
+      "Reports": [
+        {
+          "MasterBytes": 2810,
+          "EmailBytesBound": false,
+          "EmailPublished": false,
+          "ReductionDecimalInvariant": null,
+          "Report": {
+            "MasterBytes": 2810,
+            "EmailBytes": null,
+            "ReductionPercent": null,
+            "Lines": [
+              "Master size: 2810 bytes (2.74 KiB)."
+            ]
+          }
+        }
+      ],
+      "Messages": [
+        "==== WinPDFMerge run 2026-10-09 18:22:20 ====",
+        "Application version: 1.0.0",
+        "Stage: Invocation preflight; elapsed: 0.860 s",
+        "Source folder: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\source [x] ! &",
+        "Output folder: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\output [x] ! &",
+        "Run identity: WinPDFMerge_source [x] ! &_20261009_182220_fe6cfd0d8c7b4b17",
+        "Planned master output: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182220_fe6cfd0d8c7b4b17.pdf",
+        "Planned email output: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182220_fe6cfd0d8c7b4b17_email.pdf",
+        "Diagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.",
+        "PowerShell: 7.6.6 (Core)",
+        "Stage: Input discovery; elapsed: 0.986 s",
+        "PDF count: 1",
+        "Input 1: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\source [x] ! &\\1.pdf",
+        "Stage: PDFtk preflight; elapsed: 1.048 s",
+        "PDFtk: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\app\\pdftk.exe (version 2.02)",
+        "Stage: Input inspection; elapsed: 1.065 s",
+        "Input preflight 1 executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\app\\pdftk.exe",
+        "Input preflight 1 arguments: T17 controlled vector",
+        "Input preflight 1 exit: 0; elapsed: 1 ms; PID: 12345",
+        "Input preflight 1 started: True; timed out: False; cancelled: False; succeeded: True",
+        "Input preflight 1 launch error: ",
+        "Input preflight 1 capture error: ",
+        "Input preflight 1 termination error: ",
+        "Input preflight 1 stdout truncated: False; stderr truncated: False",
+        "Input preflight 1 stdout:",
+        "NumberOfPages: 1",
+        "Input preflight 1 stderr:",
+        "T17 controlled warning",
+        "Input 1 pages: 1",
+        "Expected page total: 1",
+        "Private staging: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\output [x] ! &\\.WinPDFMerge_e61421f78b524422a484892d6035683b.tmp",
+        "Stage: Master processing; elapsed: 1.484 s",
+        "PDFtk executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\app\\pdftk.exe",
+        "PDFtk arguments: T17 controlled vector",
+        "PDFtk exit: 0; elapsed: 1 ms; PID: 12345",
+        "PDFtk started: True; timed out: False; cancelled: False; succeeded: True",
+        "PDFtk launch error: ",
+        "PDFtk capture error: ",
+        "PDFtk termination error: ",
+        "PDFtk stdout truncated: False; stderr truncated: False",
+        "PDFtk stdout:",
+        "T17 controlled conversion",
+        "PDFtk stderr:",
+        "T17 controlled warning",
+        "Master validation executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\app\\pdftk.exe",
+        "Master validation arguments: T17 controlled vector",
+        "Master validation exit: 0; elapsed: 1 ms; PID: 12345",
+        "Master validation started: True; timed out: False; cancelled: False; succeeded: True",
+        "Master validation launch error: ",
+        "Master validation capture error: ",
+        "Master validation termination error: ",
+        "Master validation stdout truncated: False; stderr truncated: False",
+        "Master validation stdout:",
+        "NumberOfPages: 1",
+        "Master validation stderr:",
+        "T17 controlled warning",
+        "Master validation OK: 1 expected pages inspected. Merged master published: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182220_fe6cfd0d8c7b4b17.pdf",
+        "Stage: Email preflight; elapsed: 1.970 s",
+        "Stage: Summary; elapsed: 2.051 s",
+        "Elapsed time: 2.067 s",
+        "PowerShell: 7.6.6 (Core)",
+        "PDFtk version: 2.02",
+        "Ghostscript version: unavailable",
+        "Input summary: 1 PDF(s); expected pages: 1",
+        "Email result: unavailable",
+        "Ghostscript not found; skipping email-optimized copy.",
+        "Master size: 2810 bytes (2.74 KiB).",
+        "Published Merged master: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182220_fe6cfd0d8c7b4b17.pdf",
+        "Done.",
+        "Result: SUCCESS; exit code: 0"
+      ],
+      "Outcome": {
+        "ExitCode": 0,
+        "Summary": "SUCCESS",
+        "EmailMessage": "Ghostscript not found; skipping email-optimized copy.",
+        "EmailState": "unavailable",
+        "PublishedPaths": [
+          {
+            "Label": "Merged master",
+            "Path": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182220_fe6cfd0d8c7b4b17.pdf"
+          }
+        ]
+      },
+      "NativeCalls": 3
+    },
+    "Before": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+    "After": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+    "Finals": [
+      {
+        "Path": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\da22c122fa8143fe9602d0ac9d7f7ac1\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182220_fe6cfd0d8c7b4b17.pdf",
+        "Bytes": 2810,
+        "SHA256": "4a954b01b8373fbf13a99229326001bdc7e26cba606358585d7491bea1e2be62"
+      }
+    ],
+    "StdoutSHA256": "922a6e36d4d26024137a67f27cf68b1fd6c18eee52a52ddfec0c485a54ed8d83",
+    "StderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "Label": "entry-failed",
+    "Scope": "actual bounded copied-entry subprocess with controlled native receipts; no PDF-engine/manual claim",
+    "Culture": "de-DE",
+    "Command": [
+      "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+      "-NoLogo",
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "RemoteSigned",
+      "-File",
+      "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\Invoke-Entry.ps1",
+      "-Configuration",
+      "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\app\\size-config.json"
+    ],
+    "ChildEnvironmentRemovedKeys": [
+      "PSModulePath"
+    ],
+    "PersistentEnvironmentChanges": false,
+    "EntrySHA256": "2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902",
+    "HelperWithHooksSHA256": "be3f93fd9d218db144796bce26b48e6ccecdaa50e4f59f9055fa63e4267812c8",
+    "WrapperSHA256": "d0535da1cce7392bdcfaeb982f8b115df8d382df0197bb2a48cf8a596e2f6eb7",
+    "ConfigurationSHA256": "5b74026c7c8aa5c7cec041afa033ae99a8cfb98841b91dd24ddf70158d4d18cc",
+    "Result": {
+      "Executable": "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+      "RenderedArguments": "\"-NoLogo\" \"-NoProfile\" \"-NonInteractive\" \"-ExecutionPolicy\" \"RemoteSigned\" \"-File\" \"<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\Invoke-Entry.ps1\" \"-Configuration\" \"<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\app\\size-config.json\"",
+      "ExitCode": 2,
+      "Stdout": "WinPDFMerger 1.0.0\r\nStage: Invocation preflight; elapsed: 0.070 s\r\n==== WinPDFMerge run 2026-10-09 18:22:23 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 0.833 s\r\nSource folder: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\source [x] ! &\r\nOutput folder: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\output [x] ! &\r\nRun identity: WinPDFMerge_source [x] ! &_20261009_182223_c9511ee35e2c4ba2\r\nPlanned master output: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182223_c9511ee35e2c4ba2.pdf\r\nPlanned email output: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182223_c9511ee35e2c4ba2_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 7.6.6 (Core)\r\nStage: Input discovery; elapsed: 0.923 s\r\nPDF count: 1\r\nInput 1: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\source [x] ! &\\1.pdf\r\nStage: PDFtk preflight; elapsed: 0.977 s\r\nPDFtk: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\app\\pdftk.exe (version 2.02)\r\nStage: Input inspection; elapsed: 1.000 s\r\nInput 1 pages: 1\r\nExpected page total: 1\r\nPrivate staging: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\output [x] ! &\\.WinPDFMerge_b060c1437b814d189d0dbbae394c8169.tmp\r\nStage: Master processing; elapsed: 1.501 s\r\nPDFtk executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\app\\pdftk.exe\r\nPDFtk arguments: T17 controlled vector\r\nPDFtk exit: 0; elapsed: 1 ms; PID: 12345\r\nPDFtk started: True; timed out: False; cancelled: False; succeeded: True\r\nPDFtk launch error: \r\nPDFtk capture error: \r\nPDFtk termination error: \r\nPDFtk stdout truncated: False; stderr truncated: False\r\nPDFtk stdout:\r\nT17 controlled conversion\r\nPDFtk stderr:\r\nT17 controlled warning\r\nMaster validation executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\app\\pdftk.exe\r\nMaster validation arguments: T17 controlled vector\r\nMaster validation exit: 0; elapsed: 1 ms; PID: 12345\r\nMaster validation started: True; timed out: False; cancelled: False; succeeded: True\r\nMaster validation launch error: \r\nMaster validation capture error: \r\nMaster validation termination error: \r\nMaster validation stdout truncated: False; stderr truncated: False\r\nMaster validation stdout:\r\nNumberOfPages: 1\r\nMaster validation stderr:\r\nT17 controlled warning\r\nMaster validation OK: 1 expected pages inspected. Merged master published: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182223_c9511ee35e2c4ba2.pdf\r\nStage: Email preflight; elapsed: 2.017 s\r\nGhostscript: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\app\\gswin64c.exe (version 10.08.0)\r\nStage: Email processing; elapsed: 2.077 s\r\nGhostscript executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\app\\gswin64c.exe\r\nGhostscript arguments: T17 controlled vector\r\nGhostscript exit: 7; elapsed: 1 ms; PID: 12345\r\nGhostscript started: True; timed out: False; cancelled: False; succeeded: False\r\nGhostscript launch error: \r\nGhostscript capture error: \r\nGhostscript termination error: \r\nGhostscript stdout truncated: False; stderr truncated: False\r\nGhostscript stdout:\r\nT17 controlled conversion\r\nGhostscript stderr:\r\nT17 controlled warning\r\nStage: Summary; elapsed: 2.449 s\r\nElapsed time: 2.465 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: 2.02\r\nGhostscript version: 10.08.0\r\nInput summary: 1 PDF(s); expected pages: 1\r\nEmail result: failed\r\nEmail processing failed; validated master retained.\r\nMaster size: 2810 bytes (2.74 KiB).\r\nPublished Merged master: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182223_c9511ee35e2c4ba2.pdf\r\nDone.\r\nResult: PARTIAL SUCCESS; exit code: 2\r\n\nPARTIAL SUCCESS: Ghostscript email processing failed. Ghostscript failed. Check native exit/launch/capture/timeout details and both streams in the log. The backend may reject Unicode or long paths; source files were not renamed.\r\nResult: PARTIAL SUCCESS; exit code: 2\r\nElapsed time: 2.612 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: 2.02\r\nGhostscript version: 10.08.0\r\nInput summary: 1 PDF(s); expected pages: 1\r\nMaster size: 2810 bytes (2.74 KiB).\r\n - Merged master: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182223_c9511ee35e2c4ba2.pdf\r\nLog: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182223_c9511ee35e2c4ba2.log\r\n",
+      "Stderr": "",
+      "ElapsedMilliseconds": 3276,
+      "ProcessId": 21084,
+      "Started": true,
+      "TimedOut": false,
+      "Cancelled": false,
+      "LaunchError": null,
+      "CaptureError": null,
+      "TerminationError": null,
+      "OwnershipReleased": true,
+      "StdoutTruncated": false,
+      "StderrTruncated": false,
+      "Succeeded": false
+    },
+    "ReceiptPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\receipt.json",
+    "ReceiptSHA256": "db774dce569fa07aee2f220237092b3ef604358afdc9cc6e6e11798ad0470bca",
+    "Receipt": {
+      "Scope": "copied entry with controlled native receipts; no PDF-engine execution",
+      "Identity": {
+        "OutputFolder": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\output [x] ! &",
+        "FolderLabel": "source [x] ! &",
+        "Timestamp": "20261009_182223",
+        "RunSuffix": "c9511ee35e2c4ba2",
+        "BaseName": "WinPDFMerge_source [x] ! &_20261009_182223_c9511ee35e2c4ba2",
+        "MasterPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182223_c9511ee35e2c4ba2.pdf",
+        "EmailPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182223_c9511ee35e2c4ba2_email.pdf",
+        "LogPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182223_c9511ee35e2c4ba2.log"
+      },
+      "GSDiscovery": 1,
+      "Jobs": [
+        {
+          "Tool": "Pdftk",
+          "Job": {
+            "NativeResult": {
+              "Executable": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\app\\pdftk.exe",
+              "RenderedArguments": "T17 controlled vector",
+              "Succeeded": true,
+              "Started": true,
+              "ExitCode": 0,
+              "ProcessId": 12345,
+              "ElapsedMilliseconds": 1,
+              "TimedOut": false,
+              "Cancelled": false,
+              "LaunchError": null,
+              "CaptureError": null,
+              "TerminationError": null,
+              "OwnershipReleased": true,
+              "StdoutTruncated": false,
+              "StderrTruncated": false,
+              "Stdout": "T17 controlled conversion",
+              "Stderr": "T17 controlled warning"
+            },
+            "ValidationResult": {
+              "NativeResult": {
+                "Executable": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\app\\pdftk.exe",
+                "RenderedArguments": "T17 controlled vector",
+                "Succeeded": true,
+                "Started": true,
+                "ExitCode": 0,
+                "ProcessId": 12345,
+                "ElapsedMilliseconds": 1,
+                "TimedOut": false,
+                "Cancelled": false,
+                "LaunchError": null,
+                "CaptureError": null,
+                "TerminationError": null,
+                "OwnershipReleased": true,
+                "StdoutTruncated": false,
+                "StderrTruncated": false,
+                "Stdout": "NumberOfPages: 1",
+                "Stderr": "T17 controlled warning"
+              },
+              "PageCount": 1,
+              "InputError": null,
+              "Succeeded": true
+            },
+            "OutputValidated": true,
+            "ValidatedPageCount": 1,
+            "OutputState": "published",
+            "MasterBytes": null,
+            "OutputBytes": 2810,
+            "OutputPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182223_c9511ee35e2c4ba2.pdf",
+            "OutputPublished": true,
+            "OutputError": null,
+            "CleanupError": null,
+            "StagingPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\output [x] ! &\\.WinPDFMerge_b060c1437b814d189d0dbbae394c8169.tmp",
+            "Succeeded": true
+          },
+          "MasterSHA256": "4a954b01b8373fbf13a99229326001bdc7e26cba606358585d7491bea1e2be62"
+        },
+        {
+          "Tool": "Ghostscript",
+          "Job": {
+            "NativeResult": {
+              "Executable": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\app\\gswin64c.exe",
+              "RenderedArguments": "T17 controlled vector",
+              "Succeeded": false,
+              "Started": true,
+              "ExitCode": 7,
+              "ProcessId": 12345,
+              "ElapsedMilliseconds": 1,
+              "TimedOut": false,
+              "Cancelled": false,
+              "LaunchError": null,
+              "CaptureError": null,
+              "TerminationError": null,
+              "OwnershipReleased": true,
+              "StdoutTruncated": false,
+              "StderrTruncated": false,
+              "Stdout": "T17 controlled conversion",
+              "Stderr": "T17 controlled warning"
+            },
+            "ValidationResult": null,
+            "OutputValidated": false,
+            "ValidatedPageCount": null,
+            "OutputState": "failed",
+            "MasterBytes": 2810,
+            "OutputBytes": null,
+            "OutputPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182223_c9511ee35e2c4ba2_email.pdf",
+            "OutputPublished": false,
+            "OutputError": "Ghostscript failed. Check native exit/launch/capture/timeout details and both streams in the log. The backend may reject Unicode or long paths; source files were not renamed.",
+            "CleanupError": null,
+            "StagingPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\output [x] ! &\\.WinPDFMerge_b060c1437b814d189d0dbbae394c8169.tmp",
+            "Succeeded": false
+          },
+          "MasterSHA256": "4a954b01b8373fbf13a99229326001bdc7e26cba606358585d7491bea1e2be62"
+        }
+      ],
+      "Reports": [
+        {
+          "MasterBytes": 2810,
+          "EmailBytesBound": false,
+          "EmailPublished": false,
+          "ReductionDecimalInvariant": null,
+          "Report": {
+            "MasterBytes": 2810,
+            "EmailBytes": null,
+            "ReductionPercent": null,
+            "Lines": [
+              "Master size: 2810 bytes (2.74 KiB)."
+            ]
+          }
+        }
+      ],
+      "Messages": [
+        "==== WinPDFMerge run 2026-10-09 18:22:23 ====",
+        "Application version: 1.0.0",
+        "Stage: Invocation preflight; elapsed: 0.833 s",
+        "Source folder: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\source [x] ! &",
+        "Output folder: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\output [x] ! &",
+        "Run identity: WinPDFMerge_source [x] ! &_20261009_182223_c9511ee35e2c4ba2",
+        "Planned master output: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182223_c9511ee35e2c4ba2.pdf",
+        "Planned email output: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182223_c9511ee35e2c4ba2_email.pdf",
+        "Diagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.",
+        "PowerShell: 7.6.6 (Core)",
+        "Stage: Input discovery; elapsed: 0.923 s",
+        "PDF count: 1",
+        "Input 1: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\source [x] ! &\\1.pdf",
+        "Stage: PDFtk preflight; elapsed: 0.977 s",
+        "PDFtk: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\app\\pdftk.exe (version 2.02)",
+        "Stage: Input inspection; elapsed: 1.000 s",
+        "Input preflight 1 executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\app\\pdftk.exe",
+        "Input preflight 1 arguments: T17 controlled vector",
+        "Input preflight 1 exit: 0; elapsed: 1 ms; PID: 12345",
+        "Input preflight 1 started: True; timed out: False; cancelled: False; succeeded: True",
+        "Input preflight 1 launch error: ",
+        "Input preflight 1 capture error: ",
+        "Input preflight 1 termination error: ",
+        "Input preflight 1 stdout truncated: False; stderr truncated: False",
+        "Input preflight 1 stdout:",
+        "NumberOfPages: 1",
+        "Input preflight 1 stderr:",
+        "T17 controlled warning",
+        "Input 1 pages: 1",
+        "Expected page total: 1",
+        "Private staging: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\output [x] ! &\\.WinPDFMerge_b060c1437b814d189d0dbbae394c8169.tmp",
+        "Stage: Master processing; elapsed: 1.501 s",
+        "PDFtk executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\app\\pdftk.exe",
+        "PDFtk arguments: T17 controlled vector",
+        "PDFtk exit: 0; elapsed: 1 ms; PID: 12345",
+        "PDFtk started: True; timed out: False; cancelled: False; succeeded: True",
+        "PDFtk launch error: ",
+        "PDFtk capture error: ",
+        "PDFtk termination error: ",
+        "PDFtk stdout truncated: False; stderr truncated: False",
+        "PDFtk stdout:",
+        "T17 controlled conversion",
+        "PDFtk stderr:",
+        "T17 controlled warning",
+        "Master validation executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\app\\pdftk.exe",
+        "Master validation arguments: T17 controlled vector",
+        "Master validation exit: 0; elapsed: 1 ms; PID: 12345",
+        "Master validation started: True; timed out: False; cancelled: False; succeeded: True",
+        "Master validation launch error: ",
+        "Master validation capture error: ",
+        "Master validation termination error: ",
+        "Master validation stdout truncated: False; stderr truncated: False",
+        "Master validation stdout:",
+        "NumberOfPages: 1",
+        "Master validation stderr:",
+        "T17 controlled warning",
+        "Master validation OK: 1 expected pages inspected. Merged master published: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182223_c9511ee35e2c4ba2.pdf",
+        "Stage: Email preflight; elapsed: 2.017 s",
+        "Ghostscript: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\app\\gswin64c.exe (version 10.08.0)",
+        "Stage: Email processing; elapsed: 2.077 s",
+        "Ghostscript executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\app\\gswin64c.exe",
+        "Ghostscript arguments: T17 controlled vector",
+        "Ghostscript exit: 7; elapsed: 1 ms; PID: 12345",
+        "Ghostscript started: True; timed out: False; cancelled: False; succeeded: False",
+        "Ghostscript launch error: ",
+        "Ghostscript capture error: ",
+        "Ghostscript termination error: ",
+        "Ghostscript stdout truncated: False; stderr truncated: False",
+        "Ghostscript stdout:",
+        "T17 controlled conversion",
+        "Ghostscript stderr:",
+        "T17 controlled warning",
+        "Ghostscript email processing failed. Ghostscript failed. Check native exit/launch/capture/timeout details and both streams in the log. The backend may reject Unicode or long paths; source files were not renamed.",
+        "Stage: Summary; elapsed: 2.449 s",
+        "Elapsed time: 2.465 s",
+        "PowerShell: 7.6.6 (Core)",
+        "PDFtk version: 2.02",
+        "Ghostscript version: 10.08.0",
+        "Input summary: 1 PDF(s); expected pages: 1",
+        "Email result: failed",
+        "Email processing failed; validated master retained.",
+        "Master size: 2810 bytes (2.74 KiB).",
+        "Published Merged master: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182223_c9511ee35e2c4ba2.pdf",
+        "Done.",
+        "Result: PARTIAL SUCCESS; exit code: 2"
+      ],
+      "Outcome": {
+        "ExitCode": 2,
+        "Summary": "PARTIAL SUCCESS",
+        "EmailMessage": "Email processing failed; validated master retained.",
+        "EmailState": "failed",
+        "PublishedPaths": [
+          {
+            "Label": "Merged master",
+            "Path": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182223_c9511ee35e2c4ba2.pdf"
+          }
+        ]
+      },
+      "NativeCalls": 4
+    },
+    "Before": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+    "After": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+    "Finals": [
+      {
+        "Path": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\188dc8e8724043ecb4f61336426d260f\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182223_c9511ee35e2c4ba2.pdf",
+        "Bytes": 2810,
+        "SHA256": "4a954b01b8373fbf13a99229326001bdc7e26cba606358585d7491bea1e2be62"
+      }
+    ],
+    "StdoutSHA256": "b8793d0a6e9f1f218f6266d1d12afa6928c88106d9831a7e9edf7253a41e3e52",
+    "StderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "Label": "entry-log-failed",
+    "Scope": "actual bounded copied-entry subprocess with controlled native receipts; no PDF-engine/manual claim",
+    "Culture": "de-DE",
+    "Command": [
+      "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+      "-NoLogo",
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "RemoteSigned",
+      "-File",
+      "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\Invoke-Entry.ps1",
+      "-Configuration",
+      "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\app\\size-config.json"
+    ],
+    "ChildEnvironmentRemovedKeys": [
+      "PSModulePath"
+    ],
+    "PersistentEnvironmentChanges": false,
+    "EntrySHA256": "2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902",
+    "HelperWithHooksSHA256": "be3f93fd9d218db144796bce26b48e6ccecdaa50e4f59f9055fa63e4267812c8",
+    "WrapperSHA256": "d0535da1cce7392bdcfaeb982f8b115df8d382df0197bb2a48cf8a596e2f6eb7",
+    "ConfigurationSHA256": "50d8d2cacfe59b45b07129a5bfa9864b28b94be105364a6ce48b2cd84d52baca",
+    "Result": {
+      "Executable": "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+      "RenderedArguments": "\"-NoLogo\" \"-NoProfile\" \"-NonInteractive\" \"-ExecutionPolicy\" \"RemoteSigned\" \"-File\" \"<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\Invoke-Entry.ps1\" \"-Configuration\" \"<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\app\\size-config.json\"",
+      "ExitCode": 2,
+      "Stdout": "WinPDFMerger 1.0.0\r\nStage: Invocation preflight; elapsed: 0.087 s\r\n==== WinPDFMerge run 2026-10-09 18:22:26 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 0.834 s\r\nSource folder: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\source [x] ! &\r\nOutput folder: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\output [x] ! &\r\nRun identity: WinPDFMerge_source [x] ! &_20261009_182226_3b84869e16ec4661\r\nPlanned master output: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182226_3b84869e16ec4661.pdf\r\nPlanned email output: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182226_3b84869e16ec4661_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 7.6.6 (Core)\r\nStage: Input discovery; elapsed: 0.940 s\r\nPDF count: 1\r\nInput 1: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\source [x] ! &\\1.pdf\r\nStage: PDFtk preflight; elapsed: 1.005 s\r\nPDFtk: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\app\\pdftk.exe (version 2.02)\r\nStage: Input inspection; elapsed: 1.030 s\r\nInput 1 pages: 1\r\nExpected page total: 1\r\nPrivate staging: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\output [x] ! &\\.WinPDFMerge_8a819871852a49fe81bd581e43c57f3f.tmp\r\nStage: Master processing; elapsed: 1.460 s\r\nPDFtk executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\app\\pdftk.exe\r\nPDFtk arguments: T17 controlled vector\r\nPDFtk exit: 0; elapsed: 1 ms; PID: 12345\r\nPDFtk started: True; timed out: False; cancelled: False; succeeded: True\r\nPDFtk launch error: \r\nPDFtk capture error: \r\nPDFtk termination error: \r\nPDFtk stdout truncated: False; stderr truncated: False\r\nPDFtk stdout:\r\nT17 controlled conversion\r\nPDFtk stderr:\r\nT17 controlled warning\r\nMaster validation executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\app\\pdftk.exe\r\nMaster validation arguments: T17 controlled vector\r\nMaster validation exit: 0; elapsed: 1 ms; PID: 12345\r\nMaster validation started: True; timed out: False; cancelled: False; succeeded: True\r\nMaster validation launch error: \r\nMaster validation capture error: \r\nMaster validation termination error: \r\nMaster validation stdout truncated: False; stderr truncated: False\r\nMaster validation stdout:\r\nNumberOfPages: 1\r\nMaster validation stderr:\r\nT17 controlled warning\r\nMaster validation OK: 1 expected pages inspected. Merged master published: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182226_3b84869e16ec4661.pdf\r\nStage: Email preflight; elapsed: 1.950 s\r\nGhostscript: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\app\\gswin64c.exe (version 10.08.0)\r\nStage: Email processing; elapsed: 1.983 s\r\nGhostscript executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\app\\gswin64c.exe\r\nGhostscript arguments: T17 controlled vector\r\nGhostscript exit: 0; elapsed: 1 ms; PID: 12345\r\nGhostscript started: True; timed out: False; cancelled: False; succeeded: True\r\nGhostscript launch error: \r\nGhostscript capture error: \r\nGhostscript termination error: \r\nGhostscript stdout truncated: False; stderr truncated: False\r\nGhostscript stdout:\r\nT17 controlled conversion\r\nGhostscript stderr:\r\nT17 controlled warning\r\nEmail validation executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\app\\pdftk.exe\r\nEmail validation arguments: T17 controlled vector\r\nEmail validation exit: 0; elapsed: 1 ms; PID: 12345\r\nEmail validation started: True; timed out: False; cancelled: False; succeeded: True\r\nEmail validation launch error: \r\nEmail validation capture error: \r\nEmail validation termination error: \r\nEmail validation stdout truncated: False; stderr truncated: False\r\nEmail validation stdout:\r\nNumberOfPages: 1\r\nEmail validation stderr:\r\nT17 controlled warning\r\nStage: Summary; elapsed: 2.490 s\r\nElapsed time: 2.502 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: 2.02\r\nGhostscript version: 10.08.0\r\nInput summary: 1 PDF(s); expected pages: 1\r\nEmail result: published\r\nValidated smaller email copy published.\r\n\nPARTIAL SUCCESS: Result logging failed: T17 controlled size-report logging failure\r\nResult: PARTIAL SUCCESS; exit code: 2\r\nElapsed time: 2.637 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: 2.02\r\nGhostscript version: 10.08.0\r\nInput summary: 1 PDF(s); expected pages: 1\r\nMaster size: 2810 bytes (2.74 KiB).\r\nEmail size: 1786 bytes (1.74 KiB).\r\nEmail reduction: 36.4%.\r\n - Merged master: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182226_3b84869e16ec4661.pdf\r\n - Email-optimized: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182226_3b84869e16ec4661_email.pdf\r\nLog: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182226_3b84869e16ec4661.log\r\n",
+      "Stderr": "",
+      "ElapsedMilliseconds": 3209,
+      "ProcessId": 14660,
+      "Started": true,
+      "TimedOut": false,
+      "Cancelled": false,
+      "LaunchError": null,
+      "CaptureError": null,
+      "TerminationError": null,
+      "OwnershipReleased": true,
+      "StdoutTruncated": false,
+      "StderrTruncated": false,
+      "Succeeded": false
+    },
+    "ReceiptPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\receipt.json",
+    "ReceiptSHA256": "b90f78b1ade28eb6ff98ea851349345e81791d50c9ba5b1b6942e4caeaefd34a",
+    "Receipt": {
+      "Scope": "copied entry with controlled native receipts; no PDF-engine execution",
+      "Identity": {
+        "OutputFolder": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\output [x] ! &",
+        "FolderLabel": "source [x] ! &",
+        "Timestamp": "20261009_182226",
+        "RunSuffix": "3b84869e16ec4661",
+        "BaseName": "WinPDFMerge_source [x] ! &_20261009_182226_3b84869e16ec4661",
+        "MasterPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182226_3b84869e16ec4661.pdf",
+        "EmailPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182226_3b84869e16ec4661_email.pdf",
+        "LogPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182226_3b84869e16ec4661.log"
+      },
+      "GSDiscovery": 1,
+      "Jobs": [
+        {
+          "Tool": "Pdftk",
+          "Job": {
+            "NativeResult": {
+              "Executable": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\app\\pdftk.exe",
+              "RenderedArguments": "T17 controlled vector",
+              "Succeeded": true,
+              "Started": true,
+              "ExitCode": 0,
+              "ProcessId": 12345,
+              "ElapsedMilliseconds": 1,
+              "TimedOut": false,
+              "Cancelled": false,
+              "LaunchError": null,
+              "CaptureError": null,
+              "TerminationError": null,
+              "OwnershipReleased": true,
+              "StdoutTruncated": false,
+              "StderrTruncated": false,
+              "Stdout": "T17 controlled conversion",
+              "Stderr": "T17 controlled warning"
+            },
+            "ValidationResult": {
+              "NativeResult": {
+                "Executable": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\app\\pdftk.exe",
+                "RenderedArguments": "T17 controlled vector",
+                "Succeeded": true,
+                "Started": true,
+                "ExitCode": 0,
+                "ProcessId": 12345,
+                "ElapsedMilliseconds": 1,
+                "TimedOut": false,
+                "Cancelled": false,
+                "LaunchError": null,
+                "CaptureError": null,
+                "TerminationError": null,
+                "OwnershipReleased": true,
+                "StdoutTruncated": false,
+                "StderrTruncated": false,
+                "Stdout": "NumberOfPages: 1",
+                "Stderr": "T17 controlled warning"
+              },
+              "PageCount": 1,
+              "InputError": null,
+              "Succeeded": true
+            },
+            "OutputValidated": true,
+            "ValidatedPageCount": 1,
+            "OutputState": "published",
+            "MasterBytes": null,
+            "OutputBytes": 2810,
+            "OutputPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182226_3b84869e16ec4661.pdf",
+            "OutputPublished": true,
+            "OutputError": null,
+            "CleanupError": null,
+            "StagingPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\output [x] ! &\\.WinPDFMerge_8a819871852a49fe81bd581e43c57f3f.tmp",
+            "Succeeded": true
+          },
+          "MasterSHA256": "4a954b01b8373fbf13a99229326001bdc7e26cba606358585d7491bea1e2be62"
+        },
+        {
+          "Tool": "Ghostscript",
+          "Job": {
+            "NativeResult": {
+              "Executable": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\app\\gswin64c.exe",
+              "RenderedArguments": "T17 controlled vector",
+              "Succeeded": true,
+              "Started": true,
+              "ExitCode": 0,
+              "ProcessId": 12345,
+              "ElapsedMilliseconds": 1,
+              "TimedOut": false,
+              "Cancelled": false,
+              "LaunchError": null,
+              "CaptureError": null,
+              "TerminationError": null,
+              "OwnershipReleased": true,
+              "StdoutTruncated": false,
+              "StderrTruncated": false,
+              "Stdout": "T17 controlled conversion",
+              "Stderr": "T17 controlled warning"
+            },
+            "ValidationResult": {
+              "NativeResult": {
+                "Executable": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\app\\pdftk.exe",
+                "RenderedArguments": "T17 controlled vector",
+                "Succeeded": true,
+                "Started": true,
+                "ExitCode": 0,
+                "ProcessId": 12345,
+                "ElapsedMilliseconds": 1,
+                "TimedOut": false,
+                "Cancelled": false,
+                "LaunchError": null,
+                "CaptureError": null,
+                "TerminationError": null,
+                "OwnershipReleased": true,
+                "StdoutTruncated": false,
+                "StderrTruncated": false,
+                "Stdout": "NumberOfPages: 1",
+                "Stderr": "T17 controlled warning"
+              },
+              "PageCount": 1,
+              "InputError": null,
+              "Succeeded": true
+            },
+            "OutputValidated": true,
+            "ValidatedPageCount": 1,
+            "OutputState": "published",
+            "MasterBytes": 2810,
+            "OutputBytes": 1786,
+            "OutputPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182226_3b84869e16ec4661_email.pdf",
+            "OutputPublished": true,
+            "OutputError": null,
+            "CleanupError": null,
+            "StagingPath": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\output [x] ! &\\.WinPDFMerge_8a819871852a49fe81bd581e43c57f3f.tmp",
+            "Succeeded": true
+          },
+          "MasterSHA256": "4a954b01b8373fbf13a99229326001bdc7e26cba606358585d7491bea1e2be62"
+        }
+      ],
+      "Reports": [
+        {
+          "MasterBytes": 2810,
+          "EmailBytesBound": false,
+          "EmailPublished": false,
+          "ReductionDecimalInvariant": null,
+          "Report": {
+            "MasterBytes": 2810,
+            "EmailBytes": null,
+            "ReductionPercent": null,
+            "Lines": [
+              "Master size: 2810 bytes (2.74 KiB)."
+            ]
+          }
+        },
+        {
+          "MasterBytes": 2810,
+          "EmailBytesBound": true,
+          "EmailPublished": true,
+          "ReductionDecimalInvariant": "36.441281138790035587188612100",
+          "Report": {
+            "MasterBytes": 2810,
+            "EmailBytes": 1786,
+            "ReductionPercent": 36.44128113879004,
+            "Lines": [
+              "Master size: 2810 bytes (2.74 KiB).",
+              "Email size: 1786 bytes (1.74 KiB).",
+              "Email reduction: 36.4%."
+            ]
+          }
+        }
+      ],
+      "Messages": [
+        "==== WinPDFMerge run 2026-10-09 18:22:26 ====",
+        "Application version: 1.0.0",
+        "Stage: Invocation preflight; elapsed: 0.834 s",
+        "Source folder: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\source [x] ! &",
+        "Output folder: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\output [x] ! &",
+        "Run identity: WinPDFMerge_source [x] ! &_20261009_182226_3b84869e16ec4661",
+        "Planned master output: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182226_3b84869e16ec4661.pdf",
+        "Planned email output: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182226_3b84869e16ec4661_email.pdf",
+        "Diagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.",
+        "PowerShell: 7.6.6 (Core)",
+        "Stage: Input discovery; elapsed: 0.940 s",
+        "PDF count: 1",
+        "Input 1: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\source [x] ! &\\1.pdf",
+        "Stage: PDFtk preflight; elapsed: 1.005 s",
+        "PDFtk: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\app\\pdftk.exe (version 2.02)",
+        "Stage: Input inspection; elapsed: 1.030 s",
+        "Input preflight 1 executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\app\\pdftk.exe",
+        "Input preflight 1 arguments: T17 controlled vector",
+        "Input preflight 1 exit: 0; elapsed: 1 ms; PID: 12345",
+        "Input preflight 1 started: True; timed out: False; cancelled: False; succeeded: True",
+        "Input preflight 1 launch error: ",
+        "Input preflight 1 capture error: ",
+        "Input preflight 1 termination error: ",
+        "Input preflight 1 stdout truncated: False; stderr truncated: False",
+        "Input preflight 1 stdout:",
+        "NumberOfPages: 1",
+        "Input preflight 1 stderr:",
+        "T17 controlled warning",
+        "Input 1 pages: 1",
+        "Expected page total: 1",
+        "Private staging: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\output [x] ! &\\.WinPDFMerge_8a819871852a49fe81bd581e43c57f3f.tmp",
+        "Stage: Master processing; elapsed: 1.460 s",
+        "PDFtk executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\app\\pdftk.exe",
+        "PDFtk arguments: T17 controlled vector",
+        "PDFtk exit: 0; elapsed: 1 ms; PID: 12345",
+        "PDFtk started: True; timed out: False; cancelled: False; succeeded: True",
+        "PDFtk launch error: ",
+        "PDFtk capture error: ",
+        "PDFtk termination error: ",
+        "PDFtk stdout truncated: False; stderr truncated: False",
+        "PDFtk stdout:",
+        "T17 controlled conversion",
+        "PDFtk stderr:",
+        "T17 controlled warning",
+        "Master validation executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\app\\pdftk.exe",
+        "Master validation arguments: T17 controlled vector",
+        "Master validation exit: 0; elapsed: 1 ms; PID: 12345",
+        "Master validation started: True; timed out: False; cancelled: False; succeeded: True",
+        "Master validation launch error: ",
+        "Master validation capture error: ",
+        "Master validation termination error: ",
+        "Master validation stdout truncated: False; stderr truncated: False",
+        "Master validation stdout:",
+        "NumberOfPages: 1",
+        "Master validation stderr:",
+        "T17 controlled warning",
+        "Master validation OK: 1 expected pages inspected. Merged master published: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182226_3b84869e16ec4661.pdf",
+        "Stage: Email preflight; elapsed: 1.950 s",
+        "Ghostscript: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\app\\gswin64c.exe (version 10.08.0)",
+        "Stage: Email processing; elapsed: 1.983 s",
+        "Ghostscript executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\app\\gswin64c.exe",
+        "Ghostscript arguments: T17 controlled vector",
+        "Ghostscript exit: 0; elapsed: 1 ms; PID: 12345",
+        "Ghostscript started: True; timed out: False; cancelled: False; succeeded: True",
+        "Ghostscript launch error: ",
+        "Ghostscript capture error: ",
+        "Ghostscript termination error: ",
+        "Ghostscript stdout truncated: False; stderr truncated: False",
+        "Ghostscript stdout:",
+        "T17 controlled conversion",
+        "Ghostscript stderr:",
+        "T17 controlled warning",
+        "Email validation executable: <REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\app\\pdftk.exe",
+        "Email validation arguments: T17 controlled vector",
+        "Email validation exit: 0; elapsed: 1 ms; PID: 12345",
+        "Email validation started: True; timed out: False; cancelled: False; succeeded: True",
+        "Email validation launch error: ",
+        "Email validation capture error: ",
+        "Email validation termination error: ",
+        "Email validation stdout truncated: False; stderr truncated: False",
+        "Email validation stdout:",
+        "NumberOfPages: 1",
+        "Email validation stderr:",
+        "T17 controlled warning",
+        "Stage: Summary; elapsed: 2.490 s",
+        "Elapsed time: 2.502 s",
+        "PowerShell: 7.6.6 (Core)",
+        "PDFtk version: 2.02",
+        "Ghostscript version: 10.08.0",
+        "Input summary: 1 PDF(s); expected pages: 1",
+        "Email result: published",
+        "Validated smaller email copy published.",
+        "Master size: 2810 bytes (2.74 KiB)."
+      ],
+      "Outcome": {
+        "ExitCode": 2,
+        "Summary": "PARTIAL SUCCESS",
+        "EmailMessage": "Run failed; validated published outputs retained.",
+        "EmailState": "published",
+        "PublishedPaths": [
+          {
+            "Label": "Merged master",
+            "Path": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182226_3b84869e16ec4661.pdf"
+          },
+          {
+            "Label": "Email-optimized",
+            "Path": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182226_3b84869e16ec4661_email.pdf"
+          }
+        ]
+      },
+      "NativeCalls": 5
+    },
+    "Before": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+    "After": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+    "Finals": [
+      {
+        "Path": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182226_3b84869e16ec4661_email.pdf",
+        "Bytes": 1786,
+        "SHA256": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109"
+      },
+      {
+        "Path": "<REPO>\\tests\\.work\\T17-size-reporting\\99832f74c07c4c4d9719293011f5eb3a\\5994b033dea14574aca5e61f790cccf2\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182226_3b84869e16ec4661.pdf",
+        "Bytes": 2810,
+        "SHA256": "4a954b01b8373fbf13a99229326001bdc7e26cba606358585d7491bea1e2be62"
+      }
+    ],
+    "StdoutSHA256": "10921269899af7ff1763e0759e24eb6db761ed8d8a7bd2ccae25df4ffa269a37",
+    "StderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

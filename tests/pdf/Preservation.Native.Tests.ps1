@@ -61,7 +61,7 @@ BeforeAll {
         $captures.Add($row); Save-FeatureJson -Path (Join-Path $work ($Label + '.execution.json')) -Value $row
         return $result
     }
-    foreach ($path in @($generator,$oracle,(Join-Path $repo 'WinPDFMerge.ps1'),(Join-Path $repo 'src/WinPDFMerge.Helpers.ps1'),(Join-Path $repo 'tests/pdf/Preservation.Native.Tests.ps1'))) {
+    foreach ($path in @($generator,$oracle,(Join-Path $repo 'WinPDFMerge.ps1'),(Join-Path $repo 'VERSION'),(Join-Path $repo 'src/WinPDFMerge.Helpers.ps1'),(Join-Path $repo 'tests/pdf/Preservation.Native.Tests.ps1'))) {
         Copy-Item -LiteralPath $path -Destination (Join-Path $work ([IO.Path]::GetFileName($path)))
     }
     $generation = Invoke-FeatureChild -Label 'generation' -Executable $PythonPath -Arguments @('-B',$generator,'--output',$source)
@@ -85,6 +85,7 @@ BeforeAll {
     $sourceBefore = @(Get-ChildItem -LiteralPath $source -File | Sort-Object Name | ForEach-Object { [pscustomobject]@{Name=$_.Name; Bytes=$_.Length; SHA256=(Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash.ToLowerInvariant(); Modified=$_.LastWriteTimeUtc.Ticks} })
     $app = Join-Path $work 'application'; [void][IO.Directory]::CreateDirectory((Join-Path $app 'src'))
     Copy-Item -LiteralPath (Join-Path $repo 'WinPDFMerge.ps1') -Destination $app
+    Copy-Item -LiteralPath (Join-Path $repo 'VERSION') -Destination $app
     Copy-Item -LiteralPath (Join-Path $repo 'src/WinPDFMerge.Helpers.ps1') -Destination (Join-Path $app 'src')
     $nativePath = ([IO.Path]::GetDirectoryName($PdftkPath)) + ';' + ([IO.Path]::GetDirectoryName($GhostscriptPath)) + ';' + $env:PATH
     function Run-FeatureEntry {
@@ -164,7 +165,7 @@ Describe 'AC044 actual Windows feature-rich corpus and separate master/email beh
         $sourceAfter = @(Get-ChildItem -LiteralPath $source -File | Sort-Object Name | ForEach-Object { [pscustomobject]@{Name=$_.Name; Bytes=$_.Length; SHA256=(Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash.ToLowerInvariant(); Modified=$_.LastWriteTimeUtc.Ticks} })
         ($sourceAfter | ConvertTo-Json -Compress) | Should -BeExactly ($sourceBefore | ConvertTo-Json -Compress)
         foreach ($name in $parent.Keys) { [Environment]::GetEnvironmentVariable($name,'Process') | Should -BeExactly $parent[$name] }
-        foreach ($relative in @('WinPDFMerge.ps1','src/WinPDFMerge.Helpers.ps1')) { (Get-FileHash -LiteralPath (Join-Path $app $relative) -Algorithm SHA256).Hash | Should -BeExactly (Get-FileHash -LiteralPath (Join-Path $repo $relative) -Algorithm SHA256).Hash }
+        foreach ($relative in @('WinPDFMerge.ps1','VERSION','src/WinPDFMerge.Helpers.ps1')) { (Get-FileHash -LiteralPath (Join-Path $app $relative) -Algorithm SHA256).Hash | Should -BeExactly (Get-FileHash -LiteralPath (Join-Path $repo $relative) -Algorithm SHA256).Hash }
         $observations.Add([pscustomobject]@{Label='preservation'; SourceBefore=$sourceBefore; SourceAfter=$sourceAfter; ParentEnvironmentPreserved=$true; CopiedApplicationBytesIdentical=$true})
     }
 }

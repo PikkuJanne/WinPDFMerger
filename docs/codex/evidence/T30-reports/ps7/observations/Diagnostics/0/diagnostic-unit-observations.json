@@ -1,0 +1,1883 @@
+[
+  {
+    "Label": "help-description",
+    "Scope": "unit help/helper decision; no PDF-engine execution",
+    "Data": {
+      "Synopsis": "Merges the visible top-level PDFs in one folder and optionally creates a smaller email copy.",
+      "Description": [
+        "Orders inputs naturally by filename and uses local PDFtk to publish a validated\nmerged master without intentional page rasterization or image downsampling.\nOptional Ghostscript rewrites an email candidate with the fixed screen default\nor ebook preset. Only a validated candidate smaller than the master is published.\nSources and existing outputs are never replaced. No application network calls,\ndownloads, telemetry, recursion or OCR are performed."
+      ]
+    }
+  },
+  {
+    "Label": "help-parameters",
+    "Scope": "unit help/helper decision; no PDF-engine execution",
+    "Data": [
+      {
+        "Name": "SourceFolder",
+        "Description": [
+          "One existing filesystem directory containing visible top-level PDFs. This is the\nonly positional argument. Hidden files and subfolders are not scanned."
+        ]
+      },
+      {
+        "Name": "OutputFolder",
+        "Description": [
+          "An existing writable directory separate from SourceFolder. The default is the\nentry script's directory. Unsupported reparse paths are refused with guidance."
+        ]
+      },
+      {
+        "Name": "SkipEmail",
+        "Description": [
+          "Publishes only the validated master and bypasses Ghostscript discovery and use.\nAn explicitly supplied EmailPreset is reported as ignored."
+        ]
+      },
+      {
+        "Name": "EmailPreset",
+        "Description": [
+          "Selects the fixed screen or ebook Ghostscript preset; screen is the default.\nThe email copy can lose detail. Inspect it before sharing; no target size is promised."
+        ]
+      }
+    ]
+  },
+  {
+    "Label": "help-examples",
+    "Scope": "unit help/helper decision; no PDF-engine execution",
+    "Data": [
+      {
+        "Code": ".\\WinPDFMerge.ps1 'C:\\Work\\Papers\\ToMerge'",
+        "Title": "-------------------------- EXAMPLE 1 --------------------------"
+      },
+      {
+        "Code": ".\\WinPDFMerge.ps1 'C:\\Work\\Papers\\ToMerge' -OutputFolder 'C:\\Work\\Merged'",
+        "Title": "-------------------------- EXAMPLE 2 --------------------------"
+      },
+      {
+        "Code": ".\\WinPDFMerge.ps1 'C:\\Work\\Papers\\ToMerge' -SkipEmail",
+        "Title": "-------------------------- EXAMPLE 3 --------------------------"
+      },
+      {
+        "Code": ".\\WinPDFMerge.ps1 'C:\\Work\\Papers\\ToMerge' -EmailPreset ebook",
+        "Title": "-------------------------- EXAMPLE 4 --------------------------"
+      }
+    ]
+  },
+  {
+    "Label": "help-diagnostic-notes",
+    "Scope": "unit help/helper decision; no PDF-engine execution",
+    "Data": {
+      "SensitivePathsDisclosed": true,
+      "LocalProcessingDisclosed": true
+    }
+  },
+  {
+    "Label": "stage-en-US",
+    "Scope": "unit help/helper decision; no PDF-engine execution",
+    "Data": {
+      "Text": "Stage: Input inspection; elapsed: 0.000 s",
+      "LogSHA256": "f30cf6972427ad27e527351784d284c00d9b90952450da77e9c5c44d756afde6"
+    }
+  },
+  {
+    "Label": "stage-de-DE",
+    "Scope": "unit help/helper decision; no PDF-engine execution",
+    "Data": {
+      "Text": "Stage: Input inspection; elapsed: 0.000 s",
+      "LogSHA256": "f30cf6972427ad27e527351784d284c00d9b90952450da77e9c5c44d756afde6"
+    }
+  },
+  {
+    "Label": "stage-console-only",
+    "Scope": "unit help/helper decision; no PDF-engine execution",
+    "Data": {
+      "Expected": "Stage: Invocation preflight; elapsed: 0.000 s"
+    }
+  },
+  {
+    "Label": "summary-unknown-context",
+    "Scope": "unit help/helper decision; no PDF-engine execution",
+    "Data": {
+      "Lines": [
+        "Elapsed time: 0.000 s",
+        "PowerShell: 5.1.26100.9444 (Desktop)",
+        "PDFtk version: not probed",
+        "Ghostscript version: not probed",
+        "Input summary: not discovered; expected pages: not inspected"
+      ]
+    }
+  },
+  {
+    "Label": "summary-en-US",
+    "Scope": "unit help/helper decision; no PDF-engine execution",
+    "Data": {
+      "Lines": [
+        "Elapsed time: 1.234 s",
+        "PowerShell: 7.6.6 (Core)",
+        "PDFtk version: 2.02",
+        "Ghostscript version: 10.08.0",
+        "Input summary: 2 PDF(s); expected pages: 9223372036854775807"
+      ]
+    }
+  },
+  {
+    "Label": "summary-de-DE",
+    "Scope": "unit help/helper decision; no PDF-engine execution",
+    "Data": {
+      "Lines": [
+        "Elapsed time: 1.234 s",
+        "PowerShell: 7.6.6 (Core)",
+        "PDFtk version: 2.02",
+        "Ghostscript version: 10.08.0",
+        "Input summary: 2 PDF(s); expected pages: 9223372036854775807"
+      ]
+    }
+  },
+  {
+    "Label": "summary-zero-inputs",
+    "Scope": "unit help/helper decision; no PDF-engine execution",
+    "Data": {
+      "Lines": [
+        "Elapsed time: 0.001 s",
+        "PowerShell: test (test)",
+        "PDFtk version: not probed",
+        "Ghostscript version: not probed",
+        "Input summary: 0 PDF(s); expected pages: not inspected"
+      ]
+    }
+  },
+  {
+    "Label": "summary-negative-elapsed",
+    "Scope": "unit help/helper decision; no PDF-engine execution",
+    "Data": {
+      "Rejected": true
+    }
+  },
+  {
+    "Label": "summary-negative-input-count",
+    "Scope": "unit help/helper decision; no PDF-engine execution",
+    "Data": {
+      "Rejected": true
+    }
+  },
+  {
+    "Label": "summary-negative-page-count",
+    "Scope": "unit help/helper decision; no PDF-engine execution",
+    "Data": {
+      "Rejected": true
+    }
+  },
+  {
+    "Label": "version-Stdout",
+    "Scope": "unit help/helper decision; no PDF-engine execution",
+    "Data": {
+      "LogSHA256": "4369f7d69564f009085d1b4e59ab73ffe708535877a841182161ec7966195386",
+      "NativeReceipt": {
+        "Executable": "C:\\T18 synthetic [x] ! &\\pdftk.exe",
+        "RenderedArguments": "\"--version\"",
+        "Started": true,
+        "ExitCode": 0,
+        "ProcessId": 12345,
+        "ElapsedMilliseconds": 17,
+        "Succeeded": true,
+        "TimedOut": false,
+        "Cancelled": false,
+        "LaunchError": null,
+        "CaptureError": null,
+        "TerminationError": null,
+        "OwnershipReleased": true,
+        "StdoutTruncated": false,
+        "StderrTruncated": false,
+        "Stdout": "pdftk 2.02",
+        "Stderr": "controlled version warning"
+      },
+      "Log": "PdfTk version probe executable: C:\\T18 synthetic [x] ! &\\pdftk.exe\r\nPdfTk version probe arguments: \"--version\"\r\nPdfTk version probe exit: 0; elapsed: 17 ms; PID: 12345\r\nPdfTk version probe started: True; timed out: False; cancelled: False; succeeded: True\r\nPdfTk version probe launch error: \r\nPdfTk version probe capture error: \r\nPdfTk version probe termination error: \r\nPdfTk version probe stdout truncated: False; stderr truncated: False\r\nPdfTk version probe stdout:\r\npdftk 2.02\r\nPdfTk version probe stderr:\r\ncontrolled version warning\r\n",
+      "Versions": [
+        "2.02"
+      ]
+    }
+  },
+  {
+    "Label": "version-Stderr",
+    "Scope": "unit help/helper decision; no PDF-engine execution",
+    "Data": {
+      "LogSHA256": "a85cec333e68fed25b5e5cea088025135266b8782ecd8175910aee15be1710e9",
+      "NativeReceipt": {
+        "Executable": "C:\\T18 synthetic [x] ! &\\pdftk.exe",
+        "RenderedArguments": "\"--version\"",
+        "Started": true,
+        "ExitCode": 0,
+        "ProcessId": 12345,
+        "ElapsedMilliseconds": 17,
+        "Succeeded": true,
+        "TimedOut": false,
+        "Cancelled": false,
+        "LaunchError": null,
+        "CaptureError": null,
+        "TerminationError": null,
+        "OwnershipReleased": true,
+        "StdoutTruncated": false,
+        "StderrTruncated": false,
+        "Stdout": "controlled stdout detail",
+        "Stderr": "pdftk 2.02\ncontrolled stderr warning"
+      },
+      "Log": "PdfTk version probe executable: C:\\T18 synthetic [x] ! &\\pdftk.exe\r\nPdfTk version probe arguments: \"--version\"\r\nPdfTk version probe exit: 0; elapsed: 17 ms; PID: 12345\r\nPdfTk version probe started: True; timed out: False; cancelled: False; succeeded: True\r\nPdfTk version probe launch error: \r\nPdfTk version probe capture error: \r\nPdfTk version probe termination error: \r\nPdfTk version probe stdout truncated: False; stderr truncated: False\r\nPdfTk version probe stdout:\r\ncontrolled stdout detail\r\nPdfTk version probe stderr:\r\npdftk 2.02\ncontrolled stderr warning\r\n",
+      "Versions": [
+        "2.02"
+      ]
+    }
+  },
+  {
+    "Label": "version-failure-nonzero",
+    "Scope": "unit help/helper decision; no PDF-engine execution",
+    "Data": {
+      "LogSHA256": "f4109e40f35bbd7e5d7a6fc2e3d50736a4369694ee9276d760cfd1782902316d",
+      "NativeReceipt": {
+        "Executable": "C:\\T18 synthetic [x] ! &\\pdftk.exe",
+        "RenderedArguments": "\"--version\"",
+        "Started": true,
+        "ExitCode": 9,
+        "ProcessId": 12345,
+        "ElapsedMilliseconds": 17,
+        "Succeeded": false,
+        "TimedOut": false,
+        "Cancelled": false,
+        "LaunchError": null,
+        "CaptureError": null,
+        "TerminationError": null,
+        "OwnershipReleased": true,
+        "StdoutTruncated": false,
+        "StderrTruncated": false,
+        "Stdout": "controlled nonzero stdout",
+        "Stderr": "controlled nonzero stderr"
+      },
+      "Log": "PdfTk version probe executable: C:\\T18 synthetic [x] ! &\\pdftk.exe\r\nPdfTk version probe arguments: \"--version\"\r\nPdfTk version probe exit: 9; elapsed: 17 ms; PID: 12345\r\nPdfTk version probe started: True; timed out: False; cancelled: False; succeeded: False\r\nPdfTk version probe launch error: \r\nPdfTk version probe capture error: \r\nPdfTk version probe termination error: \r\nPdfTk version probe stdout truncated: False; stderr truncated: False\r\nPdfTk version probe stdout:\r\ncontrolled nonzero stdout\r\nPdfTk version probe stderr:\r\ncontrolled nonzero stderr\r\n"
+    }
+  },
+  {
+    "Label": "version-failure-launch",
+    "Scope": "unit help/helper decision; no PDF-engine execution",
+    "Data": {
+      "LogSHA256": "d7d4f0923398e836c1714018a8b29ae8e0be4276887d6b33038ab7ebbe6cc0b8",
+      "NativeReceipt": {
+        "Executable": "C:\\T18 synthetic [x] ! &\\pdftk.exe",
+        "RenderedArguments": "\"--version\"",
+        "Started": false,
+        "ExitCode": null,
+        "ProcessId": null,
+        "ElapsedMilliseconds": 17,
+        "Succeeded": false,
+        "TimedOut": false,
+        "Cancelled": false,
+        "LaunchError": "T18 controlled launch denied",
+        "CaptureError": null,
+        "TerminationError": null,
+        "OwnershipReleased": true,
+        "StdoutTruncated": false,
+        "StderrTruncated": false,
+        "Stdout": "controlled prelaunch stdout",
+        "Stderr": "controlled launch stderr"
+      },
+      "Log": "PdfTk version probe executable: C:\\T18 synthetic [x] ! &\\pdftk.exe\r\nPdfTk version probe arguments: \"--version\"\r\nPdfTk version probe exit: ; elapsed: 17 ms; PID: \r\nPdfTk version probe started: False; timed out: False; cancelled: False; succeeded: False\r\nPdfTk version probe launch error: T18 controlled launch denied\r\nPdfTk version probe capture error: \r\nPdfTk version probe termination error: \r\nPdfTk version probe stdout truncated: False; stderr truncated: False\r\nPdfTk version probe stdout:\r\ncontrolled prelaunch stdout\r\nPdfTk version probe stderr:\r\ncontrolled launch stderr\r\n"
+    }
+  },
+  {
+    "Label": "version-failure-timeout",
+    "Scope": "unit help/helper decision; no PDF-engine execution",
+    "Data": {
+      "LogSHA256": "78ef178291f5ef6c6e3290f2932e4d3c215dc16725fb9a86cb04c522b81146e7",
+      "NativeReceipt": {
+        "Executable": "C:\\T18 synthetic [x] ! &\\pdftk.exe",
+        "RenderedArguments": "\"--version\"",
+        "Started": true,
+        "ExitCode": 0,
+        "ProcessId": 12345,
+        "ElapsedMilliseconds": 17,
+        "Succeeded": false,
+        "TimedOut": true,
+        "Cancelled": false,
+        "LaunchError": null,
+        "CaptureError": null,
+        "TerminationError": null,
+        "OwnershipReleased": true,
+        "StdoutTruncated": false,
+        "StderrTruncated": false,
+        "Stdout": "controlled timeout stdout",
+        "Stderr": "controlled timeout stderr"
+      },
+      "Log": "PdfTk version probe executable: C:\\T18 synthetic [x] ! &\\pdftk.exe\r\nPdfTk version probe arguments: \"--version\"\r\nPdfTk version probe exit: 0; elapsed: 17 ms; PID: 12345\r\nPdfTk version probe started: True; timed out: True; cancelled: False; succeeded: False\r\nPdfTk version probe launch error: \r\nPdfTk version probe capture error: \r\nPdfTk version probe termination error: \r\nPdfTk version probe stdout truncated: False; stderr truncated: False\r\nPdfTk version probe stdout:\r\ncontrolled timeout stdout\r\nPdfTk version probe stderr:\r\ncontrolled timeout stderr\r\n"
+    }
+  },
+  {
+    "Label": "version-failure-cancel",
+    "Scope": "unit help/helper decision; no PDF-engine execution",
+    "Data": {
+      "LogSHA256": "6e59021546b75be652f63e441e3a1e5d3b130865704df7da70c97b383570b8ad",
+      "NativeReceipt": {
+        "Executable": "C:\\T18 synthetic [x] ! &\\pdftk.exe",
+        "RenderedArguments": "\"--version\"",
+        "Started": true,
+        "ExitCode": 0,
+        "ProcessId": 12345,
+        "ElapsedMilliseconds": 17,
+        "Succeeded": false,
+        "TimedOut": false,
+        "Cancelled": true,
+        "LaunchError": null,
+        "CaptureError": null,
+        "TerminationError": null,
+        "OwnershipReleased": true,
+        "StdoutTruncated": false,
+        "StderrTruncated": false,
+        "Stdout": "controlled cancellation stdout",
+        "Stderr": "controlled cancel stderr"
+      },
+      "Log": "PdfTk version probe executable: C:\\T18 synthetic [x] ! &\\pdftk.exe\r\nPdfTk version probe arguments: \"--version\"\r\nPdfTk version probe exit: 0; elapsed: 17 ms; PID: 12345\r\nPdfTk version probe started: True; timed out: False; cancelled: True; succeeded: False\r\nPdfTk version probe launch error: \r\nPdfTk version probe capture error: \r\nPdfTk version probe termination error: \r\nPdfTk version probe stdout truncated: False; stderr truncated: False\r\nPdfTk version probe stdout:\r\ncontrolled cancellation stdout\r\nPdfTk version probe stderr:\r\ncontrolled cancel stderr\r\n"
+    }
+  },
+  {
+    "Label": "version-failure-capture",
+    "Scope": "unit help/helper decision; no PDF-engine execution",
+    "Data": {
+      "LogSHA256": "dc2096a1b0657c53c5ddb3cbfb8998712a761e587935fc4a401d9fadb0bcdd84",
+      "NativeReceipt": {
+        "Executable": "C:\\T18 synthetic [x] ! &\\pdftk.exe",
+        "RenderedArguments": "\"--version\"",
+        "Started": true,
+        "ExitCode": 0,
+        "ProcessId": 12345,
+        "ElapsedMilliseconds": 17,
+        "Succeeded": false,
+        "TimedOut": false,
+        "Cancelled": false,
+        "LaunchError": null,
+        "CaptureError": "T18 controlled stream capture failure",
+        "TerminationError": null,
+        "OwnershipReleased": true,
+        "StdoutTruncated": false,
+        "StderrTruncated": false,
+        "Stdout": "controlled capture stdout",
+        "Stderr": "controlled capture stderr"
+      },
+      "Log": "PdfTk version probe executable: C:\\T18 synthetic [x] ! &\\pdftk.exe\r\nPdfTk version probe arguments: \"--version\"\r\nPdfTk version probe exit: 0; elapsed: 17 ms; PID: 12345\r\nPdfTk version probe started: True; timed out: False; cancelled: False; succeeded: False\r\nPdfTk version probe launch error: \r\nPdfTk version probe capture error: T18 controlled stream capture failure\r\nPdfTk version probe termination error: \r\nPdfTk version probe stdout truncated: False; stderr truncated: False\r\nPdfTk version probe stdout:\r\ncontrolled capture stdout\r\nPdfTk version probe stderr:\r\ncontrolled capture stderr\r\n"
+    }
+  },
+  {
+    "Label": "version-failure-termination",
+    "Scope": "unit help/helper decision; no PDF-engine execution",
+    "Data": {
+      "LogSHA256": "76c79d92c4426172bb771a67f91b151cf6d192d6900171d700121adb7dc989c9",
+      "NativeReceipt": {
+        "Executable": "C:\\T18 synthetic [x] ! &\\pdftk.exe",
+        "RenderedArguments": "\"--version\"",
+        "Started": true,
+        "ExitCode": 0,
+        "ProcessId": 12345,
+        "ElapsedMilliseconds": 17,
+        "Succeeded": false,
+        "TimedOut": false,
+        "Cancelled": false,
+        "LaunchError": null,
+        "CaptureError": null,
+        "TerminationError": "T18 controlled termination failure",
+        "OwnershipReleased": false,
+        "StdoutTruncated": false,
+        "StderrTruncated": false,
+        "Stdout": "controlled termination stdout",
+        "Stderr": "controlled termination stderr"
+      },
+      "Log": "PdfTk version probe executable: C:\\T18 synthetic [x] ! &\\pdftk.exe\r\nPdfTk version probe arguments: \"--version\"\r\nPdfTk version probe exit: 0; elapsed: 17 ms; PID: 12345\r\nPdfTk version probe started: True; timed out: False; cancelled: False; succeeded: False\r\nPdfTk version probe launch error: \r\nPdfTk version probe capture error: \r\nPdfTk version probe termination error: T18 controlled termination failure\r\nPdfTk version probe stdout truncated: False; stderr truncated: False\r\nPdfTk version probe stdout:\r\ncontrolled termination stdout\r\nPdfTk version probe stderr:\r\ncontrolled termination stderr\r\n"
+    }
+  },
+  {
+    "Label": "version-failure-unrecognized",
+    "Scope": "unit help/helper decision; no PDF-engine execution",
+    "Data": {
+      "LogSHA256": "1e99f04c4ebb0ed57dfec753b9b37027c03db7bb57c45bfe9508566f1963e25e",
+      "NativeReceipt": {
+        "Executable": "C:\\T18 synthetic [x] ! &\\pdftk.exe",
+        "RenderedArguments": "\"--version\"",
+        "Started": true,
+        "ExitCode": 0,
+        "ProcessId": 12345,
+        "ElapsedMilliseconds": 17,
+        "Succeeded": true,
+        "TimedOut": false,
+        "Cancelled": false,
+        "LaunchError": null,
+        "CaptureError": null,
+        "TerminationError": null,
+        "OwnershipReleased": true,
+        "StdoutTruncated": false,
+        "StderrTruncated": false,
+        "Stdout": "controlled unrecognized stdout",
+        "Stderr": "controlled unrecognized stderr"
+      },
+      "Log": "PdfTk version probe executable: C:\\T18 synthetic [x] ! &\\pdftk.exe\r\nPdfTk version probe arguments: \"--version\"\r\nPdfTk version probe exit: 0; elapsed: 17 ms; PID: 12345\r\nPdfTk version probe started: True; timed out: False; cancelled: False; succeeded: True\r\nPdfTk version probe launch error: \r\nPdfTk version probe capture error: \r\nPdfTk version probe termination error: \r\nPdfTk version probe stdout truncated: False; stderr truncated: False\r\nPdfTk version probe stdout:\r\ncontrolled unrecognized stdout\r\nPdfTk version probe stderr:\r\ncontrolled unrecognized stderr\r\n"
+    }
+  },
+  {
+    "Label": "version-no-log",
+    "Scope": "unit help/helper decision; no PDF-engine execution",
+    "Data": {
+      "Versions": [
+        "2.02"
+      ]
+    }
+  },
+  {
+    "Label": "entry-missing-pdftk",
+    "Scope": "bounded actual copied-entry subprocess with controlled native receipts; no PDF engine/manual claim",
+    "Command": [
+      "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+      "-NoLogo",
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "RemoteSigned",
+      "-File",
+      "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\227128ddf4534b7ba3712083a8b678de\\Invoke-Entry.ps1",
+      "-Configuration",
+      "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\227128ddf4534b7ba3712083a8b678de\\app\\diagnostic-config.json"
+    ],
+    "ChildEnvironmentRemovedKeys": [
+      "PSModulePath"
+    ],
+    "PersistentEnvironmentChanges": false,
+    "Culture": "de-DE",
+    "EntrySHA256": "2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902",
+    "HelperWithHooksSHA256": "739a1f6fcf9b69806f5bd657cf98e3eefafc9509224e55ba2a7a47d173ec752a",
+    "WrapperSHA256": "75c4f4476c34fd727f7723ae40ac44e4b0736d240f882624c505d735f1d2341b",
+    "ConfigurationSHA256": "769ac333b6340bbc6de0e4b9c2592a759a611f667a10546f7d5fe4855aa93d56",
+    "Result": {
+      "Executable": "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+      "RenderedArguments": "\"-NoLogo\" \"-NoProfile\" \"-NonInteractive\" \"-ExecutionPolicy\" \"RemoteSigned\" \"-File\" \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\227128ddf4534b7ba3712083a8b678de\\Invoke-Entry.ps1\" \"-Configuration\" \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\227128ddf4534b7ba3712083a8b678de\\app\\diagnostic-config.json\"",
+      "ExitCode": 1,
+      "Stdout": "WinPDFMerger 1.0.0\r\nStage: Invocation preflight; elapsed: 0.144 s\r\n==== WinPDFMerge run 2026-10-09 18:23:36 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 0.936 s\r\nSource folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\227128ddf4534b7ba3712083a8b678de\\source [x] ! &\r\nOutput folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\227128ddf4534b7ba3712083a8b678de\\output [x] ! &\r\nRun identity: WinPDFMerge_source [x] ! &_20261009_182335_33e7cb442c8a439c\r\nPlanned master output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\227128ddf4534b7ba3712083a8b678de\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182335_33e7cb442c8a439c.pdf\r\nPlanned email output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\227128ddf4534b7ba3712083a8b678de\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182335_33e7cb442c8a439c_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 7.6.6 (Core)\r\nStage: Input discovery; elapsed: 1.068 s\r\nPDF count: 1\r\nInput 1: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\227128ddf4534b7ba3712083a8b678de\\source [x] ! &\\1.pdf\r\nStage: PDFtk preflight; elapsed: 1.138 s\r\nPDFtk preflight failed. Selected executable: ''. PDFtk Server not found.\r\nElapsed time: 1.174 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: not probed\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: 1 PDF(s); expected pages: not inspected\r\nResult: Failure; exit code: 1\r\nLog: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\227128ddf4534b7ba3712083a8b678de\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182335_33e7cb442c8a439c.log\r\nInstall PDFtk Server and ensure 'pdftk.exe' is in PATH.\r\n",
+      "Stderr": "",
+      "ElapsedMilliseconds": 2791,
+      "ProcessId": 21944,
+      "Started": true,
+      "TimedOut": false,
+      "Cancelled": false,
+      "LaunchError": null,
+      "CaptureError": null,
+      "TerminationError": null,
+      "OwnershipReleased": true,
+      "StdoutTruncated": false,
+      "StderrTruncated": false,
+      "Succeeded": false
+    },
+    "ReceiptPath": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\227128ddf4534b7ba3712083a8b678de\\receipt.json",
+    "ReceiptSHA256": "4398768ce58a880c56d92a2e33201949969eb468b92472be34d1664edd480640",
+    "Receipt": {
+      "Scope": "copied entry with controlled native receipts; no PDF engine",
+      "HelperLoaded": true,
+      "PdftkDiscovery": 1,
+      "GSDiscovery": 0,
+      "SourceDiscovery": 1,
+      "NativeCalls": [],
+      "Messages": [
+        "==== WinPDFMerge run 2026-10-09 18:23:36 ====",
+        "Application version: 1.0.0",
+        "Stage: Invocation preflight; elapsed: 0.936 s",
+        "Source folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\227128ddf4534b7ba3712083a8b678de\\source [x] ! &",
+        "Output folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\227128ddf4534b7ba3712083a8b678de\\output [x] ! &",
+        "Run identity: WinPDFMerge_source [x] ! &_20261009_182335_33e7cb442c8a439c",
+        "Planned master output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\227128ddf4534b7ba3712083a8b678de\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182335_33e7cb442c8a439c.pdf",
+        "Planned email output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\227128ddf4534b7ba3712083a8b678de\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182335_33e7cb442c8a439c_email.pdf",
+        "Diagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.",
+        "PowerShell: 7.6.6 (Core)",
+        "Stage: Input discovery; elapsed: 1.068 s",
+        "PDF count: 1",
+        "Input 1: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\227128ddf4534b7ba3712083a8b678de\\source [x] ! &\\1.pdf",
+        "Stage: PDFtk preflight; elapsed: 1.138 s",
+        "PDFtk preflight failed. Selected executable: ''. PDFtk Server not found.",
+        "Elapsed time: 1.174 s",
+        "PowerShell: 7.6.6 (Core)",
+        "PDFtk version: not probed",
+        "Ghostscript version: not used (SkipEmail)",
+        "Input summary: 1 PDF(s); expected pages: not inspected",
+        "Result: Failure; exit code: 1"
+      ],
+      "Identity": {
+        "OutputFolder": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\227128ddf4534b7ba3712083a8b678de\\output [x] ! &",
+        "FolderLabel": "source [x] ! &",
+        "Timestamp": "20261009_182335",
+        "RunSuffix": "33e7cb442c8a439c",
+        "BaseName": "WinPDFMerge_source [x] ! &_20261009_182335_33e7cb442c8a439c",
+        "MasterPath": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\227128ddf4534b7ba3712083a8b678de\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182335_33e7cb442c8a439c.pdf",
+        "EmailPath": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\227128ddf4534b7ba3712083a8b678de\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182335_33e7cb442c8a439c_email.pdf",
+        "LogPath": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\227128ddf4534b7ba3712083a8b678de\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182335_33e7cb442c8a439c.log"
+      },
+      "LogPresentAtPdftkDiscovery": true,
+      "LogPresentAtSourceDiscovery": true,
+      "Outcome": null,
+      "BindingError": null
+    },
+    "Before": "1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+    "After": "1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+    "Logs": [
+      {
+        "Path": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\227128ddf4534b7ba3712083a8b678de\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182335_33e7cb442c8a439c.log",
+        "SHA256": "f9b6ce88be04bcae12b9edee9ad1bc169087c118ab0b90d7ce4d80ffa800c3db",
+        "Text": "==== WinPDFMerge run 2026-10-09 18:23:36 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 0.936 s\r\nSource folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\227128ddf4534b7ba3712083a8b678de\\source [x] ! &\r\nOutput folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\227128ddf4534b7ba3712083a8b678de\\output [x] ! &\r\nRun identity: WinPDFMerge_source [x] ! &_20261009_182335_33e7cb442c8a439c\r\nPlanned master output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\227128ddf4534b7ba3712083a8b678de\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182335_33e7cb442c8a439c.pdf\r\nPlanned email output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\227128ddf4534b7ba3712083a8b678de\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182335_33e7cb442c8a439c_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 7.6.6 (Core)\r\nStage: Input discovery; elapsed: 1.068 s\r\nPDF count: 1\r\nInput 1: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\227128ddf4534b7ba3712083a8b678de\\source [x] ! &\\1.pdf\r\nStage: PDFtk preflight; elapsed: 1.138 s\r\nPDFtk preflight failed. Selected executable: ''. PDFtk Server not found.\r\nElapsed time: 1.174 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: not probed\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: 1 PDF(s); expected pages: not inspected\r\nResult: Failure; exit code: 1\r\n"
+      }
+    ],
+    "Finals": [],
+    "StdoutSHA256": "7ced6c02116ede5257b257e881a3106056c9dc49fa2ceb82bb176b4e94fbae5e",
+    "StderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "Label": "entry-version-failed",
+    "Scope": "bounded actual copied-entry subprocess with controlled native receipts; no PDF engine/manual claim",
+    "Command": [
+      "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+      "-NoLogo",
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "RemoteSigned",
+      "-File",
+      "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\8474fc1694994a47be5a1fd279e4b873\\Invoke-Entry.ps1",
+      "-Configuration",
+      "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\8474fc1694994a47be5a1fd279e4b873\\app\\diagnostic-config.json"
+    ],
+    "ChildEnvironmentRemovedKeys": [
+      "PSModulePath"
+    ],
+    "PersistentEnvironmentChanges": false,
+    "Culture": "de-DE",
+    "EntrySHA256": "2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902",
+    "HelperWithHooksSHA256": "739a1f6fcf9b69806f5bd657cf98e3eefafc9509224e55ba2a7a47d173ec752a",
+    "WrapperSHA256": "75c4f4476c34fd727f7723ae40ac44e4b0736d240f882624c505d735f1d2341b",
+    "ConfigurationSHA256": "00f9734aa5d5303bf2fab205126417b7082a47825ff19727b7734641bc3eecc1",
+    "Result": {
+      "Executable": "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+      "RenderedArguments": "\"-NoLogo\" \"-NoProfile\" \"-NonInteractive\" \"-ExecutionPolicy\" \"RemoteSigned\" \"-File\" \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\8474fc1694994a47be5a1fd279e4b873\\Invoke-Entry.ps1\" \"-Configuration\" \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\8474fc1694994a47be5a1fd279e4b873\\app\\diagnostic-config.json\"",
+      "ExitCode": 1,
+      "Stdout": "WinPDFMerger 1.0.0\r\nStage: Invocation preflight; elapsed: 0.144 s\r\n==== WinPDFMerge run 2026-10-09 18:23:38 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 1.222 s\r\nSource folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\8474fc1694994a47be5a1fd279e4b873\\source [x] ! &\r\nOutput folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\8474fc1694994a47be5a1fd279e4b873\\output [x] ! &\r\nRun identity: WinPDFMerge_source [x] ! &_20261009_182338_fec8ac23476144d4\r\nPlanned master output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\8474fc1694994a47be5a1fd279e4b873\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182338_fec8ac23476144d4.pdf\r\nPlanned email output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\8474fc1694994a47be5a1fd279e4b873\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182338_fec8ac23476144d4_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 7.6.6 (Core)\r\nStage: Input discovery; elapsed: 1.316 s\r\nPDF count: 1\r\nInput 1: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\8474fc1694994a47be5a1fd279e4b873\\source [x] ! &\\1.pdf\r\nStage: PDFtk preflight; elapsed: 1.398 s\r\nPDFtk preflight failed. Selected executable: '<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\8474fc1694994a47be5a1fd279e4b873\\app\\pdftk.exe'. PdfTk version probe failed (exit 9). stdout: T18 controlled version stdout; stderr: T18 controlled version stderr\r\nElapsed time: 1.669 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: not determined\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: 1 PDF(s); expected pages: not inspected\r\nResult: Failure; exit code: 1\r\nLog: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\8474fc1694994a47be5a1fd279e4b873\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182338_fec8ac23476144d4.log\r\nInstall PDFtk Server and ensure 'pdftk.exe' is in PATH.\r\n",
+      "Stderr": "",
+      "ElapsedMilliseconds": 2598,
+      "ProcessId": 17800,
+      "Started": true,
+      "TimedOut": false,
+      "Cancelled": false,
+      "LaunchError": null,
+      "CaptureError": null,
+      "TerminationError": null,
+      "OwnershipReleased": true,
+      "StdoutTruncated": false,
+      "StderrTruncated": false,
+      "Succeeded": false
+    },
+    "ReceiptPath": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\8474fc1694994a47be5a1fd279e4b873\\receipt.json",
+    "ReceiptSHA256": "60c4055bce62397b77c2698c4ae2e01c6557e5ff4d095c618f3f5b7a33fa8158",
+    "Receipt": {
+      "Scope": "copied entry with controlled native receipts; no PDF engine",
+      "HelperLoaded": true,
+      "PdftkDiscovery": 1,
+      "GSDiscovery": 0,
+      "SourceDiscovery": 1,
+      "NativeCalls": [
+        {
+          "Executable": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\8474fc1694994a47be5a1fd279e4b873\\app\\pdftk.exe",
+          "Arguments": [
+            "--version"
+          ],
+          "RemoveEnvironmentVariables": [
+            "GS_OPTIONS"
+          ]
+        }
+      ],
+      "Messages": [
+        "==== WinPDFMerge run 2026-10-09 18:23:38 ====",
+        "Application version: 1.0.0",
+        "Stage: Invocation preflight; elapsed: 1.222 s",
+        "Source folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\8474fc1694994a47be5a1fd279e4b873\\source [x] ! &",
+        "Output folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\8474fc1694994a47be5a1fd279e4b873\\output [x] ! &",
+        "Run identity: WinPDFMerge_source [x] ! &_20261009_182338_fec8ac23476144d4",
+        "Planned master output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\8474fc1694994a47be5a1fd279e4b873\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182338_fec8ac23476144d4.pdf",
+        "Planned email output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\8474fc1694994a47be5a1fd279e4b873\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182338_fec8ac23476144d4_email.pdf",
+        "Diagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.",
+        "PowerShell: 7.6.6 (Core)",
+        "Stage: Input discovery; elapsed: 1.316 s",
+        "PDF count: 1",
+        "Input 1: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\8474fc1694994a47be5a1fd279e4b873\\source [x] ! &\\1.pdf",
+        "Stage: PDFtk preflight; elapsed: 1.398 s",
+        "PdfTk version probe executable: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\8474fc1694994a47be5a1fd279e4b873\\app\\pdftk.exe",
+        "PdfTk version probe arguments: \"--version\"",
+        "PdfTk version probe exit: 9; elapsed: 1 ms; PID: 12345",
+        "PdfTk version probe started: True; timed out: False; cancelled: False; succeeded: False",
+        "PdfTk version probe launch error: ",
+        "PdfTk version probe capture error: ",
+        "PdfTk version probe termination error: ",
+        "PdfTk version probe stdout truncated: False; stderr truncated: False",
+        "PdfTk version probe stdout:",
+        "T18 controlled version stdout",
+        "PdfTk version probe stderr:",
+        "T18 controlled version stderr",
+        "PDFtk preflight failed. Selected executable: '<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\8474fc1694994a47be5a1fd279e4b873\\app\\pdftk.exe'. PdfTk version probe failed (exit 9). stdout: T18 controlled version stdout; stderr: T18 controlled version stderr",
+        "Elapsed time: 1.669 s",
+        "PowerShell: 7.6.6 (Core)",
+        "PDFtk version: not determined",
+        "Ghostscript version: not used (SkipEmail)",
+        "Input summary: 1 PDF(s); expected pages: not inspected",
+        "Result: Failure; exit code: 1"
+      ],
+      "Identity": {
+        "OutputFolder": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\8474fc1694994a47be5a1fd279e4b873\\output [x] ! &",
+        "FolderLabel": "source [x] ! &",
+        "Timestamp": "20261009_182338",
+        "RunSuffix": "fec8ac23476144d4",
+        "BaseName": "WinPDFMerge_source [x] ! &_20261009_182338_fec8ac23476144d4",
+        "MasterPath": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\8474fc1694994a47be5a1fd279e4b873\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182338_fec8ac23476144d4.pdf",
+        "EmailPath": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\8474fc1694994a47be5a1fd279e4b873\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182338_fec8ac23476144d4_email.pdf",
+        "LogPath": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\8474fc1694994a47be5a1fd279e4b873\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182338_fec8ac23476144d4.log"
+      },
+      "LogPresentAtPdftkDiscovery": true,
+      "LogPresentAtSourceDiscovery": true,
+      "Outcome": null,
+      "BindingError": null
+    },
+    "Before": "1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+    "After": "1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+    "Logs": [
+      {
+        "Path": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\8474fc1694994a47be5a1fd279e4b873\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182338_fec8ac23476144d4.log",
+        "SHA256": "fbd88ff3a23c8228b025388d3c1aa15e5dea2aff21986bbe6b04d637922149e6",
+        "Text": "==== WinPDFMerge run 2026-10-09 18:23:38 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 1.222 s\r\nSource folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\8474fc1694994a47be5a1fd279e4b873\\source [x] ! &\r\nOutput folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\8474fc1694994a47be5a1fd279e4b873\\output [x] ! &\r\nRun identity: WinPDFMerge_source [x] ! &_20261009_182338_fec8ac23476144d4\r\nPlanned master output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\8474fc1694994a47be5a1fd279e4b873\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182338_fec8ac23476144d4.pdf\r\nPlanned email output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\8474fc1694994a47be5a1fd279e4b873\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182338_fec8ac23476144d4_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 7.6.6 (Core)\r\nStage: Input discovery; elapsed: 1.316 s\r\nPDF count: 1\r\nInput 1: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\8474fc1694994a47be5a1fd279e4b873\\source [x] ! &\\1.pdf\r\nStage: PDFtk preflight; elapsed: 1.398 s\r\nPdfTk version probe executable: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\8474fc1694994a47be5a1fd279e4b873\\app\\pdftk.exe\r\nPdfTk version probe arguments: \"--version\"\r\nPdfTk version probe exit: 9; elapsed: 1 ms; PID: 12345\r\nPdfTk version probe started: True; timed out: False; cancelled: False; succeeded: False\r\nPdfTk version probe launch error: \r\nPdfTk version probe capture error: \r\nPdfTk version probe termination error: \r\nPdfTk version probe stdout truncated: False; stderr truncated: False\r\nPdfTk version probe stdout:\r\nT18 controlled version stdout\r\nPdfTk version probe stderr:\r\nT18 controlled version stderr\r\nPDFtk preflight failed. Selected executable: '<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\8474fc1694994a47be5a1fd279e4b873\\app\\pdftk.exe'. PdfTk version probe failed (exit 9). stdout: T18 controlled version stdout; stderr: T18 controlled version stderr\r\nElapsed time: 1.669 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: not determined\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: 1 PDF(s); expected pages: not inspected\r\nResult: Failure; exit code: 1\r\n"
+      }
+    ],
+    "Finals": [],
+    "StdoutSHA256": "3ba41b7af51dc50859ef7e51cb1d0902a2706cab483510cc97c50221b295e1cd",
+    "StderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "Label": "entry-version-launch",
+    "Scope": "bounded actual copied-entry subprocess with controlled native receipts; no PDF engine/manual claim",
+    "Command": [
+      "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+      "-NoLogo",
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "RemoteSigned",
+      "-File",
+      "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\b445c7879d2444e19e0e0317f12af8b9\\Invoke-Entry.ps1",
+      "-Configuration",
+      "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\b445c7879d2444e19e0e0317f12af8b9\\app\\diagnostic-config.json"
+    ],
+    "ChildEnvironmentRemovedKeys": [
+      "PSModulePath"
+    ],
+    "PersistentEnvironmentChanges": false,
+    "Culture": "de-DE",
+    "EntrySHA256": "2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902",
+    "HelperWithHooksSHA256": "739a1f6fcf9b69806f5bd657cf98e3eefafc9509224e55ba2a7a47d173ec752a",
+    "WrapperSHA256": "75c4f4476c34fd727f7723ae40ac44e4b0736d240f882624c505d735f1d2341b",
+    "ConfigurationSHA256": "15b9b15ad77da786d7e16d3bde4835304333068a55c02315800541bb0dfac067",
+    "Result": {
+      "Executable": "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+      "RenderedArguments": "\"-NoLogo\" \"-NoProfile\" \"-NonInteractive\" \"-ExecutionPolicy\" \"RemoteSigned\" \"-File\" \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\b445c7879d2444e19e0e0317f12af8b9\\Invoke-Entry.ps1\" \"-Configuration\" \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\b445c7879d2444e19e0e0317f12af8b9\\app\\diagnostic-config.json\"",
+      "ExitCode": 1,
+      "Stdout": "WinPDFMerger 1.0.0\r\nStage: Invocation preflight; elapsed: 0.156 s\r\n==== WinPDFMerge run 2026-10-09 18:23:41 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 1.165 s\r\nSource folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\b445c7879d2444e19e0e0317f12af8b9\\source [x] ! &\r\nOutput folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\b445c7879d2444e19e0e0317f12af8b9\\output [x] ! &\r\nRun identity: WinPDFMerge_source [x] ! &_20261009_182341_4e96cf6fc34c434d\r\nPlanned master output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\b445c7879d2444e19e0e0317f12af8b9\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182341_4e96cf6fc34c434d.pdf\r\nPlanned email output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\b445c7879d2444e19e0e0317f12af8b9\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182341_4e96cf6fc34c434d_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 7.6.6 (Core)\r\nStage: Input discovery; elapsed: 1.268 s\r\nPDF count: 1\r\nInput 1: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\b445c7879d2444e19e0e0317f12af8b9\\source [x] ! &\\1.pdf\r\nStage: PDFtk preflight; elapsed: 1.333 s\r\nPDFtk preflight failed. Selected executable: '<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\b445c7879d2444e19e0e0317f12af8b9\\app\\pdftk.exe'. T18 controlled version launch denied\r\nElapsed time: 1.620 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: not determined\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: 1 PDF(s); expected pages: not inspected\r\nResult: Failure; exit code: 1\r\nLog: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\b445c7879d2444e19e0e0317f12af8b9\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182341_4e96cf6fc34c434d.log\r\nInstall PDFtk Server and ensure 'pdftk.exe' is in PATH.\r\n",
+      "Stderr": "",
+      "ElapsedMilliseconds": 2619,
+      "ProcessId": 21228,
+      "Started": true,
+      "TimedOut": false,
+      "Cancelled": false,
+      "LaunchError": null,
+      "CaptureError": null,
+      "TerminationError": null,
+      "OwnershipReleased": true,
+      "StdoutTruncated": false,
+      "StderrTruncated": false,
+      "Succeeded": false
+    },
+    "ReceiptPath": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\b445c7879d2444e19e0e0317f12af8b9\\receipt.json",
+    "ReceiptSHA256": "ead3c4f641a5e28f8d004490e150d85a9e6553ffbda4a36a15688f6d7daa2239",
+    "Receipt": {
+      "Scope": "copied entry with controlled native receipts; no PDF engine",
+      "HelperLoaded": true,
+      "PdftkDiscovery": 1,
+      "GSDiscovery": 0,
+      "SourceDiscovery": 1,
+      "NativeCalls": [
+        {
+          "Executable": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\b445c7879d2444e19e0e0317f12af8b9\\app\\pdftk.exe",
+          "Arguments": [
+            "--version"
+          ],
+          "RemoveEnvironmentVariables": [
+            "GS_OPTIONS"
+          ]
+        }
+      ],
+      "Messages": [
+        "==== WinPDFMerge run 2026-10-09 18:23:41 ====",
+        "Application version: 1.0.0",
+        "Stage: Invocation preflight; elapsed: 1.165 s",
+        "Source folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\b445c7879d2444e19e0e0317f12af8b9\\source [x] ! &",
+        "Output folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\b445c7879d2444e19e0e0317f12af8b9\\output [x] ! &",
+        "Run identity: WinPDFMerge_source [x] ! &_20261009_182341_4e96cf6fc34c434d",
+        "Planned master output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\b445c7879d2444e19e0e0317f12af8b9\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182341_4e96cf6fc34c434d.pdf",
+        "Planned email output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\b445c7879d2444e19e0e0317f12af8b9\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182341_4e96cf6fc34c434d_email.pdf",
+        "Diagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.",
+        "PowerShell: 7.6.6 (Core)",
+        "Stage: Input discovery; elapsed: 1.268 s",
+        "PDF count: 1",
+        "Input 1: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\b445c7879d2444e19e0e0317f12af8b9\\source [x] ! &\\1.pdf",
+        "Stage: PDFtk preflight; elapsed: 1.333 s",
+        "PdfTk version probe executable: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\b445c7879d2444e19e0e0317f12af8b9\\app\\pdftk.exe",
+        "PdfTk version probe arguments: \"--version\"",
+        "PdfTk version probe exit: ; elapsed: 1 ms; PID: 12345",
+        "PdfTk version probe started: False; timed out: False; cancelled: False; succeeded: False",
+        "PdfTk version probe launch error: T18 controlled version launch denied",
+        "PdfTk version probe capture error: ",
+        "PdfTk version probe termination error: ",
+        "PdfTk version probe stdout truncated: False; stderr truncated: False",
+        "PdfTk version probe stdout:",
+        "",
+        "PdfTk version probe stderr:",
+        "T18 controlled prelaunch stderr",
+        "PDFtk preflight failed. Selected executable: '<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\b445c7879d2444e19e0e0317f12af8b9\\app\\pdftk.exe'. T18 controlled version launch denied",
+        "Elapsed time: 1.620 s",
+        "PowerShell: 7.6.6 (Core)",
+        "PDFtk version: not determined",
+        "Ghostscript version: not used (SkipEmail)",
+        "Input summary: 1 PDF(s); expected pages: not inspected",
+        "Result: Failure; exit code: 1"
+      ],
+      "Identity": {
+        "OutputFolder": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\b445c7879d2444e19e0e0317f12af8b9\\output [x] ! &",
+        "FolderLabel": "source [x] ! &",
+        "Timestamp": "20261009_182341",
+        "RunSuffix": "4e96cf6fc34c434d",
+        "BaseName": "WinPDFMerge_source [x] ! &_20261009_182341_4e96cf6fc34c434d",
+        "MasterPath": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\b445c7879d2444e19e0e0317f12af8b9\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182341_4e96cf6fc34c434d.pdf",
+        "EmailPath": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\b445c7879d2444e19e0e0317f12af8b9\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182341_4e96cf6fc34c434d_email.pdf",
+        "LogPath": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\b445c7879d2444e19e0e0317f12af8b9\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182341_4e96cf6fc34c434d.log"
+      },
+      "LogPresentAtPdftkDiscovery": true,
+      "LogPresentAtSourceDiscovery": true,
+      "Outcome": null,
+      "BindingError": null
+    },
+    "Before": "1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+    "After": "1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+    "Logs": [
+      {
+        "Path": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\b445c7879d2444e19e0e0317f12af8b9\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182341_4e96cf6fc34c434d.log",
+        "SHA256": "33edf7abaf1bf5346d109f51cf110b4f9cb25fee4af51c3124a9c7d614334d3b",
+        "Text": "==== WinPDFMerge run 2026-10-09 18:23:41 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 1.165 s\r\nSource folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\b445c7879d2444e19e0e0317f12af8b9\\source [x] ! &\r\nOutput folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\b445c7879d2444e19e0e0317f12af8b9\\output [x] ! &\r\nRun identity: WinPDFMerge_source [x] ! &_20261009_182341_4e96cf6fc34c434d\r\nPlanned master output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\b445c7879d2444e19e0e0317f12af8b9\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182341_4e96cf6fc34c434d.pdf\r\nPlanned email output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\b445c7879d2444e19e0e0317f12af8b9\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182341_4e96cf6fc34c434d_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 7.6.6 (Core)\r\nStage: Input discovery; elapsed: 1.268 s\r\nPDF count: 1\r\nInput 1: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\b445c7879d2444e19e0e0317f12af8b9\\source [x] ! &\\1.pdf\r\nStage: PDFtk preflight; elapsed: 1.333 s\r\nPdfTk version probe executable: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\b445c7879d2444e19e0e0317f12af8b9\\app\\pdftk.exe\r\nPdfTk version probe arguments: \"--version\"\r\nPdfTk version probe exit: ; elapsed: 1 ms; PID: 12345\r\nPdfTk version probe started: False; timed out: False; cancelled: False; succeeded: False\r\nPdfTk version probe launch error: T18 controlled version launch denied\r\nPdfTk version probe capture error: \r\nPdfTk version probe termination error: \r\nPdfTk version probe stdout truncated: False; stderr truncated: False\r\nPdfTk version probe stdout:\r\n\r\nPdfTk version probe stderr:\r\nT18 controlled prelaunch stderr\r\nPDFtk preflight failed. Selected executable: '<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\b445c7879d2444e19e0e0317f12af8b9\\app\\pdftk.exe'. T18 controlled version launch denied\r\nElapsed time: 1.620 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: not determined\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: 1 PDF(s); expected pages: not inspected\r\nResult: Failure; exit code: 1\r\n"
+      }
+    ],
+    "Finals": [],
+    "StdoutSHA256": "fef86078c805e3b7cf1ae940776c860f56ac542185ad2775763e02c506b4c884",
+    "StderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "Label": "entry-zero-input",
+    "Scope": "bounded actual copied-entry subprocess with controlled native receipts; no PDF engine/manual claim",
+    "Command": [
+      "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+      "-NoLogo",
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "RemoteSigned",
+      "-File",
+      "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\978e5f75ade74cd2866b14b24be324ac\\Invoke-Entry.ps1",
+      "-Configuration",
+      "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\978e5f75ade74cd2866b14b24be324ac\\app\\diagnostic-config.json"
+    ],
+    "ChildEnvironmentRemovedKeys": [
+      "PSModulePath"
+    ],
+    "PersistentEnvironmentChanges": false,
+    "Culture": "de-DE",
+    "EntrySHA256": "2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902",
+    "HelperWithHooksSHA256": "739a1f6fcf9b69806f5bd657cf98e3eefafc9509224e55ba2a7a47d173ec752a",
+    "WrapperSHA256": "75c4f4476c34fd727f7723ae40ac44e4b0736d240f882624c505d735f1d2341b",
+    "ConfigurationSHA256": "85c58bb305c6a927e36441879e1b68b683bcfca0d742b549216fc0c5e3d93a48",
+    "Result": {
+      "Executable": "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+      "RenderedArguments": "\"-NoLogo\" \"-NoProfile\" \"-NonInteractive\" \"-ExecutionPolicy\" \"RemoteSigned\" \"-File\" \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\978e5f75ade74cd2866b14b24be324ac\\Invoke-Entry.ps1\" \"-Configuration\" \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\978e5f75ade74cd2866b14b24be324ac\\app\\diagnostic-config.json\"",
+      "ExitCode": 1,
+      "Stdout": "WinPDFMerger 1.0.0\r\nStage: Invocation preflight; elapsed: 0.119 s\r\n==== WinPDFMerge run 2026-10-09 18:23:43 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 1.087 s\r\nSource folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\978e5f75ade74cd2866b14b24be324ac\\source [x] ! &\r\nOutput folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\978e5f75ade74cd2866b14b24be324ac\\output [x] ! &\r\nRun identity: WinPDFMerge_source [x] ! &_20261009_182343_22aee1e55fc14f26\r\nPlanned master output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\978e5f75ade74cd2866b14b24be324ac\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182343_22aee1e55fc14f26.pdf\r\nPlanned email output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\978e5f75ade74cd2866b14b24be324ac\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182343_22aee1e55fc14f26_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 7.6.6 (Core)\r\nStage: Input discovery; elapsed: 1.189 s\r\nSource preflight failed: No PDFs found in: '<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\978e5f75ade74cd2866b14b24be324ac\\source [x] ! &'. Only visible top-level .pdf files are included.\r\nElapsed time: 1.251 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: not probed\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: not discovered; expected pages: not inspected\r\nResult: Failure; exit code: 1\r\nLog: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\978e5f75ade74cd2866b14b24be324ac\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182343_22aee1e55fc14f26.log\r\n",
+      "Stderr": "",
+      "ElapsedMilliseconds": 2200,
+      "ProcessId": 22136,
+      "Started": true,
+      "TimedOut": false,
+      "Cancelled": false,
+      "LaunchError": null,
+      "CaptureError": null,
+      "TerminationError": null,
+      "OwnershipReleased": true,
+      "StdoutTruncated": false,
+      "StderrTruncated": false,
+      "Succeeded": false
+    },
+    "ReceiptPath": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\978e5f75ade74cd2866b14b24be324ac\\receipt.json",
+    "ReceiptSHA256": "b4da40fa48c5cfabdb22e5640d582d1b03eab1ca928871511a92bdfd9ad7440e",
+    "Receipt": {
+      "Scope": "copied entry with controlled native receipts; no PDF engine",
+      "HelperLoaded": true,
+      "PdftkDiscovery": 0,
+      "GSDiscovery": 0,
+      "SourceDiscovery": 1,
+      "NativeCalls": [],
+      "Messages": [
+        "==== WinPDFMerge run 2026-10-09 18:23:43 ====",
+        "Application version: 1.0.0",
+        "Stage: Invocation preflight; elapsed: 1.087 s",
+        "Source folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\978e5f75ade74cd2866b14b24be324ac\\source [x] ! &",
+        "Output folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\978e5f75ade74cd2866b14b24be324ac\\output [x] ! &",
+        "Run identity: WinPDFMerge_source [x] ! &_20261009_182343_22aee1e55fc14f26",
+        "Planned master output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\978e5f75ade74cd2866b14b24be324ac\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182343_22aee1e55fc14f26.pdf",
+        "Planned email output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\978e5f75ade74cd2866b14b24be324ac\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182343_22aee1e55fc14f26_email.pdf",
+        "Diagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.",
+        "PowerShell: 7.6.6 (Core)",
+        "Stage: Input discovery; elapsed: 1.189 s",
+        "Source preflight failed: No PDFs found in: '<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\978e5f75ade74cd2866b14b24be324ac\\source [x] ! &'. Only visible top-level .pdf files are included.",
+        "Elapsed time: 1.251 s",
+        "PowerShell: 7.6.6 (Core)",
+        "PDFtk version: not probed",
+        "Ghostscript version: not used (SkipEmail)",
+        "Input summary: not discovered; expected pages: not inspected",
+        "Result: Failure; exit code: 1"
+      ],
+      "Identity": {
+        "OutputFolder": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\978e5f75ade74cd2866b14b24be324ac\\output [x] ! &",
+        "FolderLabel": "source [x] ! &",
+        "Timestamp": "20261009_182343",
+        "RunSuffix": "22aee1e55fc14f26",
+        "BaseName": "WinPDFMerge_source [x] ! &_20261009_182343_22aee1e55fc14f26",
+        "MasterPath": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\978e5f75ade74cd2866b14b24be324ac\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182343_22aee1e55fc14f26.pdf",
+        "EmailPath": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\978e5f75ade74cd2866b14b24be324ac\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182343_22aee1e55fc14f26_email.pdf",
+        "LogPath": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\978e5f75ade74cd2866b14b24be324ac\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182343_22aee1e55fc14f26.log"
+      },
+      "LogPresentAtPdftkDiscovery": false,
+      "LogPresentAtSourceDiscovery": true,
+      "Outcome": null,
+      "BindingError": null
+    },
+    "Before": "preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+    "After": "preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+    "Logs": [
+      {
+        "Path": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\978e5f75ade74cd2866b14b24be324ac\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182343_22aee1e55fc14f26.log",
+        "SHA256": "efb5b8af73e965e02971a4e0f852c436256052176254ca681797551141ec0116",
+        "Text": "==== WinPDFMerge run 2026-10-09 18:23:43 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 1.087 s\r\nSource folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\978e5f75ade74cd2866b14b24be324ac\\source [x] ! &\r\nOutput folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\978e5f75ade74cd2866b14b24be324ac\\output [x] ! &\r\nRun identity: WinPDFMerge_source [x] ! &_20261009_182343_22aee1e55fc14f26\r\nPlanned master output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\978e5f75ade74cd2866b14b24be324ac\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182343_22aee1e55fc14f26.pdf\r\nPlanned email output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\978e5f75ade74cd2866b14b24be324ac\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182343_22aee1e55fc14f26_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 7.6.6 (Core)\r\nStage: Input discovery; elapsed: 1.189 s\r\nSource preflight failed: No PDFs found in: '<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\978e5f75ade74cd2866b14b24be324ac\\source [x] ! &'. Only visible top-level .pdf files are included.\r\nElapsed time: 1.251 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: not probed\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: not discovered; expected pages: not inspected\r\nResult: Failure; exit code: 1\r\n"
+      }
+    ],
+    "Finals": [],
+    "StdoutSHA256": "ce404ca7578fc6e0f73812a13f46ce3e5a7f4f56e5fbf3d5aea78180fe9cabc3",
+    "StderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "Label": "entry-corrupt-input",
+    "Scope": "bounded actual copied-entry subprocess with controlled native receipts; no PDF engine/manual claim",
+    "Command": [
+      "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+      "-NoLogo",
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "RemoteSigned",
+      "-File",
+      "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\Invoke-Entry.ps1",
+      "-Configuration",
+      "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\app\\diagnostic-config.json"
+    ],
+    "ChildEnvironmentRemovedKeys": [
+      "PSModulePath"
+    ],
+    "PersistentEnvironmentChanges": false,
+    "Culture": "de-DE",
+    "EntrySHA256": "2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902",
+    "HelperWithHooksSHA256": "739a1f6fcf9b69806f5bd657cf98e3eefafc9509224e55ba2a7a47d173ec752a",
+    "WrapperSHA256": "75c4f4476c34fd727f7723ae40ac44e4b0736d240f882624c505d735f1d2341b",
+    "ConfigurationSHA256": "0cd6833ce576dc60f384f2bf5fc3de5801a5a925825769e8f2355c9764c26fde",
+    "Result": {
+      "Executable": "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+      "RenderedArguments": "\"-NoLogo\" \"-NoProfile\" \"-NonInteractive\" \"-ExecutionPolicy\" \"RemoteSigned\" \"-File\" \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\Invoke-Entry.ps1\" \"-Configuration\" \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\app\\diagnostic-config.json\"",
+      "ExitCode": 1,
+      "Stdout": "WinPDFMerger 1.0.0\r\nStage: Invocation preflight; elapsed: 0.124 s\r\n==== WinPDFMerge run 2026-10-09 18:23:46 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 1.084 s\r\nSource folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\source [x] ! &\r\nOutput folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\output [x] ! &\r\nRun identity: WinPDFMerge_source [x] ! &_20261009_182345_5503b08ee78a405a\r\nPlanned master output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182345_5503b08ee78a405a.pdf\r\nPlanned email output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182345_5503b08ee78a405a_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 7.6.6 (Core)\r\nStage: Input discovery; elapsed: 1.197 s\r\nPDF count: 1\r\nInput 1: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\source [x] ! &\\1.pdf\r\nStage: PDFtk preflight; elapsed: 1.274 s\r\nPDFtk: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\app\\pdftk.exe (version 2.02)\r\nStage: Input inspection; elapsed: 1.538 s\r\nPDFtk failed during input preflight or logging. No merge was started. PDF input '<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\source [x] ! &\\1.pdf' failed preflight: PDFtk document inspection failed (exit code: 7). See native launch/capture/timeout details and both streams; protected or unparseable inputs are unsupported without passwords or repair.\r\nElapsed time: 1.810 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: 2.02\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: 1 PDF(s); expected pages: not inspected\r\nResult: Failure; exit code: 1\r\nLog: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182345_5503b08ee78a405a.log\r\n",
+      "Stderr": "",
+      "ElapsedMilliseconds": 2665,
+      "ProcessId": 15464,
+      "Started": true,
+      "TimedOut": false,
+      "Cancelled": false,
+      "LaunchError": null,
+      "CaptureError": null,
+      "TerminationError": null,
+      "OwnershipReleased": true,
+      "StdoutTruncated": false,
+      "StderrTruncated": false,
+      "Succeeded": false
+    },
+    "ReceiptPath": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\receipt.json",
+    "ReceiptSHA256": "ba5af852cf5c7a6c3f099d0c816f74057ebf5cfead2d4f4039d50db0db886cff",
+    "Receipt": {
+      "Scope": "copied entry with controlled native receipts; no PDF engine",
+      "HelperLoaded": true,
+      "PdftkDiscovery": 1,
+      "GSDiscovery": 0,
+      "SourceDiscovery": 1,
+      "NativeCalls": [
+        {
+          "Executable": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\app\\pdftk.exe",
+          "Arguments": [
+            "--version"
+          ],
+          "RemoveEnvironmentVariables": [
+            "GS_OPTIONS"
+          ]
+        },
+        {
+          "Executable": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\app\\pdftk.exe",
+          "Arguments": [
+            "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\source [x] ! &\\1.pdf",
+            "dump_data_utf8",
+            "output",
+            "-",
+            "dont_ask"
+          ],
+          "RemoveEnvironmentVariables": []
+        }
+      ],
+      "Messages": [
+        "==== WinPDFMerge run 2026-10-09 18:23:46 ====",
+        "Application version: 1.0.0",
+        "Stage: Invocation preflight; elapsed: 1.084 s",
+        "Source folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\source [x] ! &",
+        "Output folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\output [x] ! &",
+        "Run identity: WinPDFMerge_source [x] ! &_20261009_182345_5503b08ee78a405a",
+        "Planned master output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182345_5503b08ee78a405a.pdf",
+        "Planned email output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182345_5503b08ee78a405a_email.pdf",
+        "Diagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.",
+        "PowerShell: 7.6.6 (Core)",
+        "Stage: Input discovery; elapsed: 1.197 s",
+        "PDF count: 1",
+        "Input 1: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\source [x] ! &\\1.pdf",
+        "Stage: PDFtk preflight; elapsed: 1.274 s",
+        "PdfTk version probe executable: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\app\\pdftk.exe",
+        "PdfTk version probe arguments: \"--version\"",
+        "PdfTk version probe exit: 0; elapsed: 1 ms; PID: 12345",
+        "PdfTk version probe started: True; timed out: False; cancelled: False; succeeded: True",
+        "PdfTk version probe launch error: ",
+        "PdfTk version probe capture error: ",
+        "PdfTk version probe termination error: ",
+        "PdfTk version probe stdout truncated: False; stderr truncated: False",
+        "PdfTk version probe stdout:",
+        "pdftk 2.02",
+        "PdfTk version probe stderr:",
+        "T18 controlled native warning",
+        "PDFtk: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\app\\pdftk.exe (version 2.02)",
+        "Stage: Input inspection; elapsed: 1.538 s",
+        "Input preflight 1 executable: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\app\\pdftk.exe",
+        "Input preflight 1 arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\source [x] ! &\\1.pdf\" \"dump_data_utf8\" \"output\" \"-\" \"dont_ask\"",
+        "Input preflight 1 exit: 7; elapsed: 1 ms; PID: 12345",
+        "Input preflight 1 started: True; timed out: False; cancelled: False; succeeded: False",
+        "Input preflight 1 launch error: ",
+        "Input preflight 1 capture error: ",
+        "Input preflight 1 termination error: ",
+        "Input preflight 1 stdout truncated: False; stderr truncated: False",
+        "Input preflight 1 stdout:",
+        "T18 controlled corrupt inspection stdout",
+        "Input preflight 1 stderr:",
+        "T18 controlled corrupt inspection stderr",
+        "PDFtk failed during input preflight or logging. No merge was started. PDF input '<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\source [x] ! &\\1.pdf' failed preflight: PDFtk document inspection failed (exit code: 7). See native launch/capture/timeout details and both streams; protected or unparseable inputs are unsupported without passwords or repair.",
+        "Elapsed time: 1.810 s",
+        "PowerShell: 7.6.6 (Core)",
+        "PDFtk version: 2.02",
+        "Ghostscript version: not used (SkipEmail)",
+        "Input summary: 1 PDF(s); expected pages: not inspected",
+        "Result: Failure; exit code: 1"
+      ],
+      "Identity": {
+        "OutputFolder": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\output [x] ! &",
+        "FolderLabel": "source [x] ! &",
+        "Timestamp": "20261009_182345",
+        "RunSuffix": "5503b08ee78a405a",
+        "BaseName": "WinPDFMerge_source [x] ! &_20261009_182345_5503b08ee78a405a",
+        "MasterPath": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182345_5503b08ee78a405a.pdf",
+        "EmailPath": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182345_5503b08ee78a405a_email.pdf",
+        "LogPath": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182345_5503b08ee78a405a.log"
+      },
+      "LogPresentAtPdftkDiscovery": true,
+      "LogPresentAtSourceDiscovery": true,
+      "Outcome": null,
+      "BindingError": null
+    },
+    "Before": "1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+    "After": "1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+    "Logs": [
+      {
+        "Path": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182345_5503b08ee78a405a.log",
+        "SHA256": "f7b0a24fb3791a4a7ec8570a696357cf8a6dcc4d7e1382c0b3cac36a50d36a55",
+        "Text": "==== WinPDFMerge run 2026-10-09 18:23:46 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 1.084 s\r\nSource folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\source [x] ! &\r\nOutput folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\output [x] ! &\r\nRun identity: WinPDFMerge_source [x] ! &_20261009_182345_5503b08ee78a405a\r\nPlanned master output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182345_5503b08ee78a405a.pdf\r\nPlanned email output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182345_5503b08ee78a405a_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 7.6.6 (Core)\r\nStage: Input discovery; elapsed: 1.197 s\r\nPDF count: 1\r\nInput 1: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\source [x] ! &\\1.pdf\r\nStage: PDFtk preflight; elapsed: 1.274 s\r\nPdfTk version probe executable: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\app\\pdftk.exe\r\nPdfTk version probe arguments: \"--version\"\r\nPdfTk version probe exit: 0; elapsed: 1 ms; PID: 12345\r\nPdfTk version probe started: True; timed out: False; cancelled: False; succeeded: True\r\nPdfTk version probe launch error: \r\nPdfTk version probe capture error: \r\nPdfTk version probe termination error: \r\nPdfTk version probe stdout truncated: False; stderr truncated: False\r\nPdfTk version probe stdout:\r\npdftk 2.02\r\nPdfTk version probe stderr:\r\nT18 controlled native warning\r\nPDFtk: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\app\\pdftk.exe (version 2.02)\r\nStage: Input inspection; elapsed: 1.538 s\r\nInput preflight 1 executable: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\app\\pdftk.exe\r\nInput preflight 1 arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\source [x] ! &\\1.pdf\" \"dump_data_utf8\" \"output\" \"-\" \"dont_ask\"\r\nInput preflight 1 exit: 7; elapsed: 1 ms; PID: 12345\r\nInput preflight 1 started: True; timed out: False; cancelled: False; succeeded: False\r\nInput preflight 1 launch error: \r\nInput preflight 1 capture error: \r\nInput preflight 1 termination error: \r\nInput preflight 1 stdout truncated: False; stderr truncated: False\r\nInput preflight 1 stdout:\r\nT18 controlled corrupt inspection stdout\r\nInput preflight 1 stderr:\r\nT18 controlled corrupt inspection stderr\r\nPDFtk failed during input preflight or logging. No merge was started. PDF input '<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\46ff7b6d31604d3cae7845fa2bc24809\\source [x] ! &\\1.pdf' failed preflight: PDFtk document inspection failed (exit code: 7). See native launch/capture/timeout details and both streams; protected or unparseable inputs are unsupported without passwords or repair.\r\nElapsed time: 1.810 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: 2.02\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: 1 PDF(s); expected pages: not inspected\r\nResult: Failure; exit code: 1\r\n"
+      }
+    ],
+    "Finals": [],
+    "StdoutSHA256": "569f5727a82c389707e086fa2dc668fd5675b3b1e6bfc5aba0a36c594e053c45",
+    "StderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "Label": "entry-discovery-failed",
+    "Scope": "bounded actual copied-entry subprocess with controlled native receipts; no PDF engine/manual claim",
+    "Command": [
+      "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+      "-NoLogo",
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "RemoteSigned",
+      "-File",
+      "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\07c69079b90440e988c170616f00358e\\Invoke-Entry.ps1",
+      "-Configuration",
+      "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\07c69079b90440e988c170616f00358e\\app\\diagnostic-config.json"
+    ],
+    "ChildEnvironmentRemovedKeys": [
+      "PSModulePath"
+    ],
+    "PersistentEnvironmentChanges": false,
+    "Culture": "de-DE",
+    "EntrySHA256": "2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902",
+    "HelperWithHooksSHA256": "739a1f6fcf9b69806f5bd657cf98e3eefafc9509224e55ba2a7a47d173ec752a",
+    "WrapperSHA256": "75c4f4476c34fd727f7723ae40ac44e4b0736d240f882624c505d735f1d2341b",
+    "ConfigurationSHA256": "86ce6dcb3e1167b978feed820fac64101817fce208a0adc9fc69d30a590d8a1d",
+    "Result": {
+      "Executable": "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+      "RenderedArguments": "\"-NoLogo\" \"-NoProfile\" \"-NonInteractive\" \"-ExecutionPolicy\" \"RemoteSigned\" \"-File\" \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\07c69079b90440e988c170616f00358e\\Invoke-Entry.ps1\" \"-Configuration\" \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\07c69079b90440e988c170616f00358e\\app\\diagnostic-config.json\"",
+      "ExitCode": 1,
+      "Stdout": "WinPDFMerger 1.0.0\r\nStage: Invocation preflight; elapsed: 0.116 s\r\n==== WinPDFMerge run 2026-10-09 18:23:48 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 1.110 s\r\nSource folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\07c69079b90440e988c170616f00358e\\source [x] ! &\r\nOutput folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\07c69079b90440e988c170616f00358e\\output [x] ! &\r\nRun identity: WinPDFMerge_source [x] ! &_20261009_182348_68fb859bf9c14b1d\r\nPlanned master output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\07c69079b90440e988c170616f00358e\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182348_68fb859bf9c14b1d.pdf\r\nPlanned email output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\07c69079b90440e988c170616f00358e\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182348_68fb859bf9c14b1d_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 7.6.6 (Core)\r\nStage: Input discovery; elapsed: 1.223 s\r\nSource preflight failed: T18 controlled source enumeration denied\r\nElapsed time: 1.295 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: not probed\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: not discovered; expected pages: not inspected\r\nResult: Failure; exit code: 1\r\nLog: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\07c69079b90440e988c170616f00358e\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182348_68fb859bf9c14b1d.log\r\n",
+      "Stderr": "",
+      "ElapsedMilliseconds": 2251,
+      "ProcessId": 18120,
+      "Started": true,
+      "TimedOut": false,
+      "Cancelled": false,
+      "LaunchError": null,
+      "CaptureError": null,
+      "TerminationError": null,
+      "OwnershipReleased": true,
+      "StdoutTruncated": false,
+      "StderrTruncated": false,
+      "Succeeded": false
+    },
+    "ReceiptPath": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\07c69079b90440e988c170616f00358e\\receipt.json",
+    "ReceiptSHA256": "68922590b95399c09447bb0505c014677e3bb51032fed43d8a98db9a21e64a6b",
+    "Receipt": {
+      "Scope": "copied entry with controlled native receipts; no PDF engine",
+      "HelperLoaded": true,
+      "PdftkDiscovery": 0,
+      "GSDiscovery": 0,
+      "SourceDiscovery": 1,
+      "NativeCalls": [],
+      "Messages": [
+        "==== WinPDFMerge run 2026-10-09 18:23:48 ====",
+        "Application version: 1.0.0",
+        "Stage: Invocation preflight; elapsed: 1.110 s",
+        "Source folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\07c69079b90440e988c170616f00358e\\source [x] ! &",
+        "Output folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\07c69079b90440e988c170616f00358e\\output [x] ! &",
+        "Run identity: WinPDFMerge_source [x] ! &_20261009_182348_68fb859bf9c14b1d",
+        "Planned master output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\07c69079b90440e988c170616f00358e\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182348_68fb859bf9c14b1d.pdf",
+        "Planned email output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\07c69079b90440e988c170616f00358e\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182348_68fb859bf9c14b1d_email.pdf",
+        "Diagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.",
+        "PowerShell: 7.6.6 (Core)",
+        "Stage: Input discovery; elapsed: 1.223 s",
+        "Source preflight failed: T18 controlled source enumeration denied",
+        "Elapsed time: 1.295 s",
+        "PowerShell: 7.6.6 (Core)",
+        "PDFtk version: not probed",
+        "Ghostscript version: not used (SkipEmail)",
+        "Input summary: not discovered; expected pages: not inspected",
+        "Result: Failure; exit code: 1"
+      ],
+      "Identity": {
+        "OutputFolder": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\07c69079b90440e988c170616f00358e\\output [x] ! &",
+        "FolderLabel": "source [x] ! &",
+        "Timestamp": "20261009_182348",
+        "RunSuffix": "68fb859bf9c14b1d",
+        "BaseName": "WinPDFMerge_source [x] ! &_20261009_182348_68fb859bf9c14b1d",
+        "MasterPath": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\07c69079b90440e988c170616f00358e\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182348_68fb859bf9c14b1d.pdf",
+        "EmailPath": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\07c69079b90440e988c170616f00358e\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182348_68fb859bf9c14b1d_email.pdf",
+        "LogPath": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\07c69079b90440e988c170616f00358e\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182348_68fb859bf9c14b1d.log"
+      },
+      "LogPresentAtPdftkDiscovery": false,
+      "LogPresentAtSourceDiscovery": true,
+      "Outcome": null,
+      "BindingError": null
+    },
+    "Before": "1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+    "After": "1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+    "Logs": [
+      {
+        "Path": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\07c69079b90440e988c170616f00358e\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182348_68fb859bf9c14b1d.log",
+        "SHA256": "9ee5f9fde7f355de1b29e40494a15aead639a66d0e0aab92337905d25220023f",
+        "Text": "==== WinPDFMerge run 2026-10-09 18:23:48 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 1.110 s\r\nSource folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\07c69079b90440e988c170616f00358e\\source [x] ! &\r\nOutput folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\07c69079b90440e988c170616f00358e\\output [x] ! &\r\nRun identity: WinPDFMerge_source [x] ! &_20261009_182348_68fb859bf9c14b1d\r\nPlanned master output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\07c69079b90440e988c170616f00358e\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182348_68fb859bf9c14b1d.pdf\r\nPlanned email output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\07c69079b90440e988c170616f00358e\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182348_68fb859bf9c14b1d_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 7.6.6 (Core)\r\nStage: Input discovery; elapsed: 1.223 s\r\nSource preflight failed: T18 controlled source enumeration denied\r\nElapsed time: 1.295 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: not probed\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: not discovered; expected pages: not inspected\r\nResult: Failure; exit code: 1\r\n"
+      }
+    ],
+    "Finals": [],
+    "StdoutSHA256": "d39eeb876f994b63cdf6345aefd50c7b3fe7c9133ad149f5b7a2d9c182580e4f",
+    "StderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "Label": "entry-missing-source",
+    "Scope": "bounded actual copied-entry subprocess with controlled native receipts; no PDF engine/manual claim",
+    "Command": [
+      "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+      "-NoLogo",
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "RemoteSigned",
+      "-File",
+      "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\beb02f031e4d41ae930267ee20548d89\\Invoke-Entry.ps1",
+      "-Configuration",
+      "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\beb02f031e4d41ae930267ee20548d89\\app\\diagnostic-config.json"
+    ],
+    "ChildEnvironmentRemovedKeys": [
+      "PSModulePath"
+    ],
+    "PersistentEnvironmentChanges": false,
+    "Culture": "de-DE",
+    "EntrySHA256": "2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902",
+    "HelperWithHooksSHA256": "739a1f6fcf9b69806f5bd657cf98e3eefafc9509224e55ba2a7a47d173ec752a",
+    "WrapperSHA256": "75c4f4476c34fd727f7723ae40ac44e4b0736d240f882624c505d735f1d2341b",
+    "ConfigurationSHA256": "c741c5dbdc8fa5709805610cac4187e1949a572b3c86a293b821fa68e97f8199",
+    "Result": {
+      "Executable": "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+      "RenderedArguments": "\"-NoLogo\" \"-NoProfile\" \"-NonInteractive\" \"-ExecutionPolicy\" \"RemoteSigned\" \"-File\" \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\beb02f031e4d41ae930267ee20548d89\\Invoke-Entry.ps1\" \"-Configuration\" \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\beb02f031e4d41ae930267ee20548d89\\app\\diagnostic-config.json\"",
+      "ExitCode": 1,
+      "Stdout": "WinPDFMerger 1.0.0\r\nStage: Invocation preflight; elapsed: 0.184 s\r\nSource preflight failed: SourceFolder does not exist or cannot be accessed: '<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\beb02f031e4d41ae930267ee20548d89\\nonexistent-source'. Cannot find path '<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\beb02f031e4d41ae930267ee20548d89\\nonexistent-source' because it does not exist.\r\nElapsed time: 1.254 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: not probed\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: not discovered; expected pages: not inspected\r\nResult: Failure; exit code: 1\r\nNo run log was created: preflight has not established a safe writable output directory.\r\n",
+      "Stderr": "",
+      "ElapsedMilliseconds": 2318,
+      "ProcessId": 21672,
+      "Started": true,
+      "TimedOut": false,
+      "Cancelled": false,
+      "LaunchError": null,
+      "CaptureError": null,
+      "TerminationError": null,
+      "OwnershipReleased": true,
+      "StdoutTruncated": false,
+      "StderrTruncated": false,
+      "Succeeded": false
+    },
+    "ReceiptPath": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\beb02f031e4d41ae930267ee20548d89\\receipt.json",
+    "ReceiptSHA256": "f36554bb105339b874bcbae366af92301afffd35504581d8a778a620ea081b21",
+    "Receipt": {
+      "Scope": "copied entry with controlled native receipts; no PDF engine",
+      "HelperLoaded": true,
+      "PdftkDiscovery": 0,
+      "GSDiscovery": 0,
+      "SourceDiscovery": 0,
+      "NativeCalls": [],
+      "Messages": [],
+      "Identity": null,
+      "LogPresentAtPdftkDiscovery": false,
+      "LogPresentAtSourceDiscovery": false,
+      "Outcome": null,
+      "BindingError": null
+    },
+    "Before": "1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+    "After": "1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+    "Logs": [],
+    "Finals": [],
+    "StdoutSHA256": "f1b321eec36fac448d860df91f6d316cf96b1fdadec4fbf29749b3d8d6e60335",
+    "StderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "Label": "entry-invalid-destination",
+    "Scope": "bounded actual copied-entry subprocess with controlled native receipts; no PDF engine/manual claim",
+    "Command": [
+      "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+      "-NoLogo",
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "RemoteSigned",
+      "-File",
+      "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\a2d7a13b8ce14f6c8772627a6abb1b62\\Invoke-Entry.ps1",
+      "-Configuration",
+      "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\a2d7a13b8ce14f6c8772627a6abb1b62\\app\\diagnostic-config.json"
+    ],
+    "ChildEnvironmentRemovedKeys": [
+      "PSModulePath"
+    ],
+    "PersistentEnvironmentChanges": false,
+    "Culture": "de-DE",
+    "EntrySHA256": "2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902",
+    "HelperWithHooksSHA256": "739a1f6fcf9b69806f5bd657cf98e3eefafc9509224e55ba2a7a47d173ec752a",
+    "WrapperSHA256": "75c4f4476c34fd727f7723ae40ac44e4b0736d240f882624c505d735f1d2341b",
+    "ConfigurationSHA256": "bd12d4bd8232b72b057dce4b9781473438a45cee2775d8824620ad5340868330",
+    "Result": {
+      "Executable": "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+      "RenderedArguments": "\"-NoLogo\" \"-NoProfile\" \"-NonInteractive\" \"-ExecutionPolicy\" \"RemoteSigned\" \"-File\" \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\a2d7a13b8ce14f6c8772627a6abb1b62\\Invoke-Entry.ps1\" \"-Configuration\" \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\a2d7a13b8ce14f6c8772627a6abb1b62\\app\\diagnostic-config.json\"",
+      "ExitCode": 1,
+      "Stdout": "WinPDFMerger 1.0.0\r\nStage: Invocation preflight; elapsed: 0.123 s\r\nDestination preflight failed. OutputFolder must be an existing accessible directory: '<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\a2d7a13b8ce14f6c8772627a6abb1b62\\nonexistent-output'. Create it first or choose another -OutputFolder. Cannot find path '<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\a2d7a13b8ce14f6c8772627a6abb1b62\\nonexistent-output' because it does not exist.\r\nElapsed time: 1.079 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: not probed\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: not discovered; expected pages: not inspected\r\nResult: Failure; exit code: 1\r\nNo run log was created: preflight has not established a safe writable output directory.\r\nChoose a separate existing writable directory with -OutputFolder. No merge was started.\r\n",
+      "Stderr": "",
+      "ElapsedMilliseconds": 2239,
+      "ProcessId": 23272,
+      "Started": true,
+      "TimedOut": false,
+      "Cancelled": false,
+      "LaunchError": null,
+      "CaptureError": null,
+      "TerminationError": null,
+      "OwnershipReleased": true,
+      "StdoutTruncated": false,
+      "StderrTruncated": false,
+      "Succeeded": false
+    },
+    "ReceiptPath": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\a2d7a13b8ce14f6c8772627a6abb1b62\\receipt.json",
+    "ReceiptSHA256": "f36554bb105339b874bcbae366af92301afffd35504581d8a778a620ea081b21",
+    "Receipt": {
+      "Scope": "copied entry with controlled native receipts; no PDF engine",
+      "HelperLoaded": true,
+      "PdftkDiscovery": 0,
+      "GSDiscovery": 0,
+      "SourceDiscovery": 0,
+      "NativeCalls": [],
+      "Messages": [],
+      "Identity": null,
+      "LogPresentAtPdftkDiscovery": false,
+      "LogPresentAtSourceDiscovery": false,
+      "Outcome": null,
+      "BindingError": null
+    },
+    "Before": "1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+    "After": "1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+    "Logs": [],
+    "Finals": [],
+    "StdoutSHA256": "c3984935392638db694fb81f719499e7774118709ac53bf0368e63571c704ae3",
+    "StderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "Label": "entry-cancellation-setup-failed",
+    "Scope": "bounded actual copied-entry subprocess with controlled native receipts; no PDF engine/manual claim",
+    "Command": [
+      "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+      "-NoLogo",
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "RemoteSigned",
+      "-File",
+      "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\c21494b568b94079b564d901ae706941\\Invoke-Entry.ps1",
+      "-Configuration",
+      "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\c21494b568b94079b564d901ae706941\\app\\diagnostic-config.json"
+    ],
+    "ChildEnvironmentRemovedKeys": [
+      "PSModulePath"
+    ],
+    "PersistentEnvironmentChanges": false,
+    "Culture": "de-DE",
+    "EntrySHA256": "2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902",
+    "HelperWithHooksSHA256": "739a1f6fcf9b69806f5bd657cf98e3eefafc9509224e55ba2a7a47d173ec752a",
+    "WrapperSHA256": "75c4f4476c34fd727f7723ae40ac44e4b0736d240f882624c505d735f1d2341b",
+    "ConfigurationSHA256": "f1527243e15ec14e7b1fd324403e83eaf1ea41b8bc6e5eafb6cc4c07c2928d0b",
+    "Result": {
+      "Executable": "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+      "RenderedArguments": "\"-NoLogo\" \"-NoProfile\" \"-NonInteractive\" \"-ExecutionPolicy\" \"RemoteSigned\" \"-File\" \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\c21494b568b94079b564d901ae706941\\Invoke-Entry.ps1\" \"-Configuration\" \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\c21494b568b94079b564d901ae706941\\app\\diagnostic-config.json\"",
+      "ExitCode": 1,
+      "Stdout": "WinPDFMerger 1.0.0\r\nStage: Invocation preflight; elapsed: 0.113 s\r\nCancellation setup failed: T18 controlled cancellation setup failure\r\nElapsed time: 0.151 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: not probed\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: not discovered; expected pages: not inspected\r\nResult: Failure; exit code: 1\r\nNo run log was created: preflight has not established a safe writable output directory.\r\n",
+      "Stderr": "",
+      "ElapsedMilliseconds": 1144,
+      "ProcessId": 22788,
+      "Started": true,
+      "TimedOut": false,
+      "Cancelled": false,
+      "LaunchError": null,
+      "CaptureError": null,
+      "TerminationError": null,
+      "OwnershipReleased": true,
+      "StdoutTruncated": false,
+      "StderrTruncated": false,
+      "Succeeded": false
+    },
+    "ReceiptPath": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\c21494b568b94079b564d901ae706941\\receipt.json",
+    "ReceiptSHA256": "f36554bb105339b874bcbae366af92301afffd35504581d8a778a620ea081b21",
+    "Receipt": {
+      "Scope": "copied entry with controlled native receipts; no PDF engine",
+      "HelperLoaded": true,
+      "PdftkDiscovery": 0,
+      "GSDiscovery": 0,
+      "SourceDiscovery": 0,
+      "NativeCalls": [],
+      "Messages": [],
+      "Identity": null,
+      "LogPresentAtPdftkDiscovery": false,
+      "LogPresentAtSourceDiscovery": false,
+      "Outcome": null,
+      "BindingError": null
+    },
+    "Before": "1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+    "After": "1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+    "Logs": [],
+    "Finals": [],
+    "StdoutSHA256": "069b92f538ecbca4cb29ca7ed24b1ba9fda4215ac4a8da97629e0694b4d8b4e4",
+    "StderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "Label": "entry-no-source",
+    "Scope": "bounded actual copied-entry subprocess with controlled native receipts; no PDF engine/manual claim",
+    "Command": [
+      "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+      "-NoLogo",
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "RemoteSigned",
+      "-File",
+      "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\786583960a7f40d1ab9a1ad95a7e3ec9\\Invoke-Entry.ps1",
+      "-Configuration",
+      "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\786583960a7f40d1ab9a1ad95a7e3ec9\\app\\diagnostic-config.json"
+    ],
+    "ChildEnvironmentRemovedKeys": [
+      "PSModulePath"
+    ],
+    "PersistentEnvironmentChanges": false,
+    "Culture": "de-DE",
+    "EntrySHA256": "2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902",
+    "HelperWithHooksSHA256": "739a1f6fcf9b69806f5bd657cf98e3eefafc9509224e55ba2a7a47d173ec752a",
+    "WrapperSHA256": "75c4f4476c34fd727f7723ae40ac44e4b0736d240f882624c505d735f1d2341b",
+    "ConfigurationSHA256": "8493eccef7390ddf7004e58fbb833905fe1969f45c65024cd9823974ee3e59a7",
+    "Result": {
+      "Executable": "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+      "RenderedArguments": "\"-NoLogo\" \"-NoProfile\" \"-NonInteractive\" \"-ExecutionPolicy\" \"RemoteSigned\" \"-File\" \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\786583960a7f40d1ab9a1ad95a7e3ec9\\Invoke-Entry.ps1\" \"-Configuration\" \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\786583960a7f40d1ab9a1ad95a7e3ec9\\app\\diagnostic-config.json\"",
+      "ExitCode": 1,
+      "Stdout": "WinPDFMerger 1.0.0\r\nUsage: WinPDFMerge.ps1 <FolderWithPDFs> [-OutputFolder <ExistingDirectory>] [-SkipEmail] [-EmailPreset screen|ebook]\r\nNo run log was created: a source and safe output directory are required.\r\n",
+      "Stderr": "",
+      "ElapsedMilliseconds": 1078,
+      "ProcessId": 5940,
+      "Started": true,
+      "TimedOut": false,
+      "Cancelled": false,
+      "LaunchError": null,
+      "CaptureError": null,
+      "TerminationError": null,
+      "OwnershipReleased": true,
+      "StdoutTruncated": false,
+      "StderrTruncated": false,
+      "Succeeded": false
+    },
+    "ReceiptPath": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\786583960a7f40d1ab9a1ad95a7e3ec9\\receipt.json",
+    "ReceiptSHA256": "f36554bb105339b874bcbae366af92301afffd35504581d8a778a620ea081b21",
+    "Receipt": {
+      "Scope": "copied entry with controlled native receipts; no PDF engine",
+      "HelperLoaded": true,
+      "PdftkDiscovery": 0,
+      "GSDiscovery": 0,
+      "SourceDiscovery": 0,
+      "NativeCalls": [],
+      "Messages": [],
+      "Identity": null,
+      "LogPresentAtPdftkDiscovery": false,
+      "LogPresentAtSourceDiscovery": false,
+      "Outcome": null,
+      "BindingError": null
+    },
+    "Before": "1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+    "After": "1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+    "Logs": [],
+    "Finals": [],
+    "StdoutSHA256": "7c5f6d35ce26eb0760815d6bc39bc78fa85d2647e1f13d7b61476aba75b60b1b",
+    "StderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "Label": "entry-success-skip",
+    "Scope": "bounded actual copied-entry subprocess with controlled native receipts; no PDF engine/manual claim",
+    "Command": [
+      "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+      "-NoLogo",
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "RemoteSigned",
+      "-File",
+      "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\Invoke-Entry.ps1",
+      "-Configuration",
+      "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\app\\diagnostic-config.json"
+    ],
+    "ChildEnvironmentRemovedKeys": [
+      "PSModulePath"
+    ],
+    "PersistentEnvironmentChanges": false,
+    "Culture": "de-DE",
+    "EntrySHA256": "2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902",
+    "HelperWithHooksSHA256": "739a1f6fcf9b69806f5bd657cf98e3eefafc9509224e55ba2a7a47d173ec752a",
+    "WrapperSHA256": "75c4f4476c34fd727f7723ae40ac44e4b0736d240f882624c505d735f1d2341b",
+    "ConfigurationSHA256": "d7d066d5a0ea8840f683ea1eb3c118c226af614ff5fd981e44c9fe613155146a",
+    "Result": {
+      "Executable": "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+      "RenderedArguments": "\"-NoLogo\" \"-NoProfile\" \"-NonInteractive\" \"-ExecutionPolicy\" \"RemoteSigned\" \"-File\" \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\Invoke-Entry.ps1\" \"-Configuration\" \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\app\\diagnostic-config.json\"",
+      "ExitCode": 0,
+      "Stdout": "WinPDFMerger 1.0.0\r\nStage: Invocation preflight; elapsed: 0.110 s\r\n==== WinPDFMerge run 2026-10-09 18:23:58 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 1.497 s\r\nSource folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\source [x] ! &\r\nOutput folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\output [x] ! &\r\nRun identity: WinPDFMerge_source [x] ! &_20261009_182358_a21645a2ab904383\r\nPlanned master output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182358_a21645a2ab904383.pdf\r\nPlanned email output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182358_a21645a2ab904383_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 7.6.6 (Core)\r\nStage: Input discovery; elapsed: 1.603 s\r\nPDF count: 2\r\nInput 1: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\source [x] ! &\\1.pdf\r\nInput 2: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\source [x] ! &\\2.pdf\r\nStage: PDFtk preflight; elapsed: 1.771 s\r\nPDFtk: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\app\\pdftk.exe (version 2.02)\r\nStage: Input inspection; elapsed: 2.062 s\r\nInput 1 pages: 1\r\nInput 2 pages: 1\r\nExpected page total: 2\r\nPrivate staging: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\output [x] ! &\\.WinPDFMerge_9b4f10a6f4434b75bf1692f69c5be6c8.tmp\r\nStage: Master processing; elapsed: 2.719 s\r\nPDFtk executable: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\app\\pdftk.exe\r\nPDFtk arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\source [x] ! &\\1.pdf\" \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\source [x] ! &\\2.pdf\" \"cat\" \"output\" \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\output [x] ! &\\.WinPDFMerge_9b4f10a6f4434b75bf1692f69c5be6c8.tmp\\master.pdf\" \"compress\" \"dont_ask\"\r\nPDFtk exit: 0; elapsed: 1 ms; PID: 12345\r\nPDFtk started: True; timed out: False; cancelled: False; succeeded: True\r\nPDFtk launch error: \r\nPDFtk capture error: \r\nPDFtk termination error: \r\nPDFtk stdout truncated: False; stderr truncated: False\r\nPDFtk stdout:\r\nT18 controlled merge stdout\r\nPDFtk stderr:\r\nT18 controlled native warning\r\nMaster validation executable: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\app\\pdftk.exe\r\nMaster validation arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\output [x] ! &\\.WinPDFMerge_9b4f10a6f4434b75bf1692f69c5be6c8.tmp\\master.pdf\" \"dump_data_utf8\" \"output\" \"-\" \"dont_ask\"\r\nMaster validation exit: 0; elapsed: 1 ms; PID: 12345\r\nMaster validation started: True; timed out: False; cancelled: False; succeeded: True\r\nMaster validation launch error: \r\nMaster validation capture error: \r\nMaster validation termination error: \r\nMaster validation stdout truncated: False; stderr truncated: False\r\nMaster validation stdout:\r\nNumberOfPages: 2\r\nMaster validation stderr:\r\nT18 controlled native warning\r\nMaster validation OK: 2 expected pages inspected. Merged master published: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182358_a21645a2ab904383.pdf\r\nStage: Summary; elapsed: 3.270 s\r\nElapsed time: 3.287 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: 2.02\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: 2 PDF(s); expected pages: 2\r\nEmail result: skipped\r\nEmail explicitly skipped; validated master retained.\r\nMaster size: 1786 bytes (1.74 KiB).\r\nPublished Merged master: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182358_a21645a2ab904383.pdf\r\nDone.\r\nResult: SUCCESS; exit code: 0\r\n\nSUCCESS: Email explicitly skipped; validated master retained.\r\nResult: SUCCESS; exit code: 0\r\nElapsed time: 3.460 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: 2.02\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: 2 PDF(s); expected pages: 2\r\nMaster size: 1786 bytes (1.74 KiB).\r\n - Merged master: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182358_a21645a2ab904383.pdf\r\nLog: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182358_a21645a2ab904383.log\r\n",
+      "Stderr": "",
+      "ElapsedMilliseconds": 4521,
+      "ProcessId": 5460,
+      "Started": true,
+      "TimedOut": false,
+      "Cancelled": false,
+      "LaunchError": null,
+      "CaptureError": null,
+      "TerminationError": null,
+      "OwnershipReleased": true,
+      "StdoutTruncated": false,
+      "StderrTruncated": false,
+      "Succeeded": true
+    },
+    "ReceiptPath": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\receipt.json",
+    "ReceiptSHA256": "d7c77c0fe9ef6b3519a732a375ad37774ec3e5f776f4e93bd05f7a8a1cea4bef",
+    "Receipt": {
+      "Scope": "copied entry with controlled native receipts; no PDF engine",
+      "HelperLoaded": true,
+      "PdftkDiscovery": 1,
+      "GSDiscovery": 0,
+      "SourceDiscovery": 1,
+      "NativeCalls": [
+        {
+          "Executable": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\app\\pdftk.exe",
+          "Arguments": [
+            "--version"
+          ],
+          "RemoveEnvironmentVariables": [
+            "GS_OPTIONS"
+          ]
+        },
+        {
+          "Executable": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\app\\pdftk.exe",
+          "Arguments": [
+            "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\source [x] ! &\\1.pdf",
+            "dump_data_utf8",
+            "output",
+            "-",
+            "dont_ask"
+          ],
+          "RemoveEnvironmentVariables": []
+        },
+        {
+          "Executable": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\app\\pdftk.exe",
+          "Arguments": [
+            "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\source [x] ! &\\2.pdf",
+            "dump_data_utf8",
+            "output",
+            "-",
+            "dont_ask"
+          ],
+          "RemoveEnvironmentVariables": []
+        },
+        {
+          "Executable": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\app\\pdftk.exe",
+          "Arguments": [
+            "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\source [x] ! &\\1.pdf",
+            "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\source [x] ! &\\2.pdf",
+            "cat",
+            "output",
+            "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\output [x] ! &\\.WinPDFMerge_9b4f10a6f4434b75bf1692f69c5be6c8.tmp\\master.pdf",
+            "compress",
+            "dont_ask"
+          ],
+          "RemoveEnvironmentVariables": []
+        },
+        {
+          "Executable": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\app\\pdftk.exe",
+          "Arguments": [
+            "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\output [x] ! &\\.WinPDFMerge_9b4f10a6f4434b75bf1692f69c5be6c8.tmp\\master.pdf",
+            "dump_data_utf8",
+            "output",
+            "-",
+            "dont_ask"
+          ],
+          "RemoveEnvironmentVariables": []
+        }
+      ],
+      "Messages": [
+        "==== WinPDFMerge run 2026-10-09 18:23:58 ====",
+        "Application version: 1.0.0",
+        "Stage: Invocation preflight; elapsed: 1.497 s",
+        "Source folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\source [x] ! &",
+        "Output folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\output [x] ! &",
+        "Run identity: WinPDFMerge_source [x] ! &_20261009_182358_a21645a2ab904383",
+        "Planned master output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182358_a21645a2ab904383.pdf",
+        "Planned email output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182358_a21645a2ab904383_email.pdf",
+        "Diagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.",
+        "PowerShell: 7.6.6 (Core)",
+        "Stage: Input discovery; elapsed: 1.603 s",
+        "PDF count: 2",
+        "Input 1: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\source [x] ! &\\1.pdf",
+        "Input 2: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\source [x] ! &\\2.pdf",
+        "Stage: PDFtk preflight; elapsed: 1.771 s",
+        "PdfTk version probe executable: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\app\\pdftk.exe",
+        "PdfTk version probe arguments: \"--version\"",
+        "PdfTk version probe exit: 0; elapsed: 1 ms; PID: 12345",
+        "PdfTk version probe started: True; timed out: False; cancelled: False; succeeded: True",
+        "PdfTk version probe launch error: ",
+        "PdfTk version probe capture error: ",
+        "PdfTk version probe termination error: ",
+        "PdfTk version probe stdout truncated: False; stderr truncated: False",
+        "PdfTk version probe stdout:",
+        "pdftk 2.02",
+        "PdfTk version probe stderr:",
+        "T18 controlled native warning",
+        "PDFtk: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\app\\pdftk.exe (version 2.02)",
+        "Stage: Input inspection; elapsed: 2.062 s",
+        "Input preflight 1 executable: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\app\\pdftk.exe",
+        "Input preflight 1 arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\source [x] ! &\\1.pdf\" \"dump_data_utf8\" \"output\" \"-\" \"dont_ask\"",
+        "Input preflight 1 exit: 0; elapsed: 1 ms; PID: 12345",
+        "Input preflight 1 started: True; timed out: False; cancelled: False; succeeded: True",
+        "Input preflight 1 launch error: ",
+        "Input preflight 1 capture error: ",
+        "Input preflight 1 termination error: ",
+        "Input preflight 1 stdout truncated: False; stderr truncated: False",
+        "Input preflight 1 stdout:",
+        "NumberOfPages: 1",
+        "Input preflight 1 stderr:",
+        "T18 controlled native warning",
+        "Input preflight 2 executable: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\app\\pdftk.exe",
+        "Input preflight 2 arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\source [x] ! &\\2.pdf\" \"dump_data_utf8\" \"output\" \"-\" \"dont_ask\"",
+        "Input preflight 2 exit: 0; elapsed: 1 ms; PID: 12345",
+        "Input preflight 2 started: True; timed out: False; cancelled: False; succeeded: True",
+        "Input preflight 2 launch error: ",
+        "Input preflight 2 capture error: ",
+        "Input preflight 2 termination error: ",
+        "Input preflight 2 stdout truncated: False; stderr truncated: False",
+        "Input preflight 2 stdout:",
+        "NumberOfPages: 1",
+        "Input preflight 2 stderr:",
+        "T18 controlled native warning",
+        "Input 1 pages: 1",
+        "Input 2 pages: 1",
+        "Expected page total: 2",
+        "Private staging: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\output [x] ! &\\.WinPDFMerge_9b4f10a6f4434b75bf1692f69c5be6c8.tmp",
+        "Stage: Master processing; elapsed: 2.719 s",
+        "PDFtk executable: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\app\\pdftk.exe",
+        "PDFtk arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\source [x] ! &\\1.pdf\" \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\source [x] ! &\\2.pdf\" \"cat\" \"output\" \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\output [x] ! &\\.WinPDFMerge_9b4f10a6f4434b75bf1692f69c5be6c8.tmp\\master.pdf\" \"compress\" \"dont_ask\"",
+        "PDFtk exit: 0; elapsed: 1 ms; PID: 12345",
+        "PDFtk started: True; timed out: False; cancelled: False; succeeded: True",
+        "PDFtk launch error: ",
+        "PDFtk capture error: ",
+        "PDFtk termination error: ",
+        "PDFtk stdout truncated: False; stderr truncated: False",
+        "PDFtk stdout:",
+        "T18 controlled merge stdout",
+        "PDFtk stderr:",
+        "T18 controlled native warning",
+        "Master validation executable: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\app\\pdftk.exe",
+        "Master validation arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\output [x] ! &\\.WinPDFMerge_9b4f10a6f4434b75bf1692f69c5be6c8.tmp\\master.pdf\" \"dump_data_utf8\" \"output\" \"-\" \"dont_ask\"",
+        "Master validation exit: 0; elapsed: 1 ms; PID: 12345",
+        "Master validation started: True; timed out: False; cancelled: False; succeeded: True",
+        "Master validation launch error: ",
+        "Master validation capture error: ",
+        "Master validation termination error: ",
+        "Master validation stdout truncated: False; stderr truncated: False",
+        "Master validation stdout:",
+        "NumberOfPages: 2",
+        "Master validation stderr:",
+        "T18 controlled native warning",
+        "Master validation OK: 2 expected pages inspected. Merged master published: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182358_a21645a2ab904383.pdf",
+        "Stage: Summary; elapsed: 3.270 s",
+        "Elapsed time: 3.287 s",
+        "PowerShell: 7.6.6 (Core)",
+        "PDFtk version: 2.02",
+        "Ghostscript version: not used (SkipEmail)",
+        "Input summary: 2 PDF(s); expected pages: 2",
+        "Email result: skipped",
+        "Email explicitly skipped; validated master retained.",
+        "Master size: 1786 bytes (1.74 KiB).",
+        "Published Merged master: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182358_a21645a2ab904383.pdf",
+        "Done.",
+        "Result: SUCCESS; exit code: 0"
+      ],
+      "Identity": {
+        "OutputFolder": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\output [x] ! &",
+        "FolderLabel": "source [x] ! &",
+        "Timestamp": "20261009_182358",
+        "RunSuffix": "a21645a2ab904383",
+        "BaseName": "WinPDFMerge_source [x] ! &_20261009_182358_a21645a2ab904383",
+        "MasterPath": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182358_a21645a2ab904383.pdf",
+        "EmailPath": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182358_a21645a2ab904383_email.pdf",
+        "LogPath": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182358_a21645a2ab904383.log"
+      },
+      "LogPresentAtPdftkDiscovery": true,
+      "LogPresentAtSourceDiscovery": true,
+      "Outcome": {
+        "ExitCode": 0,
+        "Summary": "SUCCESS",
+        "EmailMessage": "Email explicitly skipped; validated master retained.",
+        "EmailState": "skipped",
+        "PublishedPaths": [
+          {
+            "Label": "Merged master",
+            "Path": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182358_a21645a2ab904383.pdf"
+          }
+        ]
+      },
+      "BindingError": null
+    },
+    "Before": "1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|2.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+    "After": "1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|2.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+    "Logs": [
+      {
+        "Path": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182358_a21645a2ab904383.log",
+        "SHA256": "8711ad07e48482e6828c8fcf8d4e2e8e1450be4680acded38cb9ceff285e4721",
+        "Text": "==== WinPDFMerge run 2026-10-09 18:23:58 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 1.497 s\r\nSource folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\source [x] ! &\r\nOutput folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\output [x] ! &\r\nRun identity: WinPDFMerge_source [x] ! &_20261009_182358_a21645a2ab904383\r\nPlanned master output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182358_a21645a2ab904383.pdf\r\nPlanned email output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182358_a21645a2ab904383_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 7.6.6 (Core)\r\nStage: Input discovery; elapsed: 1.603 s\r\nPDF count: 2\r\nInput 1: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\source [x] ! &\\1.pdf\r\nInput 2: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\source [x] ! &\\2.pdf\r\nStage: PDFtk preflight; elapsed: 1.771 s\r\nPdfTk version probe executable: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\app\\pdftk.exe\r\nPdfTk version probe arguments: \"--version\"\r\nPdfTk version probe exit: 0; elapsed: 1 ms; PID: 12345\r\nPdfTk version probe started: True; timed out: False; cancelled: False; succeeded: True\r\nPdfTk version probe launch error: \r\nPdfTk version probe capture error: \r\nPdfTk version probe termination error: \r\nPdfTk version probe stdout truncated: False; stderr truncated: False\r\nPdfTk version probe stdout:\r\npdftk 2.02\r\nPdfTk version probe stderr:\r\nT18 controlled native warning\r\nPDFtk: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\app\\pdftk.exe (version 2.02)\r\nStage: Input inspection; elapsed: 2.062 s\r\nInput preflight 1 executable: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\app\\pdftk.exe\r\nInput preflight 1 arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\source [x] ! &\\1.pdf\" \"dump_data_utf8\" \"output\" \"-\" \"dont_ask\"\r\nInput preflight 1 exit: 0; elapsed: 1 ms; PID: 12345\r\nInput preflight 1 started: True; timed out: False; cancelled: False; succeeded: True\r\nInput preflight 1 launch error: \r\nInput preflight 1 capture error: \r\nInput preflight 1 termination error: \r\nInput preflight 1 stdout truncated: False; stderr truncated: False\r\nInput preflight 1 stdout:\r\nNumberOfPages: 1\r\nInput preflight 1 stderr:\r\nT18 controlled native warning\r\nInput preflight 2 executable: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\app\\pdftk.exe\r\nInput preflight 2 arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\source [x] ! &\\2.pdf\" \"dump_data_utf8\" \"output\" \"-\" \"dont_ask\"\r\nInput preflight 2 exit: 0; elapsed: 1 ms; PID: 12345\r\nInput preflight 2 started: True; timed out: False; cancelled: False; succeeded: True\r\nInput preflight 2 launch error: \r\nInput preflight 2 capture error: \r\nInput preflight 2 termination error: \r\nInput preflight 2 stdout truncated: False; stderr truncated: False\r\nInput preflight 2 stdout:\r\nNumberOfPages: 1\r\nInput preflight 2 stderr:\r\nT18 controlled native warning\r\nInput 1 pages: 1\r\nInput 2 pages: 1\r\nExpected page total: 2\r\nPrivate staging: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\output [x] ! &\\.WinPDFMerge_9b4f10a6f4434b75bf1692f69c5be6c8.tmp\r\nStage: Master processing; elapsed: 2.719 s\r\nPDFtk executable: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\app\\pdftk.exe\r\nPDFtk arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\source [x] ! &\\1.pdf\" \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\source [x] ! &\\2.pdf\" \"cat\" \"output\" \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\output [x] ! &\\.WinPDFMerge_9b4f10a6f4434b75bf1692f69c5be6c8.tmp\\master.pdf\" \"compress\" \"dont_ask\"\r\nPDFtk exit: 0; elapsed: 1 ms; PID: 12345\r\nPDFtk started: True; timed out: False; cancelled: False; succeeded: True\r\nPDFtk launch error: \r\nPDFtk capture error: \r\nPDFtk termination error: \r\nPDFtk stdout truncated: False; stderr truncated: False\r\nPDFtk stdout:\r\nT18 controlled merge stdout\r\nPDFtk stderr:\r\nT18 controlled native warning\r\nMaster validation executable: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\app\\pdftk.exe\r\nMaster validation arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\output [x] ! &\\.WinPDFMerge_9b4f10a6f4434b75bf1692f69c5be6c8.tmp\\master.pdf\" \"dump_data_utf8\" \"output\" \"-\" \"dont_ask\"\r\nMaster validation exit: 0; elapsed: 1 ms; PID: 12345\r\nMaster validation started: True; timed out: False; cancelled: False; succeeded: True\r\nMaster validation launch error: \r\nMaster validation capture error: \r\nMaster validation termination error: \r\nMaster validation stdout truncated: False; stderr truncated: False\r\nMaster validation stdout:\r\nNumberOfPages: 2\r\nMaster validation stderr:\r\nT18 controlled native warning\r\nMaster validation OK: 2 expected pages inspected. Merged master published: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182358_a21645a2ab904383.pdf\r\nStage: Summary; elapsed: 3.270 s\r\nElapsed time: 3.287 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: 2.02\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: 2 PDF(s); expected pages: 2\r\nEmail result: skipped\r\nEmail explicitly skipped; validated master retained.\r\nMaster size: 1786 bytes (1.74 KiB).\r\nPublished Merged master: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182358_a21645a2ab904383.pdf\r\nDone.\r\nResult: SUCCESS; exit code: 0\r\n"
+      }
+    ],
+    "Finals": [
+      {
+        "Path": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\0e3298b6ce8c4bb69b66cd4999ed38b8\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182358_a21645a2ab904383.pdf",
+        "Bytes": 1786,
+        "SHA256": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109"
+      }
+    ],
+    "StdoutSHA256": "21e86848261cda20747cdf5597194777b6ceb1687a07ecc461c1e000f01dcf03",
+    "StderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "Label": "entry-summary-log-failed",
+    "Scope": "bounded actual copied-entry subprocess with controlled native receipts; no PDF engine/manual claim",
+    "Command": [
+      "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+      "-NoLogo",
+      "-NoProfile",
+      "-NonInteractive",
+      "-ExecutionPolicy",
+      "RemoteSigned",
+      "-File",
+      "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\Invoke-Entry.ps1",
+      "-Configuration",
+      "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\app\\diagnostic-config.json"
+    ],
+    "ChildEnvironmentRemovedKeys": [
+      "PSModulePath"
+    ],
+    "PersistentEnvironmentChanges": false,
+    "Culture": "de-DE",
+    "EntrySHA256": "2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902",
+    "HelperWithHooksSHA256": "739a1f6fcf9b69806f5bd657cf98e3eefafc9509224e55ba2a7a47d173ec752a",
+    "WrapperSHA256": "75c4f4476c34fd727f7723ae40ac44e4b0736d240f882624c505d735f1d2341b",
+    "ConfigurationSHA256": "7897c3615a53a03d247a12a7950900a2e422fce91499e3371a0806fd397ec377",
+    "Result": {
+      "Executable": "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+      "RenderedArguments": "\"-NoLogo\" \"-NoProfile\" \"-NonInteractive\" \"-ExecutionPolicy\" \"RemoteSigned\" \"-File\" \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\Invoke-Entry.ps1\" \"-Configuration\" \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\app\\diagnostic-config.json\"",
+      "ExitCode": 2,
+      "Stdout": "WinPDFMerger 1.0.0\r\nStage: Invocation preflight; elapsed: 0.132 s\r\n==== WinPDFMerge run 2026-10-09 18:24:03 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 1.129 s\r\nSource folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\source [x] ! &\r\nOutput folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\output [x] ! &\r\nRun identity: WinPDFMerge_source [x] ! &_20261009_182402_afb5664b2f144de9\r\nPlanned master output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182402_afb5664b2f144de9.pdf\r\nPlanned email output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182402_afb5664b2f144de9_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 7.6.6 (Core)\r\nStage: Input discovery; elapsed: 1.228 s\r\nPDF count: 2\r\nInput 1: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\source [x] ! &\\1.pdf\r\nInput 2: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\source [x] ! &\\2.pdf\r\nStage: PDFtk preflight; elapsed: 1.355 s\r\nPDFtk: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\app\\pdftk.exe (version 2.02)\r\nStage: Input inspection; elapsed: 1.605 s\r\nInput 1 pages: 1\r\nInput 2 pages: 1\r\nExpected page total: 2\r\nPrivate staging: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\output [x] ! &\\.WinPDFMerge_0d5f231d2aed4596be97802be512df88.tmp\r\nStage: Master processing; elapsed: 2.256 s\r\nPDFtk executable: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\app\\pdftk.exe\r\nPDFtk arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\source [x] ! &\\1.pdf\" \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\source [x] ! &\\2.pdf\" \"cat\" \"output\" \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\output [x] ! &\\.WinPDFMerge_0d5f231d2aed4596be97802be512df88.tmp\\master.pdf\" \"compress\" \"dont_ask\"\r\nPDFtk exit: 0; elapsed: 1 ms; PID: 12345\r\nPDFtk started: True; timed out: False; cancelled: False; succeeded: True\r\nPDFtk launch error: \r\nPDFtk capture error: \r\nPDFtk termination error: \r\nPDFtk stdout truncated: False; stderr truncated: False\r\nPDFtk stdout:\r\nT18 controlled merge stdout\r\nPDFtk stderr:\r\nT18 controlled native warning\r\nMaster validation executable: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\app\\pdftk.exe\r\nMaster validation arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\output [x] ! &\\.WinPDFMerge_0d5f231d2aed4596be97802be512df88.tmp\\master.pdf\" \"dump_data_utf8\" \"output\" \"-\" \"dont_ask\"\r\nMaster validation exit: 0; elapsed: 1 ms; PID: 12345\r\nMaster validation started: True; timed out: False; cancelled: False; succeeded: True\r\nMaster validation launch error: \r\nMaster validation capture error: \r\nMaster validation termination error: \r\nMaster validation stdout truncated: False; stderr truncated: False\r\nMaster validation stdout:\r\nNumberOfPages: 2\r\nMaster validation stderr:\r\nT18 controlled native warning\r\nMaster validation OK: 2 expected pages inspected. Merged master published: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182402_afb5664b2f144de9.pdf\r\nStage: Summary; elapsed: 2.804 s\r\n\nPARTIAL SUCCESS: Result logging failed: T18 controlled summary logging failure\r\nResult: PARTIAL SUCCESS; exit code: 2\r\nElapsed time: 2.847 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: 2.02\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: 2 PDF(s); expected pages: 2\r\nMaster size: 1786 bytes (1.74 KiB).\r\n - Merged master: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182402_afb5664b2f144de9.pdf\r\nLog: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182402_afb5664b2f144de9.log\r\n",
+      "Stderr": "",
+      "ElapsedMilliseconds": 3756,
+      "ProcessId": 8612,
+      "Started": true,
+      "TimedOut": false,
+      "Cancelled": false,
+      "LaunchError": null,
+      "CaptureError": null,
+      "TerminationError": null,
+      "OwnershipReleased": true,
+      "StdoutTruncated": false,
+      "StderrTruncated": false,
+      "Succeeded": false
+    },
+    "ReceiptPath": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\receipt.json",
+    "ReceiptSHA256": "955f09d3c69dfaa450d6b84a1c4c4eaf772cb452e42ac6010c136d2af8e023cd",
+    "Receipt": {
+      "Scope": "copied entry with controlled native receipts; no PDF engine",
+      "HelperLoaded": true,
+      "PdftkDiscovery": 1,
+      "GSDiscovery": 0,
+      "SourceDiscovery": 1,
+      "NativeCalls": [
+        {
+          "Executable": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\app\\pdftk.exe",
+          "Arguments": [
+            "--version"
+          ],
+          "RemoveEnvironmentVariables": [
+            "GS_OPTIONS"
+          ]
+        },
+        {
+          "Executable": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\app\\pdftk.exe",
+          "Arguments": [
+            "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\source [x] ! &\\1.pdf",
+            "dump_data_utf8",
+            "output",
+            "-",
+            "dont_ask"
+          ],
+          "RemoveEnvironmentVariables": []
+        },
+        {
+          "Executable": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\app\\pdftk.exe",
+          "Arguments": [
+            "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\source [x] ! &\\2.pdf",
+            "dump_data_utf8",
+            "output",
+            "-",
+            "dont_ask"
+          ],
+          "RemoveEnvironmentVariables": []
+        },
+        {
+          "Executable": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\app\\pdftk.exe",
+          "Arguments": [
+            "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\source [x] ! &\\1.pdf",
+            "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\source [x] ! &\\2.pdf",
+            "cat",
+            "output",
+            "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\output [x] ! &\\.WinPDFMerge_0d5f231d2aed4596be97802be512df88.tmp\\master.pdf",
+            "compress",
+            "dont_ask"
+          ],
+          "RemoveEnvironmentVariables": []
+        },
+        {
+          "Executable": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\app\\pdftk.exe",
+          "Arguments": [
+            "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\output [x] ! &\\.WinPDFMerge_0d5f231d2aed4596be97802be512df88.tmp\\master.pdf",
+            "dump_data_utf8",
+            "output",
+            "-",
+            "dont_ask"
+          ],
+          "RemoveEnvironmentVariables": []
+        }
+      ],
+      "Messages": [
+        "==== WinPDFMerge run 2026-10-09 18:24:03 ====",
+        "Application version: 1.0.0",
+        "Stage: Invocation preflight; elapsed: 1.129 s",
+        "Source folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\source [x] ! &",
+        "Output folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\output [x] ! &",
+        "Run identity: WinPDFMerge_source [x] ! &_20261009_182402_afb5664b2f144de9",
+        "Planned master output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182402_afb5664b2f144de9.pdf",
+        "Planned email output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182402_afb5664b2f144de9_email.pdf",
+        "Diagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.",
+        "PowerShell: 7.6.6 (Core)",
+        "Stage: Input discovery; elapsed: 1.228 s",
+        "PDF count: 2",
+        "Input 1: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\source [x] ! &\\1.pdf",
+        "Input 2: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\source [x] ! &\\2.pdf",
+        "Stage: PDFtk preflight; elapsed: 1.355 s",
+        "PdfTk version probe executable: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\app\\pdftk.exe",
+        "PdfTk version probe arguments: \"--version\"",
+        "PdfTk version probe exit: 0; elapsed: 1 ms; PID: 12345",
+        "PdfTk version probe started: True; timed out: False; cancelled: False; succeeded: True",
+        "PdfTk version probe launch error: ",
+        "PdfTk version probe capture error: ",
+        "PdfTk version probe termination error: ",
+        "PdfTk version probe stdout truncated: False; stderr truncated: False",
+        "PdfTk version probe stdout:",
+        "pdftk 2.02",
+        "PdfTk version probe stderr:",
+        "T18 controlled native warning",
+        "PDFtk: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\app\\pdftk.exe (version 2.02)",
+        "Stage: Input inspection; elapsed: 1.605 s",
+        "Input preflight 1 executable: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\app\\pdftk.exe",
+        "Input preflight 1 arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\source [x] ! &\\1.pdf\" \"dump_data_utf8\" \"output\" \"-\" \"dont_ask\"",
+        "Input preflight 1 exit: 0; elapsed: 1 ms; PID: 12345",
+        "Input preflight 1 started: True; timed out: False; cancelled: False; succeeded: True",
+        "Input preflight 1 launch error: ",
+        "Input preflight 1 capture error: ",
+        "Input preflight 1 termination error: ",
+        "Input preflight 1 stdout truncated: False; stderr truncated: False",
+        "Input preflight 1 stdout:",
+        "NumberOfPages: 1",
+        "Input preflight 1 stderr:",
+        "T18 controlled native warning",
+        "Input preflight 2 executable: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\app\\pdftk.exe",
+        "Input preflight 2 arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\source [x] ! &\\2.pdf\" \"dump_data_utf8\" \"output\" \"-\" \"dont_ask\"",
+        "Input preflight 2 exit: 0; elapsed: 1 ms; PID: 12345",
+        "Input preflight 2 started: True; timed out: False; cancelled: False; succeeded: True",
+        "Input preflight 2 launch error: ",
+        "Input preflight 2 capture error: ",
+        "Input preflight 2 termination error: ",
+        "Input preflight 2 stdout truncated: False; stderr truncated: False",
+        "Input preflight 2 stdout:",
+        "NumberOfPages: 1",
+        "Input preflight 2 stderr:",
+        "T18 controlled native warning",
+        "Input 1 pages: 1",
+        "Input 2 pages: 1",
+        "Expected page total: 2",
+        "Private staging: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\output [x] ! &\\.WinPDFMerge_0d5f231d2aed4596be97802be512df88.tmp",
+        "Stage: Master processing; elapsed: 2.256 s",
+        "PDFtk executable: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\app\\pdftk.exe",
+        "PDFtk arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\source [x] ! &\\1.pdf\" \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\source [x] ! &\\2.pdf\" \"cat\" \"output\" \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\output [x] ! &\\.WinPDFMerge_0d5f231d2aed4596be97802be512df88.tmp\\master.pdf\" \"compress\" \"dont_ask\"",
+        "PDFtk exit: 0; elapsed: 1 ms; PID: 12345",
+        "PDFtk started: True; timed out: False; cancelled: False; succeeded: True",
+        "PDFtk launch error: ",
+        "PDFtk capture error: ",
+        "PDFtk termination error: ",
+        "PDFtk stdout truncated: False; stderr truncated: False",
+        "PDFtk stdout:",
+        "T18 controlled merge stdout",
+        "PDFtk stderr:",
+        "T18 controlled native warning",
+        "Master validation executable: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\app\\pdftk.exe",
+        "Master validation arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\output [x] ! &\\.WinPDFMerge_0d5f231d2aed4596be97802be512df88.tmp\\master.pdf\" \"dump_data_utf8\" \"output\" \"-\" \"dont_ask\"",
+        "Master validation exit: 0; elapsed: 1 ms; PID: 12345",
+        "Master validation started: True; timed out: False; cancelled: False; succeeded: True",
+        "Master validation launch error: ",
+        "Master validation capture error: ",
+        "Master validation termination error: ",
+        "Master validation stdout truncated: False; stderr truncated: False",
+        "Master validation stdout:",
+        "NumberOfPages: 2",
+        "Master validation stderr:",
+        "T18 controlled native warning",
+        "Master validation OK: 2 expected pages inspected. Merged master published: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182402_afb5664b2f144de9.pdf",
+        "Stage: Summary; elapsed: 2.804 s",
+        "Elapsed time: 2.820 s"
+      ],
+      "Identity": {
+        "OutputFolder": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\output [x] ! &",
+        "FolderLabel": "source [x] ! &",
+        "Timestamp": "20261009_182402",
+        "RunSuffix": "afb5664b2f144de9",
+        "BaseName": "WinPDFMerge_source [x] ! &_20261009_182402_afb5664b2f144de9",
+        "MasterPath": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182402_afb5664b2f144de9.pdf",
+        "EmailPath": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182402_afb5664b2f144de9_email.pdf",
+        "LogPath": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182402_afb5664b2f144de9.log"
+      },
+      "LogPresentAtPdftkDiscovery": true,
+      "LogPresentAtSourceDiscovery": true,
+      "Outcome": {
+        "ExitCode": 2,
+        "Summary": "PARTIAL SUCCESS",
+        "EmailMessage": "Run failed; validated published outputs retained.",
+        "EmailState": "skipped",
+        "PublishedPaths": [
+          {
+            "Label": "Merged master",
+            "Path": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182402_afb5664b2f144de9.pdf"
+          }
+        ]
+      },
+      "BindingError": null
+    },
+    "Before": "1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|2.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+    "After": "1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|2.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+    "Logs": [
+      {
+        "Path": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182402_afb5664b2f144de9.log",
+        "SHA256": "11e8fcee806d15a6ce1c6c730f7bb8cf6e0b18cee2164d69dd33bb4f34b94c62",
+        "Text": "==== WinPDFMerge run 2026-10-09 18:24:03 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 1.129 s\r\nSource folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\source [x] ! &\r\nOutput folder: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\output [x] ! &\r\nRun identity: WinPDFMerge_source [x] ! &_20261009_182402_afb5664b2f144de9\r\nPlanned master output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182402_afb5664b2f144de9.pdf\r\nPlanned email output: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182402_afb5664b2f144de9_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 7.6.6 (Core)\r\nStage: Input discovery; elapsed: 1.228 s\r\nPDF count: 2\r\nInput 1: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\source [x] ! &\\1.pdf\r\nInput 2: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\source [x] ! &\\2.pdf\r\nStage: PDFtk preflight; elapsed: 1.355 s\r\nPdfTk version probe executable: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\app\\pdftk.exe\r\nPdfTk version probe arguments: \"--version\"\r\nPdfTk version probe exit: 0; elapsed: 1 ms; PID: 12345\r\nPdfTk version probe started: True; timed out: False; cancelled: False; succeeded: True\r\nPdfTk version probe launch error: \r\nPdfTk version probe capture error: \r\nPdfTk version probe termination error: \r\nPdfTk version probe stdout truncated: False; stderr truncated: False\r\nPdfTk version probe stdout:\r\npdftk 2.02\r\nPdfTk version probe stderr:\r\nT18 controlled native warning\r\nPDFtk: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\app\\pdftk.exe (version 2.02)\r\nStage: Input inspection; elapsed: 1.605 s\r\nInput preflight 1 executable: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\app\\pdftk.exe\r\nInput preflight 1 arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\source [x] ! &\\1.pdf\" \"dump_data_utf8\" \"output\" \"-\" \"dont_ask\"\r\nInput preflight 1 exit: 0; elapsed: 1 ms; PID: 12345\r\nInput preflight 1 started: True; timed out: False; cancelled: False; succeeded: True\r\nInput preflight 1 launch error: \r\nInput preflight 1 capture error: \r\nInput preflight 1 termination error: \r\nInput preflight 1 stdout truncated: False; stderr truncated: False\r\nInput preflight 1 stdout:\r\nNumberOfPages: 1\r\nInput preflight 1 stderr:\r\nT18 controlled native warning\r\nInput preflight 2 executable: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\app\\pdftk.exe\r\nInput preflight 2 arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\source [x] ! &\\2.pdf\" \"dump_data_utf8\" \"output\" \"-\" \"dont_ask\"\r\nInput preflight 2 exit: 0; elapsed: 1 ms; PID: 12345\r\nInput preflight 2 started: True; timed out: False; cancelled: False; succeeded: True\r\nInput preflight 2 launch error: \r\nInput preflight 2 capture error: \r\nInput preflight 2 termination error: \r\nInput preflight 2 stdout truncated: False; stderr truncated: False\r\nInput preflight 2 stdout:\r\nNumberOfPages: 1\r\nInput preflight 2 stderr:\r\nT18 controlled native warning\r\nInput 1 pages: 1\r\nInput 2 pages: 1\r\nExpected page total: 2\r\nPrivate staging: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\output [x] ! &\\.WinPDFMerge_0d5f231d2aed4596be97802be512df88.tmp\r\nStage: Master processing; elapsed: 2.256 s\r\nPDFtk executable: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\app\\pdftk.exe\r\nPDFtk arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\source [x] ! &\\1.pdf\" \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\source [x] ! &\\2.pdf\" \"cat\" \"output\" \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\output [x] ! &\\.WinPDFMerge_0d5f231d2aed4596be97802be512df88.tmp\\master.pdf\" \"compress\" \"dont_ask\"\r\nPDFtk exit: 0; elapsed: 1 ms; PID: 12345\r\nPDFtk started: True; timed out: False; cancelled: False; succeeded: True\r\nPDFtk launch error: \r\nPDFtk capture error: \r\nPDFtk termination error: \r\nPDFtk stdout truncated: False; stderr truncated: False\r\nPDFtk stdout:\r\nT18 controlled merge stdout\r\nPDFtk stderr:\r\nT18 controlled native warning\r\nMaster validation executable: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\app\\pdftk.exe\r\nMaster validation arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\output [x] ! &\\.WinPDFMerge_0d5f231d2aed4596be97802be512df88.tmp\\master.pdf\" \"dump_data_utf8\" \"output\" \"-\" \"dont_ask\"\r\nMaster validation exit: 0; elapsed: 1 ms; PID: 12345\r\nMaster validation started: True; timed out: False; cancelled: False; succeeded: True\r\nMaster validation launch error: \r\nMaster validation capture error: \r\nMaster validation termination error: \r\nMaster validation stdout truncated: False; stderr truncated: False\r\nMaster validation stdout:\r\nNumberOfPages: 2\r\nMaster validation stderr:\r\nT18 controlled native warning\r\nMaster validation OK: 2 expected pages inspected. Merged master published: <REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182402_afb5664b2f144de9.pdf\r\nStage: Summary; elapsed: 2.804 s\r\n"
+      }
+    ],
+    "Finals": [
+      {
+        "Path": "<REPO>\\tests\\.work\\T18-diagnostics\\13167ab555bf4458891eb9c25f7f793f\\572c598c99d2449ba7bc05c8712ca83a\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_182402_afb5664b2f144de9.pdf",
+        "Bytes": 1786,
+        "SHA256": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109"
+      }
+    ],
+    "StdoutSHA256": "3eed816d2e8643f89298c672776e35a200ee51d3006908c50cdc639c79ce3390",
+    "StderrSHA256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]

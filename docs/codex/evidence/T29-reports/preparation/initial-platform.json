@@ -1,0 +1,158 @@
+{
+  "task": "T29",
+  "scope": "initial context or dirty exploratory preparation; not accepted T29 operation",
+  "original_ledger": "tests/.work/T29-context/initial-platform.json",
+  "original_bytes": 5474,
+  "original_sha256": "38a57ced4e17ef08964403def4152650a1a08765aefa71dbde93012053b36ff8",
+  "redactions": [
+    "<REPO>",
+    "<USERPROFILE>"
+  ],
+  "payload": {
+    "observed_at_utc": "2026-10-09T15:05:35.305874+00:00",
+    "source_head": "5f962aaab1dacf0401ded92916f5a1ca73095354",
+    "invocations": [
+      {
+        "label": "pr",
+        "started_at_utc": "2026-10-09T15:05:33.376619+00:00",
+        "argv": [
+          "gh",
+          "pr",
+          "view",
+          "26",
+          "--repo",
+          "PikkuJanne/WinPDFMerger",
+          "--json",
+          "number,title,state,isDraft,headRefName,headRefOid,baseRefName,url,mergeable,reviewDecision,statusCheckRollup"
+        ],
+        "exit_code": 0,
+        "stdout_sha256": "aca0510e2cfead0086f1058d203c6c77ef87dff9f8b69d2dc0f06746bf9d547b",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "label": "releases",
+        "started_at_utc": "2026-10-09T15:05:34.176986+00:00",
+        "argv": [
+          "gh",
+          "api",
+          "repos/PikkuJanne/WinPDFMerger/releases",
+          "--paginate"
+        ],
+        "exit_code": 0,
+        "stdout_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "label": "refs",
+        "started_at_utc": "2026-10-09T15:05:34.700467+00:00",
+        "argv": [
+          "git",
+          "ls-remote",
+          "origin",
+          "refs/heads/main",
+          "refs/heads/codex/v1.0.0-readiness",
+          "refs/tags/*"
+        ],
+        "exit_code": 0,
+        "stdout_sha256": "06a47977e6b5eb52ccbb73c79e02db6308207591f53be9e943b6e8ba3d43f039",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ],
+    "pr": {
+      "baseRefName": "main",
+      "headRefName": "codex/v1.0.0-readiness",
+      "headRefOid": "5f962aaab1dacf0401ded92916f5a1ca73095354",
+      "isDraft": true,
+      "mergeable": "MERGEABLE",
+      "number": 26,
+      "reviewDecision": "",
+      "state": "OPEN",
+      "statusCheckRollup": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-09T14:57:34Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/PikkuJanne/WinPDFMerger/actions/runs/37947761213/job/113878373739",
+          "name": "unit / PS51",
+          "startedAt": "2026-10-09T14:55:05Z",
+          "status": "COMPLETED",
+          "workflowName": "Windows tests"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-09T14:58:02Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/PikkuJanne/WinPDFMerger/actions/runs/37947755009/job/113878353429",
+          "name": "unit / PS51",
+          "startedAt": "2026-10-09T14:55:02Z",
+          "status": "COMPLETED",
+          "workflowName": "Windows tests"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-09T14:57:12Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/PikkuJanne/WinPDFMerger/actions/runs/37947761213/job/113878373893",
+          "name": "unit / PS7",
+          "startedAt": "2026-10-09T14:55:06Z",
+          "status": "COMPLETED",
+          "workflowName": "Windows tests"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-09T14:57:43Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/PikkuJanne/WinPDFMerger/actions/runs/37947755009/job/113878353585",
+          "name": "unit / PS7",
+          "startedAt": "2026-10-09T14:55:03Z",
+          "status": "COMPLETED",
+          "workflowName": "Windows tests"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-09T14:56:02Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/PikkuJanne/WinPDFMerger/actions/runs/37947761213/job/113878373561",
+          "name": "native / PS51",
+          "startedAt": "2026-10-09T14:55:05Z",
+          "status": "COMPLETED",
+          "workflowName": "Windows tests"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-09T14:56:00Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/PikkuJanne/WinPDFMerger/actions/runs/37947755009/job/113878353474",
+          "name": "native / PS51",
+          "startedAt": "2026-10-09T14:55:05Z",
+          "status": "COMPLETED",
+          "workflowName": "Windows tests"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-09T14:56:04Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/PikkuJanne/WinPDFMerger/actions/runs/37947761213/job/113878373661",
+          "name": "native / PS7",
+          "startedAt": "2026-10-09T14:55:06Z",
+          "status": "COMPLETED",
+          "workflowName": "Windows tests"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-09T14:56:01Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/PikkuJanne/WinPDFMerger/actions/runs/37947755009/job/113878353329",
+          "name": "native / PS7",
+          "startedAt": "2026-10-09T14:55:03Z",
+          "status": "COMPLETED",
+          "workflowName": "Windows tests"
+        }
+      ],
+      "title": "Validate local PDF outputs and prepare WinPDFMerger v1.0.0",
+      "url": "https://github.com/PikkuJanne/WinPDFMerger/pull/26"
+    },
+    "releases": [],
+    "refs": "5f962aaab1dacf0401ded92916f5a1ca73095354\trefs/heads/codex/v1.0.0-readiness\ne2451141217efdd00a1d49d72a04df054872dffc\trefs/heads/main\n"
+  }
+}

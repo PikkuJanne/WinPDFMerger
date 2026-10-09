@@ -1,0 +1,14 @@
+{
+  "task": "T30",
+  "evidence_class": "exporter_preparation_error; not application acceptance",
+  "source_commit": "8f76ba4bce7de100cd56274ca938c4da24b500dc",
+  "command": "<approved-python> -B tests/.work/Export-T30.py 8f76ba4bce7de100cd56274ca938c4da24b500dc",
+  "first_result": "fail",
+  "exit_code": 1,
+  "error": "ValueError: stat: path too long for Windows",
+  "cause": "SizeReporting and Parameters observation lines contain inline JSON, not paths. Initial export tried Path.resolve on inline JSON.",
+  "writes_before_error": false,
+  "correction": "Validate inline JSON and retain it in original raw stdout and runs.json; only resolve actual receipt paths.",
+  "original_receipts_changed": false,
+  "limitations": "Error observed in tool output; no separate original stream/time/hash receipt is fabricated. No application execution or accepted case count affected."
+}

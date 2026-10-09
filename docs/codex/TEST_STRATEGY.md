@@ -3,8 +3,8 @@
 ## Evidence classes are not interchangeable
 - Unit/fault tests: Pester tests with mocks or controlled fake processes. They prove isolated decisions and failure paths, not native PDF support.
 - Native integration: actual pinned PDFtk/GS on Windows; inspect page totals, order, exit states, and produced files.
-- Desktop acceptance: Windows 11 standard user, the actual batch launcher, actual Explorer drag-and-drop, and visibly readable results. Shell-starting a .bat does not prove Explorer interaction.
-- Distribution: extract the exact candidate ZIP to a new path with spaces and rerun the public instructions. Repeat a smoke check from the independently downloaded published ZIP.
+- Human standard-user desktop acceptance: excluded from this project by the owner's 2026-10-09 scope instruction (AC058). Historical observations keep their actual scope; shell-starting a .bat does not prove Explorer interaction or become a manual pass.
+- Distribution: extract the exact candidate ZIP to a new path with spaces and run the public application instructions on actual Windows with real native dependencies. Repeat a smoke check from the independently downloaded published ZIP. These remain required operation/source-safety checks and may be automated; no human account-class/Explorer/PDF-viewer walkthrough is a prerequisite.
 - Development helper self-tests: tests only for this handoff's importer/sync/release checker. They never count as application tests.
 
 Use Pester with explicit version import and PSScriptAnalyzer as a complementary static check. Select a stable version supporting BOTH required PowerShell runtimes. A parser/lint pass is not a successful merge. Test results should include machine-readable reports with skipped/pending counts, not just a green summary. [S08, S13]
@@ -28,9 +28,23 @@ Test the explicit sorting contract under at least two cultures, including longer
 Prove unchanged source hashes, no existing output replacement, same-second concurrent run isolation, source/output overlap refusal, partial-file exclusion from summaries, correct 0/1/2 codes, GS absent vs explicit skip, GS environment restoration on exceptions, timeout/cancel ownership, and no cross-run cleanup. Inject locked output, permission denial, disk-write failure, logging failure, process-start failure, and parser/page-count failure. Resource-full failure simulation counts only for the fault code path; do not relabel it an actual disk-exhaustion experiment.
 
 ## Compatibility scope
-Windows 11 x64 desktop + PowerShell 5.1 is required; one recorded supported PowerShell 7 x64 build is required for that compatibility claim. A hosted Windows Server runner does not certify Windows 11 desktop or Windows 10. Windows 10, ARM/x86 hosts, and live UNC shares may be explicitly excluded from validation with accurate README/release notes. Unit tests of UNC strings do not certify live UNC execution.
+Real Windows 11 x64 + PowerShell 5.1 is required; one recorded supported
+PowerShell 7 x64 build is required for that compatibility claim. Record actual
+OS/revision, shell/dependency versions and token context. A hosted Windows Server
+runner does not certify Windows 11 or Windows 10. Windows 10, ARM/x86 hosts and
+live UNC shares may be explicitly excluded from validation with accurate
+README/release notes. Unit tests of UNC strings do not certify live UNC execution.
 
-If Codex cannot observe desktop drag-and-drop or inspect output, prepare the small fixture/run and request one focused owner check using `templates/WINDOWS_ACCEPTANCE.md`. Record only the supplied actual observations. Do not repeatedly ask for an already completed check. Without required evidence, keep the exact task blocked and the project incomplete; do not stop at a ceremonial publication permission question.
+The owner stated on 2026-10-09: "Human standard user test is out of scope for this
+project". AC058 is nonrequired and `excluded`, never `pass`; do not request a
+human standard-user/physical Explorer/PDF-viewer walkthrough or reintroduce it at
+T29/T32/T33. `templates/WINDOWS_ACCEPTANCE.md` is retained only as a superseded
+template. AC059 still requires evidence review, truthful compatibility claims
+and explicit exclusions. Required automated Windows/native tests, independent
+PDF inspections, clean exact-package operation, published-download operation and
+source-safety checks remain. Tool limitations or absent native dependencies must
+be recorded as failures/blockers for those required checks, not substituted with
+owner environment reports or scope exclusions. Keep historical receipts unchanged.
 
 ## Case catalogue and readiness
 `ACCEPTANCE_CASES.json` defines IDs, stage, required/scoped status, and expected behavior. Every case begins `not_run`, with empty evidence. A `pass` needs a real evidence path. `excluded` is permitted only for `required=false` cases and needs rationale plus compatibility documentation. Required failures/unknowns block publication.

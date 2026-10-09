@@ -1,0 +1,588 @@
+{
+  "task": "T27",
+  "tested_commit": "044f3d9654ad9e8a68cda29f53994f6b169089fc",
+  "source_clean_before_after": true,
+  "driver_sha256_before_after": "452bb2289d30b2007c710373ab9bfbba8397af311a728bf842d9b85eff04ddd7",
+  "approved_cache_files_verified": 348,
+  "python_sha256": "10d845f50a2af64e3500bb2fcb348b5bc98a75d8ddada63e45ba1da6a1fc79d1",
+  "no_acquisition_or_persistent_changes": true,
+  "invocations": [
+    {
+      "label": "PS51-environment",
+      "started_at_utc": "2026-10-09T13:25:45.682827+00:00",
+      "elapsed_seconds": 0.656,
+      "exit_code": 0,
+      "arguments": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "docs/codex/evidence/T26-scope-reports/scripts/environment-probe.ps1"
+      ],
+      "output": "tests/.work/T27-capture/b1b59d613e9441a6aca82a46c26bc6a1/PS51-environment.txt",
+      "output_sha256": "c38612d6f2c2f42cd4ef96cc2605452e1042fdb867f46f782e53811c27b0b29e"
+    },
+    {
+      "label": "PS51-Version",
+      "started_at_utc": "2026-10-09T13:25:46.349504+00:00",
+      "elapsed_seconds": 6.687,
+      "exit_code": 0,
+      "arguments": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "tools/test/Invoke-Tests.ps1",
+        "-Tier",
+        "Version",
+        "-PesterModulePath",
+        "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1"
+      ],
+      "output": "tests/.work/T27-capture/b1b59d613e9441a6aca82a46c26bc6a1/PS51-Version.txt",
+      "output_sha256": "d38aa2b70ce45a2d8e9480d2710cb59e063b0b2b87c01a7564df25143da992b8",
+      "raw_summary": "tests/.work/pester/2494ff0bfba64410bc028898e756d4f3/summary.json",
+      "raw_summary_sha256": "a7fbdcff4c9b6a2bd33fbfa45959637b76aea832c17df39ea3cb383ad2f25b17",
+      "raw_xml_sha256": "881639dd99048b9c17d7c75b39805eb186250a9b411608b56045994c3d387328"
+    },
+    {
+      "label": "PS51-Version-export",
+      "started_at_utc": "2026-10-09T13:25:53.071496+00:00",
+      "elapsed_seconds": 0.719,
+      "exit_code": 0,
+      "arguments": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-Command",
+        ". ./tools/test/CiReportSupport.ps1; Export-CiTestReport -SummaryPath '<REPO>\\tests\\.work\\pester\\2494ff0bfba64410bc028898e756d4f3\\summary.json' -XmlPath '<REPO>\\tests\\.work\\pester\\2494ff0bfba64410bc028898e756d4f3\\results.xml' -Destination '<REPO>\\tests\\.work\\T27-capture\\b1b59d613e9441a6aca82a46c26bc6a1\\sanitized\\PS51\\Version' -ExpectedTier Version -ExpectedCommit '044f3d9654ad9e8a68cda29f53994f6b169089fc' -Shell PS51 -RunnerLabel windows-local"
+      ],
+      "output": "tests/.work/T27-capture/b1b59d613e9441a6aca82a46c26bc6a1/PS51-Version-export.txt",
+      "output_sha256": "0df298b8eab764645643740dbb04b96fe35c84d8a68321abb0974dcb651be9a3"
+    },
+    {
+      "label": "PS51-Unit",
+      "started_at_utc": "2026-10-09T13:25:53.810791+00:00",
+      "elapsed_seconds": 60.109,
+      "exit_code": 0,
+      "arguments": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "tools/test/Invoke-Tests.ps1",
+        "-Tier",
+        "Unit",
+        "-PesterModulePath",
+        "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1"
+      ],
+      "output": "tests/.work/T27-capture/b1b59d613e9441a6aca82a46c26bc6a1/PS51-Unit.txt",
+      "output_sha256": "0bdafc11e9a27a8cd883278a8bc87e39da442d70e98272fc3ef89d84d9fd5096",
+      "raw_summary": "tests/.work/pester/812902a7aa28494d9b5e308c7f07498d/summary.json",
+      "raw_summary_sha256": "2058d35510643e890085e7e3d6726d8e01617eccffbf715040649dd27dc6b993",
+      "raw_xml_sha256": "c83ec4b148ac378bc4d7258f0d636984b48120c028b14e4eadd3f32b6c98fb1c"
+    },
+    {
+      "label": "PS51-Unit-export",
+      "started_at_utc": "2026-10-09T13:26:53.931118+00:00",
+      "elapsed_seconds": 1.015,
+      "exit_code": 0,
+      "arguments": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-Command",
+        ". ./tools/test/CiReportSupport.ps1; Export-CiTestReport -SummaryPath '<REPO>\\tests\\.work\\pester\\812902a7aa28494d9b5e308c7f07498d\\summary.json' -XmlPath '<REPO>\\tests\\.work\\pester\\812902a7aa28494d9b5e308c7f07498d\\results.xml' -Destination '<REPO>\\tests\\.work\\T27-capture\\b1b59d613e9441a6aca82a46c26bc6a1\\sanitized\\PS51\\Unit' -ExpectedTier Unit -ExpectedCommit '044f3d9654ad9e8a68cda29f53994f6b169089fc' -Shell PS51 -RunnerLabel windows-local"
+      ],
+      "output": "tests/.work/T27-capture/b1b59d613e9441a6aca82a46c26bc6a1/PS51-Unit-export.txt",
+      "output_sha256": "dbe996b6de3e52021ab44ff78f3d7f4809df2bcfd4cf10f54638d362f4834af2"
+    },
+    {
+      "label": "PS51-PublicDocs",
+      "started_at_utc": "2026-10-09T13:26:54.954663+00:00",
+      "elapsed_seconds": 5.297,
+      "exit_code": 0,
+      "arguments": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "tools/test/Invoke-Tests.ps1",
+        "-Tier",
+        "PublicDocs",
+        "-PesterModulePath",
+        "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1"
+      ],
+      "output": "tests/.work/T27-capture/b1b59d613e9441a6aca82a46c26bc6a1/PS51-PublicDocs.txt",
+      "output_sha256": "753c90097796249d4579632ea04ded8628d40420532f6d40be8e43264a2c00c4",
+      "raw_summary": "tests/.work/pester/27c77c521dbd456d88336ee0c9f1c084/summary.json",
+      "raw_summary_sha256": "4c4211a7de2be93fe2b99805585dd6ad7e08fe0770d37a58740e02bd6b5c2f49",
+      "raw_xml_sha256": "c52ae0d9e00c0d344ebc31f8ca3bf1f96fcfb204d1d1531e9b205907d4222be2"
+    },
+    {
+      "label": "PS51-PublicDocs-export",
+      "started_at_utc": "2026-10-09T13:27:00.264679+00:00",
+      "elapsed_seconds": 0.828,
+      "exit_code": 0,
+      "arguments": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-Command",
+        ". ./tools/test/CiReportSupport.ps1; Export-CiTestReport -SummaryPath '<REPO>\\tests\\.work\\pester\\27c77c521dbd456d88336ee0c9f1c084\\summary.json' -XmlPath '<REPO>\\tests\\.work\\pester\\27c77c521dbd456d88336ee0c9f1c084\\results.xml' -Destination '<REPO>\\tests\\.work\\T27-capture\\b1b59d613e9441a6aca82a46c26bc6a1\\sanitized\\PS51\\PublicDocs' -ExpectedTier PublicDocs -ExpectedCommit '044f3d9654ad9e8a68cda29f53994f6b169089fc' -Shell PS51 -RunnerLabel windows-local"
+      ],
+      "output": "tests/.work/T27-capture/b1b59d613e9441a6aca82a46c26bc6a1/PS51-PublicDocs-export.txt",
+      "output_sha256": "b049f0fda7fd918a5d06621b19e016b579dfe5dce8eda51870b867dd10745579"
+    },
+    {
+      "label": "PS51-Parameters",
+      "started_at_utc": "2026-10-09T13:27:01.107969+00:00",
+      "elapsed_seconds": 48.468,
+      "exit_code": 0,
+      "arguments": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "tools/test/Invoke-Tests.ps1",
+        "-Tier",
+        "Parameters",
+        "-PesterModulePath",
+        "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1"
+      ],
+      "output": "tests/.work/T27-capture/b1b59d613e9441a6aca82a46c26bc6a1/PS51-Parameters.txt",
+      "output_sha256": "7776447f061ecb8203d676ea30374a93d478db242194e5905501eaaf9a50114a",
+      "raw_summary": "tests/.work/pester/24fa4e59eaf34d4cb23a01565035dbef/summary.json",
+      "raw_summary_sha256": "442f8bb569ebda7b77a13dbbd57b941f6281fc6bee7da756fd2a8d03ce547dfe",
+      "raw_xml_sha256": "f262f27fa984830be5484fed26897ec7dffa17c00029cf92dd27353f2ddc8632"
+    },
+    {
+      "label": "PS51-Parameters-export",
+      "started_at_utc": "2026-10-09T13:27:49.594339+00:00",
+      "elapsed_seconds": 0.891,
+      "exit_code": 0,
+      "arguments": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-Command",
+        ". ./tools/test/CiReportSupport.ps1; Export-CiTestReport -SummaryPath '<REPO>\\tests\\.work\\pester\\24fa4e59eaf34d4cb23a01565035dbef\\summary.json' -XmlPath '<REPO>\\tests\\.work\\pester\\24fa4e59eaf34d4cb23a01565035dbef\\results.xml' -Destination '<REPO>\\tests\\.work\\T27-capture\\b1b59d613e9441a6aca82a46c26bc6a1\\sanitized\\PS51\\Parameters' -ExpectedTier Parameters -ExpectedCommit '044f3d9654ad9e8a68cda29f53994f6b169089fc' -Shell PS51 -RunnerLabel windows-local"
+      ],
+      "output": "tests/.work/T27-capture/b1b59d613e9441a6aca82a46c26bc6a1/PS51-Parameters-export.txt",
+      "output_sha256": "26f036c3646e900881e36eb69067b40e12f650577c7b05df7a59810f5a9c89c4"
+    },
+    {
+      "label": "PS51-Diagnostics",
+      "started_at_utc": "2026-10-09T13:27:50.498050+00:00",
+      "elapsed_seconds": 28.266,
+      "exit_code": 0,
+      "arguments": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "tools/test/Invoke-Tests.ps1",
+        "-Tier",
+        "Diagnostics",
+        "-PesterModulePath",
+        "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1"
+      ],
+      "output": "tests/.work/T27-capture/b1b59d613e9441a6aca82a46c26bc6a1/PS51-Diagnostics.txt",
+      "output_sha256": "be808c149b06df04b90956a97ffb0d4d5de6b3385562387697ffe16c7b4205e4",
+      "raw_summary": "tests/.work/pester/122ed5bdd969439d8a76876fed971edd/summary.json",
+      "raw_summary_sha256": "c7cf492fce8d4e2c17ac187ad123ea72dd6e115a1f8e6cbc7c3c6439dde10a67",
+      "raw_xml_sha256": "fd0c7667ad87eb1c72c9ab3e7c4de10811b105d4d7dff9352efa961199fa8cb1"
+    },
+    {
+      "label": "PS51-Diagnostics-export",
+      "started_at_utc": "2026-10-09T13:28:18.780593+00:00",
+      "elapsed_seconds": 0.937,
+      "exit_code": 0,
+      "arguments": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-Command",
+        ". ./tools/test/CiReportSupport.ps1; Export-CiTestReport -SummaryPath '<REPO>\\tests\\.work\\pester\\122ed5bdd969439d8a76876fed971edd\\summary.json' -XmlPath '<REPO>\\tests\\.work\\pester\\122ed5bdd969439d8a76876fed971edd\\results.xml' -Destination '<REPO>\\tests\\.work\\T27-capture\\b1b59d613e9441a6aca82a46c26bc6a1\\sanitized\\PS51\\Diagnostics' -ExpectedTier Diagnostics -ExpectedCommit '044f3d9654ad9e8a68cda29f53994f6b169089fc' -Shell PS51 -RunnerLabel windows-local"
+      ],
+      "output": "tests/.work/T27-capture/b1b59d613e9441a6aca82a46c26bc6a1/PS51-Diagnostics-export.txt",
+      "output_sha256": "5731d7281899e8dc55a4606c11df22c2e0642ed8ceb327f0ec98adf1ca50a41c"
+    },
+    {
+      "label": "PS51-DiagnosticsNative",
+      "started_at_utc": "2026-10-09T13:28:19.730264+00:00",
+      "elapsed_seconds": 34.765,
+      "exit_code": 0,
+      "arguments": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "tools/test/Invoke-Tests.ps1",
+        "-Tier",
+        "DiagnosticsNative",
+        "-PesterModulePath",
+        "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1",
+        "-PdftkPath",
+        "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe",
+        "-GhostscriptPath",
+        "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-gs-e84c278f46724e9a97dd8dbcdbb8d66f\\ghostscript-10.08.0-x64\\bin\\gswin64c.exe",
+        "-PythonPath",
+        "<USERPROFILE>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe"
+      ],
+      "output": "tests/.work/T27-capture/b1b59d613e9441a6aca82a46c26bc6a1/PS51-DiagnosticsNative.txt",
+      "output_sha256": "965902385e603a4defc4d6a8f77d7811d9aa52aab1ca7661c64f8ce870f2cec5",
+      "raw_summary": "tests/.work/pester/7b6bc98c640244bdb8c115f47151e46d/summary.json",
+      "raw_summary_sha256": "33529c38fdf9190933fdaa1f9dbb59a10cc0c665bd0969e94eeb8ee20592e832",
+      "raw_xml_sha256": "323965af15372eb602af1a8d92ff03a548dfd151fbfe1f86d5b4ed36c4e6f1c0"
+    },
+    {
+      "label": "PS51-DiagnosticsNative-export",
+      "started_at_utc": "2026-10-09T13:28:54.524201+00:00",
+      "elapsed_seconds": 0.859,
+      "exit_code": 0,
+      "arguments": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-Command",
+        ". ./tools/test/CiReportSupport.ps1; Export-CiTestReport -SummaryPath '<REPO>\\tests\\.work\\pester\\7b6bc98c640244bdb8c115f47151e46d\\summary.json' -XmlPath '<REPO>\\tests\\.work\\pester\\7b6bc98c640244bdb8c115f47151e46d\\results.xml' -Destination '<REPO>\\tests\\.work\\T27-capture\\b1b59d613e9441a6aca82a46c26bc6a1\\sanitized\\PS51\\DiagnosticsNative' -ExpectedTier DiagnosticsNative -ExpectedCommit '044f3d9654ad9e8a68cda29f53994f6b169089fc' -Shell PS51 -RunnerLabel windows-local"
+      ],
+      "output": "tests/.work/T27-capture/b1b59d613e9441a6aca82a46c26bc6a1/PS51-DiagnosticsNative-export.txt",
+      "output_sha256": "559173127636c38bc74c6064bb10b5253d8b259525929076014ddc227fef221f"
+    },
+    {
+      "label": "PS51-static",
+      "started_at_utc": "2026-10-09T13:28:55.405655+00:00",
+      "elapsed_seconds": 17.859,
+      "exit_code": 0,
+      "arguments": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-Command",
+        "& ./tools/test/Invoke-StaticChecks.ps1 -AnalyzerModulePath '<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-analyzer-681c621979ab4e95a76e03f6e98dc283\\module\\PSScriptAnalyzer.psd1' -SourcePath @('WinPDFMerge.ps1','src/WinPDFMerge.Helpers.ps1','tests/cli/Parameters.Native.Tests.ps1','tests/cli/Parameters.Tests.ps1','tests/dependencies/Dependencies.Entry.Tests.ps1','tests/faults/FaultIO.Tests.ps1','tests/faults/FaultRecovery.Native.Tests.ps1','tests/filesafety/Destination.Native.Tests.ps1','tests/help/Diagnostics.Native.Tests.ps1','tests/help/Diagnostics.Tests.ps1','tests/help/PublicDocs.Tests.ps1','tests/help/Version.Tests.ps1','tests/launcher/Launcher.Native.Tests.ps1','tests/pdf/CorpusSafety.Native.Tests.ps1','tests/pdf/EmailOutcome.Native.Tests.ps1','tests/pdf/InputPreflight.Native.Tests.ps1','tests/pdf/MasterValidation.Native.Tests.ps1','tests/pdf/Preservation.Native.Tests.ps1','tests/pdf/SizeReporting.Native.Tests.ps1','tests/pdf/SizeReporting.Tests.ps1','tests/pdf/SourceDiscovery.Native.Tests.ps1','tests/pdf/ToolPaths.Native.Tests.ps1','tests/unit/CiReportSupport.Tests.ps1','tests/unit/SourceDiscovery.Tests.ps1','tests/unit/TestRunSupport.Tests.ps1','tools/test/CiReportSupport.ps1','tools/test/Invoke-CiTests.ps1','tools/test/Invoke-Tests.ps1','tools/test/TestRunSupport.ps1')"
+      ],
+      "output": "tests/.work/T27-capture/b1b59d613e9441a6aca82a46c26bc6a1/PS51-static.txt",
+      "output_sha256": "983fe5c7489fa077dfefd480b07ad029e619316ee567fab2fadde1bc39ecd751",
+      "raw_report": "tests/.work/static/9504305123b246b4974f3feed7ceea64/analysis.json",
+      "raw_report_sha256": "356e79e028ac513f3d7a1195ae9e1803b50331d15f6ce6b7d34b68b070a34ce3"
+    },
+    {
+      "label": "PS7-environment",
+      "started_at_utc": "2026-10-09T13:25:45.682827+00:00",
+      "elapsed_seconds": 0.859,
+      "exit_code": 0,
+      "arguments": [
+        "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "docs/codex/evidence/T26-scope-reports/scripts/environment-probe.ps1"
+      ],
+      "output": "tests/.work/T27-capture/b1b59d613e9441a6aca82a46c26bc6a1/PS7-environment.txt",
+      "output_sha256": "6dae0eb0abc1bc3e24526deaaf2964fcf44214a5c607503171765d146b81b349"
+    },
+    {
+      "label": "PS7-Version",
+      "started_at_utc": "2026-10-09T13:25:46.573478+00:00",
+      "elapsed_seconds": 6.375,
+      "exit_code": 0,
+      "arguments": [
+        "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "tools/test/Invoke-Tests.ps1",
+        "-Tier",
+        "Version",
+        "-PesterModulePath",
+        "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1"
+      ],
+      "output": "tests/.work/T27-capture/b1b59d613e9441a6aca82a46c26bc6a1/PS7-Version.txt",
+      "output_sha256": "1c590a434cc68b63f4bd91dd34292d6c6c049240c064d3c3874b5e49761123ff",
+      "raw_summary": "tests/.work/pester/7d5fd57840bb430a911184e60e680553/summary.json",
+      "raw_summary_sha256": "510057373aa27bfb58c216860e71daca31a619880d6a028d8c07cfab4cab0745",
+      "raw_xml_sha256": "0397823da3ea803cfd9830dfc20533d470ddf700e92f75b45433ccacfa1f0e83"
+    },
+    {
+      "label": "PS7-Version-export",
+      "started_at_utc": "2026-10-09T13:25:52.972715+00:00",
+      "elapsed_seconds": 0.797,
+      "exit_code": 0,
+      "arguments": [
+        "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-Command",
+        ". ./tools/test/CiReportSupport.ps1; Export-CiTestReport -SummaryPath '<REPO>\\tests\\.work\\pester\\7d5fd57840bb430a911184e60e680553\\summary.json' -XmlPath '<REPO>\\tests\\.work\\pester\\7d5fd57840bb430a911184e60e680553\\results.xml' -Destination '<REPO>\\tests\\.work\\T27-capture\\b1b59d613e9441a6aca82a46c26bc6a1\\sanitized\\PS7\\Version' -ExpectedTier Version -ExpectedCommit '044f3d9654ad9e8a68cda29f53994f6b169089fc' -Shell PS7 -RunnerLabel windows-local"
+      ],
+      "output": "tests/.work/T27-capture/b1b59d613e9441a6aca82a46c26bc6a1/PS7-Version-export.txt",
+      "output_sha256": "e9516ebfe8aec956875aec946b2a5a4dbbb47aaa910abb3700d8b9712ab0ebe1"
+    },
+    {
+      "label": "PS7-Unit",
+      "started_at_utc": "2026-10-09T13:25:53.796867+00:00",
+      "elapsed_seconds": 50.094,
+      "exit_code": 0,
+      "arguments": [
+        "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "tools/test/Invoke-Tests.ps1",
+        "-Tier",
+        "Unit",
+        "-PesterModulePath",
+        "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1"
+      ],
+      "output": "tests/.work/T27-capture/b1b59d613e9441a6aca82a46c26bc6a1/PS7-Unit.txt",
+      "output_sha256": "034e5822939af7166b94a47e6aa1bae0d739ac0d2c8a8a95eb8cec0987359139",
+      "raw_summary": "tests/.work/pester/2f09256e2a2948f794f104ac3832e2bd/summary.json",
+      "raw_summary_sha256": "dc783f7fbdf82134ddfdbb40713107e226ff9abebb88207ddee295e4b74d8a84",
+      "raw_xml_sha256": "43f6e222476d38dde6e4eb36a01a7d123a09ebc588a871f69d82f4b4508db430"
+    },
+    {
+      "label": "PS7-Unit-export",
+      "started_at_utc": "2026-10-09T13:26:43.910329+00:00",
+      "elapsed_seconds": 0.875,
+      "exit_code": 0,
+      "arguments": [
+        "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-Command",
+        ". ./tools/test/CiReportSupport.ps1; Export-CiTestReport -SummaryPath '<REPO>\\tests\\.work\\pester\\2f09256e2a2948f794f104ac3832e2bd\\summary.json' -XmlPath '<REPO>\\tests\\.work\\pester\\2f09256e2a2948f794f104ac3832e2bd\\results.xml' -Destination '<REPO>\\tests\\.work\\T27-capture\\b1b59d613e9441a6aca82a46c26bc6a1\\sanitized\\PS7\\Unit' -ExpectedTier Unit -ExpectedCommit '044f3d9654ad9e8a68cda29f53994f6b169089fc' -Shell PS7 -RunnerLabel windows-local"
+      ],
+      "output": "tests/.work/T27-capture/b1b59d613e9441a6aca82a46c26bc6a1/PS7-Unit-export.txt",
+      "output_sha256": "7cd82d64688338710e4e1a8f4636c826404ac7bdb1540b5643dbf69f9a300214"
+    },
+    {
+      "label": "PS7-PublicDocs",
+      "started_at_utc": "2026-10-09T13:26:44.813943+00:00",
+      "elapsed_seconds": 3.515,
+      "exit_code": 0,
+      "arguments": [
+        "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "tools/test/Invoke-Tests.ps1",
+        "-Tier",
+        "PublicDocs",
+        "-PesterModulePath",
+        "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1"
+      ],
+      "output": "tests/.work/T27-capture/b1b59d613e9441a6aca82a46c26bc6a1/PS7-PublicDocs.txt",
+      "output_sha256": "cb5581432e595d15bb8c7a2956019793f6c18778041a8c21a3bc61929e5070f9",
+      "raw_summary": "tests/.work/pester/0f8b494a33174d479880b293e5727868/summary.json",
+      "raw_summary_sha256": "0b61a7418213338819393406e294ffa0822996c634da5faa4d93c46740030bf4",
+      "raw_xml_sha256": "083192d3ceceaa5c164465cc022446715d5e206e611e352184519a713b0746c3"
+    },
+    {
+      "label": "PS7-PublicDocs-export",
+      "started_at_utc": "2026-10-09T13:26:48.340934+00:00",
+      "elapsed_seconds": 0.813,
+      "exit_code": 0,
+      "arguments": [
+        "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-Command",
+        ". ./tools/test/CiReportSupport.ps1; Export-CiTestReport -SummaryPath '<REPO>\\tests\\.work\\pester\\0f8b494a33174d479880b293e5727868\\summary.json' -XmlPath '<REPO>\\tests\\.work\\pester\\0f8b494a33174d479880b293e5727868\\results.xml' -Destination '<REPO>\\tests\\.work\\T27-capture\\b1b59d613e9441a6aca82a46c26bc6a1\\sanitized\\PS7\\PublicDocs' -ExpectedTier PublicDocs -ExpectedCommit '044f3d9654ad9e8a68cda29f53994f6b169089fc' -Shell PS7 -RunnerLabel windows-local"
+      ],
+      "output": "tests/.work/T27-capture/b1b59d613e9441a6aca82a46c26bc6a1/PS7-PublicDocs-export.txt",
+      "output_sha256": "233b57ac0e1c912b23da92718985fa4f650fb5be0dbce80e2908e8b7c2293ea5"
+    },
+    {
+      "label": "PS7-Parameters",
+      "started_at_utc": "2026-10-09T13:26:49.167173+00:00",
+      "elapsed_seconds": 50.906,
+      "exit_code": 0,
+      "arguments": [
+        "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "tools/test/Invoke-Tests.ps1",
+        "-Tier",
+        "Parameters",
+        "-PesterModulePath",
+        "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1"
+      ],
+      "output": "tests/.work/T27-capture/b1b59d613e9441a6aca82a46c26bc6a1/PS7-Parameters.txt",
+      "output_sha256": "84a8e94246538a9cd4f5631c68432fd1810d574c828f19030e30e7b1b3388578",
+      "raw_summary": "tests/.work/pester/34221546e21640488e764ec90e6125ba/summary.json",
+      "raw_summary_sha256": "937a3a29046c914f98e4c6383b52ab0453b9a8f138e9e3a3dfde1f0c5d5738ac",
+      "raw_xml_sha256": "2e6f6b7e1a8405c7198c395cc7212adc8161cbd557b28e21932eba346380d075"
+    },
+    {
+      "label": "PS7-Parameters-export",
+      "started_at_utc": "2026-10-09T13:27:40.098072+00:00",
+      "elapsed_seconds": 0.922,
+      "exit_code": 0,
+      "arguments": [
+        "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-Command",
+        ". ./tools/test/CiReportSupport.ps1; Export-CiTestReport -SummaryPath '<REPO>\\tests\\.work\\pester\\34221546e21640488e764ec90e6125ba\\summary.json' -XmlPath '<REPO>\\tests\\.work\\pester\\34221546e21640488e764ec90e6125ba\\results.xml' -Destination '<REPO>\\tests\\.work\\T27-capture\\b1b59d613e9441a6aca82a46c26bc6a1\\sanitized\\PS7\\Parameters' -ExpectedTier Parameters -ExpectedCommit '044f3d9654ad9e8a68cda29f53994f6b169089fc' -Shell PS7 -RunnerLabel windows-local"
+      ],
+      "output": "tests/.work/T27-capture/b1b59d613e9441a6aca82a46c26bc6a1/PS7-Parameters-export.txt",
+      "output_sha256": "143cc18233e6f76bec2afd65d538b30f9d19a9b3e5ceb74e111261fc31a27df0"
+    },
+    {
+      "label": "PS7-Diagnostics",
+      "started_at_utc": "2026-10-09T13:27:41.041629+00:00",
+      "elapsed_seconds": 30.485,
+      "exit_code": 0,
+      "arguments": [
+        "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "tools/test/Invoke-Tests.ps1",
+        "-Tier",
+        "Diagnostics",
+        "-PesterModulePath",
+        "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1"
+      ],
+      "output": "tests/.work/T27-capture/b1b59d613e9441a6aca82a46c26bc6a1/PS7-Diagnostics.txt",
+      "output_sha256": "01c7619e9cf094969b97b9d8e78be1ea0c98c8a936cd46fe1108adfa37069675",
+      "raw_summary": "tests/.work/pester/a2a4a2563d4e418d9a4a573e0875e407/summary.json",
+      "raw_summary_sha256": "dac993cf5098c38bf79a274c720cd2ef5ffcfad5fbcc4b5d81120250854de8ee",
+      "raw_xml_sha256": "0b4ce1f1bb0c692926d607da04d9c276d26b987c0716ce3191a4e0186d2f4821"
+    },
+    {
+      "label": "PS7-Diagnostics-export",
+      "started_at_utc": "2026-10-09T13:28:11.548845+00:00",
+      "elapsed_seconds": 0.906,
+      "exit_code": 0,
+      "arguments": [
+        "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-Command",
+        ". ./tools/test/CiReportSupport.ps1; Export-CiTestReport -SummaryPath '<REPO>\\tests\\.work\\pester\\a2a4a2563d4e418d9a4a573e0875e407\\summary.json' -XmlPath '<REPO>\\tests\\.work\\pester\\a2a4a2563d4e418d9a4a573e0875e407\\results.xml' -Destination '<REPO>\\tests\\.work\\T27-capture\\b1b59d613e9441a6aca82a46c26bc6a1\\sanitized\\PS7\\Diagnostics' -ExpectedTier Diagnostics -ExpectedCommit '044f3d9654ad9e8a68cda29f53994f6b169089fc' -Shell PS7 -RunnerLabel windows-local"
+      ],
+      "output": "tests/.work/T27-capture/b1b59d613e9441a6aca82a46c26bc6a1/PS7-Diagnostics-export.txt",
+      "output_sha256": "25322860d88395a941462c769e17753df704f3d8152d93d0fc4a4ede917d3018"
+    },
+    {
+      "label": "PS7-DiagnosticsNative",
+      "started_at_utc": "2026-10-09T13:28:12.461309+00:00",
+      "elapsed_seconds": 36.266,
+      "exit_code": 0,
+      "arguments": [
+        "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "tools/test/Invoke-Tests.ps1",
+        "-Tier",
+        "DiagnosticsNative",
+        "-PesterModulePath",
+        "<USERPROFILE>\\.cache\\WinPDFMerger-T03\\pester-6.2.0-fe69858b0b7b4b92ae85caf8dd8fcc67\\module\\Pester.psd1",
+        "-PdftkPath",
+        "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe",
+        "-GhostscriptPath",
+        "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-gs-e84c278f46724e9a97dd8dbcdbb8d66f\\ghostscript-10.08.0-x64\\bin\\gswin64c.exe",
+        "-PythonPath",
+        "<USERPROFILE>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe"
+      ],
+      "output": "tests/.work/T27-capture/b1b59d613e9441a6aca82a46c26bc6a1/PS7-DiagnosticsNative.txt",
+      "output_sha256": "fcf73e2b6a6d9e9351a46b5f83cf4515a661c2be39fe29af465df65d5dfa2737",
+      "raw_summary": "tests/.work/pester/e81e06666e84465c93acade3068506a5/summary.json",
+      "raw_summary_sha256": "b320d12f130191859e19daeb3fe407f7d1f51905942c3ba8890b24ce5fc4904c",
+      "raw_xml_sha256": "678a898587ce401d385d8c1b27d894901bb26d25a00ebf2dab213852c1f253ff"
+    },
+    {
+      "label": "PS7-DiagnosticsNative-export",
+      "started_at_utc": "2026-10-09T13:28:48.749757+00:00",
+      "elapsed_seconds": 1.016,
+      "exit_code": 0,
+      "arguments": [
+        "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-Command",
+        ". ./tools/test/CiReportSupport.ps1; Export-CiTestReport -SummaryPath '<REPO>\\tests\\.work\\pester\\e81e06666e84465c93acade3068506a5\\summary.json' -XmlPath '<REPO>\\tests\\.work\\pester\\e81e06666e84465c93acade3068506a5\\results.xml' -Destination '<REPO>\\tests\\.work\\T27-capture\\b1b59d613e9441a6aca82a46c26bc6a1\\sanitized\\PS7\\DiagnosticsNative' -ExpectedTier DiagnosticsNative -ExpectedCommit '044f3d9654ad9e8a68cda29f53994f6b169089fc' -Shell PS7 -RunnerLabel windows-local"
+      ],
+      "output": "tests/.work/T27-capture/b1b59d613e9441a6aca82a46c26bc6a1/PS7-DiagnosticsNative-export.txt",
+      "output_sha256": "0db5fb0e1ae2bb84d455d68c09b2b629a61f8d09062f77587c4a74ce3badf7c1"
+    },
+    {
+      "label": "PS7-static",
+      "started_at_utc": "2026-10-09T13:28:49.779239+00:00",
+      "elapsed_seconds": 18.312,
+      "exit_code": 0,
+      "arguments": [
+        "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-Command",
+        "& ./tools/test/Invoke-StaticChecks.ps1 -AnalyzerModulePath '<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-analyzer-681c621979ab4e95a76e03f6e98dc283\\module\\PSScriptAnalyzer.psd1' -SourcePath @('WinPDFMerge.ps1','src/WinPDFMerge.Helpers.ps1','tests/cli/Parameters.Native.Tests.ps1','tests/cli/Parameters.Tests.ps1','tests/dependencies/Dependencies.Entry.Tests.ps1','tests/faults/FaultIO.Tests.ps1','tests/faults/FaultRecovery.Native.Tests.ps1','tests/filesafety/Destination.Native.Tests.ps1','tests/help/Diagnostics.Native.Tests.ps1','tests/help/Diagnostics.Tests.ps1','tests/help/PublicDocs.Tests.ps1','tests/help/Version.Tests.ps1','tests/launcher/Launcher.Native.Tests.ps1','tests/pdf/CorpusSafety.Native.Tests.ps1','tests/pdf/EmailOutcome.Native.Tests.ps1','tests/pdf/InputPreflight.Native.Tests.ps1','tests/pdf/MasterValidation.Native.Tests.ps1','tests/pdf/Preservation.Native.Tests.ps1','tests/pdf/SizeReporting.Native.Tests.ps1','tests/pdf/SizeReporting.Tests.ps1','tests/pdf/SourceDiscovery.Native.Tests.ps1','tests/pdf/ToolPaths.Native.Tests.ps1','tests/unit/CiReportSupport.Tests.ps1','tests/unit/SourceDiscovery.Tests.ps1','tests/unit/TestRunSupport.Tests.ps1','tools/test/CiReportSupport.ps1','tools/test/Invoke-CiTests.ps1','tools/test/Invoke-Tests.ps1','tools/test/TestRunSupport.ps1')"
+      ],
+      "output": "tests/.work/T27-capture/b1b59d613e9441a6aca82a46c26bc6a1/PS7-static.txt",
+      "output_sha256": "c094fd0f5adc0b977e5ee5d3b754f572876b8ac535392c1bfa1a3df13fbf5cd9",
+      "raw_report": "tests/.work/static/bf0f3ec499524d6d9a3b500162965522/analysis.json",
+      "raw_report_sha256": "cbb831ca47595d673548e30fade67ea666eab44935dba71052c868c117fa1ade"
+    }
+  ],
+  "sanitized_directory": "tests/.work/T27-capture/b1b59d613e9441a6aca82a46c26bc6a1/sanitized"
+}

@@ -1,0 +1,213 @@
+{
+  "schema_version": 1,
+  "task": "T26",
+  "checked_at_utc": "2026-10-09T12:50:26.220805+00:00",
+  "scope": "Read-only historical CI failure review; no application, native engine, manual or new test execution.",
+  "historical_run": {
+    "id": 37820973960,
+    "event": "pull_request",
+    "head_sha": "f2077786e64695158c60e723dce261414fa8bdf8",
+    "url": "https://github.com/PikkuJanne/WinPDFMerger/actions/runs/37820973960",
+    "conclusion": "failure",
+    "jobs": [
+      {
+        "name": "native / PS51",
+        "conclusion": "failure",
+        "url": "https://github.com/PikkuJanne/WinPDFMerger/actions/runs/37820973960/job/113461608690"
+      },
+      {
+        "name": "native / PS7",
+        "conclusion": "success",
+        "url": "https://github.com/PikkuJanne/WinPDFMerger/actions/runs/37820973960/job/113461608987"
+      },
+      {
+        "name": "unit / PS51",
+        "conclusion": "success",
+        "url": "https://github.com/PikkuJanne/WinPDFMerger/actions/runs/37820973960/job/113461609066"
+      },
+      {
+        "name": "unit / PS7",
+        "conclusion": "success",
+        "url": "https://github.com/PikkuJanne/WinPDFMerger/actions/runs/37820973960/job/113461609155"
+      }
+    ]
+  },
+  "exact_failure": {
+    "job": "native / PS51",
+    "job_id": 113461608690,
+    "step": "Prepare verified temporary test dependencies",
+    "step_started_at_utc": "2026-10-08T18:01:04Z",
+    "step_completed_at_utc": "2026-10-08T18:01:08Z",
+    "command": "Invoke-WebRequest -UseBasicParsing -Uri $dependency.url -OutFile $archive -TimeoutSec 120 -ErrorAction Stop",
+    "source_location": "tools/test/Initialize-CiDependencies.ps1:65",
+    "message": "This request is blocked by a Web Application Firewall rule.",
+    "job_process_exit_code": 1,
+    "selected_test_step_conclusion": "skipped",
+    "selected_tests_executed_in_failed_job": false
+  },
+  "acquisition_identity": {
+    "classification": "inference",
+    "inferred_dependency_id": "pester",
+    "inferred_version": "6.2.0",
+    "configured_request_url": "https://www.powershellgallery.com/api/v2/package/Pester/6.2.0",
+    "basis": "The captured WAF error occurs at the download line; the manifest-bound failed receipt has no completed downloads; the first selected manifest entry is Pester.",
+    "limits": "The log does not print the expanded request URL or HTTP status, and does not identify the responding WAF/operator or redirect endpoint."
+  },
+  "failure_artifact": {
+    "id": 11569262363,
+    "name": "windows-native-PS51-1",
+    "api_digest": "sha256:819162f40811b955cdccf8c891bc5ca25cc44fff86c008c591accbb0c6d24b85",
+    "api_size_bytes": 652,
+    "expired_at_check": false,
+    "downloaded_zip_sha256": "819162f40811b955cdccf8c891bc5ca25cc44fff86c008c591accbb0c6d24b85",
+    "downloaded_zip_bytes": 652,
+    "api_digest_matches_local_zip": true,
+    "zip_members": [
+      "dependencies.json"
+    ],
+    "dependencies_json_sha256": "817c500c57455477f5c15221722f2e4855418d0ae30bf968eb725149c0c8a04c",
+    "selected_receipt": {
+      "result": "fail",
+      "downloads": [],
+      "preinstalled_extractors": [],
+      "manifest_sha256": "685f514090f52e653ab65c193e32e5846449de4cab2f00ad13afa4115e3605b6",
+      "requested_shell": "PS51",
+      "group": "native",
+      "bootstrap_shell_version": "5.1.26100.33438",
+      "boundaries": {
+        "system_installation": false,
+        "installers_executed": false,
+        "elevation_requested": false,
+        "persistent_environment_changed": false,
+        "execution_policy_changed": false,
+        "security_controls_changed": false,
+        "application_runtime_network_added": false
+      }
+    }
+  },
+  "source_comparison": [
+    {
+      "path": ".github/workflows/windows-tests.yml",
+      "historical_commit": "f2077786e64695158c60e723dce261414fa8bdf8",
+      "current_commit": "d8f7945871108b467525bdbe605dff2620d26947",
+      "historical_sha256": "910a39e0b827a3698f6db875514fd50c8e5d8766cd38b5f5faa6d3c9a2db74fe",
+      "current_sha256": "910a39e0b827a3698f6db875514fd50c8e5d8766cd38b5f5faa6d3c9a2db74fe",
+      "canonical_git_blobs_equal": true
+    },
+    {
+      "path": "tools/test/Initialize-CiDependencies.ps1",
+      "historical_commit": "f2077786e64695158c60e723dce261414fa8bdf8",
+      "current_commit": "d8f7945871108b467525bdbe605dff2620d26947",
+      "historical_sha256": "4657e772c6a3996582182e8b52ef76259ffd29da06b0b8e24e30eea4086aece4",
+      "current_sha256": "4657e772c6a3996582182e8b52ef76259ffd29da06b0b8e24e30eea4086aece4",
+      "canonical_git_blobs_equal": true
+    },
+    {
+      "path": "tools/test/CiDependencySupport.ps1",
+      "historical_commit": "f2077786e64695158c60e723dce261414fa8bdf8",
+      "current_commit": "d8f7945871108b467525bdbe605dff2620d26947",
+      "historical_sha256": "f40724e63fd3d6af71cb3802ee1c6dcf23892d6f0e0f2e4e9d93a5e900f7db42",
+      "current_sha256": "f40724e63fd3d6af71cb3802ee1c6dcf23892d6f0e0f2e4e9d93a5e900f7db42",
+      "canonical_git_blobs_equal": true
+    },
+    {
+      "path": "tests/ci-dependencies.json",
+      "historical_commit": "f2077786e64695158c60e723dce261414fa8bdf8",
+      "current_commit": "d8f7945871108b467525bdbe605dff2620d26947",
+      "historical_sha256": "781fd70c3ed4aee791c9ba314a6f9503dc26447be8d4d7876c922c57c76998d3",
+      "current_sha256": "781fd70c3ed4aee791c9ba314a6f9503dc26447be8d4d7876c922c57c76998d3",
+      "canonical_git_blobs_equal": true
+    },
+    {
+      "path": "tests/TestDependencies.psd1",
+      "historical_commit": "f2077786e64695158c60e723dce261414fa8bdf8",
+      "current_commit": "d8f7945871108b467525bdbe605dff2620d26947",
+      "historical_sha256": "1c034e1d7f5cde1688ffa5d24cf64e44c931877a575bdb5ea451bc071281bd55",
+      "current_sha256": "1c034e1d7f5cde1688ffa5d24cf64e44c931877a575bdb5ea451bc071281bd55",
+      "canonical_git_blobs_equal": true
+    }
+  ],
+  "failed_receipt_manifest_binding": {
+    "canonical_git_blob_sha256": "781fd70c3ed4aee791c9ba314a6f9503dc26447be8d4d7876c922c57c76998d3",
+    "crlf_representation_sha256": "685f514090f52e653ab65c193e32e5846449de4cab2f00ad13afa4115e3605b6",
+    "receipt_manifest_sha256": "685f514090f52e653ab65c193e32e5846449de4cab2f00ad13afa4115e3605b6",
+    "receipt_matches_crlf_representation": true,
+    "scope": "Canonical source bytes are unchanged. The failed runner receipt hashes the CRLF checkout representation, not the canonical LF Git blob; no other checkout reconstruction is claimed."
+  },
+  "review_preparation_note": "An initial read-only reviewer assertion compared the canonical LF manifest hash directly with the failed runner receipt and failed. The reviewer separated canonical-source equality from the exactly matching CRLF representation; this was a reviewer assumption error, not an application or CI test failure. Existing captures were retained and retries wrote distinct ignored files.",
+  "same_head_push": {
+    "id": 37820967556,
+    "event": "push",
+    "head_sha": "f2077786e64695158c60e723dce261414fa8bdf8",
+    "conclusion": "success",
+    "url": "https://github.com/PikkuJanne/WinPDFMerger/actions/runs/37820967556",
+    "jobs": [
+      {
+        "name": "unit / PS7",
+        "conclusion": "success"
+      },
+      {
+        "name": "unit / PS51",
+        "conclusion": "success"
+      },
+      {
+        "name": "native / PS7",
+        "conclusion": "success"
+      },
+      {
+        "name": "native / PS51",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "current_c1_preparation": {
+    "observed_at_utc": "2026-10-09T12:50:25.051048+00:00",
+    "run_id": 37932081691,
+    "event": "pull_request",
+    "head_sha": "d8f7945871108b467525bdbe605dff2620d26947",
+    "url": "https://github.com/PikkuJanne/WinPDFMerger/actions/runs/37932081691",
+    "jobs": [
+      {
+        "job": "native / PS7",
+        "preparation_conclusion": "success"
+      },
+      {
+        "job": "native / PS51",
+        "preparation_conclusion": "success"
+      },
+      {
+        "job": "unit / PS51",
+        "preparation_conclusion": "success"
+      },
+      {
+        "job": "unit / PS7",
+        "preparation_conclusion": "success"
+      }
+    ],
+    "scope": "Preparation-step conclusions only. No current test counts, artifacts, checkout reconstruction or full-run acceptance is inferred here."
+  },
+  "assessment": {
+    "observed_class": "External CI dependency-acquisition WAF rejection before tests.",
+    "transient_assessment": "A transient external acquisition failure is consistent with successful sibling/same-head/current preparation observations; the underlying WAF cause and transience are not proved.",
+    "product_or_test_defect_observed": false,
+    "historical_conclusion_retained": "failure; the failed native/PS51 selected tests remain unrun in this run.",
+    "current_blocking_impact": "This historical failure supplies no product/test failure finding. Current C1 must still satisfy its own required checks; its four preparation steps have succeeded. No failing run is relabeled passed."
+  },
+  "commands": {
+    "metadata_and_log_retrieval_exit_codes": [
+      0,
+      0,
+      0
+    ],
+    "historical_metadata_command": "gh run view 37820973960 --repo PikkuJanne/WinPDFMerger --json jobs,conclusion,event,headSha,url",
+    "failed_log_command": "gh run view 37820973960 --repo PikkuJanne/WinPDFMerger --log-failed",
+    "artifact_metadata_command": "gh api repos/PikkuJanne/WinPDFMerger/actions/artifacts/11569262363",
+    "artifact_download_command": "gh api repos/PikkuJanne/WinPDFMerger/actions/artifacts/11569262363/zip",
+    "artifact_retrieval_exit_codes": [
+      0,
+      0
+    ],
+    "current_metadata_command": "gh run view 37932081691 --repo PikkuJanne/WinPDFMerger --json jobs,conclusion,event,headSha,url",
+    "current_metadata_retrieval_exit_code": 0
+  }
+}

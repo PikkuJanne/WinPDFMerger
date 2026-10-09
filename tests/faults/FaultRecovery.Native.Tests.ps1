@@ -86,6 +86,7 @@ print(json.dumps({'provenance':'Original deterministic stdlib-only raster and sy
         $root=Join-Path $work ([Guid]::NewGuid().ToString('N'));$app=Join-Path $root 'app';$source=Join-Path $root 'source';$output=Join-Path $root 'output';$noCommon=Join-Path $root 'no-common-engines'
         foreach($directory in @((Join-Path $app 'src'),$source,$output,$noCommon)){[void][IO.Directory]::CreateDirectory($directory)}
         [IO.File]::Copy((Join-Path $repo 'WinPDFMerge.ps1'),(Join-Path $app 'WinPDFMerge.ps1'),$false)
+        [IO.File]::Copy((Join-Path $repo 'VERSION'),(Join-Path $app 'VERSION'),$false)
         $helper=Join-Path $app 'src/WinPDFMerge.Helpers.ps1';[IO.File]::Copy((Join-Path $repo 'src/WinPDFMerge.Helpers.ps1'),$helper,$false)
         $fixtureInput=Join-Path $source 'input.pdf';$foreign=Join-Path $output 'foreign-existing.pdf';[IO.File]::Copy((Join-Path $repo 'tests/fixtures/numbered/1.pdf'),$foreign,$false)
         $generation=$null

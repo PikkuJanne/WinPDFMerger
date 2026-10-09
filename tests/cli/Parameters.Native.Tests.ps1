@@ -104,7 +104,7 @@ print(json.dumps({'page_count':len(pages),'pages':pages,'pypdfium2':str(pdfium.P
         $root = Join-Path $work ([Guid]::NewGuid().ToString('N'))
         $app = Join-Path $root 'app with spaces'; $source = Join-Path $root 'source folder'; $output = Join-Path $root 'named output'; $noCommon = Join-Path $root 'no-common-engines'
         foreach ($directory in @((Join-Path $app 'src'),$source,$output,$noCommon)) { [void][IO.Directory]::CreateDirectory($directory) }
-        foreach ($leaf in @('WinPDFMerge.ps1','WinPDFMerge.bat')) { [IO.File]::Copy((Join-Path $repo $leaf),(Join-Path $app $leaf),$false) }
+        foreach ($leaf in @('WinPDFMerge.ps1','WinPDFMerge.bat','VERSION')) { [IO.File]::Copy((Join-Path $repo $leaf),(Join-Path $app $leaf),$false) }
         $helper = Join-Path $app 'src/WinPDFMerge.Helpers.ps1'
         [IO.File]::Copy((Join-Path $repo 'src/WinPDFMerge.Helpers.ps1'),$helper,$false)
         $foreign = @(Join-Path $app 'foreign-existing.pdf'; Join-Path $output 'foreign-existing.pdf')
@@ -255,15 +255,30 @@ Describe 'AC038 actual legacy/default parameter delivery' {
         $vector = if ($Mode -eq 'Named') { @('-SourceFolder',$app.Source) } else { @($app.Source) }
         Add-ParameterObservation $app ('actual-' + $Mode.ToLowerInvariant() + '-default-screen') $vector $before $proof
     }
-    It 'prints usage and exits one with closed stdin and no helper import or outputs when input is missing' {
+    It 'prints version and usage with closed stdin without native calls or outputs when input is missing' {
         $app = New-ParameterApplication -Tiny; $before = @(Get-ParameterSnapshot (@($app.Input) + $app.Foreign))
+        $treeBefore = @(Get-ChildItem -LiteralPath @($app.App,$app.Output,$app.Source) -Force -Recurse | Select-Object -ExpandProperty FullName | Sort-Object)
+        $filesBefore = @(Get-ParameterSnapshot @(Get-ChildItem -LiteralPath @($app.App,$app.Output,$app.Source) -Force -Recurse -File | Select-Object -ExpandProperty FullName))
         $result = Invoke-ParameterEntry $app 'Missing'
         $result.ExitCode | Should -Be 1; $result.Stdout | Should -Match 'Usage: WinPDFMerge.ps1 <FolderWithPDFs>'
+        $expectedVersion = [IO.File]::ReadAllText((Join-Path $app.App 'VERSION')).TrimEnd([char[]]@("`r","`n"))
+        $result.Stdout | Should -Match ('(?m)^WinPDFMerger ' + [regex]::Escape($expectedVersion) + '\r?$')
         ($result.Stdout + $result.Stderr) | Should -Not -Match '(?i)Supply values for the following parameters|SourceFolder:\s*$|mandatory parameters'
-        [IO.File]::Exists((Join-Path $app.Capture 'helper-loaded.json')) | Should -BeFalse
-        @(Get-ChildItem -LiteralPath $app.Capture -Force).Count | Should -Be 0
+        ($result.Stdout + $result.Stderr) | Should -Not -Match 'Stage:|PDFtk version probe|Ghostscript version probe'
+        # T27 reads VERSION through the function-only helper before usage. The
+        # copied recording marker is expected; any native/job/probe receipt fails.
+        $captured = @(Get-ChildItem -LiteralPath $app.Capture -Force)
+        $captured.Count | Should -Be 1
+        $captured[0].Name | Should -BeExactly 'helper-loaded.json'
+        $loaded = Get-Content -LiteralPath $captured[0].FullName -Raw | ConvertFrom-Json
+        $loaded.EntrySHA256 | Should -BeExactly (Get-FileHash -LiteralPath $app.Entry -Algorithm SHA256).Hash
+        $loaded.ShellVersion | Should -BeExactly $PSVersionTable.PSVersion.ToString()
+        $treeAfter = @(Get-ChildItem -LiteralPath @($app.App,$app.Output,$app.Source) -Force -Recurse | Select-Object -ExpandProperty FullName | Sort-Object)
+        ($treeAfter -join "`n") | Should -BeExactly ($treeBefore -join "`n")
+        $filesAfter = @(Get-ParameterSnapshot @(Get-ChildItem -LiteralPath @($app.App,$app.Output,$app.Source) -Force -Recurse -File | Select-Object -ExpandProperty FullName))
+        ($filesAfter | ConvertTo-Json -Compress) | Should -BeExactly ($filesBefore | ConvertTo-Json -Compress)
         foreach ($directory in @($app.App,$app.Output,$app.Source)) { @(Get-ChildItem -LiteralPath $directory -Force | Where-Object Name -like '*WinPDFMerge_*').Count | Should -Be 0 }
-        Add-ParameterObservation $app 'actual-missing-input-usage-no-interactive-prompt' @() $before ([pscustomobject]@{Result=$result; ClosedStdin=$true; HelperImported=$false; NoRunOutputs=$true})
+        Add-ParameterObservation $app 'actual-missing-input-usage-no-interactive-prompt' @() $before ([pscustomobject]@{Result=$result; ClosedStdin=$true; HelperImported=$true; ApplicationVersion=$expectedVersion; NoNativeCalls=$true; NoRunOutputs=$true; TreesUnchanged=$true; FilesBefore=$filesBefore; FilesAfter=$filesAfter})
     }
 }
 

@@ -30,6 +30,7 @@ BeforeAll {
         [void][IO.Directory]::CreateDirectory($source)
         [void][IO.Directory]::CreateDirectory($noGs)
         [IO.File]::Copy((Join-Path $repo 'WinPDFMerge.ps1'), (Join-Path $app 'WinPDFMerge.ps1'))
+        [IO.File]::Copy((Join-Path $repo 'VERSION'), (Join-Path $app 'VERSION'))
         [IO.File]::Copy((Join-Path $repo 'src/WinPDFMerge.Helpers.ps1'), (Join-Path $app 'src/WinPDFMerge.Helpers.ps1'))
         # Optional GS is excluded from both PATH and common-location discovery,
         # in this test child only. No installed dependency or parent env is changed.

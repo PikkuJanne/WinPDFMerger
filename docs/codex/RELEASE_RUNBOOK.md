@@ -2,10 +2,17 @@
 
 This runbook is implemented by T27-T34. Publication is part of the requested work. Do not substitute a website launch, a release-ready report, an uploaded draft, a tag, or local ZIP creation for completion.
 
+The owner's 2026-10-09 scope instruction excludes human standard-user acceptance
+(AC058, nonrequired and `excluded`, never `pass`). This applies to all package
+and published-download gates below. Actual Windows application/native execution,
+independent PDF output inspection, exact-asset provenance and unchanged source
+checks remain required and may be automated. Record actual account/token context
+without making a human account-class/Explorer/PDF-viewer walkthrough a gate.
+
 Commands below are examples for a reviewed Windows checkout. **Build-Release.ps1 is an implementation deliverable of T28, not a file supplied by this handoff.** Codex must implement/test its interface before running the corresponding example. Check `gh ... --help` against the installed CLI. Every external command must have its exit status checked; a printed line is not success. The release helper supplied here is read/download-only and cannot publish.
 
 ## Gate A — before merge (T30)
-All T01-T30 tasks have evidence. All required `pre_release` cases pass; optional platform cases either pass or have explicit exclusions with rationale. Desktop/native/shell requirements, source safety, documentation, code review, CI and preliminary ZIP acceptance are complete. No known release-blocking defect remains. Run:
+All T01-T30 tasks have evidence. All required `pre_release` cases pass; nonrequired cases either pass or have explicit exclusions with rationale, including the owner-excluded AC058. Actual Windows/native/shell requirements, source safety, documentation, code review, CI and preliminary ZIP acceptance are complete. No known release-blocking defect remains. Run:
 
 ```text
 python tools/codex/handoff.py check-plan --repo . --require-ready
@@ -56,7 +63,7 @@ SHA256SUMS.txt
 
 SHA256SUMS.txt has one line: `<64 hex characters><two spaces>WinPDFMerger-v1.0.0.zip`. It does not include its own hash. Separately record the SHA-256 of BOTH files in prepublication evidence. The helper later requires both expected hashes, so a modified checksum file on the same website cannot silently redefine the accepted artifact.
 
-Test the **exact** final R ZIP before tagging: extract to a fresh path with spaces on the required Windows desktop, follow public instructions, run merge/email/master-only/error cases, inspect actual PDFs, and check unchanged sources. Record the ZIP hash and evidence. A premerge ZIP with a different BUILD_INFO commit is not this final asset.
+Test the **exact** final R ZIP before tagging: extract to a fresh path with spaces on actual Windows, run public application entry points with real dependencies, exercise merge/email/master-only/error cases, independently inspect actual PDFs and check unchanged sources. These required checks may be automated; no human standard-user/Explorer/PDF-viewer walkthrough is required. Record the ZIP hash, environment and execution evidence. A premerge ZIP with a different BUILD_INFO commit is not this final asset.
 
 If any fix is needed now, it is still safe to revise source through the normal PR/CI/test gates and choose a new R; do so BEFORE creating v1.0.0. Once the tag is pushed, do not move it to fix a problem. Do not silently rebuild or substitute different bytes after acceptance.
 
@@ -105,7 +112,7 @@ Use an unauthenticated download path, not the original build files or an authent
 python tools/codex/handoff.py verify-release --repo . --expected-release-commit <R> --expected-zip-sha256 <Gate-C-ZIP-hash> --expected-checksums-sha256 <Gate-C-manifest-hash> --download-dir <new-empty-download-path>
 ```
 
-Check its exit code and JSON output; save a sanitized evidence copy. Independently inspect the downloaded ZIP's safe paths/content and BUILD_INFO commit, then extract to a fresh directory. Perform a real Windows standard-user smoke merge from that published download and inspect the output. The helper's hashing does NOT run that application acceptance test. Bind the smoke evidence to the downloaded ZIP hash.
+Check its exit code and JSON output; save a sanitized evidence copy. Independently inspect the downloaded ZIP's safe paths/content and BUILD_INFO commit, then extract to a fresh directory. Perform an actual Windows smoke merge with real native dependencies from that published download, independently inspect output and verify unchanged sources. These checks may be automated; the excluded human standard-user walkthrough is not required. The helper's hashing does NOT run that application acceptance test. Bind the executed package files, environment and smoke results to the downloaded ZIP hash.
 
 If verification or post-publication operation fails, the project is NOT complete. Preserve evidence, do not delete/rewrite the release or retag automatically, and report the exact failure requiring resolution. Do not publish v1.0.1 or another version within this project's "only v1.0.0" scope without a new owner instruction.
 

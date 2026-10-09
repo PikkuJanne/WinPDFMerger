@@ -1,6 +1,10 @@
 # Preserve synthetic PDF bytes through Windows checkout/line-ending conversion.
 /tests/fixtures/numbered/*.pdf binary
 
+# Preserve T30 captured/sanitized report bytes, including native diagnostics.
+/docs/codex/evidence/T30-reports/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T30-reports/**/*.txt -text whitespace=-blank-at-eol,-blank-at-eof,space-before-tab,cr-at-eol
+
 # Existing entry is stored with CRLF; preserve its bytes and check real whitespace.
 /WinPDFMerge.ps1 -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 /WinPDFMerge.bat -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
@@ -1052,3 +1056,23 @@
 /docs/codex/evidence/T23-reports/ps7/SourceDiscovery.stdout.txt -text whitespace=-blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 /docs/codex/evidence/T23-reports/preparation/warning-probe/prove-warning-inert.py -text whitespace=blank-at-eol,-blank-at-eof,space-before-tab,cr-at-eol
 /docs/codex/evidence/T23-reports/review/audit-C1.py -text whitespace=-blank-at-eol,-blank-at-eof,space-before-tab,cr-at-eol
+# Preserve the exact selected T26 documentation/static/inventory receipt bytes.
+/docs/codex/evidence/T26-reports/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+/docs/codex/evidence/T26-scope-reports/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Preserve exact T27 version/native/static/review receipts and their manifests.
+/docs/codex/evidence/T27-reports/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Preserve exact T28 packaging/test/static/audit receipts and their manifests.
+/docs/codex/evidence/T28-reports/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Preserve the exact independent T28 precommit audit report outside its manifest.
+/docs/codex/evidence/T28-staged-review.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Preserve exact T29 candidate-operation projections and manifests.
+/docs/codex/evidence/T29-reports/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Captured original diagnostics retain empty-field trailing spaces and EOF lines.
+/docs/codex/evidence/T29-reports/capture/**/*.txt whitespace=-blank-at-eol,-blank-at-eof,space-before-tab,cr-at-eol
+/docs/codex/evidence/T29-reports/capture/**/*.application.log whitespace=-blank-at-eol,-blank-at-eof,space-before-tab,cr-at-eol

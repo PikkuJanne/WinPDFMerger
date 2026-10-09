@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "task": "T26",
+  "task_status": "blocked",
+  "documentation_test_commit": "6fba16e226bc02b5205ded6665fcbef970258917",
+  "walkthrough_candidate_commit": "e2451141217efdd00a1d49d72a04df054872dffc",
+  "runtime_and_CI_behavior_changed": false,
+  "acceptance": {
+    "AC058": {
+      "result": "not_run",
+      "required": true,
+      "reason": "Actual standard-user Explorer and visible PDF observer evidence not supplied."
+    },
+    "AC059": {
+      "result": "not_run",
+      "required": true,
+      "reason": "Public claims and exclusions reviewed; required desktop evidence and enrollment/account observations remain absent."
+    },
+    "AC060": {
+      "result": "excluded",
+      "required": false,
+      "reason": "No actual Windows 10 host; explicit permitted validation exclusion."
+    },
+    "AC061": {
+      "result": "excluded",
+      "required": false,
+      "reason": "No live UNC test; unit strings/local NTFS do not prove network operation."
+    },
+    "AC062": {
+      "result": "excluded",
+      "required": false,
+      "reason": "No ARM or x86 host; x86 PDFtk on x64 is not host validation."
+    }
+  },
+  "local": {
+    "hosts": [
+      "5.1.26100.9444 Desktop x64",
+      "7.6.6 Core x64"
+    ],
+    "pester_version": "6.2.0",
+    "documentation_regressions_added": 1,
+    "public_docs_passed_per_host": 21,
+    "public_docs_passed_total": 42,
+    "all_bad_counts": 0,
+    "source_clean_before_after": true,
+    "approved_selected_cache_file_hashes_verified": 10,
+    "static_files_per_host": 1,
+    "selected_analyzer_rules_per_host": 41,
+    "selected_findings_per_host": 0,
+    "selected_suppressions_per_host": 0,
+    "analyzer_version": "1.25.0",
+    "advisory_warnings_per_host": 3,
+    "advisory_errors_per_host": 0,
+    "advisory_information_per_host": 0
+  },
+  "current_inventory": {
+    "full_build": "26300.9457",
+    "edition": "Professional",
+    "display_version": "26H2",
+    "process_64_bit": true,
+    "is_administrator": false,
+    "support_fact": "Exact current full revision matches Microsoft GA release table checked2026-10-08; historical base-only inventory is not retroactively rewritten.",
+    "insider_enrollment": "unobserved",
+    "standard_user_account_manual_confirmation": "not supplied",
+    "process_policy": "previously authorized child-only RemoteSigned"
+  },
+  "new_native_or_manual_tests_run": false,
+  "package_created_or_tested": false,
+  "publication_started": false,
+  "checkpoint": {
+    "C1_normal_push_and_fresh_clean_live_equality": true,
+    "C2_own_sync": "must be verified after its push in session without self-reference"
+  },
+  "pull_request": {
+    "url": "https://github.com/PikkuJanne/WinPDFMerger/pull/26",
+    "draft": true,
+    "merged": false
+  },
+  "evidence": [
+    "T26-checkpoint.md",
+    "T26-compatibility-review.md",
+    "T26-M4-review.md",
+    "T26-walkthrough.md",
+    "T26-reports/manifest.json"
+  ],
+  "next_task": "Resume T26 actual required observer walkthrough; T27 not dependency-ready.",
+  "hosted_C1_platform_conclusions": {
+    "push_run": 37820093518,
+    "PR_run": 37820188814,
+    "completed_jobs_per_run": 4,
+    "successful_jobs_per_run": 4,
+    "scope": "Fresh platform metadata only, no artifact/count/checkout reconstruction; no manual desktop pass"
+  }
+}

@@ -997,24 +997,38 @@
       "id": "AC058",
       "task_id": "T26",
       "title": "Explorer acceptance",
-      "expected": "A real Windows 11 standard-user Explorer drag/drop and visible PDF inspection pass with observer/environment/commit evidence.",
+      "expected": "Owner D25 excludes human standard-user Explorer drag/drop and visible PDF acceptance; record the exclusion without a manual pass.",
       "mode": "manual",
-      "required": true,
+      "required": false,
       "stage": "pre_release",
-      "result": "not_run",
-      "evidence": [],
-      "exclusion_reason": null
+      "result": "excluded",
+      "evidence": [
+        "docs/codex/evidence/T26-compatibility-review.md",
+        "docs/codex/evidence/T26-checkpoint.md",
+        "docs/codex/evidence/T26-walkthrough.md",
+        "docs/codex/evidence/T26-owner-scope.md",
+        "docs/codex/evidence/T26-scope-completion.md"
+      ],
+      "exclusion_reason": "Owner instruction on 2026-10-09: \"Human standard user test is out of scope for this project\" (D25). Human standard-user/Explorer/visible-PDF validation was not performed and is excluded; synthetic kit preparation and its reported setup failure are not application acceptance results."
     },
     {
       "id": "AC059",
       "task_id": "T26",
       "title": "Compatibility honesty",
-      "expected": "Required PS5.1/PS7/desktop evidence is present; public claims match the matrix and all scope exclusions are explicit.",
+      "expected": "Actual recorded Windows PS5.1/PS7/native and hosted CI evidence retains its scope; public claims match the matrix and D25 human-validation/other-host exclusions are explicit.",
       "mode": "review",
       "required": true,
       "stage": "pre_release",
-      "result": "not_run",
-      "evidence": [],
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T26-compatibility-review.md",
+        "docs/codex/evidence/T26-checkpoint.md",
+        "docs/codex/evidence/T26-M4-review.md",
+        "docs/codex/evidence/T26-owner-scope.md",
+        "docs/codex/evidence/T26-scope-review.md",
+        "docs/codex/evidence/T26-scope-completion.md",
+        "docs/codex/evidence/T26-scope-reports/manifest.json"
+      ],
       "exclusion_reason": null
     },
     {
@@ -1025,9 +1039,12 @@
       "mode": "scope",
       "required": false,
       "stage": "pre_release",
-      "result": "not_run",
-      "evidence": [],
-      "exclusion_reason": null
+      "result": "excluded",
+      "evidence": [
+        "docs/codex/evidence/T26-compatibility-review.md",
+        "docs/codex/evidence/T26-checkpoint.md"
+      ],
+      "exclusion_reason": "No Windows 10 host was tested. PRODUCT_SPEC makes this optional; Windows 11 desktop and hosted Server tests do not establish Windows 10 validation. Excluded from validated v1.0.0 support in README and docs/COMPATIBILITY.md."
     },
     {
       "id": "AC061",
@@ -1037,9 +1054,12 @@
       "mode": "scope",
       "required": false,
       "stage": "pre_release",
-      "result": "not_run",
-      "evidence": [],
-      "exclusion_reason": null
+      "result": "excluded",
+      "evidence": [
+        "docs/codex/evidence/T26-compatibility-review.md",
+        "docs/codex/evidence/T26-checkpoint.md"
+      ],
+      "exclusion_reason": "No live UNC network share was tested. Local NTFS runs and UNC string unit tests do not establish network-share connectivity, permissions or native operation. Excluded from validated v1.0.0 support in README and docs/COMPATIBILITY.md."
     },
     {
       "id": "AC062",
@@ -1049,9 +1069,12 @@
       "mode": "scope",
       "required": false,
       "stage": "pre_release",
-      "result": "not_run",
-      "evidence": [],
-      "exclusion_reason": null
+      "result": "excluded",
+      "evidence": [
+        "docs/codex/evidence/T26-compatibility-review.md",
+        "docs/codex/evidence/T26-checkpoint.md"
+      ],
+      "exclusion_reason": "No ARM or 32-bit host was tested. The required reference uses x64; an x86 PDFtk executable on an x64 host does not validate other host architectures. Excluded from validated v1.0.0 support in README and docs/COMPATIBILITY.md."
     },
     {
       "id": "AC063",
@@ -1061,8 +1084,14 @@
       "mode": "static",
       "required": true,
       "stage": "pre_release",
-      "result": "not_run",
-      "evidence": [],
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T27-completion.md",
+        "docs/codex/evidence/T27-review.md",
+        "docs/codex/evidence/T27-reports/broad/PS51/Version/summary.json",
+        "docs/codex/evidence/T27-reports/broad/PS7/Version/summary.json",
+        "docs/codex/evidence/T27-results.json"
+      ],
       "exclusion_reason": null
     },
     {
@@ -1073,8 +1102,11 @@
       "mode": "review",
       "required": true,
       "stage": "pre_release",
-      "result": "not_run",
-      "evidence": [],
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T27-review.md",
+        "docs/codex/evidence/T27-completion.md"
+      ],
       "exclusion_reason": null
     },
     {
@@ -1085,8 +1117,12 @@
       "mode": "package",
       "required": true,
       "stage": "pre_release",
-      "result": "not_run",
-      "evidence": [],
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T28-completion.md",
+        "docs/codex/evidence/T28-results.json",
+        "docs/codex/evidence/T28-review.md"
+      ],
       "exclusion_reason": null
     },
     {
@@ -1097,20 +1133,28 @@
       "mode": "package",
       "required": true,
       "stage": "pre_release",
-      "result": "not_run",
-      "evidence": [],
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T28-completion.md",
+        "docs/codex/evidence/T28-results.json",
+        "docs/codex/evidence/T28-review.md"
+      ],
       "exclusion_reason": null
     },
     {
       "id": "AC067",
       "task_id": "T29",
       "title": "Clean ZIP install",
-      "expected": "The actual ZIP works from a clean extracted folder as a standard user without hidden developer files or working-directory assumptions.",
+      "expected": "The actual candidate ZIP works in an automated Windows smoke from a clean extracted folder without hidden developer files or working-directory assumptions; record OS, shell, token and selected dependencies.",
       "mode": "package",
       "required": true,
       "stage": "pre_release",
-      "result": "not_run",
-      "evidence": [],
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T29-completion.md",
+        "docs/codex/evidence/T29-results.json",
+        "docs/codex/evidence/T29-review.md"
+      ],
       "exclusion_reason": null
     },
     {
@@ -1121,8 +1165,12 @@
       "mode": "package",
       "required": true,
       "stage": "pre_release",
-      "result": "not_run",
-      "evidence": [],
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T29-completion.md",
+        "docs/codex/evidence/T29-results.json",
+        "docs/codex/evidence/T29-review.md"
+      ],
       "exclusion_reason": null
     },
     {
@@ -1133,8 +1181,12 @@
       "mode": "review",
       "required": true,
       "stage": "pre_release",
-      "result": "not_run",
-      "evidence": [],
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T30-completion.md",
+        "docs/codex/evidence/T30-results.json",
+        "docs/codex/evidence/T30-reports/review/coverage-review.json"
+      ],
       "exclusion_reason": null
     },
     {
@@ -1145,8 +1197,12 @@
       "mode": "review",
       "required": true,
       "stage": "pre_release",
-      "result": "not_run",
-      "evidence": [],
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T30-completion.md",
+        "docs/codex/evidence/T30-results.json",
+        "docs/codex/evidence/T30-reports/review/source-review.json"
+      ],
       "exclusion_reason": null
     },
     {
@@ -1213,8 +1269,8 @@
       "id": "AC076",
       "task_id": "T33",
       "title": "Downloaded package smoke",
-      "expected": "Independently downloaded published ZIP runs the documented standard-user merge workflow and preserves sources; evidence binds result to the published asset hash.",
-      "mode": "manual",
+      "expected": "An automated actual Windows smoke runs the documented merge workflow from the independently downloaded published ZIP and preserves sources; record environment/token and bind operation to the published asset hash.",
+      "mode": "package",
       "required": true,
       "stage": "published",
       "result": "not_run",

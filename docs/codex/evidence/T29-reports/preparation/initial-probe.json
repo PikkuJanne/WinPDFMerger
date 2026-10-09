@@ -1,0 +1,181 @@
+{
+  "task": "T29",
+  "scope": "initial context or dirty exploratory preparation; not accepted T29 operation",
+  "original_ledger": "tests/.work/T29-experiments/e7e96d8989084c989364cce466358bdf/invocations.json",
+  "original_bytes": 32976,
+  "original_sha256": "7d77a7a366af0c66c78d335c4b482c0188544fe2937a8d883e063490ce363d0b",
+  "redactions": [
+    "<REPO>",
+    "<USERPROFILE>"
+  ],
+  "payload": [
+    {
+      "label": "gs-lib-version",
+      "command": [
+        "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-gs-e84c278f46724e9a97dd8dbcdbb8d66f\\ghostscript-10.08.0-x64\\bin\\gswin64c.exe",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stdout": "10.08.0\n",
+      "stderr": ""
+    },
+    {
+      "label": "gs-lib-render",
+      "command": [
+        "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-gs-e84c278f46724e9a97dd8dbcdbb8d66f\\ghostscript-10.08.0-x64\\bin\\gswin64c.exe",
+        "-dBATCH",
+        "-dNOPAUSE",
+        "-dSAFER",
+        "-sDEVICE=pdfwrite",
+        "-dPDFSETTINGS=/screen",
+        "-sOutputFile=<REPO>\\tests\\.work\\T29-experiments\\e7e96d8989084c989364cce466358bdf\\gs-lib-output.pdf",
+        "<REPO>\\tests\\.work\\T29-experiments\\e7e96d8989084c989364cce466358bdf\\synthetic-input.pdf"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "GPL Ghostscript 10.08.0: Initialization file gs_init.ps does not begin with an integer.\n"
+    },
+    {
+      "label": "candidate-default",
+      "command": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\fresh install with spaces\\WinPDFMerger-v1.0.0\\WinPDFMerge.ps1",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\synthetic inputs",
+        "-OutputFolder",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-default output"
+      ],
+      "exit_code": 0,
+      "stdout": "WinPDFMerger 1.0.0\nStage: Invocation preflight; elapsed: 0.185 s\n==== WinPDFMerge run 2026-10-09 17.06.36 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 0.758 s\r\nSource folder: <USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\synthetic inputs\r\nOutput folder: <USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-default output\r\nRun identity: WinPDFMerge_synthetic inputs_20261009_170635_ef53d34f436945b3\r\nPlanned master output: <USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-default output\\WinPDFMerge_synthetic inputs_20261009_170635_ef53d34f436945b3.pdf\r\nPlanned email output: <USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-default output\\WinPDFMerge_synthetic inputs_20261009_170635_ef53d34f436945b3_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 5.1.26100.9444 (Desktop)\r\nStage: Input discovery; elapsed: 0.767 s\r\nPDF count: 3\r\nInput 1: <USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\synthetic inputs\\1.pdf\r\nInput 2: <USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\synthetic inputs\\2.pdf\r\nInput 3: <USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\synthetic inputs\\10.pdf\r\nStage: PDFtk preflight; elapsed: 0.836 s\r\nPDFtk: <USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe (version 2.02)\r\nStage: Input inspection; elapsed: 1.048 s\r\nInput 1 pages: 1\r\nInput 2 pages: 2\r\nInput 3 pages: 1\r\nExpected page total: 4\r\nPrivate staging: <USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-default output\\.WinPDFMerge_99ffcff3833c447c9d73764011cfa515.tmp\r\nStage: Master processing; elapsed: 1.515 s\r\nPDFtk executable: <USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe\r\nPDFtk arguments: \"<USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\synthetic inputs\\1.pdf\" \"<USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\synthetic inputs\\2.pdf\" \"<USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\synthetic inputs\\10.pdf\" \"cat\" \"output\" \"<USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-default output\\.WinPDFMerge_99ffcff3833c447c9d73764011cfa515.tmp\\master.pdf\" \"compress\" \"dont_ask\"\r\nPDFtk exit: 0; elapsed: 85 ms; PID: 7984\r\nPDFtk started: True; timed out: False; cancelled: False; succeeded: True\r\nPDFtk launch error: \r\nPDFtk capture error: \r\nPDFtk termination error: \r\nPDFtk stdout truncated: False; stderr truncated: False\r\nPDFtk stdout:\r\n\r\nPDFtk stderr:\r\n\r\nMaster validation executable: <USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe\r\nMaster validation arguments: \"<USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-default output\\.WinPDFMerge_99ffcff3833c447c9d73764011cfa515.tmp\\master.pdf\" \"dump_data_utf8\" \"output\" \"-\" \"dont_ask\"\r\nMaster validation exit: 0; elapsed: 51 ms; PID: 13060\r\nMaster validation started: True; timed out: False; cancelled: False; succeeded: True\r\nMaster validation launch error: \r\nMaster validation capture error: \r\nMaster validation termination error: \r\nMaster validation stdout truncated: False; stderr truncated: False\r\nMaster validation stdout:\r\nInfoBegin\r\nInfoKey: Creator\r\nInfoValue: pdftk 2.02 - www.pdftk.com\r\nInfoBegin\r\nInfoKey: Producer\r\nInfoValue: itext-paulo-155 (itextpdf.sf.net-lowagie.com)\r\nInfoBegin\r\nInfoKey: ModDate\r\nInfoValue: D:20261009140636-01'00'\r\nInfoBegin\r\nInfoKey: CreationDate\r\nInfoValue: D:20261009140636-01'00'\r\nPdfID0: 14352566dea26378925ab2e674cb5ca2\r\nPdfID1: 07ea034a424cecdada57d243899d10b0\r\nNumberOfPages: 4\r\nPageMediaBegin\r\nPageMediaNumber: 1\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 2\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 3\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 4\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\n\r\nMaster validation stderr:\r\n\r\nMaster validation OK: 4 expected pages inspected. Merged master published: <USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-default output\\WinPDFMerge_synthetic inputs_20261009_170635_ef53d34f436945b3.pdf\r\nStage: Email preflight; elapsed: 1.764 s\r\nGhostscript: <USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-gs-e84c278f46724e9a97dd8dbcdbb8d66f\\ghostscript-10.08.0-x64\\bin\\gswin64c.exe (version 10.08.0)\r\nStage: Email processing; elapsed: 1.935 s\r\nGhostscript executable: <USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-gs-e84c278f46724e9a97dd8dbcdbb8d66f\\ghostscript-10.08.0-x64\\bin\\gswin64c.exe\r\nGhostscript arguments: \"-dBATCH\" \"-dNOPAUSE\" \"-dSAFER\" \"-dPDFSTOPONERROR\" \"-sDEVICE=pdfwrite\" \"-dCompatibilityLevel=1.6\" \"-dPDFSETTINGS=/screen\" \"-dDetectDuplicateImages=true\" \"-o\" \"<USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-default output\\.WinPDFMerge_99ffcff3833c447c9d73764011cfa515.tmp\\email.pdf\" \"-f\" \"<USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-default output\\WinPDFMerge_synthetic inputs_20261009_170635_ef53d34f436945b3.pdf\"\r\nGhostscript exit: 0; elapsed: 260 ms; PID: 3880\r\nGhostscript started: True; timed out: False; cancelled: False; succeeded: True\r\nGhostscript launch error: \r\nGhostscript capture error: \r\nGhostscript termination error: \r\nGhostscript stdout truncated: False; stderr truncated: False\r\nGhostscript stdout:\r\nGPL Ghostscript 10.08.0 (2026-09-08)\nCopyright (C) 2026 Artifex Software, Inc.  All rights reserved.\nThis software is supplied under the GNU AGPLv3 and comes with NO WARRANTY:\nsee the file COPYING for details.\nProcessing pages 1 through 4.\nPage 1\nLoading font Helvetica (or substitute) from %rom%Resource/Font/NimbusSans-Regular\nLoading font Helvetica-Bold (or substitute) from %rom%Resource/Font/NimbusSans-Bold\nPage 2\nLoading font Helvetica (or substitute) from %rom%Resource/Font/NimbusSans-Regular\nLoading font Helvetica-Bold (or substitute) from %rom%Resource/Font/NimbusSans-Bold\nPage 3\nPage 4\nLoading font Helvetica (or substitute) from %rom%Resource/Font/NimbusSans-Regular\nLoading font Helvetica-Bold (or substitute) from %rom%Resource/Font/NimbusSans-Bold\n\r\nGhostscript stderr:\r\n\r\nEmail validation executable: <USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe\r\nEmail validation arguments: \"<USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-default output\\.WinPDFMerge_99ffcff3833c447c9d73764011cfa515.tmp\\email.pdf\" \"dump_data_utf8\" \"output\" \"-\" \"dont_ask\"\r\nEmail validation exit: 0; elapsed: 55 ms; PID: 20232\r\nEmail validation started: True; timed out: False; cancelled: False; succeeded: True\r\nEmail validation launch error: \r\nEmail validation capture error: \r\nEmail validation termination error: \r\nEmail validation stdout truncated: False; stderr truncated: False\r\nEmail validation stdout:\r\nInfoBegin\r\nInfoKey: Creator\r\nInfoValue: pdftk 2.02 - www.pdftk.com\r\nInfoBegin\r\nInfoKey: Producer\r\nInfoValue: GPL Ghostscript 10.08.0\r\nInfoBegin\r\nInfoKey: ModDate\r\nInfoValue: D:20261009170637+02'00'\r\nInfoBegin\r\nInfoKey: CreationDate\r\nInfoValue: D:20261009170637+02'00'\r\nPdfID0: cc96acf03b08d4ba0a4b51103ae63816\r\nPdfID1: cc96acf03b08d4ba0a4b51103ae63816\r\nNumberOfPages: 4\r\nPageMediaBegin\r\nPageMediaNumber: 1\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 2\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 3\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 4\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\n\r\nEmail validation stderr:\r\n\r\nStage: Summary; elapsed: 2.333 s\r\nElapsed time: 2.334 s\r\nPowerShell: 5.1.26100.9444 (Desktop)\r\nPDFtk version: 2.02\r\nGhostscript version: 10.08.0\r\nInput summary: 3 PDF(s); expected pages: 4\r\nEmail result: no_size_benefit\r\nValidated email copy offers no size benefit; master retained.\r\nMaster size: 3746 bytes (3.66 KiB).\r\nValidated email candidate size: 4502 bytes (4.40 KiB); not published.\r\nEmail candidate reduction: -20.2% (no size benefit; candidate not published).\r\nPublished Merged master: <USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-default output\\WinPDFMerge_synthetic inputs_20261009_170635_ef53d34f436945b3.pdf\r\nDone.\r\nResult: SUCCESS; exit code: 0\r\n\nSUCCESS: Validated email copy offers no size benefit; master retained.\nResult: SUCCESS; exit code: 0\nElapsed time: 2.358 s\nPowerShell: 5.1.26100.9444 (Desktop)\nPDFtk version: 2.02\nGhostscript version: 10.08.0\nInput summary: 3 PDF(s); expected pages: 4\nMaster size: 3746 bytes (3.66 KiB).\nValidated email candidate size: 4502 bytes (4.40 KiB); not published.\nEmail candidate reduction: -20.2% (no size benefit; candidate not published).\n - Merged master: <USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-default output\\WinPDFMerge_synthetic inputs_20261009_170635_ef53d34f436945b3.pdf\nLog: <USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-default output\\WinPDFMerge_synthetic inputs_20261009_170635_ef53d34f436945b3.log\n",
+      "stderr": "",
+      "outputs": [
+        {
+          "name": "WinPDFMerge_synthetic inputs_20261009_170635_ef53d34f436945b3.log",
+          "bytes": 14381,
+          "sha256": "ffe6b81cc4604203c4b54da5874b3d5333801fcd5526c6f65c5829f1336f44e1"
+        },
+        {
+          "name": "WinPDFMerge_synthetic inputs_20261009_170635_ef53d34f436945b3.pdf",
+          "bytes": 3746,
+          "sha256": "bfb154f4ac2afe9cbfe70377dd02806285b321c22b5fc4a3de3cf8a3c15e0d88"
+        }
+      ]
+    },
+    {
+      "label": "candidate-default-pdftk-check",
+      "command": [
+        "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-default output\\WinPDFMerge_synthetic inputs_20261009_170635_ef53d34f436945b3.pdf",
+        "dump_data_utf8"
+      ],
+      "exit_code": 0,
+      "stdout": "InfoBegin\r\nInfoKey: Creator\r\nInfoValue: pdftk 2.02 - www.pdftk.com\r\nInfoBegin\r\nInfoKey: Producer\r\nInfoValue: itext-paulo-155 (itextpdf.sf.net-lowagie.com)\r\nInfoBegin\r\nInfoKey: ModDate\r\nInfoValue: D:20261009140636-01'00'\r\nInfoBegin\r\nInfoKey: CreationDate\r\nInfoValue: D:20261009140636-01'00'\r\nPdfID0: 14352566dea26378925ab2e674cb5ca2\r\nPdfID1: 07ea034a424cecdada57d243899d10b0\r\nNumberOfPages: 4\r\nPageMediaBegin\r\nPageMediaNumber: 1\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 2\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 3\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 4\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\n",
+      "stderr": ""
+    },
+    {
+      "label": "candidate-skip",
+      "command": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\fresh install with spaces\\WinPDFMerger-v1.0.0\\WinPDFMerge.ps1",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\synthetic inputs",
+        "-OutputFolder",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-skip output",
+        "-SkipEmail"
+      ],
+      "exit_code": 0,
+      "stdout": "WinPDFMerger 1.0.0\nStage: Invocation preflight; elapsed: 0.126 s\n==== WinPDFMerge run 2026-10-09 17.06.38 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 0.694 s\r\nSource folder: <USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\synthetic inputs\r\nOutput folder: <USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-skip output\r\nRun identity: WinPDFMerge_synthetic inputs_20261009_170638_1b2015500e0e4249\r\nPlanned master output: <USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-skip output\\WinPDFMerge_synthetic inputs_20261009_170638_1b2015500e0e4249.pdf\r\nPlanned email output: <USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-skip output\\WinPDFMerge_synthetic inputs_20261009_170638_1b2015500e0e4249_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 5.1.26100.9444 (Desktop)\r\nStage: Input discovery; elapsed: 0.704 s\r\nPDF count: 3\r\nInput 1: <USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\synthetic inputs\\1.pdf\r\nInput 2: <USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\synthetic inputs\\2.pdf\r\nInput 3: <USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\synthetic inputs\\10.pdf\r\nStage: PDFtk preflight; elapsed: 0.769 s\r\nPDFtk: <USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe (version 2.02)\r\nStage: Input inspection; elapsed: 0.985 s\r\nInput 1 pages: 1\r\nInput 2 pages: 2\r\nInput 3 pages: 1\r\nExpected page total: 4\r\nPrivate staging: <USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-skip output\\.WinPDFMerge_4be2817ddc4b4f1ca0c7ba2cae5caba0.tmp\r\nStage: Master processing; elapsed: 1.449 s\r\nPDFtk executable: <USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe\r\nPDFtk arguments: \"<USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\synthetic inputs\\1.pdf\" \"<USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\synthetic inputs\\2.pdf\" \"<USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\synthetic inputs\\10.pdf\" \"cat\" \"output\" \"<USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-skip output\\.WinPDFMerge_4be2817ddc4b4f1ca0c7ba2cae5caba0.tmp\\master.pdf\" \"compress\" \"dont_ask\"\r\nPDFtk exit: 0; elapsed: 69 ms; PID: 3244\r\nPDFtk started: True; timed out: False; cancelled: False; succeeded: True\r\nPDFtk launch error: \r\nPDFtk capture error: \r\nPDFtk termination error: \r\nPDFtk stdout truncated: False; stderr truncated: False\r\nPDFtk stdout:\r\n\r\nPDFtk stderr:\r\n\r\nMaster validation executable: <USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe\r\nMaster validation arguments: \"<USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-skip output\\.WinPDFMerge_4be2817ddc4b4f1ca0c7ba2cae5caba0.tmp\\master.pdf\" \"dump_data_utf8\" \"output\" \"-\" \"dont_ask\"\r\nMaster validation exit: 0; elapsed: 51 ms; PID: 7532\r\nMaster validation started: True; timed out: False; cancelled: False; succeeded: True\r\nMaster validation launch error: \r\nMaster validation capture error: \r\nMaster validation termination error: \r\nMaster validation stdout truncated: False; stderr truncated: False\r\nMaster validation stdout:\r\nInfoBegin\r\nInfoKey: Creator\r\nInfoValue: pdftk 2.02 - www.pdftk.com\r\nInfoBegin\r\nInfoKey: Producer\r\nInfoValue: itext-paulo-155 (itextpdf.sf.net-lowagie.com)\r\nInfoBegin\r\nInfoKey: ModDate\r\nInfoValue: D:20261009140639-01'00'\r\nInfoBegin\r\nInfoKey: CreationDate\r\nInfoValue: D:20261009140639-01'00'\r\nPdfID0: b994c099b0ed890a90eba4164980a8c1\r\nPdfID1: f1723520b7dd58ea4fcdc047798f49b6\r\nNumberOfPages: 4\r\nPageMediaBegin\r\nPageMediaNumber: 1\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 2\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 3\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 4\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\n\r\nMaster validation stderr:\r\n\r\nMaster validation OK: 4 expected pages inspected. Merged master published: <USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-skip output\\WinPDFMerge_synthetic inputs_20261009_170638_1b2015500e0e4249.pdf\r\nStage: Summary; elapsed: 1.698 s\r\nElapsed time: 1.699 s\r\nPowerShell: 5.1.26100.9444 (Desktop)\r\nPDFtk version: 2.02\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: 3 PDF(s); expected pages: 4\r\nEmail result: skipped\r\nEmail explicitly skipped; validated master retained.\r\nMaster size: 3746 bytes (3.66 KiB).\r\nPublished Merged master: <USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-skip output\\WinPDFMerge_synthetic inputs_20261009_170638_1b2015500e0e4249.pdf\r\nDone.\r\nResult: SUCCESS; exit code: 0\r\n\nSUCCESS: Email explicitly skipped; validated master retained.\nResult: SUCCESS; exit code: 0\nElapsed time: 1.719 s\nPowerShell: 5.1.26100.9444 (Desktop)\nPDFtk version: 2.02\nGhostscript version: not used (SkipEmail)\nInput summary: 3 PDF(s); expected pages: 4\nMaster size: 3746 bytes (3.66 KiB).\n - Merged master: <USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-skip output\\WinPDFMerge_synthetic inputs_20261009_170638_1b2015500e0e4249.pdf\nLog: <USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-skip output\\WinPDFMerge_synthetic inputs_20261009_170638_1b2015500e0e4249.log\n",
+      "stderr": "",
+      "outputs": [
+        {
+          "name": "WinPDFMerge_synthetic inputs_20261009_170638_1b2015500e0e4249.log",
+          "bytes": 10003,
+          "sha256": "a0997e8f7071949d1733ea2167e92883ba21f393dc2c405d97344eab69c4ccbb"
+        },
+        {
+          "name": "WinPDFMerge_synthetic inputs_20261009_170638_1b2015500e0e4249.pdf",
+          "bytes": 3746,
+          "sha256": "7a95be46f3adc81bda60bc793e4268e3e89f11cebfe4b640f9edccefb3203cdf"
+        }
+      ]
+    },
+    {
+      "label": "candidate-skip-pdftk-check",
+      "command": [
+        "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-skip output\\WinPDFMerge_synthetic inputs_20261009_170638_1b2015500e0e4249.pdf",
+        "dump_data_utf8"
+      ],
+      "exit_code": 0,
+      "stdout": "InfoBegin\r\nInfoKey: Creator\r\nInfoValue: pdftk 2.02 - www.pdftk.com\r\nInfoBegin\r\nInfoKey: Producer\r\nInfoValue: itext-paulo-155 (itextpdf.sf.net-lowagie.com)\r\nInfoBegin\r\nInfoKey: ModDate\r\nInfoValue: D:20261009140639-01'00'\r\nInfoBegin\r\nInfoKey: CreationDate\r\nInfoValue: D:20261009140639-01'00'\r\nPdfID0: b994c099b0ed890a90eba4164980a8c1\r\nPdfID1: f1723520b7dd58ea4fcdc047798f49b6\r\nNumberOfPages: 4\r\nPageMediaBegin\r\nPageMediaNumber: 1\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 2\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 3\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 4\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\n",
+      "stderr": ""
+    },
+    {
+      "label": "candidate-email-failure",
+      "command": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\fresh install with spaces\\WinPDFMerger-v1.0.0\\WinPDFMerge.ps1",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\synthetic inputs",
+        "-OutputFolder",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-email-failure output"
+      ],
+      "exit_code": 2,
+      "stdout": "WinPDFMerger 1.0.0\nStage: Invocation preflight; elapsed: 0.124 s\n==== WinPDFMerge run 2026-10-09 17.06.40 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 0.680 s\r\nSource folder: <USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\synthetic inputs\r\nOutput folder: <USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-email-failure output\r\nRun identity: WinPDFMerge_synthetic inputs_20261009_170640_618a70b5e5a94153\r\nPlanned master output: <USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-email-failure output\\WinPDFMerge_synthetic inputs_20261009_170640_618a70b5e5a94153.pdf\r\nPlanned email output: <USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-email-failure output\\WinPDFMerge_synthetic inputs_20261009_170640_618a70b5e5a94153_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 5.1.26100.9444 (Desktop)\r\nStage: Input discovery; elapsed: 0.691 s\r\nPDF count: 3\r\nInput 1: <USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\synthetic inputs\\1.pdf\r\nInput 2: <USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\synthetic inputs\\2.pdf\r\nInput 3: <USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\synthetic inputs\\10.pdf\r\nStage: PDFtk preflight; elapsed: 0.746 s\r\nPDFtk: <USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe (version 2.02)\r\nStage: Input inspection; elapsed: 0.956 s\r\nInput 1 pages: 1\r\nInput 2 pages: 2\r\nInput 3 pages: 1\r\nExpected page total: 4\r\nPrivate staging: <USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-email-failure output\\.WinPDFMerge_4d0189a9791e408ebbee40dfe7018572.tmp\r\nStage: Master processing; elapsed: 1.428 s\r\nPDFtk executable: <USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe\r\nPDFtk arguments: \"<USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\synthetic inputs\\1.pdf\" \"<USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\synthetic inputs\\2.pdf\" \"<USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\synthetic inputs\\10.pdf\" \"cat\" \"output\" \"<USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-email-failure output\\.WinPDFMerge_4d0189a9791e408ebbee40dfe7018572.tmp\\master.pdf\" \"compress\" \"dont_ask\"\r\nPDFtk exit: 0; elapsed: 69 ms; PID: 21248\r\nPDFtk started: True; timed out: False; cancelled: False; succeeded: True\r\nPDFtk launch error: \r\nPDFtk capture error: \r\nPDFtk termination error: \r\nPDFtk stdout truncated: False; stderr truncated: False\r\nPDFtk stdout:\r\n\r\nPDFtk stderr:\r\n\r\nMaster validation executable: <USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe\r\nMaster validation arguments: \"<USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-email-failure output\\.WinPDFMerge_4d0189a9791e408ebbee40dfe7018572.tmp\\master.pdf\" \"dump_data_utf8\" \"output\" \"-\" \"dont_ask\"\r\nMaster validation exit: 0; elapsed: 52 ms; PID: 9120\r\nMaster validation started: True; timed out: False; cancelled: False; succeeded: True\r\nMaster validation launch error: \r\nMaster validation capture error: \r\nMaster validation termination error: \r\nMaster validation stdout truncated: False; stderr truncated: False\r\nMaster validation stdout:\r\nInfoBegin\r\nInfoKey: Creator\r\nInfoValue: pdftk 2.02 - www.pdftk.com\r\nInfoBegin\r\nInfoKey: Producer\r\nInfoValue: itext-paulo-155 (itextpdf.sf.net-lowagie.com)\r\nInfoBegin\r\nInfoKey: ModDate\r\nInfoValue: D:20261009140641-01'00'\r\nInfoBegin\r\nInfoKey: CreationDate\r\nInfoValue: D:20261009140641-01'00'\r\nPdfID0: d1800f98909f4a709ae84e6c4aedb4be\r\nPdfID1: a0f9158b381f64af16d668ad5054b149\r\nNumberOfPages: 4\r\nPageMediaBegin\r\nPageMediaNumber: 1\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 2\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 3\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 4\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\n\r\nMaster validation stderr:\r\n\r\nMaster validation OK: 4 expected pages inspected. Merged master published: <USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-email-failure output\\WinPDFMerge_synthetic inputs_20261009_170640_618a70b5e5a94153.pdf\r\nStage: Email preflight; elapsed: 1.652 s\r\nGhostscript: <USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-gs-e84c278f46724e9a97dd8dbcdbb8d66f\\ghostscript-10.08.0-x64\\bin\\gswin64c.exe (version 10.08.0)\r\nStage: Email processing; elapsed: 1.827 s\r\nGhostscript executable: <USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-gs-e84c278f46724e9a97dd8dbcdbb8d66f\\ghostscript-10.08.0-x64\\bin\\gswin64c.exe\r\nGhostscript arguments: \"-dBATCH\" \"-dNOPAUSE\" \"-dSAFER\" \"-dPDFSTOPONERROR\" \"-sDEVICE=pdfwrite\" \"-dCompatibilityLevel=1.6\" \"-dPDFSETTINGS=/screen\" \"-dDetectDuplicateImages=true\" \"-o\" \"<USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-email-failure output\\.WinPDFMerge_4d0189a9791e408ebbee40dfe7018572.tmp\\email.pdf\" \"-f\" \"<USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-email-failure output\\WinPDFMerge_synthetic inputs_20261009_170640_618a70b5e5a94153.pdf\"\r\nGhostscript exit: 1; elapsed: 166 ms; PID: 19392\r\nGhostscript started: True; timed out: False; cancelled: False; succeeded: False\r\nGhostscript launch error: \r\nGhostscript capture error: \r\nGhostscript termination error: \r\nGhostscript stdout truncated: False; stderr truncated: False\r\nGhostscript stdout:\r\n\r\nGhostscript stderr:\r\nGPL Ghostscript 10.08.0: Initialization file gs_init.ps does not begin with an integer.\n\r\nStage: Summary; elapsed: 2.072 s\r\nElapsed time: 2.073 s\r\nPowerShell: 5.1.26100.9444 (Desktop)\r\nPDFtk version: 2.02\r\nGhostscript version: 10.08.0\r\nInput summary: 3 PDF(s); expected pages: 4\r\nEmail result: failed\r\nEmail processing failed; validated master retained.\r\nMaster size: 3746 bytes (3.66 KiB).\r\nPublished Merged master: <USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-email-failure output\\WinPDFMerge_synthetic inputs_20261009_170640_618a70b5e5a94153.pdf\r\nDone.\r\nResult: PARTIAL SUCCESS; exit code: 2\r\n\nPARTIAL SUCCESS: Ghostscript email processing failed. Ghostscript failed. Check native exit/launch/capture/timeout details and both streams in the log. The backend may reject Unicode or long paths; source files were not renamed.\nResult: PARTIAL SUCCESS; exit code: 2\nElapsed time: 2.108 s\nPowerShell: 5.1.26100.9444 (Desktop)\nPDFtk version: 2.02\nGhostscript version: 10.08.0\nInput summary: 3 PDF(s); expected pages: 4\nMaster size: 3746 bytes (3.66 KiB).\n - Merged master: <USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-email-failure output\\WinPDFMerge_synthetic inputs_20261009_170640_618a70b5e5a94153.pdf\nLog: <USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-email-failure output\\WinPDFMerge_synthetic inputs_20261009_170640_618a70b5e5a94153.log\n",
+      "stderr": "",
+      "outputs": [
+        {
+          "name": "WinPDFMerge_synthetic inputs_20261009_170640_618a70b5e5a94153.log",
+          "bytes": 12249,
+          "sha256": "915ee10307af97557b61f2c5dad4b799ecbd24031f1115812f1cc2627dcb571f"
+        },
+        {
+          "name": "WinPDFMerge_synthetic inputs_20261009_170640_618a70b5e5a94153.pdf",
+          "bytes": 3746,
+          "sha256": "6e6d1fb737b161d3445fac24aff7c38b4748c75d03d5e0a476edf466c1c8ee12"
+        }
+      ]
+    },
+    {
+      "label": "candidate-email-failure-pdftk-check",
+      "command": [
+        "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_\\candidate-email-failure output\\WinPDFMerge_synthetic inputs_20261009_170640_618a70b5e5a94153.pdf",
+        "dump_data_utf8"
+      ],
+      "exit_code": 0,
+      "stdout": "InfoBegin\r\nInfoKey: Creator\r\nInfoValue: pdftk 2.02 - www.pdftk.com\r\nInfoBegin\r\nInfoKey: Producer\r\nInfoValue: itext-paulo-155 (itextpdf.sf.net-lowagie.com)\r\nInfoBegin\r\nInfoKey: ModDate\r\nInfoValue: D:20261009140641-01'00'\r\nInfoBegin\r\nInfoKey: CreationDate\r\nInfoValue: D:20261009140641-01'00'\r\nPdfID0: d1800f98909f4a709ae84e6c4aedb4be\r\nPdfID1: a0f9158b381f64af16d668ad5054b149\r\nNumberOfPages: 4\r\nPageMediaBegin\r\nPageMediaNumber: 1\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 2\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 3\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\nPageMediaBegin\r\nPageMediaNumber: 4\r\nPageMediaRotation: 0\r\nPageMediaRect: 0 0 432 288\r\nPageMediaDimensions: 432 288\r\n",
+      "stderr": ""
+    },
+    {
+      "label": "candidate-experiment-provenance",
+      "source_commit": "8917938820f60e499e2c20caa9cb03171678be72",
+      "zip_sha256": "013215efbd2777460fdbd53e7ff3e60a9c371961805e1da17ec9efc01e6757a7",
+      "external_root": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 exp 5e36brr_",
+      "source_unchanged": true,
+      "before": {
+        "1.pdf": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+        "10.pdf": "9fa79c41feb7be692b100bc0fe44ed063029e0955900d3bb2f8552a10afb6aaa",
+        "2.pdf": "7821d0ff4c3d655511e4421559d317013a64356a370d7b07a47079e5f02ad901"
+      },
+      "after": {
+        "1.pdf": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109",
+        "10.pdf": "9fa79c41feb7be692b100bc0fe44ed063029e0955900d3bb2f8552a10afb6aaa",
+        "2.pdf": "7821d0ff4c3d655511e4421559d317013a64356a370d7b07a47079e5f02ad901"
+      },
+      "scope": "experiment only; not accepted clean execution"
+    }
+  ]
+}
