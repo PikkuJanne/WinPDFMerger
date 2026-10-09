@@ -2,8 +2,14 @@
 
 Target: published and independently verified v1.0.0 in PikkuJanne/WinPDFMerger.
 T01-T28 are done; M1-M4 remain complete within recorded owner-amended scope.
-Current milestone M5. Next task T29 exact candidate ZIP operation is pending and
+Current milestone M5. Current task T29 exact candidate ZIP operation is in progress and
 dependency-ready. PR26 remains draft/open/unmerged; no tag/release is created.
+
+T29 started 2026-10-09 from clean/live 5f962aa. Fresh GitHub inspection confirms
+PR26 draft/open/unmerged at that head, main e245114, no tags/releases and all eight
+current push/PR jobs successful (platform metadata only). Both retained T28 C1b
+candidate assets and all348 approved cache payloads rehash unchanged. The T29
+operation harness and accepted dual-shell native package capture are still pending.
 
 T28 AC065/AC066 pass at clean C1b 8917938: explicit15-file tracked allowlist,
 exact Git blobs, generated BUILD_INFO and safe reproducible package metadata,

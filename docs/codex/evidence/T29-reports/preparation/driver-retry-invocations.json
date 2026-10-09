@@ -1,0 +1,1586 @@
+{
+  "task": "T29",
+  "scope": "dirty driver preparation; never accepted clean T29 cases",
+  "original_ledger": "tests/.work/T29-builder-preparation/fdd08a0294064efd937e51bb6b108885/invocations.json",
+  "original_bytes": 72099,
+  "original_sha256": "629b5065b595e9890157a9f962d6276eadb5b3660373bf8d2d0b2e0603d7e10a",
+  "redactions": [
+    "<REPO>",
+    "<USERPROFILE>"
+  ],
+  "payload": [
+    {
+      "label": "git-rev-parse",
+      "arguments": [
+        "git",
+        "-C",
+        "<REPO>",
+        "rev-parse",
+        "HEAD"
+      ],
+      "working_directory": "<REPO>",
+      "environment_overrides": {
+        "GIT_NO_REPLACE_OBJECTS": "1",
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:02.682260+00:00",
+      "elapsed_seconds": 0.047,
+      "timeout_seconds": 30,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "000-git-rev-parse.stdout.bin",
+      "stdout_sha256": "047d667291034db792a867c7479b3b294dc4c78e19f9afec212410907a76fec3",
+      "stderr": "000-git-rev-parse.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "git-status",
+      "arguments": [
+        "git",
+        "-C",
+        "<REPO>",
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "working_directory": "<REPO>",
+      "environment_overrides": {
+        "GIT_NO_REPLACE_OBJECTS": "1",
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:02.732166+00:00",
+      "elapsed_seconds": 0.078,
+      "timeout_seconds": 30,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "001-git-status.stdout.bin",
+      "stdout_sha256": "771e6d0c1c90724a898c42902927a6323e1b562c4bf5d13109f58039ec9f9e98",
+      "stderr": "001-git-status.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "git-rev-parse",
+      "arguments": [
+        "git",
+        "-C",
+        "<REPO>",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "working_directory": "<REPO>",
+      "environment_overrides": {
+        "GIT_NO_REPLACE_OBJECTS": "1",
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:02.809281+00:00",
+      "elapsed_seconds": 0.031,
+      "timeout_seconds": 30,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "002-git-rev-parse.stdout.bin",
+      "stdout_sha256": "aaad8377bfe4854016e12c7751e9c147cf3a76f662dd2ffe7ea2849fbfe43473",
+      "stderr": "002-git-rev-parse.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "shell-inventory",
+      "arguments": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-Command",
+        "$ErrorActionPreference='Stop'; $w=Get-ItemProperty -LiteralPath 'HKLM:\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion'; $p=New-Object Security.Principal.WindowsPrincipal([Security.Principal.WindowsIdentity]::GetCurrent()); [ordered]@{shell_version=$PSVersionTable.PSVersion.ToString();shell_edition=$PSVersionTable.PSEdition;process_64_bit=[Environment]::Is64BitProcess;os_version=[Environment]::OSVersion.Version.ToString();edition=$w.EditionID;display_version=$w.DisplayVersion;full_build=($w.CurrentBuildNumber+'.'+$w.UBR);is_administrator=$p.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator);policy=@(Get-ExecutionPolicy -List|ForEach-Object{[ordered]@{scope=$_.Scope.ToString();policy=$_.ExecutionPolicy.ToString()}})}|ConvertTo-Json -Depth 5"
+      ],
+      "working_directory": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885",
+      "environment_overrides": {
+        "PSModulePath": null
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:03.437461+00:00",
+      "elapsed_seconds": 0.437,
+      "timeout_seconds": 60,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "003-shell-inventory.stdout.bin",
+      "stdout_sha256": "423829fd487c4078472057ea148e6e30923a30b93586e818cf2c01b6d444bd7f",
+      "stderr": "003-shell-inventory.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "pdftk-version",
+      "arguments": [
+        "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin\\pdftk.exe",
+        "--version"
+      ],
+      "working_directory": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885",
+      "environment_overrides": {
+        "GS_OPTIONS": null,
+        "GS_LIB": null,
+        "GS_DLL": null
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:03.877675+00:00",
+      "elapsed_seconds": 0.047,
+      "timeout_seconds": 60,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "004-pdftk-version.stdout.bin",
+      "stdout_sha256": "b5d649e86b5179dd93409f5a46c07a733523f5f71a6bfa99d8b831ab61324fc2",
+      "stderr": "004-pdftk-version.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "ghostscript-version",
+      "arguments": [
+        "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-gs-e84c278f46724e9a97dd8dbcdbb8d66f\\ghostscript-10.08.0-x64\\bin\\gswin64c.exe",
+        "--version"
+      ],
+      "working_directory": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885",
+      "environment_overrides": {
+        "GS_OPTIONS": null,
+        "GS_LIB": null,
+        "GS_DLL": null
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:03.912912+00:00",
+      "elapsed_seconds": 0.156,
+      "timeout_seconds": 60,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "005-ghostscript-version.stdout.bin",
+      "stdout_sha256": "319c100d83a4d13ef09d461cafc80ce66ad831fc2b23beabe8e22c37f5fc63ce",
+      "stderr": "005-ghostscript-version.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "git-cat-file",
+      "arguments": [
+        "git",
+        "-C",
+        "<REPO>",
+        "cat-file",
+        "blob",
+        "8917938820f60e499e2c20caa9cb03171678be72:release-files.json"
+      ],
+      "working_directory": "<REPO>",
+      "environment_overrides": {
+        "GIT_NO_REPLACE_OBJECTS": "1",
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:04.078135+00:00",
+      "elapsed_seconds": 0.125,
+      "timeout_seconds": 30,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "006-git-cat-file.stdout.bin",
+      "stdout_sha256": "bd80c988f28ae7c7f539f9ed31205ade92a1c5181102d6387342b4775b589007",
+      "stderr": "006-git-cat-file.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "git-cat-file",
+      "arguments": [
+        "git",
+        "-C",
+        "<REPO>",
+        "cat-file",
+        "blob",
+        "8917938820f60e499e2c20caa9cb03171678be72:WinPDFMerge.ps1"
+      ],
+      "working_directory": "<REPO>",
+      "environment_overrides": {
+        "GIT_NO_REPLACE_OBJECTS": "1",
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:04.211062+00:00",
+      "elapsed_seconds": 0.078,
+      "timeout_seconds": 30,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "007-git-cat-file.stdout.bin",
+      "stdout_sha256": "2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902",
+      "stderr": "007-git-cat-file.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "git-cat-file",
+      "arguments": [
+        "git",
+        "-C",
+        "<REPO>",
+        "cat-file",
+        "blob",
+        "8917938820f60e499e2c20caa9cb03171678be72:WinPDFMerge.bat"
+      ],
+      "working_directory": "<REPO>",
+      "environment_overrides": {
+        "GIT_NO_REPLACE_OBJECTS": "1",
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:04.317118+00:00",
+      "elapsed_seconds": 0.047,
+      "timeout_seconds": 30,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "008-git-cat-file.stdout.bin",
+      "stdout_sha256": "288287beefea974c64d39b34266332d83112b9106c952efd8c304edfedebff83",
+      "stderr": "008-git-cat-file.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "git-cat-file",
+      "arguments": [
+        "git",
+        "-C",
+        "<REPO>",
+        "cat-file",
+        "blob",
+        "8917938820f60e499e2c20caa9cb03171678be72:src/WinPDFMerge.Helpers.ps1"
+      ],
+      "working_directory": "<REPO>",
+      "environment_overrides": {
+        "GIT_NO_REPLACE_OBJECTS": "1",
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:04.393991+00:00",
+      "elapsed_seconds": 0.046,
+      "timeout_seconds": 30,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "009-git-cat-file.stdout.bin",
+      "stdout_sha256": "fb1e0ee6c82976711ea25ec0fac3cd274b0d99752328b59bae19612d85fb6211",
+      "stderr": "009-git-cat-file.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "git-cat-file",
+      "arguments": [
+        "git",
+        "-C",
+        "<REPO>",
+        "cat-file",
+        "blob",
+        "8917938820f60e499e2c20caa9cb03171678be72:VERSION"
+      ],
+      "working_directory": "<REPO>",
+      "environment_overrides": {
+        "GIT_NO_REPLACE_OBJECTS": "1",
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:04.472776+00:00",
+      "elapsed_seconds": 0.047,
+      "timeout_seconds": 30,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "010-git-cat-file.stdout.bin",
+      "stdout_sha256": "59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03",
+      "stderr": "010-git-cat-file.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "git-cat-file",
+      "arguments": [
+        "git",
+        "-C",
+        "<REPO>",
+        "cat-file",
+        "blob",
+        "8917938820f60e499e2c20caa9cb03171678be72:README.md"
+      ],
+      "working_directory": "<REPO>",
+      "environment_overrides": {
+        "GIT_NO_REPLACE_OBJECTS": "1",
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:04.531892+00:00",
+      "elapsed_seconds": 0.062,
+      "timeout_seconds": 30,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "011-git-cat-file.stdout.bin",
+      "stdout_sha256": "7312f87922186c4d4ae7b83ff0a5b39383e9d2456dc133560d3b5bd5277c1336",
+      "stderr": "011-git-cat-file.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "git-cat-file",
+      "arguments": [
+        "git",
+        "-C",
+        "<REPO>",
+        "cat-file",
+        "blob",
+        "8917938820f60e499e2c20caa9cb03171678be72:LICENSE"
+      ],
+      "working_directory": "<REPO>",
+      "environment_overrides": {
+        "GIT_NO_REPLACE_OBJECTS": "1",
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:04.644689+00:00",
+      "elapsed_seconds": 0.046,
+      "timeout_seconds": 30,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "012-git-cat-file.stdout.bin",
+      "stdout_sha256": "714ffa7a21614e637d7dbb17a2e86e4575d7ecd2b6d36b5b67ab3fdcc4193477",
+      "stderr": "012-git-cat-file.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "git-cat-file",
+      "arguments": [
+        "git",
+        "-C",
+        "<REPO>",
+        "cat-file",
+        "blob",
+        "8917938820f60e499e2c20caa9cb03171678be72:SECURITY.md"
+      ],
+      "working_directory": "<REPO>",
+      "environment_overrides": {
+        "GIT_NO_REPLACE_OBJECTS": "1",
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:04.716084+00:00",
+      "elapsed_seconds": 0.063,
+      "timeout_seconds": 30,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "013-git-cat-file.stdout.bin",
+      "stdout_sha256": "4fdb699de9be1c399b6024ac31457fc4be94a3e0d35de63e44cf4eca6dc45258",
+      "stderr": "013-git-cat-file.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "git-cat-file",
+      "arguments": [
+        "git",
+        "-C",
+        "<REPO>",
+        "cat-file",
+        "blob",
+        "8917938820f60e499e2c20caa9cb03171678be72:CHANGELOG.md"
+      ],
+      "working_directory": "<REPO>",
+      "environment_overrides": {
+        "GIT_NO_REPLACE_OBJECTS": "1",
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:04.783395+00:00",
+      "elapsed_seconds": 0.078,
+      "timeout_seconds": 30,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "014-git-cat-file.stdout.bin",
+      "stdout_sha256": "7880d8861140fa17be50994ea588549afa0064902180c0a47fc5964a9ce7f4de",
+      "stderr": "014-git-cat-file.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "git-cat-file",
+      "arguments": [
+        "git",
+        "-C",
+        "<REPO>",
+        "cat-file",
+        "blob",
+        "8917938820f60e499e2c20caa9cb03171678be72:docs/USAGE.md"
+      ],
+      "working_directory": "<REPO>",
+      "environment_overrides": {
+        "GIT_NO_REPLACE_OBJECTS": "1",
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:04.867431+00:00",
+      "elapsed_seconds": 0.047,
+      "timeout_seconds": 30,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "015-git-cat-file.stdout.bin",
+      "stdout_sha256": "ce90ee1c6f63137c62d95fb0b29093232152b94579be61e457774a2ee9db5334",
+      "stderr": "015-git-cat-file.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "git-cat-file",
+      "arguments": [
+        "git",
+        "-C",
+        "<REPO>",
+        "cat-file",
+        "blob",
+        "8917938820f60e499e2c20caa9cb03171678be72:docs/TROUBLESHOOTING.md"
+      ],
+      "working_directory": "<REPO>",
+      "environment_overrides": {
+        "GIT_NO_REPLACE_OBJECTS": "1",
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:04.944492+00:00",
+      "elapsed_seconds": 0.063,
+      "timeout_seconds": 30,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "016-git-cat-file.stdout.bin",
+      "stdout_sha256": "9bc13043665ab6fc3eec1a7d868fa956106156d51fa76843442bf8f8519c32b8",
+      "stderr": "016-git-cat-file.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "git-cat-file",
+      "arguments": [
+        "git",
+        "-C",
+        "<REPO>",
+        "cat-file",
+        "blob",
+        "8917938820f60e499e2c20caa9cb03171678be72:docs/DEPENDENCIES.md"
+      ],
+      "working_directory": "<REPO>",
+      "environment_overrides": {
+        "GIT_NO_REPLACE_OBJECTS": "1",
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:05.007669+00:00",
+      "elapsed_seconds": 0.047,
+      "timeout_seconds": 30,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "017-git-cat-file.stdout.bin",
+      "stdout_sha256": "d8c5b5c4b539e5e9d87065838bce981761dd7915fa09899a1d5813f2fd20b206",
+      "stderr": "017-git-cat-file.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "git-cat-file",
+      "arguments": [
+        "git",
+        "-C",
+        "<REPO>",
+        "cat-file",
+        "blob",
+        "8917938820f60e499e2c20caa9cb03171678be72:docs/COMPATIBILITY.md"
+      ],
+      "working_directory": "<REPO>",
+      "environment_overrides": {
+        "GIT_NO_REPLACE_OBJECTS": "1",
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:05.061616+00:00",
+      "elapsed_seconds": 0.094,
+      "timeout_seconds": 30,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "018-git-cat-file.stdout.bin",
+      "stdout_sha256": "77a383bb5bd000b7d7341960203f10ac587283fdc92875181816290b38cbb53d",
+      "stderr": "018-git-cat-file.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "git-cat-file",
+      "arguments": [
+        "git",
+        "-C",
+        "<REPO>",
+        "cat-file",
+        "blob",
+        "8917938820f60e499e2c20caa9cb03171678be72:docs/PDF_LIMITATIONS.md"
+      ],
+      "working_directory": "<REPO>",
+      "environment_overrides": {
+        "GIT_NO_REPLACE_OBJECTS": "1",
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:05.146639+00:00",
+      "elapsed_seconds": 0.046,
+      "timeout_seconds": 30,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "019-git-cat-file.stdout.bin",
+      "stdout_sha256": "ee04655f8891b5b4db2c93e17059938b37a8d458ca945dd9fcd3ca12dde52fc7",
+      "stderr": "019-git-cat-file.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "git-cat-file",
+      "arguments": [
+        "git",
+        "-C",
+        "<REPO>",
+        "cat-file",
+        "blob",
+        "8917938820f60e499e2c20caa9cb03171678be72:docs/EMAIL_PRESETS.md"
+      ],
+      "working_directory": "<REPO>",
+      "environment_overrides": {
+        "GIT_NO_REPLACE_OBJECTS": "1",
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:05.211093+00:00",
+      "elapsed_seconds": 0.094,
+      "timeout_seconds": 30,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "020-git-cat-file.stdout.bin",
+      "stdout_sha256": "ece311071d0980dca2e4591989c670f49ec68d41f205dd9bde62beb102a73dbb",
+      "stderr": "020-git-cat-file.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "git-cat-file",
+      "arguments": [
+        "git",
+        "-C",
+        "<REPO>",
+        "cat-file",
+        "blob",
+        "8917938820f60e499e2c20caa9cb03171678be72:docs/RELEASE_NOTES_v1.0.0.md"
+      ],
+      "working_directory": "<REPO>",
+      "environment_overrides": {
+        "GIT_NO_REPLACE_OBJECTS": "1",
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:05.315921+00:00",
+      "elapsed_seconds": 0.047,
+      "timeout_seconds": 30,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "021-git-cat-file.stdout.bin",
+      "stdout_sha256": "4272df2f341e07098433215d4e84f3d0952204f97048e704a91e211b3a5f2e1a",
+      "stderr": "021-git-cat-file.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "git-cat-file",
+      "arguments": [
+        "git",
+        "-C",
+        "<REPO>",
+        "cat-file",
+        "blob",
+        "5f962aaab1dacf0401ded92916f5a1ca73095354:WinPDFMerge.ps1"
+      ],
+      "working_directory": "<REPO>",
+      "environment_overrides": {
+        "GIT_NO_REPLACE_OBJECTS": "1",
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:05.379668+00:00",
+      "elapsed_seconds": 0.047,
+      "timeout_seconds": 30,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "022-git-cat-file.stdout.bin",
+      "stdout_sha256": "2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902",
+      "stderr": "022-git-cat-file.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "git-cat-file",
+      "arguments": [
+        "git",
+        "-C",
+        "<REPO>",
+        "cat-file",
+        "blob",
+        "5f962aaab1dacf0401ded92916f5a1ca73095354:WinPDFMerge.bat"
+      ],
+      "working_directory": "<REPO>",
+      "environment_overrides": {
+        "GIT_NO_REPLACE_OBJECTS": "1",
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:05.444554+00:00",
+      "elapsed_seconds": 0.047,
+      "timeout_seconds": 30,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "023-git-cat-file.stdout.bin",
+      "stdout_sha256": "288287beefea974c64d39b34266332d83112b9106c952efd8c304edfedebff83",
+      "stderr": "023-git-cat-file.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "git-cat-file",
+      "arguments": [
+        "git",
+        "-C",
+        "<REPO>",
+        "cat-file",
+        "blob",
+        "5f962aaab1dacf0401ded92916f5a1ca73095354:src/WinPDFMerge.Helpers.ps1"
+      ],
+      "working_directory": "<REPO>",
+      "environment_overrides": {
+        "GIT_NO_REPLACE_OBJECTS": "1",
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:05.505226+00:00",
+      "elapsed_seconds": 0.062,
+      "timeout_seconds": 30,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "024-git-cat-file.stdout.bin",
+      "stdout_sha256": "fb1e0ee6c82976711ea25ec0fac3cd274b0d99752328b59bae19612d85fb6211",
+      "stderr": "024-git-cat-file.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "git-cat-file",
+      "arguments": [
+        "git",
+        "-C",
+        "<REPO>",
+        "cat-file",
+        "blob",
+        "5f962aaab1dacf0401ded92916f5a1ca73095354:VERSION"
+      ],
+      "working_directory": "<REPO>",
+      "environment_overrides": {
+        "GIT_NO_REPLACE_OBJECTS": "1",
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:05.594220+00:00",
+      "elapsed_seconds": 0.063,
+      "timeout_seconds": 30,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "025-git-cat-file.stdout.bin",
+      "stdout_sha256": "59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03",
+      "stderr": "025-git-cat-file.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "git-cat-file",
+      "arguments": [
+        "git",
+        "-C",
+        "<REPO>",
+        "cat-file",
+        "blob",
+        "5f962aaab1dacf0401ded92916f5a1ca73095354:README.md"
+      ],
+      "working_directory": "<REPO>",
+      "environment_overrides": {
+        "GIT_NO_REPLACE_OBJECTS": "1",
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:05.649492+00:00",
+      "elapsed_seconds": 0.062,
+      "timeout_seconds": 30,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "026-git-cat-file.stdout.bin",
+      "stdout_sha256": "7312f87922186c4d4ae7b83ff0a5b39383e9d2456dc133560d3b5bd5277c1336",
+      "stderr": "026-git-cat-file.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "git-cat-file",
+      "arguments": [
+        "git",
+        "-C",
+        "<REPO>",
+        "cat-file",
+        "blob",
+        "5f962aaab1dacf0401ded92916f5a1ca73095354:LICENSE"
+      ],
+      "working_directory": "<REPO>",
+      "environment_overrides": {
+        "GIT_NO_REPLACE_OBJECTS": "1",
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:05.776985+00:00",
+      "elapsed_seconds": 0.046,
+      "timeout_seconds": 30,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "027-git-cat-file.stdout.bin",
+      "stdout_sha256": "714ffa7a21614e637d7dbb17a2e86e4575d7ecd2b6d36b5b67ab3fdcc4193477",
+      "stderr": "027-git-cat-file.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "git-cat-file",
+      "arguments": [
+        "git",
+        "-C",
+        "<REPO>",
+        "cat-file",
+        "blob",
+        "5f962aaab1dacf0401ded92916f5a1ca73095354:SECURITY.md"
+      ],
+      "working_directory": "<REPO>",
+      "environment_overrides": {
+        "GIT_NO_REPLACE_OBJECTS": "1",
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:05.828129+00:00",
+      "elapsed_seconds": 0.047,
+      "timeout_seconds": 30,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "028-git-cat-file.stdout.bin",
+      "stdout_sha256": "4fdb699de9be1c399b6024ac31457fc4be94a3e0d35de63e44cf4eca6dc45258",
+      "stderr": "028-git-cat-file.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "git-cat-file",
+      "arguments": [
+        "git",
+        "-C",
+        "<REPO>",
+        "cat-file",
+        "blob",
+        "5f962aaab1dacf0401ded92916f5a1ca73095354:CHANGELOG.md"
+      ],
+      "working_directory": "<REPO>",
+      "environment_overrides": {
+        "GIT_NO_REPLACE_OBJECTS": "1",
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:05.877493+00:00",
+      "elapsed_seconds": 0.063,
+      "timeout_seconds": 30,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "029-git-cat-file.stdout.bin",
+      "stdout_sha256": "7880d8861140fa17be50994ea588549afa0064902180c0a47fc5964a9ce7f4de",
+      "stderr": "029-git-cat-file.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "git-cat-file",
+      "arguments": [
+        "git",
+        "-C",
+        "<REPO>",
+        "cat-file",
+        "blob",
+        "5f962aaab1dacf0401ded92916f5a1ca73095354:docs/USAGE.md"
+      ],
+      "working_directory": "<REPO>",
+      "environment_overrides": {
+        "GIT_NO_REPLACE_OBJECTS": "1",
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:05.939328+00:00",
+      "elapsed_seconds": 0.062,
+      "timeout_seconds": 30,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "030-git-cat-file.stdout.bin",
+      "stdout_sha256": "ce90ee1c6f63137c62d95fb0b29093232152b94579be61e457774a2ee9db5334",
+      "stderr": "030-git-cat-file.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "git-cat-file",
+      "arguments": [
+        "git",
+        "-C",
+        "<REPO>",
+        "cat-file",
+        "blob",
+        "5f962aaab1dacf0401ded92916f5a1ca73095354:docs/TROUBLESHOOTING.md"
+      ],
+      "working_directory": "<REPO>",
+      "environment_overrides": {
+        "GIT_NO_REPLACE_OBJECTS": "1",
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:06.006915+00:00",
+      "elapsed_seconds": 0.031,
+      "timeout_seconds": 30,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "031-git-cat-file.stdout.bin",
+      "stdout_sha256": "9bc13043665ab6fc3eec1a7d868fa956106156d51fa76843442bf8f8519c32b8",
+      "stderr": "031-git-cat-file.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "git-cat-file",
+      "arguments": [
+        "git",
+        "-C",
+        "<REPO>",
+        "cat-file",
+        "blob",
+        "5f962aaab1dacf0401ded92916f5a1ca73095354:docs/DEPENDENCIES.md"
+      ],
+      "working_directory": "<REPO>",
+      "environment_overrides": {
+        "GIT_NO_REPLACE_OBJECTS": "1",
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:06.044534+00:00",
+      "elapsed_seconds": 0.063,
+      "timeout_seconds": 30,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "032-git-cat-file.stdout.bin",
+      "stdout_sha256": "d8c5b5c4b539e5e9d87065838bce981761dd7915fa09899a1d5813f2fd20b206",
+      "stderr": "032-git-cat-file.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "git-cat-file",
+      "arguments": [
+        "git",
+        "-C",
+        "<REPO>",
+        "cat-file",
+        "blob",
+        "5f962aaab1dacf0401ded92916f5a1ca73095354:docs/COMPATIBILITY.md"
+      ],
+      "working_directory": "<REPO>",
+      "environment_overrides": {
+        "GIT_NO_REPLACE_OBJECTS": "1",
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:06.111082+00:00",
+      "elapsed_seconds": 0.062,
+      "timeout_seconds": 30,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "033-git-cat-file.stdout.bin",
+      "stdout_sha256": "77a383bb5bd000b7d7341960203f10ac587283fdc92875181816290b38cbb53d",
+      "stderr": "033-git-cat-file.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "git-cat-file",
+      "arguments": [
+        "git",
+        "-C",
+        "<REPO>",
+        "cat-file",
+        "blob",
+        "5f962aaab1dacf0401ded92916f5a1ca73095354:docs/PDF_LIMITATIONS.md"
+      ],
+      "working_directory": "<REPO>",
+      "environment_overrides": {
+        "GIT_NO_REPLACE_OBJECTS": "1",
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:06.164455+00:00",
+      "elapsed_seconds": 0.047,
+      "timeout_seconds": 30,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "034-git-cat-file.stdout.bin",
+      "stdout_sha256": "ee04655f8891b5b4db2c93e17059938b37a8d458ca945dd9fcd3ca12dde52fc7",
+      "stderr": "034-git-cat-file.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "git-cat-file",
+      "arguments": [
+        "git",
+        "-C",
+        "<REPO>",
+        "cat-file",
+        "blob",
+        "5f962aaab1dacf0401ded92916f5a1ca73095354:docs/EMAIL_PRESETS.md"
+      ],
+      "working_directory": "<REPO>",
+      "environment_overrides": {
+        "GIT_NO_REPLACE_OBJECTS": "1",
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:06.216025+00:00",
+      "elapsed_seconds": 0.063,
+      "timeout_seconds": 30,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "035-git-cat-file.stdout.bin",
+      "stdout_sha256": "ece311071d0980dca2e4591989c670f49ec68d41f205dd9bde62beb102a73dbb",
+      "stderr": "035-git-cat-file.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "git-cat-file",
+      "arguments": [
+        "git",
+        "-C",
+        "<REPO>",
+        "cat-file",
+        "blob",
+        "5f962aaab1dacf0401ded92916f5a1ca73095354:docs/RELEASE_NOTES_v1.0.0.md"
+      ],
+      "working_directory": "<REPO>",
+      "environment_overrides": {
+        "GIT_NO_REPLACE_OBJECTS": "1",
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:06.276312+00:00",
+      "elapsed_seconds": 0.062,
+      "timeout_seconds": 30,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "036-git-cat-file.stdout.bin",
+      "stdout_sha256": "4272df2f341e07098433215d4e84f3d0952204f97048e704a91e211b3a5f2e1a",
+      "stderr": "036-git-cat-file.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "default-screen",
+      "arguments": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case default-screen\\fresh install\\WinPDFMerger-v1.0.0\\WinPDFMerge.ps1",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case default-screen\\synthetic inputs"
+      ],
+      "working_directory": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case default-screen\\unrelated cwd",
+      "environment_overrides": {
+        "PATH": "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-gs-e84c278f46724e9a97dd8dbcdbb8d66f\\ghostscript-10.08.0-x64\\bin;<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin;C:\\Windows\\System32;C:\\Windows\\System32\\WindowsPowerShell\\v1.0",
+        "ProgramFiles": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case default-screen\\no common engines",
+        "ProgramFiles(x86)": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case default-screen\\no common engines",
+        "PSModulePath": null,
+        "GS_OPTIONS": "-T29-invalid-inherited-option",
+        "GS_LIB": null,
+        "GS_DLL": null,
+        "TEMP": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case default-screen\\child temp",
+        "TMP": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case default-screen\\child temp"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:06.768060+00:00",
+      "elapsed_seconds": 2.937,
+      "timeout_seconds": 60,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "037-default-screen.stdout.bin",
+      "stdout_sha256": "9c2917bc68c12b2cde1f55c36faaf6a1601dfb5178c3b0c03738047fd98441dc",
+      "stderr": "037-default-screen.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "ebook-output",
+      "arguments": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case ebook-output\\fresh install\\WinPDFMerger-v1.0.0\\WinPDFMerge.ps1",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case ebook-output\\synthetic inputs",
+        "-OutputFolder",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case ebook-output\\separate output",
+        "-EmailPreset",
+        "ebook"
+      ],
+      "working_directory": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case ebook-output\\unrelated cwd",
+      "environment_overrides": {
+        "PATH": "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-gs-e84c278f46724e9a97dd8dbcdbb8d66f\\ghostscript-10.08.0-x64\\bin;<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin;C:\\Windows\\System32;C:\\Windows\\System32\\WindowsPowerShell\\v1.0",
+        "ProgramFiles": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case ebook-output\\no common engines",
+        "ProgramFiles(x86)": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case ebook-output\\no common engines",
+        "PSModulePath": null,
+        "GS_OPTIONS": "-T29-invalid-inherited-option",
+        "GS_LIB": null,
+        "GS_DLL": null,
+        "TEMP": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case ebook-output\\child temp",
+        "TMP": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case ebook-output\\child temp"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:10.329297+00:00",
+      "elapsed_seconds": 2.954,
+      "timeout_seconds": 60,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "038-ebook-output.stdout.bin",
+      "stdout_sha256": "30ad32a09000cd93226f9db27628d5c7a4f9548fca3bb402bf8992e8b8cf5472",
+      "stderr": "038-ebook-output.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "skip-email",
+      "arguments": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case skip-email\\fresh install\\WinPDFMerger-v1.0.0\\WinPDFMerge.ps1",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case skip-email\\synthetic inputs",
+        "-OutputFolder",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case skip-email\\separate output",
+        "-SkipEmail"
+      ],
+      "working_directory": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case skip-email\\unrelated cwd",
+      "environment_overrides": {
+        "PATH": "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-gs-e84c278f46724e9a97dd8dbcdbb8d66f\\ghostscript-10.08.0-x64\\bin;<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin;C:\\Windows\\System32;C:\\Windows\\System32\\WindowsPowerShell\\v1.0",
+        "ProgramFiles": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case skip-email\\no common engines",
+        "ProgramFiles(x86)": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case skip-email\\no common engines",
+        "PSModulePath": null,
+        "GS_OPTIONS": "-T29-invalid-inherited-option",
+        "GS_LIB": null,
+        "GS_DLL": null,
+        "TEMP": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case skip-email\\child temp",
+        "TMP": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case skip-email\\child temp"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:13.944533+00:00",
+      "elapsed_seconds": 2.266,
+      "timeout_seconds": 60,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "039-skip-email.stdout.bin",
+      "stdout_sha256": "e86f0709d76f4b3c25d1bde795d002300269057e9f99b4cffa408e0542c42b73",
+      "stderr": "039-skip-email.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "skip-ignored-preset",
+      "arguments": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case skip-ignored-preset\\fresh install\\WinPDFMerger-v1.0.0\\WinPDFMerge.ps1",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case skip-ignored-preset\\synthetic inputs",
+        "-OutputFolder",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case skip-ignored-preset\\separate output",
+        "-SkipEmail",
+        "-EmailPreset",
+        "ebook"
+      ],
+      "working_directory": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case skip-ignored-preset\\unrelated cwd",
+      "environment_overrides": {
+        "PATH": "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-gs-e84c278f46724e9a97dd8dbcdbb8d66f\\ghostscript-10.08.0-x64\\bin;<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin;C:\\Windows\\System32;C:\\Windows\\System32\\WindowsPowerShell\\v1.0",
+        "ProgramFiles": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case skip-ignored-preset\\no common engines",
+        "ProgramFiles(x86)": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case skip-ignored-preset\\no common engines",
+        "PSModulePath": null,
+        "GS_OPTIONS": "-T29-invalid-inherited-option",
+        "GS_LIB": null,
+        "GS_DLL": null,
+        "TEMP": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case skip-ignored-preset\\child temp",
+        "TMP": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case skip-ignored-preset\\child temp"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:16.664281+00:00",
+      "elapsed_seconds": 2.328,
+      "timeout_seconds": 60,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "040-skip-ignored-preset.stdout.bin",
+      "stdout_sha256": "27c736084c67c476273e2d32c0bdc2766a08796c4b9d364aa845519e2c16e39a",
+      "stderr": "040-skip-ignored-preset.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "tiny-no-benefit",
+      "arguments": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case tiny-no-benefit\\fresh install\\WinPDFMerger-v1.0.0\\WinPDFMerge.ps1",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case tiny-no-benefit\\synthetic inputs",
+        "-OutputFolder",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case tiny-no-benefit\\separate output"
+      ],
+      "working_directory": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case tiny-no-benefit\\unrelated cwd",
+      "environment_overrides": {
+        "PATH": "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-gs-e84c278f46724e9a97dd8dbcdbb8d66f\\ghostscript-10.08.0-x64\\bin;<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin;C:\\Windows\\System32;C:\\Windows\\System32\\WindowsPowerShell\\v1.0",
+        "ProgramFiles": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case tiny-no-benefit\\no common engines",
+        "ProgramFiles(x86)": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case tiny-no-benefit\\no common engines",
+        "PSModulePath": null,
+        "GS_OPTIONS": "-T29-invalid-inherited-option",
+        "GS_LIB": null,
+        "GS_DLL": null,
+        "TEMP": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case tiny-no-benefit\\child temp",
+        "TMP": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case tiny-no-benefit\\child temp"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:19.396555+00:00",
+      "elapsed_seconds": 2.359,
+      "timeout_seconds": 60,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "041-tiny-no-benefit.stdout.bin",
+      "stdout_sha256": "407a70a9d608e973901b9067d190c8b3bc258f761ef7f1f2d99d7e4c77f50693",
+      "stderr": "041-tiny-no-benefit.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "optional-gs-absent",
+      "arguments": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case optional-gs-absent\\fresh install\\WinPDFMerger-v1.0.0\\WinPDFMerge.ps1",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case optional-gs-absent\\synthetic inputs",
+        "-OutputFolder",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case optional-gs-absent\\separate output"
+      ],
+      "working_directory": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case optional-gs-absent\\unrelated cwd",
+      "environment_overrides": {
+        "PATH": "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin;C:\\Windows\\System32;C:\\Windows\\System32\\WindowsPowerShell\\v1.0",
+        "ProgramFiles": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case optional-gs-absent\\no common engines",
+        "ProgramFiles(x86)": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case optional-gs-absent\\no common engines",
+        "PSModulePath": null,
+        "GS_OPTIONS": "-T29-invalid-inherited-option",
+        "GS_LIB": null,
+        "GS_DLL": null,
+        "TEMP": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case optional-gs-absent\\child temp",
+        "TMP": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case optional-gs-absent\\child temp"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:22.030821+00:00",
+      "elapsed_seconds": 2.046,
+      "timeout_seconds": 60,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "042-optional-gs-absent.stdout.bin",
+      "stdout_sha256": "6b2167f1c00cc3b64d37dfe6c687d3b6fe78013f488056046aa0750cecd4549d",
+      "stderr": "042-optional-gs-absent.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "missing-input",
+      "arguments": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case missing-input\\fresh install\\WinPDFMerger-v1.0.0\\WinPDFMerge.ps1"
+      ],
+      "working_directory": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case missing-input\\unrelated cwd",
+      "environment_overrides": {
+        "PATH": "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-gs-e84c278f46724e9a97dd8dbcdbb8d66f\\ghostscript-10.08.0-x64\\bin;<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin;C:\\Windows\\System32;C:\\Windows\\System32\\WindowsPowerShell\\v1.0",
+        "ProgramFiles": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case missing-input\\no common engines",
+        "ProgramFiles(x86)": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case missing-input\\no common engines",
+        "PSModulePath": null,
+        "GS_OPTIONS": "-T29-invalid-inherited-option",
+        "GS_LIB": null,
+        "GS_DLL": null,
+        "TEMP": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case missing-input\\child temp",
+        "TMP": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case missing-input\\child temp"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:24.376998+00:00",
+      "elapsed_seconds": 0.407,
+      "timeout_seconds": 60,
+      "timed_out": false,
+      "exit_code": 1,
+      "owned_job": true,
+      "stdout": "043-missing-input.stdout.bin",
+      "stdout_sha256": "1c96b1f03e6607f8e43c5684362582e8e4e02ad0ebbebb6eae082587aaa59cb8",
+      "stderr": "043-missing-input.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "invalid-preset",
+      "arguments": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case invalid-preset\\fresh install\\WinPDFMerger-v1.0.0\\WinPDFMerge.ps1",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case invalid-preset\\synthetic inputs",
+        "-OutputFolder",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case invalid-preset\\separate output",
+        "-EmailPreset",
+        "invalid"
+      ],
+      "working_directory": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case invalid-preset\\unrelated cwd",
+      "environment_overrides": {
+        "PATH": "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-gs-e84c278f46724e9a97dd8dbcdbb8d66f\\ghostscript-10.08.0-x64\\bin;<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin;C:\\Windows\\System32;C:\\Windows\\System32\\WindowsPowerShell\\v1.0",
+        "ProgramFiles": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case invalid-preset\\no common engines",
+        "ProgramFiles(x86)": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case invalid-preset\\no common engines",
+        "PSModulePath": null,
+        "GS_OPTIONS": "-T29-invalid-inherited-option",
+        "GS_LIB": null,
+        "GS_DLL": null,
+        "TEMP": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case invalid-preset\\child temp",
+        "TMP": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case invalid-preset\\child temp"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:25.043452+00:00",
+      "elapsed_seconds": 0.328,
+      "timeout_seconds": 60,
+      "timed_out": false,
+      "exit_code": 1,
+      "owned_job": true,
+      "stdout": "044-invalid-preset.stdout.bin",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr": "044-invalid-preset.stderr.bin",
+      "stderr_sha256": "2ece32b65dce2e9c07e296ce013ae4055cf9037595091298fc066884618109de"
+    },
+    {
+      "label": "empty-input",
+      "arguments": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case empty-input\\fresh install\\WinPDFMerger-v1.0.0\\WinPDFMerge.ps1",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case empty-input\\synthetic inputs",
+        "-OutputFolder",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case empty-input\\separate output"
+      ],
+      "working_directory": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case empty-input\\unrelated cwd",
+      "environment_overrides": {
+        "PATH": "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-gs-e84c278f46724e9a97dd8dbcdbb8d66f\\ghostscript-10.08.0-x64\\bin;<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin;C:\\Windows\\System32;C:\\Windows\\System32\\WindowsPowerShell\\v1.0",
+        "ProgramFiles": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case empty-input\\no common engines",
+        "ProgramFiles(x86)": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case empty-input\\no common engines",
+        "PSModulePath": null,
+        "GS_OPTIONS": "-T29-invalid-inherited-option",
+        "GS_LIB": null,
+        "GS_DLL": null,
+        "TEMP": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case empty-input\\child temp",
+        "TMP": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case empty-input\\child temp"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:25.643866+00:00",
+      "elapsed_seconds": 0.984,
+      "timeout_seconds": 60,
+      "timed_out": false,
+      "exit_code": 1,
+      "owned_job": true,
+      "stdout": "045-empty-input.stdout.bin",
+      "stdout_sha256": "5800b8600dc021dcf5ee850e6ca1e9613692bf2709a8bc5767ab8b949059215a",
+      "stderr": "045-empty-input.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "corrupt-input",
+      "arguments": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case corrupt-input\\fresh install\\WinPDFMerger-v1.0.0\\WinPDFMerge.ps1",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case corrupt-input\\synthetic inputs",
+        "-OutputFolder",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case corrupt-input\\separate output"
+      ],
+      "working_directory": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case corrupt-input\\unrelated cwd",
+      "environment_overrides": {
+        "PATH": "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-gs-e84c278f46724e9a97dd8dbcdbb8d66f\\ghostscript-10.08.0-x64\\bin;<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin;C:\\Windows\\System32;C:\\Windows\\System32\\WindowsPowerShell\\v1.0",
+        "ProgramFiles": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case corrupt-input\\no common engines",
+        "ProgramFiles(x86)": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case corrupt-input\\no common engines",
+        "PSModulePath": null,
+        "GS_OPTIONS": "-T29-invalid-inherited-option",
+        "GS_LIB": null,
+        "GS_DLL": null,
+        "TEMP": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case corrupt-input\\child temp",
+        "TMP": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case corrupt-input\\child temp"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:26.930444+00:00",
+      "elapsed_seconds": 1.281,
+      "timeout_seconds": 60,
+      "timed_out": false,
+      "exit_code": 1,
+      "owned_job": true,
+      "stdout": "046-corrupt-input.stdout.bin",
+      "stdout_sha256": "a55c52b9f18e43834757072a42fde1d47972f838448fab0f1d1c8e09d2d54176",
+      "stderr": "046-corrupt-input.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "gs-resource-failure",
+      "arguments": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-File",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case gs-resource-failure\\fresh install\\WinPDFMerger-v1.0.0\\WinPDFMerge.ps1",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case gs-resource-failure\\synthetic inputs",
+        "-OutputFolder",
+        "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case gs-resource-failure\\separate output"
+      ],
+      "working_directory": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case gs-resource-failure\\unrelated cwd",
+      "environment_overrides": {
+        "PATH": "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-gs-e84c278f46724e9a97dd8dbcdbb8d66f\\ghostscript-10.08.0-x64\\bin;<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin;C:\\Windows\\System32;C:\\Windows\\System32\\WindowsPowerShell\\v1.0",
+        "ProgramFiles": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case gs-resource-failure\\no common engines",
+        "ProgramFiles(x86)": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case gs-resource-failure\\no common engines",
+        "PSModulePath": null,
+        "GS_OPTIONS": "-T29-invalid-inherited-option",
+        "GS_LIB": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case gs-resource-failure\\owned bad GS resources",
+        "GS_DLL": null,
+        "TEMP": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case gs-resource-failure\\child temp",
+        "TMP": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case gs-resource-failure\\child temp"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:28.543965+00:00",
+      "elapsed_seconds": 2.688,
+      "timeout_seconds": 60,
+      "timed_out": false,
+      "exit_code": 2,
+      "owned_job": true,
+      "stdout": "047-gs-resource-failure.stdout.bin",
+      "stdout_sha256": "52e47012766a38baab20e9a021153db79a9e0f76c2e84205701a3ae26ab99a77",
+      "stderr": "047-gs-resource-failure.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "batch-default",
+      "arguments": "\"C:\\Windows\\System32\\cmd.exe\" /d /v:off /s /c \"\"<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case batch-default\\fresh install\\WinPDFMerger-v1.0.0\\WinPDFMerge.bat\" \"<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case batch-default\\synthetic inputs\"\"",
+      "working_directory": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case batch-default\\unrelated cwd",
+      "environment_overrides": {
+        "PATH": "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-gs-e84c278f46724e9a97dd8dbcdbb8d66f\\ghostscript-10.08.0-x64\\bin;<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin;C:\\Windows\\System32;C:\\Windows\\System32\\WindowsPowerShell\\v1.0",
+        "ProgramFiles": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case batch-default\\no common engines",
+        "ProgramFiles(x86)": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case batch-default\\no common engines",
+        "PSModulePath": null,
+        "GS_OPTIONS": "-T29-invalid-inherited-option",
+        "GS_LIB": null,
+        "GS_DLL": null,
+        "TEMP": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case batch-default\\child temp",
+        "TMP": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case batch-default\\child temp"
+      },
+      "stdin_sha256": "95e70446bddac64747dfae3356341f81b65b4430d2fce53aa7db828453ec1966",
+      "started_at_utc": "2026-10-09T15:18:31.702892+00:00",
+      "elapsed_seconds": 2.954,
+      "timeout_seconds": 60,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "048-batch-default.stdout.bin",
+      "stdout_sha256": "54827f96bb98368053499da31459082fa2d46c19839bf7ce125af35f95d0b979",
+      "stderr": "048-batch-default.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "batch-empty",
+      "arguments": "\"C:\\Windows\\System32\\cmd.exe\" /d /v:off /s /c \"\"<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case batch-empty\\fresh install\\WinPDFMerger-v1.0.0\\WinPDFMerge.bat\" \"<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case batch-empty\\synthetic inputs\"\"",
+      "working_directory": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case batch-empty\\unrelated cwd",
+      "environment_overrides": {
+        "PATH": "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-gs-e84c278f46724e9a97dd8dbcdbb8d66f\\ghostscript-10.08.0-x64\\bin;<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin;C:\\Windows\\System32;C:\\Windows\\System32\\WindowsPowerShell\\v1.0",
+        "ProgramFiles": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case batch-empty\\no common engines",
+        "ProgramFiles(x86)": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case batch-empty\\no common engines",
+        "PSModulePath": null,
+        "GS_OPTIONS": "-T29-invalid-inherited-option",
+        "GS_LIB": null,
+        "GS_DLL": null,
+        "TEMP": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case batch-empty\\child temp",
+        "TMP": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case batch-empty\\child temp"
+      },
+      "stdin_sha256": "95e70446bddac64747dfae3356341f81b65b4430d2fce53aa7db828453ec1966",
+      "started_at_utc": "2026-10-09T15:18:35.236080+00:00",
+      "elapsed_seconds": 1.031,
+      "timeout_seconds": 60,
+      "timed_out": false,
+      "exit_code": 1,
+      "owned_job": true,
+      "stdout": "049-batch-empty.stdout.bin",
+      "stdout_sha256": "638c1a6883878adef3ec3c2ffc647abf56e7fc0f7369ce36cf7ad117966052e5",
+      "stderr": "049-batch-empty.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "batch-gs-failure",
+      "arguments": "\"C:\\Windows\\System32\\cmd.exe\" /d /v:off /s /c \"\"<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case batch-gs-failure\\fresh install\\WinPDFMerger-v1.0.0\\WinPDFMerge.bat\" \"<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case batch-gs-failure\\synthetic inputs\"\"",
+      "working_directory": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case batch-gs-failure\\unrelated cwd",
+      "environment_overrides": {
+        "PATH": "<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-gs-e84c278f46724e9a97dd8dbcdbb8d66f\\ghostscript-10.08.0-x64\\bin;<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T03-pdftk-295456f881ea41a4a78dcf207f8965bf\\pdftk-server-2.02\\app\\bin;C:\\Windows\\System32;C:\\Windows\\System32\\WindowsPowerShell\\v1.0",
+        "ProgramFiles": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case batch-gs-failure\\no common engines",
+        "ProgramFiles(x86)": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case batch-gs-failure\\no common engines",
+        "PSModulePath": null,
+        "GS_OPTIONS": "-T29-invalid-inherited-option",
+        "GS_LIB": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case batch-gs-failure\\owned bad GS resources",
+        "GS_DLL": null,
+        "TEMP": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case batch-gs-failure\\child temp",
+        "TMP": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\case batch-gs-failure\\child temp"
+      },
+      "stdin_sha256": "95e70446bddac64747dfae3356341f81b65b4430d2fce53aa7db828453ec1966",
+      "started_at_utc": "2026-10-09T15:18:36.543217+00:00",
+      "elapsed_seconds": 2.656,
+      "timeout_seconds": 60,
+      "timed_out": false,
+      "exit_code": 2,
+      "owned_job": true,
+      "stdout": "050-batch-gs-failure.stdout.bin",
+      "stdout_sha256": "283373bc29b70ff8318cd4a616903cb2d8f98dec928a7b08c183f082dee203de",
+      "stderr": "050-batch-gs-failure.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "public-help",
+      "arguments": [
+        "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+        "-NoProfile",
+        "-NonInteractive",
+        "-ExecutionPolicy",
+        "RemoteSigned",
+        "-Command",
+        "Get-Help '<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885\\public help\\fresh install\\WinPDFMerger-v1.0.0\\WinPDFMerge.ps1' -Examples | Out-String -Width 200"
+      ],
+      "working_directory": "<USERPROFILE>\\AppData\\Local\\Temp\\T29 builder PS51 preparation fdd08a0294064efd937e51bb6b108885",
+      "environment_overrides": {
+        "PSModulePath": null
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:39.640021+00:00",
+      "elapsed_seconds": 0.453,
+      "timeout_seconds": 60,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "051-public-help.stdout.bin",
+      "stdout_sha256": "c583159c41acced850cc30e96e89abdece83d1af52e3262ff16f38fe045621c4",
+      "stderr": "051-public-help.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "git-rev-parse",
+      "arguments": [
+        "git",
+        "-C",
+        "<REPO>",
+        "rev-parse",
+        "HEAD"
+      ],
+      "working_directory": "<REPO>",
+      "environment_overrides": {
+        "GIT_NO_REPLACE_OBJECTS": "1",
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:40.134415+00:00",
+      "elapsed_seconds": 0.062,
+      "timeout_seconds": 30,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "052-git-rev-parse.stdout.bin",
+      "stdout_sha256": "047d667291034db792a867c7479b3b294dc4c78e19f9afec212410907a76fec3",
+      "stderr": "052-git-rev-parse.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "label": "git-status",
+      "arguments": [
+        "git",
+        "-C",
+        "<REPO>",
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "working_directory": "<REPO>",
+      "environment_overrides": {
+        "GIT_NO_REPLACE_OBJECTS": "1",
+        "GIT_OPTIONAL_LOCKS": "0"
+      },
+      "stdin_sha256": null,
+      "started_at_utc": "2026-10-09T15:18:40.195382+00:00",
+      "elapsed_seconds": 0.079,
+      "timeout_seconds": 30,
+      "timed_out": false,
+      "exit_code": 0,
+      "owned_job": true,
+      "stdout": "053-git-status.stdout.bin",
+      "stdout_sha256": "771e6d0c1c90724a898c42902927a6323e1b562c4bf5d13109f58039ec9f9e98",
+      "stderr": "053-git-status.stderr.bin",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

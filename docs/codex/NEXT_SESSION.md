@@ -1,6 +1,6 @@
 # Next session
 
-Next task: T29 test the exact candidate ZIP, pending and dependency-ready.
+Current task: T29 test the exact candidate ZIP, in progress and dependency-ready.
 T01-T28 are done. Read AGENTS/INDEX/STATUS, T29 TASKS/brief, PRODUCT_SPEC,
 GITHUB_WORKFLOW, PACKAGE_CONTRACT, RELEASE_RUNBOOK and T28-completion/review.
 Freshly confirm repository/branch/clean state, both origin routes and live branch/
