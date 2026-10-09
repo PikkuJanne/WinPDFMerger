@@ -12,6 +12,17 @@ import tempfile
 import time
 import uuid
 
+
+def validate_capture_labels(labels):
+    """Refuse output-name collisions on the required Windows filesystem."""
+    seen = set()
+    for label in labels:
+        key = label.casefold()
+        if key in seen:
+            raise ValueError('Case-insensitive capture label collision')
+        seen.add(key)
+
+
 repo = Path.cwd()
 expected = sys.argv[1]
 baseline = '95184b2ca4d1cb1b597325db6d77704b04c3b20b'
@@ -47,6 +58,11 @@ env = {k: v for k, v in os.environ.items() if k.lower() != 'psmodulepath'}
 changed_ps = [p for p in git('diff', '--name-only', baseline, expected).splitlines() if Path(p).suffix in ('.ps1', '.psm1', '.psd1')]
 driver_hash = digest(__file__)
 tiers = ['Package', 'Unit', 'Version', 'PublicDocs', 'Static']
+planned_labels = [shell + suffix for shell in hosts for suffix in
+                  (['-environment', '-selected-static', '-build-first', '-build-repeat']
+                   + ['-' + tier for tier in tiers]
+                   + ['-' + tier + '-export' for tier in tiers])]
+validate_capture_labels(planned_labels + ['capture-label-tests', 'handoff-helper-tests', 'check-plan'])
 artifact_parent = Path(tempfile.gettempdir()) / ('WinPDFMerger T28 packages ' + uuid.uuid4().hex)
 artifact_parent.mkdir(exist_ok=False)
 
@@ -100,7 +116,7 @@ def host_checks(shell):
         export, _ = invoke(shell + '-' + tier + '-export', base + ['-Command', command])
         calls.append(export)
     command = '& ./tools/test/Invoke-StaticChecks.ps1 -AnalyzerModulePath ' + psquote(paths['PSScriptAnalyzer.psd1']) + ' -SourcePath @(' + ','.join(psquote(p) for p in changed_ps) + ')'
-    call, stdout = invoke(shell + '-static', base + ['-Command', command])
+    call, stdout = invoke(shell + '-selected-static', base + ['-Command', command])
     calls.append(call)
     matches = re.findall(r'^Static reports: (.+)$', stdout, re.M)
     if len(matches) != 1:
@@ -129,10 +145,11 @@ def host_checks(shell):
 
 with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
     completed = list(pool.map(host_checks, hosts))
+label_call, _ = invoke('capture-label-tests', [python, '-B', '-m', 'unittest', 'discover', '-s', 'tests/package', '-p', 'test_*.py', '-v'])
 helper_call, _ = invoke('handoff-helper-tests', [python, '-B', '-m', 'unittest', 'discover', '-s', 'tools/codex/tests', '-v'])
 plan_call, _ = invoke('check-plan', [python, '-B', 'tools/codex/handoff.py', 'check-plan', '--repo', '.'])
 if git('rev-parse', 'HEAD') != expected or git('status', '--porcelain=v1') or digest(__file__) != driver_hash:
     raise RuntimeError('End source/driver guard failed')
-result = {'task': 'T28', 'tested_commit': expected, 'source_clean_before_after': True, 'driver_sha256_before_after': driver_hash, 'approved_cache_files_verified': len(context['approved_selected_files']), 'python_sha256': digest(python), 'no_acquisition_or_persistent_changes': True, 'invocations': [c for group in completed for c in group] + [helper_call, plan_call], 'artifact_parent': str(artifact_parent), 'sanitized_directory': public.relative_to(repo).as_posix()}
+result = {'task': 'T28', 'tested_commit': expected, 'source_clean_before_after': True, 'driver_sha256_before_after': driver_hash, 'approved_cache_files_verified': len(context['approved_selected_files']), 'python_sha256': digest(python), 'no_acquisition_or_persistent_changes': True, 'invocations': [c for group in completed for c in group] + [label_call, helper_call, plan_call], 'artifact_parent': str(artifact_parent), 'sanitized_directory': public.relative_to(repo).as_posix()}
 (work / 'invocations.json').write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8')
 print(json.dumps({'result': 'pass', 'work': work.relative_to(repo).as_posix(), 'tested_commit': expected, 'tiers': tiers, 'static_files_per_host': len(changed_ps)}, indent=2), flush=True)
