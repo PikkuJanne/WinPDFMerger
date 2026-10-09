@@ -1,0 +1,367 @@
+{
+  "observed_at_utc": "2026-10-09T13:32:05.6733641Z",
+  "commit_under_test": "a0540c47dbb1017aa024fe0a7cdc8893eadfba52",
+  "dirty_worktree": false,
+  "commit_after": "a0540c47dbb1017aa024fe0a7cdc8893eadfba52",
+  "checkpoint_guard_failed": 0,
+  "evidence_class": "static-parser-and-pinned-analyzer; no application execution or native/manual acceptance",
+  "scope": "explicit-selected-files",
+  "shell_version": "7.6.6",
+  "shell_edition": "Core",
+  "process_64_bit": true,
+  "execution_policy": "RemoteSigned",
+  "analyzer_version": "1.25.0",
+  "settings_sha256": "6311a5ca81397788712d6eb652a4f8f8be98103fa50a526dc0ea9dc42c48abb4",
+  "pins_sha256": "1c034e1d7f5cde1688ffa5d24cf64e44c931877a575bdb5ea451bc071281bd55",
+  "selected_rules": [
+    "PSAvoidAssignmentToAutomaticVariable",
+    "PSAvoidDefaultValueSwitchParameter",
+    "PSAvoidDefaultValueForMandatoryParameter",
+    "PSAvoidUsingEmptyCatchBlock",
+    "PSAvoidUsingCmdletAliases",
+    "PSAvoidGlobalAliases",
+    "PSAvoidGlobalFunctions",
+    "PSAvoidGlobalVars",
+    "PSAvoidInvokingEmptyMembers",
+    "PSAvoidMultipleTypeAttributes",
+    "PSAvoidNullOrEmptyHelpMessageAttribute",
+    "PSAvoidOverwritingBuiltInCmdlets",
+    "PSReservedCmdletChar",
+    "PSReservedParams",
+    "PSAvoidReservedWordsAsFunctionNames",
+    "PSAvoidShouldContinueWithoutForce",
+    "PSAvoidUsingUsernameAndPasswordParams",
+    "PSAvoidUsingAllowUnencryptedAuthentication",
+    "PSAvoidUsingBrokenHashAlgorithms",
+    "PSAvoidUsingComputerNameHardcoded",
+    "PSAvoidUsingConvertToSecureStringWithPlainText",
+    "PSAvoidUsingDeprecatedManifestFields",
+    "PSAvoidUsingInvokeExpression",
+    "PSAvoidUsingPlainTextForPassword",
+    "PSAvoidUsingWMICmdlet",
+    "PSMisleadingBacktick",
+    "PSPossibleIncorrectComparisonWithNull",
+    "PSPossibleIncorrectUsageOfAssignmentOperator",
+    "PSPossibleIncorrectUsageOfRedirectionOperator",
+    "PSUseBOMForUnicodeEncodedFile",
+    "PSUseCmdletCorrectly",
+    "PSUseCompatibleSyntax",
+    "PSUseConsistentParameterSetName",
+    "PSUseConsistentParametersKind",
+    "PSUseLiteralInitializerForHashtable",
+    "PSUseProcessBlockForPipelineCommand",
+    "PSUsePSCredentialType",
+    "PSShouldProcess",
+    "PSUseSingleValueFromPipelineParameter",
+    "PSUseSupportsShouldProcess",
+    "PSUseUsingScopeModifierInNewRunspaces"
+  ],
+  "syntax_target_versions": [
+    "5.1",
+    "7.6"
+  ],
+  "files_checked": 1,
+  "parser_passed": 1,
+  "parser_failed": 0,
+  "parser_errors": 0,
+  "analyzer_passed": 1,
+  "analyzer_failed": 0,
+  "analyzer_not_run": 0,
+  "skipped": 0,
+  "selected_errors": 0,
+  "selected_warnings": 0,
+  "selected_information": 0,
+  "selected_suppressions": 0,
+  "advisory_errors": 0,
+  "advisory_warnings": 9,
+  "advisory_information": 30,
+  "source_guard_failed": 0,
+  "result": "pass",
+  "files": [
+    {
+      "path": "tests/help/Diagnostics.Native.Tests.ps1",
+      "sha256": "2ea520467c4ef39ab376a4c5c639f72f252241e33eaefe8630cd449638018063",
+      "parser_result": "pass",
+      "parser_errors": [],
+      "analyzer_result": "pass",
+      "selected_findings": [],
+      "suppressed_findings": [],
+      "advisory_findings": [
+        {
+          "RuleName": "PSAvoidUsingWriteHost",
+          "Severity": "Warning",
+          "Message": "File 'Diagnostics.Native.Tests.ps1' uses Write-Host. Avoid using Write-Host because it might not work in all hosts, does not work when there is no host, and (prior to PS 5.0) cannot be suppressed, captured, or redirected. Instead, use Write-Output, Write-Verbose, or Write-Information.",
+          "Line": 282,
+          "Column": 5
+        },
+        {
+          "RuleName": "PSAvoidUsingPositionalParameters",
+          "Severity": "Information",
+          "Message": "Cmdlet 'Invoke-DiagnosticChild' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+          "Line": 146,
+          "Column": 26
+        },
+        {
+          "RuleName": "PSAvoidUsingPositionalParameters",
+          "Severity": "Information",
+          "Message": "Cmdlet 'Invoke-DiagnosticChild' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+          "Line": 161,
+          "Column": 17
+        },
+        {
+          "RuleName": "PSAvoidUsingPositionalParameters",
+          "Severity": "Information",
+          "Message": "Cmdlet 'Invoke-DiagnosticChild' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+          "Line": 174,
+          "Column": 17
+        },
+        {
+          "RuleName": "PSAvoidUsingPositionalParameters",
+          "Severity": "Information",
+          "Message": "Cmdlet 'Invoke-DiagnosticChild' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+          "Line": 203,
+          "Column": 17
+        },
+        {
+          "RuleName": "PSAvoidUsingPositionalParameters",
+          "Severity": "Information",
+          "Message": "Cmdlet 'Invoke-DiagnosticChild' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+          "Line": 206,
+          "Column": 15
+        },
+        {
+          "RuleName": "PSAvoidUsingPositionalParameters",
+          "Severity": "Information",
+          "Message": "Cmdlet 'Assert-DiagnosticSummary' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+          "Line": 221,
+          "Column": 58
+        },
+        {
+          "RuleName": "PSAvoidUsingPositionalParameters",
+          "Severity": "Information",
+          "Message": "Cmdlet 'Assert-DiagnosticNative' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+          "Line": 227,
+          "Column": 21
+        },
+        {
+          "RuleName": "PSAvoidUsingPositionalParameters",
+          "Severity": "Information",
+          "Message": "Cmdlet 'Assert-DiagnosticNative' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+          "Line": 232,
+          "Column": 24
+        },
+        {
+          "RuleName": "PSAvoidUsingPositionalParameters",
+          "Severity": "Information",
+          "Message": "Cmdlet 'Assert-DiagnosticNative' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+          "Line": 234,
+          "Column": 20
+        },
+        {
+          "RuleName": "PSAvoidUsingPositionalParameters",
+          "Severity": "Information",
+          "Message": "Cmdlet 'Assert-DiagnosticNative' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+          "Line": 235,
+          "Column": 20
+        },
+        {
+          "RuleName": "PSAvoidUsingPositionalParameters",
+          "Severity": "Information",
+          "Message": "Cmdlet 'Assert-DiagnosticNative' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+          "Line": 245,
+          "Column": 24
+        },
+        {
+          "RuleName": "PSAvoidUsingPositionalParameters",
+          "Severity": "Information",
+          "Message": "Cmdlet 'Assert-DiagnosticNative' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+          "Line": 246,
+          "Column": 24
+        },
+        {
+          "RuleName": "PSAvoidUsingPositionalParameters",
+          "Severity": "Information",
+          "Message": "Cmdlet 'Assert-DiagnosticNative' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+          "Line": 247,
+          "Column": 24
+        },
+        {
+          "RuleName": "PSAvoidUsingPositionalParameters",
+          "Severity": "Information",
+          "Message": "Cmdlet 'Add-DiagnosticObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+          "Line": 293,
+          "Column": 9
+        },
+        {
+          "RuleName": "PSAvoidUsingPositionalParameters",
+          "Severity": "Information",
+          "Message": "Cmdlet 'Assert-DiagnosticSuccess' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+          "Line": 302,
+          "Column": 16
+        },
+        {
+          "RuleName": "PSAvoidUsingPositionalParameters",
+          "Severity": "Information",
+          "Message": "Cmdlet 'Add-DiagnosticObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+          "Line": 306,
+          "Column": 9
+        },
+        {
+          "RuleName": "PSAvoidUsingPositionalParameters",
+          "Severity": "Information",
+          "Message": "Cmdlet 'Invoke-DiagnosticChild' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+          "Line": 311,
+          "Column": 17
+        },
+        {
+          "RuleName": "PSAvoidUsingPositionalParameters",
+          "Severity": "Information",
+          "Message": "Cmdlet 'Assert-DiagnosticSuccess' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+          "Line": 312,
+          "Column": 16
+        },
+        {
+          "RuleName": "PSAvoidUsingPositionalParameters",
+          "Severity": "Information",
+          "Message": "Cmdlet 'Add-DiagnosticObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+          "Line": 315,
+          "Column": 9
+        },
+        {
+          "RuleName": "PSAvoidUsingPositionalParameters",
+          "Severity": "Information",
+          "Message": "Cmdlet 'Invoke-DiagnosticChild' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+          "Line": 327,
+          "Column": 17
+        },
+        {
+          "RuleName": "PSAvoidUsingPositionalParameters",
+          "Severity": "Information",
+          "Message": "Cmdlet 'Add-DiagnosticObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+          "Line": 329,
+          "Column": 9
+        },
+        {
+          "RuleName": "PSAvoidUsingPositionalParameters",
+          "Severity": "Information",
+          "Message": "Cmdlet 'Assert-DiagnosticNative' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+          "Line": 332,
+          "Column": 17
+        },
+        {
+          "RuleName": "PSAvoidUsingPositionalParameters",
+          "Severity": "Information",
+          "Message": "Cmdlet 'Assert-DiagnosticSummary' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+          "Line": 336,
+          "Column": 9
+        },
+        {
+          "RuleName": "PSAvoidUsingPositionalParameters",
+          "Severity": "Information",
+          "Message": "Cmdlet 'Invoke-DiagnosticChild' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+          "Line": 342,
+          "Column": 17
+        },
+        {
+          "RuleName": "PSAvoidUsingPositionalParameters",
+          "Severity": "Information",
+          "Message": "Cmdlet 'Add-DiagnosticObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+          "Line": 344,
+          "Column": 9
+        },
+        {
+          "RuleName": "PSAvoidUsingPositionalParameters",
+          "Severity": "Information",
+          "Message": "Cmdlet 'Assert-DiagnosticSummary' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+          "Line": 348,
+          "Column": 9
+        },
+        {
+          "RuleName": "PSAvoidUsingPositionalParameters",
+          "Severity": "Information",
+          "Message": "Cmdlet 'Invoke-DiagnosticChild' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+          "Line": 356,
+          "Column": 17
+        },
+        {
+          "RuleName": "PSAvoidUsingPositionalParameters",
+          "Severity": "Information",
+          "Message": "Cmdlet 'Add-DiagnosticObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+          "Line": 357,
+          "Column": 9
+        },
+        {
+          "RuleName": "PSAvoidUsingPositionalParameters",
+          "Severity": "Information",
+          "Message": "Cmdlet 'Invoke-DiagnosticChild' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+          "Line": 365,
+          "Column": 17
+        },
+        {
+          "RuleName": "PSAvoidUsingPositionalParameters",
+          "Severity": "Information",
+          "Message": "Cmdlet 'Add-DiagnosticObservation' has positional parameter. Please use named parameters instead of positional parameters when calling a command.",
+          "Line": 366,
+          "Column": 9
+        },
+        {
+          "RuleName": "PSUseDeclaredVarsMoreThanAssignments",
+          "Severity": "Warning",
+          "Message": "The variable 'parentPolicies' is assigned but never used.",
+          "Line": 57,
+          "Column": 5
+        },
+        {
+          "RuleName": "PSUseDeclaredVarsMoreThanAssignments",
+          "Severity": "Warning",
+          "Message": "The variable 'originalBefore' is assigned but never used.",
+          "Line": 94,
+          "Column": 5
+        },
+        {
+          "RuleName": "PSUseDeclaredVarsMoreThanAssignments",
+          "Severity": "Warning",
+          "Message": "The variable 'oracleVersions' is assigned but never used.",
+          "Line": 148,
+          "Column": 5
+        },
+        {
+          "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+          "Severity": "Warning",
+          "Message": "Function 'New-DiagnosticApplication' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+          "Line": 95,
+          "Column": 14
+        },
+        {
+          "RuleName": "PSUseShouldProcessForStateChangingFunctions",
+          "Severity": "Warning",
+          "Message": "Function 'New-DiagnosticHelp' has verb that could change system state. Therefore, the function has to support 'ShouldProcess'.",
+          "Line": 149,
+          "Column": 14
+        },
+        {
+          "RuleName": "PSReviewUnusedParameter",
+          "Severity": "Warning",
+          "Message": "The parameter 'PdftkPath' has been declared but not used.",
+          "Line": 6,
+          "Column": 41
+        },
+        {
+          "RuleName": "PSReviewUnusedParameter",
+          "Severity": "Warning",
+          "Message": "The parameter 'GhostscriptPath' has been declared but not used.",
+          "Line": 7,
+          "Column": 41
+        },
+        {
+          "RuleName": "PSReviewUnusedParameter",
+          "Severity": "Warning",
+          "Message": "The parameter 'PythonPath' has been declared but not used.",
+          "Line": 8,
+          "Column": 41
+        }
+      ]
+    }
+  ],
+  "raw_report_sha256": "42ac8a5b59b83403419f60be99639e11c4cbccc1903060bbd39d70312b1584f7"
+}

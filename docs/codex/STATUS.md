@@ -1,26 +1,32 @@
 # Project status
 
 Target: published and independently verified v1.0.0 in PikkuJanne/WinPDFMerger.
-T01-T26 and M1-M4 are complete within recorded owner-amended scope. Current
-milestone M5; T27 version source/final notes is in_progress. T28 packaging is next
-after clean T27 execution, review and synchronized completion.
+T01-T27 are done; M1-M4 remain complete within recorded owner-amended scope.
+Current milestone M5. Next task T28 clean allowlisted packaging/checksums is
+pending and dependency-ready. No package, tag or release is created or accepted.
 
-VERSION1.0.0, runtime/usage/log agreement, help, package naming contract and
-first-release notes are implemented. Copy layouts and public documentation carry
-the required metadata. Dirty preparation Version checks pass21 after one
-resolved expected-array assertion failure; clean implementation acceptance and
-Clean C1 passes1332checks total (666perhost), including22native, and29changed
-PowerShell files perhost under41selected rules. Both C1 GitHub runs pass4/4jobs.
-Only a misleading native case title was corrected afterward; narrow clean
-follow-up and independent final review remain pending. See evidence/T27-preparation.md.
+T27 AC063/AC064 pass: VERSION1.0.0 feeds startup/usage/log; help names it;
+public note titles and package naming/build-info contract validate against it.
+Complete-layout docs and copied application tests carry VERSION. Reviewed notes
+retain all dependency/PDF/path/privacy/unsigned and compatibility limits.
 
-D25 excludes human standard-user/Explorer/PDF-viewer testing. AC058 remains
-excluded/unperformed, never passed. AC059 and existing T23 native dual-shell,
-T24 hosted CI and T25 security evidence retain their accepted SHAs/scopes;
-Windows10/liveUNC/ARM/32-bit-host exclusions remain. See evidence/T26-scope-completion.md
-and T26-scope-review.md for accepted historical authority and the disclosed prior
-f207778 PR dependency-acquisition/WAF failure; current T26 C1 jobs succeeded.
+Clean C1 044f3d9 passes666checks per actual PS5.1.26100.9444/pinnedPS7.6.6
+x64 host (1332total), including11native each, plus29changed-file static under
+41selected rules each. C1b a0540c4 changes one misleading native test title,
+then passes11native/onefile static each (22additional passing checks).
+Every required execution bad/skip/source-guard count0; selected static findings0.
+Vendor advisories remain disclosed. Independent audits pass4904/982checks.
+C1 and C1b normal pushes/fresh clean/live equality are recorded; push/PR CI
+each passed4/4jobs for both sources (platform metadata only).
 
-PR26 remains draft/open/unmerged. No package, tag, release or downloaded-operation
-acceptance is claimed. Exact candidate/final/downloaded-ZIP operation, source
-safety, publication and synchronized closure remain required later tasks.
+Final records C2 preserves exact archived bytes with a narrow Git attribute,
+records reviewed results and advances handoff; its own normal push and fresh
+clean/live equality are verified after creation in the session. See evidence/
+T27-completion.md, T27-review.md, T27-results.json and T27-reports manifests.
+
+D25 AC058 remains excluded/unperformed, never pass. Windows10/liveUNC/ARM/
+32-bit-host exclusions remain. Existing T23-T26 native/CI/security/compatibility
+authority and historical failed/blocked receipts are preserved; see T26 review.
+PR26 remains draft/open/unmerged. Actual exact candidate/final/downloaded-ZIP
+operation, independent PDF/source-safety verification, publication and closure
+remain required. The project is not complete.
