@@ -19,15 +19,16 @@ organizational policy or establish trust. Direct examples use the current host's
 policy. A SHA-256 match checks bytes, not publisher identity, signing or malware.
 See [security and signing](../SECURITY.md#unsigned-scripts-and-integrity).
 
-## Usage or missing helper
+## Usage or incomplete application folder
 
 Supply exactly one existing source folder. Double-clicking the BAT without a
 folder only displays usage and pauses; dropping multiple folders is refused.
 Use the `.ps1` for `-OutputFolder`, `-SkipEmail` or `-EmailPreset ebook`.
 Missing source input exits `1` without an interactive prompt.
 
-If the script/helper cannot be found, extract the complete project and preserve
-`src/WinPDFMerge.Helpers.ps1` beside the launchers in its `src` directory. See the
+If a launcher/helper or `VERSION` cannot be found, or `VERSION` is invalid,
+extract the complete project again. Keep its unmodified `VERSION` beside the
+launchers and `src/WinPDFMerge.Helpers.ps1` in its `src` directory. See the
 [installation layout](../README.md#install). Do not copy only the PS1/BAT files.
 Unknown options, extra positional paths or an invalid preset fail before output
 creation; check spelling and use `Get-Help .\WinPDFMerge.ps1 -Examples`.

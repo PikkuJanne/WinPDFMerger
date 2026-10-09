@@ -98,6 +98,7 @@ print(json.dumps({'page_count':len(pages),'pages':pages,'pypdfium2':str(pdfium.P
         foreach ($directory in @((Join-Path $app 'src'),$source,$output,$noCommon)) { [void][IO.Directory]::CreateDirectory($directory) }
         $entry = Join-Path $app 'WinPDFMerge.ps1'; $helper = Join-Path $app 'src/WinPDFMerge.Helpers.ps1'
         [IO.File]::Copy((Join-Path $repo 'WinPDFMerge.ps1'),$entry,$false)
+        [IO.File]::Copy((Join-Path $repo 'VERSION'),(Join-Path $app 'VERSION'),$false)
         [IO.File]::Copy((Join-Path $repo 'src/WinPDFMerge.Helpers.ps1'),$helper,$false)
         $inputs = @(foreach ($leaf in @('10.pdf','2.pdf','1.pdf')) { $path=Join-Path $source $leaf; [IO.File]::Copy((Join-Path $fixtureRoot $leaf),$path,$false); $path })
         $foreign = @(Join-Path $app 'foreign-existing.pdf'; Join-Path $output 'foreign-existing.pdf')
@@ -299,6 +300,9 @@ Describe 'AC042 actual help and every documented application command' {
         $delivery=Invoke-DiagnosticExample $app $Index
         $output=if($Index -eq 1){$app.Output}else{$app.App}; $preset=if($Index -eq 3){'ebook'}else{'screen'}
         $proof=Assert-DiagnosticSuccess $app $delivery.Result $output -Skipped:($Index -eq 2) -Preset $preset
+        $version=Get-WinPDFMergeVersion -ScriptDirectory $repo
+        $delivery.Result.Stdout | Should -Match ('(?m)^WinPDFMerger '+[regex]::Escape($version)+'\r?$')
+        $proof.Log.Text | Should -Match ('(?m)^Application version: '+[regex]::Escape($version)+'\r?$')
         Add-DiagnosticObservation $app ('actual-help-readme-'+$Route) $before ([pscustomobject]@{Delivery=$delivery; Diagnostics=$proof; MatchingReadmeCommand=$readmeCommands[$(switch($Index){0{0}1{1}2{3}3{2}})]})
     }
     It 'runs the documented direct powershell.exe literal-percent route without cmd expansion' {

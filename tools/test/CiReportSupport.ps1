@@ -6,6 +6,7 @@ function Get-CiReportEvidenceClass {
         'NativeRunner' { return 'controlled-native-process' }
         'Launcher' { return 'controlled-launcher' }
         'Static' { return 'static' }
+        'Version' { return 'static-version-contract-and-preflight; no native PDF execution' }
         'CiFailureProbe' { return 'ci-controlled-deliberate-failure' }
         { $_ -cin @('PreservationDocs','PublicDocs') } { return 'documentation' }
         { $_ -cin @('NativeFixture','SourceDiscovery','CiNativeSmoke','LauncherNative','DependencyEntry','PdftkPaths','GhostscriptPaths','Destination','InputPreflight','Staging','MasterValidation','EmailOutcome','FaultRecovery','ParametersNative','SizeReportingNative','DiagnosticsNative','PreservationNative','CorpusSafety','NativeAcceptance') } { return 'windows-native-integration' }

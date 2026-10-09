@@ -289,7 +289,8 @@ Describe 'AC054 CI evidence class and import boundary' {
     It 'accurately classifies <Tier> without converting controlled tests to native evidence' -TestCases @(
         @{Tier='Unit';Class='unit-controlled'},@{Tier='Static';Class='static'},@{Tier='NativeRunner';Class='controlled-native-process'},@{Tier='Launcher';Class='controlled-launcher'},
         @{Tier='NativeFixture';Class='windows-native-integration'},@{Tier='SourceDiscovery';Class='windows-native-integration'},@{Tier='GhostscriptPaths';Class='windows-native-integration'},@{Tier='CiNativeSmoke';Class='windows-native-integration'},
-        @{Tier='PublicDocs';Class='documentation'},@{Tier='CiFailureProbe';Class='ci-controlled-deliberate-failure'}
+        @{Tier='PublicDocs';Class='documentation'},@{Tier='CiFailureProbe';Class='ci-controlled-deliberate-failure'},
+        @{Tier='Version';Class='static-version-contract-and-preflight; no native PDF execution'}
     ) {
         param($Tier,$Class)
         Get-CiReportEvidenceClass $Tier | Should -BeExactly $Class

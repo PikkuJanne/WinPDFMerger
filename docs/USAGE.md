@@ -1,10 +1,10 @@
 # Usage details
 
 Start with the [installation and commands](../README.md). Keep
-`WinPDFMerge.ps1`, `WinPDFMerge.bat` and `src/WinPDFMerge.Helpers.ps1` in their
-relative layout. The repository name is WinPDFMerger; launcher filenames retain
-WinPDFMerge. Processing requires PDFtk and optionally Ghostscript, with no Python
-runtime dependency.
+`WinPDFMerge.ps1`, `WinPDFMerge.bat`, adjacent `VERSION` and
+`src/WinPDFMerge.Helpers.ps1` in their relative layout. The repository name is
+WinPDFMerger; launcher filenames retain WinPDFMerge. Processing requires PDFtk
+and optionally Ghostscript, with no Python runtime dependency.
 
 ## Parameters and shells
 

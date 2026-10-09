@@ -104,7 +104,7 @@ print(json.dumps({'page_count':len(pages),'pages':pages,'pypdfium2':str(pdfium.P
         $root = Join-Path $work ([Guid]::NewGuid().ToString('N'))
         $app = Join-Path $root 'app with spaces'; $source = Join-Path $root 'source folder'; $output = Join-Path $root 'named output'; $noCommon = Join-Path $root 'no-common-engines'
         foreach ($directory in @((Join-Path $app 'src'),$source,$output,$noCommon)) { [void][IO.Directory]::CreateDirectory($directory) }
-        foreach ($leaf in @('WinPDFMerge.ps1','WinPDFMerge.bat')) { [IO.File]::Copy((Join-Path $repo $leaf),(Join-Path $app $leaf),$false) }
+        foreach ($leaf in @('WinPDFMerge.ps1','WinPDFMerge.bat','VERSION')) { [IO.File]::Copy((Join-Path $repo $leaf),(Join-Path $app $leaf),$false) }
         $helper = Join-Path $app 'src/WinPDFMerge.Helpers.ps1'
         [IO.File]::Copy((Join-Path $repo 'src/WinPDFMerge.Helpers.ps1'),$helper,$false)
         $foreign = @(Join-Path $app 'foreign-existing.pdf'; Join-Path $output 'foreign-existing.pdf')

@@ -88,6 +88,7 @@ exit $entryExitCode
         $noCommon = Join-Path $root 'no-common-engines'
         foreach ($directory in @((Join-Path $app 'src'),$source,$output,$noCommon)) { [void][IO.Directory]::CreateDirectory($directory) }
         [IO.File]::Copy((Join-Path $repo 'WinPDFMerge.ps1'),(Join-Path $app 'WinPDFMerge.ps1'),$false)
+        [IO.File]::Copy((Join-Path $repo 'VERSION'),(Join-Path $app 'VERSION'),$false)
         [IO.File]::Copy((Join-Path $repo 'src/WinPDFMerge.Helpers.ps1'),(Join-Path $app 'src/WinPDFMerge.Helpers.ps1'),$false)
         $sourceFixtureRoot = Join-Path $corpusRoot $scenario.source_directory
         foreach ($fixture in $scenario.source_files) {

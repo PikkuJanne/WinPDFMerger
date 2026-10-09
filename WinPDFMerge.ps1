@@ -38,6 +38,9 @@ Creates the master without discovering or launching Ghostscript.
 Selects the ebook email preset. A candidate without a size benefit is omitted.
 .NOTES
 Author: Janne Vuorela. Personal tool, provided as-is without warranty.
+The application version comes from the adjacent VERSION file and is shown in the
+startup/usage banner and run log. Keep VERSION with this script and src helpers.
+PDFtk, Ghostscript and PowerShell versions are separate dependency versions.
 Requires Windows PowerShell 5.1 or a separately validated PowerShell 7 build,
 PDFtk Server, and optional Ghostscript. Processing stays local. Diagnostic logs
 are UTF-8 and can contain document names, full paths and native PDF metadata;
@@ -70,12 +73,19 @@ function Get-ScriptDir {
 }
 # --- Entry ---
 $ScriptDir = Get-ScriptDir
+. (Join-Path $ScriptDir 'src/WinPDFMerge.Helpers.ps1')
+try { $applicationVersion = Get-WinPDFMergeVersion -ScriptDirectory $ScriptDir }
+catch {
+    Write-Host ("Version preflight failed: {0}" -f $_.Exception.Message) -ForegroundColor Red
+    Write-Host 'No run log was created; no merge was started.'
+    exit 1
+}
+Write-Host ("WinPDFMerger {0}" -f $applicationVersion)
 if ([string]::IsNullOrWhiteSpace($SourceFolder)) {
     Write-Host "Usage: WinPDFMerge.ps1 <FolderWithPDFs> [-OutputFolder <ExistingDirectory>] [-SkipEmail] [-EmailPreset screen|ebook]" -ForegroundColor Yellow
     Write-Host 'No run log was created: a source and safe output directory are required.'
     exit 1
 }
-. (Join-Path $ScriptDir 'src/WinPDFMerge.Helpers.ps1')
 $logPath = $null
 $pdftkVersion = 'not probed'
 $gsVersion = if ($SkipEmail) { 'not used (SkipEmail)' } else { 'not probed' }
@@ -134,6 +144,7 @@ try {
     Reserve-MergeRunIdentity -Identity $run
     $logPath = $run.LogPath
     "==== WinPDFMerge run $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss') ====" | Write-RunLog -LiteralPath $logPath -Append
+    ("Application version: {0}" -f $applicationVersion) | Write-RunLog -LiteralPath $logPath -Append
     Write-PdfRunStage -Stage 'Invocation preflight' -Timer $runTimer -LiteralPath $logPath
     "Source folder: $SourceFolder" | Write-RunLog -LiteralPath $logPath -Append
     "Output folder: $OutputFolder" | Write-RunLog -LiteralPath $logPath -Append

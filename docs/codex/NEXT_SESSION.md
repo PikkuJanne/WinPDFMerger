@@ -1,11 +1,30 @@
 # Next session
 
-Next task: T27 single-source version and final change notes, pending and dependency-ready. T01-T26 are done; M4 is complete within the owner-amended D25 scope. Read AGENTS/INDEX/STATUS, T27 TASKS entry/tasks/T27.md, PRODUCT_SPEC, GITHUB_WORKFLOW, PACKAGE_CONTRACT, RELEASE_RUNBOOK and D25/T26 follow-up evidence. Freshly confirm repository, branch, clean/dirty state, both origin routes, live readiness/main/PR/tag/release before edits; preserve unrelated work and immutable receipts.
+Current task T27 is in_progress. Read AGENTS/INDEX/STATUS, T27 TASKS/brief,
+PRODUCT_SPEC, GITHUB_WORKFLOW, PACKAGE_CONTRACT and RELEASE_RUNBOOK. Freshly
+verify repository/branch/clean state, both origin routes and live branch/main/
+PR/tag/release state. Reuse draft PR26 and codex/v1.0.0-readiness; preserve
+unrelated work and historical receipts. Baseline is not a reset target.
 
-Owner D25 excludes human standard-user/Explorer/visible-PDF testing; AC058 is excluded and unperformed, never passed. AC059 compatibility/claims review passes. No human account-class or Settings observation is required. T27 final release notes must retain Windows10/liveUNC/ARM/32-bit-host exclusions, human-validation limits, dependency/PDF limits and recorded Windows/native/dual-shell/CI evidence scope. Actual Windows exact candidate/final/downloaded-ZIP operation/source-safety/asset provenance remains required in T29/T32/T33; publication and closure are incomplete.
+VERSION1.0.0, startup/usage/log consumption, help source guidance, matching
+package contract, CHANGELOG/release notes, complete-layout docs and regression
+test wiring are implemented. Preparation Version21 passes after one fixed
+expected-array assertion failure. Clean implementation tests/review/push proof
+and records completion remain; see evidence/T27-preparation.md. Do not mark
+AC063/AC064 pass or advance until actual required evidence is reviewed.
 
-Clean T26 scope C1 d8f7945 passed PublicDocs22each (44total) and selected changed-file static1file/41rules each in actual PS5.1.26100.9444/pinnedPS7.6.6;0selected findings/bad/sourceguard counts,3advisory warnings each. Independent265check raw/public review and M4 authority review passed;2098historical manifest payloads were verified without changing them. Runtime/workflow blobs remain unchanged. C1 normalpush/freshcleanlive equality and push37932076626/PR37932081691 platform4/4success each are recorded. Verify final records C2 own clean/live equality after its push in the session. PR26 is draft/open/unmerged; reuse it. Main remains e245114 at the starting inspection; no tag/release exists.
+Reuse approved external Pester6.2.0/analyzer1.25.0/PDFtk2.02/GS10.08.0/
+pinnedPS7.6.6 caches and workspace Python3.12.14. No silent acquisition/install,
+elevation, persistent policy/PATH/security change. Authorized child Process
+RemoteSigned is scoped; batch process Bypass respects Group Policy.
 
-The prior f207778 PR acquisition/WAF failure is disclosed separately, not an application failure/pass. The owner's cached-PDFtk kit setup error also precedes application execution; no human walkthrough or kit repair is required by current scope. Reuse approved external Pester6.2.0/analyzer1.25.0/PDFtk2.02/GS10.08.0/pinnedPS7.6.6 caches and workspace Python3.12.14. No silent acquisition/install/elevation/persistent policy/PATH/security change. Authorized child Process RemoteSigned remains scoped; launcher process Bypass respects Group Policy.
+AC058 is owner-excluded/unperformed, never passed; no human account-class,
+Explorer/Settings/PDF-viewer walkthrough is a gate. Windows10/liveUNC/ARM/
+32-bit-host validation exclusions and dependency/PDF limitations remain.
+Actual Windows candidate/final/downloaded-ZIP operation, independent output
+inspection/source hashes and publication/closure are still required.
 
-Implement exactly T27 in its conceptual thread: single-source1.0.0 version, reproducible version/help agreement and accurate final change/release notes. T28 owns the allowlisted builder; T29 actual package smoke. No intermediate release or tag; only final published and independently verified v1.0.0 can complete the project.
+After synchronized T27 completion continue exactly T28: clean allowlisted
+builder/checksums/BUILD_INFO from a specified commit, consuming VERSION and
+including all required runtime files. T29 owns actual package operation.
+No intermediate release or tag; M6 owns final gated publication.

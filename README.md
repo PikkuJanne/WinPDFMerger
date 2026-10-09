@@ -26,8 +26,8 @@ website work, cloud conversion, OCR, a GUI editor and an installer are outside i
 3. For the current source, use **Code > Download ZIP** in the
    [repository](https://github.com/PikkuJanne/WinPDFMerger), or use your checkout.
    Extract the whole project folder to a location such as `C:\Tools\WinPDFMerge`.
-   Keep the relative layout below, including `src/WinPDFMerge.Helpers.ps1`;
-   copying just the two launchers is insufficient.
+   Keep the relative layout below, including `VERSION` beside the launchers and
+   `src/WinPDFMerge.Helpers.ps1`; copying just the two launchers is insufficient.
    The `docs` folder supplies the linked public instructions. Native dependencies
    are installed separately, and Python is not needed to run the application.
 
@@ -35,6 +35,7 @@ website work, cloud conversion, OCR, a GUI editor and an installer are outside i
 C:\Tools\WinPDFMerge\
     WinPDFMerge.ps1
     WinPDFMerge.bat
+    VERSION
     README.md
     LICENSE
     SECURITY.md

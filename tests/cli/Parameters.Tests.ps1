@@ -17,6 +17,7 @@ BeforeAll {
         foreach($directory in @((Join-Path $app 'src'),$source,$output)){[void][IO.Directory]::CreateDirectory($directory)}
         $entry=Join-Path $app 'WinPDFMerge.ps1'; $helper=Join-Path $app 'src/WinPDFMerge.Helpers.ps1'
         [IO.File]::Copy((Join-Path $repo 'WinPDFMerge.ps1'),$entry,$false)
+        [IO.File]::Copy((Join-Path $repo 'VERSION'),(Join-Path $app 'VERSION'),$false)
         [IO.File]::Copy((Join-Path $repo 'src/WinPDFMerge.Helpers.ps1'),$helper,$false)
         $inputPath=Join-Path $source '1.pdf'; $foreign=Join-Path $output 'foreign-existing.pdf'
         foreach($path in @($inputPath,$foreign)){[IO.File]::Copy($fixture,$path,$false)}
@@ -178,7 +179,8 @@ Describe 'AC039 source and destination decisions precede output/native work' {
         Assert-ParameterNoOutput $case $run
         $run.Result.Stdout | Should -Match 'Usage: WinPDFMerge.ps1'
         ($run.Result.Stdout+$run.Result.Stderr) | Should -Not -Match 'Supply values for the following parameters'
-        $run.Receipt.HelperLoaded | Should -BeFalse
+        $run.Receipt.HelperLoaded | Should -BeTrue
+        $run.Receipt.WritableChecks | Should -Be 0
     }
     It 'refuses a missing source without probing the destination' {
         $case=New-ParameterCase; $run=Invoke-ParameterCase $case 'missing-source-directory' @{SourceFolder=(Join-Path $case.Root 'missing-source');OutputFolder=$case.Output}

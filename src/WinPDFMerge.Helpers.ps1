@@ -1,6 +1,17 @@
 # Internal helpers. Import defines functions only; entry orchestration stays in WinPDFMerge.ps1.
 # Unchanged baseline helpers retain their measured behavior until their regression task.
 
+function Get-WinPDFMergeVersion {
+    [CmdletBinding()]
+    param([Parameter(Mandatory=$true)][string]$ScriptDirectory)
+
+    try { $text = [IO.File]::ReadAllText((Join-Path $ScriptDirectory 'VERSION')) }
+    catch { throw 'Cannot read application VERSION beside WinPDFMerge.ps1. Restore the complete application folder before running.' }
+    $match = [regex]::Match($text, '\A((?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*)\.(?:0|[1-9][0-9]*))(?:\r?\n)?\z')
+    if (-not $match.Success) { throw 'Application VERSION must contain one major.minor.patch value. Restore the complete application folder before running.' }
+    return $match.Groups[1].Value
+}
+
 function Resolve-SourceDirectory {
     [CmdletBinding()]
     param([string]$Path)

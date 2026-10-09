@@ -98,7 +98,11 @@ Describe 'AC046 usable public instructions' {
         $readme = [string]$surfaces['README.md']
         foreach ($required in @('WinPDFMerge\.ps1','WinPDFMerge\.bat','src[/\\]WinPDFMerge\.Helpers\.ps1')) { $readme | Should -Match $required }
         $readme | Should -Match '\bWinPDFMerger\b'
-        Add-PublicDocsObservation 'complete-layout' @{Launchers=@('WinPDFMerge.ps1','WinPDFMerge.bat');Helper='src/WinPDFMerge.Helpers.ps1'}
+        $readme | Should -Match '(?m)^    VERSION\r?$'
+        foreach ($relative in @('README.md','docs/USAGE.md','docs/TROUBLESHOOTING.md')) {
+            (Test-PublicParagraph ([string]$surfaces[$relative]) @('\bVERSION\b','\b(?:beside|adjacent|layout)\b','WinPDFMerge\.ps1|\blaunchers\b')) | Should -BeTrue
+        }
+        Add-PublicDocsObservation 'complete-layout' @{Launchers=@('WinPDFMerge.ps1','WinPDFMerge.bat');Helper='src/WinPDFMerge.Helpers.ps1';Version='VERSION'}
     }
     It 'makes optional Ghostscript and explicit master-only use clear' {
         $readme = [string]$surfaces['README.md']

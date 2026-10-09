@@ -32,6 +32,7 @@ BeforeAll {
         [void][IO.Directory]::CreateDirectory($noGs)
         [IO.File]::Copy((Join-Path $repo 'WinPDFMerge.bat'), (Join-Path $app 'WinPDFMerge.bat'))
         [IO.File]::Copy((Join-Path $repo 'WinPDFMerge.ps1'), (Join-Path $app 'WinPDFMerge.ps1'))
+        [IO.File]::Copy((Join-Path $repo 'VERSION'), (Join-Path $app 'VERSION'))
         [IO.File]::Copy((Join-Path $repo 'src/WinPDFMerge.Helpers.ps1'), (Join-Path $app 'src/WinPDFMerge.Helpers.ps1'))
         # Overrides belong only to this cmd child and its descendants. The
         # actual batch still selects Windows PowerShell 5.1 and its own flags.
