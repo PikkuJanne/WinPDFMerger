@@ -1,0 +1,14 @@
+{
+  "task": "T30",
+  "evidence_class": "independent_unaccepted_public_projection_failure; not application failure",
+  "source_commit": "8f76ba4bce7de100cd56274ca938c4da24b500dc",
+  "result": "fail",
+  "first_manifest_sha256": "3f10c7ca088e20920100facb630cf522e5c10fe8503936465c03ba67d2dd1fb1",
+  "payload_count": 983,
+  "preserved_ignored_root": "<REPO>\\tests\\.work\\T30-public-export-unaccepted-e7d99a4ec7f84305936a9cd424c3329d",
+  "original_receipts_changed": false,
+  "tracked_capture_producers_changed": false,
+  "finding": "All104 local accepted/full-aborted NUnit XML files became invalid because literal <REPO> was inserted into XML attributes. Original XML remains valid; CI XML does not contain this substitution.",
+  "correction": "Use XML-escaped &lt;REPO&gt;/&lt;USERPROFILE&gt; path aliases, preserving original typed facts; parse every original/projected XML before writing; rerun independent public audit.",
+  "review_observation": "Independent claims/coverage review observed parse failures and reconciled counts with in-memory XML escaping. No separate failed-audit source/result is invented here; reviewer receipts remain separate."
+}

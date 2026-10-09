@@ -28,3 +28,13 @@ Windows 10, live UNC and other-architecture cases may be excluded with recorded
 rationale; exclusions are never passes. Publication and actual independent
 downloaded-package operation remain required final cases, without a human
 account-class/Explorer/PDF-viewer prerequisite.
+
+## T30 before-merge audit — 2026-10-09
+
+All17 improvements have reviewed premerge implementation and scoped evidence at
+clean8f76ba4. The machine map of all78 cases,40implementation paths and282case-
+evidence paths is `evidence/T30-reports/review/coverage-review.json`; see its MD
+for findings/limits and `evidence/T30-completion.md` for combined AC069/070 pass.
+Fresh full32-tier dual-shell regression passes2144total and independent reviews
+find no unresolved blocker. This does not complete improvements16/17 downstream
+merge/publication duties: T31-T34/AC071-078 remain required; AC058 remains excluded.

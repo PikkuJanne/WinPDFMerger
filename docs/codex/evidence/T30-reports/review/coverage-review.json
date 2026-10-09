@@ -1,0 +1,2983 @@
+{
+  "schema_version": 1,
+  "task": "T30",
+  "evidence_class": "independent_read_only_coverage_review",
+  "review_environment": {
+    "ambient_shell": "PowerShell7.6.5 Core x64",
+    "base_os_version": "10.0.26300.0",
+    "observed_at_utc": "2026-10-09T16:09:57.2079937Z",
+    "scope": "Read-only audit orchestration environment only; no application/native compatibility execution inferred."
+  },
+  "implementation_path_audit": {
+    "unique_declared_paths_checked": 40,
+    "missing_paths": 0
+  },
+  "reviewer_preparation_notes": [
+    "Initial exploratory manifest reads assumed a common files schema; older records/reports and T18 specialized schemas were inspected and the accepted scanners adapted before the final counts. No evidence bytes changed.",
+    "An initial original-T29 result-location guess failed; the accepted asset audit follows the retained outer ledger's actual report paths and hashes.",
+    "One attempted shell write of the large ignored report was rejected with Windows os error206 before process creation. The report was updated successfully with apply_patch instead.",
+    "An initial full-receipt summary table emission used a plain true token rather than a PowerShell boolean; the corrected read-only scanner completed and supplied the accepted2144/0 receipt audit.",
+    "These are reviewer setup/tool failures, not application failures or accepted execution evidence. Their messages occurred in tool output; no separate raw-stream/hash/time receipt is fabricated."
+  ],
+  "initial_reviewed_head": "681e0e3f97a44b8c23fb67f45aa9605e4d7fcd32",
+  "reviewed_head": "8f76ba4bce7de100cd56274ca938c4da24b500dc",
+  "reviewed_branch": "codex/v1.0.0-readiness",
+  "reviewed_live_branch": "8f76ba4bce7de100cd56274ca938c4da24b500dc",
+  "reviewed_live_main": "e2451141217efdd00a1d49d72a04df054872dffc",
+  "review_scope": "All17 accepted improvements; prior before-merge case records and selected underlying evidence; independent public-manifest byte checks; T23 original typed summary/NUnit outcome checks; T29 retained original result/asset hash checks. This reviewer did not author application, tests, capture drivers or historical evidence.",
+  "result": "pass_for_AC069_coverage_and_original_C1b_required_test_receipts",
+  "t30_gate_status": "AC069 pass: all17 improvements map to scoped evidence and fresh full32-tier dual-shell C1b checks pass. AC070 source/security/current-PR review and synchronized final checkpoint remain separate; this coverage report does not pass AC070 alone.",
+  "case_snapshot_counts": {
+    "all": 78,
+    "prior_premerge": 68,
+    "prior_required_passed": 64,
+    "prior_optional_excluded": 4,
+    "evidence_paths": 282,
+    "missing_evidence_paths": 0,
+    "invalid_exclusions": 0,
+    "t30_required_not_run": 2,
+    "downstream_required_not_run": 8
+  },
+  "improvements": [
+    {
+      "id": 1,
+      "title": "Fix native command-line quoting",
+      "tasks": [
+        "T08",
+        "T09"
+      ],
+      "acceptance_ids": [
+        "AC016",
+        "AC017",
+        "AC018",
+        "AC019",
+        "AC020",
+        "AC021"
+      ],
+      "implementation_paths": [
+        "tests/native/NativeRunner.Tests.ps1",
+        "tests/native/ToolInvocation.Tests.ps1",
+        "tests/pdf/ToolPaths.Native.Tests.ps1"
+      ],
+      "assessment": "Native argument echo demonstrates exact argument-vector round trips in both shells; actual PDFtk/GS path tests characterize supported special characters and explicit safe backend failures. T23 reruns both evidence classes separately.",
+      "review_result": "premerge_coverage_supported",
+      "downstream_required_cases": []
+    },
+    {
+      "id": 2,
+      "title": "Harden folder handling and batch launcher",
+      "tasks": [
+        "T04",
+        "T05"
+      ],
+      "acceptance_ids": [
+        "AC007",
+        "AC008",
+        "AC009",
+        "AC010"
+      ],
+      "implementation_paths": [
+        "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+        "tests/launcher/Launcher.Tests.ps1",
+        "tests/launcher/Launcher.Native.Tests.ps1"
+      ],
+      "assessment": "Actual entry-point discovery and cmd/BAT tests retain one top-level folder, uppercase PDF inclusion, hidden/subfolder policy, quoted paths, 0/1/2 status propagation and pause. Percent expansion is a documented cmd boundary; original BAT uses PS5.1. No Explorer pass inferred.",
+      "review_result": "premerge_coverage_supported",
+      "downstream_required_cases": []
+    },
+    {
+      "id": 3,
+      "title": "Make natural sorting dependable",
+      "tasks": [
+        "T06",
+        "T13"
+      ],
+      "acceptance_ids": [
+        "AC011",
+        "AC012",
+        "AC026",
+        "AC031"
+      ],
+      "implementation_paths": [
+        "tests/unit/Ordering.Tests.ps1",
+        "tests/pdf/MasterValidation.Native.Tests.ps1"
+      ],
+      "assessment": "Comparator regressions exercise ASCII digit runs, leading/all-zero tokens, long magnitudes, multiple segments/cultures/ties; actual independent PDFium observations confirm final page order and rotation. T29 exact packages demonstrate 1,01,2,10,20 with visible identifiers.",
+      "review_result": "premerge_coverage_supported",
+      "downstream_required_cases": []
+    },
+    {
+      "id": 4,
+      "title": "Make output creation non-destructive",
+      "tasks": [
+        "T10",
+        "T12",
+        "T15"
+      ],
+      "acceptance_ids": [
+        "AC022",
+        "AC023",
+        "AC024",
+        "AC027",
+        "AC028",
+        "AC029",
+        "AC035",
+        "AC036",
+        "AC037"
+      ],
+      "implementation_paths": [
+        "tests/filesafety/Destination.Native.Tests.ps1",
+        "tests/filesafety/Staging.Native.Tests.ps1",
+        "tests/faults/FaultRecovery.Native.Tests.ps1",
+        "tests/faults/FaultIO.Tests.ps1"
+      ],
+      "assessment": "Actual native/filesystem tests and controlled fault scheduling cover owned staging, existing outputs/source hashes, overlap/junction refusal, concurrency, safe cleanup and interruption. T29 package/source/foreign/tree guards pass in all 25 scenarios.",
+      "review_result": "premerge_coverage_supported",
+      "downstream_required_cases": []
+    },
+    {
+      "id": 5,
+      "title": "Validate PDFs, not only existence",
+      "tasks": [
+        "T11",
+        "T13",
+        "T14"
+      ],
+      "acceptance_ids": [
+        "AC025",
+        "AC026",
+        "AC030",
+        "AC031",
+        "AC032",
+        "AC033",
+        "AC034"
+      ],
+      "implementation_paths": [
+        "tests/pdf/InputPreflight.Native.Tests.ps1",
+        "tests/pdf/MasterValidation.Native.Tests.ps1",
+        "tests/pdf/EmailOutcome.Native.Tests.ps1"
+      ],
+      "assessment": "Actual PDFtk preflight inventories real pages; malformed/encrypted/non-PDF data fail. Controlled exit-zero invalid-output cases establish state gates while actual merged/native/email outputs have independent counts/order. T29 inspects 21 package-produced PDFs/106 pages.",
+      "review_result": "premerge_coverage_supported",
+      "downstream_required_cases": []
+    },
+    {
+      "id": 6,
+      "title": "Strengthen process execution and cleanup",
+      "tasks": [
+        "T08",
+        "T09",
+        "T15"
+      ],
+      "acceptance_ids": [
+        "AC016",
+        "AC017",
+        "AC018",
+        "AC019",
+        "AC020",
+        "AC021",
+        "AC035",
+        "AC036",
+        "AC037"
+      ],
+      "implementation_paths": [
+        "tests/native/NativeRunner.Tests.ps1",
+        "tests/native/ToolInvocation.Tests.ps1",
+        "tests/faults/FaultRecovery.Native.Tests.ps1"
+      ],
+      "assessment": "Controlled native executables cover stream volume, launch failures and bounded owned termination; real engines establish noninteractive selected command operation. GS_OPTIONS restoration, master retention, ownership cleanup and IO/log fault classes stay explicit; simulated faults are not real resource exhaustion.",
+      "review_result": "premerge_coverage_supported",
+      "downstream_required_cases": []
+    },
+    {
+      "id": 7,
+      "title": "Repair dependency discovery",
+      "tasks": [
+        "T07",
+        "T25"
+      ],
+      "acceptance_ids": [
+        "AC013",
+        "AC014",
+        "AC015",
+        "AC056",
+        "AC057"
+      ],
+      "implementation_paths": [
+        "tests/unit/Dependencies.Tests.ps1",
+        "tests/dependencies/Dependencies.Entry.Tests.ps1"
+      ],
+      "assessment": "Executable selection/fallback/probe tests distinguish controlled fixtures from genuine engines; T25 runtime/dependency/privacy reviews preserve optional GS, dated vendor pins, unsigned disclosure and no silent install/network. T29 actual absent-GS/master-only scenario passes.",
+      "review_result": "premerge_coverage_supported",
+      "downstream_required_cases": []
+    },
+    {
+      "id": 8,
+      "title": "Report partial success accurately",
+      "tasks": [
+        "T14",
+        "T15"
+      ],
+      "acceptance_ids": [
+        "AC032",
+        "AC033",
+        "AC034",
+        "AC035",
+        "AC036",
+        "AC037"
+      ],
+      "implementation_paths": [
+        "tests/pdf/EmailOutcome.Native.Tests.ps1",
+        "tests/faults/FaultRecovery.Native.Tests.ps1",
+        "tests/faults/FaultIO.Tests.ps1"
+      ],
+      "assessment": "Native outcomes and fault injections prove full/master-only/partial result states. T29 genuine unchanged-GS initialization failure returns application/BAT 2 in three cases, retains validated masters and publishes no failed email.",
+      "review_result": "premerge_coverage_supported",
+      "downstream_required_cases": []
+    },
+    {
+      "id": 9,
+      "title": "Detect practical limits before starting",
+      "tasks": [
+        "T09",
+        "T10",
+        "T23"
+      ],
+      "acceptance_ids": [
+        "AC021",
+        "AC022",
+        "AC023",
+        "AC024",
+        "AC052",
+        "AC053"
+      ],
+      "implementation_paths": [
+        "tests/unit/NativeCommand.Tests.ps1",
+        "tests/filesafety/Destination.Native.Tests.ps1",
+        "tests/pdf/NativeAcceptance.Native.Tests.ps1"
+      ],
+      "assessment": "Serialized command-length and path/output preflights fail before unsafe work. T23 actual 138-input/29475-character merge succeeds; 180-input/38337-character vector is refused with unchanged files. Timings are modest synthetic observations, not throughput/resource guarantees.",
+      "review_result": "premerge_coverage_supported",
+      "downstream_required_cases": []
+    },
+    {
+      "id": 10,
+      "title": "Add a small useful parameter set",
+      "tasks": [
+        "T16"
+      ],
+      "acceptance_ids": [
+        "AC038",
+        "AC039"
+      ],
+      "implementation_paths": [
+        "tests/cli/Parameters.Tests.ps1",
+        "tests/cli/Parameters.Native.Tests.ps1"
+      ],
+      "assessment": "Actual binding/CLI/native defaults and options preserve /screen and output beside scripts; invalid options fail before output, explicit skip avoids GS and explains ignored presets. T29 public extracted-package scenarios recheck those outcomes.",
+      "review_result": "premerge_coverage_supported",
+      "downstream_required_cases": []
+    },
+    {
+      "id": 11,
+      "title": "Make compression results informative",
+      "tasks": [
+        "T17"
+      ],
+      "acceptance_ids": [
+        "AC040",
+        "AC041"
+      ],
+      "implementation_paths": [
+        "tests/pdf/SizeReporting.Tests.ps1",
+        "tests/pdf/SizeReporting.Native.Tests.ps1"
+      ],
+      "assessment": "Measured sizes/reduction and equal/larger candidate disposition are tested; retained T17 assistant visual inspection covers synthetic small-print/scan/mixed fixtures. AC041 pass is expressly scoped assistant visual QA, not human/Explorer AC058. T29 decoded-image review confirms smaller screen/ebook rewrites with distinct raster behavior.",
+      "review_result": "premerge_coverage_supported",
+      "downstream_required_cases": []
+    },
+    {
+      "id": 12,
+      "title": "Narrow preservation claims",
+      "tasks": [
+        "T19",
+        "T20"
+      ],
+      "acceptance_ids": [
+        "AC044",
+        "AC045",
+        "AC046",
+        "AC047"
+      ],
+      "implementation_paths": [
+        "tests/pdf/Preservation.Native.Tests.ps1",
+        "tests/help/PreservationDocs.Tests.ps1",
+        "docs/PDF_LIMITATIONS.md"
+      ],
+      "assessment": "Native synthetic feature characterization separates master/email visual and structural observations; public docs disclose forms/tags/attachments/signatures/PDF-A/archival/malware limits. No universal fidelity or archive-safety promise is supported.",
+      "review_result": "premerge_coverage_supported",
+      "downstream_required_cases": []
+    },
+    {
+      "id": 13,
+      "title": "Improve diagnostics and help",
+      "tasks": [
+        "T18",
+        "T20"
+      ],
+      "acceptance_ids": [
+        "AC042",
+        "AC043",
+        "AC046",
+        "AC047"
+      ],
+      "implementation_paths": [
+        "tests/help/Diagnostics.Native.Tests.ps1",
+        "tests/help/Diagnostics.Tests.ps1",
+        "tests/help/PublicDocs.Tests.ps1"
+      ],
+      "assessment": "Actual documentation/help invocations and controlled summary tests record selected versions, stages, streams, order/pages/sizes and true outputs; T27 rechecks startup/log VERSION and T29 rechecks both extracted-package help calls. Logs remain local/confidential.",
+      "review_result": "premerge_coverage_supported",
+      "downstream_required_cases": []
+    },
+    {
+      "id": 14,
+      "title": "Small internal changes for testability",
+      "tasks": [
+        "T03",
+        "T08"
+      ],
+      "acceptance_ids": [
+        "AC005",
+        "AC006",
+        "AC016",
+        "AC017",
+        "AC018"
+      ],
+      "implementation_paths": [
+        "src/WinPDFMerge.Helpers.ps1",
+        "tests/unit/Helpers.Tests.ps1",
+        "tests/native/NativeRunner.Tests.ps1"
+      ],
+      "assessment": "Import-safety unit tests show helper loading has no merge/exit/GS_OPTIONS/publication side effects; small helper boundaries and controlled-native fixture tests remain separate from original synthetic PDFtk fixture evidence. Runtime remains PowerShell/PDFtk with optional GS.",
+      "review_result": "premerge_coverage_supported",
+      "downstream_required_cases": []
+    },
+    {
+      "id": 15,
+      "title": "Automated and Windows acceptance tests",
+      "tasks": [
+        "T03",
+        "T21",
+        "T22",
+        "T23",
+        "T26",
+        "T29"
+      ],
+      "acceptance_ids": [
+        "AC005",
+        "AC006",
+        "AC048",
+        "AC049",
+        "AC050",
+        "AC051",
+        "AC052",
+        "AC053",
+        "AC058",
+        "AC059",
+        "AC060",
+        "AC061",
+        "AC062",
+        "AC067",
+        "AC068"
+      ],
+      "implementation_paths": [
+        "tools/test/Invoke-Tests.ps1",
+        "tests/fixtures/corpus.json",
+        "tests/package/candidate_smoke.py"
+      ],
+      "assessment": "T23 both actual required shells pass 29 separately classified tiers/58 pairs; T21/T22 corpus/fault/static work and T29 exact candidate operation support scoped coverage. D25 explicitly excludes human AC058; Windows10/liveUNC/ARM/32-bit scopes are nonrequired exclusions, never passes.",
+      "review_result": "premerge_coverage_supported",
+      "downstream_required_cases": []
+    },
+    {
+      "id": 16,
+      "title": "Restrained GitHub automation",
+      "tasks": [
+        "T24",
+        "T31"
+      ],
+      "acceptance_ids": [
+        "AC054",
+        "AC055"
+      ],
+      "implementation_paths": [
+        ".github/workflows/windows-tests.yml",
+        "tools/test/Invoke-CiTests.ps1",
+        "tests/ci-dependencies.json"
+      ],
+      "assessment": "T24 archived hosted push/PR runs and deliberate-failure propagation verify CI/artifacts, read-only permissions, full-SHA actions and pinned safe temporary dependency extraction. Current matching-head check/review remains T30; accepted-main/final-commit AC071/072 are T31 gates.",
+      "review_result": "premerge_coverage_supported",
+      "downstream_required_cases": [
+        "AC071",
+        "AC072"
+      ]
+    },
+    {
+      "id": 17,
+      "title": "Clean traceable public release package",
+      "tasks": [
+        "T20",
+        "T25",
+        "T27",
+        "T28",
+        "T29",
+        "T30",
+        "T31",
+        "T32",
+        "T33",
+        "T34"
+      ],
+      "acceptance_ids": [
+        "AC046",
+        "AC047",
+        "AC056",
+        "AC057",
+        "AC063",
+        "AC064",
+        "AC065",
+        "AC066",
+        "AC067",
+        "AC068"
+      ],
+      "implementation_paths": [
+        "tools/release/Build-Release.ps1",
+        "release-files.json",
+        "VERSION",
+        "docs/codex/PACKAGE_CONTRACT.json"
+      ],
+      "assessment": "T27 version, T28 allowlist/build/provenance/hashes and T29 retained exact premerge packages establish premerge distribution implementation. Neither candidate is final accepted R or public download. T30 claims/full-regression/review and T31-T34 accepted-R/final-asset/publish/download/closure gates remain necessary.",
+      "review_result": "premerge_coverage_supported",
+      "downstream_required_cases": [
+        "AC069",
+        "AC070",
+        "AC071",
+        "AC072",
+        "AC073",
+        "AC074",
+        "AC075",
+        "AC076",
+        "AC077",
+        "AC078"
+      ]
+    }
+  ],
+  "case_mapping_snapshot_scope": "Source case records captured at the initial clean681e0e3 review, before root updates AC069/070. Final independent AC069 assessment and exact C1b execution are recorded separately; this reviewer does not write authoritative case records.",
+  "case_mapping": [
+    {
+      "id": "AC001",
+      "task_id": "T01",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "helper",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T01-bootstrap.md",
+        "docs/codex/evidence/T01-helper-audit.md"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC002",
+      "task_id": "T01",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "git",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T01-checkpoint.md",
+        "docs/codex/evidence/T01-C1-live-sync.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC003",
+      "task_id": "T02",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "review",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T02-baseline.md",
+        "docs/codex/evidence/T02-probe-ps7.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC004",
+      "task_id": "T02",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "review",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T02-baseline.md",
+        "docs/codex/evidence/T02-environment.json",
+        "docs/codex/evidence/T02-probe-ps7.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC005",
+      "task_id": "T03",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "unit",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T03-completion.md",
+        "docs/codex/evidence/T03-C2-results.json",
+        "docs/codex/evidence/T03-C2-reports/unit-ps51.xml",
+        "docs/codex/evidence/T03-C2-reports/unit-ps7.xml"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC006",
+      "task_id": "T03",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "integration",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T03-completion.md",
+        "docs/codex/evidence/T03-C2-results.json",
+        "docs/codex/evidence/T03-C2-reports/native-ps51.xml",
+        "docs/codex/evidence/T03-C2-reports/native-ps7.xml",
+        "docs/codex/evidence/T03-pdftk-acquisition.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC007",
+      "task_id": "T04",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "integration",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T04-completion.md",
+        "docs/codex/evidence/T04-C1-results.json",
+        "docs/codex/evidence/T04-C1-reports/manifest.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC008",
+      "task_id": "T04",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "unit",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T04-completion.md",
+        "docs/codex/evidence/T04-C1-results.json",
+        "docs/codex/evidence/T04-C1-reports/manifest.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC009",
+      "task_id": "T05",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "integration",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T05-completion.md",
+        "docs/codex/evidence/T05-C1-results.json",
+        "docs/codex/evidence/T05-C1-live-sync.json",
+        "docs/codex/evidence/T05-C1-reports/manifest.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC010",
+      "task_id": "T05",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "integration",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T05-completion.md",
+        "docs/codex/evidence/T05-C1-results.json",
+        "docs/codex/evidence/T05-C1-live-sync.json",
+        "docs/codex/evidence/T05-C1-reports/manifest.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC011",
+      "task_id": "T06",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "unit",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T06-completion.md",
+        "docs/codex/evidence/T06-C1-results.json",
+        "docs/codex/evidence/T06-C1-live-sync.json",
+        "docs/codex/evidence/T06-C1-reports/manifest.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC012",
+      "task_id": "T06",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "unit",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T06-completion.md",
+        "docs/codex/evidence/T06-C1-results.json",
+        "docs/codex/evidence/T06-C1-live-sync.json",
+        "docs/codex/evidence/T06-C1-reports/manifest.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC013",
+      "task_id": "T07",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "unit",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T07-completion.md",
+        "docs/codex/evidence/T07-C1-results.json",
+        "docs/codex/evidence/T07-C1-live-sync.json",
+        "docs/codex/evidence/T07-C1-reports/manifest.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC014",
+      "task_id": "T07",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "unit",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T07-completion.md",
+        "docs/codex/evidence/T07-C1-results.json",
+        "docs/codex/evidence/T07-C1-live-sync.json",
+        "docs/codex/evidence/T07-C1-reports/manifest.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC015",
+      "task_id": "T07",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "integration",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T07-completion.md",
+        "docs/codex/evidence/T07-C1-results.json",
+        "docs/codex/evidence/T07-C1-live-sync.json",
+        "docs/codex/evidence/T07-C1-reports/manifest.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC016",
+      "task_id": "T08",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "integration",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T08-completion.md",
+        "docs/codex/evidence/T08-C1-results.json",
+        "docs/codex/evidence/T08-C1-live-sync.json",
+        "docs/codex/evidence/T08-C1-reports/manifest.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC017",
+      "task_id": "T08",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "unit",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T08-completion.md",
+        "docs/codex/evidence/T08-C1-results.json",
+        "docs/codex/evidence/T08-C1-live-sync.json",
+        "docs/codex/evidence/T08-C1-reports/manifest.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC018",
+      "task_id": "T08",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "unit",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T08-completion.md",
+        "docs/codex/evidence/T08-C1-results.json",
+        "docs/codex/evidence/T08-C1-live-sync.json",
+        "docs/codex/evidence/T08-C1-reports/manifest.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC019",
+      "task_id": "T09",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "integration",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T09-evidence.md",
+        "docs/codex/evidence/T09-C1-results.json",
+        "docs/codex/evidence/T09-C1-reports/manifest.json",
+        "docs/codex/evidence/T09-completion.md",
+        "docs/codex/evidence/T09-C3-results.json",
+        "docs/codex/evidence/T09-C3-reports/manifest.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC020",
+      "task_id": "T09",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "integration",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T09-evidence.md",
+        "docs/codex/evidence/T09-C1-results.json",
+        "docs/codex/evidence/T09-C1-reports/manifest.json",
+        "docs/codex/evidence/T09-completion.md",
+        "docs/codex/evidence/T09-C3-results.json",
+        "docs/codex/evidence/T09-C3-reports/manifest.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC021",
+      "task_id": "T09",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "unit",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T09-evidence.md",
+        "docs/codex/evidence/T09-C1-results.json",
+        "docs/codex/evidence/T09-C1-reports/manifest.json",
+        "docs/codex/evidence/T09-completion.md",
+        "docs/codex/evidence/T09-C3-results.json",
+        "docs/codex/evidence/T09-C3-reports/manifest.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC022",
+      "task_id": "T10",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "integration",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T10-completion.md",
+        "docs/codex/evidence/T10-C1-results.json",
+        "docs/codex/evidence/T10-C1-reports/manifest.json",
+        "docs/codex/evidence/T10-C1-review.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC023",
+      "task_id": "T10",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "integration",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T10-completion.md",
+        "docs/codex/evidence/T10-C1-results.json",
+        "docs/codex/evidence/T10-C1-reports/manifest.json",
+        "docs/codex/evidence/T10-C1-review.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC024",
+      "task_id": "T10",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "unit",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T10-completion.md",
+        "docs/codex/evidence/T10-C1-results.json",
+        "docs/codex/evidence/T10-C1-reports/manifest.json",
+        "docs/codex/evidence/T10-C1-review.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC025",
+      "task_id": "T11",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "integration",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T11-completion.md",
+        "docs/codex/evidence/T11-C1-results.json",
+        "docs/codex/evidence/T11-C1-reports/manifest.json",
+        "docs/codex/evidence/T11-C1-review.json",
+        "docs/codex/evidence/T11-C1-live-sync.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC026",
+      "task_id": "T11",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "integration",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T11-completion.md",
+        "docs/codex/evidence/T11-C1-results.json",
+        "docs/codex/evidence/T11-C1-reports/manifest.json",
+        "docs/codex/evidence/T11-C1-review.json",
+        "docs/codex/evidence/T11-C1-live-sync.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC027",
+      "task_id": "T12",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "integration",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T12-completion.md",
+        "docs/codex/evidence/T12-C1-results.json",
+        "docs/codex/evidence/T12-C1-reports/manifest.json",
+        "docs/codex/evidence/T12-C1-native-audit.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC028",
+      "task_id": "T12",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "integration",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T12-completion.md",
+        "docs/codex/evidence/T12-C1-results.json",
+        "docs/codex/evidence/T12-C1-reports/manifest.json",
+        "docs/codex/evidence/T12-C1-native-audit.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC029",
+      "task_id": "T12",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "unit",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T12-completion.md",
+        "docs/codex/evidence/T12-C1-results.json",
+        "docs/codex/evidence/T12-C1-reports/manifest.json",
+        "docs/codex/evidence/T12-C1-native-audit.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC030",
+      "task_id": "T13",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "unit",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T13-completion.md",
+        "docs/codex/evidence/T13-C1-results.json",
+        "docs/codex/evidence/T13-C1-reports/manifest.json",
+        "docs/codex/evidence/T13-C1-native-audit.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC031",
+      "task_id": "T13",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "integration",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T13-completion.md",
+        "docs/codex/evidence/T13-C1-results.json",
+        "docs/codex/evidence/T13-C1-reports/manifest.json",
+        "docs/codex/evidence/T13-C1-native-audit.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC032",
+      "task_id": "T14",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "integration",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T14-completion.md",
+        "docs/codex/evidence/T14-C1-results.json",
+        "docs/codex/evidence/T14-C1-reports/manifest.json",
+        "docs/codex/evidence/T14-C1-native-audit.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC033",
+      "task_id": "T14",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "integration",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T14-completion.md",
+        "docs/codex/evidence/T14-C1-results.json",
+        "docs/codex/evidence/T14-C1-reports/manifest.json",
+        "docs/codex/evidence/T14-C1-native-audit.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC034",
+      "task_id": "T14",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "unit",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T14-completion.md",
+        "docs/codex/evidence/T14-C1-results.json",
+        "docs/codex/evidence/T14-C1-reports/manifest.json",
+        "docs/codex/evidence/T14-C1-native-audit.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC035",
+      "task_id": "T15",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "integration",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T15-completion.md",
+        "docs/codex/evidence/T15-C1-results.json",
+        "docs/codex/evidence/T15-C1-reports/manifest.json",
+        "docs/codex/evidence/T15-C1-M2-review.json",
+        "docs/codex/evidence/T15-C1-native-audit.json",
+        "docs/codex/evidence/T15-C1-evidence-review.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC036",
+      "task_id": "T15",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "integration",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T15-completion.md",
+        "docs/codex/evidence/T15-C1-results.json",
+        "docs/codex/evidence/T15-C1-reports/manifest.json",
+        "docs/codex/evidence/T15-C1-M2-review.json",
+        "docs/codex/evidence/T15-C1-native-audit.json",
+        "docs/codex/evidence/T15-C1-evidence-review.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC037",
+      "task_id": "T15",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "unit",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T15-completion.md",
+        "docs/codex/evidence/T15-C1-results.json",
+        "docs/codex/evidence/T15-C1-reports/manifest.json",
+        "docs/codex/evidence/T15-C1-M2-review.json",
+        "docs/codex/evidence/T15-C1-native-audit.json",
+        "docs/codex/evidence/T15-C1-evidence-review.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC038",
+      "task_id": "T16",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "integration",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T16-completion.md",
+        "docs/codex/evidence/T16-C1-results.json",
+        "docs/codex/evidence/T16-C1-reports/manifest.json",
+        "docs/codex/evidence/T16-C1-review.json",
+        "docs/codex/evidence/T16-C1-runtime-review.json",
+        "docs/codex/evidence/T16-C1-native-audit.json",
+        "docs/codex/evidence/T16-C1-evidence-review.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC039",
+      "task_id": "T16",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "unit",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T16-completion.md",
+        "docs/codex/evidence/T16-C1-results.json",
+        "docs/codex/evidence/T16-C1-reports/manifest.json",
+        "docs/codex/evidence/T16-C1-review.json",
+        "docs/codex/evidence/T16-C1-runtime-review.json",
+        "docs/codex/evidence/T16-C1-native-audit.json",
+        "docs/codex/evidence/T16-C1-evidence-review.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC040",
+      "task_id": "T17",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "integration",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T17-completion.md",
+        "docs/codex/evidence/T17-C1-results.json",
+        "docs/codex/evidence/T17-C1-reports/manifest.json",
+        "docs/codex/evidence/T17-C1-review.json",
+        "docs/codex/evidence/T17-C1-runtime-review.json",
+        "docs/codex/evidence/T17-C1-native-audit.json",
+        "docs/codex/evidence/T17-C1-evidence-review.json",
+        "docs/codex/evidence/T17-C1-visual-review.json",
+        "docs/codex/evidence/T17-C1-review-provenance.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC041",
+      "task_id": "T17",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "manual",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T17-completion.md",
+        "docs/codex/evidence/T17-C1-results.json",
+        "docs/codex/evidence/T17-C1-reports/manifest.json",
+        "docs/codex/evidence/T17-C1-review.json",
+        "docs/codex/evidence/T17-C1-runtime-review.json",
+        "docs/codex/evidence/T17-C1-native-audit.json",
+        "docs/codex/evidence/T17-C1-evidence-review.json",
+        "docs/codex/evidence/T17-C1-visual-review.json",
+        "docs/codex/evidence/T17-C1-review-provenance.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC042",
+      "task_id": "T18",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "integration",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T18-completion.md",
+        "docs/codex/evidence/T18-C1b-results.json",
+        "docs/codex/evidence/T18-C1b-evidence-manifest.json",
+        "docs/codex/evidence/T18-C2-provenance.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC043",
+      "task_id": "T18",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "review",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T18-completion.md",
+        "docs/codex/evidence/T18-C1b-results.json",
+        "docs/codex/evidence/T18-C1b-evidence-manifest.json",
+        "docs/codex/evidence/T18-C2-provenance.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC044",
+      "task_id": "T19",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "integration",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T19-completion.md",
+        "docs/codex/evidence/T19-results.json",
+        "docs/codex/evidence/T19-C1-reports/manifest.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC045",
+      "task_id": "T19",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "review",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T19-completion.md",
+        "docs/codex/evidence/T19-results.json",
+        "docs/codex/evidence/T19-C1-reports/manifest.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC046",
+      "task_id": "T20",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "review",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T20-completion.md",
+        "docs/codex/evidence/T20-results.json",
+        "docs/codex/evidence/T20-reports/manifest.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC047",
+      "task_id": "T20",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "review",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T20-completion.md",
+        "docs/codex/evidence/T20-results.json",
+        "docs/codex/evidence/T20-reports/manifest.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC048",
+      "task_id": "T21",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "review",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T21-completion.md",
+        "docs/codex/evidence/T21-results.json",
+        "docs/codex/evidence/T21-reports/manifest.json",
+        "docs/codex/evidence/T21-archive-review.json",
+        "docs/codex/evidence/T21-audit-invocation/manifest.json",
+        "docs/codex/evidence/T21-supplement-review.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC049",
+      "task_id": "T21",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "integration",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T21-completion.md",
+        "docs/codex/evidence/T21-results.json",
+        "docs/codex/evidence/T21-reports/manifest.json",
+        "docs/codex/evidence/T21-archive-review.json",
+        "docs/codex/evidence/T21-audit-invocation/manifest.json",
+        "docs/codex/evidence/T21-supplement-review.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC050",
+      "task_id": "T22",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "unit",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T22-completion.md",
+        "docs/codex/evidence/T22-results.json",
+        "docs/codex/evidence/T22-reports/manifest.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC051",
+      "task_id": "T22",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "static",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T22-completion.md",
+        "docs/codex/evidence/T22-results.json",
+        "docs/codex/evidence/T22-reports/manifest.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC052",
+      "task_id": "T23",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "integration",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T23-completion.md",
+        "docs/codex/evidence/T23-results.json",
+        "docs/codex/evidence/T23-reports/manifest.json",
+        "docs/codex/evidence/T23-archive-review.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC053",
+      "task_id": "T23",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "integration",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T23-completion.md",
+        "docs/codex/evidence/T23-results.json",
+        "docs/codex/evidence/T23-reports/manifest.json",
+        "docs/codex/evidence/T23-archive-review.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC054",
+      "task_id": "T24",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "ci",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T24-completion.md",
+        "docs/codex/evidence/T24-results.json",
+        "docs/codex/evidence/T24-reports/manifest.json",
+        "docs/codex/evidence/T24-reports/reviews/final-hosted-artifact-review.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC055",
+      "task_id": "T24",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "review",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T24-completion.md",
+        "docs/codex/evidence/T24-results.json",
+        "docs/codex/evidence/T24-reports/manifest.json",
+        "docs/codex/evidence/T24-reports/reviews/final-hosted-privilege-review.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC056",
+      "task_id": "T25",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "review",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T25-runtime-review.md",
+        "docs/codex/evidence/T25-completion.md"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC057",
+      "task_id": "T25",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "review",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T25-dependency-review.md",
+        "docs/codex/evidence/T25-reports/privacy-ci-package-review.json",
+        "docs/codex/evidence/T25-completion.md"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC058",
+      "task_id": "T26",
+      "required": false,
+      "stage": "pre_release",
+      "mode": "manual",
+      "result": "excluded",
+      "evidence": [
+        "docs/codex/evidence/T26-compatibility-review.md",
+        "docs/codex/evidence/T26-checkpoint.md",
+        "docs/codex/evidence/T26-walkthrough.md",
+        "docs/codex/evidence/T26-owner-scope.md",
+        "docs/codex/evidence/T26-scope-completion.md"
+      ],
+      "exclusion_reason": "Owner instruction on 2026-10-09: \"Human standard user test is out of scope for this project\" (D25). Human standard-user/Explorer/visible-PDF validation was not performed and is excluded; synthetic kit preparation and its reported setup failure are not application acceptance results.",
+      "review_assessment": "Evidence-backed nonrequired scope exclusion; never counted as pass."
+    },
+    {
+      "id": "AC059",
+      "task_id": "T26",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "review",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T26-compatibility-review.md",
+        "docs/codex/evidence/T26-checkpoint.md",
+        "docs/codex/evidence/T26-M4-review.md",
+        "docs/codex/evidence/T26-owner-scope.md",
+        "docs/codex/evidence/T26-scope-review.md",
+        "docs/codex/evidence/T26-scope-completion.md",
+        "docs/codex/evidence/T26-scope-reports/manifest.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC060",
+      "task_id": "T26",
+      "required": false,
+      "stage": "pre_release",
+      "mode": "scope",
+      "result": "excluded",
+      "evidence": [
+        "docs/codex/evidence/T26-compatibility-review.md",
+        "docs/codex/evidence/T26-checkpoint.md"
+      ],
+      "exclusion_reason": "No Windows 10 host was tested. PRODUCT_SPEC makes this optional; Windows 11 desktop and hosted Server tests do not establish Windows 10 validation. Excluded from validated v1.0.0 support in README and docs/COMPATIBILITY.md.",
+      "review_assessment": "Evidence-backed nonrequired scope exclusion; never counted as pass."
+    },
+    {
+      "id": "AC061",
+      "task_id": "T26",
+      "required": false,
+      "stage": "pre_release",
+      "mode": "scope",
+      "result": "excluded",
+      "evidence": [
+        "docs/codex/evidence/T26-compatibility-review.md",
+        "docs/codex/evidence/T26-checkpoint.md"
+      ],
+      "exclusion_reason": "No live UNC network share was tested. Local NTFS runs and UNC string unit tests do not establish network-share connectivity, permissions or native operation. Excluded from validated v1.0.0 support in README and docs/COMPATIBILITY.md.",
+      "review_assessment": "Evidence-backed nonrequired scope exclusion; never counted as pass."
+    },
+    {
+      "id": "AC062",
+      "task_id": "T26",
+      "required": false,
+      "stage": "pre_release",
+      "mode": "scope",
+      "result": "excluded",
+      "evidence": [
+        "docs/codex/evidence/T26-compatibility-review.md",
+        "docs/codex/evidence/T26-checkpoint.md"
+      ],
+      "exclusion_reason": "No ARM or 32-bit host was tested. The required reference uses x64; an x86 PDFtk executable on an x64 host does not validate other host architectures. Excluded from validated v1.0.0 support in README and docs/COMPATIBILITY.md.",
+      "review_assessment": "Evidence-backed nonrequired scope exclusion; never counted as pass."
+    },
+    {
+      "id": "AC063",
+      "task_id": "T27",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "static",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T27-completion.md",
+        "docs/codex/evidence/T27-review.md",
+        "docs/codex/evidence/T27-reports/broad/PS51/Version/summary.json",
+        "docs/codex/evidence/T27-reports/broad/PS7/Version/summary.json",
+        "docs/codex/evidence/T27-results.json"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC064",
+      "task_id": "T27",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "review",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T27-review.md",
+        "docs/codex/evidence/T27-completion.md"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC065",
+      "task_id": "T28",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "package",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T28-completion.md",
+        "docs/codex/evidence/T28-results.json",
+        "docs/codex/evidence/T28-review.md"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC066",
+      "task_id": "T28",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "package",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T28-completion.md",
+        "docs/codex/evidence/T28-results.json",
+        "docs/codex/evidence/T28-review.md"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC067",
+      "task_id": "T29",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "package",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T29-completion.md",
+        "docs/codex/evidence/T29-results.json",
+        "docs/codex/evidence/T29-review.md"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC068",
+      "task_id": "T29",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "package",
+      "result": "pass",
+      "evidence": [
+        "docs/codex/evidence/T29-completion.md",
+        "docs/codex/evidence/T29-results.json",
+        "docs/codex/evidence/T29-review.md"
+      ],
+      "exclusion_reason": null,
+      "review_assessment": "Declared path existence checked; supported by scoped task evidence and applicable later classified regressions. No fresh execution inferred."
+    },
+    {
+      "id": "AC069",
+      "task_id": "T30",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "review",
+      "result": "not_run",
+      "evidence": [],
+      "exclusion_reason": null,
+      "review_assessment": "Pending this thread's clean-source full-regression and independent review."
+    },
+    {
+      "id": "AC070",
+      "task_id": "T30",
+      "required": true,
+      "stage": "pre_release",
+      "mode": "review",
+      "result": "not_run",
+      "evidence": [],
+      "exclusion_reason": null,
+      "review_assessment": "Pending this thread's clean-source full-regression and independent review."
+    },
+    {
+      "id": "AC071",
+      "task_id": "T31",
+      "required": true,
+      "stage": "accepted",
+      "mode": "git",
+      "result": "not_run",
+      "evidence": [],
+      "exclusion_reason": null,
+      "review_assessment": "Correctly remains a downstream required gate; no execution pass asserted."
+    },
+    {
+      "id": "AC072",
+      "task_id": "T31",
+      "required": true,
+      "stage": "accepted",
+      "mode": "ci",
+      "result": "not_run",
+      "evidence": [],
+      "exclusion_reason": null,
+      "review_assessment": "Correctly remains a downstream required gate; no execution pass asserted."
+    },
+    {
+      "id": "AC073",
+      "task_id": "T32",
+      "required": true,
+      "stage": "prepared",
+      "mode": "package",
+      "result": "not_run",
+      "evidence": [],
+      "exclusion_reason": null,
+      "review_assessment": "Correctly remains a downstream required gate; no execution pass asserted."
+    },
+    {
+      "id": "AC074",
+      "task_id": "T32",
+      "required": true,
+      "stage": "prepared",
+      "mode": "release",
+      "result": "not_run",
+      "evidence": [],
+      "exclusion_reason": null,
+      "review_assessment": "Correctly remains a downstream required gate; no execution pass asserted."
+    },
+    {
+      "id": "AC075",
+      "task_id": "T33",
+      "required": true,
+      "stage": "published",
+      "mode": "release",
+      "result": "not_run",
+      "evidence": [],
+      "exclusion_reason": null,
+      "review_assessment": "Correctly remains a downstream required gate; no execution pass asserted."
+    },
+    {
+      "id": "AC076",
+      "task_id": "T33",
+      "required": true,
+      "stage": "published",
+      "mode": "package",
+      "result": "not_run",
+      "evidence": [],
+      "exclusion_reason": null,
+      "review_assessment": "Correctly remains a downstream required gate; no execution pass asserted."
+    },
+    {
+      "id": "AC077",
+      "task_id": "T34",
+      "required": true,
+      "stage": "published",
+      "mode": "git",
+      "result": "not_run",
+      "evidence": [],
+      "exclusion_reason": null,
+      "review_assessment": "Correctly remains a downstream required gate; no execution pass asserted."
+    },
+    {
+      "id": "AC078",
+      "task_id": "T34",
+      "required": true,
+      "stage": "published",
+      "mode": "review",
+      "result": "not_run",
+      "evidence": [],
+      "exclusion_reason": null,
+      "review_assessment": "Correctly remains a downstream required gate; no execution pass asserted."
+    }
+  ],
+  "manifest_audit": {
+    "root_manifests": 27,
+    "payload_bindings_checked": 4747,
+    "issues": 0,
+    "scope": "Declared selected public file hashes/byte lengths; bindings may repeat across manifests. Nested schemas and all original binary/raw evidence were not exhaustively replayed.",
+    "manifests": [
+      {
+        "manifest": "docs/codex/evidence/T04-C1-reports/manifest.json",
+        "entries": 8,
+        "checked": 8,
+        "issues": [],
+        "sha256": "a9513377a954bfc3691879a7b716c6f0e5a773eea79fe1d8f0f31f85d3a0740d"
+      },
+      {
+        "manifest": "docs/codex/evidence/T05-C1-reports/manifest.json",
+        "entries": 8,
+        "checked": 8,
+        "issues": [],
+        "sha256": "3bfaa776acb41fa951939812e1d70e82177372c52799c5d5779fd971119c2c49"
+      },
+      {
+        "manifest": "docs/codex/evidence/T06-C1-reports/manifest.json",
+        "entries": 8,
+        "checked": 8,
+        "issues": [],
+        "sha256": "024c022b080c12811a0be104a177e157f84dc81c8e1bd25f6d714215c470a123"
+      },
+      {
+        "manifest": "docs/codex/evidence/T07-C1-reports/manifest.json",
+        "entries": 12,
+        "checked": 12,
+        "issues": [],
+        "sha256": "98b7600d10bc8ad52db142a58017bc0a7288bd9f6a40807def47e3e882f636fb"
+      },
+      {
+        "manifest": "docs/codex/evidence/T08-C1-reports/manifest.json",
+        "entries": 16,
+        "checked": 16,
+        "issues": [],
+        "sha256": "686bf64239373ef3789ce5872e4d577c75e163a78d9318b03c1e126eb2f9424a"
+      },
+      {
+        "manifest": "docs/codex/evidence/T09-C1-reports/manifest.json",
+        "entries": 39,
+        "checked": 39,
+        "issues": [],
+        "sha256": "7e2cfd9f0db8ef11429adb9cb1d9199c8f04083ce50c3ff29edee8763e033eca"
+      },
+      {
+        "manifest": "docs/codex/evidence/T09-C3-reports/manifest.json",
+        "entries": 51,
+        "checked": 51,
+        "issues": [],
+        "sha256": "e32c11abdf9dd42f7ace175410fe3138b09d0640e81a7c490420a97b381a65fb"
+      },
+      {
+        "manifest": "docs/codex/evidence/T10-C1-reports/manifest.json",
+        "entries": 59,
+        "checked": 59,
+        "issues": [],
+        "sha256": "ba9c63134515a3b01d3a045cda1de7332720fa1706fef9c898a06585d70fbaf5"
+      },
+      {
+        "manifest": "docs/codex/evidence/T11-C1-reports/manifest.json",
+        "entries": 86,
+        "checked": 86,
+        "issues": [],
+        "sha256": "dc3667f572fda9acb92aae9ee8d35ddf1fcb0689aa443c2f7387f97a6b11fd07"
+      },
+      {
+        "manifest": "docs/codex/evidence/T12-C1-reports/manifest.json",
+        "entries": 69,
+        "checked": 69,
+        "issues": [],
+        "sha256": "48312203c45d007edcc80798442165e26142ccd0d08b10518c3e1c6c602aa97d"
+      },
+      {
+        "manifest": "docs/codex/evidence/T13-C1-reports/manifest.json",
+        "entries": 99,
+        "checked": 99,
+        "issues": [],
+        "sha256": "92d60663d0f0b21a3fbdb85a42519727619a475fbe53d9b4f48edd53ff4f8919"
+      },
+      {
+        "manifest": "docs/codex/evidence/T14-C1-reports/manifest.json",
+        "entries": 137,
+        "checked": 137,
+        "issues": [],
+        "sha256": "b04ab33c1eac359ee4c671d498ec2e903fa9873b3a7e3d4ef55ada71d82d6f94"
+      },
+      {
+        "manifest": "docs/codex/evidence/T15-C1-reports/manifest.json",
+        "entries": 315,
+        "checked": 315,
+        "issues": [],
+        "sha256": "fbab712c2102eb2c31eaef28ec1ef09bb09bbd70d3313eecddcd54ac5e14f287"
+      },
+      {
+        "manifest": "docs/codex/evidence/T16-C1-reports/manifest.json",
+        "entries": 333,
+        "checked": 333,
+        "issues": [],
+        "sha256": "5d958261e70924ed63c0f1d657eeba883d56f3b1f187182877ae4d090105a342"
+      },
+      {
+        "manifest": "docs/codex/evidence/T17-C1-reports/manifest.json",
+        "entries": 630,
+        "checked": 630,
+        "issues": [],
+        "sha256": "1d1b315815eb6ab487753fc5b3296ce1ea3d09a96a3f46ead7cbf94d8acb2e1e"
+      },
+      {
+        "manifest": "docs/codex/evidence/T19-C1-reports/manifest.json",
+        "entries": 418,
+        "checked": 418,
+        "issues": [],
+        "sha256": "d6f4b1bdaace3635d2f0fa30fb474d60757cadaf4602dc567c2dea0649608579"
+      },
+      {
+        "manifest": "docs/codex/evidence/T20-reports/manifest.json",
+        "entries": 99,
+        "checked": 99,
+        "issues": [],
+        "sha256": "ae84589610b8ea3cdd770dd7279f1aeced3c07239beeeb52028af597fad0631a"
+      },
+      {
+        "manifest": "docs/codex/evidence/T21-audit-invocation/manifest.json",
+        "entries": 5,
+        "checked": 5,
+        "issues": [],
+        "sha256": "699728e102591fd62d6c245fb2e79443d1e4ef303d53cca784addbebec4a2540"
+      },
+      {
+        "manifest": "docs/codex/evidence/T21-reports/manifest.json",
+        "entries": 409,
+        "checked": 409,
+        "issues": [],
+        "sha256": "069b71c4dfcfaa1df5abd70c960095a57cf171b27a407102bc33371072056214"
+      },
+      {
+        "manifest": "docs/codex/evidence/T22-reports/manifest.json",
+        "entries": 830,
+        "checked": 830,
+        "issues": [],
+        "sha256": "47d5e26ddf516ec7e6ed168fdd88aec5b9f62adc491792c54bb94d42f157990a"
+      },
+      {
+        "manifest": "docs/codex/evidence/T23-reports/manifest.json",
+        "entries": 533,
+        "checked": 533,
+        "issues": [],
+        "sha256": "2f13c9ceb6d1af4be80c7286e6da65cce0de925271aceb1153eb0b39f08dbc87"
+      },
+      {
+        "manifest": "docs/codex/evidence/T24-reports/manifest.json",
+        "entries": 307,
+        "checked": 307,
+        "issues": [],
+        "sha256": "68d6346ed1a6b82d0c1b4ba32ac681c7b8e66b23325d02ed04d21587b8b31987"
+      },
+      {
+        "manifest": "docs/codex/evidence/T26-scope-reports/manifest.json",
+        "entries": 18,
+        "checked": 18,
+        "issues": [],
+        "sha256": "422e23e2cbf21dac13491a1b6d15398c8de9887a38ce1a875fa007d99b7b2758"
+      },
+      {
+        "manifest": "docs/codex/evidence/T25-reports/manifest.json",
+        "entries": 19,
+        "checked": 19,
+        "issues": [],
+        "sha256": "30bbb9069bf27c3e02a24713de7f24b1c184293b9968241ccb82d2fc9872a865"
+      },
+      {
+        "manifest": "docs/codex/evidence/T27-reports/manifest.json",
+        "entries": 53,
+        "checked": 53,
+        "issues": [],
+        "sha256": "c6ab7a544fe3de87983660930559aeb4c3f9227961a1ad431cb7718673700ac0"
+      },
+      {
+        "manifest": "docs/codex/evidence/T28-reports/manifest.json",
+        "entries": 55,
+        "checked": 55,
+        "issues": [],
+        "sha256": "c2724da73e6219dfd9678238be5bf06c200b3ed597fac540122ff730299a2cb3"
+      },
+      {
+        "manifest": "docs/codex/evidence/T29-reports/manifest.json",
+        "entries": 131,
+        "checked": 131,
+        "issues": [],
+        "sha256": "50e35534a4f7b487f042e33cd4129125b9db9ffabd9a11f83877bbaca6d1017e"
+      }
+    ]
+  },
+  "t23_receipt_audit": {
+    "tested_commit": "8fa2032c66f94199b121fc1914792d6d71bb6202",
+    "reports": 58,
+    "json_passed": 1708,
+    "xml_success_leaves": 1708,
+    "issues": 0,
+    "hosts": [
+      {
+        "host": "ps51",
+        "reports": 29,
+        "json_passed": 854,
+        "xml_leaves": 854,
+        "issues": [],
+        "tiers": [
+          {
+            "tier": "EmailOutcome",
+            "passed": 11,
+            "xml_leaves": 11,
+            "class": "windows-real-pdftk-gs-email-outcomes-actual-batch-and-controlled-fault-scheduling",
+            "shell": "5.1.26100.9444"
+          },
+          {
+            "tier": "DiagnosticsNative",
+            "passed": 11,
+            "xml_leaves": 11,
+            "class": "windows-real-help-examples-CLI-entry-diagnostics-and-independent-pdfium; not Explorer or manual desktop acceptance",
+            "shell": "5.1.26100.9444"
+          },
+          {
+            "tier": "Diagnostics",
+            "passed": 36,
+            "xml_leaves": 36,
+            "class": "unit-help-stage-summary-and-controlled-probe-entry-diagnostics; no PDF-engine-support claim",
+            "shell": "5.1.26100.9444"
+          },
+          {
+            "tier": "Destination",
+            "passed": 15,
+            "xml_leaves": 15,
+            "class": "windows-real-entry-destination-identity-ACL-junction-concurrency",
+            "shell": "5.1.26100.9444"
+          },
+          {
+            "tier": "DependencyEntry",
+            "passed": 9,
+            "xml_leaves": 9,
+            "class": "windows-entry-dependency-faults-controlled-process-and-real-pdftk",
+            "shell": "5.1.26100.9444"
+          },
+          {
+            "tier": "CorpusSafety",
+            "passed": 18,
+            "xml_leaves": 18,
+            "class": "windows-real-entry-synthetic-corpus-repeat-order-source-tree-and-concurrency; independent-pdfium; not Explorer",
+            "shell": "5.1.26100.9444"
+          },
+          {
+            "tier": "Launcher",
+            "passed": 24,
+            "xml_leaves": 24,
+            "class": "windows-cmd-actual-batch-controlled-ps51-receiver",
+            "shell": "5.1.26100.9444"
+          },
+          {
+            "tier": "InputPreflight",
+            "passed": 22,
+            "xml_leaves": 22,
+            "class": "windows-real-pdftk-input-preflight-and-independent-pdfium-order",
+            "shell": "5.1.26100.9444"
+          },
+          {
+            "tier": "GhostscriptPaths",
+            "passed": 13,
+            "xml_leaves": 13,
+            "class": "windows-real-tool-path-prompt-integration",
+            "shell": "5.1.26100.9444"
+          },
+          {
+            "tier": "FaultRecovery",
+            "passed": 14,
+            "xml_leaves": 14,
+            "class": "windows-real-engines-environment-and-controlled-owned-native-cancellation",
+            "shell": "5.1.26100.9444"
+          },
+          {
+            "tier": "FaultIO",
+            "passed": 32,
+            "xml_leaves": 32,
+            "class": "unit-controlled-IO-logging-outcomes-and-real-file-locks",
+            "shell": "5.1.26100.9444"
+          },
+          {
+            "tier": "MasterValidation",
+            "passed": 7,
+            "xml_leaves": 7,
+            "class": "windows-real-pdftk-master-validation-entry-and-independent-pdfium-order-rotation",
+            "shell": "5.1.26100.9444"
+          },
+          {
+            "tier": "LauncherNative",
+            "passed": 2,
+            "xml_leaves": 2,
+            "class": "windows-cmd-actual-batch-entry-real-pdftk",
+            "shell": "5.1.26100.9444"
+          },
+          {
+            "tier": "NativeFixture",
+            "passed": 1,
+            "xml_leaves": 1,
+            "class": "native-pdftk-fixture-inspection",
+            "shell": "5.1.26100.9444"
+          },
+          {
+            "tier": "NativeAcceptance",
+            "passed": 6,
+            "xml_leaves": 6,
+            "class": "windows-real-pdftk-gs-helper-representative-limits-presets-and-nonfatal-warning; independent-pdfium; warning-envelope-refused-by-app; not Explorer",
+            "shell": "5.1.26100.9444"
+          },
+          {
+            "tier": "NativeRunner",
+            "passed": 41,
+            "xml_leaves": 41,
+            "class": "windows-controlled-native-argument-process; no PDF-engine-support claim",
+            "shell": "5.1.26100.9444"
+          },
+          {
+            "tier": "Parameters",
+            "passed": 31,
+            "xml_leaves": 31,
+            "class": "unit-actual-parameter-binding-and-controlled-entry-native-decisions",
+            "shell": "5.1.26100.9444"
+          },
+          {
+            "tier": "Unit",
+            "passed": 424,
+            "xml_leaves": 424,
+            "class": "unit-controlled-process-and-filesystem",
+            "shell": "5.1.26100.9444"
+          },
+          {
+            "tier": "ToolInvocation",
+            "passed": 12,
+            "xml_leaves": 12,
+            "class": "unit-controlled-native-job-and-filesystem",
+            "shell": "5.1.26100.9444"
+          },
+          {
+            "tier": "Static",
+            "passed": 9,
+            "xml_leaves": 9,
+            "class": "unit-static-checker-synthetic-refusal-and-report-regressions; no native PDF-engine-support claim",
+            "shell": "5.1.26100.9444"
+          },
+          {
+            "tier": "Staging",
+            "passed": 9,
+            "xml_leaves": 9,
+            "class": "windows-real-pdftk-gs-staging-publication-controlled-scheduling-and-filesystem",
+            "shell": "5.1.26100.9444"
+          },
+          {
+            "tier": "SourceDiscovery",
+            "passed": 4,
+            "xml_leaves": 4,
+            "class": "windows-entry-source-discovery-real-pdftk",
+            "shell": "5.1.26100.9444"
+          },
+          {
+            "tier": "SizeReportingNative",
+            "passed": 11,
+            "xml_leaves": 11,
+            "class": "windows-real-entry-size-accounting-and-controlled-equal-size-boundary; visual-manual-observations-separate",
+            "shell": "5.1.26100.9444"
+          },
+          {
+            "tier": "SizeReporting",
+            "passed": 32,
+            "xml_leaves": 32,
+            "class": "unit-numeric-size-reporting-and-controlled-entry-decisions",
+            "shell": "5.1.26100.9444"
+          },
+          {
+            "tier": "PublicDocs",
+            "passed": 18,
+            "xml_leaves": 18,
+            "class": "public-documentation-contract-isolated-real-parameter-binding-and-controlled-helper-outcomes; no application/native/manual acceptance",
+            "shell": "5.1.26100.9444"
+          },
+          {
+            "tier": "PreservationNative",
+            "passed": 6,
+            "xml_leaves": 6,
+            "class": "windows-real-entry-master-screen-ebook-feature-characterization; strict-pypdf-and-independent-pdfium; visual review separate",
+            "shell": "5.1.26100.9444"
+          },
+          {
+            "tier": "PreservationDocs",
+            "passed": 14,
+            "xml_leaves": 14,
+            "class": "documentation-contract-and-actual-help; not native PDF preservation or manual acceptance",
+            "shell": "5.1.26100.9444"
+          },
+          {
+            "tier": "PdftkPaths",
+            "passed": 13,
+            "xml_leaves": 13,
+            "class": "windows-real-tool-path-prompt-integration",
+            "shell": "5.1.26100.9444"
+          },
+          {
+            "tier": "ParametersNative",
+            "passed": 9,
+            "xml_leaves": 9,
+            "class": "windows-real-entry-preset-and-defaults-actual-cmd-batch-delivery-not-Explorer",
+            "shell": "5.1.26100.9444"
+          }
+        ]
+      },
+      {
+        "host": "ps7",
+        "reports": 29,
+        "json_passed": 854,
+        "xml_leaves": 854,
+        "issues": [],
+        "tiers": [
+          {
+            "tier": "Unit",
+            "passed": 424,
+            "xml_leaves": 424,
+            "class": "unit-controlled-process-and-filesystem",
+            "shell": "7.6.6"
+          },
+          {
+            "tier": "ToolInvocation",
+            "passed": 12,
+            "xml_leaves": 12,
+            "class": "unit-controlled-native-job-and-filesystem",
+            "shell": "7.6.6"
+          },
+          {
+            "tier": "Static",
+            "passed": 9,
+            "xml_leaves": 9,
+            "class": "unit-static-checker-synthetic-refusal-and-report-regressions; no native PDF-engine-support claim",
+            "shell": "7.6.6"
+          },
+          {
+            "tier": "Staging",
+            "passed": 9,
+            "xml_leaves": 9,
+            "class": "windows-real-pdftk-gs-staging-publication-controlled-scheduling-and-filesystem",
+            "shell": "7.6.6"
+          },
+          {
+            "tier": "SourceDiscovery",
+            "passed": 4,
+            "xml_leaves": 4,
+            "class": "windows-entry-source-discovery-real-pdftk",
+            "shell": "7.6.6"
+          },
+          {
+            "tier": "SizeReportingNative",
+            "passed": 11,
+            "xml_leaves": 11,
+            "class": "windows-real-entry-size-accounting-and-controlled-equal-size-boundary; visual-manual-observations-separate",
+            "shell": "7.6.6"
+          },
+          {
+            "tier": "SizeReporting",
+            "passed": 32,
+            "xml_leaves": 32,
+            "class": "unit-numeric-size-reporting-and-controlled-entry-decisions",
+            "shell": "7.6.6"
+          },
+          {
+            "tier": "PublicDocs",
+            "passed": 18,
+            "xml_leaves": 18,
+            "class": "public-documentation-contract-isolated-real-parameter-binding-and-controlled-helper-outcomes; no application/native/manual acceptance",
+            "shell": "7.6.6"
+          },
+          {
+            "tier": "PreservationNative",
+            "passed": 6,
+            "xml_leaves": 6,
+            "class": "windows-real-entry-master-screen-ebook-feature-characterization; strict-pypdf-and-independent-pdfium; visual review separate",
+            "shell": "7.6.6"
+          },
+          {
+            "tier": "PreservationDocs",
+            "passed": 14,
+            "xml_leaves": 14,
+            "class": "documentation-contract-and-actual-help; not native PDF preservation or manual acceptance",
+            "shell": "7.6.6"
+          },
+          {
+            "tier": "PdftkPaths",
+            "passed": 13,
+            "xml_leaves": 13,
+            "class": "windows-real-tool-path-prompt-integration",
+            "shell": "7.6.6"
+          },
+          {
+            "tier": "ParametersNative",
+            "passed": 9,
+            "xml_leaves": 9,
+            "class": "windows-real-entry-preset-and-defaults-actual-cmd-batch-delivery-not-Explorer",
+            "shell": "7.6.6"
+          },
+          {
+            "tier": "Parameters",
+            "passed": 31,
+            "xml_leaves": 31,
+            "class": "unit-actual-parameter-binding-and-controlled-entry-native-decisions",
+            "shell": "7.6.6"
+          },
+          {
+            "tier": "FaultIO",
+            "passed": 32,
+            "xml_leaves": 32,
+            "class": "unit-controlled-IO-logging-outcomes-and-real-file-locks",
+            "shell": "7.6.6"
+          },
+          {
+            "tier": "EmailOutcome",
+            "passed": 11,
+            "xml_leaves": 11,
+            "class": "windows-real-pdftk-gs-email-outcomes-actual-batch-and-controlled-fault-scheduling",
+            "shell": "7.6.6"
+          },
+          {
+            "tier": "DiagnosticsNative",
+            "passed": 11,
+            "xml_leaves": 11,
+            "class": "windows-real-help-examples-CLI-entry-diagnostics-and-independent-pdfium; not Explorer or manual desktop acceptance",
+            "shell": "7.6.6"
+          },
+          {
+            "tier": "Diagnostics",
+            "passed": 36,
+            "xml_leaves": 36,
+            "class": "unit-help-stage-summary-and-controlled-probe-entry-diagnostics; no PDF-engine-support claim",
+            "shell": "7.6.6"
+          },
+          {
+            "tier": "Destination",
+            "passed": 15,
+            "xml_leaves": 15,
+            "class": "windows-real-entry-destination-identity-ACL-junction-concurrency",
+            "shell": "7.6.6"
+          },
+          {
+            "tier": "DependencyEntry",
+            "passed": 9,
+            "xml_leaves": 9,
+            "class": "windows-entry-dependency-faults-controlled-process-and-real-pdftk",
+            "shell": "7.6.6"
+          },
+          {
+            "tier": "CorpusSafety",
+            "passed": 18,
+            "xml_leaves": 18,
+            "class": "windows-real-entry-synthetic-corpus-repeat-order-source-tree-and-concurrency; independent-pdfium; not Explorer",
+            "shell": "7.6.6"
+          },
+          {
+            "tier": "MasterValidation",
+            "passed": 7,
+            "xml_leaves": 7,
+            "class": "windows-real-pdftk-master-validation-entry-and-independent-pdfium-order-rotation",
+            "shell": "7.6.6"
+          },
+          {
+            "tier": "LauncherNative",
+            "passed": 2,
+            "xml_leaves": 2,
+            "class": "windows-cmd-actual-batch-entry-real-pdftk",
+            "shell": "7.6.6"
+          },
+          {
+            "tier": "Launcher",
+            "passed": 24,
+            "xml_leaves": 24,
+            "class": "windows-cmd-actual-batch-controlled-ps51-receiver",
+            "shell": "7.6.6"
+          },
+          {
+            "tier": "InputPreflight",
+            "passed": 22,
+            "xml_leaves": 22,
+            "class": "windows-real-pdftk-input-preflight-and-independent-pdfium-order",
+            "shell": "7.6.6"
+          },
+          {
+            "tier": "GhostscriptPaths",
+            "passed": 13,
+            "xml_leaves": 13,
+            "class": "windows-real-tool-path-prompt-integration",
+            "shell": "7.6.6"
+          },
+          {
+            "tier": "FaultRecovery",
+            "passed": 14,
+            "xml_leaves": 14,
+            "class": "windows-real-engines-environment-and-controlled-owned-native-cancellation",
+            "shell": "7.6.6"
+          },
+          {
+            "tier": "NativeFixture",
+            "passed": 1,
+            "xml_leaves": 1,
+            "class": "native-pdftk-fixture-inspection",
+            "shell": "7.6.6"
+          },
+          {
+            "tier": "NativeAcceptance",
+            "passed": 6,
+            "xml_leaves": 6,
+            "class": "windows-real-pdftk-gs-helper-representative-limits-presets-and-nonfatal-warning; independent-pdfium; warning-envelope-refused-by-app; not Explorer",
+            "shell": "7.6.6"
+          },
+          {
+            "tier": "NativeRunner",
+            "passed": 41,
+            "xml_leaves": 41,
+            "class": "windows-controlled-native-argument-process; no PDF-engine-support claim",
+            "shell": "7.6.6"
+          }
+        ]
+      }
+    ]
+  },
+  "t29_original_asset_audit": {
+    "original_ledger": "tests/.work/T29-capture/ea4dd9f8ebe74e99b7e44bbe639874b1/invocations.json",
+    "scope": "Fresh read-only original-result ledger hashes and both ZIP/whole-checksum hashes; source/package guard booleans inspected in all25 accepted original case receipts. No app/native rerun and no renderer replay performed by this reviewer.",
+    "hosts": [
+      {
+        "host": "PS51",
+        "original_result_exists": true,
+        "original_result_bound": true,
+        "result": "pass",
+        "preparation": false,
+        "harness_commit": "629f506fc18c278dd43d1021009a45406a6544e1",
+        "candidate_source_commit": "8917938820f60e499e2c20caa9cb03171678be72",
+        "case_count": 14,
+        "guard_count": 7,
+        "bad_guards": 0,
+        "bad_case_guards": 0,
+        "asset_issues": [],
+        "zip_sha256": "013215efbd2777460fdbd53e7ff3e60a9c371961805e1da17ec9efc01e6757a7",
+        "checksums_sha256": "4b9507628b77c56708688d3832d2c09b81c8edab306cb856b05cbc4fd207f201"
+      },
+      {
+        "host": "PS7",
+        "original_result_exists": true,
+        "original_result_bound": true,
+        "result": "pass",
+        "preparation": false,
+        "harness_commit": "629f506fc18c278dd43d1021009a45406a6544e1",
+        "candidate_source_commit": "8917938820f60e499e2c20caa9cb03171678be72",
+        "case_count": 11,
+        "guard_count": 7,
+        "bad_guards": 0,
+        "bad_case_guards": 0,
+        "asset_issues": [],
+        "zip_sha256": "aba36958071fc1306f18f30fe37bc2c4a10a3e25b6c6da14e35b39f1650e4cd9",
+        "checksums_sha256": "9767694e7b55661142e3d68f76153297616f9e3c804a8dced218e546c4b085a6"
+      }
+    ]
+  },
+  "source_equivalence": {
+    "candidate_commit": "8917938820f60e499e2c20caa9cb03171678be72",
+    "reviewed_head": "8f76ba4bce7de100cd56274ca938c4da24b500dc",
+    "command": "git diff --name-only <candidate> <reviewed-head> -- WinPDFMerge.ps1 WinPDFMerge.bat src/WinPDFMerge.Helpers.ps1 VERSION tools/release release-files.json docs/codex/PACKAGE_CONTRACT.json",
+    "observed_output": "empty",
+    "meaning": "No tracked runtime/version/builder/contract changes across those commits; historical operation is not claimed to be a fresh exact final package test."
+  },
+  "initial_C1_source_review": {
+    "reviewed_commit": "1e4f2b79fb9a025d71d72e7cec9f566a7c11c930",
+    "result": "source_equivalence_pass_claims_pending_COV01_and_tests",
+    "clean_worktree": true,
+    "live_branch_equals_head": true,
+    "changes_reviewed": 15,
+    "changed_runtime_version_native_arguments_builder_allowlist_contract": false,
+    "public_package_payload_docs_changed": true,
+    "claims_assessment": "Dated candidate acceptance and remaining accepted-R/final/download/publication gates are accurate; Unreleased and unsigned status remain explicit; token facts do not imply account class; link anchor corrected after preserved preparation failure.",
+    "documentation_regressions_added": 2,
+    "preparation_failure": "Dirty initial681e0e3 PublicDocs PS5.1 23 pass/1 fail: updated dependency heading broke SECURITY anchor. Corrected dirty24-pass preparations bind7aa1d57; C1 fixes the link. None is accepted full-source evidence.",
+    "current_test_status": "Both full C1 attempts aborted at twentieth ParametersNative tier: 822pass/1fail per host, including8pass/1fail in that9-case tier. Partial C1 is unaccepted. Corrected clean C1b must rerun full32tiers.",
+    "t29_scope": "Exact premerge candidate package bytes remain validated. Current C1 public payload documentation differs, so final assets must be rebuilt/operated at accepted merged R in T32."
+  },
+  "readiness_excluding_current_T30_review_cases": {
+    "required_case_count": 64,
+    "all_required_pass": true,
+    "failed_or_not_run": [],
+    "scoped_nonrequired_exclusions": [
+      "AC058",
+      "AC060",
+      "AC061",
+      "AC062"
+    ],
+    "scope": "Prior premerge tasks T01-T29 only; excludes current AC069/070 and downstream AC071-078."
+  },
+  "supplemental_manifest_audit": {
+    "manifests": [
+      {
+        "manifest": "docs/codex/evidence/T03-C2-reports/manifest.json",
+        "bindings_checked": 4,
+        "issues": [],
+        "sha256": "22ed67f0dbf8b007901a662a442d2d174e79e8ef8bcc4f18f986c76d0bc26eaa"
+      },
+      {
+        "manifest": "docs/codex/evidence/T18-C1b-evidence-manifest.json",
+        "bindings_checked": 2069,
+        "issues": [],
+        "sha256": "d2d9b78c71fded79bd33db8c9db3b3975aaf73d7d4a8164dacc3b09a594bcdfd"
+      }
+    ],
+    "bindings_checked": 2073,
+    "issues": 0,
+    "scope": "Additional T03 sanitized report hashes and T18 unique public text-path hashes/byte lengths; no execution replay."
+  },
+  "failed_C1_receipt_audit": {
+    "result": "fail_unaccepted",
+    "scope": "Read-only audit of both aborted full C1 attempts, matching 40 typed JSON/NUnit pairs and raw stream hashes. First19tiers pass;20th ParametersNative fails one stale forbidden-helper-import assertion after legitimate T27 VERSION startup helper loading. Remaining12tiers were not executed in these aborted captures.",
+    "hosts": [
+      {
+        "root": "tests/.work/T30-C1-ps51-90862e17c87741ed986e4022ccb01d59",
+        "commit": "1e4f2b79fb9a025d71d72e7cec9f566a7c11c930",
+        "attempted_report_pairs": 20,
+        "json_passed": 822,
+        "json_failed": 1,
+        "xml_passed": 822,
+        "xml_failed": 1,
+        "last_tier": "ParametersNative",
+        "last_passed": 8,
+        "last_failed": 1,
+        "last_total": 9,
+        "issues": [],
+        "accepted": false
+      },
+      {
+        "root": "tests/.work/T30-C1-ps7-2876bc2ac17a4bcaa224e47cc0c765fd",
+        "commit": "1e4f2b79fb9a025d71d72e7cec9f566a7c11c930",
+        "attempted_report_pairs": 20,
+        "json_passed": 822,
+        "json_failed": 1,
+        "xml_passed": 822,
+        "xml_failed": 1,
+        "last_tier": "ParametersNative",
+        "last_passed": 8,
+        "last_failed": 1,
+        "last_total": 9,
+        "issues": [],
+        "accepted": false
+      }
+    ],
+    "issues_in_review": 0
+  },
+  "final_C1b_source_review": {
+    "reviewed_commit": "8f76ba4bce7de100cd56274ca938c4da24b500dc",
+    "result": "pass_with_original_full_execution_reviewed",
+    "clean_worktree": true,
+    "live_branch_equals_head": true,
+    "changed_paths_since_C1": 7,
+    "runtime_version_native_arguments_builder_allowlist_contract_unchanged": true,
+    "COV01_fix": "SECURITY preparation claim is dated and links current Releases; existing new PublicDocs guard now includes SECURITY.",
+    "COV02_fix": "Missing-input native test checks actual VERSION banner/usage/exit1/no prompt; sole helper recording marker; no native/probe/job/stage activity or outputs; exact runtime/source/foreign hashes/mtime/attributes and full trees unchanged.",
+    "historical_gap": "T27 broad controlled Parameters31 and DiagnosticsNative11 reruns omitted actual ParametersNative. Old receipts remain original-source evidence; fresh full T30 C1b resolves current applicability only if all required tiers pass.",
+    "preparation": "Root reports dirty PublicDocs24 and ParametersNative9 passes per host. These are preparation only; this reviewer does not accept them as clean-source evidence.",
+    "acceptance_status": "Full32-tier C1b passes1072 perhost/2144total with64matching original pairs; both maintained-source static68files/41selectedrules pass; original stream/source/cache/driver guards agree. FailedC1 partial captures remain unaccepted."
+  },
+  "final_C1b_receipt_review": {
+    "result": "pass",
+    "tested_commit": "8f76ba4bce7de100cd56274ca938c4da24b500dc",
+    "original_report_pairs": 64,
+    "json_passed": 2144,
+    "xml_success_leaves": 2144,
+    "bad_counts": 0,
+    "review_issues": 0,
+    "full_hosts": [
+      {
+        "root": "tests/.work/T30-C1b-ps51-0fdd30c1f8e4451d97fa64893361d9a9",
+        "shell": "ps51",
+        "commit": "8f76ba4bce7de100cd56274ca938c4da24b500dc",
+        "accepted": true,
+        "report_pairs": 32,
+        "json_passed": 1072,
+        "xml_success": 1072,
+        "source_cache_driver_guards": true,
+        "elapsed_seconds": 1067.405,
+        "issues": [],
+        "tiers": [
+          {
+            "tier": "ParametersNative",
+            "passed": 9,
+            "xml_leaves": 9,
+            "class": "windows-real-entry-preset-and-defaults-actual-cmd-batch-delivery-not-Explorer"
+          },
+          {
+            "tier": "SizeReporting",
+            "passed": 32,
+            "xml_leaves": 32,
+            "class": "unit-numeric-size-reporting-and-controlled-entry-decisions"
+          },
+          {
+            "tier": "SizeReportingNative",
+            "passed": 11,
+            "xml_leaves": 11,
+            "class": "windows-real-entry-size-accounting-and-controlled-equal-size-boundary; visual-manual-observations-separate"
+          },
+          {
+            "tier": "Diagnostics",
+            "passed": 36,
+            "xml_leaves": 36,
+            "class": "unit-help-stage-summary-and-controlled-probe-entry-diagnostics; no PDF-engine-support claim"
+          },
+          {
+            "tier": "DiagnosticsNative",
+            "passed": 11,
+            "xml_leaves": 11,
+            "class": "windows-real-help-examples-CLI-entry-diagnostics-and-independent-pdfium; not Explorer or manual desktop acceptance"
+          },
+          {
+            "tier": "PreservationDocs",
+            "passed": 14,
+            "xml_leaves": 14,
+            "class": "documentation-contract-and-actual-help; not native PDF preservation or manual acceptance"
+          },
+          {
+            "tier": "PreservationNative",
+            "passed": 6,
+            "xml_leaves": 6,
+            "class": "windows-real-entry-master-screen-ebook-feature-characterization; strict-pypdf-and-independent-pdfium; visual review separate"
+          },
+          {
+            "tier": "PublicDocs",
+            "passed": 24,
+            "xml_leaves": 24,
+            "class": "public-documentation-contract-isolated-real-parameter-binding-and-controlled-helper-outcomes; no application/native/manual acceptance"
+          },
+          {
+            "tier": "CorpusSafety",
+            "passed": 18,
+            "xml_leaves": 18,
+            "class": "windows-real-entry-synthetic-corpus-repeat-order-source-tree-and-concurrency; independent-pdfium; not Explorer"
+          },
+          {
+            "tier": "NativeAcceptance",
+            "passed": 6,
+            "xml_leaves": 6,
+            "class": "windows-real-pdftk-gs-helper-representative-limits-presets-and-nonfatal-warning; independent-pdfium; warning-envelope-refused-by-app; not Explorer"
+          },
+          {
+            "tier": "Version",
+            "passed": 21,
+            "xml_leaves": 21,
+            "class": "static-version-contract-and-actual-preflight-children; no PDF-engine or package acceptance"
+          },
+          {
+            "tier": "Package",
+            "passed": 66,
+            "xml_leaves": 66,
+            "class": "windows-real-git-clean-synthetic-repository-and-exact-zip-content-provenance; no application-native-or-download-operation"
+          },
+          {
+            "tier": "CiNativeSmoke",
+            "passed": 4,
+            "xml_leaves": 4,
+            "class": "windows-real-pinned-pdftk-gs-helper-CI-smoke-with-pdftk-structural-page-counts; no standard-user-ACL-desktop-rendering-feature-preservation-or-independent-renderer-acceptance"
+          },
+          {
+            "tier": "Unit",
+            "passed": 545,
+            "xml_leaves": 545,
+            "class": "unit-controlled-process-and-filesystem"
+          },
+          {
+            "tier": "Static",
+            "passed": 9,
+            "xml_leaves": 9,
+            "class": "unit-static-checker-synthetic-refusal-and-report-regressions; no native PDF-engine-support claim"
+          },
+          {
+            "tier": "NativeFixture",
+            "passed": 1,
+            "xml_leaves": 1,
+            "class": "native-pdftk-fixture-inspection"
+          },
+          {
+            "tier": "SourceDiscovery",
+            "passed": 4,
+            "xml_leaves": 4,
+            "class": "windows-entry-source-discovery-real-pdftk"
+          },
+          {
+            "tier": "Launcher",
+            "passed": 24,
+            "xml_leaves": 24,
+            "class": "windows-cmd-actual-batch-controlled-ps51-receiver"
+          },
+          {
+            "tier": "LauncherNative",
+            "passed": 2,
+            "xml_leaves": 2,
+            "class": "windows-cmd-actual-batch-entry-real-pdftk"
+          },
+          {
+            "tier": "DependencyEntry",
+            "passed": 9,
+            "xml_leaves": 9,
+            "class": "windows-entry-dependency-faults-controlled-process-and-real-pdftk"
+          },
+          {
+            "tier": "NativeRunner",
+            "passed": 41,
+            "xml_leaves": 41,
+            "class": "windows-controlled-native-argument-process; no PDF-engine-support claim"
+          },
+          {
+            "tier": "ToolInvocation",
+            "passed": 12,
+            "xml_leaves": 12,
+            "class": "unit-controlled-native-job-and-filesystem"
+          },
+          {
+            "tier": "PdftkPaths",
+            "passed": 13,
+            "xml_leaves": 13,
+            "class": "windows-real-tool-path-prompt-integration"
+          },
+          {
+            "tier": "GhostscriptPaths",
+            "passed": 13,
+            "xml_leaves": 13,
+            "class": "windows-real-tool-path-prompt-integration"
+          },
+          {
+            "tier": "Destination",
+            "passed": 15,
+            "xml_leaves": 15,
+            "class": "windows-real-entry-destination-identity-ACL-junction-concurrency"
+          },
+          {
+            "tier": "InputPreflight",
+            "passed": 22,
+            "xml_leaves": 22,
+            "class": "windows-real-pdftk-input-preflight-and-independent-pdfium-order"
+          },
+          {
+            "tier": "Staging",
+            "passed": 9,
+            "xml_leaves": 9,
+            "class": "windows-real-pdftk-gs-staging-publication-controlled-scheduling-and-filesystem"
+          },
+          {
+            "tier": "MasterValidation",
+            "passed": 7,
+            "xml_leaves": 7,
+            "class": "windows-real-pdftk-master-validation-entry-and-independent-pdfium-order-rotation"
+          },
+          {
+            "tier": "EmailOutcome",
+            "passed": 11,
+            "xml_leaves": 11,
+            "class": "windows-real-pdftk-gs-email-outcomes-actual-batch-and-controlled-fault-scheduling"
+          },
+          {
+            "tier": "FaultIO",
+            "passed": 32,
+            "xml_leaves": 32,
+            "class": "unit-controlled-IO-logging-outcomes-and-real-file-locks"
+          },
+          {
+            "tier": "FaultRecovery",
+            "passed": 14,
+            "xml_leaves": 14,
+            "class": "windows-real-engines-environment-and-controlled-owned-native-cancellation"
+          },
+          {
+            "tier": "Parameters",
+            "passed": 31,
+            "xml_leaves": 31,
+            "class": "unit-actual-parameter-binding-and-controlled-entry-native-decisions"
+          }
+        ]
+      },
+      {
+        "root": "tests/.work/T30-C1b-ps7-b6c6f1bbba1945b6aea5f0958312d9d8",
+        "shell": "ps7",
+        "commit": "8f76ba4bce7de100cd56274ca938c4da24b500dc",
+        "accepted": true,
+        "report_pairs": 32,
+        "json_passed": 1072,
+        "xml_success": 1072,
+        "source_cache_driver_guards": true,
+        "elapsed_seconds": 1065.656,
+        "issues": [],
+        "tiers": [
+          {
+            "tier": "ParametersNative",
+            "passed": 9,
+            "xml_leaves": 9,
+            "class": "windows-real-entry-preset-and-defaults-actual-cmd-batch-delivery-not-Explorer"
+          },
+          {
+            "tier": "SizeReporting",
+            "passed": 32,
+            "xml_leaves": 32,
+            "class": "unit-numeric-size-reporting-and-controlled-entry-decisions"
+          },
+          {
+            "tier": "SizeReportingNative",
+            "passed": 11,
+            "xml_leaves": 11,
+            "class": "windows-real-entry-size-accounting-and-controlled-equal-size-boundary; visual-manual-observations-separate"
+          },
+          {
+            "tier": "Diagnostics",
+            "passed": 36,
+            "xml_leaves": 36,
+            "class": "unit-help-stage-summary-and-controlled-probe-entry-diagnostics; no PDF-engine-support claim"
+          },
+          {
+            "tier": "DiagnosticsNative",
+            "passed": 11,
+            "xml_leaves": 11,
+            "class": "windows-real-help-examples-CLI-entry-diagnostics-and-independent-pdfium; not Explorer or manual desktop acceptance"
+          },
+          {
+            "tier": "PreservationDocs",
+            "passed": 14,
+            "xml_leaves": 14,
+            "class": "documentation-contract-and-actual-help; not native PDF preservation or manual acceptance"
+          },
+          {
+            "tier": "PreservationNative",
+            "passed": 6,
+            "xml_leaves": 6,
+            "class": "windows-real-entry-master-screen-ebook-feature-characterization; strict-pypdf-and-independent-pdfium; visual review separate"
+          },
+          {
+            "tier": "PublicDocs",
+            "passed": 24,
+            "xml_leaves": 24,
+            "class": "public-documentation-contract-isolated-real-parameter-binding-and-controlled-helper-outcomes; no application/native/manual acceptance"
+          },
+          {
+            "tier": "CorpusSafety",
+            "passed": 18,
+            "xml_leaves": 18,
+            "class": "windows-real-entry-synthetic-corpus-repeat-order-source-tree-and-concurrency; independent-pdfium; not Explorer"
+          },
+          {
+            "tier": "NativeAcceptance",
+            "passed": 6,
+            "xml_leaves": 6,
+            "class": "windows-real-pdftk-gs-helper-representative-limits-presets-and-nonfatal-warning; independent-pdfium; warning-envelope-refused-by-app; not Explorer"
+          },
+          {
+            "tier": "Version",
+            "passed": 21,
+            "xml_leaves": 21,
+            "class": "static-version-contract-and-actual-preflight-children; no PDF-engine or package acceptance"
+          },
+          {
+            "tier": "Package",
+            "passed": 66,
+            "xml_leaves": 66,
+            "class": "windows-real-git-clean-synthetic-repository-and-exact-zip-content-provenance; no application-native-or-download-operation"
+          },
+          {
+            "tier": "CiNativeSmoke",
+            "passed": 4,
+            "xml_leaves": 4,
+            "class": "windows-real-pinned-pdftk-gs-helper-CI-smoke-with-pdftk-structural-page-counts; no standard-user-ACL-desktop-rendering-feature-preservation-or-independent-renderer-acceptance"
+          },
+          {
+            "tier": "Unit",
+            "passed": 545,
+            "xml_leaves": 545,
+            "class": "unit-controlled-process-and-filesystem"
+          },
+          {
+            "tier": "Static",
+            "passed": 9,
+            "xml_leaves": 9,
+            "class": "unit-static-checker-synthetic-refusal-and-report-regressions; no native PDF-engine-support claim"
+          },
+          {
+            "tier": "NativeFixture",
+            "passed": 1,
+            "xml_leaves": 1,
+            "class": "native-pdftk-fixture-inspection"
+          },
+          {
+            "tier": "SourceDiscovery",
+            "passed": 4,
+            "xml_leaves": 4,
+            "class": "windows-entry-source-discovery-real-pdftk"
+          },
+          {
+            "tier": "Launcher",
+            "passed": 24,
+            "xml_leaves": 24,
+            "class": "windows-cmd-actual-batch-controlled-ps51-receiver"
+          },
+          {
+            "tier": "LauncherNative",
+            "passed": 2,
+            "xml_leaves": 2,
+            "class": "windows-cmd-actual-batch-entry-real-pdftk"
+          },
+          {
+            "tier": "DependencyEntry",
+            "passed": 9,
+            "xml_leaves": 9,
+            "class": "windows-entry-dependency-faults-controlled-process-and-real-pdftk"
+          },
+          {
+            "tier": "NativeRunner",
+            "passed": 41,
+            "xml_leaves": 41,
+            "class": "windows-controlled-native-argument-process; no PDF-engine-support claim"
+          },
+          {
+            "tier": "ToolInvocation",
+            "passed": 12,
+            "xml_leaves": 12,
+            "class": "unit-controlled-native-job-and-filesystem"
+          },
+          {
+            "tier": "PdftkPaths",
+            "passed": 13,
+            "xml_leaves": 13,
+            "class": "windows-real-tool-path-prompt-integration"
+          },
+          {
+            "tier": "GhostscriptPaths",
+            "passed": 13,
+            "xml_leaves": 13,
+            "class": "windows-real-tool-path-prompt-integration"
+          },
+          {
+            "tier": "Destination",
+            "passed": 15,
+            "xml_leaves": 15,
+            "class": "windows-real-entry-destination-identity-ACL-junction-concurrency"
+          },
+          {
+            "tier": "InputPreflight",
+            "passed": 22,
+            "xml_leaves": 22,
+            "class": "windows-real-pdftk-input-preflight-and-independent-pdfium-order"
+          },
+          {
+            "tier": "Staging",
+            "passed": 9,
+            "xml_leaves": 9,
+            "class": "windows-real-pdftk-gs-staging-publication-controlled-scheduling-and-filesystem"
+          },
+          {
+            "tier": "MasterValidation",
+            "passed": 7,
+            "xml_leaves": 7,
+            "class": "windows-real-pdftk-master-validation-entry-and-independent-pdfium-order-rotation"
+          },
+          {
+            "tier": "EmailOutcome",
+            "passed": 11,
+            "xml_leaves": 11,
+            "class": "windows-real-pdftk-gs-email-outcomes-actual-batch-and-controlled-fault-scheduling"
+          },
+          {
+            "tier": "FaultIO",
+            "passed": 32,
+            "xml_leaves": 32,
+            "class": "unit-controlled-IO-logging-outcomes-and-real-file-locks"
+          },
+          {
+            "tier": "FaultRecovery",
+            "passed": 14,
+            "xml_leaves": 14,
+            "class": "windows-real-engines-environment-and-controlled-owned-native-cancellation"
+          },
+          {
+            "tier": "Parameters",
+            "passed": 31,
+            "xml_leaves": 31,
+            "class": "unit-actual-parameter-binding-and-controlled-entry-native-decisions"
+          }
+        ]
+      }
+    ],
+    "static_hosts": [
+      {
+        "root": "tests/.work/T30-C1b-static-ps51-b4fe6c08c2ac4e6683760630fb89b7b0",
+        "shell": "ps51",
+        "commit": "8f76ba4bce7de100cd56274ca938c4da24b500dc",
+        "result": "pass",
+        "files": 68,
+        "selected_rules": 41,
+        "selected_findings": 0,
+        "selected_suppressions": 0,
+        "advisory_errors": 0,
+        "advisory_warnings": 349,
+        "advisory_information": 175,
+        "source_guards": true,
+        "issues": []
+      },
+      {
+        "root": "tests/.work/T30-C1b-static-ps7-c353690f132d426f85daec90bfde9f86",
+        "shell": "ps7",
+        "commit": "8f76ba4bce7de100cd56274ca938c4da24b500dc",
+        "result": "pass",
+        "files": 68,
+        "selected_rules": 41,
+        "selected_findings": 0,
+        "selected_suppressions": 0,
+        "advisory_errors": 0,
+        "advisory_warnings": 349,
+        "advisory_information": 175,
+        "source_guards": true,
+        "issues": []
+      }
+    ],
+    "missing_input_regression": [
+      {
+        "host": "5.1.26100.9444",
+        "commit": "8f76ba4bce7de100cd56274ca938c4da24b500dc",
+        "pdftk": "2.02",
+        "ghostscript": "10.08.0",
+        "observations": 9,
+        "version": "1.0.0",
+        "exit": 1,
+        "runtime_source_foreign_files": 7,
+        "closed_stdin": true,
+        "helper_imported": true,
+        "no_native_calls": true,
+        "no_run_outputs": true,
+        "trees_unchanged": true,
+        "issues": []
+      },
+      {
+        "host": "7.6.6",
+        "commit": "8f76ba4bce7de100cd56274ca938c4da24b500dc",
+        "pdftk": "2.02",
+        "ghostscript": "10.08.0",
+        "observations": 9,
+        "version": "1.0.0",
+        "exit": 1,
+        "runtime_source_foreign_files": 7,
+        "closed_stdin": true,
+        "helper_imported": true,
+        "no_native_calls": true,
+        "no_run_outputs": true,
+        "trees_unchanged": true,
+        "issues": []
+      }
+    ],
+    "scope": "Direct read-only original/copy JSON/NUnit and stream-hash reconciliation; source/cache/driver guards; actual pinned host/tool fields; exact strengthened missing-input version/state/file proofs. No new application/native/CI execution by this reviewer.",
+    "AC069": "pass",
+    "AC070": "This coverage/receipt report supports the full-test and coverage components only; root's independent source/security/current-PR/check review and synchronized checkpoint remain separate."
+  },
+  "findings": [
+    {
+      "id": "COV02",
+      "status": "closed_in_clean_C1b_with_full_dual_shell_regression",
+      "path": "tests/cli/Parameters.Native.Tests.ps1",
+      "line": 258,
+      "scope": "Fresh full-source regression and historical evidence applicability",
+      "finding": "The legacy missing-input case forbids any helper import, contradicting legitimate T27 VERSION startup loading. T27's controlled Parameters and DiagnosticsNative reruns omitted ParametersNative, so historical native receipts cannot cover that changed startup assertion.",
+      "requested_fix": "Replace the stale assertion with exact version/usage/no-native/no-output and complete runtime/source/foreign-file safety checks, and accept only a fresh full clean32-tier dual-shell rerun.",
+      "dirty_delta_review": "The strengthened proposed test preserves product safety requirements, expects only the recording helper marker, forbids native/job/probe receipts, and checks exact hashes/mtime/attributes and full trees. Runtime/product behavior is unchanged; acceptance remains pending fresh clean execution."
+    },
+    {
+      "id": "COV01",
+      "status": "closed_in_clean_C1b_with_public_docs_regression",
+      "path": "SECURITY.md",
+      "line": 69,
+      "scope": "Frozen public-document release-state wording",
+      "finding": "The unqualified statement that v1.0.0 is still in preparation will survive public payload freeze and become false after publication.",
+      "requested_fix": "Make the statement explicitly dated to the recorded policy review or remove the transient release-state assertion, with a documentation regression."
+    }
+  ],
+  "required_followup": [
+    "Complete root's combined AC070 architecture/security/current-PR/check review and synchronized records checkpoint; this report supports AC069 and the required full-test components.",
+    "Review actual matching PR head/checks and independent current source/docs/candidate evidence before AC070.",
+    "Retain T31-T34 source acceptance, accepted-R tests, final exact assets, publication, independent public-download operation and synchronized closure."
+  ],
+  "limitations": [
+    "This review is read-only; it performs no application/native/manual/CI/package-build execution.",
+    "Clean C1b source/claims and original required full/static outcome receipts are directly reviewed. AC070 code/security/current-PR review and final synchronized checkpoint are outside this report's sole authority.",
+    "Prior original evidence/audits retain their explicit scopes. Public manifests establish byte integrity, not truthfulness of execution.",
+    "Only T23 JSON/NUnit pairs and T29 original result/asset guards receive new direct receipt checks here; not every earlier raw receipt or PDF/render is reopened.",
+    "AC041 records assistant visual QA on synthetic fixtures. Human standard-user/Explorer/PDF-viewer AC058 is excluded/unperformed, never a pass.",
+    "Observed Windows/token facts do not establish account class or OS Insider/support enrollment; hosted Server CI does not certify Windows11 or excluded platforms.",
+    "No tag/release/public-download/final-R or full project completion is implied."
+  ]
+}

@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="21" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2026-10-09" time="18.27.30">
+  <environment clr-version="10.0.12" user-domain="&lt;COMPUTER&gt;" cwd="&lt;REPO&gt;" user="&lt;USER&gt;" nunit-version="2.5.8.0" os-version="10.0.26300" platform="Microsoft Windows 11 Pro|C:\Windows|\Device\Harddisk0\Partition3" machine-name="&lt;COMPUTER&gt;" />
+  <culture-info current-culture="fi-FI" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="4.7432" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="&lt;REPO&gt;\tests\help\Version.Tests.ps1" executed="True" result="Success" success="True" time="4.7432" asserts="0" description="&lt;REPO&gt;\tests\help\Version.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="AC063 application version source" executed="True" result="Success" success="True" time="0.4465" asserts="0" description="AC063 application version source">
+            <results>
+              <test-case description="reads the release target from the adjacent application VERSION" name="AC063 application version source.reads the release target from the adjacent application VERSION" time="0.1242" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="fails clearly for an incomplete application folder" name="AC063 application version source.fails clearly for an incomplete application folder" time="0.0126" asserts="0" success="True" result="Success" executed="True" />
+              <test-suite type="ParameterizedTest" name="AC063 application version source.accepts a single semantic core version with &lt;Label&gt;" executed="True" result="Success" success="True" time="0.0555" asserts="0" description="accepts a single semantic core version with &lt;Label&gt;">
+                <results>
+                  <test-case description="accepts a single semantic core version with no newline" name="AC063 application version source.accepts a single semantic core version with no newline" time="0.0353" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="accepts a single semantic core version with LF" name="AC063 application version source.accepts a single semantic core version with LF" time="0.012" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="accepts a single semantic core version with CRLF" name="AC063 application version source.accepts a single semantic core version with CRLF" time="0.0082" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="ParameterizedTest" name="AC063 application version source.rejects &lt;Label&gt; rather than supplying a fallback version" executed="True" result="Success" success="True" time="0.1666" asserts="0" description="rejects &lt;Label&gt; rather than supplying a fallback version">
+                <results>
+                  <test-case description="rejects empty data rather than supplying a fallback version" name="AC063 application version source.rejects empty data rather than supplying a fallback version" time="0.0506" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects leading space rather than supplying a fallback version" name="AC063 application version source.rejects leading space rather than supplying a fallback version" time="0.0104" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects trailing space rather than supplying a fallback version" name="AC063 application version source.rejects trailing space rather than supplying a fallback version" time="0.0088" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects two version lines rather than supplying a fallback version" name="AC063 application version source.rejects two version lines rather than supplying a fallback version" time="0.0106" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects two trailing newlines rather than supplying a fallback version" name="AC063 application version source.rejects two trailing newlines rather than supplying a fallback version" time="0.0187" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects tag prefix rather than supplying a fallback version" name="AC063 application version source.rejects tag prefix rather than supplying a fallback version" time="0.0111" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects leading zero rather than supplying a fallback version" name="AC063 application version source.rejects leading zero rather than supplying a fallback version" time="0.0221" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects prerelease suffix rather than supplying a fallback version" name="AC063 application version source.rejects prerelease suffix rather than supplying a fallback version" time="0.0089" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects build suffix rather than supplying a fallback version" name="AC063 application version source.rejects build suffix rather than supplying a fallback version" time="0.0106" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="rejects executable text rather than supplying a fallback version" name="AC063 application version source.rejects executable text rather than supplying a fallback version" time="0.0148" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="AC063 actual runtime and help agreement" executed="True" result="Success" success="True" time="3.779" asserts="0" description="AC063 actual runtime and help agreement">
+            <results>
+              <test-case description="prints the selected version and familiar missing-input usage without output creation" name="AC063 actual runtime and help agreement.prints the selected version and familiar missing-input usage without output creation" time="1.0197" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="uses changed adjacent bytes rather than a duplicated runtime literal" name="AC063 actual runtime and help agreement.uses changed adjacent bytes rather than a duplicated runtime literal" time="0.7285" asserts="0" success="True" result="Success" executed="True" />
+              <test-suite type="ParameterizedTest" name="AC063 actual runtime and help agreement.refuses missing or invalid version before merge work for &lt;Label&gt;" executed="True" result="Success" success="True" time="1.5746" asserts="0" description="refuses missing or invalid version before merge work for &lt;Label&gt;">
+                <results>
+                  <test-case description="refuses missing or invalid version before merge work for missing file" name="AC063 actual runtime and help agreement.refuses missing or invalid version before merge work for missing file" time="0.7541" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="refuses missing or invalid version before merge work for invalid file" name="AC063 actual runtime and help agreement.refuses missing or invalid version before merge work for invalid file" time="0.8205" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="AC063 public version and package naming agreement" executed="True" result="Success" success="True" time="3.8557" asserts="0" description="AC063 public version and package naming agreement">
+            <results>
+              <test-case description="validates package version, root and exact asset name against VERSION" name="AC063 public version and package naming agreement.validates package version, root and exact asset name against VERSION" time="0.0453" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="validates changelog and release notes titles against VERSION" name="AC063 public version and package naming agreement.validates changelog and release notes titles against VERSION" time="0.0223" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

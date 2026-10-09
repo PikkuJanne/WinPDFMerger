@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<test-results xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="nunit_schema_2.5.xsd" name="Pester" total="66" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2026-10-09" time="18.27.32">
+  <environment clr-version="4.0.30319.42000" user-domain="&lt;COMPUTER&gt;" cwd="&lt;REPO&gt;" platform="Microsoft Windows 11 Pro|C:\Windows|\Device\Harddisk0\Partition3" machine-name="&lt;COMPUTER&gt;" nunit-version="2.5.8.0" os-version="10.0.26300" user="&lt;USER&gt;" />
+  <culture-info current-culture="fi-FI" current-uiculture="en-US" />
+  <test-suite type="TestFixture" name="Pester" executed="True" result="Success" success="True" time="158.7269" asserts="0" description="Pester">
+    <results>
+      <test-suite type="TestFixture" name="&lt;REPO&gt;\tests\package\Package.Tests.ps1" executed="True" result="Success" success="True" time="158.7269" asserts="0" description="&lt;REPO&gt;\tests\package\Package.Tests.ps1">
+        <results>
+          <test-suite type="TestFixture" name="AC065/AC066 exact allowlisted commit package" executed="True" result="Success" success="True" time="10.5274" asserts="0" description="AC065/AC066 exact allowlisted commit package">
+            <results>
+              <test-case description="creates exactly the two contract assets and no staging leftovers" name="AC065/AC066 exact allowlisted commit package.creates exactly the two contract assets and no staging leftovers" time="0.1963" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="has exactly the reviewed files and generated BUILD_INFO beneath one root" name="AC065/AC066 exact allowlisted commit package.has exactly the reviewed files and generated BUILD_INFO beneath one root" time="0.0602" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="uses safe normalized entries without case-insensitive collisions or directory entries" name="AC065/AC066 exact allowlisted commit package.uses safe normalized entries without case-insensitive collisions or directory entries" time="0.1422" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="preserves every selected Git blob byte, including the original license" name="AC065/AC066 exact allowlisted commit package.preserves every selected Git blob byte, including the original license" time="1.1616" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="binds VERSION, full source commit and actual tool environment in BUILD_INFO" name="AC065/AC066 exact allowlisted commit package.binds VERSION, full source commit and actual tool environment in BUILD_INFO" time="0.3335" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="hashes exactly every payload file and excludes the provenance self-reference" name="AC065/AC066 exact allowlisted commit package.hashes exactly every payload file and excludes the provenance self-reference" time="0.1527" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="includes the target of every packaged Markdown relative file link" name="AC065/AC066 exact allowlisted commit package.includes the target of every packaged Markdown relative file link" time="0.3749" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="records only the exact ZIP digest in SHA256SUMS and hashes both complete assets independently" name="AC065/AC066 exact allowlisted commit package.records only the exact ZIP digest in SHA256SUMS and hashes both complete assets independently" time="0.0486" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="repeats identical ZIP and checksum bytes from the same commit and recorded environment" name="AC065/AC066 exact allowlisted commit package.repeats identical ZIP and checksum bytes from the same commit and recorded environment" time="3.378" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="leaves the committed synthetic source inventory and dirty state unchanged" name="AC065/AC066 exact allowlisted commit package.leaves the committed synthetic source inventory and dirty state unchanged" time="0.2478" asserts="0" success="True" result="Success" executed="True" />
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="AC065 clean specified-commit refusal" executed="True" result="Success" success="True" time="46.256" asserts="0" description="AC065 clean specified-commit refusal">
+            <results>
+              <test-case description="refuses a missing tracked payload rather than publishing an incomplete ZIP" name="AC065 clean specified-commit refusal.refuses a missing tracked payload rather than publishing an incomplete ZIP" time="2.0731" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="refuses an allowlisted but untracked ignored payload even when ordinary Git status is clean" name="AC065 clean specified-commit refusal.refuses an allowlisted but untracked ignored payload even when ordinary Git status is clean" time="5.5508" asserts="0" success="True" result="Success" executed="True" />
+              <test-suite type="ParameterizedTest" name="AC065 clean specified-commit refusal.refuses &lt;Label&gt; dirty state before output creation" executed="True" result="Success" success="True" time="8.6869" asserts="0" description="refuses &lt;Label&gt; dirty state before output creation">
+                <results>
+                  <test-case description="refuses tracked unstaged dirty state before output creation" name="AC065 clean specified-commit refusal.refuses tracked unstaged dirty state before output creation" time="2.5503" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="refuses tracked staged dirty state before output creation" name="AC065 clean specified-commit refusal.refuses tracked staged dirty state before output creation" time="2.0133" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="refuses untracked PDF dirty state before output creation" name="AC065 clean specified-commit refusal.refuses untracked PDF dirty state before output creation" time="2.1542" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="refuses untracked developer file dirty state before output creation" name="AC065 clean specified-commit refusal.refuses untracked developer file dirty state before output creation" time="1.9692" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="ParameterizedTest" name="AC065 clean specified-commit refusal.refuses &lt;Label&gt; rather than resolving a moving ref or accepting a different commit" executed="True" result="Success" success="True" time="6.1227" asserts="0" description="refuses &lt;Label&gt; rather than resolving a moving ref or accepting a different commit">
+                <results>
+                  <test-case description="refuses wrong full commit rather than resolving a moving ref or accepting a different commit" name="AC065 clean specified-commit refusal.refuses wrong full commit rather than resolving a moving ref or accepting a different commit" time="2.0053" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="refuses branch reference rather than resolving a moving ref or accepting a different commit" name="AC065 clean specified-commit refusal.refuses branch reference rather than resolving a moving ref or accepting a different commit" time="1.2905" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="refuses abbreviated commit rather than resolving a moving ref or accepting a different commit" name="AC065 clean specified-commit refusal.refuses abbreviated commit rather than resolving a moving ref or accepting a different commit" time="1.4712" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="refuses uppercase full commit rather than resolving a moving ref or accepting a different commit" name="AC065 clean specified-commit refusal.refuses uppercase full commit rather than resolving a moving ref or accepting a different commit" time="1.3557" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="ParameterizedTest" name="AC065 clean specified-commit refusal.refuses a &lt;Flag&gt; index flag that hides a changed tracked file from clean status" executed="True" result="Success" success="True" time="5.0923" asserts="0" description="refuses a &lt;Flag&gt; index flag that hides a changed tracked file from clean status">
+                <results>
+                  <test-case description="refuses a assume-unchanged index flag that hides a changed tracked file from clean status" name="AC065 clean specified-commit refusal.refuses a assume-unchanged index flag that hides a changed tracked file from clean status" time="2.0729" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="refuses a skip-worktree index flag that hides a changed tracked file from clean status" name="AC065 clean specified-commit refusal.refuses a skip-worktree index flag that hides a changed tracked file from clean status" time="3.0193" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="ParameterizedTest" name="AC065 clean specified-commit refusal.refuses ignored non-test &lt;Label&gt; in the build tree" executed="True" result="Success" success="True" time="8.1874" asserts="0" description="refuses ignored non-test &lt;Label&gt; in the build tree">
+                <results>
+                  <test-case description="refuses ignored non-test input PDF in the build tree" name="AC065 clean specified-commit refusal.refuses ignored non-test input PDF in the build tree" time="2.5867" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="refuses ignored non-test development notes in the build tree" name="AC065 clean specified-commit refusal.refuses ignored non-test development notes in the build tree" time="2.5977" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="refuses ignored non-test old output ZIP in the build tree" name="AC065 clean specified-commit refusal.refuses ignored non-test old output ZIP in the build tree" time="3.0031" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="AC065 safe reviewed package paths and regular files" executed="True" result="Success" success="True" time="113.1793" asserts="0" description="AC065 safe reviewed package paths and regular files">
+            <results>
+              <test-case description="refuses a missing required helper in the committed allowlist" name="AC065 safe reviewed package paths and regular files.refuses a missing required helper in the committed allowlist" time="3.4092" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="refuses a required payload replaced by a tracked directory" name="AC065 safe reviewed package paths and regular files.refuses a required payload replaced by a tracked directory" time="2.7589" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="refuses a clean Git symlink mode without requiring Windows link privilege" name="AC065 safe reviewed package paths and regular files.refuses a clean Git symlink mode without requiring Windows link privilege" time="3.3171" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="refuses an actual ancestor junction with identical tracked bytes without elevation" name="AC065 safe reviewed package paths and regular files.refuses an actual ancestor junction with identical tracked bytes without elevation" time="2.7465" asserts="0" success="True" result="Success" executed="True" />
+              <test-suite type="ParameterizedTest" name="AC065 safe reviewed package paths and regular files.refuses a committed &lt;Label&gt; allowlist schema" executed="True" result="Success" success="True" time="20.8253" asserts="0" description="refuses a committed &lt;Label&gt; allowlist schema">
+                <results>
+                  <test-case description="refuses a committed unsupported version allowlist schema" name="AC065 safe reviewed package paths and regular files.refuses a committed unsupported version allowlist schema" time="3.0743" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="refuses a committed string version allowlist schema" name="AC065 safe reviewed package paths and regular files.refuses a committed string version allowlist schema" time="2.8292" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="refuses a committed boolean version allowlist schema" name="AC065 safe reviewed package paths and regular files.refuses a committed boolean version allowlist schema" time="3.1893" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="refuses a committed scalar files allowlist schema" name="AC065 safe reviewed package paths and regular files.refuses a committed scalar files allowlist schema" time="2.9702" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="refuses a committed nonstring file allowlist schema" name="AC065 safe reviewed package paths and regular files.refuses a committed nonstring file allowlist schema" time="3.4833" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="refuses a committed empty files allowlist schema" name="AC065 safe reviewed package paths and regular files.refuses a committed empty files allowlist schema" time="5.279" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="ParameterizedTest" name="AC065 safe reviewed package paths and regular files.refuses &lt;Label&gt; in a committed allowlist" executed="True" result="Success" success="True" time="33.8517" asserts="0" description="refuses &lt;Label&gt; in a committed allowlist">
+                <results>
+                  <test-case description="refuses parent traversal in a committed allowlist" name="AC065 safe reviewed package paths and regular files.refuses parent traversal in a committed allowlist" time="5.1139" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="refuses dot segment in a committed allowlist" name="AC065 safe reviewed package paths and regular files.refuses dot segment in a committed allowlist" time="4.7547" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="refuses backslash entry in a committed allowlist" name="AC065 safe reviewed package paths and regular files.refuses backslash entry in a committed allowlist" time="3.6216" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="refuses rooted entry in a committed allowlist" name="AC065 safe reviewed package paths and regular files.refuses rooted entry in a committed allowlist" time="3.4489" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="refuses drive-qualified entry in a committed allowlist" name="AC065 safe reviewed package paths and regular files.refuses drive-qualified entry in a committed allowlist" time="3.3647" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="refuses alternate data stream in a committed allowlist" name="AC065 safe reviewed package paths and regular files.refuses alternate data stream in a committed allowlist" time="3.4764" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="refuses empty entry in a committed allowlist" name="AC065 safe reviewed package paths and regular files.refuses empty entry in a committed allowlist" time="3.3682" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="refuses developer contract in a committed allowlist" name="AC065 safe reviewed package paths and regular files.refuses developer contract in a committed allowlist" time="3.3346" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="refuses case-insensitive duplicate in a committed allowlist" name="AC065 safe reviewed package paths and regular files.refuses case-insensitive duplicate in a committed allowlist" time="3.3687" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="AC066 version contract and safe output refusal" executed="True" result="Success" success="True" time="148.2013" asserts="0" description="AC066 version contract and safe output refusal">
+            <results>
+              <test-case description="refuses output inside the repository before creating it" name="AC066 version contract and safe output refusal.refuses output inside the repository before creating it" time="3.5465" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="preserves an existing output directory and exact sentinel bytes" name="AC066 version contract and safe output refusal.preserves an existing output directory and exact sentinel bytes" time="3.2504" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="refuses output under an actual junction without creating or altering target files" name="AC066 version contract and safe output refusal.refuses output under an actual junction without creating or altering target files" time="3.6878" asserts="0" success="True" result="Success" executed="True" />
+              <test-suite type="ParameterizedTest" name="AC066 version contract and safe output refusal.refuses committed &lt;Label&gt; contract schema without numeric coercion" executed="True" result="Success" success="True" time="4.7979" asserts="0" description="refuses committed &lt;Label&gt; contract schema without numeric coercion">
+                <results>
+                  <test-case description="refuses committed string version contract schema without numeric coercion" name="AC066 version contract and safe output refusal.refuses committed string version contract schema without numeric coercion" time="2.4902" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="refuses committed boolean version contract schema without numeric coercion" name="AC066 version contract and safe output refusal.refuses committed boolean version contract schema without numeric coercion" time="2.3078" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="ParameterizedTest" name="AC066 version contract and safe output refusal.refuses committed &lt;Label&gt; VERSION bytes" executed="True" result="Success" success="True" time="7.9047" asserts="0" description="refuses committed &lt;Label&gt; VERSION bytes">
+                <results>
+                  <test-case description="refuses committed invalid VERSION bytes" name="AC066 version contract and safe output refusal.refuses committed invalid VERSION bytes" time="2.5711" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="refuses committed different release VERSION bytes" name="AC066 version contract and safe output refusal.refuses committed different release VERSION bytes" time="2.7513" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="refuses committed executable-looking VERSION bytes" name="AC066 version contract and safe output refusal.refuses committed executable-looking VERSION bytes" time="2.5824" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+              <test-suite type="ParameterizedTest" name="AC066 version contract and safe output refusal.refuses committed contract &lt;Field&gt; disagreement" executed="True" result="Success" success="True" time="11.824" asserts="0" description="refuses committed contract &lt;Field&gt; disagreement">
+                <results>
+                  <test-case description="refuses committed contract target_release disagreement" name="AC066 version contract and safe output refusal.refuses committed contract target_release disagreement" time="2.5597" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="refuses committed contract zip_root disagreement" name="AC066 version contract and safe output refusal.refuses committed contract zip_root disagreement" time="2.9055" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="refuses committed contract version_source disagreement" name="AC066 version contract and safe output refusal.refuses committed contract version_source disagreement" time="2.8439" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="refuses committed contract assets disagreement" name="AC066 version contract and safe output refusal.refuses committed contract assets disagreement" time="3.5149" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+          <test-suite type="TestFixture" name="T28 package receipt and source guards" executed="True" result="Success" success="True" time="156.6026" asserts="0" description="T28 package receipt and source guards">
+            <results>
+              <test-case description="leaves no private build staging directory after the exercised successes and refusals" name="T28 package receipt and source guards.leaves no private build staging directory after the exercised successes and refusals" time="0.0132" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="imports package test helpers as function definitions without running orchestration" name="T28 package receipt and source guards.imports package test helpers as function definitions without running orchestration" time="0.0513" asserts="0" success="True" result="Success" executed="True" />
+              <test-case description="gives Package receipts an explicit classification without claiming application execution" name="T28 package receipt and source guards.gives Package receipts an explicit classification without claiming application execution" time="0.024" asserts="0" success="True" result="Success" executed="True" />
+              <test-suite type="ParameterizedTest" name="T28 package receipt and source guards.binds actual package source bytes at &lt;RelativePath&gt; even while dirty status remains identical" executed="True" result="Success" success="True" time="8.2976" asserts="0" description="binds actual package source bytes at &lt;RelativePath&gt; even while dirty status remains identical">
+                <results>
+                  <test-case description="binds actual package source bytes at release-files.json even while dirty status remains identical" name="T28 package receipt and source guards.binds actual package source bytes at release-files.json even while dirty status remains identical" time="1.0756" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="binds actual package source bytes at tools/release/Build-Release.ps1 even while dirty status remains identical" name="T28 package receipt and source guards.binds actual package source bytes at tools/release/Build-Release.ps1 even while dirty status remains identical" time="1.2014" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="binds actual package source bytes at README.md even while dirty status remains identical" name="T28 package receipt and source guards.binds actual package source bytes at README.md even while dirty status remains identical" time="1.27" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="binds actual package source bytes at LICENSE even while dirty status remains identical" name="T28 package receipt and source guards.binds actual package source bytes at LICENSE even while dirty status remains identical" time="1.2321" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="binds actual package source bytes at SECURITY.md even while dirty status remains identical" name="T28 package receipt and source guards.binds actual package source bytes at SECURITY.md even while dirty status remains identical" time="1.1529" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="binds actual package source bytes at docs/DEVELOPMENT.md even while dirty status remains identical" name="T28 package receipt and source guards.binds actual package source bytes at docs/DEVELOPMENT.md even while dirty status remains identical" time="1.2" asserts="0" success="True" result="Success" executed="True" />
+                  <test-case description="binds actual package source bytes at docs/DEPENDENCIES.md even while dirty status remains identical" name="T28 package receipt and source guards.binds actual package source bytes at docs/DEPENDENCIES.md even while dirty status remains identical" time="1.1655" asserts="0" success="True" result="Success" executed="True" />
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

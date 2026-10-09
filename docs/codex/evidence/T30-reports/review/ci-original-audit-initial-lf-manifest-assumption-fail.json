@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "task": "T30",
+  "evidence_class": "independent_downloaded_sanitized_CI_receipt_review",
+  "source_head": "1e4f2b79fb9a025d71d72e7cec9f566a7c11c930",
+  "PR_synthetic_merge": "672b6f1bd1b02ccc91004b7ca1c01d585aea2e51",
+  "exact_equal_tree": "09ba1290e7bb82b7df46357b107daa4159b1b285",
+  "observed_at_utc": "2026-10-09T16:13:36.142735+00:00",
+  "auditor_sha256": "0672e86950b8bb67e222c92c381e715a11f5dd8f6c78cb5a7b112980281265ea",
+  "checks": 3643,
+  "issues": [
+    "push/windows-native-PS51-1: exact committed dependency manifest receipt",
+    "push/windows-native-PS7-1: exact committed dependency manifest receipt",
+    "push/windows-unit-PS51-1: exact committed dependency manifest receipt",
+    "push/windows-unit-PS7-1: exact committed dependency manifest receipt",
+    "pull_request/windows-native-PS51-1: exact committed dependency manifest receipt",
+    "pull_request/windows-native-PS7-1: exact committed dependency manifest receipt",
+    "pull_request/windows-unit-PS51-1: exact committed dependency manifest receipt",
+    "pull_request/windows-unit-PS7-1: exact committed dependency manifest receipt"
+  ],
+  "result": "fail",
+  "events": [
+    {
+      "event": "push",
+      "run": 37956550873,
+      "platform_head_sha": "1e4f2b79fb9a025d71d72e7cec9f566a7c11c930",
+      "actual_checkout_sha": "1e4f2b79fb9a025d71d72e7cec9f566a7c11c930",
+      "passed": 1370,
+      "pairs": 20,
+      "jobs": [
+        {
+          "artifact": "windows-native-PS51-1",
+          "group": "native",
+          "shell": "PS51",
+          "source_commit": "1e4f2b79fb9a025d71d72e7cec9f566a7c11c930",
+          "passed": 9,
+          "pairs": 3,
+          "native_smoke_scope": "Real pinned engine/helper structural smoke only; no PDF output/render/archive inspection by this audit"
+        },
+        {
+          "artifact": "windows-native-PS7-1",
+          "group": "native",
+          "shell": "PS7",
+          "source_commit": "1e4f2b79fb9a025d71d72e7cec9f566a7c11c930",
+          "passed": 9,
+          "pairs": 3,
+          "native_smoke_scope": "Real pinned engine/helper structural smoke only; no PDF output/render/archive inspection by this audit"
+        },
+        {
+          "artifact": "windows-unit-PS51-1",
+          "group": "unit",
+          "shell": "PS51",
+          "source_commit": "1e4f2b79fb9a025d71d72e7cec9f566a7c11c930",
+          "passed": 676,
+          "pairs": 7,
+          "native_smoke_scope": null
+        },
+        {
+          "artifact": "windows-unit-PS7-1",
+          "group": "unit",
+          "shell": "PS7",
+          "source_commit": "1e4f2b79fb9a025d71d72e7cec9f566a7c11c930",
+          "passed": 676,
+          "pairs": 7,
+          "native_smoke_scope": null
+        }
+      ]
+    },
+    {
+      "event": "pull_request",
+      "run": 37956557899,
+      "platform_head_sha": "1e4f2b79fb9a025d71d72e7cec9f566a7c11c930",
+      "actual_checkout_sha": "672b6f1bd1b02ccc91004b7ca1c01d585aea2e51",
+      "passed": 1370,
+      "pairs": 20,
+      "jobs": [
+        {
+          "artifact": "windows-native-PS51-1",
+          "group": "native",
+          "shell": "PS51",
+          "source_commit": "672b6f1bd1b02ccc91004b7ca1c01d585aea2e51",
+          "passed": 9,
+          "pairs": 3,
+          "native_smoke_scope": "Real pinned engine/helper structural smoke only; no PDF output/render/archive inspection by this audit"
+        },
+        {
+          "artifact": "windows-native-PS7-1",
+          "group": "native",
+          "shell": "PS7",
+          "source_commit": "672b6f1bd1b02ccc91004b7ca1c01d585aea2e51",
+          "passed": 9,
+          "pairs": 3,
+          "native_smoke_scope": "Real pinned engine/helper structural smoke only; no PDF output/render/archive inspection by this audit"
+        },
+        {
+          "artifact": "windows-unit-PS51-1",
+          "group": "unit",
+          "shell": "PS51",
+          "source_commit": "672b6f1bd1b02ccc91004b7ca1c01d585aea2e51",
+          "passed": 676,
+          "pairs": 7,
+          "native_smoke_scope": null
+        },
+        {
+          "artifact": "windows-unit-PS7-1",
+          "group": "unit",
+          "shell": "PS7",
+          "source_commit": "672b6f1bd1b02ccc91004b7ca1c01d585aea2e51",
+          "passed": 676,
+          "pairs": 7,
+          "native_smoke_scope": null
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Downloaded CI artifacts are sanitized JSON/NUnit exports, not raw native observations or produced PDFs.",
+    "Selected engine/dependency digest receipts and source assertions were reviewed; absent hosted vendor binaries were not independently rehashed.",
+    "Hosted Windows Server/admin-token smoke does not certify Windows desktop, Explorer, account class, visual fidelity or exact release asset operation.",
+    "No test/application rerun occurred; actual checkout SHA is distinct from platform headSha for pull_request."
+  ]
+}

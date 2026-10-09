@@ -47,3 +47,9 @@ corrected clean source must rerun all32 tiers and full static checks in both hos
 
 T31 merge/source freeze is later. No tag, release or publication is authorized
 by a successful plan check alone; exact final and downloaded assets remain gates.
+
+Final source acceptance at clean8f76ba4 supersedes the pending gate at this
+implementation checkpoint: full32tiers1072perhost/2144total, both static68/41,
+all8current CI jobs and independent original/native/CI/public review pass. Failed
+preparations and first malformed public XML export remain unaccepted and preserved.
+See T30-completion.md/results.json; C2 records-only push/live proof follows creation.

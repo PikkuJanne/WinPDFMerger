@@ -349,3 +349,21 @@ failures, hosted ACL scope change, versions and limits are disclosed in T24
 completion. Hosted Server/admin CI is not physical Explorer/manual desktop
 acceptance. OS channel, security, broader OS/UNC, package and release gates
 remain; publication is not started.
+
+## T30 premerge completeness review — 2026-10-09
+
+CleanC1b8f76ba4 passes1072checks/32tiers in each actual PS5.1.26100.9444 and
+pinnedPS7.6.6 x64 host,2144total/64JSON-NUnit pairs, every bad counter0. Mixed
+unit/control/docs/static/package and actual native classes stay distinct. Static
+68files/41selectedrules has0selected findings/suppressions;349warnings/175info
+advisory perhost remains. Supplementary developer helpers83pass/1symlinkskip
+are separate. Source/driver/all348 selected cache guards pass; no installs or
+persistent policy/PATH/security changes. Fresh Professional26H2/full26300.9457/
+nonadministrator token facts do not establish account class or Insider enrollment.
+Current C1b hosted push/PR all8jobs pass1370pertrigger/2740total under Server/admin
+tokens with original artifacts reviewed and exact PR tree checked; no new desktop
+or hosted independent PDF-render/cache-binary verification is inferred. AC069/070
+independent review passes; AC058 stays excluded/unperformed. Dirty preparations/
+abortedC1 full runs822pass/1fail perhost remain unaccepted. Existing T29 candidate
+bytes keep their exact scope; accepted R/final/download/publication/closure remain
+T31-T34. See evidence/T30-completion.md/results.json and frozen reports/reviews.

@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "task": "T30",
+  "evidence_class": "independent_downloaded_sanitized_CI_receipt_review",
+  "source_head": "1e4f2b79fb9a025d71d72e7cec9f566a7c11c930",
+  "PR_synthetic_merge": "672b6f1bd1b02ccc91004b7ca1c01d585aea2e51",
+  "exact_equal_tree": "09ba1290e7bb82b7df46357b107daa4159b1b285",
+  "observed_at_utc": "2026-10-09T16:14:11.135870+00:00",
+  "auditor_sha256": "69db0d6845912992c05b0fdb86444200f23a0b8eba3358f5f436dd3a2a165fcd",
+  "checks": 3643,
+  "issues": [],
+  "result": "pass",
+  "events": [
+    {
+      "event": "push",
+      "run": 37956550873,
+      "platform_head_sha": "1e4f2b79fb9a025d71d72e7cec9f566a7c11c930",
+      "actual_checkout_sha": "1e4f2b79fb9a025d71d72e7cec9f566a7c11c930",
+      "passed": 1370,
+      "pairs": 20,
+      "jobs": [
+        {
+          "artifact": "windows-native-PS51-1",
+          "group": "native",
+          "shell": "PS51",
+          "source_commit": "1e4f2b79fb9a025d71d72e7cec9f566a7c11c930",
+          "passed": 9,
+          "pairs": 3,
+          "native_smoke_scope": "Real pinned engine/helper structural smoke only; no PDF output/render/archive inspection by this audit"
+        },
+        {
+          "artifact": "windows-native-PS7-1",
+          "group": "native",
+          "shell": "PS7",
+          "source_commit": "1e4f2b79fb9a025d71d72e7cec9f566a7c11c930",
+          "passed": 9,
+          "pairs": 3,
+          "native_smoke_scope": "Real pinned engine/helper structural smoke only; no PDF output/render/archive inspection by this audit"
+        },
+        {
+          "artifact": "windows-unit-PS51-1",
+          "group": "unit",
+          "shell": "PS51",
+          "source_commit": "1e4f2b79fb9a025d71d72e7cec9f566a7c11c930",
+          "passed": 676,
+          "pairs": 7,
+          "native_smoke_scope": null
+        },
+        {
+          "artifact": "windows-unit-PS7-1",
+          "group": "unit",
+          "shell": "PS7",
+          "source_commit": "1e4f2b79fb9a025d71d72e7cec9f566a7c11c930",
+          "passed": 676,
+          "pairs": 7,
+          "native_smoke_scope": null
+        }
+      ]
+    },
+    {
+      "event": "pull_request",
+      "run": 37956557899,
+      "platform_head_sha": "1e4f2b79fb9a025d71d72e7cec9f566a7c11c930",
+      "actual_checkout_sha": "672b6f1bd1b02ccc91004b7ca1c01d585aea2e51",
+      "passed": 1370,
+      "pairs": 20,
+      "jobs": [
+        {
+          "artifact": "windows-native-PS51-1",
+          "group": "native",
+          "shell": "PS51",
+          "source_commit": "672b6f1bd1b02ccc91004b7ca1c01d585aea2e51",
+          "passed": 9,
+          "pairs": 3,
+          "native_smoke_scope": "Real pinned engine/helper structural smoke only; no PDF output/render/archive inspection by this audit"
+        },
+        {
+          "artifact": "windows-native-PS7-1",
+          "group": "native",
+          "shell": "PS7",
+          "source_commit": "672b6f1bd1b02ccc91004b7ca1c01d585aea2e51",
+          "passed": 9,
+          "pairs": 3,
+          "native_smoke_scope": "Real pinned engine/helper structural smoke only; no PDF output/render/archive inspection by this audit"
+        },
+        {
+          "artifact": "windows-unit-PS51-1",
+          "group": "unit",
+          "shell": "PS51",
+          "source_commit": "672b6f1bd1b02ccc91004b7ca1c01d585aea2e51",
+          "passed": 676,
+          "pairs": 7,
+          "native_smoke_scope": null
+        },
+        {
+          "artifact": "windows-unit-PS7-1",
+          "group": "unit",
+          "shell": "PS7",
+          "source_commit": "672b6f1bd1b02ccc91004b7ca1c01d585aea2e51",
+          "passed": 676,
+          "pairs": 7,
+          "native_smoke_scope": null
+        }
+      ]
+    }
+  ],
+  "committed_manifest_checkout_hashes": {
+    "LF": "781fd70c3ed4aee791c9ba314a6f9503dc26447be8d4d7876c922c57c76998d3",
+    "CRLF": "685f514090f52e653ab65c193e32e5846449de4cab2f00ad13afa4115e3605b6"
+  },
+  "retained_initial_auditor_failure": {
+    "source": "tests/.work/T30-review/audit_ci_initial_lf_manifest_assumption.py",
+    "report": "tests/.work/T30-review/ci-original-audit-initial-lf-manifest-assumption-fail.json",
+    "reason": "Initial CI auditor assumed LF manifest bytes while hosted Windows legitimately checked out CRLF; exact declared LF/CRLF variants and all typed pin values now bind the same committed content. No producer receipt was changed."
+  },
+  "limitations": [
+    "Downloaded CI artifacts are sanitized JSON/NUnit exports, not raw native observations or produced PDFs.",
+    "Selected engine/dependency digest receipts and source assertions were reviewed; absent hosted vendor binaries were not independently rehashed.",
+    "Hosted Windows Server/admin-token smoke does not certify Windows desktop, Explorer, account class, visual fidelity or exact release asset operation.",
+    "No test/application rerun occurred; actual checkout SHA is distinct from platform headSha for pull_request."
+  ]
+}
