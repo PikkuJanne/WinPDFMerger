@@ -1,0 +1,68 @@
+--- frozen-T33/verify_published_release.py
++++ T34/verify_published_release.py
+@@ -1,4 +1,4 @@
+-"""T33 independent unauthenticated public API, Gate F download and exact-byte audit.
++"""T34 independent unauthenticated public API, Gate F download and exact-byte audit.
+ 
+ No gh, credentials, cookies, Git mutations, release writes or application execution.
+ The original Gate F helper runs as a separate process; its source is never imported.
+@@ -34,7 +34,7 @@
+     release = releases[0]
+     require(release['id'] == RELEASE_ID and release['tag_name'] == 'v1.0.0' and
+             release['draft'] is False and release['prerelease'] is False and
+-            isinstance(release['published_at'], str) and bool(release['published_at']) and
++            release['published_at'] == '2026-10-10T07:12:01Z' and
+             release['html_url'] == f'https://github.com/{REPOSITORY}/releases/tag/v1.0.0', 'Exact published final release metadata')
+     require(isinstance(assets, list) and len(assets) == 2 and {a['name'] for a in assets} == set(PAIR), 'Exactly the two accepted published assets')
+     for asset in assets:
+@@ -59,7 +59,7 @@
+             del result[key]
+     result.update({'GIT_TERMINAL_PROMPT': '0', 'GIT_OPTIONAL_LOCKS': '0', 'GIT_NO_REPLACE_OBJECTS': '1',
+                    'GIT_CONFIG_COUNT': '2', 'GIT_CONFIG_KEY_0': 'credential.helper', 'GIT_CONFIG_VALUE_0': '',
+-                   'GIT_CONFIG_KEY_1': 'http.extraHeader', 'GIT_CONFIG_VALUE_1': ''})
++                   'GIT_CONFIG_KEY_1': 'http.extraHeader', 'GIT_CONFIG_VALUE_1': '', 'NO_PROXY': '*'})
+     return result, sorted(removed)
+ 
+ def stable_snapshot(snapshot):
+@@ -85,13 +85,13 @@
+     helper = repo / 'tools/codex/handoff.py'
+     auditor = preparation / 'audit_published_package.py'
+     require(sha(helper.read_bytes()) == args.helper_sha256 and sha(auditor.read_bytes()) == args.package_auditor_sha256, 'Pinned original helper and independent package-auditor sources')
+-    download = repo.parent / ('WinPDFMerger-t33-public-download-' + uuid.uuid4().hex)
++    download = repo.parent / ('WinPDFMerger-t34-public-download-' + uuid.uuid4().hex)
+     require(not download.exists() and not download.resolve().is_relative_to(repo), 'New empty owned outside-repository download target')
+     env, removed = child_environment()
+     commands, requests, failures = [], [], []
+     started = now()
+     opener = urllib.request.build_opener(urllib.request.ProxyHandler({}))
+-    headers = {'User-Agent': 'WinPDFMerger-T33-independent-public-verifier', 'Accept': 'application/vnd.github+json', 'Cache-Control': 'no-cache'}
++    headers = {'User-Agent': 'WinPDFMerger-T34-independent-public-verifier', 'Accept': 'application/vnd.github+json', 'Cache-Control': 'no-cache'}
+     require(not any(k.casefold() in {'authorization', 'cookie'} for k in headers), 'No authentication or cookie HTTP headers')
+ 
+     def command(label, argv):
+@@ -167,7 +167,7 @@
+         require(sha(helper.read_bytes()) == args.helper_sha256 and sha(auditor.read_bytes()) == args.package_auditor_sha256, 'Original helper/auditor unchanged')
+         inventory = [{'name': path.name, 'bytes': path.stat().st_size, 'sha256': sha(path.read_bytes())} for path in sorted(download.iterdir())]
+         require(inventory == [{'name': name, 'bytes': PAIR[name][0], 'sha256': PAIR[name][1]} for name in sorted(PAIR)], 'Exact two fresh public download assets unchanged')
+-        result = {'schema_version': 1, 'task': 'T33', 'result': 'pass_for_unauthenticated_published_release_and_independent_download', 'source_commit': R,
++        result = {'schema_version': 1, 'task': 'T34', 'result': 'pass_for_unauthenticated_published_release_and_independent_download', 'source_commit': R,
+                   'harness_commit': head, 'release_id': RELEASE_ID, 'release_url': after['release']['html_url'], 'published_at': after['release']['published_at'],
+                   'draft': False, 'prerelease': False, 'tag_object_sha': TAG_OBJECT, 'zip_sha256': PAIR['WinPDFMerger-v1.0.0.zip'][1],
+                   'checksums_sha256': PAIR['SHA256SUMS.txt'][1], 'download_directory': str(download), 'download_directory_previously_existed': False,
+@@ -177,13 +177,13 @@
+                   'package_audit': {'path': package_report.relative_to(repo).as_posix(), 'sha256': sha(package_report.read_bytes()), 'checks': 266, 'issues': []},
+                   'source_sha256': sha(Path(__file__).read_bytes()), 'helper_sha256': args.helper_sha256, 'package_auditor_sha256': args.package_auditor_sha256,
+                   'start_utc': started, 'end_utc': now(), 'commands': commands, 'public_http_requests': requests, 'child_environment_removed_variable_names': removed,
+-                  'remote_mutations': False, 'application_executed': False, 'downloaded_package_native_smoke': 'still required',
++                  'remote_mutations': False, 'application_executed': False, 'downloaded_package_native_smoke': 'not reexecuted; requires independent exact-hash linkage to accepted T33 native/PDF proof', 'child_proxy_bypass': 'NO_PROXY=*; independent API uses empty ProxyHandler',
+                   'manual_acceptance': 'excluded/unperformed; never pass', 'issues': []}
+     except Exception as error:
+         failures.append(type(error).__name__ + ': ' + str(error))
+-        result = {'schema_version': 1, 'task': 'T33', 'result': 'fail_for_unauthenticated_published_release_download_review', 'source_commit': R,
++        result = {'schema_version': 1, 'task': 'T34', 'result': 'fail_for_unauthenticated_published_release_download_review', 'source_commit': R,
+                   'start_utc': started, 'end_utc': now(), 'download_directory': str(download), 'commands': commands, 'public_http_requests': requests,
+-                  'issues': failures, 'remote_mutations': False, 'application_executed': False, 'downloaded_package_native_smoke': 'still required'}
++                  'issues': failures, 'remote_mutations': False, 'application_executed': False, 'downloaded_package_native_smoke': 'not reexecuted; requires independent exact-hash linkage to accepted T33 native/PDF proof', 'child_proxy_bypass': 'NO_PROXY=*; independent API uses empty ProxyHandler'}
+     (root / 'public-download-review.json').write_text(json.dumps(result, indent=2) + '\n', encoding='utf-8')
+     index = [{'path': path.name, 'bytes': path.stat().st_size, 'sha256': sha(path.read_bytes())} for path in sorted(root.iterdir()) if path.is_file()]
+     (root / 'file-index.json').write_text(json.dumps(index, indent=2) + '\n', encoding='utf-8')

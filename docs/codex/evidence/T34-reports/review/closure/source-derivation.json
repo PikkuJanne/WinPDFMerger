@@ -1,0 +1,58 @@
+{
+  "task": "T34",
+  "result": "pass_for_source_preparation_only",
+  "sources": [
+    {
+      "path": "verify_published_release.py",
+      "base_path": "tests\\.work\\T33-public-download-review\\verify_published_release.py",
+      "base_sha256": "f0f3bcba724e99c249787b01092d111c4085e296aee43d1403f3e7eaee9df6dc",
+      "derived_sha256": "8d0230650b79c1a5ee7717527320d8d7544510a9f91339ecb640af71a5331c6a",
+      "changes": [
+        [
+          "T33",
+          "T34"
+        ],
+        [
+          "t33-public-download-",
+          "t34-public-download-"
+        ],
+        [
+          "'GIT_CONFIG_KEY_1': 'http.extraHeader', 'GIT_CONFIG_VALUE_1': ''})",
+          "'GIT_CONFIG_KEY_1': 'http.extraHeader', 'GIT_CONFIG_VALUE_1': '', 'NO_PROXY': '*'})"
+        ],
+        [
+          "isinstance(release['published_at'], str) and bool(release['published_at'])",
+          "release['published_at'] == '2026-10-10T07:12:01Z'"
+        ],
+        [
+          "'downloaded_package_native_smoke': 'still required'",
+          "'downloaded_package_native_smoke': 'not reexecuted; requires independent exact-hash linkage to accepted T33 native/PDF proof', 'child_proxy_bypass': 'NO_PROXY=*; independent API uses empty ProxyHandler'"
+        ]
+      ],
+      "executed": false
+    },
+    {
+      "path": "audit_published_package.py",
+      "base_path": "tests\\.work\\T33-public-download-review\\audit_published_package.py",
+      "base_sha256": "85fb65be23bffd953f76fc4a52b6ac84bf3d89400a0cbdd75bcd2379a20bec34",
+      "derived_sha256": "c6f4e066171ae49114b801d1f7095f7d8927347ef1490579649fba6216e6f8b2",
+      "changes": [
+        [
+          "T33",
+          "T34"
+        ],
+        [
+          "t33-public-download-",
+          "t34-public-download-"
+        ]
+      ],
+      "executed": false
+    }
+  ],
+  "scope": {
+    "application_native_executed": false,
+    "Git_or_remote_mutations": false,
+    "network_or_download_performed": false,
+    "prior_native_human_scopes_unchanged": true
+  }
+}

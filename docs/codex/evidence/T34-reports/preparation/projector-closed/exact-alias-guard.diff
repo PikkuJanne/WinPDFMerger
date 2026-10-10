@@ -1,0 +1,11 @@
+--- initial/Export-T34.py
++++ closed-v2/Export-T34.py
+@@ -52,7 +52,7 @@
+         self.guards = []
+         for entry in self.config.get('local_path_aliases', []):
+             original, alias = entry['original'], entry['alias']
+-            require(isinstance(original, str) and re.fullmatch(r'(?i)[A-Z]:[\\/]projects[\\/]WinPDFMerger-(?:t32-(?:source|artifacts)|t33-public-download|t34-public-download)-[0-9a-f]{32}', original),
++            require(isinstance(original, str) and re.fullmatch(r'(?i)[A-Z]:[\\/]projects[\\/]WinPDFMerger-t34-public-download-[0-9a-f]{32}', original),
+                     'Additional aliases must be exact independently owned T34 public-download UUID roots')
+             require(re.fullmatch(r'<T34_[A-Z0-9_]+>', alias) and entry.get('provenance'), 'Task alias requires a scoped name and provenance')
+             self.aliases.append((original, alias))

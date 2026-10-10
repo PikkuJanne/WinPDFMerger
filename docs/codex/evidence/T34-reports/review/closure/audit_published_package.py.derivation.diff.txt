@@ -1,0 +1,26 @@
+--- frozen-T33/audit_published_package.py
++++ T34/audit_published_package.py
+@@ -1,4 +1,4 @@
+-"""Independent T33 exact published-download accepted-R ZIP audit; no builder imports and no application execution."""
++"""Independent T34 exact published-download accepted-R ZIP audit; no builder imports and no application execution."""
+ from __future__ import annotations
+ 
+ import argparse
+@@ -35,7 +35,7 @@
+     report_path = pathlib.Path(a.report).resolve()
+     review_root = pathlib.Path(__file__).resolve().parent
+     if not report_path.is_relative_to(review_root) or report_path.exists():
+-        raise ValueError("Use a new report under ignored T33-public-download-review; never overwrite an attempt")
++        raise ValueError("Use a new report under ignored T34-public-download-review; never overwrite an attempt")
+     checks: list[dict] = []
+ 
+     def check(label: str, truth: bool) -> None:
+@@ -168,7 +168,7 @@
+     report = {
+         "schema_version": 1, "evidence_class": "independent-package-byte-and-source-audit",
+         "application_executed": False, "native_engines_executed": False,
+-        "task": "T33", "result": "pass_for_exact_published_download_package_bytes" if not issues else "fail_for_exact_published_download_package_bytes",
++        "task": "T34", "result": "pass_for_exact_published_download_package_bytes" if not issues else "fail_for_exact_published_download_package_bytes",
+         "source_commit": a.commit, "source_tree": source_tree, "clean_audit_checkout": status == "",
+         "recorded_expected_zip_sha256": a.expected_zip_sha256, "recorded_expected_checksums_sha256": a.expected_checksums_sha256,
+         "environment": {"system": platform.system(), "release": platform.release(), "machine": platform.machine(), "python": platform.python_version(), "implementation": sys.implementation.name},

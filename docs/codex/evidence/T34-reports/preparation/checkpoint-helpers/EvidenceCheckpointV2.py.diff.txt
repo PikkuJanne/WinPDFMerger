@@ -1,0 +1,64 @@
+--- tests\.work\T33-final-helper-preparation\EvidenceCheckpointV2.py
++++ tests\.work\T34-final-helper-preparation\EvidenceCheckpointV2.py
+@@ -1,13 +1,13 @@
+-"""Normal T33 docs-only checkpoint after an exact independent staged review."""
++"""Normal T34 docs-only checkpoint after an exact independent staged review."""
+ from pathlib import Path
+ import datetime, hashlib, json, subprocess, sys, uuid
+ 
+ repo = Path.cwd().resolve()
+-root = repo/'tests/.work'/('T33-evidence-checkpoint-'+uuid.uuid4().hex)
++root = repo/'tests/.work'/('T34-evidence-checkpoint-'+uuid.uuid4().hex)
+ root.mkdir()
+ R = '95e0a19e6cc5fc01cd4bec4ac15f989f9830840a'
+-BASE = 'f3d8f3c8e8a8c582171c36ff1ceed82d84b09232'
+-MAIN = 'f3d8f3c8e8a8c582171c36ff1ceed82d84b09232'
++BASE = 'b6897ea75037d2d1f1d8ed88e08d214a25d3b143'
++MAIN = 'b6897ea75037d2d1f1d8ed88e08d214a25d3b143'
+ TAG = '7818645de07b902ad8f2b815e90ee1d74d2724d6'
+ branch = 'codex/v1.0.0-release-evidence'
+ sha = lambda data: hashlib.sha256(data).hexdigest()
+@@ -34,15 +34,15 @@
+ assert run('actual-evidence-branch',['git','branch','--show-current']).decode().strip()==branch
+ assert not run('actual-no-unstaged',['git','diff','--name-only','-z'])
+ assert not run('actual-no-untracked',['git','ls-files','--others','--exclude-standard','-z'])
+-manifest=json.loads((repo/'docs/codex/evidence/T33-reports/manifest.json').read_bytes())
++manifest=json.loads((repo/'docs/codex/evidence/T34-reports/manifest.json').read_bytes())
+ expected={'docs/codex/'+p for p in ['TASKS.json','ACCEPTANCE_CASES.json','RELEASE_STATE.json','STATUS.md','NEXT_SESSION.md',
+-                                 'evidence/.gitattributes','evidence/T33-completion.md','evidence/T33-results.json']}
+-expected|={'docs/codex/evidence/T33-reports/'+row['path'] for row in manifest['files']}
+-expected|={'docs/codex/evidence/T33-reports/'+p for p in ['manifest.json','review/public-review.py','review/public-review.json']}
++                                 'evidence/.gitattributes','evidence/T34-completion.md','evidence/T34-results.json']}
++expected|={'docs/codex/evidence/T34-reports/'+row['path'] for row in manifest['files']}
++expected|={'docs/codex/evidence/T34-reports/'+p for p in ['manifest.json','review/public-review.py','review/public-review.json']}
+ assert {p for p in run('actual-staged-paths',['git','diff','--cached','--name-only','-z']).decode('utf-8').split('\0') if p}==expected
+ assert sha(run('actual-reviewed-staged-diff',['git','diff','--cached','--binary']))==review['staged_diff_sha256']
+ run('actual-staged-whitespace',['git','diff','--cached','--check'])
+-run('actual-prepared-records-gate',[sys.executable,'-B','tools/codex/handoff.py','check-plan','--repo','.','--require-prepared'])
++run('actual-prepared-records-gate',[sys.executable,'-B','tools/codex/handoff.py','check-plan','--repo','.','--require-complete'])
+ for label,argv in [('origin-fetch',['git','remote','get-url','--all','origin']),('origin-push',['git','remote','get-url','--push','--all','origin'])]:
+     assert run(label,argv).decode().strip()=='https://github.com/PikkuJanne/WinPDFMerger.git'
+ assert run('live-main-before',['git','ls-remote','--heads','origin','main']).decode().strip()==MAIN+'\trefs/heads/main'
+@@ -62,7 +62,7 @@
+ inventory=json.loads(run('live-release-inventory-before',['gh','api','repos/PikkuJanne/WinPDFMerger/releases?per_page=100','--paginate','--slurp']))
+ assert len(inventory)==1 and len(inventory[0])==1 and inventory[0][0]['id']==408603768
+ release_facts('live-public-release-before');tag_facts('live-tag-before')
+-run('normal-intended-commit',['git','commit','-m','Record published v1.0.0 and verified anonymous Windows download'])
++run('normal-intended-commit',['git','commit','-m','Complete synchronized v1.0.0 project closure'])
+ E=run('actual-checkpoint-head',['git','rev-parse','HEAD']).decode().strip()
+ assert not run('actual-checkpoint-clean',['git','status','--porcelain=v1','--untracked-files=all'])
+ assert all(p.startswith('docs/codex/') for p in run('actual-frozen-source-surface',['git','diff','--name-only','-z',R,E]).decode('utf-8').split('\0') if p)
+@@ -73,10 +73,10 @@
+ tag_facts('live-tag-after');release_facts('live-public-release-after')
+ inventory_after=json.loads(run('live-release-inventory-after',['gh','api','repos/PikkuJanne/WinPDFMerger/releases?per_page=100','--paginate','--slurp']))
+ assert len(inventory_after)==1 and len(inventory_after[0])==1 and inventory_after[0][0]['id']==408603768
+-result={'task':'T33','result':'pass','source_commit':R,'evidence_commit':E,'clean_live_sync':sync,
++result={'task':'T34','result':'pass','source_commit':R,'evidence_commit':E,'clean_live_sync':sync,
+         'staged_paths':len(expected),'R_to_E_only_docs_codex':True,'tag_object_sha':TAG,'live_peeled_commit':R,
+-        'release_id':408603768,'draft':False,'published_at':'2026-10-10T07:12:01Z','next_task':'T34','project_complete':False,
++        'release_id':408603768,'draft':False,'published_at':'2026-10-10T07:12:01Z','next_task':None,'project_complete':False,
+         'independent_staged_review_sha256':sha(reviewraw),'driver_sha256':sha(Path(__file__).read_bytes()),
+         'invocations_sha256':sha((root/'invocations.json').read_bytes())}
+ (root/'checkpoint-result.json').write_text(json.dumps(result,indent=2)+'\n',encoding='utf-8')
+-print(json.dumps({'result':'pass','evidence_commit':E,'root':root.relative_to(repo).as_posix(),'next_task':'T34'}))
++print(json.dumps({'result':'pass','evidence_commit':E,'root':root.relative_to(repo).as_posix(),'next_task':None}))

@@ -1,0 +1,453 @@
+{
+  "schema_version": 1,
+  "task": "T34",
+  "result": "pass_for_unauthenticated_published_release_and_independent_download",
+  "source_commit": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+  "harness_commit": "b6897ea75037d2d1f1d8ed88e08d214a25d3b143",
+  "release_id": 408603768,
+  "release_url": "https://github.com/PikkuJanne/WinPDFMerger/releases/tag/v1.0.0",
+  "published_at": "2026-10-10T07:12:01Z",
+  "draft": false,
+  "prerelease": false,
+  "tag_object_sha": "7818645de07b902ad8f2b815e90ee1d74d2724d6",
+  "zip_sha256": "2b95e90cc3eb3d47b5619710acd1b6cf551769e90ac89813a1dbf0c899c63fc2",
+  "checksums_sha256": "d39084cb335c56bb99fa51424ec5aed2d95179f3c44974c81a68a8d3bf1e01ca",
+  "download_directory": "<T34_PUBLIC_DOWNLOAD>",
+  "download_directory_previously_existed": false,
+  "authentication_used": false,
+  "cookies_used": false,
+  "gh_download_used": false,
+  "assets": [
+    {
+      "name": "SHA256SUMS.txt",
+      "bytes": 90,
+      "sha256": "d39084cb335c56bb99fa51424ec5aed2d95179f3c44974c81a68a8d3bf1e01ca"
+    },
+    {
+      "name": "WinPDFMerger-v1.0.0.zip",
+      "bytes": 193669,
+      "sha256": "2b95e90cc3eb3d47b5619710acd1b6cf551769e90ac89813a1dbf0c899c63fc2"
+    }
+  ],
+  "observed_public_download_counts": {
+    "before": {
+      "SHA256SUMS.txt": 3,
+      "WinPDFMerger-v1.0.0.zip": 3
+    },
+    "after": {
+      "SHA256SUMS.txt": 3,
+      "WinPDFMerger-v1.0.0.zip": 3
+    }
+  },
+  "package_audit": {
+    "path": "tests/.work/T34-closure-review/actual-9b63f6ec6a174df8b2f9434d6303d5c2/downloaded-package-byte-audit.json",
+    "sha256": "7b18cd1f82622b5d9ad6448fcd4247e583f4a6f9d76d6edab66cb0a7a11ffa3e",
+    "checks": 266,
+    "issues": []
+  },
+  "source_sha256": "8d0230650b79c1a5ee7717527320d8d7544510a9f91339ecb640af71a5331c6a",
+  "helper_sha256": "a62c8e001d1379c2444b03e34d5bf064139a52191b25d53a1f531123bff4c9fa",
+  "package_auditor_sha256": "c6f4e066171ae49114b801d1f7095f7d8927347ef1490579649fba6216e6f8b2",
+  "start_utc": "2026-10-10T08:16:43.727075+00:00",
+  "end_utc": "2026-10-10T08:16:49.724831+00:00",
+  "commands": [
+    {
+      "label": "primary-head-before",
+      "argv": [
+        "git",
+        "-C",
+        "<REPO>",
+        "rev-parse",
+        "HEAD"
+      ],
+      "start_utc": "2026-10-10T08:16:43.753539+00:00",
+      "end_utc": "2026-10-10T08:16:43.814259+00:00",
+      "exit_code": 0,
+      "streams": {
+        "stdout": {
+          "path": "tests/.work/T34-closure-review/actual-9b63f6ec6a174df8b2f9434d6303d5c2/primary-head-before.stdout.txt",
+          "bytes": 41,
+          "sha256": "a90b5b2055a2f9deb3b2ab294277166f548e1ff9953fd188ec61ea22c47f4cd4"
+        },
+        "stderr": {
+          "path": "tests/.work/T34-closure-review/actual-9b63f6ec6a174df8b2f9434d6303d5c2/primary-head-before.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "label": "primary-status-before",
+      "argv": [
+        "git",
+        "-C",
+        "<REPO>",
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "start_utc": "2026-10-10T08:16:43.814259+00:00",
+      "end_utc": "2026-10-10T08:16:43.902987+00:00",
+      "exit_code": 0,
+      "streams": {
+        "stdout": {
+          "path": "tests/.work/T34-closure-review/actual-9b63f6ec6a174df8b2f9434d6303d5c2/primary-status-before.stdout.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "path": "tests/.work/T34-closure-review/actual-9b63f6ec6a174df8b2f9434d6303d5c2/primary-status-before.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "label": "frozen-R-release-notes",
+      "argv": [
+        "git",
+        "-C",
+        "<T34_SOURCE>",
+        "show",
+        "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a:docs/RELEASE_NOTES_v1.0.0.md"
+      ],
+      "start_utc": "2026-10-10T08:16:43.902987+00:00",
+      "end_utc": "2026-10-10T08:16:43.953152+00:00",
+      "exit_code": 0,
+      "streams": {
+        "stdout": {
+          "path": "tests/.work/T34-closure-review/actual-9b63f6ec6a174df8b2f9434d6303d5c2/frozen-R-release-notes.stdout.txt",
+          "bytes": 8971,
+          "sha256": "38866d8ab69626f49a5ed50381f839d21dca9e702dbcc59c4338ee37f8894fbd"
+        },
+        "stderr": {
+          "path": "tests/.work/T34-closure-review/actual-9b63f6ec6a174df8b2f9434d6303d5c2/frozen-R-release-notes.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "label": "gate-F-original-helper",
+      "argv": [
+        "<USERPROFILE>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "<REPO>\\tools\\codex\\handoff.py",
+        "verify-release",
+        "--repo",
+        "<REPO>",
+        "--expected-release-commit",
+        "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+        "--expected-zip-sha256",
+        "2b95e90cc3eb3d47b5619710acd1b6cf551769e90ac89813a1dbf0c899c63fc2",
+        "--expected-checksums-sha256",
+        "d39084cb335c56bb99fa51424ec5aed2d95179f3c44974c81a68a8d3bf1e01ca",
+        "--download-dir",
+        "<T34_PUBLIC_DOWNLOAD>"
+      ],
+      "start_utc": "2026-10-10T08:16:45.022181+00:00",
+      "end_utc": "2026-10-10T08:16:47.174949+00:00",
+      "exit_code": 0,
+      "streams": {
+        "stdout": {
+          "path": "tests/.work/T34-closure-review/actual-9b63f6ec6a174df8b2f9434d6303d5c2/gate-F-original-helper.stdout.txt",
+          "bytes": 994,
+          "sha256": "478fdce3e0bfb3b6d9d7889ba1a828d64abdb0b6483b5726de078d59a55452de"
+        },
+        "stderr": {
+          "path": "tests/.work/T34-closure-review/actual-9b63f6ec6a174df8b2f9434d6303d5c2/gate-F-original-helper.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "label": "independent-published-package-byte-audit",
+      "argv": [
+        "<USERPROFILE>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "<REPO>\\tests\\.work\\T34-closure-review\\audit_published_package.py",
+        "--repo",
+        "<T34_SOURCE>",
+        "--commit",
+        "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+        "--artifacts",
+        "<T34_PUBLIC_DOWNLOAD>",
+        "--report",
+        "<REPO>\\tests\\.work\\T34-closure-review\\actual-9b63f6ec6a174df8b2f9434d6303d5c2\\downloaded-package-byte-audit.json",
+        "--require-clean",
+        "--expected-zip-sha256",
+        "2b95e90cc3eb3d47b5619710acd1b6cf551769e90ac89813a1dbf0c899c63fc2",
+        "--expected-checksums-sha256",
+        "d39084cb335c56bb99fa51424ec5aed2d95179f3c44974c81a68a8d3bf1e01ca"
+      ],
+      "start_utc": "2026-10-10T08:16:47.174949+00:00",
+      "end_utc": "2026-10-10T08:16:49.190767+00:00",
+      "exit_code": 0,
+      "streams": {
+        "stdout": {
+          "path": "tests/.work/T34-closure-review/actual-9b63f6ec6a174df8b2f9434d6303d5c2/independent-published-package-byte-audit.stdout.txt",
+          "bytes": 294,
+          "sha256": "8e12c77831a6a225550c768433a547399fed151e30b72f2b7255111bc1e67ef2"
+        },
+        "stderr": {
+          "path": "tests/.work/T34-closure-review/actual-9b63f6ec6a174df8b2f9434d6303d5c2/independent-published-package-byte-audit.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "label": "primary-head-after",
+      "argv": [
+        "git",
+        "-C",
+        "<REPO>",
+        "rev-parse",
+        "HEAD"
+      ],
+      "start_utc": "2026-10-10T08:16:49.593365+00:00",
+      "end_utc": "2026-10-10T08:16:49.644853+00:00",
+      "exit_code": 0,
+      "streams": {
+        "stdout": {
+          "path": "tests/.work/T34-closure-review/actual-9b63f6ec6a174df8b2f9434d6303d5c2/primary-head-after.stdout.txt",
+          "bytes": 41,
+          "sha256": "a90b5b2055a2f9deb3b2ab294277166f548e1ff9953fd188ec61ea22c47f4cd4"
+        },
+        "stderr": {
+          "path": "tests/.work/T34-closure-review/actual-9b63f6ec6a174df8b2f9434d6303d5c2/primary-head-after.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "label": "primary-status-after",
+      "argv": [
+        "git",
+        "-C",
+        "<REPO>",
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "start_utc": "2026-10-10T08:16:49.644853+00:00",
+      "end_utc": "2026-10-10T08:16:49.722863+00:00",
+      "exit_code": 0,
+      "streams": {
+        "stdout": {
+          "path": "tests/.work/T34-closure-review/actual-9b63f6ec6a174df8b2f9434d6303d5c2/primary-status-after.stdout.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "path": "tests/.work/T34-closure-review/actual-9b63f6ec6a174df8b2f9434d6303d5c2/primary-status-after.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    }
+  ],
+  "public_http_requests": [
+    {
+      "method": "GET",
+      "url": "https://api.github.com/repos/PikkuJanne/WinPDFMerger/releases?per_page=100&page=1",
+      "request_headers": {
+        "User-Agent": "WinPDFMerger-T34-independent-public-verifier",
+        "Accept": "application/vnd.github+json",
+        "Cache-Control": "no-cache"
+      },
+      "authentication": false,
+      "cookies": false,
+      "proxy_handler": "explicit empty mapping",
+      "start_utc": "2026-10-10T08:16:43.953152+00:00",
+      "end_utc": "2026-10-10T08:16:44.268182+00:00",
+      "status": 200,
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Sat, 10 Oct 2026 08:16:44 GMT",
+        "ETag": "W/\"3e595f345a1756602c532478a4e0de7ed57570de99256be32a11af30935b5944\"",
+        "X-GitHub-Request-Id": "FA80:23399:786C453:B48D06C:6AC9F46B"
+      },
+      "response_path": "tests/.work/T34-closure-review/actual-9b63f6ec6a174df8b2f9434d6303d5c2/before-releases-page1.json",
+      "bytes": 13895,
+      "sha256": "5290d886e4becd7cea72da47422dee6ea912e21768cbea786ae728ede62f0f8d"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.github.com/repos/PikkuJanne/WinPDFMerger/releases/408603768/assets?per_page=100&page=1",
+      "request_headers": {
+        "User-Agent": "WinPDFMerger-T34-independent-public-verifier",
+        "Accept": "application/vnd.github+json",
+        "Cache-Control": "no-cache"
+      },
+      "authentication": false,
+      "cookies": false,
+      "proxy_handler": "explicit empty mapping",
+      "start_utc": "2026-10-10T08:16:44.269173+00:00",
+      "end_utc": "2026-10-10T08:16:44.520937+00:00",
+      "status": 200,
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Sat, 10 Oct 2026 08:16:44 GMT",
+        "ETag": "W/\"53833c1de80c764ce3683ead4b409a838e39f41ef9b760dce512aad62ddaea2c\"",
+        "X-GitHub-Request-Id": "FBA4:279EA5:762547A:B154B25:6AC9F46C"
+      },
+      "response_path": "tests/.work/T34-closure-review/actual-9b63f6ec6a174df8b2f9434d6303d5c2/before-releases-408603768-assets-page1.json",
+      "bytes": 2989,
+      "sha256": "354ba1cc803ee1da3be697274585ce3e47f7fd141b042fb7c455bcdbb0f7c443"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.github.com/repos/PikkuJanne/WinPDFMerger/git/ref/tags/v1.0.0",
+      "request_headers": {
+        "User-Agent": "WinPDFMerger-T34-independent-public-verifier",
+        "Accept": "application/vnd.github+json",
+        "Cache-Control": "no-cache"
+      },
+      "authentication": false,
+      "cookies": false,
+      "proxy_handler": "explicit empty mapping",
+      "start_utc": "2026-10-10T08:16:44.521934+00:00",
+      "end_utc": "2026-10-10T08:16:44.758278+00:00",
+      "status": 200,
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Sat, 10 Oct 2026 08:16:44 GMT",
+        "ETag": "W/\"7a98c26f15b3e918b0c231b48f7b1ce678ddbbb7c18eec3502f38e17d5689961\"",
+        "X-GitHub-Request-Id": "F0CB:397FAE:7879971:B4556AC:6AC9F46C"
+      },
+      "response_path": "tests/.work/T34-closure-review/actual-9b63f6ec6a174df8b2f9434d6303d5c2/before-tag-ref.json",
+      "bytes": 341,
+      "sha256": "3b52afa9469586c6b22a4d81cebe4de115c4e518a569a9d5d3535442c1e19523"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.github.com/repos/PikkuJanne/WinPDFMerger/git/tags/7818645de07b902ad8f2b815e90ee1d74d2724d6",
+      "request_headers": {
+        "User-Agent": "WinPDFMerger-T34-independent-public-verifier",
+        "Accept": "application/vnd.github+json",
+        "Cache-Control": "no-cache"
+      },
+      "authentication": false,
+      "cookies": false,
+      "proxy_handler": "explicit empty mapping",
+      "start_utc": "2026-10-10T08:16:44.758278+00:00",
+      "end_utc": "2026-10-10T08:16:45.022181+00:00",
+      "status": 200,
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Sat, 10 Oct 2026 08:16:44 GMT",
+        "ETag": "W/\"4ae5ef3762ae2ca919e6b805d11ba0183e0ca5a8e346b852860db090340b8982\"",
+        "X-GitHub-Request-Id": "FC19:300327:76B51AE:B25E5D4:6AC9F46C"
+      },
+      "response_path": "tests/.work/T34-closure-review/actual-9b63f6ec6a174df8b2f9434d6303d5c2/before-annotated-tag.json",
+      "bytes": 679,
+      "sha256": "c8708bf1bdf5bc5f39a1904266203a17e9454ef7a96304f636cb8a18edd2ee30"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.github.com/repos/PikkuJanne/WinPDFMerger/releases?per_page=100&page=1",
+      "request_headers": {
+        "User-Agent": "WinPDFMerger-T34-independent-public-verifier",
+        "Accept": "application/vnd.github+json",
+        "Cache-Control": "no-cache"
+      },
+      "authentication": false,
+      "cookies": false,
+      "proxy_handler": "explicit empty mapping",
+      "start_utc": "2026-10-10T08:16:49.190767+00:00",
+      "end_utc": "2026-10-10T08:16:49.324788+00:00",
+      "status": 200,
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Sat, 10 Oct 2026 08:16:44 GMT",
+        "ETag": "W/\"3e595f345a1756602c532478a4e0de7ed57570de99256be32a11af30935b5944\"",
+        "X-GitHub-Request-Id": "F1BC:985A4:73C14CE:AE267D6:6AC9F471"
+      },
+      "response_path": "tests/.work/T34-closure-review/actual-9b63f6ec6a174df8b2f9434d6303d5c2/after-releases-page1.json",
+      "bytes": 13895,
+      "sha256": "5290d886e4becd7cea72da47422dee6ea912e21768cbea786ae728ede62f0f8d"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.github.com/repos/PikkuJanne/WinPDFMerger/releases/408603768/assets?per_page=100&page=1",
+      "request_headers": {
+        "User-Agent": "WinPDFMerger-T34-independent-public-verifier",
+        "Accept": "application/vnd.github+json",
+        "Cache-Control": "no-cache"
+      },
+      "authentication": false,
+      "cookies": false,
+      "proxy_handler": "explicit empty mapping",
+      "start_utc": "2026-10-10T08:16:49.324788+00:00",
+      "end_utc": "2026-10-10T08:16:49.411982+00:00",
+      "status": 200,
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Sat, 10 Oct 2026 08:16:44 GMT",
+        "ETag": "W/\"53833c1de80c764ce3683ead4b409a838e39f41ef9b760dce512aad62ddaea2c\"",
+        "X-GitHub-Request-Id": "ECD2:1741:6168425:92D48F7:6AC9F471"
+      },
+      "response_path": "tests/.work/T34-closure-review/actual-9b63f6ec6a174df8b2f9434d6303d5c2/after-releases-408603768-assets-page1.json",
+      "bytes": 2989,
+      "sha256": "354ba1cc803ee1da3be697274585ce3e47f7fd141b042fb7c455bcdbb0f7c443"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.github.com/repos/PikkuJanne/WinPDFMerger/git/ref/tags/v1.0.0",
+      "request_headers": {
+        "User-Agent": "WinPDFMerger-T34-independent-public-verifier",
+        "Accept": "application/vnd.github+json",
+        "Cache-Control": "no-cache"
+      },
+      "authentication": false,
+      "cookies": false,
+      "proxy_handler": "explicit empty mapping",
+      "start_utc": "2026-10-10T08:16:49.412976+00:00",
+      "end_utc": "2026-10-10T08:16:49.491668+00:00",
+      "status": 200,
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Sat, 10 Oct 2026 08:16:44 GMT",
+        "ETag": "W/\"7a98c26f15b3e918b0c231b48f7b1ce678ddbbb7c18eec3502f38e17d5689961\"",
+        "X-GitHub-Request-Id": "FB4C:3075E3:7B62BF1:B8B542A:6AC9F471"
+      },
+      "response_path": "tests/.work/T34-closure-review/actual-9b63f6ec6a174df8b2f9434d6303d5c2/after-tag-ref.json",
+      "bytes": 341,
+      "sha256": "3b52afa9469586c6b22a4d81cebe4de115c4e518a569a9d5d3535442c1e19523"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.github.com/repos/PikkuJanne/WinPDFMerger/git/tags/7818645de07b902ad8f2b815e90ee1d74d2724d6",
+      "request_headers": {
+        "User-Agent": "WinPDFMerger-T34-independent-public-verifier",
+        "Accept": "application/vnd.github+json",
+        "Cache-Control": "no-cache"
+      },
+      "authentication": false,
+      "cookies": false,
+      "proxy_handler": "explicit empty mapping",
+      "start_utc": "2026-10-10T08:16:49.491668+00:00",
+      "end_utc": "2026-10-10T08:16:49.593365+00:00",
+      "status": 200,
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Sat, 10 Oct 2026 08:16:44 GMT",
+        "ETag": "W/\"4ae5ef3762ae2ca919e6b805d11ba0183e0ca5a8e346b852860db090340b8982\"",
+        "X-GitHub-Request-Id": "F2FC:2F4446:7628228:B15DC36:6AC9F471"
+      },
+      "response_path": "tests/.work/T34-closure-review/actual-9b63f6ec6a174df8b2f9434d6303d5c2/after-annotated-tag.json",
+      "bytes": 679,
+      "sha256": "c8708bf1bdf5bc5f39a1904266203a17e9454ef7a96304f636cb8a18edd2ee30"
+    }
+  ],
+  "child_environment_removed_variable_names": [],
+  "remote_mutations": false,
+  "application_executed": false,
+  "downloaded_package_native_smoke": "not reexecuted; requires independent exact-hash linkage to accepted T33 native/PDF proof",
+  "child_proxy_bypass": "NO_PROXY=*; independent API uses empty ProxyHandler",
+  "manual_acceptance": "excluded/unperformed; never pass",
+  "issues": []
+}

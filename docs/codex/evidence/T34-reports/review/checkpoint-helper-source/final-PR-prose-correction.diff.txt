@@ -1,0 +1,11 @@
+--- initial-preparation-CreateEvidencePRV2.py
++++ actual-reviewed-CreateEvidencePRV2.py
+@@ -38,7 +38,7 @@
+ existing = json.loads(run('open-head-PRs', ['gh', 'pr', 'list', '--repo', target, '--head', branch, '--state', 'open', '--json', 'number,url,state,isDraft,headRefOid,baseRefName']))
+ assert len(existing) <= 1
+ body = root / 'body.md'
+-body.write_text('''Closes the completed WinPDFMerger v1.0.0 project with synchronized documentation and evidence. The owner’s PR #30 merge is preserved. Release source `95e0a19e6cc5fc01cd4bec4ac15f989f9830840a`, the annotated tag, published notes and both assets remain frozen; all subsequent changes are under docs/codex/.
++body.write_text('''Records final WinPDFMerger v1.0.0 closure documentation and evidence. The owner’s PR #30 merge is preserved. Release source `95e0a19e6cc5fc01cd4bec4ac15f989f9830840a`, the annotated tag, published notes and both assets remain frozen; all subsequent changes are under docs/codex/.
+ 
+ Validation: reviewed prior exact-source regression (1072 passes per required shell), published-download operation (25 actual Windows scenarios, 21 PDFs/106 pages) and source safety; fresh anonymous download of both accepted hashes; independent closure, public byte/privacy and staged diff reviews; complete plan gate. All 34 tasks and 74 required cases have evidence; four optional cases remain excluded, including AC058, which was unperformed and never passed.
+ 
