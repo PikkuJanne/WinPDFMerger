@@ -1,0 +1,46 @@
+{
+  "task": "T32",
+  "access_date_utc": "2026-10-10",
+  "mechanism": "Read-only web opens of primary vendor pages and official GitHub advisory/release pages",
+  "source_commit": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+  "sources": [
+    {
+      "url": "https://learn.microsoft.com/en-us/powershell/scripting/install/powershell-support-lifecycle?view=powershell-7.6",
+      "observation": "Microsoft lists 7.6.6 as the current LTS update and 2028-11-14 as the 7.6 support end date; only current serviced updates on supported host operating systems receive support. Windows PowerShell follows its Windows host lifecycle."
+    },
+    {
+      "url": "https://github.com/PowerShell/Announcements/issues/98",
+      "observation": "The official September 11 advisory identifies 7.6.6 as patched for CVE-2026-62801. This specific fix does not establish freedom from all vulnerabilities."
+    },
+    {
+      "url": "https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/tag/gs10080",
+      "observation": "The official page identifies Ghostscript/GhostPDL 10.08.0, released September 8, and marks it Latest at this observation. The project retains the separately tested pin rather than treating a version string as executable authentication."
+    },
+    {
+      "url": "https://www.ghostscript.com/releases/cve/index.html",
+      "observation": "The vendor table lists CVE-2026-19547 and CVE-2026-39919 as fixed in 10.08.0; no comprehensive security assurance is inferred."
+    },
+    {
+      "url": "https://www.pdflabs.com/tools/pdftk-server/",
+      "observation": "The vendor supplies a Windows 10/11 installer and pdftk-2.02-src.zip. Vendor download availability does not establish project validation on Windows 10 or absence of security defects."
+    },
+    {
+      "url": "https://www.pdflabs.com/docs/pdftk-license/",
+      "observation": "The vendor describes GPL version 2 and separate redistribution terms. The application package excludes vendor executables and directs users to applicable vendor terms; this review is attribution and routing, not a legal exemption determination."
+    },
+    {
+      "url": "https://www.ghostscript.com/releases/gsdnld.html",
+      "observation": "Ghostscript's vendor download page describes open source AGPL and commercial licensing alternatives."
+    },
+    {
+      "url": "https://artifex.com/licensing",
+      "observation": "Artifex describes AGPLv3 and commercial licenses, with compliance obligations. This supports the frozen dependency attribution without implying that separate installation removes every licensing obligation."
+    }
+  ],
+  "result": "pass_for_dated_vendor_claims_recheck",
+  "issues": [],
+  "limitations": [
+    "These are dated online vendor observations, not new native execution, authenticity proof, future support assurances or guarantees of security.",
+    "Exact R public docs retain their original 2026-10-09 observation dates; no runtime or packaged source file was edited."
+  ]
+}

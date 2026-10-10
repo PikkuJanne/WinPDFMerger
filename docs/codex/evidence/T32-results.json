@@ -1,0 +1,414 @@
+{
+  "schema_version": 1,
+  "task": "T32",
+  "result": "pass",
+  "acceptance_ids": [
+    "AC073",
+    "AC074"
+  ],
+  "evidence_class": "exact_frozen_R_Windows_package_operation_annotated_tag_and_unpublished_draft",
+  "observed_at_utc": "2026-10-10T04:02:11.488932+00:00",
+  "release_source_commit_R": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+  "accepted_git_tree": "5014f5bdf4f374aee828ced4c39cb93bfeb6465a",
+  "actual_harness_evidence_commit": "ab0c64530993eaf006fd05a4dcbe10a29b5719b3",
+  "owner_merged_main": "4f14ce5458ad0101c4f555fd7de1780f50a765d6",
+  "assets": [
+    {
+      "name": "WinPDFMerger-v1.0.0.zip",
+      "bytes": 193669,
+      "sha256": "2b95e90cc3eb3d47b5619710acd1b6cf551769e90ac89813a1dbf0c899c63fc2"
+    },
+    {
+      "name": "SHA256SUMS.txt",
+      "bytes": 90,
+      "sha256": "d39084cb335c56bb99fa51424ec5aed2d95179f3c44974c81a68a8d3bf1e01ca"
+    }
+  ],
+  "build": {
+    "clean_detached_R": true,
+    "payload_files": 15,
+    "zip_entries": 16,
+    "canonical_host": "Windows PowerShell 5.1",
+    "same_environment_repeat_byte_identical": true,
+    "cross_host_reproducibility_claimed": false
+  },
+  "hosts": {
+    "PS51": {
+      "report": "docs/codex/evidence/T32-reports/operation/PS51-reports/result.json",
+      "raw_report_sha256": "df31e44ade6ac70c53ffe21172860ff2a33c27b9887705da2c9f8ae4de4a06f0",
+      "application_cases": 14,
+      "captured_invocations": 54,
+      "environment": {
+        "shell_version": "5.1.26100.9444",
+        "shell_edition": "Desktop",
+        "process_64_bit": true,
+        "os_version": "10.0.26300.0",
+        "edition": "Professional",
+        "display_version": "26H2",
+        "full_build": "26300.9457",
+        "is_administrator": false,
+        "policy": [
+          {
+            "scope": "MachinePolicy",
+            "policy": "Undefined"
+          },
+          {
+            "scope": "UserPolicy",
+            "policy": "Undefined"
+          },
+          {
+            "scope": "Process",
+            "policy": "RemoteSigned"
+          },
+          {
+            "scope": "CurrentUser",
+            "policy": "Undefined"
+          },
+          {
+            "scope": "LocalMachine",
+            "policy": "Undefined"
+          }
+        ]
+      },
+      "reader_versions": {
+        "python": "3.12.14",
+        "reportlab": "4.4.9",
+        "pypdf": "6.10.0",
+        "pillow": "12.3.0",
+        "pypdfium2": "5.13.0",
+        "pdfium": "153.0.7999.0"
+      },
+      "source_guard": {
+        "expected_head": true,
+        "status_unchanged": true,
+        "clean": true,
+        "driver_unchanged": true,
+        "approved_cache_unchanged": true,
+        "candidate_assets_unchanged": true,
+        "parent_environment_unchanged": true
+      },
+      "case_results": [
+        {
+          "case": "default-screen",
+          "exit_code": 0,
+          "email_state": "published",
+          "package_guard": true,
+          "source_foreign_guard": true
+        },
+        {
+          "case": "ebook-output",
+          "exit_code": 0,
+          "email_state": "published",
+          "package_guard": true,
+          "source_foreign_guard": true
+        },
+        {
+          "case": "skip-email",
+          "exit_code": 0,
+          "email_state": "skipped",
+          "package_guard": true,
+          "source_foreign_guard": true
+        },
+        {
+          "case": "skip-ignored-preset",
+          "exit_code": 0,
+          "email_state": "skipped",
+          "package_guard": true,
+          "source_foreign_guard": true
+        },
+        {
+          "case": "tiny-no-benefit",
+          "exit_code": 0,
+          "email_state": "no_size_benefit",
+          "package_guard": true,
+          "source_foreign_guard": true
+        },
+        {
+          "case": "optional-gs-absent",
+          "exit_code": 0,
+          "email_state": "unavailable",
+          "package_guard": true,
+          "source_foreign_guard": true
+        },
+        {
+          "case": "missing-input",
+          "exit_code": 1,
+          "email_state": null,
+          "package_guard": true,
+          "source_foreign_guard": true
+        },
+        {
+          "case": "invalid-preset",
+          "exit_code": 1,
+          "email_state": null,
+          "package_guard": true,
+          "source_foreign_guard": true
+        },
+        {
+          "case": "empty-input",
+          "exit_code": 1,
+          "email_state": null,
+          "package_guard": true,
+          "source_foreign_guard": true
+        },
+        {
+          "case": "corrupt-input",
+          "exit_code": 1,
+          "email_state": null,
+          "package_guard": true,
+          "source_foreign_guard": true
+        },
+        {
+          "case": "gs-resource-failure",
+          "exit_code": 2,
+          "email_state": "failed",
+          "package_guard": true,
+          "source_foreign_guard": true
+        },
+        {
+          "case": "batch-default",
+          "exit_code": 0,
+          "email_state": "published",
+          "package_guard": true,
+          "source_foreign_guard": true
+        },
+        {
+          "case": "batch-empty",
+          "exit_code": 1,
+          "email_state": null,
+          "package_guard": true,
+          "source_foreign_guard": true
+        },
+        {
+          "case": "batch-gs-failure",
+          "exit_code": 2,
+          "email_state": "failed",
+          "package_guard": true,
+          "source_foreign_guard": true
+        }
+      ]
+    },
+    "PS7": {
+      "report": "docs/codex/evidence/T32-reports/operation/PS7-reports/result.json",
+      "raw_report_sha256": "9b1733cca5345efbee695baf9e0a489aec08692a4c1a68c319c278fd2b80acae",
+      "application_cases": 11,
+      "captured_invocations": 51,
+      "environment": {
+        "shell_version": "7.6.6",
+        "shell_edition": "Core",
+        "process_64_bit": true,
+        "os_version": "10.0.26300.0",
+        "edition": "Professional",
+        "display_version": "26H2",
+        "full_build": "26300.9457",
+        "is_administrator": false,
+        "policy": [
+          {
+            "scope": "MachinePolicy",
+            "policy": "Undefined"
+          },
+          {
+            "scope": "UserPolicy",
+            "policy": "Undefined"
+          },
+          {
+            "scope": "Process",
+            "policy": "RemoteSigned"
+          },
+          {
+            "scope": "CurrentUser",
+            "policy": "Undefined"
+          },
+          {
+            "scope": "LocalMachine",
+            "policy": "RemoteSigned"
+          }
+        ]
+      },
+      "reader_versions": {
+        "python": "3.12.14",
+        "reportlab": "4.4.9",
+        "pypdf": "6.10.0",
+        "pillow": "12.3.0",
+        "pypdfium2": "5.13.0",
+        "pdfium": "153.0.7999.0"
+      },
+      "source_guard": {
+        "expected_head": true,
+        "status_unchanged": true,
+        "clean": true,
+        "driver_unchanged": true,
+        "approved_cache_unchanged": true,
+        "candidate_assets_unchanged": true,
+        "parent_environment_unchanged": true
+      },
+      "case_results": [
+        {
+          "case": "default-screen",
+          "exit_code": 0,
+          "email_state": "published",
+          "package_guard": true,
+          "source_foreign_guard": true
+        },
+        {
+          "case": "ebook-output",
+          "exit_code": 0,
+          "email_state": "published",
+          "package_guard": true,
+          "source_foreign_guard": true
+        },
+        {
+          "case": "skip-email",
+          "exit_code": 0,
+          "email_state": "skipped",
+          "package_guard": true,
+          "source_foreign_guard": true
+        },
+        {
+          "case": "skip-ignored-preset",
+          "exit_code": 0,
+          "email_state": "skipped",
+          "package_guard": true,
+          "source_foreign_guard": true
+        },
+        {
+          "case": "tiny-no-benefit",
+          "exit_code": 0,
+          "email_state": "no_size_benefit",
+          "package_guard": true,
+          "source_foreign_guard": true
+        },
+        {
+          "case": "optional-gs-absent",
+          "exit_code": 0,
+          "email_state": "unavailable",
+          "package_guard": true,
+          "source_foreign_guard": true
+        },
+        {
+          "case": "missing-input",
+          "exit_code": 1,
+          "email_state": null,
+          "package_guard": true,
+          "source_foreign_guard": true
+        },
+        {
+          "case": "invalid-preset",
+          "exit_code": 1,
+          "email_state": null,
+          "package_guard": true,
+          "source_foreign_guard": true
+        },
+        {
+          "case": "empty-input",
+          "exit_code": 1,
+          "email_state": null,
+          "package_guard": true,
+          "source_foreign_guard": true
+        },
+        {
+          "case": "corrupt-input",
+          "exit_code": 1,
+          "email_state": null,
+          "package_guard": true,
+          "source_foreign_guard": true
+        },
+        {
+          "case": "gs-resource-failure",
+          "exit_code": 2,
+          "email_state": "failed",
+          "package_guard": true,
+          "source_foreign_guard": true
+        }
+      ]
+    }
+  },
+  "native_tools": {
+    "PDFtk": "2.02",
+    "Ghostscript": "10.08.0"
+  },
+  "independent_reviews": {
+    "package_checks": 269,
+    "operation_checks": 5617,
+    "decoded_image_checks": 1360,
+    "PDFs": 21,
+    "PDF_pages": 106,
+    "issues": [],
+    "independent_draft_checks": 30,
+    "independent_downloaded_package_checks": 266
+  },
+  "tag": {
+    "name": "v1.0.0",
+    "annotated": true,
+    "object_sha": "7818645de07b902ad8f2b815e90ee1d74d2724d6",
+    "live_peeled_commit": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a"
+  },
+  "draft": {
+    "id": 408603768,
+    "url": "https://github.com/PikkuJanne/WinPDFMerger/releases/tag/untagged-f7a5262a2e7c231e1f40",
+    "draft": true,
+    "prerelease": false,
+    "published_at": null,
+    "authenticated_redownload_matches_both_accepted_hashes": true,
+    "independent_redownload_review": {
+      "path": "docs/codex/evidence/T32-reports/review/draft-independent-408603768-2723d5699d73425a9e4b0b1c0c277c91/draft-gate-review.json",
+      "raw_sha256": "1fb108229e1ce84dc774cdcacee367711747f291be679d382663882de831bb9d"
+    }
+  },
+  "references": {
+    "build": {
+      "path": "docs/codex/evidence/T32-reports/build/final/build-result.json",
+      "raw_sha256": "e8964025eaac7e8986a6944ff388c2a249daf5fbd50dbb031b090426c27415a8"
+    },
+    "actual_operation": {
+      "path": "docs/codex/evidence/T32-reports/operation/invocations.json",
+      "raw_sha256": "44fa021c70e60cda39812f8ff53ce418be25aee6c56ba9b026d21bb276b5663c"
+    },
+    "package_review": {
+      "path": "docs/codex/evidence/T32-reports/review/originals/final-package-byte-audit.json",
+      "raw_sha256": "533f703ae53e8db71e8ee784fffa3dbb063271d8f8aa0703a19e02193f657ad0"
+    },
+    "operation_review": {
+      "path": "docs/codex/evidence/T32-reports/review/originals/final-operation-gate-binding.json",
+      "raw_sha256": "f94f93020cb9eb99fc49a6b1709cebba91f3195a0e71f3e82ba7d241b95f559e"
+    },
+    "decoded_image_review": {
+      "path": "docs/codex/evidence/T32-reports/review/originals/final-decoded-image-report.json",
+      "raw_sha256": "f168b65e3eafade5b31e1a7c581ddc71ca84d3682842e7acc507f5ea2cbf2513"
+    },
+    "tag_draft_transaction": {
+      "path": "docs/codex/evidence/T32-reports/tag-draft/actual/transaction.json",
+      "raw_sha256": "88c12d3e40fa282b50cb625c87ab62fb75d32193745159cd38b24cbef2a1059a"
+    },
+    "independent_draft_review": {
+      "path": "docs/codex/evidence/T32-reports/review/draft-independent-408603768-2723d5699d73425a9e4b0b1c0c277c91/draft-gate-review.json",
+      "raw_sha256": "1fb108229e1ce84dc774cdcacee367711747f291be679d382663882de831bb9d"
+    }
+  },
+  "public_manifest": {
+    "path": "docs/codex/evidence/T32-reports/manifest.json",
+    "sha256": "72698deaf9667c8438727f318325d82d823f846198da03042eb67f0297f27763",
+    "payloads": 981
+  },
+  "public_review": {
+    "path": "docs/codex/evidence/T32-reports/review/public-review.json",
+    "sha256": "0df5e0bbb9609526a3999359e11a6622f72a070edcdbdcd19120facf743a4e8c"
+  },
+  "retained_preparation_failures": [
+    "Original build capture stopped before invoking builder on an overly strict checkout CRLF/LF equality assertion; separate reviewed V2 aligns with frozen builder and passes seven guard probes.",
+    "Independent reviewer inverse-delta reconstruction initially left one extra blank line; original report retained and separately corrected review passes.",
+    "Read-only platform preparation queried one nonexistent filename; original command failure retained and scoped review closes the assumption."
+  ],
+  "human_acceptance": "AC058 excluded/nonrequired/unperformed; never pass",
+  "release_state": "prepared",
+  "publication_claimed": false,
+  "project_complete": false,
+  "next_task": "T33",
+  "limitations": [
+    "All execution is automated on the recorded Windows x64 host; token facts imply no human account class, Explorer/viewer pass or Insider enrollment.",
+    "Existing Windows10/liveUNC/ARM/32-bit-host exclusions remain; scripts are unsigned; no universal PDF preservation/PDF-A/signature/malware-removal claim.",
+    "The controlled child Ghostscript resource fault is disclosed; developer/synthetic tests are separate from native scenario and independent inspection evidence.",
+    "T33 publication/independent public download/Windows smoke and T34 synchronized closure remain required.",
+    "Final docs-only normal commit/push/live-clean proof follows these records and is reported by the session; no future checkpoint hash is claimed."
+  ]
+}

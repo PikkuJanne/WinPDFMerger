@@ -1,0 +1,11 @@
+--- tests\.work\T32-review\source-preparation\review.py
++++ tests\.work\T32-review\source-preparation-v2\review.py
+@@ -68,7 +68,7 @@
+     original = h.replace('Operate an exact final-R ZIP', 'Operate an exact candidate ZIP')
+     original = original.replace('\nT32 derivative of the frozen T29 harness. Legacy candidate field/CLI names and\noriginal synthetic fault tokens stay stable; the accepted release source is fixed.\n', '')
+     original = original.replace('ACCEPTED_SOURCE = "' + R + '"\n', '')
+-    original = original.replace('\n\ndef require_release_source(source: str) -> None:\n    require(source == ACCEPTED_SOURCE, "Exact accepted release source R required; historical candidate cannot substitute")', '')
++    original = original.replace('\n\ndef require_release_source(source: str) -> None:\n    require(source == ACCEPTED_SOURCE, "Exact accepted release source R required; historical candidate cannot substitute")\n', '')
+     original = original.replace('    require_release_source(arguments.candidate_source_commit)\n', '')
+     original = original.replace('"task": "T32", "evidence_class": "actual_final_R_package_operation"', '"task": "T29", "evidence_class": "actual_candidate_package_operation"')
+     check('all baseline scenarios/native argv/source/PDF safeguards preserved exactly', original.encode() == baseline)

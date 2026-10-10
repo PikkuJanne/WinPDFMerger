@@ -1,0 +1,118 @@
+--- T32-WriteCompletionV2.py
++++ T32-WriteCompletionV3.py
+@@ -111,21 +111,21 @@
+         (target/name).write_text(json.dumps(obj,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
+     completion = f'''# T32 exact assets, annotated tag and draft
+ 
+-AC073/AC074 pass for frozen R `{R}`. The final ZIP is193669 bytes,
+-SHA-256 `{ZIP}`; the whole90 byte SHA256 SUMS file is
++AC073/AC074 pass for frozen R `{R}`. The final ZIP is 193669 bytes,
++SHA-256 `{ZIP}`; the whole 90 byte SHA256SUMS.txt file is
+ `{SUMS}`. Clean detached checkout at R PS 5.1 canonical and repeat builds
+-produce identical bytes. Fifteen tracked payloads plus BUILD_INFO give16 ZIP entries;
+-independent269 checks verify exact Git blobs, provenance, safe paths and inventory.
+-
+-The SAME final pair passes14 actual PS 5.1 and11 pinned PS 7.6.6 application scenarios,
++produce identical bytes. Fifteen tracked payloads plus BUILD_INFO give 16 ZIP entries;
++independent 269 checks verify exact Git blobs, provenance, safe paths and inventory.
++
++The SAME final pair passes 14 actual PS 5.1 and 11 pinned PS 7.6.6 application scenarios,
+ including batch/default, merge/email/master-only and invalid/native-failure paths.
+-All package/source/foreign/cache348/environment/driver guards pass. Observed host
+-is Windows Professional26 H2 build26300.9457 x64, nonadministrator token;
++All package/source/foreign/cache 348/environment/driver guards pass. Observed host
++is Windows Professional 26H2 build 26300.9457 x 64, nonadministrator token;
+ PS 5.1.26100.9444 Desktop and PS 7.6.6 Core, PDFtk 2.02 and Ghostscript 10.08.0.
+ Process-only RemoteSigned obeys the observed GPO; no persistent policy/security,
+ elevation or dependency installation changes occur.
+ 
+-Independent5617 receipt/PDF checks inspect21 PDFs/106 pages;1360 focused decoded-image
++Independent 5617 receipt/PDF checks inspect 21 PDFs/106 pages;1360 focused decoded-image
+ checks and six Poppler contact-sheet reviews pass. Root additionally inspects two
+ actual sheets. Expected page IDs/order, geometry, nonblank rendering, master survival
+ and source preservation pass; compression differences and PDF preservation limits
+@@ -145,7 +145,7 @@
+ separate reviewed corrections pass. Actual capture commands, raw/public hashes,
+ versions, outcomes, limits and independent reviews are in T32-results and T32-reports.
+ 
+-Cases70 pass/4 excluded/4 not_run;T01-T32 done. AC058 is owner-excluded/nonrequired/
++Cases 70 pass/4 excluded/4 not_run;T01-T32 done. AC058 is owner-excluded/nonrequired/
+ unperformed, never passed. Unsigned and existing platform/PDF/privacy limits remain.
+ RELEASE_STATE is prepared, public URL/time null. T33 publication/public download and
+ Windows smoke, then T34 synchronized closure, remain required. The project is not done.
+@@ -155,7 +155,7 @@
+     (target/'evidence/T32-completion.md').write_text(completion,encoding='utf-8')
+     (target/'STATUS.md').write_text(f'''# Project status
+ 
+-T01-T32 are done within owner-amended scope. Current milestone M6; T33 is next.
++T01-T32 are done within owner-amended scope. Current milestone M 6; T33 is next.
+ The project is not complete. RELEASE_STATE is prepared; v1.0.0 remains a draft.
+ 
+ Accepted immutable release source R is `{R}`, tree `5014f5b`. T31 exact-R
+@@ -165,35 +165,35 @@
+ public docs, allowlist and builder stay frozen; later changes are docs/codex only
+ on codex/v1.0.0-release-evidence. Historical failures remain preserved.
+ 
+-AC073/074 pass: cleanR finalassets, identical same-host repeat build,269 package
+-checks; same exact ZIP operates in25 actual Windows scenarios across PS 5.1.26100.9444
+-and pinned PS 7.6.6 with real PDFtk 2.02/GS 10.08.0. All source/package/cache348 guards
+-pass. Independent5617 operation/PDF checks inspect21 PDF106 pages;1360 decoded-image
++AC073/074 pass: clean R final assets, identical same-host repeat build,269 package
++checks; same exact ZIP operates in 25 actual Windows scenarios across PS 5.1.26100.9444
++and pinned PS 7.6.6 with real PDFtk 2.02/GS 10.08.0. All source/package/cache 348 guards
++pass. Independent 5617 operation/PDF checks inspect 21 PDF 106 pages;1360 decoded-image
+ checks and six rendered contact sheets pass. Live annotated v1.0.0 peels to R;
+-one unpublished draft with exact2 assets passes independent authenticated redownload.
++one unpublished draft with exact 2 assets passes independent authenticated redownload.
+ See evidence/T32-completion.md, T32-results.json and frozen T32-reports.
+ 
+ ZIP SHA256 `{ZIP}`.
+ Whole checksum-file SHA256 `{SUMS}`.
+-Cases70 pass/4 excluded/4 later not_run. AC058 excluded/nonrequired/unperformed,
++Cases 70 pass/4 excluded/4 later not_run. AC058 excluded/nonrequired/unperformed,
+ never pass; no human account-class/Explorer/viewer or Insider-enrollment inference.
+ Unsigned/dependency/PDF/signature/PDF-A/privacy and existing platform limits remain.
+ Final evidence commit/push/clean-live proof follows records and is reported in-session.
+ 
+-T33 final publication/independent publicdownload/actual Windows smoke and T34 normal
++T33 final publication/independent public download/actual Windows smoke and T34 normal
+ docs-only evidence merge/synchronized closure remain required. No public release
+ URL/time or project-completion claim is made yet.
+ ''',encoding='utf-8')
+     (target/'NEXT_SESSION.md').write_text(f'''# Next session
+ 
+ Do exactly T33: publish v1.0.0 and independently verify public download/Windows smoke.
+-T01-T32 done;AC073/074 pass. AC075-078 remain not_run;RELEASE_STATEprepared, not published.
++T01-T32 done;AC073/074 pass. AC075-078 remain not_run;RELEASE_STATE prepared, not published.
+ Read AGENTS/INDEX/STATUS, T33 TASKS/brief, RELEASE_RUNBOOK, DEFINITION_OF_DONE,
+ PRODUCT_SPEC/TEST_STRATEGY/SECURITY_AND_DEPENDENCIES and T32 completion/results/reports.
+ 
+ Frozen source R `{R}`; live annotated tag object `{tx['tag_object_sha']}`
+ peels to R. Final ZIP SHA256 `{ZIP}`; complete checksum-file SHA256
+-`{SUMS}`. Exact same pair passes both required Windows shells and native25 scenarios,
++`{SUMS}`. Exact same pair passes both required Windows shells and native 25 scenarios,
+ independent PDF/source audits and draft redownload. Draft ID {tx['draft_id']} at
+ {tx['draft_url']}; draft=true/prerelease=false/published_at null, exactly two assets.
+ Do not rebuild/substitute bytes, move tag, overwrite conflicting assets or create
+@@ -202,7 +202,7 @@
+ Recheck current repo/branch/clean state, canonical origin/live refs, prior final
+ checkpoint proof from session, tag/peel/draft assets/notes/permissions and required
+ evidence. Primary remains codex/v1.0.0-release-evidence; all later edits docs/codex.
+-Owner merged PR28 to main `{M}`; reuse the new open draft M6 evidence PR
++Owner merged PR28 to main `{M}`; reuse the new open draft M 6 evidence PR
+ identified by the live head branch, keeping it unmerged until T34. Preserve all
+ initial rejected-R and preparation failures. R source's old handoff snapshot remains
+ historical; later records carry completed execution without rewriting R.
+@@ -218,10 +218,10 @@
+ 
+ AC058 human standard-user/Explorer/viewer acceptance remains excluded/nonrequired/
+ unperformed, never passed or a package/download gate. Record actual token/environment
+-facts without human/accountclass/Insider inference. No install/elevation/persistent
++facts without human/account class/Insider inference. No install/elevation/persistent
+ policy/security changes. Existing platform and PDF/privacy/signature limits remain.
+ T34 closes records, normal evidence-only PR merge and final clean/live main E with
+-R..E docs/codex-only, while tag stays R. Only after publication, publicdownload smoke
++R..E docs/codex-only, while tag stays R. Only after publication, public download smoke
+ and synchronized closure is the project complete.
+ '''.replace('UNA UTHENTICATED','UNAUTHENTICATED'),encoding='utf-8')
+     print(json.dumps({'task':'T32','result':'pass_for_seven_completion_records','source_commit':R,

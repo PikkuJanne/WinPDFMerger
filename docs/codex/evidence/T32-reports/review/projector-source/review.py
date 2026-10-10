@@ -1,0 +1,39 @@
+"""Read-only prepared T32 text projector source/regression review; never run projection."""
+import ast,hashlib,json,pathlib,datetime,sys
+ROOT=pathlib.Path(__file__).resolve().parent;REPO=ROOT.parents[2]
+OLD=REPO/'tests/.work/T32-export-preparation';FINAL=REPO/'tests/.work/T32-export-final-preparation'
+sha=lambda raw:hashlib.sha256(raw).hexdigest();checks=[];issues=[];bindings={}
+def check(label,value):
+ checks.append({'check':label,'pass':bool(value)})
+ if not value:issues.append(label)
+def bind(path):
+ raw=path.read_bytes();bindings[str(path.relative_to(REPO))]={'bytes':len(raw),'sha256':sha(raw)};return raw
+a,b=bind(OLD/'Export-T32.py'),bind(FINAL/'Export-T32.py');text=b.decode('utf-8');ta,tb=ast.parse(a),ast.parse(b)
+check('initial source preserved exactly',sha(a)=='8209477527d8ed144fc31762863839d451bda93c6d7b4fd4b12ae9143c1f5f8b')
+check('final corrected source exact hash',sha(b)=='e966f37f1a9a10fa9df8aee220d2f14b195c303caf86b49e3c83f2e7b866f93a')
+def methods(tree):return {n.name:n for n in next(n for n in tree.body if isinstance(n,ast.ClassDef) and n.name=='Projector').body if isinstance(n,ast.FunctionDef)}
+ma,mb=methods(ta),methods(tb)
+for name in ('__init__','replace','typed','xml','encode_json','github_metadata','choose','acceptance','select','payloads'):
+ check('privacy/selection/six-gate semantics unchanged '+name,ast.dump(ma[name],include_attributes=False)==ast.dump(mb[name],include_attributes=False))
+check('ordinary original-path Windows reparse ancestors checked',all(value in text for value in ['def ordinary_ancestors(path):',"getattr(candidate, 'is_junction'",'candidate.lstat()','& 0x400','ordinary_ancestors(path)']))
+main=next(n for n in tb.body if isinstance(n,ast.FunctionDef) and n.name=='main');maintext=ast.get_source_segment(text,main)
+check('original destination ordinary check precedes resolve',maintext.index('ordinary_ancestors(destination)')<maintext.index('destination = destination.resolve()'))
+runtext=ast.get_source_segment(text,mb['run'])
+check('owned targets checked before and after directory creation',runtext.count('ordinary_ancestors(target)')==3 and 'target = destination/label; ordinary_ancestors(target)\n                target.parent.mkdir(parents=True, exist_ok=True); ordinary_ancestors(target)' in runtext)
+check('immutable fresh-only writes remain exclusive with declared inventory',"with target.open('xb')" in text and 'Existing packet cannot be rewritten' in text and 'Destination has undeclared files' in text and "destination.is_relative_to(self.repo/'docs/codex/evidence/T32-reports') or destination.is_relative_to(self.work)" in text)
+for root,count in [(OLD,24),(FINAL,28)]:
+ result=json.loads(bind(root/'preparation-result.json'));tests=bind(root/'test_projector.py');ast.parse(tests)
+ stdout,stderr=bind(root/'tests.stdout.txt'),bind(root/'tests.stderr.txt')
+ check(str(count)+' original helper receipt source/streams scope',result['result']=='pass_for_synthetic_projection_checks' and result['exit_code']==0 and result['synthetic_checks']==count and result['producer_sha256']==sha(bind(root/'Export-T32.py')) and result['test_source_sha256']==sha(tests) and result['stdout_sha256']==sha(stdout) and result['stderr_sha256']==sha(stderr) and result['tracked_export_performed'] is False and result['remote_mutations'] is False)
+ check(str(count)+' actual completed synthetic helper checks',('Ran '+str(count)+' tests').encode() in stderr and stderr.rstrip().endswith(b'OK') and b'skipped=' not in stderr)
+finaltests=(FINAL/'test_projector.py').read_text(encoding='utf-8')
+check('meaningful actual local junction refusal/target preservation regression present',all(value in finaltests for value in ['test_real_junction_parent',"['cmd.exe','/d','/c','mklink','/J'",'self.assertEqual(run.returncode,0',"module.ordinary_ancestors(link/'future'/'payload.txt')",'module.ordinary_ancestors(link)','os.rmdir(link)','self.assertTrue(target.is_dir())']))
+check('BOM/XML/key-collision and narrow typed metadata guards reviewed',all(value in text for value in ['Projected JSON key collision','ET.fromstring(raw)','ET.fromstring(public)',"raw.startswith(b'\\xef\\xbb\\xbf')",'Declared identity receipt raw hash changed','Pinned Actions run/head mismatch','Pinned annotated-tag object schema mismatch',"person['email']='<EMAIL>'",'Declared metadata email lacks private local identity']))
+check('explicit task-owned selection and text privacy guard reviewed',all(value in text for value in ['Source must be explicit existing owned work below tests/.work','Every root requires its scoped evidence classification','Every final acceptance gate original must be selected','Binary payload disguised as text','Non-text NUL payload','Private Windows user/computer identity remains','Undeclared private Windows task path remains','Case-insensitive public inventory collision']))
+check('six exact R/samepair actual gates preserve outcome scopes',all(value in text for value in ['accepted_build','accepted_native','accepted_package_review','accepted_operation_review','accepted_tag_draft','accepted_draft_review','All six actual final T32 gate roles required','Both actual shells required',"len(cases)==(14 if shell=='PS51' else 11)","value['application_cases']==25", "value['independent_pdf_count']==21", "value['independent_pdf_pages']==106",'Actual final annotated-R tag and unpublished draft required','Actual independent draft/download review required']))
+check('producer executes no app/build/platform commands',not any(isinstance(n,ast.Name) and n.id in ('subprocess','requests','urllib') for n in ast.walk(tb)) and "'new_application_or_native_execution': False" in text and "'overall_T32_or_release_acceptance_decided_by_producer': False" in text)
+check('final source stable after review',sha((FINAL/'Export-T32.py').read_bytes())==sha(b))
+report={'task':'T32','result':'pass_for_final_typed_projector_source_and_helper_receipts' if not issues else 'fail','source_commit':'95e0a19e6cc5fc01cd4bec4ac15f989f9830840a','issues':issues,'checks_total':len(checks),'checks':checks,'initial_source_sha256':sha(a),'final_source_sha256':sha(b),'file_bindings':bindings,'reviewer_source_sha256':sha(pathlib.Path(__file__).read_bytes()),'recorded_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'resolved_finding':{'initial_source':sha(a),'initial_lines':[260,265,268,280],'finding':'Existing target-parent links/junctions were not checked before packet writes; resolving original CLI destination hid its link spelling.','correction':'Final source validates each original existing path/ancestor for symlink/junction/reparse attributes, checks destination before resolve and target before/after mkdir; raw source ownership uses the same guard.','actual_regression':'Original24 helper checks preserved; final28 passes include real local NTFS junction parent/root refusal and target directory preservation. These remain developer checks.'},'limitations':['No projector/import/main/dry-run/write or application/native/build/remote mutation was executed by this reviewer.','Source review does not accept a nonexistent public packet or decide task/publication completion; actual selected origins, privacy/type invariance, manifest/index/public bytes and references require independent post-export audit.','Narrow email aliases mask only exact raw-hash/index/head/object-pinned local-identifying GitHub metadata email fields; unknown schemas/identities fail closed.','AC058 excluded/unperformed; later publication/public-download operation/closure remain required.']}
+with (ROOT/'projector-source-review.json').open('x',encoding='utf-8') as out:json.dump(report,out,indent=2);out.write('\n')
+print(json.dumps({'result':report['result'],'checks_total':len(checks),'issues':issues,'report_sha256':sha((ROOT/'projector-source-review.json').read_bytes())}))
+sys.exit(0 if not issues else 1)

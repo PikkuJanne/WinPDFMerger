@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "task": "T32",
+  "evidence_class": "explicit-final-operation-gate-binding",
+  "result": "pass",
+  "source_commit": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+  "harness_commit": "ab0c64530993eaf006fd05a4dcbe10a29b5719b3",
+  "zip_sha256": "2b95e90cc3eb3d47b5619710acd1b6cf551769e90ac89813a1dbf0c899c63fc2",
+  "checksums_sha256": "d39084cb335c56bb99fa51424ec5aed2d95179f3c44974c81a68a8d3bf1e01ca",
+  "checks": 5617,
+  "issues": [],
+  "application_cases": 25,
+  "independent_pdf_count": 21,
+  "independent_pdf_pages": 106,
+  "binding_checks": [
+    {
+      "check": "Actual independent auditor completed exit 0",
+      "pass": true
+    },
+    {
+      "check": "Actual final T32 receipt/task scope",
+      "pass": true
+    },
+    {
+      "check": "Exact accepted final source R",
+      "pass": true
+    },
+    {
+      "check": "Actual clean operation harness source",
+      "pass": true
+    },
+    {
+      "check": "Pinned actual independent audit source bytes",
+      "pass": true
+    },
+    {
+      "check": "All 5617 actual independent audit checks pass",
+      "pass": true
+    },
+    {
+      "check": "Actual complete 25 cases / 21 PDFs / 106 independently read pages",
+      "pass": true
+    },
+    {
+      "check": "Independent read-only audit scope; AC058 excluded",
+      "pass": true
+    },
+    {
+      "check": "Actual executed argv binds original report and operation ledger",
+      "pass": true
+    },
+    {
+      "check": "Actual auditor argv independently accepted shared asset hashes",
+      "pass": true
+    },
+    {
+      "check": "Original zip_path bytes still equal accepted asset SHA256",
+      "pass": true
+    },
+    {
+      "check": "Original checksums_path bytes still equal accepted asset SHA256",
+      "pass": true
+    },
+    {
+      "check": "Actual independent audit stdout raw stream receipt SHA256",
+      "pass": true
+    },
+    {
+      "check": "Actual independent audit stderr raw stream receipt SHA256",
+      "pass": true
+    },
+    {
+      "check": "Actual exit-0 audit stdout agrees with original detailed report",
+      "pass": true
+    },
+    {
+      "check": "Current actual audit checkout remains clean recorded harness source",
+      "pass": true
+    }
+  ],
+  "application_reexecuted": false,
+  "manual_acceptance": "excluded/unperformed",
+  "original_auditor_sha256": "6e926e44d99df7839a568589f9d22bda903afcee6c80b38a572908d26c2b476f",
+  "original_audit_report": {
+    "path": "tests/.work/T32-review/final-operation-audit.json",
+    "sha256": "1bbc3f16818e6c5e459e2ca2cd8a4b45010c37864f2aeba966679234592463bb"
+  },
+  "original_audit_execution_receipt": {
+    "path": "tests/.work/T32-final-actions/independent-final-operation-PDF-audit-061fd465ac8a4bf69726a48dc5303d3e/receipt.json",
+    "sha256": "077ffd292655c31c0c53202ccd39331adfbc9953c533087f8a9625bb1e960803"
+  },
+  "original_operation_ledger": {
+    "path": "tests/.work/T32-capture/dabd5f0f2d694c4fab3559133f4965ff/invocations.json",
+    "sha256": "44fa021c70e60cda39812f8ff53ce418be25aee6c56ba9b026d21bb276b5663c"
+  },
+  "binding_source_sha256": "459ae945797a8e732bb31762fadb812fae2555cf174fe1fb977304a95b3e7b4c",
+  "binding_command": [
+    "<USERPROFILE>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "-B",
+    "<REPO>\\tests\\.work\\T32-review\\bind_operation_gate.py",
+    "--audit-report",
+    "<REPO>/tests/.work/T32-review/final-operation-audit.json",
+    "--audit-receipt",
+    "<REPO>/tests/.work/T32-final-actions/independent-final-operation-PDF-audit-061fd465ac8a4bf69726a48dc5303d3e/receipt.json",
+    "--ledger",
+    "<REPO>/tests/.work/T32-capture/dabd5f0f2d694c4fab3559133f4965ff/invocations.json",
+    "--output",
+    "<REPO>/tests/.work/T32-review/final-operation-gate-binding.json"
+  ],
+  "limitations": [
+    "This wrapper binds existing actual audit execution; no new application/native test or manual acceptance.",
+    "Tag/draft/download/publication and closure remain separate gates."
+  ]
+}

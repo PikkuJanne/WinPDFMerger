@@ -1,0 +1,11 @@
+# T32 independent actual final package byte review
+
+PASS for the exact final package bytes: 269 independent checks, no issues. This review used the clean detached checkout at accepted R `95e0a19e6cc5fc01cd4bec4ac15f989f9830840a`, tree `5014f5bdf4f374aee828ced4c39cb93bfeb6465a`. All 15 tracked allowlist payloads match the committed Git blob bytes. Generated `BUILD_INFO.json` makes 16 ZIP entries and records the same source, reviewed builder/allowlist/contract hashes, actual build environment and file inventory.
+
+The canonical ZIP is 193,669 bytes, SHA256 `2b95e90cc3eb3d47b5619710acd1b6cf551769e90ac89813a1dbf0c899c63fc2`. Complete `SHA256SUMS.txt` is 90 bytes, SHA256 `d39084cb335c56bb99fa51424ec5aed2d95179f3c44974c81a68a8d3bf1e01ca`. The separately built repeat in the same Windows PowerShell 5.1 environment has identical bytes for both assets. This proves the recorded same-environment repeat, without claiming cross-environment byte identity.
+
+The auditor checked exact inventory, source and provenance, normalized unique safe paths, regular and nonencrypted ZIP entries, CRC, fixed ZIP metadata, version, checksum line and local packaged documentation links. Both assets and clean R checkout remained unchanged throughout this read-only audit. The actual auditor invocation, timestamps, exit 0 and original stdout/stderr hashes are retained in `tests/.work/T32-final-actions/independent-final-package-byte-audit-b82b5dea3d264bd6a282826003e86872/receipt.json`.
+
+Report: `tests/.work/T32-review/final-package-byte-audit.json`, SHA256 `533f703ae53e8db71e8ee784fffa3dbb063271d8f8aa0703a19e02193f657ad0`. Auditor: `tests/.work/T32-review/audit_final_package.py`, SHA256 `8bfc2e3f6dcdf02e7ed26d2eaee7fe98f9ad5fcb055bd5853ef7bccbb4c1cbc1`; exact preparation delta and base hashes are retained alongside it.
+
+No application, PDFtk or Ghostscript was executed by this review. Actual final-package operation in both required shells and independent retained-PDF inspection remain the rest of AC073. Annotated tag, draft and authenticated asset redownload are AC074; publication, independent published download operation and synchronized closure remain later gates. AC058 remains excluded/unperformed, never passed.

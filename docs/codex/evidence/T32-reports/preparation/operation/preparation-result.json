@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "task": "T32",
+  "result": "pass",
+  "source_commit": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+  "observed_primary_commit": "ab0c64530993eaf006fd05a4dcbe10a29b5719b3",
+  "observed_primary_branch": "codex/v1.0.0-release-evidence",
+  "observed_primary_dirty_state": "",
+  "baseline_capture_blob_sha256": "2a32bef97ca70a7ec72071ddbf4ed52c31b08962472b49e9e45b8e333aa61fe8",
+  "source_sha256": {
+    "final_package_smoke.py": "080016af3ec0e579d648d75d584306d9d7e25a854079c1ce1a5df6bd90ce99e5",
+    "capture-T32.py": "02811fe05e6fbc5955634fc5ed62d4f3650834bd0fce60c4c62c806093b8557a",
+    "test_final_operation.py": "2b533e6133b1e3c2f51bd7f9d8dbd7e6977c6257d54aec87f65f81494a59eb46",
+    "test_inherited_safety.py": "ed5483a3cc4c1eba57dcb5ff43d62daa7059715358ba40d7b210f8e39759a3c3",
+    "harness-derivation.diff": "92972a6e1542ece68c97b69a3c748b15bc92169626d060f5bb89301e2681b7f8",
+    "capture-derivation.diff": "a9c6f650167cd719efd067651442fe5bc1f39daee571da7e3390c430f61133bb",
+    "derivation.json": "85209f69ede7de20c051208e69dfcc09d2f0db3595e8946063b5338f57916cdb"
+  },
+  "commands": [
+    {
+      "label": "helper-regressions",
+      "argv": [
+        "<USERPROFILE>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "<REPO>\\tests\\.work\\T32-operation-preparation",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "start_utc": "2026-10-10T03:25:26.674505+00:00",
+      "end_utc": "2026-10-10T03:25:27.061135+00:00",
+      "exit_code": 0,
+      "streams": {
+        "stdout": {
+          "path": "helper-regressions.stdout.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "path": "helper-regressions.stderr.txt",
+          "bytes": 3252,
+          "sha256": "d8323bb74ff02047dbe324eec7315b3c97a9418cdd74a1a67bb231cc8d440b81"
+        }
+      }
+    },
+    {
+      "label": "capture-interface",
+      "argv": [
+        "<USERPROFILE>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "<REPO>\\tests\\.work\\T32-operation-preparation\\capture-T32.py",
+        "--help"
+      ],
+      "start_utc": "2026-10-10T03:25:27.061135+00:00",
+      "end_utc": "2026-10-10T03:25:27.154435+00:00",
+      "exit_code": 0,
+      "streams": {
+        "stdout": {
+          "path": "capture-interface.stdout.txt",
+          "bytes": 743,
+          "sha256": "7f39ac6b38d94d275f302ec46257771e2b6b701958dec2454fceb1dc342f382e"
+        },
+        "stderr": {
+          "path": "capture-interface.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "label": "harness-interface",
+      "argv": [
+        "<USERPROFILE>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "<REPO>\\tests\\.work\\T32-operation-preparation\\final_package_smoke.py",
+        "--help"
+      ],
+      "start_utc": "2026-10-10T03:25:27.154435+00:00",
+      "end_utc": "2026-10-10T03:25:27.269767+00:00",
+      "exit_code": 0,
+      "streams": {
+        "stdout": {
+          "path": "harness-interface.stdout.txt",
+          "bytes": 1884,
+          "sha256": "61552db6f334fbd6c5634746824d882c5cb3443c97426db9deadd2f4d1d0a3a3"
+        },
+        "stderr": {
+          "path": "harness-interface.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    }
+  ],
+  "helper_tests": {
+    "ran": 19,
+    "passed": 19,
+    "skipped": 0,
+    "evidence_class": "developer-tool unit safety only; no application/native/exact-package pass"
+  },
+  "shared_asset_contract": "Both required hosts receive one identical externally pinned final ZIP/checksum pair and fixed accepted sourceR; extraction/capture roots differ and are freshly owned.",
+  "preserved_operation_contract": "PS51 fourteen scenarios plusPS7 eleven; original T29FaultToken/native argv/all source-cache-PDF guards retained; human acceptance excluded/unperformed neverpass.",
+  "operation_not_run": true,
+  "asset_build_tag_or_release_not_performed": true,
+  "scope": "Minimal ignored T29 harness/capture derivation and19helper regressions/interfaces only; no tracked/runtime/source change, no acquisition or persistent settings changes."
+}

@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "task": "T32",
+  "repo": "<REPO>",
+  "source_commit": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+  "assets": {
+    "WinPDFMerger-v1.0.0.zip": {
+      "path": null,
+      "sha256": null
+    },
+    "SHA256SUMS.txt": {
+      "path": null,
+      "sha256": null
+    }
+  },
+  "gates": [
+    {
+      "role": "native_ledger",
+      "path": null,
+      "sha256": null,
+      "expected_result": "pass",
+      "result_pointer": "/result",
+      "source_pointer": "/source_commit",
+      "zip_pointer": "/shared_assets/zip_sha256",
+      "checksums_pointer": "/shared_assets/checksums_sha256"
+    },
+    {
+      "role": "asset_review",
+      "path": null,
+      "sha256": null,
+      "expected_result": "pass_for_exact_final_package_bytes",
+      "result_pointer": "/result",
+      "source_pointer": "/source_commit",
+      "zip_pointer": "/recorded_expected_zip_sha256",
+      "checksums_pointer": "/recorded_expected_checksums_sha256",
+      "issues_pointer": "/issues",
+      "checks_pointer": "/checks_total"
+    },
+    {
+      "role": "independent_native_review",
+      "path": null,
+      "sha256": null,
+      "expected_result": null,
+      "result_pointer": "/result",
+      "source_pointer": null,
+      "zip_pointer": null,
+      "checksums_pointer": null,
+      "issues_pointer": "/issues",
+      "checks_pointer": "/checks"
+    }
+  ],
+  "notes": "Deliberate null placeholders fail closed. Root binds actual accepted reports and hashes only after final exact-ZIP operation and independent gates pass. Default helper is read-only; --execute is root's later explicit gated transaction."
+}

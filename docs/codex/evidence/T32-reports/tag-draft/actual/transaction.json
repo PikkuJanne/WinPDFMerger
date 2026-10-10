@@ -1,0 +1,823 @@
+{
+  "task": "T32",
+  "source_commit": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+  "started_at_utc": "2026-10-10T03:36:51.817712+00:00",
+  "producer_sha256": "d894da59dc0bad2322a8d9271ae381f54d88b3d3d38f4b949ba146a764e5fd1f",
+  "config_sha256": "f623993026f5f64eb5d5d82b84b999cb387327c5d485223e33ffebc599546ebd",
+  "mode": "execute",
+  "result": "pass_for_annotated_R_tag_unpublished_draft_and_authenticated_asset_hashes",
+  "remote_write_started": true,
+  "commands": [
+    {
+      "label": "frozen-R-notes",
+      "argv": [
+        "git",
+        "show",
+        "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a:docs/RELEASE_NOTES_v1.0.0.md"
+      ],
+      "started_at_utc": "2026-10-10T03:36:51.829719+00:00",
+      "state": "completed",
+      "mutation": false,
+      "exit_code": 0,
+      "timeout_seconds": 180,
+      "finished_at_utc": "2026-10-10T03:36:51.880375+00:00",
+      "stdout": {
+        "path": "frozen-R-notes.stdout.txt",
+        "bytes": 8971,
+        "sha256": "38866d8ab69626f49a5ed50381f839d21dca9e702dbcc59c4338ee37f8894fbd"
+      },
+      "stderr": {
+        "path": "frozen-R-notes.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "frozen-R-allowlist",
+      "argv": [
+        "git",
+        "show",
+        "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a:release-files.json"
+      ],
+      "started_at_utc": "2026-10-10T03:36:51.882323+00:00",
+      "state": "completed",
+      "mutation": false,
+      "exit_code": 0,
+      "timeout_seconds": 180,
+      "finished_at_utc": "2026-10-10T03:36:51.920854+00:00",
+      "stdout": {
+        "path": "frozen-R-allowlist.stdout.txt",
+        "bytes": 415,
+        "sha256": "bd80c988f28ae7c7f539f9ed31205ade92a1c5181102d6387342b4775b589007"
+      },
+      "stderr": {
+        "path": "frozen-R-allowlist.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "fresh-repository",
+      "argv": [
+        "gh",
+        "api",
+        "repos/PikkuJanne/WinPDFMerger"
+      ],
+      "started_at_utc": "2026-10-10T03:36:51.925316+00:00",
+      "state": "completed",
+      "mutation": false,
+      "exit_code": 0,
+      "timeout_seconds": 180,
+      "finished_at_utc": "2026-10-10T03:36:52.385791+00:00",
+      "stdout": {
+        "path": "fresh-repository.stdout.txt",
+        "bytes": 6368,
+        "sha256": "f0974ffa49b15504f20a4866921cad9dd558985e66aa8af243df3c8d726c3763"
+      },
+      "stderr": {
+        "path": "fresh-repository.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "fresh-all-tags",
+      "argv": [
+        "gh",
+        "api",
+        "repos/PikkuJanne/WinPDFMerger/tags?per_page=100",
+        "--paginate",
+        "--slurp"
+      ],
+      "started_at_utc": "2026-10-10T03:36:52.396087+00:00",
+      "state": "completed",
+      "mutation": false,
+      "exit_code": 0,
+      "timeout_seconds": 180,
+      "finished_at_utc": "2026-10-10T03:36:52.884202+00:00",
+      "stdout": {
+        "path": "fresh-all-tags.stdout.txt",
+        "bytes": 4,
+        "sha256": "cf1cbb66a638b4860a516671fb74850e6ccf787fe6c4c8d29e9c04efe880bd05"
+      },
+      "stderr": {
+        "path": "fresh-all-tags.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "fresh-all-releases",
+      "argv": [
+        "gh",
+        "api",
+        "repos/PikkuJanne/WinPDFMerger/releases?per_page=100",
+        "--paginate",
+        "--slurp"
+      ],
+      "started_at_utc": "2026-10-10T03:36:52.888170+00:00",
+      "state": "completed",
+      "mutation": false,
+      "exit_code": 0,
+      "timeout_seconds": 180,
+      "finished_at_utc": "2026-10-10T03:36:53.368388+00:00",
+      "stdout": {
+        "path": "fresh-all-releases.stdout.txt",
+        "bytes": 4,
+        "sha256": "cf1cbb66a638b4860a516671fb74850e6ccf787fe6c4c8d29e9c04efe880bd05"
+      },
+      "stderr": {
+        "path": "fresh-all-releases.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "fresh-local-tag",
+      "argv": [
+        "git",
+        "rev-parse",
+        "--verify",
+        "--quiet",
+        "refs/tags/v1.0.0"
+      ],
+      "started_at_utc": "2026-10-10T03:36:53.371871+00:00",
+      "state": "completed",
+      "mutation": false,
+      "exit_code": 1,
+      "timeout_seconds": 180,
+      "finished_at_utc": "2026-10-10T03:36:53.421932+00:00",
+      "stdout": {
+        "path": "fresh-local-tag.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "fresh-local-tag.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "fresh-live-tags",
+      "argv": [
+        "git",
+        "ls-remote",
+        "origin",
+        "refs/tags/*"
+      ],
+      "started_at_utc": "2026-10-10T03:36:53.422898+00:00",
+      "state": "completed",
+      "mutation": false,
+      "exit_code": 0,
+      "timeout_seconds": 180,
+      "finished_at_utc": "2026-10-10T03:36:53.934041+00:00",
+      "stdout": {
+        "path": "fresh-live-tags.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "fresh-live-tags.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "fresh-all-rulesets",
+      "argv": [
+        "gh",
+        "api",
+        "repos/PikkuJanne/WinPDFMerger/rulesets?includes_parents=true&per_page=100",
+        "--paginate",
+        "--slurp"
+      ],
+      "started_at_utc": "2026-10-10T03:36:53.953330+00:00",
+      "state": "completed",
+      "mutation": false,
+      "exit_code": 0,
+      "timeout_seconds": 180,
+      "finished_at_utc": "2026-10-10T03:36:54.432218+00:00",
+      "stdout": {
+        "path": "fresh-all-rulesets.stdout.txt",
+        "bytes": 4,
+        "sha256": "cf1cbb66a638b4860a516671fb74850e6ccf787fe6c4c8d29e9c04efe880bd05"
+      },
+      "stderr": {
+        "path": "fresh-all-rulesets.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "fresh-main",
+      "argv": [
+        "gh",
+        "api",
+        "repos/PikkuJanne/WinPDFMerger/branches/main"
+      ],
+      "started_at_utc": "2026-10-10T03:36:54.432218+00:00",
+      "state": "completed",
+      "mutation": false,
+      "exit_code": 0,
+      "timeout_seconds": 180,
+      "finished_at_utc": "2026-10-10T03:36:54.916520+00:00",
+      "stdout": {
+        "path": "fresh-main.stdout.txt",
+        "bytes": 5283,
+        "sha256": "dac1207a14b0f40891bf80b1273b756afb71d4549a63724185ab2eba39e196f7"
+      },
+      "stderr": {
+        "path": "fresh-main.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "fresh-all-workflow-metadata",
+      "argv": [
+        "gh",
+        "api",
+        "repos/PikkuJanne/WinPDFMerger/actions/workflows?per_page=100",
+        "--paginate",
+        "--slurp"
+      ],
+      "started_at_utc": "2026-10-10T03:36:54.921659+00:00",
+      "state": "completed",
+      "mutation": false,
+      "exit_code": 0,
+      "timeout_seconds": 180,
+      "finished_at_utc": "2026-10-10T03:36:55.349082+00:00",
+      "stdout": {
+        "path": "fresh-all-workflow-metadata.stdout.txt",
+        "bytes": 540,
+        "sha256": "4047c28ca5f31ab29bdb95ceb3e3f1a656476672c500f49d7061ed2d0a50a2dd"
+      },
+      "stderr": {
+        "path": "fresh-all-workflow-metadata.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "fresh-main-tree",
+      "argv": [
+        "gh",
+        "api",
+        "repos/PikkuJanne/WinPDFMerger/git/trees/4f14ce5458ad0101c4f555fd7de1780f50a765d6?recursive=1"
+      ],
+      "started_at_utc": "2026-10-10T03:36:55.352188+00:00",
+      "state": "completed",
+      "mutation": false,
+      "exit_code": 0,
+      "timeout_seconds": 180,
+      "finished_at_utc": "2026-10-10T03:36:56.248974+00:00",
+      "stdout": {
+        "path": "fresh-main-tree.stdout.txt",
+        "bytes": 3569968,
+        "sha256": "c472a382ac0b79f237b2f4f5909757d9d9bf6942f4831acc9ec7f0b8337e3fdb"
+      },
+      "stderr": {
+        "path": "fresh-main-tree.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "fresh-workflow",
+      "argv": [
+        "gh",
+        "api",
+        "repos/PikkuJanne/WinPDFMerger/contents/.github/workflows/windows-tests.yml?ref=4f14ce5458ad0101c4f555fd7de1780f50a765d6"
+      ],
+      "started_at_utc": "2026-10-10T03:36:56.286892+00:00",
+      "state": "completed",
+      "mutation": false,
+      "exit_code": 0,
+      "timeout_seconds": 180,
+      "finished_at_utc": "2026-10-10T03:36:56.700654+00:00",
+      "stdout": {
+        "path": "fresh-workflow.stdout.txt",
+        "bytes": 5835,
+        "sha256": "424464d5cf8ff70ef8f2315980bc2d07f4f34400339d45eb4ee54adadc0f9e5a"
+      },
+      "stderr": {
+        "path": "fresh-workflow.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "fresh-source-commit",
+      "argv": [
+        "git",
+        "rev-parse",
+        "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a^{commit}"
+      ],
+      "started_at_utc": "2026-10-10T03:36:56.700654+00:00",
+      "state": "completed",
+      "mutation": false,
+      "exit_code": 0,
+      "timeout_seconds": 180,
+      "finished_at_utc": "2026-10-10T03:36:56.752963+00:00",
+      "stdout": {
+        "path": "fresh-source-commit.stdout.txt",
+        "bytes": 41,
+        "sha256": "1763ba356b8308a156e9d311f997c7daa490b72ad2afc57c3f0c3758f2192527"
+      },
+      "stderr": {
+        "path": "fresh-source-commit.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "fresh-source-ancestry",
+      "argv": [
+        "git",
+        "merge-base",
+        "--is-ancestor",
+        "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+        "HEAD"
+      ],
+      "started_at_utc": "2026-10-10T03:36:56.758525+00:00",
+      "state": "completed",
+      "mutation": false,
+      "exit_code": 0,
+      "timeout_seconds": 180,
+      "finished_at_utc": "2026-10-10T03:36:56.800542+00:00",
+      "stdout": {
+        "path": "fresh-source-ancestry.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "fresh-source-ancestry.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "fresh-only-M6-source-diff",
+      "argv": [
+        "git",
+        "diff",
+        "--name-only",
+        "-z",
+        "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+        "HEAD"
+      ],
+      "started_at_utc": "2026-10-10T03:36:56.800542+00:00",
+      "state": "completed",
+      "mutation": false,
+      "exit_code": 0,
+      "timeout_seconds": 180,
+      "finished_at_utc": "2026-10-10T03:36:56.867002+00:00",
+      "stdout": {
+        "path": "fresh-only-M6-source-diff.stdout.txt",
+        "bytes": 116804,
+        "sha256": "36bc05c8eae10fe7397b2c78c55e61174e33c6f85157befb7cb0bfc727957d0c"
+      },
+      "stderr": {
+        "path": "fresh-only-M6-source-diff.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "fresh-clean-primary",
+      "argv": [
+        "git",
+        "status",
+        "--porcelain=v1"
+      ],
+      "started_at_utc": "2026-10-10T03:36:56.867002+00:00",
+      "state": "completed",
+      "mutation": false,
+      "exit_code": 0,
+      "timeout_seconds": 180,
+      "finished_at_utc": "2026-10-10T03:36:56.975800+00:00",
+      "stdout": {
+        "path": "fresh-clean-primary.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "fresh-clean-primary.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "fresh-origin-fetch",
+      "argv": [
+        "git",
+        "remote",
+        "get-url",
+        "--all",
+        "origin"
+      ],
+      "started_at_utc": "2026-10-10T03:36:56.975800+00:00",
+      "state": "completed",
+      "mutation": false,
+      "exit_code": 0,
+      "timeout_seconds": 180,
+      "finished_at_utc": "2026-10-10T03:36:57.028007+00:00",
+      "stdout": {
+        "path": "fresh-origin-fetch.stdout.txt",
+        "bytes": 47,
+        "sha256": "58f6700c4e67515f2efad4232e0616f25e02b6623ba5df89d0313d71a4298181"
+      },
+      "stderr": {
+        "path": "fresh-origin-fetch.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "fresh-origin-push",
+      "argv": [
+        "git",
+        "remote",
+        "get-url",
+        "--push",
+        "--all",
+        "origin"
+      ],
+      "started_at_utc": "2026-10-10T03:36:57.032004+00:00",
+      "state": "completed",
+      "mutation": false,
+      "exit_code": 0,
+      "timeout_seconds": 180,
+      "finished_at_utc": "2026-10-10T03:36:57.095973+00:00",
+      "stdout": {
+        "path": "fresh-origin-push.stdout.txt",
+        "bytes": 47,
+        "sha256": "58f6700c4e67515f2efad4232e0616f25e02b6623ba5df89d0313d71a4298181"
+      },
+      "stderr": {
+        "path": "fresh-origin-push.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "create-annotated-tag",
+      "argv": [
+        "git",
+        "tag",
+        "-a",
+        "v1.0.0",
+        "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+        "-m",
+        "WinPDFMerger v1.0.0"
+      ],
+      "started_at_utc": "2026-10-10T03:36:57.104729+00:00",
+      "state": "completed",
+      "mutation": true,
+      "exit_code": 0,
+      "timeout_seconds": 180,
+      "finished_at_utc": "2026-10-10T03:36:57.195783+00:00",
+      "stdout": {
+        "path": "create-annotated-tag.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "create-annotated-tag.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "local-tag-object-id",
+      "argv": [
+        "git",
+        "rev-parse",
+        "refs/tags/v1.0.0"
+      ],
+      "started_at_utc": "2026-10-10T03:36:57.203193+00:00",
+      "state": "completed",
+      "mutation": false,
+      "exit_code": 0,
+      "timeout_seconds": 180,
+      "finished_at_utc": "2026-10-10T03:36:57.267674+00:00",
+      "stdout": {
+        "path": "local-tag-object-id.stdout.txt",
+        "bytes": 41,
+        "sha256": "fa99bc76ed5d3c79e7397d08231da5e98eaf4536827787e7747b7b81eda420c5"
+      },
+      "stderr": {
+        "path": "local-tag-object-id.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "local-tag-object-type",
+      "argv": [
+        "git",
+        "cat-file",
+        "-t",
+        "7818645de07b902ad8f2b815e90ee1d74d2724d6"
+      ],
+      "started_at_utc": "2026-10-10T03:36:57.267674+00:00",
+      "state": "completed",
+      "mutation": false,
+      "exit_code": 0,
+      "timeout_seconds": 180,
+      "finished_at_utc": "2026-10-10T03:36:57.335503+00:00",
+      "stdout": {
+        "path": "local-tag-object-type.stdout.txt",
+        "bytes": 4,
+        "sha256": "ccda8f9a2cb0295182b9a99e4c8270badcc89525850e1e737a294fb426363ac9"
+      },
+      "stderr": {
+        "path": "local-tag-object-type.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "local-tag-peeled-commit",
+      "argv": [
+        "git",
+        "rev-parse",
+        "refs/tags/v1.0.0^{}"
+      ],
+      "started_at_utc": "2026-10-10T03:36:57.337332+00:00",
+      "state": "completed",
+      "mutation": false,
+      "exit_code": 0,
+      "timeout_seconds": 180,
+      "finished_at_utc": "2026-10-10T03:36:57.377983+00:00",
+      "stdout": {
+        "path": "local-tag-peeled-commit.stdout.txt",
+        "bytes": 41,
+        "sha256": "1763ba356b8308a156e9d311f997c7daa490b72ad2afc57c3f0c3758f2192527"
+      },
+      "stderr": {
+        "path": "local-tag-peeled-commit.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "push-exact-tag",
+      "argv": [
+        "git",
+        "push",
+        "origin",
+        "refs/tags/v1.0.0:refs/tags/v1.0.0"
+      ],
+      "started_at_utc": "2026-10-10T03:36:57.380996+00:00",
+      "state": "completed",
+      "mutation": true,
+      "exit_code": 0,
+      "timeout_seconds": 180,
+      "finished_at_utc": "2026-10-10T03:36:59.521686+00:00",
+      "stdout": {
+        "path": "push-exact-tag.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "push-exact-tag.stderr.txt",
+        "bytes": 88,
+        "sha256": "a9835d917f904307a60b9aea4bbb4ca2db8cbaeee244a5fd7330cdbbb2609bd9"
+      }
+    },
+    {
+      "label": "live-annotated-tag-and-peel",
+      "argv": [
+        "git",
+        "ls-remote",
+        "origin",
+        "refs/tags/v1.0.0",
+        "refs/tags/v1.0.0^{}"
+      ],
+      "started_at_utc": "2026-10-10T03:36:59.526685+00:00",
+      "state": "completed",
+      "mutation": false,
+      "exit_code": 0,
+      "timeout_seconds": 180,
+      "finished_at_utc": "2026-10-10T03:37:00.053720+00:00",
+      "stdout": {
+        "path": "live-annotated-tag-and-peel.stdout.txt",
+        "bytes": 119,
+        "sha256": "f5cd3fd2be261b75d4e0083a068454d4e6ea8b2a6490da716c1f478fd84e48c5"
+      },
+      "stderr": {
+        "path": "live-annotated-tag-and-peel.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "live-tag-reference",
+      "argv": [
+        "gh",
+        "api",
+        "repos/PikkuJanne/WinPDFMerger/git/ref/tags/v1.0.0"
+      ],
+      "started_at_utc": "2026-10-10T03:37:00.060865+00:00",
+      "state": "completed",
+      "mutation": false,
+      "exit_code": 0,
+      "timeout_seconds": 180,
+      "finished_at_utc": "2026-10-10T03:37:00.520526+00:00",
+      "stdout": {
+        "path": "live-tag-reference.stdout.txt",
+        "bytes": 341,
+        "sha256": "3b52afa9469586c6b22a4d81cebe4de115c4e518a569a9d5d3535442c1e19523"
+      },
+      "stderr": {
+        "path": "live-tag-reference.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "live-tag-object",
+      "argv": [
+        "gh",
+        "api",
+        "repos/PikkuJanne/WinPDFMerger/git/tags/7818645de07b902ad8f2b815e90ee1d74d2724d6"
+      ],
+      "started_at_utc": "2026-10-10T03:37:00.525522+00:00",
+      "state": "completed",
+      "mutation": false,
+      "exit_code": 0,
+      "timeout_seconds": 180,
+      "finished_at_utc": "2026-10-10T03:37:00.953143+00:00",
+      "stdout": {
+        "path": "live-tag-object.stdout.txt",
+        "bytes": 679,
+        "sha256": "c8708bf1bdf5bc5f39a1904266203a17e9454ef7a96304f636cb8a18edd2ee30"
+      },
+      "stderr": {
+        "path": "live-tag-object.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "create-final-unpublished-draft",
+      "argv": [
+        "gh",
+        "release",
+        "create",
+        "v1.0.0",
+        "--repo",
+        "PikkuJanne/WinPDFMerger",
+        "--verify-tag",
+        "--draft",
+        "--title",
+        "WinPDFMerger v1.0.0",
+        "--notes-file",
+        "<REPO>\\tests\\.work\\T32-tag-draft-actual-run1\\frozen-R-notes.md",
+        "<T32_FINAL_ASSETS>\\Final PS51\\WinPDFMerger-v1.0.0.zip",
+        "<T32_FINAL_ASSETS>\\Final PS51\\SHA256SUMS.txt"
+      ],
+      "started_at_utc": "2026-10-10T03:37:00.961093+00:00",
+      "state": "completed",
+      "mutation": true,
+      "exit_code": 0,
+      "timeout_seconds": 300,
+      "finished_at_utc": "2026-10-10T03:37:02.795813+00:00",
+      "stdout": {
+        "path": "create-final-unpublished-draft.stdout.txt",
+        "bytes": 86,
+        "sha256": "5c5d5aed0ada0f5766191e9a1b453957060a778cbeaa5cd0f174563d6da9c13e"
+      },
+      "stderr": {
+        "path": "create-final-unpublished-draft.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "actual-all-releases-after-draft",
+      "argv": [
+        "gh",
+        "api",
+        "repos/PikkuJanne/WinPDFMerger/releases?per_page=100",
+        "--paginate",
+        "--slurp"
+      ],
+      "started_at_utc": "2026-10-10T03:37:02.800825+00:00",
+      "state": "completed",
+      "mutation": false,
+      "exit_code": 0,
+      "timeout_seconds": 180,
+      "finished_at_utc": "2026-10-10T03:37:03.387009+00:00",
+      "stdout": {
+        "path": "actual-all-releases-after-draft.stdout.txt",
+        "bytes": 13817,
+        "sha256": "ab9e28792bb00d38e99afa0976bbf5b5cd1c26a590c3d87b6bfb96cb7e439095"
+      },
+      "stderr": {
+        "path": "actual-all-releases-after-draft.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "download-exact-draft-assets",
+      "argv": [
+        "gh",
+        "release",
+        "download",
+        "v1.0.0",
+        "--repo",
+        "PikkuJanne/WinPDFMerger",
+        "--dir",
+        "<REPO>\\tests\\.work\\T32-tag-draft-actual-run1\\authenticated-draft-download",
+        "--pattern",
+        "WinPDFMerger-v1.0.0.zip",
+        "--pattern",
+        "SHA256SUMS.txt"
+      ],
+      "started_at_utc": "2026-10-10T03:37:03.391678+00:00",
+      "state": "completed",
+      "mutation": false,
+      "exit_code": 0,
+      "timeout_seconds": 300,
+      "finished_at_utc": "2026-10-10T03:37:04.623777+00:00",
+      "stdout": {
+        "path": "download-exact-draft-assets.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "download-exact-draft-assets.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "label": "actual-final-draft-metadata",
+      "argv": [
+        "gh",
+        "api",
+        "repos/PikkuJanne/WinPDFMerger/releases/408603768"
+      ],
+      "started_at_utc": "2026-10-10T03:37:04.623777+00:00",
+      "state": "completed",
+      "mutation": false,
+      "exit_code": 0,
+      "timeout_seconds": 180,
+      "finished_at_utc": "2026-10-10T03:37:05.026129+00:00",
+      "stdout": {
+        "path": "actual-final-draft-metadata.stdout.txt",
+        "bytes": 13813,
+        "sha256": "74b6f59b0b3b5f8a8933c0e9ec6259a71823b1acd00db0ba64f0e182360ac9cb"
+      },
+      "stderr": {
+        "path": "actual-final-draft-metadata.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "actual_gates": {
+    "native_ledger": {
+      "path": "<REPO>\\tests\\.work\\T32-capture\\dabd5f0f2d694c4fab3559133f4965ff\\invocations.json",
+      "sha256": "44fa021c70e60cda39812f8ff53ce418be25aee6c56ba9b026d21bb276b5663c",
+      "result": "pass"
+    },
+    "asset_review": {
+      "path": "<REPO>\\tests\\.work\\T32-review\\final-package-byte-audit.json",
+      "sha256": "533f703ae53e8db71e8ee784fffa3dbb063271d8f8aa0703a19e02193f657ad0",
+      "result": "pass_for_exact_final_package_bytes"
+    },
+    "independent_native_review": {
+      "path": "<REPO>\\tests\\.work\\T32-review\\final-operation-gate-binding.json",
+      "sha256": "f94f93020cb9eb99fc49a6b1709cebba91f3195a0e71f3e82ba7d241b95f559e",
+      "result": "pass"
+    }
+  },
+  "live_main_observed": "4f14ce5458ad0101c4f555fd7de1780f50a765d6",
+  "asset_hashes": {
+    "WinPDFMerger-v1.0.0.zip": "2b95e90cc3eb3d47b5619710acd1b6cf551769e90ac89813a1dbf0c899c63fc2",
+    "SHA256SUMS.txt": "d39084cb335c56bb99fa51424ec5aed2d95179f3c44974c81a68a8d3bf1e01ca"
+  },
+  "notes_sha256": "38866d8ab69626f49a5ed50381f839d21dca9e702dbcc59c4338ee37f8894fbd",
+  "tag_object_sha": "7818645de07b902ad8f2b815e90ee1d74d2724d6",
+  "live_peeled_commit": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+  "draft_id": 408603768,
+  "draft_url": "https://github.com/PikkuJanne/WinPDFMerger/releases/tag/untagged-f7a5262a2e7c231e1f40",
+  "draft": true,
+  "published_at": null,
+  "downloaded_assets": {
+    "WinPDFMerger-v1.0.0.zip": {
+      "sha256": "2b95e90cc3eb3d47b5619710acd1b6cf551769e90ac89813a1dbf0c899c63fc2",
+      "bytes": 193669
+    },
+    "SHA256SUMS.txt": {
+      "sha256": "d39084cb335c56bb99fa51424ec5aed2d95179f3c44974c81a68a8d3bf1e01ca",
+      "bytes": 90
+    }
+  },
+  "finished_at_utc": "2026-10-10T03:37:05.034087+00:00"
+}

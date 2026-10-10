@@ -1,0 +1,75 @@
+--- 95e0a19e6cc5fc01cd4bec4ac15f989f9830840a:docs/codex/evidence/T29-reports/review/inspect_decoded_images.py
++++ ignoredT32/inspect_final_decoded_images.py
+@@ -1,4 +1,5 @@
+-"""Read-only focused image/PDF review of retained accepted T29 outputs."""
++"""Read-only focused image/PDF review of retained accepted T32 final-R outputs."""
++import argparse
+ from contextlib import closing
+ from datetime import datetime, timezone
+ import hashlib
+@@ -14,10 +15,18 @@
+ import pypdfium2 as pdfium
+ 
+ ROOT = Path(__file__).resolve().parent
+-CAPTURE = Path(sys.argv[1]).resolve()
++parser = argparse.ArgumentParser(description=__doc__)
++parser.add_argument('--capture', type=Path, required=True)
++parser.add_argument('--repo', type=Path, required=True)
++parser.add_argument('--expected-harness-commit', required=True)
++parser.add_argument('--report', type=Path, required=True)
++args = parser.parse_args()
++CAPTURE = args.capture.resolve()
++if not args.report.resolve().is_relative_to(ROOT) or args.report.exists():
++    raise ValueError('Use a NEW report under ignored T32-review')
+ EXPECTED_IDS = ["T03-01-P01", "T03-01-P02", "T03-02-P01", "T03-02-P02", "T03-10-P01", "T03-14-P01"]
+-EXPECTED_COMMIT = "629f506fc18c278dd43d1021009a45406a6544e1"
+-SOURCE_COMMIT = "8917938820f60e499e2c20caa9cb03171678be72"
++EXPECTED_COMMIT = args.expected_harness_commit
++SOURCE_COMMIT = "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a"
+ ID_PATTERN = re.compile(r"T03-[0-9]{2}-P[0-9]{2}")
+ ORIGINAL_PIXELS = random.Random(140032).randbytes(1200 * 800 * 3)
+ SHA = lambda raw: hashlib.sha256(raw).hexdigest()
+@@ -84,7 +93,7 @@
+     check(image["rgb_pixel_bytes"] == len(ORIGINAL_PIXELS) and image["rgb_pixel_sha256"] == SHA(ORIGINAL_PIXELS),
+           label + ": independent PIL decoded pixels match original seeded bytes")
+ 
+-result = {"scope": "Focused read-only retained source/master/email PDF and decoded image inspection; no new application run, manual pass, universal fidelity, PDF/A or signature claim",
++result = {"task": "T32", "scope": "Focused read-only retained source/master/email PDF and decoded image inspection; no new application run, manual pass, universal fidelity, PDF/A or signature claim",
+           "observed_at_utc": datetime.now(timezone.utc).isoformat(), "result": "fail", "issues": [],
+           "harness_commit": EXPECTED_COMMIT, "candidate_source_commit": SOURCE_COMMIT,
+           "versions": {"python": sys.version.split()[0], "pypdf": pypdf.__version__, "pillow": PIL.__version__,
+@@ -92,7 +101,9 @@
+           "expected_original_rgb_sha256": SHA(ORIGINAL_PIXELS), "files": [], "source_rasters": [], "email_observations": []}
+ try:
+     check(result["versions"] == {"python": "3.12.14", "pypdf": "6.10.0", "pillow": "12.3.0", "pypdfium2": "5.13.0", "pdfium": "153.0.7999.0"}, "Approved reader pins")
+-    repo = Path(__file__).resolve().parents[3]
++    repo = args.repo.resolve()
++    status_before = subprocess.check_output(["git", "-C", str(repo), "status", "--porcelain=v1", "--untracked-files=all"])
++    check(not status_before, "Clean actual harness checkout required")
+     head = subprocess.run(["git", "-C", str(repo), "rev-parse", "HEAD"], capture_output=True, timeout=10, check=True).stdout.decode().strip()
+     check(head == EXPECTED_COMMIT, "Actual harness HEAD differs")
+     result["input_receipts"] = []
+@@ -100,6 +111,7 @@
+         receipt_path = CAPTURE / (shell + "-reports/result.json")
+         report = json.loads(receipt_path.read_text(encoding="utf-8-sig"))
+         check(report["result"] == "pass" and not report["preparation"], shell + ": accepted receipt")
++        check(report["task"] == "T32" and report["evidence_class"] == "actual_final_R_package_operation", shell + ": actual final-R package receipt")
+         check(report["harness_commit"] == EXPECTED_COMMIT and report["candidate_source_commit"] == SOURCE_COMMIT, shell + ": observed source identity")
+         result["input_receipts"].append({"path": receipt_path.relative_to(CAPTURE).as_posix(), "sha256": SHA(receipt_path.read_bytes())})
+         work = Path(report["work_root"])
+@@ -147,11 +159,14 @@
+     result["normal_master_image_count"] = sum(1 for row in result["files"] if row["alias"].endswith("/master") and row["images"])
+     result["rewritten_email_image_count"] = len(result["email_observations"])
+     result["source_raster_count"] = len(result["source_rasters"])
++    status_after = subprocess.check_output(["git", "-C", str(repo), "status", "--porcelain=v1", "--untracked-files=all"])
++    head_after = subprocess.check_output(["git", "-C", str(repo), "rev-parse", "HEAD"]).decode().strip()
++    check(status_after == status_before and head_after == EXPECTED_COMMIT, "Actual harness source unchanged throughout read-only review")
+     result["result"] = "pass"
+ except Exception as error:
+     result["issues"].append(type(error).__name__ + ": " + str(error))
+ result["checks"] = checks
+ result["review_script_sha256"] = SHA(Path(__file__).read_bytes())
+-(ROOT / "decoded-image-report.json").write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
++args.report.write_text(json.dumps(result, indent=2) + "\n", encoding="utf-8")
+ print(json.dumps({k:v for k,v in result.items() if k not in ("files", "source_rasters")},indent=2))
+ raise SystemExit(0 if result["result"] == "pass" else 1)
