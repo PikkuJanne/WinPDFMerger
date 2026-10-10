@@ -1,0 +1,10 @@
+--- unexecuted-first-adapter.py
++++ Export-T34.py
+@@ -238,6 +238,7 @@
+             require(path.is_file() and len(path.read_bytes())==size and sha(path.read_bytes())==digest, 'Actual fresh downloaded bytes changed')
+         child=download['package_audit'];package=self.bound_gate({'source':child['path'],'raw_sha256':child['sha256']})
+         require(child['checks']==266 and child['issues']==[] and package['task']=='T34' and package['source_commit']==R and package['result']=='pass_for_exact_published_download_package_bytes' and package['checks_total']==266 and package['issues']==[] and package['recorded_expected_zip_sha256']==pair['zip'] and package['recorded_expected_checksums_sha256']==pair['checksums'], 'Fresh package child exact path/hash/scope required')
++        require(len(package['checks'])==266 and all(x['pass']is True for x in package['checks']) and package['application_executed']is False and package['native_engines_executed']is False, 'Every exact fresh package check must pass without application/native execution')
+         binding_row=self.config['native_reuse_binding'];reuse=self.bound_gate(binding_row)
+         require(reuse['task']=='T34' and reuse['source_commit']==R and reuse['harness_commit']==M and reuse['result']=='pass_for_fresh_identical_assets_and_prior_exact_download_native_proof' and reuse['checks']==17 and len(reuse['details'])==17 and all(x['pass']is True for x in reuse['details']) and reuse['issues']==[], 'Actual strict native evidence reuse binding required')
+         require(reuse['zip_sha256']==pair['zip'] and reuse['checksums_sha256']==pair['checksums'] and Path(reuse['fresh_download_directory'])==directory and reuse['manual_acceptance']=='excluded/unperformed; never pass', 'Fresh/prior pair identity and exclusion required')

@@ -1,0 +1,33 @@
+--- unexecuted-initial-writer.py
++++ WriteCompletion.py
+@@ -49,10 +49,12 @@
+  assert package['result']=='pass_for_exact_published_download_package_bytes' and package['source_commit']==R
+  assert package['checks_total']==len(package['checks'])==266 and all(x['pass'] is True for x in package['checks'])
+  assert package['application_executed'] is False and package['native_engines_executed'] is False
+- # Final reuse schema is bound explicitly after its independent report is sealed.
+- assert reuse['result']=='pass_for_fresh_published_pair_identity_and_prior_actual_native_reuse'
++ assert reuse['result']=='pass_for_fresh_identical_assets_and_prior_exact_download_native_proof'
+  assert reuse['source_commit']==R and reuse['harness_commit']==M and reuse['zip_sha256']==ZIP and reuse['checksums_sha256']==SUMS
+- assert reuse['application_reexecuted'] is False and reuse['native_engines_reexecuted'] is False
++ assert reuse['application_native_CI_reexecuted'] is False and reuse['new_T34_native_pass_claimed'] is False
++ assert reuse['AC077_AC078_or_project_completion_inferred'] is False and reuse['checks']==len(reuse['details'])==17 and all(x['pass'] is True for x in reuse['details'])
++ assert (reuse['downloaded_windows_cases'],reuse['operation_checks'],reuse['decoded_image_checks'],reuse['independent_pdf_count'],reuse['independent_pdf_pages'])==(25,5673,1360,21,106)
++ assert reuse['manual_acceptance']=='excluded/unperformed; never pass'
+ 
+ def plan(t,c,s):
+  assert len(t['tasks'])==34 and sum(x['status']=='done' for x in t['tasks'])==33
+@@ -77,7 +79,14 @@
+   paths[role]=path;g[role]=read(path)
+  validate(g)
+  assert (repo/g['published_download']['package_audit']['path']).resolve()==paths['package_review'] and g['published_download']['package_audit']['sha256']==sha(paths['package_review'])
++ for key,role in [('fresh_public_download','published_download'),('fresh_package_audit','package_review'),('prior_readiness_review','readiness_review')]:
++  row=g['native_reuse'][key];assert (repo/row['path']).resolve()==paths[role] and row['sha256']==sha(paths[role])
++ old_manifest=(repo/g['native_reuse']['prior_manifest']['path']).resolve();assert old_manifest==repo/'docs/codex/evidence/T33-reports/manifest.json' and sha(old_manifest)==g['native_reuse']['prior_manifest']['sha256']
++ for key in ('prior_public_download','prior_native','prior_operation_review','prior_decoded_image_review'):
++  row=g['native_reuse'][key];path=(repo/row['path']).resolve();assert path.is_relative_to(old_manifest.parent) and sha(path)==row['public_sha256']
++  matches=[x for x in read(old_manifest)['files'] if old_manifest.parent/x['path']==path];assert len(matches)==1 and matches[0]['raw_sha256']==row['raw_sha256'] and matches[0]['sha256']==row['public_sha256']
+  directory=Path(g['published_download']['download_directory']).resolve();assert directory.is_dir() and not directory.is_relative_to(repo)
++ assert Path(g['native_reuse']['fresh_download_directory']).resolve()==directory
+  assert sha(directory/'WinPDFMerger-v1.0.0.zip')==ZIP and sha(directory/'SHA256SUMS.txt')==SUMS
+  packet=repo/'docs/codex/evidence/T34-reports';manifest=read(packet/'manifest.json');public=read(a.public_review)
+  assert manifest['task']=='T34' and manifest['source_commit']==R and manifest['asset_sha256']=={'zip':ZIP,'checksums':SUMS}

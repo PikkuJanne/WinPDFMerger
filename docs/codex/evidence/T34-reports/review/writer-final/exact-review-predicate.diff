@@ -1,0 +1,11 @@
+--- initial/review-writer.py
++++ final/review-writer.py
+@@ -37,7 +37,7 @@
+ check("'done_tasks':34,'pass_cases':74,'excluded_cases':4,'not_run_cases':0"in text,'Technical closure record totals correct')
+ check("['AC058','AC060','AC061','AC062']"in text and 'AC058 owner-excluded/nonrequired/unperformed' in text,'Four scope exclusions/AC058 never-pass preserved')
+ check('Final clean synchronized main E' in text and 'Final synchronized main E live proof is reported after execution in-session' in text,'Final E/live proof remains an external checkpoint obligation')
+-check("'state'"not in ast.unparse(next(n for n in tree.body if isinstance(n,ast.FunctionDef)and n.name=='validate')) or True,'Seven role validation function reviewed without record writes')
++check(not any(isinstance(n,ast.Call)and isinstance(n.func,ast.Attribute)and n.func.attr in ('write_text','write_bytes','open','run','check_output','update')for n in ast.walk(next(n for n in tree.body if isinstance(n,ast.FunctionDef)and n.name=='validate'))),'Actual seven-role validation AST contains no file/Git execution or mutation calls')
+ check('No next implementation task remains.' in text and 'Future product' in text,'Continuation distinguishes completed implementation from new owner work')
+ check("('TASKS.json',t),('ACCEPTANCE_CASES.json',c),('RELEASE_STATE.json',s),('evidence/T34-results.json',result)"in text and "('evidence/T34-completion.md',text),('STATUS.md',status),('NEXT_SESSION.md',nexttext)"in text,'Exactly seven intended closure record destinations')
+ status=subprocess.run(['git','status','--porcelain=v1'],cwd=REPO,check=True,capture_output=True,text=True).stdout

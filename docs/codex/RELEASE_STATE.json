@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "state": "verified",
+  "state": "complete",
   "repository": "PikkuJanne/WinPDFMerger",
   "target_tag": "v1.0.0",
   "release_commit": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
@@ -39,7 +39,56 @@
     "docs/codex/evidence/T33-reports/review/public-download/published-operation-gate-binding-v2.json",
     "docs/codex/evidence/T33-reports/review/public-download/published-decoded-image-report.json"
   ],
-  "scope_exclusions": [],
+  "scope_exclusions": [
+    {
+      "acceptance_id": "AC058",
+      "reason": "Owner instruction on 2026-10-09: \"Human standard user test is out of scope for this project\" (D25). Human standard-user/Explorer/visible-PDF validation was not performed and is excluded; synthetic kit preparation and its reported setup failure are not application acceptance results.",
+      "evidence": [
+        "docs/codex/evidence/T26-compatibility-review.md",
+        "docs/codex/evidence/T26-checkpoint.md",
+        "docs/codex/evidence/T26-walkthrough.md",
+        "docs/codex/evidence/T26-owner-scope.md",
+        "docs/codex/evidence/T26-scope-completion.md"
+      ]
+    },
+    {
+      "acceptance_id": "AC060",
+      "reason": "No Windows 10 host was tested. PRODUCT_SPEC makes this optional; Windows 11 desktop and hosted Server tests do not establish Windows 10 validation. Excluded from validated v1.0.0 support in README and docs/COMPATIBILITY.md.",
+      "evidence": [
+        "docs/codex/evidence/T26-compatibility-review.md",
+        "docs/codex/evidence/T26-checkpoint.md"
+      ]
+    },
+    {
+      "acceptance_id": "AC061",
+      "reason": "No live UNC network share was tested. Local NTFS runs and UNC string unit tests do not establish network-share connectivity, permissions or native operation. Excluded from validated v1.0.0 support in README and docs/COMPATIBILITY.md.",
+      "evidence": [
+        "docs/codex/evidence/T26-compatibility-review.md",
+        "docs/codex/evidence/T26-checkpoint.md"
+      ]
+    },
+    {
+      "acceptance_id": "AC062",
+      "reason": "No ARM or 32-bit host was tested. The required reference uses x64; an x86 PDFtk executable on an x64 host does not validate other host architectures. Excluded from validated v1.0.0 support in README and docs/COMPATIBILITY.md.",
+      "evidence": [
+        "docs/codex/evidence/T26-compatibility-review.md",
+        "docs/codex/evidence/T26-checkpoint.md"
+      ]
+    }
+  ],
   "blockers": [],
-  "authorization": "Owner requested implementation locally and on GitHub through published v1.0.0; see AGENTS.md for limits."
+  "authorization": "Owner requested implementation locally and on GitHub through published v1.0.0; see AGENTS.md for limits.",
+  "closure_evidence": [
+    "docs/codex/evidence/T34-completion.md",
+    "docs/codex/evidence/T34-results.json",
+    "docs/codex/evidence/T34-reports/manifest.json",
+    "docs/codex/evidence/T34-reports/review/public-review.json",
+    "docs/codex/evidence/T34-reports/review/source-merge/preflight-result.json",
+    "docs/codex/evidence/T34-reports/operations/reconciliation/reconcile-result.json",
+    "docs/codex/evidence/T34-reports/actions/actual-owner-main-clean-live-sync-a882172716e0463db0204061e2628cb0/stdout.txt",
+    "docs/codex/evidence/T34-reports/review/closure/closure-readiness-review.json",
+    "docs/codex/evidence/T34-reports/review/closure/actual-9b63f6ec6a174df8b2f9434d6303d5c2/public-download-review.json",
+    "docs/codex/evidence/T34-reports/review/closure/actual-9b63f6ec6a174df8b2f9434d6303d5c2/downloaded-package-byte-audit.json",
+    "docs/codex/evidence/T34-reports/review/closure/identical-native-reuse-binding.json"
+  ]
 }

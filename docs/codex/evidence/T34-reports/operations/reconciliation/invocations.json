@@ -1,0 +1,584 @@
+[
+  {
+    "label": "original-head",
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "start_utc": "2026-10-10T08:15:57.951873+00:00",
+    "end_utc": "2026-10-10T08:15:57.998569+00:00",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "path": "original-head.stdout.txt",
+        "bytes": 41,
+        "sha256": "72b04013e6962c25ba94c71bd92e803ad34c8827d2f625db57301066acca1b61"
+      },
+      "stderr": {
+        "path": "original-head.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  {
+    "label": "original-branch",
+    "argv": [
+      "git",
+      "branch",
+      "--show-current"
+    ],
+    "start_utc": "2026-10-10T08:15:58.003783+00:00",
+    "end_utc": "2026-10-10T08:15:58.032123+00:00",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "path": "original-branch.stdout.txt",
+        "bytes": 30,
+        "sha256": "1efba28e2478a901cf680a282df984f2e7bbf1d052faed5c1685e3a3089f1ad6"
+      },
+      "stderr": {
+        "path": "original-branch.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  {
+    "label": "original-clean",
+    "argv": [
+      "git",
+      "status",
+      "--porcelain=v1",
+      "--untracked-files=all"
+    ],
+    "start_utc": "2026-10-10T08:15:58.032123+00:00",
+    "end_utc": "2026-10-10T08:15:58.114997+00:00",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "path": "original-clean.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "original-clean.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  {
+    "label": "fetch-origin",
+    "argv": [
+      "git",
+      "remote",
+      "get-url",
+      "--all",
+      "origin"
+    ],
+    "start_utc": "2026-10-10T08:15:58.114997+00:00",
+    "end_utc": "2026-10-10T08:15:58.152998+00:00",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "path": "fetch-origin.stdout.txt",
+        "bytes": 47,
+        "sha256": "58f6700c4e67515f2efad4232e0616f25e02b6623ba5df89d0313d71a4298181"
+      },
+      "stderr": {
+        "path": "fetch-origin.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  {
+    "label": "push-origin",
+    "argv": [
+      "git",
+      "remote",
+      "get-url",
+      "--push",
+      "--all",
+      "origin"
+    ],
+    "start_utc": "2026-10-10T08:15:58.154005+00:00",
+    "end_utc": "2026-10-10T08:15:58.189679+00:00",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "path": "push-origin.stdout.txt",
+        "bytes": 47,
+        "sha256": "58f6700c4e67515f2efad4232e0616f25e02b6623ba5df89d0313d71a4298181"
+      },
+      "stderr": {
+        "path": "push-origin.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  {
+    "label": "live-main-before",
+    "argv": [
+      "git",
+      "ls-remote",
+      "--heads",
+      "origin",
+      "main"
+    ],
+    "start_utc": "2026-10-10T08:15:58.189679+00:00",
+    "end_utc": "2026-10-10T08:15:58.745767+00:00",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "path": "live-main-before.stdout.txt",
+        "bytes": 57,
+        "sha256": "9dd9ad221214d86004674cd966e133936acbce98a10b6303f68d1b090032d24d"
+      },
+      "stderr": {
+        "path": "live-main-before.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  {
+    "label": "live-evidence-before",
+    "argv": [
+      "git",
+      "ls-remote",
+      "--heads",
+      "origin",
+      "codex/v1.0.0-release-evidence"
+    ],
+    "start_utc": "2026-10-10T08:15:58.745767+00:00",
+    "end_utc": "2026-10-10T08:15:59.233683+00:00",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "path": "live-evidence-before.stdout.txt",
+        "bytes": 82,
+        "sha256": "990d5bdf6bfd1dfdab9d21f0b294495f04ac16834d2facd7dbef3d789012c265"
+      },
+      "stderr": {
+        "path": "live-evidence-before.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  {
+    "label": "owner-PR30",
+    "argv": [
+      "gh",
+      "pr",
+      "view",
+      "30",
+      "--repo",
+      "PikkuJanne/WinPDFMerger",
+      "--json",
+      "state,mergeCommit,mergedAt,headRefOid,statusCheckRollup"
+    ],
+    "start_utc": "2026-10-10T08:15:59.233683+00:00",
+    "end_utc": "2026-10-10T08:15:59.888449+00:00",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "path": "owner-PR30.stdout.txt",
+        "bytes": 1374,
+        "sha256": "b496beb1a7f6512c7e2251f96d97623a1ae807dfaf383c324e457c55e58ac9da"
+      },
+      "stderr": {
+        "path": "owner-PR30.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  {
+    "label": "fetch-exact-main",
+    "argv": [
+      "git",
+      "fetch",
+      "origin",
+      "main"
+    ],
+    "start_utc": "2026-10-10T08:15:59.889490+00:00",
+    "end_utc": "2026-10-10T08:16:00.737317+00:00",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "path": "fetch-exact-main.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "fetch-exact-main.stderr.txt",
+        "bytes": 141,
+        "sha256": "b318a748d9bec26079933542ebbdb054666fa3d56b7241fde436bd3a68f5ad7d"
+      }
+    }
+  },
+  {
+    "label": "fetched-main",
+    "argv": [
+      "git",
+      "rev-parse",
+      "origin/main"
+    ],
+    "start_utc": "2026-10-10T08:16:00.737317+00:00",
+    "end_utc": "2026-10-10T08:16:00.789902+00:00",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "path": "fetched-main.stdout.txt",
+        "bytes": 41,
+        "sha256": "a90b5b2055a2f9deb3b2ab294277166f548e1ff9953fd188ec61ea22c47f4cd4"
+      },
+      "stderr": {
+        "path": "fetched-main.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  {
+    "label": "E-ancestor-M",
+    "argv": [
+      "git",
+      "merge-base",
+      "--is-ancestor",
+      "84a92fbd94250e884c72103b84bc191623254f0e",
+      "b6897ea75037d2d1f1d8ed88e08d214a25d3b143"
+    ],
+    "start_utc": "2026-10-10T08:16:00.789902+00:00",
+    "end_utc": "2026-10-10T08:16:00.830330+00:00",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "path": "E-ancestor-M.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "E-ancestor-M.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  {
+    "label": "R-ancestor-M",
+    "argv": [
+      "git",
+      "merge-base",
+      "--is-ancestor",
+      "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+      "b6897ea75037d2d1f1d8ed88e08d214a25d3b143"
+    ],
+    "start_utc": "2026-10-10T08:16:00.830330+00:00",
+    "end_utc": "2026-10-10T08:16:00.867713+00:00",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "path": "R-ancestor-M.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "R-ancestor-M.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  {
+    "label": "owner-merge-tree",
+    "argv": [
+      "git",
+      "rev-parse",
+      "b6897ea75037d2d1f1d8ed88e08d214a25d3b143^{tree}"
+    ],
+    "start_utc": "2026-10-10T08:16:00.867713+00:00",
+    "end_utc": "2026-10-10T08:16:00.901086+00:00",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "path": "owner-merge-tree.stdout.txt",
+        "bytes": 41,
+        "sha256": "075af8e9ab9cdcdd5712ec9eb9c57de65dc5e8ee14169e7450f0d33cf2d19a33"
+      },
+      "stderr": {
+        "path": "owner-merge-tree.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  {
+    "label": "reviewed-evidence-tree",
+    "argv": [
+      "git",
+      "rev-parse",
+      "84a92fbd94250e884c72103b84bc191623254f0e^{tree}"
+    ],
+    "start_utc": "2026-10-10T08:16:00.901086+00:00",
+    "end_utc": "2026-10-10T08:16:00.950404+00:00",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "path": "reviewed-evidence-tree.stdout.txt",
+        "bytes": 41,
+        "sha256": "075af8e9ab9cdcdd5712ec9eb9c57de65dc5e8ee14169e7450f0d33cf2d19a33"
+      },
+      "stderr": {
+        "path": "reviewed-evidence-tree.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  {
+    "label": "R-to-owner-main-paths",
+    "argv": [
+      "git",
+      "diff",
+      "--name-only",
+      "-z",
+      "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+      "b6897ea75037d2d1f1d8ed88e08d214a25d3b143"
+    ],
+    "start_utc": "2026-10-10T08:16:00.951699+00:00",
+    "end_utc": "2026-10-10T08:16:01.036914+00:00",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "path": "R-to-owner-main-paths.stdout.txt",
+        "bytes": 278574,
+        "sha256": "dbb2335275b074544e5b0a676ef3c2b7a439b97deaa800a7e838329669ff359c"
+      },
+      "stderr": {
+        "path": "R-to-owner-main-paths.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  {
+    "label": "checkout-local-main",
+    "argv": [
+      "git",
+      "checkout",
+      "main"
+    ],
+    "start_utc": "2026-10-10T08:16:01.051508+00:00",
+    "end_utc": "2026-10-10T08:16:01.425809+00:00",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "path": "checkout-local-main.stdout.txt",
+        "bytes": 124,
+        "sha256": "afc6069686bc4c056731eb4f7e1b92a0e414dd826da1154a9f10699662f39578"
+      },
+      "stderr": {
+        "path": "checkout-local-main.stderr.txt",
+        "bytes": 26,
+        "sha256": "6300963e525f04410f9d2df59c376a7490543a6db6823dd3351451dad11cfcb0"
+      }
+    }
+  },
+  {
+    "label": "normal-main-fastforward",
+    "argv": [
+      "git",
+      "merge",
+      "--ff-only",
+      "origin/main"
+    ],
+    "start_utc": "2026-10-10T08:16:01.426868+00:00",
+    "end_utc": "2026-10-10T08:16:02.325348+00:00",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "path": "normal-main-fastforward.stdout.txt",
+        "bytes": 151033,
+        "sha256": "f1c4b4a16d04cfc3443051c582968f46f42ff61cde45fa2a7ae8caa4a1f6922e"
+      },
+      "stderr": {
+        "path": "normal-main-fastforward.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  {
+    "label": "local-main-equals-owner",
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "start_utc": "2026-10-10T08:16:02.326348+00:00",
+    "end_utc": "2026-10-10T08:16:02.365131+00:00",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "path": "local-main-equals-owner.stdout.txt",
+        "bytes": 41,
+        "sha256": "a90b5b2055a2f9deb3b2ab294277166f548e1ff9953fd188ec61ea22c47f4cd4"
+      },
+      "stderr": {
+        "path": "local-main-equals-owner.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  {
+    "label": "return-evidence",
+    "argv": [
+      "git",
+      "checkout",
+      "codex/v1.0.0-release-evidence"
+    ],
+    "start_utc": "2026-10-10T08:16:02.366142+00:00",
+    "end_utc": "2026-10-10T08:16:02.709979+00:00",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "path": "return-evidence.stdout.txt",
+        "bytes": 71,
+        "sha256": "b7967e61dbe58ac6b35cb491eab15e33b552b15cf70a15c3306703bb4962ccc3"
+      },
+      "stderr": {
+        "path": "return-evidence.stderr.txt",
+        "bytes": 51,
+        "sha256": "7dd2757252386161839126e8746dc31c41dc3c213948034b08cfacf4608210a1"
+      }
+    }
+  },
+  {
+    "label": "normal-evidence-fastforward",
+    "argv": [
+      "git",
+      "merge",
+      "--ff-only",
+      "main"
+    ],
+    "start_utc": "2026-10-10T08:16:02.711985+00:00",
+    "end_utc": "2026-10-10T08:16:02.902048+00:00",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "path": "normal-evidence-fastforward.stdout.txt",
+        "bytes": 39,
+        "sha256": "31aed3bae095680d9aeb88e932b1baea6e36d402b92341d4b75aabdb8cb1ffc9"
+      },
+      "stderr": {
+        "path": "normal-evidence-fastforward.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  {
+    "label": "reconciled-evidence-head",
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "start_utc": "2026-10-10T08:16:02.903046+00:00",
+    "end_utc": "2026-10-10T08:16:02.941034+00:00",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "path": "reconciled-evidence-head.stdout.txt",
+        "bytes": 41,
+        "sha256": "a90b5b2055a2f9deb3b2ab294277166f548e1ff9953fd188ec61ea22c47f4cd4"
+      },
+      "stderr": {
+        "path": "reconciled-evidence-head.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  {
+    "label": "reconciled-clean",
+    "argv": [
+      "git",
+      "status",
+      "--porcelain=v1",
+      "--untracked-files=all"
+    ],
+    "start_utc": "2026-10-10T08:16:02.941034+00:00",
+    "end_utc": "2026-10-10T08:16:03.025800+00:00",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "path": "reconciled-clean.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "reconciled-clean.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  {
+    "label": "normal-matching-evidence-push",
+    "argv": [
+      "git",
+      "push",
+      "origin",
+      "codex/v1.0.0-release-evidence"
+    ],
+    "start_utc": "2026-10-10T08:16:03.026800+00:00",
+    "end_utc": "2026-10-10T08:16:05.365885+00:00",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "path": "normal-matching-evidence-push.stdout.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "path": "normal-matching-evidence-push.stderr.txt",
+        "bytes": 134,
+        "sha256": "c9428bfe627092748e0a276ced3efdf564983d58d986d6ffdd50ef883d564a71"
+      }
+    }
+  },
+  {
+    "label": "reconciled-clean-live-sync",
+    "argv": [
+      "<USERPROFILE>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "-B",
+      "tools/codex/handoff.py",
+      "sync",
+      "--repo",
+      "."
+    ],
+    "start_utc": "2026-10-10T08:16:05.366794+00:00",
+    "end_utc": "2026-10-10T08:16:06.545947+00:00",
+    "exit_code": 0,
+    "streams": {
+      "stdout": {
+        "path": "reconciled-clean-live-sync.stdout.txt",
+        "bytes": 391,
+        "sha256": "2a84ad37ada4d346e0def542be66ad0acdb50b7b154ed65282780b53f770ba2a"
+      },
+      "stderr": {
+        "path": "reconciled-clean-live-sync.stderr.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  }
+]
