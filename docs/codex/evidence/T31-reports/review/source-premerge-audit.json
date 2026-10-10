@@ -1,0 +1,276 @@
+{
+  "task": "T31",
+  "audit": "independent_premerge_source_and_committed_T30_packet_revalidation",
+  "observed_at_utc": "2026-10-09T17:46:14.493348+00:00",
+  "auditor_sha256": "6767a3e98668420489af0fce6c623cdea9f46b6c503d1cfffc53ff58858a5802",
+  "checks": 2006,
+  "issues": [],
+  "result": "pass",
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "4b4ecb3003fab01d30e924247fecce64ee6e5aa1496225ca8f5de5133f43749b",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "head.stdout",
+      "stderr": "head.stderr"
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--porcelain=v1"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "status.stdout",
+      "stderr": "status.stderr"
+    },
+    {
+      "argv": [
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "9ca7391f41b8ed974fa7586e14472adbab5905be80b14bbb216caa63b3303d74",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "branch.stdout",
+      "stderr": "branch.stderr"
+    },
+    {
+      "argv": [
+        "git",
+        "remote",
+        "get-url",
+        "--all",
+        "origin"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "58f6700c4e67515f2efad4232e0616f25e02b6623ba5df89d0313d71a4298181",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "origin-fetch.stdout",
+      "stderr": "origin-fetch.stderr"
+    },
+    {
+      "argv": [
+        "git",
+        "remote",
+        "get-url",
+        "--push",
+        "--all",
+        "origin"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "58f6700c4e67515f2efad4232e0616f25e02b6623ba5df89d0313d71a4298181",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "origin-push.stdout",
+      "stderr": "origin-push.stderr"
+    },
+    {
+      "argv": [
+        "git",
+        "ls-remote",
+        "origin",
+        "refs/heads/codex/v1.0.0-readiness",
+        "refs/heads/main"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "c15a8520213f0583f6d7871477253e3e56b9274da1777414cfa9e9de205423e4",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "live-refs.stdout",
+      "stderr": "live-refs.stderr"
+    },
+    {
+      "argv": [
+        "git",
+        "ls-tree",
+        "-r",
+        "-z",
+        "8f76ba4bce7de100cd56274ca938c4da24b500dc"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "53567eebee6bd72012dde22501fc54e402da0efb987071ad23c396baf3075db1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "C1b-tree.stdout",
+      "stderr": "C1b-tree.stderr"
+    },
+    {
+      "argv": [
+        "git",
+        "ls-tree",
+        "-r",
+        "-z",
+        "277e8cbb7de98b4cb07850def58590473ec636b9"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "11aeb936b45b37e8ed04f994137596ff48c67071e29749568f79b2fbff3374c4",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "C2-tree.stdout",
+      "stderr": "C2-tree.stderr"
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--binary",
+        "8f76ba4bce7de100cd56274ca938c4da24b500dc",
+        "277e8cbb7de98b4cb07850def58590473ec636b9",
+        "--",
+        ".",
+        ":(exclude)docs/codex/evidence/T30-record-review.json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "2171b887d7ca9cdab2b3c77ad070427e88da39b76aff6e7e792e9f41aefc1a59",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "audited-packet-diff.stdout",
+      "stderr": "audited-packet-diff.stderr"
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--name-only",
+        "-z",
+        "8f76ba4bce7de100cd56274ca938c4da24b500dc",
+        "277e8cbb7de98b4cb07850def58590473ec636b9"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "e8cd13194fb0a2113842c6ce5a1949faa3f5d7d2a95298599e3f3f8e029fc758",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "committed-paths.stdout",
+      "stderr": "committed-paths.stderr"
+    },
+    {
+      "argv": [
+        "gh",
+        "pr",
+        "view",
+        "26",
+        "--repo",
+        "PikkuJanne/WinPDFMerger",
+        "--json",
+        "number,url,headRefOid,headRefName,baseRefName,isDraft,state,mergeStateStatus,reviewDecision,statusCheckRollup"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "5fa86452260ab677a787b53e93c4deb970058cf2176314797d5a3676a7337b6d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "current-pr.stdout",
+      "stderr": "current-pr.stderr"
+    }
+  ],
+  "observations": {
+    "reviewed_C1b": "8f76ba4bce7de100cd56274ca938c4da24b500dc",
+    "reviewed_C2": "277e8cbb7de98b4cb07850def58590473ec636b9",
+    "live_main_before_merge": "e2451141217efdd00a1d49d72a04df054872dffc",
+    "current_PR": {
+      "baseRefName": "main",
+      "headRefName": "codex/v1.0.0-readiness",
+      "headRefOid": "277e8cbb7de98b4cb07850def58590473ec636b9",
+      "isDraft": true,
+      "mergeStateStatus": "CLEAN",
+      "number": 26,
+      "reviewDecision": "",
+      "state": "OPEN",
+      "statusCheckRollup": [
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-09T17:16:45Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/PikkuJanne/WinPDFMerger/actions/runs/37964747871/job/113936183423",
+          "name": "unit / PS51",
+          "startedAt": "2026-10-09T17:13:38Z",
+          "status": "COMPLETED",
+          "workflowName": "Windows tests"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-09T17:16:41Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/PikkuJanne/WinPDFMerger/actions/runs/37964741851/job/113936162465",
+          "name": "unit / PS51",
+          "startedAt": "2026-10-09T17:13:34Z",
+          "status": "COMPLETED",
+          "workflowName": "Windows tests"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-09T17:16:15Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/PikkuJanne/WinPDFMerger/actions/runs/37964747871/job/113936183527",
+          "name": "unit / PS7",
+          "startedAt": "2026-10-09T17:13:37Z",
+          "status": "COMPLETED",
+          "workflowName": "Windows tests"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-09T17:16:08Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/PikkuJanne/WinPDFMerger/actions/runs/37964741851/job/113936162610",
+          "name": "unit / PS7",
+          "startedAt": "2026-10-09T17:13:34Z",
+          "status": "COMPLETED",
+          "workflowName": "Windows tests"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-09T17:14:30Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/PikkuJanne/WinPDFMerger/actions/runs/37964747871/job/113936183600",
+          "name": "native / PS51",
+          "startedAt": "2026-10-09T17:13:37Z",
+          "status": "COMPLETED",
+          "workflowName": "Windows tests"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-09T17:14:51Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/PikkuJanne/WinPDFMerger/actions/runs/37964741851/job/113936162630",
+          "name": "native / PS51",
+          "startedAt": "2026-10-09T17:13:34Z",
+          "status": "COMPLETED",
+          "workflowName": "Windows tests"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-09T17:14:40Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/PikkuJanne/WinPDFMerger/actions/runs/37964747871/job/113936183173",
+          "name": "native / PS7",
+          "startedAt": "2026-10-09T17:13:37Z",
+          "status": "COMPLETED",
+          "workflowName": "Windows tests"
+        },
+        {
+          "__typename": "CheckRun",
+          "completedAt": "2026-10-09T17:14:28Z",
+          "conclusion": "SUCCESS",
+          "detailsUrl": "https://github.com/PikkuJanne/WinPDFMerger/actions/runs/37964741851/job/113936162245",
+          "name": "native / PS7",
+          "startedAt": "2026-10-09T17:13:34Z",
+          "status": "COMPLETED",
+          "workflowName": "Windows tests"
+        }
+      ],
+      "url": "https://github.com/PikkuJanne/WinPDFMerger/pull/26"
+    },
+    "unchanged_non_evidence_paths": 124,
+    "committed_packet_paths": 1002,
+    "frozen_manifest_sha256": "e9b9d18aa8462b8acc04ab2a78d2fcc011ad82802f2ab239c40463e9526aa3f7",
+    "frozen_payloads": 987,
+    "frozen_payload_bytes": 34624295
+  },
+  "limitations": [
+    "Premerge audit does not merge, ready the PR, change protections or accept unknown R. Root owns the normal allowed merge.",
+    "Actual protections/reviewer gates must be satisfied at merge; empty reviewDecision is not human approval.",
+    "Prior C1b tests keep original scope; exact merged R lineage/blob comparison and fresh R test/CI originals remain pending.",
+    "Final R package/publication/download evidence remains T32-T34; AC058 stays excluded/unperformed."
+  ]
+}

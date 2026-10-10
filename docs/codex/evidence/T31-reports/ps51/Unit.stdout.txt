@@ -1,0 +1,1633 @@
+Pester v6.2.0
+
+Running tests from 18 files.
+
+Running tests from '<REPO>\tests\unit\CiDependencies.Tests.ps1'
+Describing AC055 explicit hosted dependency acquisition boundary
+  [+] accepts only the complete hosted Windows context with an existing ordinary temporary directory 213ms
+  [+] refuses GITHUB_ACTIONS set to false 72ms
+  [+] refuses GITHUB_ACTIONS set to True 6ms
+  [+] refuses RUNNER_ENVIRONMENT set to self-hosted 8ms
+  [+] refuses RUNNER_ENVIRONMENT set to  7ms
+  [+] refuses RUNNER_OS set to Linux 8ms
+  [+] refuses RUNNER_OS set to macOS 8ms
+  [+] refuses RUNNER_TEMP set to relative 9ms
+  [+] refuses RUNNER_TEMP set to C:relative 5ms
+  [+] refuses RUNNER_TEMP set to C:\synthetic
+GITHUB_OUTPUT=unsafe 7ms
+  [+] refuses a file in place of the temporary directory 13ms
+  [+] refuses reparse-point ancestry before creating files 450ms
+  [+] keeps importing dependency support inert 48ms
+
+Describing AC055 exact integrity gate and fresh extraction
+  [+] matches the actual file digest and length 119ms
+  [+] refuses a changed digest before creating the extraction directory 67ms
+  [+] refuses a mismatched size or incomplete hash 40ms
+  [+] extracts a verified ordinary file under its owned directory 97ms
+  [+] refuses an existing directory without replacing its file 33ms
+
+Describing AC055 ZIP names cannot escape or alias the owned destination
+  [+] rejects parent traversal before extracting any safe preceding entry 51ms
+  [+] rejects nested traversal before extracting any safe preceding entry 52ms
+  [+] rejects backslash traversal before extracting any safe preceding entry 36ms
+  [+] rejects rooted path before extracting any safe preceding entry 46ms
+  [+] rejects Windows rooted path before extracting any safe preceding entry 36ms
+  [+] rejects drive path before extracting any safe preceding entry 32ms
+  [+] rejects UNC path before extracting any safe preceding entry 32ms
+  [+] rejects alternate data stream before extracting any safe preceding entry 32ms
+  [+] rejects dot component before extracting any safe preceding entry 41ms
+  [+] rejects empty component before extracting any safe preceding entry 34ms
+  [+] rejects device name before extracting any safe preceding entry 37ms
+  [+] rejects nested device name before extracting any safe preceding entry 33ms
+  [+] rejects trailing dot before extracting any safe preceding entry 32ms
+  [+] rejects trailing space before extracting any safe preceding entry 37ms
+  [+] rejects wildcard before extracting any safe preceding entry 81ms
+  [+] rejects control characters directly across both ZIP library versions 30ms
+  [+] rejects case-insensitive duplicate paths before writing 89ms
+  [+] rejects symbolic-link attributes before writing 59ms
+
+Describing AC055 native setups are listed safely before reading them as data
+  [+] recognizes the recorded Inno file listing format 27ms
+  [+] refuses unrecognized Inno listing entries 11ms
+  [+] refuses an empty or traversal native listing 17ms
+  [+] refuses native archive links 10ms
+  [+] allows precisely two copies of the known GS helper with no overwrite extraction 9ms
+  [+] refuses arbitrary duplicate paths and a third GS helper copy 65ms
+
+Describing AC055 fixed CI output keys and compatible dependency manifest
+  [+] writes only the fixed path keys, without interpreting shell metacharacters 35ms
+  [+] refuses output injection before appending any key 16ms
+  [+] keeps exact versions compatible with the existing selected test modules 145ms
+
+Running tests from '<REPO>\tests\unit\CiReportSupport.Tests.ps1'
+Describing AC054 public CI report receipts fail closed
+  [+] exports consistent pass counts and removes all synthetic identity/path/name data 272ms
+  [+] does not overwrite an existing artifact directory 58ms
+  [+] rejects a missing passed field 36ms
+  [+] rejects a missing failed field 18ms
+  [+] rejects a missing failed_blocks field 16ms
+  [+] rejects a missing failed_containers field 33ms
+  [+] rejects a missing skipped field 20ms
+  [+] rejects a missing not_run field 19ms
+  [+] rejects a missing inconclusive field 26ms
+  [+] rejects a missing total field 28ms
+  [+] rejects a missing source_start field 25ms
+  [+] rejects a missing source_end field 25ms
+  [+] rejects a missing runner_error field 20ms
+  [+] rejects a missing source_unchanged field 18ms
+  [+] rejects a missing result field 61ms
+  [+] rejects a missing pester_version field 28ms
+  [+] rejects null counter values without coercing them 34ms
+  [+] rejects negative counter values without coercing them 29ms
+  [+] rejects string counter values without coercing them 26ms
+  [+] rejects boolean counter values without coercing them 25ms
+  [+] rejects fraction counter values without coercing them 25ms
+  [+] rejects array counter values without coercing them 30ms
+  [+] rejects oversized counter values without coercing them 33ms
+  [+] rejects a tier source/runtime mismatch 43ms
+  [+] rejects a commit_under_test source/runtime mismatch 27ms
+  [+] rejects a dirty_worktree source/runtime mismatch 20ms
+  [+] rejects a dirty_worktree source/runtime mismatch 31ms
+  [+] rejects a shell_version source/runtime mismatch 27ms
+  [+] rejects a shell_edition source/runtime mismatch 36ms
+  [+] rejects a process_64_bit source/runtime mismatch 30ms
+  [+] rejects a pester_version source/runtime mismatch 29ms
+  [+] rejects a result source/runtime mismatch 21ms
+  [+] accepts only the pinned PowerShell 7 version under PS7 selection 85ms
+  [+] refuses malformed JSON and missing receipts without publishing files 41ms
+  [+] refuses XML external entities without reading their target 40ms
+  [+] refuses mismatched NUnit root/leaf counts 36ms
+  [+] refuses mismatched NUnit root/leaf counts 26ms
+  [+] refuses mismatched NUnit root/leaf counts 27ms
+  [+] refuses mismatched NUnit root/leaf counts 25ms
+  [+] refuses a passed case marked as unexecuted or unsuccessful 38ms
+  [+] refuses a passed case marked as unexecuted or unsuccessful 31ms
+  [+] refuses a passing summary when its NUnit suite reports failure 32ms
+  [+] refuses namespace metadata that XML serialization could otherwise retain 45ms
+  [+] exports an explicitly failed guard result even when all tests passed 54ms
+  [+] exports actual source mutation as failure with preserved counts 55ms
+  [+] rejects a forged unchanged-source claim 36ms
+  [+] retains skipped failures instead of converting unexecuted tests to passed 56ms
+  [+] retains inconclusive failures instead of converting unexecuted tests to passed 50ms
+  [+] retains not_run failures instead of converting unexecuted tests to passed 50ms
+  [+] rejects skipped results falsely marked as a passing run 31ms
+  [+] retains discovery errors and absent tests as a failed run 50ms
+  [+] exports a real isolated Pester assertion failure with its actual zero/one counts 4.81s
+
+Describing AC054 CI evidence class and import boundary
+  [+] accurately classifies Unit without converting controlled tests to native evidence 21ms
+  [+] accurately classifies Static without converting controlled tests to native evidence 6ms
+  [+] accurately classifies NativeRunner without converting controlled tests to native evidence 7ms
+  [+] accurately classifies Launcher without converting controlled tests to native evidence 6ms
+  [+] accurately classifies NativeFixture without converting controlled tests to native evidence 10ms
+  [+] accurately classifies SourceDiscovery without converting controlled tests to native evidence 11ms
+  [+] accurately classifies GhostscriptPaths without converting controlled tests to native evidence 8ms
+  [+] accurately classifies CiNativeSmoke without converting controlled tests to native evidence 10ms
+  [+] accurately classifies PublicDocs without converting controlled tests to native evidence 9ms
+  [+] accurately classifies CiFailureProbe without converting controlled tests to native evidence 11ms
+  [+] accurately classifies Version without converting controlled tests to native evidence 8ms
+  [+] rejects an unknown or incorrectly cased tier 19ms
+  [+] defines only helper functions when imported 31ms
+
+Running tests from '<REPO>\tests\unit\CiRunSupport.Tests.ps1'
+Describing CI static receipt gate
+  [+] retains advisory counts while omitting raw paths and messages 143ms
+  [+] exports a failed parser receipt and returns rejected 39ms
+  [+] refuses a success state with failure counts 31ms
+  [+] refuses missing, negative, string and inconsistent counts 87ms
+  [+] refuses wrong commit, dirty, partial scope and unsupported shell receipts 81ms
+
+Describing Windows CI policy contract
+  [+] uses verified full Action commits and minimum token permission 44ms
+  [+] keeps explicit Windows shells, native group and fail-closed upload settings 141ms
+
+Running tests from '<REPO>\tests\unit\CorpusSafetySupport.Tests.ps1'
+Describing Controlled full-tree corpus safety snapshot regressions
+  [+] includes hidden and nested files and empty directories with file hashes and exact metadata 290ms
+  [+] excludes directory last-write settling while retaining directory presence, attributes and creation time 97ms
+  [+] detects a same-length source byte replacement even if the original file modification time is restored 65ms
+  [+] still detects source file timestamp and attribute changes and added empty-directory inventory 132ms
+
+Running tests from '<REPO>\tests\unit\Dependencies.Tests.ps1'
+Describing T07: controlled dependency discovery and version regressions
+ Describing AC013: strict PDFtk executable selection
+   [+] ignores a Alias named pdftk and requests applications only 328ms
+   [+] ignores a Function named pdftk and requests applications only 125ms
+   [+] selects a valid PATH application before common installations and prefers ApplicationInfo.Path 118ms
+   [+] uses the first existing PATH application when multiple candidates are returned 112ms
+   [+] resolves the actual ProgramFiles(x86) legacy PDFtk candidate 122ms
+   [+] falls through to the ProgramFiles(x86) PDFtk Server candidate 75ms
+   [+] preserves documented common-location priority 64ms
+   [+] rejects wrong executable names and continues to a valid common candidate 61ms
+   [+] rejects a missing PATH file and continues to the next real file 87ms
+   [+] rejects a directory named pdftk.exe instead of accepting it as an executable 89ms
+   [+] uses literal common-root paths containing brackets 69ms
+   [+] returns no path when required PDFtk is absent 67ms
+ Describing AC014: optional Ghostscript selection and numeric installation versions
+   [+] ignores a Alias named Ghostscript and requests applications only 147ms
+   [+] ignores a Function named Ghostscript and requests applications only 95ms
+   [+] prioritizes PATH gswin64c before PATH gswin32c and common installations 83ms
+   [+] falls back to valid PATH gswin32c when PATH gswin64c is missing or incorrectly named 81ms
+   [+] orders gs10.2 after gs9.99 numerically rather than lexically 127ms
+   [+] continues past an incomplete newest recognized installation 84ms
+   [+] ignores unrelated and malformed version directories even when they contain executables 94ms
+   [+] accepts supported two, three and four component folder versions and sorts them numerically 70ms
+   [+] ignores overflowing two, three and four component directory versions 80ms
+   [+] prefers gswin64c before gswin32c within the same installation 83ms
+   [+] uses gswin32c from a recognized common installation when its gswin64c is absent 148ms
+   [+] considers the x86 root globally by version before an older ProgramFiles installation 93ms
+   [+] prefers ProgramFiles to the x86 root when installation versions tie 66ms
+   [+] uses literal Ghostscript installation roots containing brackets 60ms
+   [+] returns no path when optional Ghostscript is absent 42ms
+ Describing AC013: native version parsing through the agreed controlled process seam
+   [+] parses the exact PDFtk banner version and calls the selected executable path 196ms
+   [+] parses bare Ghostscript version 10.06 while preserving component zeros 71ms
+   [+] parses bare Ghostscript version 10.06.0 while preserving component zeros 131ms
+   [+] parses bare Ghostscript version 10.06.0.1 while preserving component zeros 74ms
+   [+] uses recognizable stderr version output when stdout is empty 79ms
+   [+] recognizes an anchored stderr version when stdout contains only unrelated diagnostics 79ms
+   [+] does not let unrelated stderr override a successful stdout version 69ms
+   [+] rejects a nonzero probe exit even when its output contains a recognizable version 87ms
+   [+] rejects unrecognized version output rather than guessing from generic digits 68ms
+   [+] rejects Ghostscript output unrelated application 10.06.0 without a complete valid version 83ms
+   [+] rejects Ghostscript output 10.06.0garbage without a complete valid version 59ms
+   [+] rejects Ghostscript output 2147483648.0 without a complete valid version 60ms
+   [+] rejects Ghostscript output 10.2.2147483648 without a complete valid version 55ms
+   [+] rejects Ghostscript output 10.2.1.2147483648 without a complete valid version 51ms
+   [+] propagates a version-probe exception instead of inventing a version 68ms
+
+Running tests from '<REPO>\tests\unit\Destination.Tests.ps1'
+Describing AC022: literal destination validation and owned writable probe
+  [+] accepts a literal existing destination with brackets and a trailing separator 30ms
+  [+] rejects null rather than treating it as an omitted option 14ms
+  [+] rejects empty rather than treating it as an omitted option 12ms
+  [+] rejects whitespace rather than treating it as an omitted option 11ms
+  [+] rejects nonfilesystem rather than treating it as an omitted option 7ms
+  [+] does not create a missing destination 22ms
+  [+] refuses a file or wildcard destination 31ms
+  [+] writes and flushes its owned probe without touching an existing sentinel or leaving residue 45ms
+
+Describing AC023: directory identity is physical and reparse paths are checked before probing
+  [+] accepts distinct existing directories 414ms
+  [+] rejects the same directory and its case alias without creating files 69ms
+  [+] refuses two spelling-distinct paths with a matching physical identity 98ms
+  [+] fails closed when a physical identity cannot be established 58ms
+
+Describing AC024: bounded shared output names
+  [+] uses a safe ordinary folder token and common identity for all artifacts 76ms
+  [+] uses a safe drive root folder token and common identity for all artifacts 27ms
+  [+] uses a safe empty leaf folder token and common identity for all artifacts 28ms
+  [+] uses a safe dot-only leaf folder token and common identity for all artifacts 42ms
+  [+] uses a safe trailing dots and spaces folder token and common identity for all artifacts 68ms
+  [+] uses a safe trailing separators folder token and common identity for all artifacts 38ms
+  [+] uses a safe reserved token folder token and common identity for all artifacts 38ms
+  [+] preserves supported punctuation and Unicode in the folder label 19ms
+  [+] bounds long labels without splitting a surrogate pair 40ms
+  [+] adapts the token to the complete destination budget 17ms
+  [+] rejects a destination without room for the native private output before creating anything 25ms
+  [+] formats the timestamp independently of the current culture calendar 26ms
+  [+] gives same-second runs independent random identities 178ms
+
+Describing AC024: create-new log reservation cannot steal an existing identity
+  [+] reserves one log and appends the first line without overwriting it 50ms
+  [+] refuses an existing master before log reservation 33ms
+  [+] refuses an existing email before log reservation 29ms
+  [+] refuses an existing log before log reservation 20ms
+  [+] refuses an existing master directory before log reservation 16ms
+
+Running tests from '<REPO>\tests\unit\EmailOutcome.Tests.ps1'
+Describing T14 explicit result decisions do not infer publication from path existence
+  [+] reports not_started after a published master as code 2 with only explicit outputs 155ms
+  [+] reports skipped after a published master as code 0 with only explicit outputs 64ms
+  [+] reports unavailable after a published master as code 0 with only explicit outputs 56ms
+  [+] reports published after a published master as code 0 with only explicit outputs 49ms
+  [+] reports no_size_benefit after a published master as code 0 with only explicit outputs 55ms
+  [+] reports failed after a published master as code 2 with only explicit outputs 51ms
+  [+] fails before master publication even if the email state says not_started 45ms
+  [+] fails before master publication even if the email state says skipped 34ms
+  [+] fails before master publication even if the email state says unavailable 52ms
+  [+] fails before master publication even if the email state says published 40ms
+  [+] fails before master publication even if the email state says no_size_benefit 44ms
+  [+] fails before master publication even if the email state says failed 47ms
+  [+] omits a foreign existing email file from a failed result and preserves its bytes 73ms
+  [+] lists explicitly published paths even when the files are not present in this controlled decision test 17ms
+  [+] rejects an unknown email state rather than guessing from paths 28ms
+  [+] fails closed after a published master when email state was never recorded 43ms
+  [+] requires an explicit path for a claimed published master 27ms
+  [+] requires an explicit path for a claimed published email 12ms
+
+Describing AC034 email publication requires complete inspection, stable metadata and strict size benefit
+  [+] refuses omitted expected pages before staging or native execution 261ms
+  [+] refuses zero expected pages before staging or native execution 101ms
+  [+] refuses negative expected pages before staging or native execution 130ms
+  [+] refuses a positive page count with an omitted inspector before native execution 100ms
+  [+] refuses a positive page count with an empty inspector before native execution 118ms
+  [+] publishes a smaller email only after a separate bounded successful inspection 746ms
+  [+] reports equal validated bytes as no size benefit and cleans only its owned stage 196ms
+  [+] reports larger validated bytes as no size benefit and cleans only its owned stage 212ms
+  [+] allows warning stderr when both native operations and structural validation succeed 209ms
+  [+] keeps a published master when Ghostscript fails after writing partial staged bytes 184ms
+  [+] rejects native exit zero with missing email staging before inspection or publication 154ms
+  [+] rejects native exit zero with empty email staging before inspection or publication 169ms
+  [+] rejects native exit zero with non-PDF email staging before inspection or publication 206ms
+  [+] rejects native exit zero with truncated email staging before inspection or publication 204ms
+  [+] rejects native exit zero with directory email staging before inspection or publication 168ms
+  [+] rejects missing page labels through the real strict parser 259ms
+  [+] rejects malformed page labels through the real strict parser 266ms
+  [+] rejects zero page labels through the real strict parser 219ms
+  [+] rejects negative page labels through the real strict parser 200ms
+  [+] rejects duplicate page labels through the real strict parser 225ms
+  [+] rejects overflow page labels through the real strict parser 225ms
+  [+] refuses a parseable email whose page count differs from the frozen master total 187ms
+  [+] refuses controlled inspection receipt Started despite a claimed success flag 225ms
+  [+] refuses controlled inspection receipt ExitCode despite a claimed success flag 194ms
+  [+] refuses controlled inspection receipt TimedOut despite a claimed success flag 200ms
+  [+] refuses controlled inspection receipt Cancelled despite a claimed success flag 187ms
+  [+] refuses controlled inspection receipt LaunchError despite a claimed success flag 193ms
+  [+] refuses controlled inspection receipt CaptureError despite a claimed success flag 195ms
+  [+] refuses controlled inspection receipt TerminationError despite a claimed success flag 169ms
+  [+] refuses controlled inspection receipt StdoutTruncated despite a claimed success flag 162ms
+  [+] refuses controlled inspection receipt StderrTruncated despite a claimed success flag 175ms
+  [+] refuses controlled inspection receipt Succeeded despite a claimed success flag 171ms
+  [+] refuses a controlled inspection receipt missing explicit Started 235ms
+  [+] refuses a controlled inspection receipt missing explicit ExitCode 200ms
+  [+] refuses a controlled inspection receipt missing explicit TimedOut 204ms
+  [+] refuses a controlled inspection receipt missing explicit Cancelled 160ms
+  [+] refuses a controlled inspection receipt missing explicit StdoutTruncated 192ms
+  [+] refuses a controlled inspection receipt missing explicit StderrTruncated 188ms
+  [+] requires explicit TimedOut even when the controlled caller disables StrictMode 177ms
+  [+] requires explicit StdoutTruncated even when the controlled caller disables StrictMode 169ms
+  [+] requires an actual inspection receipt when a controlled inspection object claims success 184ms
+  [+] keeps the master when the inspection launch throws 196ms
+  [+] rechecks staged stage-length after a successful inspection 195ms
+  [+] rechecks staged stage-timestamp after a successful inspection 170ms
+  [+] refuses controlled external master mutation master-length-native during optional processing 178ms
+  [+] refuses controlled external master mutation master-timestamp-inspection during optional processing 282ms
+  [+] rechecks caller staging ownership before validated email publication 253ms
+  [+] preserves a foreign file collision while distinguishing email validation from publication 224ms
+  [+] preserves a foreign directory collision while distinguishing email validation from publication 201ms
+  [+] leaves equal no-benefit email bytes in a shared stage until caller cleanup 143ms
+  [+] leaves larger no-benefit email bytes in a shared stage until caller cleanup 174ms
+  [+] leaves rejected email bytes in caller-owned staging for known-path cleanup 177ms
+  [+] keeps exact orphan diagnostics and unknown children when caller cleanup fails 176ms
+  [+] compares a positive Int64 maximum expected count without arithmetic overflow 192ms
+
+Running tests from '<REPO>\tests\unit\FakeNative.Tests.ps1'
+Describing T03 controlled process fixture (not PDFtk or Ghostscript)
+  [+] echoes individual space, empty, Unicode and trailing-backslash arguments 165ms
+  [+] exposes the baseline Start-Process array splitting defect 1.04s
+  [+] emits both streams independently 98ms
+  [+] returns nonzero after making a deliberately invalid partial file and refuses overwrite 163ms
+  [+] provides a finite sleep for later timeout tests 260ms
+  [+] provides high volume on both streams for later capture tests 181ms
+
+Running tests from '<REPO>\tests\unit\FaultMatrix.Tests.ps1'
+Describing AC050 source discovery does not return a partial collection after IO faults
+  [+] reports an inaccessible source resolution with its original reason 95ms
+  [+] reports an item access failure after literal resolution and before enumeration 79ms
+  [+] withholds an already enumerated PDF when later enumeration throws access denial 118ms
+  [+] withholds an already enumerated PDF when later enumeration throws IO failure 62ms
+
+Describing AC050 native prelaunch faults return explicit failure receipts
+  [+] refuses a null argument vector before any runtime initialization 90ms
+  [+] refuses a null element argument vector before any runtime initialization 64ms
+  [+] refuses a integer element argument vector before any runtime initialization 46ms
+  [+] refuses a NUL element argument vector before any runtime initialization 59ms
+  [+] refuses a empty child environment name without changing caller state 54ms
+  [+] refuses a whitespace child environment name without changing caller state 54ms
+  [+] refuses a equals child environment name without changing caller state 42ms
+  [+] refuses a NUL child environment name without changing caller state 46ms
+
+Describing AC050 stream capture preserves fault and retention boundaries
+  [+] drains 8192 characters to EOF with an exact 8192-character retention limit 91ms
+  [+] drains 8193 characters to EOF with an exact 8192-character retention limit 26ms
+  [+] records a faulted asynchronous read without replacing previously retained bytes 32ms
+  [+] records a next-read IO failure after retaining the completed current chunk 34ms
+
+Describing AC050 a locked source fails read-only preflight without a native call
+  [+] returns the exact source diagnostic and no parseable page count for real sharing denial 64ms
+
+Describing AC050 a separate run failure overrides every explicit email stage outcome
+  [+] retains only recorded publications and reports partial success for not_started 56ms
+  [+] retains only recorded publications and reports partial success for skipped 38ms
+  [+] retains only recorded publications and reports partial success for unavailable 34ms
+  [+] retains only recorded publications and reports partial success for published 40ms
+  [+] retains only recorded publications and reports partial success for no_size_benefit 46ms
+  [+] retains only recorded publications and reports partial success for failed 41ms
+
+Running tests from '<REPO>\tests\unit\Helpers.Tests.ps1'
+Describing AC005: importing baseline helpers
+  [+] has only function definitions at file scope 206ms
+  [+] returns to the caller without native work, outputs, location or preference changes 74ms
+  [+] preserves GS_OPTIONS unset 26ms
+  [+] preserves GS_OPTIONS empty 38ms
+  [+] preserves GS_OPTIONS value 17ms
+
+Describing Existing helper behavior and corrected ordering regressions
+  [+] replaces invalid filename characters and trims ordinary whitespace 12ms
+  [+] orders the formerly defective numeric example naturally 57ms
+  [+] orders the formerly overflowing Int32 example without fixed-width parsing 21ms
+
+Running tests from '<REPO>\tests\unit\InputPreflight.Tests.ps1'
+Describing T11: document-data page count parsing
+  [+] uses the one complete labeled count amid unrelated metadata and noise 12ms
+  [+] parses a positive Int64 count independently of culture 11ms
+  [+] rejects empty output without inventing a count 28ms
+  [+] rejects digits without a label without inventing a count 11ms
+  [+] rejects count inside metadata only without inventing a count 8ms
+  [+] rejects split label/value without inventing a count 12ms
+  [+] rejects zero pages without inventing a count 7ms
+  [+] rejects negative count without inventing a count 6ms
+  [+] rejects explicit plus without inventing a count 6ms
+  [+] rejects fraction without inventing a count 7ms
+  [+] rejects exponent without inventing a count 11ms
+  [+] rejects non-ASCII digits without inventing a count 7ms
+  [+] rejects trailing text without inventing a count 8ms
+  [+] rejects overflow without inventing a count 8ms
+  [+] rejects duplicate label without inventing a count 8ms
+  [+] rejects malformed duplicate without inventing a count 8ms
+
+Describing T11: frozen input metadata
+  [+] records literal path, length and UTC timestamp without editing the source 45ms
+  [+] rejects empty input by name 22ms
+  [+] rejects missing input by name 11ms
+  [+] rejects a directory instead of an input file 18ms
+  [+] detects a length change after the snapshot 19ms
+  [+] detects timestamp change even when length is unchanged 15ms
+
+Describing T11: bounded read-only PDFtk inspection wiring
+  [+] uses one absolute input, fixed document-data operation and dont_ask with injected bound 108ms
+  [+] rejects nonzero exit even when stdout contains a plausible count 49ms
+  [+] rejects timeout even when stdout contains a plausible count 49ms
+  [+] rejects cancellation even when stdout contains a plausible count 80ms
+  [+] rejects capture failure even when stdout contains a plausible count 93ms
+  [+] rejects truncated stdout even when stdout contains a plausible count 62ms
+  [+] rejects termination failure even when stdout contains a plausible count 49ms
+  [+] never treats a count in stderr as document data 52ms
+  [+] refuses an unsupported long operand before launching the native process 52ms
+  [+] retains benign stderr warnings while using only the labeled stdout count 62ms
+
+Describing T11: complete ordered page inventory
+  [+] retains all given inputs and their order, sums pages and rechecks before merge 112ms
+  [+] stops on a rejected file without returning a partial inventory 50ms
+  [+] detects mutation of the file during native inspection 61ms
+  [+] snapshots every file before the first inspection and detects a later-file mutation 58ms
+  [+] detects an earlier-file mutation during a later inspection at the final check 53ms
+  [+] does not return success if native evidence logging fails 66ms
+  [+] returns exactly one inventory object when the native logger emits text 86ms
+  [+] guards the expected total against Int64 overflow 49ms
+  [+] rejects an empty inventory before inspection 30ms
+
+Running tests from '<REPO>\tests\unit\MasterValidation.Tests.ps1'
+Describing AC030: master publication follows explicit complete structural validation
+  [+] rejects omitted expected page inventory before creating staging or calling native code 106ms
+  [+] rejects zero expected page inventory before creating staging or calling native code 89ms
+  [+] rejects negative expected page inventory before creating staging or calling native code 74ms
+  [+] refuses a positive Ghostscript page count without its selected PDFtk inspector 67ms
+  [+] publishes only after merge success, real envelope and strict page-label inspection at the requested bound 159ms
+  [+] compares an Int64 maximum expected count without summing or overflowing it 146ms
+  [+] rejects native exit zero with missing staged data before any inspection process or final move 132ms
+  [+] rejects native exit zero with empty staged data before any inspection process or final move 124ms
+  [+] rejects native exit zero with non-PDF staged data before any inspection process or final move 133ms
+  [+] rejects native exit zero with truncated staged data before any inspection process or final move 125ms
+  [+] rejects native exit zero with directory staged data before any inspection process or final move 108ms
+  [+] rejects unparseable inspection document data through the actual strict label parser 136ms
+  [+] rejects zero-page inspection document data through the actual strict label parser 131ms
+  [+] rejects duplicate inspection document data through the actual strict label parser 127ms
+  [+] rejects malformed duplicate inspection document data through the actual strict label parser 122ms
+  [+] rejects overflow inspection document data through the actual strict label parser 156ms
+  [+] rejects metadata-only inspection document data through the actual strict label parser 142ms
+  [+] rejects a parsed positive count differing from the frozen expected total 151ms
+  [+] refuses not started failed inspection even with plausible stdout 136ms
+  [+] refuses nonzero exit failed inspection even with plausible stdout 165ms
+  [+] refuses timeout failed inspection even with plausible stdout 133ms
+  [+] refuses cancellation failed inspection even with plausible stdout 150ms
+  [+] refuses launch failure failed inspection even with plausible stdout 167ms
+  [+] refuses capture failure failed inspection even with plausible stdout 148ms
+  [+] refuses termination failure failed inspection even with plausible stdout 122ms
+  [+] refuses truncated stdout failed inspection even with plausible stdout 148ms
+  [+] refuses truncated stderr failed inspection even with plausible stdout 142ms
+  [+] refuses a controlled malformed success receipt containing not-started state 164ms
+  [+] refuses a controlled malformed success receipt containing nonzero exit 188ms
+  [+] refuses a controlled malformed success receipt containing capture error 196ms
+  [+] refuses a controlled malformed success receipt containing truncated stderr 178ms
+  [+] captures an inspection exception as validation failure and cleans only its automatic stage 156ms
+  [+] requires a native inspection receipt even when a controlled inspection object claims success 169ms
+  [+] rejects a staged master whose length changes during inspection 141ms
+  [+] rejects a staged master whose timestamp changes during inspection 145ms
+  [+] rechecks caller-owned staging identity before validation can allow publication 159ms
+  [+] leaves rejected master bytes in caller-owned staging until its caller performs known-path cleanup 147ms
+  [+] retains a foreign final collision while distinguishing validated from published output 187ms
+
+Running tests from '<REPO>\tests\unit\NativeCommand.Tests.ps1'
+Describing AC021: complete serialized command length
+  [+] counts executable, quotes, separator and NUL, including surrogate pairs 18ms
+  [+] accepts the exact bound and rejects one code unit above it 20ms
+  [+] includes executable and terminator when there are no arguments 10ms
+  [+] refuses oversized arguments before Process.Start with explicit launch state 63ms
+  [+] applies an injectable smaller limit before launch 15ms
+
+Running tests from '<REPO>\tests\unit\Ordering.Tests.ps1'
+Describing AC011: ASCII numeric magnitude and leading-zero order
+  [+] orders 1, 01, 001, 2 and 10 by the documented run rules 42ms
+  [+] handles tokens beyond Int32, Int64 and decimal without overflow 35ms
+  [+] uses ordinal digits to distinguish very long values of the same significant length 19ms
+  [+] orders equal long magnitudes by original numeric-run length 21ms
+  [+] continues through multiple numeric groups 32ms
+
+Describing AC012: deterministic natural segments and final ties
+  [+] orders all-zero numeric runs by their original length 32ms
+  [+] applies an equal-magnitude run-length tie before comparing later numeric groups 13ms
+  [+] compares later natural segments before the original case-sensitive name tie 20ms
+  [+] orders exhausted token sequences before extensions despite original-case differences 26ms
+  [+] compares mixed digit and text punctuation tokens ordinally rather than putting all numbers first 36ms
+  [+] uses the ordinal original basename before the ordinal full-path tie 22ms
+  [+] compares already canonical absolute full paths ordinally when basenames tie 21ms
+  [+] returns zero when natural name, original name and canonical full path are identical 10ms
+  [+] treats Arabic-Indic and fullwidth digits as ordinal text rather than numeric runs 32ms
+  [+] gives the same documented order and reversed-input result in en-US 56ms
+  [+] gives the same documented order and reversed-input result in tr-TR 45ms
+  [+] preserves object identities and the original collection while sorting a copy 32ms
+  [+] normalizes empty and single-input collections without copying their objects 19ms
+  [+] is reflexive, antisymmetric and transitive on a concise mixed corpus 1.28s
+
+Running tests from '<REPO>\tests\unit\PdfEnvelope.Tests.ps1'
+Describing T11: bounded PDF byte-envelope plausibility
+  [+] accepts a conventional target with LF and preserves exact bytes 72ms
+  [+] accepts a conventional target with CR and preserves exact bytes 33ms
+  [+] accepts a conventional target with CRLF and preserves exact bytes 45ms
+  [+] accepts an indirect-object target shape for cross-reference streams 45ms
+  [+] accepts a PDF comment as the delimiter immediately after obj 39ms
+  [+] accepts comments separating indirect-object header tokens 18ms
+  [+] rejects a case-changed header PDF keyword 73ms
+  [+] rejects a case-changed xref PDF keyword 27ms
+  [+] rejects a case-changed obj PDF keyword 30ms
+  [+] rejects a case-changed footer PDF keyword 16ms
+  [+] accepts horizontal whitespace around the final numeric offset 19ms
+  [+] uses byte offsets when the prefix contains binary characters 37ms
+  [+] uses the final footer after an earlier dummy startxref0 and EOF 20ms
+  [+] allows PDF whitespace after the terminal EOF 38ms
+  [+] rejects missing header instead of trusting a backend-repaired count 30ms
+  [+] rejects missing EOF instead of trusting a backend-repaired count 26ms
+  [+] rejects zero final offset instead of trusting a backend-repaired count 23ms
+  [+] rejects out-of-file offset instead of trusting a backend-repaired count 33ms
+  [+] rejects overflow offset instead of trusting a backend-repaired count 14ms
+  [+] rejects invalid target instead of trusting a backend-repaired count 15ms
+  [+] rejects trailing garbage instead of trusting a backend-repaired count 13ms
+  [+] rejects footer beyond supported window instead of trusting a backend-repaired count 25ms
+
+Running tests from '<REPO>\tests\unit\SourceDiscovery.Tests.ps1'
+Describing AC007: real filesystem source collection boundaries
+  [+] reports zero top-level visible PDFs clearly 38ms
+  [+] returns one PDF as a FileInfo that callers can normalize to an array 42ms
+  [+] includes multiple top-level PDFs and uppercase extensions without prefix omission 45ms
+  [+] omits subfolder and hidden PDFs while preserving every source byte, name and metadata 75ms
+  [+] reports no inputs when the only top-level PDF is hidden 28ms
+  [+] freezes the discovered collection before a later file arrives 24ms
+
+Describing AC008: literal source directory validation
+  [+] resolves bracket names literally instead of selecting a wildcard sibling 51ms
+  [+] resolves a relative directory and a trailing separator without changing location 21ms
+  [+] accepts an explicitly qualified FileSystem directory 9ms
+  [+] preserves supported punctuation, Unicode and apostrophes in directory and input names 27ms
+  [+] rejects null input with a SourceFolder diagnostic 16ms
+  [+] rejects empty input with a SourceFolder diagnostic 18ms
+  [+] rejects whitespace input with a SourceFolder diagnostic 8ms
+  [+] rejects a missing directory 26ms
+  [+] rejects a file instead of a directory 20ms
+  [+] rejects nonfilesystem providers even when the provider path exists 17ms
+  [+] rejects wildcard expansion instead of resolving one or multiple matching directories 27ms
+  [+] rejects a directory array instead of combining source folders 24ms
+
+Describing AC008: entry preflight failures precede dependencies and output creation
+  [+] shows usage and exits one for omitted input without an interactive prompt 718ms
+  [+] fails a missing directory before dependency resolution and outputs 1.04s
+  [+] fails a file argument before dependency resolution and outputs 1.5s
+  [+] fails a nonfilesystem provider before dependency resolution and outputs 1.25s
+  [+] rejects extra source paths before creating outputs 590ms
+  [+] logs zero PDFs before trying to find PDFtk without creating a PDF 1.8s
+
+Running tests from '<REPO>\tests\unit\Staging.Tests.ps1'
+Describing AC029: owned staging reservation and cleanup boundaries
+  [+] reserves a literal private directory with fixed owned paths and a held ownership marker 122ms
+  [+] refuses an existing same-suffix directory without modifying foreign contents 46ms
+  [+] refuses an existing same-suffix file without modifying foreign contents 29ms
+  [+] rejects an invalid suffix before any staging directory appears 21ms
+  [+] keeps two live stages and their known files independent during cleanup 96ms
+  [+] cleans only known owned files and leaves adjacent prefix-matching artifacts unchanged 76ms
+  [+] refuses all cleanup when an unknown file is present and retains the ownership marker 61ms
+  [+] refuses all cleanup when an unknown directory is present and retains the ownership marker 63ms
+  [+] reports an exact orphan path when a known staged file is locked 61ms
+  [+] refuses publication and cleanup after the held ownership handle has been disposed 59ms
+  [+] reports a late unknown child and restores its marker only while directory identity remains unchanged 98ms
+  [+] reports a late unknown child and restores its marker only while directory identity remains changed 145ms
+  [+] refuses a changed DirectoryIdentity before publication or cleanup can touch a staged file 86ms
+  [+] refuses a changed OutputDirectoryIdentity before publication or cleanup can touch a staged file 98ms
+  [+] refuses a changed MarkerText before publication or cleanup can touch a staged file 76ms
+  [+] does not acquire another directory by changing the context path 49ms
+  [+] refuses a real junction at a known staged path and retains the unrelated target contents 87ms
+
+Describing AC027: literal staged publication uses no-overwrite direct-child moves
+  [+] moves only the known master to a literal final path and leaves other staged/final files intact 102ms
+  [+] moves only the known email to a literal final path and leaves other staged/final files intact 75ms
+  [+] refuses a preexisting final file without changing either candidate 77ms
+  [+] refuses a preexisting final directory without changing either candidate 61ms
+  [+] refuses an output in another directory or a nested directory 63ms
+  [+] refuses relative or noncanonical final operands before the move 66ms
+  [+] refuses an empty, missing or directory staged master without publishing it 67ms
+  [+] refuses an empty, missing or directory staged master without publishing it 57ms
+  [+] refuses an empty, missing or directory staged master without publishing it 52ms
+  [+] refuses an unknown staged operand inside or outside the private directory 78ms
+  [+] reports the actual locked-file move failure while keeping its candidate private 64ms
+
+Running tests from '<REPO>\tests\unit\TestRunSupport.Tests.ps1'
+Describing AC050 development runner result trust boundary
+  [+] accepts a complete all-passed result with actual byte integer counters 34ms
+  [+] accepts a complete all-passed result with actual sbyte integer counters 18ms
+  [+] accepts a complete all-passed result with actual int16 integer counters 13ms
+  [+] accepts a complete all-passed result with actual uint16 integer counters 15ms
+  [+] accepts a complete all-passed result with actual int32 integer counters 9ms
+  [+] accepts a complete all-passed result with actual uint32 integer counters 11ms
+  [+] accepts a complete all-passed result with actual int64 integer counters 10ms
+  [+] accepts a complete all-passed result with actual uint64 integer counters 12ms
+  [+] rejects Failed result state despite all-passed counters 14ms
+  [+] rejects Skipped result state despite all-passed counters 6ms
+  [+] rejects NotRun result state despite all-passed counters 6ms
+  [+] rejects passed result state despite all-passed counters 10ms
+  [+] rejects  result state despite all-passed counters 5ms
+  [+] rejects $null result state despite all-passed counters 8ms
+  [+] rejects a missing Result intrinsically when caller StrictMode is off 13ms
+  [+] rejects a missing PassedCount intrinsically when caller StrictMode is off 8ms
+  [+] rejects a missing FailedCount intrinsically when caller StrictMode is off 8ms
+  [+] rejects a missing FailedBlocksCount intrinsically when caller StrictMode is off 15ms
+  [+] rejects a missing FailedContainersCount intrinsically when caller StrictMode is off 6ms
+  [+] rejects a missing SkippedCount intrinsically when caller StrictMode is off 5ms
+  [+] rejects a missing InconclusiveCount intrinsically when caller StrictMode is off 7ms
+  [+] rejects a missing NotRunCount intrinsically when caller StrictMode is off 6ms
+  [+] rejects a missing TotalCount intrinsically when caller StrictMode is off 5ms
+  [+] rejects a null PassedCount rather than treating it as zero 15ms
+  [+] rejects a null FailedCount rather than treating it as zero 10ms
+  [+] rejects a null FailedBlocksCount rather than treating it as zero 7ms
+  [+] rejects a null FailedContainersCount rather than treating it as zero 10ms
+  [+] rejects a null SkippedCount rather than treating it as zero 6ms
+  [+] rejects a null InconclusiveCount rather than treating it as zero 6ms
+  [+] rejects a null NotRunCount rather than treating it as zero 12ms
+  [+] rejects a null TotalCount rather than treating it as zero 9ms
+  [+] rejects a string counter without coercing a plausible value 12ms
+  [+] rejects a boolean counter without coercing a plausible value 9ms
+  [+] rejects a double counter without coercing a plausible value 6ms
+  [+] rejects a decimal counter without coercing a plausible value 19ms
+  [+] rejects a fraction counter without coercing a plausible value 5ms
+  [+] rejects a array counter without coercing a plausible value 6ms
+  [+] rejects a negative PassedCount counter 16ms
+  [+] rejects a negative FailedCount counter 8ms
+  [+] rejects a negative FailedBlocksCount counter 9ms
+  [+] rejects a negative FailedContainersCount counter 10ms
+  [+] rejects a negative SkippedCount counter 6ms
+  [+] rejects a negative InconclusiveCount counter 6ms
+  [+] rejects a negative NotRunCount counter 11ms
+  [+] rejects a negative TotalCount counter 10ms
+  [+] rejects a visible nonzero FailedCount even when Result claims Passed 12ms
+  [+] rejects a visible nonzero FailedBlocksCount even when Result claims Passed 14ms
+  [+] rejects a visible nonzero FailedContainersCount even when Result claims Passed 7ms
+  [+] rejects a visible nonzero SkippedCount even when Result claims Passed 5ms
+  [+] rejects a visible nonzero InconclusiveCount even when Result claims Passed 8ms
+  [+] rejects a visible nonzero NotRunCount even when Result claims Passed 8ms
+  [+] rejects an empty suite 10ms
+  [+] rejects inconsistent less passed than total totals 16ms
+  [+] rejects inconsistent more passed than total totals 5ms
+  [+] returns false for a missing entire result object 5ms
+  [+] does not mutate the original completed result while evaluating it 8ms
+
+Describing AC050 importing development runner support remains inert
+  [+] defines only functions at file scope 21ms
+
+Describing AC050 source evidence binds the tested bytes
+  [+] binds a clean source snapshot to the local commit and actual file digest 494ms
+  [+] detects a second source mutation even when commit and dirty status remain identical 640ms
+  [+] binds runtime version and release contracts at VERSION to their actual bytes 708ms
+  [+] binds runtime version and release contracts at CHANGELOG.md to their actual bytes 779ms
+  [+] binds runtime version and release contracts at docs/RELEASE_NOTES_v1.0.0.md to their actual bytes 803ms
+  [+] binds runtime version and release contracts at docs/codex/PACKAGE_CONTRACT.json to their actual bytes 780ms
+  [+] keeps ignored generated work outside source evidence and dirty status 870ms
+  [+] binds new untracked test bytes even when their dirty status remains identical 674ms
+  [+] fails a missing source file rather than silently producing incomplete bindings 423ms
+Tests completed in 68.71s
+Tests Passed: 545, Failed: 0, Skipped: 0, Inconclusive: 0, NotRun: 0
+{
+    "observed_at_utc":  "2026-10-09T18:14:26.4083682Z",
+    "started_at_utc":  "2026-10-09T18:13:15.1792782Z",
+    "commit_under_test":  "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+    "dirty_worktree":  false,
+    "source_start":  {
+                         "commit":  "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+                         "status":  [
+
+                                    ],
+                         "sources":  [
+                                         {
+                                             "path":  "CHANGELOG.md",
+                                             "sha256":  "f94dd9b5babc6ded3b44ae61f7f5afaffd9a27f79f9f9dddb173c3c4a9015401"
+                                         },
+                                         {
+                                             "path":  "docs/codex/PACKAGE_CONTRACT.json",
+                                             "sha256":  "3a729a4fcdbfcce765e41cb3eea71d4be521915b545e788820dae93786b2cc60"
+                                         },
+                                         {
+                                             "path":  "docs/COMPATIBILITY.md",
+                                             "sha256":  "a1eee1febba7a918e066e786f40f2d25bffa711b95d3f31bc4801fd252553adc"
+                                         },
+                                         {
+                                             "path":  "docs/DEPENDENCIES.md",
+                                             "sha256":  "9e7ea2d7e00ed467f9bf1429d29f6420fed267ecb997444034ad193bdfb34f40"
+                                         },
+                                         {
+                                             "path":  "docs/DEVELOPMENT.md",
+                                             "sha256":  "186fa634ee2bc9f625b56b3d8e07166de4319c4b4b635abef340707fe85206d2"
+                                         },
+                                         {
+                                             "path":  "docs/EMAIL_PRESETS.md",
+                                             "sha256":  "8eac3bc343ba4de9d419b15572d259d98c35fb8e06b9fddd727f0d34405fc359"
+                                         },
+                                         {
+                                             "path":  "docs/PDF_LIMITATIONS.md",
+                                             "sha256":  "a22cde1a0b1628d7b84dcbea481c40c12014712903f7b4a0806389e2c3326efa"
+                                         },
+                                         {
+                                             "path":  "docs/RELEASE_NOTES_v1.0.0.md",
+                                             "sha256":  "33f68f89ab70d95cabaad40961a5cb2d1f1c55eb40e35e7e2c85fbc226baef34"
+                                         },
+                                         {
+                                             "path":  "docs/TROUBLESHOOTING.md",
+                                             "sha256":  "7833d442fb6bec5320742090e067cba631efa79c869ab116da497c33414070d1"
+                                         },
+                                         {
+                                             "path":  "docs/USAGE.md",
+                                             "sha256":  "5f58914ebd7f0b1b37d54ba2999d1f6b9d93c214c0bdeed8c6b6ee98d218867a"
+                                         },
+                                         {
+                                             "path":  "LICENSE",
+                                             "sha256":  "714ffa7a21614e637d7dbb17a2e86e4575d7ecd2b6d36b5b67ab3fdcc4193477"
+                                         },
+                                         {
+                                             "path":  "PSScriptAnalyzerSettings.psd1",
+                                             "sha256":  "93c946f5fca800175f74ae00762264525305889e87a639dffebf3990c02561de"
+                                         },
+                                         {
+                                             "path":  "README.md",
+                                             "sha256":  "6fb3bfa326c215ef99f152309a12768c967527782e796f60983f9f9f2005a097"
+                                         },
+                                         {
+                                             "path":  "release-files.json",
+                                             "sha256":  "c116a790f17fac692209ab45fb07f2eb56a52a39aecaa711089dc34585566cb5"
+                                         },
+                                         {
+                                             "path":  "SECURITY.md",
+                                             "sha256":  "2d45ca9525c780409938c027b019693204014f1d565816a583689c7e31b880e8"
+                                         },
+                                         {
+                                             "path":  "src/WinPDFMerge.Helpers.ps1",
+                                             "sha256":  "1dbcc362f72a260792b81831560b97e83dc121b43e001d6ee42c2b9f00cc7435"
+                                         },
+                                         {
+                                             "path":  "tests/ci-dependencies.json",
+                                             "sha256":  "685f514090f52e653ab65c193e32e5846449de4cab2f00ad13afa4115e3605b6"
+                                         },
+                                         {
+                                             "path":  "tests/cli/Parameters.Native.Tests.ps1",
+                                             "sha256":  "dbe31b3a843863b90891a2cd7129f3d66ea6c258674f90dd3c79c4ee2a699df9"
+                                         },
+                                         {
+                                             "path":  "tests/cli/Parameters.Tests.ps1",
+                                             "sha256":  "7bad300a821a7815d1db0ee625ad73310e3d58c0db8238e2a4f7eb59cb7ab7a3"
+                                         },
+                                         {
+                                             "path":  "tests/CorpusSafetySupport.ps1",
+                                             "sha256":  "4168396c70f5032fba462a40548143d0487ff4d5abfae8088af4eeae3f68776c"
+                                         },
+                                         {
+                                             "path":  "tests/dependencies/Dependencies.Entry.Tests.ps1",
+                                             "sha256":  "76402f16c6e044f4f67e2c99431d080a65f5e8bac8cb25144bdd42e51657ed30"
+                                         },
+                                         {
+                                             "path":  "tests/dependencies/VersionProbeFixture.cs",
+                                             "sha256":  "5e58c6f6a05c87a52f729540eef8db299774f21fd2edc780d505381945641418"
+                                         },
+                                         {
+                                             "path":  "tests/faults/FaultIO.Tests.ps1",
+                                             "sha256":  "d1c86326fb8d9600c6f135370d551746c5b0ad0c2125a2f36891efb1ceeeb053"
+                                         },
+                                         {
+                                             "path":  "tests/faults/FaultRecovery.Native.Tests.ps1",
+                                             "sha256":  "f79ea985f34cc58b876404aa326ac83e03dd78953ccae165eedc1f4615842b18"
+                                         },
+                                         {
+                                             "path":  "tests/filesafety/Destination.Native.Tests.ps1",
+                                             "sha256":  "b6ccb08fe94eee3f1e923b7d9c2ccd522f5bc51a76420af18ab282fc6c8bc55a"
+                                         },
+                                         {
+                                             "path":  "tests/filesafety/Staging.Native.Tests.ps1",
+                                             "sha256":  "8291b51d9ed904611154604308084ab60b848ba3ef62f57e440409444ebbcc52"
+                                         },
+                                         {
+                                             "path":  "tests/fixtures/corpus.json",
+                                             "sha256":  "71b57b3032b61c34a0ee9accaf9f3054f0f00a6f63d89f11b05a2584a4472d89"
+                                         },
+                                         {
+                                             "path":  "tests/fixtures/features/generate_features.py",
+                                             "sha256":  "a6c4146fba847ccb4c961c11277456503bed61dc3db3672cc9a0fb2aebfddbd8"
+                                         },
+                                         {
+                                             "path":  "tests/fixtures/features/manifest.json",
+                                             "sha256":  "73b1c8cd478f8f8e709005550f42a7d9177ab71dcbb738ba2614edc37b1dc846"
+                                         },
+                                         {
+                                             "path":  "tests/fixtures/numbered/1.pdf",
+                                             "sha256":  "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109"
+                                         },
+                                         {
+                                             "path":  "tests/fixtures/numbered/10.pdf",
+                                             "sha256":  "9fa79c41feb7be692b100bc0fe44ed063029e0955900d3bb2f8552a10afb6aaa"
+                                         },
+                                         {
+                                             "path":  "tests/fixtures/numbered/2.pdf",
+                                             "sha256":  "7821d0ff4c3d655511e4421559d317013a64356a370d7b07a47079e5f02ad901"
+                                         },
+                                         {
+                                             "path":  "tests/fixtures/numbered/manifest.json",
+                                             "sha256":  "62cbc4b3a86464693c3568be9b0ef487212abd7fc560f08320739b5a2aaa810f"
+                                         },
+                                         {
+                                             "path":  "tests/fixtures/presets/generate_presets.py",
+                                             "sha256":  "1aaabe651bd4d468b09e617607b1f276d3a894b67e15081d380cc45e91a62db6"
+                                         },
+                                         {
+                                             "path":  "tests/fixtures/presets/manifest.json",
+                                             "sha256":  "383ec07bec823f131ab86cf07de2ffb96e10803ad4f2f4997ba834835ee01e1f"
+                                         },
+                                         {
+                                             "path":  "tests/fixtures/README.md",
+                                             "sha256":  "6e8c8f8217a118f17ba423d2f7284e478772ca93da186eac6a243700b3140eef"
+                                         },
+                                         {
+                                             "path":  "tests/help/Diagnostics.Native.Tests.ps1",
+                                             "sha256":  "89e1b68e0a239b07aa86925b72cdda2461bacb93ac27d3ab30f320408392eb47"
+                                         },
+                                         {
+                                             "path":  "tests/help/Diagnostics.Tests.ps1",
+                                             "sha256":  "5b42fc444c621d42a0ea15278e75711440d2a11ba7934075d313c101832268fc"
+                                         },
+                                         {
+                                             "path":  "tests/help/PreservationDocs.Tests.ps1",
+                                             "sha256":  "fa31f78ee8ea172bfdebac839a3ae9a626fc508b71f02d5151ad1f30a0a85864"
+                                         },
+                                         {
+                                             "path":  "tests/help/PublicDocs.Tests.ps1",
+                                             "sha256":  "f05707580d5ec4a0486ed607e86acb47cf4c123ddf00e121c7c9fa2bbf609d5a"
+                                         },
+                                         {
+                                             "path":  "tests/help/Version.Tests.ps1",
+                                             "sha256":  "98f32959b47a167e3351ec4103e2fc27b6189c44a01ffba2f74ef5edbe82dae3"
+                                         },
+                                         {
+                                             "path":  "tests/launcher/Launcher.Native.Tests.ps1",
+                                             "sha256":  "61bbe9e2d927c18eaa7265dae000f621f5570bf9d3743c8c1528d2fea7f4195e"
+                                         },
+                                         {
+                                             "path":  "tests/launcher/Launcher.Tests.ps1",
+                                             "sha256":  "94becd084a9013b2b6b5be97139ac3b1848081047021cb8b8fb55263282142d1"
+                                         },
+                                         {
+                                             "path":  "tests/launcher/Receiver.ps1",
+                                             "sha256":  "b1ddadbe8034a595f23242b56404aec12ac20051519d5ef4f8a9893e320ec3cc"
+                                         },
+                                         {
+                                             "path":  "tests/launcher/TestSupport.ps1",
+                                             "sha256":  "4249a55083b88629edac14b1cd82f87f35f77753f4870a21923cb4198c772a65"
+                                         },
+                                         {
+                                             "path":  "tests/native/FakeNative.cs",
+                                             "sha256":  "1f124bad206540a41a511462d2761cb5fe5f863cf344cd7235b09e71212b5036"
+                                         },
+                                         {
+                                             "path":  "tests/native/NativeRunner.Tests.ps1",
+                                             "sha256":  "2706360b442c74e527a8fd54f6a5efffbca29f60a1791fb6735cba4b75b0a902"
+                                         },
+                                         {
+                                             "path":  "tests/native/ToolInvocation.Tests.ps1",
+                                             "sha256":  "4e64fd678a656fa6b3160a554d3a0f0e5cc2a96978f8a064b76fa21bae808a2a"
+                                         },
+                                         {
+                                             "path":  "tests/package/candidate_smoke.py",
+                                             "sha256":  "b563eca14a898159763c245e2c8a275c8b1a7f4968e28bcad49c352a771a502f"
+                                         },
+                                         {
+                                             "path":  "tests/package/Package.Tests.ps1",
+                                             "sha256":  "8e758a8b4d3bc4d87a077efab119f5f0b94f9fb8f682e82f54f7deb99557ee67"
+                                         },
+                                         {
+                                             "path":  "tests/package/PackageSupport.ps1",
+                                             "sha256":  "22fcb0d0e1ff113ed76e41d2ea6fb45565f5e4df3e4c0a0eb77b1656158d8ba8"
+                                         },
+                                         {
+                                             "path":  "tests/package/test_candidate_smoke.py",
+                                             "sha256":  "6c771c0381ae81406f6bb782141f465acc8a0b8f715166c31510cc3605b40a8c"
+                                         },
+                                         {
+                                             "path":  "tests/package/test_capture_labels.py",
+                                             "sha256":  "f944e75f7419418fb921b5d98f11fc8be2cfa5b39e718cd3424f43eec3e02985"
+                                         },
+                                         {
+                                             "path":  "tests/pdf/CiSmoke.Native.Tests.ps1",
+                                             "sha256":  "299007a580910622876aeb6de96a4571f7a38ba99fa1d53db56c63390e65ba9b"
+                                         },
+                                         {
+                                             "path":  "tests/pdf/CorpusSafety.Native.Tests.ps1",
+                                             "sha256":  "49f430d05a38f873a0794780ccd68285e573e09899c1b9c5f9584dcff771862d"
+                                         },
+                                         {
+                                             "path":  "tests/pdf/EmailOutcome.Native.Tests.ps1",
+                                             "sha256":  "bb7bbe50db77fd3bee1833485181e3b758639065c10625fb918df5eab6caeb1b"
+                                         },
+                                         {
+                                             "path":  "tests/pdf/Fixture.Native.Tests.ps1",
+                                             "sha256":  "6191900d9499b10cae113f336d298eed2720bc6814d5c7a8489bd597cafae8f1"
+                                         },
+                                         {
+                                             "path":  "tests/pdf/InputPreflight.Native.Tests.ps1",
+                                             "sha256":  "f9be7d95e4113a5f8559127e4a82c33c80faf8e8d712cd88708ffb764b2f4f2a"
+                                         },
+                                         {
+                                             "path":  "tests/pdf/MasterValidation.Native.Tests.ps1",
+                                             "sha256":  "19fd9161e0c074943c01049984d72a93565e0f69b1a08f14a9eaa6aaa9370080"
+                                         },
+                                         {
+                                             "path":  "tests/pdf/NativeAcceptance.Native.Tests.ps1",
+                                             "sha256":  "fb387749c5d4319175e8a14fceb878a313fcdb91b55428ddff0426927b62e25c"
+                                         },
+                                         {
+                                             "path":  "tests/pdf/Preservation.Native.Tests.ps1",
+                                             "sha256":  "8ac63feba7baf828a02764bfd9a0972ae2e7809578c43054f084c7e1a33ea264"
+                                         },
+                                         {
+                                             "path":  "tests/pdf/SizeReporting.Native.Tests.ps1",
+                                             "sha256":  "864195172a053611eb55ac749c2b844369ec08af1d8163313abc5c88d1f72681"
+                                         },
+                                         {
+                                             "path":  "tests/pdf/SizeReporting.Tests.ps1",
+                                             "sha256":  "b483404583d3093333031e1799d36f39adef5a9b7061fef88b19970d12690ce7"
+                                         },
+                                         {
+                                             "path":  "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+                                             "sha256":  "e5ea266524f8a6537dff8bc4a89ea87032d1b80bd2ee58d8d870aa511bfb4174"
+                                         },
+                                         {
+                                             "path":  "tests/pdf/ToolPaths.Native.Tests.ps1",
+                                             "sha256":  "3f6a6a8d7a2096976bff9b11e8d9bdf9fa1b782cdac49f064eff88641357d027"
+                                         },
+                                         {
+                                             "path":  "tests/static/StaticChecks.Tests.ps1",
+                                             "sha256":  "a4765fd019f53f39a5560e4d81d8811074463950cdb01a0578ade8135b5d35ec"
+                                         },
+                                         {
+                                             "path":  "tests/TestDependencies.psd1",
+                                             "sha256":  "04dca897f5504a2d7564711b993ab486831be69e81adefede136d7aa9f68dbbb"
+                                         },
+                                         {
+                                             "path":  "tests/TestSupport.ps1",
+                                             "sha256":  "f02d2b28444aeb6ee208d8f270d474a16e7edea26e2c92f7bdb10bdb997421a2"
+                                         },
+                                         {
+                                             "path":  "tests/unit/CiDependencies.Tests.ps1",
+                                             "sha256":  "17c6d2f88b3b738a35f604426ec607eda4eec3f7eeb6035d5bd7478cdbb1c14b"
+                                         },
+                                         {
+                                             "path":  "tests/unit/CiReportSupport.Tests.ps1",
+                                             "sha256":  "4c4c6c6cb6ac49d8f28fcd99bbd6756692c3b8be393572898bff98ba95199905"
+                                         },
+                                         {
+                                             "path":  "tests/unit/CiRunSupport.Tests.ps1",
+                                             "sha256":  "e12ff7d3a606bdafef81cd3c18f9851a3218f4898c886ca7d0d8e3e594ce0425"
+                                         },
+                                         {
+                                             "path":  "tests/unit/CorpusSafetySupport.Tests.ps1",
+                                             "sha256":  "bf82f6d895b37156aa69ebe4907d6c64e62d42854bcebd1be994b06cb7ae3a21"
+                                         },
+                                         {
+                                             "path":  "tests/unit/Dependencies.Tests.ps1",
+                                             "sha256":  "8e6153c3d7eaccfe06161a043e707654c921a047ed4cdbe46573f0ade96c949e"
+                                         },
+                                         {
+                                             "path":  "tests/unit/Destination.Tests.ps1",
+                                             "sha256":  "504b334c72a73754c3c41f11811703e76c6a48b1ab7844ba2b7f83adb4dc3747"
+                                         },
+                                         {
+                                             "path":  "tests/unit/EmailOutcome.Tests.ps1",
+                                             "sha256":  "88fe4272b559c140284e80040dd065ef04c2b941481e38a29882a088b7a3d5cf"
+                                         },
+                                         {
+                                             "path":  "tests/unit/FakeNative.Tests.ps1",
+                                             "sha256":  "4cb5fa831a99e28d34617008f65364e3c11ed8db925066daf8ba1fd58c4f49a2"
+                                         },
+                                         {
+                                             "path":  "tests/unit/FaultMatrix.Tests.ps1",
+                                             "sha256":  "32159aeddeed9b2c7a55f2779533aa49244602d8585bd44280c94bcc5e8513d3"
+                                         },
+                                         {
+                                             "path":  "tests/unit/Helpers.Tests.ps1",
+                                             "sha256":  "ae54da066ab871a957b4182815a9ab29120821eec1d88a3cbc3616d499a3d36e"
+                                         },
+                                         {
+                                             "path":  "tests/unit/InputPreflight.Tests.ps1",
+                                             "sha256":  "74a1526f57d17c792fd7324ccd00baa8cd7145c1c8056d2b875502d8bdb5e162"
+                                         },
+                                         {
+                                             "path":  "tests/unit/MasterValidation.Tests.ps1",
+                                             "sha256":  "cdec06dad50436bb8eba8abb6a64208ad2972028ba52551a198738f480bf7ef4"
+                                         },
+                                         {
+                                             "path":  "tests/unit/NativeCommand.Tests.ps1",
+                                             "sha256":  "ccaf2d25abe827e36964b1ea369094d7b8516d8109a98034812ce29e11429bc9"
+                                         },
+                                         {
+                                             "path":  "tests/unit/Ordering.Tests.ps1",
+                                             "sha256":  "30da6738a7710c4da188ea11912b631d1888a1aa406b87630be3eb05f24e8721"
+                                         },
+                                         {
+                                             "path":  "tests/unit/PdfEnvelope.Tests.ps1",
+                                             "sha256":  "b33d041cee9171edb8ca14e16ad97d45294e15da2af4d39ecc67c552b3ddd4f6"
+                                         },
+                                         {
+                                             "path":  "tests/unit/SourceDiscovery.Tests.ps1",
+                                             "sha256":  "ac5af7e2037aad438ddf761f0f2512b96353bef8f00f5666f4bd743edc63fa60"
+                                         },
+                                         {
+                                             "path":  "tests/unit/Staging.Tests.ps1",
+                                             "sha256":  "e54002b4ad43043accbd502918daefadc21ff5840d9d37ce169841e09de255bd"
+                                         },
+                                         {
+                                             "path":  "tests/unit/TestRunSupport.Tests.ps1",
+                                             "sha256":  "0d229ccf531fa374abd2ebebba9c16d91443e9aa811a89600a9bc2e809bc7b1b"
+                                         },
+                                         {
+                                             "path":  "tools/release/Build-Release.ps1",
+                                             "sha256":  "c8ab8ad70f80a6bfa5af4ec20871009778943a301c716871e018301114519a2a"
+                                         },
+                                         {
+                                             "path":  "tools/test/Build-FakeNative.ps1",
+                                             "sha256":  "152fe731d2d008e460f6777179d43bbf0d04c9430a5718afeeba5246bf45be6a"
+                                         },
+                                         {
+                                             "path":  "tools/test/CiDependencySupport.ps1",
+                                             "sha256":  "8a2d5e28e3bcd0b9de65811b6c9a7c67b61eb4edf87f2dea238d6d524874fdcb"
+                                         },
+                                         {
+                                             "path":  "tools/test/CiReportSupport.ps1",
+                                             "sha256":  "157238c6f1111aa88cfd64827d77ee5385c2bfcbc4bbbcae1dcde0bfdaa3bb9a"
+                                         },
+                                         {
+                                             "path":  "tools/test/CiRunSupport.ps1",
+                                             "sha256":  "76c66a722d53e16c0f029a69d252cb44d7efa8ed510d7018b52343a603f3707c"
+                                         },
+                                         {
+                                             "path":  "tools/test/corpus.py",
+                                             "sha256":  "ac8c2e89f9e6cc340b9f338a4a2c29564efc4aa301ab53cdb54580dcaddda3a2"
+                                         },
+                                         {
+                                             "path":  "tools/test/Destination.md",
+                                             "sha256":  "54a7c33a99c5600ad47e16b2b8a9d969e964eaf8ee3e84febb7aac04769c3788"
+                                         },
+                                         {
+                                             "path":  "tools/test/FakeNative.md",
+                                             "sha256":  "3739f72a2eb798b74ed9c60e78ca0c897d2f3e2dc26554221b43c6b1cebf20c7"
+                                         },
+                                         {
+                                             "path":  "tools/test/feature_oracle.py",
+                                             "sha256":  "3e0a0c46204cbdadffcc687e1881ffced75d72c4fae061538fb0e4b9ed019526"
+                                         },
+                                         {
+                                             "path":  "tools/test/fixture_oracle.py",
+                                             "sha256":  "87132d5c19d97bc13089fe684c31812708bba80841c24fed90c9b8cc86f8a09c"
+                                         },
+                                         {
+                                             "path":  "tools/test/generate_numbered_fixtures.py",
+                                             "sha256":  "3a1d5386a7ca327efcae128e5f64114300df89649eedaa9b48c377f8f0979be1"
+                                         },
+                                         {
+                                             "path":  "tools/test/generate_pdf_envelope_fixtures.py",
+                                             "sha256":  "7eac6f773c1ee3a075de4f1c647b49f9c8c4ab5364e98432c7a185a861bfe59f"
+                                         },
+                                         {
+                                             "path":  "tools/test/Initialize-CiDependencies.ps1",
+                                             "sha256":  "b8be3fc28d23a4a947b5887b3e551e612dfd6783790549262f665ea3ee945105"
+                                         },
+                                         {
+                                             "path":  "tools/test/InputPreflight.md",
+                                             "sha256":  "8e87c1509cc3bceb2f074fa051310886a3c75cdaefdb9b2ab3d8cd2cfcf9de7d"
+                                         },
+                                         {
+                                             "path":  "tools/test/Invoke-CiFailureProbe.ps1",
+                                             "sha256":  "40f9e49d57e87954dd416316e9a0589df9aaafaa8d4993badf1f9a9f96221a01"
+                                         },
+                                         {
+                                             "path":  "tools/test/Invoke-CiTests.ps1",
+                                             "sha256":  "eb621a44f9bc7af603426a7475da42a33345fc45d157c8d1032a2cc40ca002ec"
+                                         },
+                                         {
+                                             "path":  "tools/test/Invoke-StaticChecks.ps1",
+                                             "sha256":  "4c5139e47ef24d8f1b842574b76a781732b3d31d95dea63d8c5a6faaa4547d05"
+                                         },
+                                         {
+                                             "path":  "tools/test/Invoke-Tests.ps1",
+                                             "sha256":  "27858fcb087a51b1a51b83c6a1ef09ded6826223336c9bf91fc0152a67a95e3d"
+                                         },
+                                         {
+                                             "path":  "tools/test/NativeRunner.md",
+                                             "sha256":  "138e12552e07f9504609075ac910a0dc6943504952ecb095ae80ac109aefb48b"
+                                         },
+                                         {
+                                             "path":  "tools/test/README.md",
+                                             "sha256":  "414fe5bda3e11b436e5a0eaac85eed18996b98c03477596140e4266fa084efbd"
+                                         },
+                                         {
+                                             "path":  "tools/test/requirements-fixtures.txt",
+                                             "sha256":  "86ec1cc3035bafd26ba3edd579c6a719356ae8353602218484c524ef4b84f181"
+                                         },
+                                         {
+                                             "path":  "tools/test/Staging.md",
+                                             "sha256":  "cb7797a69d7f929af3a51826ef7dd0a2df14039f870bbf618dd9ce99f46821f7"
+                                         },
+                                         {
+                                             "path":  "tools/test/StaticChecks.md",
+                                             "sha256":  "c2e8f7db83ea15e1038a12c0b711e7076fdd0f2d2705b23b8819a54e6b28f971"
+                                         },
+                                         {
+                                             "path":  "tools/test/TestRunSupport.ps1",
+                                             "sha256":  "98ff5f02b29b998069d9f457e1d0f8dd87826f5419037710236b385e09457baa"
+                                         },
+                                         {
+                                             "path":  "tools/test/tests/test_corpus.py",
+                                             "sha256":  "3f1ae084c7ca2b4ada8678822581e0d2bca0e90fc6827a174f6a4ec52e4497a5"
+                                         },
+                                         {
+                                             "path":  "tools/test/tests/test_feature_oracle.py",
+                                             "sha256":  "3477ab506c3a171abe2cf478e00493a934f91685b486724f550b82179effcc55"
+                                         },
+                                         {
+                                             "path":  "tools/test/tests/test_fixture_checkout.py",
+                                             "sha256":  "2b21ebfdc9647b80fbcf0e7a5bd8e48d77e21f079bbb323daad4ae3ebb1a499e"
+                                         },
+                                         {
+                                             "path":  "tools/test/tests/test_fixture_oracle.py",
+                                             "sha256":  "7522de6248fdd694ce3274e0e5679e7a3b464775c24087eb7e5ce01875e91e44"
+                                         },
+                                         {
+                                             "path":  "VERSION",
+                                             "sha256":  "4ca8bbd3c595ee306226c6996b32b8d47a900217c55a7ed0cfc868ee444f34f1"
+                                         },
+                                         {
+                                             "path":  "WinPDFMerge.bat",
+                                             "sha256":  "288287beefea974c64d39b34266332d83112b9106c952efd8c304edfedebff83"
+                                         },
+                                         {
+                                             "path":  "WinPDFMerge.ps1",
+                                             "sha256":  "2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902"
+                                         }
+                                     ]
+                     },
+    "source_end":  {
+                       "commit":  "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+                       "status":  [
+
+                                  ],
+                       "sources":  [
+                                       {
+                                           "path":  "CHANGELOG.md",
+                                           "sha256":  "f94dd9b5babc6ded3b44ae61f7f5afaffd9a27f79f9f9dddb173c3c4a9015401"
+                                       },
+                                       {
+                                           "path":  "docs/codex/PACKAGE_CONTRACT.json",
+                                           "sha256":  "3a729a4fcdbfcce765e41cb3eea71d4be521915b545e788820dae93786b2cc60"
+                                       },
+                                       {
+                                           "path":  "docs/COMPATIBILITY.md",
+                                           "sha256":  "a1eee1febba7a918e066e786f40f2d25bffa711b95d3f31bc4801fd252553adc"
+                                       },
+                                       {
+                                           "path":  "docs/DEPENDENCIES.md",
+                                           "sha256":  "9e7ea2d7e00ed467f9bf1429d29f6420fed267ecb997444034ad193bdfb34f40"
+                                       },
+                                       {
+                                           "path":  "docs/DEVELOPMENT.md",
+                                           "sha256":  "186fa634ee2bc9f625b56b3d8e07166de4319c4b4b635abef340707fe85206d2"
+                                       },
+                                       {
+                                           "path":  "docs/EMAIL_PRESETS.md",
+                                           "sha256":  "8eac3bc343ba4de9d419b15572d259d98c35fb8e06b9fddd727f0d34405fc359"
+                                       },
+                                       {
+                                           "path":  "docs/PDF_LIMITATIONS.md",
+                                           "sha256":  "a22cde1a0b1628d7b84dcbea481c40c12014712903f7b4a0806389e2c3326efa"
+                                       },
+                                       {
+                                           "path":  "docs/RELEASE_NOTES_v1.0.0.md",
+                                           "sha256":  "33f68f89ab70d95cabaad40961a5cb2d1f1c55eb40e35e7e2c85fbc226baef34"
+                                       },
+                                       {
+                                           "path":  "docs/TROUBLESHOOTING.md",
+                                           "sha256":  "7833d442fb6bec5320742090e067cba631efa79c869ab116da497c33414070d1"
+                                       },
+                                       {
+                                           "path":  "docs/USAGE.md",
+                                           "sha256":  "5f58914ebd7f0b1b37d54ba2999d1f6b9d93c214c0bdeed8c6b6ee98d218867a"
+                                       },
+                                       {
+                                           "path":  "LICENSE",
+                                           "sha256":  "714ffa7a21614e637d7dbb17a2e86e4575d7ecd2b6d36b5b67ab3fdcc4193477"
+                                       },
+                                       {
+                                           "path":  "PSScriptAnalyzerSettings.psd1",
+                                           "sha256":  "93c946f5fca800175f74ae00762264525305889e87a639dffebf3990c02561de"
+                                       },
+                                       {
+                                           "path":  "README.md",
+                                           "sha256":  "6fb3bfa326c215ef99f152309a12768c967527782e796f60983f9f9f2005a097"
+                                       },
+                                       {
+                                           "path":  "release-files.json",
+                                           "sha256":  "c116a790f17fac692209ab45fb07f2eb56a52a39aecaa711089dc34585566cb5"
+                                       },
+                                       {
+                                           "path":  "SECURITY.md",
+                                           "sha256":  "2d45ca9525c780409938c027b019693204014f1d565816a583689c7e31b880e8"
+                                       },
+                                       {
+                                           "path":  "src/WinPDFMerge.Helpers.ps1",
+                                           "sha256":  "1dbcc362f72a260792b81831560b97e83dc121b43e001d6ee42c2b9f00cc7435"
+                                       },
+                                       {
+                                           "path":  "tests/ci-dependencies.json",
+                                           "sha256":  "685f514090f52e653ab65c193e32e5846449de4cab2f00ad13afa4115e3605b6"
+                                       },
+                                       {
+                                           "path":  "tests/cli/Parameters.Native.Tests.ps1",
+                                           "sha256":  "dbe31b3a843863b90891a2cd7129f3d66ea6c258674f90dd3c79c4ee2a699df9"
+                                       },
+                                       {
+                                           "path":  "tests/cli/Parameters.Tests.ps1",
+                                           "sha256":  "7bad300a821a7815d1db0ee625ad73310e3d58c0db8238e2a4f7eb59cb7ab7a3"
+                                       },
+                                       {
+                                           "path":  "tests/CorpusSafetySupport.ps1",
+                                           "sha256":  "4168396c70f5032fba462a40548143d0487ff4d5abfae8088af4eeae3f68776c"
+                                       },
+                                       {
+                                           "path":  "tests/dependencies/Dependencies.Entry.Tests.ps1",
+                                           "sha256":  "76402f16c6e044f4f67e2c99431d080a65f5e8bac8cb25144bdd42e51657ed30"
+                                       },
+                                       {
+                                           "path":  "tests/dependencies/VersionProbeFixture.cs",
+                                           "sha256":  "5e58c6f6a05c87a52f729540eef8db299774f21fd2edc780d505381945641418"
+                                       },
+                                       {
+                                           "path":  "tests/faults/FaultIO.Tests.ps1",
+                                           "sha256":  "d1c86326fb8d9600c6f135370d551746c5b0ad0c2125a2f36891efb1ceeeb053"
+                                       },
+                                       {
+                                           "path":  "tests/faults/FaultRecovery.Native.Tests.ps1",
+                                           "sha256":  "f79ea985f34cc58b876404aa326ac83e03dd78953ccae165eedc1f4615842b18"
+                                       },
+                                       {
+                                           "path":  "tests/filesafety/Destination.Native.Tests.ps1",
+                                           "sha256":  "b6ccb08fe94eee3f1e923b7d9c2ccd522f5bc51a76420af18ab282fc6c8bc55a"
+                                       },
+                                       {
+                                           "path":  "tests/filesafety/Staging.Native.Tests.ps1",
+                                           "sha256":  "8291b51d9ed904611154604308084ab60b848ba3ef62f57e440409444ebbcc52"
+                                       },
+                                       {
+                                           "path":  "tests/fixtures/corpus.json",
+                                           "sha256":  "71b57b3032b61c34a0ee9accaf9f3054f0f00a6f63d89f11b05a2584a4472d89"
+                                       },
+                                       {
+                                           "path":  "tests/fixtures/features/generate_features.py",
+                                           "sha256":  "a6c4146fba847ccb4c961c11277456503bed61dc3db3672cc9a0fb2aebfddbd8"
+                                       },
+                                       {
+                                           "path":  "tests/fixtures/features/manifest.json",
+                                           "sha256":  "73b1c8cd478f8f8e709005550f42a7d9177ab71dcbb738ba2614edc37b1dc846"
+                                       },
+                                       {
+                                           "path":  "tests/fixtures/numbered/1.pdf",
+                                           "sha256":  "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109"
+                                       },
+                                       {
+                                           "path":  "tests/fixtures/numbered/10.pdf",
+                                           "sha256":  "9fa79c41feb7be692b100bc0fe44ed063029e0955900d3bb2f8552a10afb6aaa"
+                                       },
+                                       {
+                                           "path":  "tests/fixtures/numbered/2.pdf",
+                                           "sha256":  "7821d0ff4c3d655511e4421559d317013a64356a370d7b07a47079e5f02ad901"
+                                       },
+                                       {
+                                           "path":  "tests/fixtures/numbered/manifest.json",
+                                           "sha256":  "62cbc4b3a86464693c3568be9b0ef487212abd7fc560f08320739b5a2aaa810f"
+                                       },
+                                       {
+                                           "path":  "tests/fixtures/presets/generate_presets.py",
+                                           "sha256":  "1aaabe651bd4d468b09e617607b1f276d3a894b67e15081d380cc45e91a62db6"
+                                       },
+                                       {
+                                           "path":  "tests/fixtures/presets/manifest.json",
+                                           "sha256":  "383ec07bec823f131ab86cf07de2ffb96e10803ad4f2f4997ba834835ee01e1f"
+                                       },
+                                       {
+                                           "path":  "tests/fixtures/README.md",
+                                           "sha256":  "6e8c8f8217a118f17ba423d2f7284e478772ca93da186eac6a243700b3140eef"
+                                       },
+                                       {
+                                           "path":  "tests/help/Diagnostics.Native.Tests.ps1",
+                                           "sha256":  "89e1b68e0a239b07aa86925b72cdda2461bacb93ac27d3ab30f320408392eb47"
+                                       },
+                                       {
+                                           "path":  "tests/help/Diagnostics.Tests.ps1",
+                                           "sha256":  "5b42fc444c621d42a0ea15278e75711440d2a11ba7934075d313c101832268fc"
+                                       },
+                                       {
+                                           "path":  "tests/help/PreservationDocs.Tests.ps1",
+                                           "sha256":  "fa31f78ee8ea172bfdebac839a3ae9a626fc508b71f02d5151ad1f30a0a85864"
+                                       },
+                                       {
+                                           "path":  "tests/help/PublicDocs.Tests.ps1",
+                                           "sha256":  "f05707580d5ec4a0486ed607e86acb47cf4c123ddf00e121c7c9fa2bbf609d5a"
+                                       },
+                                       {
+                                           "path":  "tests/help/Version.Tests.ps1",
+                                           "sha256":  "98f32959b47a167e3351ec4103e2fc27b6189c44a01ffba2f74ef5edbe82dae3"
+                                       },
+                                       {
+                                           "path":  "tests/launcher/Launcher.Native.Tests.ps1",
+                                           "sha256":  "61bbe9e2d927c18eaa7265dae000f621f5570bf9d3743c8c1528d2fea7f4195e"
+                                       },
+                                       {
+                                           "path":  "tests/launcher/Launcher.Tests.ps1",
+                                           "sha256":  "94becd084a9013b2b6b5be97139ac3b1848081047021cb8b8fb55263282142d1"
+                                       },
+                                       {
+                                           "path":  "tests/launcher/Receiver.ps1",
+                                           "sha256":  "b1ddadbe8034a595f23242b56404aec12ac20051519d5ef4f8a9893e320ec3cc"
+                                       },
+                                       {
+                                           "path":  "tests/launcher/TestSupport.ps1",
+                                           "sha256":  "4249a55083b88629edac14b1cd82f87f35f77753f4870a21923cb4198c772a65"
+                                       },
+                                       {
+                                           "path":  "tests/native/FakeNative.cs",
+                                           "sha256":  "1f124bad206540a41a511462d2761cb5fe5f863cf344cd7235b09e71212b5036"
+                                       },
+                                       {
+                                           "path":  "tests/native/NativeRunner.Tests.ps1",
+                                           "sha256":  "2706360b442c74e527a8fd54f6a5efffbca29f60a1791fb6735cba4b75b0a902"
+                                       },
+                                       {
+                                           "path":  "tests/native/ToolInvocation.Tests.ps1",
+                                           "sha256":  "4e64fd678a656fa6b3160a554d3a0f0e5cc2a96978f8a064b76fa21bae808a2a"
+                                       },
+                                       {
+                                           "path":  "tests/package/candidate_smoke.py",
+                                           "sha256":  "b563eca14a898159763c245e2c8a275c8b1a7f4968e28bcad49c352a771a502f"
+                                       },
+                                       {
+                                           "path":  "tests/package/Package.Tests.ps1",
+                                           "sha256":  "8e758a8b4d3bc4d87a077efab119f5f0b94f9fb8f682e82f54f7deb99557ee67"
+                                       },
+                                       {
+                                           "path":  "tests/package/PackageSupport.ps1",
+                                           "sha256":  "22fcb0d0e1ff113ed76e41d2ea6fb45565f5e4df3e4c0a0eb77b1656158d8ba8"
+                                       },
+                                       {
+                                           "path":  "tests/package/test_candidate_smoke.py",
+                                           "sha256":  "6c771c0381ae81406f6bb782141f465acc8a0b8f715166c31510cc3605b40a8c"
+                                       },
+                                       {
+                                           "path":  "tests/package/test_capture_labels.py",
+                                           "sha256":  "f944e75f7419418fb921b5d98f11fc8be2cfa5b39e718cd3424f43eec3e02985"
+                                       },
+                                       {
+                                           "path":  "tests/pdf/CiSmoke.Native.Tests.ps1",
+                                           "sha256":  "299007a580910622876aeb6de96a4571f7a38ba99fa1d53db56c63390e65ba9b"
+                                       },
+                                       {
+                                           "path":  "tests/pdf/CorpusSafety.Native.Tests.ps1",
+                                           "sha256":  "49f430d05a38f873a0794780ccd68285e573e09899c1b9c5f9584dcff771862d"
+                                       },
+                                       {
+                                           "path":  "tests/pdf/EmailOutcome.Native.Tests.ps1",
+                                           "sha256":  "bb7bbe50db77fd3bee1833485181e3b758639065c10625fb918df5eab6caeb1b"
+                                       },
+                                       {
+                                           "path":  "tests/pdf/Fixture.Native.Tests.ps1",
+                                           "sha256":  "6191900d9499b10cae113f336d298eed2720bc6814d5c7a8489bd597cafae8f1"
+                                       },
+                                       {
+                                           "path":  "tests/pdf/InputPreflight.Native.Tests.ps1",
+                                           "sha256":  "f9be7d95e4113a5f8559127e4a82c33c80faf8e8d712cd88708ffb764b2f4f2a"
+                                       },
+                                       {
+                                           "path":  "tests/pdf/MasterValidation.Native.Tests.ps1",
+                                           "sha256":  "19fd9161e0c074943c01049984d72a93565e0f69b1a08f14a9eaa6aaa9370080"
+                                       },
+                                       {
+                                           "path":  "tests/pdf/NativeAcceptance.Native.Tests.ps1",
+                                           "sha256":  "fb387749c5d4319175e8a14fceb878a313fcdb91b55428ddff0426927b62e25c"
+                                       },
+                                       {
+                                           "path":  "tests/pdf/Preservation.Native.Tests.ps1",
+                                           "sha256":  "8ac63feba7baf828a02764bfd9a0972ae2e7809578c43054f084c7e1a33ea264"
+                                       },
+                                       {
+                                           "path":  "tests/pdf/SizeReporting.Native.Tests.ps1",
+                                           "sha256":  "864195172a053611eb55ac749c2b844369ec08af1d8163313abc5c88d1f72681"
+                                       },
+                                       {
+                                           "path":  "tests/pdf/SizeReporting.Tests.ps1",
+                                           "sha256":  "b483404583d3093333031e1799d36f39adef5a9b7061fef88b19970d12690ce7"
+                                       },
+                                       {
+                                           "path":  "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+                                           "sha256":  "e5ea266524f8a6537dff8bc4a89ea87032d1b80bd2ee58d8d870aa511bfb4174"
+                                       },
+                                       {
+                                           "path":  "tests/pdf/ToolPaths.Native.Tests.ps1",
+                                           "sha256":  "3f6a6a8d7a2096976bff9b11e8d9bdf9fa1b782cdac49f064eff88641357d027"
+                                       },
+                                       {
+                                           "path":  "tests/static/StaticChecks.Tests.ps1",
+                                           "sha256":  "a4765fd019f53f39a5560e4d81d8811074463950cdb01a0578ade8135b5d35ec"
+                                       },
+                                       {
+                                           "path":  "tests/TestDependencies.psd1",
+                                           "sha256":  "04dca897f5504a2d7564711b993ab486831be69e81adefede136d7aa9f68dbbb"
+                                       },
+                                       {
+                                           "path":  "tests/TestSupport.ps1",
+                                           "sha256":  "f02d2b28444aeb6ee208d8f270d474a16e7edea26e2c92f7bdb10bdb997421a2"
+                                       },
+                                       {
+                                           "path":  "tests/unit/CiDependencies.Tests.ps1",
+                                           "sha256":  "17c6d2f88b3b738a35f604426ec607eda4eec3f7eeb6035d5bd7478cdbb1c14b"
+                                       },
+                                       {
+                                           "path":  "tests/unit/CiReportSupport.Tests.ps1",
+                                           "sha256":  "4c4c6c6cb6ac49d8f28fcd99bbd6756692c3b8be393572898bff98ba95199905"
+                                       },
+                                       {
+                                           "path":  "tests/unit/CiRunSupport.Tests.ps1",
+                                           "sha256":  "e12ff7d3a606bdafef81cd3c18f9851a3218f4898c886ca7d0d8e3e594ce0425"
+                                       },
+                                       {
+                                           "path":  "tests/unit/CorpusSafetySupport.Tests.ps1",
+                                           "sha256":  "bf82f6d895b37156aa69ebe4907d6c64e62d42854bcebd1be994b06cb7ae3a21"
+                                       },
+                                       {
+                                           "path":  "tests/unit/Dependencies.Tests.ps1",
+                                           "sha256":  "8e6153c3d7eaccfe06161a043e707654c921a047ed4cdbe46573f0ade96c949e"
+                                       },
+                                       {
+                                           "path":  "tests/unit/Destination.Tests.ps1",
+                                           "sha256":  "504b334c72a73754c3c41f11811703e76c6a48b1ab7844ba2b7f83adb4dc3747"
+                                       },
+                                       {
+                                           "path":  "tests/unit/EmailOutcome.Tests.ps1",
+                                           "sha256":  "88fe4272b559c140284e80040dd065ef04c2b941481e38a29882a088b7a3d5cf"
+                                       },
+                                       {
+                                           "path":  "tests/unit/FakeNative.Tests.ps1",
+                                           "sha256":  "4cb5fa831a99e28d34617008f65364e3c11ed8db925066daf8ba1fd58c4f49a2"
+                                       },
+                                       {
+                                           "path":  "tests/unit/FaultMatrix.Tests.ps1",
+                                           "sha256":  "32159aeddeed9b2c7a55f2779533aa49244602d8585bd44280c94bcc5e8513d3"
+                                       },
+                                       {
+                                           "path":  "tests/unit/Helpers.Tests.ps1",
+                                           "sha256":  "ae54da066ab871a957b4182815a9ab29120821eec1d88a3cbc3616d499a3d36e"
+                                       },
+                                       {
+                                           "path":  "tests/unit/InputPreflight.Tests.ps1",
+                                           "sha256":  "74a1526f57d17c792fd7324ccd00baa8cd7145c1c8056d2b875502d8bdb5e162"
+                                       },
+                                       {
+                                           "path":  "tests/unit/MasterValidation.Tests.ps1",
+                                           "sha256":  "cdec06dad50436bb8eba8abb6a64208ad2972028ba52551a198738f480bf7ef4"
+                                       },
+                                       {
+                                           "path":  "tests/unit/NativeCommand.Tests.ps1",
+                                           "sha256":  "ccaf2d25abe827e36964b1ea369094d7b8516d8109a98034812ce29e11429bc9"
+                                       },
+                                       {
+                                           "path":  "tests/unit/Ordering.Tests.ps1",
+                                           "sha256":  "30da6738a7710c4da188ea11912b631d1888a1aa406b87630be3eb05f24e8721"
+                                       },
+                                       {
+                                           "path":  "tests/unit/PdfEnvelope.Tests.ps1",
+                                           "sha256":  "b33d041cee9171edb8ca14e16ad97d45294e15da2af4d39ecc67c552b3ddd4f6"
+                                       },
+                                       {
+                                           "path":  "tests/unit/SourceDiscovery.Tests.ps1",
+                                           "sha256":  "ac5af7e2037aad438ddf761f0f2512b96353bef8f00f5666f4bd743edc63fa60"
+                                       },
+                                       {
+                                           "path":  "tests/unit/Staging.Tests.ps1",
+                                           "sha256":  "e54002b4ad43043accbd502918daefadc21ff5840d9d37ce169841e09de255bd"
+                                       },
+                                       {
+                                           "path":  "tests/unit/TestRunSupport.Tests.ps1",
+                                           "sha256":  "0d229ccf531fa374abd2ebebba9c16d91443e9aa811a89600a9bc2e809bc7b1b"
+                                       },
+                                       {
+                                           "path":  "tools/release/Build-Release.ps1",
+                                           "sha256":  "c8ab8ad70f80a6bfa5af4ec20871009778943a301c716871e018301114519a2a"
+                                       },
+                                       {
+                                           "path":  "tools/test/Build-FakeNative.ps1",
+                                           "sha256":  "152fe731d2d008e460f6777179d43bbf0d04c9430a5718afeeba5246bf45be6a"
+                                       },
+                                       {
+                                           "path":  "tools/test/CiDependencySupport.ps1",
+                                           "sha256":  "8a2d5e28e3bcd0b9de65811b6c9a7c67b61eb4edf87f2dea238d6d524874fdcb"
+                                       },
+                                       {
+                                           "path":  "tools/test/CiReportSupport.ps1",
+                                           "sha256":  "157238c6f1111aa88cfd64827d77ee5385c2bfcbc4bbbcae1dcde0bfdaa3bb9a"
+                                       },
+                                       {
+                                           "path":  "tools/test/CiRunSupport.ps1",
+                                           "sha256":  "76c66a722d53e16c0f029a69d252cb44d7efa8ed510d7018b52343a603f3707c"
+                                       },
+                                       {
+                                           "path":  "tools/test/corpus.py",
+                                           "sha256":  "ac8c2e89f9e6cc340b9f338a4a2c29564efc4aa301ab53cdb54580dcaddda3a2"
+                                       },
+                                       {
+                                           "path":  "tools/test/Destination.md",
+                                           "sha256":  "54a7c33a99c5600ad47e16b2b8a9d969e964eaf8ee3e84febb7aac04769c3788"
+                                       },
+                                       {
+                                           "path":  "tools/test/FakeNative.md",
+                                           "sha256":  "3739f72a2eb798b74ed9c60e78ca0c897d2f3e2dc26554221b43c6b1cebf20c7"
+                                       },
+                                       {
+                                           "path":  "tools/test/feature_oracle.py",
+                                           "sha256":  "3e0a0c46204cbdadffcc687e1881ffced75d72c4fae061538fb0e4b9ed019526"
+                                       },
+                                       {
+                                           "path":  "tools/test/fixture_oracle.py",
+                                           "sha256":  "87132d5c19d97bc13089fe684c31812708bba80841c24fed90c9b8cc86f8a09c"
+                                       },
+                                       {
+                                           "path":  "tools/test/generate_numbered_fixtures.py",
+                                           "sha256":  "3a1d5386a7ca327efcae128e5f64114300df89649eedaa9b48c377f8f0979be1"
+                                       },
+                                       {
+                                           "path":  "tools/test/generate_pdf_envelope_fixtures.py",
+                                           "sha256":  "7eac6f773c1ee3a075de4f1c647b49f9c8c4ab5364e98432c7a185a861bfe59f"
+                                       },
+                                       {
+                                           "path":  "tools/test/Initialize-CiDependencies.ps1",
+                                           "sha256":  "b8be3fc28d23a4a947b5887b3e551e612dfd6783790549262f665ea3ee945105"
+                                       },
+                                       {
+                                           "path":  "tools/test/InputPreflight.md",
+                                           "sha256":  "8e87c1509cc3bceb2f074fa051310886a3c75cdaefdb9b2ab3d8cd2cfcf9de7d"
+                                       },
+                                       {
+                                           "path":  "tools/test/Invoke-CiFailureProbe.ps1",
+                                           "sha256":  "40f9e49d57e87954dd416316e9a0589df9aaafaa8d4993badf1f9a9f96221a01"
+                                       },
+                                       {
+                                           "path":  "tools/test/Invoke-CiTests.ps1",
+                                           "sha256":  "eb621a44f9bc7af603426a7475da42a33345fc45d157c8d1032a2cc40ca002ec"
+                                       },
+                                       {
+                                           "path":  "tools/test/Invoke-StaticChecks.ps1",
+                                           "sha256":  "4c5139e47ef24d8f1b842574b76a781732b3d31d95dea63d8c5a6faaa4547d05"
+                                       },
+                                       {
+                                           "path":  "tools/test/Invoke-Tests.ps1",
+                                           "sha256":  "27858fcb087a51b1a51b83c6a1ef09ded6826223336c9bf91fc0152a67a95e3d"
+                                       },
+                                       {
+                                           "path":  "tools/test/NativeRunner.md",
+                                           "sha256":  "138e12552e07f9504609075ac910a0dc6943504952ecb095ae80ac109aefb48b"
+                                       },
+                                       {
+                                           "path":  "tools/test/README.md",
+                                           "sha256":  "414fe5bda3e11b436e5a0eaac85eed18996b98c03477596140e4266fa084efbd"
+                                       },
+                                       {
+                                           "path":  "tools/test/requirements-fixtures.txt",
+                                           "sha256":  "86ec1cc3035bafd26ba3edd579c6a719356ae8353602218484c524ef4b84f181"
+                                       },
+                                       {
+                                           "path":  "tools/test/Staging.md",
+                                           "sha256":  "cb7797a69d7f929af3a51826ef7dd0a2df14039f870bbf618dd9ce99f46821f7"
+                                       },
+                                       {
+                                           "path":  "tools/test/StaticChecks.md",
+                                           "sha256":  "c2e8f7db83ea15e1038a12c0b711e7076fdd0f2d2705b23b8819a54e6b28f971"
+                                       },
+                                       {
+                                           "path":  "tools/test/TestRunSupport.ps1",
+                                           "sha256":  "98ff5f02b29b998069d9f457e1d0f8dd87826f5419037710236b385e09457baa"
+                                       },
+                                       {
+                                           "path":  "tools/test/tests/test_corpus.py",
+                                           "sha256":  "3f1ae084c7ca2b4ada8678822581e0d2bca0e90fc6827a174f6a4ec52e4497a5"
+                                       },
+                                       {
+                                           "path":  "tools/test/tests/test_feature_oracle.py",
+                                           "sha256":  "3477ab506c3a171abe2cf478e00493a934f91685b486724f550b82179effcc55"
+                                       },
+                                       {
+                                           "path":  "tools/test/tests/test_fixture_checkout.py",
+                                           "sha256":  "2b21ebfdc9647b80fbcf0e7a5bd8e48d77e21f079bbb323daad4ae3ebb1a499e"
+                                       },
+                                       {
+                                           "path":  "tools/test/tests/test_fixture_oracle.py",
+                                           "sha256":  "7522de6248fdd694ce3274e0e5679e7a3b464775c24087eb7e5ce01875e91e44"
+                                       },
+                                       {
+                                           "path":  "VERSION",
+                                           "sha256":  "4ca8bbd3c595ee306226c6996b32b8d47a900217c55a7ed0cfc868ee444f34f1"
+                                       },
+                                       {
+                                           "path":  "WinPDFMerge.bat",
+                                           "sha256":  "288287beefea974c64d39b34266332d83112b9106c952efd8c304edfedebff83"
+                                       },
+                                       {
+                                           "path":  "WinPDFMerge.ps1",
+                                           "sha256":  "2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902"
+                                       }
+                                   ]
+                   },
+    "source_unchanged":  true,
+    "runner_error":  null,
+    "result":  "pass",
+    "shell_version":  "5.1.26100.9444",
+    "shell_edition":  "Desktop",
+    "process_64_bit":  true,
+    "execution_policy":  "RemoteSigned",
+    "pester_version":  "6.2.0",
+    "tier":  "Unit",
+    "evidence_class":  "unit-controlled-process-and-filesystem",
+    "passed":  545,
+    "failed":  0,
+    "failed_blocks":  0,
+    "failed_containers":  0,
+    "skipped":  0,
+    "not_run":  0,
+    "inconclusive":  0,
+    "total":  545
+}
+Reports: <REPO>\tests\.work\pester\cd4517b7d79141e2b92a69a56ed4434c

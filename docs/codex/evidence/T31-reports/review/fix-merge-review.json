@@ -1,0 +1,394 @@
+{
+  "task": "T31",
+  "audit": "independent_committed_fix_source_and_normal_merge_helper_derivation_review",
+  "observed_at_utc": "2026-10-09T18:11:13.612817+00:00",
+  "auditor_sha256": "427a4bedfadf9ebe9db9a8643d4f41e79a215f70c7d990e3718e0dbe48ef047a",
+  "base_unaccepted_R": "de5f30155c68755dbd5af691625a0651e3fb7230",
+  "reviewed_fix_C1": "30560516a0248636769e988b0420466214c25e3b",
+  "result": "pass_for_source_and_merge_helper",
+  "checks": 72,
+  "issues": [],
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "acba927b7702817c39976066dd1a40a08a7332b14014bd3086f6f226b0b24800",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--porcelain=v1"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "72397210e66ce1d84a37724ee3d94b3df7a1b4e07e4792d40bef68627803c425",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "ls-remote",
+        "origin",
+        "refs/heads/main",
+        "refs/heads/codex/t31-fixture-checkout"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "48aa87d6e440e447d164bd24b6cd04910f38bc5b5f6d7b9d086147c2a9ff2da2",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--binary",
+        "de5f30155c68755dbd5af691625a0651e3fb7230",
+        "30560516a0248636769e988b0420466214c25e3b"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "10ba98dad4c8bef2fd1ef2252c31f32e7e195345e6b324fb4a24715487ef5a7e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        "30560516a0248636769e988b0420466214c25e3b:.gitattributes"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "f05814a3fae0cc3ed4a6780713e0db141172671678a37903532c072806f12aab",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "30560516a0248636769e988b0420466214c25e3b:.gitattributes"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "eee5b143b688bc16516e75e2eb897f8b80091dbe7302f77625734c917a48de3e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        "30560516a0248636769e988b0420466214c25e3b:docs/codex/ACCEPTANCE_CASES.json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "8526c25fd30ed516dc446f9d5ac44a2d61f69673e4afb50fcb5e252fe769baae",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "30560516a0248636769e988b0420466214c25e3b:docs/codex/ACCEPTANCE_CASES.json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "df46851ebc76f2488d729dcdceeb77a5c14a7752be946758656e6e06063f311a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        "30560516a0248636769e988b0420466214c25e3b:docs/codex/NEXT_SESSION.md"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "f0a53d459445cde6f70f7bb15fa3a20219fdb33dce9c6aaaca096c5083ce1721",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "30560516a0248636769e988b0420466214c25e3b:docs/codex/NEXT_SESSION.md"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "c49c2b4579e1aaeffc375bbcb69121f67807fec26860e1d1b621426dbeb73f90",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        "30560516a0248636769e988b0420466214c25e3b:docs/codex/STATUS.md"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "bc13b3a01a66b17eaa6e3aeac0cf88b6032e99440066df2889abe86c4e772bcc",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "30560516a0248636769e988b0420466214c25e3b:docs/codex/STATUS.md"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "4d5d9973924868d4cfd935084dfee876dc95e507e55bee368a8f8f4b3339e898",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        "30560516a0248636769e988b0420466214c25e3b:docs/codex/TASKS.json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "4013788d85b2f696496d36092ae20870241f0a0abfd4fd3eb5b6b7634f2e67a7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "30560516a0248636769e988b0420466214c25e3b:docs/codex/TASKS.json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "44b3b577029d506cb78fe9b48437b3624273d6d6e22e197ed14160e872a7ba63",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        "30560516a0248636769e988b0420466214c25e3b:docs/codex/evidence/T31-checkout-fix.md"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "c108b7144cba22e1aad182dd2f8d7e6c1e11094c9c2d4c84f371987b3f4bfd1d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "30560516a0248636769e988b0420466214c25e3b:docs/codex/evidence/T31-checkout-fix.md"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "88f3471725c3a91aff71fefb3bd2e7f6abbaf952d6ad376f75efa89aa761117e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        "30560516a0248636769e988b0420466214c25e3b:tests/fixtures/presets/manifest.json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "383ec07bec823f131ab86cf07de2ffb96e10803ad4f2f4997ba834835ee01e1f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "30560516a0248636769e988b0420466214c25e3b:tests/fixtures/presets/manifest.json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "86c92a2b3b13eedce9470726a1df241764ac8fcac1b3372ee661c0832128c8f7",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        "30560516a0248636769e988b0420466214c25e3b:tools/test/tests/test_fixture_checkout.py"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "1ad01e47a75b06fed7eff56cdfa1b3eb1ef9394fa897f08c698862df08a0e220",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "30560516a0248636769e988b0420466214c25e3b:tools/test/tests/test_fixture_checkout.py"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "d39467ad6a6658b5b25cc0a00b628f961f301d64bfab17f246a5350065d4bb19",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--name-only",
+        "-z",
+        "de5f30155c68755dbd5af691625a0651e3fb7230",
+        "30560516a0248636769e988b0420466214c25e3b"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "e6203fa079b1613bdb65cc0b0cb37a6efcba0a02d8e3b08ecb8b7b80b7cd0e02",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        "30560516a0248636769e988b0420466214c25e3b:.github/workflows/windows-tests.yml"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "910a39e0b827a3698f6db875514fd50c8e5d8766cd38b5f5faa6d3c9a2db74fe",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        "de5f30155c68755dbd5af691625a0651e3fb7230:.github/workflows/windows-tests.yml"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "910a39e0b827a3698f6db875514fd50c8e5d8766cd38b5f5faa6d3c9a2db74fe",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "gh",
+        "pr",
+        "view",
+        "27",
+        "--repo",
+        "PikkuJanne/WinPDFMerger",
+        "--json",
+        "number,url,headRefName,headRefOid,baseRefName,isDraft,state,mergeable,mergeStateStatus,reviewDecision,statusCheckRollup"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "cb8f886625bcbd1bbcedbd3a8e69ad95358db3c7cc31cdb49f9be6fa9b3131a8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "committed_diff_sha256": "10ba98dad4c8bef2fd1ef2252c31f32e7e195345e6b324fb4a24715487ef5a7e",
+  "merge_helper_sha256": "23b04a569ccfb50833ab837826d0b8f287906018db749743e72ad66f3025de04",
+  "merge_derivation_sha256": "092ff997577199b42431213ceed377affcce0fc03b6b1279ce8156169a7c2ce4",
+  "workflow_CI_gate": {
+    "configured_jobs": 4,
+    "events_for_corrective_branch": [
+      "pull_request"
+    ],
+    "push_filter": [
+      "main",
+      "codex/v1.0.0-readiness",
+      "codex/t24-ci-failure-probe"
+    ],
+    "actual_PR_jobs": [
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-10-09T18:10:27Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/PikkuJanne/WinPDFMerger/actions/runs/37971199628/job/113957964618",
+        "name": "unit / PS51",
+        "startedAt": "2026-10-09T18:08:30Z",
+        "status": "COMPLETED",
+        "workflowName": "Windows tests"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-10-09T18:10:25Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/PikkuJanne/WinPDFMerger/actions/runs/37971199628/job/113957964167",
+        "name": "unit / PS7",
+        "startedAt": "2026-10-09T18:08:30Z",
+        "status": "COMPLETED",
+        "workflowName": "Windows tests"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-10-09T18:09:25Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/PikkuJanne/WinPDFMerger/actions/runs/37971199628/job/113957964509",
+        "name": "native / PS51",
+        "startedAt": "2026-10-09T18:08:30Z",
+        "status": "COMPLETED",
+        "workflowName": "Windows tests"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-10-09T18:09:12Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/PikkuJanne/WinPDFMerger/actions/runs/37971199628/job/113957964835",
+        "name": "native / PS7",
+        "startedAt": "2026-10-09T18:08:30Z",
+        "status": "COMPLETED",
+        "workflowName": "Windows tests"
+      }
+    ],
+    "all_current_four_completed_success": true,
+    "interpretation": "Four current PR jobs is the complete configured premerge CI gate here; it is not eight, and does not replace exact merged main push/final regression."
+  },
+  "current_PR": {
+    "baseRefName": "main",
+    "headRefName": "codex/t31-fixture-checkout",
+    "headRefOid": "30560516a0248636769e988b0420466214c25e3b",
+    "isDraft": false,
+    "mergeStateStatus": "CLEAN",
+    "mergeable": "MERGEABLE",
+    "number": 27,
+    "reviewDecision": "",
+    "state": "OPEN",
+    "statusCheckRollup": [
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-10-09T18:10:27Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/PikkuJanne/WinPDFMerger/actions/runs/37971199628/job/113957964618",
+        "name": "unit / PS51",
+        "startedAt": "2026-10-09T18:08:30Z",
+        "status": "COMPLETED",
+        "workflowName": "Windows tests"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-10-09T18:10:25Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/PikkuJanne/WinPDFMerger/actions/runs/37971199628/job/113957964167",
+        "name": "unit / PS7",
+        "startedAt": "2026-10-09T18:08:30Z",
+        "status": "COMPLETED",
+        "workflowName": "Windows tests"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-10-09T18:09:25Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/PikkuJanne/WinPDFMerger/actions/runs/37971199628/job/113957964509",
+        "name": "native / PS51",
+        "startedAt": "2026-10-09T18:08:30Z",
+        "status": "COMPLETED",
+        "workflowName": "Windows tests"
+      },
+      {
+        "__typename": "CheckRun",
+        "completedAt": "2026-10-09T18:09:12Z",
+        "conclusion": "SUCCESS",
+        "detailsUrl": "https://github.com/PikkuJanne/WinPDFMerger/actions/runs/37971199628/job/113957964835",
+        "name": "native / PS7",
+        "startedAt": "2026-10-09T18:08:30Z",
+        "status": "COMPLETED",
+        "workflowName": "Windows tests"
+      }
+    ],
+    "url": "https://github.com/PikkuJanne/WinPDFMerger/pull/27"
+  },
+  "limitations": [
+    "No merge-helper or generator execution, source edits, push, ready transition or merge by this reviewer.",
+    "The helper must be invoked with reviewed full C1 and PR27; it rechecks current clean/live source, exact head, actual four SUCCESS jobs and unchanged unprotected/no-rules repository gates immediately before normal --match-head-commit merge. Any changed protection/rules/head/main fails closed.",
+    "Current check completion is an observation; script remains blocked until all four actual jobs complete SUCCESS. Empty reviewDecision is not invented human approval.",
+    "check-plan --require-ready covers historical pre-release record completeness; current AC072 failure remains until fresh exact new merged tests pass.",
+    "Actual new R lineage/main equality and fresh exact-R full/native/static/helper/CI originals remain required. Final package/tag/publication/download later; AC058 excluded/unperformed."
+  ]
+}

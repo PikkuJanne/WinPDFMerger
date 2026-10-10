@@ -1,0 +1,1581 @@
+{
+  "schema_version": 1,
+  "task": "T31",
+  "result": "pass",
+  "acceptance_ids": [
+    "AC071",
+    "AC072"
+  ],
+  "evidence_class": "actual_normal_merged_main_exact_R2_final_regression_CI_and_source_freeze",
+  "created_at_utc": "2026-10-09T18:57:51.255218+00:00",
+  "release_source_commit_R": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+  "initial_unaccepted_R": "de5f30155c68755dbd5af691625a0651e3fb7230",
+  "reviewed_corrective_C1": "30560516a0248636769e988b0420466214c25e3b",
+  "accepted_git_tree": "5014f5bdf4f374aee828ced4c39cb93bfeb6465a",
+  "normal_merge_transactions": [
+    {
+      "PR": 26,
+      "head": "277e8cbb7de98b4cb07850def58590473ec636b9",
+      "merged_commit": "de5f30155c68755dbd5af691625a0651e3fb7230",
+      "merged_at_utc": "2026-10-09T17:46:48Z",
+      "normal_merge_command": [
+        "gh",
+        "pr",
+        "merge",
+        "26",
+        "--repo",
+        "PikkuJanne/WinPDFMerger",
+        "--merge",
+        "--match-head-commit",
+        "277e8cbb7de98b4cb07850def58590473ec636b9"
+      ],
+      "transaction_ledger": "docs/codex/evidence/T31-reports/operations/initial-PR26-merge/invocations.json",
+      "public_ledger_sha256": "d40bc40e2d30c9d7361a59326b6bb1446ad3dbe255eb9c866fbc14cb49caee99"
+    },
+    {
+      "PR": 27,
+      "head": "30560516a0248636769e988b0420466214c25e3b",
+      "merged_commit": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+      "merged_at_utc": "2026-10-09T18:12:54Z",
+      "normal_merge_command": [
+        "gh",
+        "pr",
+        "merge",
+        "27",
+        "--repo",
+        "PikkuJanne/WinPDFMerger",
+        "--merge",
+        "--match-head-commit",
+        "30560516a0248636769e988b0420466214c25e3b"
+      ],
+      "transaction_ledger": "docs/codex/evidence/T31-reports/operations/fix-PR27-merge/invocations.json",
+      "public_ledger_sha256": "1b4c453e9cf621ba0b1b8c031bf8b80eb4141f48e0073e75405f022dad203795"
+    }
+  ],
+  "hosts": {
+    "ps51": {
+      "aggregate": {
+        "task": "T31",
+        "result": "pass",
+        "shell": "ps51",
+        "phase": "R2",
+        "commit_under_test": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+        "dirty_worktree": false,
+        "passed": 1072,
+        "tiers": 32,
+        "bad_counts": 0,
+        "completed_at_utc": "2026-10-09T18:30:55.580754+00:00",
+        "root": "<REPO>\\tests\\.work\\T31-R2-ps51-68052f41dcfb4ce9817a0105aade7542",
+        "elapsed_seconds": 1039.939
+      },
+      "shell_facts": {
+        "shell_version": "5.1.26100.9444",
+        "shell_edition": "Desktop",
+        "process_64_bit": true,
+        "execution_policy": "RemoteSigned"
+      },
+      "tier_counts": {
+        "Unit": 545,
+        "Static": 9,
+        "NativeFixture": 1,
+        "SourceDiscovery": 4,
+        "Launcher": 24,
+        "LauncherNative": 2,
+        "DependencyEntry": 9,
+        "NativeRunner": 41,
+        "ToolInvocation": 12,
+        "PdftkPaths": 13,
+        "GhostscriptPaths": 13,
+        "Destination": 15,
+        "InputPreflight": 22,
+        "Staging": 9,
+        "MasterValidation": 7,
+        "EmailOutcome": 11,
+        "FaultIO": 32,
+        "FaultRecovery": 14,
+        "Parameters": 31,
+        "ParametersNative": 9,
+        "SizeReporting": 32,
+        "SizeReportingNative": 11,
+        "Diagnostics": 36,
+        "DiagnosticsNative": 11,
+        "PreservationDocs": 14,
+        "PreservationNative": 6,
+        "PublicDocs": 24,
+        "CorpusSafety": 18,
+        "NativeAcceptance": 6,
+        "Version": 21,
+        "Package": 66,
+        "CiNativeSmoke": 4
+      },
+      "evidence_class_pass_counts": {
+        "unit-controlled-process-and-filesystem": 545,
+        "unit-static-checker-synthetic-refusal-and-report-regressions; no native PDF-engine-support claim": 9,
+        "native-pdftk-fixture-inspection": 1,
+        "windows-entry-source-discovery-real-pdftk": 4,
+        "windows-cmd-actual-batch-controlled-ps51-receiver": 24,
+        "windows-cmd-actual-batch-entry-real-pdftk": 2,
+        "windows-entry-dependency-faults-controlled-process-and-real-pdftk": 9,
+        "windows-controlled-native-argument-process; no PDF-engine-support claim": 41,
+        "unit-controlled-native-job-and-filesystem": 12,
+        "windows-real-tool-path-prompt-integration": 26,
+        "windows-real-entry-destination-identity-ACL-junction-concurrency": 15,
+        "windows-real-pdftk-input-preflight-and-independent-pdfium-order": 22,
+        "windows-real-pdftk-gs-staging-publication-controlled-scheduling-and-filesystem": 9,
+        "windows-real-pdftk-master-validation-entry-and-independent-pdfium-order-rotation": 7,
+        "windows-real-pdftk-gs-email-outcomes-actual-batch-and-controlled-fault-scheduling": 11,
+        "unit-controlled-IO-logging-outcomes-and-real-file-locks": 32,
+        "windows-real-engines-environment-and-controlled-owned-native-cancellation": 14,
+        "unit-actual-parameter-binding-and-controlled-entry-native-decisions": 31,
+        "windows-real-entry-preset-and-defaults-actual-cmd-batch-delivery-not-Explorer": 9,
+        "unit-numeric-size-reporting-and-controlled-entry-decisions": 32,
+        "windows-real-entry-size-accounting-and-controlled-equal-size-boundary; visual-manual-observations-separate": 11,
+        "unit-help-stage-summary-and-controlled-probe-entry-diagnostics; no PDF-engine-support claim": 36,
+        "windows-real-help-examples-CLI-entry-diagnostics-and-independent-pdfium; not Explorer or manual desktop acceptance": 11,
+        "documentation-contract-and-actual-help; not native PDF preservation or manual acceptance": 14,
+        "windows-real-entry-master-screen-ebook-feature-characterization; strict-pypdf-and-independent-pdfium; visual review separate": 6,
+        "public-documentation-contract-isolated-real-parameter-binding-and-controlled-helper-outcomes; no application/native/manual acceptance": 24,
+        "windows-real-entry-synthetic-corpus-repeat-order-source-tree-and-concurrency; independent-pdfium; not Explorer": 18,
+        "windows-real-pdftk-gs-helper-representative-limits-presets-and-nonfatal-warning; independent-pdfium; warning-envelope-refused-by-app; not Explorer": 6,
+        "static-version-contract-and-actual-preflight-children; no PDF-engine or package acceptance": 21,
+        "windows-real-git-clean-synthetic-repository-and-exact-zip-content-provenance; no application-native-or-download-operation": 66,
+        "windows-real-pinned-pdftk-gs-helper-CI-smoke-with-pdftk-structural-page-counts; no standard-user-ACL-desktop-rendering-feature-preservation-or-independent-renderer-acceptance": 4
+      },
+      "original_json_nunit_pairs": 32,
+      "all_bad_counts": 0,
+      "static": {
+        "files_checked": 68,
+        "selected_rules": 41,
+        "selected_findings": 0,
+        "selected_suppressions": 0,
+        "advisory_errors": 0,
+        "advisory_warnings": 349,
+        "advisory_information": 175
+      },
+      "receipts": "docs/codex/evidence/T31-reports/ps51",
+      "environment": {
+        "observed_at_utc": "2026-10-09T18:13:30.0893644Z",
+        "commit": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+        "dirty_worktree": false,
+        "edition": "Professional",
+        "display_version": "26H2",
+        "current_build": "26300",
+        "ubr": 9457,
+        "full_build": "26300.9457",
+        "os_version": "10.0.26300.0",
+        "process_64_bit": true,
+        "is_administrator": false,
+        "shell_version": "5.1.26100.9444",
+        "shell_edition": "Desktop",
+        "channel_registry": {
+          "BranchName": null,
+          "ContentType": null,
+          "Ring": null
+        },
+        "policy": [
+          {
+            "scope": "MachinePolicy",
+            "policy": "Undefined"
+          },
+          {
+            "scope": "UserPolicy",
+            "policy": "Undefined"
+          },
+          {
+            "scope": "Process",
+            "policy": "RemoteSigned"
+          },
+          {
+            "scope": "CurrentUser",
+            "policy": "Undefined"
+          },
+          {
+            "scope": "LocalMachine",
+            "policy": "Undefined"
+          }
+        ],
+        "observation_class": "read-only inventory; no Explorer or PDF-viewer observations",
+        "insider_enrollment": "unobserved; null registry values are not proof"
+      }
+    },
+    "ps7": {
+      "aggregate": {
+        "task": "T31",
+        "result": "pass",
+        "shell": "ps7",
+        "phase": "R2",
+        "commit_under_test": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+        "dirty_worktree": false,
+        "passed": 1072,
+        "tiers": 32,
+        "bad_counts": 0,
+        "completed_at_utc": "2026-10-09T18:30:50.005005+00:00",
+        "root": "<REPO>\\tests\\.work\\T31-R2-ps7-a820ef8caaa84fbb989c71d8e3287b2b",
+        "elapsed_seconds": 1033.498
+      },
+      "shell_facts": {
+        "shell_version": "7.6.6",
+        "shell_edition": "Core",
+        "process_64_bit": true,
+        "execution_policy": "RemoteSigned"
+      },
+      "tier_counts": {
+        "Unit": 545,
+        "Static": 9,
+        "NativeFixture": 1,
+        "SourceDiscovery": 4,
+        "Launcher": 24,
+        "LauncherNative": 2,
+        "DependencyEntry": 9,
+        "NativeRunner": 41,
+        "ToolInvocation": 12,
+        "PdftkPaths": 13,
+        "GhostscriptPaths": 13,
+        "Destination": 15,
+        "InputPreflight": 22,
+        "Staging": 9,
+        "MasterValidation": 7,
+        "EmailOutcome": 11,
+        "FaultIO": 32,
+        "FaultRecovery": 14,
+        "Parameters": 31,
+        "ParametersNative": 9,
+        "SizeReporting": 32,
+        "SizeReportingNative": 11,
+        "Diagnostics": 36,
+        "DiagnosticsNative": 11,
+        "PreservationDocs": 14,
+        "PreservationNative": 6,
+        "PublicDocs": 24,
+        "CorpusSafety": 18,
+        "NativeAcceptance": 6,
+        "Version": 21,
+        "Package": 66,
+        "CiNativeSmoke": 4
+      },
+      "evidence_class_pass_counts": {
+        "unit-controlled-process-and-filesystem": 545,
+        "unit-static-checker-synthetic-refusal-and-report-regressions; no native PDF-engine-support claim": 9,
+        "native-pdftk-fixture-inspection": 1,
+        "windows-entry-source-discovery-real-pdftk": 4,
+        "windows-cmd-actual-batch-controlled-ps51-receiver": 24,
+        "windows-cmd-actual-batch-entry-real-pdftk": 2,
+        "windows-entry-dependency-faults-controlled-process-and-real-pdftk": 9,
+        "windows-controlled-native-argument-process; no PDF-engine-support claim": 41,
+        "unit-controlled-native-job-and-filesystem": 12,
+        "windows-real-tool-path-prompt-integration": 26,
+        "windows-real-entry-destination-identity-ACL-junction-concurrency": 15,
+        "windows-real-pdftk-input-preflight-and-independent-pdfium-order": 22,
+        "windows-real-pdftk-gs-staging-publication-controlled-scheduling-and-filesystem": 9,
+        "windows-real-pdftk-master-validation-entry-and-independent-pdfium-order-rotation": 7,
+        "windows-real-pdftk-gs-email-outcomes-actual-batch-and-controlled-fault-scheduling": 11,
+        "unit-controlled-IO-logging-outcomes-and-real-file-locks": 32,
+        "windows-real-engines-environment-and-controlled-owned-native-cancellation": 14,
+        "unit-actual-parameter-binding-and-controlled-entry-native-decisions": 31,
+        "windows-real-entry-preset-and-defaults-actual-cmd-batch-delivery-not-Explorer": 9,
+        "unit-numeric-size-reporting-and-controlled-entry-decisions": 32,
+        "windows-real-entry-size-accounting-and-controlled-equal-size-boundary; visual-manual-observations-separate": 11,
+        "unit-help-stage-summary-and-controlled-probe-entry-diagnostics; no PDF-engine-support claim": 36,
+        "windows-real-help-examples-CLI-entry-diagnostics-and-independent-pdfium; not Explorer or manual desktop acceptance": 11,
+        "documentation-contract-and-actual-help; not native PDF preservation or manual acceptance": 14,
+        "windows-real-entry-master-screen-ebook-feature-characterization; strict-pypdf-and-independent-pdfium; visual review separate": 6,
+        "public-documentation-contract-isolated-real-parameter-binding-and-controlled-helper-outcomes; no application/native/manual acceptance": 24,
+        "windows-real-entry-synthetic-corpus-repeat-order-source-tree-and-concurrency; independent-pdfium; not Explorer": 18,
+        "windows-real-pdftk-gs-helper-representative-limits-presets-and-nonfatal-warning; independent-pdfium; warning-envelope-refused-by-app; not Explorer": 6,
+        "static-version-contract-and-actual-preflight-children; no PDF-engine or package acceptance": 21,
+        "windows-real-git-clean-synthetic-repository-and-exact-zip-content-provenance; no application-native-or-download-operation": 66,
+        "windows-real-pinned-pdftk-gs-helper-CI-smoke-with-pdftk-structural-page-counts; no standard-user-ACL-desktop-rendering-feature-preservation-or-independent-renderer-acceptance": 4
+      },
+      "original_json_nunit_pairs": 32,
+      "all_bad_counts": 0,
+      "static": {
+        "files_checked": 68,
+        "selected_rules": 41,
+        "selected_findings": 0,
+        "selected_suppressions": 0,
+        "advisory_errors": 0,
+        "advisory_warnings": 349,
+        "advisory_information": 175
+      },
+      "receipts": "docs/codex/evidence/T31-reports/ps7",
+      "environment": {
+        "observed_at_utc": "2026-10-09T18:13:31.6655346Z",
+        "commit": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+        "dirty_worktree": false,
+        "edition": "Professional",
+        "display_version": "26H2",
+        "current_build": "26300",
+        "ubr": 9457,
+        "full_build": "26300.9457",
+        "os_version": "10.0.26300.0",
+        "process_64_bit": true,
+        "is_administrator": false,
+        "shell_version": "7.6.6",
+        "shell_edition": "Core",
+        "channel_registry": {
+          "BranchName": null,
+          "ContentType": null,
+          "Ring": null
+        },
+        "policy": [
+          {
+            "scope": "MachinePolicy",
+            "policy": "Undefined"
+          },
+          {
+            "scope": "UserPolicy",
+            "policy": "Undefined"
+          },
+          {
+            "scope": "Process",
+            "policy": "RemoteSigned"
+          },
+          {
+            "scope": "CurrentUser",
+            "policy": "Undefined"
+          },
+          {
+            "scope": "LocalMachine",
+            "policy": "RemoteSigned"
+          }
+        ],
+        "observation_class": "read-only inventory; no Explorer or PDF-viewer observations",
+        "insider_enrollment": "unobserved; null registry values are not proof"
+      }
+    }
+  },
+  "local_full_passed": 2144,
+  "local_full_tiers_per_host": 32,
+  "local_full_report_pairs": 64,
+  "supplementary_helpers": {
+    "python": "3.12.14",
+    "commands": 10,
+    "groups": {
+      "handoff": {
+        "ran": 27,
+        "passed": 26,
+        "skipped": 1
+      },
+      "fixture-oracles": {
+        "ran": 42,
+        "passed": 42,
+        "skipped": 0
+      },
+      "candidate-helpers": {
+        "ran": 17,
+        "passed": 17,
+        "skipped": 0
+      }
+    },
+    "total_passed": 85,
+    "total_skipped": 1,
+    "skip_reason": "Symlink creation not permitted; no elevation/policy change requested",
+    "is_native_or_manual_acceptance": false,
+    "receipts": "docs/codex/evidence/T31-reports/extras/accepted-R2"
+  },
+  "hosted_CI": {
+    "push_run": 37971716309,
+    "platform_head": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+    "actual_checkout": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+    "jobs_successful": 4,
+    "passed": 1370,
+    "native_job_checks": 18,
+    "unit_job_checks": 1352,
+    "json_nunit_pairs": 20,
+    "scope": "Hosted Server/admin-token automated unit/control and pinned native smoke; separate from local desktop/native/manual/cache rehash scope",
+    "receipts": "docs/codex/evidence/T31-reports/ci/accepted-R2"
+  },
+  "independent_reviews": {
+    "source": {
+      "path": "docs/codex/evidence/T31-reports/review/source-R2-lineage-audit-corrected.json",
+      "sha256": "b0cd3bb8b49b5c8dac536fa00a7bc00affc8f93c3c20d4257e90481a177c5e64",
+      "result": "pass_for_R2_lineage_source_and_capture_preparation",
+      "checks": 255
+    },
+    "original": {
+      "path": "docs/codex/evidence/T31-reports/review/final-R2-original-audit.json",
+      "sha256": "425101f3a3a56b27881bea69083b237060ef4284bd99d43c70d1a1aad9187803",
+      "result": "pass",
+      "checks": 21877
+    },
+    "native": {
+      "path": "docs/codex/evidence/T31-reports/review/final-R2-native-original-audit.json",
+      "sha256": "6bb6f1ed8215e3c25e701581846291aafd274002192c448bb24012ef362aec47",
+      "result": "pass",
+      "checks": 1212
+    },
+    "ci": {
+      "path": "docs/codex/evidence/T31-reports/ci/accepted-R2/review.json",
+      "sha256": "fda66acdd9cc5008d8e351c0546efbda42ad3fcfac39d0dc2c17896a2556afe6",
+      "result": "pass_for_exact_R2_push_CI_scope",
+      "checks": 1850
+    },
+    "final_gate": {
+      "path": "docs/codex/evidence/T31-reports/review/final-R2-gate-audit-corrected.json",
+      "sha256": "803b8dad1db87ba41573faec3cf7a254f6c0232e7bdb015c59a3628c423b1bd4",
+      "result": "pass",
+      "checks": 16240
+    },
+    "public": {
+      "path": "docs/codex/evidence/T31-reports/review/public-review.json",
+      "sha256": "76effa0b321620c59f606d788d45830bfea8bdb675f2dce9495a011238a9919d",
+      "result": "pass",
+      "checks": 808504
+    }
+  },
+  "final_clean_live_main_freeze_proof": {
+    "path": "docs/codex/evidence/T31-reports/operations/source-freeze/freeze.json",
+    "raw_sha256": "fdac2e38850e06cbd6a142e80990fb4f7f643d1c58059bbeaa6c7b1c9b0036b0",
+    "public_sha256": "cc4136b7af6f54df097fd595aaaa38612d9b13fb4f80a1be6f8557df9fc42b9f",
+    "observed_at_utc": "2026-10-09T18:35:45.271102+00:00",
+    "facts": {
+      "source_commit": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+      "local_head": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+      "local_main": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+      "live_main": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+      "branch": "main",
+      "clean": true,
+      "synchronized": true,
+      "runtime_package_version_public_docs_frozen": true
+    },
+    "command_receipts": [
+      {
+        "label": "head",
+        "argv": [
+          "git",
+          "rev-parse",
+          "HEAD"
+        ],
+        "started_at_utc": "2026-10-09T18:35:41.639107+00:00",
+        "finished_at_utc": "2026-10-09T18:35:41.674818+00:00",
+        "exit_code": 0,
+        "stdout_sha256": "1763ba356b8308a156e9d311f997c7daa490b72ad2afc57c3f0c3758f2192527",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "label": "local-main",
+        "argv": [
+          "git",
+          "rev-parse",
+          "main"
+        ],
+        "started_at_utc": "2026-10-09T18:35:41.674818+00:00",
+        "finished_at_utc": "2026-10-09T18:35:41.725372+00:00",
+        "exit_code": 0,
+        "stdout_sha256": "1763ba356b8308a156e9d311f997c7daa490b72ad2afc57c3f0c3758f2192527",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "label": "branch",
+        "argv": [
+          "git",
+          "branch",
+          "--show-current"
+        ],
+        "started_at_utc": "2026-10-09T18:35:41.726441+00:00",
+        "finished_at_utc": "2026-10-09T18:35:41.759370+00:00",
+        "exit_code": 0,
+        "stdout_sha256": "6403203dd5a0867eb14d104ee8a73730bd72dd9ad92e78d996a6dba0a5dcfc01",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "label": "status",
+        "argv": [
+          "git",
+          "status",
+          "--porcelain=v1"
+        ],
+        "started_at_utc": "2026-10-09T18:35:41.759370+00:00",
+        "finished_at_utc": "2026-10-09T18:35:41.827856+00:00",
+        "exit_code": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "label": "origin-fetch",
+        "argv": [
+          "git",
+          "remote",
+          "get-url",
+          "--all",
+          "origin"
+        ],
+        "started_at_utc": "2026-10-09T18:35:41.827856+00:00",
+        "finished_at_utc": "2026-10-09T18:35:41.863177+00:00",
+        "exit_code": 0,
+        "stdout_sha256": "58f6700c4e67515f2efad4232e0616f25e02b6623ba5df89d0313d71a4298181",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "label": "origin-push",
+        "argv": [
+          "git",
+          "remote",
+          "get-url",
+          "--push",
+          "--all",
+          "origin"
+        ],
+        "started_at_utc": "2026-10-09T18:35:41.863177+00:00",
+        "finished_at_utc": "2026-10-09T18:35:41.898730+00:00",
+        "exit_code": 0,
+        "stdout_sha256": "58f6700c4e67515f2efad4232e0616f25e02b6623ba5df89d0313d71a4298181",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "label": "fresh-main-sync",
+        "argv": [
+          "<USERPROFILE>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+          "-B",
+          "tools/codex/handoff.py",
+          "sync",
+          "--repo",
+          "."
+        ],
+        "started_at_utc": "2026-10-09T18:35:41.899738+00:00",
+        "finished_at_utc": "2026-10-09T18:35:42.935647+00:00",
+        "exit_code": 0,
+        "stdout_sha256": "3aa597bfe104ed5f00782a81554ea06448d20267528c47566648bb20a92954d1",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "label": "tree",
+        "argv": [
+          "git",
+          "rev-parse",
+          "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a^{tree}"
+        ],
+        "started_at_utc": "2026-10-09T18:35:42.936952+00:00",
+        "finished_at_utc": "2026-10-09T18:35:42.978229+00:00",
+        "exit_code": 0,
+        "stdout_sha256": "302b57343f73873df370070085cf05e35e4e3004f070bbb5cb2d626cc2d3e661",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "label": "tags",
+        "argv": [
+          "gh",
+          "api",
+          "repos/PikkuJanne/WinPDFMerger/tags"
+        ],
+        "started_at_utc": "2026-10-09T18:35:42.978229+00:00",
+        "finished_at_utc": "2026-10-09T18:35:43.435591+00:00",
+        "exit_code": 0,
+        "stdout_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "label": "releases",
+        "argv": [
+          "gh",
+          "api",
+          "repos/PikkuJanne/WinPDFMerger/releases"
+        ],
+        "started_at_utc": "2026-10-09T18:35:43.436593+00:00",
+        "finished_at_utc": "2026-10-09T18:35:44.005625+00:00",
+        "exit_code": 0,
+        "stdout_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "label": "prior-live-evidence-branch",
+        "argv": [
+          "git",
+          "ls-remote",
+          "--heads",
+          "origin",
+          "codex/v1.0.0-release-evidence"
+        ],
+        "started_at_utc": "2026-10-09T18:35:44.007910+00:00",
+        "finished_at_utc": "2026-10-09T18:35:44.561970+00:00",
+        "exit_code": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "label": "prior-evidence-PRs",
+        "argv": [
+          "gh",
+          "pr",
+          "list",
+          "--repo",
+          "PikkuJanne/WinPDFMerger",
+          "--head",
+          "codex/v1.0.0-release-evidence",
+          "--state",
+          "all",
+          "--json",
+          "number,url,state"
+        ],
+        "started_at_utc": "2026-10-09T18:35:44.562937+00:00",
+        "finished_at_utc": "2026-10-09T18:35:45.270103+00:00",
+        "exit_code": 0,
+        "stdout_sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ]
+  },
+  "frozen_package_runtime_version_public_docs_builder_blobs": {
+    "WinPDFMerge.ps1": {
+      "git_blob": "c6402bd4f13e8d19cc325c24b215e41cf8bf5f7e",
+      "git_blob_sha256": "2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902",
+      "git_blob_bytes": 19302
+    },
+    "WinPDFMerge.bat": {
+      "git_blob": "17e054df3ea043832de4599aa811f90e4e660208",
+      "git_blob_sha256": "288287beefea974c64d39b34266332d83112b9106c952efd8c304edfedebff83",
+      "git_blob_bytes": 1782
+    },
+    "src/WinPDFMerge.Helpers.ps1": {
+      "git_blob": "7ae00095a4734db9016a0feb712329097c720a07",
+      "git_blob_sha256": "fb1e0ee6c82976711ea25ec0fac3cd274b0d99752328b59bae19612d85fb6211",
+      "git_blob_bytes": 100296
+    },
+    "VERSION": {
+      "git_blob": "3eefcb9dd5b38e2c1dc061052455dd97bcd51e6c",
+      "git_blob_sha256": "59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03",
+      "git_blob_bytes": 6
+    },
+    "README.md": {
+      "git_blob": "742a36f2af1962510100eea25366788bb49766ec",
+      "git_blob_sha256": "6fb3bfa326c215ef99f152309a12768c967527782e796f60983f9f9f2005a097",
+      "git_blob_bytes": 9258
+    },
+    "LICENSE": {
+      "git_blob": "d8cca2639474e791c0aaa4d77aac79d8c8900359",
+      "git_blob_sha256": "714ffa7a21614e637d7dbb17a2e86e4575d7ecd2b6d36b5b67ab3fdcc4193477",
+      "git_blob_bytes": 1070
+    },
+    "SECURITY.md": {
+      "git_blob": "fac25ac3c8170d0326b833f9d4e03422e62b6827",
+      "git_blob_sha256": "dadc3249a8f8f24518d9325b5b0c72c480725ad18bfefabdb6faaf56f3334275",
+      "git_blob_bytes": 5665
+    },
+    "CHANGELOG.md": {
+      "git_blob": "cada71f1409ea7e64c6422e2d9d73b4ab70e35db",
+      "git_blob_sha256": "ef62802668744491374c1f1214b1cc4494f026295eaf396c7ec68d3fc34e75bc",
+      "git_blob_bytes": 4504
+    },
+    "docs/USAGE.md": {
+      "git_blob": "fdcca03769484e2b5531dfa97cbd70754efe25c2",
+      "git_blob_sha256": "ce90ee1c6f63137c62d95fb0b29093232152b94579be61e457774a2ee9db5334",
+      "git_blob_bytes": 8925
+    },
+    "docs/TROUBLESHOOTING.md": {
+      "git_blob": "3ab1faec3594608f4266be89aad17c123bac74e1",
+      "git_blob_sha256": "9bc13043665ab6fc3eec1a7d868fa956106156d51fa76843442bf8f8519c32b8",
+      "git_blob_bytes": 7022
+    },
+    "docs/DEPENDENCIES.md": {
+      "git_blob": "39b20bbea233283b4764677e4741800aa9a1abb3",
+      "git_blob_sha256": "d79cba6694d4335fdb1bc2b6b716c851aa7b88b9301cfb8cc464e1834fe916b3",
+      "git_blob_bytes": 7294
+    },
+    "docs/COMPATIBILITY.md": {
+      "git_blob": "88489641ae59cf9c15da6bb01f295710c26d6628",
+      "git_blob_sha256": "dbf6f2ee612defed1501298874960cf0275a0dc0585c94a905bb69ba2aa84bfe",
+      "git_blob_bytes": 3860
+    },
+    "docs/PDF_LIMITATIONS.md": {
+      "git_blob": "029efb59aa3649e557f1422fd6a06034a8703508",
+      "git_blob_sha256": "1bd08b2cec008fcc41390111f8ccfc0cfef4c3374018fe3b9d6d19589993f58d",
+      "git_blob_bytes": 6071
+    },
+    "docs/EMAIL_PRESETS.md": {
+      "git_blob": "43cdb905f97134ffca3a5ff816b331c63ab476aa",
+      "git_blob_sha256": "ece311071d0980dca2e4591989c670f49ec68d41f205dd9bde62beb102a73dbb",
+      "git_blob_bytes": 2969
+    },
+    "docs/RELEASE_NOTES_v1.0.0.md": {
+      "git_blob": "873551dc6e2651c3d9744aa7946f3052d47182be",
+      "git_blob_sha256": "38866d8ab69626f49a5ed50381f839d21dca9e702dbcc59c4338ee37f8894fbd",
+      "git_blob_bytes": 8971
+    },
+    "tools/release/Build-Release.ps1": {
+      "git_blob": "7e0b2f046afd8708ea0bf39b6fa7cc74f3aa8999",
+      "git_blob_sha256": "6dcc57f0c48208fa061f1195ecf17a3057c269af7f6165914ade781406a7c0b2",
+      "git_blob_bytes": 19345
+    },
+    "release-files.json": {
+      "git_blob": "8e17a1d7f737001ea2d29fdf609e01612166a52c",
+      "git_blob_sha256": "bd80c988f28ae7c7f539f9ed31205ade92a1c5181102d6387342b4775b589007",
+      "git_blob_bytes": 415
+    },
+    "docs/codex/PACKAGE_CONTRACT.json": {
+      "git_blob": "704a8da9173385f606bb4c4770a1f2c79ed96603",
+      "git_blob_sha256": "82b559d7517d7704a88e1b43e4996de25035e9b7ced78f6d09a13b39fe205e6a",
+      "git_blob_bytes": 1419
+    }
+  },
+  "public_evidence": {
+    "manifest": "docs/codex/evidence/T31-reports/manifest.json",
+    "manifest_sha256": "371ea0bfffc776977c797c35093dc3348e9d4634629314ffb71ec20e0c1a86b5",
+    "payload_count": 1407,
+    "payload_bytes": 46226712,
+    "post_manifest_review_files": [
+      "review/public-review.json",
+      "review/public-review.py"
+    ],
+    "raw_public_hashes_and_typed_JSON_XML_projection_independently_reviewed": true
+  },
+  "unaccepted_and_preparation_history": {
+    "initial_unaccepted_R": "de5f30155c68755dbd5af691625a0651e3fb7230",
+    "reason": "Fresh core.autocrlf=true checkout altered exact fixture recipe/manifest bytes; strict fixture oracle required34pass/1fail/5errors. Scoped Git/runtime identity, static and CI success did not accept R1.",
+    "fixture_oracles": {
+      "ran": 40,
+      "passed": 34,
+      "failed": 1,
+      "errors": 5
+    },
+    "partial_full": {
+      "ps51": {
+        "passed": 726,
+        "completed_pairs": 15,
+        "requested_tiers": 32,
+        "intentionally_stopped": true,
+        "outer_final_guards_present": false
+      },
+      "ps7": {
+        "passed": 823,
+        "completed_pairs": 20,
+        "requested_tiers": 32,
+        "intentionally_stopped": true,
+        "outer_final_guards_present": false
+      }
+    },
+    "partial_total_passed": 1549,
+    "partial_pairs": 35,
+    "scoped_push_CI": {
+      "run": 37968677750,
+      "passed": 1370,
+      "jobs": 4,
+      "pairs": 20,
+      "is_accepted_R": false
+    },
+    "scoped_static_passes": "Both actual first-R static hosts passed selected rules; source remained rejected.",
+    "corrective_preparation": {
+      "draft_red_errors": 2,
+      "final_dirty_base_helpers_passed": 85,
+      "skipped": 1,
+      "independent_dirty_base_review_checks": [
+        260,
+        72
+      ],
+      "is_exact_R2_acceptance": false
+    },
+    "bound_reviews": [
+      {
+        "path": "docs/codex/evidence/T31-reports/review/staged-fix-review.json",
+        "sha256": "d92a0e656d4a3fa8d7c5db726f8341ce47f3f499391ad977b1d86befb774f06c",
+        "scope": "260 actual independent staged-fix checks at dirty first-R preparation, not final-R2 execution",
+        "observed_assertions": {
+          "/checks": 260,
+          "/result": "pass",
+          "/issues": []
+        }
+      },
+      {
+        "path": "docs/codex/evidence/T31-reports/review/fix-merge-review.json",
+        "sha256": "5a6ea4d9fa8b0a41449bb822ae2fa4f574b9798863654ca2b7ae87fc53abf726",
+        "scope": "72 actual independent corrective-source/merge-helper checks before PR27, not final-R2 execution",
+        "observed_assertions": {
+          "/checks": 72,
+          "/result": "pass_for_source_and_merge_helper",
+          "/issues": []
+        }
+      }
+    ],
+    "T30_public_projection_privacy_attempts_preserved_ignored": true,
+    "reviewer_preparation_and_assumption_failures_remain_historical": true
+  },
+  "case_counts_after_records": {
+    "pass": 68,
+    "excluded": 4,
+    "not_run": 6
+  },
+  "done_tasks_after_records": 31,
+  "excluded_cases": [
+    "AC058",
+    "AC060",
+    "AC061",
+    "AC062"
+  ],
+  "remaining_required_cases": [
+    "AC073",
+    "AC074",
+    "AC075",
+    "AC076",
+    "AC077",
+    "AC078"
+  ],
+  "exact_executed_argv_receipts": [
+    "docs/codex/evidence/T31-reports/ps51/runs.json",
+    "docs/codex/evidence/T31-reports/ps7/runs.json",
+    "docs/codex/evidence/T31-reports/static/ps51/execution.json",
+    "docs/codex/evidence/T31-reports/static/ps7/execution.json",
+    "docs/codex/evidence/T31-reports/extras/accepted-R2/invocations.json",
+    "docs/codex/evidence/T31-reports/ci/accepted-R2/downloads.json",
+    "docs/codex/evidence/T31-reports/ci/accepted-R2/invocations.json",
+    "docs/codex/evidence/T31-reports/operations/create-fix-PR27/invocations.json",
+    "docs/codex/evidence/T31-reports/operations/fix-PR27-merge/invocations.json",
+    "docs/codex/evidence/T31-reports/operations/fix-commit-push/invocations.json",
+    "docs/codex/evidence/T31-reports/operations/initial-PR26-merge/invocations.json",
+    "docs/codex/evidence/T31-reports/operations/source-freeze/invocations.json"
+  ],
+  "writer_read_only_git_checks": [
+    {
+      "argv": [
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "1efba28e2478a901cf680a282df984f2e7bbf1d052faed5c1685e3a3089f1ad6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "1763ba356b8308a156e9d311f997c7daa490b72ad2afc57c3f0c3758f2192527",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "refs/heads/main"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "1763ba356b8308a156e9d311f997c7daa490b72ad2afc57c3f0c3758f2192527",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "remote",
+        "get-url",
+        "--all",
+        "origin"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "58f6700c4e67515f2efad4232e0616f25e02b6623ba5df89d0313d71a4298181",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "remote",
+        "get-url",
+        "--push",
+        "--all",
+        "origin"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "58f6700c4e67515f2efad4232e0616f25e02b6623ba5df89d0313d71a4298181",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "ls-remote",
+        "origin",
+        "refs/heads/main"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "9b0df12f35e0a4adf7b62ba6930593767909c695a914d2bc745a6b8f553d7d5d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a^{tree}"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "302b57343f73873df370070085cf05e35e4e3004f070bbb5cb2d626cc2d3e661",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        "-s",
+        "--format=%P",
+        "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "981a63c68675af8ac430269ee373b78d031a00d06c5d8243e054990e0e9505ac",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        "-s",
+        "--format=%P",
+        "de5f30155c68755dbd5af691625a0651e3fb7230"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "6c2448ebba01b1092f1dd9898d549386d19efe66c6990856dc8239750b7f4eba",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--name-only",
+        "-z"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--name-only",
+        "-z"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "c1878c0e7cbd9551a08104f08a2a32507766b15116cbd33f87b1dade7cc7c1ce",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "ls-files",
+        "--others",
+        "--exclude-standard",
+        "-z"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a:WinPDFMerge.ps1"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "a2d62136edd74e82d8ddaa4dae1c16f4e5a13c1bf406cff5310b3920b5255640",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "hash-object",
+        "--path",
+        "WinPDFMerge.ps1",
+        "WinPDFMerge.ps1"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "a2d62136edd74e82d8ddaa4dae1c16f4e5a13c1bf406cff5310b3920b5255640",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "cat-file",
+        "blob",
+        "c6402bd4f13e8d19cc325c24b215e41cf8bf5f7e"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a:WinPDFMerge.bat"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "1093258b58b46bcb82d1834af1cb745799a4ce0490533996d6a3bfff6805b502",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "hash-object",
+        "--path",
+        "WinPDFMerge.bat",
+        "WinPDFMerge.bat"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "1093258b58b46bcb82d1834af1cb745799a4ce0490533996d6a3bfff6805b502",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "cat-file",
+        "blob",
+        "17e054df3ea043832de4599aa811f90e4e660208"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "288287beefea974c64d39b34266332d83112b9106c952efd8c304edfedebff83",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a:src/WinPDFMerge.Helpers.ps1"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "58d751700b95f07deb040ec15ca49186573abea0aaebfaed364501cf17f3047e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "hash-object",
+        "--path",
+        "src/WinPDFMerge.Helpers.ps1",
+        "src/WinPDFMerge.Helpers.ps1"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "58d751700b95f07deb040ec15ca49186573abea0aaebfaed364501cf17f3047e",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "cat-file",
+        "blob",
+        "7ae00095a4734db9016a0feb712329097c720a07"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "fb1e0ee6c82976711ea25ec0fac3cd274b0d99752328b59bae19612d85fb6211",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a:VERSION"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "45f93f01c2b16e31416189184ebd1b7bb08fe330d955c349c7dc23593c1e6080",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "hash-object",
+        "--path",
+        "VERSION",
+        "VERSION"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "45f93f01c2b16e31416189184ebd1b7bb08fe330d955c349c7dc23593c1e6080",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "cat-file",
+        "blob",
+        "3eefcb9dd5b38e2c1dc061052455dd97bcd51e6c"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "59854984853104df5c353e2f681a15fc7924742f9a2e468c29af248dce45ce03",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a:README.md"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "06a372f2f9c507e2938b489a1a1ed3ca95eadbab00e7d396de0441a92963a362",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "hash-object",
+        "--path",
+        "README.md",
+        "README.md"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "06a372f2f9c507e2938b489a1a1ed3ca95eadbab00e7d396de0441a92963a362",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "cat-file",
+        "blob",
+        "742a36f2af1962510100eea25366788bb49766ec"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "6fb3bfa326c215ef99f152309a12768c967527782e796f60983f9f9f2005a097",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a:LICENSE"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "027e80ea639fb896c8b60d2bcb93378d42e97edf6fc24ab943dc5447b69331da",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "hash-object",
+        "--path",
+        "LICENSE",
+        "LICENSE"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "027e80ea639fb896c8b60d2bcb93378d42e97edf6fc24ab943dc5447b69331da",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "cat-file",
+        "blob",
+        "d8cca2639474e791c0aaa4d77aac79d8c8900359"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "714ffa7a21614e637d7dbb17a2e86e4575d7ecd2b6d36b5b67ab3fdcc4193477",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a:SECURITY.md"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "956c63bdf0865460dd40eaebe81c764b86f236aff27a044433cd86b4cda61876",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "hash-object",
+        "--path",
+        "SECURITY.md",
+        "SECURITY.md"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "956c63bdf0865460dd40eaebe81c764b86f236aff27a044433cd86b4cda61876",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "cat-file",
+        "blob",
+        "fac25ac3c8170d0326b833f9d4e03422e62b6827"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "dadc3249a8f8f24518d9325b5b0c72c480725ad18bfefabdb6faaf56f3334275",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a:CHANGELOG.md"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "acc423a6e9795b66d56752c3803cc2705aa56ce3429a939bae13e58957482fea",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "hash-object",
+        "--path",
+        "CHANGELOG.md",
+        "CHANGELOG.md"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "acc423a6e9795b66d56752c3803cc2705aa56ce3429a939bae13e58957482fea",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "cat-file",
+        "blob",
+        "cada71f1409ea7e64c6422e2d9d73b4ab70e35db"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "ef62802668744491374c1f1214b1cc4494f026295eaf396c7ec68d3fc34e75bc",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a:docs/USAGE.md"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "6b4aa4b453737eb5e600f864b7771cfa9eb63005115d4f16dcb344fd90b03df3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "hash-object",
+        "--path",
+        "docs/USAGE.md",
+        "docs/USAGE.md"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "6b4aa4b453737eb5e600f864b7771cfa9eb63005115d4f16dcb344fd90b03df3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "cat-file",
+        "blob",
+        "fdcca03769484e2b5531dfa97cbd70754efe25c2"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "ce90ee1c6f63137c62d95fb0b29093232152b94579be61e457774a2ee9db5334",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a:docs/TROUBLESHOOTING.md"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "c7831eb1aee2519d343c79f5d49c4bf5787c2895e7d38ece4f18c17c612490e6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "hash-object",
+        "--path",
+        "docs/TROUBLESHOOTING.md",
+        "docs/TROUBLESHOOTING.md"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "c7831eb1aee2519d343c79f5d49c4bf5787c2895e7d38ece4f18c17c612490e6",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "cat-file",
+        "blob",
+        "3ab1faec3594608f4266be89aad17c123bac74e1"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "9bc13043665ab6fc3eec1a7d868fa956106156d51fa76843442bf8f8519c32b8",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a:docs/DEPENDENCIES.md"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "34e823c706fd24b33ccda3fbff550e487166a4be65883e23bdccb14528b6ecd5",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "hash-object",
+        "--path",
+        "docs/DEPENDENCIES.md",
+        "docs/DEPENDENCIES.md"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "34e823c706fd24b33ccda3fbff550e487166a4be65883e23bdccb14528b6ecd5",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "cat-file",
+        "blob",
+        "39b20bbea233283b4764677e4741800aa9a1abb3"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "d79cba6694d4335fdb1bc2b6b716c851aa7b88b9301cfb8cc464e1834fe916b3",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a:docs/COMPATIBILITY.md"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "14ef6b4b1e203d62cc3112adff667c234e7e0e7437bda201058c7c539b0f95bd",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "hash-object",
+        "--path",
+        "docs/COMPATIBILITY.md",
+        "docs/COMPATIBILITY.md"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "14ef6b4b1e203d62cc3112adff667c234e7e0e7437bda201058c7c539b0f95bd",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "cat-file",
+        "blob",
+        "88489641ae59cf9c15da6bb01f295710c26d6628"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "dbf6f2ee612defed1501298874960cf0275a0dc0585c94a905bb69ba2aa84bfe",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a:docs/PDF_LIMITATIONS.md"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "d05a634145a27b8d5ae7a5970cd20319f830c09a130a0499bb964b8e05114b37",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "hash-object",
+        "--path",
+        "docs/PDF_LIMITATIONS.md",
+        "docs/PDF_LIMITATIONS.md"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "d05a634145a27b8d5ae7a5970cd20319f830c09a130a0499bb964b8e05114b37",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "cat-file",
+        "blob",
+        "029efb59aa3649e557f1422fd6a06034a8703508"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "1bd08b2cec008fcc41390111f8ccfc0cfef4c3374018fe3b9d6d19589993f58d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a:docs/EMAIL_PRESETS.md"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "a51b353ca0d0167735e8a08776adbf590a6935e128513c4659093fe00915ba58",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "hash-object",
+        "--path",
+        "docs/EMAIL_PRESETS.md",
+        "docs/EMAIL_PRESETS.md"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "a51b353ca0d0167735e8a08776adbf590a6935e128513c4659093fe00915ba58",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "cat-file",
+        "blob",
+        "43cdb905f97134ffca3a5ff816b331c63ab476aa"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "ece311071d0980dca2e4591989c670f49ec68d41f205dd9bde62beb102a73dbb",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a:docs/RELEASE_NOTES_v1.0.0.md"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "efcbfaf54811037916070b252fe1b6fc265262a970d1ecae67d3761d4a15a0df",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "hash-object",
+        "--path",
+        "docs/RELEASE_NOTES_v1.0.0.md",
+        "docs/RELEASE_NOTES_v1.0.0.md"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "efcbfaf54811037916070b252fe1b6fc265262a970d1ecae67d3761d4a15a0df",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "cat-file",
+        "blob",
+        "873551dc6e2651c3d9744aa7946f3052d47182be"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "38866d8ab69626f49a5ed50381f839d21dca9e702dbcc59c4338ee37f8894fbd",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a:tools/release/Build-Release.ps1"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "59b64435eba7b7a8354bc0e23a0cc5a34de8cd390f180071a45f5f7e3d213a2a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "hash-object",
+        "--path",
+        "tools/release/Build-Release.ps1",
+        "tools/release/Build-Release.ps1"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "59b64435eba7b7a8354bc0e23a0cc5a34de8cd390f180071a45f5f7e3d213a2a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "cat-file",
+        "blob",
+        "7e0b2f046afd8708ea0bf39b6fa7cc74f3aa8999"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "6dcc57f0c48208fa061f1195ecf17a3057c269af7f6165914ade781406a7c0b2",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a:release-files.json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "8e896714dda56041576bee3366d454c88b502c4180fb68147d6b2afcb5a976dd",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "hash-object",
+        "--path",
+        "release-files.json",
+        "release-files.json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "8e896714dda56041576bee3366d454c88b502c4180fb68147d6b2afcb5a976dd",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "cat-file",
+        "blob",
+        "8e17a1d7f737001ea2d29fdf609e01612166a52c"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "bd80c988f28ae7c7f539f9ed31205ade92a1c5181102d6387342b4775b589007",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a:docs/codex/PACKAGE_CONTRACT.json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "e0aa8e07ba5cfc74d512dcad8bae65dc517a3befa4891a361457c92bbadad1d0",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "hash-object",
+        "--path",
+        "docs/codex/PACKAGE_CONTRACT.json",
+        "docs/codex/PACKAGE_CONTRACT.json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "e0aa8e07ba5cfc74d512dcad8bae65dc517a3befa4891a361457c92bbadad1d0",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "cat-file",
+        "blob",
+        "704a8da9173385f606bb4c4770a1f2c79ed96603"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "82b559d7517d7704a88e1b43e4996de25035e9b7ced78f6d09a13b39fe205e6a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "record_writer_sha256": "b47f5a51f5320e18245e096b1c23329a145cd5a23dee2fa653cabd22eb1565b0",
+  "writer_bindings_raw_sha256": "0e954f5317c42aec9d88afd4cbccb1b3e2ea68f3845891221475496241166610",
+  "checkpoint": {
+    "source_R2_clean_live_main_verified_before_M6_records": true,
+    "records_branch": "codex/v1.0.0-release-evidence",
+    "future_E1_commit_push_sync": "Performed after these records; actual session proof is required, never inferred here",
+    "no_self_referential_future_commit_or_push_SHA": true
+  },
+  "release_state": {
+    "state": "not_started",
+    "release_commit": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+    "final_asset_hashes": null,
+    "tag_draft_publication_download_closure": "not_run"
+  },
+  "limitations": [
+    "Mixed unit/control/native/PDF evidence classes remain separate; aggregate passes are not all native-engine executions.",
+    "AC058 excluded/unperformed, never pass; no human account-class/Explorer/viewer acceptance.",
+    "Windows10/liveUNC/ARM/32-bit-host exclusions unchanged.",
+    "Observed nonadministrator tokens/full Windows build do not establish account class or Insider enrollment.",
+    "Static selected rules pass with349warnings/175information advisory per host retained.",
+    "One developer symlink check skipped; synthetic exporter/reviewer preparation checks remain tooling only.",
+    "Unsigned application distribution, separate dependency trust/licensing and PDF/signature/PDF-A/privacy/preservation limitations remain.",
+    "T28/T29 premerge candidate assets are historical, not final R2 assets or downloaded release.",
+    "T32 final exact assets/tag/draft, T33 publication/independent downloaded operation and T34 synchronized closure remain required."
+  ]
+}

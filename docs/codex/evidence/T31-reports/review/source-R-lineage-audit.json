@@ -1,0 +1,827 @@
+{
+  "task": "T31",
+  "audit": "independent_actual_merged_R_lineage_tree_and_source_freeze",
+  "R": "de5f30155c68755dbd5af691625a0651e3fb7230",
+  "reviewed_C2": "277e8cbb7de98b4cb07850def58590473ec636b9",
+  "reviewed_C1b": "8f76ba4bce7de100cd56274ca938c4da24b500dc",
+  "observed_at_utc": "2026-10-09T17:47:47.119409+00:00",
+  "auditor_sha256": "535d90075d150cd34a160d4aaadb9fcc952aa68d1b17956180746579766443b5",
+  "checks": 27,
+  "issues": [],
+  "result": "pass",
+  "commands": [
+    {
+      "argv": [
+        "gh",
+        "api",
+        "repos/PikkuJanne/WinPDFMerger/pulls/26"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "4c7bb555a8278e8143e4c8584287b0daec7485d3113525c1d30d0aeee84ef174",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "R-merged-PR.stdout",
+      "stderr": "R-merged-PR.stderr"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-list",
+        "--parents",
+        "-n",
+        "1",
+        "de5f30155c68755dbd5af691625a0651e3fb7230"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "4b613a26754f1e7b140335d36c839cf78ac88de23ee303325145a508a54dea9f",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "R-parents.stdout",
+      "stderr": "R-parents.stderr"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "de5f30155c68755dbd5af691625a0651e3fb7230^{tree}"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "c72ec5da4f84d7267dde42503abd028fa04566727c0a282d4a08c54432a2e85a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "R-tree-ID.stdout",
+      "stderr": "R-tree-ID.stderr"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "277e8cbb7de98b4cb07850def58590473ec636b9^{tree}"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "c72ec5da4f84d7267dde42503abd028fa04566727c0a282d4a08c54432a2e85a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "C2-tree-ID.stdout",
+      "stderr": "C2-tree-ID.stderr"
+    },
+    {
+      "argv": [
+        "git",
+        "ls-tree",
+        "-r",
+        "-z",
+        "de5f30155c68755dbd5af691625a0651e3fb7230"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "11aeb936b45b37e8ed04f994137596ff48c67071e29749568f79b2fbff3374c4",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "R-tracked-tree.stdout",
+      "stderr": "R-tracked-tree.stderr"
+    },
+    {
+      "argv": [
+        "git",
+        "ls-tree",
+        "-r",
+        "-z",
+        "277e8cbb7de98b4cb07850def58590473ec636b9"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "11aeb936b45b37e8ed04f994137596ff48c67071e29749568f79b2fbff3374c4",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "C2-tracked-tree.stdout",
+      "stderr": "C2-tracked-tree.stderr"
+    },
+    {
+      "argv": [
+        "git",
+        "ls-tree",
+        "-r",
+        "-z",
+        "8f76ba4bce7de100cd56274ca938c4da24b500dc"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "53567eebee6bd72012dde22501fc54e402da0efb987071ad23c396baf3075db1",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "C1b-tracked-tree.stdout",
+      "stderr": "C1b-tracked-tree.stderr"
+    },
+    {
+      "argv": [
+        "git",
+        "ls-remote",
+        "origin",
+        "refs/heads/main"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "943c241dc23a310387224df32810053bb5617d124df3b5be1ca5f36fb0bb5bf5",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "R-live-main.stdout",
+      "stderr": "R-live-main.stderr"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "refs/heads/main"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "9fbfbbf29857d738a227aea48f7019bddafd7377fa3b30005c7c85b6647d1870",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "R-local-main.stdout",
+      "stderr": "R-local-main.stderr"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "9fbfbbf29857d738a227aea48f7019bddafd7377fa3b30005c7c85b6647d1870",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "R-current-HEAD.stdout",
+      "stderr": "R-current-HEAD.stderr"
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--porcelain=v1"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "R-clean-status.stdout",
+      "stderr": "R-clean-status.stderr"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        "de5f30155c68755dbd5af691625a0651e3fb7230:docs/codex/RELEASE_STATE.json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "adce4eda65f541e6fdd12e3bfe49631b223c75fc916a52555245d4bd7afca726",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "R-release-state.stdout",
+      "stderr": "R-release-state.stderr"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        "de5f30155c68755dbd5af691625a0651e3fb7230:docs/codex/ACCEPTANCE_CASES.json"
+      ],
+      "exit_code": 0,
+      "stdout_sha256": "5bf60249b52033be00e8bcb4b23256c1f014542e9bc7ee62b57b38594969922d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout": "R-cases.stdout",
+      "stderr": "R-cases.stderr"
+    }
+  ],
+  "lineage": {
+    "PR": 26,
+    "merged_at": "2026-10-09T17:46:48Z",
+    "merge_commit_sha": "de5f30155c68755dbd5af691625a0651e3fb7230",
+    "parents": [
+      "e2451141217efdd00a1d49d72a04df054872dffc",
+      "277e8cbb7de98b4cb07850def58590473ec636b9"
+    ],
+    "observed_parent_style": "merge",
+    "R_tree": "bf637877191a6d8009738ebd5ad9e85e8b32a92b",
+    "reviewed_C2_tree": "bf637877191a6d8009738ebd5ad9e85e8b32a92b",
+    "exact_tree_equal": true,
+    "changed_paths": [],
+    "local_main": "de5f30155c68755dbd5af691625a0651e3fb7230",
+    "live_main": "de5f30155c68755dbd5af691625a0651e3fb7230"
+  },
+  "freeze": {
+    "tracked_non_evidence_paths": 124,
+    "files": {
+      ".gitattributes": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "f2b367982ec49a97e226bee634ea55cf687a5346"
+      },
+      ".github/workflows/windows-tests.yml": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "ce1da750878937d9d6d7ee5da503767bb9ce0dab"
+      },
+      ".gitignore": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "2467a9c5188c01ba8a0337bcc17efed58bcafd2d"
+      },
+      "AGENTS.md": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "e80b184810f72ce65256f7cf4304b46e9a076f2b"
+      },
+      "CHANGELOG.md": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "cada71f1409ea7e64c6422e2d9d73b4ab70e35db"
+      },
+      "LICENSE": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "d8cca2639474e791c0aaa4d77aac79d8c8900359"
+      },
+      "PSScriptAnalyzerSettings.psd1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "ff555a9ffbe271cfca014f7532944e559b71e088"
+      },
+      "README.md": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "742a36f2af1962510100eea25366788bb49766ec"
+      },
+      "SECURITY.md": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "fac25ac3c8170d0326b833f9d4e03422e62b6827"
+      },
+      "VERSION": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "3eefcb9dd5b38e2c1dc061052455dd97bcd51e6c"
+      },
+      "WinPDFMerge.bat": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "17e054df3ea043832de4599aa811f90e4e660208"
+      },
+      "WinPDFMerge.ico": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "bcf626f1685055b03e18d508c5dec3abfe068c7c"
+      },
+      "WinPDFMerge.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "c6402bd4f13e8d19cc325c24b215e41cf8bf5f7e"
+      },
+      "WinPDFMerge_icon.png": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "69e45875bfe513168911e621ac19b2fa681a6b6e"
+      },
+      "WinPDFMerge_poster.png": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "c4e51142b99973349013d940e927587f3046a6de"
+      },
+      "docs/COMPATIBILITY.md": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "88489641ae59cf9c15da6bb01f295710c26d6628"
+      },
+      "docs/DEPENDENCIES.md": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "39b20bbea233283b4764677e4741800aa9a1abb3"
+      },
+      "docs/DEVELOPMENT.md": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "da048183d66f9ff738e58bdf935eb05837eef874"
+      },
+      "docs/EMAIL_PRESETS.md": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "43cdb905f97134ffca3a5ff816b331c63ab476aa"
+      },
+      "docs/PDF_LIMITATIONS.md": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "029efb59aa3649e557f1422fd6a06034a8703508"
+      },
+      "docs/RELEASE_NOTES_v1.0.0.md": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "873551dc6e2651c3d9744aa7946f3052d47182be"
+      },
+      "docs/TROUBLESHOOTING.md": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "3ab1faec3594608f4266be89aad17c123bac74e1"
+      },
+      "docs/USAGE.md": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "fdcca03769484e2b5531dfa97cbd70754efe25c2"
+      },
+      "release-files.json": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "8e17a1d7f737001ea2d29fdf609e01612166a52c"
+      },
+      "src/WinPDFMerge.Helpers.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "7ae00095a4734db9016a0feb712329097c720a07"
+      },
+      "tests/CorpusSafetySupport.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "dd342bb88eaf04c68ec663e3801b37a5b143c4a8"
+      },
+      "tests/TestDependencies.psd1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "d1c726a871a16bf05394a88df678bf678c861583"
+      },
+      "tests/TestSupport.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "d1fb361a2dcdf5770549e3be5a2e7f3b8921307a"
+      },
+      "tests/ci-dependencies.json": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "2089eb3eeed2c3bd3b566c8f36e80eea3d8c8992"
+      },
+      "tests/cli/Parameters.Native.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "1ef4b0ad4d2bb9fb3ced0c444db5451159d8c345"
+      },
+      "tests/cli/Parameters.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "c9c63ff34a057cca10907aa0755185f26d6e1ed4"
+      },
+      "tests/dependencies/Dependencies.Entry.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "67636bc6d4603d11b7cf972dffdf9040315d05a7"
+      },
+      "tests/dependencies/VersionProbeFixture.cs": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "5f4bb375032369620a17ab16c1fca6d63df669bc"
+      },
+      "tests/faults/FaultIO.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "f6f2d7d8562c5c85b7572ddaac507ad36e75f07b"
+      },
+      "tests/faults/FaultRecovery.Native.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "3d4f28849b49eba1db7cf12d6fcd2fca3f93c20f"
+      },
+      "tests/filesafety/Destination.Native.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "10c7096cd66f2ba4faf5e20b3d848aac613142f8"
+      },
+      "tests/filesafety/Staging.Native.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "3fa2db8f2aae24592230daea59948af9b1602eaf"
+      },
+      "tests/fixtures/README.md": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "fc48733212b76ac3cb19c8a5f9e77b30b875c85b"
+      },
+      "tests/fixtures/corpus.json": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "3c345d84b8a173fd543f7f8e15b5ed63df284fee"
+      },
+      "tests/fixtures/features/generate_features.py": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "75c73372666d8d7f82da34146a7bc28f8d1fe4b3"
+      },
+      "tests/fixtures/features/manifest.json": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "b58a6a8512e00c3845649b8c2ccb29b3a47b6a2f"
+      },
+      "tests/fixtures/numbered/1.pdf": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "049cdd0516c32cb73206cbcec87fe4bb00ab65b4"
+      },
+      "tests/fixtures/numbered/10.pdf": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "0d463a2533f898ade924a51d7ef4a1523ed3e28c"
+      },
+      "tests/fixtures/numbered/2.pdf": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "9e6c70ef0d3ebf14048f9172fb5bf1ae588530da"
+      },
+      "tests/fixtures/numbered/manifest.json": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "26b368059a1cade861037123396a60b518906e81"
+      },
+      "tests/fixtures/presets/generate_presets.py": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "08a0674db2d9f8af0819bb6bfa681d9b1e2d1a37"
+      },
+      "tests/fixtures/presets/manifest.json": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "b0b7eace22aceca343a779964752f2fbeeb74921"
+      },
+      "tests/help/Diagnostics.Native.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "54590373e2314b1527ab6cd379b5317e765ea12b"
+      },
+      "tests/help/Diagnostics.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "ed557d0385dbb3aa5152946baf42fdfe7fface83"
+      },
+      "tests/help/PreservationDocs.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "7f2414d8615c8054bb4a169ca6790d7722a3d002"
+      },
+      "tests/help/PublicDocs.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "68d64941455ec45e4b05f94bcd5132d6e2a8f348"
+      },
+      "tests/help/Version.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "d9822465f1ffccaaaca089076d8040e69bd3bb50"
+      },
+      "tests/launcher/Launcher.Native.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "3318ef4e8588424f073de7df7c09c5126b5471c3"
+      },
+      "tests/launcher/Launcher.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "0e6398bcc2d0a7529b7ab771d6123c47f62dc952"
+      },
+      "tests/launcher/Receiver.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "ae3f691ece88177b76f1d9e77632f9dfcef8d220"
+      },
+      "tests/launcher/TestSupport.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "1e8462053c427865af084437965aca9ff959a896"
+      },
+      "tests/native/FakeNative.cs": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "d727aa4e2968198639c9a677c83ecaf32b592371"
+      },
+      "tests/native/NativeRunner.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "8b7be16db99ea4f43f2b9444594322c7499737c5"
+      },
+      "tests/native/ToolInvocation.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "7d07c5623cb513efd66d08376a60c2d089c92ff4"
+      },
+      "tests/package/Package.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "9c2c563c0fdc89a45a0984c19db6ee592ccf1d1b"
+      },
+      "tests/package/PackageSupport.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "7ad5a50d4ad5c0a3fac6edac3c8449c4f9949d93"
+      },
+      "tests/package/candidate_smoke.py": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "d3ec1f3aa7f1ae4ef83dbd4f4c61a464df51cb5c"
+      },
+      "tests/package/test_candidate_smoke.py": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "9b7c4a2c11477c95c55ac22cb5c08508be8558db"
+      },
+      "tests/package/test_capture_labels.py": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "f85fe875aa0174ff0fd1547a9cc99ff999a47d79"
+      },
+      "tests/pdf/CiSmoke.Native.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "0990b7c84138ec221f6b021c0c70817d74f2326f"
+      },
+      "tests/pdf/CorpusSafety.Native.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "b75e3c18fb096f69fc86930f269bd41181cab579"
+      },
+      "tests/pdf/EmailOutcome.Native.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "55cdfa674088dcdb92a9fd7865c2425ca45b9d37"
+      },
+      "tests/pdf/Fixture.Native.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "9132dd71f5939e343466f38e017024398a651f48"
+      },
+      "tests/pdf/InputPreflight.Native.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "80c8e91ea81bbe8e41b244de3eeefdc8cb68ffb5"
+      },
+      "tests/pdf/MasterValidation.Native.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "e957c4d5d2dd76e5883d1b6e64aafa096101eb41"
+      },
+      "tests/pdf/NativeAcceptance.Native.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "03a0babbaa4a9743be97ccc27131c7219d26795d"
+      },
+      "tests/pdf/Preservation.Native.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "d3dc442829befc7d775dc744442947592d99fd8f"
+      },
+      "tests/pdf/SizeReporting.Native.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "182cfb28ac442c6af57d0486583f658018effeb5"
+      },
+      "tests/pdf/SizeReporting.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "f3d5b1e74272773ad88efc01b141473db7265144"
+      },
+      "tests/pdf/SourceDiscovery.Native.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "2637ddb6033058c3dc4339b19292e7c7e6b5005c"
+      },
+      "tests/pdf/ToolPaths.Native.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "1c64daae09e353f76258bb50eb6caf00c002828e"
+      },
+      "tests/static/StaticChecks.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "fc84ffe7300790940bf6f58bde99a6372b3246bd"
+      },
+      "tests/unit/CiDependencies.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "11c700f26fa96c789ab9afdc2b3c909caa2ef501"
+      },
+      "tests/unit/CiReportSupport.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "bb5b8c3c9e960c08f776b43f5906017102916985"
+      },
+      "tests/unit/CiRunSupport.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "8b68903a69cb32b22a897869c9f8e8d118ab38d0"
+      },
+      "tests/unit/CorpusSafetySupport.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "889724d67dc2f41c64a773f3d6e40233e056f615"
+      },
+      "tests/unit/Dependencies.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "69939fca331e3d43dbccbd94c043df62d2976a3f"
+      },
+      "tests/unit/Destination.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "63799bb03f0cf2d40553c8ba3d627894e06ce532"
+      },
+      "tests/unit/EmailOutcome.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "b5d2b6bcb40c633b48e996f69b3b303e4cef0671"
+      },
+      "tests/unit/FakeNative.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "58fe0711c7019989758812cf468c23b8a5e93325"
+      },
+      "tests/unit/FaultMatrix.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "e155448c2114155298738b9fb58fe3b670bbada3"
+      },
+      "tests/unit/Helpers.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "b41853b1dcf81c44626cac3921daebb7c581072d"
+      },
+      "tests/unit/InputPreflight.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "4b5ccc109ad424ff918205cd1bb44778ac88f110"
+      },
+      "tests/unit/MasterValidation.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "f8d817994b05af0c9c98e55dcc4543a521928eab"
+      },
+      "tests/unit/NativeCommand.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "6a6129ecb9172004f861176c25ef8e5d1cf5a8ec"
+      },
+      "tests/unit/Ordering.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "5118c6b882ddfb7b02519023ef6afbcbba2effa0"
+      },
+      "tests/unit/PdfEnvelope.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "b1279ae5f3bf322c25ed57633538e74309779034"
+      },
+      "tests/unit/SourceDiscovery.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "aa944856b5be07f6c2799ea1e039e524799d5c03"
+      },
+      "tests/unit/Staging.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "f5117d079f74db2a3cb8b64e34aead14e2d1c514"
+      },
+      "tests/unit/TestRunSupport.Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "0aea7d3f063d29cc299e06957cf25a1b7eb10f72"
+      },
+      "tools/codex/handoff.py": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "034e769d50c2b40c578177f0f334d3c99fa81e2a"
+      },
+      "tools/codex/tests/test_handoff.py": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "4ed33d7a1166911b3d44840e53647196a01a6538"
+      },
+      "tools/release/Build-Release.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "7e0b2f046afd8708ea0bf39b6fa7cc74f3aa8999"
+      },
+      "tools/test/Build-FakeNative.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "15e7d5e101e6f22cbf5f26a5dc26f15b84d39010"
+      },
+      "tools/test/CiDependencySupport.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "c9f2ebcbb21b7e38cff353ad8bfd6fd41152f895"
+      },
+      "tools/test/CiReportSupport.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "4fef6429ef69ec842e3f6669bb77fa0ab3a1fddd"
+      },
+      "tools/test/CiRunSupport.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "aa576b0e043dbe0d0695c474da21d2668025dff9"
+      },
+      "tools/test/Destination.md": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "edccd9be300a2aa43b2fe81feaabb858f3c6ad71"
+      },
+      "tools/test/FakeNative.md": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "ad98850b9ad23d5d4ced450f4de5ec79909587c8"
+      },
+      "tools/test/Initialize-CiDependencies.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "8191739cf8c06c338a0c3813257d82d6f92499c1"
+      },
+      "tools/test/InputPreflight.md": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "9057122d780901dedbd8d6ef5158c2ffce90c64e"
+      },
+      "tools/test/Invoke-CiFailureProbe.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "3c0d822c1b98674f7328fd366f43185e7d950a76"
+      },
+      "tools/test/Invoke-CiTests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "75b3d0a3d3a0e98c4394a4f5032d3ee00556367d"
+      },
+      "tools/test/Invoke-StaticChecks.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "ae5d16d87c7cc434e94ce34a63da7edab7dd431c"
+      },
+      "tools/test/Invoke-Tests.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "809144d28d3a62d9e4b571e75cddb26ade372990"
+      },
+      "tools/test/NativeRunner.md": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "4da2531e3b2038644d3ec9a8584c450f12007250"
+      },
+      "tools/test/README.md": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "ec6df688b3339a5bc948dde4eb7230abf3c820e6"
+      },
+      "tools/test/Staging.md": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "414c2209233e271ce6cbcef09d40ebde42cade4b"
+      },
+      "tools/test/StaticChecks.md": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "a0eaf3c685eaa12497ac04765a62714c68065bd8"
+      },
+      "tools/test/TestRunSupport.ps1": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "7c7d97a85192631c944405e3dd98a9b5e66b61d1"
+      },
+      "tools/test/corpus.py": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "cd188901312eba8f4807fba946549dc382512d70"
+      },
+      "tools/test/feature_oracle.py": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "d55860846e027f191c4d1b0bfe589cdea61a70ff"
+      },
+      "tools/test/fixture_oracle.py": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "583d93244182a0bb373dd19c7e333af07474e8e2"
+      },
+      "tools/test/generate_numbered_fixtures.py": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "9ec5101afda501c43136ca17e70a1806754c1ff5"
+      },
+      "tools/test/generate_pdf_envelope_fixtures.py": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "abbf2bd7ac8dbc73b8ecebed62116641baa649f8"
+      },
+      "tools/test/requirements-fixtures.txt": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "1fc88c927adbf5eb3c50acab3630230cbb3ad7f2"
+      },
+      "tools/test/tests/test_corpus.py": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "0ef2fc7e660305b40f4f843d13f82ed6d1c78cef"
+      },
+      "tools/test/tests/test_feature_oracle.py": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "aaa28029a972f01d355507b682d56e18e5b5fa9d"
+      },
+      "tools/test/tests/test_fixture_oracle.py": {
+        "mode": "100644",
+        "type": "blob",
+        "git_oid": "c2d971879cf72dc6b34f66fd9b580281b4dc41a1"
+      }
+    }
+  },
+  "limitations": [
+    "R tree/blob equivalence is measured, never inferred from branch or abbreviated SHA.",
+    "No application/native/static/CI receipt acceptance in this lineage audit; those require exact R execution originals.",
+    "Subsequent M6 tracked changes must remain under docs/codex; final packages/tag/publication/download remain later gates.",
+    "Human AC058 remains excluded/unperformed; automated native source safety remains required."
+  ]
+}

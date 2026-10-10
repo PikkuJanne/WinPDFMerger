@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "task": "T31",
+  "scope": "Read-only diagnosis of actual fail-closed exporter; no application/native/CI execution or public writes.",
+  "result": "fail_for_original_selected_projection_privacy",
+  "observed_at_utc": "2026-10-09T18:44:25.446810+00:00",
+  "diagnostic_source_sha256": "79c9cb06b70c5f9581f182990c62454633d889baf51764a3a677df47626fed1e",
+  "original_exporter_sha256": "03288f27e9def307e3fbedfee7b3a3c8eb637dfaac8369d5a81994823f1dce2c",
+  "original_selection_sha256": "318006165313cbdf83a56c134b969b5c66d63b3f35944f5026c711fb80000487",
+  "selected_text_payloads_checked": 1377,
+  "private_receipts": [
+    {
+      "path": "ci/fix-PR27/reviewed-head-commit-api-1.stdout.txt",
+      "raw_sha256": "d3b6f54b2aace50ed5b8a0a525772e05249c9de0350fc1a49359b8edd93f65f3",
+      "raw_bytes": 1154,
+      "private_fields": [
+        {
+          "pointer": "/author/email",
+          "categories": [
+            "windows_user"
+          ],
+          "value_sha256": "ede8175e041a592e45960b2cd382b6f346ea18117498c5f0b5eccfe12c15abc4",
+          "value_bytes": 17
+        },
+        {
+          "pointer": "/committer/email",
+          "categories": [
+            "windows_user"
+          ],
+          "value_sha256": "ede8175e041a592e45960b2cd382b6f346ea18117498c5f0b5eccfe12c15abc4",
+          "value_bytes": 17
+        }
+      ]
+    },
+    {
+      "path": "ci/fix-PR27/run-api-1.stdout.txt",
+      "raw_sha256": "923e3584a94920cf1b99205c7b98cd653abd8b1dbd189a0e4de62d82bd88862f",
+      "raw_bytes": 13438,
+      "private_fields": [
+        {
+          "pointer": "/head_commit/author/email",
+          "categories": [
+            "windows_user"
+          ],
+          "value_sha256": "ede8175e041a592e45960b2cd382b6f346ea18117498c5f0b5eccfe12c15abc4",
+          "value_bytes": 17
+        },
+        {
+          "pointer": "/head_commit/committer/email",
+          "categories": [
+            "windows_user"
+          ],
+          "value_sha256": "ede8175e041a592e45960b2cd382b6f346ea18117498c5f0b5eccfe12c15abc4",
+          "value_bytes": 17
+        }
+      ]
+    }
+  ],
+  "private_values_printed_or_saved": false,
+  "failed_dry_run": {
+    "receipt": "tests/.work/T31-final-actions/export-dry-d34ef8f6c5d041dbb5625e0cb6afa3e7/receipt.json",
+    "receipt_sha256": "ab12f10648fd65c836a278d5136f6f60c872cd038d985193f55e50f01088e830",
+    "exit_code": 1,
+    "stdout_sha256": "12856e125535a436821655d434da2b9260652762d3e436e15737488ab6e9f4b7",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "writes_performed": false
+  },
+  "proposed_correction": "Explicit raw-hash/Git-SHA-pinned commit API receipt registry; alias only /author/email and /committer/email to <EMAIL>, preserve all other typed facts. Unknown identities/schema/pins continue to fail closed.",
+  "original_selected_sources_changed": false
+}

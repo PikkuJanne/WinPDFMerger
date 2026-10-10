@@ -1,0 +1,11 @@
+# T31 exact merged-R2 push CI review
+
+[Push CI run 37971716309](https://github.com/PikkuJanne/WinPDFMerger/actions/runs/37971716309) passes its actual scope: four successful jobs, 20 original JSON/NUnit pairs and 1,370 passes. Unit scopes contribute 676 per shell; native smoke contributes 9 per shell. The 1,850 independent original/API/hash/count checks found zero issues.
+
+The strict `accepted_ci` label records actual `CI_COMMIT=95e0a19e6cc5fc01cd4bec4ac15f989f9830840a`. Original provider API metadata identifies a `push` on `main`; all downloaded artifact execution commits equal this normally merged R2. GitHub's commit API confirms tree `5014f5bdf4f374aee828ced4c39cb93bfeb6465a` and parents first R `de5f30155c68755dbd5af691625a0651e3fb7230` plus reviewed correction C1 `30560516a0248636769e988b0420466214c25e3b`. First-R failed/partial and premerge synthetic-checkout receipts remain separately scoped.
+
+Both hosted maintained-source static receipts pass 68 files with zero selected findings/suppressions or other bad counts; advisory totals remain 349 warnings and 175 information each. Actual hosts are Windows Server, PS5.1.26100.33438 and pinned PS7.6.6 with administrator tokens. Unit, controlled, documentation, static and native smoke evidence classes remain separate; no human account-class/Explorer acceptance is inferred.
+
+`push.json` contains actual final `gh run view` bytes. `push/` contains 50 original already-sanitized artifact files. The bundle preserves the earlier pending observation, all actual read/download/API argv and raw stdout/stderr, provider jobs/artifacts/commit objects, timestamps/exits, download metadata and a byte/hash index. `review.json` records the structured audit. This reviewer ran no application/test and made no tracked source or Git configuration change; downloaded exporter receipts do not independently rehash hosted dependency payloads.
+
+This is the exact merged-R2 hosted CI gate only. Overall AC071/AC072 acceptance awaits full dual-shell, maintained-source static, supplementary and native original reviews. AC058 remains owner-excluded/unperformed. Final package, tag/draft, publication, independent download operation and synchronized closure remain later gates.

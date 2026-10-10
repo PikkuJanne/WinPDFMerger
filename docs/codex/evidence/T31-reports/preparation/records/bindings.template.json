@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "task": "T31",
+  "source_commit": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+  "manifest_sha256": null,
+  "reviews": {
+    "source": {
+      "path": "review/source-R2-lineage-audit-corrected.json",
+      "sha256": null,
+      "result_pointer": "/result",
+      "expected_result": "pass_for_R2_lineage_source_and_capture_preparation",
+      "source_pointer": "/R2",
+      "issues_pointer": "/issues",
+      "checks_pointer": "/checks"
+    },
+    "original": {
+      "path": null,
+      "sha256": null,
+      "result_pointer": "/result",
+      "expected_result": "pass",
+      "source_pointer": null,
+      "issues_pointer": "/issues",
+      "checks_pointer": "/checks"
+    },
+    "native": {
+      "path": null,
+      "sha256": null,
+      "result_pointer": "/result",
+      "expected_result": "pass",
+      "source_pointer": null,
+      "issues_pointer": "/issues",
+      "checks_pointer": "/checks"
+    },
+    "ci": {
+      "path": null,
+      "sha256": null,
+      "result_pointer": "/result",
+      "expected_result": "pass",
+      "source_pointer": null,
+      "issues_pointer": "/issues",
+      "checks_pointer": "/checks"
+    },
+    "final_gate": {
+      "path": null,
+      "sha256": null,
+      "result_pointer": "/result",
+      "expected_result": "pass",
+      "source_pointer": null,
+      "issues_pointer": "/issues",
+      "checks_pointer": "/checks"
+    },
+    "public": {
+      "path": "review/public-review.json",
+      "sha256": null,
+      "result_pointer": "/result",
+      "expected_result": "pass",
+      "source_pointer": "/source_commit",
+      "issues_pointer": "/issues",
+      "checks_pointer": "/checks"
+    }
+  },
+  "freeze_proof": {
+    "path": null,
+    "sha256": null,
+    "public_path": null
+  },
+  "historical_review_bindings": [
+    {
+      "path": "review/staged-fix-review.json",
+      "sha256": null,
+      "scope": "260 actual independent staged-fix checks at dirty first-R preparation, not final-R2 execution",
+      "assertions": {
+        "/checks": 260,
+        "/result": "pass",
+        "/issues": []
+      }
+    },
+    {
+      "path": "review/fix-merge-review.json",
+      "sha256": null,
+      "scope": "72 actual independent corrective-source/merge-helper checks before PR27, not final-R2 execution",
+      "assertions": {
+        "/checks": 72,
+        "/result": "pass_for_source_and_merge_helper",
+        "/issues": []
+      }
+    }
+  ],
+  "notes": [
+    "Intentionally incomplete: exact manifest/review/proof names and hashes are required before any drafts or records can be written.",
+    "Review paths are relative to frozen T31-reports; source pointers explicitly bind each differing report schema to exact R2.",
+    "External proof raw file stays below tests/.work and its raw hash must be in the frozen public manifest.",
+    "Proof fields: task=T31,result=pass,source_commit/local_head/local_main/live_main=R2,branch=main,clean/synchronized/runtime_package_version_public_docs_frozen=true,observed_at_utc,actual successful command_receipts.",
+    "Proof must follow both full captures and be at most one hour old when the writer runs.",
+    "Historical review bindings need path,sha256,scope,assertions; keep dirty-base260/72 checks/red2errors/final85pass1skip explicitly historical.",
+    "Run only after root opens codex/v1.0.0-release-evidence at exact R2. Default writes ignored drafts; --apply writes only seven requested docs/codex files.",
+    "No final package/tag/draft/publication/download gate, own future commit SHA or future push outcome is claimed."
+  ]
+}

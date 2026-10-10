@@ -1,0 +1,487 @@
+diff --git a/.gitattributes b/.gitattributes
+index f2b3679..42dfbba 100644
+--- a/.gitattributes
++++ b/.gitattributes
+@@ -1,6 +1,13 @@
+ # Preserve synthetic PDF bytes through Windows checkout/line-ending conversion.
+ /tests/fixtures/numbered/*.pdf binary
+ 
++# Corpus catalogue pins recipe/manifest bytes; preserve them in every checkout.
++/tools/test/generate_numbered_fixtures.py -text
++/tests/fixtures/numbered/manifest.json -text
++/tests/fixtures/presets/generate_presets.py -text
++/tools/test/generate_pdf_envelope_fixtures.py -text
++/tests/fixtures/presets/manifest.json -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
++
+ # Preserve T30 captured/sanitized report bytes, including native diagnostics.
+ /docs/codex/evidence/T30-reports/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+ /docs/codex/evidence/T30-reports/**/*.txt -text whitespace=-blank-at-eol,-blank-at-eof,space-before-tab,cr-at-eol
+diff --git a/docs/codex/ACCEPTANCE_CASES.json b/docs/codex/ACCEPTANCE_CASES.json
+index 735289a..5cca58a 100644
+--- a/docs/codex/ACCEPTANCE_CASES.json
++++ b/docs/codex/ACCEPTANCE_CASES.json
+@@ -1225,8 +1225,10 @@
+       "mode": "ci",
+       "required": true,
+       "stage": "accepted",
+-      "result": "not_run",
+-      "evidence": [],
++      "result": "fail",
++      "evidence": [
++        "docs/codex/evidence/T31-checkout-fix.md"
++      ],
+       "exclusion_reason": null
+     },
+     {
+diff --git a/docs/codex/NEXT_SESSION.md b/docs/codex/NEXT_SESSION.md
+index 0e527d0..cb201fc 100644
+--- a/docs/codex/NEXT_SESSION.md
++++ b/docs/codex/NEXT_SESSION.md
+@@ -1,54 +1,43 @@
+ # Next session
+ 
+-Complete exactly T31: merge the accepted PR and freeze release-source commit R.
+-T01-T30 are done. AC069/070 pass; later AC071-078 remain not_run.
++Continue exactly T31: merge accepted source and freeze release-source R.
++T01-T30 remain done; T31 in_progress, AC071 not_run, AC072 fail for the
++unaccepted first candidate, later T32-T34 pending.
+ Read AGENTS/INDEX/STATUS, T31 TASKS/brief, PRODUCT_SPEC, ACCEPTANCE_CASES,
+ GITHUB_WORKFLOW, TEST_STRATEGY, SECURITY_AND_DEPENDENCIES, RELEASE_RUNBOOK,
+-DEFINITION_OF_DONE and T30 completion/results/independent review records.
++DEFINITION_OF_DONE and evidence/T31-checkout-fix.md.
+ 
+-Freshly verify repository/branch/clean state, origin fetch/push routes, live main/
+-branch and PR26 actual head/checks/protections/review. Reuse
+-codex/v1.0.0-readiness and draft/open/unmerged PR26. Final T30 records C2 own
+-commit/push/clean-live proof is in the prior session output and must be rechecked.
+-Last tested source C1b is8f76ba4bce7de100cd56274ca938c4da24b500dc; live main
+-was e2451141217efdd00a1d49d72a04df054872dffc; no tag/releases existed.
++PR26 was normally merged at2026-10-09T17:46:48Z. First candidate
++de5f30155c68755dbd5af691625a0651e3fb7230 is explicitly unaccepted: fresh
++Windows checkout under existing system autocrlf=true converted four pinned LF
++development fixture files, causing34pass/1failure/5errors. Presets manifest's
++pinned CRLF bytes were also normalized in Git, breaking autocrlf=false. Preserve
++these failures, partial full runs and successful scoped CI/static facts separately.
++Original receipts/producers/reviews remain under ignored tests/.work/T31-*.
+ 
+-T30 full32-tier regression passes1072checks per actual PS5.1.26100.9444 and
+-pinnedPS7.6.6,2144total/64JSON-NUnit pairs, all bad counts0. Static68files/
+-41selectedrules perhost passes with349warnings/175information advisories each.
+-Helpers83pass/1symlinkskip remains separate. C1b push/PR all8CI jobs pass1370
+-pertrigger/2740total; exact PR merge d8b2863 has equal source tree. Local/native,
+-unit/control/docs/package and hosted Server/admin-token classes are distinct.
+-Source/cache/driver guards and independent original/native/CI/public audits pass.
+-Public core manifest and raw/public hashes are in evidence/T30-reports; failed
+-dirtypreps and1e4 aborted full runs822pass/1fail perhost remain unaccepted.
++Reuse codex/t31-fixture-checkout for the reviewed five-file -text fix and actual
++true/false fresh Git checkout regression. No pin/expectation/runtime/version/
++builder/allowlist changes. Verify the preset manifest staged bytes retain SHA
++383ec07bec823f131ab86cf07de2ffb96e10803ad4f2f4997ba834835ee01e1f.
++Dirty-base green preparation42fixture-helper passes are not final acceptance.
++Normally commit/push, verify matching live ref and clean state, review exact fix
++head and CI, then normally merge without admin bypass. Fetch/fast-forward main;
++run required full32-tier regression in actual PS5.1 and pinnedPS7.6.6 plus static,
++helpers and exact new merged CI using a genuinely fresh checkout. Identify exact
++accepted R only after required passes. No freeze/tag/draft/publication yet.
+ 
+-T30 fixes public candidate/date/token wording and stale missing-input assertion;
+-runtime/VERSION/native flags/builder/allowlist are unchanged. Records-only C2
+-changes docs/codex only; C1b executions must not be relabeled as C2 executions.
+-Run check-plan --require-ready and inspect underlying evidence before merge.
+-Refresh current matching PR checks and normal approvals; do not use admin bypass.
+-Mark PR ready when appropriate and merge through a permitted strategy, then
+-fetch/fast-forward clean main without discarding work. Identify exact merged R,
+-rerun required checks against R, especially if Git merge/squash changes source.
+-Record R externally or later records commit, never its own future SHA.
+-Freeze runtime/version/build at R and open the separate evidence-only M6 branch.
+-
+-Retained T28 candidate8917938820f60e499e2c20caa9cb03171678be72 and T29 harness
+-629f506fc18c278dd43d1021009a45406a6544e1 prove their exact premerge ZIPs,
+-25actual app scenarios/21PDFs/106pages. Public docs now differ intentionally;
+-do not substitute candidate operation for final R/assets or published downloads.
+-Original assets/ledgers are located by T28/T29 completion/results/public receipts.
++After accepted R, open separate codex/v1.0.0-release-evidence branch. Changes
++then ONLY docs/codex. Future report byte-preservation rules belong in existing
++docs/codex/evidence/.gitattributes. Preserve raw/public hashes, typed JSON and
++entity-escaped XML identity/path projections; no private PDFs/native binaries.
++No record may claim its own future commit/push. Verify clean/live synchronization.
+ 
+ Reuse approved348-file caches and workspacePython3.12.14; no silent install,
+-elevation or persistent policy/PATH/security change. Actual approved pinned
+-shell execution is required; ambient7.6.5 is not7.6.6 evidence. Child RemoteSigned
+-and existing BAT Bypass respect Group Policy. Fresh Professional26H2/full26300.9457
+-and nonadministrator token facts do not establish account class/Insider enrollment.
+-
+-D25 AC058 human standard-user/Explorer/PDF-viewer acceptance is excluded,
++elevation or persistent policy/PATH/security/Git-config change. Ambient7.6.5 is
++not pinned7.6.6 evidence. Record actual Professional26H2/full26300.9457 and
++nonadministrator token facts without inferring account class/Insider enrollment.
++AC058 human standard-user/Explorer/viewer acceptance remains excluded,
+ unperformed and never pass. Windows10/liveUNC/ARM/32-bit-host exclusions and
+-unsigned/dependency/PDF/privacy limits remain. T32 final exact asset operation,
+-T33 publication/independent published-download operation and T34 synchronized
+-closure remain required. No intermediate published tag/release. The project is
+-not complete; no extra ceremonial owner release permission is required.
++unsigned/dependency/PDF/privacy limits remain. Only T32 final assets, T33 final
++publication/independent download and T34 closure complete the public v1.0.0;
++no extra ceremonial owner approval is required.
+diff --git a/docs/codex/STATUS.md b/docs/codex/STATUS.md
+index 3083ff1..a55a0af 100644
+--- a/docs/codex/STATUS.md
++++ b/docs/codex/STATUS.md
+@@ -2,7 +2,12 @@
+ 
+ Target: published and independently verified v1.0.0 in PikkuJanne/WinPDFMerger.
+ T01-T30 are done within owner-amended scope. Current milestone M5.
+-Next task T31 is pending: merge the accepted PR and freeze release-source R.
++T31 is in_progress. PR26 merged normally at2026-10-09T17:46:48Z to first
++candidate de5f30155c68755dbd5af691625a0651e3fb7230; it is unaccepted. Fresh
++Windows checkout exposed required fixture-byte provenance failures (34pass,
++1failure,5errors). Reviewed five-file byte-preservation fix and real fresh Git
++checkout regression are needed before a new merged source can be accepted.
++See evidence/T31-checkout-fix.md. AC071 remains not_run; AC072 is fail for the unaccepted first candidate.
+ The project is not complete; no tag/release/publication is created.
+ 
+ T30 AC069/AC070 pass at clean tested C1b
+@@ -26,14 +31,15 @@ audited. Hosted Server/admin-token scope remains distinct. Failed dirty preparat
+ and aborted1e4 full runs822pass/1fail perhost remain unaccepted and separately kept.
+ See evidence/T30-completion.md, T30-results.json and T30-reports/review.
+ 
+-Case totals:66pass/4excluded/8later not_run. AC058 D25 is excluded/unperformed,
++Case totals:66pass/4excluded/1fail/7not_run. AC058 D25 is excluded/unperformed,
+ never pass; Windows10/liveUNC/ARM/32-bit-host exclusions remain. T28/T29 exact
+ premerge ZIP acceptance retains its original candidate8917938/harness629f506,
+ 25app scenarios/21PDFs/106pages and scope; final R/download acceptance is later.
+ 
+-C1b clean/live synchronization is recorded; records-only C2 normal push and fresh
+-clean/live proof follow creation and are reported in the session. Recheck current
+-HEAD and matching PR26 checks next session. PR26 remains draft/open/unmerged;
+-main e245114; release state not_started. T31 accepted R/tests, T32final exact
+-assets, T33publication/independent downloaded operation and T34synchronized
+-closure remain required. Unsigned/dependency/PDF/privacy limits remain.
++T30 C1b/C2 clean/live synchronization was recorded and PR26's exact eight checks
++were freshly verified before its normal merge. First candidate scoped static/CI
++passes do not supersede the required fixture failure. No release source is frozen;
++release state remains not_started. T31 accepted new merged source/tests,
++T32final exact assets, T33publication/independent downloaded operation and
++T34synchronized closure remain required. Unsigned/dependency/PDF/privacy limits
++remain. First-candidate partial captures and preparation failures are retained.
+diff --git a/docs/codex/TASKS.json b/docs/codex/TASKS.json
+index 11e00a7..3b0c649 100644
+--- a/docs/codex/TASKS.json
++++ b/docs/codex/TASKS.json
+@@ -953,7 +953,7 @@
+       "id": "T31",
+       "milestone": "M5",
+       "title": "Merge the accepted PR and freeze release-source commit R",
+-      "status": "pending",
++      "status": "in_progress",
+       "depends_on": [
+         "T30"
+       ],
+@@ -966,8 +966,10 @@
+         "AC071",
+         "AC072"
+       ],
+-      "evidence": [],
+-      "notes": null
++      "evidence": [
++        "docs/codex/evidence/T31-checkout-fix.md"
++      ],
++      "notes": "PR26 merged normally to first candidate de5f301; fresh checkout exposed required fixture-byte failures. Candidate unaccepted. Five-file byte contract and real true/false Git checkout regression are under reviewed fix; new merged exact-source acceptance remains required."
+     },
+     {
+       "id": "T32",
+diff --git a/docs/codex/evidence/T31-checkout-fix.md b/docs/codex/evidence/T31-checkout-fix.md
+new file mode 100644
+index 0000000..7c30cda
+--- /dev/null
++++ b/docs/codex/evidence/T31-checkout-fix.md
+@@ -0,0 +1,72 @@
++# T31 — unaccepted merged candidate and checkout-byte fix
++
++PR26 was reviewed at277e8cbb7de98b4cb07850def58590473ec636b9 and merged through
++the normal allowed merge path at2026-10-09T17:46:48Z. First candidate
++de5f30155c68755dbd5af691625a0651e3fb7230 has the exact reviewed PR tree and parents
++e2451141217efdd00a1d49d72a04df054872dffc and277e8cbb7de98b4cb07850def58590473ec636b9.
++Clean local/live main equality was observed at17:47:03UTC. No tag or release exists.
++
++This candidate is **unaccepted**. Its fresh Windows checkout under the existing
++system core.autocrlf=true converted four LF-pinned development fixture files.
++The actual Python fixture-oracle suite ran40tests:34pass,1failure,5errors; exit1.
++The original stderr SHA-256 is
++7c11d8c17c901c3ec2b8ddd0bc6c0f775f5b1dac722a3529594b3f0986fbcf88.
++The numbered manifest failed exact reproducibility, and five corpus tests rejected
++raw recipe/manifest pin mismatches. These are required developer-tool failures;
++successful scoped CI and static checks do not make this candidate accepted.
++
++The fix adds five explicit -text rules. Four canonical LF blobs already match
++the existing pins. The presets manifest's original pinned CRLF bytes are now
++stored verbatim in Git, removing its opposite autocrlf=false mismatch. All
++catalogue expectations, hashes, fixture semantics, existing feature/PDF rules,
++runtime/version/native arguments, builder and allowlist remain unchanged.
++Future evidence byte rules can remain inside docs/codex/evidence/.gitattributes,
++which is allowed on the separate M6 evidence-only branch after source freeze.
++
++The new test creates a small owned local Git repository, commits the fixture
++bytes and attributes, and performs two real fresh clones with command-scoped
++core.autocrlf=true and false. Both call actual corpus.load_catalog and compare
++numbered generator output with checked-out bytes. The initial regression draft
++failed before the fix (2errors,exit1); original stderr SHA-256
++5e52d98f2e71a6de473b7a14783e35a214c5b5267c595d79efd64209fd09090c.
++Both passed afterward; the full fixture helper suite passed42tests without skips.
++The final test adds command-scoped empty hooksPath to isolate global hooks;
++the original draft is reconstructed byte-for-byte and matches its recorded SHA
++72e653efc3664c1ab2af58b92b7d7430ca7cadda7b2da8a433c4dc255ccedbfe.
++The final test source SHA-256 is
++1ad01e47a75b06fed7eff56cdfa1b3eb1ef9394fa897f08c698862df08a0e220.
++Green preparation executions are explicitly dirty-base executions at de5f301,
++not accepted final-source evidence. Exact commands/times/source hashes and red/
++green streams remain in owned tests/.work/T31-checkout-regression-{red,green}.
++Python is the approved pinned3.12.14 runtime; no acquisition/elevation or
++persistent policy, Git-config, PATH or security change was performed.
++
++Final five-rule dirty-base preparation at18:02:02–13UTC ran
++`<approvedPython> -B -m unittest discover -s <scope> -p test_*.py -v`
++for tools/codex/tests, tools/test/tests and tests/package:26pass/1symlinkskip,
++42pass/no skips and17pass/no skips respectively (85pass/1skip,all exit0).
++Original stderr SHA-256 values in that order are
++0871a620a3141fc65a653359ed2c5755b30bc59c0ab6c14fde9d6f2a4b53312d,
++655925fd22427cd266b529d5454cbe53c1c8c9eda385ae9a57966396e6d68610 and
++c43564d005a8c08a6b05163ac6c04aed0bb924bd730e52c5f5c32626ee937bab.
++Their exact invocation ledger/streams remain in
++tests/.work/T31-fix-preparation-1d9deb93c5a64a9f89938e051f5c4b98.
++Record-only check-plan --require-ready passes30done/66pass/4excluded; it
++does not execute the application or establish accepted final-source results.
++
++First-candidate full native test captures were intentionally stopped after the
++known required failure: PS5.1 completed15tiers/726passes and pinnedPS7 completed
++20tiers/823passes. Incomplete tiers, remaining tiers and final guards are not
++accepted. The first owned PS5.1 tree signal returned1 after terminating its
++selected parent/three children; one child reported unsupported termination.
++The separate PS7 signal returned0 and refreshed creation-identity query confirmed
++the selected parent absent. No application cancellation/cleanup pass is inferred;
++partial streams and owned synthetic leftovers are retained. Source stayed unchanged
++before stopping; no broad process sweep or elevated retry was used.
++
++AC071 remains not_run; AC072 is fail for the unaccepted candidate's actual
++required fixture failure. T31 remains in_progress until the reviewed fix is
++normally merged, clean/live main is verified, and all required exact new merged
++source checks pass. T32–T34 remain pending. AC058 remains excluded, unperformed
++and never pass. Final task records will preserve first-candidate failures and
++bind the accepted source, original reports and independent reviews separately.
+diff --git a/tests/fixtures/presets/manifest.json b/tests/fixtures/presets/manifest.json
+index b0b7eac..16723c8 100644
+--- a/tests/fixtures/presets/manifest.json
++++ b/tests/fixtures/presets/manifest.json
+@@ -1,62 +1,62 @@
+-{
+-  "schema_version": 1,
+-  "license": "CC0-1.0",
+-  "versions": {
+-    "python": "3.12.14",
+-    "reportlab": "4.4.9",
+-    "pillow": "12.3.0"
+-  },
+-  "provenance": "Original synthetic vector text/diagrams and seeded raster pixels; no external documents, user data, OCR or network.",
+-  "scan_pixel_dimensions": [
+-    2250,
+-    2800
+-  ],
+-  "scan_seed": 170041,
+-  "generator_sha256": "1aaabe651bd4d468b09e617607b1f276d3a894b67e15081d380cc45e91a62db6",
+-  "fixtures": [
+-    {
+-      "file": "small-print.pdf",
+-      "category": "vector_small_print",
+-      "bytes": 2619,
+-      "sha256": "7074f0ca973ccf90ce555ee427fa4cc041c06b8a248cb7eb5344680959b34920",
+-      "page_count": 1,
+-      "page_identifiers": [
+-        "T03-17-P01"
+-      ],
+-      "page_size_points": [
+-        612,
+-        792
+-      ]
+-    },
+-    {
+-      "file": "scan.pdf",
+-      "category": "original_scanned_text_diagram",
+-      "bytes": 3133596,
+-      "sha256": "2de91e376e39a99e1fd3d3760a05737023b503a7aca5ee4365eabc7971b7be03",
+-      "page_count": 1,
+-      "page_identifiers": [
+-        "T03-17-P02"
+-      ],
+-      "page_size_points": [
+-        612,
+-        792
+-      ]
+-    },
+-    {
+-      "file": "mixed.pdf",
+-      "category": "mixed_vector_raster",
+-      "bytes": 3135054,
+-      "sha256": "3ce010ec530ed27bfb168462f487f9591877398e9bddac5789f31386c56d6eaa",
+-      "page_count": 2,
+-      "page_identifiers": [
+-        "T03-17-P03",
+-        "T03-17-P04"
+-      ],
+-      "page_size_points": [
+-        612,
+-        792
+-      ]
+-    }
+-  ],
+-  "scope": "Development fixture recipe and structural expectations; visual preset acceptance requires actual rendered master/derivative review."
++{
++  "schema_version": 1,
++  "license": "CC0-1.0",
++  "versions": {
++    "python": "3.12.14",
++    "reportlab": "4.4.9",
++    "pillow": "12.3.0"
++  },
++  "provenance": "Original synthetic vector text/diagrams and seeded raster pixels; no external documents, user data, OCR or network.",
++  "scan_pixel_dimensions": [
++    2250,
++    2800
++  ],
++  "scan_seed": 170041,
++  "generator_sha256": "1aaabe651bd4d468b09e617607b1f276d3a894b67e15081d380cc45e91a62db6",
++  "fixtures": [
++    {
++      "file": "small-print.pdf",
++      "category": "vector_small_print",
++      "bytes": 2619,
++      "sha256": "7074f0ca973ccf90ce555ee427fa4cc041c06b8a248cb7eb5344680959b34920",
++      "page_count": 1,
++      "page_identifiers": [
++        "T03-17-P01"
++      ],
++      "page_size_points": [
++        612,
++        792
++      ]
++    },
++    {
++      "file": "scan.pdf",
++      "category": "original_scanned_text_diagram",
++      "bytes": 3133596,
++      "sha256": "2de91e376e39a99e1fd3d3760a05737023b503a7aca5ee4365eabc7971b7be03",
++      "page_count": 1,
++      "page_identifiers": [
++        "T03-17-P02"
++      ],
++      "page_size_points": [
++        612,
++        792
++      ]
++    },
++    {
++      "file": "mixed.pdf",
++      "category": "mixed_vector_raster",
++      "bytes": 3135054,
++      "sha256": "3ce010ec530ed27bfb168462f487f9591877398e9bddac5789f31386c56d6eaa",
++      "page_count": 2,
++      "page_identifiers": [
++        "T03-17-P03",
++        "T03-17-P04"
++      ],
++      "page_size_points": [
++        612,
++        792
++      ]
++    }
++  ],
++  "scope": "Development fixture recipe and structural expectations; visual preset acceptance requires actual rendered master/derivative review."
+ }
+\ No newline at end of file
+diff --git a/tools/test/tests/test_fixture_checkout.py b/tools/test/tests/test_fixture_checkout.py
+new file mode 100644
+index 0000000..fd6fa28
+--- /dev/null
++++ b/tools/test/tests/test_fixture_checkout.py
+@@ -0,0 +1,80 @@
++"""Fixture byte pins must survive real Git checkouts; development tooling only."""
++from __future__ import annotations
++
++import importlib.util
++import json
++from pathlib import Path
++import shutil
++import subprocess
++import tempfile
++import unittest
++
++
++REPO = Path(__file__).resolve().parents[3]
++
++
++def load_corpus(root: Path):
++    source = root / "tools/test/corpus.py"
++    specification = importlib.util.spec_from_file_location("checkout_corpus", source)
++    module = importlib.util.module_from_spec(specification)
++    specification.loader.exec_module(module)
++    return module
++
++
++def git(root: Path, autocrlf: str, *arguments: str) -> None:
++    result = subprocess.run(
++        ["git", "-c", f"core.autocrlf={autocrlf}", "-c", "core.safecrlf=false",
++         "-c", "core.attributesFile=", "-c", "core.hooksPath=", *arguments],
++        cwd=root, stdin=subprocess.DEVNULL, capture_output=True, timeout=30,
++        shell=False,
++    )
++    if result.returncode:
++        raise AssertionError(result.stderr.decode("utf-8", errors="replace"))
++
++
++class FixtureCheckoutTests(unittest.TestCase):
++    @classmethod
++    def setUpClass(cls):
++        cls.temporary = tempfile.TemporaryDirectory()
++        cls.addClassCleanup(cls.temporary.cleanup)
++        cls.root = Path(cls.temporary.name)
++        cls.seed = cls.root / "seed"
++        cls.seed.mkdir()
++        corpus = load_corpus(REPO)
++        catalog = json.loads(corpus.CATALOG.read_text(encoding="utf-8"))
++        paths = {".gitattributes", "tools/test/corpus.py", "tests/fixtures/corpus.json"}
++        for recipe, manifest in corpus.GROUPS.values():
++            paths.add(recipe)
++            if manifest:
++                paths.add(manifest)
++        paths.update("tests/fixtures/numbered/" + row["file"]
++                     for row in catalog["groups"]["numbered"]["fixtures"])
++        for relative in paths:
++            destination = cls.seed / relative
++            destination.parent.mkdir(parents=True, exist_ok=True)
++            shutil.copyfile(REPO / relative, destination)
++        # Reproduce an ordinary Windows add, including its newline conversion.
++        # All configuration is scoped to this command and this owned repository.
++        git(cls.seed, "true", "init", "--template=", "--initial-branch=checkout-test")
++        git(cls.seed, "true", "add", "--all")
++        git(cls.seed, "true", "-c", "user.name=Fixture checkout regression",
++            "-c", "user.email=fixture-checkout@example.invalid",
++            "-c", "commit.gpgsign=false", "commit", "--quiet", "-m", "Synthetic fixture bytes")
++
++    def check_checkout(self, autocrlf: str):
++        checkout = self.root / ("checkout-" + autocrlf)
++        git(self.root, autocrlf, "clone", "--quiet", "--no-local", str(self.seed), str(checkout))
++        corpus = load_corpus(checkout)
++        corpus.load_catalog()
++        for name, expected in corpus.load_recipe("numbered").expected_files().items():
++            self.assertEqual(expected, (checkout / "tests/fixtures/numbered" / name).read_bytes(), name)
++
++    def test_fixture_byte_pins_survive_autocrlf_true_checkout(self):
++        self.check_checkout("true")
++
++    def test_fixture_byte_pins_survive_autocrlf_false_checkout(self):
++        self.check_checkout("false")
++
++
++if __name__ == "__main__":
++    unittest.main()

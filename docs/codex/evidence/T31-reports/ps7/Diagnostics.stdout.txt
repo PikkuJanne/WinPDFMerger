@@ -1,0 +1,1027 @@
+Pester v6.2.0
+
+Running tests from 1 files.
+
+Running tests from '<REPO>\tests\help\Diagnostics.Tests.ps1'
+Describing AC042 actual comment-based help without entry execution
+  [+] exposes a real synopsis and description through Get-Help 203ms
+  [+] documents all four public parameters through structured help 113ms
+  [+] provides four parseable direct-PowerShell examples with the supported options 95ms
+  [+] discloses local diagnostic paths and preservation limits in help 118ms
+
+Describing AC043 invariant stages and final numeric context
+  [+] writes identical invariant stage text to the log under en-US 68ms
+  [+] writes identical invariant stage text to the log under de-DE 19ms
+  [+] reports a console-only stage without needing a log path 339ms
+  [+] uses explicit unknown counts and unprobed versions without inventing outputs 17ms
+  [+] formats known counts and versions invariantly under en-US 13ms
+  [+] formats known counts and versions invariantly under de-DE 4ms
+  [+] distinguishes zero discovered PDFs from an unknown input count 6ms
+  [+] rejects negative elapsed 53ms
+  [+] rejects negative input-count 5ms
+  [+] rejects negative page-count 12ms
+
+Describing AC043 version-probe logging before all decision failures
+  [+] keeps a single version string and both streams when the version appears in Stdout 159ms
+  [+] keeps a single version string and both streams when the version appears in Stderr 39ms
+  [+] logs the actual receipt before refusing nonzero 39ms
+  [+] logs the actual receipt before refusing launch 33ms
+  [+] logs the actual receipt before refusing timeout 48ms
+  [+] logs the actual receipt before refusing cancel 32ms
+  [+] logs the actual receipt before refusing capture 31ms
+WARNING: T18 controlled termination failure
+  [+] logs the actual receipt before refusing termination 38ms
+  [+] logs the actual receipt before refusing unrecognized 34ms
+  [+] retains the existing optional-log-free return contract 28ms
+
+Describing AC043 safe early logs and explicit copied-entry outcomes
+  [+] retains useful diagnostics before merge for missing-pdftk 2.51s
+  [+] retains useful diagnostics before merge for version-failed 2.23s
+  [+] retains useful diagnostics before merge for version-launch 2.14s
+  [+] retains useful diagnostics before merge for zero-input 1.73s
+  [+] retains useful diagnostics before merge for corrupt-input 2.12s
+  [+] retains useful diagnostics before merge for discovery-failed 1.75s
+  [+] explains console-only failures when missing-source provides no trustworthy log destination 1.9s
+  [+] explains console-only failures when invalid-destination provides no trustworthy log destination 2.03s
+  [+] explains console-only failures when cancellation-setup-failed provides no trustworthy log destination 917ms
+  [+] explains console-only failures when no-source provides no trustworthy log destination 844ms
+  [+] reports stages, final input/page/size context and only the explicitly published skipped-email master 3.17s
+  [+] preserves the published master and reports partial success if final context logging fails 2.57s
+Diagnostic unit observations:
+[{"Label":"help-description","Scope":"unit help/helper decision; no PDF-engine execution","Data":{"Synopsis":"Merges the visible top-level PDFs in one folder and optionally creates a smaller email copy.","Description":["Orders inputs naturally by filename and uses local PDFtk to publish a validated\nmerged master without intentional page rasterization or image downsampling.\nOptional Ghostscript rewrites an email candidate with the fixed screen default\nor ebook preset. Only a validated candidate smaller than the master is published.\nSources and existing outputs are never replaced. No application network calls,\ndownloads, telemetry, recursion or OCR are performed."]}},{"Label":"help-parameters","Scope":"unit help/helper decision; no PDF-engine execution","Data":[{"Name":"SourceFolder","Description":["One existing filesystem directory containing visible top-level PDFs. This is the\nonly positional argument. Hidden files and subfolders are not scanned."]},{"Name":"OutputFolder","Description":["An existing writable directory separate from SourceFolder. The default is the\nentry script's directory. Unsupported reparse paths are refused with guidance."]},{"Name":"SkipEmail","Description":["Publishes only the validated master and bypasses Ghostscript discovery and use.\nAn explicitly supplied EmailPreset is reported as ignored."]},{"Name":"EmailPreset","Description":["Selects the fixed screen or ebook Ghostscript preset; screen is the default.\nThe email copy can lose detail. Inspect it before sharing; no target size is promised."]}]},{"Label":"help-examples","Scope":"unit help/helper decision; no PDF-engine execution","Data":[{"Code":".\\WinPDFMerge.ps1 'C:\\Work\\Papers\\ToMerge'","Title":"-------------------------- EXAMPLE 1 --------------------------"},{"Code":".\\WinPDFMerge.ps1 'C:\\Work\\Papers\\ToMerge' -OutputFolder 'C:\\Work\\Merged'","Title":"-------------------------- EXAMPLE 2 --------------------------"},{"Code":".\\WinPDFMerge.ps1 'C:\\Work\\Papers\\ToMerge' -SkipEmail","Title":"-------------------------- EXAMPLE 3 --------------------------"},{"Code":".\\WinPDFMerge.ps1 'C:\\Work\\Papers\\ToMerge' -EmailPreset ebook","Title":"-------------------------- EXAMPLE 4 --------------------------"}]},{"Label":"help-diagnostic-notes","Scope":"unit help/helper decision; no PDF-engine execution","Data":{"SensitivePathsDisclosed":true,"LocalProcessingDisclosed":true}},{"Label":"stage-en-US","Scope":"unit help/helper decision; no PDF-engine execution","Data":{"LogSHA256":"f30cf6972427ad27e527351784d284c00d9b90952450da77e9c5c44d756afde6","Text":"Stage: Input inspection; elapsed: 0.000 s"}},{"Label":"stage-de-DE","Scope":"unit help/helper decision; no PDF-engine execution","Data":{"LogSHA256":"f30cf6972427ad27e527351784d284c00d9b90952450da77e9c5c44d756afde6","Text":"Stage: Input inspection; elapsed: 0.000 s"}},{"Label":"stage-console-only","Scope":"unit help/helper decision; no PDF-engine execution","Data":{"Expected":"Stage: Invocation preflight; elapsed: 0.000 s"}},{"Label":"summary-unknown-context","Scope":"unit help/helper decision; no PDF-engine execution","Data":{"Lines":["Elapsed time: 0.000 s","PowerShell: 5.1.26100.9444 (Desktop)","PDFtk version: not probed","Ghostscript version: not probed","Input summary: not discovered; expected pages: not inspected"]}},{"Label":"summary-en-US","Scope":"unit help/helper decision; no PDF-engine execution","Data":{"Lines":["Elapsed time: 1.234 s","PowerShell: 7.6.6 (Core)","PDFtk version: 2.02","Ghostscript version: 10.08.0","Input summary: 2 PDF(s); expected pages: 9223372036854775807"]}},{"Label":"summary-de-DE","Scope":"unit help/helper decision; no PDF-engine execution","Data":{"Lines":["Elapsed time: 1.234 s","PowerShell: 7.6.6 (Core)","PDFtk version: 2.02","Ghostscript version: 10.08.0","Input summary: 2 PDF(s); expected pages: 9223372036854775807"]}},{"Label":"summary-zero-inputs","Scope":"unit help/helper decision; no PDF-engine execution","Data":{"Lines":["Elapsed time: 0.001 s","PowerShell: test (test)","PDFtk version: not probed","Ghostscript version: not probed","Input summary: 0 PDF(s); expected pages: not inspected"]}},{"Label":"summary-negative-elapsed","Scope":"unit help/helper decision; no PDF-engine execution","Data":{"Rejected":true}},{"Label":"summary-negative-input-count","Scope":"unit help/helper decision; no PDF-engine execution","Data":{"Rejected":true}},{"Label":"summary-negative-page-count","Scope":"unit help/helper decision; no PDF-engine execution","Data":{"Rejected":true}},{"Label":"version-Stdout","Scope":"unit help/helper decision; no PDF-engine execution","Data":{"Versions":["2.02"],"NativeReceipt":{"Executable":"C:\\T18 synthetic [x] ! &\\pdftk.exe","RenderedArguments":"\"--version\"","Started":true,"ExitCode":0,"ProcessId":12345,"ElapsedMilliseconds":17,"Succeeded":true,"TimedOut":false,"Cancelled":false,"LaunchError":null,"CaptureError":null,"TerminationError":null,"OwnershipReleased":true,"StdoutTruncated":false,"StderrTruncated":false,"Stdout":"pdftk 2.02","Stderr":"controlled version warning"},"LogSHA256":"4369f7d69564f009085d1b4e59ab73ffe708535877a841182161ec7966195386","Log":"PdfTk version probe executable: C:\\T18 synthetic [x] ! &\\pdftk.exe\r\nPdfTk version probe arguments: \"--version\"\r\nPdfTk version probe exit: 0; elapsed: 17 ms; PID: 12345\r\nPdfTk version probe started: True; timed out: False; cancelled: False; succeeded: True\r\nPdfTk version probe launch error: \r\nPdfTk version probe capture error: \r\nPdfTk version probe termination error: \r\nPdfTk version probe stdout truncated: False; stderr truncated: False\r\nPdfTk version probe stdout:\r\npdftk 2.02\r\nPdfTk version probe stderr:\r\ncontrolled version warning\r\n"}},{"Label":"version-Stderr","Scope":"unit help/helper decision; no PDF-engine execution","Data":{"Versions":["2.02"],"NativeReceipt":{"Executable":"C:\\T18 synthetic [x] ! &\\pdftk.exe","RenderedArguments":"\"--version\"","Started":true,"ExitCode":0,"ProcessId":12345,"ElapsedMilliseconds":17,"Succeeded":true,"TimedOut":false,"Cancelled":false,"LaunchError":null,"CaptureError":null,"TerminationError":null,"OwnershipReleased":true,"StdoutTruncated":false,"StderrTruncated":false,"Stdout":"controlled stdout detail","Stderr":"pdftk 2.02\ncontrolled stderr warning"},"LogSHA256":"a85cec333e68fed25b5e5cea088025135266b8782ecd8175910aee15be1710e9","Log":"PdfTk version probe executable: C:\\T18 synthetic [x] ! &\\pdftk.exe\r\nPdfTk version probe arguments: \"--version\"\r\nPdfTk version probe exit: 0; elapsed: 17 ms; PID: 12345\r\nPdfTk version probe started: True; timed out: False; cancelled: False; succeeded: True\r\nPdfTk version probe launch error: \r\nPdfTk version probe capture error: \r\nPdfTk version probe termination error: \r\nPdfTk version probe stdout truncated: False; stderr truncated: False\r\nPdfTk version probe stdout:\r\ncontrolled stdout detail\r\nPdfTk version probe stderr:\r\npdftk 2.02\ncontrolled stderr warning\r\n"}},{"Label":"version-failure-nonzero","Scope":"unit help/helper decision; no PDF-engine execution","Data":{"NativeReceipt":{"Executable":"C:\\T18 synthetic [x] ! &\\pdftk.exe","RenderedArguments":"\"--version\"","Started":true,"ExitCode":9,"ProcessId":12345,"ElapsedMilliseconds":17,"Succeeded":false,"TimedOut":false,"Cancelled":false,"LaunchError":null,"CaptureError":null,"TerminationError":null,"OwnershipReleased":true,"StdoutTruncated":false,"StderrTruncated":false,"Stdout":"controlled nonzero stdout","Stderr":"controlled nonzero stderr"},"LogSHA256":"f4109e40f35bbd7e5d7a6fc2e3d50736a4369694ee9276d760cfd1782902316d","Log":"PdfTk version probe executable: C:\\T18 synthetic [x] ! &\\pdftk.exe\r\nPdfTk version probe arguments: \"--version\"\r\nPdfTk version probe exit: 9; elapsed: 17 ms; PID: 12345\r\nPdfTk version probe started: True; timed out: False; cancelled: False; succeeded: False\r\nPdfTk version probe launch error: \r\nPdfTk version probe capture error: \r\nPdfTk version probe termination error: \r\nPdfTk version probe stdout truncated: False; stderr truncated: False\r\nPdfTk version probe stdout:\r\ncontrolled nonzero stdout\r\nPdfTk version probe stderr:\r\ncontrolled nonzero stderr\r\n"}},{"Label":"version-failure-launch","Scope":"unit help/helper decision; no PDF-engine execution","Data":{"NativeReceipt":{"Executable":"C:\\T18 synthetic [x] ! &\\pdftk.exe","RenderedArguments":"\"--version\"","Started":false,"ExitCode":null,"ProcessId":null,"ElapsedMilliseconds":17,"Succeeded":false,"TimedOut":false,"Cancelled":false,"LaunchError":"T18 controlled launch denied","CaptureError":null,"TerminationError":null,"OwnershipReleased":true,"StdoutTruncated":false,"StderrTruncated":false,"Stdout":"controlled prelaunch stdout","Stderr":"controlled launch stderr"},"LogSHA256":"d7d4f0923398e836c1714018a8b29ae8e0be4276887d6b33038ab7ebbe6cc0b8","Log":"PdfTk version probe executable: C:\\T18 synthetic [x] ! &\\pdftk.exe\r\nPdfTk version probe arguments: \"--version\"\r\nPdfTk version probe exit: ; elapsed: 17 ms; PID: \r\nPdfTk version probe started: False; timed out: False; cancelled: False; succeeded: False\r\nPdfTk version probe launch error: T18 controlled launch denied\r\nPdfTk version probe capture error: \r\nPdfTk version probe termination error: \r\nPdfTk version probe stdout truncated: False; stderr truncated: False\r\nPdfTk version probe stdout:\r\ncontrolled prelaunch stdout\r\nPdfTk version probe stderr:\r\ncontrolled launch stderr\r\n"}},{"Label":"version-failure-timeout","Scope":"unit help/helper decision; no PDF-engine execution","Data":{"NativeReceipt":{"Executable":"C:\\T18 synthetic [x] ! &\\pdftk.exe","RenderedArguments":"\"--version\"","Started":true,"ExitCode":0,"ProcessId":12345,"ElapsedMilliseconds":17,"Succeeded":false,"TimedOut":true,"Cancelled":false,"LaunchError":null,"CaptureError":null,"TerminationError":null,"OwnershipReleased":true,"StdoutTruncated":false,"StderrTruncated":false,"Stdout":"controlled timeout stdout","Stderr":"controlled timeout stderr"},"LogSHA256":"78ef178291f5ef6c6e3290f2932e4d3c215dc16725fb9a86cb04c522b81146e7","Log":"PdfTk version probe executable: C:\\T18 synthetic [x] ! &\\pdftk.exe\r\nPdfTk version probe arguments: \"--version\"\r\nPdfTk version probe exit: 0; elapsed: 17 ms; PID: 12345\r\nPdfTk version probe started: True; timed out: True; cancelled: False; succeeded: False\r\nPdfTk version probe launch error: \r\nPdfTk version probe capture error: \r\nPdfTk version probe termination error: \r\nPdfTk version probe stdout truncated: False; stderr truncated: False\r\nPdfTk version probe stdout:\r\ncontrolled timeout stdout\r\nPdfTk version probe stderr:\r\ncontrolled timeout stderr\r\n"}},{"Label":"version-failure-cancel","Scope":"unit help/helper decision; no PDF-engine execution","Data":{"NativeReceipt":{"Executable":"C:\\T18 synthetic [x] ! &\\pdftk.exe","RenderedArguments":"\"--version\"","Started":true,"ExitCode":0,"ProcessId":12345,"ElapsedMilliseconds":17,"Succeeded":false,"TimedOut":false,"Cancelled":true,"LaunchError":null,"CaptureError":null,"TerminationError":null,"OwnershipReleased":true,"StdoutTruncated":false,"StderrTruncated":false,"Stdout":"controlled cancellation stdout","Stderr":"controlled cancel stderr"},"LogSHA256":"6e59021546b75be652f63e441e3a1e5d3b130865704df7da70c97b383570b8ad","Log":"PdfTk version probe executable: C:\\T18 synthetic [x] ! &\\pdftk.exe\r\nPdfTk version probe arguments: \"--version\"\r\nPdfTk version probe exit: 0; elapsed: 17 ms; PID: 12345\r\nPdfTk version probe started: True; timed out: False; cancelled: True; succeeded: False\r\nPdfTk version probe launch error: \r\nPdfTk version probe capture error: \r\nPdfTk version probe termination error: \r\nPdfTk version probe stdout truncated: False; stderr truncated: False\r\nPdfTk version probe stdout:\r\ncontrolled cancellation stdout\r\nPdfTk version probe stderr:\r\ncontrolled cancel stderr\r\n"}},{"Label":"version-failure-capture","Scope":"unit help/helper decision; no PDF-engine execution","Data":{"NativeReceipt":{"Executable":"C:\\T18 synthetic [x] ! &\\pdftk.exe","RenderedArguments":"\"--version\"","Started":true,"ExitCode":0,"ProcessId":12345,"ElapsedMilliseconds":17,"Succeeded":false,"TimedOut":false,"Cancelled":false,"LaunchError":null,"CaptureError":"T18 controlled stream capture failure","TerminationError":null,"OwnershipReleased":true,"StdoutTruncated":false,"StderrTruncated":false,"Stdout":"controlled capture stdout","Stderr":"controlled capture stderr"},"LogSHA256":"dc2096a1b0657c53c5ddb3cbfb8998712a761e587935fc4a401d9fadb0bcdd84","Log":"PdfTk version probe executable: C:\\T18 synthetic [x] ! &\\pdftk.exe\r\nPdfTk version probe arguments: \"--version\"\r\nPdfTk version probe exit: 0; elapsed: 17 ms; PID: 12345\r\nPdfTk version probe started: True; timed out: False; cancelled: False; succeeded: False\r\nPdfTk version probe launch error: \r\nPdfTk version probe capture error: T18 controlled stream capture failure\r\nPdfTk version probe termination error: \r\nPdfTk version probe stdout truncated: False; stderr truncated: False\r\nPdfTk version probe stdout:\r\ncontrolled capture stdout\r\nPdfTk version probe stderr:\r\ncontrolled capture stderr\r\n"}},{"Label":"version-failure-termination","Scope":"unit help/helper decision; no PDF-engine execution","Data":{"NativeReceipt":{"Executable":"C:\\T18 synthetic [x] ! &\\pdftk.exe","RenderedArguments":"\"--version\"","Started":true,"ExitCode":0,"ProcessId":12345,"ElapsedMilliseconds":17,"Succeeded":false,"TimedOut":false,"Cancelled":false,"LaunchError":null,"CaptureError":null,"TerminationError":"T18 controlled termination failure","OwnershipReleased":false,"StdoutTruncated":false,"StderrTruncated":false,"Stdout":"controlled termination stdout","Stderr":"controlled termination stderr"},"LogSHA256":"76c79d92c4426172bb771a67f91b151cf6d192d6900171d700121adb7dc989c9","Log":"PdfTk version probe executable: C:\\T18 synthetic [x] ! &\\pdftk.exe\r\nPdfTk version probe arguments: \"--version\"\r\nPdfTk version probe exit: 0; elapsed: 17 ms; PID: 12345\r\nPdfTk version probe started: True; timed out: False; cancelled: False; succeeded: False\r\nPdfTk version probe launch error: \r\nPdfTk version probe capture error: \r\nPdfTk version probe termination error: T18 controlled termination failure\r\nPdfTk version probe stdout truncated: False; stderr truncated: False\r\nPdfTk version probe stdout:\r\ncontrolled termination stdout\r\nPdfTk version probe stderr:\r\ncontrolled termination stderr\r\n"}},{"Label":"version-failure-unrecognized","Scope":"unit help/helper decision; no PDF-engine execution","Data":{"NativeReceipt":{"Executable":"C:\\T18 synthetic [x] ! &\\pdftk.exe","RenderedArguments":"\"--version\"","Started":true,"ExitCode":0,"ProcessId":12345,"ElapsedMilliseconds":17,"Succeeded":true,"TimedOut":false,"Cancelled":false,"LaunchError":null,"CaptureError":null,"TerminationError":null,"OwnershipReleased":true,"StdoutTruncated":false,"StderrTruncated":false,"Stdout":"controlled unrecognized stdout","Stderr":"controlled unrecognized stderr"},"LogSHA256":"1e99f04c4ebb0ed57dfec753b9b37027c03db7bb57c45bfe9508566f1963e25e","Log":"PdfTk version probe executable: C:\\T18 synthetic [x] ! &\\pdftk.exe\r\nPdfTk version probe arguments: \"--version\"\r\nPdfTk version probe exit: 0; elapsed: 17 ms; PID: 12345\r\nPdfTk version probe started: True; timed out: False; cancelled: False; succeeded: True\r\nPdfTk version probe launch error: \r\nPdfTk version probe capture error: \r\nPdfTk version probe termination error: \r\nPdfTk version probe stdout truncated: False; stderr truncated: False\r\nPdfTk version probe stdout:\r\ncontrolled unrecognized stdout\r\nPdfTk version probe stderr:\r\ncontrolled unrecognized stderr\r\n"}},{"Label":"version-no-log","Scope":"unit help/helper decision; no PDF-engine execution","Data":{"Versions":["2.02"]}},{"Label":"entry-missing-pdftk","Scope":"bounded actual copied-entry subprocess with controlled native receipts; no PDF engine/manual claim","Command":["<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe","-NoLogo","-NoProfile","-NonInteractive","-ExecutionPolicy","RemoteSigned","-File","<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\4adad7542f8847a2b148cf1497a01de8\\Invoke-Entry.ps1","-Configuration","<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\4adad7542f8847a2b148cf1497a01de8\\app\\diagnostic-config.json"],"ChildEnvironmentRemovedKeys":["PSModulePath"],"PersistentEnvironmentChanges":false,"Culture":"de-DE","EntrySHA256":"2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902","HelperWithHooksSHA256":"0cc1042dd6a77ba6786ed1051aef87ceb479d57a0868c1cf11c4fb8a43ec1b8b","WrapperSHA256":"4977af419f1e57e9d95245d1b60e5d762043a9573c1150482e9d945d24d5f846","ConfigurationSHA256":"802f91ecb21f2ab4a4d7dad0a781f6ce6b6dfe0281853a9909beddded30eed99","Result":{"Executable":"<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe","RenderedArguments":"\"-NoLogo\" \"-NoProfile\" \"-NonInteractive\" \"-ExecutionPolicy\" \"RemoteSigned\" \"-File\" \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\4adad7542f8847a2b148cf1497a01de8\\Invoke-Entry.ps1\" \"-Configuration\" \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\4adad7542f8847a2b148cf1497a01de8\\app\\diagnostic-config.json\"","ExitCode":1,"Stdout":"WinPDFMerger 1.0.0\r\nStage: Invocation preflight; elapsed: 0.113 s\r\n==== WinPDFMerge run 2026-10-09 20:24:42 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 0.895 s\r\nSource folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\4adad7542f8847a2b148cf1497a01de8\\source [x] ! &\r\nOutput folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\4adad7542f8847a2b148cf1497a01de8\\output [x] ! &\r\nRun identity: WinPDFMerge_source [x] ! &_20261009_202442_26c5248ae2194937\r\nPlanned master output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\4adad7542f8847a2b148cf1497a01de8\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202442_26c5248ae2194937.pdf\r\nPlanned email output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\4adad7542f8847a2b148cf1497a01de8\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202442_26c5248ae2194937_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 7.6.6 (Core)\r\nStage: Input discovery; elapsed: 0.915 s\r\nPDF count: 1\r\nInput 1: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\4adad7542f8847a2b148cf1497a01de8\\source [x] ! &\\1.pdf\r\nStage: PDFtk preflight; elapsed: 0.967 s\r\nPDFtk preflight failed. Selected executable: ''. PDFtk Server not found.\r\nElapsed time: 0.987 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: not probed\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: 1 PDF(s); expected pages: not inspected\r\nResult: Failure; exit code: 1\r\nLog: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\4adad7542f8847a2b148cf1497a01de8\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202442_26c5248ae2194937.log\r\nInstall PDFtk Server and ensure 'pdftk.exe' is in PATH.\r\n","Stderr":"","ElapsedMilliseconds":2286,"ProcessId":19332,"Started":true,"TimedOut":false,"Cancelled":false,"LaunchError":null,"CaptureError":null,"TerminationError":null,"OwnershipReleased":true,"StdoutTruncated":false,"StderrTruncated":false,"Succeeded":false},"ReceiptPath":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\4adad7542f8847a2b148cf1497a01de8\\receipt.json","ReceiptSHA256":"323008c5ea95fe0c4a882df930e4daa3b71d450d16592af3e7509749c597f760","Receipt":{"Scope":"copied entry with controlled native receipts; no PDF engine","HelperLoaded":true,"PdftkDiscovery":1,"GSDiscovery":0,"SourceDiscovery":1,"NativeCalls":[],"Messages":["==== WinPDFMerge run 2026-10-09 20:24:42 ====","Application version: 1.0.0","Stage: Invocation preflight; elapsed: 0.895 s","Source folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\4adad7542f8847a2b148cf1497a01de8\\source [x] ! &","Output folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\4adad7542f8847a2b148cf1497a01de8\\output [x] ! &","Run identity: WinPDFMerge_source [x] ! &_20261009_202442_26c5248ae2194937","Planned master output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\4adad7542f8847a2b148cf1497a01de8\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202442_26c5248ae2194937.pdf","Planned email output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\4adad7542f8847a2b148cf1497a01de8\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202442_26c5248ae2194937_email.pdf","Diagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.","PowerShell: 7.6.6 (Core)","Stage: Input discovery; elapsed: 0.915 s","PDF count: 1","Input 1: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\4adad7542f8847a2b148cf1497a01de8\\source [x] ! &\\1.pdf","Stage: PDFtk preflight; elapsed: 0.967 s","PDFtk preflight failed. Selected executable: ''. PDFtk Server not found.","Elapsed time: 0.987 s","PowerShell: 7.6.6 (Core)","PDFtk version: not probed","Ghostscript version: not used (SkipEmail)","Input summary: 1 PDF(s); expected pages: not inspected","Result: Failure; exit code: 1"],"Identity":{"OutputFolder":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\4adad7542f8847a2b148cf1497a01de8\\output [x] ! &","FolderLabel":"source [x] ! &","Timestamp":"20261009_202442","RunSuffix":"26c5248ae2194937","BaseName":"WinPDFMerge_source [x] ! &_20261009_202442_26c5248ae2194937","MasterPath":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\4adad7542f8847a2b148cf1497a01de8\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202442_26c5248ae2194937.pdf","EmailPath":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\4adad7542f8847a2b148cf1497a01de8\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202442_26c5248ae2194937_email.pdf","LogPath":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\4adad7542f8847a2b148cf1497a01de8\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202442_26c5248ae2194937.log"},"LogPresentAtPdftkDiscovery":true,"LogPresentAtSourceDiscovery":true,"Outcome":null,"BindingError":null},"Before":"1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109","After":"1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109","Logs":[{"Path":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\4adad7542f8847a2b148cf1497a01de8\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202442_26c5248ae2194937.log","SHA256":"2b08cbcbcf9f45234611357a26e74b1dd8a8af6b1938fca029d5d919b9ab86c4","Text":"==== WinPDFMerge run 2026-10-09 20:24:42 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 0.895 s\r\nSource folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\4adad7542f8847a2b148cf1497a01de8\\source [x] ! &\r\nOutput folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\4adad7542f8847a2b148cf1497a01de8\\output [x] ! &\r\nRun identity: WinPDFMerge_source [x] ! &_20261009_202442_26c5248ae2194937\r\nPlanned master output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\4adad7542f8847a2b148cf1497a01de8\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202442_26c5248ae2194937.pdf\r\nPlanned email output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\4adad7542f8847a2b148cf1497a01de8\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202442_26c5248ae2194937_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 7.6.6 (Core)\r\nStage: Input discovery; elapsed: 0.915 s\r\nPDF count: 1\r\nInput 1: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\4adad7542f8847a2b148cf1497a01de8\\source [x] ! &\\1.pdf\r\nStage: PDFtk preflight; elapsed: 0.967 s\r\nPDFtk preflight failed. Selected executable: ''. PDFtk Server not found.\r\nElapsed time: 0.987 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: not probed\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: 1 PDF(s); expected pages: not inspected\r\nResult: Failure; exit code: 1\r\n"}],"Finals":[],"StdoutSHA256":"785dbf0d0ed26f17bc4e65d6fcd8bebe9939ee7b9393ad6d36e051d6bcd5b771","StderrSHA256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},{"Label":"entry-version-failed","Scope":"bounded actual copied-entry subprocess with controlled native receipts; no PDF engine/manual claim","Command":["<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe","-NoLogo","-NoProfile","-NonInteractive","-ExecutionPolicy","RemoteSigned","-File","<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8fcc8e0fb4034900ad965f6cf167f736\\Invoke-Entry.ps1","-Configuration","<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8fcc8e0fb4034900ad965f6cf167f736\\app\\diagnostic-config.json"],"ChildEnvironmentRemovedKeys":["PSModulePath"],"PersistentEnvironmentChanges":false,"Culture":"de-DE","EntrySHA256":"2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902","HelperWithHooksSHA256":"0cc1042dd6a77ba6786ed1051aef87ceb479d57a0868c1cf11c4fb8a43ec1b8b","WrapperSHA256":"4977af419f1e57e9d95245d1b60e5d762043a9573c1150482e9d945d24d5f846","ConfigurationSHA256":"71ef177775b975aa7725530c057a6153ee48bafa144a3655a0b93789d47c7a25","Result":{"Executable":"<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe","RenderedArguments":"\"-NoLogo\" \"-NoProfile\" \"-NonInteractive\" \"-ExecutionPolicy\" \"RemoteSigned\" \"-File\" \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8fcc8e0fb4034900ad965f6cf167f736\\Invoke-Entry.ps1\" \"-Configuration\" \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8fcc8e0fb4034900ad965f6cf167f736\\app\\diagnostic-config.json\"","ExitCode":1,"Stdout":"WinPDFMerger 1.0.0\r\nStage: Invocation preflight; elapsed: 0.135 s\r\n==== WinPDFMerge run 2026-10-09 20:24:45 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 1.116 s\r\nSource folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8fcc8e0fb4034900ad965f6cf167f736\\source [x] ! &\r\nOutput folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8fcc8e0fb4034900ad965f6cf167f736\\output [x] ! &\r\nRun identity: WinPDFMerge_source [x] ! &_20261009_202444_e51972e9972a4564\r\nPlanned master output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8fcc8e0fb4034900ad965f6cf167f736\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202444_e51972e9972a4564.pdf\r\nPlanned email output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8fcc8e0fb4034900ad965f6cf167f736\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202444_e51972e9972a4564_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 7.6.6 (Core)\r\nStage: Input discovery; elapsed: 1.142 s\r\nPDF count: 1\r\nInput 1: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8fcc8e0fb4034900ad965f6cf167f736\\source [x] ! &\\1.pdf\r\nStage: PDFtk preflight; elapsed: 1.202 s\r\nPDFtk preflight failed. Selected executable: '<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8fcc8e0fb4034900ad965f6cf167f736\\app\\pdftk.exe'. PdfTk version probe failed (exit 9). stdout: T18 controlled version stdout; stderr: T18 controlled version stderr\r\nElapsed time: 1.315 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: not determined\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: 1 PDF(s); expected pages: not inspected\r\nResult: Failure; exit code: 1\r\nLog: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8fcc8e0fb4034900ad965f6cf167f736\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202444_e51972e9972a4564.log\r\nInstall PDFtk Server and ensure 'pdftk.exe' is in PATH.\r\n","Stderr":"","ElapsedMilliseconds":2160,"ProcessId":3764,"Started":true,"TimedOut":false,"Cancelled":false,"LaunchError":null,"CaptureError":null,"TerminationError":null,"OwnershipReleased":true,"StdoutTruncated":false,"StderrTruncated":false,"Succeeded":false},"ReceiptPath":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8fcc8e0fb4034900ad965f6cf167f736\\receipt.json","ReceiptSHA256":"d01bd0b34e4b9efb0288c835d98747193668c9e53e5e9f51106b089288c9570b","Receipt":{"Scope":"copied entry with controlled native receipts; no PDF engine","HelperLoaded":true,"PdftkDiscovery":1,"GSDiscovery":0,"SourceDiscovery":1,"NativeCalls":[{"Executable":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8fcc8e0fb4034900ad965f6cf167f736\\app\\pdftk.exe","Arguments":["--version"],"RemoveEnvironmentVariables":["GS_OPTIONS"]}],"Messages":["==== WinPDFMerge run 2026-10-09 20:24:45 ====","Application version: 1.0.0","Stage: Invocation preflight; elapsed: 1.116 s","Source folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8fcc8e0fb4034900ad965f6cf167f736\\source [x] ! &","Output folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8fcc8e0fb4034900ad965f6cf167f736\\output [x] ! &","Run identity: WinPDFMerge_source [x] ! &_20261009_202444_e51972e9972a4564","Planned master output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8fcc8e0fb4034900ad965f6cf167f736\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202444_e51972e9972a4564.pdf","Planned email output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8fcc8e0fb4034900ad965f6cf167f736\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202444_e51972e9972a4564_email.pdf","Diagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.","PowerShell: 7.6.6 (Core)","Stage: Input discovery; elapsed: 1.142 s","PDF count: 1","Input 1: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8fcc8e0fb4034900ad965f6cf167f736\\source [x] ! &\\1.pdf","Stage: PDFtk preflight; elapsed: 1.202 s","PdfTk version probe executable: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8fcc8e0fb4034900ad965f6cf167f736\\app\\pdftk.exe","PdfTk version probe arguments: \"--version\"","PdfTk version probe exit: 9; elapsed: 1 ms; PID: 12345","PdfTk version probe started: True; timed out: False; cancelled: False; succeeded: False","PdfTk version probe launch error: ","PdfTk version probe capture error: ","PdfTk version probe termination error: ","PdfTk version probe stdout truncated: False; stderr truncated: False","PdfTk version probe stdout:","T18 controlled version stdout","PdfTk version probe stderr:","T18 controlled version stderr","PDFtk preflight failed. Selected executable: '<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8fcc8e0fb4034900ad965f6cf167f736\\app\\pdftk.exe'. PdfTk version probe failed (exit 9). stdout: T18 controlled version stdout; stderr: T18 controlled version stderr","Elapsed time: 1.315 s","PowerShell: 7.6.6 (Core)","PDFtk version: not determined","Ghostscript version: not used (SkipEmail)","Input summary: 1 PDF(s); expected pages: not inspected","Result: Failure; exit code: 1"],"Identity":{"OutputFolder":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8fcc8e0fb4034900ad965f6cf167f736\\output [x] ! &","FolderLabel":"source [x] ! &","Timestamp":"20261009_202444","RunSuffix":"e51972e9972a4564","BaseName":"WinPDFMerge_source [x] ! &_20261009_202444_e51972e9972a4564","MasterPath":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8fcc8e0fb4034900ad965f6cf167f736\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202444_e51972e9972a4564.pdf","EmailPath":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8fcc8e0fb4034900ad965f6cf167f736\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202444_e51972e9972a4564_email.pdf","LogPath":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8fcc8e0fb4034900ad965f6cf167f736\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202444_e51972e9972a4564.log"},"LogPresentAtPdftkDiscovery":true,"LogPresentAtSourceDiscovery":true,"Outcome":null,"BindingError":null},"Before":"1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109","After":"1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109","Logs":[{"Path":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8fcc8e0fb4034900ad965f6cf167f736\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202444_e51972e9972a4564.log","SHA256":"3f94107afbb246ee4e9de66f045c7a35dc3843299c5fa7014eef0b4a2139f1e2","Text":"==== WinPDFMerge run 2026-10-09 20:24:45 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 1.116 s\r\nSource folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8fcc8e0fb4034900ad965f6cf167f736\\source [x] ! &\r\nOutput folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8fcc8e0fb4034900ad965f6cf167f736\\output [x] ! &\r\nRun identity: WinPDFMerge_source [x] ! &_20261009_202444_e51972e9972a4564\r\nPlanned master output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8fcc8e0fb4034900ad965f6cf167f736\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202444_e51972e9972a4564.pdf\r\nPlanned email output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8fcc8e0fb4034900ad965f6cf167f736\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202444_e51972e9972a4564_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 7.6.6 (Core)\r\nStage: Input discovery; elapsed: 1.142 s\r\nPDF count: 1\r\nInput 1: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8fcc8e0fb4034900ad965f6cf167f736\\source [x] ! &\\1.pdf\r\nStage: PDFtk preflight; elapsed: 1.202 s\r\nPdfTk version probe executable: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8fcc8e0fb4034900ad965f6cf167f736\\app\\pdftk.exe\r\nPdfTk version probe arguments: \"--version\"\r\nPdfTk version probe exit: 9; elapsed: 1 ms; PID: 12345\r\nPdfTk version probe started: True; timed out: False; cancelled: False; succeeded: False\r\nPdfTk version probe launch error: \r\nPdfTk version probe capture error: \r\nPdfTk version probe termination error: \r\nPdfTk version probe stdout truncated: False; stderr truncated: False\r\nPdfTk version probe stdout:\r\nT18 controlled version stdout\r\nPdfTk version probe stderr:\r\nT18 controlled version stderr\r\nPDFtk preflight failed. Selected executable: '<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8fcc8e0fb4034900ad965f6cf167f736\\app\\pdftk.exe'. PdfTk version probe failed (exit 9). stdout: T18 controlled version stdout; stderr: T18 controlled version stderr\r\nElapsed time: 1.315 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: not determined\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: 1 PDF(s); expected pages: not inspected\r\nResult: Failure; exit code: 1\r\n"}],"Finals":[],"StdoutSHA256":"b94781b3d2b5310f4eaecc56e7e5140f2df3d877a1d7cde808699f3727fb2421","StderrSHA256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},{"Label":"entry-version-launch","Scope":"bounded actual copied-entry subprocess with controlled native receipts; no PDF engine/manual claim","Command":["<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe","-NoLogo","-NoProfile","-NonInteractive","-ExecutionPolicy","RemoteSigned","-File","<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0fbbc013e62046a28eea9218d947cd4b\\Invoke-Entry.ps1","-Configuration","<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0fbbc013e62046a28eea9218d947cd4b\\app\\diagnostic-config.json"],"ChildEnvironmentRemovedKeys":["PSModulePath"],"PersistentEnvironmentChanges":false,"Culture":"de-DE","EntrySHA256":"2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902","HelperWithHooksSHA256":"0cc1042dd6a77ba6786ed1051aef87ceb479d57a0868c1cf11c4fb8a43ec1b8b","WrapperSHA256":"4977af419f1e57e9d95245d1b60e5d762043a9573c1150482e9d945d24d5f846","ConfigurationSHA256":"5e569cfa9bb6fa12f26bdec0f8ab2ddcd2586e057251e4d0469b0a13195598ce","Result":{"Executable":"<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe","RenderedArguments":"\"-NoLogo\" \"-NoProfile\" \"-NonInteractive\" \"-ExecutionPolicy\" \"RemoteSigned\" \"-File\" \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0fbbc013e62046a28eea9218d947cd4b\\Invoke-Entry.ps1\" \"-Configuration\" \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0fbbc013e62046a28eea9218d947cd4b\\app\\diagnostic-config.json\"","ExitCode":1,"Stdout":"WinPDFMerger 1.0.0\r\nStage: Invocation preflight; elapsed: 0.130 s\r\n==== WinPDFMerge run 2026-10-09 20:24:47 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 1.028 s\r\nSource folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0fbbc013e62046a28eea9218d947cd4b\\source [x] ! &\r\nOutput folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0fbbc013e62046a28eea9218d947cd4b\\output [x] ! &\r\nRun identity: WinPDFMerge_source [x] ! &_20261009_202447_9db0befa9346474a\r\nPlanned master output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0fbbc013e62046a28eea9218d947cd4b\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202447_9db0befa9346474a.pdf\r\nPlanned email output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0fbbc013e62046a28eea9218d947cd4b\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202447_9db0befa9346474a_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 7.6.6 (Core)\r\nStage: Input discovery; elapsed: 1.055 s\r\nPDF count: 1\r\nInput 1: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0fbbc013e62046a28eea9218d947cd4b\\source [x] ! &\\1.pdf\r\nStage: PDFtk preflight; elapsed: 1.115 s\r\nPDFtk preflight failed. Selected executable: '<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0fbbc013e62046a28eea9218d947cd4b\\app\\pdftk.exe'. T18 controlled version launch denied\r\nElapsed time: 1.259 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: not determined\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: 1 PDF(s); expected pages: not inspected\r\nResult: Failure; exit code: 1\r\nLog: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0fbbc013e62046a28eea9218d947cd4b\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202447_9db0befa9346474a.log\r\nInstall PDFtk Server and ensure 'pdftk.exe' is in PATH.\r\n","Stderr":"","ElapsedMilliseconds":2095,"ProcessId":20756,"Started":true,"TimedOut":false,"Cancelled":false,"LaunchError":null,"CaptureError":null,"TerminationError":null,"OwnershipReleased":true,"StdoutTruncated":false,"StderrTruncated":false,"Succeeded":false},"ReceiptPath":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0fbbc013e62046a28eea9218d947cd4b\\receipt.json","ReceiptSHA256":"ef587653a9c86a2734850df14053286acef295969289b3a92fe5a69ccd016bf3","Receipt":{"Scope":"copied entry with controlled native receipts; no PDF engine","HelperLoaded":true,"PdftkDiscovery":1,"GSDiscovery":0,"SourceDiscovery":1,"NativeCalls":[{"Executable":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0fbbc013e62046a28eea9218d947cd4b\\app\\pdftk.exe","Arguments":["--version"],"RemoveEnvironmentVariables":["GS_OPTIONS"]}],"Messages":["==== WinPDFMerge run 2026-10-09 20:24:47 ====","Application version: 1.0.0","Stage: Invocation preflight; elapsed: 1.028 s","Source folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0fbbc013e62046a28eea9218d947cd4b\\source [x] ! &","Output folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0fbbc013e62046a28eea9218d947cd4b\\output [x] ! &","Run identity: WinPDFMerge_source [x] ! &_20261009_202447_9db0befa9346474a","Planned master output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0fbbc013e62046a28eea9218d947cd4b\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202447_9db0befa9346474a.pdf","Planned email output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0fbbc013e62046a28eea9218d947cd4b\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202447_9db0befa9346474a_email.pdf","Diagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.","PowerShell: 7.6.6 (Core)","Stage: Input discovery; elapsed: 1.055 s","PDF count: 1","Input 1: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0fbbc013e62046a28eea9218d947cd4b\\source [x] ! &\\1.pdf","Stage: PDFtk preflight; elapsed: 1.115 s","PdfTk version probe executable: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0fbbc013e62046a28eea9218d947cd4b\\app\\pdftk.exe","PdfTk version probe arguments: \"--version\"","PdfTk version probe exit: ; elapsed: 1 ms; PID: 12345","PdfTk version probe started: False; timed out: False; cancelled: False; succeeded: False","PdfTk version probe launch error: T18 controlled version launch denied","PdfTk version probe capture error: ","PdfTk version probe termination error: ","PdfTk version probe stdout truncated: False; stderr truncated: False","PdfTk version probe stdout:","","PdfTk version probe stderr:","T18 controlled prelaunch stderr","PDFtk preflight failed. Selected executable: '<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0fbbc013e62046a28eea9218d947cd4b\\app\\pdftk.exe'. T18 controlled version launch denied","Elapsed time: 1.259 s","PowerShell: 7.6.6 (Core)","PDFtk version: not determined","Ghostscript version: not used (SkipEmail)","Input summary: 1 PDF(s); expected pages: not inspected","Result: Failure; exit code: 1"],"Identity":{"OutputFolder":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0fbbc013e62046a28eea9218d947cd4b\\output [x] ! &","FolderLabel":"source [x] ! &","Timestamp":"20261009_202447","RunSuffix":"9db0befa9346474a","BaseName":"WinPDFMerge_source [x] ! &_20261009_202447_9db0befa9346474a","MasterPath":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0fbbc013e62046a28eea9218d947cd4b\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202447_9db0befa9346474a.pdf","EmailPath":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0fbbc013e62046a28eea9218d947cd4b\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202447_9db0befa9346474a_email.pdf","LogPath":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0fbbc013e62046a28eea9218d947cd4b\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202447_9db0befa9346474a.log"},"LogPresentAtPdftkDiscovery":true,"LogPresentAtSourceDiscovery":true,"Outcome":null,"BindingError":null},"Before":"1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109","After":"1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109","Logs":[{"Path":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0fbbc013e62046a28eea9218d947cd4b\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202447_9db0befa9346474a.log","SHA256":"c27f0253e3bd96a4bd9ae0c13aff3152c8e2db658502cd42d886948d0ccbf6cb","Text":"==== WinPDFMerge run 2026-10-09 20:24:47 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 1.028 s\r\nSource folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0fbbc013e62046a28eea9218d947cd4b\\source [x] ! &\r\nOutput folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0fbbc013e62046a28eea9218d947cd4b\\output [x] ! &\r\nRun identity: WinPDFMerge_source [x] ! &_20261009_202447_9db0befa9346474a\r\nPlanned master output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0fbbc013e62046a28eea9218d947cd4b\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202447_9db0befa9346474a.pdf\r\nPlanned email output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0fbbc013e62046a28eea9218d947cd4b\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202447_9db0befa9346474a_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 7.6.6 (Core)\r\nStage: Input discovery; elapsed: 1.055 s\r\nPDF count: 1\r\nInput 1: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0fbbc013e62046a28eea9218d947cd4b\\source [x] ! &\\1.pdf\r\nStage: PDFtk preflight; elapsed: 1.115 s\r\nPdfTk version probe executable: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0fbbc013e62046a28eea9218d947cd4b\\app\\pdftk.exe\r\nPdfTk version probe arguments: \"--version\"\r\nPdfTk version probe exit: ; elapsed: 1 ms; PID: 12345\r\nPdfTk version probe started: False; timed out: False; cancelled: False; succeeded: False\r\nPdfTk version probe launch error: T18 controlled version launch denied\r\nPdfTk version probe capture error: \r\nPdfTk version probe termination error: \r\nPdfTk version probe stdout truncated: False; stderr truncated: False\r\nPdfTk version probe stdout:\r\n\r\nPdfTk version probe stderr:\r\nT18 controlled prelaunch stderr\r\nPDFtk preflight failed. Selected executable: '<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0fbbc013e62046a28eea9218d947cd4b\\app\\pdftk.exe'. T18 controlled version launch denied\r\nElapsed time: 1.259 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: not determined\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: 1 PDF(s); expected pages: not inspected\r\nResult: Failure; exit code: 1\r\n"}],"Finals":[],"StdoutSHA256":"b334e16750d381191ccd9218bac4a19674e57e4a7ba8fba847e63cd2dd30eac7","StderrSHA256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},{"Label":"entry-zero-input","Scope":"bounded actual copied-entry subprocess with controlled native receipts; no PDF engine/manual claim","Command":["<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe","-NoLogo","-NoProfile","-NonInteractive","-ExecutionPolicy","RemoteSigned","-File","<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\fa9916b2713a453baab693d317f87ba6\\Invoke-Entry.ps1","-Configuration","<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\fa9916b2713a453baab693d317f87ba6\\app\\diagnostic-config.json"],"ChildEnvironmentRemovedKeys":["PSModulePath"],"PersistentEnvironmentChanges":false,"Culture":"de-DE","EntrySHA256":"2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902","HelperWithHooksSHA256":"0cc1042dd6a77ba6786ed1051aef87ceb479d57a0868c1cf11c4fb8a43ec1b8b","WrapperSHA256":"4977af419f1e57e9d95245d1b60e5d762043a9573c1150482e9d945d24d5f846","ConfigurationSHA256":"a37de2735992838c630b5f64f0d3e2b5897b099da87e7624777593858630ff0a","Result":{"Executable":"<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe","RenderedArguments":"\"-NoLogo\" \"-NoProfile\" \"-NonInteractive\" \"-ExecutionPolicy\" \"RemoteSigned\" \"-File\" \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\fa9916b2713a453baab693d317f87ba6\\Invoke-Entry.ps1\" \"-Configuration\" \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\fa9916b2713a453baab693d317f87ba6\\app\\diagnostic-config.json\"","ExitCode":1,"Stdout":"WinPDFMerger 1.0.0\r\nStage: Invocation preflight; elapsed: 0.097 s\r\n==== WinPDFMerge run 2026-10-09 20:24:49 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 0.899 s\r\nSource folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\fa9916b2713a453baab693d317f87ba6\\source [x] ! &\r\nOutput folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\fa9916b2713a453baab693d317f87ba6\\output [x] ! &\r\nRun identity: WinPDFMerge_source [x] ! &_20261009_202449_abf24abbc1bb4c8f\r\nPlanned master output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\fa9916b2713a453baab693d317f87ba6\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202449_abf24abbc1bb4c8f.pdf\r\nPlanned email output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\fa9916b2713a453baab693d317f87ba6\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202449_abf24abbc1bb4c8f_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 7.6.6 (Core)\r\nStage: Input discovery; elapsed: 0.928 s\r\nSource preflight failed: No PDFs found in: '<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\fa9916b2713a453baab693d317f87ba6\\source [x] ! &'. Only visible top-level .pdf files are included.\r\nElapsed time: 0.982 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: not probed\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: not discovered; expected pages: not inspected\r\nResult: Failure; exit code: 1\r\nLog: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\fa9916b2713a453baab693d317f87ba6\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202449_abf24abbc1bb4c8f.log\r\n","Stderr":"","ElapsedMilliseconds":1685,"ProcessId":23492,"Started":true,"TimedOut":false,"Cancelled":false,"LaunchError":null,"CaptureError":null,"TerminationError":null,"OwnershipReleased":true,"StdoutTruncated":false,"StderrTruncated":false,"Succeeded":false},"ReceiptPath":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\fa9916b2713a453baab693d317f87ba6\\receipt.json","ReceiptSHA256":"244559df0800d94828a426db2d3c7d51e195cffbf8f1eb7c4a35e5191dde86c1","Receipt":{"Scope":"copied entry with controlled native receipts; no PDF engine","HelperLoaded":true,"PdftkDiscovery":0,"GSDiscovery":0,"SourceDiscovery":1,"NativeCalls":[],"Messages":["==== WinPDFMerge run 2026-10-09 20:24:49 ====","Application version: 1.0.0","Stage: Invocation preflight; elapsed: 0.899 s","Source folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\fa9916b2713a453baab693d317f87ba6\\source [x] ! &","Output folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\fa9916b2713a453baab693d317f87ba6\\output [x] ! &","Run identity: WinPDFMerge_source [x] ! &_20261009_202449_abf24abbc1bb4c8f","Planned master output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\fa9916b2713a453baab693d317f87ba6\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202449_abf24abbc1bb4c8f.pdf","Planned email output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\fa9916b2713a453baab693d317f87ba6\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202449_abf24abbc1bb4c8f_email.pdf","Diagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.","PowerShell: 7.6.6 (Core)","Stage: Input discovery; elapsed: 0.928 s","Source preflight failed: No PDFs found in: '<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\fa9916b2713a453baab693d317f87ba6\\source [x] ! &'. Only visible top-level .pdf files are included.","Elapsed time: 0.982 s","PowerShell: 7.6.6 (Core)","PDFtk version: not probed","Ghostscript version: not used (SkipEmail)","Input summary: not discovered; expected pages: not inspected","Result: Failure; exit code: 1"],"Identity":{"OutputFolder":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\fa9916b2713a453baab693d317f87ba6\\output [x] ! &","FolderLabel":"source [x] ! &","Timestamp":"20261009_202449","RunSuffix":"abf24abbc1bb4c8f","BaseName":"WinPDFMerge_source [x] ! &_20261009_202449_abf24abbc1bb4c8f","MasterPath":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\fa9916b2713a453baab693d317f87ba6\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202449_abf24abbc1bb4c8f.pdf","EmailPath":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\fa9916b2713a453baab693d317f87ba6\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202449_abf24abbc1bb4c8f_email.pdf","LogPath":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\fa9916b2713a453baab693d317f87ba6\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202449_abf24abbc1bb4c8f.log"},"LogPresentAtPdftkDiscovery":false,"LogPresentAtSourceDiscovery":true,"Outcome":null,"BindingError":null},"Before":"preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109","After":"preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109","Logs":[{"Path":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\fa9916b2713a453baab693d317f87ba6\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202449_abf24abbc1bb4c8f.log","SHA256":"d5d0c38e721e73b05aef17baa3ca519e56cc648d11cf4c2fa64f75b69bcfe337","Text":"==== WinPDFMerge run 2026-10-09 20:24:49 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 0.899 s\r\nSource folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\fa9916b2713a453baab693d317f87ba6\\source [x] ! &\r\nOutput folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\fa9916b2713a453baab693d317f87ba6\\output [x] ! &\r\nRun identity: WinPDFMerge_source [x] ! &_20261009_202449_abf24abbc1bb4c8f\r\nPlanned master output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\fa9916b2713a453baab693d317f87ba6\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202449_abf24abbc1bb4c8f.pdf\r\nPlanned email output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\fa9916b2713a453baab693d317f87ba6\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202449_abf24abbc1bb4c8f_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 7.6.6 (Core)\r\nStage: Input discovery; elapsed: 0.928 s\r\nSource preflight failed: No PDFs found in: '<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\fa9916b2713a453baab693d317f87ba6\\source [x] ! &'. Only visible top-level .pdf files are included.\r\nElapsed time: 0.982 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: not probed\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: not discovered; expected pages: not inspected\r\nResult: Failure; exit code: 1\r\n"}],"Finals":[],"StdoutSHA256":"9858900e312df1ba1a95d5be9869086f4d3d484f230ddd52afe5e70f762a95d3","StderrSHA256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},{"Label":"entry-corrupt-input","Scope":"bounded actual copied-entry subprocess with controlled native receipts; no PDF engine/manual claim","Command":["<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe","-NoLogo","-NoProfile","-NonInteractive","-ExecutionPolicy","RemoteSigned","-File","<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\Invoke-Entry.ps1","-Configuration","<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\app\\diagnostic-config.json"],"ChildEnvironmentRemovedKeys":["PSModulePath"],"PersistentEnvironmentChanges":false,"Culture":"de-DE","EntrySHA256":"2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902","HelperWithHooksSHA256":"0cc1042dd6a77ba6786ed1051aef87ceb479d57a0868c1cf11c4fb8a43ec1b8b","WrapperSHA256":"4977af419f1e57e9d95245d1b60e5d762043a9573c1150482e9d945d24d5f846","ConfigurationSHA256":"b1995034a5a9ca6d9d7a5845f66a683e6d52ed0c4e05f8c1418af5d2d16b6e12","Result":{"Executable":"<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe","RenderedArguments":"\"-NoLogo\" \"-NoProfile\" \"-NonInteractive\" \"-ExecutionPolicy\" \"RemoteSigned\" \"-File\" \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\Invoke-Entry.ps1\" \"-Configuration\" \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\app\\diagnostic-config.json\"","ExitCode":1,"Stdout":"WinPDFMerger 1.0.0\r\nStage: Invocation preflight; elapsed: 0.092 s\r\n==== WinPDFMerge run 2026-10-09 20:24:50 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 0.970 s\r\nSource folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\source [x] ! &\r\nOutput folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\output [x] ! &\r\nRun identity: WinPDFMerge_source [x] ! &_20261009_202450_456e4ad7ec2e4376\r\nPlanned master output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202450_456e4ad7ec2e4376.pdf\r\nPlanned email output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202450_456e4ad7ec2e4376_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 7.6.6 (Core)\r\nStage: Input discovery; elapsed: 1.007 s\r\nPDF count: 1\r\nInput 1: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\source [x] ! &\\1.pdf\r\nStage: PDFtk preflight; elapsed: 1.073 s\r\nPDFtk: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\app\\pdftk.exe (version 2.02)\r\nStage: Input inspection; elapsed: 1.194 s\r\nPDFtk failed during input preflight or logging. No merge was started. PDF input '<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\source [x] ! &\\1.pdf' failed preflight: PDFtk document inspection failed (exit code: 7). See native launch/capture/timeout details and both streams; protected or unparseable inputs are unsupported without passwords or repair.\r\nElapsed time: 1.342 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: 2.02\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: 1 PDF(s); expected pages: not inspected\r\nResult: Failure; exit code: 1\r\nLog: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202450_456e4ad7ec2e4376.log\r\n","Stderr":"","ElapsedMilliseconds":2071,"ProcessId":5312,"Started":true,"TimedOut":false,"Cancelled":false,"LaunchError":null,"CaptureError":null,"TerminationError":null,"OwnershipReleased":true,"StdoutTruncated":false,"StderrTruncated":false,"Succeeded":false},"ReceiptPath":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\receipt.json","ReceiptSHA256":"fe42c73a0b3bcbec4c55efdcce5b41291c7882c0b95c0b6a47f774777aa88c3a","Receipt":{"Scope":"copied entry with controlled native receipts; no PDF engine","HelperLoaded":true,"PdftkDiscovery":1,"GSDiscovery":0,"SourceDiscovery":1,"NativeCalls":[{"Executable":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\app\\pdftk.exe","Arguments":["--version"],"RemoveEnvironmentVariables":["GS_OPTIONS"]},{"Executable":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\app\\pdftk.exe","Arguments":["<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\source [x] ! &\\1.pdf","dump_data_utf8","output","-","dont_ask"],"RemoveEnvironmentVariables":[]}],"Messages":["==== WinPDFMerge run 2026-10-09 20:24:50 ====","Application version: 1.0.0","Stage: Invocation preflight; elapsed: 0.970 s","Source folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\source [x] ! &","Output folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\output [x] ! &","Run identity: WinPDFMerge_source [x] ! &_20261009_202450_456e4ad7ec2e4376","Planned master output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202450_456e4ad7ec2e4376.pdf","Planned email output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202450_456e4ad7ec2e4376_email.pdf","Diagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.","PowerShell: 7.6.6 (Core)","Stage: Input discovery; elapsed: 1.007 s","PDF count: 1","Input 1: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\source [x] ! &\\1.pdf","Stage: PDFtk preflight; elapsed: 1.073 s","PdfTk version probe executable: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\app\\pdftk.exe","PdfTk version probe arguments: \"--version\"","PdfTk version probe exit: 0; elapsed: 1 ms; PID: 12345","PdfTk version probe started: True; timed out: False; cancelled: False; succeeded: True","PdfTk version probe launch error: ","PdfTk version probe capture error: ","PdfTk version probe termination error: ","PdfTk version probe stdout truncated: False; stderr truncated: False","PdfTk version probe stdout:","pdftk 2.02","PdfTk version probe stderr:","T18 controlled native warning","PDFtk: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\app\\pdftk.exe (version 2.02)","Stage: Input inspection; elapsed: 1.194 s","Input preflight 1 executable: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\app\\pdftk.exe","Input preflight 1 arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\source [x] ! &\\1.pdf\" \"dump_data_utf8\" \"output\" \"-\" \"dont_ask\"","Input preflight 1 exit: 7; elapsed: 1 ms; PID: 12345","Input preflight 1 started: True; timed out: False; cancelled: False; succeeded: False","Input preflight 1 launch error: ","Input preflight 1 capture error: ","Input preflight 1 termination error: ","Input preflight 1 stdout truncated: False; stderr truncated: False","Input preflight 1 stdout:","T18 controlled corrupt inspection stdout","Input preflight 1 stderr:","T18 controlled corrupt inspection stderr","PDFtk failed during input preflight or logging. No merge was started. PDF input '<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\source [x] ! &\\1.pdf' failed preflight: PDFtk document inspection failed (exit code: 7). See native launch/capture/timeout details and both streams; protected or unparseable inputs are unsupported without passwords or repair.","Elapsed time: 1.342 s","PowerShell: 7.6.6 (Core)","PDFtk version: 2.02","Ghostscript version: not used (SkipEmail)","Input summary: 1 PDF(s); expected pages: not inspected","Result: Failure; exit code: 1"],"Identity":{"OutputFolder":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\output [x] ! &","FolderLabel":"source [x] ! &","Timestamp":"20261009_202450","RunSuffix":"456e4ad7ec2e4376","BaseName":"WinPDFMerge_source [x] ! &_20261009_202450_456e4ad7ec2e4376","MasterPath":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202450_456e4ad7ec2e4376.pdf","EmailPath":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202450_456e4ad7ec2e4376_email.pdf","LogPath":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202450_456e4ad7ec2e4376.log"},"LogPresentAtPdftkDiscovery":true,"LogPresentAtSourceDiscovery":true,"Outcome":null,"BindingError":null},"Before":"1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109","After":"1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109","Logs":[{"Path":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202450_456e4ad7ec2e4376.log","SHA256":"4f12035a116feb0e108e05b0ce59ebc16409c6947f5ff06a0ba5bbb5f17d54dd","Text":"==== WinPDFMerge run 2026-10-09 20:24:50 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 0.970 s\r\nSource folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\source [x] ! &\r\nOutput folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\output [x] ! &\r\nRun identity: WinPDFMerge_source [x] ! &_20261009_202450_456e4ad7ec2e4376\r\nPlanned master output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202450_456e4ad7ec2e4376.pdf\r\nPlanned email output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202450_456e4ad7ec2e4376_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 7.6.6 (Core)\r\nStage: Input discovery; elapsed: 1.007 s\r\nPDF count: 1\r\nInput 1: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\source [x] ! &\\1.pdf\r\nStage: PDFtk preflight; elapsed: 1.073 s\r\nPdfTk version probe executable: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\app\\pdftk.exe\r\nPdfTk version probe arguments: \"--version\"\r\nPdfTk version probe exit: 0; elapsed: 1 ms; PID: 12345\r\nPdfTk version probe started: True; timed out: False; cancelled: False; succeeded: True\r\nPdfTk version probe launch error: \r\nPdfTk version probe capture error: \r\nPdfTk version probe termination error: \r\nPdfTk version probe stdout truncated: False; stderr truncated: False\r\nPdfTk version probe stdout:\r\npdftk 2.02\r\nPdfTk version probe stderr:\r\nT18 controlled native warning\r\nPDFtk: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\app\\pdftk.exe (version 2.02)\r\nStage: Input inspection; elapsed: 1.194 s\r\nInput preflight 1 executable: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\app\\pdftk.exe\r\nInput preflight 1 arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\source [x] ! &\\1.pdf\" \"dump_data_utf8\" \"output\" \"-\" \"dont_ask\"\r\nInput preflight 1 exit: 7; elapsed: 1 ms; PID: 12345\r\nInput preflight 1 started: True; timed out: False; cancelled: False; succeeded: False\r\nInput preflight 1 launch error: \r\nInput preflight 1 capture error: \r\nInput preflight 1 termination error: \r\nInput preflight 1 stdout truncated: False; stderr truncated: False\r\nInput preflight 1 stdout:\r\nT18 controlled corrupt inspection stdout\r\nInput preflight 1 stderr:\r\nT18 controlled corrupt inspection stderr\r\nPDFtk failed during input preflight or logging. No merge was started. PDF input '<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\8364b0b19f4348bc904fdf8ffd87ac7e\\source [x] ! &\\1.pdf' failed preflight: PDFtk document inspection failed (exit code: 7). See native launch/capture/timeout details and both streams; protected or unparseable inputs are unsupported without passwords or repair.\r\nElapsed time: 1.342 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: 2.02\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: 1 PDF(s); expected pages: not inspected\r\nResult: Failure; exit code: 1\r\n"}],"Finals":[],"StdoutSHA256":"42c24e4b619adde9d3c345f9d0eda211d237be35d22b5e37a7b624c595d608d4","StderrSHA256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},{"Label":"entry-discovery-failed","Scope":"bounded actual copied-entry subprocess with controlled native receipts; no PDF engine/manual claim","Command":["<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe","-NoLogo","-NoProfile","-NonInteractive","-ExecutionPolicy","RemoteSigned","-File","<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\f126eda7c61b44c79d147093c4c4c9c1\\Invoke-Entry.ps1","-Configuration","<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\f126eda7c61b44c79d147093c4c4c9c1\\app\\diagnostic-config.json"],"ChildEnvironmentRemovedKeys":["PSModulePath"],"PersistentEnvironmentChanges":false,"Culture":"de-DE","EntrySHA256":"2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902","HelperWithHooksSHA256":"0cc1042dd6a77ba6786ed1051aef87ceb479d57a0868c1cf11c4fb8a43ec1b8b","WrapperSHA256":"4977af419f1e57e9d95245d1b60e5d762043a9573c1150482e9d945d24d5f846","ConfigurationSHA256":"41ee91547c55704de3566abfcf71916bf266f1326d370de86044cf88310d5dd7","Result":{"Executable":"<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe","RenderedArguments":"\"-NoLogo\" \"-NoProfile\" \"-NonInteractive\" \"-ExecutionPolicy\" \"RemoteSigned\" \"-File\" \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\f126eda7c61b44c79d147093c4c4c9c1\\Invoke-Entry.ps1\" \"-Configuration\" \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\f126eda7c61b44c79d147093c4c4c9c1\\app\\diagnostic-config.json\"","ExitCode":1,"Stdout":"WinPDFMerger 1.0.0\r\nStage: Invocation preflight; elapsed: 0.096 s\r\n==== WinPDFMerge run 2026-10-09 20:24:52 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 0.952 s\r\nSource folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\f126eda7c61b44c79d147093c4c4c9c1\\source [x] ! &\r\nOutput folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\f126eda7c61b44c79d147093c4c4c9c1\\output [x] ! &\r\nRun identity: WinPDFMerge_source [x] ! &_20261009_202452_48d830faddfc40b2\r\nPlanned master output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\f126eda7c61b44c79d147093c4c4c9c1\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202452_48d830faddfc40b2.pdf\r\nPlanned email output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\f126eda7c61b44c79d147093c4c4c9c1\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202452_48d830faddfc40b2_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 7.6.6 (Core)\r\nStage: Input discovery; elapsed: 0.970 s\r\nSource preflight failed: T18 controlled source enumeration denied\r\nElapsed time: 0.999 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: not probed\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: not discovered; expected pages: not inspected\r\nResult: Failure; exit code: 1\r\nLog: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\f126eda7c61b44c79d147093c4c4c9c1\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202452_48d830faddfc40b2.log\r\n","Stderr":"","ElapsedMilliseconds":1689,"ProcessId":20180,"Started":true,"TimedOut":false,"Cancelled":false,"LaunchError":null,"CaptureError":null,"TerminationError":null,"OwnershipReleased":true,"StdoutTruncated":false,"StderrTruncated":false,"Succeeded":false},"ReceiptPath":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\f126eda7c61b44c79d147093c4c4c9c1\\receipt.json","ReceiptSHA256":"7168410dee29e363a09e4066f818edf6933cb3de334c410b49fd606a5dd2440a","Receipt":{"Scope":"copied entry with controlled native receipts; no PDF engine","HelperLoaded":true,"PdftkDiscovery":0,"GSDiscovery":0,"SourceDiscovery":1,"NativeCalls":[],"Messages":["==== WinPDFMerge run 2026-10-09 20:24:52 ====","Application version: 1.0.0","Stage: Invocation preflight; elapsed: 0.952 s","Source folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\f126eda7c61b44c79d147093c4c4c9c1\\source [x] ! &","Output folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\f126eda7c61b44c79d147093c4c4c9c1\\output [x] ! &","Run identity: WinPDFMerge_source [x] ! &_20261009_202452_48d830faddfc40b2","Planned master output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\f126eda7c61b44c79d147093c4c4c9c1\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202452_48d830faddfc40b2.pdf","Planned email output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\f126eda7c61b44c79d147093c4c4c9c1\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202452_48d830faddfc40b2_email.pdf","Diagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.","PowerShell: 7.6.6 (Core)","Stage: Input discovery; elapsed: 0.970 s","Source preflight failed: T18 controlled source enumeration denied","Elapsed time: 0.999 s","PowerShell: 7.6.6 (Core)","PDFtk version: not probed","Ghostscript version: not used (SkipEmail)","Input summary: not discovered; expected pages: not inspected","Result: Failure; exit code: 1"],"Identity":{"OutputFolder":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\f126eda7c61b44c79d147093c4c4c9c1\\output [x] ! &","FolderLabel":"source [x] ! &","Timestamp":"20261009_202452","RunSuffix":"48d830faddfc40b2","BaseName":"WinPDFMerge_source [x] ! &_20261009_202452_48d830faddfc40b2","MasterPath":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\f126eda7c61b44c79d147093c4c4c9c1\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202452_48d830faddfc40b2.pdf","EmailPath":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\f126eda7c61b44c79d147093c4c4c9c1\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202452_48d830faddfc40b2_email.pdf","LogPath":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\f126eda7c61b44c79d147093c4c4c9c1\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202452_48d830faddfc40b2.log"},"LogPresentAtPdftkDiscovery":false,"LogPresentAtSourceDiscovery":true,"Outcome":null,"BindingError":null},"Before":"1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109","After":"1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109","Logs":[{"Path":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\f126eda7c61b44c79d147093c4c4c9c1\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202452_48d830faddfc40b2.log","SHA256":"fc6b0a9ca33f1746219780da5ebe9f5ef5e1212ad9e9bab7ccdf157ace5fbadd","Text":"==== WinPDFMerge run 2026-10-09 20:24:52 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 0.952 s\r\nSource folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\f126eda7c61b44c79d147093c4c4c9c1\\source [x] ! &\r\nOutput folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\f126eda7c61b44c79d147093c4c4c9c1\\output [x] ! &\r\nRun identity: WinPDFMerge_source [x] ! &_20261009_202452_48d830faddfc40b2\r\nPlanned master output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\f126eda7c61b44c79d147093c4c4c9c1\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202452_48d830faddfc40b2.pdf\r\nPlanned email output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\f126eda7c61b44c79d147093c4c4c9c1\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202452_48d830faddfc40b2_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 7.6.6 (Core)\r\nStage: Input discovery; elapsed: 0.970 s\r\nSource preflight failed: T18 controlled source enumeration denied\r\nElapsed time: 0.999 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: not probed\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: not discovered; expected pages: not inspected\r\nResult: Failure; exit code: 1\r\n"}],"Finals":[],"StdoutSHA256":"1df5754079f5087523117015996ac29e35503fda5d1f075d46bc1308e93b94be","StderrSHA256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},{"Label":"entry-missing-source","Scope":"bounded actual copied-entry subprocess with controlled native receipts; no PDF engine/manual claim","Command":["<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe","-NoLogo","-NoProfile","-NonInteractive","-ExecutionPolicy","RemoteSigned","-File","<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\007beaa00b6f4f00aaa62e935b5cd621\\Invoke-Entry.ps1","-Configuration","<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\007beaa00b6f4f00aaa62e935b5cd621\\app\\diagnostic-config.json"],"ChildEnvironmentRemovedKeys":["PSModulePath"],"PersistentEnvironmentChanges":false,"Culture":"de-DE","EntrySHA256":"2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902","HelperWithHooksSHA256":"0cc1042dd6a77ba6786ed1051aef87ceb479d57a0868c1cf11c4fb8a43ec1b8b","WrapperSHA256":"4977af419f1e57e9d95245d1b60e5d762043a9573c1150482e9d945d24d5f846","ConfigurationSHA256":"a3916e77ec18169087e4044182f38a08815c47bd9b7cae48dee93c4054ff37ec","Result":{"Executable":"<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe","RenderedArguments":"\"-NoLogo\" \"-NoProfile\" \"-NonInteractive\" \"-ExecutionPolicy\" \"RemoteSigned\" \"-File\" \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\007beaa00b6f4f00aaa62e935b5cd621\\Invoke-Entry.ps1\" \"-Configuration\" \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\007beaa00b6f4f00aaa62e935b5cd621\\app\\diagnostic-config.json\"","ExitCode":1,"Stdout":"WinPDFMerger 1.0.0\r\nStage: Invocation preflight; elapsed: 0.104 s\r\nSource preflight failed: SourceFolder does not exist or cannot be accessed: '<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\007beaa00b6f4f00aaa62e935b5cd621\\nonexistent-source'. Cannot find path '<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\007beaa00b6f4f00aaa62e935b5cd621\\nonexistent-source' because it does not exist.\r\nElapsed time: 0.955 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: not probed\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: not discovered; expected pages: not inspected\r\nResult: Failure; exit code: 1\r\nNo run log was created: preflight has not established a safe writable output directory.\r\n","Stderr":"","ElapsedMilliseconds":1833,"ProcessId":22868,"Started":true,"TimedOut":false,"Cancelled":false,"LaunchError":null,"CaptureError":null,"TerminationError":null,"OwnershipReleased":true,"StdoutTruncated":false,"StderrTruncated":false,"Succeeded":false},"ReceiptPath":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\007beaa00b6f4f00aaa62e935b5cd621\\receipt.json","ReceiptSHA256":"f36554bb105339b874bcbae366af92301afffd35504581d8a778a620ea081b21","Receipt":{"Scope":"copied entry with controlled native receipts; no PDF engine","HelperLoaded":true,"PdftkDiscovery":0,"GSDiscovery":0,"SourceDiscovery":0,"NativeCalls":[],"Messages":[],"Identity":null,"LogPresentAtPdftkDiscovery":false,"LogPresentAtSourceDiscovery":false,"Outcome":null,"BindingError":null},"Before":"1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109","After":"1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109","Logs":[],"Finals":[],"StdoutSHA256":"9d0e4662968c3f7d09c09c107a52ca93488975cd82279daacc35192918e9106c","StderrSHA256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},{"Label":"entry-invalid-destination","Scope":"bounded actual copied-entry subprocess with controlled native receipts; no PDF engine/manual claim","Command":["<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe","-NoLogo","-NoProfile","-NonInteractive","-ExecutionPolicy","RemoteSigned","-File","<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\a1c5a1855add4be4a45f46c3ac72d32d\\Invoke-Entry.ps1","-Configuration","<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\a1c5a1855add4be4a45f46c3ac72d32d\\app\\diagnostic-config.json"],"ChildEnvironmentRemovedKeys":["PSModulePath"],"PersistentEnvironmentChanges":false,"Culture":"de-DE","EntrySHA256":"2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902","HelperWithHooksSHA256":"0cc1042dd6a77ba6786ed1051aef87ceb479d57a0868c1cf11c4fb8a43ec1b8b","WrapperSHA256":"4977af419f1e57e9d95245d1b60e5d762043a9573c1150482e9d945d24d5f846","ConfigurationSHA256":"c57128ae98d9600d63cecf3b8552ffe457c722311e4f9162ff84c8ac2704b59b","Result":{"Executable":"<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe","RenderedArguments":"\"-NoLogo\" \"-NoProfile\" \"-NonInteractive\" \"-ExecutionPolicy\" \"RemoteSigned\" \"-File\" \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\a1c5a1855add4be4a45f46c3ac72d32d\\Invoke-Entry.ps1\" \"-Configuration\" \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\a1c5a1855add4be4a45f46c3ac72d32d\\app\\diagnostic-config.json\"","ExitCode":1,"Stdout":"WinPDFMerger 1.0.0\r\nStage: Invocation preflight; elapsed: 0.106 s\r\nDestination preflight failed. OutputFolder must be an existing accessible directory: '<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\a1c5a1855add4be4a45f46c3ac72d32d\\nonexistent-output'. Create it first or choose another -OutputFolder. Cannot find path '<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\a1c5a1855add4be4a45f46c3ac72d32d\\nonexistent-output' because it does not exist.\r\nElapsed time: 1.136 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: not probed\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: not discovered; expected pages: not inspected\r\nResult: Failure; exit code: 1\r\nNo run log was created: preflight has not established a safe writable output directory.\r\nChoose a separate existing writable directory with -OutputFolder. No merge was started.\r\n","Stderr":"","ElapsedMilliseconds":1971,"ProcessId":23520,"Started":true,"TimedOut":false,"Cancelled":false,"LaunchError":null,"CaptureError":null,"TerminationError":null,"OwnershipReleased":true,"StdoutTruncated":false,"StderrTruncated":false,"Succeeded":false},"ReceiptPath":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\a1c5a1855add4be4a45f46c3ac72d32d\\receipt.json","ReceiptSHA256":"f36554bb105339b874bcbae366af92301afffd35504581d8a778a620ea081b21","Receipt":{"Scope":"copied entry with controlled native receipts; no PDF engine","HelperLoaded":true,"PdftkDiscovery":0,"GSDiscovery":0,"SourceDiscovery":0,"NativeCalls":[],"Messages":[],"Identity":null,"LogPresentAtPdftkDiscovery":false,"LogPresentAtSourceDiscovery":false,"Outcome":null,"BindingError":null},"Before":"1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109","After":"1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109","Logs":[],"Finals":[],"StdoutSHA256":"c6e78a4f9bd1ff7ecc4d4a3a4041b5fcae452d706bfbf178f89e01d0efe4beb7","StderrSHA256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},{"Label":"entry-cancellation-setup-failed","Scope":"bounded actual copied-entry subprocess with controlled native receipts; no PDF engine/manual claim","Command":["<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe","-NoLogo","-NoProfile","-NonInteractive","-ExecutionPolicy","RemoteSigned","-File","<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\766e5f3894f44d75ae0ee8e71e19325d\\Invoke-Entry.ps1","-Configuration","<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\766e5f3894f44d75ae0ee8e71e19325d\\app\\diagnostic-config.json"],"ChildEnvironmentRemovedKeys":["PSModulePath"],"PersistentEnvironmentChanges":false,"Culture":"de-DE","EntrySHA256":"2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902","HelperWithHooksSHA256":"0cc1042dd6a77ba6786ed1051aef87ceb479d57a0868c1cf11c4fb8a43ec1b8b","WrapperSHA256":"4977af419f1e57e9d95245d1b60e5d762043a9573c1150482e9d945d24d5f846","ConfigurationSHA256":"3888e5c5d8874357d96f334230df359e0b35ff488b02ec2327db149345f8b934","Result":{"Executable":"<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe","RenderedArguments":"\"-NoLogo\" \"-NoProfile\" \"-NonInteractive\" \"-ExecutionPolicy\" \"RemoteSigned\" \"-File\" \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\766e5f3894f44d75ae0ee8e71e19325d\\Invoke-Entry.ps1\" \"-Configuration\" \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\766e5f3894f44d75ae0ee8e71e19325d\\app\\diagnostic-config.json\"","ExitCode":1,"Stdout":"WinPDFMerger 1.0.0\r\nStage: Invocation preflight; elapsed: 0.112 s\r\nCancellation setup failed: T18 controlled cancellation setup failure\r\nElapsed time: 0.140 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: not probed\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: not discovered; expected pages: not inspected\r\nResult: Failure; exit code: 1\r\nNo run log was created: preflight has not established a safe writable output directory.\r\n","Stderr":"","ElapsedMilliseconds":858,"ProcessId":21060,"Started":true,"TimedOut":false,"Cancelled":false,"LaunchError":null,"CaptureError":null,"TerminationError":null,"OwnershipReleased":true,"StdoutTruncated":false,"StderrTruncated":false,"Succeeded":false},"ReceiptPath":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\766e5f3894f44d75ae0ee8e71e19325d\\receipt.json","ReceiptSHA256":"f36554bb105339b874bcbae366af92301afffd35504581d8a778a620ea081b21","Receipt":{"Scope":"copied entry with controlled native receipts; no PDF engine","HelperLoaded":true,"PdftkDiscovery":0,"GSDiscovery":0,"SourceDiscovery":0,"NativeCalls":[],"Messages":[],"Identity":null,"LogPresentAtPdftkDiscovery":false,"LogPresentAtSourceDiscovery":false,"Outcome":null,"BindingError":null},"Before":"1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109","After":"1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109","Logs":[],"Finals":[],"StdoutSHA256":"c967ee84a11a7aca823378d0bd05bdf59e58af4812c772ffcc11bf5c3e84afa3","StderrSHA256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},{"Label":"entry-no-source","Scope":"bounded actual copied-entry subprocess with controlled native receipts; no PDF engine/manual claim","Command":["<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe","-NoLogo","-NoProfile","-NonInteractive","-ExecutionPolicy","RemoteSigned","-File","<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\f8a24b2b0a1249d5985e652342cbbff5\\Invoke-Entry.ps1","-Configuration","<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\f8a24b2b0a1249d5985e652342cbbff5\\app\\diagnostic-config.json"],"ChildEnvironmentRemovedKeys":["PSModulePath"],"PersistentEnvironmentChanges":false,"Culture":"de-DE","EntrySHA256":"2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902","HelperWithHooksSHA256":"0cc1042dd6a77ba6786ed1051aef87ceb479d57a0868c1cf11c4fb8a43ec1b8b","WrapperSHA256":"4977af419f1e57e9d95245d1b60e5d762043a9573c1150482e9d945d24d5f846","ConfigurationSHA256":"4c1e85b20639de112cd62146d1d9c565d6901e4438861198840c6a9b34aba9f6","Result":{"Executable":"<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe","RenderedArguments":"\"-NoLogo\" \"-NoProfile\" \"-NonInteractive\" \"-ExecutionPolicy\" \"RemoteSigned\" \"-File\" \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\f8a24b2b0a1249d5985e652342cbbff5\\Invoke-Entry.ps1\" \"-Configuration\" \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\f8a24b2b0a1249d5985e652342cbbff5\\app\\diagnostic-config.json\"","ExitCode":1,"Stdout":"WinPDFMerger 1.0.0\r\nUsage: WinPDFMerge.ps1 <FolderWithPDFs> [-OutputFolder <ExistingDirectory>] [-SkipEmail] [-EmailPreset screen|ebook]\r\nNo run log was created: a source and safe output directory are required.\r\n","Stderr":"","ElapsedMilliseconds":799,"ProcessId":14640,"Started":true,"TimedOut":false,"Cancelled":false,"LaunchError":null,"CaptureError":null,"TerminationError":null,"OwnershipReleased":true,"StdoutTruncated":false,"StderrTruncated":false,"Succeeded":false},"ReceiptPath":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\f8a24b2b0a1249d5985e652342cbbff5\\receipt.json","ReceiptSHA256":"f36554bb105339b874bcbae366af92301afffd35504581d8a778a620ea081b21","Receipt":{"Scope":"copied entry with controlled native receipts; no PDF engine","HelperLoaded":true,"PdftkDiscovery":0,"GSDiscovery":0,"SourceDiscovery":0,"NativeCalls":[],"Messages":[],"Identity":null,"LogPresentAtPdftkDiscovery":false,"LogPresentAtSourceDiscovery":false,"Outcome":null,"BindingError":null},"Before":"1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109","After":"1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109","Logs":[],"Finals":[],"StdoutSHA256":"7c5f6d35ce26eb0760815d6bc39bc78fa85d2647e1f13d7b61476aba75b60b1b","StderrSHA256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},{"Label":"entry-success-skip","Scope":"bounded actual copied-entry subprocess with controlled native receipts; no PDF engine/manual claim","Command":["<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe","-NoLogo","-NoProfile","-NonInteractive","-ExecutionPolicy","RemoteSigned","-File","<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\Invoke-Entry.ps1","-Configuration","<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\app\\diagnostic-config.json"],"ChildEnvironmentRemovedKeys":["PSModulePath"],"PersistentEnvironmentChanges":false,"Culture":"de-DE","EntrySHA256":"2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902","HelperWithHooksSHA256":"0cc1042dd6a77ba6786ed1051aef87ceb479d57a0868c1cf11c4fb8a43ec1b8b","WrapperSHA256":"4977af419f1e57e9d95245d1b60e5d762043a9573c1150482e9d945d24d5f846","ConfigurationSHA256":"a831cc24bbf2a66e73076baaca813eaab59515f45497c7a3b198c0770d345eb9","Result":{"Executable":"<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe","RenderedArguments":"\"-NoLogo\" \"-NoProfile\" \"-NonInteractive\" \"-ExecutionPolicy\" \"RemoteSigned\" \"-File\" \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\Invoke-Entry.ps1\" \"-Configuration\" \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\app\\diagnostic-config.json\"","ExitCode":0,"Stdout":"WinPDFMerger 1.0.0\r\nStage: Invocation preflight; elapsed: 0.085 s\r\n==== WinPDFMerge run 2026-10-09 20:25:00 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 1.528 s\r\nSource folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\source [x] ! &\r\nOutput folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\output [x] ! &\r\nRun identity: WinPDFMerge_source [x] ! &_20261009_202500_d1091da398ed4b53\r\nPlanned master output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202500_d1091da398ed4b53.pdf\r\nPlanned email output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202500_d1091da398ed4b53_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 7.6.6 (Core)\r\nStage: Input discovery; elapsed: 1.561 s\r\nPDF count: 2\r\nInput 1: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\source [x] ! &\\1.pdf\r\nInput 2: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\source [x] ! &\\2.pdf\r\nStage: PDFtk preflight; elapsed: 1.668 s\r\nPDFtk: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\app\\pdftk.exe (version 2.02)\r\nStage: Input inspection; elapsed: 1.778 s\r\nInput 1 pages: 1\r\nInput 2 pages: 1\r\nExpected page total: 2\r\nPrivate staging: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\output [x] ! &\\.WinPDFMerge_294fe9760bad451b8a9e0333ecd5a28b.tmp\r\nStage: Master processing; elapsed: 2.060 s\r\nPDFtk executable: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\app\\pdftk.exe\r\nPDFtk arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\source [x] ! &\\1.pdf\" \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\source [x] ! &\\2.pdf\" \"cat\" \"output\" \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\output [x] ! &\\.WinPDFMerge_294fe9760bad451b8a9e0333ecd5a28b.tmp\\master.pdf\" \"compress\" \"dont_ask\"\r\nPDFtk exit: 0; elapsed: 1 ms; PID: 12345\r\nPDFtk started: True; timed out: False; cancelled: False; succeeded: True\r\nPDFtk launch error: \r\nPDFtk capture error: \r\nPDFtk termination error: \r\nPDFtk stdout truncated: False; stderr truncated: False\r\nPDFtk stdout:\r\nT18 controlled merge stdout\r\nPDFtk stderr:\r\nT18 controlled native warning\r\nMaster validation executable: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\app\\pdftk.exe\r\nMaster validation arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\output [x] ! &\\.WinPDFMerge_294fe9760bad451b8a9e0333ecd5a28b.tmp\\master.pdf\" \"dump_data_utf8\" \"output\" \"-\" \"dont_ask\"\r\nMaster validation exit: 0; elapsed: 1 ms; PID: 12345\r\nMaster validation started: True; timed out: False; cancelled: False; succeeded: True\r\nMaster validation launch error: \r\nMaster validation capture error: \r\nMaster validation termination error: \r\nMaster validation stdout truncated: False; stderr truncated: False\r\nMaster validation stdout:\r\nNumberOfPages: 2\r\nMaster validation stderr:\r\nT18 controlled native warning\r\nMaster validation OK: 2 expected pages inspected. Merged master published: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202500_d1091da398ed4b53.pdf\r\nStage: Summary; elapsed: 2.312 s\r\nElapsed time: 2.315 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: 2.02\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: 2 PDF(s); expected pages: 2\r\nEmail result: skipped\r\nEmail explicitly skipped; validated master retained.\r\nMaster size: 1786 bytes (1.74 KiB).\r\nPublished Merged master: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202500_d1091da398ed4b53.pdf\r\nDone.\r\nResult: SUCCESS; exit code: 0\r\n\nSUCCESS: Email explicitly skipped; validated master retained.\r\nResult: SUCCESS; exit code: 0\r\nElapsed time: 2.369 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: 2.02\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: 2 PDF(s); expected pages: 2\r\nMaster size: 1786 bytes (1.74 KiB).\r\n - Merged master: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202500_d1091da398ed4b53.pdf\r\nLog: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202500_d1091da398ed4b53.log\r\n","Stderr":"","ElapsedMilliseconds":3076,"ProcessId":14616,"Started":true,"TimedOut":false,"Cancelled":false,"LaunchError":null,"CaptureError":null,"TerminationError":null,"OwnershipReleased":true,"StdoutTruncated":false,"StderrTruncated":false,"Succeeded":true},"ReceiptPath":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\receipt.json","ReceiptSHA256":"84ff9f38d548237fd5f05719dc5490db1a98b7140182f9b7978b2434b7a7357e","Receipt":{"Scope":"copied entry with controlled native receipts; no PDF engine","HelperLoaded":true,"PdftkDiscovery":1,"GSDiscovery":0,"SourceDiscovery":1,"NativeCalls":[{"Executable":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\app\\pdftk.exe","Arguments":["--version"],"RemoveEnvironmentVariables":["GS_OPTIONS"]},{"Executable":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\app\\pdftk.exe","Arguments":["<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\source [x] ! &\\1.pdf","dump_data_utf8","output","-","dont_ask"],"RemoveEnvironmentVariables":[]},{"Executable":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\app\\pdftk.exe","Arguments":["<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\source [x] ! &\\2.pdf","dump_data_utf8","output","-","dont_ask"],"RemoveEnvironmentVariables":[]},{"Executable":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\app\\pdftk.exe","Arguments":["<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\source [x] ! &\\1.pdf","<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\source [x] ! &\\2.pdf","cat","output","<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\output [x] ! &\\.WinPDFMerge_294fe9760bad451b8a9e0333ecd5a28b.tmp\\master.pdf","compress","dont_ask"],"RemoveEnvironmentVariables":[]},{"Executable":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\app\\pdftk.exe","Arguments":["<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\output [x] ! &\\.WinPDFMerge_294fe9760bad451b8a9e0333ecd5a28b.tmp\\master.pdf","dump_data_utf8","output","-","dont_ask"],"RemoveEnvironmentVariables":[]}],"Messages":["==== WinPDFMerge run 2026-10-09 20:25:00 ====","Application version: 1.0.0","Stage: Invocation preflight; elapsed: 1.528 s","Source folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\source [x] ! &","Output folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\output [x] ! &","Run identity: WinPDFMerge_source [x] ! &_20261009_202500_d1091da398ed4b53","Planned master output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202500_d1091da398ed4b53.pdf","Planned email output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202500_d1091da398ed4b53_email.pdf","Diagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.","PowerShell: 7.6.6 (Core)","Stage: Input discovery; elapsed: 1.561 s","PDF count: 2","Input 1: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\source [x] ! &\\1.pdf","Input 2: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\source [x] ! &\\2.pdf","Stage: PDFtk preflight; elapsed: 1.668 s","PdfTk version probe executable: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\app\\pdftk.exe","PdfTk version probe arguments: \"--version\"","PdfTk version probe exit: 0; elapsed: 1 ms; PID: 12345","PdfTk version probe started: True; timed out: False; cancelled: False; succeeded: True","PdfTk version probe launch error: ","PdfTk version probe capture error: ","PdfTk version probe termination error: ","PdfTk version probe stdout truncated: False; stderr truncated: False","PdfTk version probe stdout:","pdftk 2.02","PdfTk version probe stderr:","T18 controlled native warning","PDFtk: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\app\\pdftk.exe (version 2.02)","Stage: Input inspection; elapsed: 1.778 s","Input preflight 1 executable: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\app\\pdftk.exe","Input preflight 1 arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\source [x] ! &\\1.pdf\" \"dump_data_utf8\" \"output\" \"-\" \"dont_ask\"","Input preflight 1 exit: 0; elapsed: 1 ms; PID: 12345","Input preflight 1 started: True; timed out: False; cancelled: False; succeeded: True","Input preflight 1 launch error: ","Input preflight 1 capture error: ","Input preflight 1 termination error: ","Input preflight 1 stdout truncated: False; stderr truncated: False","Input preflight 1 stdout:","NumberOfPages: 1","Input preflight 1 stderr:","T18 controlled native warning","Input preflight 2 executable: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\app\\pdftk.exe","Input preflight 2 arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\source [x] ! &\\2.pdf\" \"dump_data_utf8\" \"output\" \"-\" \"dont_ask\"","Input preflight 2 exit: 0; elapsed: 1 ms; PID: 12345","Input preflight 2 started: True; timed out: False; cancelled: False; succeeded: True","Input preflight 2 launch error: ","Input preflight 2 capture error: ","Input preflight 2 termination error: ","Input preflight 2 stdout truncated: False; stderr truncated: False","Input preflight 2 stdout:","NumberOfPages: 1","Input preflight 2 stderr:","T18 controlled native warning","Input 1 pages: 1","Input 2 pages: 1","Expected page total: 2","Private staging: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\output [x] ! &\\.WinPDFMerge_294fe9760bad451b8a9e0333ecd5a28b.tmp","Stage: Master processing; elapsed: 2.060 s","PDFtk executable: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\app\\pdftk.exe","PDFtk arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\source [x] ! &\\1.pdf\" \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\source [x] ! &\\2.pdf\" \"cat\" \"output\" \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\output [x] ! &\\.WinPDFMerge_294fe9760bad451b8a9e0333ecd5a28b.tmp\\master.pdf\" \"compress\" \"dont_ask\"","PDFtk exit: 0; elapsed: 1 ms; PID: 12345","PDFtk started: True; timed out: False; cancelled: False; succeeded: True","PDFtk launch error: ","PDFtk capture error: ","PDFtk termination error: ","PDFtk stdout truncated: False; stderr truncated: False","PDFtk stdout:","T18 controlled merge stdout","PDFtk stderr:","T18 controlled native warning","Master validation executable: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\app\\pdftk.exe","Master validation arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\output [x] ! &\\.WinPDFMerge_294fe9760bad451b8a9e0333ecd5a28b.tmp\\master.pdf\" \"dump_data_utf8\" \"output\" \"-\" \"dont_ask\"","Master validation exit: 0; elapsed: 1 ms; PID: 12345","Master validation started: True; timed out: False; cancelled: False; succeeded: True","Master validation launch error: ","Master validation capture error: ","Master validation termination error: ","Master validation stdout truncated: False; stderr truncated: False","Master validation stdout:","NumberOfPages: 2","Master validation stderr:","T18 controlled native warning","Master validation OK: 2 expected pages inspected. Merged master published: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202500_d1091da398ed4b53.pdf","Stage: Summary; elapsed: 2.312 s","Elapsed time: 2.315 s","PowerShell: 7.6.6 (Core)","PDFtk version: 2.02","Ghostscript version: not used (SkipEmail)","Input summary: 2 PDF(s); expected pages: 2","Email result: skipped","Email explicitly skipped; validated master retained.","Master size: 1786 bytes (1.74 KiB).","Published Merged master: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202500_d1091da398ed4b53.pdf","Done.","Result: SUCCESS; exit code: 0"],"Identity":{"OutputFolder":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\output [x] ! &","FolderLabel":"source [x] ! &","Timestamp":"20261009_202500","RunSuffix":"d1091da398ed4b53","BaseName":"WinPDFMerge_source [x] ! &_20261009_202500_d1091da398ed4b53","MasterPath":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202500_d1091da398ed4b53.pdf","EmailPath":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202500_d1091da398ed4b53_email.pdf","LogPath":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202500_d1091da398ed4b53.log"},"LogPresentAtPdftkDiscovery":true,"LogPresentAtSourceDiscovery":true,"Outcome":{"ExitCode":0,"Summary":"SUCCESS","EmailMessage":"Email explicitly skipped; validated master retained.","EmailState":"skipped","PublishedPaths":[{"Label":"Merged master","Path":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202500_d1091da398ed4b53.pdf"}]},"BindingError":null},"Before":"1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|2.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109","After":"1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|2.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109","Logs":[{"Path":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202500_d1091da398ed4b53.log","SHA256":"39717164a0c58f1499022d706df7ac006445aca000c0efa54f9076178cc05c7e","Text":"==== WinPDFMerge run 2026-10-09 20:25:00 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 1.528 s\r\nSource folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\source [x] ! &\r\nOutput folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\output [x] ! &\r\nRun identity: WinPDFMerge_source [x] ! &_20261009_202500_d1091da398ed4b53\r\nPlanned master output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202500_d1091da398ed4b53.pdf\r\nPlanned email output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202500_d1091da398ed4b53_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 7.6.6 (Core)\r\nStage: Input discovery; elapsed: 1.561 s\r\nPDF count: 2\r\nInput 1: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\source [x] ! &\\1.pdf\r\nInput 2: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\source [x] ! &\\2.pdf\r\nStage: PDFtk preflight; elapsed: 1.668 s\r\nPdfTk version probe executable: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\app\\pdftk.exe\r\nPdfTk version probe arguments: \"--version\"\r\nPdfTk version probe exit: 0; elapsed: 1 ms; PID: 12345\r\nPdfTk version probe started: True; timed out: False; cancelled: False; succeeded: True\r\nPdfTk version probe launch error: \r\nPdfTk version probe capture error: \r\nPdfTk version probe termination error: \r\nPdfTk version probe stdout truncated: False; stderr truncated: False\r\nPdfTk version probe stdout:\r\npdftk 2.02\r\nPdfTk version probe stderr:\r\nT18 controlled native warning\r\nPDFtk: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\app\\pdftk.exe (version 2.02)\r\nStage: Input inspection; elapsed: 1.778 s\r\nInput preflight 1 executable: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\app\\pdftk.exe\r\nInput preflight 1 arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\source [x] ! &\\1.pdf\" \"dump_data_utf8\" \"output\" \"-\" \"dont_ask\"\r\nInput preflight 1 exit: 0; elapsed: 1 ms; PID: 12345\r\nInput preflight 1 started: True; timed out: False; cancelled: False; succeeded: True\r\nInput preflight 1 launch error: \r\nInput preflight 1 capture error: \r\nInput preflight 1 termination error: \r\nInput preflight 1 stdout truncated: False; stderr truncated: False\r\nInput preflight 1 stdout:\r\nNumberOfPages: 1\r\nInput preflight 1 stderr:\r\nT18 controlled native warning\r\nInput preflight 2 executable: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\app\\pdftk.exe\r\nInput preflight 2 arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\source [x] ! &\\2.pdf\" \"dump_data_utf8\" \"output\" \"-\" \"dont_ask\"\r\nInput preflight 2 exit: 0; elapsed: 1 ms; PID: 12345\r\nInput preflight 2 started: True; timed out: False; cancelled: False; succeeded: True\r\nInput preflight 2 launch error: \r\nInput preflight 2 capture error: \r\nInput preflight 2 termination error: \r\nInput preflight 2 stdout truncated: False; stderr truncated: False\r\nInput preflight 2 stdout:\r\nNumberOfPages: 1\r\nInput preflight 2 stderr:\r\nT18 controlled native warning\r\nInput 1 pages: 1\r\nInput 2 pages: 1\r\nExpected page total: 2\r\nPrivate staging: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\output [x] ! &\\.WinPDFMerge_294fe9760bad451b8a9e0333ecd5a28b.tmp\r\nStage: Master processing; elapsed: 2.060 s\r\nPDFtk executable: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\app\\pdftk.exe\r\nPDFtk arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\source [x] ! &\\1.pdf\" \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\source [x] ! &\\2.pdf\" \"cat\" \"output\" \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\output [x] ! &\\.WinPDFMerge_294fe9760bad451b8a9e0333ecd5a28b.tmp\\master.pdf\" \"compress\" \"dont_ask\"\r\nPDFtk exit: 0; elapsed: 1 ms; PID: 12345\r\nPDFtk started: True; timed out: False; cancelled: False; succeeded: True\r\nPDFtk launch error: \r\nPDFtk capture error: \r\nPDFtk termination error: \r\nPDFtk stdout truncated: False; stderr truncated: False\r\nPDFtk stdout:\r\nT18 controlled merge stdout\r\nPDFtk stderr:\r\nT18 controlled native warning\r\nMaster validation executable: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\app\\pdftk.exe\r\nMaster validation arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\output [x] ! &\\.WinPDFMerge_294fe9760bad451b8a9e0333ecd5a28b.tmp\\master.pdf\" \"dump_data_utf8\" \"output\" \"-\" \"dont_ask\"\r\nMaster validation exit: 0; elapsed: 1 ms; PID: 12345\r\nMaster validation started: True; timed out: False; cancelled: False; succeeded: True\r\nMaster validation launch error: \r\nMaster validation capture error: \r\nMaster validation termination error: \r\nMaster validation stdout truncated: False; stderr truncated: False\r\nMaster validation stdout:\r\nNumberOfPages: 2\r\nMaster validation stderr:\r\nT18 controlled native warning\r\nMaster validation OK: 2 expected pages inspected. Merged master published: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202500_d1091da398ed4b53.pdf\r\nStage: Summary; elapsed: 2.312 s\r\nElapsed time: 2.315 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: 2.02\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: 2 PDF(s); expected pages: 2\r\nEmail result: skipped\r\nEmail explicitly skipped; validated master retained.\r\nMaster size: 1786 bytes (1.74 KiB).\r\nPublished Merged master: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202500_d1091da398ed4b53.pdf\r\nDone.\r\nResult: SUCCESS; exit code: 0\r\n"}],"Finals":[{"Path":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\0538b6dc4b4b48039c5486ea879a3ea6\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202500_d1091da398ed4b53.pdf","Bytes":1786,"SHA256":"ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109"}],"StdoutSHA256":"99bbec876cd66bf13fcec9106e32981f67db24ddc5f5ae61f45867f3f81297c5","StderrSHA256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"},{"Label":"entry-summary-log-failed","Scope":"bounded actual copied-entry subprocess with controlled native receipts; no PDF engine/manual claim","Command":["<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe","-NoLogo","-NoProfile","-NonInteractive","-ExecutionPolicy","RemoteSigned","-File","<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\Invoke-Entry.ps1","-Configuration","<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\app\\diagnostic-config.json"],"ChildEnvironmentRemovedKeys":["PSModulePath"],"PersistentEnvironmentChanges":false,"Culture":"de-DE","EntrySHA256":"2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902","HelperWithHooksSHA256":"0cc1042dd6a77ba6786ed1051aef87ceb479d57a0868c1cf11c4fb8a43ec1b8b","WrapperSHA256":"4977af419f1e57e9d95245d1b60e5d762043a9573c1150482e9d945d24d5f846","ConfigurationSHA256":"e32376d9180fad50b7808fbba7e2d4d7b68e82ffb17ee67c2dc47d90f315653a","Result":{"Executable":"<USERPROFILE>\\AppData\\Local\\WinPDFMergerDevCache\\T09-ps7-6719cb8d846e47c9bf69d6c7f5948a6a\\portable\\pwsh.exe","RenderedArguments":"\"-NoLogo\" \"-NoProfile\" \"-NonInteractive\" \"-ExecutionPolicy\" \"RemoteSigned\" \"-File\" \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\Invoke-Entry.ps1\" \"-Configuration\" \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\app\\diagnostic-config.json\"","ExitCode":2,"Stdout":"WinPDFMerger 1.0.0\r\nStage: Invocation preflight; elapsed: 0.102 s\r\n==== WinPDFMerge run 2026-10-09 20:25:03 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 1.005 s\r\nSource folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\source [x] ! &\r\nOutput folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\output [x] ! &\r\nRun identity: WinPDFMerge_source [x] ! &_20261009_202503_12d9937282244197\r\nPlanned master output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202503_12d9937282244197.pdf\r\nPlanned email output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202503_12d9937282244197_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 7.6.6 (Core)\r\nStage: Input discovery; elapsed: 1.039 s\r\nPDF count: 2\r\nInput 1: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\source [x] ! &\\1.pdf\r\nInput 2: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\source [x] ! &\\2.pdf\r\nStage: PDFtk preflight; elapsed: 1.133 s\r\nPDFtk: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\app\\pdftk.exe (version 2.02)\r\nStage: Input inspection; elapsed: 1.250 s\r\nInput 1 pages: 1\r\nInput 2 pages: 1\r\nExpected page total: 2\r\nPrivate staging: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\output [x] ! &\\.WinPDFMerge_0aa2cbea420f461a970255420562f2c5.tmp\r\nStage: Master processing; elapsed: 1.518 s\r\nPDFtk executable: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\app\\pdftk.exe\r\nPDFtk arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\source [x] ! &\\1.pdf\" \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\source [x] ! &\\2.pdf\" \"cat\" \"output\" \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\output [x] ! &\\.WinPDFMerge_0aa2cbea420f461a970255420562f2c5.tmp\\master.pdf\" \"compress\" \"dont_ask\"\r\nPDFtk exit: 0; elapsed: 1 ms; PID: 12345\r\nPDFtk started: True; timed out: False; cancelled: False; succeeded: True\r\nPDFtk launch error: \r\nPDFtk capture error: \r\nPDFtk termination error: \r\nPDFtk stdout truncated: False; stderr truncated: False\r\nPDFtk stdout:\r\nT18 controlled merge stdout\r\nPDFtk stderr:\r\nT18 controlled native warning\r\nMaster validation executable: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\app\\pdftk.exe\r\nMaster validation arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\output [x] ! &\\.WinPDFMerge_0aa2cbea420f461a970255420562f2c5.tmp\\master.pdf\" \"dump_data_utf8\" \"output\" \"-\" \"dont_ask\"\r\nMaster validation exit: 0; elapsed: 1 ms; PID: 12345\r\nMaster validation started: True; timed out: False; cancelled: False; succeeded: True\r\nMaster validation launch error: \r\nMaster validation capture error: \r\nMaster validation termination error: \r\nMaster validation stdout truncated: False; stderr truncated: False\r\nMaster validation stdout:\r\nNumberOfPages: 2\r\nMaster validation stderr:\r\nT18 controlled native warning\r\nMaster validation OK: 2 expected pages inspected. Merged master published: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202503_12d9937282244197.pdf\r\nStage: Summary; elapsed: 1.773 s\r\n\nPARTIAL SUCCESS: Result logging failed: T18 controlled summary logging failure\r\nResult: PARTIAL SUCCESS; exit code: 2\r\nElapsed time: 1.802 s\r\nPowerShell: 7.6.6 (Core)\r\nPDFtk version: 2.02\r\nGhostscript version: not used (SkipEmail)\r\nInput summary: 2 PDF(s); expected pages: 2\r\nMaster size: 1786 bytes (1.74 KiB).\r\n - Merged master: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202503_12d9937282244197.pdf\r\nLog: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202503_12d9937282244197.log\r\n","Stderr":"","ElapsedMilliseconds":2510,"ProcessId":7524,"Started":true,"TimedOut":false,"Cancelled":false,"LaunchError":null,"CaptureError":null,"TerminationError":null,"OwnershipReleased":true,"StdoutTruncated":false,"StderrTruncated":false,"Succeeded":false},"ReceiptPath":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\receipt.json","ReceiptSHA256":"46a3ace3b2609518d3b93ccd7b97c16b6ea01ca75ad81f36ad6b7589b2bd4d5d","Receipt":{"Scope":"copied entry with controlled native receipts; no PDF engine","HelperLoaded":true,"PdftkDiscovery":1,"GSDiscovery":0,"SourceDiscovery":1,"NativeCalls":[{"Executable":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\app\\pdftk.exe","Arguments":["--version"],"RemoveEnvironmentVariables":["GS_OPTIONS"]},{"Executable":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\app\\pdftk.exe","Arguments":["<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\source [x] ! &\\1.pdf","dump_data_utf8","output","-","dont_ask"],"RemoveEnvironmentVariables":[]},{"Executable":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\app\\pdftk.exe","Arguments":["<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\source [x] ! &\\2.pdf","dump_data_utf8","output","-","dont_ask"],"RemoveEnvironmentVariables":[]},{"Executable":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\app\\pdftk.exe","Arguments":["<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\source [x] ! &\\1.pdf","<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\source [x] ! &\\2.pdf","cat","output","<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\output [x] ! &\\.WinPDFMerge_0aa2cbea420f461a970255420562f2c5.tmp\\master.pdf","compress","dont_ask"],"RemoveEnvironmentVariables":[]},{"Executable":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\app\\pdftk.exe","Arguments":["<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\output [x] ! &\\.WinPDFMerge_0aa2cbea420f461a970255420562f2c5.tmp\\master.pdf","dump_data_utf8","output","-","dont_ask"],"RemoveEnvironmentVariables":[]}],"Messages":["==== WinPDFMerge run 2026-10-09 20:25:03 ====","Application version: 1.0.0","Stage: Invocation preflight; elapsed: 1.005 s","Source folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\source [x] ! &","Output folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\output [x] ! &","Run identity: WinPDFMerge_source [x] ! &_20261009_202503_12d9937282244197","Planned master output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202503_12d9937282244197.pdf","Planned email output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202503_12d9937282244197_email.pdf","Diagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.","PowerShell: 7.6.6 (Core)","Stage: Input discovery; elapsed: 1.039 s","PDF count: 2","Input 1: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\source [x] ! &\\1.pdf","Input 2: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\source [x] ! &\\2.pdf","Stage: PDFtk preflight; elapsed: 1.133 s","PdfTk version probe executable: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\app\\pdftk.exe","PdfTk version probe arguments: \"--version\"","PdfTk version probe exit: 0; elapsed: 1 ms; PID: 12345","PdfTk version probe started: True; timed out: False; cancelled: False; succeeded: True","PdfTk version probe launch error: ","PdfTk version probe capture error: ","PdfTk version probe termination error: ","PdfTk version probe stdout truncated: False; stderr truncated: False","PdfTk version probe stdout:","pdftk 2.02","PdfTk version probe stderr:","T18 controlled native warning","PDFtk: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\app\\pdftk.exe (version 2.02)","Stage: Input inspection; elapsed: 1.250 s","Input preflight 1 executable: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\app\\pdftk.exe","Input preflight 1 arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\source [x] ! &\\1.pdf\" \"dump_data_utf8\" \"output\" \"-\" \"dont_ask\"","Input preflight 1 exit: 0; elapsed: 1 ms; PID: 12345","Input preflight 1 started: True; timed out: False; cancelled: False; succeeded: True","Input preflight 1 launch error: ","Input preflight 1 capture error: ","Input preflight 1 termination error: ","Input preflight 1 stdout truncated: False; stderr truncated: False","Input preflight 1 stdout:","NumberOfPages: 1","Input preflight 1 stderr:","T18 controlled native warning","Input preflight 2 executable: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\app\\pdftk.exe","Input preflight 2 arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\source [x] ! &\\2.pdf\" \"dump_data_utf8\" \"output\" \"-\" \"dont_ask\"","Input preflight 2 exit: 0; elapsed: 1 ms; PID: 12345","Input preflight 2 started: True; timed out: False; cancelled: False; succeeded: True","Input preflight 2 launch error: ","Input preflight 2 capture error: ","Input preflight 2 termination error: ","Input preflight 2 stdout truncated: False; stderr truncated: False","Input preflight 2 stdout:","NumberOfPages: 1","Input preflight 2 stderr:","T18 controlled native warning","Input 1 pages: 1","Input 2 pages: 1","Expected page total: 2","Private staging: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\output [x] ! &\\.WinPDFMerge_0aa2cbea420f461a970255420562f2c5.tmp","Stage: Master processing; elapsed: 1.518 s","PDFtk executable: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\app\\pdftk.exe","PDFtk arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\source [x] ! &\\1.pdf\" \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\source [x] ! &\\2.pdf\" \"cat\" \"output\" \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\output [x] ! &\\.WinPDFMerge_0aa2cbea420f461a970255420562f2c5.tmp\\master.pdf\" \"compress\" \"dont_ask\"","PDFtk exit: 0; elapsed: 1 ms; PID: 12345","PDFtk started: True; timed out: False; cancelled: False; succeeded: True","PDFtk launch error: ","PDFtk capture error: ","PDFtk termination error: ","PDFtk stdout truncated: False; stderr truncated: False","PDFtk stdout:","T18 controlled merge stdout","PDFtk stderr:","T18 controlled native warning","Master validation executable: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\app\\pdftk.exe","Master validation arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\output [x] ! &\\.WinPDFMerge_0aa2cbea420f461a970255420562f2c5.tmp\\master.pdf\" \"dump_data_utf8\" \"output\" \"-\" \"dont_ask\"","Master validation exit: 0; elapsed: 1 ms; PID: 12345","Master validation started: True; timed out: False; cancelled: False; succeeded: True","Master validation launch error: ","Master validation capture error: ","Master validation termination error: ","Master validation stdout truncated: False; stderr truncated: False","Master validation stdout:","NumberOfPages: 2","Master validation stderr:","T18 controlled native warning","Master validation OK: 2 expected pages inspected. Merged master published: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202503_12d9937282244197.pdf","Stage: Summary; elapsed: 1.773 s","Elapsed time: 1.777 s"],"Identity":{"OutputFolder":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\output [x] ! &","FolderLabel":"source [x] ! &","Timestamp":"20261009_202503","RunSuffix":"12d9937282244197","BaseName":"WinPDFMerge_source [x] ! &_20261009_202503_12d9937282244197","MasterPath":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202503_12d9937282244197.pdf","EmailPath":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202503_12d9937282244197_email.pdf","LogPath":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202503_12d9937282244197.log"},"LogPresentAtPdftkDiscovery":true,"LogPresentAtSourceDiscovery":true,"Outcome":{"ExitCode":2,"Summary":"PARTIAL SUCCESS","EmailMessage":"Run failed; validated published outputs retained.","EmailState":"skipped","PublishedPaths":[{"Label":"Merged master","Path":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202503_12d9937282244197.pdf"}]},"BindingError":null},"Before":"1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|2.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109","After":"1.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|2.pdf:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109|preserved-source.txt:abb1ed95a5adfe4b4081ba551b230213ed7d0ec7188f1f7d7c55845bf1d08bf0|foreign:ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109","Logs":[{"Path":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202503_12d9937282244197.log","SHA256":"94a336458582cf435f690f8b6425ad1d24d5f020f69fa407f01455fa7b5f9edd","Text":"==== WinPDFMerge run 2026-10-09 20:25:03 ====\r\nApplication version: 1.0.0\r\nStage: Invocation preflight; elapsed: 1.005 s\r\nSource folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\source [x] ! &\r\nOutput folder: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\output [x] ! &\r\nRun identity: WinPDFMerge_source [x] ! &_20261009_202503_12d9937282244197\r\nPlanned master output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202503_12d9937282244197.pdf\r\nPlanned email output: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202503_12d9937282244197_email.pdf\r\nDiagnostics are local and may contain sensitive paths, names and PDF metadata. Sanitize a copy before sharing.\r\nPowerShell: 7.6.6 (Core)\r\nStage: Input discovery; elapsed: 1.039 s\r\nPDF count: 2\r\nInput 1: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\source [x] ! &\\1.pdf\r\nInput 2: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\source [x] ! &\\2.pdf\r\nStage: PDFtk preflight; elapsed: 1.133 s\r\nPdfTk version probe executable: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\app\\pdftk.exe\r\nPdfTk version probe arguments: \"--version\"\r\nPdfTk version probe exit: 0; elapsed: 1 ms; PID: 12345\r\nPdfTk version probe started: True; timed out: False; cancelled: False; succeeded: True\r\nPdfTk version probe launch error: \r\nPdfTk version probe capture error: \r\nPdfTk version probe termination error: \r\nPdfTk version probe stdout truncated: False; stderr truncated: False\r\nPdfTk version probe stdout:\r\npdftk 2.02\r\nPdfTk version probe stderr:\r\nT18 controlled native warning\r\nPDFtk: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\app\\pdftk.exe (version 2.02)\r\nStage: Input inspection; elapsed: 1.250 s\r\nInput preflight 1 executable: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\app\\pdftk.exe\r\nInput preflight 1 arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\source [x] ! &\\1.pdf\" \"dump_data_utf8\" \"output\" \"-\" \"dont_ask\"\r\nInput preflight 1 exit: 0; elapsed: 1 ms; PID: 12345\r\nInput preflight 1 started: True; timed out: False; cancelled: False; succeeded: True\r\nInput preflight 1 launch error: \r\nInput preflight 1 capture error: \r\nInput preflight 1 termination error: \r\nInput preflight 1 stdout truncated: False; stderr truncated: False\r\nInput preflight 1 stdout:\r\nNumberOfPages: 1\r\nInput preflight 1 stderr:\r\nT18 controlled native warning\r\nInput preflight 2 executable: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\app\\pdftk.exe\r\nInput preflight 2 arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\source [x] ! &\\2.pdf\" \"dump_data_utf8\" \"output\" \"-\" \"dont_ask\"\r\nInput preflight 2 exit: 0; elapsed: 1 ms; PID: 12345\r\nInput preflight 2 started: True; timed out: False; cancelled: False; succeeded: True\r\nInput preflight 2 launch error: \r\nInput preflight 2 capture error: \r\nInput preflight 2 termination error: \r\nInput preflight 2 stdout truncated: False; stderr truncated: False\r\nInput preflight 2 stdout:\r\nNumberOfPages: 1\r\nInput preflight 2 stderr:\r\nT18 controlled native warning\r\nInput 1 pages: 1\r\nInput 2 pages: 1\r\nExpected page total: 2\r\nPrivate staging: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\output [x] ! &\\.WinPDFMerge_0aa2cbea420f461a970255420562f2c5.tmp\r\nStage: Master processing; elapsed: 1.518 s\r\nPDFtk executable: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\app\\pdftk.exe\r\nPDFtk arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\source [x] ! &\\1.pdf\" \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\source [x] ! &\\2.pdf\" \"cat\" \"output\" \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\output [x] ! &\\.WinPDFMerge_0aa2cbea420f461a970255420562f2c5.tmp\\master.pdf\" \"compress\" \"dont_ask\"\r\nPDFtk exit: 0; elapsed: 1 ms; PID: 12345\r\nPDFtk started: True; timed out: False; cancelled: False; succeeded: True\r\nPDFtk launch error: \r\nPDFtk capture error: \r\nPDFtk termination error: \r\nPDFtk stdout truncated: False; stderr truncated: False\r\nPDFtk stdout:\r\nT18 controlled merge stdout\r\nPDFtk stderr:\r\nT18 controlled native warning\r\nMaster validation executable: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\app\\pdftk.exe\r\nMaster validation arguments: \"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\output [x] ! &\\.WinPDFMerge_0aa2cbea420f461a970255420562f2c5.tmp\\master.pdf\" \"dump_data_utf8\" \"output\" \"-\" \"dont_ask\"\r\nMaster validation exit: 0; elapsed: 1 ms; PID: 12345\r\nMaster validation started: True; timed out: False; cancelled: False; succeeded: True\r\nMaster validation launch error: \r\nMaster validation capture error: \r\nMaster validation termination error: \r\nMaster validation stdout truncated: False; stderr truncated: False\r\nMaster validation stdout:\r\nNumberOfPages: 2\r\nMaster validation stderr:\r\nT18 controlled native warning\r\nMaster validation OK: 2 expected pages inspected. Merged master published: <REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202503_12d9937282244197.pdf\r\nStage: Summary; elapsed: 1.773 s\r\n"}],"Finals":[{"Path":"<REPO>\\tests\\.work\\T18-diagnostics\\7c091168fb7147afa74fe486a758e1dd\\acc85f6884424405a395a05d1340c4bf\\output [x] ! &\\WinPDFMerge_source [x] ! &_20261009_202503_12d9937282244197.pdf","Bytes":1786,"SHA256":"ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109"}],"StdoutSHA256":"bed9d8f455e9e3d3a3e740a4a323359c448ca18faaad252ea33059faa41115b5","StderrSHA256":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"}]
+Diagnostic unit receipts: <REPO>\tests\.work\T18-diagnostics\7c091168fb7147afa74fe486a758e1dd\diagnostic-unit-observations.json
+Tests completed in 26.42s
+Tests Passed: 36, Failed: 0, Skipped: 0, Inconclusive: 0, NotRun: 0
+{
+  "observed_at_utc": "2026-10-09T18:25:05.5978548Z",
+  "started_at_utc": "2026-10-09T18:24:38.1407170Z",
+  "commit_under_test": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+  "dirty_worktree": false,
+  "source_start": {
+    "commit": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+    "status": [],
+    "sources": [
+      {
+        "path": "CHANGELOG.md",
+        "sha256": "f94dd9b5babc6ded3b44ae61f7f5afaffd9a27f79f9f9dddb173c3c4a9015401"
+      },
+      {
+        "path": "docs/codex/PACKAGE_CONTRACT.json",
+        "sha256": "3a729a4fcdbfcce765e41cb3eea71d4be521915b545e788820dae93786b2cc60"
+      },
+      {
+        "path": "docs/COMPATIBILITY.md",
+        "sha256": "a1eee1febba7a918e066e786f40f2d25bffa711b95d3f31bc4801fd252553adc"
+      },
+      {
+        "path": "docs/DEPENDENCIES.md",
+        "sha256": "9e7ea2d7e00ed467f9bf1429d29f6420fed267ecb997444034ad193bdfb34f40"
+      },
+      {
+        "path": "docs/DEVELOPMENT.md",
+        "sha256": "186fa634ee2bc9f625b56b3d8e07166de4319c4b4b635abef340707fe85206d2"
+      },
+      {
+        "path": "docs/EMAIL_PRESETS.md",
+        "sha256": "8eac3bc343ba4de9d419b15572d259d98c35fb8e06b9fddd727f0d34405fc359"
+      },
+      {
+        "path": "docs/PDF_LIMITATIONS.md",
+        "sha256": "a22cde1a0b1628d7b84dcbea481c40c12014712903f7b4a0806389e2c3326efa"
+      },
+      {
+        "path": "docs/RELEASE_NOTES_v1.0.0.md",
+        "sha256": "33f68f89ab70d95cabaad40961a5cb2d1f1c55eb40e35e7e2c85fbc226baef34"
+      },
+      {
+        "path": "docs/TROUBLESHOOTING.md",
+        "sha256": "7833d442fb6bec5320742090e067cba631efa79c869ab116da497c33414070d1"
+      },
+      {
+        "path": "docs/USAGE.md",
+        "sha256": "5f58914ebd7f0b1b37d54ba2999d1f6b9d93c214c0bdeed8c6b6ee98d218867a"
+      },
+      {
+        "path": "LICENSE",
+        "sha256": "714ffa7a21614e637d7dbb17a2e86e4575d7ecd2b6d36b5b67ab3fdcc4193477"
+      },
+      {
+        "path": "PSScriptAnalyzerSettings.psd1",
+        "sha256": "93c946f5fca800175f74ae00762264525305889e87a639dffebf3990c02561de"
+      },
+      {
+        "path": "README.md",
+        "sha256": "6fb3bfa326c215ef99f152309a12768c967527782e796f60983f9f9f2005a097"
+      },
+      {
+        "path": "release-files.json",
+        "sha256": "c116a790f17fac692209ab45fb07f2eb56a52a39aecaa711089dc34585566cb5"
+      },
+      {
+        "path": "SECURITY.md",
+        "sha256": "2d45ca9525c780409938c027b019693204014f1d565816a583689c7e31b880e8"
+      },
+      {
+        "path": "src/WinPDFMerge.Helpers.ps1",
+        "sha256": "1dbcc362f72a260792b81831560b97e83dc121b43e001d6ee42c2b9f00cc7435"
+      },
+      {
+        "path": "tests/ci-dependencies.json",
+        "sha256": "685f514090f52e653ab65c193e32e5846449de4cab2f00ad13afa4115e3605b6"
+      },
+      {
+        "path": "tests/cli/Parameters.Native.Tests.ps1",
+        "sha256": "dbe31b3a843863b90891a2cd7129f3d66ea6c258674f90dd3c79c4ee2a699df9"
+      },
+      {
+        "path": "tests/cli/Parameters.Tests.ps1",
+        "sha256": "7bad300a821a7815d1db0ee625ad73310e3d58c0db8238e2a4f7eb59cb7ab7a3"
+      },
+      {
+        "path": "tests/CorpusSafetySupport.ps1",
+        "sha256": "4168396c70f5032fba462a40548143d0487ff4d5abfae8088af4eeae3f68776c"
+      },
+      {
+        "path": "tests/dependencies/Dependencies.Entry.Tests.ps1",
+        "sha256": "76402f16c6e044f4f67e2c99431d080a65f5e8bac8cb25144bdd42e51657ed30"
+      },
+      {
+        "path": "tests/dependencies/VersionProbeFixture.cs",
+        "sha256": "5e58c6f6a05c87a52f729540eef8db299774f21fd2edc780d505381945641418"
+      },
+      {
+        "path": "tests/faults/FaultIO.Tests.ps1",
+        "sha256": "d1c86326fb8d9600c6f135370d551746c5b0ad0c2125a2f36891efb1ceeeb053"
+      },
+      {
+        "path": "tests/faults/FaultRecovery.Native.Tests.ps1",
+        "sha256": "f79ea985f34cc58b876404aa326ac83e03dd78953ccae165eedc1f4615842b18"
+      },
+      {
+        "path": "tests/filesafety/Destination.Native.Tests.ps1",
+        "sha256": "b6ccb08fe94eee3f1e923b7d9c2ccd522f5bc51a76420af18ab282fc6c8bc55a"
+      },
+      {
+        "path": "tests/filesafety/Staging.Native.Tests.ps1",
+        "sha256": "8291b51d9ed904611154604308084ab60b848ba3ef62f57e440409444ebbcc52"
+      },
+      {
+        "path": "tests/fixtures/corpus.json",
+        "sha256": "71b57b3032b61c34a0ee9accaf9f3054f0f00a6f63d89f11b05a2584a4472d89"
+      },
+      {
+        "path": "tests/fixtures/features/generate_features.py",
+        "sha256": "a6c4146fba847ccb4c961c11277456503bed61dc3db3672cc9a0fb2aebfddbd8"
+      },
+      {
+        "path": "tests/fixtures/features/manifest.json",
+        "sha256": "73b1c8cd478f8f8e709005550f42a7d9177ab71dcbb738ba2614edc37b1dc846"
+      },
+      {
+        "path": "tests/fixtures/numbered/1.pdf",
+        "sha256": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109"
+      },
+      {
+        "path": "tests/fixtures/numbered/10.pdf",
+        "sha256": "9fa79c41feb7be692b100bc0fe44ed063029e0955900d3bb2f8552a10afb6aaa"
+      },
+      {
+        "path": "tests/fixtures/numbered/2.pdf",
+        "sha256": "7821d0ff4c3d655511e4421559d317013a64356a370d7b07a47079e5f02ad901"
+      },
+      {
+        "path": "tests/fixtures/numbered/manifest.json",
+        "sha256": "62cbc4b3a86464693c3568be9b0ef487212abd7fc560f08320739b5a2aaa810f"
+      },
+      {
+        "path": "tests/fixtures/presets/generate_presets.py",
+        "sha256": "1aaabe651bd4d468b09e617607b1f276d3a894b67e15081d380cc45e91a62db6"
+      },
+      {
+        "path": "tests/fixtures/presets/manifest.json",
+        "sha256": "383ec07bec823f131ab86cf07de2ffb96e10803ad4f2f4997ba834835ee01e1f"
+      },
+      {
+        "path": "tests/fixtures/README.md",
+        "sha256": "6e8c8f8217a118f17ba423d2f7284e478772ca93da186eac6a243700b3140eef"
+      },
+      {
+        "path": "tests/help/Diagnostics.Native.Tests.ps1",
+        "sha256": "89e1b68e0a239b07aa86925b72cdda2461bacb93ac27d3ab30f320408392eb47"
+      },
+      {
+        "path": "tests/help/Diagnostics.Tests.ps1",
+        "sha256": "5b42fc444c621d42a0ea15278e75711440d2a11ba7934075d313c101832268fc"
+      },
+      {
+        "path": "tests/help/PreservationDocs.Tests.ps1",
+        "sha256": "fa31f78ee8ea172bfdebac839a3ae9a626fc508b71f02d5151ad1f30a0a85864"
+      },
+      {
+        "path": "tests/help/PublicDocs.Tests.ps1",
+        "sha256": "f05707580d5ec4a0486ed607e86acb47cf4c123ddf00e121c7c9fa2bbf609d5a"
+      },
+      {
+        "path": "tests/help/Version.Tests.ps1",
+        "sha256": "98f32959b47a167e3351ec4103e2fc27b6189c44a01ffba2f74ef5edbe82dae3"
+      },
+      {
+        "path": "tests/launcher/Launcher.Native.Tests.ps1",
+        "sha256": "61bbe9e2d927c18eaa7265dae000f621f5570bf9d3743c8c1528d2fea7f4195e"
+      },
+      {
+        "path": "tests/launcher/Launcher.Tests.ps1",
+        "sha256": "94becd084a9013b2b6b5be97139ac3b1848081047021cb8b8fb55263282142d1"
+      },
+      {
+        "path": "tests/launcher/Receiver.ps1",
+        "sha256": "b1ddadbe8034a595f23242b56404aec12ac20051519d5ef4f8a9893e320ec3cc"
+      },
+      {
+        "path": "tests/launcher/TestSupport.ps1",
+        "sha256": "4249a55083b88629edac14b1cd82f87f35f77753f4870a21923cb4198c772a65"
+      },
+      {
+        "path": "tests/native/FakeNative.cs",
+        "sha256": "1f124bad206540a41a511462d2761cb5fe5f863cf344cd7235b09e71212b5036"
+      },
+      {
+        "path": "tests/native/NativeRunner.Tests.ps1",
+        "sha256": "2706360b442c74e527a8fd54f6a5efffbca29f60a1791fb6735cba4b75b0a902"
+      },
+      {
+        "path": "tests/native/ToolInvocation.Tests.ps1",
+        "sha256": "4e64fd678a656fa6b3160a554d3a0f0e5cc2a96978f8a064b76fa21bae808a2a"
+      },
+      {
+        "path": "tests/package/candidate_smoke.py",
+        "sha256": "b563eca14a898159763c245e2c8a275c8b1a7f4968e28bcad49c352a771a502f"
+      },
+      {
+        "path": "tests/package/Package.Tests.ps1",
+        "sha256": "8e758a8b4d3bc4d87a077efab119f5f0b94f9fb8f682e82f54f7deb99557ee67"
+      },
+      {
+        "path": "tests/package/PackageSupport.ps1",
+        "sha256": "22fcb0d0e1ff113ed76e41d2ea6fb45565f5e4df3e4c0a0eb77b1656158d8ba8"
+      },
+      {
+        "path": "tests/package/test_candidate_smoke.py",
+        "sha256": "6c771c0381ae81406f6bb782141f465acc8a0b8f715166c31510cc3605b40a8c"
+      },
+      {
+        "path": "tests/package/test_capture_labels.py",
+        "sha256": "f944e75f7419418fb921b5d98f11fc8be2cfa5b39e718cd3424f43eec3e02985"
+      },
+      {
+        "path": "tests/pdf/CiSmoke.Native.Tests.ps1",
+        "sha256": "299007a580910622876aeb6de96a4571f7a38ba99fa1d53db56c63390e65ba9b"
+      },
+      {
+        "path": "tests/pdf/CorpusSafety.Native.Tests.ps1",
+        "sha256": "49f430d05a38f873a0794780ccd68285e573e09899c1b9c5f9584dcff771862d"
+      },
+      {
+        "path": "tests/pdf/EmailOutcome.Native.Tests.ps1",
+        "sha256": "bb7bbe50db77fd3bee1833485181e3b758639065c10625fb918df5eab6caeb1b"
+      },
+      {
+        "path": "tests/pdf/Fixture.Native.Tests.ps1",
+        "sha256": "6191900d9499b10cae113f336d298eed2720bc6814d5c7a8489bd597cafae8f1"
+      },
+      {
+        "path": "tests/pdf/InputPreflight.Native.Tests.ps1",
+        "sha256": "f9be7d95e4113a5f8559127e4a82c33c80faf8e8d712cd88708ffb764b2f4f2a"
+      },
+      {
+        "path": "tests/pdf/MasterValidation.Native.Tests.ps1",
+        "sha256": "19fd9161e0c074943c01049984d72a93565e0f69b1a08f14a9eaa6aaa9370080"
+      },
+      {
+        "path": "tests/pdf/NativeAcceptance.Native.Tests.ps1",
+        "sha256": "fb387749c5d4319175e8a14fceb878a313fcdb91b55428ddff0426927b62e25c"
+      },
+      {
+        "path": "tests/pdf/Preservation.Native.Tests.ps1",
+        "sha256": "8ac63feba7baf828a02764bfd9a0972ae2e7809578c43054f084c7e1a33ea264"
+      },
+      {
+        "path": "tests/pdf/SizeReporting.Native.Tests.ps1",
+        "sha256": "864195172a053611eb55ac749c2b844369ec08af1d8163313abc5c88d1f72681"
+      },
+      {
+        "path": "tests/pdf/SizeReporting.Tests.ps1",
+        "sha256": "b483404583d3093333031e1799d36f39adef5a9b7061fef88b19970d12690ce7"
+      },
+      {
+        "path": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+        "sha256": "e5ea266524f8a6537dff8bc4a89ea87032d1b80bd2ee58d8d870aa511bfb4174"
+      },
+      {
+        "path": "tests/pdf/ToolPaths.Native.Tests.ps1",
+        "sha256": "3f6a6a8d7a2096976bff9b11e8d9bdf9fa1b782cdac49f064eff88641357d027"
+      },
+      {
+        "path": "tests/static/StaticChecks.Tests.ps1",
+        "sha256": "a4765fd019f53f39a5560e4d81d8811074463950cdb01a0578ade8135b5d35ec"
+      },
+      {
+        "path": "tests/TestDependencies.psd1",
+        "sha256": "04dca897f5504a2d7564711b993ab486831be69e81adefede136d7aa9f68dbbb"
+      },
+      {
+        "path": "tests/TestSupport.ps1",
+        "sha256": "f02d2b28444aeb6ee208d8f270d474a16e7edea26e2c92f7bdb10bdb997421a2"
+      },
+      {
+        "path": "tests/unit/CiDependencies.Tests.ps1",
+        "sha256": "17c6d2f88b3b738a35f604426ec607eda4eec3f7eeb6035d5bd7478cdbb1c14b"
+      },
+      {
+        "path": "tests/unit/CiReportSupport.Tests.ps1",
+        "sha256": "4c4c6c6cb6ac49d8f28fcd99bbd6756692c3b8be393572898bff98ba95199905"
+      },
+      {
+        "path": "tests/unit/CiRunSupport.Tests.ps1",
+        "sha256": "e12ff7d3a606bdafef81cd3c18f9851a3218f4898c886ca7d0d8e3e594ce0425"
+      },
+      {
+        "path": "tests/unit/CorpusSafetySupport.Tests.ps1",
+        "sha256": "bf82f6d895b37156aa69ebe4907d6c64e62d42854bcebd1be994b06cb7ae3a21"
+      },
+      {
+        "path": "tests/unit/Dependencies.Tests.ps1",
+        "sha256": "8e6153c3d7eaccfe06161a043e707654c921a047ed4cdbe46573f0ade96c949e"
+      },
+      {
+        "path": "tests/unit/Destination.Tests.ps1",
+        "sha256": "504b334c72a73754c3c41f11811703e76c6a48b1ab7844ba2b7f83adb4dc3747"
+      },
+      {
+        "path": "tests/unit/EmailOutcome.Tests.ps1",
+        "sha256": "88fe4272b559c140284e80040dd065ef04c2b941481e38a29882a088b7a3d5cf"
+      },
+      {
+        "path": "tests/unit/FakeNative.Tests.ps1",
+        "sha256": "4cb5fa831a99e28d34617008f65364e3c11ed8db925066daf8ba1fd58c4f49a2"
+      },
+      {
+        "path": "tests/unit/FaultMatrix.Tests.ps1",
+        "sha256": "32159aeddeed9b2c7a55f2779533aa49244602d8585bd44280c94bcc5e8513d3"
+      },
+      {
+        "path": "tests/unit/Helpers.Tests.ps1",
+        "sha256": "ae54da066ab871a957b4182815a9ab29120821eec1d88a3cbc3616d499a3d36e"
+      },
+      {
+        "path": "tests/unit/InputPreflight.Tests.ps1",
+        "sha256": "74a1526f57d17c792fd7324ccd00baa8cd7145c1c8056d2b875502d8bdb5e162"
+      },
+      {
+        "path": "tests/unit/MasterValidation.Tests.ps1",
+        "sha256": "cdec06dad50436bb8eba8abb6a64208ad2972028ba52551a198738f480bf7ef4"
+      },
+      {
+        "path": "tests/unit/NativeCommand.Tests.ps1",
+        "sha256": "ccaf2d25abe827e36964b1ea369094d7b8516d8109a98034812ce29e11429bc9"
+      },
+      {
+        "path": "tests/unit/Ordering.Tests.ps1",
+        "sha256": "30da6738a7710c4da188ea11912b631d1888a1aa406b87630be3eb05f24e8721"
+      },
+      {
+        "path": "tests/unit/PdfEnvelope.Tests.ps1",
+        "sha256": "b33d041cee9171edb8ca14e16ad97d45294e15da2af4d39ecc67c552b3ddd4f6"
+      },
+      {
+        "path": "tests/unit/SourceDiscovery.Tests.ps1",
+        "sha256": "ac5af7e2037aad438ddf761f0f2512b96353bef8f00f5666f4bd743edc63fa60"
+      },
+      {
+        "path": "tests/unit/Staging.Tests.ps1",
+        "sha256": "e54002b4ad43043accbd502918daefadc21ff5840d9d37ce169841e09de255bd"
+      },
+      {
+        "path": "tests/unit/TestRunSupport.Tests.ps1",
+        "sha256": "0d229ccf531fa374abd2ebebba9c16d91443e9aa811a89600a9bc2e809bc7b1b"
+      },
+      {
+        "path": "tools/release/Build-Release.ps1",
+        "sha256": "c8ab8ad70f80a6bfa5af4ec20871009778943a301c716871e018301114519a2a"
+      },
+      {
+        "path": "tools/test/Build-FakeNative.ps1",
+        "sha256": "152fe731d2d008e460f6777179d43bbf0d04c9430a5718afeeba5246bf45be6a"
+      },
+      {
+        "path": "tools/test/CiDependencySupport.ps1",
+        "sha256": "8a2d5e28e3bcd0b9de65811b6c9a7c67b61eb4edf87f2dea238d6d524874fdcb"
+      },
+      {
+        "path": "tools/test/CiReportSupport.ps1",
+        "sha256": "157238c6f1111aa88cfd64827d77ee5385c2bfcbc4bbbcae1dcde0bfdaa3bb9a"
+      },
+      {
+        "path": "tools/test/CiRunSupport.ps1",
+        "sha256": "76c66a722d53e16c0f029a69d252cb44d7efa8ed510d7018b52343a603f3707c"
+      },
+      {
+        "path": "tools/test/corpus.py",
+        "sha256": "ac8c2e89f9e6cc340b9f338a4a2c29564efc4aa301ab53cdb54580dcaddda3a2"
+      },
+      {
+        "path": "tools/test/Destination.md",
+        "sha256": "54a7c33a99c5600ad47e16b2b8a9d969e964eaf8ee3e84febb7aac04769c3788"
+      },
+      {
+        "path": "tools/test/FakeNative.md",
+        "sha256": "3739f72a2eb798b74ed9c60e78ca0c897d2f3e2dc26554221b43c6b1cebf20c7"
+      },
+      {
+        "path": "tools/test/feature_oracle.py",
+        "sha256": "3e0a0c46204cbdadffcc687e1881ffced75d72c4fae061538fb0e4b9ed019526"
+      },
+      {
+        "path": "tools/test/fixture_oracle.py",
+        "sha256": "87132d5c19d97bc13089fe684c31812708bba80841c24fed90c9b8cc86f8a09c"
+      },
+      {
+        "path": "tools/test/generate_numbered_fixtures.py",
+        "sha256": "3a1d5386a7ca327efcae128e5f64114300df89649eedaa9b48c377f8f0979be1"
+      },
+      {
+        "path": "tools/test/generate_pdf_envelope_fixtures.py",
+        "sha256": "7eac6f773c1ee3a075de4f1c647b49f9c8c4ab5364e98432c7a185a861bfe59f"
+      },
+      {
+        "path": "tools/test/Initialize-CiDependencies.ps1",
+        "sha256": "b8be3fc28d23a4a947b5887b3e551e612dfd6783790549262f665ea3ee945105"
+      },
+      {
+        "path": "tools/test/InputPreflight.md",
+        "sha256": "8e87c1509cc3bceb2f074fa051310886a3c75cdaefdb9b2ab3d8cd2cfcf9de7d"
+      },
+      {
+        "path": "tools/test/Invoke-CiFailureProbe.ps1",
+        "sha256": "40f9e49d57e87954dd416316e9a0589df9aaafaa8d4993badf1f9a9f96221a01"
+      },
+      {
+        "path": "tools/test/Invoke-CiTests.ps1",
+        "sha256": "eb621a44f9bc7af603426a7475da42a33345fc45d157c8d1032a2cc40ca002ec"
+      },
+      {
+        "path": "tools/test/Invoke-StaticChecks.ps1",
+        "sha256": "4c5139e47ef24d8f1b842574b76a781732b3d31d95dea63d8c5a6faaa4547d05"
+      },
+      {
+        "path": "tools/test/Invoke-Tests.ps1",
+        "sha256": "27858fcb087a51b1a51b83c6a1ef09ded6826223336c9bf91fc0152a67a95e3d"
+      },
+      {
+        "path": "tools/test/NativeRunner.md",
+        "sha256": "138e12552e07f9504609075ac910a0dc6943504952ecb095ae80ac109aefb48b"
+      },
+      {
+        "path": "tools/test/README.md",
+        "sha256": "414fe5bda3e11b436e5a0eaac85eed18996b98c03477596140e4266fa084efbd"
+      },
+      {
+        "path": "tools/test/requirements-fixtures.txt",
+        "sha256": "86ec1cc3035bafd26ba3edd579c6a719356ae8353602218484c524ef4b84f181"
+      },
+      {
+        "path": "tools/test/Staging.md",
+        "sha256": "cb7797a69d7f929af3a51826ef7dd0a2df14039f870bbf618dd9ce99f46821f7"
+      },
+      {
+        "path": "tools/test/StaticChecks.md",
+        "sha256": "c2e8f7db83ea15e1038a12c0b711e7076fdd0f2d2705b23b8819a54e6b28f971"
+      },
+      {
+        "path": "tools/test/TestRunSupport.ps1",
+        "sha256": "98ff5f02b29b998069d9f457e1d0f8dd87826f5419037710236b385e09457baa"
+      },
+      {
+        "path": "tools/test/tests/test_corpus.py",
+        "sha256": "3f1ae084c7ca2b4ada8678822581e0d2bca0e90fc6827a174f6a4ec52e4497a5"
+      },
+      {
+        "path": "tools/test/tests/test_feature_oracle.py",
+        "sha256": "3477ab506c3a171abe2cf478e00493a934f91685b486724f550b82179effcc55"
+      },
+      {
+        "path": "tools/test/tests/test_fixture_checkout.py",
+        "sha256": "2b21ebfdc9647b80fbcf0e7a5bd8e48d77e21f079bbb323daad4ae3ebb1a499e"
+      },
+      {
+        "path": "tools/test/tests/test_fixture_oracle.py",
+        "sha256": "7522de6248fdd694ce3274e0e5679e7a3b464775c24087eb7e5ce01875e91e44"
+      },
+      {
+        "path": "VERSION",
+        "sha256": "4ca8bbd3c595ee306226c6996b32b8d47a900217c55a7ed0cfc868ee444f34f1"
+      },
+      {
+        "path": "WinPDFMerge.bat",
+        "sha256": "288287beefea974c64d39b34266332d83112b9106c952efd8c304edfedebff83"
+      },
+      {
+        "path": "WinPDFMerge.ps1",
+        "sha256": "2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902"
+      }
+    ]
+  },
+  "source_end": {
+    "commit": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+    "status": [],
+    "sources": [
+      {
+        "path": "CHANGELOG.md",
+        "sha256": "f94dd9b5babc6ded3b44ae61f7f5afaffd9a27f79f9f9dddb173c3c4a9015401"
+      },
+      {
+        "path": "docs/codex/PACKAGE_CONTRACT.json",
+        "sha256": "3a729a4fcdbfcce765e41cb3eea71d4be521915b545e788820dae93786b2cc60"
+      },
+      {
+        "path": "docs/COMPATIBILITY.md",
+        "sha256": "a1eee1febba7a918e066e786f40f2d25bffa711b95d3f31bc4801fd252553adc"
+      },
+      {
+        "path": "docs/DEPENDENCIES.md",
+        "sha256": "9e7ea2d7e00ed467f9bf1429d29f6420fed267ecb997444034ad193bdfb34f40"
+      },
+      {
+        "path": "docs/DEVELOPMENT.md",
+        "sha256": "186fa634ee2bc9f625b56b3d8e07166de4319c4b4b635abef340707fe85206d2"
+      },
+      {
+        "path": "docs/EMAIL_PRESETS.md",
+        "sha256": "8eac3bc343ba4de9d419b15572d259d98c35fb8e06b9fddd727f0d34405fc359"
+      },
+      {
+        "path": "docs/PDF_LIMITATIONS.md",
+        "sha256": "a22cde1a0b1628d7b84dcbea481c40c12014712903f7b4a0806389e2c3326efa"
+      },
+      {
+        "path": "docs/RELEASE_NOTES_v1.0.0.md",
+        "sha256": "33f68f89ab70d95cabaad40961a5cb2d1f1c55eb40e35e7e2c85fbc226baef34"
+      },
+      {
+        "path": "docs/TROUBLESHOOTING.md",
+        "sha256": "7833d442fb6bec5320742090e067cba631efa79c869ab116da497c33414070d1"
+      },
+      {
+        "path": "docs/USAGE.md",
+        "sha256": "5f58914ebd7f0b1b37d54ba2999d1f6b9d93c214c0bdeed8c6b6ee98d218867a"
+      },
+      {
+        "path": "LICENSE",
+        "sha256": "714ffa7a21614e637d7dbb17a2e86e4575d7ecd2b6d36b5b67ab3fdcc4193477"
+      },
+      {
+        "path": "PSScriptAnalyzerSettings.psd1",
+        "sha256": "93c946f5fca800175f74ae00762264525305889e87a639dffebf3990c02561de"
+      },
+      {
+        "path": "README.md",
+        "sha256": "6fb3bfa326c215ef99f152309a12768c967527782e796f60983f9f9f2005a097"
+      },
+      {
+        "path": "release-files.json",
+        "sha256": "c116a790f17fac692209ab45fb07f2eb56a52a39aecaa711089dc34585566cb5"
+      },
+      {
+        "path": "SECURITY.md",
+        "sha256": "2d45ca9525c780409938c027b019693204014f1d565816a583689c7e31b880e8"
+      },
+      {
+        "path": "src/WinPDFMerge.Helpers.ps1",
+        "sha256": "1dbcc362f72a260792b81831560b97e83dc121b43e001d6ee42c2b9f00cc7435"
+      },
+      {
+        "path": "tests/ci-dependencies.json",
+        "sha256": "685f514090f52e653ab65c193e32e5846449de4cab2f00ad13afa4115e3605b6"
+      },
+      {
+        "path": "tests/cli/Parameters.Native.Tests.ps1",
+        "sha256": "dbe31b3a843863b90891a2cd7129f3d66ea6c258674f90dd3c79c4ee2a699df9"
+      },
+      {
+        "path": "tests/cli/Parameters.Tests.ps1",
+        "sha256": "7bad300a821a7815d1db0ee625ad73310e3d58c0db8238e2a4f7eb59cb7ab7a3"
+      },
+      {
+        "path": "tests/CorpusSafetySupport.ps1",
+        "sha256": "4168396c70f5032fba462a40548143d0487ff4d5abfae8088af4eeae3f68776c"
+      },
+      {
+        "path": "tests/dependencies/Dependencies.Entry.Tests.ps1",
+        "sha256": "76402f16c6e044f4f67e2c99431d080a65f5e8bac8cb25144bdd42e51657ed30"
+      },
+      {
+        "path": "tests/dependencies/VersionProbeFixture.cs",
+        "sha256": "5e58c6f6a05c87a52f729540eef8db299774f21fd2edc780d505381945641418"
+      },
+      {
+        "path": "tests/faults/FaultIO.Tests.ps1",
+        "sha256": "d1c86326fb8d9600c6f135370d551746c5b0ad0c2125a2f36891efb1ceeeb053"
+      },
+      {
+        "path": "tests/faults/FaultRecovery.Native.Tests.ps1",
+        "sha256": "f79ea985f34cc58b876404aa326ac83e03dd78953ccae165eedc1f4615842b18"
+      },
+      {
+        "path": "tests/filesafety/Destination.Native.Tests.ps1",
+        "sha256": "b6ccb08fe94eee3f1e923b7d9c2ccd522f5bc51a76420af18ab282fc6c8bc55a"
+      },
+      {
+        "path": "tests/filesafety/Staging.Native.Tests.ps1",
+        "sha256": "8291b51d9ed904611154604308084ab60b848ba3ef62f57e440409444ebbcc52"
+      },
+      {
+        "path": "tests/fixtures/corpus.json",
+        "sha256": "71b57b3032b61c34a0ee9accaf9f3054f0f00a6f63d89f11b05a2584a4472d89"
+      },
+      {
+        "path": "tests/fixtures/features/generate_features.py",
+        "sha256": "a6c4146fba847ccb4c961c11277456503bed61dc3db3672cc9a0fb2aebfddbd8"
+      },
+      {
+        "path": "tests/fixtures/features/manifest.json",
+        "sha256": "73b1c8cd478f8f8e709005550f42a7d9177ab71dcbb738ba2614edc37b1dc846"
+      },
+      {
+        "path": "tests/fixtures/numbered/1.pdf",
+        "sha256": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109"
+      },
+      {
+        "path": "tests/fixtures/numbered/10.pdf",
+        "sha256": "9fa79c41feb7be692b100bc0fe44ed063029e0955900d3bb2f8552a10afb6aaa"
+      },
+      {
+        "path": "tests/fixtures/numbered/2.pdf",
+        "sha256": "7821d0ff4c3d655511e4421559d317013a64356a370d7b07a47079e5f02ad901"
+      },
+      {
+        "path": "tests/fixtures/numbered/manifest.json",
+        "sha256": "62cbc4b3a86464693c3568be9b0ef487212abd7fc560f08320739b5a2aaa810f"
+      },
+      {
+        "path": "tests/fixtures/presets/generate_presets.py",
+        "sha256": "1aaabe651bd4d468b09e617607b1f276d3a894b67e15081d380cc45e91a62db6"
+      },
+      {
+        "path": "tests/fixtures/presets/manifest.json",
+        "sha256": "383ec07bec823f131ab86cf07de2ffb96e10803ad4f2f4997ba834835ee01e1f"
+      },
+      {
+        "path": "tests/fixtures/README.md",
+        "sha256": "6e8c8f8217a118f17ba423d2f7284e478772ca93da186eac6a243700b3140eef"
+      },
+      {
+        "path": "tests/help/Diagnostics.Native.Tests.ps1",
+        "sha256": "89e1b68e0a239b07aa86925b72cdda2461bacb93ac27d3ab30f320408392eb47"
+      },
+      {
+        "path": "tests/help/Diagnostics.Tests.ps1",
+        "sha256": "5b42fc444c621d42a0ea15278e75711440d2a11ba7934075d313c101832268fc"
+      },
+      {
+        "path": "tests/help/PreservationDocs.Tests.ps1",
+        "sha256": "fa31f78ee8ea172bfdebac839a3ae9a626fc508b71f02d5151ad1f30a0a85864"
+      },
+      {
+        "path": "tests/help/PublicDocs.Tests.ps1",
+        "sha256": "f05707580d5ec4a0486ed607e86acb47cf4c123ddf00e121c7c9fa2bbf609d5a"
+      },
+      {
+        "path": "tests/help/Version.Tests.ps1",
+        "sha256": "98f32959b47a167e3351ec4103e2fc27b6189c44a01ffba2f74ef5edbe82dae3"
+      },
+      {
+        "path": "tests/launcher/Launcher.Native.Tests.ps1",
+        "sha256": "61bbe9e2d927c18eaa7265dae000f621f5570bf9d3743c8c1528d2fea7f4195e"
+      },
+      {
+        "path": "tests/launcher/Launcher.Tests.ps1",
+        "sha256": "94becd084a9013b2b6b5be97139ac3b1848081047021cb8b8fb55263282142d1"
+      },
+      {
+        "path": "tests/launcher/Receiver.ps1",
+        "sha256": "b1ddadbe8034a595f23242b56404aec12ac20051519d5ef4f8a9893e320ec3cc"
+      },
+      {
+        "path": "tests/launcher/TestSupport.ps1",
+        "sha256": "4249a55083b88629edac14b1cd82f87f35f77753f4870a21923cb4198c772a65"
+      },
+      {
+        "path": "tests/native/FakeNative.cs",
+        "sha256": "1f124bad206540a41a511462d2761cb5fe5f863cf344cd7235b09e71212b5036"
+      },
+      {
+        "path": "tests/native/NativeRunner.Tests.ps1",
+        "sha256": "2706360b442c74e527a8fd54f6a5efffbca29f60a1791fb6735cba4b75b0a902"
+      },
+      {
+        "path": "tests/native/ToolInvocation.Tests.ps1",
+        "sha256": "4e64fd678a656fa6b3160a554d3a0f0e5cc2a96978f8a064b76fa21bae808a2a"
+      },
+      {
+        "path": "tests/package/candidate_smoke.py",
+        "sha256": "b563eca14a898159763c245e2c8a275c8b1a7f4968e28bcad49c352a771a502f"
+      },
+      {
+        "path": "tests/package/Package.Tests.ps1",
+        "sha256": "8e758a8b4d3bc4d87a077efab119f5f0b94f9fb8f682e82f54f7deb99557ee67"
+      },
+      {
+        "path": "tests/package/PackageSupport.ps1",
+        "sha256": "22fcb0d0e1ff113ed76e41d2ea6fb45565f5e4df3e4c0a0eb77b1656158d8ba8"
+      },
+      {
+        "path": "tests/package/test_candidate_smoke.py",
+        "sha256": "6c771c0381ae81406f6bb782141f465acc8a0b8f715166c31510cc3605b40a8c"
+      },
+      {
+        "path": "tests/package/test_capture_labels.py",
+        "sha256": "f944e75f7419418fb921b5d98f11fc8be2cfa5b39e718cd3424f43eec3e02985"
+      },
+      {
+        "path": "tests/pdf/CiSmoke.Native.Tests.ps1",
+        "sha256": "299007a580910622876aeb6de96a4571f7a38ba99fa1d53db56c63390e65ba9b"
+      },
+      {
+        "path": "tests/pdf/CorpusSafety.Native.Tests.ps1",
+        "sha256": "49f430d05a38f873a0794780ccd68285e573e09899c1b9c5f9584dcff771862d"
+      },
+      {
+        "path": "tests/pdf/EmailOutcome.Native.Tests.ps1",
+        "sha256": "bb7bbe50db77fd3bee1833485181e3b758639065c10625fb918df5eab6caeb1b"
+      },
+      {
+        "path": "tests/pdf/Fixture.Native.Tests.ps1",
+        "sha256": "6191900d9499b10cae113f336d298eed2720bc6814d5c7a8489bd597cafae8f1"
+      },
+      {
+        "path": "tests/pdf/InputPreflight.Native.Tests.ps1",
+        "sha256": "f9be7d95e4113a5f8559127e4a82c33c80faf8e8d712cd88708ffb764b2f4f2a"
+      },
+      {
+        "path": "tests/pdf/MasterValidation.Native.Tests.ps1",
+        "sha256": "19fd9161e0c074943c01049984d72a93565e0f69b1a08f14a9eaa6aaa9370080"
+      },
+      {
+        "path": "tests/pdf/NativeAcceptance.Native.Tests.ps1",
+        "sha256": "fb387749c5d4319175e8a14fceb878a313fcdb91b55428ddff0426927b62e25c"
+      },
+      {
+        "path": "tests/pdf/Preservation.Native.Tests.ps1",
+        "sha256": "8ac63feba7baf828a02764bfd9a0972ae2e7809578c43054f084c7e1a33ea264"
+      },
+      {
+        "path": "tests/pdf/SizeReporting.Native.Tests.ps1",
+        "sha256": "864195172a053611eb55ac749c2b844369ec08af1d8163313abc5c88d1f72681"
+      },
+      {
+        "path": "tests/pdf/SizeReporting.Tests.ps1",
+        "sha256": "b483404583d3093333031e1799d36f39adef5a9b7061fef88b19970d12690ce7"
+      },
+      {
+        "path": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+        "sha256": "e5ea266524f8a6537dff8bc4a89ea87032d1b80bd2ee58d8d870aa511bfb4174"
+      },
+      {
+        "path": "tests/pdf/ToolPaths.Native.Tests.ps1",
+        "sha256": "3f6a6a8d7a2096976bff9b11e8d9bdf9fa1b782cdac49f064eff88641357d027"
+      },
+      {
+        "path": "tests/static/StaticChecks.Tests.ps1",
+        "sha256": "a4765fd019f53f39a5560e4d81d8811074463950cdb01a0578ade8135b5d35ec"
+      },
+      {
+        "path": "tests/TestDependencies.psd1",
+        "sha256": "04dca897f5504a2d7564711b993ab486831be69e81adefede136d7aa9f68dbbb"
+      },
+      {
+        "path": "tests/TestSupport.ps1",
+        "sha256": "f02d2b28444aeb6ee208d8f270d474a16e7edea26e2c92f7bdb10bdb997421a2"
+      },
+      {
+        "path": "tests/unit/CiDependencies.Tests.ps1",
+        "sha256": "17c6d2f88b3b738a35f604426ec607eda4eec3f7eeb6035d5bd7478cdbb1c14b"
+      },
+      {
+        "path": "tests/unit/CiReportSupport.Tests.ps1",
+        "sha256": "4c4c6c6cb6ac49d8f28fcd99bbd6756692c3b8be393572898bff98ba95199905"
+      },
+      {
+        "path": "tests/unit/CiRunSupport.Tests.ps1",
+        "sha256": "e12ff7d3a606bdafef81cd3c18f9851a3218f4898c886ca7d0d8e3e594ce0425"
+      },
+      {
+        "path": "tests/unit/CorpusSafetySupport.Tests.ps1",
+        "sha256": "bf82f6d895b37156aa69ebe4907d6c64e62d42854bcebd1be994b06cb7ae3a21"
+      },
+      {
+        "path": "tests/unit/Dependencies.Tests.ps1",
+        "sha256": "8e6153c3d7eaccfe06161a043e707654c921a047ed4cdbe46573f0ade96c949e"
+      },
+      {
+        "path": "tests/unit/Destination.Tests.ps1",
+        "sha256": "504b334c72a73754c3c41f11811703e76c6a48b1ab7844ba2b7f83adb4dc3747"
+      },
+      {
+        "path": "tests/unit/EmailOutcome.Tests.ps1",
+        "sha256": "88fe4272b559c140284e80040dd065ef04c2b941481e38a29882a088b7a3d5cf"
+      },
+      {
+        "path": "tests/unit/FakeNative.Tests.ps1",
+        "sha256": "4cb5fa831a99e28d34617008f65364e3c11ed8db925066daf8ba1fd58c4f49a2"
+      },
+      {
+        "path": "tests/unit/FaultMatrix.Tests.ps1",
+        "sha256": "32159aeddeed9b2c7a55f2779533aa49244602d8585bd44280c94bcc5e8513d3"
+      },
+      {
+        "path": "tests/unit/Helpers.Tests.ps1",
+        "sha256": "ae54da066ab871a957b4182815a9ab29120821eec1d88a3cbc3616d499a3d36e"
+      },
+      {
+        "path": "tests/unit/InputPreflight.Tests.ps1",
+        "sha256": "74a1526f57d17c792fd7324ccd00baa8cd7145c1c8056d2b875502d8bdb5e162"
+      },
+      {
+        "path": "tests/unit/MasterValidation.Tests.ps1",
+        "sha256": "cdec06dad50436bb8eba8abb6a64208ad2972028ba52551a198738f480bf7ef4"
+      },
+      {
+        "path": "tests/unit/NativeCommand.Tests.ps1",
+        "sha256": "ccaf2d25abe827e36964b1ea369094d7b8516d8109a98034812ce29e11429bc9"
+      },
+      {
+        "path": "tests/unit/Ordering.Tests.ps1",
+        "sha256": "30da6738a7710c4da188ea11912b631d1888a1aa406b87630be3eb05f24e8721"
+      },
+      {
+        "path": "tests/unit/PdfEnvelope.Tests.ps1",
+        "sha256": "b33d041cee9171edb8ca14e16ad97d45294e15da2af4d39ecc67c552b3ddd4f6"
+      },
+      {
+        "path": "tests/unit/SourceDiscovery.Tests.ps1",
+        "sha256": "ac5af7e2037aad438ddf761f0f2512b96353bef8f00f5666f4bd743edc63fa60"
+      },
+      {
+        "path": "tests/unit/Staging.Tests.ps1",
+        "sha256": "e54002b4ad43043accbd502918daefadc21ff5840d9d37ce169841e09de255bd"
+      },
+      {
+        "path": "tests/unit/TestRunSupport.Tests.ps1",
+        "sha256": "0d229ccf531fa374abd2ebebba9c16d91443e9aa811a89600a9bc2e809bc7b1b"
+      },
+      {
+        "path": "tools/release/Build-Release.ps1",
+        "sha256": "c8ab8ad70f80a6bfa5af4ec20871009778943a301c716871e018301114519a2a"
+      },
+      {
+        "path": "tools/test/Build-FakeNative.ps1",
+        "sha256": "152fe731d2d008e460f6777179d43bbf0d04c9430a5718afeeba5246bf45be6a"
+      },
+      {
+        "path": "tools/test/CiDependencySupport.ps1",
+        "sha256": "8a2d5e28e3bcd0b9de65811b6c9a7c67b61eb4edf87f2dea238d6d524874fdcb"
+      },
+      {
+        "path": "tools/test/CiReportSupport.ps1",
+        "sha256": "157238c6f1111aa88cfd64827d77ee5385c2bfcbc4bbbcae1dcde0bfdaa3bb9a"
+      },
+      {
+        "path": "tools/test/CiRunSupport.ps1",
+        "sha256": "76c66a722d53e16c0f029a69d252cb44d7efa8ed510d7018b52343a603f3707c"
+      },
+      {
+        "path": "tools/test/corpus.py",
+        "sha256": "ac8c2e89f9e6cc340b9f338a4a2c29564efc4aa301ab53cdb54580dcaddda3a2"
+      },
+      {
+        "path": "tools/test/Destination.md",
+        "sha256": "54a7c33a99c5600ad47e16b2b8a9d969e964eaf8ee3e84febb7aac04769c3788"
+      },
+      {
+        "path": "tools/test/FakeNative.md",
+        "sha256": "3739f72a2eb798b74ed9c60e78ca0c897d2f3e2dc26554221b43c6b1cebf20c7"
+      },
+      {
+        "path": "tools/test/feature_oracle.py",
+        "sha256": "3e0a0c46204cbdadffcc687e1881ffced75d72c4fae061538fb0e4b9ed019526"
+      },
+      {
+        "path": "tools/test/fixture_oracle.py",
+        "sha256": "87132d5c19d97bc13089fe684c31812708bba80841c24fed90c9b8cc86f8a09c"
+      },
+      {
+        "path": "tools/test/generate_numbered_fixtures.py",
+        "sha256": "3a1d5386a7ca327efcae128e5f64114300df89649eedaa9b48c377f8f0979be1"
+      },
+      {
+        "path": "tools/test/generate_pdf_envelope_fixtures.py",
+        "sha256": "7eac6f773c1ee3a075de4f1c647b49f9c8c4ab5364e98432c7a185a861bfe59f"
+      },
+      {
+        "path": "tools/test/Initialize-CiDependencies.ps1",
+        "sha256": "b8be3fc28d23a4a947b5887b3e551e612dfd6783790549262f665ea3ee945105"
+      },
+      {
+        "path": "tools/test/InputPreflight.md",
+        "sha256": "8e87c1509cc3bceb2f074fa051310886a3c75cdaefdb9b2ab3d8cd2cfcf9de7d"
+      },
+      {
+        "path": "tools/test/Invoke-CiFailureProbe.ps1",
+        "sha256": "40f9e49d57e87954dd416316e9a0589df9aaafaa8d4993badf1f9a9f96221a01"
+      },
+      {
+        "path": "tools/test/Invoke-CiTests.ps1",
+        "sha256": "eb621a44f9bc7af603426a7475da42a33345fc45d157c8d1032a2cc40ca002ec"
+      },
+      {
+        "path": "tools/test/Invoke-StaticChecks.ps1",
+        "sha256": "4c5139e47ef24d8f1b842574b76a781732b3d31d95dea63d8c5a6faaa4547d05"
+      },
+      {
+        "path": "tools/test/Invoke-Tests.ps1",
+        "sha256": "27858fcb087a51b1a51b83c6a1ef09ded6826223336c9bf91fc0152a67a95e3d"
+      },
+      {
+        "path": "tools/test/NativeRunner.md",
+        "sha256": "138e12552e07f9504609075ac910a0dc6943504952ecb095ae80ac109aefb48b"
+      },
+      {
+        "path": "tools/test/README.md",
+        "sha256": "414fe5bda3e11b436e5a0eaac85eed18996b98c03477596140e4266fa084efbd"
+      },
+      {
+        "path": "tools/test/requirements-fixtures.txt",
+        "sha256": "86ec1cc3035bafd26ba3edd579c6a719356ae8353602218484c524ef4b84f181"
+      },
+      {
+        "path": "tools/test/Staging.md",
+        "sha256": "cb7797a69d7f929af3a51826ef7dd0a2df14039f870bbf618dd9ce99f46821f7"
+      },
+      {
+        "path": "tools/test/StaticChecks.md",
+        "sha256": "c2e8f7db83ea15e1038a12c0b711e7076fdd0f2d2705b23b8819a54e6b28f971"
+      },
+      {
+        "path": "tools/test/TestRunSupport.ps1",
+        "sha256": "98ff5f02b29b998069d9f457e1d0f8dd87826f5419037710236b385e09457baa"
+      },
+      {
+        "path": "tools/test/tests/test_corpus.py",
+        "sha256": "3f1ae084c7ca2b4ada8678822581e0d2bca0e90fc6827a174f6a4ec52e4497a5"
+      },
+      {
+        "path": "tools/test/tests/test_feature_oracle.py",
+        "sha256": "3477ab506c3a171abe2cf478e00493a934f91685b486724f550b82179effcc55"
+      },
+      {
+        "path": "tools/test/tests/test_fixture_checkout.py",
+        "sha256": "2b21ebfdc9647b80fbcf0e7a5bd8e48d77e21f079bbb323daad4ae3ebb1a499e"
+      },
+      {
+        "path": "tools/test/tests/test_fixture_oracle.py",
+        "sha256": "7522de6248fdd694ce3274e0e5679e7a3b464775c24087eb7e5ce01875e91e44"
+      },
+      {
+        "path": "VERSION",
+        "sha256": "4ca8bbd3c595ee306226c6996b32b8d47a900217c55a7ed0cfc868ee444f34f1"
+      },
+      {
+        "path": "WinPDFMerge.bat",
+        "sha256": "288287beefea974c64d39b34266332d83112b9106c952efd8c304edfedebff83"
+      },
+      {
+        "path": "WinPDFMerge.ps1",
+        "sha256": "2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902"
+      }
+    ]
+  },
+  "source_unchanged": true,
+  "runner_error": null,
+  "result": "pass",
+  "shell_version": "7.6.6",
+  "shell_edition": "Core",
+  "process_64_bit": true,
+  "execution_policy": "RemoteSigned",
+  "pester_version": "6.2.0",
+  "tier": "Diagnostics",
+  "evidence_class": "unit-help-stage-summary-and-controlled-probe-entry-diagnostics; no PDF-engine-support claim",
+  "passed": 36,
+  "failed": 0,
+  "failed_blocks": 0,
+  "failed_containers": 0,
+  "skipped": 0,
+  "not_run": 0,
+  "inconclusive": 0,
+  "total": 36
+}
+Reports: <REPO>\tests\.work\pester\9ffe7a1c9fab45e9b3c001dc40e0598c

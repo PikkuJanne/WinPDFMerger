@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "task": "T31",
+  "result": "pass",
+  "checks": 16,
+  "issues": [],
+  "observed_at_utc": "2026-10-09T18:49:55.263468+00:00",
+  "observed_commit": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+  "auditor_source_sha256": "543585f304337676a8250a7a3fef2ec5cd277bc7e3f5186dfaadb26d18c36826",
+  "independent_unit_source_sha256": "2f38db80ee82b67230cdf90ed5b67e41e9ace05713d2c064c1f5dbdbb441ed7f",
+  "reviewed_corrected_exporter_sha256": "2a4461854203974fa7b2a106307f02f98a0fec1754508ac7f70092f838361fa1",
+  "exporter_source_diff_sha256": "4f10f66e88aaf5e64c82d62c63b06e76463d71371706c2a4b61aa553fd855841",
+  "reviewed_corrected_exporter_result_sha256": "03fd4fa4ed8d08540143634f0358e70c68be1001f803cb8cfef69e9e8246dc76",
+  "commands": [
+    {
+      "label": "identity-unit",
+      "argv": [
+        "<USERPROFILE>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "<REPO>\\tests\\.work\\T31-public-privacy-review-v2\\test_identity_auditor.py"
+      ],
+      "start_utc": "2026-10-09T18:49:54.993489+00:00",
+      "end_utc": "2026-10-09T18:49:55.153237+00:00",
+      "exit_code": 0,
+      "streams": {
+        "stdout": {
+          "path": "identity-unit.stdout.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "path": "identity-unit.stderr.txt",
+          "bytes": 1659,
+          "sha256": "111fe9c7417c068fb734a2bb5b9d19ee05b5a90275751e24e3150225d2499330"
+        }
+      }
+    },
+    {
+      "label": "inherited-self-checks",
+      "argv": [
+        "<USERPROFILE>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "<REPO>\\tests\\.work\\T31-public-privacy-review-v2\\public-review.py",
+        "--repo",
+        ".",
+        "--self-test"
+      ],
+      "start_utc": "2026-10-09T18:49:55.153237+00:00",
+      "end_utc": "2026-10-09T18:49:55.263468+00:00",
+      "exit_code": 0,
+      "streams": {
+        "stdout": {
+          "path": "inherited-self-checks.stdout.txt",
+          "bytes": 144,
+          "sha256": "418e6d694c637f5e1e8487627bd633b6a8579de058b90aa286fd0a59f75c8038"
+        },
+        "stderr": {
+          "path": "inherited-self-checks.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    }
+  ],
+  "independent_identity_unit_tests": 11,
+  "inherited_independent_checks": 43,
+  "reviewed_exporter_regressions": 12,
+  "privacy_semantics": "Only exact declared two GitHub API receipts and four email pointers alias to <EMAIL>; every other typed key/value/order/provenance fact is retained through existing path projection. Exact raw hashes/commit/run IDs and recognized schemas are required; unknown identity remains rejected.",
+  "preserved_initial_privacy_preparation_root": "tests/.work/T31-public-privacy-review",
+  "scope": "Independent corrected exporter source/schema/recorded12regression review and auditor11synthetic/43selfchecks only; no actual public packet audit, application/native/CI or overallT31 acceptance."
+}

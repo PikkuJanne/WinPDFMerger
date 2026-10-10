@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "task": "T31",
+  "result": "pass",
+  "scope": "Synthetic projector development checks only; not application/native/CI/R2 acceptance. Null R2 is deliberately rejected.",
+  "new_application_or_native_execution": false,
+  "new_CI_execution": false,
+  "observed_at_utc": "2026-10-09T18:09:48.087649+00:00",
+  "source_sha256": {
+    "Export-T31.py": "03288f27e9def307e3fbedfee7b3a3c8eb637dfaac8369d5a81994823f1dce2c",
+    "selection.template.json": "e8dfeb66abfd5c880145f759fe25b90e358d2f1990c07ecf98f13f55e2e80146",
+    "test_exporter.py": "e6a2f24d3796243fa0e7bfdc9aba4fd9fa4f5ef3f1e56b13016b7d25afe1b927",
+    "capture-preparation.py": "fe8fa40070074edbbc8b0eaf3ef7c9185f5fdf1eba28f0a2b99025a39566c395"
+  },
+  "derived_from_accepted_T30_projector_sha256": "490dc20c20c8a63b0a528fd0238fd279011237d27e320e663064f5f52c28d8c9",
+  "commands": [
+    {
+      "label": "synthetic-tool-checks",
+      "arguments": [
+        "<USERPROFILE>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "<REPO>\\tests\\.work\\T31-export-preparation\\test_exporter.py"
+      ],
+      "expected_exit_code": 0,
+      "actual_exit_code": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "983796fbfa13dfbdb23a47f13c6f1ffde2df1dc7b4f394c21bf4a81de43391da",
+      "result": "pass"
+    },
+    {
+      "label": "unknown-R2-rejected",
+      "arguments": [
+        "<USERPROFILE>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "<REPO>\\tests\\.work\\T31-export-preparation\\Export-T31.py",
+        "--config",
+        "<REPO>\\tests\\.work\\T31-export-preparation\\selection.template.json"
+      ],
+      "expected_exit_code": 1,
+      "actual_exit_code": 1,
+      "stdout_sha256": "70eed8b75c01a6a088b0e0953158f2f79f041ab386a17e45f274cc3a8db96925",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "result": "pass"
+    }
+  ],
+  "synthetic_unittest_expected_count": 15,
+  "synthetic_unittest_actual_count": 15,
+  "tracked_public_artifacts_exported": false
+}

@@ -1,0 +1,31 @@
+test_fixture_byte_pins_survive_autocrlf_false_checkout (test_fixture_checkout.FixtureCheckoutTests.test_fixture_byte_pins_survive_autocrlf_false_checkout) ... ERROR
+test_fixture_byte_pins_survive_autocrlf_true_checkout (test_fixture_checkout.FixtureCheckoutTests.test_fixture_byte_pins_survive_autocrlf_true_checkout) ... ERROR
+
+======================================================================
+ERROR: test_fixture_byte_pins_survive_autocrlf_false_checkout (test_fixture_checkout.FixtureCheckoutTests.test_fixture_byte_pins_survive_autocrlf_false_checkout)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<REPO>\tools\test\tests\test_fixture_checkout.py", line 76, in test_fixture_byte_pins_survive_autocrlf_false_checkout
+    self.check_checkout("false")
+  File "<REPO>\tools\test\tests\test_fixture_checkout.py", line 68, in check_checkout
+    corpus.load_catalog()
+  File "<USERPROFILE>\AppData\Local\Temp\tmptg3cusz5\checkout-false\tools\test\corpus.py", line 204, in load_catalog
+    raise ValueError("Tracked corpus catalog differs from its pinned recipes/expectations.")
+ValueError: Tracked corpus catalog differs from its pinned recipes/expectations.
+
+======================================================================
+ERROR: test_fixture_byte_pins_survive_autocrlf_true_checkout (test_fixture_checkout.FixtureCheckoutTests.test_fixture_byte_pins_survive_autocrlf_true_checkout)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "<REPO>\tools\test\tests\test_fixture_checkout.py", line 73, in test_fixture_byte_pins_survive_autocrlf_true_checkout
+    self.check_checkout("true")
+  File "<REPO>\tools\test\tests\test_fixture_checkout.py", line 68, in check_checkout
+    corpus.load_catalog()
+  File "<USERPROFILE>\AppData\Local\Temp\tmptg3cusz5\checkout-true\tools\test\corpus.py", line 204, in load_catalog
+    raise ValueError("Tracked corpus catalog differs from its pinned recipes/expectations.")
+ValueError: Tracked corpus catalog differs from its pinned recipes/expectations.
+
+----------------------------------------------------------------------
+Ran 2 tests in 1.539s
+
+FAILED (errors=2)

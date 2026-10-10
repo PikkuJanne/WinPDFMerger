@@ -1,0 +1,75 @@
+# Changelog
+
+The application version is defined in [VERSION](VERSION). Dependency version
+numbers describe separate products and do not change the application version.
+
+## [1.0.0] - Unreleased
+
+Release status recorded 2026-10-09 before source acceptance and publication.
+This Unreleased entry records that review; check
+[GitHub Releases](https://github.com/PikkuJanne/WinPDFMerger/releases) for current status.
+
+First-release changes remain Unreleased. Exact premerge candidate ZIPs passed
+automated Windows operation and unchanged-source checks on 2026-10-09 in both
+required shells. Accepted merged source, final assets and independently downloaded
+published ZIP checks remain later gates; no publication is claimed. See the
+[release notes](docs/RELEASE_NOTES_v1.0.0.md) for validation scope.
+
+### Retained workflow
+
+- Keep `WinPDFMerge.ps1` and `WinPDFMerge.bat`, one-folder drag-and-drop, the
+  batch pause and Windows PowerShell 5.1 batch host.
+- Process visible top-level PDFs locally with PDFtk; use optional Ghostscript for
+  an email copy. Preserve source PDFs and existing outputs.
+- Keep output beside the entry script and the Ghostscript `/screen` default.
+  Hidden files and subfolders remain outside input discovery.
+
+### Improvements
+
+- Accept one PDF, reject zero PDFs, and freeze the discovered case-insensitive
+  `.pdf` input set. Inspect every input and stop on unusable documents without
+  silently omitting them.
+- Sort filenames naturally and deterministically across cultures, including long
+  ASCII digit runs and leading zeros; log the final numbered input order.
+- Reject overlapping source/output directories and unsupported reparse paths;
+  require an existing writable output directory and bound native paths/commands.
+- Use unique run identities and owned staging, validate native results and page
+  totals before publication, and publish without overwriting existing files.
+- Publish the validated master before email conversion. Keep it when email work
+  fails; publish an email candidate only if valid and smaller than the master.
+- Invoke selected executable files directly with quoted arguments, bounded
+  execution and captured streams. Preserve Ghostscript safety flags and isolate
+  `GS_OPTIONS` removal to selected child processes.
+- Correct dependency discovery and report the selected paths/versions. Missing
+  Ghostscript permits master-only success; PDFtk remains required.
+- Distinguish success (`0`), failure (`1`) and partial success (`2`), including in
+  the batch launcher. Controlled cancellation cleans only owned temporary files.
+- Add `-OutputFolder`, `-SkipEmail` and fixed `-EmailPreset screen|ebook` options;
+  explain ignored presets when email is explicitly skipped.
+- Report exact output bytes, readable sizes, actual reduction, stages and elapsed
+  time. Provide UTF-8 diagnostics, built-in help, usage and recovery guidance.
+- Document measured email-quality and PDF-feature limits, confidential logs,
+  external dependency terms and unsigned-script handling.
+- Keep small testable helpers and add regression, fault, native dual-shell and
+  restrained Windows CI checks. The startup/usage banner and run log read the
+  application version from `VERSION`; built-in help identifies that source.
+
+### Scope and limitations
+
+- Recorded source tests used Windows PowerShell 5.1.26100.9444 and PowerShell
+  7.6.6 x64 with PDFtk Server 2.02 and Ghostscript 10.08.0 on Windows 11 x64.
+  Exact premerge candidate ZIP operation and unchanged-source checks passed in
+  both shells. Accepted merged source, final assets and independently downloaded
+  published ZIP operation remain required before project completion.
+- Human standard-user/Explorer/PDF-viewer acceptance is excluded by owner scope
+  and was not performed; this exclusion is never a passing manual test.
+  Windows 10, live UNC shares, Windows on ARM and 32-bit hosts are excluded from
+  validated support because actual tests for those environments are absent.
+- Scripts are unsigned; dependencies are installed separately and no vendor
+  executables are included in the tested candidate packages.
+- Keep originals. Neither output guarantees PDF/A, signature validity,
+  accessibility, universal feature retention, archival certification or malware
+  removal. Email output is a potentially lossy rewrite with no attachment-size
+  guarantee. See [PDF limits](docs/PDF_LIMITATIONS.md),
+  [path limits](docs/USAGE.md#paths-and-destinations) and
+  [compatibility scope](docs/COMPATIBILITY.md).

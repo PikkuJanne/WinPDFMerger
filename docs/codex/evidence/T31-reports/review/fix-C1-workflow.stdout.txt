@@ -1,0 +1,84 @@
+name: Windows tests
+
+on:
+  push:
+    branches: [main, codex/v1.0.0-readiness, codex/t24-ci-failure-probe]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      failure_probe:
+        description: Run one deliberately failing Pester case to verify the CI failure gate
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: windows-tests-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  tests:
+    name: ${{ matrix.group }} / ${{ matrix.shell }}
+    runs-on: windows-2025
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        group: [unit, native]
+        shell: [PS51, PS7]
+    env:
+      CI_GROUP: ${{ matrix.group }}
+      CI_SHELL_NAME: ${{ matrix.shell }}
+      CI_COMMIT: ${{ github.sha }}
+      CI_FAILURE_PROBE: ${{ github.ref == 'refs/heads/codex/t24-ci-failure-probe' || inputs.failure_probe == true }}
+    steps:
+      - name: Check out the tested commit
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+
+      - name: Prepare verified temporary test dependencies
+        id: dependencies
+        shell: powershell
+        env:
+          CI_REPORTS: ${{ runner.temp }}/sanitized-reports
+        run: |
+          & ./tools/test/Initialize-CiDependencies.ps1 -Group $env:CI_GROUP -Shell $env:CI_SHELL_NAME -ArtifactDirectory $env:CI_REPORTS
+
+      - name: Run the selected tests and export sanitized receipts
+        shell: powershell
+        env:
+          CI_REPORTS: ${{ runner.temp }}/sanitized-reports
+          CI_SHELL_PATH: ${{ steps.dependencies.outputs.shell_path }}
+          CI_PESTER: ${{ steps.dependencies.outputs.pester_path }}
+          CI_ANALYZER: ${{ steps.dependencies.outputs.analyzer_path }}
+          CI_PDFTK: ${{ steps.dependencies.outputs.pdftk_path }}
+          CI_GS: ${{ steps.dependencies.outputs.ghostscript_path }}
+        run: |
+          $arguments = @('-NoProfile', '-NonInteractive', '-ExecutionPolicy', 'RemoteSigned', '-File', './tools/test/Invoke-CiTests.ps1',
+            '-Group', $env:CI_GROUP, '-Shell', $env:CI_SHELL_NAME, '-ExpectedCommit', $env:CI_COMMIT,
+            '-PesterModulePath', $env:CI_PESTER,
+            '-ReportDirectory', $env:CI_REPORTS, '-RunnerLabel', 'windows-2025')
+          if ($env:CI_GROUP -eq 'unit') { $arguments += @('-AnalyzerModulePath', $env:CI_ANALYZER) }
+          if ($env:CI_GROUP -eq 'native') { $arguments += @('-PdftkPath', $env:CI_PDFTK, '-GhostscriptPath', $env:CI_GS) }
+          if ($env:CI_GROUP -eq 'unit' -and $env:CI_FAILURE_PROBE -eq 'true') { $arguments += '-FailureProbe' }
+          # Let the selected shell build its own compatible default module path.
+          $env:PSModulePath = $null
+          & $env:CI_SHELL_PATH @arguments
+          exit $LASTEXITCODE
+
+      - name: Upload sanitized reports only
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: windows-${{ matrix.group }}-${{ matrix.shell }}-${{ github.run_attempt }}
+          path: |
+            ${{ runner.temp }}/sanitized-reports/**/*.json
+            ${{ runner.temp }}/sanitized-reports/**/*.xml
+          if-no-files-found: error
+          include-hidden-files: false
+          retention-days: 7

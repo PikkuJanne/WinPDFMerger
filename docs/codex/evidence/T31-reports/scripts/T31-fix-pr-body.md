@@ -1,0 +1,5 @@
+Fresh Windows checkouts rewrote four fixture recipes/manifests whose exact bytes are pinned by the development corpus. A fifth manifest was pinned as CRLF but normalized to LF in Git, causing the opposite failure with autocrlf=false. Five explicit byte-preservation rules retain the existing pins and make both checkout settings work; runtime behavior and package contents are unchanged.
+
+The regression creates a small local Git repository and performs two real fresh clones, checking the actual strict corpus loader and exact numbered fixtures. Its initial draft failed before the fix; the final test adds command-scoped hook isolation and passes. Preparation checks: 85 Python helper passes, one existing symlink skip; independent exact staged review: 260 checks, zero findings. The staged presets manifest matches its existing SHA-256 pin without expectation changes.
+
+T31 records retain the first merged candidate's required failures and interrupted full runs. The fix still needs current CI, normal merge and full exact merged-source checks before source acceptance or freeze. No tag or release is created.

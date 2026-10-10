@@ -1,0 +1,987 @@
+Pester v6.2.0
+
+Running tests from 1 files.
+
+Running tests from '<REPO>\tests\native\ToolInvocation.Tests.ps1'
+Describing T09 isolated PDF tool job behavior
+ Describing T09: fixed tool vectors and private fresh native outputs
+   [+] passes literal PDFtk input operands and dont_ask only to a fresh owned staged output 1.77s
+   [+] retains the fixed Ghostscript profile and safety flags while removing only child GS_OPTIONS 158ms
+ Describing T09: collision refusal and bounded native failures
+   [+] rejects a 260-character input before launching any native process 84ms
+   [+] rejects a 260-character output before launching any native process 38ms
+   [+] rejects a short final when its private staged operand would reach 260 characters 79ms
+   [+] refuses an existing Pdftk final before native execution and retains its exact bytes 62ms
+   [+] refuses an existing Ghostscript final before native execution and retains its exact bytes 52ms
+   [+] refuses a final path equal to a source without launching or editing the source 35ms
+   [+] does not publish a partial file after an explicit native failure 124ms
+   [+] does not infer success from exit zero when capture failed after creating a staged file 116ms
+   [+] does not publish when the native process reports success without making a file 117ms
+   [+] preserves a final created during the native call and discards only this job staging 232ms
+Tests completed in 4s
+Tests Passed: 12, Failed: 0, Skipped: 0, Inconclusive: 0, NotRun: 0
+{
+  "observed_at_utc": "2026-10-09T17:51:13.9776250Z",
+  "started_at_utc": "2026-10-09T17:51:08.3830449Z",
+  "commit_under_test": "de5f30155c68755dbd5af691625a0651e3fb7230",
+  "dirty_worktree": false,
+  "source_start": {
+    "commit": "de5f30155c68755dbd5af691625a0651e3fb7230",
+    "status": [],
+    "sources": [
+      {
+        "path": "CHANGELOG.md",
+        "sha256": "f94dd9b5babc6ded3b44ae61f7f5afaffd9a27f79f9f9dddb173c3c4a9015401"
+      },
+      {
+        "path": "docs/codex/PACKAGE_CONTRACT.json",
+        "sha256": "3a729a4fcdbfcce765e41cb3eea71d4be521915b545e788820dae93786b2cc60"
+      },
+      {
+        "path": "docs/COMPATIBILITY.md",
+        "sha256": "a1eee1febba7a918e066e786f40f2d25bffa711b95d3f31bc4801fd252553adc"
+      },
+      {
+        "path": "docs/DEPENDENCIES.md",
+        "sha256": "9e7ea2d7e00ed467f9bf1429d29f6420fed267ecb997444034ad193bdfb34f40"
+      },
+      {
+        "path": "docs/DEVELOPMENT.md",
+        "sha256": "186fa634ee2bc9f625b56b3d8e07166de4319c4b4b635abef340707fe85206d2"
+      },
+      {
+        "path": "docs/EMAIL_PRESETS.md",
+        "sha256": "8eac3bc343ba4de9d419b15572d259d98c35fb8e06b9fddd727f0d34405fc359"
+      },
+      {
+        "path": "docs/PDF_LIMITATIONS.md",
+        "sha256": "a22cde1a0b1628d7b84dcbea481c40c12014712903f7b4a0806389e2c3326efa"
+      },
+      {
+        "path": "docs/RELEASE_NOTES_v1.0.0.md",
+        "sha256": "33f68f89ab70d95cabaad40961a5cb2d1f1c55eb40e35e7e2c85fbc226baef34"
+      },
+      {
+        "path": "docs/TROUBLESHOOTING.md",
+        "sha256": "7833d442fb6bec5320742090e067cba631efa79c869ab116da497c33414070d1"
+      },
+      {
+        "path": "docs/USAGE.md",
+        "sha256": "5f58914ebd7f0b1b37d54ba2999d1f6b9d93c214c0bdeed8c6b6ee98d218867a"
+      },
+      {
+        "path": "LICENSE",
+        "sha256": "714ffa7a21614e637d7dbb17a2e86e4575d7ecd2b6d36b5b67ab3fdcc4193477"
+      },
+      {
+        "path": "PSScriptAnalyzerSettings.psd1",
+        "sha256": "93c946f5fca800175f74ae00762264525305889e87a639dffebf3990c02561de"
+      },
+      {
+        "path": "README.md",
+        "sha256": "6fb3bfa326c215ef99f152309a12768c967527782e796f60983f9f9f2005a097"
+      },
+      {
+        "path": "release-files.json",
+        "sha256": "c116a790f17fac692209ab45fb07f2eb56a52a39aecaa711089dc34585566cb5"
+      },
+      {
+        "path": "SECURITY.md",
+        "sha256": "2d45ca9525c780409938c027b019693204014f1d565816a583689c7e31b880e8"
+      },
+      {
+        "path": "src/WinPDFMerge.Helpers.ps1",
+        "sha256": "1dbcc362f72a260792b81831560b97e83dc121b43e001d6ee42c2b9f00cc7435"
+      },
+      {
+        "path": "tests/ci-dependencies.json",
+        "sha256": "685f514090f52e653ab65c193e32e5846449de4cab2f00ad13afa4115e3605b6"
+      },
+      {
+        "path": "tests/cli/Parameters.Native.Tests.ps1",
+        "sha256": "dbe31b3a843863b90891a2cd7129f3d66ea6c258674f90dd3c79c4ee2a699df9"
+      },
+      {
+        "path": "tests/cli/Parameters.Tests.ps1",
+        "sha256": "7bad300a821a7815d1db0ee625ad73310e3d58c0db8238e2a4f7eb59cb7ab7a3"
+      },
+      {
+        "path": "tests/CorpusSafetySupport.ps1",
+        "sha256": "4168396c70f5032fba462a40548143d0487ff4d5abfae8088af4eeae3f68776c"
+      },
+      {
+        "path": "tests/dependencies/Dependencies.Entry.Tests.ps1",
+        "sha256": "76402f16c6e044f4f67e2c99431d080a65f5e8bac8cb25144bdd42e51657ed30"
+      },
+      {
+        "path": "tests/dependencies/VersionProbeFixture.cs",
+        "sha256": "5e58c6f6a05c87a52f729540eef8db299774f21fd2edc780d505381945641418"
+      },
+      {
+        "path": "tests/faults/FaultIO.Tests.ps1",
+        "sha256": "d1c86326fb8d9600c6f135370d551746c5b0ad0c2125a2f36891efb1ceeeb053"
+      },
+      {
+        "path": "tests/faults/FaultRecovery.Native.Tests.ps1",
+        "sha256": "f79ea985f34cc58b876404aa326ac83e03dd78953ccae165eedc1f4615842b18"
+      },
+      {
+        "path": "tests/filesafety/Destination.Native.Tests.ps1",
+        "sha256": "b6ccb08fe94eee3f1e923b7d9c2ccd522f5bc51a76420af18ab282fc6c8bc55a"
+      },
+      {
+        "path": "tests/filesafety/Staging.Native.Tests.ps1",
+        "sha256": "8291b51d9ed904611154604308084ab60b848ba3ef62f57e440409444ebbcc52"
+      },
+      {
+        "path": "tests/fixtures/corpus.json",
+        "sha256": "71b57b3032b61c34a0ee9accaf9f3054f0f00a6f63d89f11b05a2584a4472d89"
+      },
+      {
+        "path": "tests/fixtures/features/generate_features.py",
+        "sha256": "a6c4146fba847ccb4c961c11277456503bed61dc3db3672cc9a0fb2aebfddbd8"
+      },
+      {
+        "path": "tests/fixtures/features/manifest.json",
+        "sha256": "73b1c8cd478f8f8e709005550f42a7d9177ab71dcbb738ba2614edc37b1dc846"
+      },
+      {
+        "path": "tests/fixtures/numbered/1.pdf",
+        "sha256": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109"
+      },
+      {
+        "path": "tests/fixtures/numbered/10.pdf",
+        "sha256": "9fa79c41feb7be692b100bc0fe44ed063029e0955900d3bb2f8552a10afb6aaa"
+      },
+      {
+        "path": "tests/fixtures/numbered/2.pdf",
+        "sha256": "7821d0ff4c3d655511e4421559d317013a64356a370d7b07a47079e5f02ad901"
+      },
+      {
+        "path": "tests/fixtures/numbered/manifest.json",
+        "sha256": "f781106b398e449360507ecf8bfe5d444a40f05b5df605a8f6e8c5769e7826a9"
+      },
+      {
+        "path": "tests/fixtures/presets/generate_presets.py",
+        "sha256": "48f61c2c8b9c119bf0edd9f3a41d92610b4498135a296ea751ab1bddd9e0f26c"
+      },
+      {
+        "path": "tests/fixtures/presets/manifest.json",
+        "sha256": "383ec07bec823f131ab86cf07de2ffb96e10803ad4f2f4997ba834835ee01e1f"
+      },
+      {
+        "path": "tests/fixtures/README.md",
+        "sha256": "6e8c8f8217a118f17ba423d2f7284e478772ca93da186eac6a243700b3140eef"
+      },
+      {
+        "path": "tests/help/Diagnostics.Native.Tests.ps1",
+        "sha256": "89e1b68e0a239b07aa86925b72cdda2461bacb93ac27d3ab30f320408392eb47"
+      },
+      {
+        "path": "tests/help/Diagnostics.Tests.ps1",
+        "sha256": "5b42fc444c621d42a0ea15278e75711440d2a11ba7934075d313c101832268fc"
+      },
+      {
+        "path": "tests/help/PreservationDocs.Tests.ps1",
+        "sha256": "fa31f78ee8ea172bfdebac839a3ae9a626fc508b71f02d5151ad1f30a0a85864"
+      },
+      {
+        "path": "tests/help/PublicDocs.Tests.ps1",
+        "sha256": "f05707580d5ec4a0486ed607e86acb47cf4c123ddf00e121c7c9fa2bbf609d5a"
+      },
+      {
+        "path": "tests/help/Version.Tests.ps1",
+        "sha256": "98f32959b47a167e3351ec4103e2fc27b6189c44a01ffba2f74ef5edbe82dae3"
+      },
+      {
+        "path": "tests/launcher/Launcher.Native.Tests.ps1",
+        "sha256": "61bbe9e2d927c18eaa7265dae000f621f5570bf9d3743c8c1528d2fea7f4195e"
+      },
+      {
+        "path": "tests/launcher/Launcher.Tests.ps1",
+        "sha256": "94becd084a9013b2b6b5be97139ac3b1848081047021cb8b8fb55263282142d1"
+      },
+      {
+        "path": "tests/launcher/Receiver.ps1",
+        "sha256": "b1ddadbe8034a595f23242b56404aec12ac20051519d5ef4f8a9893e320ec3cc"
+      },
+      {
+        "path": "tests/launcher/TestSupport.ps1",
+        "sha256": "4249a55083b88629edac14b1cd82f87f35f77753f4870a21923cb4198c772a65"
+      },
+      {
+        "path": "tests/native/FakeNative.cs",
+        "sha256": "1f124bad206540a41a511462d2761cb5fe5f863cf344cd7235b09e71212b5036"
+      },
+      {
+        "path": "tests/native/NativeRunner.Tests.ps1",
+        "sha256": "2706360b442c74e527a8fd54f6a5efffbca29f60a1791fb6735cba4b75b0a902"
+      },
+      {
+        "path": "tests/native/ToolInvocation.Tests.ps1",
+        "sha256": "4e64fd678a656fa6b3160a554d3a0f0e5cc2a96978f8a064b76fa21bae808a2a"
+      },
+      {
+        "path": "tests/package/candidate_smoke.py",
+        "sha256": "b563eca14a898159763c245e2c8a275c8b1a7f4968e28bcad49c352a771a502f"
+      },
+      {
+        "path": "tests/package/Package.Tests.ps1",
+        "sha256": "8e758a8b4d3bc4d87a077efab119f5f0b94f9fb8f682e82f54f7deb99557ee67"
+      },
+      {
+        "path": "tests/package/PackageSupport.ps1",
+        "sha256": "22fcb0d0e1ff113ed76e41d2ea6fb45565f5e4df3e4c0a0eb77b1656158d8ba8"
+      },
+      {
+        "path": "tests/package/test_candidate_smoke.py",
+        "sha256": "6c771c0381ae81406f6bb782141f465acc8a0b8f715166c31510cc3605b40a8c"
+      },
+      {
+        "path": "tests/package/test_capture_labels.py",
+        "sha256": "f944e75f7419418fb921b5d98f11fc8be2cfa5b39e718cd3424f43eec3e02985"
+      },
+      {
+        "path": "tests/pdf/CiSmoke.Native.Tests.ps1",
+        "sha256": "299007a580910622876aeb6de96a4571f7a38ba99fa1d53db56c63390e65ba9b"
+      },
+      {
+        "path": "tests/pdf/CorpusSafety.Native.Tests.ps1",
+        "sha256": "49f430d05a38f873a0794780ccd68285e573e09899c1b9c5f9584dcff771862d"
+      },
+      {
+        "path": "tests/pdf/EmailOutcome.Native.Tests.ps1",
+        "sha256": "bb7bbe50db77fd3bee1833485181e3b758639065c10625fb918df5eab6caeb1b"
+      },
+      {
+        "path": "tests/pdf/Fixture.Native.Tests.ps1",
+        "sha256": "6191900d9499b10cae113f336d298eed2720bc6814d5c7a8489bd597cafae8f1"
+      },
+      {
+        "path": "tests/pdf/InputPreflight.Native.Tests.ps1",
+        "sha256": "f9be7d95e4113a5f8559127e4a82c33c80faf8e8d712cd88708ffb764b2f4f2a"
+      },
+      {
+        "path": "tests/pdf/MasterValidation.Native.Tests.ps1",
+        "sha256": "19fd9161e0c074943c01049984d72a93565e0f69b1a08f14a9eaa6aaa9370080"
+      },
+      {
+        "path": "tests/pdf/NativeAcceptance.Native.Tests.ps1",
+        "sha256": "fb387749c5d4319175e8a14fceb878a313fcdb91b55428ddff0426927b62e25c"
+      },
+      {
+        "path": "tests/pdf/Preservation.Native.Tests.ps1",
+        "sha256": "8ac63feba7baf828a02764bfd9a0972ae2e7809578c43054f084c7e1a33ea264"
+      },
+      {
+        "path": "tests/pdf/SizeReporting.Native.Tests.ps1",
+        "sha256": "864195172a053611eb55ac749c2b844369ec08af1d8163313abc5c88d1f72681"
+      },
+      {
+        "path": "tests/pdf/SizeReporting.Tests.ps1",
+        "sha256": "b483404583d3093333031e1799d36f39adef5a9b7061fef88b19970d12690ce7"
+      },
+      {
+        "path": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+        "sha256": "e5ea266524f8a6537dff8bc4a89ea87032d1b80bd2ee58d8d870aa511bfb4174"
+      },
+      {
+        "path": "tests/pdf/ToolPaths.Native.Tests.ps1",
+        "sha256": "3f6a6a8d7a2096976bff9b11e8d9bdf9fa1b782cdac49f064eff88641357d027"
+      },
+      {
+        "path": "tests/static/StaticChecks.Tests.ps1",
+        "sha256": "a4765fd019f53f39a5560e4d81d8811074463950cdb01a0578ade8135b5d35ec"
+      },
+      {
+        "path": "tests/TestDependencies.psd1",
+        "sha256": "04dca897f5504a2d7564711b993ab486831be69e81adefede136d7aa9f68dbbb"
+      },
+      {
+        "path": "tests/TestSupport.ps1",
+        "sha256": "f02d2b28444aeb6ee208d8f270d474a16e7edea26e2c92f7bdb10bdb997421a2"
+      },
+      {
+        "path": "tests/unit/CiDependencies.Tests.ps1",
+        "sha256": "17c6d2f88b3b738a35f604426ec607eda4eec3f7eeb6035d5bd7478cdbb1c14b"
+      },
+      {
+        "path": "tests/unit/CiReportSupport.Tests.ps1",
+        "sha256": "4c4c6c6cb6ac49d8f28fcd99bbd6756692c3b8be393572898bff98ba95199905"
+      },
+      {
+        "path": "tests/unit/CiRunSupport.Tests.ps1",
+        "sha256": "e12ff7d3a606bdafef81cd3c18f9851a3218f4898c886ca7d0d8e3e594ce0425"
+      },
+      {
+        "path": "tests/unit/CorpusSafetySupport.Tests.ps1",
+        "sha256": "bf82f6d895b37156aa69ebe4907d6c64e62d42854bcebd1be994b06cb7ae3a21"
+      },
+      {
+        "path": "tests/unit/Dependencies.Tests.ps1",
+        "sha256": "8e6153c3d7eaccfe06161a043e707654c921a047ed4cdbe46573f0ade96c949e"
+      },
+      {
+        "path": "tests/unit/Destination.Tests.ps1",
+        "sha256": "504b334c72a73754c3c41f11811703e76c6a48b1ab7844ba2b7f83adb4dc3747"
+      },
+      {
+        "path": "tests/unit/EmailOutcome.Tests.ps1",
+        "sha256": "88fe4272b559c140284e80040dd065ef04c2b941481e38a29882a088b7a3d5cf"
+      },
+      {
+        "path": "tests/unit/FakeNative.Tests.ps1",
+        "sha256": "4cb5fa831a99e28d34617008f65364e3c11ed8db925066daf8ba1fd58c4f49a2"
+      },
+      {
+        "path": "tests/unit/FaultMatrix.Tests.ps1",
+        "sha256": "32159aeddeed9b2c7a55f2779533aa49244602d8585bd44280c94bcc5e8513d3"
+      },
+      {
+        "path": "tests/unit/Helpers.Tests.ps1",
+        "sha256": "ae54da066ab871a957b4182815a9ab29120821eec1d88a3cbc3616d499a3d36e"
+      },
+      {
+        "path": "tests/unit/InputPreflight.Tests.ps1",
+        "sha256": "74a1526f57d17c792fd7324ccd00baa8cd7145c1c8056d2b875502d8bdb5e162"
+      },
+      {
+        "path": "tests/unit/MasterValidation.Tests.ps1",
+        "sha256": "cdec06dad50436bb8eba8abb6a64208ad2972028ba52551a198738f480bf7ef4"
+      },
+      {
+        "path": "tests/unit/NativeCommand.Tests.ps1",
+        "sha256": "ccaf2d25abe827e36964b1ea369094d7b8516d8109a98034812ce29e11429bc9"
+      },
+      {
+        "path": "tests/unit/Ordering.Tests.ps1",
+        "sha256": "30da6738a7710c4da188ea11912b631d1888a1aa406b87630be3eb05f24e8721"
+      },
+      {
+        "path": "tests/unit/PdfEnvelope.Tests.ps1",
+        "sha256": "b33d041cee9171edb8ca14e16ad97d45294e15da2af4d39ecc67c552b3ddd4f6"
+      },
+      {
+        "path": "tests/unit/SourceDiscovery.Tests.ps1",
+        "sha256": "ac5af7e2037aad438ddf761f0f2512b96353bef8f00f5666f4bd743edc63fa60"
+      },
+      {
+        "path": "tests/unit/Staging.Tests.ps1",
+        "sha256": "e54002b4ad43043accbd502918daefadc21ff5840d9d37ce169841e09de255bd"
+      },
+      {
+        "path": "tests/unit/TestRunSupport.Tests.ps1",
+        "sha256": "0d229ccf531fa374abd2ebebba9c16d91443e9aa811a89600a9bc2e809bc7b1b"
+      },
+      {
+        "path": "tools/release/Build-Release.ps1",
+        "sha256": "c8ab8ad70f80a6bfa5af4ec20871009778943a301c716871e018301114519a2a"
+      },
+      {
+        "path": "tools/test/Build-FakeNative.ps1",
+        "sha256": "152fe731d2d008e460f6777179d43bbf0d04c9430a5718afeeba5246bf45be6a"
+      },
+      {
+        "path": "tools/test/CiDependencySupport.ps1",
+        "sha256": "8a2d5e28e3bcd0b9de65811b6c9a7c67b61eb4edf87f2dea238d6d524874fdcb"
+      },
+      {
+        "path": "tools/test/CiReportSupport.ps1",
+        "sha256": "157238c6f1111aa88cfd64827d77ee5385c2bfcbc4bbbcae1dcde0bfdaa3bb9a"
+      },
+      {
+        "path": "tools/test/CiRunSupport.ps1",
+        "sha256": "76c66a722d53e16c0f029a69d252cb44d7efa8ed510d7018b52343a603f3707c"
+      },
+      {
+        "path": "tools/test/corpus.py",
+        "sha256": "ac8c2e89f9e6cc340b9f338a4a2c29564efc4aa301ab53cdb54580dcaddda3a2"
+      },
+      {
+        "path": "tools/test/Destination.md",
+        "sha256": "54a7c33a99c5600ad47e16b2b8a9d969e964eaf8ee3e84febb7aac04769c3788"
+      },
+      {
+        "path": "tools/test/FakeNative.md",
+        "sha256": "3739f72a2eb798b74ed9c60e78ca0c897d2f3e2dc26554221b43c6b1cebf20c7"
+      },
+      {
+        "path": "tools/test/feature_oracle.py",
+        "sha256": "3e0a0c46204cbdadffcc687e1881ffced75d72c4fae061538fb0e4b9ed019526"
+      },
+      {
+        "path": "tools/test/fixture_oracle.py",
+        "sha256": "87132d5c19d97bc13089fe684c31812708bba80841c24fed90c9b8cc86f8a09c"
+      },
+      {
+        "path": "tools/test/generate_numbered_fixtures.py",
+        "sha256": "709f58b407aff0bd34d3122e6588da031737deeb2876ff9cc4a9f835514597a8"
+      },
+      {
+        "path": "tools/test/generate_pdf_envelope_fixtures.py",
+        "sha256": "528b526bcab6cb6e6de48eb5ea4d39d6125a92c1559f11dcf3e51cc499763f44"
+      },
+      {
+        "path": "tools/test/Initialize-CiDependencies.ps1",
+        "sha256": "b8be3fc28d23a4a947b5887b3e551e612dfd6783790549262f665ea3ee945105"
+      },
+      {
+        "path": "tools/test/InputPreflight.md",
+        "sha256": "8e87c1509cc3bceb2f074fa051310886a3c75cdaefdb9b2ab3d8cd2cfcf9de7d"
+      },
+      {
+        "path": "tools/test/Invoke-CiFailureProbe.ps1",
+        "sha256": "40f9e49d57e87954dd416316e9a0589df9aaafaa8d4993badf1f9a9f96221a01"
+      },
+      {
+        "path": "tools/test/Invoke-CiTests.ps1",
+        "sha256": "eb621a44f9bc7af603426a7475da42a33345fc45d157c8d1032a2cc40ca002ec"
+      },
+      {
+        "path": "tools/test/Invoke-StaticChecks.ps1",
+        "sha256": "4c5139e47ef24d8f1b842574b76a781732b3d31d95dea63d8c5a6faaa4547d05"
+      },
+      {
+        "path": "tools/test/Invoke-Tests.ps1",
+        "sha256": "27858fcb087a51b1a51b83c6a1ef09ded6826223336c9bf91fc0152a67a95e3d"
+      },
+      {
+        "path": "tools/test/NativeRunner.md",
+        "sha256": "138e12552e07f9504609075ac910a0dc6943504952ecb095ae80ac109aefb48b"
+      },
+      {
+        "path": "tools/test/README.md",
+        "sha256": "414fe5bda3e11b436e5a0eaac85eed18996b98c03477596140e4266fa084efbd"
+      },
+      {
+        "path": "tools/test/requirements-fixtures.txt",
+        "sha256": "86ec1cc3035bafd26ba3edd579c6a719356ae8353602218484c524ef4b84f181"
+      },
+      {
+        "path": "tools/test/Staging.md",
+        "sha256": "cb7797a69d7f929af3a51826ef7dd0a2df14039f870bbf618dd9ce99f46821f7"
+      },
+      {
+        "path": "tools/test/StaticChecks.md",
+        "sha256": "c2e8f7db83ea15e1038a12c0b711e7076fdd0f2d2705b23b8819a54e6b28f971"
+      },
+      {
+        "path": "tools/test/TestRunSupport.ps1",
+        "sha256": "98ff5f02b29b998069d9f457e1d0f8dd87826f5419037710236b385e09457baa"
+      },
+      {
+        "path": "tools/test/tests/test_corpus.py",
+        "sha256": "3f1ae084c7ca2b4ada8678822581e0d2bca0e90fc6827a174f6a4ec52e4497a5"
+      },
+      {
+        "path": "tools/test/tests/test_feature_oracle.py",
+        "sha256": "3477ab506c3a171abe2cf478e00493a934f91685b486724f550b82179effcc55"
+      },
+      {
+        "path": "tools/test/tests/test_fixture_oracle.py",
+        "sha256": "7522de6248fdd694ce3274e0e5679e7a3b464775c24087eb7e5ce01875e91e44"
+      },
+      {
+        "path": "VERSION",
+        "sha256": "4ca8bbd3c595ee306226c6996b32b8d47a900217c55a7ed0cfc868ee444f34f1"
+      },
+      {
+        "path": "WinPDFMerge.bat",
+        "sha256": "288287beefea974c64d39b34266332d83112b9106c952efd8c304edfedebff83"
+      },
+      {
+        "path": "WinPDFMerge.ps1",
+        "sha256": "2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902"
+      }
+    ]
+  },
+  "source_end": {
+    "commit": "de5f30155c68755dbd5af691625a0651e3fb7230",
+    "status": [],
+    "sources": [
+      {
+        "path": "CHANGELOG.md",
+        "sha256": "f94dd9b5babc6ded3b44ae61f7f5afaffd9a27f79f9f9dddb173c3c4a9015401"
+      },
+      {
+        "path": "docs/codex/PACKAGE_CONTRACT.json",
+        "sha256": "3a729a4fcdbfcce765e41cb3eea71d4be521915b545e788820dae93786b2cc60"
+      },
+      {
+        "path": "docs/COMPATIBILITY.md",
+        "sha256": "a1eee1febba7a918e066e786f40f2d25bffa711b95d3f31bc4801fd252553adc"
+      },
+      {
+        "path": "docs/DEPENDENCIES.md",
+        "sha256": "9e7ea2d7e00ed467f9bf1429d29f6420fed267ecb997444034ad193bdfb34f40"
+      },
+      {
+        "path": "docs/DEVELOPMENT.md",
+        "sha256": "186fa634ee2bc9f625b56b3d8e07166de4319c4b4b635abef340707fe85206d2"
+      },
+      {
+        "path": "docs/EMAIL_PRESETS.md",
+        "sha256": "8eac3bc343ba4de9d419b15572d259d98c35fb8e06b9fddd727f0d34405fc359"
+      },
+      {
+        "path": "docs/PDF_LIMITATIONS.md",
+        "sha256": "a22cde1a0b1628d7b84dcbea481c40c12014712903f7b4a0806389e2c3326efa"
+      },
+      {
+        "path": "docs/RELEASE_NOTES_v1.0.0.md",
+        "sha256": "33f68f89ab70d95cabaad40961a5cb2d1f1c55eb40e35e7e2c85fbc226baef34"
+      },
+      {
+        "path": "docs/TROUBLESHOOTING.md",
+        "sha256": "7833d442fb6bec5320742090e067cba631efa79c869ab116da497c33414070d1"
+      },
+      {
+        "path": "docs/USAGE.md",
+        "sha256": "5f58914ebd7f0b1b37d54ba2999d1f6b9d93c214c0bdeed8c6b6ee98d218867a"
+      },
+      {
+        "path": "LICENSE",
+        "sha256": "714ffa7a21614e637d7dbb17a2e86e4575d7ecd2b6d36b5b67ab3fdcc4193477"
+      },
+      {
+        "path": "PSScriptAnalyzerSettings.psd1",
+        "sha256": "93c946f5fca800175f74ae00762264525305889e87a639dffebf3990c02561de"
+      },
+      {
+        "path": "README.md",
+        "sha256": "6fb3bfa326c215ef99f152309a12768c967527782e796f60983f9f9f2005a097"
+      },
+      {
+        "path": "release-files.json",
+        "sha256": "c116a790f17fac692209ab45fb07f2eb56a52a39aecaa711089dc34585566cb5"
+      },
+      {
+        "path": "SECURITY.md",
+        "sha256": "2d45ca9525c780409938c027b019693204014f1d565816a583689c7e31b880e8"
+      },
+      {
+        "path": "src/WinPDFMerge.Helpers.ps1",
+        "sha256": "1dbcc362f72a260792b81831560b97e83dc121b43e001d6ee42c2b9f00cc7435"
+      },
+      {
+        "path": "tests/ci-dependencies.json",
+        "sha256": "685f514090f52e653ab65c193e32e5846449de4cab2f00ad13afa4115e3605b6"
+      },
+      {
+        "path": "tests/cli/Parameters.Native.Tests.ps1",
+        "sha256": "dbe31b3a843863b90891a2cd7129f3d66ea6c258674f90dd3c79c4ee2a699df9"
+      },
+      {
+        "path": "tests/cli/Parameters.Tests.ps1",
+        "sha256": "7bad300a821a7815d1db0ee625ad73310e3d58c0db8238e2a4f7eb59cb7ab7a3"
+      },
+      {
+        "path": "tests/CorpusSafetySupport.ps1",
+        "sha256": "4168396c70f5032fba462a40548143d0487ff4d5abfae8088af4eeae3f68776c"
+      },
+      {
+        "path": "tests/dependencies/Dependencies.Entry.Tests.ps1",
+        "sha256": "76402f16c6e044f4f67e2c99431d080a65f5e8bac8cb25144bdd42e51657ed30"
+      },
+      {
+        "path": "tests/dependencies/VersionProbeFixture.cs",
+        "sha256": "5e58c6f6a05c87a52f729540eef8db299774f21fd2edc780d505381945641418"
+      },
+      {
+        "path": "tests/faults/FaultIO.Tests.ps1",
+        "sha256": "d1c86326fb8d9600c6f135370d551746c5b0ad0c2125a2f36891efb1ceeeb053"
+      },
+      {
+        "path": "tests/faults/FaultRecovery.Native.Tests.ps1",
+        "sha256": "f79ea985f34cc58b876404aa326ac83e03dd78953ccae165eedc1f4615842b18"
+      },
+      {
+        "path": "tests/filesafety/Destination.Native.Tests.ps1",
+        "sha256": "b6ccb08fe94eee3f1e923b7d9c2ccd522f5bc51a76420af18ab282fc6c8bc55a"
+      },
+      {
+        "path": "tests/filesafety/Staging.Native.Tests.ps1",
+        "sha256": "8291b51d9ed904611154604308084ab60b848ba3ef62f57e440409444ebbcc52"
+      },
+      {
+        "path": "tests/fixtures/corpus.json",
+        "sha256": "71b57b3032b61c34a0ee9accaf9f3054f0f00a6f63d89f11b05a2584a4472d89"
+      },
+      {
+        "path": "tests/fixtures/features/generate_features.py",
+        "sha256": "a6c4146fba847ccb4c961c11277456503bed61dc3db3672cc9a0fb2aebfddbd8"
+      },
+      {
+        "path": "tests/fixtures/features/manifest.json",
+        "sha256": "73b1c8cd478f8f8e709005550f42a7d9177ab71dcbb738ba2614edc37b1dc846"
+      },
+      {
+        "path": "tests/fixtures/numbered/1.pdf",
+        "sha256": "ed0457c1d675cfc502f96ee5f9a9b4fd0dddc4010a21af13c891528089be2109"
+      },
+      {
+        "path": "tests/fixtures/numbered/10.pdf",
+        "sha256": "9fa79c41feb7be692b100bc0fe44ed063029e0955900d3bb2f8552a10afb6aaa"
+      },
+      {
+        "path": "tests/fixtures/numbered/2.pdf",
+        "sha256": "7821d0ff4c3d655511e4421559d317013a64356a370d7b07a47079e5f02ad901"
+      },
+      {
+        "path": "tests/fixtures/numbered/manifest.json",
+        "sha256": "f781106b398e449360507ecf8bfe5d444a40f05b5df605a8f6e8c5769e7826a9"
+      },
+      {
+        "path": "tests/fixtures/presets/generate_presets.py",
+        "sha256": "48f61c2c8b9c119bf0edd9f3a41d92610b4498135a296ea751ab1bddd9e0f26c"
+      },
+      {
+        "path": "tests/fixtures/presets/manifest.json",
+        "sha256": "383ec07bec823f131ab86cf07de2ffb96e10803ad4f2f4997ba834835ee01e1f"
+      },
+      {
+        "path": "tests/fixtures/README.md",
+        "sha256": "6e8c8f8217a118f17ba423d2f7284e478772ca93da186eac6a243700b3140eef"
+      },
+      {
+        "path": "tests/help/Diagnostics.Native.Tests.ps1",
+        "sha256": "89e1b68e0a239b07aa86925b72cdda2461bacb93ac27d3ab30f320408392eb47"
+      },
+      {
+        "path": "tests/help/Diagnostics.Tests.ps1",
+        "sha256": "5b42fc444c621d42a0ea15278e75711440d2a11ba7934075d313c101832268fc"
+      },
+      {
+        "path": "tests/help/PreservationDocs.Tests.ps1",
+        "sha256": "fa31f78ee8ea172bfdebac839a3ae9a626fc508b71f02d5151ad1f30a0a85864"
+      },
+      {
+        "path": "tests/help/PublicDocs.Tests.ps1",
+        "sha256": "f05707580d5ec4a0486ed607e86acb47cf4c123ddf00e121c7c9fa2bbf609d5a"
+      },
+      {
+        "path": "tests/help/Version.Tests.ps1",
+        "sha256": "98f32959b47a167e3351ec4103e2fc27b6189c44a01ffba2f74ef5edbe82dae3"
+      },
+      {
+        "path": "tests/launcher/Launcher.Native.Tests.ps1",
+        "sha256": "61bbe9e2d927c18eaa7265dae000f621f5570bf9d3743c8c1528d2fea7f4195e"
+      },
+      {
+        "path": "tests/launcher/Launcher.Tests.ps1",
+        "sha256": "94becd084a9013b2b6b5be97139ac3b1848081047021cb8b8fb55263282142d1"
+      },
+      {
+        "path": "tests/launcher/Receiver.ps1",
+        "sha256": "b1ddadbe8034a595f23242b56404aec12ac20051519d5ef4f8a9893e320ec3cc"
+      },
+      {
+        "path": "tests/launcher/TestSupport.ps1",
+        "sha256": "4249a55083b88629edac14b1cd82f87f35f77753f4870a21923cb4198c772a65"
+      },
+      {
+        "path": "tests/native/FakeNative.cs",
+        "sha256": "1f124bad206540a41a511462d2761cb5fe5f863cf344cd7235b09e71212b5036"
+      },
+      {
+        "path": "tests/native/NativeRunner.Tests.ps1",
+        "sha256": "2706360b442c74e527a8fd54f6a5efffbca29f60a1791fb6735cba4b75b0a902"
+      },
+      {
+        "path": "tests/native/ToolInvocation.Tests.ps1",
+        "sha256": "4e64fd678a656fa6b3160a554d3a0f0e5cc2a96978f8a064b76fa21bae808a2a"
+      },
+      {
+        "path": "tests/package/candidate_smoke.py",
+        "sha256": "b563eca14a898159763c245e2c8a275c8b1a7f4968e28bcad49c352a771a502f"
+      },
+      {
+        "path": "tests/package/Package.Tests.ps1",
+        "sha256": "8e758a8b4d3bc4d87a077efab119f5f0b94f9fb8f682e82f54f7deb99557ee67"
+      },
+      {
+        "path": "tests/package/PackageSupport.ps1",
+        "sha256": "22fcb0d0e1ff113ed76e41d2ea6fb45565f5e4df3e4c0a0eb77b1656158d8ba8"
+      },
+      {
+        "path": "tests/package/test_candidate_smoke.py",
+        "sha256": "6c771c0381ae81406f6bb782141f465acc8a0b8f715166c31510cc3605b40a8c"
+      },
+      {
+        "path": "tests/package/test_capture_labels.py",
+        "sha256": "f944e75f7419418fb921b5d98f11fc8be2cfa5b39e718cd3424f43eec3e02985"
+      },
+      {
+        "path": "tests/pdf/CiSmoke.Native.Tests.ps1",
+        "sha256": "299007a580910622876aeb6de96a4571f7a38ba99fa1d53db56c63390e65ba9b"
+      },
+      {
+        "path": "tests/pdf/CorpusSafety.Native.Tests.ps1",
+        "sha256": "49f430d05a38f873a0794780ccd68285e573e09899c1b9c5f9584dcff771862d"
+      },
+      {
+        "path": "tests/pdf/EmailOutcome.Native.Tests.ps1",
+        "sha256": "bb7bbe50db77fd3bee1833485181e3b758639065c10625fb918df5eab6caeb1b"
+      },
+      {
+        "path": "tests/pdf/Fixture.Native.Tests.ps1",
+        "sha256": "6191900d9499b10cae113f336d298eed2720bc6814d5c7a8489bd597cafae8f1"
+      },
+      {
+        "path": "tests/pdf/InputPreflight.Native.Tests.ps1",
+        "sha256": "f9be7d95e4113a5f8559127e4a82c33c80faf8e8d712cd88708ffb764b2f4f2a"
+      },
+      {
+        "path": "tests/pdf/MasterValidation.Native.Tests.ps1",
+        "sha256": "19fd9161e0c074943c01049984d72a93565e0f69b1a08f14a9eaa6aaa9370080"
+      },
+      {
+        "path": "tests/pdf/NativeAcceptance.Native.Tests.ps1",
+        "sha256": "fb387749c5d4319175e8a14fceb878a313fcdb91b55428ddff0426927b62e25c"
+      },
+      {
+        "path": "tests/pdf/Preservation.Native.Tests.ps1",
+        "sha256": "8ac63feba7baf828a02764bfd9a0972ae2e7809578c43054f084c7e1a33ea264"
+      },
+      {
+        "path": "tests/pdf/SizeReporting.Native.Tests.ps1",
+        "sha256": "864195172a053611eb55ac749c2b844369ec08af1d8163313abc5c88d1f72681"
+      },
+      {
+        "path": "tests/pdf/SizeReporting.Tests.ps1",
+        "sha256": "b483404583d3093333031e1799d36f39adef5a9b7061fef88b19970d12690ce7"
+      },
+      {
+        "path": "tests/pdf/SourceDiscovery.Native.Tests.ps1",
+        "sha256": "e5ea266524f8a6537dff8bc4a89ea87032d1b80bd2ee58d8d870aa511bfb4174"
+      },
+      {
+        "path": "tests/pdf/ToolPaths.Native.Tests.ps1",
+        "sha256": "3f6a6a8d7a2096976bff9b11e8d9bdf9fa1b782cdac49f064eff88641357d027"
+      },
+      {
+        "path": "tests/static/StaticChecks.Tests.ps1",
+        "sha256": "a4765fd019f53f39a5560e4d81d8811074463950cdb01a0578ade8135b5d35ec"
+      },
+      {
+        "path": "tests/TestDependencies.psd1",
+        "sha256": "04dca897f5504a2d7564711b993ab486831be69e81adefede136d7aa9f68dbbb"
+      },
+      {
+        "path": "tests/TestSupport.ps1",
+        "sha256": "f02d2b28444aeb6ee208d8f270d474a16e7edea26e2c92f7bdb10bdb997421a2"
+      },
+      {
+        "path": "tests/unit/CiDependencies.Tests.ps1",
+        "sha256": "17c6d2f88b3b738a35f604426ec607eda4eec3f7eeb6035d5bd7478cdbb1c14b"
+      },
+      {
+        "path": "tests/unit/CiReportSupport.Tests.ps1",
+        "sha256": "4c4c6c6cb6ac49d8f28fcd99bbd6756692c3b8be393572898bff98ba95199905"
+      },
+      {
+        "path": "tests/unit/CiRunSupport.Tests.ps1",
+        "sha256": "e12ff7d3a606bdafef81cd3c18f9851a3218f4898c886ca7d0d8e3e594ce0425"
+      },
+      {
+        "path": "tests/unit/CorpusSafetySupport.Tests.ps1",
+        "sha256": "bf82f6d895b37156aa69ebe4907d6c64e62d42854bcebd1be994b06cb7ae3a21"
+      },
+      {
+        "path": "tests/unit/Dependencies.Tests.ps1",
+        "sha256": "8e6153c3d7eaccfe06161a043e707654c921a047ed4cdbe46573f0ade96c949e"
+      },
+      {
+        "path": "tests/unit/Destination.Tests.ps1",
+        "sha256": "504b334c72a73754c3c41f11811703e76c6a48b1ab7844ba2b7f83adb4dc3747"
+      },
+      {
+        "path": "tests/unit/EmailOutcome.Tests.ps1",
+        "sha256": "88fe4272b559c140284e80040dd065ef04c2b941481e38a29882a088b7a3d5cf"
+      },
+      {
+        "path": "tests/unit/FakeNative.Tests.ps1",
+        "sha256": "4cb5fa831a99e28d34617008f65364e3c11ed8db925066daf8ba1fd58c4f49a2"
+      },
+      {
+        "path": "tests/unit/FaultMatrix.Tests.ps1",
+        "sha256": "32159aeddeed9b2c7a55f2779533aa49244602d8585bd44280c94bcc5e8513d3"
+      },
+      {
+        "path": "tests/unit/Helpers.Tests.ps1",
+        "sha256": "ae54da066ab871a957b4182815a9ab29120821eec1d88a3cbc3616d499a3d36e"
+      },
+      {
+        "path": "tests/unit/InputPreflight.Tests.ps1",
+        "sha256": "74a1526f57d17c792fd7324ccd00baa8cd7145c1c8056d2b875502d8bdb5e162"
+      },
+      {
+        "path": "tests/unit/MasterValidation.Tests.ps1",
+        "sha256": "cdec06dad50436bb8eba8abb6a64208ad2972028ba52551a198738f480bf7ef4"
+      },
+      {
+        "path": "tests/unit/NativeCommand.Tests.ps1",
+        "sha256": "ccaf2d25abe827e36964b1ea369094d7b8516d8109a98034812ce29e11429bc9"
+      },
+      {
+        "path": "tests/unit/Ordering.Tests.ps1",
+        "sha256": "30da6738a7710c4da188ea11912b631d1888a1aa406b87630be3eb05f24e8721"
+      },
+      {
+        "path": "tests/unit/PdfEnvelope.Tests.ps1",
+        "sha256": "b33d041cee9171edb8ca14e16ad97d45294e15da2af4d39ecc67c552b3ddd4f6"
+      },
+      {
+        "path": "tests/unit/SourceDiscovery.Tests.ps1",
+        "sha256": "ac5af7e2037aad438ddf761f0f2512b96353bef8f00f5666f4bd743edc63fa60"
+      },
+      {
+        "path": "tests/unit/Staging.Tests.ps1",
+        "sha256": "e54002b4ad43043accbd502918daefadc21ff5840d9d37ce169841e09de255bd"
+      },
+      {
+        "path": "tests/unit/TestRunSupport.Tests.ps1",
+        "sha256": "0d229ccf531fa374abd2ebebba9c16d91443e9aa811a89600a9bc2e809bc7b1b"
+      },
+      {
+        "path": "tools/release/Build-Release.ps1",
+        "sha256": "c8ab8ad70f80a6bfa5af4ec20871009778943a301c716871e018301114519a2a"
+      },
+      {
+        "path": "tools/test/Build-FakeNative.ps1",
+        "sha256": "152fe731d2d008e460f6777179d43bbf0d04c9430a5718afeeba5246bf45be6a"
+      },
+      {
+        "path": "tools/test/CiDependencySupport.ps1",
+        "sha256": "8a2d5e28e3bcd0b9de65811b6c9a7c67b61eb4edf87f2dea238d6d524874fdcb"
+      },
+      {
+        "path": "tools/test/CiReportSupport.ps1",
+        "sha256": "157238c6f1111aa88cfd64827d77ee5385c2bfcbc4bbbcae1dcde0bfdaa3bb9a"
+      },
+      {
+        "path": "tools/test/CiRunSupport.ps1",
+        "sha256": "76c66a722d53e16c0f029a69d252cb44d7efa8ed510d7018b52343a603f3707c"
+      },
+      {
+        "path": "tools/test/corpus.py",
+        "sha256": "ac8c2e89f9e6cc340b9f338a4a2c29564efc4aa301ab53cdb54580dcaddda3a2"
+      },
+      {
+        "path": "tools/test/Destination.md",
+        "sha256": "54a7c33a99c5600ad47e16b2b8a9d969e964eaf8ee3e84febb7aac04769c3788"
+      },
+      {
+        "path": "tools/test/FakeNative.md",
+        "sha256": "3739f72a2eb798b74ed9c60e78ca0c897d2f3e2dc26554221b43c6b1cebf20c7"
+      },
+      {
+        "path": "tools/test/feature_oracle.py",
+        "sha256": "3e0a0c46204cbdadffcc687e1881ffced75d72c4fae061538fb0e4b9ed019526"
+      },
+      {
+        "path": "tools/test/fixture_oracle.py",
+        "sha256": "87132d5c19d97bc13089fe684c31812708bba80841c24fed90c9b8cc86f8a09c"
+      },
+      {
+        "path": "tools/test/generate_numbered_fixtures.py",
+        "sha256": "709f58b407aff0bd34d3122e6588da031737deeb2876ff9cc4a9f835514597a8"
+      },
+      {
+        "path": "tools/test/generate_pdf_envelope_fixtures.py",
+        "sha256": "528b526bcab6cb6e6de48eb5ea4d39d6125a92c1559f11dcf3e51cc499763f44"
+      },
+      {
+        "path": "tools/test/Initialize-CiDependencies.ps1",
+        "sha256": "b8be3fc28d23a4a947b5887b3e551e612dfd6783790549262f665ea3ee945105"
+      },
+      {
+        "path": "tools/test/InputPreflight.md",
+        "sha256": "8e87c1509cc3bceb2f074fa051310886a3c75cdaefdb9b2ab3d8cd2cfcf9de7d"
+      },
+      {
+        "path": "tools/test/Invoke-CiFailureProbe.ps1",
+        "sha256": "40f9e49d57e87954dd416316e9a0589df9aaafaa8d4993badf1f9a9f96221a01"
+      },
+      {
+        "path": "tools/test/Invoke-CiTests.ps1",
+        "sha256": "eb621a44f9bc7af603426a7475da42a33345fc45d157c8d1032a2cc40ca002ec"
+      },
+      {
+        "path": "tools/test/Invoke-StaticChecks.ps1",
+        "sha256": "4c5139e47ef24d8f1b842574b76a781732b3d31d95dea63d8c5a6faaa4547d05"
+      },
+      {
+        "path": "tools/test/Invoke-Tests.ps1",
+        "sha256": "27858fcb087a51b1a51b83c6a1ef09ded6826223336c9bf91fc0152a67a95e3d"
+      },
+      {
+        "path": "tools/test/NativeRunner.md",
+        "sha256": "138e12552e07f9504609075ac910a0dc6943504952ecb095ae80ac109aefb48b"
+      },
+      {
+        "path": "tools/test/README.md",
+        "sha256": "414fe5bda3e11b436e5a0eaac85eed18996b98c03477596140e4266fa084efbd"
+      },
+      {
+        "path": "tools/test/requirements-fixtures.txt",
+        "sha256": "86ec1cc3035bafd26ba3edd579c6a719356ae8353602218484c524ef4b84f181"
+      },
+      {
+        "path": "tools/test/Staging.md",
+        "sha256": "cb7797a69d7f929af3a51826ef7dd0a2df14039f870bbf618dd9ce99f46821f7"
+      },
+      {
+        "path": "tools/test/StaticChecks.md",
+        "sha256": "c2e8f7db83ea15e1038a12c0b711e7076fdd0f2d2705b23b8819a54e6b28f971"
+      },
+      {
+        "path": "tools/test/TestRunSupport.ps1",
+        "sha256": "98ff5f02b29b998069d9f457e1d0f8dd87826f5419037710236b385e09457baa"
+      },
+      {
+        "path": "tools/test/tests/test_corpus.py",
+        "sha256": "3f1ae084c7ca2b4ada8678822581e0d2bca0e90fc6827a174f6a4ec52e4497a5"
+      },
+      {
+        "path": "tools/test/tests/test_feature_oracle.py",
+        "sha256": "3477ab506c3a171abe2cf478e00493a934f91685b486724f550b82179effcc55"
+      },
+      {
+        "path": "tools/test/tests/test_fixture_oracle.py",
+        "sha256": "7522de6248fdd694ce3274e0e5679e7a3b464775c24087eb7e5ce01875e91e44"
+      },
+      {
+        "path": "VERSION",
+        "sha256": "4ca8bbd3c595ee306226c6996b32b8d47a900217c55a7ed0cfc868ee444f34f1"
+      },
+      {
+        "path": "WinPDFMerge.bat",
+        "sha256": "288287beefea974c64d39b34266332d83112b9106c952efd8c304edfedebff83"
+      },
+      {
+        "path": "WinPDFMerge.ps1",
+        "sha256": "2e494489cfcd4ce0112254ddb6b4ade6b6103b4af25dd0fd16959e973b773902"
+      }
+    ]
+  },
+  "source_unchanged": true,
+  "runner_error": null,
+  "result": "pass",
+  "shell_version": "7.6.6",
+  "shell_edition": "Core",
+  "process_64_bit": true,
+  "execution_policy": "RemoteSigned",
+  "pester_version": "6.2.0",
+  "tier": "ToolInvocation",
+  "evidence_class": "unit-controlled-native-job-and-filesystem",
+  "passed": 12,
+  "failed": 0,
+  "failed_blocks": 0,
+  "failed_containers": 0,
+  "skipped": 0,
+  "not_run": 0,
+  "inconclusive": 0,
+  "total": 12
+}
+Reports: <REPO>\tests\.work\pester\ad4c5b0ca0e248c1b8f605787b39ea1c

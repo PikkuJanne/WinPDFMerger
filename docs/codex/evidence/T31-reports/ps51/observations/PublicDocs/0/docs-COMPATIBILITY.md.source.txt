@@ -1,0 +1,57 @@
+# Compatibility scope
+
+Scope recorded 2026-10-09 for the planned v1.0.0 release. The release is not yet
+published. These statements describe actual scoped tests and explicit validation
+exclusions; exact release ZIP and downloaded-package checks remain later gates.
+Exact premerge candidate ZIPs passed automated Windows operation and unchanged-source
+checks on 2026-10-09 in both required shells. Accepted merged source and final assets
+still require their own checks; the candidate results do not certify a published download.
+
+The tested reference environment is Windows 11 x64 with Windows PowerShell 5.1
+and one recorded supported PowerShell 7 x64 build. Actual synthetic/native tests
+used Windows PowerShell 5.1.26100.9444 and
+PowerShell 7.6.6 x64 on Windows with base OSVersion 10.0.26300.0, a non-elevated
+x64 token, local NTFS storage, PDFtk Server 2.02 and Ghostscript 10.08.0.
+The separate later registry check below identifies Windows 11 Pro / 26H2; it
+does not add an edition or full revision to the earlier test receipt.
+
+The earlier tests did not record the full OS revision. A fresh registry check on
+2026-10-08 observed Windows 11 Pro 26H2, full build 26300.9457.
+[Microsoft's release history](https://learn.microsoft.com/en-us/windows/release-health/windows11-release-information),
+checked that day, lists that exact build in the General Availability Channel
+from 2026-09-29; the table's latest 26H2 build was 26300.9550. This is a current
+build match, not a retroactive full-revision claim for earlier tests or a desktop
+acceptance pass.
+
+On 2026-10-09 the owner reports that this computer is not enrolled in the Windows
+Insider Program. This is owner-reported enrollment information, separate from
+the dated registry/build-history observation; it does not add a Settings
+inspection or a full revision to older test receipts. Windows PowerShell support
+follows the host Windows lifecycle, and PowerShell 7 support also depends on a
+supported host OS. The recorded tests do not certify ongoing OS support. See
+the dated [dependency observations](DEPENDENCIES.md).
+
+Scoped automated Windows native, dual-shell, batch/CLI and hosted CI tests remain
+the validation evidence. At the owner's direction, human standard-user and
+Explorer validation is excluded from project scope and was not performed.
+This exclusion is not a manual pass: hosted Windows Server tests, controlled
+BAT execution and renderer inspections do not establish human Explorer,
+standard-user account or interactive visible-output acceptance.
+
+| Environment | Validation scope | Rationale |
+| --- | --- | --- |
+| Windows 10 | Excluded from validated v1.0.0 support | No actual Windows 10 host testing is recorded; the reference desktop and hosted Server results do not establish it. |
+| Live UNC | Excluded from validated v1.0.0 support | No actual live UNC network-share test is recorded; local NTFS runs do not establish share permissions or network behavior. |
+| Windows on ARM | Excluded from validated v1.0.0 support | No actual ARM host validation evidence is recorded; the tested hosts use x64. |
+| 32-bit hosts | Excluded from validated v1.0.0 support | No actual 32-bit host validation evidence is recorded; an x86 dependency on an x64 host does not establish it. |
+
+UNC string unit tests do not establish live network-share operation. Tests of the
+x86 PDFtk executable on an x64 host do not validate a 32-bit host. These exclusions
+are not passing compatibility tests and do not assert that every excluded
+environment will fail. The v1.0.0 instructions make no validated support claim for
+those environments.
+
+Use the documented local paths and retained defaults, keep original PDFs, and
+inspect the results. [Usage and path limits](USAGE.md),
+[PDF preservation limits](PDF_LIMITATIONS.md) and
+[security guidance](../SECURITY.md) apply in the tested environment too.
