@@ -1,0 +1,142 @@
+{
+  "task": "T33",
+  "result": "pass_for_minimal_publication_helper_source_and_isolated_transaction_guards",
+  "issues": [],
+  "source_commit": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+  "evidence_commit": "f3d8f3c8e8a8c582171c36ff1ceed82d84b09232",
+  "helper_source_sha256": "e88081f8522f5250309a6c55d2e7fad14785aa48e6ceca94e20756838ac6510e",
+  "checks_total": 31,
+  "checks": [
+    {
+      "check": "exact stable final V2 helper SHA",
+      "pass": true
+    },
+    {
+      "check": "unexecuted initial source preserved",
+      "pass": true
+    },
+    {
+      "check": "default explicit publish switch is store_true",
+      "pass": true
+    },
+    {
+      "check": "actual original66 receipt accepted by exact final schema",
+      "pass": true
+    },
+    {
+      "check": "isolated schema rejects source",
+      "pass": true
+    },
+    {
+      "check": "isolated schema rejects merge",
+      "pass": true
+    },
+    {
+      "check": "isolated schema rejects issue",
+      "pass": true
+    },
+    {
+      "check": "isolated schema rejects clean type",
+      "pass": true
+    },
+    {
+      "check": "isolated schema rejects wrong branch",
+      "pass": true
+    },
+    {
+      "check": "all original non-main transaction helper functions unchanged AST",
+      "pass": true
+    },
+    {
+      "check": "only one exact publication mutation call in helper",
+      "pass": true
+    },
+    {
+      "check": "isolated dry matching draft action semantics",
+      "pass": true
+    },
+    {
+      "check": "isolated explicit matching draft action semantics",
+      "pass": true
+    },
+    {
+      "check": "isolated already published idempotent action semantics",
+      "pass": true
+    },
+    {
+      "check": "isolated actual valid draft accepted",
+      "pass": true
+    },
+    {
+      "check": "isolated synthetic valid publication accepted",
+      "pass": true
+    },
+    {
+      "check": "isolated release rejects wrong id",
+      "pass": true
+    },
+    {
+      "check": "isolated release rejects wrong tag",
+      "pass": true
+    },
+    {
+      "check": "isolated release rejects prerelease",
+      "pass": true
+    },
+    {
+      "check": "isolated release rejects extra asset",
+      "pass": true
+    },
+    {
+      "check": "isolated release rejects wrong digest",
+      "pass": true
+    },
+    {
+      "check": "isolated release rejects wrong size",
+      "pass": true
+    },
+    {
+      "check": "isolated release rejects changed notes",
+      "pass": true
+    },
+    {
+      "check": "isolated release rejects draft with published time",
+      "pass": true
+    },
+    {
+      "check": "isolated published release rejects missing time",
+      "pass": true
+    },
+    {
+      "check": "isolated published release rejects wrong URL",
+      "pass": true
+    },
+    {
+      "check": "isolated tag correct annotated peel",
+      "pass": true
+    },
+    {
+      "check": "isolated tag wrong peel",
+      "pass": true
+    },
+    {
+      "check": "isolated tag missing object",
+      "pass": true
+    },
+    {
+      "check": "failure stops once without retry and no public-download acceptance inference",
+      "pass": true
+    },
+    {
+      "check": "original11 schema developer probes bound to helper/actual preflight",
+      "pass": true
+    }
+  ],
+  "reviewer_source_sha256": "e85a5f241c39034ba3157ba090ed1904dcf137703f2a60029bedeab0b60d9e6b",
+  "observed_at_utc": "2026-10-10T07:11:10.157543+00:00",
+  "limitations": [
+    "Only source/actual AST-isolated synthetic guard tests were executed; no helper full invocation/API/Git/publication/app/native action performed.",
+    "Actual fresh default preflight and authorized publication remain root-owned; original66 live gate report remains hash-bound and unchanged.",
+    "Explicit mutation journal marks attempted before the sole checked release edit; any failure/timeout leaves failure for live-state inspection without automatic retry. Independent anonymous public download and native operation remain later acceptance. AC058 stays excluded."
+  ]
+}

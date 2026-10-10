@@ -1,0 +1,47 @@
+--- preserved-T33-v2/Export-T33.py
++++ T33-v3/Export-T33.py
+@@ -67,12 +67,13 @@
+         for row in registry:
+             label_safe(row['path'])
+             require(re.fullmatch('[0-9a-f]{64}', row['raw_sha256']), 'Identity receipt requires exact raw SHA256')
+-            require(row['kind'] in ('actions_run_pages', 'annotated_tag'), 'Only narrowly scoped paginated Actions and annotated-tag metadata are supported')
+-            if row['kind']=='actions_run_pages':
++            require(row['kind'] in ('actions_run_pages', 'actions_runs', 'annotated_tag'), 'Only narrowly scoped paginated/single-object Actions and annotated-tag metadata are supported')
++            if row['kind'] in ('actions_run_pages','actions_runs'):
+                 require(re.fullmatch('[0-9a-f]{40}', row['git_commit_sha']) and
+                         type(row['run_id']) is int and row['run_id']>0 and
+                         type(row['page_index']) is int and row['page_index']>=0 and
+-                        type(row['run_index']) is int and row['run_index']>=0, 'Exact paginated Actions run/head/index pins required')
++                        type(row['run_index']) is int and row['run_index']>=0, 'Exact Actions run/head/index pins required')
++                require(row['kind']!='actions_runs' or row['page_index']==0, 'Single-object Actions response requires page_index zero')
+             else:
+                 require(re.fullmatch('[0-9a-f]{40}', row['tag_object_sha']) and row['target_commit_sha']==R and row['tag']=='v1.0.0', 'Exact annotated object, final tag and immutable R pins required')
+             require(row['path'] not in self.github_identity_receipts, 'Duplicate identity receipt declaration')
+@@ -115,10 +116,15 @@
+         declaration = self.github_identity_receipts[label]
+         require(sha(raw)==declaration['raw_sha256'], 'Declared identity receipt raw hash changed')
+         value = json.loads(raw.decode('utf-8-sig'))
+-        if declaration['kind']=='actions_run_pages':
+-            require(isinstance(value,list) and value, 'Paginated --slurp Actions pages required')
+-            require(all(isinstance(p,dict) and type(p.get('total_count')) is int and isinstance(p.get('workflow_runs'),list) for p in value), 'Actions page schema mismatch')
+-            run = value[declaration['page_index']]['workflow_runs'][declaration['run_index']]
++        if declaration['kind'] in ('actions_run_pages','actions_runs'):
++            if declaration['kind']=='actions_runs':
++                require(isinstance(value,dict), 'Single-object Actions response required')
++                pages=[value]
++            else:
++                require(isinstance(value,list) and value, 'Paginated --slurp Actions pages required')
++                pages=value
++            require(all(isinstance(p,dict) and type(p.get('total_count')) is int and isinstance(p.get('workflow_runs'),list) for p in pages), 'Actions page schema mismatch')
++            run = pages[declaration['page_index']]['workflow_runs'][declaration['run_index']]
+             required = {'id','head_sha','head_commit','event','status','conclusion','url','html_url'}
+             require(isinstance(run,dict) and required <= set(run) and type(run['id']) is int and run['id']==declaration['run_id'] and run['head_sha']==declaration['git_commit_sha'], 'Pinned Actions run/head mismatch')
+             commit = run['head_commit']
+@@ -219,6 +225,7 @@
+                     require(value['public_download_report']['sha256']==next(x['raw_sha256']for x in rows if x['role']=='accepted_public_download') and Path(value['download_directory'])==directory, 'Independent operation must bind original anonymous download receipt/path')
+                 details={'checks':checks}
+             else:
++                require(values['accepted_operation_review']['decoded_image_review']['sha256']==row['raw_sha256'] and self.owned(values['accepted_operation_review']['decoded_image_review']['path'])==self.owned(row['source']), 'Decoded review must be linked by exact hash/path to independent published operation audit')
+                 require(value['result']=='pass' and value['harness_commit']==M and value['issues']==[] and value['retained_pdf_count']==21 and value['retained_output_page_count']==106 and type(value['checks'])is int and value['checks']>0, 'Actual independent decoded-image/PDF review required')
+                 details={'checks':value['checks'],'PDFs':21,'PDF_pages':106}
+             self.guards.append({'role':role,'source_commit':R,'raw_sha256':row['raw_sha256'],**details})

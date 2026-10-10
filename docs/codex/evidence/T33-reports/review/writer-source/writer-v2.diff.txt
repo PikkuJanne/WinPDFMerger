@@ -1,0 +1,242 @@
+--- WriteCompletion.py
++++ WriteCompletionV2.py
+@@ -51,6 +51,135 @@
+     assert images['result'] == 'pass' and images['checks'] > 0
+     assert visual['result'] == 'pass_for_recorded_rendered_contact_sheet_inspection' and len(visual['sheets']) == 2
+ 
++    assert pre['facts']['primary_initial']['branch'] == 'codex/v1.0.0-release-evidence'
++    asset_rows(download['assets'])
++    assert package['source_tree'] == '5014f5bdf4f374aee828ced4c39cb93bfeb6465a' and package['clean_audit_checkout'] is True
++    assert package['recorded_expected_zip_sha256'] == ZIP and package['recorded_expected_checksums_sha256'] == SUMS
++    asset_rows(package['assets'])
++    assert package['checks_total'] == 266 and len(package['checks']) == 266 and all(x['pass'] is True for x in package['checks'])
++    assert package['application_executed'] is False and package['native_engines_executed'] is False
++    assert native['candidate_source_commit'] == R and native['approved_cache_files_verified'] == 348
++    assert native['driver_sha256'] == '01cf9fa377dde5719fea16153791bc2a85fa412872ceee9cfa6029a5f270c8b7'
++    assert native['harness_sha256'] == '5ea6bd48c400f1ffe9becf7ba5fb2b7fd355019dbbab3a8aa295a29c727626f8'
++    assert operation['checks'] == 5673 and operation['manual_acceptance'] == 'excluded/unperformed'
++    assert operation['binding_checks_total'] == len(operation['binding_checks']) == 17 and all(x['pass'] is True for x in operation['binding_checks'])
++    assert all(operation[x] is False for x in ('application_reexecuted', 'native_engines_reexecuted', 'original_reports_modified'))
++    assert images['candidate_source_commit'] == R and images['harness_commit'] == M and images['checks'] == 1360
++    assert (images['retained_pdf_count'], images['retained_output_page_count']) == (21, 106)
++    assert (images['normal_master_image_count'], images['rewritten_email_image_count'], images['source_raster_count']) == (12, 5, 14)
++    assert visual['source_commit'] == R and visual['harness_commit'] == M
++
++
++def asset_rows(rows):
++    assert isinstance(rows, list) and len(rows) == 2
++    expected = {'WinPDFMerger-v1.0.0.zip': (193669, ZIP), 'SHA256SUMS.txt': (90, SUMS)}
++    assert len({x['name'] for x in rows}) == 2
++    assert {x['name']: (x['bytes'], x['sha256']) for x in rows} == expected
++
++
++def validate_host(report, kind, child, native):
++    count, invocations, version, edition = {'PS51': (14, 54, '5.1.26100.9444', 'Desktop'),
++                                           'PS7': (11, 51, '7.6.6', 'Core')}[kind]
++    assert report['task'] == 'T33' and report['result'] == 'pass' and report['preparation'] is False
++    assert report['shell_kind'] == kind and len(report['cases']) == count
++    assert report['evidence_class'] == CLASS and report['harness_commit'] == M and report['candidate_source_commit'] == R
++    guard_keys = {'expected_head', 'status_unchanged', 'clean', 'driver_unchanged',
++                  'approved_cache_unchanged', 'candidate_assets_unchanged', 'parent_environment_unchanged'}
++    assert set(report['source_guard']) == guard_keys and all(report['source_guard'][x] is True for x in guard_keys)
++    assert report['manual_acceptance'] == 'excluded/unperformed; never pass'
++    assert all(x['package_guard'] is True and x['source_foreign_guard'] is True for x in report['cases'])
++    assert child['shell'] == kind and child['cases'] == count and child['invocations'] == invocations and child['result'] == 'pass'
++    assert report['invocation_count'] == invocations
++    assert len(report['approved_cache_files']) == native['approved_cache_files_verified'] == 348
++    assert report['driver_sha256_before'] == report['driver_sha256_after'] == native['harness_sha256']
++    for key in ('zip_path', 'checksums_path'):
++        assert Path(report['candidate'][key]).resolve() == Path(native['shared_assets'][key]).resolve()
++    assert report['candidate']['zip_sha256'] == ZIP and report['candidate']['checksums_sha256'] == SUMS
++    assert report['candidate']['build_info']['source_commit'] == R
++    env = report['environment']
++    assert env['shell_version'] == version and env['shell_edition'] == edition
++    assert env['process_64_bit'] is True and env['is_administrator'] is False
++    assert (env['edition'], env['display_version'], env['full_build']) == ('Professional', '26H2', '26300.9457')
++    policies = {x['scope']: x['policy'] for x in env['policy']}
++    assert policies['Process'] == 'RemoteSigned' and policies['MachinePolicy'] == policies['UserPolicy'] == 'Undefined'
++
++
++def validate_bindings(g, paths, repo):
++    download, package, native, operation, images, visual = (g[x] for x in
++        ('public_download', 'package_review', 'actual_operation', 'operation_review', 'decoded_image_review', 'root_visual_review'))
++
++    def linked(row, path):
++        assert (repo / row['path']).resolve() == path.resolve()
++        assert row['sha256'] == sha(path)
++
++    linked(download['package_audit'], paths['package_review'])
++    assert download['package_audit']['checks'] == package['checks_total'] and download['package_audit']['issues'] == []
++    directory = Path(download['download_directory']).resolve()
++    assert directory.is_dir() and not directory.is_relative_to(repo)
++    assert Path(operation['download_directory']).resolve() == directory
++    for key, name, digest in [('zip_path', 'WinPDFMerger-v1.0.0.zip', ZIP), ('checksums_path', 'SHA256SUMS.txt', SUMS)]:
++        assert Path(native['shared_assets'][key]).resolve() == directory / name
++        assert sha(directory / name) == digest
++    linked(operation['public_download_report'], paths['public_download'])
++    linked(operation['actual_native_ledger'], paths['actual_operation'])
++    linked(operation['decoded_image_review'], paths['decoded_image_review'])
++    original = (repo / operation['original_operation_report']['path']).resolve()
++    execution = (repo / operation['actual_execution_receipt']['path']).resolve()
++    assert original.is_relative_to(repo / 'tests/.work') and execution.is_relative_to(repo / 'tests/.work')
++    linked(operation['original_operation_report'], original)
++    linked(operation['actual_execution_receipt'], execution)
++    assert operation['actual_execution_receipt']['exit_code'] == read(execution)['exit_code'] == 0
++    original_report = read(original)
++    assert original_report['task'] == 'T33' and original_report['issues'] == []
++    assert original_report['candidate_source_commit'] == R and original_report['harness_commit'] == M
++    assert original_report['application_reexecuted'] is False and original_report['pdftk_or_ghostscript_reexecuted'] is False
++    assert original_report['checks'] == operation['checks']
++    assert len(original_report['actual_application_cases']) == 25 and len(original_report['independent_pdf_reads']) == 21
++    assert sum(len(x['pages']) for x in original_report['independent_pdf_reads']) == 106
++    children = native['candidate_reports']
++    assert isinstance(children, list) and len(children) == 2 and {x['shell'] for x in children} == {'PS51', 'PS7'}
++    receipts, host_reports = [], {}
++    for kind in ('PS51', 'PS7'):
++        child = next(x for x in children if x['shell'] == kind)
++        path = paths['actual_operation'].parent / (kind + '-reports') / 'result.json'
++        linked(child, path)
++        report = read(path)
++        validate_host(report, kind, child, native)
++        host_reports[kind] = (path, report)
++        receipts.append({'path': kind + '-reports/result.json', 'sha256': sha(path)})
++    assert images['input_receipts'] == receipts
++
++    render_path = paths['decoded_image_review'].parent / 'visual-published-outputs/render-contact-report.json'
++    independent_path = paths['decoded_image_review'].parent / 'visual-published-review.json'
++    render, independent = read(render_path), read(independent_path)
++    assert render['task'] == 'T33' and render['source_commit'] == R
++    assert render['result'] == 'rendered_pending_visual_review'
++    assert Path(render['capture']).resolve() == paths['actual_operation'].parent.resolve()
++    assert (render['pdf_count'], render['page_count'], len(render['sheets'])) == (21, 106, 6)
++    assert independent['task'] == 'T33' and independent['result'] == 'pass_for_recorded_rendered_contact_sheet_inspection'
++    assert independent['issues'] == [] and independent['source_commit'] == R and independent['harness_commit'] == M
++    assert independent['zip_sha256'] == ZIP and independent['checksums_sha256'] == SUMS
++    assert independent['original_render_report_sha256'] == sha(render_path)
++    assert (independent['pdf_count'], independent['page_count'], independent['contact_sheets'], len(independent['sheets'])) == (21, 106, 6, 6)
++    assert independent['human_acceptance'] == 'excluded/unperformed; never pass'
++    assert independent['application_native_or_download_reexecuted'] is False
++    assert len({x['path'] for x in render['sheets']}) == 6
++    for sheet in render['sheets']:
++        path = (render_path.parent / sheet['path']).resolve()
++        assert path.is_relative_to(render_path.parent) and sha(path) == sheet['sha256']
++        matches = [x for x in independent['sheets'] if (independent_path.parent / x['path']).resolve() == path]
++        assert len(matches) == 1 and matches[0]['sha256'] == sheet['sha256'] and matches[0]['bytes'] == path.stat().st_size
++    expected_root_sheets = ['contact-01.png', 'contact-04.png']
++    for row, name, prefix in zip(visual['sheets'], expected_root_sheets, ('PS51-', 'PS7-')):
++        assert row['path'].startswith('<REPO>/')
++        path = (repo / row['path'][len('<REPO>/'):]).resolve()
++        assert path == (render_path.parent / name).resolve() and row['sha256'] == sha(path)
++        sheet = next(x for x in render['sheets'] if x['path'] == name)
++        assert row['sha256'] == sheet['sha256']
++        assert sheet['pdf_labels'] == [prefix + x for x in ('default-screen-master', 'default-screen-email', 'ebook-output-master', 'ebook-output-email')]
++    assert visual['tool'] == 'view_image'
++    return host_reports, render_path, independent_path
++
+ 
+ def main():
+     p = argparse.ArgumentParser(description=__doc__)
+@@ -74,6 +203,7 @@
+         assert path.is_relative_to(repo / 'tests/.work') and sha(path) == pin['sha256'], role
+         raw_paths[role], gates[role] = path, read(path)
+     validate_gates(gates)
++    host_reports, render_path, independent_visual_path = validate_bindings(gates, raw_paths, repo)
+     public = read(a.public_review)
+     assert public['result'].startswith('pass') and public['issues'] == []
+     assert public['manifest_sha256'] == sha(packet / 'manifest.json')
+@@ -91,12 +221,7 @@
+     native, package, operation, images = (gates[x] for x in ('actual_operation', 'package_review', 'operation_review', 'decoded_image_review'))
+     hosts = {}
+     for kind, count in [('PS51', 14), ('PS7', 11)]:
+-        path = raw_paths['actual_operation'].parent / (kind + '-reports') / 'result.json'
+-        report = read(path)
+-        assert report['result'] == 'pass' and report['preparation'] is False and len(report['cases']) == count
+-        assert report['evidence_class'] == CLASS and report['harness_commit'] == M and report['candidate_source_commit'] == R
+-        assert all(v is True for v in report['source_guard'].values()) and report['manual_acceptance'] == 'excluded/unperformed; never pass'
+-        assert all(x['package_guard'] is True and x['source_foreign_guard'] is True for x in report['cases'])
++        path, report = host_reports[kind]
+         projected = read(repo / ref(path)['path'])
+         hosts[kind] = {'report': ref(path), 'application_cases': count, 'captured_invocations': report['invocation_count'],
+                        'environment': projected['environment'], 'reader_versions': report['independent_reader_versions'],
+@@ -119,12 +244,15 @@
+               'hosts': hosts, 'native_tools': {'PDFtk': '2.02', 'Ghostscript': '10.08.0'},
+               'independent_reviews': {'downloaded_package_checks': package['checks_total'], 'operation_checks': operation['checks'],
+                                       'decoded_image_checks': images['checks'], 'PDFs': 21, 'PDF_pages': 106,
+-                                      'contact_sheets': 6, 'root_contact_sheets': 2, 'issues': []},
++                                      'contact_sheets': 6, 'root_contact_sheets': 2,
++                                      'render_receipt': ref(render_path), 'visual_review': ref(independent_visual_path), 'issues': []},
+               'references': references,
+               'public_manifest': {'path': 'docs/codex/evidence/T33-reports/manifest.json', 'sha256': sha(packet / 'manifest.json'),
+                                   'payloads': manifest.get('payload_count', len(rows))},
+               'public_review': {'path': 'docs/codex/evidence/T33-reports/review/public-review.json', 'sha256': sha(a.public_review)},
+               'retained_preparation_corrections': ['Unexecuted publication V1 guessed a preflight evidence_commit key; reviewed V2 binds the actual owner_merged_main schema and separate actual guard probes pass.',
++                                                   'Initial unexecuted completion writer omitted several pair/path/child/image/visual semantic bindings; reviewed V2 binds actual immutable receipts and isolated developer rejection probes, without executing native/application operations.',
++                                                   'Original operation-wrapper metadata counted 16 binding rows while retaining 17; final separate V2 reports 17 coherent binding checks and preserves the initial wrapper, without changing the 5673 underlying original review checks.',
+                                                    'Original GitHub tree endpoint sha echoed the requested revision; frozen supplemental evidence binds the actual Git tree object and preserves the original API response.'],
+               'human_acceptance': 'AC058 excluded/nonrequired/unperformed; never pass',
+               'release_state': 'verified', 'publication_claimed': True, 'project_complete': False, 'next_task': 'T34',
+@@ -175,8 +303,8 @@
+ paths with real PDFtk 2.02/Ghostscript 10.08.0. Sources, package, foreign files, approved
+ 348-cache files, drivers and parent environment remain unchanged. Primary harness was
+ clean owner PR29 merge `{M}`; frozen source was R throughout.
+-Observed Windows Professional 26H2 build26300.9457 x64/nonadministrator token,
+-PS5.1.26100.9444 Desktop and PS7.6.6 Core; process-only RemoteSigned obeyed observed GPO.
++Observed Windows Professional 26H2 build 26300.9457 x64/nonadministrator token,
++PS 5.1.26100.9444 Desktop and PS 7.6.6 Core; process-only RemoteSigned obeyed observed GPO.
+ No persistent policy/security changes, elevation or dependency installation occurred.
+ 
+ Independent {operation['checks']} operation/PDF checks inspect 21 output PDFs/106 pages;
+@@ -185,8 +313,9 @@
+ source preservation and validated master survival pass within the documented PDF limits.
+ Actual argv/time/version/exit/raw-stream and independent report hashes are bound in
+ T33-results and the reviewed sanitized T33-reports packet. Raw local originals survive.
+-Unexecuted V1 schema assumption and the API revision/tree clarification are preserved;
+-separate reviewed corrections carry actual evidence, without rewriting originals.
++Unexecuted publication/writer assumptions, wrapper count metadata and the API revision/tree
++clarification are preserved. Separate reviewed corrections carry actual evidence without
++rewriting originals; isolated developer probes are separate from native execution.
+ 
+ T01-T33 done; 72 cases pass/4 excluded/AC077-078 not_run. AC058 remains owner-excluded,
+ nonrequired/unperformed, never pass. All execution was automated; no human account-class,
+@@ -208,14 +337,14 @@
+ used that clean revision. All later tracked changes remain docs/codex only.
+ 
+ AC075/076 pass: anonymous public API/Gate F download, independent {package['checks_total']}
+-package checks and 25 actual Windows scenarios across PS5.1.26100.9444/PS7.6.6 using
+-real PDFtk2.02/GS10.08.0. Every source/package/cache/environment guard passes.
++package checks and 25 actual Windows scenarios across PS 5.1.26100.9444/PS 7.6.6 using
++real PDFtk 2.02/GS 10.08.0. Every source/package/cache/environment guard passes.
+ Independent {operation['checks']} operation checks, 21 PDFs/106 pages, {images['checks']}
+ decoded-image checks and six contact sheets pass. See T33-completion/results/reports.
+ Prior exact-R full regression/CI/static/helper evidence and original failures remain accepted
+ and preserved; developer probes are separate from actual application evidence.
+ 
+-Cases72 pass/4 excluded/2 not_run. AC058 excluded/nonrequired/unperformed, never passed.
++Cases: 72 pass/4 excluded/2 not_run. AC058 excluded/nonrequired/unperformed, never passed.
+ No human account-class/Explorer/viewer or Insider enrollment inference. Existing unsigned,
+ dependency, platform, source safety, PDF/signature/PDF-A/privacy limitations remain.
+ Final T33 evidence commit/push/clean-live proof follows records and is reported in-session.
+@@ -230,17 +359,17 @@
+ DEFINITION_OF_DONE and T33 completion/results/reports. Recheck repository/branch/clean
+ state, canonical origin, current evidence checkpoint and live main/head/tag/release.
+ 
+-Frozen R `{R}`, tree5014f5bdf4f374aee828ced4c39cb93bfeb6465a.
+-Annotated v1.0.0 `{TAG}` peels to R. Sole public release408603768:
++Frozen R `{R}`, tree 5014f5bdf4f374aee828ced4c39cb93bfeb6465a.
++Annotated v1.0.0 `{TAG}` peels to R. Sole public release 408603768:
+ {URL}, published_at `{PUBLISHED}`, draft=false/prerelease=false.
+ ZIP `{ZIP}`; complete checksum-file `{SUMS}`. Both anonymous downloads match;
+-that exact pair passes25 actual Windows dual-shell scenarios and independent PDF/source
++that exact pair passes 25 actual Windows dual-shell scenarios and independent PDF/source
+ inspection. Preserve all raw/report evidence and accurately disclosed unsigned/PDF limits.
+ Do not rebuild/substitute assets, retag, overwrite, delete or publish another release.
+ 
+-Owner merged prior PR29 to main `{M}` before publication. The new T33 draft evidence
+-PR is identified by the live codex/v1.0.0-release-evidence head branch and the final session
+-checkpoint/PR link; preserve owner history. Verify its exact head and all required CI/reviews,
++Owner merged prior PR29 to main `{M}` before publication. Create or reuse the T33 draft evidence
++PR from the live codex/v1.0.0-release-evidence head branch and record its actual checkpoint/PR
++link in-session; preserve owner history. Verify its exact head and all required CI/reviews,
+ then perform the authorized normal reviewed merge for T34. Follow the no-self-reference
+ checkpoint method: update closure records, normal docs/codex-only commits/push,
+ verify fresh live main E and clean tree; R..E must contain only docs/codex paths.

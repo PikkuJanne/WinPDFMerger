@@ -1,0 +1,20 @@
+--- CreateEvidencePR.py
++++ CreateEvidencePRV2.py
+@@ -53,12 +53,15 @@
+     pr = existing[0]
+     assert pr['state'] == 'OPEN' and pr['isDraft'] is True and pr['headRefOid'] == head and pr['baseRefName'] == 'main'
+     url = pr['url']
++    run('update-reused-draft-body', ['gh', 'pr', 'edit', url, '--repo', target, '--title', 'Record published v1.0.0 and verified public download', '--body-file', str(body)])
+ else:
+     url = run('create-draft-T33-evidence-PR', ['gh', 'pr', 'create', '--repo', target, '--base', 'main', '--head', branch, '--draft', '--title', 'Record published v1.0.0 and verified public download', '--body-file', str(body)])
+-pr = json.loads(run('actual-draft-PR', ['gh', 'pr', 'view', url, '--repo', target, '--json', 'number,url,state,isDraft,headRefOid,baseRefName']))
++pr = json.loads(run('actual-draft-PR', ['gh', 'pr', 'view', url, '--repo', target, '--json', 'number,url,state,isDraft,headRefOid,baseRefName,body,title']))
+ assert pr['state'] == 'OPEN' and pr['isDraft'] is True and pr['headRefOid'] == head and pr['baseRefName'] == 'main'
++assert pr['title'] == 'Record published v1.0.0 and verified public download'
++assert pr['body'].replace('\r\n', '\n').strip() == body.read_text(encoding='utf-8').strip()
+ record = {'task': 'T33', 'result': 'pass', 'evidence_commit': head, 'PR': pr,
+-          'body_sha256': sha(body.read_bytes()), 'source_sha256': sha(Path(__file__).read_bytes()),
++          'body_sha256': sha(body.read_bytes()), 'actual_platform_body_utf8_sha256': sha(pr['body'].encode('utf-8')), 'source_sha256': sha(Path(__file__).read_bytes()),
+           'invocations_sha256': sha((root / 'invocations.json').read_bytes()),
+           'limitations': 'Draft remains unmerged; new PR CI completion and T34 synchronized closure are not inferred.'}
+ (root / 'PR-result.json').write_text(json.dumps(record, indent=2) + '\n', encoding='utf-8')

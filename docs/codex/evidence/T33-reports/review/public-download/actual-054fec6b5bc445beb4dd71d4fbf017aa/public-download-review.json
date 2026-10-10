@@ -1,0 +1,452 @@
+{
+  "schema_version": 1,
+  "task": "T33",
+  "result": "pass_for_unauthenticated_published_release_and_independent_download",
+  "source_commit": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+  "harness_commit": "f3d8f3c8e8a8c582171c36ff1ceed82d84b09232",
+  "release_id": 408603768,
+  "release_url": "https://github.com/PikkuJanne/WinPDFMerger/releases/tag/v1.0.0",
+  "published_at": "2026-10-10T07:12:01Z",
+  "draft": false,
+  "prerelease": false,
+  "tag_object_sha": "7818645de07b902ad8f2b815e90ee1d74d2724d6",
+  "zip_sha256": "2b95e90cc3eb3d47b5619710acd1b6cf551769e90ac89813a1dbf0c899c63fc2",
+  "checksums_sha256": "d39084cb335c56bb99fa51424ec5aed2d95179f3c44974c81a68a8d3bf1e01ca",
+  "download_directory": "<T33_PUBLIC_DOWNLOAD>",
+  "download_directory_previously_existed": false,
+  "authentication_used": false,
+  "cookies_used": false,
+  "gh_download_used": false,
+  "assets": [
+    {
+      "name": "SHA256SUMS.txt",
+      "bytes": 90,
+      "sha256": "d39084cb335c56bb99fa51424ec5aed2d95179f3c44974c81a68a8d3bf1e01ca"
+    },
+    {
+      "name": "WinPDFMerger-v1.0.0.zip",
+      "bytes": 193669,
+      "sha256": "2b95e90cc3eb3d47b5619710acd1b6cf551769e90ac89813a1dbf0c899c63fc2"
+    }
+  ],
+  "observed_public_download_counts": {
+    "before": {
+      "SHA256SUMS.txt": 2,
+      "WinPDFMerger-v1.0.0.zip": 2
+    },
+    "after": {
+      "SHA256SUMS.txt": 2,
+      "WinPDFMerger-v1.0.0.zip": 2
+    }
+  },
+  "package_audit": {
+    "path": "tests/.work/T33-public-download-review/actual-054fec6b5bc445beb4dd71d4fbf017aa/downloaded-package-byte-audit.json",
+    "sha256": "f9b277562ce359443a09a2ed2242398dc054659c46c74415775475a87611172d",
+    "checks": 266,
+    "issues": []
+  },
+  "source_sha256": "f0f3bcba724e99c249787b01092d111c4085e296aee43d1403f3e7eaee9df6dc",
+  "helper_sha256": "a62c8e001d1379c2444b03e34d5bf064139a52191b25d53a1f531123bff4c9fa",
+  "package_auditor_sha256": "85fb65be23bffd953f76fc4a52b6ac84bf3d89400a0cbdd75bcd2379a20bec34",
+  "start_utc": "2026-10-10T07:12:19.814498+00:00",
+  "end_utc": "2026-10-10T07:12:26.100602+00:00",
+  "commands": [
+    {
+      "label": "primary-head-before",
+      "argv": [
+        "git",
+        "-C",
+        "<REPO>",
+        "rev-parse",
+        "HEAD"
+      ],
+      "start_utc": "2026-10-10T07:12:19.865845+00:00",
+      "end_utc": "2026-10-10T07:12:19.913449+00:00",
+      "exit_code": 0,
+      "streams": {
+        "stdout": {
+          "path": "tests/.work/T33-public-download-review/actual-054fec6b5bc445beb4dd71d4fbf017aa/primary-head-before.stdout.txt",
+          "bytes": 41,
+          "sha256": "a4b32f4f395583f0823b96a841f058491aaed832b3d75d8b1fdbf8ff7bb52de0"
+        },
+        "stderr": {
+          "path": "tests/.work/T33-public-download-review/actual-054fec6b5bc445beb4dd71d4fbf017aa/primary-head-before.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "label": "primary-status-before",
+      "argv": [
+        "git",
+        "-C",
+        "<REPO>",
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "start_utc": "2026-10-10T07:12:19.913449+00:00",
+      "end_utc": "2026-10-10T07:12:19.980844+00:00",
+      "exit_code": 0,
+      "streams": {
+        "stdout": {
+          "path": "tests/.work/T33-public-download-review/actual-054fec6b5bc445beb4dd71d4fbf017aa/primary-status-before.stdout.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "path": "tests/.work/T33-public-download-review/actual-054fec6b5bc445beb4dd71d4fbf017aa/primary-status-before.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "label": "frozen-R-release-notes",
+      "argv": [
+        "git",
+        "-C",
+        "<T33_SOURCE>",
+        "show",
+        "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a:docs/RELEASE_NOTES_v1.0.0.md"
+      ],
+      "start_utc": "2026-10-10T07:12:19.980844+00:00",
+      "end_utc": "2026-10-10T07:12:20.014333+00:00",
+      "exit_code": 0,
+      "streams": {
+        "stdout": {
+          "path": "tests/.work/T33-public-download-review/actual-054fec6b5bc445beb4dd71d4fbf017aa/frozen-R-release-notes.stdout.txt",
+          "bytes": 8971,
+          "sha256": "38866d8ab69626f49a5ed50381f839d21dca9e702dbcc59c4338ee37f8894fbd"
+        },
+        "stderr": {
+          "path": "tests/.work/T33-public-download-review/actual-054fec6b5bc445beb4dd71d4fbf017aa/frozen-R-release-notes.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "label": "gate-F-original-helper",
+      "argv": [
+        "<USERPROFILE>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "<REPO>\\tools\\codex\\handoff.py",
+        "verify-release",
+        "--repo",
+        "<REPO>",
+        "--expected-release-commit",
+        "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+        "--expected-zip-sha256",
+        "2b95e90cc3eb3d47b5619710acd1b6cf551769e90ac89813a1dbf0c899c63fc2",
+        "--expected-checksums-sha256",
+        "d39084cb335c56bb99fa51424ec5aed2d95179f3c44974c81a68a8d3bf1e01ca",
+        "--download-dir",
+        "<T33_PUBLIC_DOWNLOAD>"
+      ],
+      "start_utc": "2026-10-10T07:12:21.207889+00:00",
+      "end_utc": "2026-10-10T07:12:23.450512+00:00",
+      "exit_code": 0,
+      "streams": {
+        "stdout": {
+          "path": "tests/.work/T33-public-download-review/actual-054fec6b5bc445beb4dd71d4fbf017aa/gate-F-original-helper.stdout.txt",
+          "bytes": 994,
+          "sha256": "75769edd192e5ffc92fe3a0f8d640176afe89721544de5ee663a377ab8bfbf79"
+        },
+        "stderr": {
+          "path": "tests/.work/T33-public-download-review/actual-054fec6b5bc445beb4dd71d4fbf017aa/gate-F-original-helper.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "label": "independent-published-package-byte-audit",
+      "argv": [
+        "<USERPROFILE>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+        "-B",
+        "<REPO>\\tests\\.work\\T33-public-download-review\\audit_published_package.py",
+        "--repo",
+        "<T33_SOURCE>",
+        "--commit",
+        "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+        "--artifacts",
+        "<T33_PUBLIC_DOWNLOAD>",
+        "--report",
+        "<REPO>\\tests\\.work\\T33-public-download-review\\actual-054fec6b5bc445beb4dd71d4fbf017aa\\downloaded-package-byte-audit.json",
+        "--require-clean",
+        "--expected-zip-sha256",
+        "2b95e90cc3eb3d47b5619710acd1b6cf551769e90ac89813a1dbf0c899c63fc2",
+        "--expected-checksums-sha256",
+        "d39084cb335c56bb99fa51424ec5aed2d95179f3c44974c81a68a8d3bf1e01ca"
+      ],
+      "start_utc": "2026-10-10T07:12:23.450512+00:00",
+      "end_utc": "2026-10-10T07:12:25.534817+00:00",
+      "exit_code": 0,
+      "streams": {
+        "stdout": {
+          "path": "tests/.work/T33-public-download-review/actual-054fec6b5bc445beb4dd71d4fbf017aa/independent-published-package-byte-audit.stdout.txt",
+          "bytes": 294,
+          "sha256": "8e12c77831a6a225550c768433a547399fed151e30b72f2b7255111bc1e67ef2"
+        },
+        "stderr": {
+          "path": "tests/.work/T33-public-download-review/actual-054fec6b5bc445beb4dd71d4fbf017aa/independent-published-package-byte-audit.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "label": "primary-head-after",
+      "argv": [
+        "git",
+        "-C",
+        "<REPO>",
+        "rev-parse",
+        "HEAD"
+      ],
+      "start_utc": "2026-10-10T07:12:25.970552+00:00",
+      "end_utc": "2026-10-10T07:12:26.021385+00:00",
+      "exit_code": 0,
+      "streams": {
+        "stdout": {
+          "path": "tests/.work/T33-public-download-review/actual-054fec6b5bc445beb4dd71d4fbf017aa/primary-head-after.stdout.txt",
+          "bytes": 41,
+          "sha256": "a4b32f4f395583f0823b96a841f058491aaed832b3d75d8b1fdbf8ff7bb52de0"
+        },
+        "stderr": {
+          "path": "tests/.work/T33-public-download-review/actual-054fec6b5bc445beb4dd71d4fbf017aa/primary-head-after.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "label": "primary-status-after",
+      "argv": [
+        "git",
+        "-C",
+        "<REPO>",
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "start_utc": "2026-10-10T07:12:26.021385+00:00",
+      "end_utc": "2026-10-10T07:12:26.085945+00:00",
+      "exit_code": 0,
+      "streams": {
+        "stdout": {
+          "path": "tests/.work/T33-public-download-review/actual-054fec6b5bc445beb4dd71d4fbf017aa/primary-status-after.stdout.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "path": "tests/.work/T33-public-download-review/actual-054fec6b5bc445beb4dd71d4fbf017aa/primary-status-after.stderr.txt",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    }
+  ],
+  "public_http_requests": [
+    {
+      "method": "GET",
+      "url": "https://api.github.com/repos/PikkuJanne/WinPDFMerger/releases?per_page=100&page=1",
+      "request_headers": {
+        "User-Agent": "WinPDFMerger-T33-independent-public-verifier",
+        "Accept": "application/vnd.github+json",
+        "Cache-Control": "no-cache"
+      },
+      "authentication": false,
+      "cookies": false,
+      "proxy_handler": "explicit empty mapping",
+      "start_utc": "2026-10-10T07:12:20.014333+00:00",
+      "end_utc": "2026-10-10T07:12:20.381839+00:00",
+      "status": 200,
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Sat, 10 Oct 2026 07:12:20 GMT",
+        "ETag": "W/\"eedceecf1be6ca780efaacd2d776db9cf7d8a4b65410050204a9e06913f173f1\"",
+        "X-GitHub-Request-Id": "FAF5:45522:6F004CF:A6BBA5A:6AC9E554"
+      },
+      "response_path": "tests/.work/T33-public-download-review/actual-054fec6b5bc445beb4dd71d4fbf017aa/before-releases-page1.json",
+      "bytes": 13895,
+      "sha256": "89134fe4edf7f53f8e485ab30637cc9062334b9f10c70cf2a239e71cd9f63108"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.github.com/repos/PikkuJanne/WinPDFMerger/releases/408603768/assets?per_page=100&page=1",
+      "request_headers": {
+        "User-Agent": "WinPDFMerger-T33-independent-public-verifier",
+        "Accept": "application/vnd.github+json",
+        "Cache-Control": "no-cache"
+      },
+      "authentication": false,
+      "cookies": false,
+      "proxy_handler": "explicit empty mapping",
+      "start_utc": "2026-10-10T07:12:20.381839+00:00",
+      "end_utc": "2026-10-10T07:12:20.652851+00:00",
+      "status": 200,
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Sat, 10 Oct 2026 07:12:20 GMT",
+        "ETag": "W/\"fc041156e03cf2223c306f4aa10850adc30fe51e0dde5969c550f4302d088ce5\"",
+        "X-GitHub-Request-Id": "F4BC:3075E3:746B796:AE4896C:6AC9E554"
+      },
+      "response_path": "tests/.work/T33-public-download-review/actual-054fec6b5bc445beb4dd71d4fbf017aa/before-releases-408603768-assets-page1.json",
+      "bytes": 2989,
+      "sha256": "58b7948cd0e3e89c3920c36b1f3b59d0612cb656e6a375f580162fb5ad3c1fc9"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.github.com/repos/PikkuJanne/WinPDFMerger/git/ref/tags/v1.0.0",
+      "request_headers": {
+        "User-Agent": "WinPDFMerger-T33-independent-public-verifier",
+        "Accept": "application/vnd.github+json",
+        "Cache-Control": "no-cache"
+      },
+      "authentication": false,
+      "cookies": false,
+      "proxy_handler": "explicit empty mapping",
+      "start_utc": "2026-10-10T07:12:20.652851+00:00",
+      "end_utc": "2026-10-10T07:12:20.924942+00:00",
+      "status": 200,
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Sat, 10 Oct 2026 07:12:20 GMT",
+        "ETag": "W/\"7a98c26f15b3e918b0c231b48f7b1ce678ddbbb7c18eec3502f38e17d5689961\"",
+        "X-GitHub-Request-Id": "E8C8:2F4446:6F60A5F:A73FA62:6AC9E554"
+      },
+      "response_path": "tests/.work/T33-public-download-review/actual-054fec6b5bc445beb4dd71d4fbf017aa/before-tag-ref.json",
+      "bytes": 341,
+      "sha256": "3b52afa9469586c6b22a4d81cebe4de115c4e518a569a9d5d3535442c1e19523"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.github.com/repos/PikkuJanne/WinPDFMerger/git/tags/7818645de07b902ad8f2b815e90ee1d74d2724d6",
+      "request_headers": {
+        "User-Agent": "WinPDFMerger-T33-independent-public-verifier",
+        "Accept": "application/vnd.github+json",
+        "Cache-Control": "no-cache"
+      },
+      "authentication": false,
+      "cookies": false,
+      "proxy_handler": "explicit empty mapping",
+      "start_utc": "2026-10-10T07:12:20.930480+00:00",
+      "end_utc": "2026-10-10T07:12:21.207889+00:00",
+      "status": 200,
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Sat, 10 Oct 2026 07:12:21 GMT",
+        "ETag": "W/\"4ae5ef3762ae2ca919e6b805d11ba0183e0ca5a8e346b852860db090340b8982\"",
+        "X-GitHub-Request-Id": "F0E8:D7670:6F14492:A65AA14:6AC9E554"
+      },
+      "response_path": "tests/.work/T33-public-download-review/actual-054fec6b5bc445beb4dd71d4fbf017aa/before-annotated-tag.json",
+      "bytes": 679,
+      "sha256": "c8708bf1bdf5bc5f39a1904266203a17e9454ef7a96304f636cb8a18edd2ee30"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.github.com/repos/PikkuJanne/WinPDFMerger/releases?per_page=100&page=1",
+      "request_headers": {
+        "User-Agent": "WinPDFMerger-T33-independent-public-verifier",
+        "Accept": "application/vnd.github+json",
+        "Cache-Control": "no-cache"
+      },
+      "authentication": false,
+      "cookies": false,
+      "proxy_handler": "explicit empty mapping",
+      "start_utc": "2026-10-10T07:12:25.534817+00:00",
+      "end_utc": "2026-10-10T07:12:25.655048+00:00",
+      "status": 200,
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Sat, 10 Oct 2026 07:12:20 GMT",
+        "ETag": "W/\"eedceecf1be6ca780efaacd2d776db9cf7d8a4b65410050204a9e06913f173f1\"",
+        "X-GitHub-Request-Id": "FCDD:45522:6F02C99:A6BF47A:6AC9E559"
+      },
+      "response_path": "tests/.work/T33-public-download-review/actual-054fec6b5bc445beb4dd71d4fbf017aa/after-releases-page1.json",
+      "bytes": 13895,
+      "sha256": "89134fe4edf7f53f8e485ab30637cc9062334b9f10c70cf2a239e71cd9f63108"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.github.com/repos/PikkuJanne/WinPDFMerger/releases/408603768/assets?per_page=100&page=1",
+      "request_headers": {
+        "User-Agent": "WinPDFMerger-T33-independent-public-verifier",
+        "Accept": "application/vnd.github+json",
+        "Cache-Control": "no-cache"
+      },
+      "authentication": false,
+      "cookies": false,
+      "proxy_handler": "explicit empty mapping",
+      "start_utc": "2026-10-10T07:12:25.655048+00:00",
+      "end_utc": "2026-10-10T07:12:25.746967+00:00",
+      "status": 200,
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Sat, 10 Oct 2026 07:12:20 GMT",
+        "ETag": "W/\"fc041156e03cf2223c306f4aa10850adc30fe51e0dde5969c550f4302d088ce5\"",
+        "X-GitHub-Request-Id": "F1BE:2F4446:6F62B59:A742BB8:6AC9E559"
+      },
+      "response_path": "tests/.work/T33-public-download-review/actual-054fec6b5bc445beb4dd71d4fbf017aa/after-releases-408603768-assets-page1.json",
+      "bytes": 2989,
+      "sha256": "58b7948cd0e3e89c3920c36b1f3b59d0612cb656e6a375f580162fb5ad3c1fc9"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.github.com/repos/PikkuJanne/WinPDFMerger/git/ref/tags/v1.0.0",
+      "request_headers": {
+        "User-Agent": "WinPDFMerger-T33-independent-public-verifier",
+        "Accept": "application/vnd.github+json",
+        "Cache-Control": "no-cache"
+      },
+      "authentication": false,
+      "cookies": false,
+      "proxy_handler": "explicit empty mapping",
+      "start_utc": "2026-10-10T07:12:25.747870+00:00",
+      "end_utc": "2026-10-10T07:12:25.836478+00:00",
+      "status": 200,
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Sat, 10 Oct 2026 07:12:20 GMT",
+        "ETag": "W/\"7a98c26f15b3e918b0c231b48f7b1ce678ddbbb7c18eec3502f38e17d5689961\"",
+        "X-GitHub-Request-Id": "F3BC:235E56:6EFD944:A6F518E:6AC9E559"
+      },
+      "response_path": "tests/.work/T33-public-download-review/actual-054fec6b5bc445beb4dd71d4fbf017aa/after-tag-ref.json",
+      "bytes": 341,
+      "sha256": "3b52afa9469586c6b22a4d81cebe4de115c4e518a569a9d5d3535442c1e19523"
+    },
+    {
+      "method": "GET",
+      "url": "https://api.github.com/repos/PikkuJanne/WinPDFMerger/git/tags/7818645de07b902ad8f2b815e90ee1d74d2724d6",
+      "request_headers": {
+        "User-Agent": "WinPDFMerger-T33-independent-public-verifier",
+        "Accept": "application/vnd.github+json",
+        "Cache-Control": "no-cache"
+      },
+      "authentication": false,
+      "cookies": false,
+      "proxy_handler": "explicit empty mapping",
+      "start_utc": "2026-10-10T07:12:25.836478+00:00",
+      "end_utc": "2026-10-10T07:12:25.968495+00:00",
+      "status": 200,
+      "response_headers": {
+        "Content-Type": "application/json; charset=utf-8",
+        "Date": "Sat, 10 Oct 2026 07:12:21 GMT",
+        "ETag": "W/\"4ae5ef3762ae2ca919e6b805d11ba0183e0ca5a8e346b852860db090340b8982\"",
+        "X-GitHub-Request-Id": "E9A5:B47D0:702446E:A8723CC:6AC9E559"
+      },
+      "response_path": "tests/.work/T33-public-download-review/actual-054fec6b5bc445beb4dd71d4fbf017aa/after-annotated-tag.json",
+      "bytes": 679,
+      "sha256": "c8708bf1bdf5bc5f39a1904266203a17e9454ef7a96304f636cb8a18edd2ee30"
+    }
+  ],
+  "child_environment_removed_variable_names": [],
+  "remote_mutations": false,
+  "application_executed": false,
+  "downloaded_package_native_smoke": "still required",
+  "manual_acceptance": "excluded/unperformed; never pass",
+  "issues": []
+}

@@ -1,0 +1,35 @@
+--- frozen-T32/inspect_final_decoded_images.py
++++ prepared-T33/inspect_published_decoded_images.py
+@@ -1,4 +1,4 @@
+-"""Read-only focused image/PDF review of retained accepted T32 final-R outputs."""
++"""Read-only focused image/PDF review of retained accepted T33 final-R outputs."""
+ import argparse
+ from contextlib import closing
+ from datetime import datetime, timezone
+@@ -23,7 +23,7 @@
+ args = parser.parse_args()
+ CAPTURE = args.capture.resolve()
+ if not args.report.resolve().is_relative_to(ROOT) or args.report.exists():
+-    raise ValueError('Use a NEW report under ignored T32-review')
++    raise ValueError('Use a NEW report under ignored T33-public-download-review')
+ EXPECTED_IDS = ["T03-01-P01", "T03-01-P02", "T03-02-P01", "T03-02-P02", "T03-10-P01", "T03-14-P01"]
+ EXPECTED_COMMIT = args.expected_harness_commit
+ SOURCE_COMMIT = "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a"
+@@ -93,7 +93,7 @@
+     check(image["rgb_pixel_bytes"] == len(ORIGINAL_PIXELS) and image["rgb_pixel_sha256"] == SHA(ORIGINAL_PIXELS),
+           label + ": independent PIL decoded pixels match original seeded bytes")
+ 
+-result = {"task": "T32", "scope": "Focused read-only retained source/master/email PDF and decoded image inspection; no new application run, manual pass, universal fidelity, PDF/A or signature claim",
++result = {"task": "T33", "scope": "Focused read-only retained source/master/email PDF and decoded image inspection; no new application run, manual pass, universal fidelity, PDF/A or signature claim",
+           "observed_at_utc": datetime.now(timezone.utc).isoformat(), "result": "fail", "issues": [],
+           "harness_commit": EXPECTED_COMMIT, "candidate_source_commit": SOURCE_COMMIT,
+           "versions": {"python": sys.version.split()[0], "pypdf": pypdf.__version__, "pillow": PIL.__version__,
+@@ -111,7 +111,7 @@
+         receipt_path = CAPTURE / (shell + "-reports/result.json")
+         report = json.loads(receipt_path.read_text(encoding="utf-8-sig"))
+         check(report["result"] == "pass" and not report["preparation"], shell + ": accepted receipt")
+-        check(report["task"] == "T32" and report["evidence_class"] == "actual_final_R_package_operation", shell + ": actual final-R package receipt")
++        check(report["task"] == "T33" and report["evidence_class"] == "actual_independently_anonymously_downloaded_published_v1_0_0_package_operation", shell + ": actual final-R package receipt")
+         check(report["harness_commit"] == EXPECTED_COMMIT and report["candidate_source_commit"] == SOURCE_COMMIT, shell + ": observed source identity")
+         result["input_receipts"].append({"path": receipt_path.relative_to(CAPTURE).as_posix(), "sha256": SHA(receipt_path.read_bytes())})
+         work = Path(report["work_root"])

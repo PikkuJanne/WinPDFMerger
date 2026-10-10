@@ -1,0 +1,19 @@
+--- original/bind_published_operation_gate.py
++++ corrected/bind_published_operation_gate_v2.py
+@@ -46,6 +46,8 @@
+ decoded_sha = '27f17350498f3ba8c71a602a27e2a4240a5ca2a248dfaba0ae57ada4fd32b60e'
+ decoded = read(decoded_path, decoded_sha)
+ require(decoded['result'] == 'pass' and decoded['issues'] == [] and decoded['checks'] == 1360 and decoded['candidate_source_commit'] == R and decoded['harness_commit'] == M and decoded['retained_pdf_count'] == 21 and decoded['retained_output_page_count'] == 106 and {row['sha256'] for row in decoded['input_receipts']} == {row['sha256'] for row in ledger['candidate_reports']}, 'Standalone decoded-image review binds same actual native reports')
++destination = root / 'published-operation-gate-binding-v2.json'
++require(not destination.exists(), 'New immutable explicit gate binding')
+ report = {'schema_version': 1, 'task': 'T33', 'result': 'pass', 'source_commit': R, 'harness_commit': M,
+           'zip_sha256': public['zip_sha256'], 'checksums_sha256': public['checksums_sha256'],
+           'application_cases': 25, 'independent_pdf_count': 21, 'independent_pdf_pages': 106, 'checks': 5673, 'issues': [],
+@@ -58,7 +60,5 @@
+           'binding_checks': checks, 'binding_checks_total': len(checks), 'binding_source_sha256': sha(Path(__file__).read_bytes()),
+           'application_reexecuted': False, 'native_engines_reexecuted': False, 'original_reports_modified': False,
+           'scope': 'Explicit original-execution/source/hash/path/scope binding only;5673 is the underlying independent review count, binding checks kept separate'}
+-destination = root / 'published-operation-gate-binding.json'
+-require(not destination.exists(), 'New immutable explicit gate binding')
+ destination.write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
+ print(json.dumps({'result': report['result'], 'checks': report['checks'], 'binding_checks': report['binding_checks_total'], 'report': destination.relative_to(repo).as_posix(), 'sha256': sha(destination.read_bytes())}))

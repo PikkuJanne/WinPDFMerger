@@ -1,0 +1,11 @@
+--- preserved-initial-T33/Export-T33.py
++++ T33-v2/Export-T33.py
+@@ -186,7 +186,7 @@
+             if role=='accepted_publication':
+                 require(value['result']=='pass_for_verified_final_publication' and value['mode']=='publish' and value['publication_attempted'] is True and value['evidence_commit']==M and value['draft'] is False and value['prerelease'] is False and value['live_peeled_commit']==R and value['tag_object_sha']==download['tag_object_sha'], 'Actual published annotated-R release required')
+                 require(value['release_id']==download['release_id'] and value['published_at']==download['published_at'] and value['release_url']==download['release_url']=='https://github.com/PikkuJanne/WinPDFMerger/releases/tag/v1.0.0', 'Publication/public verification metadata mismatch')
+-                assets=value['assets'];require(set(assets)=={'WinPDFMerger-v1.0.0.zip','SHA256SUMS.txt'} and assets['WinPDFMerger-v1.0.0.zip']['sha256']==pair['zip'] and assets['SHA256SUMS.txt']['sha256']==pair['checksums'], 'Published exact two-asset hashes required')
++                assets=value['assets'];require(assets=={'WinPDFMerger-v1.0.0.zip':[193669,'sha256:'+pair['zip']],'SHA256SUMS.txt':[90,'sha256:'+pair['checksums']]}, 'Published exact two-asset sizes and hashes required')
+                 details={'release_id':value['release_id'],'published_at':value['published_at'],'tag_object_sha':value['tag_object_sha']}
+             elif role=='accepted_public_download':
+                 package=value['package_audit'];require(package['sha256']==next(x['raw_sha256']for x in rows if x['role']=='accepted_package_review') and package['checks']==266 and package['issues']==[], 'Independent downloaded package-audit binding mismatch')
