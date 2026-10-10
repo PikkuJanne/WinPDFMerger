@@ -1,6 +1,6 @@
 # Next session
 
-Complete exactly T32: build exact accepted R assets, then final tag/draft.
+Continue exactly T32: build exact accepted R assets, then final tag/draft.
 T01-T31 are done. AC071/072 pass; AC073-078 remain not_run.
 Read AGENTS/INDEX/STATUS, T32 TASKS/brief, PRODUCT_SPEC, ACCEPTANCE_CASES,
 GITHUB_WORKFLOW, PACKAGE_CONTRACT, RELEASE_RUNBOOK, DEFINITION_OF_DONE and
@@ -41,3 +41,11 @@ No silent install, elevation, policy/security change or intermediate release.
 T33 publication/independent public download and actual Windows operation, then
 T34 synchronized docs-only closure E descending from R, remain required.
 No extra ceremonial owner publication permission is required within scope.
+
+T32 is in progress. Preserve the owner's PR28 merge to
+`4f14ce5458ad0101c4f555fd7de1780f50a765d6`; local branches were safely
+fast-forwarded after verifying its documentation-only scope and unchanged
+runtime/package tree. Read T32-preparation and recheck the latest normal
+evidence-branch checkpoint from session output. Reuse the same branch and
+open a new draft evidence PR after the T32 checkpoint, because PR28 is merged.
+No final asset/tag/draft result is inferred from preparation.

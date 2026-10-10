@@ -1,7 +1,7 @@
 # Project status
 
 Target: published and independently verified v1.0.0 in PikkuJanne/WinPDFMerger.
-T01-T31 are done within owner-amended scope. Current milestone M6; next T32.
+T01-T31 are done within owner-amended scope. Current milestone M6; T32 is in progress.
 The project is not complete. No tag/draft/public release is created by T31.
 
 Accepted release-source R is `95e0a19e6cc5fc01cd4bec4ac15f989f9830840a` after normal
@@ -36,3 +36,11 @@ See evidence/T31-completion.md, T31-results.json and frozen T31-reports.
 RELEASE_STATE not_started now records exact R with null asset hashes/URL/time.
 T32final exact-R assets/operation/tag/draft, T33publication/independent downloaded
 operation and T34synchronized closure remain required.
+
+T32 started on 2026-10-10. The owner merged PR28 to main
+`4f14ce5458ad0101c4f555fd7de1780f50a765d6`; its tree equals the reviewed
+T31 checkpoint and every change after R is under docs/codex. Local main and
+the evidence branch were fast-forwarded normally. Final assets, exact-package
+operation, annotated tag and draft checks remain unperformed. See
+evidence/T32-preparation.md. The normal preparation commit/push/live proof
+follows these records; no future checkpoint SHA is claimed here.
