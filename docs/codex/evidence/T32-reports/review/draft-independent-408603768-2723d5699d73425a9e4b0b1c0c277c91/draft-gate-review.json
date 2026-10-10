@@ -1,0 +1,185 @@
+{
+  "task": "T32",
+  "evidence_class": "independent-actual-annotated-tag-unpublished-draft-download-audit",
+  "result": "pass_for_actual_annotated_R_tag_unpublished_draft_and_independent_download",
+  "source_commit": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+  "zip_sha256": "2b95e90cc3eb3d47b5619710acd1b6cf551769e90ac89813a1dbf0c899c63fc2",
+  "checksums_sha256": "d39084cb335c56bb99fa51424ec5aed2d95179f3c44974c81a68a8d3bf1e01ca",
+  "observed_start_utc": "2026-10-10T03:37:33.764235+00:00",
+  "application_reexecuted": false,
+  "remote_mutations": false,
+  "manual_acceptance": "excluded/unperformed",
+  "source_sha256": "2636d57d1ba2226ff495cc5306e36bec9fb1d1ec3cad336930c45a21993b5566",
+  "command": [
+    "<USERPROFILE>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+    "-B",
+    "<REPO>\\tests\\.work\\T32-review\\verify_actual_draft.py",
+    "--repo",
+    "<REPO>",
+    "--source-worktree",
+    "<T32_SOURCE>",
+    "--expected-draft-id",
+    "408603768",
+    "--expected-tag-object",
+    "7818645de07b902ad8f2b815e90ee1d74d2724d6",
+    "--output-root",
+    "<REPO>/tests/.work/T32-review/draft-independent-408603768-2723d5699d73425a9e4b0b1c0c277c91"
+  ],
+  "checks": [
+    {
+      "check": "clean-R-head-before completed actual exit 0",
+      "pass": true
+    },
+    {
+      "check": "clean-R-status-before completed actual exit 0",
+      "pass": true
+    },
+    {
+      "check": "Clean independent package audit source checkout exactly R",
+      "pass": true
+    },
+    {
+      "check": "fresh-live-annotated-tag-peel completed actual exit 0",
+      "pass": true
+    },
+    {
+      "check": "Live final annotated tag and peel identify exact reviewed R",
+      "pass": true
+    },
+    {
+      "check": "fresh-tag-reference completed actual exit 0",
+      "pass": true
+    },
+    {
+      "check": "Fresh GitHub reference exact annotated object",
+      "pass": true
+    },
+    {
+      "check": "fresh-annotated-tag-object completed actual exit 0",
+      "pass": true
+    },
+    {
+      "check": "Fresh annotated object exact name and R commit",
+      "pass": true
+    },
+    {
+      "check": "fresh-all-release-pages completed actual exit 0",
+      "pass": true
+    },
+    {
+      "check": "Paginated release inventory exactly one final release draft",
+      "pass": true
+    },
+    {
+      "check": "Fresh actual expected draft ID/name/unpublished/nonprerelease",
+      "pass": true
+    },
+    {
+      "check": "frozen-R-release-notes completed actual exit 0",
+      "pass": true
+    },
+    {
+      "check": "Exact frozen R release note bytes",
+      "pass": true
+    },
+    {
+      "check": "Fresh draft exactly two approved asset names",
+      "pass": true
+    },
+    {
+      "check": "SHA256SUMS.txt actual uploaded size and server digest",
+      "pass": true
+    },
+    {
+      "check": "WinPDFMerger-v1.0.0.zip actual uploaded size and server digest",
+      "pass": true
+    },
+    {
+      "check": "Owned download directory initially empty",
+      "pass": true
+    },
+    {
+      "check": "fresh-independent-draft-download completed actual exit 0",
+      "pass": true
+    },
+    {
+      "check": "Actual authenticated draft download exactly two files",
+      "pass": true
+    },
+    {
+      "check": "WinPDFMerger-v1.0.0.zip actual fresh downloaded bytes equal accepted asset",
+      "pass": true
+    },
+    {
+      "check": "SHA256SUMS.txt actual fresh downloaded bytes equal accepted asset",
+      "pass": true
+    },
+    {
+      "check": "Pinned independent package auditor unchanged",
+      "pass": true
+    },
+    {
+      "check": "independent-fresh-downloaded-package-byte-audit completed actual exit 0",
+      "pass": true
+    },
+    {
+      "check": "Actual downloaded ZIP independently satisfies full source/byte/BUILD_INFO contract",
+      "pass": true
+    },
+    {
+      "check": "fresh-draft-metadata-after-download completed actual exit 0",
+      "pass": true
+    },
+    {
+      "check": "Actual draft remains unpublished and same release/assets/notes after independent download",
+      "pass": true
+    },
+    {
+      "check": "clean-R-head-after completed actual exit 0",
+      "pass": true
+    },
+    {
+      "check": "clean-R-status-after completed actual exit 0",
+      "pass": true
+    },
+    {
+      "check": "Independent audit source checkout remains exact clean R",
+      "pass": true
+    }
+  ],
+  "issues": [],
+  "limitations": [
+    "Authenticated unpublished draft download only; publication/independent public download operation/closure remain later gates.",
+    "No new application/native or human acceptance execution."
+  ],
+  "tag_object_sha": "7818645de07b902ad8f2b815e90ee1d74d2724d6",
+  "live_peeled_commit": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+  "draft_id": 408603768,
+  "draft_url": "https://github.com/PikkuJanne/WinPDFMerger/releases/tag/untagged-f7a5262a2e7c231e1f40",
+  "draft": true,
+  "prerelease": false,
+  "published_at": null,
+  "notes_sha256": "38866d8ab69626f49a5ed50381f839d21dca9e702dbcc59c4338ee37f8894fbd",
+  "downloaded_assets": [
+    {
+      "name": "WinPDFMerger-v1.0.0.zip",
+      "bytes": 193669,
+      "sha256": "2b95e90cc3eb3d47b5619710acd1b6cf551769e90ac89813a1dbf0c899c63fc2"
+    },
+    {
+      "name": "SHA256SUMS.txt",
+      "bytes": 90,
+      "sha256": "d39084cb335c56bb99fa51424ec5aed2d95179f3c44974c81a68a8d3bf1e01ca"
+    }
+  ],
+  "fresh_downloaded_package_audit": {
+    "path": "tests/.work/T32-review/draft-independent-408603768-2723d5699d73425a9e4b0b1c0c277c91/fresh-downloaded-package-byte-audit.json",
+    "sha256": "86cfe04786d0dbfa81ae2b5073b7b7eb7e7c5162ad26c1c5bb2ef94733ed9163",
+    "checks": 266,
+    "issues": []
+  },
+  "observed_end_utc": "2026-10-10T03:37:39.685287+00:00",
+  "checks_total": 30,
+  "commands_total": 12,
+  "invocations_sha256": "4ca2cc70447fc05c610a4048a0d8e375d9aa785ac7a9e6c209803bf27e65ed72"
+}

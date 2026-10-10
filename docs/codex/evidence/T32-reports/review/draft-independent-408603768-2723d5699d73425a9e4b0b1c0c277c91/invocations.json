@@ -1,0 +1,305 @@
+[
+  {
+    "label": "clean-R-head-before",
+    "argv": [
+      "git",
+      "-C",
+      "<T32_SOURCE>",
+      "rev-parse",
+      "HEAD"
+    ],
+    "start_utc": "2026-10-10T03:37:33.764235+00:00",
+    "end_utc": "2026-10-10T03:37:33.809097+00:00",
+    "exit_code": 0,
+    "mutation": false,
+    "stdout": {
+      "path": "clean-R-head-before.stdout.txt",
+      "bytes": 41,
+      "sha256": "1763ba356b8308a156e9d311f997c7daa490b72ad2afc57c3f0c3758f2192527"
+    },
+    "stderr": {
+      "path": "clean-R-head-before.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "clean-R-status-before",
+    "argv": [
+      "git",
+      "-C",
+      "<T32_SOURCE>",
+      "status",
+      "--porcelain=v1",
+      "--untracked-files=all"
+    ],
+    "start_utc": "2026-10-10T03:37:33.809097+00:00",
+    "end_utc": "2026-10-10T03:37:33.881133+00:00",
+    "exit_code": 0,
+    "mutation": false,
+    "stdout": {
+      "path": "clean-R-status-before.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stderr": {
+      "path": "clean-R-status-before.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "fresh-live-annotated-tag-peel",
+    "argv": [
+      "git",
+      "ls-remote",
+      "origin",
+      "refs/tags/v1.0.0",
+      "refs/tags/v1.0.0^{}"
+    ],
+    "start_utc": "2026-10-10T03:37:33.883165+00:00",
+    "end_utc": "2026-10-10T03:37:34.403079+00:00",
+    "exit_code": 0,
+    "mutation": false,
+    "stdout": {
+      "path": "fresh-live-annotated-tag-peel.stdout.txt",
+      "bytes": 119,
+      "sha256": "f5cd3fd2be261b75d4e0083a068454d4e6ea8b2a6490da716c1f478fd84e48c5"
+    },
+    "stderr": {
+      "path": "fresh-live-annotated-tag-peel.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "fresh-tag-reference",
+    "argv": [
+      "gh",
+      "api",
+      "repos/PikkuJanne/WinPDFMerger/git/ref/tags/v1.0.0"
+    ],
+    "start_utc": "2026-10-10T03:37:34.410987+00:00",
+    "end_utc": "2026-10-10T03:37:34.863367+00:00",
+    "exit_code": 0,
+    "mutation": false,
+    "stdout": {
+      "path": "fresh-tag-reference.stdout.txt",
+      "bytes": 341,
+      "sha256": "3b52afa9469586c6b22a4d81cebe4de115c4e518a569a9d5d3535442c1e19523"
+    },
+    "stderr": {
+      "path": "fresh-tag-reference.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "fresh-annotated-tag-object",
+    "argv": [
+      "gh",
+      "api",
+      "repos/PikkuJanne/WinPDFMerger/git/tags/7818645de07b902ad8f2b815e90ee1d74d2724d6"
+    ],
+    "start_utc": "2026-10-10T03:37:34.865150+00:00",
+    "end_utc": "2026-10-10T03:37:35.315735+00:00",
+    "exit_code": 0,
+    "mutation": false,
+    "stdout": {
+      "path": "fresh-annotated-tag-object.stdout.txt",
+      "bytes": 679,
+      "sha256": "c8708bf1bdf5bc5f39a1904266203a17e9454ef7a96304f636cb8a18edd2ee30"
+    },
+    "stderr": {
+      "path": "fresh-annotated-tag-object.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "fresh-all-release-pages",
+    "argv": [
+      "gh",
+      "api",
+      "repos/PikkuJanne/WinPDFMerger/releases?per_page=100",
+      "--paginate",
+      "--slurp"
+    ],
+    "start_utc": "2026-10-10T03:37:35.331123+00:00",
+    "end_utc": "2026-10-10T03:37:35.815658+00:00",
+    "exit_code": 0,
+    "mutation": false,
+    "stdout": {
+      "path": "fresh-all-release-pages.stdout.txt",
+      "bytes": 13817,
+      "sha256": "ab9e28792bb00d38e99afa0976bbf5b5cd1c26a590c3d87b6bfb96cb7e439095"
+    },
+    "stderr": {
+      "path": "fresh-all-release-pages.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "frozen-R-release-notes",
+    "argv": [
+      "git",
+      "-C",
+      "<T32_SOURCE>",
+      "cat-file",
+      "blob",
+      "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a:docs/RELEASE_NOTES_v1.0.0.md"
+    ],
+    "start_utc": "2026-10-10T03:37:35.815658+00:00",
+    "end_utc": "2026-10-10T03:37:35.877369+00:00",
+    "exit_code": 0,
+    "mutation": false,
+    "stdout": {
+      "path": "frozen-R-release-notes.stdout.txt",
+      "bytes": 8971,
+      "sha256": "38866d8ab69626f49a5ed50381f839d21dca9e702dbcc59c4338ee37f8894fbd"
+    },
+    "stderr": {
+      "path": "frozen-R-release-notes.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "fresh-independent-draft-download",
+    "argv": [
+      "gh",
+      "release",
+      "download",
+      "v1.0.0",
+      "--repo",
+      "PikkuJanne/WinPDFMerger",
+      "--dir",
+      "<REPO>\\tests\\.work\\T32-review\\draft-independent-408603768-2723d5699d73425a9e4b0b1c0c277c91\\fresh-independent-draft-download",
+      "--pattern",
+      "WinPDFMerger-v1.0.0.zip",
+      "--pattern",
+      "SHA256SUMS.txt"
+    ],
+    "start_utc": "2026-10-10T03:37:35.880787+00:00",
+    "end_utc": "2026-10-10T03:37:36.967374+00:00",
+    "exit_code": 0,
+    "mutation": false,
+    "stdout": {
+      "path": "fresh-independent-draft-download.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stderr": {
+      "path": "fresh-independent-draft-download.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "independent-fresh-downloaded-package-byte-audit",
+    "argv": [
+      "<USERPROFILE>\\.cache\\codex-runtimes\\codex-primary-runtime\\dependencies\\python\\python.exe",
+      "-B",
+      "<REPO>\\tests\\.work\\T32-review\\audit_final_package.py",
+      "--repo",
+      "<T32_SOURCE>",
+      "--commit",
+      "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+      "--artifacts",
+      "<REPO>\\tests\\.work\\T32-review\\draft-independent-408603768-2723d5699d73425a9e4b0b1c0c277c91\\fresh-independent-draft-download",
+      "--expected-zip-sha256",
+      "2b95e90cc3eb3d47b5619710acd1b6cf551769e90ac89813a1dbf0c899c63fc2",
+      "--expected-checksums-sha256",
+      "d39084cb335c56bb99fa51424ec5aed2d95179f3c44974c81a68a8d3bf1e01ca",
+      "--require-clean",
+      "--report",
+      "<REPO>\\tests\\.work\\T32-review\\draft-independent-408603768-2723d5699d73425a9e4b0b1c0c277c91\\fresh-downloaded-package-byte-audit.json"
+    ],
+    "start_utc": "2026-10-10T03:37:36.967374+00:00",
+    "end_utc": "2026-10-10T03:37:39.134840+00:00",
+    "exit_code": 0,
+    "mutation": false,
+    "stdout": {
+      "path": "independent-fresh-downloaded-package-byte-audit.stdout.txt",
+      "bytes": 294,
+      "sha256": "8e12c77831a6a225550c768433a547399fed151e30b72f2b7255111bc1e67ef2"
+    },
+    "stderr": {
+      "path": "independent-fresh-downloaded-package-byte-audit.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "fresh-draft-metadata-after-download",
+    "argv": [
+      "gh",
+      "api",
+      "repos/PikkuJanne/WinPDFMerger/releases/408603768"
+    ],
+    "start_utc": "2026-10-10T03:37:39.134840+00:00",
+    "end_utc": "2026-10-10T03:37:39.552542+00:00",
+    "exit_code": 0,
+    "mutation": false,
+    "stdout": {
+      "path": "fresh-draft-metadata-after-download.stdout.txt",
+      "bytes": 13813,
+      "sha256": "74b6f59b0b3b5f8a8933c0e9ec6259a71823b1acd00db0ba64f0e182360ac9cb"
+    },
+    "stderr": {
+      "path": "fresh-draft-metadata-after-download.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "clean-R-head-after",
+    "argv": [
+      "git",
+      "-C",
+      "<T32_SOURCE>",
+      "rev-parse",
+      "HEAD"
+    ],
+    "start_utc": "2026-10-10T03:37:39.552542+00:00",
+    "end_utc": "2026-10-10T03:37:39.604110+00:00",
+    "exit_code": 0,
+    "mutation": false,
+    "stdout": {
+      "path": "clean-R-head-after.stdout.txt",
+      "bytes": 41,
+      "sha256": "1763ba356b8308a156e9d311f997c7daa490b72ad2afc57c3f0c3758f2192527"
+    },
+    "stderr": {
+      "path": "clean-R-head-after.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  {
+    "label": "clean-R-status-after",
+    "argv": [
+      "git",
+      "-C",
+      "<T32_SOURCE>",
+      "status",
+      "--porcelain=v1",
+      "--untracked-files=all"
+    ],
+    "start_utc": "2026-10-10T03:37:39.610510+00:00",
+    "end_utc": "2026-10-10T03:37:39.668658+00:00",
+    "exit_code": 0,
+    "mutation": false,
+    "stdout": {
+      "path": "clean-R-status-after.stdout.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stderr": {
+      "path": "clean-R-status-after.stderr.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  }
+]

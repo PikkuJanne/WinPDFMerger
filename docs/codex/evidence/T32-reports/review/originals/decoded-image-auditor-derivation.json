@@ -1,0 +1,56 @@
+{
+  "task": "T32",
+  "scope": "Read-only source derivation/AST parse; no PDF inspection/application/native/tests executed",
+  "base_path": "docs/codex/evidence/T29-reports/review/inspect_decoded_images.py",
+  "base_R_blob_sha256": "3cc6e2dab0ec0b58acfbd77d9e042f7ccae0dd49ddce388c6d77677ab9d65f59",
+  "derivative_path": "tests/.work/T32-review/inspect_final_decoded_images.py",
+  "derivative_sha256": "a71610468d01461e7e9057690a8f90c1f9eefaf3de0d80d2bdb0138d1ef1b507",
+  "delta_sha256": "84f16b28f7b8c0bb1e28f94959eed59d3ee08cbbd46ca146c5ad1b4e2a0b891b",
+  "accepted_source_R": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+  "changes": [
+    {
+      "before": "retained accepted T29 outputs",
+      "after": "retained accepted T32 final-R outputs"
+    },
+    {
+      "before": "from contextlib import closing",
+      "after": "import argparse\nfrom contextlib import closing"
+    },
+    {
+      "before": "CAPTURE = Path(sys.argv[1]).resolve()",
+      "after": "parser = argparse.ArgumentParser(description=__doc__)\nparser.add_argument('--capture', type=Path, required=True)\nparser.add_argument('--repo', type=Path, required=True)\nparser.add_argument('--expected-harness-commit', required=True)\nparser.add_argument('--report', type=Path, required=True)\nargs = parser.parse_args()\nCAPTURE = args.capture.resolve()\nif not args.report.resolve().is_relative_to(ROOT) or args.report.exists():\n    raise ValueError('Use a NEW report under ignored T32-review')"
+    },
+    {
+      "before": "EXPECTED_COMMIT = \"629f506fc18c278dd43d1021009a45406a6544e1\"",
+      "after": "EXPECTED_COMMIT = args.expected_harness_commit"
+    },
+    {
+      "before": "SOURCE_COMMIT = \"8917938820f60e499e2c20caa9cb03171678be72\"",
+      "after": "SOURCE_COMMIT = \"95e0a19e6cc5fc01cd4bec4ac15f989f9830840a\""
+    },
+    {
+      "before": "result = {\"scope\":",
+      "after": "result = {\"task\": \"T32\", \"scope\":"
+    },
+    {
+      "before": "    repo = Path(__file__).resolve().parents[3]",
+      "after": "    repo = args.repo.resolve()\n    status_before = subprocess.check_output([\"git\", \"-C\", str(repo), \"status\", \"--porcelain=v1\", \"--untracked-files=all\"])\n    check(not status_before, \"Clean actual harness checkout required\")"
+    },
+    {
+      "before": "        check(report[\"result\"] == \"pass\" and not report[\"preparation\"], shell + \": accepted receipt\")",
+      "after": "        check(report[\"result\"] == \"pass\" and not report[\"preparation\"], shell + \": accepted receipt\")\n        check(report[\"task\"] == \"T32\" and report[\"evidence_class\"] == \"actual_final_R_package_operation\", shell + \": actual final-R package receipt\")"
+    },
+    {
+      "before": "    result[\"result\"] = \"pass\"",
+      "after": "    status_after = subprocess.check_output([\"git\", \"-C\", str(repo), \"status\", \"--porcelain=v1\", \"--untracked-files=all\"])\n    head_after = subprocess.check_output([\"git\", \"-C\", str(repo), \"rev-parse\", \"HEAD\"]).decode().strip()\n    check(status_after == status_before and head_after == EXPECTED_COMMIT, \"Actual harness source unchanged throughout read-only review\")\n    result[\"result\"] = \"pass\""
+    },
+    {
+      "before": "(ROOT / \"decoded-image-report.json\").write_text",
+      "after": "args.report.write_text"
+    }
+  ],
+  "limitations": [
+    "Focused synthetic corpus observations only; no universal fidelity, PDF/A, signature or human/manual acceptance claim.",
+    "Actual final package operation and independent original receipt/PDF audit remain separate."
+  ]
+}

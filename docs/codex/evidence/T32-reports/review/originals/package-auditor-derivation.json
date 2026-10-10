@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "task": "T32",
+  "scope": "independent package auditor preparation only; no builder/app/native/test execution",
+  "accepted_source_R": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+  "accepted_source_tree": "5014f5bdf4f374aee828ced4c39cb93bfeb6465a",
+  "base_path": "docs/codex/evidence/T28-reports/review/audit_package.py",
+  "base_working_sha256": "b3d191b1719ae5b83be5140134c16a1bea08073b31ab39c21e2509341931a325",
+  "base_R_blob_sha256": "b3d191b1719ae5b83be5140134c16a1bea08073b31ab39c21e2509341931a325",
+  "derivative_path": "tests/.work/T32-review/audit_final_package.py",
+  "derivative_sha256": "8bfc2e3f6dcdf02e7ed26d2eaee7fe98f9ad5fcb055bd5853ef7bccbb4c1cbc1",
+  "delta_sha256": "a76a3c634bd69f81bc44bbdc38180f207857a53052dd751ebb646f5901227a32",
+  "frozen_build_inputs": [
+    {
+      "path": "tools/release/Build-Release.ps1",
+      "R_blob_sha256": "6dcc57f0c48208fa061f1195ecf17a3057c269af7f6165914ade781406a7c0b2"
+    },
+    {
+      "path": "release-files.json",
+      "R_blob_sha256": "bd80c988f28ae7c7f539f9ed31205ade92a1c5181102d6387342b4775b589007"
+    },
+    {
+      "path": "docs/codex/PACKAGE_CONTRACT.json",
+      "R_blob_sha256": "82b559d7517d7704a88e1b43e4996de25035e9b7ced78f6d09a13b39fe205e6a"
+    }
+  ],
+  "changes": [
+    {
+      "before": "Independent T28 ZIP audit",
+      "after": "Independent T32 exact accepted-R ZIP audit"
+    },
+    {
+      "before": "    p.add_argument(\"--require-clean\", action=\"store_true\")",
+      "after": "    p.add_argument(\"--require-clean\", action=\"store_true\")\n    p.add_argument(\"--expected-zip-sha256\", required=True)\n    p.add_argument(\"--expected-checksums-sha256\", required=True)"
+    },
+    {
+      "before": "    artifacts = pathlib.Path(a.artifacts).resolve()",
+      "after": "    artifacts = pathlib.Path(a.artifacts).resolve()\n    report_path = pathlib.Path(a.report).resolve()\n    review_root = pathlib.Path(__file__).resolve().parent\n    if not report_path.is_relative_to(review_root) or report_path.exists():\n        raise ValueError(\"Use a new report under ignored T32-review; never overwrite an attempt\")"
+    },
+    {
+      "before": "    status = git(\"status\", \"--porcelain=v1\", \"--untracked-files=all\").decode(\"utf-8\")",
+      "after": "    check(\"requested source is exact accepted release R\", a.commit == \"95e0a19e6cc5fc01cd4bec4ac15f989f9830840a\")\n    source_tree = git(\"rev-parse\", f\"{a.commit}^{{tree}}\").strip().decode()\n    check(\"accepted R tree matches frozen lineage\", source_tree == \"5014f5bdf4f374aee828ced4c39cb93bfeb6465a\")\n    status = git(\"status\", \"--porcelain=v1\", \"--untracked-files=all\").decode(\"utf-8\")"
+    },
+    {
+      "before": "    check(\"checksums exact one-line bytes/hash agree\",",
+      "after": "    check(\"expected ZIP hash is full lowercase SHA256\", bool(re.fullmatch(r\"[0-9a-f]{64}\", a.expected_zip_sha256)))\n    check(\"expected complete checksum-file hash is full lowercase SHA256\", bool(re.fullmatch(r\"[0-9a-f]{64}\", a.expected_checksums_sha256)))\n    check(\"actual final ZIP equals recorded build asset bytes\", zip_hash == a.expected_zip_sha256)\n    check(\"actual complete SHA256SUMS equals recorded build asset bytes\", sums_hash == a.expected_checksums_sha256)\n    check(\"checksums exact one-line bytes/hash agree\","
+    },
+    {
+      "before": "    issues = [x[\"check\"] for x in checks if not x[\"pass\"]]",
+      "after": "    check(\"actual ZIP bytes unchanged throughout independent audit\", sha256((artifacts / zip_name).read_bytes()) == zip_hash)\n    check(\"actual checksum bytes unchanged throughout independent audit\", sha256((artifacts / \"SHA256SUMS.txt\").read_bytes()) == sums_hash)\n    check(\"source HEAD/status unchanged throughout independent audit\", git(\"rev-parse\", \"HEAD\").strip().decode() == a.commit and git(\"status\", \"--porcelain=v1\", \"--untracked-files=all\").decode(\"utf-8\") == status)\n    issues = [x[\"check\"] for x in checks if not x[\"pass\"]]"
+    },
+    {
+      "before": "        \"source_commit\": a.commit, \"clean_audit_checkout\": status == \"\",",
+      "after": "        \"task\": \"T32\", \"result\": \"pass_for_exact_final_package_bytes\" if not issues else \"fail_for_exact_final_package_bytes\",\n        \"source_commit\": a.commit, \"source_tree\": source_tree, \"clean_audit_checkout\": status == \"\",\n        \"recorded_expected_zip_sha256\": a.expected_zip_sha256, \"recorded_expected_checksums_sha256\": a.expected_checksums_sha256,"
+    },
+    {
+      "before": "    pathlib.Path(a.report).write_text(",
+      "after": "    report_path.write_text("
+    }
+  ],
+  "invocation": "approved Python -B audit_final_package.py --repo <clean detached build root at R> --commit 95e0a19e6cc5fc01cd4bec4ac15f989f9830840a --artifacts <actual final asset directory> --expected-zip-sha256 <recorded actual ZIP SHA256> --expected-checksums-sha256 <recorded complete SHA256SUMS SHA256> --require-clean --report <new T32-review report path>",
+  "limitations": [
+    "Preparation and AST parse only. No package bytes, application/native operation, tag/draft or publication accepted.",
+    "One selected final asset pair must be independently audited and used for actual operation in both required shells; different runtime BUILD_INFO can change rebuild hashes."
+  ]
+}

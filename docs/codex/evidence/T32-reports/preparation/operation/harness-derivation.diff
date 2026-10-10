@@ -1,0 +1,47 @@
+--- 95e0a19e6cc5fc01cd4bec4ac15f989f9830840a:tests/package/candidate_smoke.py
++++ ignoredT32/final_package_smoke.py
+@@ -1,4 +1,7 @@
+-"""Operate an exact candidate ZIP on Windows; development-only, no installation.
++"""Operate an exact final-R ZIP on Windows; development-only, no installation.
++
++T32 derivative of the frozen T29 harness. Legacy candidate field/CLI names and
++original synthetic fault tokens stay stable; the accepted release source is fixed.
+ 
+ All application code comes from a hash-verified ZIP. Python, fixture generation
+ and independent PDF readers belong only to this test driver. Each scenario uses
+@@ -30,6 +33,7 @@
+         "pillow": "12.3.0", "pypdfium2": "5.13.0", "pdfium": "153.0.7999.0"}
+ PACKAGE_ROOT = "WinPDFMerger-v1.0.0"
+ PAGE_ID = re.compile(r"T03-[0-9]{2}-P[0-9]{2}")
++ACCEPTED_SOURCE = "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a"
+ BAD_GS_INIT = b"/T29FaultToken load\n"
+ 
+ 
+@@ -44,6 +48,10 @@
+ def require(condition: bool, message: str) -> None:
+     if not condition:
+         raise RuntimeError(message)
++
++
++def require_release_source(source: str) -> None:
++    require(source == ACCEPTED_SOURCE, "Exact accepted release source R required; historical candidate cannot substitute")
+ 
+ 
+ def safe_entry(name: str) -> str:
+@@ -290,6 +298,7 @@
+ 
+ 
+ def run(arguments) -> dict:
++    require_release_source(arguments.candidate_source_commit)
+     require(os.name == "nt", "Actual Windows required; unsupported environments are failures")
+     repo = Path(os.path.abspath(arguments.repo))
+     ordinary_path(repo)
+@@ -303,7 +312,7 @@
+     work.mkdir(exist_ok=False)
+     capture_root.mkdir(parents=True, exist_ok=False)
+     capture = Capture(capture_root)
+-    result = {"task": "T29", "evidence_class": "actual_candidate_package_operation", "result": "fail",
++    result = {"task": "T32", "evidence_class": "actual_final_R_package_operation", "result": "fail",
+               "preparation": arguments.preparation, "harness_commit": arguments.expected_harness_commit,
+               "candidate_source_commit": arguments.candidate_source_commit, "shell_kind": arguments.shell_kind,
+               "work_root": str(work), "capture_root": str(capture_root), "cases": [], "manual_acceptance": "excluded/unperformed; never pass"}

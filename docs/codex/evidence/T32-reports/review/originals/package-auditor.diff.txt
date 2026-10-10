@@ -1,0 +1,72 @@
+--- T28/audit_package.py
++++ T32/audit_final_package.py
+@@ -1,4 +1,4 @@
+-"""Independent T28 ZIP audit; no builder imports and no application execution."""
++"""Independent T32 exact accepted-R ZIP audit; no builder imports and no application execution."""
+ from __future__ import annotations
+ 
+ import argparse
+@@ -27,9 +27,15 @@
+     p.add_argument("--repeat-artifacts")
+     p.add_argument("--report", required=True)
+     p.add_argument("--require-clean", action="store_true")
++    p.add_argument("--expected-zip-sha256", required=True)
++    p.add_argument("--expected-checksums-sha256", required=True)
+     a = p.parse_args()
+     repo = pathlib.Path(a.repo).resolve()
+     artifacts = pathlib.Path(a.artifacts).resolve()
++    report_path = pathlib.Path(a.report).resolve()
++    review_root = pathlib.Path(__file__).resolve().parent
++    if not report_path.is_relative_to(review_root) or report_path.exists():
++        raise ValueError("Use a new report under ignored T32-review; never overwrite an attempt")
+     checks: list[dict] = []
+ 
+     def check(label: str, truth: bool) -> None:
+@@ -46,6 +52,9 @@
+ 
+     check("requested source is full lowercase SHA", bool(re.fullmatch(r"[0-9a-f]{40}", a.commit)))
+     check("source resolves to requested commit", git("rev-parse", f"{a.commit}^{{commit}}").strip().decode() == a.commit)
++    check("requested source is exact accepted release R", a.commit == "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a")
++    source_tree = git("rev-parse", f"{a.commit}^{{tree}}").strip().decode()
++    check("accepted R tree matches frozen lineage", source_tree == "5014f5bdf4f374aee828ced4c39cb93bfeb6465a")
+     status = git("status", "--porcelain=v1", "--untracked-files=all").decode("utf-8")
+     check("HEAD equals requested source", git("rev-parse", "HEAD").strip().decode() == a.commit)
+     if a.require_clean:
+@@ -82,6 +91,10 @@
+     sums_bytes = (artifacts / "SHA256SUMS.txt").read_bytes()
+     zip_hash = sha256(zip_bytes)
+     sums_hash = sha256(sums_bytes)
++    check("expected ZIP hash is full lowercase SHA256", bool(re.fullmatch(r"[0-9a-f]{64}", a.expected_zip_sha256)))
++    check("expected complete checksum-file hash is full lowercase SHA256", bool(re.fullmatch(r"[0-9a-f]{64}", a.expected_checksums_sha256)))
++    check("actual final ZIP equals recorded build asset bytes", zip_hash == a.expected_zip_sha256)
++    check("actual complete SHA256SUMS equals recorded build asset bytes", sums_hash == a.expected_checksums_sha256)
+     check("checksums exact one-line bytes/hash agree", sums_bytes in (f"{zip_hash}  {zip_name}\n".encode(), f"{zip_hash}  {zip_name}\r\n".encode()))
+     source_blobs = {name: blob(name) for name in names}
+     expected = {root + "/" + name for name in names} | {root + "/BUILD_INFO.json"}
+@@ -148,11 +161,16 @@
+         repeat = {n: sha256((repeat_dir / n).read_bytes()) for n in assets}
+         check("repeat exact ZIP bytes deterministic", (repeat_dir / zip_name).read_bytes() == zip_bytes)
+         check("repeat exact checksum bytes deterministic", (repeat_dir / "SHA256SUMS.txt").read_bytes() == sums_bytes)
++    check("actual ZIP bytes unchanged throughout independent audit", sha256((artifacts / zip_name).read_bytes()) == zip_hash)
++    check("actual checksum bytes unchanged throughout independent audit", sha256((artifacts / "SHA256SUMS.txt").read_bytes()) == sums_hash)
++    check("source HEAD/status unchanged throughout independent audit", git("rev-parse", "HEAD").strip().decode() == a.commit and git("status", "--porcelain=v1", "--untracked-files=all").decode("utf-8") == status)
+     issues = [x["check"] for x in checks if not x["pass"]]
+     report = {
+         "schema_version": 1, "evidence_class": "independent-package-byte-and-source-audit",
+         "application_executed": False, "native_engines_executed": False,
+-        "source_commit": a.commit, "clean_audit_checkout": status == "",
++        "task": "T32", "result": "pass_for_exact_final_package_bytes" if not issues else "fail_for_exact_final_package_bytes",
++        "source_commit": a.commit, "source_tree": source_tree, "clean_audit_checkout": status == "",
++        "recorded_expected_zip_sha256": a.expected_zip_sha256, "recorded_expected_checksums_sha256": a.expected_checksums_sha256,
+         "environment": {"system": platform.system(), "release": platform.release(), "machine": platform.machine(), "python": platform.python_version(), "implementation": sys.implementation.name},
+         "auditor_sha256": sha256(pathlib.Path(__file__).read_bytes()),
+         "producer_source_sha256": sha256(blob("tools/release/Build-Release.ps1")),
+@@ -162,7 +180,7 @@
+         "repeat_hashes": repeat, "build_info": bi, "zip_files": zip_rows,
+         "checks": checks, "checks_total": len(checks), "issues": issues,
+         "limitations": ["Review checks are not application/native/Windows-shell acceptance cases.", "No package application or native PDF engine executed by this auditor.", "No publication or download verification performed.", "No source commit is accepted final release R merely because it has a package."]}
+-    pathlib.Path(a.report).write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
++    report_path.write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+     print(json.dumps({"checks": len(checks), "issues": issues, "assets": report["assets"]}))
+     return 1 if issues else 0
+ 

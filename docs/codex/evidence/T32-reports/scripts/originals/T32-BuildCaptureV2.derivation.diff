@@ -1,0 +1,30 @@
+--- T32-BuildCapture.py
++++ T32-BuildCaptureV2.py
+@@ -7,9 +7,9 @@
+ shell = r'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe'
+ root = repo / 'tests/.work' / ('T32-build-' + uuid.uuid4().hex)
+ root.mkdir()
+-source = pathlib.Path(r'C:\projects') / ('WinPDFMerger-t32-source-' + uuid.uuid4().hex)
++source = pathlib.Path(r'<T32_SOURCE>')
+ parent = pathlib.Path(r'C:\projects') / ('WinPDFMerger-t32-artifacts-' + uuid.uuid4().hex)
+-assert not source.exists() and not parent.exists()
++assert source.is_dir() and not parent.exists()
+ parent.mkdir()
+ ledger = []
+ 
+@@ -38,13 +38,13 @@
+ try:
+     assert git('evidence-head', 'rev-parse', 'HEAD').decode().strip() == E
+     assert git('evidence-clean', 'status', '--porcelain=v1', '--untracked-files=all') == b''
+-    git('add-detached-frozen-source', 'worktree', 'add', '--detach', str(source), R)
++    git('reuse-detached-frozen-source', 'worktree', 'list', '--porcelain')
+     assert git('source-head-before', 'rev-parse', 'HEAD', cwd=source).decode().strip() == R
+     assert git('source-clean-before', 'status', '--porcelain=v1', '--untracked-files=all', cwd=source) == b''
+     inputs = {}
+     for index, rel in enumerate(['tools/release/Build-Release.ps1', 'release-files.json', 'docs/codex/PACKAGE_CONTRACT.json']):
+         data = git('frozen-input-' + str(index), 'show', R + ':' + rel, cwd=source)
+-        assert (source / rel).read_bytes() == data
++        assert (source / rel).read_bytes().replace(bytes([13,10]), bytes([10])) == data.replace(bytes([13,10]), bytes([10])), rel
+         inputs[rel] = hashlib.sha256(data).hexdigest()
+     result['frozen_input_sha256'] = inputs
+     wrapper = root / 'Invoke-T32Build.ps1'

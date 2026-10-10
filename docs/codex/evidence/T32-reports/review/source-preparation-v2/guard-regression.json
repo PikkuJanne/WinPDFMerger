@@ -1,0 +1,55 @@
+{
+  "scope": "Isolated AST predicate against in-memory frozen blob variants; no builder/application or source mutation",
+  "source_sha256": "25585b9a16eb1b37cd1e1ced80986827d04f67399f368de8c385e60525bc7e01",
+  "cases": [
+    {
+      "probe": "exact frozen LF",
+      "input_sha256": "6dcc57f0c48208fa061f1195ecf17a3057c269af7f6165914ade781406a7c0b2",
+      "frozen_blob_sha256": "6dcc57f0c48208fa061f1195ecf17a3057c269af7f6165914ade781406a7c0b2",
+      "expected_accepted": true,
+      "actual_accepted": true
+    },
+    {
+      "probe": "frozen CRLF checkout",
+      "input_sha256": "c8ab8ad70f80a6bfa5af4ec20871009778943a301c716871e018301114519a2a",
+      "frozen_blob_sha256": "6dcc57f0c48208fa061f1195ecf17a3057c269af7f6165914ade781406a7c0b2",
+      "expected_accepted": true,
+      "actual_accepted": true
+    },
+    {
+      "probe": "mixed CRLF LF checkout",
+      "input_sha256": "428e78d639927bc15643ad0487b87e5390e4b88d58bfe0337793af87646b743d",
+      "frozen_blob_sha256": "6dcc57f0c48208fa061f1195ecf17a3057c269af7f6165914ade781406a7c0b2",
+      "expected_accepted": true,
+      "actual_accepted": true
+    },
+    {
+      "probe": "nonnewline content mutation",
+      "input_sha256": "26d6ef668e9f652d911fa015e3b6ba8a8eff97f77631255e0cea990a3f3ef596",
+      "frozen_blob_sha256": "6dcc57f0c48208fa061f1195ecf17a3057c269af7f6165914ade781406a7c0b2",
+      "expected_accepted": false,
+      "actual_accepted": false
+    },
+    {
+      "probe": "extra trailing byte",
+      "input_sha256": "48740382c68c1491069eac1dc9122cf34b6100844846d2022375cbeb22826234",
+      "frozen_blob_sha256": "6dcc57f0c48208fa061f1195ecf17a3057c269af7f6165914ade781406a7c0b2",
+      "expected_accepted": false,
+      "actual_accepted": false
+    },
+    {
+      "probe": "UTF8 BOM insertion",
+      "input_sha256": "38b6e7c81e94641e6a9cfdc1d043233128d85782d766700b27e5970b6a23e969",
+      "frozen_blob_sha256": "6dcc57f0c48208fa061f1195ecf17a3057c269af7f6165914ade781406a7c0b2",
+      "expected_accepted": false,
+      "actual_accepted": false
+    },
+    {
+      "probe": "lone CR insertion",
+      "input_sha256": "3409afdf539b5dff5616747509d580f4aa111449f4a03eb8d238fb5deac27935",
+      "frozen_blob_sha256": "6dcc57f0c48208fa061f1195ecf17a3057c269af7f6165914ade781406a7c0b2",
+      "expected_accepted": false,
+      "actual_accepted": false
+    }
+  ]
+}

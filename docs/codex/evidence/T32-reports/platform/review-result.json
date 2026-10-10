@@ -1,0 +1,106 @@
+{
+  "schema_version": 1,
+  "task": "T32",
+  "source_commit": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+  "result": "pass_for_read_only_platform_and_frozen_claims_scope",
+  "observed_at_utc": "2026-10-10T03:25:44.685382+00:00",
+  "checks": 178,
+  "issues": [],
+  "reviewer_source_sha256": "1d4f0188ebcc5be8a88667eb6d32ef5e4e7ca49091797314cab25b2625f0a63a",
+  "capture_source_sha256": "1da642ad5923e73b4a09dbfcea7f85df6a51656967d10c9963a2da7942864e4d",
+  "capture_result_sha256": "6e986a77316e0cbfafbb95fb7116442ab59cacb461ce81dec7486a2623b7447c",
+  "invocations_sha256": "f348783496a6ac4cf88a81a21fca41291b31eb6550c88261836c8c68ae1bf744",
+  "vendor_recheck_sha256": "446a4750e0e72e3fb85c76b4af2cbdb31800483b52ad87780975e11778aa90eb",
+  "reviewer_checklist_sha256": "00c8856970ebe7659e4ee1b2ac89569108a58e78fbe83dc0303a263bbb4a7267",
+  "platform_observation_at_utc": "2026-10-10T03:22:28.442263+00:00",
+  "facts": {
+    "no_tags": true,
+    "no_releases_or_drafts": true,
+    "push_permission": true,
+    "workflow_count": 1,
+    "automatic_tag_or_release_publication": false,
+    "owner_merged_PR28": true,
+    "owner_merge_commit": "4f14ce5458ad0101c4f555fd7de1780f50a765d6",
+    "owner_merge_parents": [
+      "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+      "7edb42d9d5c6410f227462a7021b886c0be3f2e5"
+    ],
+    "PR28_evidence_only_files": 1418,
+    "PR28_successful_CI_checks": 4,
+    "owner_merge_successful_CI_checks": 4,
+    "notes_source_commit": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a"
+  },
+  "frozen_public_document_blobs": {
+    "docs/RELEASE_NOTES_v1.0.0.md": {
+      "git_blob_sha": "873551dc6e2651c3d9744aa7946f3052d47182be",
+      "raw_sha256": "38866d8ab69626f49a5ed50381f839d21dca9e702dbcc59c4338ee37f8894fbd",
+      "bytes": 8971
+    },
+    "README.md": {
+      "git_blob_sha": "742a36f2af1962510100eea25366788bb49766ec",
+      "raw_sha256": "6fb3bfa326c215ef99f152309a12768c967527782e796f60983f9f9f2005a097",
+      "bytes": 9258
+    },
+    "CHANGELOG.md": {
+      "git_blob_sha": "cada71f1409ea7e64c6422e2d9d73b4ab70e35db",
+      "raw_sha256": "ef62802668744491374c1f1214b1cc4494f026295eaf396c7ec68d3fc34e75bc",
+      "bytes": 4504
+    },
+    "docs/DEPENDENCIES.md": {
+      "git_blob_sha": "39b20bbea233283b4764677e4741800aa9a1abb3",
+      "raw_sha256": "d79cba6694d4335fdb1bc2b6b716c851aa7b88b9301cfb8cc464e1834fe916b3",
+      "bytes": 7294
+    },
+    "docs/COMPATIBILITY.md": {
+      "git_blob_sha": "88489641ae59cf9c15da6bb01f295710c26d6628",
+      "raw_sha256": "dbf6f2ee612defed1501298874960cf0275a0dc0585c94a905bb69ba2aa84bfe",
+      "bytes": 3860
+    },
+    "SECURITY.md": {
+      "git_blob_sha": "fac25ac3c8170d0326b833f9d4e03422e62b6827",
+      "raw_sha256": "dadc3249a8f8f24518d9325b5b0c72c480725ad18bfefabdb6faaf56f3334275",
+      "bytes": 5665
+    },
+    "docs/PDF_LIMITATIONS.md": {
+      "git_blob_sha": "029efb59aa3649e557f1422fd6a06034a8703508",
+      "raw_sha256": "1bd08b2cec008fcc41390111f8ccfc0cfef4c3374018fe3b9d6d19589993f58d",
+      "bytes": 6071
+    }
+  },
+  "permitted_after_final_assets_pass": {
+    "annotated_tag": "v1.0.0",
+    "tag_target": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+    "tag_push_refspec": "refs/tags/v1.0.0:refs/tags/v1.0.0",
+    "draft_required_flags": [
+      "--verify-tag",
+      "--draft"
+    ],
+    "draft_assets": [
+      "WinPDFMerger-v1.0.0.zip",
+      "SHA256SUMS.txt"
+    ]
+  },
+  "preparation_error_retained": {
+    "label": "R-known-limitations",
+    "exit_code": 128,
+    "explanation": "Reviewer requested a nonexistent docs/KNOWN_LIMITATIONS.md. Actual frozen limitations are docs/PDF_LIMITATIONS.md; this is neither an application failure nor a platform blocker.",
+    "original_capture_result_remains_fail": true
+  },
+  "claims_conclusion": "No unsupported release/native/manual/security/support claim requires changing immutable R. Candidate and Unreleased wording is explicitly dated2026-10-09, with current Releases links. Actual current accepted/final-byte/draft facts belong in later evidence.",
+  "remaining_gates": [
+    "Exact clean-R final build and two independently accepted asset hashes",
+    "Actual exact-ZIP dual-shell Windows operation, independent PDF inspection and unchanged source/runtime/foreign files",
+    "Fresh pretransaction tags/releases/workflows/permissions/rules recheck",
+    "Annotated tag at R and fresh live peeled SHA",
+    "One actual unpublished draft with exactly accepted assets",
+    "Independent authenticated draft-download hashes",
+    "New evidence-only M6 PR after PR28 merge; actual checkpoint clean/live sync",
+    "T33 publication/independent public-download operation and T34 closure"
+  ],
+  "limitations": [
+    "All platform commands were read-only; no tag, draft, asset upload, permission/protection edit or publication occurred.",
+    "This scope is current platform/docs preparation, not AC073/AC074 completion or final package execution.",
+    "Raw API author/email material remains ignored; it requires scoped privacy review before any public evidence export.",
+    "AC058 remains excluded/unperformed and is never passed or a later account-class/Explorer/viewer gate."
+  ]
+}

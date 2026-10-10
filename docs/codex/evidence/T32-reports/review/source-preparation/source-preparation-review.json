@@ -1,0 +1,1224 @@
+{
+  "schema_version": 1,
+  "task": "T32",
+  "result": "fail",
+  "source_commit": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+  "observed_evidence_commit": "ab0c64530993eaf006fd05a4dcbe10a29b5719b3",
+  "issues": [
+    "all baseline scenarios/native argv/source/PDF safeguards preserved exactly"
+  ],
+  "checks_total": 153,
+  "checks": [
+    {
+      "check": "head-before read-only Git succeeds",
+      "pass": true
+    },
+    {
+      "check": "status-before read-only Git succeeds",
+      "pass": true
+    },
+    {
+      "check": "branch-before read-only Git succeeds",
+      "pass": true
+    },
+    {
+      "check": "actual clean evidence source",
+      "pass": true
+    },
+    {
+      "check": "live-evidence-ref read-only Git succeeds",
+      "pass": true
+    },
+    {
+      "check": "live evidence ref equals clean HEAD",
+      "pass": true
+    },
+    {
+      "check": "frozen-tree read-only Git succeeds",
+      "pass": true
+    },
+    {
+      "check": "frozen source exact tree",
+      "pass": true
+    },
+    {
+      "check": "preparation helper-only correct scope",
+      "pass": true
+    },
+    {
+      "check": "stable prepared hash final_package_smoke.py",
+      "pass": true
+    },
+    {
+      "check": "stable prepared hash capture-T32.py",
+      "pass": true
+    },
+    {
+      "check": "stable prepared hash test_final_operation.py",
+      "pass": true
+    },
+    {
+      "check": "stable prepared hash test_inherited_safety.py",
+      "pass": true
+    },
+    {
+      "check": "stable prepared hash harness-derivation.diff",
+      "pass": true
+    },
+    {
+      "check": "stable prepared hash capture-derivation.diff",
+      "pass": true
+    },
+    {
+      "check": "stable prepared hash derivation.json",
+      "pass": true
+    },
+    {
+      "check": "helper-regressions original success",
+      "pass": true
+    },
+    {
+      "check": "helper-regressions raw stdout bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "helper-regressions raw stderr bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "capture-interface original success",
+      "pass": true
+    },
+    {
+      "check": "capture-interface raw stdout bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "capture-interface raw stderr bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "harness-interface original success",
+      "pass": true
+    },
+    {
+      "check": "harness-interface raw stdout bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "harness-interface raw stderr bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "original nineteen helper tests actually complete",
+      "pass": true
+    },
+    {
+      "check": "baseline-harness read-only Git succeeds",
+      "pass": true
+    },
+    {
+      "check": "exact baseline harness identity",
+      "pass": true
+    },
+    {
+      "check": "all baseline scenarios/native argv/source/PDF safeguards preserved exactly",
+      "pass": false
+    },
+    {
+      "check": "operation source fixed accepted R before orchestration",
+      "pass": true
+    },
+    {
+      "check": "PS51 same pair/R explicit actual-operation argv",
+      "pass": true
+    },
+    {
+      "check": "PS7 same pair/R explicit actual-operation argv",
+      "pass": true
+    },
+    {
+      "check": "unique allowed capture delta: source",
+      "pass": true
+    },
+    {
+      "check": "unique allowed capture delta: assert not source.exists() and not parent.exists()",
+      "pass": true
+    },
+    {
+      "check": "unique allowed capture delta: git('add-detached-frozen-source', 'worktree', 'add', '--detach', str(source), R)",
+      "pass": true
+    },
+    {
+      "check": "unique allowed capture delta: assert (source / rel).read_bytes()",
+      "pass": true
+    },
+    {
+      "check": "V2 only reuse guards and CRLF/LF predicate delta",
+      "pass": true
+    },
+    {
+      "check": "V2 stable prepared source hash",
+      "pass": true
+    },
+    {
+      "check": "frozen-builder read-only Git succeeds",
+      "pass": true
+    },
+    {
+      "check": "frozen builder already explicitly permits only CRLF/LF conversion",
+      "pass": true
+    },
+    {
+      "check": "actual AST predicate regression exact frozen LF",
+      "pass": true
+    },
+    {
+      "check": "actual AST predicate regression frozen CRLF checkout",
+      "pass": true
+    },
+    {
+      "check": "actual AST predicate regression mixed CRLF LF checkout",
+      "pass": true
+    },
+    {
+      "check": "actual AST predicate regression nonnewline content mutation",
+      "pass": true
+    },
+    {
+      "check": "actual AST predicate regression extra trailing byte",
+      "pass": true
+    },
+    {
+      "check": "actual AST predicate regression UTF8 BOM insertion",
+      "pass": true
+    },
+    {
+      "check": "actual AST predicate regression lone CR insertion",
+      "pass": true
+    },
+    {
+      "check": "evidence-head original success",
+      "pass": true
+    },
+    {
+      "check": "evidence-head raw stdout bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "evidence-head raw stderr bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "evidence-clean original success",
+      "pass": true
+    },
+    {
+      "check": "evidence-clean raw stdout bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "evidence-clean raw stderr bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "add-detached-frozen-source original success",
+      "pass": true
+    },
+    {
+      "check": "add-detached-frozen-source raw stdout bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "add-detached-frozen-source raw stderr bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "source-head-before original success",
+      "pass": true
+    },
+    {
+      "check": "source-head-before raw stdout bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "source-head-before raw stderr bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "source-clean-before original success",
+      "pass": true
+    },
+    {
+      "check": "source-clean-before raw stdout bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "source-clean-before raw stderr bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "frozen-input-0 original success",
+      "pass": true
+    },
+    {
+      "check": "frozen-input-0 raw stdout bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "frozen-input-0 raw stderr bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "initial receipt honest capture-only pre-builder failure",
+      "pass": true
+    },
+    {
+      "check": "evidence-head original success",
+      "pass": true
+    },
+    {
+      "check": "evidence-head raw stdout bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "evidence-head raw stderr bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "evidence-clean original success",
+      "pass": true
+    },
+    {
+      "check": "evidence-clean raw stdout bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "evidence-clean raw stderr bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "reuse-detached-frozen-source original success",
+      "pass": true
+    },
+    {
+      "check": "reuse-detached-frozen-source raw stdout bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "reuse-detached-frozen-source raw stderr bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "source-head-before original success",
+      "pass": true
+    },
+    {
+      "check": "source-head-before raw stdout bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "source-head-before raw stderr bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "source-clean-before original success",
+      "pass": true
+    },
+    {
+      "check": "source-clean-before raw stdout bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "source-clean-before raw stderr bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "frozen-input-0 original success",
+      "pass": true
+    },
+    {
+      "check": "frozen-input-0 raw stdout bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "frozen-input-0 raw stderr bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "frozen-input-1 original success",
+      "pass": true
+    },
+    {
+      "check": "frozen-input-1 raw stdout bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "frozen-input-1 raw stderr bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "frozen-input-2 original success",
+      "pass": true
+    },
+    {
+      "check": "frozen-input-2 raw stdout bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "frozen-input-2 raw stderr bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "build-Final-PS51 original success",
+      "pass": true
+    },
+    {
+      "check": "build-Final-PS51 raw stdout bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "build-Final-PS51 raw stderr bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "build-Repeat-PS51 original success",
+      "pass": true
+    },
+    {
+      "check": "build-Repeat-PS51 raw stdout bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "build-Repeat-PS51 raw stderr bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "source-head-after original success",
+      "pass": true
+    },
+    {
+      "check": "source-head-after raw stdout bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "source-head-after raw stderr bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "source-clean-after original success",
+      "pass": true
+    },
+    {
+      "check": "source-clean-after raw stdout bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "source-clean-after raw stderr bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "evidence-head-after original success",
+      "pass": true
+    },
+    {
+      "check": "evidence-head-after raw stdout bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "evidence-head-after raw stderr bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "evidence-clean-after original success",
+      "pass": true
+    },
+    {
+      "check": "evidence-clean-after raw stdout bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "evidence-clean-after raw stderr bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "complete successful build ledger binding",
+      "pass": true
+    },
+    {
+      "check": "exact wrapper bytes/hash",
+      "pass": true
+    },
+    {
+      "check": "evidence-head exact E",
+      "pass": true
+    },
+    {
+      "check": "evidence-clean actually clean",
+      "pass": true
+    },
+    {
+      "check": "source-head-before exact R",
+      "pass": true
+    },
+    {
+      "check": "source-clean-before actually clean",
+      "pass": true
+    },
+    {
+      "check": "source-head-after exact R",
+      "pass": true
+    },
+    {
+      "check": "source-clean-after actually clean",
+      "pass": true
+    },
+    {
+      "check": "evidence-head-after exact E",
+      "pass": true
+    },
+    {
+      "check": "evidence-clean-after actually clean",
+      "pass": true
+    },
+    {
+      "check": "source-current-head read-only Git succeeds",
+      "pass": true
+    },
+    {
+      "check": "source-current-branch read-only Git succeeds",
+      "pass": true
+    },
+    {
+      "check": "source-current-status read-only Git succeeds",
+      "pass": true
+    },
+    {
+      "check": "actual reused source is detached R",
+      "pass": true
+    },
+    {
+      "check": "frozen canonical input captured tools/release/Build-Release.ps1",
+      "pass": true
+    },
+    {
+      "check": "working input differs only allowed checkout newline tools/release/Build-Release.ps1",
+      "pass": true
+    },
+    {
+      "check": "frozen canonical input captured release-files.json",
+      "pass": true
+    },
+    {
+      "check": "working input differs only allowed checkout newline release-files.json",
+      "pass": true
+    },
+    {
+      "check": "frozen canonical input captured docs/codex/PACKAGE_CONTRACT.json",
+      "pass": true
+    },
+    {
+      "check": "working input differs only allowed checkout newline docs/codex/PACKAGE_CONTRACT.json",
+      "pass": true
+    },
+    {
+      "check": "actual build R/version/inventory",
+      "pass": true
+    },
+    {
+      "check": "actual canonical/repeat asset raw hash ZipPath",
+      "pass": true
+    },
+    {
+      "check": "actual canonical/repeat asset raw hash ChecksumsPath",
+      "pass": true
+    },
+    {
+      "check": "actual build R/version/inventory",
+      "pass": true
+    },
+    {
+      "check": "actual canonical/repeat asset raw hash ZipPath",
+      "pass": true
+    },
+    {
+      "check": "actual canonical/repeat asset raw hash ChecksumsPath",
+      "pass": true
+    },
+    {
+      "check": "same-host repeat identical independently pinned pair",
+      "pass": true
+    },
+    {
+      "check": "baseline-operation-auditor read-only Git succeeds",
+      "pass": true
+    },
+    {
+      "check": "auditor unique documented derivative change Independently inspect original T29 receipts",
+      "pass": true
+    },
+    {
+      "check": "auditor unique documented derivative change SOURCE = '8917938820f60e499e2c20caa9cb03171678be72'",
+      "pass": true
+    },
+    {
+      "check": "auditor unique documented derivative change ASSETS = {\n    'PS51': ('013215efbd2777460fdbd53e7ff3e60a9c371961805e1",
+      "pass": true
+    },
+    {
+      "check": "auditor unique documented derivative change     parser.add_argument('--require-clean', action='store_true')",
+      "pass": true
+    },
+    {
+      "check": "auditor unique documented derivative change     repo, capture = args.repo.absolute(), args.capture.absolute()",
+      "pass": true
+    },
+    {
+      "check": "auditor unique documented derivative change         check('actual Windows independent review', os.name == 'nt')",
+      "pass": true
+    },
+    {
+      "check": "auditor unique documented derivative change         check('outer five complete distinct invocations',",
+      "pass": true
+    },
+    {
+      "check": "auditor unique documented derivative change         check('outer driver tracked source hash', sha(git('cat-file', ",
+      "pass": true
+    },
+    {
+      "check": "auditor unique documented derivative change         check('frozen harness tracked source hash', sha(git('cat-file'",
+      "pass": true
+    },
+    {
+      "check": "auditor unique documented derivative change             check(shell + ' accepted clean result source binding',",
+      "pass": true
+    },
+    {
+      "check": "auditor unique documented derivative change             raw_zip = bind(zip_path, zip_hash, shell + ' exact retaine",
+      "pass": true
+    },
+    {
+      "check": "auditor unique documented derivative change 'task': 'T29', 'audit': 'independent_original_receipts_exact_packages_",
+      "pass": true
+    },
+    {
+      "check": "operation auditor only documented R/sharedpair/source-binding deltas",
+      "pass": true
+    },
+    {
+      "check": "independent byte-audit actual scoped successful report",
+      "pass": true
+    },
+    {
+      "check": "head-after read-only Git succeeds",
+      "pass": true
+    },
+    {
+      "check": "status-after read-only Git succeeds",
+      "pass": true
+    },
+    {
+      "check": "end primary HEAD/status unchanged",
+      "pass": true
+    }
+  ],
+  "file_bindings": {
+    "tests\\.work\\T32-operation-preparation\\preparation-result.json": {
+      "bytes": 4608,
+      "sha256": "31d05660d0f5c1f7c90e0fb203c524b014651104b34ca277059f110a10507817"
+    },
+    "tests\\.work\\T32-operation-preparation\\final_package_smoke.py": {
+      "bytes": 40037,
+      "sha256": "080016af3ec0e579d648d75d584306d9d7e25a854079c1ce1a5df6bd90ce99e5"
+    },
+    "tests\\.work\\T32-operation-preparation\\capture-T32.py": {
+      "bytes": 10297,
+      "sha256": "02811fe05e6fbc5955634fc5ed62d4f3650834bd0fce60c4c62c806093b8557a"
+    },
+    "tests\\.work\\T32-operation-preparation\\test_final_operation.py": {
+      "bytes": 5138,
+      "sha256": "2b533e6133b1e3c2f51bd7f9d8dbd7e6977c6257d54aec87f65f81494a59eb46"
+    },
+    "tests\\.work\\T32-operation-preparation\\test_inherited_safety.py": {
+      "bytes": 7377,
+      "sha256": "ed5483a3cc4c1eba57dcb5ff43d62daa7059715358ba40d7b210f8e39759a3c3"
+    },
+    "tests\\.work\\T32-operation-preparation\\harness-derivation.diff": {
+      "bytes": 2261,
+      "sha256": "92972a6e1542ece68c97b69a3c748b15bc92169626d060f5bb89301e2681b7f8"
+    },
+    "tests\\.work\\T32-operation-preparation\\capture-derivation.diff": {
+      "bytes": 17817,
+      "sha256": "a9c6f650167cd719efd067651442fe5bc1f39daee571da7e3390c430f61133bb"
+    },
+    "tests\\.work\\T32-operation-preparation\\derivation.json": {
+      "bytes": 1012,
+      "sha256": "85209f69ede7de20c051208e69dfcc09d2f0db3595e8946063b5338f57916cdb"
+    },
+    "tests\\.work\\T32-operation-preparation\\README.md": {
+      "bytes": 3477,
+      "sha256": "5fcebdcc664bccfe885ca7feb50cdefc9547488dd13386bcb1b67371500caed2"
+    },
+    "tests\\.work\\T32-operation-preparation\\helper-regressions.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests\\.work\\T32-operation-preparation\\helper-regressions.stderr.txt": {
+      "bytes": 3252,
+      "sha256": "d8323bb74ff02047dbe324eec7315b3c97a9418cdd74a1a67bb231cc8d440b81"
+    },
+    "tests\\.work\\T32-operation-preparation\\capture-interface.stdout.txt": {
+      "bytes": 743,
+      "sha256": "7f39ac6b38d94d275f302ec46257771e2b6b701958dec2454fceb1dc342f382e"
+    },
+    "tests\\.work\\T32-operation-preparation\\capture-interface.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests\\.work\\T32-operation-preparation\\harness-interface.stdout.txt": {
+      "bytes": 1884,
+      "sha256": "61552db6f334fbd6c5634746824d882c5cb3443c97426db9deadd2f4d1d0a3a3"
+    },
+    "tests\\.work\\T32-operation-preparation\\harness-interface.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests\\.work\\T32-BuildCapture.py": {
+      "bytes": 5810,
+      "sha256": "10c0813b152af16c584e88e7c9dec3efe6dbc36311376fca3df4c5849735c399"
+    },
+    "tests\\.work\\T32-BuildCaptureV2.py": {
+      "bytes": 5970,
+      "sha256": "25585b9a16eb1b37cd1e1ced80986827d04f67399f368de8c385e60525bc7e01"
+    },
+    "tests\\.work\\T32-build-a0e06a04f8454349970efe314cc691ad\\build-result.json": {
+      "bytes": 762,
+      "sha256": "4dcb3536f7ec15464b21549217d8ad0e66c040ec08b8c9f5505b5c5d8b9a3df4"
+    },
+    "tests\\.work\\T32-build-a0e06a04f8454349970efe314cc691ad\\invocations.json": {
+      "bytes": 6077,
+      "sha256": "95556669236099c1283d605fe35e356af4930e632c92df5eee7166a65c4e991e"
+    },
+    "tests\\.work\\T32-build-a0e06a04f8454349970efe314cc691ad\\evidence-head.stdout.txt": {
+      "bytes": 41,
+      "sha256": "69f15296c5fba1bed075f76f76b65b30d1dcaabac1ddc1b87423d29c2d78154a"
+    },
+    "tests\\.work\\T32-build-a0e06a04f8454349970efe314cc691ad\\evidence-head.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests\\.work\\T32-build-a0e06a04f8454349970efe314cc691ad\\evidence-clean.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests\\.work\\T32-build-a0e06a04f8454349970efe314cc691ad\\evidence-clean.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests\\.work\\T32-build-a0e06a04f8454349970efe314cc691ad\\add-detached-frozen-source.stdout.txt": {
+      "bytes": 89,
+      "sha256": "d33d75e53e1cebfc969fb7ca01acdff84cd8c823d4d01f545dfeb81f95118b56"
+    },
+    "tests\\.work\\T32-build-a0e06a04f8454349970efe314cc691ad\\add-detached-frozen-source.stderr.txt": {
+      "bytes": 2789,
+      "sha256": "877d8bb892623baf97bff08714dafa4e99159a78b3cffe878693e3145fece2e0"
+    },
+    "tests\\.work\\T32-build-a0e06a04f8454349970efe314cc691ad\\source-head-before.stdout.txt": {
+      "bytes": 41,
+      "sha256": "1763ba356b8308a156e9d311f997c7daa490b72ad2afc57c3f0c3758f2192527"
+    },
+    "tests\\.work\\T32-build-a0e06a04f8454349970efe314cc691ad\\source-head-before.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests\\.work\\T32-build-a0e06a04f8454349970efe314cc691ad\\source-clean-before.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests\\.work\\T32-build-a0e06a04f8454349970efe314cc691ad\\source-clean-before.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests\\.work\\T32-build-a0e06a04f8454349970efe314cc691ad\\frozen-input-0.stdout.txt": {
+      "bytes": 19345,
+      "sha256": "6dcc57f0c48208fa061f1195ecf17a3057c269af7f6165914ade781406a7c0b2"
+    },
+    "tests\\.work\\T32-build-a0e06a04f8454349970efe314cc691ad\\frozen-input-0.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests\\.work\\T32-build-2cbb77683273464baa9812129b8252c4\\build-result.json": {
+      "bytes": 2593,
+      "sha256": "e8964025eaac7e8986a6944ff388c2a249daf5fbd50dbb031b090426c27415a8"
+    },
+    "tests\\.work\\T32-build-2cbb77683273464baa9812129b8252c4\\invocations.json": {
+      "bytes": 14886,
+      "sha256": "e61d4206da86b80cdf8e83d0c9f29ccb1d360caa3cec3428036a18fc258377a9"
+    },
+    "tests\\.work\\T32-build-2cbb77683273464baa9812129b8252c4\\evidence-head.stdout.txt": {
+      "bytes": 41,
+      "sha256": "69f15296c5fba1bed075f76f76b65b30d1dcaabac1ddc1b87423d29c2d78154a"
+    },
+    "tests\\.work\\T32-build-2cbb77683273464baa9812129b8252c4\\evidence-head.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests\\.work\\T32-build-2cbb77683273464baa9812129b8252c4\\evidence-clean.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests\\.work\\T32-build-2cbb77683273464baa9812129b8252c4\\evidence-clean.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests\\.work\\T32-build-2cbb77683273464baa9812129b8252c4\\reuse-detached-frozen-source.stdout.txt": {
+      "bytes": 268,
+      "sha256": "c96a7916d43791fc366a52adb0b8f55147bc1ceb813ef96c2d224daefd7adc38"
+    },
+    "tests\\.work\\T32-build-2cbb77683273464baa9812129b8252c4\\reuse-detached-frozen-source.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests\\.work\\T32-build-2cbb77683273464baa9812129b8252c4\\source-head-before.stdout.txt": {
+      "bytes": 41,
+      "sha256": "1763ba356b8308a156e9d311f997c7daa490b72ad2afc57c3f0c3758f2192527"
+    },
+    "tests\\.work\\T32-build-2cbb77683273464baa9812129b8252c4\\source-head-before.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests\\.work\\T32-build-2cbb77683273464baa9812129b8252c4\\source-clean-before.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests\\.work\\T32-build-2cbb77683273464baa9812129b8252c4\\source-clean-before.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests\\.work\\T32-build-2cbb77683273464baa9812129b8252c4\\frozen-input-0.stdout.txt": {
+      "bytes": 19345,
+      "sha256": "6dcc57f0c48208fa061f1195ecf17a3057c269af7f6165914ade781406a7c0b2"
+    },
+    "tests\\.work\\T32-build-2cbb77683273464baa9812129b8252c4\\frozen-input-0.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests\\.work\\T32-build-2cbb77683273464baa9812129b8252c4\\frozen-input-1.stdout.txt": {
+      "bytes": 415,
+      "sha256": "bd80c988f28ae7c7f539f9ed31205ade92a1c5181102d6387342b4775b589007"
+    },
+    "tests\\.work\\T32-build-2cbb77683273464baa9812129b8252c4\\frozen-input-1.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests\\.work\\T32-build-2cbb77683273464baa9812129b8252c4\\frozen-input-2.stdout.txt": {
+      "bytes": 1419,
+      "sha256": "82b559d7517d7704a88e1b43e4996de25035e9b7ced78f6d09a13b39fe205e6a"
+    },
+    "tests\\.work\\T32-build-2cbb77683273464baa9812129b8252c4\\frozen-input-2.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests\\.work\\T32-build-2cbb77683273464baa9812129b8252c4\\build-Final-PS51.stdout.txt": {
+      "bytes": 559,
+      "sha256": "dc164f7f27bda2ebe744a79ce5a1e914f53ef8c2386bbf33df15bed751471667"
+    },
+    "tests\\.work\\T32-build-2cbb77683273464baa9812129b8252c4\\build-Final-PS51.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests\\.work\\T32-build-2cbb77683273464baa9812129b8252c4\\build-Repeat-PS51.stdout.txt": {
+      "bytes": 561,
+      "sha256": "86eff35194c13214f1972ab66f72d473988e8ff1afc44cddaebc0ac239013fa5"
+    },
+    "tests\\.work\\T32-build-2cbb77683273464baa9812129b8252c4\\build-Repeat-PS51.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests\\.work\\T32-build-2cbb77683273464baa9812129b8252c4\\source-head-after.stdout.txt": {
+      "bytes": 41,
+      "sha256": "1763ba356b8308a156e9d311f997c7daa490b72ad2afc57c3f0c3758f2192527"
+    },
+    "tests\\.work\\T32-build-2cbb77683273464baa9812129b8252c4\\source-head-after.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests\\.work\\T32-build-2cbb77683273464baa9812129b8252c4\\source-clean-after.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests\\.work\\T32-build-2cbb77683273464baa9812129b8252c4\\source-clean-after.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests\\.work\\T32-build-2cbb77683273464baa9812129b8252c4\\evidence-head-after.stdout.txt": {
+      "bytes": 41,
+      "sha256": "69f15296c5fba1bed075f76f76b65b30d1dcaabac1ddc1b87423d29c2d78154a"
+    },
+    "tests\\.work\\T32-build-2cbb77683273464baa9812129b8252c4\\evidence-head-after.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests\\.work\\T32-build-2cbb77683273464baa9812129b8252c4\\evidence-clean-after.stdout.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests\\.work\\T32-build-2cbb77683273464baa9812129b8252c4\\evidence-clean-after.stderr.txt": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "tests\\.work\\T32-build-2cbb77683273464baa9812129b8252c4\\Invoke-T32Build.ps1": {
+      "bytes": 335,
+      "sha256": "a8a1882dea249f8d736b61c6a67128786c2c0687a356af84eb79c8d7f12e14ad"
+    },
+    "<T32_FINAL_ASSETS>\\Final PS51\\WinPDFMerger-v1.0.0.zip": {
+      "bytes": 193669,
+      "sha256": "2b95e90cc3eb3d47b5619710acd1b6cf551769e90ac89813a1dbf0c899c63fc2"
+    },
+    "<T32_FINAL_ASSETS>\\Final PS51\\SHA256SUMS.txt": {
+      "bytes": 90,
+      "sha256": "d39084cb335c56bb99fa51424ec5aed2d95179f3c44974c81a68a8d3bf1e01ca"
+    },
+    "<T32_FINAL_ASSETS>\\Repeat PS51\\WinPDFMerger-v1.0.0.zip": {
+      "bytes": 193669,
+      "sha256": "2b95e90cc3eb3d47b5619710acd1b6cf551769e90ac89813a1dbf0c899c63fc2"
+    },
+    "<T32_FINAL_ASSETS>\\Repeat PS51\\SHA256SUMS.txt": {
+      "bytes": 90,
+      "sha256": "d39084cb335c56bb99fa51424ec5aed2d95179f3c44974c81a68a8d3bf1e01ca"
+    },
+    "tests\\.work\\T32-review\\audit_final_package.py": {
+      "bytes": 14431,
+      "sha256": "8bfc2e3f6dcdf02e7ed26d2eaee7fe98f9ad5fcb055bd5853ef7bccbb4c1cbc1"
+    },
+    "tests\\.work\\T32-review\\audit_final_operation.py": {
+      "bytes": 31211,
+      "sha256": "6e926e44d99df7839a568589f9d22bda903afcee6c80b38a572908d26c2b476f"
+    },
+    "tests\\.work\\T32-review\\operation-auditor-derivation.json": {
+      "bytes": 7231,
+      "sha256": "c6836810e55a76fd63240d6d9048709a1c92cf246402fe799b8be06796dd123d"
+    },
+    "tests\\.work\\T32-review\\final-package-byte-audit.json": {
+      "bytes": 40868,
+      "sha256": "533f703ae53e8db71e8ee784fffa3dbb063271d8f8aa0703a19e02193f657ad0"
+    }
+  },
+  "reviewer_read_only_git_commands": [
+    {
+      "argv": [
+        "git",
+        "-C",
+        "<REPO>",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "streams": {
+        "stdout": {
+          "path": "<REPO>\\tests\\.work\\T32-review\\source-preparation\\head-before.stdout.bin",
+          "bytes": 41,
+          "sha256": "69f15296c5fba1bed075f76f76b65b30d1dcaabac1ddc1b87423d29c2d78154a"
+        },
+        "stderr": {
+          "path": "<REPO>\\tests\\.work\\T32-review\\source-preparation\\head-before.stderr.bin",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "<REPO>",
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "exit_code": 0,
+      "streams": {
+        "stdout": {
+          "path": "<REPO>\\tests\\.work\\T32-review\\source-preparation\\status-before.stdout.bin",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "path": "<REPO>\\tests\\.work\\T32-review\\source-preparation\\status-before.stderr.bin",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "<REPO>",
+        "branch",
+        "--show-current"
+      ],
+      "exit_code": 0,
+      "streams": {
+        "stdout": {
+          "path": "<REPO>\\tests\\.work\\T32-review\\source-preparation\\branch-before.stdout.bin",
+          "bytes": 30,
+          "sha256": "1efba28e2478a901cf680a282df984f2e7bbf1d052faed5c1685e3a3089f1ad6"
+        },
+        "stderr": {
+          "path": "<REPO>\\tests\\.work\\T32-review\\source-preparation\\branch-before.stderr.bin",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "<REPO>",
+        "ls-remote",
+        "--refs",
+        "origin",
+        "refs/heads/codex/v1.0.0-release-evidence"
+      ],
+      "exit_code": 0,
+      "streams": {
+        "stdout": {
+          "path": "<REPO>\\tests\\.work\\T32-review\\source-preparation\\live-evidence-ref.stdout.bin",
+          "bytes": 82,
+          "sha256": "16c1300a29376548f3803545a15321429d816a493c7fa808ff4d1d700e9e99fa"
+        },
+        "stderr": {
+          "path": "<REPO>\\tests\\.work\\T32-review\\source-preparation\\live-evidence-ref.stderr.bin",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "<REPO>",
+        "rev-parse",
+        "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a^{tree}"
+      ],
+      "exit_code": 0,
+      "streams": {
+        "stdout": {
+          "path": "<REPO>\\tests\\.work\\T32-review\\source-preparation\\frozen-tree.stdout.bin",
+          "bytes": 41,
+          "sha256": "302b57343f73873df370070085cf05e35e4e3004f070bbb5cb2d626cc2d3e661"
+        },
+        "stderr": {
+          "path": "<REPO>\\tests\\.work\\T32-review\\source-preparation\\frozen-tree.stderr.bin",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "<REPO>",
+        "cat-file",
+        "blob",
+        "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a:tests/package/candidate_smoke.py"
+      ],
+      "exit_code": 0,
+      "streams": {
+        "stdout": {
+          "path": "<REPO>\\tests\\.work\\T32-review\\source-preparation\\baseline-harness.stdout.bin",
+          "bytes": 39581,
+          "sha256": "4c57f326a4cd703f2e36d7248ffbab69a0500aede9b502d695db392f05e4c28a"
+        },
+        "stderr": {
+          "path": "<REPO>\\tests\\.work\\T32-review\\source-preparation\\baseline-harness.stderr.bin",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "<REPO>",
+        "cat-file",
+        "blob",
+        "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a:tools/release/Build-Release.ps1"
+      ],
+      "exit_code": 0,
+      "streams": {
+        "stdout": {
+          "path": "<REPO>\\tests\\.work\\T32-review\\source-preparation\\frozen-builder.stdout.bin",
+          "bytes": 19345,
+          "sha256": "6dcc57f0c48208fa061f1195ecf17a3057c269af7f6165914ade781406a7c0b2"
+        },
+        "stderr": {
+          "path": "<REPO>\\tests\\.work\\T32-review\\source-preparation\\frozen-builder.stderr.bin",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "<T32_SOURCE>",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "streams": {
+        "stdout": {
+          "path": "<REPO>\\tests\\.work\\T32-review\\source-preparation\\source-current-head.stdout.bin",
+          "bytes": 41,
+          "sha256": "1763ba356b8308a156e9d311f997c7daa490b72ad2afc57c3f0c3758f2192527"
+        },
+        "stderr": {
+          "path": "<REPO>\\tests\\.work\\T32-review\\source-preparation\\source-current-head.stderr.bin",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "<T32_SOURCE>",
+        "branch",
+        "--show-current"
+      ],
+      "exit_code": 0,
+      "streams": {
+        "stdout": {
+          "path": "<REPO>\\tests\\.work\\T32-review\\source-preparation\\source-current-branch.stdout.bin",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "path": "<REPO>\\tests\\.work\\T32-review\\source-preparation\\source-current-branch.stderr.bin",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "<T32_SOURCE>",
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "exit_code": 0,
+      "streams": {
+        "stdout": {
+          "path": "<REPO>\\tests\\.work\\T32-review\\source-preparation\\source-current-status.stdout.bin",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "path": "<REPO>\\tests\\.work\\T32-review\\source-preparation\\source-current-status.stderr.bin",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "<REPO>",
+        "cat-file",
+        "blob",
+        "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a:docs/codex/evidence/T29-reports/review/audit_operation.py"
+      ],
+      "exit_code": 0,
+      "streams": {
+        "stdout": {
+          "path": "<REPO>\\tests\\.work\\T32-review\\source-preparation\\baseline-operation-auditor.stdout.bin",
+          "bytes": 29460,
+          "sha256": "62a759f25c0a4fded72be1dd29efb8dd8ca35e02c7ad5968408298d6ffb6b3b3"
+        },
+        "stderr": {
+          "path": "<REPO>\\tests\\.work\\T32-review\\source-preparation\\baseline-operation-auditor.stderr.bin",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "<REPO>",
+        "rev-parse",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "streams": {
+        "stdout": {
+          "path": "<REPO>\\tests\\.work\\T32-review\\source-preparation\\head-after.stdout.bin",
+          "bytes": 41,
+          "sha256": "69f15296c5fba1bed075f76f76b65b30d1dcaabac1ddc1b87423d29c2d78154a"
+        },
+        "stderr": {
+          "path": "<REPO>\\tests\\.work\\T32-review\\source-preparation\\head-after.stderr.bin",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    },
+    {
+      "argv": [
+        "git",
+        "-C",
+        "<REPO>",
+        "status",
+        "--porcelain=v1",
+        "--untracked-files=all"
+      ],
+      "exit_code": 0,
+      "streams": {
+        "stdout": {
+          "path": "<REPO>\\tests\\.work\\T32-review\\source-preparation\\status-after.stdout.bin",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stderr": {
+          "path": "<REPO>\\tests\\.work\\T32-review\\source-preparation\\status-after.stderr.bin",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    }
+  ],
+  "isolated_guard_regressions": {
+    "cases": 7,
+    "passed": 7,
+    "path": "<REPO>\\tests\\.work\\T32-review\\source-preparation\\guard-regression.json"
+  },
+  "reviewed_source_semantics": [
+    "The exact baseline harness retains all fourteen PS51 and eleven PS7 native scenarios, direct packaged entry invocation, BAT pause/error semantics, real selected PDFtk/Ghostscript, source/foreign-tree protection, per-run staging, default screen/explicit ebook/skip/no-benefit/missing-GS/0-1-2 failures and independent PDF inspection.",
+    "The T32 harness adds the early exact R source assertion and final-R report scope; legacy candidate keys and T29 fault tokens remain compatibility fields, without historical acceptance substitution.",
+    "The capture passes one externally pinned canonical ZIP and complete checksum asset pair to both actual required hosts, uses distinct fresh extraction roots, retains raw argv/time/exit/stream receipts, and requires complete actual scenario/source/cache/assets/environment guards.",
+    "The V2 build capture only reuses its original clean detached R worktree and permits the same CRLF/LF conversion as the unchanged frozen builder; all other content mutations fail the tested predicate. Original capture-only failure is preserved and does not claim an application/build failure.",
+    "The independent package auditor reads exact Git blobs and retained archive bytes without importing the builder; inventory/provenance/path/metadata/sums and same-host repeat scopes are explicit. Operation auditor retains baseline native/PDF/source checks with exact final source, shared pair and prepared source bindings."
+  ],
+  "limitations": [
+    "Reviewer executed read-only Git/source/receipt checks and isolated in-memory developer guard/argv probes only; no builder, application, native engine, tag, draft or publication execution.",
+    "Nineteen preparation helpers and seven guard regression probes are developer checks, never application/native/acceptance-case passes.",
+    "Canonical and repeat build receipts and independent byte audit are actual completed producer/reviewer evidence; full exact-package operation is ongoing and is not accepted by this source review.",
+    "AC058 remains excluded/unperformed, never passed; actual token/environment facts are separate from human account-class/Explorer/PDF-viewer acceptance.",
+    "Tag/draft verification, publication, independent published-download operation and synchronized closure remain later required gates."
+  ],
+  "reviewer_source_sha256": "2f7c2861fbed3078e9616717ba4a2bafe0d798b724bf8022444667ebf693725f",
+  "recorded_at_utc": "2026-10-10T03:32:54.535976+00:00"
+}

@@ -1,0 +1,481 @@
+{
+  "schema_version": 1,
+  "task": "T32",
+  "source_commit": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+  "asset_sha256": {
+    "zip": "2b95e90cc3eb3d47b5619710acd1b6cf551769e90ac89813a1dbf0c899c63fc2",
+    "checksums": "d39084cb335c56bb99fa51424ec5aed2d95179f3c44974c81a68a8d3bf1e01ca"
+  },
+  "acceptance_gates": [
+    {
+      "role": "accepted_build",
+      "source": "tests/.work/T32-build-2cbb77683273464baa9812129b8252c4/build-result.json",
+      "raw_sha256": "e8964025eaac7e8986a6944ff388c2a249daf5fbd50dbb031b090426c27415a8"
+    },
+    {
+      "role": "accepted_native",
+      "source": "tests/.work/T32-capture/dabd5f0f2d694c4fab3559133f4965ff/invocations.json",
+      "raw_sha256": "44fa021c70e60cda39812f8ff53ce418be25aee6c56ba9b026d21bb276b5663c"
+    },
+    {
+      "role": "accepted_package_review",
+      "source": "tests/.work/T32-review/final-package-byte-audit.json",
+      "raw_sha256": "533f703ae53e8db71e8ee784fffa3dbb063271d8f8aa0703a19e02193f657ad0"
+    },
+    {
+      "role": "accepted_operation_review",
+      "source": "tests/.work/T32-review/final-operation-gate-binding.json",
+      "raw_sha256": "f94f93020cb9eb99fc49a6b1709cebba91f3195a0e71f3e82ba7d241b95f559e"
+    },
+    {
+      "role": "accepted_tag_draft",
+      "source": "tests/.work/T32-tag-draft-actual-run1/transaction.json",
+      "raw_sha256": "88c12d3e40fa282b50cb625c87ab62fb75d32193745159cd38b24cbef2a1059a"
+    },
+    {
+      "role": "accepted_draft_review",
+      "source": "tests/.work/T32-review/draft-independent-408603768-2723d5699d73425a9e4b0b1c0c277c91/draft-gate-review.json",
+      "raw_sha256": "1fb108229e1ce84dc774cdcacee367711747f291be679d382663882de831bb9d"
+    }
+  ],
+  "roots": [
+    {
+      "source": "tests/.work/T32-operation-preparation",
+      "label": "preparation/operation",
+      "role": "preparation",
+      "mode": "flat",
+      "scope": "Developer-only harness preparation; synthetic cases never application/native/manual acceptance",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer"
+    },
+    {
+      "source": "tests/.work/T32-platform-preflight-20261010",
+      "label": "platform",
+      "role": "preparation",
+      "mode": "flat",
+      "scope": "43 original read-only commands; nonexistent KNOWN_LIMITATIONS filename error remains historical; final scoped review closes that preparation assumption",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer"
+    },
+    {
+      "source": "tests/.work/T32-build-a0e06a04f8454349970efe314cc691ad",
+      "label": "build/unaccepted-initial-capture",
+      "role": "unaccepted",
+      "mode": "flat",
+      "scope": "Initial builder capture failed on line-ending comparison before final build; no application or runtime defect inferred",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer"
+    },
+    {
+      "source": "tests/.work/T32-build-2cbb77683273464baa9812129b8252c4",
+      "label": "build/final",
+      "role": "actual",
+      "mode": "flat",
+      "scope": "Actual exact-R final ZIP and same-host repeat byte-identical build; no cross-host reproducibility claim",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer"
+    },
+    {
+      "source": "tests/.work/T32-capture/dabd5f0f2d694c4fab3559133f4965ff",
+      "label": "operation",
+      "role": "actual",
+      "mode": "recursive",
+      "scope": "Final accepted pair, actual 14 PS51 and 11 PS7 scenarios with package/source/environment guards; human acceptance excluded/unperformed",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer",
+      "include_utf8_named_bin_streams": true
+    },
+    {
+      "source": "tests/.work/T32-tag-draft-preparation",
+      "label": "preparation/tag-draft",
+      "role": "preparation",
+      "mode": "flat",
+      "scope": "Synthetic helper checks and actual completed-gate config; no producer preparation test substitutes for platform execution",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer"
+    },
+    {
+      "source": "tests/.work/T32-tag-draft-preflight-run1",
+      "label": "tag-draft/preflight",
+      "role": "preparation",
+      "mode": "flat",
+      "scope": "Actual read-only fresh platform/source preflight; no tag/draft mutation",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer"
+    },
+    {
+      "source": "tests/.work/T32-tag-draft-actual-run1",
+      "label": "tag-draft/actual",
+      "role": "actual",
+      "mode": "recursive",
+      "scope": "Actual annotated v1.0.0 at immutable R, one unpublished draft and authenticated exact two-asset producer download",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer"
+    },
+    {
+      "source": "tests/.work/T32-review",
+      "label": "review/originals",
+      "role": "review",
+      "mode": "flat",
+      "scope": "Original independently captured package/operation/PDF gate reports and review sources; distinct scoped results",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer"
+    },
+    {
+      "source": "tests/.work/T32-review/source-preparation",
+      "label": "review/source-preparation",
+      "role": "review",
+      "mode": "recursive",
+      "scope": "Frozen original T32 independent reviewer receipt bundle; privacy aliases only, no new execution by projector",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer"
+    },
+    {
+      "source": "tests/.work/T32-review/source-preparation-v2",
+      "label": "review/source-preparation-v2",
+      "role": "review",
+      "mode": "recursive",
+      "scope": "Frozen original T32 independent reviewer receipt bundle; privacy aliases only, no new execution by projector",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer"
+    },
+    {
+      "source": "tests/.work/T32-review/tag-draft-source",
+      "label": "review/tag-draft-source",
+      "role": "review",
+      "mode": "recursive",
+      "scope": "Frozen original T32 independent reviewer receipt bundle; privacy aliases only, no new execution by projector",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer"
+    },
+    {
+      "source": "tests/.work/T32-review/tag-draft-source-v2",
+      "label": "review/tag-draft-source-v2",
+      "role": "review",
+      "mode": "recursive",
+      "scope": "Frozen original T32 independent reviewer receipt bundle; privacy aliases only, no new execution by projector",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer"
+    },
+    {
+      "source": "tests/.work/T32-review/visual-final-outputs",
+      "label": "review/visual-final-outputs",
+      "role": "review",
+      "mode": "recursive",
+      "scope": "Frozen original T32 independent reviewer receipt bundle; privacy aliases only, no new execution by projector",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer"
+    },
+    {
+      "source": "tests/.work/T32-review/draft-independent-408603768-2723d5699d73425a9e4b0b1c0c277c91",
+      "label": "review/draft-independent-408603768-2723d5699d73425a9e4b0b1c0c277c91",
+      "role": "review",
+      "mode": "recursive",
+      "scope": "Frozen original T32 independent reviewer receipt bundle; privacy aliases only, no new execution by projector",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer"
+    },
+    {
+      "source": "tests/.work/T32-reconcile-f83953decacc4fadb32959f3c092cd43",
+      "label": "ledger/owner-merge-reconcile",
+      "role": "ledger",
+      "mode": "flat",
+      "scope": "Owner PR28 normal merge observation and safe branch reconciliation; no undo or source change",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer"
+    },
+    {
+      "source": "tests/.work/T32-export-preparation",
+      "label": "preparation/projector",
+      "role": "preparation",
+      "mode": "flat",
+      "scope": "Compact explicit text projection source and synthetic checks only; no application/native/platform acceptance",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer"
+    },
+    {
+      "source": "tests/.work/T32-final-actions/actual-tag-draft-2dd0e303f4234fa09028ec8974752535",
+      "label": "commands/actual-tag-draft-2dd0e303f4234fa09028ec8974752535",
+      "role": "ledger",
+      "mode": "flat",
+      "scope": "Original command argv/UTC/exit/stdout/stderr/hash receipt; failures or preparation passes retain their own classification",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer"
+    },
+    {
+      "source": "tests/.work/T32-final-actions/before-tag-clean-live-sync-f6975eee511e42dab307af727dd525e0",
+      "label": "commands/before-tag-clean-live-sync-f6975eee511e42dab307af727dd525e0",
+      "role": "ledger",
+      "mode": "flat",
+      "scope": "Original command argv/UTC/exit/stdout/stderr/hash receipt; failures or preparation passes retain their own classification",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer"
+    },
+    {
+      "source": "tests/.work/T32-final-actions/fetch-main-3f6e4469eafa469dad00fbc6af93e6aa",
+      "label": "commands/fetch-main-3f6e4469eafa469dad00fbc6af93e6aa",
+      "role": "ledger",
+      "mode": "flat",
+      "scope": "Original command argv/UTC/exit/stdout/stderr/hash receipt; failures or preparation passes retain their own classification",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer"
+    },
+    {
+      "source": "tests/.work/T32-final-actions/final-build-563be34245db4812a7750fdb51932631",
+      "label": "commands/final-build-563be34245db4812a7750fdb51932631",
+      "role": "ledger",
+      "mode": "flat",
+      "scope": "Original command argv/UTC/exit/stdout/stderr/hash receipt; failures or preparation passes retain their own classification",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer"
+    },
+    {
+      "source": "tests/.work/T32-final-actions/final-build-v2-b1df4459c8cb4574b96c9e48f3686047",
+      "label": "commands/final-build-v2-b1df4459c8cb4574b96c9e48f3686047",
+      "role": "ledger",
+      "mode": "flat",
+      "scope": "Original command argv/UTC/exit/stdout/stderr/hash receipt; failures or preparation passes retain their own classification",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer"
+    },
+    {
+      "source": "tests/.work/T32-final-actions/final-package-operation-f6eb8b2984ba45208242bf1fa52b244b",
+      "label": "commands/final-package-operation-f6eb8b2984ba45208242bf1fa52b244b",
+      "role": "ledger",
+      "mode": "flat",
+      "scope": "Original command argv/UTC/exit/stdout/stderr/hash receipt; failures or preparation passes retain their own classification",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer"
+    },
+    {
+      "source": "tests/.work/T32-final-actions/independent-actual-draft-download-audit-b54e02c5ac5a494fb54d1d31c2da8359",
+      "label": "commands/independent-actual-draft-download-audit-b54e02c5ac5a494fb54d1d31c2da8359",
+      "role": "ledger",
+      "mode": "flat",
+      "scope": "Original command argv/UTC/exit/stdout/stderr/hash receipt; failures or preparation passes retain their own classification",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer"
+    },
+    {
+      "source": "tests/.work/T32-final-actions/independent-final-contact-render-60451deb96044b4191358a8b3399cd53",
+      "label": "commands/independent-final-contact-render-60451deb96044b4191358a8b3399cd53",
+      "role": "ledger",
+      "mode": "flat",
+      "scope": "Original command argv/UTC/exit/stdout/stderr/hash receipt; failures or preparation passes retain their own classification",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer"
+    },
+    {
+      "source": "tests/.work/T32-final-actions/independent-final-decoded-image-audit-ca86bd5b52534a53bfc7d2530d461e32",
+      "label": "commands/independent-final-decoded-image-audit-ca86bd5b52534a53bfc7d2530d461e32",
+      "role": "ledger",
+      "mode": "flat",
+      "scope": "Original command argv/UTC/exit/stdout/stderr/hash receipt; failures or preparation passes retain their own classification",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer"
+    },
+    {
+      "source": "tests/.work/T32-final-actions/independent-final-operation-gate-binding-5b5a5089a1034ad895502ee5f2453dc1",
+      "label": "commands/independent-final-operation-gate-binding-5b5a5089a1034ad895502ee5f2453dc1",
+      "role": "ledger",
+      "mode": "flat",
+      "scope": "Original command argv/UTC/exit/stdout/stderr/hash receipt; failures or preparation passes retain their own classification",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer"
+    },
+    {
+      "source": "tests/.work/T32-final-actions/independent-final-operation-PDF-audit-061fd465ac8a4bf69726a48dc5303d3e",
+      "label": "commands/independent-final-operation-PDF-audit-061fd465ac8a4bf69726a48dc5303d3e",
+      "role": "ledger",
+      "mode": "flat",
+      "scope": "Original command argv/UTC/exit/stdout/stderr/hash receipt; failures or preparation passes retain their own classification",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer"
+    },
+    {
+      "source": "tests/.work/T32-final-actions/independent-final-package-byte-audit-b82b5dea3d264bd6a282826003e86872",
+      "label": "commands/independent-final-package-byte-audit-b82b5dea3d264bd6a282826003e86872",
+      "role": "ledger",
+      "mode": "flat",
+      "scope": "Original command argv/UTC/exit/stdout/stderr/hash receipt; failures or preparation passes retain their own classification",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer"
+    },
+    {
+      "source": "tests/.work/T32-final-actions/initial-sync-704cbbc43c974e3882e73eae846a61d9",
+      "label": "commands/initial-sync-704cbbc43c974e3882e73eae846a61d9",
+      "role": "ledger",
+      "mode": "flat",
+      "scope": "Original command argv/UTC/exit/stdout/stderr/hash receipt; failures or preparation passes retain their own classification",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer"
+    },
+    {
+      "source": "tests/.work/T32-final-actions/preparation-check-plan-cf57869a4a994b4cb145b08c07fe4483",
+      "label": "commands/preparation-check-plan-cf57869a4a994b4cb145b08c07fe4483",
+      "role": "ledger",
+      "mode": "flat",
+      "scope": "Original command argv/UTC/exit/stdout/stderr/hash receipt; failures or preparation passes retain their own classification",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer"
+    },
+    {
+      "source": "tests/.work/T32-final-actions/preparation-clean-live-sync-547abc93e7904790b4a4d9b148b4b50c",
+      "label": "commands/preparation-clean-live-sync-547abc93e7904790b4a4d9b148b4b50c",
+      "role": "ledger",
+      "mode": "flat",
+      "scope": "Original command argv/UTC/exit/stdout/stderr/hash receipt; failures or preparation passes retain their own classification",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer"
+    },
+    {
+      "source": "tests/.work/T32-final-actions/preparation-normal-commit-333f03ef460a4bb5a3872d848e54da13",
+      "label": "commands/preparation-normal-commit-333f03ef460a4bb5a3872d848e54da13",
+      "role": "ledger",
+      "mode": "flat",
+      "scope": "Original command argv/UTC/exit/stdout/stderr/hash receipt; failures or preparation passes retain their own classification",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer"
+    },
+    {
+      "source": "tests/.work/T32-final-actions/preparation-normal-push-3bb88e7f50ff43689a3bb7b1932f4276",
+      "label": "commands/preparation-normal-push-3bb88e7f50ff43689a3bb7b1932f4276",
+      "role": "ledger",
+      "mode": "flat",
+      "scope": "Original command argv/UTC/exit/stdout/stderr/hash receipt; failures or preparation passes retain their own classification",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer"
+    },
+    {
+      "source": "tests/.work/T32-final-actions/preparation-ready-baba211b78b248eda59f6c334502fb61",
+      "label": "commands/preparation-ready-baba211b78b248eda59f6c334502fb61",
+      "role": "ledger",
+      "mode": "flat",
+      "scope": "Original command argv/UTC/exit/stdout/stderr/hash receipt; failures or preparation passes retain their own classification",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer"
+    },
+    {
+      "source": "tests/.work/T32-final-actions/preparation-staged-whitespace-cfd307ac98454ebf8a6c884e80f41047",
+      "label": "commands/preparation-staged-whitespace-cfd307ac98454ebf8a6c884e80f41047",
+      "role": "ledger",
+      "mode": "flat",
+      "scope": "Original command argv/UTC/exit/stdout/stderr/hash receipt; failures or preparation passes retain their own classification",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer"
+    },
+    {
+      "source": "tests/.work/T32-final-actions/reconcile-owner-main-9bb276fcfad74ddca6b29593aed74d48",
+      "label": "commands/reconcile-owner-main-9bb276fcfad74ddca6b29593aed74d48",
+      "role": "ledger",
+      "mode": "flat",
+      "scope": "Original command argv/UTC/exit/stdout/stderr/hash receipt; failures or preparation passes retain their own classification",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer"
+    },
+    {
+      "source": "tests/.work/T32-final-actions/stage-preparation-daca2f6bd5104e52b5f591d692ca5cb1",
+      "label": "commands/stage-preparation-daca2f6bd5104e52b5f591d692ca5cb1",
+      "role": "ledger",
+      "mode": "flat",
+      "scope": "Original command argv/UTC/exit/stdout/stderr/hash receipt; failures or preparation passes retain their own classification",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer"
+    },
+    {
+      "source": "tests/.work/T32-final-actions/tag-draft-read-only-preflight-24ea54d4dcb7452480ee470651af234b",
+      "label": "commands/tag-draft-read-only-preflight-24ea54d4dcb7452480ee470651af234b",
+      "role": "ledger",
+      "mode": "flat",
+      "scope": "Original command argv/UTC/exit/stdout/stderr/hash receipt; failures or preparation passes retain their own classification",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer"
+    },
+    {
+      "source": "tests/.work/T32-final-actions/write-preparation-54182cdedfcf4e4c89ecfd035a0422e4",
+      "label": "commands/write-preparation-54182cdedfcf4e4c89ecfd035a0422e4",
+      "role": "ledger",
+      "mode": "flat",
+      "scope": "Original command argv/UTC/exit/stdout/stderr/hash receipt; failures or preparation passes retain their own classification",
+      "provenance": "Original T32 receipt root explicitly named by capture owner/reviewer"
+    }
+  ],
+  "files": [
+    {
+      "source": "tests/.work/T32-build-pointer.json",
+      "label": "scripts/originals/T32-build-pointer.json",
+      "provenance": "Original T32 capture/checkpoint/reconciliation/record source or scoped root visual review; no future record-writer execution inferred"
+    },
+    {
+      "source": "tests/.work/T32-BuildCapture.py",
+      "label": "scripts/originals/T32-BuildCapture.py",
+      "provenance": "Original T32 capture/checkpoint/reconciliation/record source or scoped root visual review; no future record-writer execution inferred"
+    },
+    {
+      "source": "tests/.work/T32-BuildCaptureV2.derivation.diff",
+      "label": "scripts/originals/T32-BuildCaptureV2.derivation.diff",
+      "provenance": "Original T32 capture/checkpoint/reconciliation/record source or scoped root visual review; no future record-writer execution inferred"
+    },
+    {
+      "source": "tests/.work/T32-BuildCaptureV2.py",
+      "label": "scripts/originals/T32-BuildCaptureV2.py",
+      "provenance": "Original T32 capture/checkpoint/reconciliation/record source or scoped root visual review; no future record-writer execution inferred"
+    },
+    {
+      "source": "tests/.work/T32-command-derivation.json",
+      "label": "scripts/originals/T32-command-derivation.json",
+      "provenance": "Original T32 capture/checkpoint/reconciliation/record source or scoped root visual review; no future record-writer execution inferred"
+    },
+    {
+      "source": "tests/.work/T32-Command.py",
+      "label": "scripts/originals/T32-Command.py",
+      "provenance": "Original T32 capture/checkpoint/reconciliation/record source or scoped root visual review; no future record-writer execution inferred"
+    },
+    {
+      "source": "tests/.work/T32-preparation-checkpoint.json",
+      "label": "scripts/originals/T32-preparation-checkpoint.json",
+      "provenance": "Original T32 capture/checkpoint/reconciliation/record source or scoped root visual review; no future record-writer execution inferred"
+    },
+    {
+      "source": "tests/.work/T32-PreparationCheckpoint.py",
+      "label": "scripts/originals/T32-PreparationCheckpoint.py",
+      "provenance": "Original T32 capture/checkpoint/reconciliation/record source or scoped root visual review; no future record-writer execution inferred"
+    },
+    {
+      "source": "tests/.work/T32-Reconcile.py",
+      "label": "scripts/originals/T32-Reconcile.py",
+      "provenance": "Original T32 capture/checkpoint/reconciliation/record source or scoped root visual review; no future record-writer execution inferred"
+    },
+    {
+      "source": "tests/.work/T32-root-visual-review.json",
+      "label": "scripts/originals/T32-root-visual-review.json",
+      "provenance": "Original T32 capture/checkpoint/reconciliation/record source or scoped root visual review; no future record-writer execution inferred"
+    },
+    {
+      "source": "tests/.work/T32-WriteCompletion.py",
+      "label": "scripts/originals/T32-WriteCompletion.py",
+      "provenance": "Original T32 capture/checkpoint/reconciliation/record source or scoped root visual review; no future record-writer execution inferred"
+    },
+    {
+      "source": "tests/.work/T32-WriteCompletionV2.py",
+      "label": "scripts/originals/T32-WriteCompletionV2.py",
+      "provenance": "Original T32 capture/checkpoint/reconciliation/record source or scoped root visual review; no future record-writer execution inferred"
+    },
+    {
+      "source": "tests/.work/T32-PolishWriter.py",
+      "label": "scripts/originals/T32-PolishWriter.py",
+      "provenance": "Original T32 capture/checkpoint/reconciliation/record source or scoped root visual review; no future record-writer execution inferred"
+    },
+    {
+      "source": "tests/.work/T32-WritePreparation.py",
+      "label": "scripts/originals/T32-WritePreparation.py",
+      "provenance": "Original T32 capture/checkpoint/reconciliation/record source or scoped root visual review; no future record-writer execution inferred"
+    }
+  ],
+  "local_path_aliases": [
+    {
+      "original": "<T32_SOURCE>",
+      "alias": "<T32_SOURCE>",
+      "provenance": "Exact UUID task path in immutable original builder receipt"
+    },
+    {
+      "original": "<T32_FINAL_ASSETS>",
+      "alias": "<T32_FINAL_ASSETS>",
+      "provenance": "Exact UUID task path in immutable original builder receipt"
+    },
+    {
+      "original": "<T32_INITIAL_ASSETS>",
+      "alias": "<T32_INITIAL_ASSETS>",
+      "provenance": "Exact UUID task path in immutable original builder receipt"
+    }
+  ],
+  "github_metadata_identity_receipts": [
+    {
+      "path": "platform/E1-action-runs.stdout.txt",
+      "kind": "actions_run_pages",
+      "raw_sha256": "0eebf5cf96b8f792bd8a44b8a091cdb4b7e75a20fb1a661d08b180abb1b581d3",
+      "git_commit_sha": "7edb42d9d5c6410f227462a7021b886c0be3f2e5",
+      "run_id": 37978214362,
+      "page_index": 0,
+      "run_index": 0
+    },
+    {
+      "path": "tag-draft/actual/live-tag-object.stdout.txt",
+      "kind": "annotated_tag",
+      "raw_sha256": "c8708bf1bdf5bc5f39a1904266203a17e9454ef7a96304f636cb8a18edd2ee30",
+      "tag_object_sha": "7818645de07b902ad8f2b815e90ee1d74d2724d6",
+      "target_commit_sha": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+      "tag": "v1.0.0"
+    },
+    {
+      "path": "review/draft-independent-408603768-2723d5699d73425a9e4b0b1c0c277c91/fresh-annotated-tag-object.stdout.txt",
+      "kind": "annotated_tag",
+      "raw_sha256": "c8708bf1bdf5bc5f39a1904266203a17e9454ef7a96304f636cb8a18edd2ee30",
+      "tag_object_sha": "7818645de07b902ad8f2b815e90ee1d74d2724d6",
+      "target_commit_sha": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+      "tag": "v1.0.0"
+    }
+  ],
+  "limitations": "Explicit compact original text only. PDFs/PNGs/ZIP/vendor/cache stay local; actual T33 publication/public-download operation and T34 closure remain pending; AC058 excluded/unperformed."
+}
