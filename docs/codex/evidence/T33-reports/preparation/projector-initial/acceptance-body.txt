@@ -1,0 +1,62 @@
+    def acceptance(self):
+        roles = {'accepted_publication','accepted_public_download','accepted_native','accepted_package_review','accepted_operation_review','accepted_decoded_image_review'}
+        rows=self.config['acceptance_gates']
+        require(len(rows)==len(roles) and {r['role'] for r in rows}==roles, 'All six actual published T33 gate roles required')
+        pair=self.config['asset_sha256']
+        require(pair=={'zip':'2b95e90cc3eb3d47b5619710acd1b6cf551769e90ac89813a1dbf0c899c63fc2','checksums':'d39084cb335c56bb99fa51424ec5aed2d95179f3c44974c81a68a8d3bf1e01ca'}, 'Exact accepted published ZIP and whole checksum hashes required')
+        values={}
+        for row in rows:
+            p=self.owned(row['source']); raw=p.read_bytes()
+            require(re.fullmatch('[0-9a-f]{64}',row['raw_sha256']) and sha(raw)==row['raw_sha256'], 'Acceptance gate original hash mismatch')
+            values[row['role']]=read_json(p)
+        download=values['accepted_public_download']
+        require(download.get('task')=='T33' and download.get('source_commit')==R and download.get('harness_commit')==M and download.get('result')=='pass_for_unauthenticated_published_release_and_independent_download' and download.get('issues')==[], 'Actual independent public download must pass')
+        require(all(download[k] is False for k in ('draft','prerelease','authentication_used','cookies_used','gh_download_used','download_directory_previously_existed','remote_mutations','application_executed')), 'Fresh anonymous public download scope required')
+        directory=Path(download['download_directory'])
+        ordinary_ancestors(directory)
+        require(directory.is_absolute() and re.fullmatch(r'(?i)[A-Z]:[\\/]projects[\\/]WinPDFMerger-t33-public-download-[0-9a-f]{32}',str(directory)), 'Exact independently owned public-download root required')
+        require(any(Path(original)==directory for original,_ in self.aliases), 'Verified public download requires an exact declared path alias')
+        require(download['zip_sha256']==pair['zip'] and download['checksums_sha256']==pair['checksums'] and download['tag_object_sha']=='7818645de07b902ad8f2b815e90ee1d74d2724d6' and download['release_id']==408603768 and download['published_at']=='2026-10-10T07:12:01Z', 'Independent published source/pair/metadata mismatch')
+        for row in rows:
+            value=values[row['role']]; role=row['role']
+            source_key='candidate_source_commit' if role=='accepted_decoded_image_review' else 'source_commit'
+            require(value.get('task')=='T33' and value.get(source_key)==R, 'Final gate wrong task/source')
+            if role=='accepted_publication':
+                require(value['result']=='pass_for_verified_final_publication' and value['mode']=='publish' and value['publication_attempted'] is True and value['evidence_commit']==M and value['draft'] is False and value['prerelease'] is False and value['live_peeled_commit']==R and value['tag_object_sha']==download['tag_object_sha'], 'Actual published annotated-R release required')
+                require(value['release_id']==download['release_id'] and value['published_at']==download['published_at'] and value['release_url']==download['release_url']=='https://github.com/PikkuJanne/WinPDFMerger/releases/tag/v1.0.0', 'Publication/public verification metadata mismatch')
+                assets=value['assets'];require(set(assets)=={'WinPDFMerger-v1.0.0.zip','SHA256SUMS.txt'} and assets['WinPDFMerger-v1.0.0.zip']['sha256']==pair['zip'] and assets['SHA256SUMS.txt']['sha256']==pair['checksums'], 'Published exact two-asset hashes required')
+                details={'release_id':value['release_id'],'published_at':value['published_at'],'tag_object_sha':value['tag_object_sha']}
+            elif role=='accepted_public_download':
+                package=value['package_audit'];require(package['sha256']==next(x['raw_sha256']for x in rows if x['role']=='accepted_package_review') and package['checks']==266 and package['issues']==[], 'Independent downloaded package-audit binding mismatch')
+                require(value['manual_acceptance']=='excluded/unperformed; never pass', 'Excluded human acceptance must remain unperformed')
+                details={'release_id':value['release_id'],'authentication_used':False,'download_directory':self.replace(value['download_directory']),'package_checks':266}
+            elif role=='accepted_native':
+                require(value['result']=='pass' and value['harness_commit']==M and value['evidence_class']==NATIVE_CLASS and value['source_clean_before_after'] is True and value['driver_unchanged'] is True and value['cache_and_assets_unchanged'] is True and value['approved_cache_files_verified']==348 and value['manual_acceptance']=='excluded/unperformed; never pass', 'Actual published-download native capture/safety guards required')
+                require(value['shared_assets']['zip_sha256']==pair['zip'] and value['shared_assets']['checksums_sha256']==pair['checksums'] and Path(value['shared_assets']['zip_path'])==directory/'WinPDFMerger-v1.0.0.zip' and Path(value['shared_assets']['checksums_path'])==directory/'SHA256SUMS.txt', 'Actual native must execute the independently anonymous downloaded pair paths')
+                children=value['candidate_reports']; require(len(children)==2 and {x['shell'] for x in children}=={'PS51','PS7'}, 'Both actual shells required')
+                count=0
+                for child in children:
+                    q=self.owned(child['path']); require(sha(q.read_bytes())==child['sha256'], 'Actual native child report hash changed')
+                    n=read_json(q); shell=child['shell']; cases=n['cases']
+                    require(n['task']=='T33' and n['evidence_class']==NATIVE_CLASS and n['result']=='pass' and n['preparation'] is False and n['candidate_source_commit']==R and n['harness_commit']==M and n['shell_kind']==shell, 'Actual native child scope mismatch')
+                    require(n['candidate']['zip_sha256']==pair['zip'] and n['candidate']['checksums_sha256']==pair['checksums'] and Path(n['candidate']['zip_path'])==directory/'WinPDFMerger-v1.0.0.zip' and Path(n['candidate']['checksums_path'])==directory/'SHA256SUMS.txt' and len(cases)==(14 if shell=='PS51' else 11), 'Actual child public pair/case set mismatch')
+                    require(all(x['package_guard'] is True and x['source_foreign_guard'] is True for x in cases), 'Every actual package/source guard required')
+                    guards={'expected_head','status_unchanged','clean','driver_unchanged','approved_cache_unchanged','candidate_assets_unchanged','parent_environment_unchanged'}
+                    require(set(n['source_guard'])==guards and all(v is True for v in n['source_guard'].values()), 'Complete native source/environment guards required')
+                    require(n['public_help']['exit_code']==0 and n['public_help']['package_unchanged'] is True and n['public_help']['no_outputs'] is True and n['manual_acceptance']=='excluded/unperformed; never pass', 'Actual help/exclusion guard required')
+                    count+=len(cases)
+                details={'shells':['PS51','PS7'],'application_cases':count,'download_directory':self.replace(str(directory))}
+            elif role in ('accepted_package_review','accepted_operation_review'):
+                package=role=='accepted_package_review'
+                require(value['result']==('pass_for_exact_published_download_package_bytes' if package else 'pass') and value['issues']==[], 'Actual independent review must pass its scoped result')
+                zkey='recorded_expected_zip_sha256' if package else 'zip_sha256'; skey='recorded_expected_checksums_sha256' if package else 'checksums_sha256'
+                require(value[zkey]==pair['zip'] and value[skey]==pair['checksums'], 'Independent published review pair mismatch')
+                checks=value['checks_total' if package else 'checks']; require(type(checks) is int and checks>0, 'Actual positive independent review check count required')
+                if not package:
+                    require(value['application_cases']==25 and value['independent_pdf_count']==21 and value['independent_pdf_pages']==106 and value['manual_acceptance']=='excluded/unperformed', 'Actual independent operation scope mismatch')
+                    require(value['public_download_report']['sha256']==next(x['raw_sha256']for x in rows if x['role']=='accepted_public_download') and Path(value['download_directory'])==directory, 'Independent operation must bind original anonymous download receipt/path')
+                details={'checks':checks}
+            else:
+                require(value['result']=='pass' and value['harness_commit']==M and value['issues']==[] and value['retained_pdf_count']==21 and value['retained_output_page_count']==106 and type(value['checks'])is int and value['checks']>0, 'Actual independent decoded-image/PDF review required')
+                details={'checks':value['checks'],'PDFs':21,'PDF_pages':106}
+            self.guards.append({'role':role,'source_commit':R,'raw_sha256':row['raw_sha256'],**details})

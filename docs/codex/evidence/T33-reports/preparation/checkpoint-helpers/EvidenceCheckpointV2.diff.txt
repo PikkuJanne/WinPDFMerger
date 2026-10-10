@@ -1,0 +1,11 @@
+--- EvidenceCheckpoint.py
++++ EvidenceCheckpointV2.py
+@@ -71,6 +71,8 @@
+ assert sync['clean'] and sync['synchronized'] and sync['local_head']==sync['live_remote_head']==E
+ assert run('live-main-after',['git','ls-remote','--heads','origin','main']).decode().strip()==MAIN+'\trefs/heads/main'
+ tag_facts('live-tag-after');release_facts('live-public-release-after')
++inventory_after=json.loads(run('live-release-inventory-after',['gh','api','repos/PikkuJanne/WinPDFMerger/releases?per_page=100','--paginate','--slurp']))
++assert len(inventory_after)==1 and len(inventory_after[0])==1 and inventory_after[0][0]['id']==408603768
+ result={'task':'T33','result':'pass','source_commit':R,'evidence_commit':E,'clean_live_sync':sync,
+         'staged_paths':len(expected),'R_to_E_only_docs_codex':True,'tag_object_sha':TAG,'live_peeled_commit':R,
+         'release_id':408603768,'draft':False,'published_at':'2026-10-10T07:12:01Z','next_task':'T34','project_complete':False,

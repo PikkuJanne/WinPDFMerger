@@ -1,0 +1,90 @@
+{
+  "task": "T33",
+  "result": "pass_for_isolated_developer_rejection_and_derivation_probes",
+  "scope": "14 developer checks only; no app, native, API, download, Git or release execution",
+  "checks": [
+    {
+      "case": "exact published annotated-R pair accepted",
+      "expected_acceptance": true,
+      "actual_acceptance": true,
+      "pass": true
+    },
+    {
+      "case": "second public release refused",
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "pass": true
+    },
+    {
+      "case": "draft refused",
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "pass": true
+    },
+    {
+      "case": "prerelease refused",
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "pass": true
+    },
+    {
+      "case": "missing publication time refused",
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "pass": true
+    },
+    {
+      "case": "wrong asset digest refused",
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "pass": true
+    },
+    {
+      "case": "wrong asset size refused",
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "pass": true
+    },
+    {
+      "case": "foreign download URL refused",
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "pass": true
+    },
+    {
+      "case": "third asset refused",
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "pass": true
+    },
+    {
+      "case": "lightweight tag refused",
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "pass": true
+    },
+    {
+      "case": "wrong peeled R refused",
+      "expected_acceptance": false,
+      "actual_acceptance": false,
+      "pass": true
+    },
+    {
+      "case": "observed download counters only may change",
+      "pass": true
+    },
+    {
+      "case": "changed digest remains refused despite counter allowance",
+      "pass": true
+    },
+    {
+      "case": "package auditor all guards reconstruct frozen original exactly",
+      "pass": true
+    }
+  ],
+  "checks_total": 14,
+  "issues": [],
+  "verifier_sha256": "f0f3bcba724e99c249787b01092d111c4085e296aee43d1403f3e7eaee9df6dc",
+  "package_auditor_sha256": "85fb65be23bffd953f76fc4a52b6ac84bf3d89400a0cbdd75bcd2379a20bec34",
+  "frozen_original_modified": false
+}

@@ -1,0 +1,101 @@
+--- frozen-T32/audit_final_operation.py
++++ prepared-T33/audit_published_operation.py
+@@ -1,4 +1,4 @@
+-"""Independently inspect original T32 final-R receipts, intact packages and actual PDFs.
++"""Independently inspect original T33 final-R receipts, intact packages and actual PDFs.
+ 
+ Never invokes application entry points, PDFtk, or Ghostscript. Git reads and
+ independent pinned PDFium/pypdf parsing/rendering are development review only.
+@@ -69,10 +69,29 @@
+         kernel.LocalFree(values)
+ 
+ 
++
++def published_download_matches_ledger(public, ledger, zip_hash, sums_hash):
++    directory = Path(public['download_directory']).absolute()
++    return (public['task'] == 'T33' and public['result'] == 'pass_for_unauthenticated_published_release_and_independent_download' and
++            public['issues'] == [] and public['source_commit'] == SOURCE and public['harness_commit'] == ledger['harness_commit'] and
++            public['authentication_used'] is False and public['cookies_used'] is False and public['gh_download_used'] is False and
++            public['download_directory_previously_existed'] is False and public['application_executed'] is False and public['remote_mutations'] is False and
++            public['draft'] is False and public['prerelease'] is False and public['published_at'] == '2026-10-10T07:12:01Z' and
++            public['release_id'] == 408603768 and public['tag_object_sha'] == '7818645de07b902ad8f2b815e90ee1d74d2724d6' and
++            public['source_sha256'] == 'f0f3bcba724e99c249787b01092d111c4085e296aee43d1403f3e7eaee9df6dc' and
++            public['package_auditor_sha256'] == '85fb65be23bffd953f76fc4a52b6ac84bf3d89400a0cbdd75bcd2379a20bec34' and
++            public['zip_sha256'] == ledger['shared_assets']['zip_sha256'] == zip_hash and
++            public['checksums_sha256'] == ledger['shared_assets']['checksums_sha256'] == sums_hash and
++            public['package_audit']['checks'] == 266 and public['package_audit']['issues'] == [] and
++            Path(ledger['shared_assets']['zip_path']).absolute() == directory / 'WinPDFMerger-v1.0.0.zip' and
++            Path(ledger['shared_assets']['checksums_path']).absolute() == directory / 'SHA256SUMS.txt')
++
+ def main():
+     parser = argparse.ArgumentParser(description=__doc__)
+     parser.add_argument('--repo', type=Path, required=True)
+     parser.add_argument('--capture', type=Path, required=True)
++    parser.add_argument('--public-download-report', type=Path, required=True)
++    parser.add_argument('--public-download-report-sha256', required=True)
+     parser.add_argument('--expected-harness-commit', required=True)
+     parser.add_argument('--report', type=Path, required=True)
+     parser.add_argument('--require-clean', action='store_true')
+@@ -82,7 +101,7 @@
+     repo, capture = args.repo.absolute(), args.capture.absolute()
+     review_root = Path(__file__).resolve().parent
+     if not args.report.resolve().is_relative_to(review_root) or args.report.exists():
+-        raise ValueError('Use a NEW report under ignored T32-review')
++        raise ValueError('Use a NEW report under ignored T33-public-download-review')
+     global ASSETS
+     ASSETS = {shell: (args.expected_zip_sha256, args.expected_checksums_sha256) for shell in ('PS51', 'PS7')}
+     checks, issues, raw_receipts, pdf_reads, operations = [], [], [], [], []
+@@ -172,13 +191,30 @@
+             check('review starts with clean tracked/untracked source', not before_status)
+         ledger = load(capture / 'invocations.json')
+         bind(capture / 'invocations.json')
++
++        check('external accepted anonymous download report pin', args.public_download_report_sha256 == '0f5f94923e47d0ae5bcc247df9d5ba56e02b39b1513977b32b27b3c1727faa19')
++        public = load(args.public_download_report)
++        bind(args.public_download_report, args.public_download_report_sha256, 'actual independent public download report')
++        check('actual independently downloaded public pair paths and scopes', published_download_matches_ledger(public, ledger, args.expected_zip_sha256, args.expected_checksums_sha256))
++        for command in public['commands']:
++            check('public original ' + command['label'] + ' actual exit', command['exit_code'] == 0)
++            for name, stream in command['streams'].items():
++                raw = bind(repo / stream['path'], stream['sha256'], command['label'] + '/' + name)
++                check('public original command stream byte length', len(raw) == stream['bytes'])
++        for request in public['public_http_requests']:
++            raw = bind(repo / request['response_path'], request['sha256'], 'actual public API response')
++            check('actual public API unauthenticated response facts', request['method'] == 'GET' and request['status'] == 200 and request['authentication'] is False and request['cookies'] is False and len(raw) == request['bytes'] and not any(key.lower() in ('authorization', 'cookie') for key in request['request_headers']))
++        package_audit = load(repo / public['package_audit']['path'])
++        bind(repo / public['package_audit']['path'], public['package_audit']['sha256'], 'actual published downloaded package audit')
++        check('actual original public download byte audit complete', package_audit['task'] == 'T33' and package_audit['source_commit'] == SOURCE and package_audit['checks_total'] == 266 and package_audit['issues'] == [] and all(item['pass'] is True for item in package_audit['checks']))
++
+         check('outer accepted capture source/asset guards', ledger['result'] == 'pass' and ledger['harness_commit'] == args.expected_harness_commit and ledger['candidate_source_commit'] == SOURCE and ledger['source_clean_before_after'] is True and ledger['driver_unchanged'] is True and ledger['cache_and_assets_unchanged'] is True and ledger['approved_cache_files_verified'] == 348)
+-        check('outer exact T32 final source/task/shared pair', ledger['task'] == 'T32' and ledger['source_commit'] == SOURCE and ledger['shared_assets']['zip_sha256'] == args.expected_zip_sha256 and ledger['shared_assets']['checksums_sha256'] == args.expected_checksums_sha256)
++        check('outer exact T33 final source/task/shared pair', ledger['task'] == 'T33' and ledger['source_commit'] == SOURCE and ledger['shared_assets']['zip_sha256'] == args.expected_zip_sha256 and ledger['shared_assets']['checksums_sha256'] == args.expected_checksums_sha256)
+         check('outer five complete distinct invocations', [row['label'] for row in ledger['invocations']] == ['PS51-environment', 'PS51-candidate', 'PS7-environment', 'PS7-candidate', 'harness-tests'])
+-        prepared_driver = repo / 'tests/.work/T32-operation-preparation/capture-T32.py'
+-        prepared_harness = repo / 'tests/.work/T32-operation-preparation/final_package_smoke.py'
+-        check('outer actual prepared T32 capture source hash', sha(bind(prepared_driver)) == ledger['driver_sha256'] == '02811fe05e6fbc5955634fc5ed62d4f3650834bd0fce60c4c62c806093b8557a')
+-        check('actual prepared T32 running harness source hash/path', sha(bind(prepared_harness)) == ledger['harness_sha256'] == '080016af3ec0e579d648d75d584306d9d7e25a854079c1ce1a5df6bd90ce99e5' and Path(ledger['harness_path']).absolute() == prepared_harness.absolute())
++        prepared_driver = repo / 'tests/.work/T33-operation-preparation/capture-T33.py'
++        prepared_harness = repo / 'tests/.work/T33-operation-preparation/final_package_smoke.py'
++        check('outer actual prepared T33 capture source hash', sha(bind(prepared_driver)) == ledger['driver_sha256'] == '01cf9fa377dde5719fea16153791bc2a85fa412872ceee9cfa6029a5f270c8b7')
++        check('actual prepared T33 running harness source hash/path', sha(bind(prepared_harness)) == ledger['harness_sha256'] == '5ea6bd48c400f1ffe9becf7ba5fb2b7fd355019dbbab3a8aa295a29c727626f8' and Path(ledger['harness_path']).absolute() == prepared_harness.absolute())
+         check('frozen tracked baseline harness source unchanged at R/current harness', sha(git('cat-file', 'blob', SOURCE + ':tests/package/candidate_smoke.py')) == sha(git('cat-file', 'blob', args.expected_harness_commit + ':tests/package/candidate_smoke.py')) == '4c57f326a4cd703f2e36d7248ffbab69a0500aede9b502d695db392f05e4c28a')
+         check('outer approved development Python bytes/version', ledger['python_version'] == '3.12.14' and ledger['python_sha256'] == sha(Path(sys.executable).read_bytes()) == '10d845f50a2af64e3500bb2fcb348b5bc98a75d8ddada63e45ba1da6a1fc79d1')
+         allow = load(repo / 'release-files.json')['files']
+@@ -194,7 +230,7 @@
+             calls = load(report_dir / 'invocations.json')
+             bind(report_dir / 'result.json')
+             bind(report_dir / 'invocations.json')
+-            check(shell + ' actual T32 final package task/evidence scope', result['task'] == 'T32' and result['evidence_class'] == 'actual_final_R_package_operation')
++            check(shell + ' actual T33 final package task/evidence scope', result['task'] == 'T33' and result['evidence_class'] == 'actual_independently_anonymously_downloaded_published_v1_0_0_package_operation')
+             check(shell + ' accepted clean result source binding', result['result'] == 'pass' and result['preparation'] is False and result['harness_commit'] == args.expected_harness_commit and result['candidate_source_commit'] == SOURCE and all(result['source_guard'].values()))
+             check(shell + ' exact frozen running harness unchanged', result['driver_sha256_before'] == result['driver_sha256_after'] == ledger['harness_sha256'])
+             env = result['environment']
+@@ -341,7 +377,7 @@
+     except Exception as error:
+         check('independent audit completed without exception: ' + type(error).__name__, False)
+         issues.append(redact(str(error)))
+-    report = {'task': 'T32', 'audit': 'independent_original_final_R_receipts_exact_shared_assets_and_final_pdf_operation', 'application_reexecuted': False, 'pdftk_or_ghostscript_reexecuted': False, 'manual_acceptance': 'excluded/unperformed', 'auditor_sha256': sha(Path(__file__).read_bytes()), 'command': redact([sys.executable, '-B', str(Path(__file__).absolute()), *sys.argv[1:]]), 'harness_commit': args.expected_harness_commit, 'candidate_source_commit': SOURCE, 'checks': len(checks), 'issues': issues, 'actual_application_cases': operations, 'independent_pdf_reads': pdf_reads, 'raw_receipts': raw_receipts, 'details': checks}
++    report = {'task': 'T33', 'audit': 'independent_original_anonymous_published_download_receipts_exact_shared_assets_and_pdf_operation', 'application_reexecuted': False, 'pdftk_or_ghostscript_reexecuted': False, 'manual_acceptance': 'excluded/unperformed', 'auditor_sha256': sha(Path(__file__).read_bytes()), 'command': redact([sys.executable, '-B', str(Path(__file__).absolute()), *sys.argv[1:]]), 'harness_commit': args.expected_harness_commit, 'candidate_source_commit': SOURCE, 'checks': len(checks), 'issues': issues, 'actual_application_cases': operations, 'independent_pdf_reads': pdf_reads, 'raw_receipts': raw_receipts, 'details': checks}
+     args.report.parent.mkdir(parents=True, exist_ok=True)
+     args.report.write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8', newline='\n')
+     print(json.dumps({'checks': len(checks), 'issues': len(issues), 'cases': len(operations), 'PDFs': len(pdf_reads), 'pages': sum(len(row['pages']) for row in pdf_reads), 'report': redact(str(args.report))}))

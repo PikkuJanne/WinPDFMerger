@@ -1,0 +1,1985 @@
+Updating 4f14ce5..f3d8f3c
+Fast-forward
+ docs/codex/ACCEPTANCE_CASES.json                   |    18 +-
+ docs/codex/NEXT_SESSION.md                         |    70 +-
+ docs/codex/RELEASE_STATE.json                      |    12 +-
+ docs/codex/STATUS.md                               |    56 +-
+ docs/codex/TASKS.json                              |    13 +-
+ docs/codex/evidence/.gitattributes                 |    38 +
+ docs/codex/evidence/T32-completion.md              |    42 +
+ docs/codex/evidence/T32-preparation.json           |    32 +
+ docs/codex/evidence/T32-preparation.md             |    24 +
+ .../T32-reports/build/final/Invoke-T32Build.ps1    |     5 +
+ .../build/final/build-Final-PS51.stderr.txt        |     0
+ .../build/final/build-Final-PS51.stdout.txt        |     9 +
+ .../build/final/build-Repeat-PS51.stderr.txt       |     0
+ .../build/final/build-Repeat-PS51.stdout.txt       |     9 +
+ .../T32-reports/build/final/build-result.json      |    43 +
+ .../build/final/evidence-clean-after.stderr.txt    |     0
+ .../build/final/evidence-clean-after.stdout.txt    |     0
+ .../build/final/evidence-clean.stderr.txt          |     0
+ .../build/final/evidence-clean.stdout.txt          |     0
+ .../build/final/evidence-head-after.stderr.txt     |     0
+ .../build/final/evidence-head-after.stdout.txt     |     1 +
+ .../build/final/evidence-head.stderr.txt           |     0
+ .../build/final/evidence-head.stdout.txt           |     1 +
+ .../build/final/frozen-input-0.stderr.txt          |     0
+ .../build/final/frozen-input-0.stdout.txt          |   342 +
+ .../build/final/frozen-input-1.stderr.txt          |     0
+ .../build/final/frozen-input-1.stdout.txt          |    20 +
+ .../build/final/frozen-input-2.stderr.txt          |     0
+ .../build/final/frozen-input-2.stdout.txt          |    40 +
+ .../T32-reports/build/final/invocations.json       |   389 +
+ .../final/reuse-detached-frozen-source.stderr.txt  |     0
+ .../final/reuse-detached-frozen-source.stdout.txt  |     8 +
+ .../build/final/source-clean-after.stderr.txt      |     0
+ .../build/final/source-clean-after.stdout.txt      |     0
+ .../build/final/source-clean-before.stderr.txt     |     0
+ .../build/final/source-clean-before.stdout.txt     |     0
+ .../build/final/source-head-after.stderr.txt       |     0
+ .../build/final/source-head-after.stdout.txt       |     1 +
+ .../build/final/source-head-before.stderr.txt      |     0
+ .../build/final/source-head-before.stdout.txt      |     1 +
+ .../add-detached-frozen-source.stderr.txt          |     2 +
+ .../add-detached-frozen-source.stdout.txt          |     1 +
+ .../unaccepted-initial-capture/build-result.json   |    13 +
+ .../evidence-clean.stderr.txt                      |     0
+ .../evidence-clean.stdout.txt                      |     0
+ .../evidence-head.stderr.txt                       |     0
+ .../evidence-head.stdout.txt                       |     1 +
+ .../frozen-input-0.stderr.txt                      |     0
+ .../frozen-input-0.stdout.txt                      |   342 +
+ .../unaccepted-initial-capture/invocations.json    |   163 +
+ .../source-clean-before.stderr.txt                 |     0
+ .../source-clean-before.stdout.txt                 |     0
+ .../source-head-before.stderr.txt                  |     0
+ .../source-head-before.stdout.txt                  |     1 +
+ .../receipt.json                                   |    30 +
+ .../stderr.txt                                     |     0
+ .../stdout.txt                                     |     1 +
+ .../receipt.json                                   |    28 +
+ .../stderr.txt                                     |     0
+ .../stdout.txt                                     |    10 +
+ .../receipt.json                                   |    26 +
+ .../stderr.txt                                     |     3 +
+ .../stdout.txt                                     |     0
+ .../receipt.json                                   |    25 +
+ .../stderr.txt                                     |     0
+ .../stdout.txt                                     |     1 +
+ .../receipt.json                                   |    25 +
+ .../stderr.txt                                     |     0
+ .../stdout.txt                                     |     1 +
+ .../receipt.json                                   |    37 +
+ .../stderr.txt                                     |     0
+ .../stdout.txt                                     |    11 +
+ .../receipt.json                                   |    35 +
+ .../stderr.txt                                     |     0
+ .../stdout.txt                                     |     1 +
+ .../receipt.json                                   |    29 +
+ .../stderr.txt                                     |     0
+ .../stdout.txt                                     |     1 +
+ .../receipt.json                                   |    33 +
+ .../stderr.txt                                     |     0
+ .../stdout.txt                                     |    86 +
+ .../receipt.json                                   |    38 +
+ .../stderr.txt                                     |     0
+ .../stdout.txt                                     |     1 +
+ .../receipt.json                                   |    33 +
+ .../stderr.txt                                     |     0
+ .../stdout.txt                                     |     1 +
+ .../receipt.json                                   |    40 +
+ .../stderr.txt                                     |     0
+ .../stdout.txt                                     |     1 +
+ .../receipt.json                                   |    28 +
+ .../stderr.txt                                     |     0
+ .../stdout.txt                                     |    10 +
+ .../receipt.json                                   |    29 +
+ .../stderr.txt                                     |     0
+ .../stdout.txt                                     |    10 +
+ .../receipt.json                                   |    28 +
+ .../stderr.txt                                     |     0
+ .../stdout.txt                                     |    10 +
+ .../receipt.json                                   |    26 +
+ .../stderr.txt                                     |     0
+ .../stdout.txt                                     |     4 +
+ .../receipt.json                                   |    26 +
+ .../stderr.txt                                     |     2 +
+ .../stdout.txt                                     |     0
+ .../receipt.json                                   |    29 +
+ .../stderr.txt                                     |     0
+ .../stdout.txt                                     |    10 +
+ .../receipt.json                                   |    26 +
+ .../stderr.txt                                     |     0
+ .../stdout.txt                                     |     0
+ .../receipt.json                                   |    25 +
+ .../stderr.txt                                     |     0
+ .../stdout.txt                                     |     1 +
+ .../receipt.json                                   |    25 +
+ .../stderr.txt                                     |     0
+ .../stdout.txt                                     |     1 +
+ .../receipt.json                                   |    25 +
+ .../stderr.txt                                     |     0
+ .../stdout.txt                                     |     1 +
+ .../receipt.json                                   |    25 +
+ .../stderr.txt                                     |     0
+ .../stdout.txt                                     |     1 +
+ .../receipt.json                                   |    30 +
+ .../stderr.txt                                     |     0
+ .../stdout.txt                                     |     0
+ .../receipt.json                                   |    29 +
+ .../stderr.txt                                     |     0
+ .../stdout.txt                                     |     1 +
+ .../receipt.json                                   |    25 +
+ .../stderr.txt                                     |     0
+ .../stdout.txt                                     |     1 +
+ .../owner-merge-reconcile/E1-ancestor.stderr.txt   |     0
+ .../owner-merge-reconcile/E1-ancestor.stdout.txt   |     0
+ .../owner-merge-reconcile/R-ancestor.stderr.txt    |     0
+ .../owner-merge-reconcile/R-ancestor.stdout.txt    |     0
+ .../R-to-main-paths.stderr.txt                     |     0
+ .../ledger/owner-merge-reconcile/aggregate.json    |    25 +
+ .../fast-forward-evidence.stderr.txt               |     0
+ .../fast-forward-evidence.stdout.txt               |     2 +
+ .../fast-forward-main.stderr.txt                   |     1 +
+ .../fast-forward-main.stdout.txt                   |  2833 ++
+ .../owner-merge-reconcile/fetch-route.stderr.txt   |     0
+ .../owner-merge-reconcile/fetch-route.stdout.txt   |     1 +
+ .../owner-merge-reconcile/fetched-main.stderr.txt  |     0
+ .../owner-merge-reconcile/fetched-main.stdout.txt  |     1 +
+ .../owner-merge-reconcile/final-clean.stderr.txt   |     0
+ .../owner-merge-reconcile/final-clean.stdout.txt   |     0
+ .../owner-merge-reconcile/final-head.stderr.txt    |     0
+ .../owner-merge-reconcile/final-head.stdout.txt    |     1 +
+ .../initial-branch.stderr.txt                      |     0
+ .../initial-branch.stdout.txt                      |     1 +
+ .../owner-merge-reconcile/initial-clean.stderr.txt |     0
+ .../owner-merge-reconcile/initial-clean.stdout.txt |     0
+ .../owner-merge-reconcile/initial-head.stderr.txt  |     0
+ .../owner-merge-reconcile/initial-head.stdout.txt  |     1 +
+ .../ledger/owner-merge-reconcile/invocations.json  |   258 +
+ .../owner-merge-reconcile/live-main.stderr.txt     |     0
+ .../owner-merge-reconcile/live-main.stdout.txt     |     1 +
+ .../main-live-sync.stderr.txt                      |     0
+ .../main-live-sync.stdout.txt                      |    10 +
+ .../owner-merge-tree-equivalence.stderr.txt        |     0
+ .../owner-merge-tree-equivalence.stdout.txt        |     0
+ .../owner-merge-reconcile/push-route.stderr.txt    |     0
+ .../owner-merge-reconcile/push-route.stdout.txt    |     1 +
+ .../switch-evidence.stderr.txt                     |     1 +
+ .../switch-evidence.stdout.txt                     |     1 +
+ .../owner-merge-reconcile/switch-main.stderr.txt   |     1 +
+ .../owner-merge-reconcile/switch-main.stdout.txt   |     2 +
+ docs/codex/evidence/T32-reports/manifest.json      | 10473 ++++++++
+ .../operation/PS51-candidate.stderr.txt            |     0
+ .../operation/PS51-candidate.stdout.txt            |    15 +
+ .../operation/PS51-environment.stderr.txt          |     0
+ .../operation/PS51-environment.stdout.txt          |    44 +
+ .../PS51-reports/000-git-rev-parse.invocation.json |    26 +
+ .../PS51-reports/000-git-rev-parse.stderr.txt      |     0
+ .../PS51-reports/000-git-rev-parse.stdout.txt      |     1 +
+ .../PS51-reports/001-git-status.invocation.json    |    27 +
+ .../PS51-reports/001-git-status.stderr.txt         |     0
+ .../PS51-reports/001-git-status.stdout.txt         |     0
+ .../PS51-reports/002-git-rev-parse.invocation.json |    26 +
+ .../PS51-reports/002-git-rev-parse.stderr.txt      |     0
+ .../PS51-reports/002-git-rev-parse.stdout.txt      |     1 +
+ .../003-shell-inventory.invocation.json            |    27 +
+ .../PS51-reports/003-shell-inventory.stderr.txt    |     0
+ .../PS51-reports/003-shell-inventory.stdout.txt    |    32 +
+ .../PS51-reports/004-pdftk-version.invocation.json |    24 +
+ .../PS51-reports/004-pdftk-version.stderr.txt      |     0
+ .../PS51-reports/004-pdftk-version.stdout.txt      |     5 +
+ .../005-ghostscript-version.invocation.json        |    24 +
+ .../005-ghostscript-version.stderr.txt             |     0
+ .../005-ghostscript-version.stdout.txt             |     1 +
+ .../PS51-reports/006-git-cat-file.invocation.json  |    27 +
+ .../PS51-reports/006-git-cat-file.stderr.txt       |     0
+ .../PS51-reports/006-git-cat-file.stdout.txt       |    20 +
+ .../PS51-reports/007-git-cat-file.invocation.json  |    27 +
+ .../PS51-reports/007-git-cat-file.stderr.txt       |     0
+ .../PS51-reports/007-git-cat-file.stdout.txt       |   335 +
+ .../PS51-reports/008-git-cat-file.invocation.json  |    27 +
+ .../PS51-reports/008-git-cat-file.stderr.txt       |     0
+ .../PS51-reports/008-git-cat-file.stdout.txt       |    59 +
+ .../PS51-reports/009-git-cat-file.invocation.json  |    27 +
+ .../PS51-reports/009-git-cat-file.stderr.txt       |     0
+ .../PS51-reports/009-git-cat-file.stdout.txt       |  1881 ++
+ .../PS51-reports/010-git-cat-file.invocation.json  |    27 +
+ .../PS51-reports/010-git-cat-file.stderr.txt       |     0
+ .../PS51-reports/010-git-cat-file.stdout.txt       |     1 +
+ .../PS51-reports/011-git-cat-file.invocation.json  |    27 +
+ .../PS51-reports/011-git-cat-file.stderr.txt       |     0
+ .../PS51-reports/011-git-cat-file.stdout.txt       |   165 +
+ .../PS51-reports/012-git-cat-file.invocation.json  |    27 +
+ .../PS51-reports/012-git-cat-file.stderr.txt       |     0
+ .../PS51-reports/012-git-cat-file.stdout.txt       |    21 +
+ .../PS51-reports/013-git-cat-file.invocation.json  |    27 +
+ .../PS51-reports/013-git-cat-file.stderr.txt       |     0
+ .../PS51-reports/013-git-cat-file.stdout.txt       |    90 +
+ .../PS51-reports/014-git-cat-file.invocation.json  |    27 +
+ .../PS51-reports/014-git-cat-file.stderr.txt       |     0
+ .../PS51-reports/014-git-cat-file.stdout.txt       |    75 +
+ .../PS51-reports/015-git-cat-file.invocation.json  |    27 +
+ .../PS51-reports/015-git-cat-file.stderr.txt       |     0
+ .../PS51-reports/015-git-cat-file.stdout.txt       |   145 +
+ .../PS51-reports/016-git-cat-file.invocation.json  |    27 +
+ .../PS51-reports/016-git-cat-file.stderr.txt       |     0
+ .../PS51-reports/016-git-cat-file.stdout.txt       |   122 +
+ .../PS51-reports/017-git-cat-file.invocation.json  |    27 +
+ .../PS51-reports/017-git-cat-file.stderr.txt       |     0
+ .../PS51-reports/017-git-cat-file.stdout.txt       |   101 +
+ .../PS51-reports/018-git-cat-file.invocation.json  |    27 +
+ .../PS51-reports/018-git-cat-file.stderr.txt       |     0
+ .../PS51-reports/018-git-cat-file.stdout.txt       |    57 +
+ .../PS51-reports/019-git-cat-file.invocation.json  |    27 +
+ .../PS51-reports/019-git-cat-file.stderr.txt       |     0
+ .../PS51-reports/019-git-cat-file.stdout.txt       |    79 +
+ .../PS51-reports/020-git-cat-file.invocation.json  |    27 +
+ .../PS51-reports/020-git-cat-file.stderr.txt       |     0
+ .../PS51-reports/020-git-cat-file.stdout.txt       |    41 +
+ .../PS51-reports/021-git-cat-file.invocation.json  |    27 +
+ .../PS51-reports/021-git-cat-file.stderr.txt       |     0
+ .../PS51-reports/021-git-cat-file.stdout.txt       |   139 +
+ .../PS51-reports/022-git-cat-file.invocation.json  |    27 +
+ .../PS51-reports/022-git-cat-file.stderr.txt       |     0
+ .../PS51-reports/022-git-cat-file.stdout.txt       |   335 +
+ .../PS51-reports/023-git-cat-file.invocation.json  |    27 +
+ .../PS51-reports/023-git-cat-file.stderr.txt       |     0
+ .../PS51-reports/023-git-cat-file.stdout.txt       |    59 +
+ .../PS51-reports/024-git-cat-file.invocation.json  |    27 +
+ .../PS51-reports/024-git-cat-file.stderr.txt       |     0
+ .../PS51-reports/024-git-cat-file.stdout.txt       |  1881 ++
+ .../PS51-reports/025-git-cat-file.invocation.json  |    27 +
+ .../PS51-reports/025-git-cat-file.stderr.txt       |     0
+ .../PS51-reports/025-git-cat-file.stdout.txt       |     1 +
+ .../PS51-reports/026-git-cat-file.invocation.json  |    27 +
+ .../PS51-reports/026-git-cat-file.stderr.txt       |     0
+ .../PS51-reports/026-git-cat-file.stdout.txt       |   165 +
+ .../PS51-reports/027-git-cat-file.invocation.json  |    27 +
+ .../PS51-reports/027-git-cat-file.stderr.txt       |     0
+ .../PS51-reports/027-git-cat-file.stdout.txt       |    21 +
+ .../PS51-reports/028-git-cat-file.invocation.json  |    27 +
+ .../PS51-reports/028-git-cat-file.stderr.txt       |     0
+ .../PS51-reports/028-git-cat-file.stdout.txt       |    90 +
+ .../PS51-reports/029-git-cat-file.invocation.json  |    27 +
+ .../PS51-reports/029-git-cat-file.stderr.txt       |     0
+ .../PS51-reports/029-git-cat-file.stdout.txt       |    75 +
+ .../PS51-reports/030-git-cat-file.invocation.json  |    27 +
+ .../PS51-reports/030-git-cat-file.stderr.txt       |     0
+ .../PS51-reports/030-git-cat-file.stdout.txt       |   145 +
+ .../PS51-reports/031-git-cat-file.invocation.json  |    27 +
+ .../PS51-reports/031-git-cat-file.stderr.txt       |     0
+ .../PS51-reports/031-git-cat-file.stdout.txt       |   122 +
+ .../PS51-reports/032-git-cat-file.invocation.json  |    27 +
+ .../PS51-reports/032-git-cat-file.stderr.txt       |     0
+ .../PS51-reports/032-git-cat-file.stdout.txt       |   101 +
+ .../PS51-reports/033-git-cat-file.invocation.json  |    27 +
+ .../PS51-reports/033-git-cat-file.stderr.txt       |     0
+ .../PS51-reports/033-git-cat-file.stdout.txt       |    57 +
+ .../PS51-reports/034-git-cat-file.invocation.json  |    27 +
+ .../PS51-reports/034-git-cat-file.stderr.txt       |     0
+ .../PS51-reports/034-git-cat-file.stdout.txt       |    79 +
+ .../PS51-reports/035-git-cat-file.invocation.json  |    27 +
+ .../PS51-reports/035-git-cat-file.stderr.txt       |     0
+ .../PS51-reports/035-git-cat-file.stdout.txt       |    41 +
+ .../PS51-reports/036-git-cat-file.invocation.json  |    27 +
+ .../PS51-reports/036-git-cat-file.stderr.txt       |     0
+ .../PS51-reports/036-git-cat-file.stdout.txt       |   139 +
+ .../037-default-screen.invocation.json             |    36 +
+ .../PS51-reports/037-default-screen.stderr.txt     |     0
+ .../PS51-reports/037-default-screen.stdout.txt     |   221 +
+ .../PS51-reports/038-ebook-output.invocation.json  |    40 +
+ .../PS51-reports/038-ebook-output.stderr.txt       |     0
+ .../PS51-reports/038-ebook-output.stdout.txt       |   221 +
+ .../PS51-reports/039-skip-email.invocation.json    |    39 +
+ .../PS51-reports/039-skip-email.stderr.txt         |     0
+ .../PS51-reports/039-skip-email.stdout.txt         |   123 +
+ .../040-skip-ignored-preset.invocation.json        |    41 +
+ .../040-skip-ignored-preset.stderr.txt             |     0
+ .../040-skip-ignored-preset.stdout.txt             |   125 +
+ .../041-tiny-no-benefit.invocation.json            |    38 +
+ .../PS51-reports/041-tiny-no-benefit.stderr.txt    |     0
+ .../PS51-reports/041-tiny-no-benefit.stdout.txt    |   149 +
+ .../042-optional-gs-absent.invocation.json         |    38 +
+ .../PS51-reports/042-optional-gs-absent.stderr.txt |     0
+ .../PS51-reports/042-optional-gs-absent.stdout.txt |    91 +
+ .../PS51-reports/043-missing-input.invocation.json |    35 +
+ .../PS51-reports/043-missing-input.stderr.txt      |     0
+ .../PS51-reports/043-missing-input.stdout.txt      |     3 +
+ .../044-invalid-preset.invocation.json             |    40 +
+ .../PS51-reports/044-invalid-preset.stderr.txt     |     7 +
+ .../PS51-reports/044-invalid-preset.stdout.txt     |     0
+ .../PS51-reports/045-empty-input.invocation.json   |    38 +
+ .../PS51-reports/045-empty-input.stderr.txt        |     0
+ .../PS51-reports/045-empty-input.stdout.txt        |    21 +
+ .../PS51-reports/046-corrupt-input.invocation.json |    38 +
+ .../PS51-reports/046-corrupt-input.stderr.txt      |     0
+ .../PS51-reports/046-corrupt-input.stdout.txt      |    26 +
+ .../047-gs-resource-failure.invocation.json        |    38 +
+ .../047-gs-resource-failure.stderr.txt             |     0
+ .../047-gs-resource-failure.stdout.txt             |   139 +
+ .../PS51-reports/048-batch-default.invocation.json |    27 +
+ .../PS51-reports/048-batch-default.stderr.txt      |     0
+ .../PS51-reports/048-batch-default.stdout.txt      |   224 +
+ .../PS51-reports/049-batch-empty.invocation.json   |    27 +
+ .../PS51-reports/049-batch-empty.stderr.txt        |     0
+ .../PS51-reports/049-batch-empty.stdout.txt        |    24 +
+ .../050-batch-gs-failure.invocation.json           |    27 +
+ .../PS51-reports/050-batch-gs-failure.stderr.txt   |     0
+ .../PS51-reports/050-batch-gs-failure.stdout.txt   |   142 +
+ .../PS51-reports/051-public-help.invocation.json   |    27 +
+ .../PS51-reports/051-public-help.stderr.txt        |     0
+ .../PS51-reports/051-public-help.stdout.txt        |    48 +
+ .../PS51-reports/052-git-rev-parse.invocation.json |    26 +
+ .../PS51-reports/052-git-rev-parse.stderr.txt      |     0
+ .../PS51-reports/052-git-rev-parse.stdout.txt      |     1 +
+ .../PS51-reports/053-git-status.invocation.json    |    27 +
+ .../PS51-reports/053-git-status.stderr.txt         |     0
+ .../PS51-reports/053-git-status.stdout.txt         |     0
+ .../operation/PS51-reports/batch-default.case.json |   770 +
+ .../operation/PS51-reports/batch-empty.case.json   |   475 +
+ .../PS51-reports/batch-gs-failure.case.json        |   718 +
+ .../operation/PS51-reports/corrupt-input.case.json |   500 +
+ .../PS51-reports/default-screen.case.json          |   770 +
+ .../operation/PS51-reports/ebook-output.case.json  |   761 +
+ .../operation/PS51-reports/empty-input.case.json   |   470 +
+ .../PS51-reports/gs-resource-failure.case.json     |   711 +
+ .../PS51-reports/invalid-preset.case.json          |   613 +
+ .../operation/PS51-reports/invocations.json        |  1575 ++
+ .../operation/PS51-reports/missing-input.case.json |   466 +
+ .../PS51-reports/optional-gs-absent.case.json      |   521 +
+ .../T32-reports/operation/PS51-reports/result.json | 10330 +++++++
+ .../operation/PS51-reports/skip-email.case.json    |   691 +
+ .../PS51-reports/skip-ignored-preset.case.json     |   691 +
+ .../PS51-reports/tiny-no-benefit.case.json         |   521 +
+ .../T32-reports/operation/PS7-candidate.stderr.txt |     0
+ .../T32-reports/operation/PS7-candidate.stdout.txt |    12 +
+ .../operation/PS7-environment.stderr.txt           |     0
+ .../operation/PS7-environment.stdout.txt           |    44 +
+ .../PS7-reports/000-git-rev-parse.invocation.json  |    26 +
+ .../PS7-reports/000-git-rev-parse.stderr.txt       |     0
+ .../PS7-reports/000-git-rev-parse.stdout.txt       |     1 +
+ .../PS7-reports/001-git-status.invocation.json     |    27 +
+ .../PS7-reports/001-git-status.stderr.txt          |     0
+ .../PS7-reports/001-git-status.stdout.txt          |     0
+ .../PS7-reports/002-git-rev-parse.invocation.json  |    26 +
+ .../PS7-reports/002-git-rev-parse.stderr.txt       |     0
+ .../PS7-reports/002-git-rev-parse.stdout.txt       |     1 +
+ .../003-shell-inventory.invocation.json            |    27 +
+ .../PS7-reports/003-shell-inventory.stderr.txt     |     0
+ .../PS7-reports/003-shell-inventory.stdout.txt     |    32 +
+ .../PS7-reports/004-pdftk-version.invocation.json  |    24 +
+ .../PS7-reports/004-pdftk-version.stderr.txt       |     0
+ .../PS7-reports/004-pdftk-version.stdout.txt       |     5 +
+ .../005-ghostscript-version.invocation.json        |    24 +
+ .../PS7-reports/005-ghostscript-version.stderr.txt |     0
+ .../PS7-reports/005-ghostscript-version.stdout.txt |     1 +
+ .../PS7-reports/006-git-cat-file.invocation.json   |    27 +
+ .../PS7-reports/006-git-cat-file.stderr.txt        |     0
+ .../PS7-reports/006-git-cat-file.stdout.txt        |    20 +
+ .../PS7-reports/007-git-cat-file.invocation.json   |    27 +
+ .../PS7-reports/007-git-cat-file.stderr.txt        |     0
+ .../PS7-reports/007-git-cat-file.stdout.txt        |   335 +
+ .../PS7-reports/008-git-cat-file.invocation.json   |    27 +
+ .../PS7-reports/008-git-cat-file.stderr.txt        |     0
+ .../PS7-reports/008-git-cat-file.stdout.txt        |    59 +
+ .../PS7-reports/009-git-cat-file.invocation.json   |    27 +
+ .../PS7-reports/009-git-cat-file.stderr.txt        |     0
+ .../PS7-reports/009-git-cat-file.stdout.txt        |  1881 ++
+ .../PS7-reports/010-git-cat-file.invocation.json   |    27 +
+ .../PS7-reports/010-git-cat-file.stderr.txt        |     0
+ .../PS7-reports/010-git-cat-file.stdout.txt        |     1 +
+ .../PS7-reports/011-git-cat-file.invocation.json   |    27 +
+ .../PS7-reports/011-git-cat-file.stderr.txt        |     0
+ .../PS7-reports/011-git-cat-file.stdout.txt        |   165 +
+ .../PS7-reports/012-git-cat-file.invocation.json   |    27 +
+ .../PS7-reports/012-git-cat-file.stderr.txt        |     0
+ .../PS7-reports/012-git-cat-file.stdout.txt        |    21 +
+ .../PS7-reports/013-git-cat-file.invocation.json   |    27 +
+ .../PS7-reports/013-git-cat-file.stderr.txt        |     0
+ .../PS7-reports/013-git-cat-file.stdout.txt        |    90 +
+ .../PS7-reports/014-git-cat-file.invocation.json   |    27 +
+ .../PS7-reports/014-git-cat-file.stderr.txt        |     0
+ .../PS7-reports/014-git-cat-file.stdout.txt        |    75 +
+ .../PS7-reports/015-git-cat-file.invocation.json   |    27 +
+ .../PS7-reports/015-git-cat-file.stderr.txt        |     0
+ .../PS7-reports/015-git-cat-file.stdout.txt        |   145 +
+ .../PS7-reports/016-git-cat-file.invocation.json   |    27 +
+ .../PS7-reports/016-git-cat-file.stderr.txt        |     0
+ .../PS7-reports/016-git-cat-file.stdout.txt        |   122 +
+ .../PS7-reports/017-git-cat-file.invocation.json   |    27 +
+ .../PS7-reports/017-git-cat-file.stderr.txt        |     0
+ .../PS7-reports/017-git-cat-file.stdout.txt        |   101 +
+ .../PS7-reports/018-git-cat-file.invocation.json   |    27 +
+ .../PS7-reports/018-git-cat-file.stderr.txt        |     0
+ .../PS7-reports/018-git-cat-file.stdout.txt        |    57 +
+ .../PS7-reports/019-git-cat-file.invocation.json   |    27 +
+ .../PS7-reports/019-git-cat-file.stderr.txt        |     0
+ .../PS7-reports/019-git-cat-file.stdout.txt        |    79 +
+ .../PS7-reports/020-git-cat-file.invocation.json   |    27 +
+ .../PS7-reports/020-git-cat-file.stderr.txt        |     0
+ .../PS7-reports/020-git-cat-file.stdout.txt        |    41 +
+ .../PS7-reports/021-git-cat-file.invocation.json   |    27 +
+ .../PS7-reports/021-git-cat-file.stderr.txt        |     0
+ .../PS7-reports/021-git-cat-file.stdout.txt        |   139 +
+ .../PS7-reports/022-git-cat-file.invocation.json   |    27 +
+ .../PS7-reports/022-git-cat-file.stderr.txt        |     0
+ .../PS7-reports/022-git-cat-file.stdout.txt        |   335 +
+ .../PS7-reports/023-git-cat-file.invocation.json   |    27 +
+ .../PS7-reports/023-git-cat-file.stderr.txt        |     0
+ .../PS7-reports/023-git-cat-file.stdout.txt        |    59 +
+ .../PS7-reports/024-git-cat-file.invocation.json   |    27 +
+ .../PS7-reports/024-git-cat-file.stderr.txt        |     0
+ .../PS7-reports/024-git-cat-file.stdout.txt        |  1881 ++
+ .../PS7-reports/025-git-cat-file.invocation.json   |    27 +
+ .../PS7-reports/025-git-cat-file.stderr.txt        |     0
+ .../PS7-reports/025-git-cat-file.stdout.txt        |     1 +
+ .../PS7-reports/026-git-cat-file.invocation.json   |    27 +
+ .../PS7-reports/026-git-cat-file.stderr.txt        |     0
+ .../PS7-reports/026-git-cat-file.stdout.txt        |   165 +
+ .../PS7-reports/027-git-cat-file.invocation.json   |    27 +
+ .../PS7-reports/027-git-cat-file.stderr.txt        |     0
+ .../PS7-reports/027-git-cat-file.stdout.txt        |    21 +
+ .../PS7-reports/028-git-cat-file.invocation.json   |    27 +
+ .../PS7-reports/028-git-cat-file.stderr.txt        |     0
+ .../PS7-reports/028-git-cat-file.stdout.txt        |    90 +
+ .../PS7-reports/029-git-cat-file.invocation.json   |    27 +
+ .../PS7-reports/029-git-cat-file.stderr.txt        |     0
+ .../PS7-reports/029-git-cat-file.stdout.txt        |    75 +
+ .../PS7-reports/030-git-cat-file.invocation.json   |    27 +
+ .../PS7-reports/030-git-cat-file.stderr.txt        |     0
+ .../PS7-reports/030-git-cat-file.stdout.txt        |   145 +
+ .../PS7-reports/031-git-cat-file.invocation.json   |    27 +
+ .../PS7-reports/031-git-cat-file.stderr.txt        |     0
+ .../PS7-reports/031-git-cat-file.stdout.txt        |   122 +
+ .../PS7-reports/032-git-cat-file.invocation.json   |    27 +
+ .../PS7-reports/032-git-cat-file.stderr.txt        |     0
+ .../PS7-reports/032-git-cat-file.stdout.txt        |   101 +
+ .../PS7-reports/033-git-cat-file.invocation.json   |    27 +
+ .../PS7-reports/033-git-cat-file.stderr.txt        |     0
+ .../PS7-reports/033-git-cat-file.stdout.txt        |    57 +
+ .../PS7-reports/034-git-cat-file.invocation.json   |    27 +
+ .../PS7-reports/034-git-cat-file.stderr.txt        |     0
+ .../PS7-reports/034-git-cat-file.stdout.txt        |    79 +
+ .../PS7-reports/035-git-cat-file.invocation.json   |    27 +
+ .../PS7-reports/035-git-cat-file.stderr.txt        |     0
+ .../PS7-reports/035-git-cat-file.stdout.txt        |    41 +
+ .../PS7-reports/036-git-cat-file.invocation.json   |    27 +
+ .../PS7-reports/036-git-cat-file.stderr.txt        |     0
+ .../PS7-reports/036-git-cat-file.stdout.txt        |   139 +
+ .../PS7-reports/037-default-screen.invocation.json |    36 +
+ .../PS7-reports/037-default-screen.stderr.txt      |     0
+ .../PS7-reports/037-default-screen.stdout.txt      |   221 +
+ .../PS7-reports/038-ebook-output.invocation.json   |    40 +
+ .../PS7-reports/038-ebook-output.stderr.txt        |     0
+ .../PS7-reports/038-ebook-output.stdout.txt        |   221 +
+ .../PS7-reports/039-skip-email.invocation.json     |    39 +
+ .../PS7-reports/039-skip-email.stderr.txt          |     0
+ .../PS7-reports/039-skip-email.stdout.txt          |   123 +
+ .../040-skip-ignored-preset.invocation.json        |    41 +
+ .../PS7-reports/040-skip-ignored-preset.stderr.txt |     0
+ .../PS7-reports/040-skip-ignored-preset.stdout.txt |   125 +
+ .../041-tiny-no-benefit.invocation.json            |    38 +
+ .../PS7-reports/041-tiny-no-benefit.stderr.txt     |     0
+ .../PS7-reports/041-tiny-no-benefit.stdout.txt     |   149 +
+ .../042-optional-gs-absent.invocation.json         |    38 +
+ .../PS7-reports/042-optional-gs-absent.stderr.txt  |     0
+ .../PS7-reports/042-optional-gs-absent.stdout.txt  |    91 +
+ .../PS7-reports/043-missing-input.invocation.json  |    35 +
+ .../PS7-reports/043-missing-input.stderr.txt       |     0
+ .../PS7-reports/043-missing-input.stdout.txt       |     3 +
+ .../PS7-reports/044-invalid-preset.invocation.json |    40 +
+ .../PS7-reports/044-invalid-preset.stderr.txt      |     1 +
+ .../PS7-reports/044-invalid-preset.stdout.txt      |     0
+ .../PS7-reports/045-empty-input.invocation.json    |    38 +
+ .../PS7-reports/045-empty-input.stderr.txt         |     0
+ .../PS7-reports/045-empty-input.stdout.txt         |    21 +
+ .../PS7-reports/046-corrupt-input.invocation.json  |    38 +
+ .../PS7-reports/046-corrupt-input.stderr.txt       |     0
+ .../PS7-reports/046-corrupt-input.stdout.txt       |    26 +
+ .../047-gs-resource-failure.invocation.json        |    38 +
+ .../PS7-reports/047-gs-resource-failure.stderr.txt |     0
+ .../PS7-reports/047-gs-resource-failure.stdout.txt |   139 +
+ .../PS7-reports/048-public-help.invocation.json    |    27 +
+ .../PS7-reports/048-public-help.stderr.txt         |     0
+ .../PS7-reports/048-public-help.stdout.txt         |    47 +
+ .../PS7-reports/049-git-rev-parse.invocation.json  |    26 +
+ .../PS7-reports/049-git-rev-parse.stderr.txt       |     0
+ .../PS7-reports/049-git-rev-parse.stdout.txt       |     1 +
+ .../PS7-reports/050-git-status.invocation.json     |    27 +
+ .../PS7-reports/050-git-status.stderr.txt          |     0
+ .../PS7-reports/050-git-status.stdout.txt          |     0
+ .../operation/PS7-reports/corrupt-input.case.json  |   500 +
+ .../operation/PS7-reports/default-screen.case.json |   770 +
+ .../operation/PS7-reports/ebook-output.case.json   |   761 +
+ .../operation/PS7-reports/empty-input.case.json    |   470 +
+ .../PS7-reports/gs-resource-failure.case.json      |   711 +
+ .../operation/PS7-reports/invalid-preset.case.json |   613 +
+ .../operation/PS7-reports/invocations.json         |  1494 ++
+ .../operation/PS7-reports/missing-input.case.json  |   466 +
+ .../PS7-reports/optional-gs-absent.case.json       |   521 +
+ .../T32-reports/operation/PS7-reports/result.json  |  8367 ++++++
+ .../operation/PS7-reports/skip-email.case.json     |   691 +
+ .../PS7-reports/skip-ignored-preset.case.json      |   691 +
+ .../PS7-reports/tiny-no-benefit.case.json          |   521 +
+ .../T32-reports/operation/harness-tests.stderr.txt |    22 +
+ .../T32-reports/operation/harness-tests.stdout.txt |     0
+ .../T32-reports/operation/invocations.json         |   199 +
+ .../T32-reports/platform/E1-action-runs.stderr.txt |     0
+ .../T32-reports/platform/E1-action-runs.stdout.txt |   231 +
+ .../T32-reports/platform/E1-check-runs.stderr.txt  |     0
+ .../T32-reports/platform/E1-check-runs.stdout.txt  |     1 +
+ .../platform/E1-check-status.stderr.txt            |     0
+ .../platform/E1-check-status.stdout.txt            |     1 +
+ .../platform/PR28-CLI-review-checks.stderr.txt     |     0
+ .../platform/PR28-CLI-review-checks.stdout.txt     |     1 +
+ .../T32-reports/platform/PR28-files.stderr.txt     |     0
+ .../T32-reports/platform/PR28-files.stdout.txt     |     1 +
+ .../evidence/T32-reports/platform/PR28.stderr.txt  |     0
+ .../evidence/T32-reports/platform/PR28.stdout.txt  |     1 +
+ .../T32-reports/platform/R-changelog.stderr.txt    |     0
+ .../T32-reports/platform/R-changelog.stdout.txt    |    75 +
+ .../platform/R-compatibility.stderr.txt            |     0
+ .../platform/R-compatibility.stdout.txt            |    57 +
+ .../T32-reports/platform/R-dependencies.stderr.txt |     0
+ .../T32-reports/platform/R-dependencies.stdout.txt |   101 +
+ .../platform/R-known-limitations.stderr.txt        |     1 +
+ .../platform/R-known-limitations.stdout.txt        |     0
+ .../platform/R-notes-blob-id.stderr.txt            |     0
+ .../platform/R-notes-blob-id.stdout.txt            |     1 +
+ .../T32-reports/platform/R-notes.stderr.txt        |     0
+ .../T32-reports/platform/R-notes.stdout.txt        |   139 +
+ .../platform/R-package-allowlist.stderr.txt        |     0
+ .../platform/R-package-allowlist.stdout.txt        |    20 +
+ .../platform/R-pdf-limitations.stderr.txt          |     0
+ .../platform/R-pdf-limitations.stdout.txt          |    79 +
+ .../T32-reports/platform/R-readme.stderr.txt       |     0
+ .../T32-reports/platform/R-readme.stdout.txt       |   165 +
+ .../T32-reports/platform/R-security.stderr.txt     |     0
+ .../T32-reports/platform/R-security.stdout.txt     |    90 +
+ .../T32-reports/platform/R-tree.stderr.txt         |     0
+ .../T32-reports/platform/R-tree.stdout.txt         |     1 +
+ .../T32-reports/platform/R-version.stderr.txt      |     0
+ .../T32-reports/platform/R-version.stdout.txt      |     1 +
+ .../T32-reports/platform/capture-result.json       |  5860 ++++
+ .../codex/evidence/T32-reports/platform/capture.py |   172 +
+ .../T32-reports/platform/current-main.stderr.txt   |     0
+ .../T32-reports/platform/current-main.stdout.txt   |     1 +
+ .../platform/gh-release-create-help.stderr.txt     |     0
+ .../platform/gh-release-create-help.stdout.txt     |   105 +
+ .../platform/gh-release-download-help.stderr.txt   |     0
+ .../platform/gh-release-download-help.stdout.txt   |    42 +
+ .../T32-reports/platform/gh-version.stderr.txt     |     0
+ .../T32-reports/platform/gh-version.stdout.txt     |     2 +
+ .../evidence/T32-reports/platform/invocations.json |   809 +
+ .../live-main-evidence-tag-refs.stderr.txt         |     0
+ .../live-main-evidence-tag-refs.stdout.txt         |     2 +
+ .../T32-reports/platform/local-branch.stderr.txt   |     0
+ .../T32-reports/platform/local-branch.stdout.txt   |     1 +
+ .../T32-reports/platform/local-head.stderr.txt     |     0
+ .../T32-reports/platform/local-head.stdout.txt     |     1 +
+ .../T32-reports/platform/local-main.stderr.txt     |     0
+ .../T32-reports/platform/local-main.stdout.txt     |     1 +
+ .../T32-reports/platform/local-status.stderr.txt   |     0
+ .../T32-reports/platform/local-status.stdout.txt   |     0
+ .../platform/main-active-rules.stderr.txt          |     0
+ .../platform/main-active-rules.stdout.txt          |     1 +
+ .../platform/main-protection.stderr.txt            |     1 +
+ .../platform/main-protection.stdout.txt            |     1 +
+ .../T32-reports/platform/origin-fetch.stderr.txt   |     0
+ .../T32-reports/platform/origin-fetch.stdout.txt   |     1 +
+ .../T32-reports/platform/origin-push.stderr.txt    |     0
+ .../T32-reports/platform/origin-push.stdout.txt    |     1 +
+ .../platform/owner-merge-action-runs.stderr.txt    |     0
+ .../platform/owner-merge-action-runs.stdout.txt    |     1 +
+ .../platform/owner-merge-check-runs.stderr.txt     |     0
+ .../platform/owner-merge-check-runs.stdout.txt     |     1 +
+ .../platform/owner-merge-commit.stderr.txt         |     0
+ .../platform/owner-merge-commit.stdout.txt         |     1 +
+ .../platform/owner-merge-status.stderr.txt         |     0
+ .../platform/owner-merge-status.stdout.txt         |     1 +
+ .../platform/owner-merge-tree.stderr.txt           |     0
+ .../platform/owner-merge-tree.stdout.txt           |     1 +
+ .../T32-reports/platform/privacy-inventory.json    |    16 +
+ .../T32-reports/platform/releases-all.stderr.txt   |     0
+ .../T32-reports/platform/releases-all.stdout.txt   |     1 +
+ .../T32-reports/platform/repository.stderr.txt     |     0
+ .../T32-reports/platform/repository.stdout.txt     |     1 +
+ .../T32-reports/platform/review-result.json        |   106 +
+ docs/codex/evidence/T32-reports/platform/review.py |   116 +
+ .../T32-reports/platform/reviewer-checklist.md     |    13 +
+ .../T32-reports/platform/rulesets-all.stderr.txt   |     0
+ .../T32-reports/platform/rulesets-all.stdout.txt   |     1 +
+ .../T32-reports/platform/tags-all.stderr.txt       |     0
+ .../T32-reports/platform/tags-all.stdout.txt       |     1 +
+ .../T32-reports/platform/vendor-recheck.json       |    46 +
+ .../workflow-0-current-main-API.stderr.txt         |     0
+ .../workflow-0-current-main-API.stdout.txt         |     1 +
+ .../platform/workflow-0-frozen-R-API.stderr.txt    |     0
+ .../platform/workflow-0-frozen-R-API.stdout.txt    |     1 +
+ .../T32-reports/platform/workflows-all.stderr.txt  |     0
+ .../T32-reports/platform/workflows-all.stdout.txt  |     1 +
+ .../export-selections/T32-export-selection-v1.json |   481 +
+ .../export-selections/T32-export-selection-v2.json |   514 +
+ .../export-selections/T32-export-selection-v3.json |   662 +
+ .../export-selections/T32-export-selection-v4.json |   685 +
+ .../export-selections/T32-export-selection-v5.json |   699 +
+ .../T32-reports/preparation/operation/README.md    |    51 +
+ .../preparation/operation/capture-T32.py           |   147 +
+ .../preparation/operation/capture-derivation.diff  |   270 +
+ .../operation/capture-interface.stderr.txt         |     0
+ .../operation/capture-interface.stdout.txt         |    18 +
+ .../preparation/operation/derivation.json          |    20 +
+ .../preparation/operation/final_package_smoke.py   |   598 +
+ .../preparation/operation/harness-derivation.diff  |    47 +
+ .../operation/harness-interface.stderr.txt         |     0
+ .../operation/harness-interface.stdout.txt         |    38 +
+ .../operation/helper-regressions.stderr.txt        |    24 +
+ .../operation/helper-regressions.stdout.txt        |     0
+ .../preparation/operation/preparation-result.json  |   110 +
+ .../preparation/operation/test_final_operation.py  |    80 +
+ .../preparation/operation/test_inherited_safety.py |   145 +
+ .../preparation/projector-approved/Export-T32.py   |   305 +
+ .../approved-selection-preview.json                |    84 +
+ .../projector-approved/capture-tests.py            |    18 +
+ .../preparation/projector-approved/derive-v3.py    |    31 +
+ .../projector-approved/final-readiness.json        |    33 +
+ .../projector-approved/finalize-selection.py       |    38 +
+ .../projector-approved/preparation-result.json     |    20 +
+ .../prepare-approved-selection.py                  |    19 +
+ .../preview-approved-selection.py                  |    22 +
+ .../projector-approved/test_projector.py           |   144 +
+ .../projector-approved/tests.stderr.txt            |     5 +
+ .../projector-approved/tests.stdout.txt            |     0
+ .../preparation/projector-final/Export-T32.py      |   301 +
+ .../projector-final/build-selection-v2.py          |   126 +
+ .../preparation/projector-final/capture-tests.py   |    18 +
+ .../preparation/projector-final/derive-v2.py       |    53 +
+ .../projector-final/final-selection-preview.json   |    10 +
+ .../projector-final/preparation-result.json        |    20 +
+ .../projector-final/prepare-final-selection.py     |    54 +
+ .../projector-final/prepare-selection-v2.py        |    13 +
+ .../projector-final/preview-final-selection.py     |    22 +
+ .../projector-final/preview-selection.py           |    23 +
+ .../projector-final/selection-preview.json         |    10 +
+ .../preparation/projector-final/test_projector.py  |   137 +
+ .../preparation/projector-final/tests.stderr.txt   |     5 +
+ .../preparation/projector-final/tests.stdout.txt   |     0
+ .../preparation/projector-initial/Export-T32.py    |   287 +
+ .../projector-initial/build-selection.py           |   125 +
+ .../preparation/projector-initial/capture-tests.py |    18 +
+ .../preparation/projector-initial/derive.py        |   155 +
+ .../projector-initial/preparation-result.json      |    20 +
+ .../projector-initial/test_projector.py            |   116 +
+ .../preparation/projector-initial/tests.stderr.txt |     5 +
+ .../preparation/projector-initial/tests.stdout.txt |     0
+ .../preparation/projector-reviewed/Export-T32.py   |   305 +
+ .../projector-reviewed/capture-tests.py            |    18 +
+ .../preparation/projector-reviewed/derive-v4.py    |    27 +
+ .../projector-reviewed/finalize-selection.py       |    26 +
+ .../projector-reviewed/preparation-history.json    |    27 +
+ .../projector-reviewed/preparation-result.json     |    20 +
+ .../projector-reviewed/preview-final-selection.py  |    28 +
+ .../projector-reviewed/test_projector.py           |   155 +
+ .../projector-reviewed/tests.stderr.txt            |     5 +
+ .../projector-reviewed/tests.stdout.txt            |     0
+ .../preparation/tag-draft/TagDraft-T32.py          |   251 +
+ .../preparation/tag-draft/bind-final-config.py     |    56 +
+ .../preparation/tag-draft/capture-tests.py         |    18 +
+ .../tag-draft/final-gates-validation.json          |    30 +
+ .../preparation/tag-draft/final-gates.json         |    53 +
+ .../preparation/tag-draft/gates.template.json      |    53 +
+ .../preparation/tag-draft/helper-tests.stderr.txt  |    22 +
+ .../preparation/tag-draft/helper-tests.stdout.txt  |     0
+ .../preparation/tag-draft/preparation-result.json  |    19 +
+ .../preparation/tag-draft/test_helper.py           |   128 +
+ .../T32-record-review-v2/capture-writer-review.py  |    24 +
+ .../T32-record-review-v2/head-after.stderr.txt     |     0
+ .../T32-record-review-v2/head-after.stdout.txt     |     1 +
+ .../T32-record-review-v2/head-before.stderr.txt    |     0
+ .../T32-record-review-v2/head-before.stdout.txt    |     1 +
+ .../T32-record-review-v2/review-invocation.json    |    27 +
+ .../review/T32-record-review-v2/review.stderr.txt  |     0
+ .../review/T32-record-review-v2/review.stdout.txt  |     1 +
+ .../T32-record-review-v2/reviewer-derivation.json  |     4 +
+ .../T32-record-review-v2/status-after.stderr.txt   |     0
+ .../T32-record-review-v2/status-after.stdout.txt   |     0
+ .../T32-record-review-v2/status-before.stderr.txt  |     0
+ .../T32-record-review-v2/status-before.stdout.txt  |     0
+ .../T32-record-review-v2/writer-source-review.json |   397 +
+ .../T32-record-review-v2/writer-source-review.py   |   101 +
+ .../capture-review.py                              |    24 +
+ .../T32-record-review-v4-corrected/delta-review.py |    31 +
+ .../final-writer-delta-review.json                 |    51 +
+ .../review-invocation.json                         |    27 +
+ .../review.stderr.txt                              |     0
+ .../review.stdout.txt                              |     1 +
+ .../reviewer-derivation.json                       |     6 +
+ .../review/T32-record-review-v4/capture-review.py  |    24 +
+ .../review/T32-record-review-v4/delta-review.py    |    31 +
+ .../T32-record-review-v4/review-invocation.json    |    26 +
+ .../review/T32-record-review-v4/review.stderr.txt  |     5 +
+ .../review/T32-record-review-v4/review.stdout.txt  |     0
+ .../T32-record-review/capture-writer-review.py     |    24 +
+ .../review/T32-record-review/head-after.stderr.txt |     0
+ .../review/T32-record-review/head-after.stdout.txt |     1 +
+ .../T32-record-review/head-before.stderr.txt       |     0
+ .../T32-record-review/head-before.stdout.txt       |     1 +
+ .../T32-record-review/review-invocation.json       |    27 +
+ .../review/T32-record-review/review.stderr.txt     |     0
+ .../review/T32-record-review/review.stdout.txt     |     1 +
+ .../T32-record-review/status-after.stderr.txt      |     0
+ .../T32-record-review/status-after.stdout.txt      |     0
+ .../T32-record-review/status-before.stderr.txt     |     0
+ .../T32-record-review/status-before.stdout.txt     |     0
+ .../T32-record-review/writer-source-review.json    |   361 +
+ .../T32-record-review/writer-source-review.py      |    80 +
+ .../clean-R-head-after.stderr.txt                  |     0
+ .../clean-R-head-after.stdout.txt                  |     1 +
+ .../clean-R-head-before.stderr.txt                 |     0
+ .../clean-R-head-before.stdout.txt                 |     1 +
+ .../clean-R-status-after.stderr.txt                |     0
+ .../clean-R-status-after.stdout.txt                |     0
+ .../clean-R-status-before.stderr.txt               |     0
+ .../clean-R-status-before.stdout.txt               |     0
+ .../draft-gate-review.json                         |   185 +
+ .../fresh-all-release-pages.stderr.txt             |     0
+ .../fresh-all-release-pages.stdout.txt             |     1 +
+ .../fresh-annotated-tag-object.stderr.txt          |     0
+ .../fresh-annotated-tag-object.stdout.txt          |    24 +
+ .../fresh-downloaded-package-byte-audit.json       |  1449 +
+ .../fresh-draft-metadata-after-download.stderr.txt |     0
+ .../fresh-draft-metadata-after-download.stdout.txt |     1 +
+ .../fresh-independent-draft-download.stderr.txt    |     0
+ .../fresh-independent-draft-download.stdout.txt    |     0
+ .../SHA256SUMS.txt                                 |     1 +
+ .../fresh-live-annotated-tag-peel.stderr.txt       |     0
+ .../fresh-live-annotated-tag-peel.stdout.txt       |     2 +
+ .../fresh-tag-reference.stderr.txt                 |     0
+ .../fresh-tag-reference.stdout.txt                 |     1 +
+ .../frozen-R-release-notes.stderr.txt              |     0
+ .../frozen-R-release-notes.stdout.txt              |   139 +
+ ...-fresh-downloaded-package-byte-audit.stderr.txt |     0
+ ...-fresh-downloaded-package-byte-audit.stdout.txt |     1 +
+ .../invocations.json                               |   305 +
+ .../review/originals/audit_final_operation.py      |   356 +
+ .../review/originals/audit_final_package.py        |   189 +
+ .../review/originals/bind_operation_gate.py        |    50 +
+ .../decoded-image-auditor-derivation.json          |    56 +
+ .../originals/decoded-image-auditor.diff.txt       |    75 +
+ .../originals/final-decoded-image-report.json      |  2066 ++
+ .../review/originals/final-draft-review.md         |    11 +
+ .../review/originals/final-operation-audit.json    | 26610 +++++++++++++++++++
+ .../originals/final-operation-gate-binding.json    |   114 +
+ .../review/originals/final-operation-review.md     |    20 +
+ .../review/originals/final-package-byte-audit.json |  1464 +
+ .../review/originals/final-package-byte-review.md  |    11 +
+ .../originals/inspect_final_decoded_images.py      |   172 +
+ .../originals/operation-auditor-derivation.json    |    77 +
+ .../review/originals/operation-auditor.diff.txt    |    88 +
+ .../originals/package-auditor-derivation.json      |    66 +
+ .../review/originals/package-auditor.diff.txt      |    72 +
+ .../review/originals/preparation-notes.md          |    21 +
+ .../originals/prepare_decoded_image_auditor.py     |    41 +
+ .../review/originals/prepare_operation_auditor.py  |    57 +
+ .../review/originals/prepare_package_auditor.py    |    48 +
+ .../originals/render_final_contact_sheets.py       |    67 +
+ .../review/originals/verify_actual_draft.py        |   103 +
+ .../review/originals/visual-final-review.json      |    34 +
+ .../review/projector-data-delta/capture-review.py  |    17 +
+ .../review/projector-data-delta/delta-review.py    |    51 +
+ .../final-source-data-review.json                  |    84 +
+ .../projector-data-delta/review-invocation.json    |    27 +
+ .../review/projector-data-delta/review.stderr.txt  |     0
+ .../review/projector-data-delta/review.stdout.txt  |     1 +
+ .../review/projector-final-delta/capture-review.py |    24 +
+ .../review/projector-final-delta/delta-review.py   |    33 +
+ .../final-projector-delta-review.json              |   135 +
+ .../projector-final-delta/review-invocation.json   |    27 +
+ .../review/projector-final-delta/review.stderr.txt |     0
+ .../review/projector-final-delta/review.stdout.txt |     1 +
+ .../review/projector-source/capture-review.py      |    24 +
+ .../projector-source/projector-source-review.json  |   177 +
+ .../review/projector-source/review-invocation.json |    27 +
+ .../T32-reports/review/projector-source/review.py  |    39 +
+ .../review/projector-source/review.stderr.txt      |     0
+ .../review/projector-source/review.stdout.txt      |     1 +
+ .../evidence/T32-reports/review/public-review.json |  8008 ++++++
+ .../evidence/T32-reports/review/public-review.py   |   389 +
+ .../review/source-preparation-v2/capture-review.py |    24 +
+ .../source-preparation-v2/guard-regression.json    |    55 +
+ .../preparation-derivation.json                    |     8 +
+ .../source-preparation-v2/review-invocation.json   |    27 +
+ .../review/source-preparation-v2/review.py         |   165 +
+ .../source-preparation-v2/reviewer-delta.diff.txt  |    11 +
+ .../source-preparation-review.json                 |  1222 +
+ .../review/source-preparation/capture-review.py    |    24 +
+ .../source-preparation/guard-regression.json       |    55 +
+ .../source-preparation/review-invocation.json      |    27 +
+ .../review/source-preparation/review.py            |   165 +
+ .../source-preparation-review.json                 |  1224 +
+ .../review/tag-draft-source-v2/capture-review.py   |    24 +
+ .../preparation-derivation.json                    |     6 +
+ .../tag-draft-source-v2/review-invocation.json     |    27 +
+ .../review/tag-draft-source-v2/review.py           |    58 +
+ .../tag-draft-source-v2/reviewer-delta.diff.txt    |    11 +
+ .../tag-draft-source-review.json                   |   153 +
+ .../review/tag-draft-source/capture-review.py      |    24 +
+ .../review/tag-draft-source/review-invocation.json |    27 +
+ .../T32-reports/review/tag-draft-source/review.py  |    58 +
+ .../tag-draft-source/tag-draft-source-review.json  |   155 +
+ .../PS51-batch-default-email.stderr.txt            |    23 +
+ .../PS51-batch-default-email.stdout.txt            |     0
+ .../PS51-batch-default-master.stderr.txt           |    23 +
+ .../PS51-batch-default-master.stdout.txt           |     0
+ .../PS51-batch-gs-failure-master.stderr.txt        |    23 +
+ .../PS51-batch-gs-failure-master.stdout.txt        |     0
+ .../PS51-default-screen-email.stderr.txt           |    23 +
+ .../PS51-default-screen-email.stdout.txt           |     0
+ .../PS51-default-screen-master.stderr.txt          |    23 +
+ .../PS51-default-screen-master.stdout.txt          |     0
+ .../PS51-ebook-output-email.stderr.txt             |    23 +
+ .../PS51-ebook-output-email.stdout.txt             |     0
+ .../PS51-ebook-output-master.stderr.txt            |    23 +
+ .../PS51-ebook-output-master.stdout.txt            |     0
+ .../PS51-gs-resource-failure-master.stderr.txt     |    23 +
+ .../PS51-gs-resource-failure-master.stdout.txt     |     0
+ .../PS51-optional-gs-absent-master.stderr.txt      |    23 +
+ .../PS51-optional-gs-absent-master.stdout.txt      |     0
+ .../PS51-skip-email-master.stderr.txt              |    23 +
+ .../PS51-skip-email-master.stdout.txt              |     0
+ .../PS51-skip-ignored-preset-master.stderr.txt     |    23 +
+ .../PS51-skip-ignored-preset-master.stdout.txt     |     0
+ .../PS51-tiny-no-benefit-master.stderr.txt         |    23 +
+ .../PS51-tiny-no-benefit-master.stdout.txt         |     0
+ .../PS7-default-screen-email.stderr.txt            |    23 +
+ .../PS7-default-screen-email.stdout.txt            |     0
+ .../PS7-default-screen-master.stderr.txt           |    23 +
+ .../PS7-default-screen-master.stdout.txt           |     0
+ .../PS7-ebook-output-email.stderr.txt              |    23 +
+ .../PS7-ebook-output-email.stdout.txt              |     0
+ .../PS7-ebook-output-master.stderr.txt             |    23 +
+ .../PS7-ebook-output-master.stdout.txt             |     0
+ .../PS7-gs-resource-failure-master.stderr.txt      |    23 +
+ .../PS7-gs-resource-failure-master.stdout.txt      |     0
+ .../PS7-optional-gs-absent-master.stderr.txt       |    23 +
+ .../PS7-optional-gs-absent-master.stdout.txt       |     0
+ .../PS7-skip-email-master.stderr.txt               |    23 +
+ .../PS7-skip-email-master.stdout.txt               |     0
+ .../PS7-skip-ignored-preset-master.stderr.txt      |    23 +
+ .../PS7-skip-ignored-preset-master.stdout.txt      |     0
+ .../PS7-tiny-no-benefit-master.stderr.txt          |    23 +
+ .../PS7-tiny-no-benefit-master.stdout.txt          |     0
+ .../render-contact-report.json                     |  1141 +
+ .../evidence/T32-reports/scripts/Export-T32.py     |   305 +
+ .../T32-reports/scripts/export-selection.json      |   722 +
+ .../scripts/originals/T32-BuildCapture.py          |    88 +
+ .../originals/T32-BuildCaptureV2.derivation.diff   |    30 +
+ .../scripts/originals/T32-BuildCaptureV2.py        |    88 +
+ .../T32-reports/scripts/originals/T32-Command.py   |    26 +
+ .../scripts/originals/T32-EvidenceCheckpoint.py    |    76 +
+ .../scripts/originals/T32-PolishWriter.py          |    38 +
+ .../scripts/originals/T32-PolishWriterV3.py        |    22 +
+ .../scripts/originals/T32-PreparationCheckpoint.py |    37 +
+ .../T32-reports/scripts/originals/T32-Reconcile.py |    58 +
+ .../scripts/originals/T32-WriteCompletion.py       |   228 +
+ .../originals/T32-WriteCompletionV2.diff.txt       |   156 +
+ .../scripts/originals/T32-WriteCompletionV2.py     |   231 +
+ .../originals/T32-WriteCompletionV3.diff.txt       |   118 +
+ .../scripts/originals/T32-WriteCompletionV3.py     |   231 +
+ .../originals/T32-WriteCompletionV4.diff.txt       |    95 +
+ .../scripts/originals/T32-WriteCompletionV4.py     |   231 +
+ .../scripts/originals/T32-WritePreparation.py      |    58 +
+ .../scripts/originals/T32-build-pointer.json       |     3 +
+ .../scripts/originals/T32-command-derivation.json  |     9 +
+ .../originals/T32-preparation-checkpoint.json      |    26 +
+ .../scripts/originals/T32-root-visual-review.json  |    24 +
+ .../actual-all-releases-after-draft.stderr.txt     |     0
+ .../actual-all-releases-after-draft.stdout.txt     |     1 +
+ .../actual/actual-final-draft-metadata.stderr.txt  |     0
+ .../actual/actual-final-draft-metadata.stdout.txt  |     1 +
+ .../authenticated-draft-download/SHA256SUMS.txt    |     1 +
+ .../actual/create-annotated-tag.stderr.txt         |     0
+ .../actual/create-annotated-tag.stdout.txt         |     0
+ .../create-final-unpublished-draft.stderr.txt      |     0
+ .../create-final-unpublished-draft.stdout.txt      |     1 +
+ .../actual/download-exact-draft-assets.stderr.txt  |     0
+ .../actual/download-exact-draft-assets.stdout.txt  |     0
+ .../tag-draft/actual/fresh-all-releases.stderr.txt |     0
+ .../tag-draft/actual/fresh-all-releases.stdout.txt |     1 +
+ .../tag-draft/actual/fresh-all-rulesets.stderr.txt |     0
+ .../tag-draft/actual/fresh-all-rulesets.stdout.txt |     1 +
+ .../tag-draft/actual/fresh-all-tags.stderr.txt     |     0
+ .../tag-draft/actual/fresh-all-tags.stdout.txt     |     1 +
+ .../actual/fresh-all-workflow-metadata.stderr.txt  |     0
+ .../actual/fresh-all-workflow-metadata.stdout.txt  |     1 +
+ .../actual/fresh-clean-primary.stderr.txt          |     0
+ .../actual/fresh-clean-primary.stdout.txt          |     0
+ .../tag-draft/actual/fresh-live-tags.stderr.txt    |     0
+ .../tag-draft/actual/fresh-live-tags.stdout.txt    |     0
+ .../tag-draft/actual/fresh-local-tag.stderr.txt    |     0
+ .../tag-draft/actual/fresh-local-tag.stdout.txt    |     0
+ .../tag-draft/actual/fresh-main-tree.stderr.txt    |     0
+ .../tag-draft/actual/fresh-main-tree.stdout.txt    |     1 +
+ .../tag-draft/actual/fresh-main.stderr.txt         |     0
+ .../tag-draft/actual/fresh-main.stdout.txt         |     1 +
+ .../actual/fresh-only-M6-source-diff.stderr.txt    |     0
+ .../tag-draft/actual/fresh-origin-fetch.stderr.txt |     0
+ .../tag-draft/actual/fresh-origin-fetch.stdout.txt |     1 +
+ .../tag-draft/actual/fresh-origin-push.stderr.txt  |     0
+ .../tag-draft/actual/fresh-origin-push.stdout.txt  |     1 +
+ .../tag-draft/actual/fresh-repository.stderr.txt   |     0
+ .../tag-draft/actual/fresh-repository.stdout.txt   |     1 +
+ .../actual/fresh-source-ancestry.stderr.txt        |     0
+ .../actual/fresh-source-ancestry.stdout.txt        |     0
+ .../actual/fresh-source-commit.stderr.txt          |     0
+ .../actual/fresh-source-commit.stdout.txt          |     1 +
+ .../tag-draft/actual/fresh-workflow.stderr.txt     |     0
+ .../tag-draft/actual/fresh-workflow.stdout.txt     |     1 +
+ .../tag-draft/actual/frozen-R-allowlist.stderr.txt |     0
+ .../tag-draft/actual/frozen-R-allowlist.stdout.txt |    20 +
+ .../T32-reports/tag-draft/actual/frozen-R-notes.md |   139 +
+ .../tag-draft/actual/frozen-R-notes.stderr.txt     |     0
+ .../tag-draft/actual/frozen-R-notes.stdout.txt     |   139 +
+ .../actual/live-annotated-tag-and-peel.stderr.txt  |     0
+ .../actual/live-annotated-tag-and-peel.stdout.txt  |     2 +
+ .../tag-draft/actual/live-tag-object.stderr.txt    |     0
+ .../tag-draft/actual/live-tag-object.stdout.txt    |    24 +
+ .../tag-draft/actual/live-tag-reference.stderr.txt |     0
+ .../tag-draft/actual/live-tag-reference.stdout.txt |     1 +
+ .../actual/local-tag-object-id.stderr.txt          |     0
+ .../actual/local-tag-object-id.stdout.txt          |     1 +
+ .../actual/local-tag-object-type.stderr.txt        |     0
+ .../actual/local-tag-object-type.stdout.txt        |     1 +
+ .../actual/local-tag-peeled-commit.stderr.txt      |     0
+ .../actual/local-tag-peeled-commit.stdout.txt      |     1 +
+ .../tag-draft/actual/push-exact-tag.stderr.txt     |     2 +
+ .../tag-draft/actual/push-exact-tag.stdout.txt     |     0
+ .../T32-reports/tag-draft/actual/transaction.json  |   823 +
+ .../preflight/fresh-all-releases.stderr.txt        |     0
+ .../preflight/fresh-all-releases.stdout.txt        |     1 +
+ .../preflight/fresh-all-rulesets.stderr.txt        |     0
+ .../preflight/fresh-all-rulesets.stdout.txt        |     1 +
+ .../tag-draft/preflight/fresh-all-tags.stderr.txt  |     0
+ .../tag-draft/preflight/fresh-all-tags.stdout.txt  |     1 +
+ .../fresh-all-workflow-metadata.stderr.txt         |     0
+ .../fresh-all-workflow-metadata.stdout.txt         |     1 +
+ .../preflight/fresh-clean-primary.stderr.txt       |     0
+ .../preflight/fresh-clean-primary.stdout.txt       |     0
+ .../tag-draft/preflight/fresh-live-tags.stderr.txt |     0
+ .../tag-draft/preflight/fresh-live-tags.stdout.txt |     0
+ .../tag-draft/preflight/fresh-local-tag.stderr.txt |     0
+ .../tag-draft/preflight/fresh-local-tag.stdout.txt |     0
+ .../tag-draft/preflight/fresh-main-tree.stderr.txt |     0
+ .../tag-draft/preflight/fresh-main-tree.stdout.txt |     1 +
+ .../tag-draft/preflight/fresh-main.stderr.txt      |     0
+ .../tag-draft/preflight/fresh-main.stdout.txt      |     1 +
+ .../preflight/fresh-only-M6-source-diff.stderr.txt |     0
+ .../preflight/fresh-origin-fetch.stderr.txt        |     0
+ .../preflight/fresh-origin-fetch.stdout.txt        |     1 +
+ .../preflight/fresh-origin-push.stderr.txt         |     0
+ .../preflight/fresh-origin-push.stdout.txt         |     1 +
+ .../preflight/fresh-repository.stderr.txt          |     0
+ .../preflight/fresh-repository.stdout.txt          |     1 +
+ .../preflight/fresh-source-ancestry.stderr.txt     |     0
+ .../preflight/fresh-source-ancestry.stdout.txt     |     0
+ .../preflight/fresh-source-commit.stderr.txt       |     0
+ .../preflight/fresh-source-commit.stdout.txt       |     1 +
+ .../tag-draft/preflight/fresh-workflow.stderr.txt  |     0
+ .../tag-draft/preflight/fresh-workflow.stdout.txt  |     1 +
+ .../preflight/frozen-R-allowlist.stderr.txt        |     0
+ .../preflight/frozen-R-allowlist.stdout.txt        |    20 +
+ .../tag-draft/preflight/frozen-R-notes.md          |   139 +
+ .../tag-draft/preflight/frozen-R-notes.stderr.txt  |     0
+ .../tag-draft/preflight/frozen-R-notes.stdout.txt  |   139 +
+ .../tag-draft/preflight/transaction.json           |   489 +
+ docs/codex/evidence/T32-results.json               |   414 +
+ 994 files changed, 143931 insertions(+), 80 deletions(-)
+ create mode 100644 docs/codex/evidence/T32-completion.md
+ create mode 100644 docs/codex/evidence/T32-preparation.json
+ create mode 100644 docs/codex/evidence/T32-preparation.md
+ create mode 100644 docs/codex/evidence/T32-reports/build/final/Invoke-T32Build.ps1
+ create mode 100644 docs/codex/evidence/T32-reports/build/final/build-Final-PS51.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/build/final/build-Final-PS51.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/build/final/build-Repeat-PS51.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/build/final/build-Repeat-PS51.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/build/final/build-result.json
+ create mode 100644 docs/codex/evidence/T32-reports/build/final/evidence-clean-after.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/build/final/evidence-clean-after.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/build/final/evidence-clean.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/build/final/evidence-clean.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/build/final/evidence-head-after.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/build/final/evidence-head-after.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/build/final/evidence-head.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/build/final/evidence-head.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/build/final/frozen-input-0.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/build/final/frozen-input-0.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/build/final/frozen-input-1.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/build/final/frozen-input-1.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/build/final/frozen-input-2.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/build/final/frozen-input-2.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/build/final/invocations.json
+ create mode 100644 docs/codex/evidence/T32-reports/build/final/reuse-detached-frozen-source.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/build/final/reuse-detached-frozen-source.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/build/final/source-clean-after.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/build/final/source-clean-after.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/build/final/source-clean-before.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/build/final/source-clean-before.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/build/final/source-head-after.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/build/final/source-head-after.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/build/final/source-head-before.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/build/final/source-head-before.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/build/unaccepted-initial-capture/add-detached-frozen-source.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/build/unaccepted-initial-capture/add-detached-frozen-source.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/build/unaccepted-initial-capture/build-result.json
+ create mode 100644 docs/codex/evidence/T32-reports/build/unaccepted-initial-capture/evidence-clean.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/build/unaccepted-initial-capture/evidence-clean.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/build/unaccepted-initial-capture/evidence-head.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/build/unaccepted-initial-capture/evidence-head.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/build/unaccepted-initial-capture/frozen-input-0.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/build/unaccepted-initial-capture/frozen-input-0.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/build/unaccepted-initial-capture/invocations.json
+ create mode 100644 docs/codex/evidence/T32-reports/build/unaccepted-initial-capture/source-clean-before.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/build/unaccepted-initial-capture/source-clean-before.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/build/unaccepted-initial-capture/source-head-before.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/build/unaccepted-initial-capture/source-head-before.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/actual-tag-draft-2dd0e303f4234fa09028ec8974752535/receipt.json
+ create mode 100644 docs/codex/evidence/T32-reports/commands/actual-tag-draft-2dd0e303f4234fa09028ec8974752535/stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/actual-tag-draft-2dd0e303f4234fa09028ec8974752535/stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/before-tag-clean-live-sync-f6975eee511e42dab307af727dd525e0/receipt.json
+ create mode 100644 docs/codex/evidence/T32-reports/commands/before-tag-clean-live-sync-f6975eee511e42dab307af727dd525e0/stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/before-tag-clean-live-sync-f6975eee511e42dab307af727dd525e0/stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/fetch-main-3f6e4469eafa469dad00fbc6af93e6aa/receipt.json
+ create mode 100644 docs/codex/evidence/T32-reports/commands/fetch-main-3f6e4469eafa469dad00fbc6af93e6aa/stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/fetch-main-3f6e4469eafa469dad00fbc6af93e6aa/stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/final-build-563be34245db4812a7750fdb51932631/receipt.json
+ create mode 100644 docs/codex/evidence/T32-reports/commands/final-build-563be34245db4812a7750fdb51932631/stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/final-build-563be34245db4812a7750fdb51932631/stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/final-build-v2-b1df4459c8cb4574b96c9e48f3686047/receipt.json
+ create mode 100644 docs/codex/evidence/T32-reports/commands/final-build-v2-b1df4459c8cb4574b96c9e48f3686047/stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/final-build-v2-b1df4459c8cb4574b96c9e48f3686047/stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/final-package-operation-f6eb8b2984ba45208242bf1fa52b244b/receipt.json
+ create mode 100644 docs/codex/evidence/T32-reports/commands/final-package-operation-f6eb8b2984ba45208242bf1fa52b244b/stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/final-package-operation-f6eb8b2984ba45208242bf1fa52b244b/stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/independent-actual-draft-download-audit-b54e02c5ac5a494fb54d1d31c2da8359/receipt.json
+ create mode 100644 docs/codex/evidence/T32-reports/commands/independent-actual-draft-download-audit-b54e02c5ac5a494fb54d1d31c2da8359/stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/independent-actual-draft-download-audit-b54e02c5ac5a494fb54d1d31c2da8359/stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/independent-final-contact-render-60451deb96044b4191358a8b3399cd53/receipt.json
+ create mode 100644 docs/codex/evidence/T32-reports/commands/independent-final-contact-render-60451deb96044b4191358a8b3399cd53/stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/independent-final-contact-render-60451deb96044b4191358a8b3399cd53/stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/independent-final-decoded-image-audit-ca86bd5b52534a53bfc7d2530d461e32/receipt.json
+ create mode 100644 docs/codex/evidence/T32-reports/commands/independent-final-decoded-image-audit-ca86bd5b52534a53bfc7d2530d461e32/stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/independent-final-decoded-image-audit-ca86bd5b52534a53bfc7d2530d461e32/stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/independent-final-operation-PDF-audit-061fd465ac8a4bf69726a48dc5303d3e/receipt.json
+ create mode 100644 docs/codex/evidence/T32-reports/commands/independent-final-operation-PDF-audit-061fd465ac8a4bf69726a48dc5303d3e/stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/independent-final-operation-PDF-audit-061fd465ac8a4bf69726a48dc5303d3e/stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/independent-final-operation-gate-binding-5b5a5089a1034ad895502ee5f2453dc1/receipt.json
+ create mode 100644 docs/codex/evidence/T32-reports/commands/independent-final-operation-gate-binding-5b5a5089a1034ad895502ee5f2453dc1/stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/independent-final-operation-gate-binding-5b5a5089a1034ad895502ee5f2453dc1/stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/independent-final-package-byte-audit-b82b5dea3d264bd6a282826003e86872/receipt.json
+ create mode 100644 docs/codex/evidence/T32-reports/commands/independent-final-package-byte-audit-b82b5dea3d264bd6a282826003e86872/stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/independent-final-package-byte-audit-b82b5dea3d264bd6a282826003e86872/stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/initial-sync-704cbbc43c974e3882e73eae846a61d9/receipt.json
+ create mode 100644 docs/codex/evidence/T32-reports/commands/initial-sync-704cbbc43c974e3882e73eae846a61d9/stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/initial-sync-704cbbc43c974e3882e73eae846a61d9/stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/preparation-check-plan-cf57869a4a994b4cb145b08c07fe4483/receipt.json
+ create mode 100644 docs/codex/evidence/T32-reports/commands/preparation-check-plan-cf57869a4a994b4cb145b08c07fe4483/stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/preparation-check-plan-cf57869a4a994b4cb145b08c07fe4483/stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/preparation-clean-live-sync-547abc93e7904790b4a4d9b148b4b50c/receipt.json
+ create mode 100644 docs/codex/evidence/T32-reports/commands/preparation-clean-live-sync-547abc93e7904790b4a4d9b148b4b50c/stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/preparation-clean-live-sync-547abc93e7904790b4a4d9b148b4b50c/stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/preparation-normal-commit-333f03ef460a4bb5a3872d848e54da13/receipt.json
+ create mode 100644 docs/codex/evidence/T32-reports/commands/preparation-normal-commit-333f03ef460a4bb5a3872d848e54da13/stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/preparation-normal-commit-333f03ef460a4bb5a3872d848e54da13/stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/preparation-normal-push-3bb88e7f50ff43689a3bb7b1932f4276/receipt.json
+ create mode 100644 docs/codex/evidence/T32-reports/commands/preparation-normal-push-3bb88e7f50ff43689a3bb7b1932f4276/stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/preparation-normal-push-3bb88e7f50ff43689a3bb7b1932f4276/stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/preparation-ready-baba211b78b248eda59f6c334502fb61/receipt.json
+ create mode 100644 docs/codex/evidence/T32-reports/commands/preparation-ready-baba211b78b248eda59f6c334502fb61/stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/preparation-ready-baba211b78b248eda59f6c334502fb61/stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/preparation-staged-whitespace-cfd307ac98454ebf8a6c884e80f41047/receipt.json
+ create mode 100644 docs/codex/evidence/T32-reports/commands/preparation-staged-whitespace-cfd307ac98454ebf8a6c884e80f41047/stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/preparation-staged-whitespace-cfd307ac98454ebf8a6c884e80f41047/stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/prepare-final-writer-v2-1e01c6c01bbd4bd3a4615462ed5e3681/receipt.json
+ create mode 100644 docs/codex/evidence/T32-reports/commands/prepare-final-writer-v2-1e01c6c01bbd4bd3a4615462ed5e3681/stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/prepare-final-writer-v2-1e01c6c01bbd4bd3a4615462ed5e3681/stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/prepare-final-writer-v3-02ac7b53b0ff432d8a40baf8a3d200d6/receipt.json
+ create mode 100644 docs/codex/evidence/T32-reports/commands/prepare-final-writer-v3-02ac7b53b0ff432d8a40baf8a3d200d6/stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/prepare-final-writer-v3-02ac7b53b0ff432d8a40baf8a3d200d6/stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/prepare-final-writer-v4-4e20d7f8225e4f169a008ed02ff8fa1d/receipt.json
+ create mode 100644 docs/codex/evidence/T32-reports/commands/prepare-final-writer-v4-4e20d7f8225e4f169a008ed02ff8fa1d/stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/prepare-final-writer-v4-4e20d7f8225e4f169a008ed02ff8fa1d/stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/reconcile-owner-main-9bb276fcfad74ddca6b29593aed74d48/receipt.json
+ create mode 100644 docs/codex/evidence/T32-reports/commands/reconcile-owner-main-9bb276fcfad74ddca6b29593aed74d48/stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/reconcile-owner-main-9bb276fcfad74ddca6b29593aed74d48/stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/stage-preparation-daca2f6bd5104e52b5f591d692ca5cb1/receipt.json
+ create mode 100644 docs/codex/evidence/T32-reports/commands/stage-preparation-daca2f6bd5104e52b5f591d692ca5cb1/stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/stage-preparation-daca2f6bd5104e52b5f591d692ca5cb1/stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/tag-draft-read-only-preflight-24ea54d4dcb7452480ee470651af234b/receipt.json
+ create mode 100644 docs/codex/evidence/T32-reports/commands/tag-draft-read-only-preflight-24ea54d4dcb7452480ee470651af234b/stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/tag-draft-read-only-preflight-24ea54d4dcb7452480ee470651af234b/stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/write-preparation-54182cdedfcf4e4c89ecfd035a0422e4/receipt.json
+ create mode 100644 docs/codex/evidence/T32-reports/commands/write-preparation-54182cdedfcf4e4c89ecfd035a0422e4/stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/commands/write-preparation-54182cdedfcf4e4c89ecfd035a0422e4/stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/ledger/owner-merge-reconcile/E1-ancestor.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/ledger/owner-merge-reconcile/E1-ancestor.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/ledger/owner-merge-reconcile/R-ancestor.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/ledger/owner-merge-reconcile/R-ancestor.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/ledger/owner-merge-reconcile/R-to-main-paths.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/ledger/owner-merge-reconcile/aggregate.json
+ create mode 100644 docs/codex/evidence/T32-reports/ledger/owner-merge-reconcile/fast-forward-evidence.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/ledger/owner-merge-reconcile/fast-forward-evidence.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/ledger/owner-merge-reconcile/fast-forward-main.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/ledger/owner-merge-reconcile/fast-forward-main.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/ledger/owner-merge-reconcile/fetch-route.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/ledger/owner-merge-reconcile/fetch-route.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/ledger/owner-merge-reconcile/fetched-main.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/ledger/owner-merge-reconcile/fetched-main.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/ledger/owner-merge-reconcile/final-clean.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/ledger/owner-merge-reconcile/final-clean.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/ledger/owner-merge-reconcile/final-head.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/ledger/owner-merge-reconcile/final-head.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/ledger/owner-merge-reconcile/initial-branch.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/ledger/owner-merge-reconcile/initial-branch.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/ledger/owner-merge-reconcile/initial-clean.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/ledger/owner-merge-reconcile/initial-clean.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/ledger/owner-merge-reconcile/initial-head.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/ledger/owner-merge-reconcile/initial-head.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/ledger/owner-merge-reconcile/invocations.json
+ create mode 100644 docs/codex/evidence/T32-reports/ledger/owner-merge-reconcile/live-main.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/ledger/owner-merge-reconcile/live-main.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/ledger/owner-merge-reconcile/main-live-sync.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/ledger/owner-merge-reconcile/main-live-sync.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/ledger/owner-merge-reconcile/owner-merge-tree-equivalence.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/ledger/owner-merge-reconcile/owner-merge-tree-equivalence.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/ledger/owner-merge-reconcile/push-route.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/ledger/owner-merge-reconcile/push-route.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/ledger/owner-merge-reconcile/switch-evidence.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/ledger/owner-merge-reconcile/switch-evidence.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/ledger/owner-merge-reconcile/switch-main.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/ledger/owner-merge-reconcile/switch-main.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/manifest.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-candidate.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-candidate.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-environment.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-environment.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/000-git-rev-parse.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/000-git-rev-parse.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/000-git-rev-parse.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/001-git-status.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/001-git-status.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/001-git-status.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/002-git-rev-parse.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/002-git-rev-parse.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/002-git-rev-parse.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/003-shell-inventory.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/003-shell-inventory.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/003-shell-inventory.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/004-pdftk-version.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/004-pdftk-version.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/004-pdftk-version.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/005-ghostscript-version.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/005-ghostscript-version.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/005-ghostscript-version.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/006-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/006-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/006-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/007-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/007-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/007-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/008-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/008-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/008-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/009-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/009-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/009-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/010-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/010-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/010-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/011-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/011-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/011-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/012-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/012-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/012-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/013-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/013-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/013-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/014-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/014-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/014-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/015-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/015-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/015-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/016-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/016-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/016-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/017-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/017-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/017-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/018-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/018-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/018-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/019-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/019-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/019-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/020-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/020-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/020-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/021-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/021-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/021-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/022-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/022-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/022-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/023-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/023-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/023-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/024-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/024-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/024-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/025-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/025-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/025-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/026-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/026-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/026-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/027-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/027-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/027-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/028-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/028-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/028-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/029-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/029-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/029-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/030-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/030-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/030-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/031-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/031-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/031-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/032-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/032-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/032-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/033-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/033-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/033-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/034-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/034-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/034-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/035-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/035-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/035-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/036-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/036-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/036-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/037-default-screen.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/037-default-screen.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/037-default-screen.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/038-ebook-output.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/038-ebook-output.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/038-ebook-output.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/039-skip-email.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/039-skip-email.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/039-skip-email.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/040-skip-ignored-preset.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/040-skip-ignored-preset.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/040-skip-ignored-preset.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/041-tiny-no-benefit.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/041-tiny-no-benefit.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/041-tiny-no-benefit.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/042-optional-gs-absent.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/042-optional-gs-absent.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/042-optional-gs-absent.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/043-missing-input.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/043-missing-input.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/043-missing-input.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/044-invalid-preset.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/044-invalid-preset.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/044-invalid-preset.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/045-empty-input.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/045-empty-input.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/045-empty-input.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/046-corrupt-input.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/046-corrupt-input.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/046-corrupt-input.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/047-gs-resource-failure.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/047-gs-resource-failure.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/047-gs-resource-failure.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/048-batch-default.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/048-batch-default.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/048-batch-default.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/049-batch-empty.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/049-batch-empty.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/049-batch-empty.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/050-batch-gs-failure.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/050-batch-gs-failure.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/050-batch-gs-failure.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/051-public-help.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/051-public-help.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/051-public-help.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/052-git-rev-parse.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/052-git-rev-parse.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/052-git-rev-parse.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/053-git-status.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/053-git-status.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/053-git-status.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/batch-default.case.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/batch-empty.case.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/batch-gs-failure.case.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/corrupt-input.case.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/default-screen.case.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/ebook-output.case.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/empty-input.case.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/gs-resource-failure.case.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/invalid-preset.case.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/invocations.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/missing-input.case.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/optional-gs-absent.case.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/result.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/skip-email.case.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/skip-ignored-preset.case.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS51-reports/tiny-no-benefit.case.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-candidate.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-candidate.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-environment.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-environment.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/000-git-rev-parse.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/000-git-rev-parse.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/000-git-rev-parse.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/001-git-status.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/001-git-status.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/001-git-status.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/002-git-rev-parse.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/002-git-rev-parse.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/002-git-rev-parse.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/003-shell-inventory.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/003-shell-inventory.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/003-shell-inventory.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/004-pdftk-version.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/004-pdftk-version.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/004-pdftk-version.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/005-ghostscript-version.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/005-ghostscript-version.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/005-ghostscript-version.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/006-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/006-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/006-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/007-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/007-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/007-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/008-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/008-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/008-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/009-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/009-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/009-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/010-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/010-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/010-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/011-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/011-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/011-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/012-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/012-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/012-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/013-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/013-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/013-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/014-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/014-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/014-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/015-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/015-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/015-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/016-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/016-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/016-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/017-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/017-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/017-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/018-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/018-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/018-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/019-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/019-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/019-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/020-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/020-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/020-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/021-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/021-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/021-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/022-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/022-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/022-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/023-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/023-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/023-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/024-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/024-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/024-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/025-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/025-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/025-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/026-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/026-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/026-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/027-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/027-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/027-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/028-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/028-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/028-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/029-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/029-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/029-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/030-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/030-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/030-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/031-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/031-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/031-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/032-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/032-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/032-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/033-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/033-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/033-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/034-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/034-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/034-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/035-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/035-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/035-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/036-git-cat-file.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/036-git-cat-file.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/036-git-cat-file.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/037-default-screen.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/037-default-screen.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/037-default-screen.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/038-ebook-output.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/038-ebook-output.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/038-ebook-output.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/039-skip-email.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/039-skip-email.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/039-skip-email.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/040-skip-ignored-preset.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/040-skip-ignored-preset.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/040-skip-ignored-preset.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/041-tiny-no-benefit.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/041-tiny-no-benefit.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/041-tiny-no-benefit.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/042-optional-gs-absent.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/042-optional-gs-absent.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/042-optional-gs-absent.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/043-missing-input.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/043-missing-input.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/043-missing-input.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/044-invalid-preset.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/044-invalid-preset.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/044-invalid-preset.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/045-empty-input.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/045-empty-input.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/045-empty-input.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/046-corrupt-input.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/046-corrupt-input.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/046-corrupt-input.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/047-gs-resource-failure.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/047-gs-resource-failure.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/047-gs-resource-failure.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/048-public-help.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/048-public-help.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/048-public-help.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/049-git-rev-parse.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/049-git-rev-parse.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/049-git-rev-parse.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/050-git-status.invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/050-git-status.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/050-git-status.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/corrupt-input.case.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/default-screen.case.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/ebook-output.case.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/empty-input.case.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/gs-resource-failure.case.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/invalid-preset.case.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/invocations.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/missing-input.case.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/optional-gs-absent.case.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/result.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/skip-email.case.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/skip-ignored-preset.case.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/PS7-reports/tiny-no-benefit.case.json
+ create mode 100644 docs/codex/evidence/T32-reports/operation/harness-tests.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/harness-tests.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/operation/invocations.json
+ create mode 100644 docs/codex/evidence/T32-reports/platform/E1-action-runs.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/E1-action-runs.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/E1-check-runs.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/E1-check-runs.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/E1-check-status.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/E1-check-status.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/PR28-CLI-review-checks.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/PR28-CLI-review-checks.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/PR28-files.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/PR28-files.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/PR28.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/PR28.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/R-changelog.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/R-changelog.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/R-compatibility.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/R-compatibility.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/R-dependencies.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/R-dependencies.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/R-known-limitations.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/R-known-limitations.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/R-notes-blob-id.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/R-notes-blob-id.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/R-notes.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/R-notes.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/R-package-allowlist.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/R-package-allowlist.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/R-pdf-limitations.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/R-pdf-limitations.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/R-readme.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/R-readme.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/R-security.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/R-security.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/R-tree.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/R-tree.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/R-version.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/R-version.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/capture-result.json
+ create mode 100644 docs/codex/evidence/T32-reports/platform/capture.py
+ create mode 100644 docs/codex/evidence/T32-reports/platform/current-main.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/current-main.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/gh-release-create-help.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/gh-release-create-help.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/gh-release-download-help.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/gh-release-download-help.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/gh-version.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/gh-version.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/invocations.json
+ create mode 100644 docs/codex/evidence/T32-reports/platform/live-main-evidence-tag-refs.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/live-main-evidence-tag-refs.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/local-branch.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/local-branch.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/local-head.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/local-head.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/local-main.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/local-main.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/local-status.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/local-status.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/main-active-rules.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/main-active-rules.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/main-protection.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/main-protection.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/origin-fetch.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/origin-fetch.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/origin-push.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/origin-push.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/owner-merge-action-runs.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/owner-merge-action-runs.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/owner-merge-check-runs.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/owner-merge-check-runs.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/owner-merge-commit.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/owner-merge-commit.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/owner-merge-status.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/owner-merge-status.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/owner-merge-tree.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/owner-merge-tree.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/privacy-inventory.json
+ create mode 100644 docs/codex/evidence/T32-reports/platform/releases-all.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/releases-all.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/repository.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/repository.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/review-result.json
+ create mode 100644 docs/codex/evidence/T32-reports/platform/review.py
+ create mode 100644 docs/codex/evidence/T32-reports/platform/reviewer-checklist.md
+ create mode 100644 docs/codex/evidence/T32-reports/platform/rulesets-all.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/rulesets-all.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/tags-all.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/tags-all.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/vendor-recheck.json
+ create mode 100644 docs/codex/evidence/T32-reports/platform/workflow-0-current-main-API.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/workflow-0-current-main-API.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/workflow-0-frozen-R-API.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/workflow-0-frozen-R-API.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/workflows-all.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/platform/workflows-all.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/export-selections/T32-export-selection-v1.json
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/export-selections/T32-export-selection-v2.json
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/export-selections/T32-export-selection-v3.json
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/export-selections/T32-export-selection-v4.json
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/export-selections/T32-export-selection-v5.json
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/operation/README.md
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/operation/capture-T32.py
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/operation/capture-derivation.diff
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/operation/capture-interface.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/operation/capture-interface.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/operation/derivation.json
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/operation/final_package_smoke.py
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/operation/harness-derivation.diff
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/operation/harness-interface.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/operation/harness-interface.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/operation/helper-regressions.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/operation/helper-regressions.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/operation/preparation-result.json
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/operation/test_final_operation.py
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/operation/test_inherited_safety.py
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-approved/Export-T32.py
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-approved/approved-selection-preview.json
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-approved/capture-tests.py
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-approved/derive-v3.py
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-approved/final-readiness.json
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-approved/finalize-selection.py
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-approved/preparation-result.json
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-approved/prepare-approved-selection.py
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-approved/preview-approved-selection.py
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-approved/test_projector.py
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-approved/tests.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-approved/tests.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-final/Export-T32.py
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-final/build-selection-v2.py
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-final/capture-tests.py
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-final/derive-v2.py
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-final/final-selection-preview.json
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-final/preparation-result.json
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-final/prepare-final-selection.py
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-final/prepare-selection-v2.py
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-final/preview-final-selection.py
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-final/preview-selection.py
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-final/selection-preview.json
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-final/test_projector.py
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-final/tests.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-final/tests.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-initial/Export-T32.py
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-initial/build-selection.py
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-initial/capture-tests.py
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-initial/derive.py
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-initial/preparation-result.json
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-initial/test_projector.py
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-initial/tests.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-initial/tests.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-reviewed/Export-T32.py
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-reviewed/capture-tests.py
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-reviewed/derive-v4.py
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-reviewed/finalize-selection.py
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-reviewed/preparation-history.json
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-reviewed/preparation-result.json
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-reviewed/preview-final-selection.py
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-reviewed/test_projector.py
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-reviewed/tests.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/projector-reviewed/tests.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/tag-draft/TagDraft-T32.py
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/tag-draft/bind-final-config.py
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/tag-draft/capture-tests.py
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/tag-draft/final-gates-validation.json
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/tag-draft/final-gates.json
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/tag-draft/gates.template.json
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/tag-draft/helper-tests.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/tag-draft/helper-tests.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/tag-draft/preparation-result.json
+ create mode 100644 docs/codex/evidence/T32-reports/preparation/tag-draft/test_helper.py
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review-v2/capture-writer-review.py
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review-v2/head-after.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review-v2/head-after.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review-v2/head-before.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review-v2/head-before.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review-v2/review-invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review-v2/review.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review-v2/review.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review-v2/reviewer-derivation.json
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review-v2/status-after.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review-v2/status-after.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review-v2/status-before.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review-v2/status-before.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review-v2/writer-source-review.json
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review-v2/writer-source-review.py
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review-v4-corrected/capture-review.py
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review-v4-corrected/delta-review.py
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review-v4-corrected/final-writer-delta-review.json
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review-v4-corrected/review-invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review-v4-corrected/review.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review-v4-corrected/review.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review-v4-corrected/reviewer-derivation.json
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review-v4/capture-review.py
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review-v4/delta-review.py
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review-v4/review-invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review-v4/review.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review-v4/review.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review/capture-writer-review.py
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review/head-after.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review/head-after.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review/head-before.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review/head-before.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review/review-invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review/review.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review/review.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review/status-after.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review/status-after.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review/status-before.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review/status-before.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review/writer-source-review.json
+ create mode 100644 docs/codex/evidence/T32-reports/review/T32-record-review/writer-source-review.py
+ create mode 100644 docs/codex/evidence/T32-reports/review/draft-independent-408603768-2723d5699d73425a9e4b0b1c0c277c91/clean-R-head-after.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/draft-independent-408603768-2723d5699d73425a9e4b0b1c0c277c91/clean-R-head-after.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/draft-independent-408603768-2723d5699d73425a9e4b0b1c0c277c91/clean-R-head-before.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/draft-independent-408603768-2723d5699d73425a9e4b0b1c0c277c91/clean-R-head-before.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/draft-independent-408603768-2723d5699d73425a9e4b0b1c0c277c91/clean-R-status-after.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/draft-independent-408603768-2723d5699d73425a9e4b0b1c0c277c91/clean-R-status-after.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/draft-independent-408603768-2723d5699d73425a9e4b0b1c0c277c91/clean-R-status-before.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/draft-independent-408603768-2723d5699d73425a9e4b0b1c0c277c91/clean-R-status-before.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/draft-independent-408603768-2723d5699d73425a9e4b0b1c0c277c91/draft-gate-review.json
+ create mode 100644 docs/codex/evidence/T32-reports/review/draft-independent-408603768-2723d5699d73425a9e4b0b1c0c277c91/fresh-all-release-pages.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/draft-independent-408603768-2723d5699d73425a9e4b0b1c0c277c91/fresh-all-release-pages.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/draft-independent-408603768-2723d5699d73425a9e4b0b1c0c277c91/fresh-annotated-tag-object.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/draft-independent-408603768-2723d5699d73425a9e4b0b1c0c277c91/fresh-annotated-tag-object.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/draft-independent-408603768-2723d5699d73425a9e4b0b1c0c277c91/fresh-downloaded-package-byte-audit.json
+ create mode 100644 docs/codex/evidence/T32-reports/review/draft-independent-408603768-2723d5699d73425a9e4b0b1c0c277c91/fresh-draft-metadata-after-download.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/draft-independent-408603768-2723d5699d73425a9e4b0b1c0c277c91/fresh-draft-metadata-after-download.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/draft-independent-408603768-2723d5699d73425a9e4b0b1c0c277c91/fresh-independent-draft-download.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/draft-independent-408603768-2723d5699d73425a9e4b0b1c0c277c91/fresh-independent-draft-download.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/draft-independent-408603768-2723d5699d73425a9e4b0b1c0c277c91/fresh-independent-draft-download/SHA256SUMS.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/draft-independent-408603768-2723d5699d73425a9e4b0b1c0c277c91/fresh-live-annotated-tag-peel.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/draft-independent-408603768-2723d5699d73425a9e4b0b1c0c277c91/fresh-live-annotated-tag-peel.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/draft-independent-408603768-2723d5699d73425a9e4b0b1c0c277c91/fresh-tag-reference.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/draft-independent-408603768-2723d5699d73425a9e4b0b1c0c277c91/fresh-tag-reference.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/draft-independent-408603768-2723d5699d73425a9e4b0b1c0c277c91/frozen-R-release-notes.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/draft-independent-408603768-2723d5699d73425a9e4b0b1c0c277c91/frozen-R-release-notes.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/draft-independent-408603768-2723d5699d73425a9e4b0b1c0c277c91/independent-fresh-downloaded-package-byte-audit.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/draft-independent-408603768-2723d5699d73425a9e4b0b1c0c277c91/independent-fresh-downloaded-package-byte-audit.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/draft-independent-408603768-2723d5699d73425a9e4b0b1c0c277c91/invocations.json
+ create mode 100644 docs/codex/evidence/T32-reports/review/originals/audit_final_operation.py
+ create mode 100644 docs/codex/evidence/T32-reports/review/originals/audit_final_package.py
+ create mode 100644 docs/codex/evidence/T32-reports/review/originals/bind_operation_gate.py
+ create mode 100644 docs/codex/evidence/T32-reports/review/originals/decoded-image-auditor-derivation.json
+ create mode 100644 docs/codex/evidence/T32-reports/review/originals/decoded-image-auditor.diff.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/originals/final-decoded-image-report.json
+ create mode 100644 docs/codex/evidence/T32-reports/review/originals/final-draft-review.md
+ create mode 100644 docs/codex/evidence/T32-reports/review/originals/final-operation-audit.json
+ create mode 100644 docs/codex/evidence/T32-reports/review/originals/final-operation-gate-binding.json
+ create mode 100644 docs/codex/evidence/T32-reports/review/originals/final-operation-review.md
+ create mode 100644 docs/codex/evidence/T32-reports/review/originals/final-package-byte-audit.json
+ create mode 100644 docs/codex/evidence/T32-reports/review/originals/final-package-byte-review.md
+ create mode 100644 docs/codex/evidence/T32-reports/review/originals/inspect_final_decoded_images.py
+ create mode 100644 docs/codex/evidence/T32-reports/review/originals/operation-auditor-derivation.json
+ create mode 100644 docs/codex/evidence/T32-reports/review/originals/operation-auditor.diff.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/originals/package-auditor-derivation.json
+ create mode 100644 docs/codex/evidence/T32-reports/review/originals/package-auditor.diff.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/originals/preparation-notes.md
+ create mode 100644 docs/codex/evidence/T32-reports/review/originals/prepare_decoded_image_auditor.py
+ create mode 100644 docs/codex/evidence/T32-reports/review/originals/prepare_operation_auditor.py
+ create mode 100644 docs/codex/evidence/T32-reports/review/originals/prepare_package_auditor.py
+ create mode 100644 docs/codex/evidence/T32-reports/review/originals/render_final_contact_sheets.py
+ create mode 100644 docs/codex/evidence/T32-reports/review/originals/verify_actual_draft.py
+ create mode 100644 docs/codex/evidence/T32-reports/review/originals/visual-final-review.json
+ create mode 100644 docs/codex/evidence/T32-reports/review/projector-data-delta/capture-review.py
+ create mode 100644 docs/codex/evidence/T32-reports/review/projector-data-delta/delta-review.py
+ create mode 100644 docs/codex/evidence/T32-reports/review/projector-data-delta/final-source-data-review.json
+ create mode 100644 docs/codex/evidence/T32-reports/review/projector-data-delta/review-invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/review/projector-data-delta/review.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/projector-data-delta/review.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/projector-final-delta/capture-review.py
+ create mode 100644 docs/codex/evidence/T32-reports/review/projector-final-delta/delta-review.py
+ create mode 100644 docs/codex/evidence/T32-reports/review/projector-final-delta/final-projector-delta-review.json
+ create mode 100644 docs/codex/evidence/T32-reports/review/projector-final-delta/review-invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/review/projector-final-delta/review.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/projector-final-delta/review.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/projector-source/capture-review.py
+ create mode 100644 docs/codex/evidence/T32-reports/review/projector-source/projector-source-review.json
+ create mode 100644 docs/codex/evidence/T32-reports/review/projector-source/review-invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/review/projector-source/review.py
+ create mode 100644 docs/codex/evidence/T32-reports/review/projector-source/review.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/projector-source/review.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/public-review.json
+ create mode 100644 docs/codex/evidence/T32-reports/review/public-review.py
+ create mode 100644 docs/codex/evidence/T32-reports/review/source-preparation-v2/capture-review.py
+ create mode 100644 docs/codex/evidence/T32-reports/review/source-preparation-v2/guard-regression.json
+ create mode 100644 docs/codex/evidence/T32-reports/review/source-preparation-v2/preparation-derivation.json
+ create mode 100644 docs/codex/evidence/T32-reports/review/source-preparation-v2/review-invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/review/source-preparation-v2/review.py
+ create mode 100644 docs/codex/evidence/T32-reports/review/source-preparation-v2/reviewer-delta.diff.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/source-preparation-v2/source-preparation-review.json
+ create mode 100644 docs/codex/evidence/T32-reports/review/source-preparation/capture-review.py
+ create mode 100644 docs/codex/evidence/T32-reports/review/source-preparation/guard-regression.json
+ create mode 100644 docs/codex/evidence/T32-reports/review/source-preparation/review-invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/review/source-preparation/review.py
+ create mode 100644 docs/codex/evidence/T32-reports/review/source-preparation/source-preparation-review.json
+ create mode 100644 docs/codex/evidence/T32-reports/review/tag-draft-source-v2/capture-review.py
+ create mode 100644 docs/codex/evidence/T32-reports/review/tag-draft-source-v2/preparation-derivation.json
+ create mode 100644 docs/codex/evidence/T32-reports/review/tag-draft-source-v2/review-invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/review/tag-draft-source-v2/review.py
+ create mode 100644 docs/codex/evidence/T32-reports/review/tag-draft-source-v2/reviewer-delta.diff.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/tag-draft-source-v2/tag-draft-source-review.json
+ create mode 100644 docs/codex/evidence/T32-reports/review/tag-draft-source/capture-review.py
+ create mode 100644 docs/codex/evidence/T32-reports/review/tag-draft-source/review-invocation.json
+ create mode 100644 docs/codex/evidence/T32-reports/review/tag-draft-source/review.py
+ create mode 100644 docs/codex/evidence/T32-reports/review/tag-draft-source/tag-draft-source-review.json
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS51-batch-default-email.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS51-batch-default-email.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS51-batch-default-master.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS51-batch-default-master.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS51-batch-gs-failure-master.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS51-batch-gs-failure-master.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS51-default-screen-email.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS51-default-screen-email.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS51-default-screen-master.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS51-default-screen-master.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS51-ebook-output-email.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS51-ebook-output-email.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS51-ebook-output-master.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS51-ebook-output-master.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS51-gs-resource-failure-master.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS51-gs-resource-failure-master.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS51-optional-gs-absent-master.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS51-optional-gs-absent-master.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS51-skip-email-master.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS51-skip-email-master.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS51-skip-ignored-preset-master.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS51-skip-ignored-preset-master.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS51-tiny-no-benefit-master.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS51-tiny-no-benefit-master.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS7-default-screen-email.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS7-default-screen-email.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS7-default-screen-master.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS7-default-screen-master.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS7-ebook-output-email.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS7-ebook-output-email.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS7-ebook-output-master.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS7-ebook-output-master.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS7-gs-resource-failure-master.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS7-gs-resource-failure-master.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS7-optional-gs-absent-master.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS7-optional-gs-absent-master.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS7-skip-email-master.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS7-skip-email-master.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS7-skip-ignored-preset-master.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS7-skip-ignored-preset-master.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS7-tiny-no-benefit-master.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/PS7-tiny-no-benefit-master.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/review/visual-final-outputs/render-contact-report.json
+ create mode 100644 docs/codex/evidence/T32-reports/scripts/Export-T32.py
+ create mode 100644 docs/codex/evidence/T32-reports/scripts/export-selection.json
+ create mode 100644 docs/codex/evidence/T32-reports/scripts/originals/T32-BuildCapture.py
+ create mode 100644 docs/codex/evidence/T32-reports/scripts/originals/T32-BuildCaptureV2.derivation.diff
+ create mode 100644 docs/codex/evidence/T32-reports/scripts/originals/T32-BuildCaptureV2.py
+ create mode 100644 docs/codex/evidence/T32-reports/scripts/originals/T32-Command.py
+ create mode 100644 docs/codex/evidence/T32-reports/scripts/originals/T32-EvidenceCheckpoint.py
+ create mode 100644 docs/codex/evidence/T32-reports/scripts/originals/T32-PolishWriter.py
+ create mode 100644 docs/codex/evidence/T32-reports/scripts/originals/T32-PolishWriterV3.py
+ create mode 100644 docs/codex/evidence/T32-reports/scripts/originals/T32-PreparationCheckpoint.py
+ create mode 100644 docs/codex/evidence/T32-reports/scripts/originals/T32-Reconcile.py
+ create mode 100644 docs/codex/evidence/T32-reports/scripts/originals/T32-WriteCompletion.py
+ create mode 100644 docs/codex/evidence/T32-reports/scripts/originals/T32-WriteCompletionV2.diff.txt
+ create mode 100644 docs/codex/evidence/T32-reports/scripts/originals/T32-WriteCompletionV2.py
+ create mode 100644 docs/codex/evidence/T32-reports/scripts/originals/T32-WriteCompletionV3.diff.txt
+ create mode 100644 docs/codex/evidence/T32-reports/scripts/originals/T32-WriteCompletionV3.py
+ create mode 100644 docs/codex/evidence/T32-reports/scripts/originals/T32-WriteCompletionV4.diff.txt
+ create mode 100644 docs/codex/evidence/T32-reports/scripts/originals/T32-WriteCompletionV4.py
+ create mode 100644 docs/codex/evidence/T32-reports/scripts/originals/T32-WritePreparation.py
+ create mode 100644 docs/codex/evidence/T32-reports/scripts/originals/T32-build-pointer.json
+ create mode 100644 docs/codex/evidence/T32-reports/scripts/originals/T32-command-derivation.json
+ create mode 100644 docs/codex/evidence/T32-reports/scripts/originals/T32-preparation-checkpoint.json
+ create mode 100644 docs/codex/evidence/T32-reports/scripts/originals/T32-root-visual-review.json
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/actual-all-releases-after-draft.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/actual-all-releases-after-draft.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/actual-final-draft-metadata.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/actual-final-draft-metadata.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/authenticated-draft-download/SHA256SUMS.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/create-annotated-tag.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/create-annotated-tag.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/create-final-unpublished-draft.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/create-final-unpublished-draft.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/download-exact-draft-assets.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/download-exact-draft-assets.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/fresh-all-releases.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/fresh-all-releases.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/fresh-all-rulesets.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/fresh-all-rulesets.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/fresh-all-tags.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/fresh-all-tags.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/fresh-all-workflow-metadata.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/fresh-all-workflow-metadata.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/fresh-clean-primary.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/fresh-clean-primary.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/fresh-live-tags.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/fresh-live-tags.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/fresh-local-tag.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/fresh-local-tag.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/fresh-main-tree.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/fresh-main-tree.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/fresh-main.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/fresh-main.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/fresh-only-M6-source-diff.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/fresh-origin-fetch.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/fresh-origin-fetch.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/fresh-origin-push.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/fresh-origin-push.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/fresh-repository.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/fresh-repository.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/fresh-source-ancestry.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/fresh-source-ancestry.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/fresh-source-commit.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/fresh-source-commit.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/fresh-workflow.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/fresh-workflow.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/frozen-R-allowlist.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/frozen-R-allowlist.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/frozen-R-notes.md
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/frozen-R-notes.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/frozen-R-notes.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/live-annotated-tag-and-peel.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/live-annotated-tag-and-peel.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/live-tag-object.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/live-tag-object.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/live-tag-reference.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/live-tag-reference.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/local-tag-object-id.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/local-tag-object-id.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/local-tag-object-type.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/local-tag-object-type.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/local-tag-peeled-commit.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/local-tag-peeled-commit.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/push-exact-tag.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/push-exact-tag.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/actual/transaction.json
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/preflight/fresh-all-releases.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/preflight/fresh-all-releases.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/preflight/fresh-all-rulesets.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/preflight/fresh-all-rulesets.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/preflight/fresh-all-tags.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/preflight/fresh-all-tags.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/preflight/fresh-all-workflow-metadata.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/preflight/fresh-all-workflow-metadata.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/preflight/fresh-clean-primary.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/preflight/fresh-clean-primary.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/preflight/fresh-live-tags.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/preflight/fresh-live-tags.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/preflight/fresh-local-tag.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/preflight/fresh-local-tag.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/preflight/fresh-main-tree.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/preflight/fresh-main-tree.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/preflight/fresh-main.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/preflight/fresh-main.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/preflight/fresh-only-M6-source-diff.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/preflight/fresh-origin-fetch.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/preflight/fresh-origin-fetch.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/preflight/fresh-origin-push.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/preflight/fresh-origin-push.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/preflight/fresh-repository.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/preflight/fresh-repository.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/preflight/fresh-source-ancestry.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/preflight/fresh-source-ancestry.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/preflight/fresh-source-commit.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/preflight/fresh-source-commit.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/preflight/fresh-workflow.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/preflight/fresh-workflow.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/preflight/frozen-R-allowlist.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/preflight/frozen-R-allowlist.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/preflight/frozen-R-notes.md
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/preflight/frozen-R-notes.stderr.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/preflight/frozen-R-notes.stdout.txt
+ create mode 100644 docs/codex/evidence/T32-reports/tag-draft/preflight/transaction.json
+ create mode 100644 docs/codex/evidence/T32-results.json

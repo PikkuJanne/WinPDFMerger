@@ -1,0 +1,86 @@
+{
+  "task": "T33",
+  "scope": "Focused read-only retained source/master/email PDF and decoded image inspection; no new application run, manual pass, universal fidelity, PDF/A or signature claim",
+  "observed_at_utc": "2026-10-10T07:16:19.294120+00:00",
+  "result": "pass",
+  "issues": [],
+  "harness_commit": "f3d8f3c8e8a8c582171c36ff1ceed82d84b09232",
+  "candidate_source_commit": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+  "versions": {
+    "python": "3.12.14",
+    "pypdf": "6.10.0",
+    "pillow": "12.3.0",
+    "pypdfium2": "5.13.0",
+    "pdfium": "153.0.7999.0"
+  },
+  "expected_original_rgb_sha256": "20ae8a045f5c9014dda6a1bbe46ce82db4e931c66087898c64eb441f68128589",
+  "email_observations": [
+    {
+      "case": "PS51/default-screen",
+      "master_bytes": 2886184,
+      "email_bytes": 379281,
+      "width": 432,
+      "height": 288,
+      "filter": "/FlateDecode",
+      "downsampled": true,
+      "rgb_pixel_sha256": "6bb9e2feaebfc96c143cac5f870e01c235324020c6a303097eb2d14a0cf5e731"
+    },
+    {
+      "case": "PS51/ebook-output",
+      "master_bytes": 2886184,
+      "email_bytes": 473419,
+      "width": 1200,
+      "height": 800,
+      "filter": "/DCTDecode",
+      "downsampled": false,
+      "rgb_pixel_sha256": "feee5b375c683572531c09feb1fbc988bfcb1a66a997c27778e66d7e84a6a6cf"
+    },
+    {
+      "case": "PS51/batch-default",
+      "master_bytes": 2886184,
+      "email_bytes": 379281,
+      "width": 432,
+      "height": 288,
+      "filter": "/FlateDecode",
+      "downsampled": true,
+      "rgb_pixel_sha256": "6bb9e2feaebfc96c143cac5f870e01c235324020c6a303097eb2d14a0cf5e731"
+    },
+    {
+      "case": "PS7/default-screen",
+      "master_bytes": 2886184,
+      "email_bytes": 379281,
+      "width": 432,
+      "height": 288,
+      "filter": "/FlateDecode",
+      "downsampled": true,
+      "rgb_pixel_sha256": "6bb9e2feaebfc96c143cac5f870e01c235324020c6a303097eb2d14a0cf5e731"
+    },
+    {
+      "case": "PS7/ebook-output",
+      "master_bytes": 2886184,
+      "email_bytes": 473419,
+      "width": 1200,
+      "height": 800,
+      "filter": "/DCTDecode",
+      "downsampled": false,
+      "rgb_pixel_sha256": "feee5b375c683572531c09feb1fbc988bfcb1a66a997c27778e66d7e84a6a6cf"
+    }
+  ],
+  "input_receipts": [
+    {
+      "path": "PS51-reports/result.json",
+      "sha256": "fd611b157d5c5eca78af38870a2e0e72e546782edb3a3a554a9c7be9dc1f2683"
+    },
+    {
+      "path": "PS7-reports/result.json",
+      "sha256": "230236fe767e5a40cb9dffe4c4092b03e878a651be95a7e9fadc417cb7e0a557"
+    }
+  ],
+  "retained_pdf_count": 21,
+  "retained_output_page_count": 106,
+  "normal_master_image_count": 12,
+  "rewritten_email_image_count": 5,
+  "source_raster_count": 14,
+  "checks": 1360,
+  "review_script_sha256": "837b0a495d7303b903a0172a9e9411bdbefea504c13abd5d2d9cbbe656abb9d6"
+}

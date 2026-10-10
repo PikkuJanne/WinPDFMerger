@@ -1,0 +1,56 @@
+--- accepted-T32/capture-T32.py
++++ T33/capture-T33.py
+@@ -1,13 +1,17 @@
+-"""T32 derivative of T29 capture: operate ONE exact final asset pair in both hosts.
++"""T33 derivative of T29 capture: operate ONE exact final asset pair in both hosts.
+ 
+ No acquisition/build/tag/release or persistent changes. Legacy report fields are
+ retained. This captures real operation only when explicitly run with exact pins.
++T33 requires the independently anonymously downloaded published pair accepted by
++the separate public verifier; this driver performs no network acquisition.
+ """
+ from __future__ import annotations
+ import argparse, datetime, hashlib, json, os, re, subprocess, sys, tempfile, time, uuid
+ from pathlib import Path
+ 
+ SOURCE = '95e0a19e6cc5fc01cd4bec4ac15f989f9830840a'
++EXPECTED_HARNESS = 'f3d8f3c8e8a8c582171c36ff1ceed82d84b09232'
++EVIDENCE_CLASS = 'actual_independently_anonymously_downloaded_published_v1_0_0_package_operation'
+ GUARDS = {'expected_head', 'status_unchanged', 'clean', 'driver_unchanged',
+           'approved_cache_unchanged', 'candidate_assets_unchanged', 'parent_environment_unchanged'}
+ 
+@@ -40,7 +44,7 @@
+ 
+ 
+ def validate_report(report, kind, expected, assets):
+-    if (report['task'] != 'T32' or report['result'] != 'pass' or report['preparation'] is not False or
++    if (report['task'] != 'T33' or report['evidence_class'] != EVIDENCE_CLASS or report['result'] != 'pass' or report['preparation'] is not False or
+             report['harness_commit'] != expected or report['candidate_source_commit'] != SOURCE or
+             report['shell_kind'] != kind or report['candidate']['zip_sha256'] != assets['zip_sha256'] or
+             report['candidate']['checksums_sha256'] != assets['checksums_sha256'] or
+@@ -60,8 +64,8 @@
+     parser.add_argument('--checksums-sha256', required=True)
+     args = parser.parse_args()
+     repo = Path(os.path.abspath(args.repo)); expected = args.expected_harness_commit
+-    if os.name != 'nt' or not re.fullmatch('[0-9a-f]{40}', expected):
+-        raise ValueError('Actual Windows and exact clean harness commit required')
++    if os.name != 'nt' or expected != EXPECTED_HARNESS:
++        raise ValueError('Actual Windows and exact owner-merged T33 harness commit M required')
+ 
+     def git(*arguments):
+         return subprocess.check_output(['git', *arguments], cwd=repo, text=True).strip()
+@@ -84,11 +88,11 @@
+     hosts = {'PS51': str(Path(os.environ['SystemRoot']) / 'System32/WindowsPowerShell/v1.0/powershell.exe'),
+              'PS7': selected['pwsh.exe']}
+     assets = validate_assets(args.zip.absolute(), args.zip_sha256, args.checksums.absolute(), args.checksums_sha256)
+-    work = repo / 'tests/.work/T32-capture' / uuid.uuid4().hex; work.mkdir(parents=True, exist_ok=False)
+-    external = Path(tempfile.gettempdir()) / ('T32 packages ' + uuid.uuid4().hex); external.mkdir(exist_ok=False)
++    work = repo / 'tests/.work/T33-capture' / uuid.uuid4().hex; work.mkdir(parents=True, exist_ok=False)
++    external = Path(tempfile.gettempdir()) / ('T33 packages ' + uuid.uuid4().hex); external.mkdir(exist_ok=False)
+     env = {key: value for key, value in os.environ.items() if key.lower() != 'psmodulepath'}
+     driver_hash = digest(__file__); harness_hash = digest(harness)
+-    record = {'task': 'T32', 'source_commit': SOURCE, 'candidate_source_commit': SOURCE, 'harness_commit': expected,
++    record = {'task': 'T33', 'evidence_class': EVIDENCE_CLASS, 'source_commit': SOURCE, 'candidate_source_commit': SOURCE, 'harness_commit': expected,
+               'started_at_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
+               'work': work.relative_to(repo).as_posix(), 'external_work_parent': str(external),
+               'driver_sha256': driver_hash, 'harness_path': str(harness), 'harness_sha256': harness_hash,

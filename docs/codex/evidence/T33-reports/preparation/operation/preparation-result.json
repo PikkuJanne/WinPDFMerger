@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "task": "T33",
+  "result": "preparation_pass",
+  "evidence_class": "developer_only_published_download_operation_derivative_preparation",
+  "observed_at_utc": "2026-10-10T07:07:39.037917+00:00",
+  "source_commit_R": "95e0a19e6cc5fc01cd4bec4ac15f989f9830840a",
+  "harness_commit_M": "f3d8f3c8e8a8c582171c36ff1ceed82d84b09232",
+  "clean_primary_observed": true,
+  "helper_regressions": {
+    "passed": 25,
+    "failed": 0,
+    "scope": "19 inherited plus 6 T33 developer checks; never actual Windows/native/manual acceptance"
+  },
+  "source_files": [
+    {
+      "path": "final_package_smoke.py",
+      "sha256": "5ea6bd48c400f1ffe9becf7ba5fb2b7fd355019dbbab3a8aa295a29c727626f8"
+    },
+    {
+      "path": "capture-T33.py",
+      "sha256": "01cf9fa377dde5719fea16153791bc2a85fa412872ceee9cfa6029a5f270c8b7"
+    }
+  ],
+  "commands": [
+    {
+      "path": "derive-receipt.json",
+      "sha256": "95b43f0b35ad09ad116486f4975bc0f8cbcdc8080135592ae32724a133655e95",
+      "exit_code": 0
+    },
+    {
+      "path": "helper-regressions-receipt.json",
+      "sha256": "54ca51eb4e95a580be615e86b1f2d621ec607b50cc99ae3b6d4645664aa25faa",
+      "exit_code": 0
+    },
+    {
+      "path": "capture-T33.py.help.receipt.json",
+      "sha256": "73a7558e11d0be99547108537a4ec26daddde233cef0b53b0286443314297ff9",
+      "exit_code": 0
+    },
+    {
+      "path": "final_package_smoke.py.help.receipt.json",
+      "sha256": "42f6b0892823c7542f40070f03120987174fc8fa0b2c5d4fc6b3243051055c36",
+      "exit_code": 0
+    }
+  ],
+  "derivation": {
+    "path": "derivation.json",
+    "sha256": "047416029d27f7c7491696d42bc67d6d86d1efc5658179247b6bbbc060ee5007"
+  },
+  "application_executed": false,
+  "native_engines_executed": false,
+  "actual_downloaded_pair_supplied": false,
+  "manual_acceptance": "AC058 excluded/nonrequired/unperformed; never pass",
+  "preparation_observations": [
+    "Initial source inspection guessed a nonexistent test_capture_T32.py filename; the tool returned a read failure, and rg inventory found the actual inherited test_final_operation.py and test_inherited_safety.py. No standalone raw receipt exists for that tool-only read assumption."
+  ],
+  "limitations": [
+    "Prepared CLI and guard tests are not AC075/AC076 acceptance.",
+    "No anonymous network acquisition, publication, rebuild, native/application execution, PDF output review or tracked/remote mutation was performed.",
+    "Root/independent public verifier must supply and accept the actual anonymously downloaded published asset pair before native capture is authorized.",
+    "Legacy candidate fields and --candidate-source-commit remain pinned to R; source safety requires clean exact owner-merged M.",
+    "Original T32 source hashes, exact normalized diffs and unchanged native/PDF/source/cache scenario AST are retained."
+  ]
+}
