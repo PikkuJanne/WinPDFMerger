@@ -108,6 +108,42 @@ function Assert-MergeDirectoryPath {
     }
 }
 
+function Get-MergeDocumentsDirectory {
+    # Resolve the configured Windows known folder, including redirected Documents.
+    return [Environment]::GetFolderPath([Environment+SpecialFolder]::MyDocuments)
+}
+
+function Resolve-DefaultOutputDirectory {
+    [CmdletBinding()]
+    param()
+
+    try {
+        $documents = Get-MergeDocumentsDirectory
+        if ([string]::IsNullOrWhiteSpace($documents)) { throw 'Windows did not resolve the current user Documents folder.' }
+        if (-not [IO.Path]::IsPathRooted($documents)) { throw 'Windows returned a Documents path that is not absolute.' }
+        $parent = Resolve-OutputDirectory -Path $documents
+        Assert-MergeDirectoryPath -Path $parent -Role Documents
+        $parentIdentity = Get-MergeDirectoryIdentity -Path $parent
+        $destination = [IO.Path]::Combine($parent, 'WinPDFMerger')
+        $existing = Get-Item -LiteralPath $destination -Force -ErrorAction SilentlyContinue
+        if ($null -ne $existing) {
+            if (-not $existing.PSIsContainer) { throw "The Documents child '$destination' already exists as a file." }
+            Assert-MergeDirectoryPath -Path $destination -Role OutputFolder
+        }
+        # Check the existing parent before creation; CreateDirectory safely reuses
+        # a concurrent ordinary-directory creation and never overwrites a file.
+        Assert-MergeDirectoryPath -Path $parent -Role Documents
+        if ((Get-MergeDirectoryIdentity -Path $parent) -cne $parentIdentity) { throw 'The Documents directory changed during destination selection.' }
+        [void][IO.Directory]::CreateDirectory($destination)
+        $destination = Resolve-OutputDirectory -Path $destination
+        Assert-MergeDirectoryPath -Path $destination -Role OutputFolder
+        if ((Get-MergeDirectoryIdentity -Path $parent) -cne $parentIdentity) { throw 'The Documents directory changed during destination creation.' }
+        return $destination
+    } catch {
+        throw "Cannot use the default Documents\WinPDFMerger destination. $($_.Exception.Message) Choose a separate existing writable directory with -OutputFolder."
+    }
+}
+
 function Get-MergeDirectoryIdentity {
     param([string]$Path)
 
@@ -289,12 +325,134 @@ function Write-PdfRunStage {
     param(
         [Parameter(Mandatory=$true)][string]$Stage,
         [Parameter(Mandatory=$true)][Diagnostics.Stopwatch]$Timer,
-        [string]$LiteralPath
+        [string]$LiteralPath,
+        $Presentation
     )
     $seconds = ([decimal]$Timer.ElapsedMilliseconds / 1000).ToString('0.000', [Globalization.CultureInfo]::InvariantCulture)
     $line = 'Stage: {0}; elapsed: {1} s' -f $Stage, $seconds
-    if ($LiteralPath) { $line | Write-RunLog -LiteralPath $LiteralPath -Append }
-    else { Write-Host $line }
+    if ($LiteralPath) {
+        if ($null -eq $Presentation) {
+            $line | Write-RunLog -LiteralPath $LiteralPath -Append
+            return
+        }
+        $line | Write-RunLog -LiteralPath $LiteralPath -Append | Out-Null
+    }
+    if ($null -ne $Presentation -and $Presentation.Interactive) {
+        $column = switch ($Stage) {
+            'Input discovery' { 'SCAN' }
+            'Input inspection' { 'CHECK' }
+            'Master processing' { 'MERGE' }
+            'Email preflight' { 'EMAIL' }
+            'Email processing' { 'EMAIL' }
+            'Summary' { 'RESULT' }
+            default { 'PREP' }
+        }
+        Write-PdfConsoleStage -Presentation $Presentation -Stage $column -Message ('{0} / {1} s' -f $Stage, $seconds)
+    } else { Write-PdfConsoleText -Presentation $Presentation -Text $line }
+}
+
+function Test-PdfNonInteractiveCommandLine {
+    param([string]$Argument)
+
+    # Both supported shells accept switch abbreviations from NonI onward.
+    # Inspect individual argv tokens rather than matching text inside a command.
+    # GetCommandLineArgs removes quotes; tolerate a quoted standalone token for
+    # callers inspecting a serialized argument without accepting partial quotes.
+    if ($Argument -match '^"([^"]+)"$') { $Argument = $Matches[1] }
+    if ($Argument -notmatch '^[-/]([A-Za-z]+)$') { return $false }
+    $switchName = $Matches[1]
+    return ($switchName.Length -ge 4 -and
+        'NonInteractive'.StartsWith($switchName, [StringComparison]::OrdinalIgnoreCase))
+}
+
+function New-PdfConsolePresentation {
+    # Only the real interactive console gets framing and host colors. Detection
+    # is advisory: unavailable console APIs must not interrupt PDF processing.
+    $interactive = $false
+    try {
+        $nonInteractive = @([Environment]::GetCommandLineArgs() | Where-Object { Test-PdfNonInteractiveCommandLine -Argument $_ }).Count -ne 0
+        $interactive = $Host.Name -eq 'ConsoleHost' -and
+            -not [Console]::IsOutputRedirected -and -not [Console]::IsInputRedirected -and
+            -not $nonInteractive
+    } catch { $interactive = $false }
+    [pscustomobject]@{ Interactive = [bool]$interactive }
+}
+
+function Write-PdfConsoleText {
+    param(
+        $Presentation,
+        [AllowEmptyString()][string]$Text,
+        [ValidateSet('Frame','Label','Success','Warning','Failure')][string]$Role = 'Label'
+    )
+    # Native host colors work in Windows PowerShell 5.1; no ANSI/VT dependency.
+    # A host which refuses colors still gets the complete plain line.
+    $color = switch ($Role) {
+        'Frame' { 'Cyan' }
+        'Success' { 'Green' }
+        'Warning' { 'Yellow' }
+        'Failure' { 'Red' }
+        default { 'White' }
+    }
+    try {
+        if ($null -ne $Presentation -and $Presentation.Interactive) {
+            Write-Host $Text -ForegroundColor $color -ErrorAction Stop
+        } else { Write-Host $Text -ErrorAction Stop }
+    } catch {
+        try { Write-Host $Text -ErrorAction Stop }
+        catch { Write-Output $Text }
+    }
+}
+
+function Write-PdfConsoleHeader {
+    param($Presentation, [Parameter(Mandatory=$true)][string]$Version)
+    if ($Presentation.Interactive) {
+        $segment = '+--[ WINPDFMERGER {0} ]' -f $Version
+        Write-PdfConsoleText $Presentation ($segment.PadRight(51, '-') + '[ LOCAL ]--+') -Role Frame
+        Write-PdfConsoleText $Presentation '| DOCUMENT OPS  //  MERGE CONSOLE                              |' -Role Label
+        Write-PdfConsoleText $Presentation '+-------------------------------------------------------------+' -Role Frame
+    } else { Write-PdfConsoleText $Presentation ('WinPDFMerger {0}' -f $Version) }
+}
+
+function Write-PdfConsoleStage {
+    param(
+        $Presentation,
+        [Parameter(Mandatory=$true)][string]$Stage,
+        [Parameter(Mandatory=$true)][string]$Message,
+        [ValidateSet('Frame','Label','Success','Warning','Failure')][string]$Role = 'Label'
+    )
+    if ($null -ne $Presentation -and $Presentation.Interactive) {
+        Write-PdfConsoleText $Presentation ('  [{0,-6}] {1}' -f $Stage, $Message) -Role $Role
+    } else { Write-PdfConsoleText $Presentation ('{0}: {1}' -f $Stage, $Message) }
+}
+
+function Write-PdfConsoleResult {
+    param(
+        $Presentation,
+        [Parameter(Mandatory=$true)]$Outcome,
+        [string]$OutputFolder,
+        [string]$LogPath,
+        [string]$Detail,
+        [string[]]$SummaryLines = @(),
+        [string[]]$SizeLines = @()
+    )
+    $state = switch ($Outcome.ExitCode) { 0 { 'SUCCESS' } 2 { 'PARTIAL' } default { 'FAILURE' } }
+    $role = switch ($Outcome.ExitCode) { 0 { 'Success' } 2 { 'Warning' } default { 'Failure' } }
+    if ($Presentation.Interactive) {
+        Write-PdfConsoleText $Presentation ''
+        Write-PdfConsoleText $Presentation (('+--[ RESULT: {0} ]' -f $state).PadRight(62, '-') + '+') -Role $role
+    }
+    Write-PdfConsoleText $Presentation ('Result: {0}; exit code: {1}' -f $Outcome.Summary, $Outcome.ExitCode) -Role $role
+    if ($Detail) { Write-PdfConsoleText $Presentation $Detail -Role $role }
+    # Complete paths intentionally sit outside the frame, so the console can
+    # wrap them naturally without truncating, abbreviating or inserting borders.
+    if ($OutputFolder) { Write-PdfConsoleText $Presentation ('  Folder : {0}' -f $OutputFolder) }
+    foreach ($published in $Outcome.PublishedPaths) {
+        $label = if ($published.Label -eq 'Merged master') { 'Master' } else { 'Email ' }
+        Write-PdfConsoleText $Presentation ('  {0} : {1}' -f $label, $published.Path) -Role Success
+    }
+    if ($LogPath) { Write-PdfConsoleText $Presentation ('Log: {0}' -f $LogPath) }
+    else { Write-PdfConsoleText $Presentation 'No run log was created: preflight has not established a safe writable output directory.' -Role Warning }
+    foreach ($line in @($SizeLines) + @($SummaryLines)) { Write-PdfConsoleText $Presentation $line }
 }
 
 function Get-PdfRunSummary {

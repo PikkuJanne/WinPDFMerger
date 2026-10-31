@@ -1,5 +1,14 @@
 # Decision log
 
+2026-10-31 — D26: The owner explicitly invoked the v1.0.1 assignment for two
+changes: live console presentation and configured Documents/WinPDFMerger output.
+It supersedes the v1.0.0-only, beside-scripts default and one-task-per-chat rules
+for this patch. Explicit OutputFolder, PDF engines/options, source safety, BAT
+pause and exit codes remain. Normal GitHub publication and fresh public-download
+verification are authorized in this chat; no human testing or approval handover.
+Historical T01–T34 and v1.0.0 assets/evidence are preserved. Patch tracking is in
+tasks/V1.0.1.md and evidence/V1.0.1-validation.md.
+
 | ID | Decision | Status / rationale |
 |---|---|---|
 | D01 | Existing PowerShell entry points and PDFtk/GS remain. | Binding owner scope: improve, not rewrite. |

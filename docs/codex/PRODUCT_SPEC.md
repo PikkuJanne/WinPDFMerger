@@ -1,5 +1,13 @@
 # Product contract for v1.0.0
 
+Owner amendment for v1.0.1 (2026-10-31): the omitted OutputFolder destination
+is now the configured Windows Documents directory's persistent `WinPDFMerger`
+child, created safely on first use. Explicit OutputFolder remains an exact
+existing directory. The live console gains ASCII/native-color framing, stage and
+result panels with plain redirected output/logs. See `tasks/V1.0.1.md`. These
+two changes supersede the historical default/presentation text below; all other
+processing, source safety, publication and exit-code contracts are retained.
+
 These are implementation decisions for this release, not claims about the current script. A later owner instruction takes precedence; log changes in DECISIONS.md. Sources explaining dependency behavior are in SOURCES.md.
 
 ## Preserve

@@ -1,5 +1,5 @@
 # Actual help/documented application routes and retained local diagnostics.
-# Only synthetic copied inputs, unchanged copied application sources and scoped
+# Only synthetic copied inputs, a controlled known-folder resolver and scoped
 # child environments are used. Corruption and missing-dependency controls are
 # disclosed; neither these tests nor Get-Help prove physical Explorer delivery.
 param(
@@ -100,12 +100,14 @@ print(json.dumps({'page_count':len(pages),'pages':pages,'pypdfium2':str(pdfium.P
         [IO.File]::Copy((Join-Path $repo 'WinPDFMerge.ps1'),$entry,$false)
         [IO.File]::Copy((Join-Path $repo 'VERSION'),(Join-Path $app 'VERSION'),$false)
         [IO.File]::Copy((Join-Path $repo 'src/WinPDFMerge.Helpers.ps1'),$helper,$false)
+        $defaultOutput = Set-TestDocumentsResolver -HelperPath $helper -DocumentsPath (Join-Path $root 'Documents fixture')
+        $helperHash = (Get-FileHash -LiteralPath $helper -Algorithm SHA256).Hash.ToLowerInvariant()
         $inputs = @(foreach ($leaf in @('10.pdf','2.pdf','1.pdf')) { $path=Join-Path $source $leaf; [IO.File]::Copy((Join-Path $fixtureRoot $leaf),$path,$false); $path })
         $foreign = @(Join-Path $app 'foreign-existing.pdf'; Join-Path $output 'foreign-existing.pdf')
         foreach ($path in $foreign) { [IO.File]::Copy((Join-Path $fixtureRoot '1.pdf'),$path,$false) }
         $systemPath = (Join-Path $env:SystemRoot 'System32') + ';' + (Join-Path $env:SystemRoot 'System32/WindowsPowerShell/v1.0')
         $path = if ($MissingPdfTk) { $systemPath } else { [IO.Path]::GetDirectoryName($GhostscriptPath)+';'+[IO.Path]::GetDirectoryName($PdftkPath)+';'+$systemPath }
-        [pscustomobject]@{Root=$root; App=$app; Source=$source; Output=$output; Entry=$entry; Helper=$helper; Inputs=$inputs; Foreign=$foreign; ChildEnvironment=@{PATH=$path; ProgramFiles=$noCommon; 'ProgramFiles(x86)'=$noCommon; GS_OPTIONS='-T18-invalid-inherited-child-option'; NAME='expanded-synthetic-path'}; MissingPdfTk=[bool]$MissingPdfTk; Percent=[bool]$Percent}
+        [pscustomobject]@{Root=$root; App=$app; Source=$source; Output=$output; DefaultOutput=$defaultOutput; HelperHash=$helperHash; Entry=$entry; Helper=$helper; Inputs=$inputs; Foreign=$foreign; ChildEnvironment=@{PATH=$path; ProgramFiles=$noCommon; 'ProgramFiles(x86)'=$noCommon; GS_OPTIONS='-T18-invalid-inherited-child-option'; NAME='expanded-synthetic-path'}; MissingPdfTk=[bool]$MissingPdfTk; Percent=[bool]$Percent}
     }
     function Invoke-DiagnosticChild([string]$Executable,[string[]]$Arguments,[string]$Directory,[hashtable]$Environment=@{},[int]$TimeoutMilliseconds=40000) {
         $capture = Join-Path $Directory ('child-' + [Guid]::NewGuid().ToString('N'))
@@ -262,12 +264,12 @@ $record=[ordered]@{Synopsis=[string]$help.Synopsis;Description=@($help.Descripti
         foreach($directory in @($Application.App,$Application.Source,$Application.Output)) { @(Get-ChildItem -LiteralPath $directory -Force | Where-Object Name -like '.WinPDFMerge*').Count | Should -Be 0 }
         [pscustomobject]@{Output=$Output; Log=$log; FinalReads=$reads; NativeReceipts=$receipts; Stages=$stages; ExpectedShellVersion=$expectedShell; ExpectedShellEdition=$edition; ExpectedPreset=$Preset; Skipped=[bool]$Skipped; Result=$Result}
     }
-    function Add-DiagnosticObservation($Application,[string]$Label,$Before,$Proof,[string]$Control='Unchanged copied entry/helper; real selected native engines, no native result or input substitution.') {
+    function Add-DiagnosticObservation($Application,[string]$Label,$Before,$Proof,[string]$Control='Unchanged copied entry; copied helper has a controlled Documents resolver confined to the fixture tree. Real selected native engines, no native result or input substitution.') {
         $after=@(Get-DiagnosticSnapshot (@($Application.Inputs)+$Application.Foreign))
         ($after | ConvertTo-Json -Compress) | Should -BeExactly ($Before | ConvertTo-Json -Compress)
         $sourceCopies=@(Get-DiagnosticSnapshot @($Application.Entry,$Application.Helper))
         $sourceCopies[0].SHA256 | Should -BeExactly (Get-FileHash -LiteralPath (Join-Path $repo 'WinPDFMerge.ps1') -Algorithm SHA256).Hash.ToLowerInvariant()
-        $sourceCopies[1].SHA256 | Should -BeExactly (Get-FileHash -LiteralPath (Join-Path $repo 'src/WinPDFMerge.Helpers.ps1') -Algorithm SHA256).Hash.ToLowerInvariant()
+        $sourceCopies[1].SHA256 | Should -BeExactly $Application.HelperHash
         $observations.Add([pscustomobject]@{Label=$Label; AppFolder=$Application.App; SourceFolder=$Application.Source; NamedOutputFolder=$Application.Output; CopiedSources=$sourceCopies; ChildEnvironment=$Application.ChildEnvironment; Before=$Before; After=$after; Proof=$Proof; ControlledFixture=$Control; Scope='Actual Windows application and pinned native engines on original synthetic copies; local logs contain paths/metadata and require separate redaction for public evidence. No physical Explorer, network upload, universal fidelity/security/archival or package/release claim.'})
     }
 }
@@ -298,7 +300,7 @@ Describe 'AC042 actual help and every documented application command' {
         param($Route,$Index)
         $app=New-DiagnosticApplication; $before=@(Get-DiagnosticSnapshot (@($app.Inputs)+$app.Foreign))
         $delivery=Invoke-DiagnosticExample $app $Index
-        $output=if($Index -eq 1){$app.Output}else{$app.App}; $preset=if($Index -eq 3){'ebook'}else{'screen'}
+        $output=if($Index -eq 1){$app.Output}else{$app.DefaultOutput}; $preset=if($Index -eq 3){'ebook'}else{'screen'}
         $proof=Assert-DiagnosticSuccess $app $delivery.Result $output -Skipped:($Index -eq 2) -Preset $preset
         $version=Get-WinPDFMergeVersion -ScriptDirectory $repo
         $delivery.Result.Stdout | Should -Match ('(?m)^WinPDFMerger '+[regex]::Escape($version)+'\r?$')
@@ -309,7 +311,7 @@ Describe 'AC042 actual help and every documented application command' {
         $app=New-DiagnosticApplication -Percent; $before=@(Get-DiagnosticSnapshot (@($app.Inputs)+$app.Foreign))
         $arguments=@('-NoProfile','-ExecutionPolicy','Bypass','-File',$app.Entry,'-SourceFolder',$app.Source)
         $result=Invoke-DiagnosticChild $windowsPowerShell $arguments $app.App $app.ChildEnvironment
-        $proof=Assert-DiagnosticSuccess $app $result $app.App -WindowsPowerShell
+        $proof=Assert-DiagnosticSuccess $app $result $app.DefaultOutput -WindowsPowerShell
         $proof.Log.Text | Should -Match ([regex]::Escape('source%NAME%'))
         $proof.Log.Text | Should -Not -Match 'sourceexpanded-synthetic-path'
         Add-DiagnosticObservation $app 'actual-readme-powershell51-literal-percent' $before ([pscustomobject]@{MatchingReadmeCommand=$readmeCommands[4]; Diagnostics=$proof; ActualHost='Windows PowerShell5.1 as explicitly named by README, in either outer tier context'; PolicyScope='Existing documented process-only Bypass argument; no persistent policy/security or organization override.'})
@@ -325,7 +327,7 @@ Describe 'AC043 actual early/failure diagnostics supporting separate review' {
         [IO.File]::WriteAllBytes($bad,$encoding.GetBytes($text))
         $before=@(Get-DiagnosticSnapshot (@($app.Inputs)+$app.Foreign))
         $result=Invoke-DiagnosticChild $shell @('-NoProfile','-ExecutionPolicy','RemoteSigned','-File',$app.Entry,$app.Source) $app.App $app.ChildEnvironment
-        $log=Get-DiagnosticLog $app $app.App
+        $log=Get-DiagnosticLog $app $app.DefaultOutput
         Add-DiagnosticObservation $app 'actual-owned-corrupt-input-native-inspection-failure' $before ([pscustomobject]@{Result=$result; Log=$log; CorruptPath=$bad}) 'Controlled same-length catalog Pages pointer corruption in an owned copy before snapshots; original fixtures unchanged. Real PDFtk is invoked without mocked/substituted results.'
         $result.ExitCode | Should -Be 1
         $log.Text | Should -Match ([regex]::Escape($bad)); $log.Text | Should -Match 'PDF input .*failed preflight'
@@ -340,13 +342,13 @@ Describe 'AC043 actual early/failure diagnostics supporting separate review' {
     It 'retains early trusted-path failure diagnostics when selected PDFtk is missing in a scoped child environment' {
         $app=New-DiagnosticApplication -MissingPdfTk; $before=@(Get-DiagnosticSnapshot (@($app.Inputs)+$app.Foreign))
         $result=Invoke-DiagnosticChild $shell @('-NoProfile','-ExecutionPolicy','RemoteSigned','-File',$app.Entry,$app.Source) $app.App $app.ChildEnvironment
-        $log=Get-DiagnosticLog $app $app.App
+        $log=Get-DiagnosticLog $app $app.DefaultOutput
         Add-DiagnosticObservation $app 'actual-scoped-missing-PDFtk-early-log' $before ([pscustomobject]@{Result=$result; Log=$log}) 'Selected child PATH/common roots deliberately exclude engines; approved host/cache engines remain present. No installation or parent environment mutation.'
         $result.ExitCode | Should -Be 1; ($result.Stdout+$result.Stderr) | Should -Match 'PDFtk Server not found|PDFtk preflight failed'
         $log.Text | Should -Match 'PDFtk Server not found'
         $log.Text | Should -Not -Match '(?m)^(?:PdfTk version probe|Input preflight [0-9]+|PDFtk|Master validation|Ghostscript version probe|Ghostscript|Email validation) executable:'
         Assert-DiagnosticSummary $log.Text $PSVersionTable.PSVersion.ToString() $PSVersionTable.PSEdition -Pages 'not inspected' -PdfTk 'not probed' -Ghostscript 'not probed'
-        @(Get-ChildItem -LiteralPath $app.App -File -Filter 'WinPDFMerge_*.pdf').Count | Should -Be 0
+        @(Get-ChildItem -LiteralPath $app.DefaultOutput -File -Filter 'WinPDFMerge_*.pdf').Count | Should -Be 0
     }
     It 'reports <Kind> preflight clearly on console before an unsafe diagnostic location can be established' -TestCases @(@{Kind='source'},@{Kind='destination'}) {
         param($Kind)

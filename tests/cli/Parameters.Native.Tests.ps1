@@ -1,6 +1,7 @@
 # Actual Windows entry and cmd/BAT parameter delivery with approved engines.
 # Copied helper wrappers only record original calls; SkipEmail sentinels are
 # explicitly controlled. These tests do not exercise physical Explorer input.
+# A copied-helper Documents resolver fixture confines omitted-output cases.
 param(
     [Parameter(Mandatory=$true)][string]$PdftkPath,
     [Parameter(Mandatory=$true)][string]$GhostscriptPath,
@@ -107,6 +108,7 @@ print(json.dumps({'page_count':len(pages),'pages':pages,'pypdfium2':str(pdfium.P
         foreach ($leaf in @('WinPDFMerge.ps1','WinPDFMerge.bat','VERSION')) { [IO.File]::Copy((Join-Path $repo $leaf),(Join-Path $app $leaf),$false) }
         $helper = Join-Path $app 'src/WinPDFMerge.Helpers.ps1'
         [IO.File]::Copy((Join-Path $repo 'src/WinPDFMerge.Helpers.ps1'),$helper,$false)
+        $defaultOutput = Set-TestDocumentsResolver -HelperPath $helper -DocumentsPath (Join-Path $root 'Documents fixture')
         $foreign = @(Join-Path $app 'foreign-existing.pdf'; Join-Path $output 'foreign-existing.pdf')
         foreach ($path in $foreign) { [IO.File]::Copy($fixturePath,$path,$false) }
         $fixtureInput = Join-Path $source '1.pdf'; $generation = $null
@@ -156,7 +158,7 @@ if('__SKIP__' -eq 'True') {
         $captureSource = $captureSource.Replace('__CAPTURE__',($capture -replace "'","''")).Replace('__ENTRY__',((Join-Path $app 'WinPDFMerge.ps1') -replace "'","''")).Replace('__SKIP__',[string][bool]$SkipSentinels)
         [IO.File]::AppendAllText($helper,"`n"+$captureSource,(New-Object Text.UTF8Encoding($false)))
         $path = [IO.Path]::GetDirectoryName($GhostscriptPath) + ';' + [IO.Path]::GetDirectoryName($PdftkPath) + ';' + (Join-Path $env:SystemRoot 'System32') + ';' + (Join-Path $env:SystemRoot 'System32/WindowsPowerShell/v1.0')
-        [pscustomobject]@{Root=$root; App=$app; Source=$source; Output=$output; Foreign=$foreign; Input=$fixtureInput; Entry=(Join-Path $app 'WinPDFMerge.ps1'); Batch=(Join-Path $app 'WinPDFMerge.bat'); Helper=$helper; Capture=$capture; Generation=$generation; ChildEnvironment=@{PATH=$path; ProgramFiles=$noCommon; 'ProgramFiles(x86)'=$noCommon; GS_OPTIONS='-T16-invalid-inherited-child-option'}; SkipSentinels=[bool]$SkipSentinels}
+        [pscustomobject]@{Root=$root; App=$app; Source=$source; Output=$output; DefaultOutput=$defaultOutput; Foreign=$foreign; Input=$fixtureInput; Entry=(Join-Path $app 'WinPDFMerge.ps1'); Batch=(Join-Path $app 'WinPDFMerge.bat'); Helper=$helper; Capture=$capture; Generation=$generation; ChildEnvironment=@{PATH=$path; ProgramFiles=$noCommon; 'ProgramFiles(x86)'=$noCommon; GS_OPTIONS='-T16-invalid-inherited-child-option'}; SkipSentinels=[bool]$SkipSentinels}
     }
     function Invoke-ParameterEntry($App,[string]$Mode='Positional',[string[]]$Extra=@()) {
         if ($Mode -eq 'Batch') { return Invoke-LauncherCommand -BatchPath $App.Batch -SourceArguments @($App.Source) -ChildEnvironment $App.ChildEnvironment -TimeoutMilliseconds 40000 }
@@ -248,10 +250,10 @@ AfterAll {
 }
 
 Describe 'AC038 actual legacy/default parameter delivery' {
-    It 'retains entry-folder output and screen through <Mode> delivery' -TestCases @(@{Mode='Positional'},@{Mode='Named'},@{Mode='Batch'}) {
+    It 'uses the controlled Documents child and screen through <Mode> delivery' -TestCases @(@{Mode='Positional'},@{Mode='Named'},@{Mode='Batch'}) {
         param($Mode)
         $app = New-ParameterApplication; $before = @(Get-ParameterSnapshot (@($app.Input) + $app.Foreign))
-        $result = Invoke-ParameterEntry $app $Mode; $proof = Assert-ParameterResult $app $result $app.App -Batch:($Mode -eq 'Batch')
+        $result = Invoke-ParameterEntry $app $Mode; $proof = Assert-ParameterResult $app $result $app.DefaultOutput -Batch:($Mode -eq 'Batch')
         $vector = if ($Mode -eq 'Named') { @('-SourceFolder',$app.Source) } else { @($app.Source) }
         Add-ParameterObservation $app ('actual-' + $Mode.ToLowerInvariant() + '-default-screen') $vector $before $proof
     }
@@ -295,7 +297,7 @@ Describe 'AC038 actual explicit preset and named output selection' {
         $app = New-ParameterApplication; $before = @(Get-ParameterSnapshot (@($app.Input) + $app.Foreign))
         $vector = @($app.Source,'-EmailPreset',$Requested)
         $result = Invoke-ParameterEntry $app 'Positional' @('-EmailPreset',$Requested)
-        $proof = Assert-ParameterResult $app $result $app.App $Selected
+        $proof = Assert-ParameterResult $app $result $app.DefaultOutput $Selected
         Add-ParameterObservation $app ('actual-case-insensitive-' + $Selected) $vector $before $proof
     }
 }
@@ -306,7 +308,7 @@ Describe 'AC039 native supplement for explicit SkipEmail' {
         $app = New-ParameterApplication -Tiny -SkipSentinels; $before = @(Get-ParameterSnapshot (@($app.Input) + $app.Foreign))
         $extra = @('-SkipEmail'); if ($BoundPreset) { $extra += @('-EmailPreset','ebook') }
         $result = Invoke-ParameterEntry $app 'Named' $extra
-        $proof = Assert-ParameterResult $app $result $app.App -Skipped
+        $proof = Assert-ParameterResult $app $result $app.DefaultOutput -Skipped
         if ($BoundPreset) {
             $result.Stdout | Should -Match "EmailPreset 'ebook' is ignored because -SkipEmail was supplied\."
             $proof.Log | Should -Match "EmailPreset 'ebook' is ignored because -SkipEmail was supplied\."

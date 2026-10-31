@@ -7,7 +7,7 @@ BeforeAll {
     $surfaces = @{}
     $bindings = New-Object 'System.Collections.Generic.List[object]'
     $observations = New-Object 'System.Collections.Generic.List[object]'
-    foreach ($relative in @('README.md','CHANGELOG.md','docs/RELEASE_NOTES_v1.0.0.md','docs/USAGE.md','docs/TROUBLESHOOTING.md','docs/DEPENDENCIES.md','docs/COMPATIBILITY.md','SECURITY.md','docs/PDF_LIMITATIONS.md','docs/EMAIL_PRESETS.md','LICENSE','WinPDFMerge.ps1','WinPDFMerge.bat')) {
+    foreach ($relative in @('README.md','CHANGELOG.md','docs/RELEASE_NOTES_v1.0.0.md','docs/RELEASE_NOTES_v1.0.1.md','docs/USAGE.md','docs/TROUBLESHOOTING.md','docs/DEPENDENCIES.md','docs/COMPATIBILITY.md','SECURITY.md','docs/PDF_LIMITATIONS.md','docs/EMAIL_PRESETS.md','LICENSE','WinPDFMerge.ps1','WinPDFMerge.bat')) {
         $path = Join-Path $repo $relative
         $exists = [IO.File]::Exists($path)
         $hash = $null
@@ -94,20 +94,17 @@ BeforeAll {
 }
 
 Describe 'AC046 usable public instructions' {
-    It 'distinguishes accepted premerge candidate evidence from remaining release gates' {
-        foreach ($relative in @('README.md','CHANGELOG.md','docs/RELEASE_NOTES_v1.0.0.md','docs/DEPENDENCIES.md','docs/COMPATIBILITY.md')) {
-            $text = [string]$surfaces[$relative]
-            (Test-PublicParagraph $text @('\bexact\b','\bpremerge\b','\bcandidate\s+ZIPs?\b','\bpassed\b','\bautomated\b','\bWindows\b','\bunchanged-source\b','\bboth\b','\bshells\b')) | Should -BeTrue
-            (Test-PublicParagraph $text @('\baccepted\b','\bmerged\s+source\b','\bfinal\s+assets\b','\b(?:later\s+gates|still\s+require)\b')) | Should -BeTrue
-            $text | Should -Not -Match '(?is)(?:no[^.\r\n]*tested\s+application\s+ZIP\s+is\s+claimed|exact\s+candidate,\s*final\s+and\s+independently\s+downloaded\s+ZIP\s+operation\s+remains)'
+    It 'documents the patch without replacing historical release evidence' {
+        ([string]$surfaces['CHANGELOG.md']) | Should -Match '(?m)^## \[1\.0\.1\] - 2026-10-31\r?$'
+        ([string]$surfaces['CHANGELOG.md']) | Should -Match '(?m)^## \[1\.0\.0\] - 2026-10-10\r?$'
+        $notes = [string]$surfaces['docs/RELEASE_NOTES_v1.0.1.md']
+        $notes | Should -Match '(?m)^# WinPDFMerger v1\.0\.1 release notes'
+        foreach ($pattern in @('Documents','WinPDFMerger','-OutputFolder','PARTIAL','Redirected','public-download','Human testing is excluded')) { $notes | Should -Match ([regex]::Escape($pattern)) }
+        ([string]$surfaces['docs/RELEASE_NOTES_v1.0.0.md']) | Should -Match 'Release status recorded \d{4}-\d{2}-\d{2} before source acceptance and publication'
+        foreach ($relative in @('README.md','docs/DEPENDENCIES.md','docs/COMPATIBILITY.md')) {
+            ([string]$surfaces[$relative]) | Should -Not -Match 'remain later gates|v1\.0\.0 is not yet published'
         }
-        ([string]$surfaces['CHANGELOG.md']) | Should -Match '(?m)^## \[1\.0\.0\] - Unreleased\r?$'
-        ([string]$surfaces['docs/RELEASE_NOTES_v1.0.0.md']) | Should -Match 'v1\.0\.0 has not been published'
-        foreach ($relative in @('README.md','CHANGELOG.md','docs/RELEASE_NOTES_v1.0.0.md','SECURITY.md')) {
-            ([string]$surfaces[$relative]) | Should -Match 'Release status recorded \d{4}-\d{2}-\d{2} before source acceptance and publication'
-            ([string]$surfaces[$relative]) | Should -Match 'https://github\.com/PikkuJanne/WinPDFMerger/releases'
-        }
-        Add-PublicDocsObservation 'candidate-versus-final-gates' @{CandidateAcceptance='automated premerge only';FinalReleaseAccepted=$false;PublishedDownloadAccepted=$false;ApplicationInvoked=$false;NativeInvoked=$false}
+        Add-PublicDocsObservation 'patch-contract-and-history' @{Patch='1.0.1';HistoricalNotesPreserved=$true;ApplicationInvoked=$false;NativeInvoked=$false}
     }
     It 'keeps measured PDF token facts separate from human account acceptance' {
         $limits = [string]$surfaces['docs/PDF_LIMITATIONS.md']
@@ -135,7 +132,8 @@ Describe 'AC046 usable public instructions' {
         $public | Should -Match '\bhidden\b'
         (Test-PublicParagraph $public @('\bsubfolders\b','\b(?:not|never|excluded)\b')) | Should -BeTrue
         (Test-PublicParagraph $public @('\bdefault\b','\bscreen\b')) | Should -BeTrue
-        (Test-PublicParagraph $public @('\bdefault\b','\b(?:entry[- ]script|scripts?|launcher)\b','\b(?:next\s+to|beside|directory|folder)\b')) | Should -BeTrue
+        (Test-PublicParagraph $public @('\bdefault\b','\bDocuments\b','\bWinPDFMerger\b')) | Should -BeTrue
+        (Test-PublicParagraph $public @('-OutputFolder','\bexact\b','\bexisting\b','\bwithout\b','\bapp folder\b')) | Should -BeTrue
         (Test-PublicParagraph $public @('\bWindows\s+10\b','\b(?:unvalidated|not\s+validated|untested)\b')) | Should -BeTrue
     }
     It 'keeps host OS support separate from scoped dependency test observations' {
@@ -149,7 +147,7 @@ Describe 'AC046 usable public instructions' {
             $text = [string]$surfaces[$relative]
             (Test-PublicParagraph $text @('\bhuman\b','\bstandard[- ]user\b','\bExplorer\b','\bexcluded\b','\bnot\s+performed\b','\bnot\s+a\s+manual\s+pass\b')) | Should -BeTrue
             (Test-PublicParagraph $text @('\bscoped\b','\bautomated\b','\bnative\b','\bdual[- ]shell\b','\bCI\b')) | Should -BeTrue
-            (Test-PublicParagraph $text @('\bexact\s+release\s+ZIP\b','\bdownloaded[- ]package\b','\bremain\s+later\s+gates\b')) | Should -BeTrue
+            (Test-PublicParagraph $text @('\b(?:exact[- ]package|exact release ZIP)\b','\b(?:public[- ]download|downloaded[- ]package)\b','\brequired\b','\beach release\b')) | Should -BeTrue
             $text | Should -Not -Match '(?is)(?:physical\s+Explorer\s+acceptance\s+remains\s+a\s+release\s+gate|required\s+(?:standard[- ]user|desktop|human)\s+(?:acceptance|walkthrough)|(?:require|requires)\s+a\s+standard[- ]user\s+desktop\s+walkthrough)'
         }
         Add-PublicDocsObservation 'owner-directed-human-validation-exclusion' @{Surfaces=@('README.md','docs/COMPATIBILITY.md','docs/DEPENDENCIES.md');HumanValidationStatus='excluded';ManualAcceptance=$false;ApplicationInvoked=$false;NativeInvoked=$false;ReleaseZipAccepted=$false}
@@ -160,7 +158,7 @@ Describe 'AC046 usable public instructions' {
         foreach ($scope in @('Windows\s+10','Live\s+UNC','Windows\s+on\s+ARM','32-bit\s+hosts')) {
             $rows = @($compatibility -split '\r?\n' | Where-Object { $_ -match ('^\|\s*' + $scope + '\s*\|') })
             $rows.Count | Should -Be 1
-            $rows[0] | Should -Match 'Excluded\s+from\s+validated\s+v1\.0\.0\s+support'
+            $rows[0] | Should -Match 'Excluded\s+from\s+validated\s+support'
             $rows[0] | Should -Match 'No\s+actual\s+.+\b(?:test|testing|evidence)'
         }
         (Test-PublicParagraph $compatibility @('\bUNC\b','\bunit\b','\bdo\s+not\s+establish\b','\blive\b')) | Should -BeTrue

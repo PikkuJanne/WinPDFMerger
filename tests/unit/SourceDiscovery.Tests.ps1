@@ -38,7 +38,10 @@ BeforeAll {
         $shell = [Diagnostics.Process]::GetCurrentProcess().MainModule.FileName
         # Process-scoped RemoteSigned is the already-authorized development test
         # policy. Organization policy precedence remains in effect.
-        $result = Invoke-TestChildProcess -Executable $shell -Arguments (@('-NoProfile', '-ExecutionPolicy', 'RemoteSigned', '-File', $entry) + $Arguments)
+        # Discovery/preflight cases use only this owned install directory as an
+        # explicit destination. Actual Documents defaults are covered separately
+        # on a disposable runner; never write a log into the test owner's profile.
+        $result = Invoke-TestChildProcess -Executable $shell -Arguments (@('-NoProfile', '-ExecutionPolicy', 'RemoteSigned', '-File', $entry) + $Arguments + @('-OutputFolder', $app))
         [pscustomobject]@{
             ExitCode = $result.ExitCode
             Text = $result.Stdout + "`n" + $result.Stderr

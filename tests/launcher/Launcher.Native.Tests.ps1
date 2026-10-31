@@ -2,6 +2,8 @@
 # Short ASCII paths deliberately keep this narrow launcher check independent of
 # T08 native space quoting. It does not prove Explorer, email, publication safety
 # or document fidelity; the separate receiver suite tests launcher path delivery.
+# Copied-helper Documents resolver fixtures confine default outputs to owned
+# trees; exact package tests separately exercise the Windows known folder.
 param([Parameter(Mandatory=$true)][string]$PdftkPath)
 
 BeforeAll {
@@ -34,11 +36,13 @@ BeforeAll {
         [IO.File]::Copy((Join-Path $repo 'WinPDFMerge.ps1'), (Join-Path $app 'WinPDFMerge.ps1'))
         [IO.File]::Copy((Join-Path $repo 'VERSION'), (Join-Path $app 'VERSION'))
         [IO.File]::Copy((Join-Path $repo 'src/WinPDFMerge.Helpers.ps1'), (Join-Path $app 'src/WinPDFMerge.Helpers.ps1'))
+        $output = Set-TestDocumentsResolver -HelperPath (Join-Path $app 'src/WinPDFMerge.Helpers.ps1') -DocumentsPath (Join-Path $run 'Documents-fixture')
         # Overrides belong only to this cmd child and its descendants. The
         # actual batch still selects Windows PowerShell 5.1 and its own flags.
         $childPath = (Split-Path -Parent $PdftkPath) + ';' + (Join-Path $env:SystemRoot 'System32') + ';' + (Join-Path $env:SystemRoot 'System32/WindowsPowerShell/v1.0')
         [pscustomobject]@{
             App = $app
+            Output = $output
             Source = $source
             Batch = (Join-Path $app 'WinPDFMerge.bat')
             Environment = @{ PATH = $childPath; ProgramFiles = $noGs; 'ProgramFiles(x86)' = $noGs }
@@ -73,19 +77,24 @@ Describe 'AC010: actual cmd batch and application with real PDFtk, narrow smoke'
         $result = Invoke-LauncherCommand -BatchPath $application.Batch -SourceArguments @($application.Source) -ChildEnvironment $application.Environment
         $result.ExitCode | Should -Be 0 -Because ($result.Stdout + $result.Stderr)
         $result.Stdout | Should -Match 'Merge completed successfully'
-        $result.Stdout | Should -Match 'PDF count: 1(?:\r?\n|$)'
+        $result.Stdout | Should -Match '(?m)^SCAN: 1 documents / 2 pages\r?$'
         $result.Stdout | Should -Match 'Ghostscript not found; skipping email-optimized copy'
-        $masters = @(Get-ChildItem -LiteralPath $application.App -Filter '*.pdf' -File)
+        $masters = @(Get-ChildItem -LiteralPath $application.Output -Filter '*.pdf' -File)
         $masters.Count | Should -Be 1
+        $result.Stdout | Should -Match ('(?m)^  Master : ' + [regex]::Escape($masters[0].FullName) + '\r?$')
         $masters[0].Name | Should -Not -Match '_email\.pdf$'
         $inspection = Invoke-TestChildProcess -Executable $PdftkPath -Arguments @($masters[0].FullName, 'dump_data_utf8', 'output', '-', 'dont_ask') -TimeoutMilliseconds 10000
         $inspection.ExitCode | Should -Be 0 -Because $inspection.Stderr
         $counts = @([regex]::Matches($inspection.Stdout, '(?m)^NumberOfPages:\s*([0-9]+)\s*$'))
         $counts.Count | Should -Be 1
         [int]$counts[0].Groups[1].Value | Should -Be 2
-        $logs = @(Get-ChildItem -LiteralPath $application.App -Filter '*.log' -File)
+        $logs = @(Get-ChildItem -LiteralPath $application.Output -Filter '*.log' -File)
         $logs.Count | Should -Be 1
-        (Get-Content -LiteralPath $logs[0].FullName -Raw) | Should -Match '(?m)^Done\.\r?$'
+        $log = Get-Content -LiteralPath $logs[0].FullName -Raw
+        $log | Should -Match '(?m)^PDF count: 1\r?$'
+        $log | Should -Match '(?m)^Done\.\r?$'
+        $result.Stdout | Should -Match ('(?m)^Log: ' + [regex]::Escape($logs[0].FullName) + '\r?$')
+        @(Get-ChildItem -LiteralPath $application.App -File -Filter 'WinPDFMerge_*').Count | Should -Be 0
         (@(Get-NativeLauncherSourceSnapshot $application.Source) -join "`n") | Should -BeExactly $before
         Assert-NativeLauncherParentUnchanged
     }
@@ -96,14 +105,14 @@ Describe 'AC010: actual cmd batch and application with real PDFtk, narrow smoke'
         $result.ExitCode | Should -Be 1
         ($result.Stdout + $result.Stderr) | Should -Match 'No PDFs found'
         $result.Stdout | Should -Match 'Merge failed with exit code 1'
-        @(Get-ChildItem -LiteralPath $application.App -Filter 'WinPDFMerge_*.pdf' -File -Force).Count | Should -Be 0
-        $logs = @(Get-ChildItem -LiteralPath $application.App -Filter 'WinPDFMerge_*.log' -File -Force)
+        @(Get-ChildItem -LiteralPath $application.Output -Filter 'WinPDFMerge_*.pdf' -File -Force).Count | Should -Be 0
+        $logs = @(Get-ChildItem -LiteralPath $application.Output -Filter 'WinPDFMerge_*.log' -File -Force)
         $logs.Count | Should -Be 1
         $log = Get-Content -LiteralPath $logs[0].FullName -Raw
         $log | Should -Match 'No PDFs found'
         $log | Should -Match '(?m)^Input summary: not discovered; expected pages: not inspected\r?$'
         $log | Should -Match '(?m)^Result: Failure; exit code: 1\r?$'
-        @(Get-ChildItem -LiteralPath $application.App -Directory -Force | Where-Object Name -like '.WinPDFMerge*').Count | Should -Be 0
+        @(Get-ChildItem -LiteralPath $application.Output -Directory -Force | Where-Object Name -like '.WinPDFMerge*').Count | Should -Be 0
         @(Get-ChildItem -LiteralPath $application.Source -Force).Count | Should -Be 0
         Assert-NativeLauncherParentUnchanged
     }

@@ -1,8 +1,10 @@
 # AC039: actual advanced script binding and controlled public-option decisions.
 # PDF engines are replaced in GUID-owned copies; these are unit observations.
+# A copied-helper Documents resolver fixture confines omitted-output cases.
 BeforeAll {
     $repo = (Resolve-Path -LiteralPath (Join-Path $PSScriptRoot '../..')).ProviderPath
     . (Join-Path $repo 'src/WinPDFMerge.Helpers.ps1')
+    . (Join-Path $repo 'tests/TestSupport.ps1')
     $fixture = Join-Path $repo 'tests/fixtures/numbered/1.pdf'
     $shell = [Diagnostics.Process]::GetCurrentProcess().MainModule.FileName
     $work = Join-Path $repo ('tests/.work/T16-parameters/' + [Guid]::NewGuid().ToString('N'))
@@ -19,12 +21,13 @@ BeforeAll {
         [IO.File]::Copy((Join-Path $repo 'WinPDFMerge.ps1'),$entry,$false)
         [IO.File]::Copy((Join-Path $repo 'VERSION'),(Join-Path $app 'VERSION'),$false)
         [IO.File]::Copy((Join-Path $repo 'src/WinPDFMerge.Helpers.ps1'),$helper,$false)
+        $defaultOutput = Set-TestDocumentsResolver -HelperPath $helper -DocumentsPath (Join-Path $root 'Documents fixture')
         $inputPath=Join-Path $source '1.pdf'; $foreign=Join-Path $output 'foreign-existing.pdf'
         foreach($path in @($inputPath,$foreign)){[IO.File]::Copy($fixture,$path,$false)}
         $pdftk=Join-Path $app 'pdftk.exe'; $gs=Join-Path $app 'gswin64c.exe'
         foreach($path in @($pdftk,$gs)){[IO.File]::WriteAllText($path,'T16 controlled placeholder; never executed')}
         $receipt=Join-Path $root 'receipt.json'; $config=Join-Path $app 'parameter-config.json'
-        $initial=[ordered]@{Scope='unit controlled native receipts; no PDF-engine execution';HelperLoaded=$false;NativeCalls=0;PdftkDiscovery=0;GSDiscovery=0;GSVersion=0;WritableChecks=0;Jobs=@();NativeVectors=@();Messages=@();Outcome=$null;Identity=$null;BindingError=$null}
+        $initial=[ordered]@{Scope='unit controlled native receipts; no PDF-engine execution';HelperLoaded=$false;NativeCalls=0;PdftkDiscovery=0;GSDiscovery=0;GSVersion=0;WritableChecks=0;DocumentsResolution=0;Jobs=@();NativeVectors=@();Messages=@();Outcome=$null;Identity=$null;BindingError=$null}
         [IO.File]::WriteAllText($receipt,($initial | ConvertTo-Json -Depth 6),(New-Object Text.UTF8Encoding($false)))
         $controlled=@'
 $script:t16Config=Get-Content -LiteralPath (Join-Path (Split-Path -Parent $PSScriptRoot) 'parameter-config.json') -Raw | ConvertFrom-Json
@@ -35,7 +38,13 @@ $script:t16Job=${function:Invoke-PdfToolJob}
 $script:t16Writable=${function:Test-OutputDirectoryWritable}
 $script:t16Logger=${function:Write-RunLog}
 $script:t16Outcome=${function:Get-PdfMergeOutcome}
+$script:t16Documents=${function:Get-MergeDocumentsDirectory}
 function Save-T16ParameterReceipt { [IO.File]::WriteAllText($script:t16Config.Receipt,($script:t16Receipt | ConvertTo-Json -Depth 20),(New-Object Text.UTF8Encoding($false))) }
+function Get-MergeDocumentsDirectory {
+ $script:t16Receipt.DocumentsResolution++; Save-T16ParameterReceipt
+ if($script:t16Config.Mode -eq 'documents-unavailable'){throw 'T101 controlled Documents resolution unavailable'}
+ & $script:t16Documents
+}
 function Find-Pdftk { $script:t16Receipt.PdftkDiscovery++; Save-T16ParameterReceipt; $script:t16Config.Pdftk }
 function Find-Ghostscript { $script:t16Receipt.GSDiscovery++; Save-T16ParameterReceipt; $script:t16Config.Ghostscript }
 function Get-NativeToolVersion {
@@ -101,7 +110,7 @@ catch {
 }
 '@
         [IO.File]::WriteAllText($wrapper,$wrapperText,(New-Object Text.UTF8Encoding($false)))
-        [pscustomobject]@{Root=$root;App=$app;Entry=$entry;Helper=$helper;Wrapper=$wrapper;Input=$inputPath;Foreign=$foreign;Source=$source;Output=$output;Receipt=$receipt;Config=$config;Pdftk=$pdftk;GS=$gs;Mode=$Mode}
+        [pscustomobject]@{Root=$root;App=$app;Entry=$entry;Helper=$helper;Wrapper=$wrapper;Input=$inputPath;Foreign=$foreign;Source=$source;Output=$output;DefaultOutput=$defaultOutput;Receipt=$receipt;Config=$config;Pdftk=$pdftk;GS=$gs;Mode=$Mode}
     }
     function Invoke-ParameterCase($Case,[string]$Label,[hashtable]$Named=@{},[object[]]$Positional=@()) {
         $before=Get-ParameterPreservedHashes $Case
@@ -206,6 +215,14 @@ Describe 'AC039 source and destination decisions precede output/native work' {
 }
 
 Describe 'AC039 valid options reach fixed email presets and keep master behavior' {
+    It 'reports unusable Documents with the explicit-output remedy and no silent fallback' {
+        $case=New-ParameterCase -Mode 'documents-unavailable'
+        $run=Invoke-ParameterCase $case 'unusable-documents-no-fallback' @{} @($case.Source)
+        Assert-ParameterNoOutput $case $run
+        $run.Receipt.DocumentsResolution | Should -Be 1
+        ($run.Result.Stdout+$run.Result.Stderr) | Should -Match 'Documents resolution unavailable.+OutputFolder'
+        [IO.Directory]::Exists($case.DefaultOutput) | Should -BeFalse
+    }
     It 'uses <Expected> for <Label> with the requested existing output directory' -TestCases @(
         @{Label='legacy-default-output-and-preset';Preset=$null;Expected='screen';ExplicitOutput=$false},
         @{Label='explicit-output-default-preset';Preset=$null;Expected='screen';ExplicitOutput=$true},
@@ -221,7 +238,9 @@ Describe 'AC039 valid options reach fixed email presets and keep master behavior
         $run.Result.ExitCode | Should -Be 0
         $run.Receipt.Outcome.EmailState | Should -BeExactly 'published'
         @($run.Receipt.Outcome.PublishedPaths).Count | Should -Be 2
-        $target=if($ExplicitOutput){$case.Output}else{$case.App}
+        $target=if($ExplicitOutput){$case.Output}else{$case.DefaultOutput}
+        $run.Receipt.DocumentsResolution | Should -Be $(if($ExplicitOutput){0}else{1})
+        [IO.Directory]::Exists((Join-Path $case.Output 'WinPDFMerger')) | Should -BeFalse
         [IO.Path]::GetDirectoryName($run.Receipt.Identity.MasterPath) | Should -BeExactly $target
         [IO.File]::Exists($run.Receipt.Identity.MasterPath) | Should -BeTrue
         [IO.File]::Exists($run.Receipt.Identity.EmailPath) | Should -BeTrue
@@ -238,6 +257,15 @@ Describe 'AC039 valid options reach fixed email presets and keep master behavior
         $run.Receipt.GSDiscovery | Should -Be 1
         $run.Receipt.GSVersion | Should -Be 1
         $run.Result.Stdout | Should -Not -Match '(?i)preset.*ignored'
+    }
+    It 'uses an explicit exact existing directory even when Documents resolution is unusable' {
+        $case=New-ParameterCase -Mode 'documents-unavailable'
+        $run=Invoke-ParameterCase $case 'explicit-output-bypasses-unusable-documents' @{OutputFolder=$case.Output;SkipEmail=$true} @($case.Source)
+        $run.Result.ExitCode | Should -Be 0
+        $run.Receipt.DocumentsResolution | Should -Be 0
+        $run.Receipt.Identity.OutputFolder | Should -BeExactly $case.Output
+        [IO.Directory]::Exists((Join-Path $case.Output 'WinPDFMerger')) | Should -BeFalse
+        [IO.Directory]::Exists($case.DefaultOutput) | Should -BeFalse
     }
     It 'skips GS discovery, version and launch for <Label>, explaining only a bound preset' -TestCases @(
         @{Label='skip-default';Preset=$null;Explained=$false},

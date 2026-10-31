@@ -1,5 +1,7 @@
 # Genuine Windows destination/identity integration, synthetic PDFs only.
 # Counts are narrow structural oracles, not visual/fidelity acceptance.
+# Copied-helper Documents resolver fixtures confine omitted-output cases; no
+# owner's known-folder settings or Documents content is changed by this suite.
 param(
     [Parameter(Mandatory=$true)][string]$PdftkPath,
     [Parameter(Mandatory=$true)][string]$GhostscriptPath
@@ -51,10 +53,11 @@ BeforeAll {
         [IO.File]::Copy((Join-Path $repo 'WinPDFMerge.ps1'), (Join-Path $app 'WinPDFMerge.ps1'), $false)
         [IO.File]::Copy((Join-Path $repo 'VERSION'), (Join-Path $app 'VERSION'), $false)
         [IO.File]::Copy((Join-Path $repo 'src/WinPDFMerge.Helpers.ps1'), (Join-Path $app 'src/WinPDFMerge.Helpers.ps1'), $false)
+        $defaultOutput = Set-TestDocumentsResolver -HelperPath (Join-Path $app 'src/WinPDFMerge.Helpers.ps1') -DocumentsPath (Join-Path $root 'Documents fixture')
         $fixtureInput = Join-Path $source 'input.pdf'
         [IO.File]::Copy($fixture, $fixtureInput, $false)
         [pscustomobject]@{
-            Root = $root; App = $app; Source = $source; Output = $output; Input = $fixtureInput
+            Root = $root; App = $app; Source = $source; Output = $output; DefaultOutput = $defaultOutput; Input = $fixtureInput
             Entry = (Join-Path $app 'WinPDFMerge.ps1')
             ChildEnvironment = @{ ProgramFiles = $noCommon; 'ProgramFiles(x86)' = $noCommon; GS_OPTIONS = '-T10-invalid-inherited-child-option' }
         }
@@ -206,14 +209,15 @@ AfterAll {
 }
 
 Describe 'AC022: actual entry destination preflight and standard-user writability' {
-    It 'keeps the omitted destination beside the entry script and uses actual engines without editing sources' {
+    It 'uses the controlled Documents child for omitted output with actual engines and unchanged sources' {
         $application = New-DestinationApplication
         $before = Get-DestinationSnapshot @($application.Input)
         $result = Invoke-DestinationEntry $application
-        $log = Assert-DestinationSuccess $application $result $application.App
+        $log = Assert-DestinationSuccess $application $result $application.DefaultOutput
+        @(Get-ChildItem -LiteralPath $application.App -File -Filter 'WinPDFMerge_*').Count | Should -Be 0
         @(Get-ChildItem -LiteralPath $application.Output -Force).Count | Should -Be 0
         (Get-DestinationSnapshot @($application.Input)) | Should -BeExactly $before
-        Add-DestinationObservation 'default-entry-directory-writable' $result $application $application.App $before $log
+        Add-DestinationObservation 'default-controlled-Documents-child-writable-real-engines' $result $application $application.DefaultOutput $before $log
     }
 
     It 'accepts a named literal writable OutputFolder with punctuation and Latin Unicode' {
@@ -254,7 +258,7 @@ Describe 'AC022: actual entry destination preflight and standard-user writabilit
         Add-DestinationObservation ('invalid-output-' + $Kind) $result $application $output $before
     }
 
-    It 'refuses a denied-write default installation and recovers through an explicit writable destination' {
+    It 'refuses a denied-write explicit installation directory and recovers through another explicit destination' {
         $application = New-DestinationApplication
         $originalAcl = Get-Acl -LiteralPath $application.App
         $originalDescriptor = $originalAcl.Sddl
@@ -267,7 +271,7 @@ Describe 'AC022: actual entry destination preflight and standard-user writabilit
             [IO.File]::ReadAllText($application.Entry).Length | Should -BeGreaterThan 0
             $probe = Join-Path $application.App 'T10-owned-denial-proof.tmp'
             { $file = [IO.File]::Open($probe, [IO.FileMode]::CreateNew, [IO.FileAccess]::Write, [IO.FileShare]::None); $file.Dispose() } | Should -Throw
-            $failure = Invoke-DestinationEntry $application -WithTools $false
+            $failure = Invoke-DestinationEntry $application -OutputPath $application.App -WithTools $false
             $failure.ExitCode | Should -Be 1
             ($failure.Stdout + $failure.Stderr) | Should -Match '(?i)OutputFolder|writ|output|destination'
             ($failure.Stdout + $failure.Stderr) | Should -Not -Match 'PDFtk preflight failed'
@@ -275,7 +279,7 @@ Describe 'AC022: actual entry destination preflight and standard-user writabilit
             Assert-NoDestinationResidue $application.App
             $success = Invoke-DestinationEntry $application -OutputPath $application.Output
             $log = Assert-DestinationSuccess $application $success $application.Output
-            Add-DestinationObservation 'default-actual-directory-ACL-denial' $failure $application $application.App $before
+            Add-DestinationObservation 'explicit-actual-directory-ACL-denial' $failure $application $application.App $before
             Add-DestinationObservation 'explicit-writable-recovery-from-restricted-install' $success $application $application.Output $before $log
         } finally { Set-Acl -LiteralPath $application.App -AclObject $originalAcl }
         (Get-Acl -LiteralPath $application.App).Sddl | Should -BeExactly $originalDescriptor

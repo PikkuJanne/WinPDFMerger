@@ -3,17 +3,29 @@
 The application version is defined in [VERSION](VERSION). Dependency version
 numbers describe separate products and do not change the application version.
 
-## [1.0.0] - Unreleased
+## [1.0.1] - 2026-10-31
 
-Release status recorded 2026-10-09 before source acceptance and publication.
-This Unreleased entry records that review; check
-[GitHub Releases](https://github.com/PikkuJanne/WinPDFMerger/releases) for current status.
+- Restyle the live Windows PowerShell 5.1 and PowerShell 7 console with cyan ASCII
+  framing, a stage column, native status colors and a separate result panel with
+  complete published paths. Retained-master email failures are PARTIAL. Redirected
+  output and UTF-8 logs remain plain.
+- Default both entry points to the configured Windows Documents folder's persistent
+  `WinPDFMerger` child. Create it on first use, reuse it safely and preserve unique
+  filenames. Explicit `-OutputFolder` overrides remain exact existing directories.
+  Unavailable or unsafe destinations fail with a remedy and no silent fallback.
+- Extend automated destination, renderer, Windows/native and exact-package/public
+  download verification. Human testing remains excluded.
 
-First-release changes remain Unreleased. Exact premerge candidate ZIPs passed
-automated Windows operation and unchanged-source checks on 2026-10-09 in both
-required shells. Accepted merged source, final assets and independently downloaded
-published ZIP checks remain later gates; no publication is claimed. See the
-[release notes](docs/RELEASE_NOTES_v1.0.0.md) for validation scope.
+See the [v1.0.1 release notes](docs/RELEASE_NOTES_v1.0.1.md). `VERSION` is the
+application version source; dependencies, PDF processing, `/screen`, source
+preservation, the BAT pause and exit codes `0/1/2` are unchanged.
+
+## [1.0.0] - 2026-10-10
+
+Published on 2026-10-10. The changes below describe v1.0.0, including its former
+beside-the-script destination. The [historical release notes](docs/RELEASE_NOTES_v1.0.0.md)
+retain their dated prepublication review; current publication status is on
+[GitHub Releases](https://github.com/PikkuJanne/WinPDFMerger/releases).
 
 ### Retained workflow
 

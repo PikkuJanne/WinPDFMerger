@@ -1,5 +1,9 @@
 # Project status
 
+v1.0.1 patch in progress under the owner's 2026-10-31 assignment. Active task:
+`tasks/V1.0.1.md`; automatic validation/publication evidence:
+`evidence/V1.0.1-validation.md`. The v1.0.0 completion record below is historical.
+
 T01-T34 done within owner-amended scope. All 17 improvements have evidence;
 74 acceptance cases pass, four are explicitly excluded, none is not_run.
 RELEASE_STATE is complete. See evidence/T34-completion.md and T34-results.json.

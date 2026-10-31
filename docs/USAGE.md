@@ -11,7 +11,7 @@ and optionally Ghostscript, with no Python runtime dependency.
 | Parameter | Meaning |
 | --- | --- |
 | `SourceFolder` | Exactly one existing filesystem directory; optional positional binding, but missing input prints usage and exits `1`. |
-| `-OutputFolder` | An existing writable directory separate from the source. Default: directory of the entry script. No automatic creation or fallback. |
+| `-OutputFolder` | An existing writable directory separate from the source. Omitted: the configured Windows Documents folder's persistent `WinPDFMerger` child, created on first use. An explicit override is used exactly as supplied, without a nested app folder. No silent fallback. |
 | `-SkipEmail` | Publish only the validated master; never discover or launch Ghostscript. |
 | `-EmailPreset screen\|ebook` | Fixed Ghostscript profile, default `screen`. No arbitrary native argument strings. |
 
@@ -67,7 +67,13 @@ does not edit, rename, replace or delete source PDFs.
 Source and output must identify different directories, including case variants
 and supported short-name aliases. Junctions, symbolic links and other reparse
 directories at either path or an ancestor are refused; use direct directory paths.
-The output directory must already exist and be writable. A short create-new probe
+The default destination is resolved using Windows' configured Documents location,
+including a redirected location; it is not inferred from a home drive or OneDrive
+name. The Documents parent is checked before creating the literal `WinPDFMerger`
+child, and the result is checked again. The same app folder is reused across runs.
+An explicit `-OutputFolder` must already exist and be writable. If resolution,
+creation or safety checks fail, use a separate existing writable `-OutputFolder`;
+the application never silently chooses another location. A short create-new probe
 is removed when its owned handle closes; existing files are never used as probes.
 
 Native file operands must be shorter than 260 UTF-16 characters, including their
@@ -82,7 +88,7 @@ CJK source/input and output paths failed in that backend, although a CJK tool
 installation directory worked. These observations do not promise all Unicode
 names work. Unsupported inputs fail without renaming sources. Live UNC shares,
 Windows 10, ARM and 32-bit hosts are unvalidated and excluded from validated
-v1.0.0 support; see the [compatibility scope and rationale](COMPATIBILITY.md).
+support; see the [compatibility scope and rationale](COMPATIBILITY.md).
 
 For paired `%NAME%` characters in source or installation paths, use the
 [direct PowerShell route](../README.md#use): `cmd.exe` may expand them before
@@ -119,6 +125,13 @@ There is no target attachment-size guarantee. See [preset tradeoffs](EMAIL_PRESE
 and [feature preservation limits](PDF_LIMITATIONS.md).
 
 ## Diagnostics, interruption and cleanup
+
+Interactive hosts show an ASCII operations-console header, a stage column and a
+separate SUCCESS, PARTIAL or FAILURE result panel using native host colors. Folder,
+master, published email and log paths are shown in full outside the frame; an email
+path appears only after publication. A retained master after email failure is PARTIAL.
+Redirected and noninteractive output is plain. The UTF-8 diagnostic log has no
+terminal borders, color escapes or animation.
 
 The console/log records stage names and measured elapsed time, not an estimated
 percentage. The UTF-8 log is reserved after safe source/destination validation and

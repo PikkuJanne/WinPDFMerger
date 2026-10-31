@@ -1,11 +1,14 @@
 # Compatibility scope
 
-Scope recorded 2026-10-09 for the planned v1.0.0 release. The release is not yet
-published. These statements describe actual scoped tests and explicit validation
-exclusions; exact release ZIP and downloaded-package checks remain later gates.
-Exact premerge candidate ZIPs passed automated Windows operation and unchanged-source
-checks on 2026-10-09 in both required shells. Accepted merged source and final assets
-still require their own checks; the candidate results do not certify a published download.
+Scope recorded 2026-10-31 for v1.0.1. The patch retains Windows PowerShell 5.1 and
+PowerShell 7 x64 support and the validation exclusions below. Automated Windows
+regression, exact-package and independent public-download checks are required for
+each release. Human standard-user, Explorer and PDF-viewer testing remains excluded
+and was not performed. See the [release notes](RELEASE_NOTES_v1.0.1.md) and the
+release's verification receipt for actual patch results.
+
+The following dated environment observations come from v1.0.0 testing; they do not
+establish a later runtime version or substitute for v1.0.1 package verification.
 
 The tested reference environment is Windows 11 x64 with Windows PowerShell 5.1
 and one recorded supported PowerShell 7 x64 build. Actual synthetic/native tests
@@ -40,15 +43,15 @@ standard-user account or interactive visible-output acceptance.
 
 | Environment | Validation scope | Rationale |
 | --- | --- | --- |
-| Windows 10 | Excluded from validated v1.0.0 support | No actual Windows 10 host testing is recorded; the reference desktop and hosted Server results do not establish it. |
-| Live UNC | Excluded from validated v1.0.0 support | No actual live UNC network-share test is recorded; local NTFS runs do not establish share permissions or network behavior. |
-| Windows on ARM | Excluded from validated v1.0.0 support | No actual ARM host validation evidence is recorded; the tested hosts use x64. |
-| 32-bit hosts | Excluded from validated v1.0.0 support | No actual 32-bit host validation evidence is recorded; an x86 dependency on an x64 host does not establish it. |
+| Windows 10 | Excluded from validated support | No actual Windows 10 host testing is recorded; the reference desktop and hosted Server results do not establish it. |
+| Live UNC | Excluded from validated support | No actual live UNC network-share test is recorded; local NTFS runs do not establish share permissions or network behavior. |
+| Windows on ARM | Excluded from validated support | No actual ARM host validation evidence is recorded; the tested hosts use x64. |
+| 32-bit hosts | Excluded from validated support | No actual 32-bit host validation evidence is recorded; an x86 dependency on an x64 host does not establish it. |
 
 UNC string unit tests do not establish live network-share operation. Tests of the
 x86 PDFtk executable on an x64 host do not validate a 32-bit host. These exclusions
 are not passing compatibility tests and do not assert that every excluded
-environment will fail. The v1.0.0 instructions make no validated support claim for
+environment will fail. These instructions make no validated support claim for
 those environments.
 
 Use the documented local paths and retained defaults, keep original PDFs, and

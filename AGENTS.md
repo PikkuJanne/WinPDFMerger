@@ -1,5 +1,16 @@
 # WinPDFMerger project instructions
 
+## Owner patch assignment — 2026-10-31
+The owner explicitly requested implementation, automatic testing, normal GitHub
+merge, stable Latest publication and independent public-download verification of
+v1.0.1 in one chat. For this assignment only, this supersedes the v1.0.0-only,
+beside-the-scripts default and one-task-per-thread clauses below. The default is
+the configured Windows Documents directory's persistent `WinPDFMerger` child;
+an explicit `-OutputFolder` remains an exact existing-directory override.
+The second change is the live ASCII/native-color operations console. Preserve
+v1.0.0, its assets and historical evidence. No human tests or approval handovers
+are required. See `docs/codex/tasks/V1.0.1.md` for the active patch record.
+
 ## Objective and boundaries
 Improve, do not rewrite. Keep `WinPDFMerge.ps1` and `WinPDFMerge.bat`, PowerShell, PDFtk, optional Ghostscript, one-folder drag-and-drop, top-level inputs only, and local processing. Preserve sources. Keep `/screen` and output beside scripts as defaults; add explicit options rather than silently changing familiar behavior. Website, cloud processing, OCR, GUI editor, installer, auto-updater, and replacement PDF engines are out of scope.
 

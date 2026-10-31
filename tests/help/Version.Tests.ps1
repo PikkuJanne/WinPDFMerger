@@ -43,7 +43,7 @@ BeforeAll {
 
 Describe 'AC063 application version source' {
     It 'reads the release target from the adjacent application VERSION' {
-        $version | Should -BeExactly '1.0.0'
+        $version | Should -BeExactly '1.0.1'
     }
     It 'accepts a single semantic core version with <Label>' -TestCases @(
         @{Label='no newline';Text='3.12.14'},
@@ -119,12 +119,11 @@ Describe 'AC063 public version and package naming agreement' {
         $notes = [IO.File]::ReadAllText((Join-Path $repo ('docs/RELEASE_NOTES_v' + $version + '.md')))
         $changelog | Should -Match ('(?m)^## \[' + [regex]::Escape($version) + '\]')
         $notes | Should -Match ('(?m)^# WinPDFMerger v' + [regex]::Escape($version) + ' release notes')
-        foreach ($text in @($changelog,$notes)) {
-            $text | Should -Match 'VERSION'
-            foreach ($match in [regex]::Matches($text,'(?:WinPDFMerger v|## \[)([0-9]+\.[0-9]+\.[0-9]+)')) {
-                $match.Groups[1].Value | Should -BeExactly $version
-            }
-        }
+        foreach ($text in @($changelog,$notes)) { $text | Should -Match 'VERSION' }
+        $firstEntry = [regex]::Match($changelog,'(?m)^## \[([0-9]+\.[0-9]+\.[0-9]+)\]')
+        $firstEntry.Groups[1].Value | Should -BeExactly $version
+        # Earlier release entries and notes retain their historical versions.
+        $changelog | Should -Match '(?m)^## \[1\.0\.0\] - 2026-10-10\r?$'
     }
 }
 
