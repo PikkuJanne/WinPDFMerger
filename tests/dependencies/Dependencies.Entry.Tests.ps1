@@ -193,14 +193,17 @@ Describe 'T07 actual entry dependency diagnostics with real PDFtk, narrow native
         $result = Invoke-DependencyEntry $application
         $result.ExitCode | Should -Be 0 -Because ($result.Stdout + $result.Stderr)
         $selectedDiagnostic = '(?m)^PDFtk: ' + [regex]::Escape($PdftkPath) + ' \(version 2\.02\)\r?$'
-        $result.Stdout | Should -Match $selectedDiagnostic
+        $result.Stdout | Should -Match '(?m)^PDFtk version: 2\.02\r?$'
+        $result.Stdout | Should -Match '(?m)^SCAN: 1 documents / 2 pages\r?$'
         $result.Stdout | Should -Match 'Ghostscript not found; skipping email-optimized copy'
         $logs = @(Get-ChildItem -LiteralPath $application.App -Filter '*.log' -File)
         $logs.Count | Should -Be 1
+        $result.Stdout | Should -Match ('(?m)^Log: ' + [regex]::Escape($logs[0].FullName) + '\r?$')
         $log = Get-Content -LiteralPath $logs[0].FullName -Raw
         $log | Should -Match $selectedDiagnostic
         $masters = @(Get-ChildItem -LiteralPath $application.App -Filter '*.pdf' -File)
         $masters.Count | Should -Be 1
+        $result.Stdout | Should -Match ('(?m)^  Master : ' + [regex]::Escape($masters[0].FullName) + '\r?$')
         $masters[0].Name | Should -Not -Match '_email\.pdf$'
         $inspection = Invoke-TestChildProcess -Executable $PdftkPath -Arguments @($masters[0].FullName, 'dump_data_utf8', 'output', '-', 'dont_ask') -TimeoutMilliseconds 10000
         $inspection.ExitCode | Should -Be 0 -Because $inspection.Stderr

@@ -1,5 +1,11 @@
 # Local/GitHub workflow and authority
 
+Owner amendment (2026-10-31): v1.0.1 is authorized through stable Latest release
+and independent public-download verification in this chat. Use the normal PR,
+review/check/merge route on `codex/v1.0.1`; preserve v1.0.0. The historical
+v1.0.0-only and one-task-per-chat clauses below do not gate this owner-requested
+patch. No human testing or ceremonial publication approval is required.
+
 ## Fixed target and scope
 Repository: `PikkuJanne/WinPDFMerger`. Default branch observed: `main`. Development branch: `codex/v1.0.0-readiness` (reuse only if it belongs to this work). One draft implementation PR is sufficient; no need to create 34 issues or 34 branches. M6 uses a separate `codex/v1.0.0-release-evidence` branch/PR containing handoff evidence only.
 

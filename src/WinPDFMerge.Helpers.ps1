@@ -351,12 +351,26 @@ function Write-PdfRunStage {
     } else { Write-PdfConsoleText -Presentation $Presentation -Text $line }
 }
 
+function Test-PdfNonInteractiveCommandLine {
+    param([string]$Argument)
+
+    # Both supported shells accept switch abbreviations from NonI onward.
+    # Inspect individual argv tokens rather than matching text inside a command.
+    # GetCommandLineArgs removes quotes; tolerate a quoted standalone token for
+    # callers inspecting a serialized argument without accepting partial quotes.
+    if ($Argument -match '^"([^"]+)"$') { $Argument = $Matches[1] }
+    if ($Argument -notmatch '^[-/]([A-Za-z]+)$') { return $false }
+    $switchName = $Matches[1]
+    return ($switchName.Length -ge 4 -and
+        'NonInteractive'.StartsWith($switchName, [StringComparison]::OrdinalIgnoreCase))
+}
+
 function New-PdfConsolePresentation {
     # Only the real interactive console gets framing and host colors. Detection
     # is advisory: unavailable console APIs must not interrupt PDF processing.
     $interactive = $false
     try {
-        $nonInteractive = @([Environment]::GetCommandLineArgs() | Where-Object { $_ -match '(?i)^[-/]NonI(nteractive)?$' }).Count -ne 0
+        $nonInteractive = @([Environment]::GetCommandLineArgs() | Where-Object { Test-PdfNonInteractiveCommandLine -Argument $_ }).Count -ne 0
         $interactive = $Host.Name -eq 'ConsoleHost' -and
             -not [Console]::IsOutputRedirected -and -not [Console]::IsInputRedirected -and
             -not $nonInteractive

@@ -43,6 +43,29 @@ Write-PdfConsoleResult $presentation -Outcome $outcome -OutputFolder $Folder -Lo
     }
 }
 
+Describe 'Noninteractive command-line switch detection' {
+    It 'recognizes the valid noninteractive switch token <Argument>' -TestCases @(
+        @{Argument='-NonI'}, @{Argument='-NonIn'}, @{Argument='-NonInt'},
+        @{Argument='-NonInte'}, @{Argument='-NonInter'}, @{Argument='-NonIntera'},
+        @{Argument='-NonInterac'}, @{Argument='-NonInteract'}, @{Argument='-NonInteracti'},
+        @{Argument='-NonInteractiv'}, @{Argument='-NonInteractive'},
+        @{Argument='/nonint'}, @{Argument='-NONINTERACTIVE'},
+        @{Argument='"-NonInt"'}, @{Argument='"-NonInteractive"'}, @{Argument='"/nOnI"'}
+    ) {
+        param($Argument)
+        Test-PdfNonInteractiveCommandLine -Argument $Argument | Should -BeTrue
+    }
+    It 'rejects other arguments or embedded command text: <Argument>' -TestCases @(
+        @{Argument='-Non'}, @{Argument='-NonInvalid'}, @{Argument='-NonInteractiveExtra'},
+        @{Argument='-NoProfile'}, @{Argument='NonInteractive'}, @{Argument=''},
+        @{Argument='Write-Host -NonInt'}, @{Argument='-NonInt with extra tokens'},
+        @{Argument='"-NonInt'}, @{Argument='-NonInt"'}, @{Argument='"-Non"'}
+    ) {
+        param($Argument)
+        Test-PdfNonInteractiveCommandLine -Argument $Argument | Should -BeFalse
+    }
+}
+
 Describe 'Live console renderer on a recording PowerShell host' {
     It 'renders segmented cyan framing, stage column, actual paths and host color roles' {
         $record = Invoke-RecordedPresentation -EmailState published

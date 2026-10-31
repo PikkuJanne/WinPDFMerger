@@ -77,10 +77,11 @@ Describe 'AC010: actual cmd batch and application with real PDFtk, narrow smoke'
         $result = Invoke-LauncherCommand -BatchPath $application.Batch -SourceArguments @($application.Source) -ChildEnvironment $application.Environment
         $result.ExitCode | Should -Be 0 -Because ($result.Stdout + $result.Stderr)
         $result.Stdout | Should -Match 'Merge completed successfully'
-        $result.Stdout | Should -Match 'PDF count: 1(?:\r?\n|$)'
+        $result.Stdout | Should -Match '(?m)^SCAN: 1 documents / 2 pages\r?$'
         $result.Stdout | Should -Match 'Ghostscript not found; skipping email-optimized copy'
         $masters = @(Get-ChildItem -LiteralPath $application.Output -Filter '*.pdf' -File)
         $masters.Count | Should -Be 1
+        $result.Stdout | Should -Match ('(?m)^  Master : ' + [regex]::Escape($masters[0].FullName) + '\r?$')
         $masters[0].Name | Should -Not -Match '_email\.pdf$'
         $inspection = Invoke-TestChildProcess -Executable $PdftkPath -Arguments @($masters[0].FullName, 'dump_data_utf8', 'output', '-', 'dont_ask') -TimeoutMilliseconds 10000
         $inspection.ExitCode | Should -Be 0 -Because $inspection.Stderr
@@ -89,7 +90,10 @@ Describe 'AC010: actual cmd batch and application with real PDFtk, narrow smoke'
         [int]$counts[0].Groups[1].Value | Should -Be 2
         $logs = @(Get-ChildItem -LiteralPath $application.Output -Filter '*.log' -File)
         $logs.Count | Should -Be 1
-        (Get-Content -LiteralPath $logs[0].FullName -Raw) | Should -Match '(?m)^Done\.\r?$'
+        $log = Get-Content -LiteralPath $logs[0].FullName -Raw
+        $log | Should -Match '(?m)^PDF count: 1\r?$'
+        $log | Should -Match '(?m)^Done\.\r?$'
+        $result.Stdout | Should -Match ('(?m)^Log: ' + [regex]::Escape($logs[0].FullName) + '\r?$')
         @(Get-ChildItem -LiteralPath $application.App -File -Filter 'WinPDFMerge_*').Count | Should -Be 0
         (@(Get-NativeLauncherSourceSnapshot $application.Source) -join "`n") | Should -BeExactly $before
         Assert-NativeLauncherParentUnchanged
