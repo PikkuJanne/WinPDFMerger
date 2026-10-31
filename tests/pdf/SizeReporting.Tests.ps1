@@ -256,10 +256,12 @@ Describe 'AC040 copied-entry measured size reporting with controlled native rece
         $masterLine='Master size: '+$masterBytes.ToString($invariant)+' bytes ('+$masterHuman+').'
         $report.Lines[0] | Should -BeExactly $masterLine
         $sizePattern='^(Master size:|Email size:|Email reduction:|Validated email candidate size:|Email candidate reduction:)'
-        # Write-RunLog echoes messages; the final summary prints measured sizes
-        # again. Verify all metrics, then the ordered final summary separately.
+        # The result panel prints measured sizes once; native diagnostics stay
+        # in the log. Check the ordered metrics following the actual result line.
         foreach($line in @($run.Result.Stdout -split '\r?\n' | Where-Object {$_ -match $sizePattern})){@($report.Lines) | Should -Contain $line}
-        $summaryText=($run.Result.Stdout -split '(?m)^(?:SUCCESS|PARTIAL SUCCESS|FAILURE):')[-1]
+        $resultPattern='(?m)^Result: (?:SUCCESS|PARTIAL SUCCESS|FAILURE); exit code: [012]\r?$'
+        [regex]::Matches($run.Result.Stdout,$resultPattern).Count | Should -Be 1
+        $summaryText=($run.Result.Stdout -split $resultPattern)[-1]
         $consoleLines=@($summaryText -split '\r?\n' | Where-Object {$_ -match $sizePattern})
         @($consoleLines) | Should -Be @($report.Lines)
         $log=[IO.File]::ReadAllText($run.Receipt.Identity.LogPath)
@@ -285,7 +287,7 @@ Describe 'AC040 copied-entry measured size reporting with controlled native rece
                 [IO.File]::Exists($email) | Should -BeFalse
                 $report.Lines[1] | Should -Match '^Validated email candidate size: .*; not published\.$'
                 $report.Lines[2] | Should -BeExactly ('Email candidate reduction: '+$expectedReduction.ToString('0.0',$invariant)+'% (no size benefit; candidate not published).')
-                $run.Result.Stdout | Should -Not -Match ' - Email-optimized:'
+                $run.Result.Stdout.Contains($email) | Should -BeFalse
             }
         }else{
             @($run.Receipt.Reports).Count | Should -Be 1
@@ -297,7 +299,8 @@ Describe 'AC040 copied-entry measured size reporting with controlled native rece
         }
         if($Mode -eq 'log-failed'){
             @($logLines).Count | Should -Be 0
-            $run.Result.Stdout | Should -Match 'PARTIAL SUCCESS: Result logging failed:'
+            $run.Result.Stdout | Should -Match '(?m)^Result: PARTIAL SUCCESS; exit code: 2\r?$'
+            $run.Result.Stdout | Should -Match '(?m)^Result logging failed:'
             $log | Should -Not -Match 'Result: SUCCESS; exit code: 0'
         }else{@($logLines) | Should -Be @($report.Lines)}
         if($Mode -eq 'skipped'){$run.Receipt.GSDiscovery | Should -Be 0}
