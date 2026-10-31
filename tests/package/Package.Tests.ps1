@@ -40,17 +40,17 @@ Describe 'AC065/AC066 exact allowlisted commit package' {
         $sourceBefore = Get-TestSourceSnapshot -Repo $fixture.Repository
         $build = Invoke-PackageTestBuild -Fixture $fixture
         if ($build.ExitCode -ne 0) { throw ('Expected clean build failed: ' + $build.Stdout + $build.Stderr) }
-        $zipPath = Join-Path $build.OutputDirectory 'WinPDFMerger-v1.0.0.zip'
+        $zipPath = Join-Path $build.OutputDirectory 'WinPDFMerger-v1.0.1.zip'
         $checksumsPath = Join-Path $build.OutputDirectory 'SHA256SUMS.txt'
         $entries = @(Read-PackageTestZip -ZipPath $zipPath)
-        $infoEntry = @($entries | Where-Object Path -CEQ 'WinPDFMerger-v1.0.0/BUILD_INFO.json')[0]
+        $infoEntry = @($entries | Where-Object Path -CEQ 'WinPDFMerger-v1.0.1/BUILD_INFO.json')[0]
         $info = [Text.Encoding]::UTF8.GetString($infoEntry.Bytes) | ConvertFrom-Json
     }
     It 'creates exactly the two contract assets and no staging leftovers' {
-        @(Get-ChildItem -LiteralPath $build.OutputDirectory -Force | Sort-Object Name | Select-Object -ExpandProperty Name) | Should -Be @('SHA256SUMS.txt','WinPDFMerger-v1.0.0.zip')
+        @(Get-ChildItem -LiteralPath $build.OutputDirectory -Force | Sort-Object Name | Select-Object -ExpandProperty Name) | Should -Be @('SHA256SUMS.txt','WinPDFMerger-v1.0.1.zip')
     }
     It 'has exactly the reviewed files and generated BUILD_INFO beneath one root' {
-        $expected = @(@($fixture.Allowlist.files) + @('BUILD_INFO.json') | ForEach-Object { 'WinPDFMerger-v1.0.0/' + $_ } | Sort-Object)
+        $expected = @(@($fixture.Allowlist.files) + @('BUILD_INFO.json') | ForEach-Object { 'WinPDFMerger-v1.0.1/' + $_ } | Sort-Object)
         @($entries.Path | Sort-Object) | Should -Be $expected
         @($entries | Where-Object { $_.Path -match '(?i)(\.git|docs/codex|tests/|tools/|\.pdf$|\.log$|\.exe$|\.png$|\.jpg$)' }).Count | Should -Be 0
     }
@@ -64,15 +64,15 @@ Describe 'AC065/AC066 exact allowlisted commit package' {
     }
     It 'preserves every selected Git blob byte, including the original license' {
         foreach ($relative in $fixture.Allowlist.files) {
-            $entry = @($entries | Where-Object Path -CEQ ('WinPDFMerger-v1.0.0/' + $relative))[0]
+            $entry = @($entries | Where-Object Path -CEQ ('WinPDFMerger-v1.0.1/' + $relative))[0]
             $blob = Read-PackageTestGitBlob -Repository $fixture.Repository -Commit $fixture.Commit -Path $relative
             [Convert]::ToBase64String($entry.Bytes) | Should -BeExactly ([Convert]::ToBase64String($blob))
         }
-        $license = @($entries | Where-Object Path -CEQ 'WinPDFMerger-v1.0.0/LICENSE')[0]
+        $license = @($entries | Where-Object Path -CEQ 'WinPDFMerger-v1.0.1/LICENSE')[0]
         (Get-PackageTestBytesHash -Bytes $license.Bytes) | Should -BeExactly ((Get-FileHash -LiteralPath (Join-Path $repo 'LICENSE') -Algorithm SHA256).Hash.ToLowerInvariant())
     }
     It 'binds VERSION, full source commit and actual tool environment in BUILD_INFO' {
-        $info.version | Should -BeExactly '1.0.0'
+        $info.version | Should -BeExactly '1.0.1'
         $info.source_commit | Should -BeExactly $fixture.Commit
         $info.source_commit | Should -Match '^[0-9a-f]{40}$'
         $info.build_environment.powershell_version | Should -BeExactly $PSVersionTable.PSVersion.ToString()
@@ -89,7 +89,7 @@ Describe 'AC065/AC066 exact allowlisted commit package' {
         @($info.files | Where-Object path -CEQ 'BUILD_INFO.json').Count | Should -Be 0
         foreach ($row in $info.files) {
             $row.sha256 | Should -Match '^[0-9a-f]{64}$'
-            $entry = @($entries | Where-Object Path -CEQ ('WinPDFMerger-v1.0.0/' + $row.path))[0]
+            $entry = @($entries | Where-Object Path -CEQ ('WinPDFMerger-v1.0.1/' + $row.path))[0]
             $row.sha256 | Should -BeExactly (Get-PackageTestBytesHash -Bytes $entry.Bytes)
         }
     }
@@ -98,7 +98,7 @@ Describe 'AC065/AC066 exact allowlisted commit package' {
         foreach ($relative in $fixture.Allowlist.files) { [void]$selected.Add($relative) }
         $checked = 0
         foreach ($relative in ($fixture.Allowlist.files | Where-Object { $_ -match '\.md$' })) {
-            $entry = @($entries | Where-Object Path -CEQ ('WinPDFMerger-v1.0.0/' + $relative))[0]
+            $entry = @($entries | Where-Object Path -CEQ ('WinPDFMerger-v1.0.1/' + $relative))[0]
             $text = [Text.Encoding]::UTF8.GetString($entry.Bytes)
             foreach ($match in [regex]::Matches($text,'!?\[[^\]]*\]\((?<target>[^\s)]+)(?:\s+[^)]*)?\)')) {
                 $target = $match.Groups['target'].Value.Trim('<','>')
@@ -116,14 +116,14 @@ Describe 'AC065/AC066 exact allowlisted commit package' {
     }
     It 'records only the exact ZIP digest in SHA256SUMS and hashes both complete assets independently' {
         $zipHash = (Get-FileHash -LiteralPath $zipPath -Algorithm SHA256).Hash.ToLowerInvariant()
-        [IO.File]::ReadAllText($checksumsPath) | Should -Match ('\A' + $zipHash + '  WinPDFMerger-v1\.0\.0\.zip(?:\r?\n)?\z')
+        [IO.File]::ReadAllText($checksumsPath) | Should -Match ('\A' + $zipHash + '  WinPDFMerger-v1\.0\.1\.zip(?:\r?\n)?\z')
         (Get-FileHash -LiteralPath $checksumsPath -Algorithm SHA256).Hash | Should -Match '^[0-9A-F]{64}$'
         $observations.Add([pscustomobject]@{Scope='independent exact assets';ZipSHA256=$zipHash;ChecksumsSHA256=(Get-FileHash -LiteralPath $checksumsPath -Algorithm SHA256).Hash.ToLowerInvariant();PayloadFiles=@($info.files).Count;SourceCommit=$fixture.Commit})
     }
     It 'repeats identical ZIP and checksum bytes from the same commit and recorded environment' {
         $again = Invoke-PackageTestBuild -Fixture $fixture
         $again.ExitCode | Should -Be 0
-        foreach ($asset in @('WinPDFMerger-v1.0.0.zip','SHA256SUMS.txt')) {
+        foreach ($asset in @('WinPDFMerger-v1.0.1.zip','SHA256SUMS.txt')) {
             (Get-FileHash -LiteralPath (Join-Path $again.OutputDirectory $asset) -Algorithm SHA256).Hash | Should -BeExactly ((Get-FileHash -LiteralPath (Join-Path $build.OutputDirectory $asset) -Algorithm SHA256).Hash)
         }
     }
@@ -278,9 +278,10 @@ Describe 'AC066 version contract and safe output refusal' {
         Assert-PackageTestRefused (Invoke-PackageTestBuild -Fixture $fixture)
     }
     It 'refuses committed <Label> VERSION bytes' -TestCases @(
-        @{Label='invalid';Text='v1.0.0'},
+        @{Label='invalid';Text='v1.0.1'},
         @{Label='different release';Text='2.0.0'},
-        @{Label='executable-looking';Text='1.0.0; exit 0'}
+        @{Label='prior release';Text='1.0.0'},
+        @{Label='executable-looking';Text='1.0.1; exit 0'}
     ) {
         param($Label,$Text)
         [IO.File]::WriteAllText((Join-Path $fixture.Repository 'VERSION'),$Text)
@@ -308,7 +309,7 @@ Describe 'AC066 version contract and safe output refusal' {
     It 'preserves an existing output directory and exact sentinel bytes' {
         $output = Join-Path $work ('existing output ' + [Guid]::NewGuid().ToString('N'))
         [void][IO.Directory]::CreateDirectory($output)
-        $sentinel = Join-Path $output 'WinPDFMerger-v1.0.0.zip'
+        $sentinel = Join-Path $output 'WinPDFMerger-v1.0.1.zip'
         [IO.File]::WriteAllText($sentinel,'T28 preexisting protected output')
         $before = (Get-FileHash -LiteralPath $sentinel -Algorithm SHA256).Hash
         $result = Invoke-PackageTestBuild -Fixture $fixture -OutputDirectory $output
@@ -344,7 +345,8 @@ Describe 'T28 package receipt and source guards' {
     It 'binds actual package source bytes at <RelativePath> even while dirty status remains identical' -TestCases @(
         @{RelativePath='release-files.json'}, @{RelativePath='tools/release/Build-Release.ps1'},
         @{RelativePath='README.md'}, @{RelativePath='LICENSE'}, @{RelativePath='SECURITY.md'},
-        @{RelativePath='docs/DEVELOPMENT.md'}, @{RelativePath='docs/DEPENDENCIES.md'}
+        @{RelativePath='docs/DEVELOPMENT.md'}, @{RelativePath='docs/DEPENDENCIES.md'},
+        @{RelativePath='docs/RELEASE_NOTES_v1.0.1.md'}
     ) {
         param($RelativePath)
         $fixture = New-PackageTestRepository -SourceRepository $repo -WorkRoot $work

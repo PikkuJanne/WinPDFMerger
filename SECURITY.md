@@ -39,7 +39,8 @@ time, process ID and known temporary paths. These files can be confidential.
 
 Logs and outputs are not automatically redacted, encrypted or given a special
 application ACL. They inherit ordinary directory/filesystem access controls.
-The default output directory is beside the scripts; choose a suitable existing
+The default output directory is your configured Documents folder's `WinPDFMerger`
+child; choose a suitable existing
 private writable `-OutputFolder` when needed. The application has no log-retention
 or automatic deletion schedule. Manage access, retention and disposal yourself,
 including orphan staging after stopped runs. A sync/backup service or network
@@ -65,7 +66,7 @@ A SHA-256 checksum verifies agreement with expected bytes; it is not a digital
 signature, proof of publisher identity or a malware verdict. A checksum obtained
 from the same site as a download does not independently establish who published
 it. No paid signing service or private signing key is required by this project.
-An accurately disclosed unsigned release is acceptable for v1.0.0; signing is
+An accurately disclosed unsigned release is acceptable; signing is
 optional and is not a completion gate.
 
 Release status recorded 2026-10-09 before source acceptance and publication.

@@ -17,14 +17,15 @@ website work, cloud conversion, OCR, a GUI editor and an installer are outside i
    is the batch launcher's host. Direct invocation has also been tested on PowerShell
    7.6.6 x64. These are scoped test observations, not completed release certification.
    Windows 10, ARM, 32-bit hosts and live UNC shares are unvalidated and excluded
-   from validated v1.0.0 support; see the [compatibility scope](docs/COMPATIBILITY.md).
+   from validated support; see the [compatibility scope](docs/COMPATIBILITY.md).
 2. Install [PDFtk Server for Windows](https://www.pdflabs.com/tools/pdftk-server/)
    from its vendor. PDFtk is required. Install
    [Ghostscript](https://www.ghostscript.com/releases/gsdnld.html) only if you want
    an email copy; it is optional. Review the separate
    [dependency terms and selection rules](docs/DEPENDENCIES.md).
-3. For the current source, use **Code > Download ZIP** in the
-   [repository](https://github.com/PikkuJanne/WinPDFMerger), or use your checkout.
+3. Download `WinPDFMerger-v1.0.1.zip` and `SHA256SUMS.txt` from
+   [GitHub Releases](https://github.com/PikkuJanne/WinPDFMerger/releases/latest).
+   Compare the ZIP's SHA-256 with the manifest before extracting it.
    Extract the whole project folder to a location such as `C:\Tools\WinPDFMerge`.
    Keep the relative layout below, including `VERSION` beside the launchers and
    `src/WinPDFMerge.Helpers.ps1`; copying just the two launchers is insufficient.
@@ -54,27 +55,27 @@ C:\Tools\WinPDFMerge\
    if installed, `gswin64c.exe --version`. A tool outside PATH can still be selected
    from the documented standard locations; the run reports its actual path/version.
    Version detection does not establish trust. The application installs nothing.
-5. Choose a source folder and a **separate existing writable output folder**.
-   By default, output is beside `WinPDFMerge.ps1`, so that script directory must
-   be writable. Use `-OutputFolder` if it is not. The application does not create
-   destinations or silently choose another location.
+5. Choose a source folder separate from the destination. Both launchers default
+   to **your configured Windows Documents folder, in its `WinPDFMerger` child**.
+   The application creates that one persistent app folder on first use and reuses
+   it. The master, optional email copy and log go directly there. An explicit
+   `-OutputFolder` selects that exact existing writable directory without adding
+   an app folder. An unavailable or unsafe destination fails with guidance; there
+   is no silent fallback.
 
 The scripts are unsigned. Downloaded scripts or enterprise policy may block them.
 Verify the source and follow your organization's approved process; do not disable
 security controls or change machine-wide execution policy. See
 [security and signing limits](SECURITY.md) and [blocked-script guidance](docs/TROUBLESHOOTING.md#script-blocked).
-Release status recorded 2026-10-09 before source acceptance and publication:
-v1.0.0 is not yet published. Exact premerge candidate ZIPs passed
-automated Windows operation and unchanged-source checks in both required shells
-on 2026-10-09. Those local candidates are not a published release download.
-See [GitHub Releases](https://github.com/PikkuJanne/WinPDFMerger/releases) for current
-publication status and assets. The remaining gates below describe this dated review.
+See the [v1.0.1 release notes](docs/RELEASE_NOTES_v1.0.1.md) for the terminal and
+destination changes, and [GitHub Releases](https://github.com/PikkuJanne/WinPDFMerger/releases)
+for publication status and assets. The earlier v1.0.0 release remains available.
 
 Validation evidence covers scoped automated Windows native, dual-shell and hosted
 CI tests. At the owner's direction, human standard-user and Explorer validation
 is excluded from project scope and was not performed. This exclusion is not a
-manual pass. Exact release ZIP and downloaded-package checks remain later gates;
-the accepted merged source and its final assets still require their own checks.
+manual pass. Automated exact-package and public-download verification are required
+for each release; earlier results do not establish a newer package's behavior.
 See the [compatibility scope](docs/COMPATIBILITY.md).
 
 ## Use
@@ -86,7 +87,7 @@ copies if you need a different order, and check the numbered input list in the l
 Existing results placed in the source folder are inputs too; there is no filename-prefix exclusion.
 
 For the default workflow, drag **exactly one folder** onto `WinPDFMerge.bat` in
-Explorer. It uses Windows PowerShell 5.1, writes beside the scripts, and pauses to
+Explorer. It uses Windows PowerShell 5.1, writes to Documents\WinPDFMerger, and pauses to
 show the result and log path. Double-click without a folder shows usage and fails;
 there is no folder picker. Human Explorer drag-and-drop validation is excluded
 and was not performed.
@@ -141,6 +142,12 @@ The batch file returns the exact code after its pause. For a direct script call,
 read `$LASTEXITCODE` immediately afterward. Warnings on stderr alone do not decide
 success. Closing the window, killing the host or a crash cannot guarantee a code
 or cleanup. See [usage details and recovery](docs/USAGE.md).
+
+The interactive console uses a cyan ASCII operations header, stage labels and a
+separate result panel: green success, amber partial/warning and red failure. Full
+destination, published PDF and log paths appear on separate copyable lines. A
+retained master after email failure is **PARTIAL**. Redirected or noninteractive
+output stays plain, and the UTF-8 log contains diagnostics without terminal framing.
 
 ## Quality, privacy and help
 

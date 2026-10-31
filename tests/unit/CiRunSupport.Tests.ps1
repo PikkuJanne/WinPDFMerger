@@ -90,7 +90,8 @@ Describe 'Windows CI policy contract' {
         $driver | Should -Not -Match "PSModulePath=''"
         $yaml | Should -Match '\$env:PSModulePath = \$null'
         (& git -C $repo check-attr text -- LICENSE) | Should -Match 'LICENSE: text: unset$'
-        $driver | Should -Match "@\('NativeFixture','SourceDiscovery','CiNativeSmoke'\)"
+        $driver | Should -Match "@\('NativeFixture','SourceDiscovery','CiNativeSmoke','LauncherNative','DependencyEntry'\)"
+        $driver | Should -Match "'Parameters','Diagnostics','PreservationDocs','SizeReporting','Package'"
         # PS5.1 drops empty native argv values; the native job has no analyzer.
         $yaml | Should -Match "if \(\`$env:CI_GROUP -eq 'unit'\) \{ \`$arguments \+= @\('-AnalyzerModulePath', \`$env:CI_ANALYZER\) \}"
     }

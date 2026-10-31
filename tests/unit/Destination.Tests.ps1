@@ -2,6 +2,98 @@ BeforeAll {
     . (Join-Path $PSScriptRoot '../../src/WinPDFMerge.Helpers.ps1')
 }
 
+Describe 'v1.0.1: persistent configured Documents destination' {
+    BeforeEach {
+        $documents = Join-Path $TestDrive ('redirected Documents [x] ' + [Guid]::NewGuid().ToString('N'))
+        [void][IO.Directory]::CreateDirectory($documents)
+        Mock Get-MergeDocumentsDirectory { $documents }
+    }
+
+    It 'creates one literal child in the resolved Documents path with spaces' {
+        $expected = Join-Path $documents 'WinPDFMerger'
+        [IO.Directory]::Exists($expected) | Should -BeFalse
+        Resolve-DefaultOutputDirectory | Should -BeExactly $expected
+        [IO.Directory]::Exists($expected) | Should -BeTrue
+        @(Get-ChildItem -LiteralPath $documents -Force).Count | Should -Be 1
+        @(Get-ChildItem -LiteralPath $expected -Force).Count | Should -Be 0
+    }
+
+    It 'reuses the persistent child without changing existing output or run identities' {
+        $first = Resolve-DefaultOutputDirectory
+        $sentinel = Join-Path $first 'existing-result.pdf'
+        [IO.File]::WriteAllText($sentinel, 'foreign output')
+        $one = New-MergeRunIdentity -SourceFolder 'C:\synthetic' -OutputFolder $first
+        $second = Resolve-DefaultOutputDirectory
+        $two = New-MergeRunIdentity -SourceFolder 'C:\synthetic' -OutputFolder $second
+        $second | Should -BeExactly $first
+        $one.BaseName | Should -Not -BeExactly $two.BaseName
+        [IO.File]::ReadAllText($sentinel) | Should -BeExactly 'foreign output'
+        @(Get-ChildItem -LiteralPath $documents -Directory).Count | Should -Be 1
+    }
+
+    It 'accepts a concurrent ordinary child creation without overwriting its content' {
+        $expected = Join-Path $documents 'WinPDFMerger'
+        $script:identityReads = 0
+        Mock Get-MergeDirectoryIdentity {
+            $script:identityReads++
+            if ($script:identityReads -eq 2) {
+                [void][IO.Directory]::CreateDirectory($expected)
+                [IO.File]::WriteAllText((Join-Path $expected 'concurrent.txt'), 'other run')
+            }
+            'stable-parent'
+        }
+        Resolve-DefaultOutputDirectory | Should -BeExactly $expected
+        [IO.File]::ReadAllText((Join-Path $expected 'concurrent.txt')) | Should -BeExactly 'other run'
+    }
+
+    It 'refuses an existing file with the app-folder name and reports the override remedy' {
+        $file = Join-Path $documents 'WinPDFMerger'
+        [IO.File]::WriteAllText($file, 'unrelated file')
+        { Resolve-DefaultOutputDirectory } | Should -Throw '*already exists as a file*OutputFolder*'
+        [IO.File]::ReadAllText($file) | Should -BeExactly 'unrelated file'
+    }
+
+    It 'refuses an unresolved, missing or relative Documents path without fallback: <Kind>' -TestCases @(
+        @{Kind='empty';Path=''}, @{Kind='relative';Path='relative-documents'}, @{Kind='missing';Path='Z:\nonexistent-v101-synthetic-documents'}
+    ) {
+        param($Kind,$Path)
+        Mock Get-MergeDocumentsDirectory { $Path }
+        { Resolve-DefaultOutputDirectory } | Should -Throw '*Documents*OutputFolder*'
+        @(Get-ChildItem -LiteralPath $documents -Force).Count | Should -Be 0
+    }
+
+    It 'validates the Documents parent before creating its child' {
+        Mock Assert-MergeDirectoryPath { throw 'refused synthetic junction parent' }
+        { Resolve-DefaultOutputDirectory } | Should -Throw '*junction*OutputFolder*'
+        [IO.Directory]::Exists((Join-Path $documents 'WinPDFMerger')) | Should -BeFalse
+    }
+
+    It 'refuses an actual app-child junction without writing into its target' {
+        $target = Join-Path $TestDrive ('junction-target-' + [Guid]::NewGuid().ToString('N'))
+        [void][IO.Directory]::CreateDirectory($target)
+        $junction = Join-Path $documents 'WinPDFMerger'
+        $null = New-Item -ItemType Junction -Path $junction -Target $target -ErrorAction Stop
+        try {
+            { Resolve-DefaultOutputDirectory } | Should -Throw '*junction*OutputFolder*'
+            @(Get-ChildItem -LiteralPath $target -Force).Count | Should -Be 0
+        } finally {
+            # Delete only the fixture junction itself, never its target tree.
+            [IO.Directory]::Delete($junction, $false)
+        }
+        [IO.Directory]::Exists($target) | Should -BeTrue
+    }
+
+    It 'revalidates the resulting directory and fails closed on changed parent identity' {
+        $script:identityReads = 0
+        Mock Get-MergeDirectoryIdentity {
+            $script:identityReads++
+            if ($script:identityReads -eq 3) { 'changed-parent' } else { 'stable-parent' }
+        }
+        { Resolve-DefaultOutputDirectory } | Should -Throw '*changed*OutputFolder*'
+        @(Get-ChildItem -LiteralPath (Join-Path $documents 'WinPDFMerger') -Force).Count | Should -Be 0
+    }
+}
+
 Describe 'AC022: literal destination validation and owned writable probe' {
     BeforeEach {
         $output = Join-Path $TestDrive ('out-' + [Guid]::NewGuid().ToString('N'))

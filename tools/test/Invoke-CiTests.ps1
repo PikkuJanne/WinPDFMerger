@@ -28,7 +28,7 @@ if ($Group -eq 'unit' -and -not $AnalyzerModulePath) { throw 'The unit job requi
 if ($Group -eq 'native' -and (-not $PdftkPath -or -not $GhostscriptPath)) { throw 'The native job requires both verified real engines.' }
 $process = [Diagnostics.Process]::GetCurrentProcess()
 try { $executable = $process.MainModule.FileName } finally { $process.Dispose() }
-$tiers = if ($Group -eq 'unit') { @('Unit','Static','Launcher','NativeRunner','ToolInvocation','PublicDocs','Version') } else { @('NativeFixture','SourceDiscovery','CiNativeSmoke') }
+$tiers = if ($Group -eq 'unit') { @('Unit','Static','Launcher','NativeRunner','ToolInvocation','PublicDocs','Version','Parameters','Diagnostics','PreservationDocs','SizeReporting','Package') } else { @('NativeFixture','SourceDiscovery','CiNativeSmoke','LauncherNative','DependencyEntry') }
 if ($FailureProbe -and $Group -eq 'unit') { $tiers += 'CiFailureProbe' }
 [void][IO.Directory]::CreateDirectory($ReportDirectory)
 $rawRoot = Join-Path $repo 'tests/.work/pester'

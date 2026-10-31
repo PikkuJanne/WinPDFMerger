@@ -38,9 +38,13 @@ creation; check spelling and use `Get-Help .\WinPDFMerge.ps1 -Examples`.
 Use existing filesystem directories. Source and output cannot be the same
 directory, even through case or supported aliases. Reparse/junction ancestors are
 refused. Choose direct paths and an existing writable `-OutputFolder` separate
-from the source. Output defaults beside the entry script, so a protected install
-folder needs an explicit destination. The application creates no destination and
-does not choose another folder silently. Normal operation requires no administrator.
+from the source. Output defaults to your configured Windows Documents folder's
+persistent `WinPDFMerger` child. Its parent must exist and be safe and writable;
+an existing file named `WinPDFMerger` prevents creation. If Documents cannot be
+resolved, written or accepted by the safety checks, supply an existing writable
+`-OutputFolder`. That override is used exactly, with no nested app folder. The
+application does not choose another folder silently. Normal operation requires
+no administrator.
 
 If no log exists, read the console. Binding, source/destination checks and log
 reservation can fail before a usable log is available. Shorten paths for native

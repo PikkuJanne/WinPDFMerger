@@ -24,7 +24,7 @@ PowerShell support follows the host Windows lifecycle. PDFtk Server 2.02 and
 Ghostscript 10.08.0 were the native builds
 used. These observations do not certify OS support, every build or complete release
 acceptance. Windows 10, ARM, 32-bit hosts and live UNC shares are unvalidated and
-excluded from validated v1.0.0 support; see the [compatibility scope](COMPATIBILITY.md).
+excluded from validated support; see the [compatibility scope](COMPATIBILITY.md).
 Version numbers here identify tests, not perpetual newest/safe versions. Before
 installation or release, check current vendor downloads, security notices and the
 [PowerShell support lifecycle](https://learn.microsoft.com/en-us/powershell/scripting/install/powershell-support-lifecycle).
@@ -45,10 +45,10 @@ does not imply a Settings inspection. See the dated
 Validation evidence covers scoped automated Windows native, dual-shell and hosted
 CI tests. At the owner's direction, human standard-user and Explorer validation
 is excluded from project scope and was not performed. This exclusion is not a
-manual pass. Exact release ZIP and downloaded-package checks remain later gates.
-Exact premerge candidate ZIPs passed automated Windows operation and unchanged-source
-checks on 2026-10-09 in both required shells using the recorded native pins. Accepted
-merged source and final assets still require their own checks.
+manual pass. Automated exact-package and independent public-download verification
+are required for each release. The dated v1.0.0 dependency observations above do
+not establish v1.0.1 package results; see the [patch notes](RELEASE_NOTES_v1.0.1.md)
+and its verification receipt for the actual patch environment and checks.
 
 ## Vendor information checked 2026-10-09
 

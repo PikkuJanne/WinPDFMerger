@@ -63,7 +63,7 @@ BeforeAll {
 
     function Assert-DiscoveryNativeMaster($Application, [int]$ExpectedPages, [int]$ExpectedInputs, [string[]]$ExpectedInputNames = @()) {
         $before = @(Get-DiscoveryNativeSnapshot $Application.Source) -join "`n"
-        $result = Invoke-TestChildProcess -Executable $shell -Arguments @('-NoProfile', '-ExecutionPolicy', 'RemoteSigned', '-File', $Application.Entry, $Application.Source) -ChildPath $childPath -ChildEnvironment $Application.ChildEnvironment
+        $result = Invoke-TestChildProcess -Executable $shell -Arguments @('-NoProfile', '-ExecutionPolicy', 'RemoteSigned', '-File', $Application.Entry, $Application.Source, '-OutputFolder', $Application.App) -ChildPath $childPath -ChildEnvironment $Application.ChildEnvironment
         $result.ExitCode | Should -Be 0 -Because ($result.Stdout + $result.Stderr)
         $result.Stdout | Should -Match ('PDF count: ' + $ExpectedInputs + '(?:\r?\n|$)')
         $result.Stdout | Should -Match 'Ghostscript not found; skipping email-optimized copy'
@@ -131,7 +131,7 @@ Describe 'AC007: actual entry source discovery with real PDFtk' {
         $hidden = Copy-DiscoveryNativeFixture $application.Source '1.pdf' 'hidden.PDF'
         [IO.File]::SetAttributes($hidden, ([IO.File]::GetAttributes($hidden) -bor [IO.FileAttributes]::Hidden))
         $before = @(Get-DiscoveryNativeSnapshot $application.Source) -join "`n"
-        $result = Invoke-TestChildProcess -Executable $shell -Arguments @('-NoProfile', '-ExecutionPolicy', 'RemoteSigned', '-File', $application.Entry, $application.Source) -ChildPath $childPath -ChildEnvironment $application.ChildEnvironment
+        $result = Invoke-TestChildProcess -Executable $shell -Arguments @('-NoProfile', '-ExecutionPolicy', 'RemoteSigned', '-File', $application.Entry, $application.Source, '-OutputFolder', $application.App) -ChildPath $childPath -ChildEnvironment $application.ChildEnvironment
         $result.ExitCode | Should -Be 1
         ($result.Stdout + $result.Stderr) | Should -Match 'No PDFs found'
         @(Get-ChildItem -LiteralPath $application.App -Filter 'WinPDFMerge_*.pdf' -File -Force).Count | Should -Be 0

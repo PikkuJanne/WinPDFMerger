@@ -1,5 +1,10 @@
 # Completed project continuation
 
+The owner has since authorized v1.0.1 in this chat: console presentation and the
+configured Documents/WinPDFMerger default. See `tasks/V1.0.1.md` and
+`evidence/V1.0.1-validation.md` for its actual current state. The completed v1.0.0
+continuation below is preserved historical evidence, not a prohibition on this patch.
+
 No next task remains: T01-T34 done, 74 cases pass/four optional exclusions,
 RELEASE_STATE complete. Read T34-completion/results/reports and fresh live Git state
 when inspecting this project. The final closure E/live-sync proof is reported in the

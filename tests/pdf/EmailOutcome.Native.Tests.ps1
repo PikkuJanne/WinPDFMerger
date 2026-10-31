@@ -1,5 +1,7 @@
 # Real Windows entry/BAT/native engines and original synthetic inputs. Copied
 # helper fault/discovery seams are controlled scheduling, explicitly disclosed.
+# BAT cases use a copied-helper Documents resolver fixture in this suite's owned
+# tree; exact package tests cover actual Windows known-folder resolution.
 param([Parameter(Mandatory=$true)][string]$PdftkPath,[Parameter(Mandatory=$true)][string]$GhostscriptPath,[Parameter(Mandatory=$true)][string]$PythonPath)
 BeforeAll {
  $repo=(Resolve-Path -LiteralPath (Join-Path $PSScriptRoot '../..')).ProviderPath
@@ -25,24 +27,7 @@ BeforeAll {
  $work=Join-Path $repo ('tests/.work/email-outcome/'+[Guid]::NewGuid().ToString('N'));[void][IO.Directory]::CreateDirectory($work)
  $observations=New-Object 'System.Collections.Generic.List[object]'
  $parentPath=[Environment]::GetEnvironmentVariable('PATH','Process');$parentGs=[Environment]::GetEnvironmentVariable('GS_OPTIONS','Process')
- $generator=Join-Path $work 'original-raster.py'
- $generatorSource=@'
-from pathlib import Path
-import hashlib, io, json, random, sys
-path=Path(sys.argv[1])
-pixels=random.Random(140032).randbytes(1200*800*3)
-content=b'q 432 0 0 260 0 28 cm /Im0 Do Q\nBT /F1 12 Tf 24 8 Td (T03-14-P01) Tj ET\n'
-objects=[b'<< /Type /Catalog /Pages 2 0 R >>',b'<< /Type /Pages /Kids [3 0 R] /Count 1 >>',b'<< /Type /Page /Parent 2 0 R /MediaBox [0 0 432 288] /Resources << /Font << /F1 4 0 R >> /XObject << /Im0 5 0 R >> >> /Contents 6 0 R >>',b'<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>',b'<< /Type /XObject /Subtype /Image /Width 1200 /Height 800 /ColorSpace /DeviceRGB /BitsPerComponent 8 /Length '+str(len(pixels)).encode()+b' >>\nstream\n'+pixels+b'\nendstream',b'<< /Length '+str(len(content)).encode()+b' >>\nstream\n'+content+b'endstream']
-buffer=io.BytesIO();buffer.write(b'%PDF-1.4\n%\xe2\xe3\xcf\xd3\n');offsets=[0]
-for number,obj in enumerate(objects,1):
-    offsets.append(buffer.tell());buffer.write(str(number).encode()+b' 0 obj\n'+obj+b'\nendobj\n')
-xref=buffer.tell();buffer.write(b'xref\n0 7\n0000000000 65535 f \n')
-for offset in offsets[1:]:buffer.write(f'{offset:010} 00000 n \n'.encode())
-buffer.write(b'trailer\n<< /Size 7 /Root 1 0 R >>\nstartxref\n'+str(xref).encode()+b'\n%%EOF\n')
-raw=buffer.getvalue();path.write_bytes(raw)
-print(json.dumps({'provenance':'Original deterministic stdlib-only RGB noise raster and synthetic text; no external content','seed':140032,'pixel_dimensions':[1200,800],'page_size_points':[432,288],'visible_id':'T03-14-P01','pages':1,'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest()}))
-'@
- [IO.File]::WriteAllText($generator,$generatorSource,(New-Object Text.UTF8Encoding($false)))
+ $generator=Join-Path $repo 'tools/test/generate_email_fixture.py'
  $oracle=Join-Path $work 'independent-email-inspection.py'
  [IO.File]::WriteAllText($oracle,@'
 import json, re, sys
@@ -66,10 +51,11 @@ print(json.dumps({'page_count':len(pages),'pages':pages,'pypdfium2':str(pdfium.P
  $versions=Invoke-TestChildProcess -Executable $PythonPath -Arguments @('-B',$oracle,'--versions') -TimeoutMilliseconds 10000
  if($versions.ExitCode -ne 0){throw $versions.Stderr};$oracleVersions=$versions.Stdout | ConvertFrom-Json
  function New-EmailApplication([string]$Fixture='tiny',[switch]$Batch){
-  $root=Join-Path $work ([Guid]::NewGuid().ToString('N'));$app=Join-Path $root 'app';$source=Join-Path $root 'source';$output=if($Batch){$app}else{Join-Path $root 'output'};$noCommon=Join-Path $root 'no-common-engines'
+  $root=Join-Path $work ([Guid]::NewGuid().ToString('N'));$app=Join-Path $root 'app';$source=Join-Path $root 'source';$output=Join-Path $root 'output';$noCommon=Join-Path $root 'no-common-engines'
   foreach($directory in @((Join-Path $app 'src'),$source,$output,$noCommon)){[void][IO.Directory]::CreateDirectory($directory)}
   foreach($leaf in @('WinPDFMerge.ps1','WinPDFMerge.bat','VERSION')){[IO.File]::Copy((Join-Path $repo $leaf),(Join-Path $app $leaf),$false)}
   [IO.File]::Copy((Join-Path $repo 'src/WinPDFMerge.Helpers.ps1'),(Join-Path $app 'src/WinPDFMerge.Helpers.ps1'),$false)
+  if($Batch){$output=Set-TestDocumentsResolver -HelperPath (Join-Path $app 'src/WinPDFMerge.Helpers.ps1') -DocumentsPath (Join-Path $root 'Documents fixture');[void][IO.Directory]::CreateDirectory($output)}
   $foreign=Join-Path $output 'foreign-existing.pdf';[IO.File]::Copy((Join-Path $repo 'tests/fixtures/numbered/1.pdf'),$foreign,$false)
   $fixtureInput=Join-Path $source 'input.pdf';$generation=$null
   if($Fixture -eq 'raster'){$g=Invoke-TestChildProcess -Executable $PythonPath -Arguments @('-B',$generator,$fixtureInput) -TimeoutMilliseconds 10000;$g.ExitCode | Should -Be 0 -Because $g.Stderr;$generation=$g.Stdout | ConvertFrom-Json;(Get-FileHash -LiteralPath $fixtureInput -Algorithm SHA256).Hash.ToLowerInvariant() | Should -BeExactly $generation.sha256}

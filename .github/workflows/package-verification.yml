@@ -1,0 +1,120 @@
+name: Exact package verification
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Build exact main package or independently verify published public assets
+        type: choice
+        options: [build, public-download]
+        default: build
+      source_commit:
+        description: Full accepted main source commit
+        required: true
+        type: string
+      zip_sha256:
+        description: Tested ZIP SHA256 (required for public-download)
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    name: BAT PS51 and direct PS7 / exact ZIP
+    runs-on: windows-2025
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 1
+
+      - name: Prepare pinned temporary engines, Pester and PS7
+        id: dependencies
+        shell: powershell
+        run: |
+          & ./tools/test/Initialize-CiDependencies.ps1 -Group native -Shell PS7 -ArtifactDirectory "$env:RUNNER_TEMP/dependency-reports"
+
+      - name: Build or download and verify the exact assets
+        id: assets
+        shell: powershell
+        env:
+          PATCH_MODE: ${{ inputs.mode }}
+          PATCH_COMMIT: ${{ inputs.source_commit }}
+          PATCH_HASH: ${{ inputs.zip_sha256 }}
+          PATCH_EVENT: ${{ github.event_name }}
+          PATCH_SHA: ${{ github.sha }}
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $commit = $env:PATCH_SHA
+          if ($env:PATCH_EVENT -eq 'workflow_dispatch') {
+            if ($env:PATCH_COMMIT -cnotmatch '^[0-9a-f]{40}$' -or $env:PATCH_COMMIT -cne $commit -or $env:GITHUB_REF -cne 'refs/heads/main') { throw 'Dispatch must select the exact accepted main commit.' }
+          }
+          $assets = Join-Path $env:RUNNER_TEMP ('exact-assets-' + [Guid]::NewGuid().ToString('N'))
+          if ($env:PATCH_MODE -eq 'public-download') {
+            if ($env:PATCH_HASH -cnotmatch '^[0-9a-f]{64}$') { throw 'Provide the tested ZIP digest.' }
+            [void][IO.Directory]::CreateDirectory($assets)
+            $release = Invoke-RestMethod -Uri 'https://api.github.com/repos/PikkuJanne/WinPDFMerger/releases/tags/v1.0.1'
+            $latest = Invoke-RestMethod -Uri 'https://api.github.com/repos/PikkuJanne/WinPDFMerger/releases/latest'
+            if ($release.draft -or $release.prerelease -or $latest.id -ne $release.id -or $release.tag_name -cne 'v1.0.1') { throw 'Release is not published stable Latest.' }
+            $tag = (& git ls-remote origin 'refs/tags/v1.0.1^{}') -split '\s+'
+            if ($LASTEXITCODE -ne 0 -or $tag[0] -cne $commit) { throw 'Annotated release tag differs from tested main commit.' }
+            foreach ($name in @('WinPDFMerger-v1.0.1.zip', 'SHA256SUMS.txt')) {
+              $selected = @($release.assets | Where-Object name -CEQ $name)
+              if ($selected.Count -ne 1) { throw 'Public release asset inventory differs.' }
+              Invoke-WebRequest -UseBasicParsing -Uri $selected[0].browser_download_url -OutFile (Join-Path $assets $name)
+            }
+            $zip = Join-Path $assets 'WinPDFMerger-v1.0.1.zip'
+            $hash = (Get-FileHash -LiteralPath $zip -Algorithm SHA256).Hash.ToLowerInvariant()
+            $manifest = [IO.File]::ReadAllText((Join-Path $assets 'SHA256SUMS.txt'))
+            if ($hash -cne $env:PATCH_HASH -or $manifest -cnotmatch ('\A' + $hash + '  WinPDFMerger-v1\.0\.1\.zip\r?\n\z')) { throw 'Downloaded ZIP, manifest and tested digest disagree.' }
+            [void][IO.Directory]::CreateDirectory((Join-Path $env:RUNNER_TEMP 'package-reports'))
+            [ordered]@{ release_url=$release.html_url; release_id=$release.id; published_at=$release.published_at; draft=$release.draft; prerelease=$release.prerelease; latest=$true; tag_commit=$commit; zip_sha256=$hash; checksums_sha256=(Get-FileHash -LiteralPath (Join-Path $assets 'SHA256SUMS.txt') -Algorithm SHA256).Hash.ToLowerInvariant(); anonymous_download=$true } | ConvertTo-Json | Set-Content "$env:RUNNER_TEMP/package-reports/public-download.json" -Encoding UTF8
+          } else {
+            $built = & ./tools/release/Build-Release.ps1 -SourceCommit $commit -OutputDirectory $assets
+            $zip = $built.ZipPath
+            $hash = $built.ZipSha256
+          }
+          "zip_path=$zip" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+          "zip_hash=$hash" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+          "asset_directory=$assets" | Out-File -FilePath $env:GITHUB_OUTPUT -Append -Encoding utf8
+
+      - name: Run real package BAT and PS7 with synthetic PDFs on disposable profile
+        shell: powershell
+        env:
+          PATCH_PS7: ${{ steps.dependencies.outputs.shell_path }}
+          PATCH_PESTER: ${{ steps.dependencies.outputs.pester_path }}
+          PATCH_PDFTK: ${{ steps.dependencies.outputs.pdftk_path }}
+          PATCH_GS: ${{ steps.dependencies.outputs.ghostscript_path }}
+          PATCH_ZIP: ${{ steps.assets.outputs.zip_path }}
+          PATCH_HASH: ${{ steps.assets.outputs.zip_hash }}
+          PATCH_SHA: ${{ github.sha }}
+        run: |
+          $env:PSModulePath = $null
+          & $env:PATCH_PS7 -NoProfile -NonInteractive -File ./tools/release/Invoke-PackageVerification.ps1 -ZipPath $env:PATCH_ZIP -ExpectedZipHash $env:PATCH_HASH -ExpectedCommit $env:PATCH_SHA -PesterModulePath $env:PATCH_PESTER -PdftkPath $env:PATCH_PDFTK -GhostscriptPath $env:PATCH_GS -PowerShell7Path $env:PATCH_PS7 -ReportDirectory "$env:RUNNER_TEMP/package-reports"
+          exit $LASTEXITCODE
+
+      - name: Preserve tested final-main assets for publication
+        if: github.event_name == 'workflow_dispatch' && inputs.mode == 'build'
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: exact-main-release-assets
+          path: |
+            ${{ steps.assets.outputs.asset_directory }}/WinPDFMerger-v1.0.1.zip
+            ${{ steps.assets.outputs.asset_directory }}/SHA256SUMS.txt
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Preserve sanitized verification receipts
+        if: always()
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: package-verification-receipts
+          path: |
+            ${{ runner.temp }}/package-reports/*.json
+            ${{ runner.temp }}/dependency-reports/*.json
+          if-no-files-found: error
+          retention-days: 7

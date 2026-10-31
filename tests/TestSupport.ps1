@@ -1,5 +1,18 @@
 # Test-only subprocess support. This does not exercise the application's future
 # native argument serializer, timeout handling or publication state machine.
+function Set-TestDocumentsResolver {
+    param([string]$HelperPath, [string]$DocumentsPath)
+
+    # A controlled known-folder resolver in a copied helper confines historical
+    # entry/launcher suites to their owned fixture trees. Native PDF calls stay
+    # real; exact-package tests separately exercise Windows GetFolderPath itself.
+    [void][IO.Directory]::CreateDirectory($DocumentsPath)
+    $literal = $DocumentsPath.Replace("'", "''")
+    $resolver = "`nfunction Get-MergeDocumentsDirectory { '$literal' }`n"
+    [IO.File]::AppendAllText($HelperPath, $resolver, (New-Object Text.UTF8Encoding($false)))
+    return [IO.Path]::Combine($DocumentsPath, 'WinPDFMerger')
+}
+
 function Invoke-TestChildProcess {
     param(
         [Parameter(Mandatory=$true)][string]$Executable,

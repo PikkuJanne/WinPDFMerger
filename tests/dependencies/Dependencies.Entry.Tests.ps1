@@ -109,7 +109,7 @@ BeforeAll {
     }
 
     function Invoke-DependencyEntry($Application) {
-        Invoke-TestChildProcess -Executable $shell -Arguments @('-NoProfile', '-ExecutionPolicy', 'RemoteSigned', '-File', $Application.Entry, $Application.Source) -ChildEnvironment $Application.Environment -TimeoutMilliseconds 20000
+        Invoke-TestChildProcess -Executable $shell -Arguments @('-NoProfile', '-ExecutionPolicy', 'RemoteSigned', '-File', $Application.Entry, $Application.Source, '-OutputFolder', $Application.App) -ChildEnvironment $Application.Environment -TimeoutMilliseconds 20000
     }
 
     function Assert-RequiredDependencyEntryFailure($Application, [string]$ExpectedDiagnostic, [bool]$CheckProbeExit = $false, [string]$ExpectedExecutablePath = '', [string[]]$ExpectedDetails = @()) {

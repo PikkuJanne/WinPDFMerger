@@ -285,7 +285,7 @@ Describe 'AC019: actual native source, output and installation path vectors' {
         $before = Get-ToolPathSnapshot @($case.Input)
         $parentPath = [Environment]::GetEnvironmentVariable('PATH', 'Process')
         $parentGs = [Environment]::GetEnvironmentVariable('GS_OPTIONS', 'Process')
-        $result = Invoke-TestChildProcess -Executable $shell -Arguments @('-NoProfile', '-ExecutionPolicy', 'RemoteSigned', '-File', (Join-Path $app 'WinPDFMerge.ps1'), $case.Source) -ChildPath $childPath -ChildEnvironment @{ ProgramFiles = $noCommon; 'ProgramFiles(x86)' = $noCommon; GS_OPTIONS = '-T09-deliberately-invalid-child-option' } -TimeoutMilliseconds 30000
+        $result = Invoke-TestChildProcess -Executable $shell -Arguments @('-NoProfile', '-ExecutionPolicy', 'RemoteSigned', '-File', (Join-Path $app 'WinPDFMerge.ps1'), $case.Source, '-OutputFolder', $app) -ChildPath $childPath -ChildEnvironment @{ ProgramFiles = $noCommon; 'ProgramFiles(x86)' = $noCommon; GS_OPTIONS = '-T09-deliberately-invalid-child-option' } -TimeoutMilliseconds 30000
         $result.ExitCode | Should -Be 0 -Because ($result.Stdout + $result.Stderr)
         $masters = @(Get-ChildItem -LiteralPath $app -File -Filter '*.pdf' | Where-Object Name -notlike '*_email.pdf')
         $masters.Count | Should -Be 1
@@ -357,7 +357,7 @@ Describe 'AC020: real prompt-free encrypted, locked and collision outcomes' {
         [void][IO.Directory]::CreateDirectory($noCommon)
         $childPath = [IO.Path]::GetDirectoryName($PdftkPath) + ';' + (Join-Path $env:SystemRoot 'System32')
         if ($ToolBackend -eq 'Ghostscript') { $childPath = [IO.Path]::GetDirectoryName($engine) + ';' + $childPath }
-        $result = Invoke-TestChildProcess -Executable $shell -Arguments @('-NoProfile', '-ExecutionPolicy', 'RemoteSigned', '-File', (Join-Path $app 'WinPDFMerge.ps1'), $source) -ChildPath $childPath -ChildEnvironment @{ ProgramFiles = $noCommon; 'ProgramFiles(x86)' = $noCommon } -TimeoutMilliseconds 10000
+        $result = Invoke-TestChildProcess -Executable $shell -Arguments @('-NoProfile', '-ExecutionPolicy', 'RemoteSigned', '-File', (Join-Path $app 'WinPDFMerge.ps1'), $source, '-OutputFolder', $app) -ChildPath $childPath -ChildEnvironment @{ ProgramFiles = $noCommon; 'ProgramFiles(x86)' = $noCommon } -TimeoutMilliseconds 10000
         $result.ExitCode | Should -Be 1 -Because ($result.Stdout + $result.Stderr)
         ($result.Stdout + $result.Stderr) | Should -Match 'PDFtk failed'
         @(Get-ChildItem -LiteralPath $app -Filter '*.pdf' -File).Count | Should -Be 0

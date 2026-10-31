@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-Builds the allowlisted v1.0.0 ZIP and its exact SHA-256 manifest from clean HEAD.
+Builds the allowlisted v1.0.1 ZIP and its exact SHA-256 manifest from clean HEAD.
 .DESCRIPTION
 Development-only builder; Git supplies exact committed blob bytes without checkout
 filters. The new output directory must be outside the repository, beneath an
@@ -224,10 +224,10 @@ if ($versionText -cnotmatch '\A(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)
 $version = $versionText.TrimEnd("`r", "`n")
 $rootName = 'WinPDFMerger-v' + $version
 $zipName = $rootName + '.zip'
-if ($version -cne '1.0.0' -or $contract.target_release -cne ('v' + $version) -or
+if ($version -cne '1.0.1' -or $contract.target_release -cne ('v' + $version) -or
     $contract.zip_root -cne $rootName -or $contract.build_info_contract.version -cne $version -or
     $contract.assets.Count -ne 2 -or $contract.assets[0] -cne $zipName -or $contract.assets[1] -cne 'SHA256SUMS.txt') {
-    throw 'VERSION and the fixed v1.0.0 package contract disagree.'
+    throw 'VERSION and the fixed v1.0.1 package contract disagree.'
 }
 Assert-ReleaseEntryName $rootName
 $files = New-Object 'Collections.Generic.Dictionary[string,byte[]]' ([StringComparer]::OrdinalIgnoreCase)
